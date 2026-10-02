@@ -19,10 +19,6 @@ extern "C" {
 #endif
 
 typedef struct ui_workspace ui_workspace_t;
-typedef enum ui_workspace_shell_mode {
-    UI_WORKSPACE_SHELL_NATIVE = 0,
-    UI_WORKSPACE_SHELL_WEB = 1
-} ui_workspace_shell_mode_t;
 typedef enum ui_app_close_decision {
     UI_APP_CLOSE_ALLOW = 0,
     UI_APP_CLOSE_REFUSE = 1,
@@ -91,10 +87,6 @@ typedef struct ui_workspace_config {
     ui_workspace_confirm_fn confirm;
     ui_workspace_changed_fn changed;
     ui_assistant_permission_t max_permission;
-    /* Preserve the complete v1 structure, including its tail padding. */
-    uintptr_t reserved_v1;
-    /* Appended. Zero preserves native embedding; standalone uses WEB. */
-    ui_workspace_shell_mode_t shell_mode;
 } ui_workspace_config_t;
 
 typedef struct ui_app_instance_info {

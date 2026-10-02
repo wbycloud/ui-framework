@@ -8,14 +8,37 @@
 #include <limits.h>
 #include <wchar.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 
 #include "../ui_internal.h"
 #include "ui_framework/native.h"
+#include "ui_framework/shell.h"
+#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
+#include "ui_framework/light_web.h"
+#endif
 
 #pragma comment(lib, "comctl32.lib")
 
 #define UI_NATIVE_FIRST_COMMAND 0x5000u
+#define UI_WEB_PANEL_TITLE_HEIGHT 28
+
+struct ui_shell {
+    ui_native_shell_t *native;
+};
+
+struct ui_content_slot {
+    ui_shell_t *shell;
+    char *panel_id;
+    ui_rect_t frame_rect;
+    ui_rect_t rect;
+    ui_rect_t pixel_rect;
+    int visible;
+    int floating;
+    ui_surface_t *surface;
+    ui_web_view_t *web_view;
+    struct ui_content_slot *next;
+};
 
 typedef struct ui_native_command_binding {
     UINT native_id;
@@ -35,9 +58,18 @@ typedef struct ui_native_panel {
     int preferred_width;
     uint32_t floating_dpi;
     HFONT floating_font;
+    HWND popup;
+    ui_host_t *popup_host;
+    ui_web_backend_t *popup_backend;
+    ui_web_view_t *popup_view;
+    ui_content_slot_t *slot;
 } ui_native_panel_t;
 
 struct ui_native_shell {
+    ui_shell_t shell;
+    ui_content_slot_t *slots;
+    int web_chrome;
+    int reflowing;
     ui_host_t *host;
     HWND parent;
     HWND menu_owner;
@@ -57,6 +89,53 @@ struct ui_native_shell {
 };
 
 static HFONT create_font_for_dpi(uint32_t dpi);
+static RECT logical_rect_to_pixels(const ui_rect_t *logical, uint32_t dpi);
+static int logical_to_pixels(int value, uint32_t dpi);
+static ui_status_t web_shell_reflow(ui_native_shell_t *shell);
+static void close_popup(ui_native_panel_t *panel);
+static void update_native_slot(ui_content_slot_t *slot);
+
+static ui_content_slot_t *find_slot(ui_native_shell_t *shell,
+                                     const char *panel_id)
+{
+    ui_content_slot_t *slot;
+    for (slot = shell->slots; slot != NULL; slot = slot->next) {
+        if ((panel_id == NULL && slot->panel_id == NULL) ||
+            (panel_id != NULL && slot->panel_id != NULL &&
+             strcmp(panel_id, slot->panel_id) == 0)) return slot;
+    }
+    return NULL;
+}
+
+static ui_content_slot_t *create_slot(ui_native_shell_t *shell,
+                                       const char *panel_id)
+{
+    ui_content_slot_t *slot = find_slot(shell, panel_id);
+    if (slot != NULL) return slot;
+    slot = (ui_content_slot_t *)calloc(1, sizeof(*slot));
+    if (slot == NULL) return NULL;
+    if (panel_id != NULL) {
+        slot->panel_id = ui_strdup(panel_id);
+        if (slot->panel_id == NULL) { free(slot); return NULL; }
+    }
+    slot->shell = &shell->shell;
+    slot->next = shell->slots;
+    shell->slots = slot;
+    return slot;
+}
+
+static void detach_slot(ui_content_slot_t *slot)
+{
+    if (slot == NULL) return;
+    if (slot->surface != NULL && slot->panel_id != NULL) {
+        HWND window = (HWND)ui_surface_native_handle(slot->surface);
+        if (window != NULL && IsWindow(window))
+            (void)SetParent(window, slot->shell->native->parent);
+    }
+    slot->surface = NULL;
+    slot->web_view = NULL;
+    slot->visible = 0;
+}
 
 static int set_panel_dpi(ui_native_panel_t *panel, uint32_t dpi)
 {
@@ -95,6 +174,10 @@ static LRESULT CALLBACK panel_subclass_proc(HWND hwnd, UINT message,
             if (panel->hwnd == hwnd && message == WM_CLOSE) {
                 shell->panels[index].closed = 1;
                 ShowWindow(hwnd, SW_HIDE);
+                if (shell->web_chrome && panel->popup != NULL) {
+                    panel->slot->visible = 0;
+                    ShowWindow(panel->popup, SW_HIDE);
+                }
                 return 0;
             }
             if (panel->hwnd == hwnd && message == WM_DPICHANGED && panel->floating) {
@@ -302,9 +385,11 @@ static void free_panels(ui_native_shell_t *shell)
     size_t index;
 
     for (index = 0u; index < shell->panel_count; ++index) {
+        detach_slot(shell->panels[index].slot);
         if (shell->panels[index].hwnd != NULL) {
             DestroyWindow(shell->panels[index].hwnd);
         }
+        close_popup(&shell->panels[index]);
         if (shell->panels[index].tag != NULL) {
             DestroyWindow(shell->panels[index].tag);
         }
@@ -478,13 +563,13 @@ static ui_status_t refresh_menu(ui_native_shell_t *shell)
     }
     free(entries);
 
-    if (shell->active) {
+    if (!shell->web_chrome && shell->active) {
         if (!SetMenu(shell->menu_owner, menu)) {
             DestroyMenu(menu);
             return UI_STATUS_PLATFORM_ERROR;
         }
         (void)DrawMenuBar(shell->menu_owner);
-    } else if (shell->menu != NULL && GetMenu(shell->menu_owner) == shell->menu) {
+    } else if (!shell->web_chrome && shell->menu != NULL && GetMenu(shell->menu_owner) == shell->menu) {
         if (!SetMenu(shell->menu_owner, shell->previous_menu)) {
             DestroyMenu(menu);
             return UI_STATUS_PLATFORM_ERROR;
@@ -508,6 +593,16 @@ static ui_status_t refresh_toolbar(ui_native_shell_t *shell)
     size_t index;
     INITCOMMONCONTROLSEX common_controls;
     HWND toolbar;
+
+    if (shell->web_chrome) {
+        ui_toolbar_item_entry_t *item;
+        for (item = shell->host->toolbar_items; item != NULL; item = item->next) {
+            if (!add_binding(shell, UI_NATIVE_FIRST_COMMAND +
+                              (UINT)shell->binding_count, item->command_id))
+                return UI_STATUS_OUT_OF_MEMORY;
+        }
+        return UI_STATUS_OK;
+    }
 
     ZeroMemory(&common_controls, sizeof(common_controls));
     common_controls.dwSize = sizeof(common_controls);
@@ -612,12 +707,9 @@ static ui_status_t refresh_toolbar(ui_native_shell_t *shell)
     return UI_STATUS_OK;
 }
 
-static ui_status_t refresh_panels(ui_native_shell_t *shell)
+static ui_status_t append_panel(ui_native_shell_t *shell,
+                                const ui_panel_entry_t *entry)
 {
-    ui_panel_entry_t *entry;
-
-    free_panels(shell);
-    for (entry = shell->host->panels; entry != NULL; entry = entry->next) {
         wchar_t *title;
         HWND panel_window;
         HWND tag = NULL;
@@ -635,7 +727,7 @@ static ui_status_t refresh_panels(ui_native_shell_t *shell)
         if (title == NULL) {
             return UI_STATUS_OUT_OF_MEMORY;
         }
-        if (entry->kind == UI_PANEL_FLOATING) {
+        if (entry->kind == UI_PANEL_FLOATING && !shell->web_chrome) {
             style = WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_CLIPCHILDREN;
             extended_style = WS_EX_TOOLWINDOW;
             panel_window = CreateWindowExW(extended_style,
@@ -652,7 +744,7 @@ static ui_status_t refresh_panels(ui_native_shell_t *shell)
                     SS_LEFT | SS_NOPREFIX;
             panel_window = CreateWindowExW(0,
                                            L"STATIC",
-                                           title,
+                                           shell->web_chrome ? L"" : title,
                                            style,
                                            0, 0, 0, 0,
                                            shell->parent,
@@ -664,7 +756,7 @@ static ui_status_t refresh_panels(ui_native_shell_t *shell)
             free(title);
             return UI_STATUS_PLATFORM_ERROR;
         }
-        if (entry->kind == UI_PANEL_SIDEBAR) {
+        if (entry->kind == UI_PANEL_SIDEBAR && !shell->web_chrome) {
             tag = CreateWindowExW(0, L"BUTTON", title,
                                     WS_CHILD | BS_MULTILINE,
                                     0, 0, 0, 0, shell->parent, NULL,
@@ -684,16 +776,27 @@ static ui_status_t refresh_panels(ui_native_shell_t *shell)
         panel->kind = entry->kind;
         panel->dock_region = entry->dock_region;
         panel->preferred_width = entry->preferred_width;
-        panel->floating = entry->kind == UI_PANEL_FLOATING;
-        if (panel->id == NULL || !SetWindowSubclass(panel_window, panel_subclass_proc,
+        panel->floating = entry->kind == UI_PANEL_FLOATING && !shell->web_chrome;
+        panel->slot = create_slot(shell, entry->id);
+        if (panel->id == NULL || panel->slot == NULL || !SetWindowSubclass(panel_window, panel_subclass_proc,
                                                     1, (DWORD_PTR)shell)) {
-            ui_status_t error = panel->id == NULL ? UI_STATUS_OUT_OF_MEMORY : UI_STATUS_PLATFORM_ERROR;
+            ui_status_t error = panel->id == NULL || panel->slot == NULL ? UI_STATUS_OUT_OF_MEMORY : UI_STATUS_PLATFORM_ERROR;
             DestroyWindow(panel_window);
             if (tag != NULL) DestroyWindow(tag);
             free(panel->id);
             return error;
         }
         shell->panel_count += 1u;
+    return UI_STATUS_OK;
+}
+
+static ui_status_t refresh_panels(ui_native_shell_t *shell)
+{
+    ui_panel_entry_t *entry;
+    free_panels(shell);
+    for (entry = shell->host->panels; entry != NULL; entry = entry->next) {
+        ui_status_t status = append_panel(shell, entry);
+        if (status != UI_STATUS_OK) return status;
     }
     return UI_STATUS_OK;
 }
@@ -810,6 +913,424 @@ static void set_floating(ui_native_shell_t *shell, ui_native_panel_t *panel,
     panel->positioned = 0;
 }
 
+static ui_native_panel_t *find_popup(ui_native_shell_t *shell, HWND window)
+{
+    size_t index;
+    for (index = 0; index < shell->panel_count; ++index)
+        if (shell->panels[index].popup == window) return &shell->panels[index];
+    return NULL;
+}
+
+static void update_popup(ui_native_shell_t *shell, ui_native_panel_t *panel)
+{
+    RECT client;
+    int title_height;
+    uint32_t dpi = panel->floating_dpi != 0 ? panel->floating_dpi : shell->host->dpi;
+    if (panel->popup == NULL || !GetClientRect(panel->popup, &client)) return;
+    title_height = logical_to_pixels(UI_WEB_PANEL_TITLE_HEIGHT, dpi);
+    if (title_height > client.bottom) title_height = client.bottom;
+    (void)MoveWindow(panel->hwnd, 1, title_height,
+                     client.right > 2 ? client.right - 2 : 0,
+                     client.bottom > title_height + 1 ? client.bottom - title_height - 1 : 0,
+                     TRUE);
+    if (panel->popup_view != NULL) {
+        ui_rect_t title = {0, 0, MulDiv(client.right, 96, (int)dpi),
+                           UI_WEB_PANEL_TITLE_HEIGHT};
+        (void)ui_web_view_set_rect(panel->popup_view, &title, dpi);
+    }
+    panel->slot->frame_rect = (ui_rect_t){0, 0,
+        MulDiv(client.right, 96, (int)dpi), MulDiv(client.bottom, 96, (int)dpi)};
+    panel->slot->rect = (ui_rect_t){0, 0,
+        MulDiv(client.right > 2 ? client.right - 2 : 0, 96, (int)dpi),
+        MulDiv(client.bottom > title_height + 1 ? client.bottom - title_height - 1 : 0,
+               96, (int)dpi)};
+    panel->slot->pixel_rect = (ui_rect_t){0, 0,
+        client.right > 2 ? client.right - 2 : 0,
+        client.bottom > title_height + 1 ? client.bottom - title_height - 1 : 0};
+}
+
+#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
+static LRESULT CALLBACK popup_view_subclass_proc(HWND window, UINT message,
+                                                  WPARAM w_param, LPARAM l_param,
+                                                  UINT_PTR id, DWORD_PTR data)
+{
+    ui_native_shell_t *shell = (ui_native_shell_t *)data;
+    ui_host_t *host = shell->host;
+    LRESULT result;
+    (void)id;
+    ui_dispatch_enter(host);
+    result = DefSubclassProc(window, message, w_param, l_param);
+    ui_dispatch_leave(host);
+    return result;
+}
+
+static LRESULT popup_window_message(HWND window, UINT message,
+                                           WPARAM w_param, LPARAM l_param)
+{
+    ui_native_shell_t *shell = (ui_native_shell_t *)GetWindowLongPtrW(window, GWLP_USERDATA);
+    ui_native_panel_t *panel = shell != NULL ? find_popup(shell, window) : NULL;
+    if (message == WM_NCCREATE) {
+        const CREATESTRUCTW *create = (const CREATESTRUCTW *)l_param;
+        SetWindowLongPtrW(window, GWLP_USERDATA, (LONG_PTR)create->lpCreateParams);
+    } else if (panel != NULL) {
+        if (message == WM_CLOSE) {
+            panel->closed = 1;
+            panel->slot->visible = 0;
+            ShowWindow(window, SW_HIDE);
+            return 0;
+        }
+        if (message == WM_SIZE) {
+            update_popup(shell, panel);
+            if (!shell->reflowing) (void)web_shell_reflow(shell);
+            return 0;
+        }
+        if (message == WM_DPICHANGED) {
+            const RECT *suggested = (const RECT *)l_param;
+            uint32_t dpi = HIWORD(w_param);
+            if (dpi == 0) dpi = LOWORD(w_param);
+            if (dpi != 0) (void)set_panel_dpi(panel, dpi);
+            if (suggested != NULL)
+                (void)SetWindowPos(window, NULL, suggested->left, suggested->top,
+                    suggested->right - suggested->left,
+                    suggested->bottom - suggested->top, SWP_NOACTIVATE | SWP_NOZORDER);
+            update_popup(shell, panel);
+            if (!shell->reflowing) (void)web_shell_reflow(shell);
+            return 0;
+        }
+        if (message == WM_NCHITTEST) {
+            RECT rect;
+            int x = (short)LOWORD(l_param), y = (short)HIWORD(l_param);
+            int border = logical_to_pixels(5, panel->floating_dpi);
+            GetWindowRect(window, &rect);
+            if (y < rect.top + border)
+                return x < rect.left + border ? HTTOPLEFT :
+                       x >= rect.right - border ? HTTOPRIGHT : HTTOP;
+            if (y >= rect.bottom - border)
+                return x < rect.left + border ? HTBOTTOMLEFT :
+                       x >= rect.right - border ? HTBOTTOMRIGHT : HTBOTTOM;
+            if (x < rect.left + border) return HTLEFT;
+            if (x >= rect.right - border) return HTRIGHT;
+            return HTCLIENT;
+        }
+        if (message == WM_ERASEBKGND) {
+            RECT rect;
+            HBRUSH background = CreateSolidBrush(RGB(221, 226, 234));
+            GetClientRect(window, &rect);
+            FillRect((HDC)w_param, &rect, background);
+            DeleteObject(background);
+            return 1;
+        }
+    }
+    return DefWindowProcW(window, message, w_param, l_param);
+}
+
+static LRESULT CALLBACK popup_window_proc(HWND window, UINT message,
+                                           WPARAM w_param, LPARAM l_param)
+{
+    ui_native_shell_t *shell = (ui_native_shell_t *)GetWindowLongPtrW(window, GWLP_USERDATA);
+    ui_host_t *host;
+    LRESULT result;
+    if (message == WM_NCCREATE)
+        shell = (ui_native_shell_t *)((const CREATESTRUCTW *)l_param)->lpCreateParams;
+    host = shell != NULL ? shell->host : NULL;
+    if (host != NULL) ui_dispatch_enter(host);
+    result = popup_window_message(window, message, w_param, l_param);
+    if (host != NULL) ui_dispatch_leave(host);
+    return result;
+}
+
+static void popup_command(ui_host_t *host, uint64_t request_id,
+                           const char *command_id, const char *params,
+                           const char *source, void *data)
+{
+    ui_native_shell_t *shell = (ui_native_shell_t *)data;
+    ui_host_t *app_host = shell->host;
+    size_t index;
+    (void)params; (void)source;
+    ui_dispatch_enter(app_host);
+    for (index = 0; index < shell->panel_count; ++index) {
+        ui_native_panel_t *panel = &shell->panels[index];
+        if (panel->popup_host != host) continue;
+        if (strcmp(command_id, "framework.panel.close") == 0) {
+            panel->closed = 1;
+            panel->slot->visible = 0;
+            ShowWindow(panel->popup, SW_HIDE);
+            (void)ui_host_emit_event(app_host, "ui.shell.changed", "{}");
+        } else if (strcmp(command_id, "framework.panel.dock") == 0) {
+            if (panel->kind == UI_PANEL_SIDEBAR) {
+                panel->manual_floating = 0;
+                panel->closed = 0;
+                (void)ui_native_shell_reflow(shell);
+                (void)ui_host_emit_event(app_host, "ui.shell.changed", "{}");
+            }
+        } else {
+            ReleaseCapture();
+            (void)SendMessageW(panel->popup, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+        }
+        break;
+    }
+    (void)ui_host_reply(host, request_id, 1, "{}");
+    ui_dispatch_leave(app_host);
+}
+
+static char *popup_html(const ui_panel_entry_t *entry)
+{
+    static const char prefix[] =
+        "<html><body style='margin:0;background:#edf0f5;color:#263143'>"
+        "<div style='display:flex;flex-direction:row;height:28px;align-items:center;padding:0 6px'>"
+        "<span style='flex:1;font-size:13px;font-weight:600' "
+        "onmousedown=\"ui.invoke('framework.panel.drag')\">";
+    static const char dock[] =
+        "<button style='width:46px;height:24px;border:0;border-radius:4px' "
+        "onclick=\"ui.invoke('framework.panel.dock')\">Dock</button>";
+    static const char suffix[] =
+        "<button style='width:26px;height:24px;border:0;border-radius:4px' "
+        "onclick=\"ui.invoke('framework.panel.close')\">&#215;</button></div></body></html>";
+    size_t length = strlen(entry->title), i;
+    char *html, *cursor;
+    if (length > (SIZE_MAX - sizeof(prefix) - sizeof(dock) - sizeof(suffix) - 8) / 6)
+        return NULL;
+    html = (char *)malloc(length * 6 + sizeof(prefix) + sizeof(dock) + sizeof(suffix) + 8);
+    if (html == NULL) return NULL;
+    strcpy(html, prefix); cursor = html + strlen(html);
+    for (i = 0; i < length; ++i) {
+        const char *replacement = NULL;
+        if (entry->title[i] == '&') replacement = "&amp;";
+        else if (entry->title[i] == '<') replacement = "&lt;";
+        else if (entry->title[i] == '>') replacement = "&gt;";
+        if (replacement != NULL) {
+            size_t count = strlen(replacement);
+            memcpy(cursor, replacement, count); cursor += count;
+        } else *cursor++ = entry->title[i];
+    }
+    *cursor = 0;
+    strcat(html, "</span>");
+    if (entry->kind == UI_PANEL_SIDEBAR) strcat(html, dock);
+    strcat(html, suffix);
+    return html;
+}
+#endif
+
+static void close_popup(ui_native_panel_t *panel)
+{
+#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
+    if (panel->popup_view != NULL) ui_web_view_destroy(panel->popup_view);
+    if (panel->popup_backend != NULL) ui_light_web_backend_destroy(panel->popup_backend);
+#endif
+    if (panel->popup_host != NULL) ui_host_destroy(panel->popup_host);
+    if (panel->popup != NULL) DestroyWindow(panel->popup);
+    panel->popup_view = NULL; panel->popup_backend = NULL;
+    panel->popup_host = NULL; panel->popup = NULL;
+}
+
+static ui_status_t create_popup(ui_native_shell_t *shell,
+                                 ui_native_panel_t *panel)
+{
+#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
+    WNDCLASSW window_class;
+    ui_host_config_t host_config;
+    ui_light_web_config_t web_config;
+    ui_command_desc_t command;
+    ui_panel_entry_t *entry;
+    char *html;
+    size_t i;
+    static const char *commands[] = {"framework.panel.close", "framework.panel.dock", "framework.panel.drag"};
+    if (panel->popup != NULL) return UI_STATUS_OK;
+    memset(&window_class, 0, sizeof(window_class));
+    window_class.lpfnWndProc = popup_window_proc;
+    window_class.hInstance = GetModuleHandleW(NULL);
+    window_class.hCursor = LoadCursorW(NULL, MAKEINTRESOURCEW(32512));
+    window_class.lpszClassName = L"UiFrameworkWebPanelPopupV2";
+    if (RegisterClassW(&window_class) == 0 && GetLastError() != ERROR_CLASS_ALREADY_EXISTS)
+        return UI_STATUS_PLATFORM_ERROR;
+    panel->popup = CreateWindowExW(WS_EX_TOOLWINDOW, window_class.lpszClassName,
+        L"", WS_POPUP | WS_CLIPCHILDREN | WS_CLIPSIBLINGS,
+        0, 0, 320, 240, shell->menu_owner, NULL, window_class.hInstance, shell);
+    if (panel->popup == NULL) return UI_STATUS_PLATFORM_ERROR;
+    memset(&host_config, 0, sizeof(host_config));
+    host_config.size = sizeof(host_config); host_config.api_version = UI_FRAMEWORK_API_VERSION;
+    host_config.native_parent = panel->popup;
+    panel->popup_host = ui_host_create(&host_config);
+    if (panel->popup_host == NULL) { close_popup(panel); return UI_STATUS_OUT_OF_MEMORY; }
+    memset(&command, 0, sizeof(command));
+    command.size = sizeof(command); command.title = "Panel"; command.params_schema_json = "{}";
+    command.handler = popup_command; command.user_data = shell;
+    for (i = 0; i < sizeof(commands) / sizeof(commands[0]); ++i) {
+        command.id = commands[i];
+        if (ui_host_register_command(panel->popup_host, &command) != UI_STATUS_OK) {
+            close_popup(panel); return UI_STATUS_OUT_OF_MEMORY;
+        }
+    }
+    memset(&web_config, 0, sizeof(web_config));
+    web_config.size = sizeof(web_config); web_config.parent_hwnd = panel->popup;
+    panel->popup_backend = ui_light_web_backend_create(&web_config);
+    if (panel->popup_backend == NULL) { close_popup(panel); return UI_STATUS_OUT_OF_MEMORY; }
+    panel->popup_view = ui_web_view_create(panel->popup_host, panel->popup_backend);
+    for (entry = shell->host->panels; entry != NULL; entry = entry->next)
+        if (strcmp(entry->id, panel->id) == 0) break;
+    html = entry != NULL ? popup_html(entry) : NULL;
+    if (panel->popup_view == NULL || html == NULL) {
+        free(html); close_popup(panel); return UI_STATUS_OUT_OF_MEMORY;
+    }
+    {
+        HWND window = (HWND)ui_web_view_native_handle(panel->popup_view);
+        if (window == NULL || !SetWindowSubclass(window, popup_view_subclass_proc,
+                                                1, (DWORD_PTR)shell)) {
+            free(html); close_popup(panel); return UI_STATUS_PLATFORM_ERROR;
+        }
+    }
+    if (ui_web_view_load_html(panel->popup_view, html) != UI_STATUS_OK) {
+        free(html); close_popup(panel); return UI_STATUS_PLATFORM_ERROR;
+    }
+    free(html);
+    (void)set_panel_dpi(panel, shell->host->dpi);
+    return UI_STATUS_OK;
+#else
+    (void)shell; (void)panel;
+    return UI_STATUS_UNSUPPORTED;
+#endif
+}
+
+static ui_status_t web_set_floating(ui_native_shell_t *shell,
+                                    ui_native_panel_t *panel, int floating)
+{
+    if (panel->floating == floating) return UI_STATUS_OK;
+    if (floating) {
+        ui_status_t status = create_popup(shell, panel);
+        if (status != UI_STATUS_OK) return status;
+        (void)SetParent(panel->hwnd, panel->popup);
+    } else {
+        (void)SetParent(panel->hwnd, shell->parent);
+        ShowWindow(panel->popup, SW_HIDE);
+        panel->closed = 0;
+    }
+    panel->floating = floating;
+    panel->positioned = 0;
+    return UI_STATUS_OK;
+}
+
+static ui_status_t apply_slot(ui_content_slot_t *slot)
+{
+    ui_native_shell_t *shell = slot->shell->native;
+    ui_status_t status = UI_STATUS_OK;
+    if (slot->surface != NULL) {
+        ui_rect_t rect = slot->rect;
+        if (slot->floating) {
+            HWND window = (HWND)ui_surface_native_handle(slot->surface);
+            ui_rect_t old_rect = slot->surface->rect;
+            ui_rect_t old_pixels = slot->surface->pixel_rect;
+            if (window != NULL) (void)MoveWindow(window, 0, 0,
+                slot->pixel_rect.width, slot->pixel_rect.height, TRUE);
+            /* Floating content has its own DPI and local framebuffer extent. */
+            slot->surface->rect = rect;
+            slot->surface->pixel_rect = slot->pixel_rect;
+            if (slot->surface->resized != NULL &&
+                (memcmp(&old_rect, &rect, sizeof(rect)) != 0 ||
+                 memcmp(&old_pixels, &slot->pixel_rect, sizeof(old_pixels)) != 0)) {
+                ui_dispatch_enter(shell->host);
+                slot->surface->resized(slot->surface, &rect, &slot->pixel_rect,
+                    ui_shell_surface_dpi(shell->host, slot->surface),
+                    slot->surface->callback_user_data);
+                ui_dispatch_leave(shell->host);
+            }
+        } else status = ui_surface_set_rect(slot->surface, &rect);
+        if (status == UI_STATUS_OK) status = ui_surface_set_visible(slot->surface, slot->visible);
+    }
+    if (slot->web_view != NULL) {
+        ui_rect_t rect = slot->rect;
+        uint32_t dpi = shell->host->dpi;
+        if (slot->panel_id != NULL) { rect.x = 0; rect.y = 0; }
+        if (!slot->visible) { rect.width = 0; rect.height = 0; }
+        if (slot->floating) {
+            ui_native_panel_t *panel = find_panel(shell, slot->panel_id);
+            if (panel != NULL && panel->floating_dpi != 0) dpi = panel->floating_dpi;
+        }
+        status = ui_web_view_set_rect(slot->web_view, &rect, dpi);
+    }
+    return status;
+}
+
+static ui_status_t web_shell_reflow(ui_native_shell_t *shell)
+{
+    ui_rect_t side_rects[2];
+    ui_sidebar_state_t states[2];
+    size_t dock_count[2] = {0, 0}, dock_index[2] = {0, 0}, i;
+    uint32_t dpi = shell->host->dpi;
+    ui_status_t status = UI_STATUS_OK;
+    ui_content_slot_t *main_slot = find_slot(shell, NULL);
+    if (shell->reflowing) return UI_STATUS_OK;
+    shell->reflowing = 1;
+    if (main_slot != NULL) {
+        RECT pixels;
+        (void)ui_host_get_rect(shell->host, UI_LAYOUT_REGION_MAIN, &main_slot->rect);
+        main_slot->frame_rect = main_slot->rect;
+        pixels = logical_rect_to_pixels(&main_slot->rect, dpi);
+        main_slot->pixel_rect = (ui_rect_t){pixels.left, pixels.top,
+            pixels.right - pixels.left, pixels.bottom - pixels.top};
+        main_slot->visible = shell->active && main_slot->rect.width > 0 && main_slot->rect.height > 0;
+        status = apply_slot(main_slot);
+    }
+    for (i = 0; i < 2; ++i) {
+        ui_layout_region_t region = i == 0 ? UI_LAYOUT_REGION_LEFT_SIDEBAR : UI_LAYOUT_REGION_RIGHT_SIDEBAR;
+        (void)ui_host_get_rect(shell->host, region, &side_rects[i]);
+        (void)ui_host_get_sidebar_state(shell->host, region, &states[i]);
+    }
+    for (i = 0; i < shell->panel_count; ++i) {
+        ui_native_panel_t *panel = &shell->panels[i];
+        size_t side = panel->dock_region == UI_LAYOUT_REGION_LEFT_SIDEBAR ? 0 : 1;
+        if (panel->kind == UI_PANEL_SIDEBAR && !panel->manual_floating && states[side] == UI_SIDEBAR_VISIBLE)
+            ++dock_count[side];
+    }
+    for (i = 0; i < shell->panel_count && status == UI_STATUS_OK; ++i) {
+        ui_native_panel_t *panel = &shell->panels[i];
+        ui_content_slot_t *slot = panel->slot;
+        size_t side = panel->dock_region == UI_LAYOUT_REGION_LEFT_SIDEBAR ? 0 : 1;
+        int floating = panel->kind == UI_PANEL_FLOATING || panel->manual_floating ||
+                       states[side] == UI_SIDEBAR_FLOATING;
+        status = web_set_floating(shell, panel, floating);
+        if (status != UI_STATUS_OK) break;
+        slot->floating = floating;
+        slot->visible = shell->active && !panel->closed && shell->host->host_rect.width > 0 &&
+            shell->host->host_rect.height > 0 && (floating || states[side] == UI_SIDEBAR_VISIBLE);
+        if (floating) {
+            if (!panel->positioned) {
+                POINT position = {logical_to_pixels(shell->host->host_rect.width - 340, dpi),
+                                  logical_to_pixels(48 + (int)i * 24, dpi)};
+                ClientToScreen(shell->parent, &position);
+                (void)SetWindowPos(panel->popup, NULL, position.x, position.y,
+                    logical_to_pixels(panel->preferred_width > 0 ? panel->preferred_width : 320, panel->floating_dpi),
+                    logical_to_pixels(240, panel->floating_dpi), SWP_NOACTIVATE | SWP_NOZORDER);
+                panel->positioned = 1;
+            }
+            update_popup(shell, panel);
+            ShowWindow(panel->popup, slot->visible ? SW_SHOWNOACTIVATE : SW_HIDE);
+        } else {
+            RECT pixels;
+            slot->frame_rect = side_rects[side];
+            if (dock_count[side] > 0) {
+                int height = side_rects[side].height / (int)dock_count[side];
+                slot->frame_rect.y += height * (int)dock_index[side];
+                slot->frame_rect.height = ++dock_index[side] == dock_count[side]
+                    ? side_rects[side].height - height * (int)(dock_index[side] - 1) : height;
+            }
+            slot->rect = slot->frame_rect;
+            if (states[side] == UI_SIDEBAR_VISIBLE) {
+                int title = slot->rect.height < UI_WEB_PANEL_TITLE_HEIGHT ? slot->rect.height : UI_WEB_PANEL_TITLE_HEIGHT;
+                slot->rect.y += title; slot->rect.height -= title;
+            } else slot->rect.width = slot->rect.height = 0;
+            pixels = logical_rect_to_pixels(&slot->rect, dpi);
+            slot->pixel_rect = (ui_rect_t){pixels.left, pixels.top,
+                pixels.right - pixels.left, pixels.bottom - pixels.top};
+            (void)MoveWindow(panel->hwnd, pixels.left, pixels.top,
+                             pixels.right - pixels.left, pixels.bottom - pixels.top, TRUE);
+        }
+        ShowWindow(panel->hwnd, slot->visible ? SW_SHOW : SW_HIDE);
+        if (status == UI_STATUS_OK) status = apply_slot(slot);
+    }
+    shell->reflowing = 0;
+    return status;
+}
+
 ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
 {
     ui_rect_t logical;
@@ -827,6 +1348,7 @@ ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
     if (shell == NULL || shell->host == NULL || shell->parent == NULL) {
         return UI_STATUS_INVALID_ARGUMENT;
     }
+    if (shell->web_chrome) return web_shell_reflow(shell);
     (void)ui_host_get_dpi(shell->host, &dpi);
     if (!update_font(shell, dpi)) return UI_STATUS_PLATFORM_ERROR;
 
@@ -907,6 +1429,14 @@ ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
             ShowWindow(panel->hwnd, SW_HIDE);
         }
     }
+    {
+        ui_content_slot_t *slot;
+        for (slot = shell->slots; slot != NULL; slot = slot->next) {
+            update_native_slot(slot);
+            if ((slot->surface != NULL || slot->web_view != NULL) && apply_slot(slot) != UI_STATUS_OK)
+                return UI_STATUS_PLATFORM_ERROR;
+        }
+    }
     return UI_STATUS_OK;
 }
 
@@ -923,8 +1453,8 @@ static const char *find_command_binding(const ui_native_shell_t *shell,
     return NULL;
 }
 
-ui_native_shell_t *ui_native_shell_create(
-    const ui_native_shell_config_t *config)
+static ui_native_shell_t *create_shell(
+    const ui_native_shell_config_t *config, int web_chrome)
 {
     ui_native_shell_t *shell;
     HWND parent;
@@ -953,30 +1483,51 @@ ui_native_shell_t *ui_native_shell_create(
         return NULL;
     }
     shell->host = config->host;
+    shell->shell.native = shell;
+    shell->web_chrome = web_chrome;
     shell->parent = parent;
     shell->menu_owner = menu_owner;
     shell->managed_activation = (flags & UI_NATIVE_SHELL_MANAGED_ACTIVATION) != 0u;
     shell->active = !shell->managed_activation;
-    shell->previous_menu = shell->managed_activation ? NULL : GetMenu(menu_owner);
+    shell->previous_menu = shell->managed_activation || web_chrome ? NULL : GetMenu(menu_owner);
+    if (create_slot(shell, NULL) == NULL) { free(shell); return NULL; }
     if (shell->managed_activation) ShowWindow(parent, SW_HIDE);
     if (ui_native_shell_refresh(shell) != UI_STATUS_OK) {
         ui_native_shell_destroy(shell);
         return NULL;
     }
+    shell->host->shell = &shell->shell;
     return shell;
+}
+
+ui_native_shell_t *ui_native_shell_create(const ui_native_shell_config_t *config)
+{
+    return create_shell(config, 0);
+}
+
+ui_native_shell_t *ui_native_shell_create_web(const ui_native_shell_config_t *config)
+{
+#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
+    return create_shell(config, 1);
+#else
+    (void)config;
+    return NULL;
+#endif
 }
 
 void ui_native_shell_destroy(ui_native_shell_t *shell)
 {
+    ui_content_slot_t *slot;
     if (shell == NULL) {
         return;
     }
+    if (shell->host->shell == &shell->shell) shell->host->shell = NULL;
     free_panels(shell);
     if (shell->toolbar != NULL) {
         DestroyWindow(shell->toolbar);
     }
     if (shell->menu != NULL) {
-        if (GetMenu(shell->menu_owner) == shell->menu) {
+        if (!shell->web_chrome && GetMenu(shell->menu_owner) == shell->menu) {
             (void)SetMenu(shell->menu_owner, shell->previous_menu);
             (void)DrawMenuBar(shell->menu_owner);
         }
@@ -984,6 +1535,12 @@ void ui_native_shell_destroy(ui_native_shell_t *shell)
     }
     free_bindings(shell);
     if (shell->font != NULL) DeleteObject(shell->font);
+    while ((slot = shell->slots) != NULL) {
+        shell->slots = slot->next;
+        detach_slot(slot);
+        free(slot->panel_id);
+        free(slot);
+    }
     free(shell);
 }
 
@@ -992,7 +1549,7 @@ ui_status_t ui_native_shell_set_active(ui_native_shell_t *shell, int active)
     HMENU replacement;
     if (shell == NULL) return UI_STATUS_INVALID_ARGUMENT;
     active = active != 0;
-    if (active || GetMenu(shell->menu_owner) == shell->menu) {
+    if (!shell->web_chrome && (active || GetMenu(shell->menu_owner) == shell->menu)) {
         replacement = active ? shell->menu : shell->previous_menu;
         if (!SetMenu(shell->menu_owner, replacement)) return UI_STATUS_PLATFORM_ERROR;
         (void)DrawMenuBar(shell->menu_owner);
@@ -1106,4 +1663,222 @@ ui_status_t ui_native_shell_handle_message(ui_native_shell_t *shell,
     }
     (void)ui_host_invoke(shell->host, command_id, "{}", "native");
     return UI_STATUS_OK;
+}
+
+ui_shell_t *ui_host_get_shell(ui_host_t *host)
+{
+    return host != NULL ? host->shell : NULL;
+}
+
+ui_content_slot_t *ui_shell_get_content_slot(ui_shell_t *shell,
+                                             const char *panel_id)
+{
+    if (shell == NULL || shell->native == NULL) return NULL;
+    return find_slot(shell->native, panel_id);
+}
+
+void *ui_content_slot_native_handle(const ui_content_slot_t *slot)
+{
+    ui_native_shell_t *shell;
+    ui_native_panel_t *panel;
+    if (slot == NULL || slot->shell == NULL) return NULL;
+    shell = slot->shell->native;
+    if (slot->panel_id == NULL) return shell->parent;
+    panel = find_panel(shell, slot->panel_id);
+    return panel != NULL ? panel->hwnd : NULL;
+}
+
+static void update_native_slot(ui_content_slot_t *slot)
+{
+    ui_native_shell_t *shell = slot->shell->native;
+    ui_native_panel_t *panel;
+    RECT pixels;
+    uint32_t dpi = shell->host->dpi;
+    if (shell->web_chrome) return;
+    if (slot->panel_id == NULL) {
+        (void)ui_host_get_rect(shell->host, UI_LAYOUT_REGION_MAIN, &slot->rect);
+        pixels = logical_rect_to_pixels(&slot->rect, dpi);
+        slot->pixel_rect = (ui_rect_t){pixels.left, pixels.top,
+            pixels.right - pixels.left, pixels.bottom - pixels.top};
+        slot->floating = 0;
+        slot->visible = shell->active && slot->rect.width > 0 && slot->rect.height > 0;
+    } else {
+        panel = find_panel(shell, slot->panel_id);
+        if (panel == NULL || !GetClientRect(panel->hwnd, &pixels)) {
+            slot->rect = (ui_rect_t){0, 0, 0, 0};
+            slot->pixel_rect = slot->rect; slot->visible = 0;
+            return;
+        }
+        slot->floating = panel->floating;
+        if (panel->floating) dpi = panel->floating_dpi != 0 ? panel->floating_dpi : dpi;
+        else MapWindowPoints(panel->hwnd, shell->parent, (POINT *)&pixels, 2);
+        slot->pixel_rect = (ui_rect_t){pixels.left, pixels.top,
+            pixels.right - pixels.left, pixels.bottom - pixels.top};
+        slot->rect = (ui_rect_t){MulDiv(pixels.left, 96, (int)dpi),
+            MulDiv(pixels.top, 96, (int)dpi),
+            MulDiv(pixels.right - pixels.left, 96, (int)dpi),
+            MulDiv(pixels.bottom - pixels.top, 96, (int)dpi)};
+        slot->visible = shell->active && (GetWindowLongPtrW(panel->hwnd, GWL_STYLE) & WS_VISIBLE) != 0;
+    }
+    slot->frame_rect = slot->rect;
+}
+
+ui_status_t ui_content_slot_get_rect(const ui_content_slot_t *slot,
+                                      ui_rect_t *rect)
+{
+    if (slot == NULL || rect == NULL) return UI_STATUS_INVALID_ARGUMENT;
+    update_native_slot((ui_content_slot_t *)slot);
+    *rect = slot->rect;
+    return UI_STATUS_OK;
+}
+
+ui_status_t ui_content_slot_get_pixel_rect(const ui_content_slot_t *slot,
+                                            ui_rect_t *rect)
+{
+    if (slot == NULL || rect == NULL) return UI_STATUS_INVALID_ARGUMENT;
+    update_native_slot((ui_content_slot_t *)slot);
+    *rect = slot->pixel_rect;
+    return UI_STATUS_OK;
+}
+
+ui_status_t ui_shell_get_slot_state(ui_shell_t *shell, const char *panel_id,
+                                    ui_rect_t *frame_rect, ui_rect_t *content_rect,
+                                    int *visible, int *floating)
+{
+    ui_content_slot_t *slot = ui_shell_get_content_slot(shell, panel_id);
+    if (slot == NULL) return shell == NULL ? UI_STATUS_INVALID_ARGUMENT : UI_STATUS_NOT_FOUND;
+    update_native_slot(slot);
+    if (frame_rect != NULL) *frame_rect = slot->frame_rect;
+    if (content_rect != NULL) *content_rect = slot->rect;
+    if (visible != NULL) *visible = slot->visible;
+    if (floating != NULL) *floating = slot->floating;
+    return UI_STATUS_OK;
+}
+
+ui_status_t ui_content_slot_attach_surface(ui_content_slot_t *slot,
+                                            ui_surface_t *surface)
+{
+    ui_native_shell_t *shell;
+    ui_status_t status;
+    ui_content_slot_t *other;
+    if (slot == NULL) return UI_STATUS_INVALID_ARGUMENT;
+    shell = slot->shell->native;
+    if (surface != NULL && surface->host != shell->host) return UI_STATUS_INVALID_ARGUMENT;
+    if (surface != NULL && slot->web_view != NULL) return UI_STATUS_ALREADY_EXISTS;
+    for (other = shell->slots; surface != NULL && other != NULL; other = other->next)
+        if (other != slot && other->surface == surface) return UI_STATUS_ALREADY_EXISTS;
+    if (slot->surface != NULL && slot->surface != surface) {
+        HWND old_window = (HWND)ui_surface_native_handle(slot->surface);
+        if (old_window != NULL && slot->panel_id != NULL) (void)SetParent(old_window, shell->parent);
+    }
+    slot->surface = surface;
+    if (surface == NULL) return UI_STATUS_OK;
+    (void)ui_surface_set_layout_region(surface, UI_LAYOUT_REGION_NONE);
+    if (slot->panel_id != NULL) {
+        HWND parent = (HWND)ui_content_slot_native_handle(slot);
+        HWND window = (HWND)ui_surface_native_handle(surface);
+        if (parent == NULL || window == NULL) { slot->surface = NULL; return UI_STATUS_PLATFORM_ERROR; }
+        SetLastError(0);
+        if (SetParent(window, parent) == NULL && GetLastError() != 0) {
+            slot->surface = NULL; return UI_STATUS_PLATFORM_ERROR;
+        }
+    }
+    update_native_slot(slot);
+    status = apply_slot(slot);
+    if (status != UI_STATUS_OK) detach_slot(slot);
+    return status;
+}
+
+ui_status_t ui_content_slot_attach_web_view(ui_content_slot_t *slot,
+                                             ui_web_view_t *view)
+{
+    ui_content_slot_t *other;
+    if (slot == NULL) return UI_STATUS_INVALID_ARGUMENT;
+    if (view != NULL && view->host != slot->shell->native->host) return UI_STATUS_INVALID_ARGUMENT;
+    if (view != NULL && slot->surface != NULL) return UI_STATUS_ALREADY_EXISTS;
+    for (other = slot->shell->native->slots; view != NULL && other != NULL; other = other->next)
+        if (other != slot && other->web_view == view) return UI_STATUS_ALREADY_EXISTS;
+    slot->web_view = view;
+    if (view == NULL) return UI_STATUS_OK;
+    (void)ui_web_view_set_layout_region(view, UI_LAYOUT_REGION_NONE);
+    update_native_slot(slot);
+    return apply_slot(slot);
+}
+
+ui_status_t ui_shell_refresh(ui_shell_t *shell)
+{
+    ui_native_shell_t *native;
+    ui_panel_entry_t *entry;
+    ui_status_t status;
+    if (shell == NULL || shell->native == NULL) return UI_STATUS_INVALID_ARGUMENT;
+    native = shell->native;
+    free_bindings(native);
+    status = refresh_menu(native);
+    if (status != UI_STATUS_OK) return status;
+    status = refresh_toolbar(native);
+    if (status != UI_STATUS_OK) return status;
+    for (entry = native->host->panels; entry != NULL; entry = entry->next) {
+        if (find_panel(native, entry->id) == NULL) {
+            status = append_panel(native, entry);
+            if (status != UI_STATUS_OK) return status;
+        }
+    }
+    status = ui_native_shell_reflow(native);
+    if (status == UI_STATUS_OK && native->web_chrome)
+        (void)ui_host_emit_event(native->host, "ui.shell.changed", "{}");
+    return status;
+}
+
+void ui_shell_layout_changed(ui_host_t *host)
+{
+    if (host != NULL && host->shell != NULL && host->shell->native->web_chrome)
+        (void)web_shell_reflow(host->shell->native);
+}
+
+int ui_shell_surface_bound(ui_host_t *host, const ui_surface_t *surface)
+{
+    ui_content_slot_t *slot;
+    if (host == NULL || host->shell == NULL || !host->shell->native->web_chrome) return 0;
+    for (slot = host->shell->native->slots; slot != NULL; slot = slot->next)
+        if (slot->surface == surface) return 1;
+    return 0;
+}
+
+int ui_shell_web_view_bound(ui_host_t *host, const ui_web_view_t *view)
+{
+    ui_content_slot_t *slot;
+    if (host == NULL || host->shell == NULL || !host->shell->native->web_chrome) return 0;
+    for (slot = host->shell->native->slots; slot != NULL; slot = slot->next)
+        if (slot->web_view == view) return 1;
+    return 0;
+}
+
+uint32_t ui_shell_surface_dpi(ui_host_t *host, const ui_surface_t *surface)
+{
+    ui_content_slot_t *slot;
+    if (host == NULL) return 96u;
+    if (host->shell == NULL || !host->shell->native->web_chrome) return host->dpi;
+    for (slot = host->shell->native->slots; slot != NULL; slot = slot->next) {
+        if (slot->surface == surface && slot->floating && slot->panel_id != NULL) {
+            ui_native_panel_t *panel = find_panel(host->shell->native, slot->panel_id);
+            if (panel != NULL && panel->floating_dpi != 0) return panel->floating_dpi;
+        }
+    }
+    return host->dpi;
+}
+
+void ui_shell_surface_destroyed(ui_host_t *host, ui_surface_t *surface)
+{
+    ui_content_slot_t *slot;
+    if (host == NULL || host->shell == NULL) return;
+    for (slot = host->shell->native->slots; slot != NULL; slot = slot->next)
+        if (slot->surface == surface) slot->surface = NULL;
+}
+
+void ui_shell_web_view_destroyed(ui_host_t *host, ui_web_view_t *view)
+{
+    ui_content_slot_t *slot;
+    if (host == NULL || host->shell == NULL) return;
+    for (slot = host->shell->native->slots; slot != NULL; slot = slot->next)
+        if (slot->web_view == view) slot->web_view = NULL;
 }

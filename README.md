@@ -1,99 +1,113 @@
 # Windows C/Web UI Framework
 
-面向 Windows x64 的轻量 C 应用框架。独立宿主 `framework_host.exe` 加载 `.uapp` 应用包，使用标签同时运行多个应用，并提供菜单、工具栏、侧栏、悬浮窗、Per-Monitor DPI、OpenGL 内容区和全局助手命令面板。应用通过公共 C ABI 接入，维护自己的文档和业务逻辑。
+面向 Windows x64 的轻量 C 应用框架。独立宿主 `framework_host.exe` 加载 `.uapp` 应用包，以浏览器风格的 Web 外壳提供多应用标签、菜单、工具入口、侧栏外框和全局助手。外壳使用 Lexbor、QuickJS-NG 与 GDI 实现受控 HTML/CSS/JS 子集，支持浅色/深色切换，并保留 Windows 标准标题栏。
 
-默认构建采用 Win32/OpenGL，不包含第三方 HTML/JavaScript 引擎。Lexbor/QuickJS-NG 和 WebView2 是可选后端。框架同时保留静态库与应用自行创建窗口的嵌入式使用方式。
+应用通过公共 C ABI 接入，按需要选择原生控件、OpenGL 或 Web 内容，并维护自己的文档和业务逻辑。框架同时保留静态库及应用自行创建窗口的原生嵌入式模式。WebView2 是可选的应用内容后端。
 
 ## 当前版本与开发入口
 
-| 项目 | 当前值 | 定义位置 |
+| 项目 | 当前开发值 | 定义位置 |
 | --- | --- | --- |
-| SDK 发布版本 / 稳定标签 | `0.1.0` / `v0.1.0` | [CMakeLists.txt](CMakeLists.txt)、Git 标签 |
-| 框架 API | `1` | [ui.h](include/ui_framework/ui.h) |
-| 应用 ABI | `1` | [application.h](include/ui_framework/application.h) |
-| 应用包格式 | `1` | [package.h](include/ui_framework/package.h) |
-| 开发标准修订 | `1`，对应 `v0.1.0` | [应用开发标准](docs/application-development-standard.md) |
+| SDK | `0.2.0`，开发中，尚未发布对应稳定标签 | [CMakeLists.txt](CMakeLists.txt) |
+| 最近稳定标签 | `v0.1.0` | [稳定源码](https://github.com/wbycloud/ui-framework/tree/v0.1.0) |
+| 框架 API | `2`；当前运行库接受 `1`、`2` | [ui.h](include/ui_framework/ui.h) |
+| 应用 ABI / 包格式 | `1` / `1` | [application.h](include/ui_framework/application.h)、[package.h](include/ui_framework/package.h) |
+| 开发标准修订 | `2`，对应当前 `0.2.0` 开发源码 | [应用开发标准](docs/application-development-standard.md) |
 
-应用开发和升级以稳定 Git 标签对应的说明及头文件为准。当前稳定基准为 [v0.1.0](https://github.com/wbycloud/ui-framework/tree/v0.1.0)，`main` 用于后续开发。API/ABI 当前采用严格版本校验，尚未提供跨版本兼容范围协商或自动迁移工具。
+`main` 提供当前 `0.2.0` 开发源码，尚未发布 `v0.2.0` 稳定标签。需要稳定基准时使用 `v0.1.0` 及该标签内的文档；采用当前开发版本时，记录确切 commit。清单与 DLL 的 API 声明必须一致，API 2 应用不能加载到 API 1 宿主。
 
 建议按以下顺序阅读：
 
-1. [CHANGELOG](CHANGELOG.md)：版本变化、兼容性和迁移说明。
-2. [应用开发标准](docs/application-development-standard.md)：生命周期、线程、所有权、多实例、DPI、OpenGL/Web 和助手接入约定。
-3. [构建与验证](docs/build-and-validation.md)：工具链、可选依赖、测试和发布检查。
-4. [最小 EDA 模块](examples/minimal_eda/app.c)及其[清单](examples/minimal_eda/manifest.ini)：可构建的独立应用参考。
+1. [CHANGELOG](CHANGELOG.md)：版本变化和兼容性分类。
+2. [从 v0.1.0 迁移到 0.2.0](docs/migration-v0.1-to-v0.2.md)：旧应用包、外壳依赖与新内容槽接口。
+3. [应用开发标准](docs/application-development-standard.md)：生命周期、线程、所有权、DPI、内容后端与助手约定。
+4. [构建与验证](docs/build-and-validation.md)：固定依赖、构建开关、测试和发布检查。
+5. [Web Counter](examples/web_counter/app.c)及其[清单](examples/web_counter/manifest.ini)：API 2 的纯 Web 内容示例；[最小 EDA](examples/minimal_eda/app.c)展示 API 1 原生/OpenGL 内容兼容路径。
 
 ## 获取、构建与运行
 
-需要 Git、Visual Studio MSVC C/C++ 工具、Windows SDK、CMake 3.20 或更新版本，以及 Ninja。以下命令在选择 x64 工具链的 Visual Studio Developer PowerShell 中执行。最小 EDA 模块需要驱动支持 OpenGL 3.3 compatibility profile。
+需要 Git、Visual Studio MSVC C/C++ 工具、Windows SDK、CMake 3.20 或更新版本，以及 Ninja。以下命令在选择 x64 工具链的 Visual Studio Developer PowerShell 中执行。
+
+Windows 默认开启 `UI_BUILD_STANDALONE_HOST` 和 `UI_FRAMEWORK_ENABLE_LIGHT_WEB`。新 clone 不包含 `.deps/`，构建不会自动下载依赖；首次构建先准备固定版本：
 
 ```powershell
 git clone https://github.com/wbycloud/ui-framework.git
 cd ui-framework
-git switch --detach v0.1.0
-cmake -S . -B build/native -G Ninja -DCMAKE_BUILD_TYPE=Release
-cmake --build build/native
-ctest --test-dir build/native --output-on-failure
-& .\build\native\framework_host.exe
+git rev-parse HEAD
+New-Item -ItemType Directory -Path .deps -Force | Out-Null
+git clone --no-checkout https://github.com/lexbor/lexbor.git .deps/lexbor
+git -C .deps/lexbor checkout --detach 7fb22cf5664a331d7c24b113489e566767c9c25a
+git clone --no-checkout https://github.com/quickjs-ng/quickjs.git .deps/quickjs
+git -C .deps/quickjs checkout --detach 2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278
+cmake -S . -B build/web-shell -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build/web-shell
+ctest --test-dir build/web-shell --output-on-failure
+& .\build\web-shell\framework_host.exe
 ```
 
-宿主空启动后，选择“框架 → 打开应用”，打开 `build/native/minimal_eda.uapp`。再次打开该包会创建第二个独立 EDA 标签，也可通过命令行同时打开两份：
+宿主空启动后点击“打开应用”，选择 `build/web-shell/web_counter.uapp`，无需 OpenGL。再次打开会创建另一个独立计数器标签。也可同时打开纯 Web 计数器与 OpenGL EDA：
 
 ```powershell
-& .\build\native\framework_host.exe .\build\native\minimal_eda.uapp .\build\native\minimal_eda.uapp
+& .\build\web-shell\framework_host.exe .\build\web-shell\web_counter.uapp .\build\web-shell\minimal_eda.uapp
 ```
 
-点击画布后，`A` 添加矩形、`Z` 放大、`C` 清空。两个实例的数据、缩放和属性区笔记独立保存。`Ctrl+O` 打开应用，`Ctrl+W` 关闭标签，`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手可选目标实例、查看命令和参数 schema、提交 JSON、查看结果与快照；危险命令由应用权限和确认接口控制。
+EDA 需要驱动支持 OpenGL 3.3 compatibility profile。点击画布后，`A` 添加矩形、`Z` 放大、`C` 清空。不同实例的数据、缩放和属性笔记独立保存。`Ctrl+O` 打开应用，`Ctrl+W` 关闭标签，`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手可选目标实例、查看命令/schema、提交 JSON、查看结果与快照；危险命令经过权限和确认接口。
 
-分发默认宿主时，保留同目录的 `framework_host.exe` 与 `ui_framework.dll`，并提供应用包。构建自动生成这些文件和 `uapp_pack.exe`；Git 仓库保存源码，不提交构建产物。
+分发宿主时，保留同目录的 `framework_host.exe` 与匹配的 `ui_framework.dll`，并提供应用包、工具链运行依赖及第三方许可。默认轻量引擎静态链接到运行库；当前共享运行库使用动态 CRT，部署要求见[构建与验证](docs/build-and-validation.md#21-打包自己的应用)。Git 仓库不提交构建产物。
 
-嵌入式模式的参考是 [main.c](examples/minimal_eda/main.c)，可运行 `build/native/minimal_eda.exe`。显式添加 `--legacy` 可以验证旧式 WGL 路径；此参数不适用于宿主加载的 EDA 模块。
+## 原生嵌入式构建
+
+只构建原生/OpenGL、打包器和核心测试时，必须同时关闭独立宿主与轻量 Web 后端。这条路径不需要 `.deps/`：
+
+```powershell
+cmake -S . -B build/native -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_BUILD_STANDALONE_HOST=OFF -DUI_FRAMEWORK_ENABLE_LIGHT_WEB=OFF -DUI_FRAMEWORK_ENABLE_WEBVIEW2=OFF
+cmake --build build/native
+ctest --test-dir build/native --output-on-failure
+& .\build\native\minimal_eda.exe
+```
+
+该配置不产生 `framework_host.exe`。[嵌入式 EDA](examples/minimal_eda/main.c)自行创建顶层窗口和原生外壳；显式添加 `--legacy` 可验证旧式 WGL 路径。这个参数不适用于宿主加载的 EDA 模块。
 
 ## 开发应用
 
-应用 DLL 使用公共头文件，链接共享框架的 `ui_framework_runtime.lib`，导出 `ui_app_query_v1`，实现实例生命周期并注册自己的 UI 和语义命令。CMake 应用模块链接 `ui_framework_shared` 可获得公共 include 路径和 shared 编译定义。宿主提供统一的 `ui_framework.dll`。
+应用 DLL 使用公共头文件，链接共享框架的 `ui_framework_runtime.lib`，导出 `ui_app_query_v1`，实现实例生命周期并注册 UI 和语义命令。CMake 模块链接 `ui_framework_shared` 可获得公共 include 路径和 shared 编译定义。应用不重复静态链接框架，也不携带替换宿主的 `ui_framework.dll`。
+
+在 `mount` 中通过 [shell.h](include/ui_framework/shell.h) 获取借用的 shell 和内容槽，挂载原生/OpenGL surface 或 Web view；在 `unmount` 中释放应用内容。`ui_shell_refresh()` 更新注册项并保留已有内容容器。旧 `ui_native_shell_refresh()` 的重建语义仍保留，调用后必须重新创建面板内容。
 
 应用包是版本化、未压缩的单文件容器，由清单、DLL 和资源组成。构建产生的 EDA staging 目录可直接重新打包：
 
 ```powershell
-& .\build\native\uapp_pack.exe .\examples\minimal_eda\manifest.ini .\build\native\eda_package .\build\native\minimal_eda-copy.uapp
+& .\build\web-shell\uapp_pack.exe .\examples\minimal_eda\manifest.ini .\build\web-shell\eda_package .\build\web-shell\minimal_eda-copy.uapp
 ```
 
-实例的私有状态由应用分配和释放；宿主管理框架对象。工作线程只通过复制投递接口交付结果、事件、进度和关闭完成通知。完整的关闭顺序、回调 scope 以及模块卸载要求见[开发标准](docs/application-development-standard.md)。
+实例私有状态由应用分配和释放；宿主管理框架对象。工作线程只通过复制投递接口交付结果、事件、进度和关闭完成通知。完整关闭顺序、回调 scope 和模块卸载要求见[开发标准](docs/application-development-standard.md)。
 
 ## 已有应用如何升级
 
-在应用项目中独立记录框架仓库地址、已适配的 SDK 标签或 commit、开发标准修订号及 API/ABI。SDK 记录不放进当前 `.uapp` 清单：格式 v1 严格接受已有字段，额外字段会被拒绝。
+在应用项目中记录框架仓库地址、已适配的 SDK 标签或 commit、开发标准修订号及 API/ABI。SDK 记录不放进 `.uapp` 清单：包格式 1 严格接受已有八个字段，额外字段会被拒绝。
 
-升级流程：
-
-1. 选定目标稳定标签，阅读从当前基准到目标版本之间的 CHANGELOG。
-2. 对照该标签的开发标准、公共头文件和示例，判断变化属于无需修改、可选升级还是必须迁移。
-3. 修改受影响的接口调用与使用约定，使用目标 SDK 重新构建应用 DLL 和应用包。
-4. 验证加载、多实例、助手路由、DPI/绘制、异步关闭及完整卸载，再更新应用的适配记录。
-
-开发者或 AI 可从本 README 开始检查升级，但仍需读取应用自己的版本记录和代码。新增可选能力无需由所有旧应用立即采用；接口版本相同也不能替代对行为变化和验收结果的核对。
-
-## 可选 Web 后端
-
-新克隆仓库不包含 `.deps/`，构建不会自动联网下载依赖。先按[依赖准备说明](docs/build-and-validation.md#3-启用两种-web-后端)获取固定版本，再启用所需开关：
+已有框架 clone 可更新 `main` 并记录新的开发源码基准：
 
 ```powershell
-cmake -S . -B build/web -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_FRAMEWORK_ENABLE_LIGHT_WEB=ON -DUI_FRAMEWORK_ENABLE_WEBVIEW2=ON
-cmake --build build/web
-ctest --test-dir build/web --output-on-failure
+git switch main
+git pull --ff-only origin main
+git rev-parse HEAD
 ```
 
-轻量后端使用 Lexbor v2.5.0 对应 commit `7fb22cf5664a331d7c24b113489e566767c9c25a` 与 QuickJS-NG commit `2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278`。WebView2 SDK 固定为 `1.0.4129.50`，浏览器 Runtime 需另外安装。两个开关可独立启用；轻量后端是固定 HTML/CSS/JS 子集，WebView2 的现代网页能力由 Runtime 提供。TypeScript 需离线编译为 JavaScript。
+符合 v0.1.0 公共接口约定、通过框架注册 UI 并在内容容器中挂载的 API 1 二进制包，属于无需重新编译的兼容目标。直接安装/修改 Win32 菜单、枚举原生工具栏或依赖外壳窗口类的应用必须迁移。独立宿主只提供 Web 外壳；原生嵌入式 API 保留。
 
-## 验证与能力边界
+升级时先保存原应用包，对照[迁移指南](docs/migration-v0.1-to-v0.2.md)核查依赖，再在目标宿主验证加载、多实例、助手路由、DPI/绘制和卸载。采用 API 2 新能力或重新构建应用时，同步清单与 DLL 的 API 版本。旧包无需修改的兼容目标与本次实际验收结果分别记录，不能用重新编译的示例代替原二进制兼容证据。
 
-2026-10-02，干净源码在没有 `.deps/` 的情况下完成原生构建，测试为 **15 通过、1 失败、1 跳过**。失败项为本机 Windows 将 1920×1080 客户区加标题栏后的窗口高度限制到 1100 像素，纯 Win32 对照窗口也得到相同结果；其余三组窗口尺寸通过。该失败保留记录，详见[本次干净源码验收](docs/build-and-validation.md#51-本次干净源码验收)。
+## Web 后端和能力边界
 
-已有 Windows x64 集成验收记录为：原生配置 16 项通过、1 项跳过；同时启用 Web 后端时 18 项通过、1 项跳过，均无失败。跳过项为真实跨显示器测试，测试环境只有一台显示器。详细条件和历史记录见[构建与验证](docs/build-and-validation.md#5-结果解读和验证记录)。目标机器仍需验证实际显示器 DPI 变化与 GPU 配置。
+默认外壳使用 Lexbor v2.5.0 对应 commit `7fb22cf5664a331d7c24b113489e566767c9c25a` 与 QuickJS-NG commit `2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278`。后端具备受控动态 DOM、基础 flex/absolute 布局、按钮/文本输入、JSON 双向消息与 GDI 绘制；完整支持清单见[开发标准](docs/application-development-standard.md#92-轻量受控后端的实际子集)。它不提供完整浏览器兼容性。
 
-应用在同一进程执行，应用崩溃可能影响宿主。助手面板目前用于协议验证，尚未连接模型服务。EDA 是验证示例；框架不实现 EDA、Markdown、画板、PPT 或电子表格的完整文档模型，也不直接加载任意现成 EXE。
+应用需要现代浏览器内容时，可另行启用 `UI_FRAMEWORK_ENABLE_WEBVIEW2=ON`，准备固定 WebView2 SDK `1.0.4129.50` 并部署 Runtime；该开关默认 OFF，不改变独立宿主的轻量 Web 外壳。TypeScript 需要离线编译为 JavaScript，框架不直接执行 `.ts`。
+
+本轮默认 Web 构建成功，旧 v0.1.0 EDA 二进制包与 API 2 Web Counter 混合运行及浅色/深色实际界面已验证。新增 6 项集成测试全部通过；完整可选配置为 21 通过、2 失败、1 跳过。两项失败是保留的旧 API 2/class/节点限制断言，单屏环境跳过真实跨显示器测试，详见[验证记录](docs/build-and-validation.md#51-020-开发版本迁移验收)。当前仍是开发版本，尚未发布稳定标签。
+
+应用在同一进程执行，应用崩溃可能影响宿主。助手 UI 尚未连接模型服务。框架不实现 EDA、Markdown、画板、PPT 或电子表格的完整文档模型，也不直接加载任意现成 EXE。
 
 ## 许可证
 
-框架本身的许可证尚未选定。可选第三方组件有各自的许可证和再分发条款，来源与文件说明见[依赖许可](docs/build-and-validation.md#7-依赖许可和分发)。
+框架本身的许可证尚未选定。第三方组件有各自的许可证和再分发条款，来源与文件说明见[依赖许可](docs/build-and-validation.md#7-依赖许可和分发)。

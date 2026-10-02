@@ -1,11 +1,17 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ui_framework VERSION 0.1.0 LANGUAGES C)
+project(ui_framework VERSION 0.2.0 LANGUAGES C)
+
+option(UI_BUILD_STANDALONE_HOST "Build the Windows Web application host" ${WIN32})
 
 option(UI_FRAMEWORK_ENABLE_WEBVIEW2
        "Build the optional WebView2 backend (requires .deps SDK)" OFF)
 option(UI_FRAMEWORK_ENABLE_LIGHT_WEB
-       "Build the optional Lexbor/QuickJS controlled Web backend" OFF)
+       "Build the Lexbor/QuickJS controlled Web backend" ${UI_BUILD_STANDALONE_HOST})
+
+if(UI_BUILD_STANDALONE_HOST AND NOT UI_FRAMEWORK_ENABLE_LIGHT_WEB)
+    message(FATAL_ERROR "The standalone Web host requires UI_FRAMEWORK_ENABLE_LIGHT_WEB. Disable UI_BUILD_STANDALONE_HOST for native embedding/core-only builds.")
+endif()
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -50,16 +56,26 @@ if(WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
     if(MSVC)
         target_compile_options(ui_framework_shared PRIVATE /W4 /WX /utf-8)
     endif()
-    add_executable(framework_host WIN32 examples/framework_host/main.c)
-    target_link_libraries(framework_host PRIVATE ui_framework_shared comdlg32 shell32)
-    target_compile_definitions(framework_host PRIVATE _CRT_SECURE_NO_WARNINGS)
+    if(UI_BUILD_STANDALONE_HOST)
+        enable_language(RC)
+        add_executable(framework_host WIN32 examples/framework_host/main.c
+            examples/framework_host/host.rc)
+        target_include_directories(framework_host PRIVATE src examples/framework_host)
+        target_link_libraries(framework_host PRIVATE ui_framework_shared comdlg32 shell32)
+        target_compile_definitions(framework_host PRIVATE _CRT_SECURE_NO_WARNINGS)
+    endif()
     add_library(minimal_eda_app MODULE examples/minimal_eda/app.c)
     target_link_libraries(minimal_eda_app PRIVATE ui_framework_shared)
+    # Compile this compatibility sample against the frozen v0.1.0 SDK.
+    target_include_directories(minimal_eda_app BEFORE PRIVATE tests/sdk_v1)
     target_compile_definitions(minimal_eda_app PRIVATE _CRT_SECURE_NO_WARNINGS)
     if(MSVC)
-        target_compile_options(framework_host PRIVATE /W4 /WX /utf-8)
+        if(TARGET framework_host)
+            target_compile_options(framework_host PRIVATE $<$<COMPILE_LANGUAGE:C>:/W4;/WX;/utf-8>)
+            set_property(TARGET framework_host PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+        endif()
         target_compile_options(minimal_eda_app PRIVATE /W4 /WX /utf-8)
-        set_target_properties(ui_framework_shared framework_host minimal_eda_app
+        set_target_properties(ui_framework_shared minimal_eda_app
             PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
         if(UI_FRAMEWORK_ENABLE_LIGHT_WEB OR UI_FRAMEWORK_ENABLE_WEBVIEW2)
             # Bundled static engines/loader use the dynamic CRT. Match them;
@@ -115,6 +131,34 @@ if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
     target_link_libraries(light_web_probe PRIVATE ui_framework)
     target_compile_definitions(light_web_probe PRIVATE
         UI_WEB_PARITY_PAGE_PATH="web_parity.html")
+    if(TARGET ui_framework_shared)
+        add_library(web_counter_app MODULE examples/web_counter/app.c)
+        target_link_libraries(web_counter_app PRIVATE ui_framework_shared)
+        if(MSVC)
+            target_compile_options(web_counter_app PRIVATE /W4 /WX /utf-8)
+            set_property(TARGET web_counter_app PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+        endif()
+        add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp"
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/counter_package"
+            COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:web_counter_app>"
+                "${CMAKE_CURRENT_BINARY_DIR}/counter_package/web_counter_app.dll"
+            COMMAND $<TARGET_FILE:uapp_pack>
+                "${CMAKE_CURRENT_SOURCE_DIR}/examples/web_counter/manifest.ini"
+                "${CMAKE_CURRENT_BINARY_DIR}/counter_package"
+                "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp"
+            DEPENDS web_counter_app uapp_pack examples/web_counter/manifest.ini VERBATIM)
+        add_custom_target(web_counter_package ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp")
+        file(READ "${CMAKE_CURRENT_SOURCE_DIR}/examples/web_counter/manifest.ini" _counter_manifest)
+        string(REPLACE "framework_api_version=2" "framework_api_version=1"
+            _counter_mismatch "${_counter_manifest}")
+        file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.ini" "${_counter_mismatch}")
+        add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.uapp"
+            COMMAND $<TARGET_FILE:uapp_pack> "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.ini"
+                "${CMAKE_CURRENT_BINARY_DIR}/counter_package"
+                "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.uapp"
+            DEPENDS web_counter_package uapp_pack "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.ini" VERBATIM)
+        add_custom_target(counter_mismatch_package ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.uapp")
+    endif()
 endif()
 
 if(WIN32)
@@ -164,8 +208,45 @@ if(UI_BUILD_TESTS)
     if(UI_FRAMEWORK_ENABLE_WEBVIEW2)
         add_test(NAME ui_webview2_parity COMMAND webview2_probe)
         set_tests_properties(ui_webview2_parity PROPERTIES TIMEOUT 25 SKIP_RETURN_CODE 77)
+        add_executable(ui_webview2_messages_test tests/webview2_messages.c)
+        target_link_libraries(ui_webview2_messages_test PRIVATE ui_framework)
+        if(MSVC)
+            target_compile_options(ui_webview2_messages_test PRIVATE /W4 /WX /utf-8)
+        endif()
+        add_test(NAME ui_webview2_messages COMMAND ui_webview2_messages_test)
+        set_tests_properties(ui_webview2_messages PROPERTIES TIMEOUT 25 SKIP_RETURN_CODE 77)
     endif()
     if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
+        add_executable(ui_application_versions_test tests/application_versions.c)
+        target_link_libraries(ui_application_versions_test PRIVATE ui_framework_shared)
+        target_compile_definitions(ui_application_versions_test PRIVATE _CRT_SECURE_NO_WARNINGS)
+        add_dependencies(ui_application_versions_test minimal_eda_package web_counter_package counter_mismatch_package)
+        set(UI_LEGACY_EDA_PACKAGE "${CMAKE_CURRENT_BINARY_DIR}/minimal_eda.uapp" CACHE FILEPATH
+            "Previously built v0.1.0 EDA package for binary compatibility validation")
+        add_test(NAME ui_application_versions COMMAND ui_application_versions_test
+            "${UI_LEGACY_EDA_PACKAGE}" "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp"
+            "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.uapp")
+        set_tests_properties(ui_application_versions PROPERTIES TIMEOUT 45)
+        add_executable(ui_light_web_dynamic_test tests/light_web_dynamic.c)
+        target_link_libraries(ui_light_web_dynamic_test PRIVATE ui_framework)
+        add_test(NAME ui_light_web_dynamic COMMAND ui_light_web_dynamic_test)
+        set_tests_properties(ui_light_web_dynamic PROPERTIES TIMEOUT 30)
+        add_executable(ui_web_shell_slots_test tests/web_shell_slots.c)
+        target_link_libraries(ui_web_shell_slots_test PRIVATE ui_framework)
+        target_compile_definitions(ui_web_shell_slots_test PRIVATE _CRT_SECURE_NO_WARNINGS)
+        add_test(NAME ui_web_shell_slots COMMAND ui_web_shell_slots_test)
+        set_tests_properties(ui_web_shell_slots PROPERTIES TIMEOUT 30)
+        add_executable(ui_floating_web_dpi_test tests/floating_web_dpi.c)
+        target_link_libraries(ui_floating_web_dpi_test PRIVATE ui_framework)
+        add_test(NAME ui_floating_web_dpi COMMAND ui_floating_web_dpi_test)
+        set_tests_properties(ui_floating_web_dpi PROPERTIES TIMEOUT 30)
+        if(MSVC)
+            target_compile_options(ui_application_versions_test PRIVATE /W4 /WX /utf-8)
+            set_property(TARGET ui_application_versions_test PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+            target_compile_options(ui_light_web_dynamic_test PRIVATE /W4 /WX /utf-8)
+            target_compile_options(ui_web_shell_slots_test PRIVATE /W4 /WX /utf-8)
+            target_compile_options(ui_floating_web_dpi_test PRIVATE /W4 /WX /utf-8)
+        endif()
         target_compile_definitions(light_web_probe PRIVATE
             UI_WEB_PARITY_PAGE_PATH="web_parity.html")
         add_test(NAME ui_light_web_parity COMMAND light_web_probe)
@@ -175,6 +256,7 @@ if(UI_BUILD_TESTS)
         if(TARGET ui_framework_shared)
             add_library(ui_lifecycle_fixture MODULE tests/app_lifecycle_fixture.c)
             target_link_libraries(ui_lifecycle_fixture PRIVATE ui_framework_shared)
+            target_include_directories(ui_lifecycle_fixture BEFORE PRIVATE tests/sdk_v1)
             target_compile_definitions(ui_lifecycle_fixture PRIVATE _CRT_SECURE_NO_WARNINGS)
             add_executable(ui_workspace_integration_test tests/workspace_integration.c)
             target_link_libraries(ui_workspace_integration_test PRIVATE ui_framework_shared)
@@ -183,10 +265,14 @@ if(UI_BUILD_TESTS)
             add_executable(ui_host_frontend_test tests/host_frontend.c)
             target_link_libraries(ui_host_frontend_test PRIVATE user32 comctl32)
             target_compile_definitions(ui_host_frontend_test PRIVATE _CRT_SECURE_NO_WARNINGS)
-            add_dependencies(ui_host_frontend_test framework_host minimal_eda_package)
+            add_dependencies(ui_host_frontend_test minimal_eda_package)
+            if(TARGET framework_host)
+                add_dependencies(ui_host_frontend_test framework_host)
+            endif()
             if(CMAKE_CXX_COMPILER)
                 add_library(ui_application_cpp MODULE tests/application_cpp.cpp)
                 target_link_libraries(ui_application_cpp PRIVATE ui_framework_shared)
+                target_include_directories(ui_application_cpp BEFORE PRIVATE tests/sdk_v1)
                 target_compile_features(ui_application_cpp PRIVATE cxx_std_11)
                 add_dependencies(ui_workspace_integration_test ui_application_cpp)
                 set(workspace_cpp_argument "$<TARGET_FILE:ui_application_cpp>")
@@ -207,10 +293,26 @@ if(UI_BUILD_TESTS)
                 "${CMAKE_CURRENT_BINARY_DIR}/minimal_eda.uapp" "$<TARGET_FILE:ui_lifecycle_fixture>"
                 ${workspace_cpp_argument})
             set_tests_properties(ui_workspace_integration PROPERTIES TIMEOUT 45)
-            add_test(NAME ui_host_frontend COMMAND ui_host_frontend_test
-                "$<TARGET_FILE:framework_host>" "${CMAKE_CURRENT_BINARY_DIR}/minimal_eda.uapp"
-                ${frontend_cpp_argument})
-            set_tests_properties(ui_host_frontend PROPERTIES TIMEOUT 60)
+            # The immutable native-control frontend oracle targets v0.1.0.
+            # Web-shell behavior is validated by its separate frontend test.
+            if(TARGET framework_host)
+                add_executable(ui_web_host_frontend_test tests/web_host_frontend.c
+                    examples/framework_host/host.rc)
+                target_include_directories(ui_web_host_frontend_test PRIVATE src examples/framework_host)
+                target_link_libraries(ui_web_host_frontend_test PRIVATE ui_framework_shared comdlg32 shell32)
+                target_compile_definitions(ui_web_host_frontend_test PRIVATE _CRT_SECURE_NO_WARNINGS)
+                add_dependencies(ui_web_host_frontend_test minimal_eda_package web_counter_package)
+                if(TARGET ui_cpp_package)
+                    add_dependencies(ui_web_host_frontend_test ui_cpp_package)
+                endif()
+                if(MSVC)
+                    target_compile_options(ui_web_host_frontend_test PRIVATE $<$<COMPILE_LANGUAGE:C>:/W4;/WX;/utf-8>)
+                    set_property(TARGET ui_web_host_frontend_test PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+                endif()
+                add_test(NAME ui_web_host_frontend COMMAND ui_web_host_frontend_test
+                    "${CMAKE_CURRENT_BINARY_DIR}/minimal_eda.uapp" ${frontend_cpp_argument})
+                set_tests_properties(ui_web_host_frontend PROPERTIES TIMEOUT 60)
+            endif()
             if(MSVC)
                 foreach(new_target IN ITEMS ui_lifecycle_fixture ui_workspace_integration_test ui_host_frontend_test ui_application_cpp)
                     if(TARGET ${new_target})

@@ -1,11 +1,11 @@
-# Opt-in integration for the bundled controlled web backend.
+# Integration for the controlled Web backend used by the standalone host.
 #
 # Usage after ui_framework has been created:
 #   include(cmake/light_web.cmake)
 #   ui_enable_light_web(ui_framework)
 #
-# The dependency projects are built static and are kept out of the default
-# framework build so applications that only use OpenGL do not pay the cost.
+# Dependency projects are linked statically. Native embedding builds can
+# explicitly disable the standalone host and this backend.
 set(_UI_LIGHT_WEB_CMAKE_DIR "${CMAKE_CURRENT_LIST_DIR}")
 
 function(ui_enable_light_web target)

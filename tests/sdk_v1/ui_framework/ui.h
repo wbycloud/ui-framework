@@ -18,8 +18,7 @@
 extern "C" {
 #endif
 
-#define UI_FRAMEWORK_API_VERSION 2u
-#define UI_FRAMEWORK_MIN_API_VERSION 1u
+#define UI_FRAMEWORK_API_VERSION 1u
 
 typedef struct ui_host ui_host_t;
 typedef struct ui_surface ui_surface_t;
@@ -266,26 +265,6 @@ typedef ui_status_t (*ui_web_view_set_rect_fn)(
     void *backend_user_data, void *view_user_data,
     const ui_rect_t *logical_rect, uint32_t dpi);
 
-/* Messages are UTF-8 JSON data. Callbacks run on the UI thread and must not
- * directly destroy the view/backend/host; schedule teardown after returning. */
-typedef void (*ui_web_backend_message_fn)(const char *json_utf8, void *user_data);
-typedef void (*ui_web_message_fn)(ui_web_view_t *view, const char *json_utf8,
-                                 void *user_data);
-typedef ui_status_t (*ui_web_set_message_handler_fn)(void *backend_user_data,
-    void *view_user_data, ui_web_backend_message_fn callback, void *user_data);
-typedef ui_status_t (*ui_web_post_json_fn)(void *backend_user_data,
-    void *view_user_data, const char *json_utf8);
-typedef ui_status_t (*ui_web_get_capabilities_fn)(void *backend_user_data,
-    void *view_user_data, uint64_t *capabilities);
-typedef void *(*ui_web_native_handle_fn)(void *backend_user_data,
-                                        void *view_user_data);
-
-#define UI_WEB_CAP_JSON_MESSAGES UINT64_C(1)
-#define UI_WEB_CAP_DYNAMIC_DOM UINT64_C(2)
-#define UI_WEB_CAP_RESPONSIVE_LAYOUT UINT64_C(4)
-#define UI_WEB_CAP_NATIVE_WINDOW UINT64_C(8)
-#define UI_WEB_CAP_TEXT_INPUT UINT64_C(16)
-
 typedef struct ui_web_backend_ops {
     uint32_t size;
     ui_web_view_create_fn create_view;
@@ -296,10 +275,6 @@ typedef struct ui_web_backend_ops {
     ui_web_view_invalidate_fn invalidate;
     ui_web_view_get_element_rect_fn get_element_rect;
     ui_web_view_set_rect_fn set_rect;
-    ui_web_set_message_handler_fn set_message_handler;
-    ui_web_post_json_fn post_json;
-    ui_web_get_capabilities_fn get_capabilities;
-    ui_web_native_handle_fn native_handle;
 } ui_web_backend_ops_t;
 
 typedef struct ui_web_backend_desc {
@@ -312,7 +287,6 @@ UI_API ui_host_t *ui_host_create(const ui_host_config_t *config);
 UI_API void ui_host_destroy(ui_host_t *host);
 /* Call before creating the application's first Win32 window. */
 UI_API ui_status_t ui_framework_initialize(void);
-UI_API int ui_framework_supports_api(uint32_t api_version);
 /* Width and height are logical client pixels. */
 UI_API ui_status_t ui_host_resize(ui_host_t *host, int width, int height);
 /* DPI is expressed as Windows effective DPI (96 means 100%). */
@@ -374,8 +348,9 @@ UI_API ui_status_t ui_host_emit_event(ui_host_t *host,
                                       const char *payload_json);
 
 /*
- * Backends are created explicitly. The standalone host uses the controlled
- * light backend; applications may select it, WebView2, or a custom backend.
+ * Web backends are supplied by the application or a separate plugin. The
+ * initial framework does not ship a built-in HTML engine, so a backend with
+ * no implementation is not created implicitly.
  */
 UI_API ui_web_backend_t *ui_web_backend_create(
     const ui_web_backend_desc_t *desc);
@@ -404,18 +379,7 @@ UI_API ui_status_t ui_web_view_invalidate(ui_web_view_t *view);
 /* Hidden elements return a zero rect; absent elements return NOT_FOUND. */
 UI_API ui_status_t ui_web_view_get_element_rect(ui_web_view_t *view,
                                                  const char *id_utf8,
-                                         ui_rect_t *logical_rect);
-
-/* UI-thread calls. Message arguments are borrowed only for the duration of the
- * call. The backend parses JSON as data; it never concatenates it into script. */
-UI_API ui_status_t ui_web_view_set_message_callback(ui_web_view_t *view,
-    ui_web_message_fn callback, void *user_data);
-UI_API ui_status_t ui_web_view_post_json(ui_web_view_t *view,
-                                         const char *json_utf8);
-UI_API ui_status_t ui_web_view_get_capabilities(ui_web_view_t *view,
-                                                uint64_t *capabilities);
-/* Borrowed native presentation window, or NULL when unsupported. */
-UI_API void *ui_web_view_native_handle(ui_web_view_t *view);
+                                                 ui_rect_t *logical_rect);
 
 /* Native/OpenGL surfaces. Web views use ui_web_view_create with a backend. */
 UI_API ui_surface_t *ui_surface_create(ui_host_t *host,

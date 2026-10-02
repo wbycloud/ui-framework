@@ -326,7 +326,8 @@ static ui_status_t extract_module(ui_workspace_t *w, app_module_t *m)
         ++w->depth; api = query(); leave_callback(w);
         if (api == NULL || api->size < sizeof(*api) ||
             api->abi_version != UI_APPLICATION_ABI_VERSION ||
-            api->framework_api_version != UI_FRAMEWORK_API_VERSION)
+            !ui_framework_supports_api(api->framework_api_version) ||
+            api->framework_api_version != m->meta->framework_api_version)
             return error_text(w, UI_STATUS_UNSUPPORTED, "Application DLL ABI does not match the manifest/runtime");
         if (!api->create || !api->mount || !api->request_close || !api->unmount || !api->destroy)
             return error_text(w, UI_STATUS_VALIDATION_FAILED, "Application DLL lacks required lifecycle callbacks");
@@ -404,7 +405,8 @@ static ui_status_t create_instance(ui_workspace_t *w, app_module_t *m,
     ZeroMemory(&shell, sizeof(shell)); shell.size = sizeof(shell);
     shell.host = p->context.host; shell.native_parent = p->container;
     shell.menu_owner = w->parent; shell.flags = UI_NATIVE_SHELL_MANAGED_ACTIVATION;
-    p->context.shell = ui_native_shell_create(&shell);
+    p->context.shell = w->config.shell_mode == UI_WORKSPACE_SHELL_WEB ?
+        ui_native_shell_create_web(&shell) : ui_native_shell_create(&shell);
     if (!p->context.shell) { status = UI_STATUS_PLATFORM_ERROR; goto fail; }
     /* Add before mount so resource reads and callbacks can resolve the instance. */
     { app_instance_t **tail = &w->instances;
@@ -443,11 +445,15 @@ static void set_closing(app_instance_t *p, int closing)
 ui_workspace_t *ui_workspace_create(const ui_workspace_config_t *config)
 {
     ui_workspace_t *w;
-    if (!config || config->size < sizeof(*config) ||
+    if (!config || config->size < offsetof(ui_workspace_config_t, reserved_v1) ||
         !IsWindow((HWND)config->native_parent) || !create_container_class()) return NULL;
     w = (ui_workspace_t *)calloc(1, sizeof(*w));
     if (w != NULL) {
-        w->config = *config; w->parent = (HWND)config->native_parent;
+        size_t size = config->size < sizeof(w->config) ? config->size : sizeof(w->config);
+        memcpy(&w->config, config, size);
+        if (w->config.shell_mode != UI_WORKSPACE_SHELL_NATIVE &&
+            w->config.shell_mode != UI_WORKSPACE_SHELL_WEB) { free(w); return NULL; }
+        w->parent = (HWND)config->native_parent;
         w->dpi = 96; InitializeCriticalSection(&w->queue_lock);
     }
     return w;
@@ -466,6 +472,11 @@ ui_status_t ui_workspace_open(ui_workspace_t *w, const char *path, uint64_t *id)
         if (strcmp(m->meta->app_id, meta->app_id) == 0) break;
     }
     if (m != NULL) {
+        if (meta->framework_api_version != m->api.framework_api_version) {
+            ui_package_destroy(package);
+            return error_text(w, UI_STATUS_UNSUPPORTED,
+                "Application manifest API does not match the loaded DLL");
+        }
         if (strcmp(m->meta->version, meta->version) != 0) {
             ui_package_destroy(package);
             return error_text(w, UI_STATUS_ALREADY_EXISTS, "Another version of this application is already loaded");

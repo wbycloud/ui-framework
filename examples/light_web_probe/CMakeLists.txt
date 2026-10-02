@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.20)
 project(light_web_probe C)
 
 set(UI_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(UI_BUILD_STANDALONE_HOST OFF CACHE BOOL "" FORCE)
+set(UI_FRAMEWORK_ENABLE_LIGHT_WEB OFF CACHE BOOL "" FORCE)
 add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/../.." framework)
 include("${CMAKE_CURRENT_LIST_DIR}/../../cmake/light_web.cmake")
 ui_enable_light_web(ui_framework)

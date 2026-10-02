@@ -399,7 +399,7 @@ next_line:
     }
     if (strcmp(metadata->architecture, "x64") ||
         metadata->abi_version != UI_PACKAGE_APPLICATION_ABI_VERSION ||
-        metadata->framework_api_version != UI_FRAMEWORK_API_VERSION) {
+        !ui_framework_supports_api(metadata->framework_api_version)) {
         status = package_error(UI_STATUS_UNSUPPORTED, error, capacity, "Application architecture, ABI, or framework API is unsupported.");
         free(copy);
         return status;

@@ -3,6 +3,7 @@
 
 #include "ui_framework/ui.h"
 #include "ui_framework/opengl.h"
+#include "ui_framework/shell.h"
 
 typedef struct ui_command_entry ui_command_entry_t;
 typedef struct ui_menu_entry ui_menu_entry_t;
@@ -46,6 +47,8 @@ struct ui_web_view {
     uint32_t dpi;
     ui_web_view_t *host_next;
     ui_web_view_t *backend_next;
+    ui_web_message_fn message_callback;
+    void *message_user_data;
 };
 
 struct ui_host {
@@ -73,6 +76,7 @@ struct ui_host {
     ui_pending_request_t *pending;
     ui_surface_t *surfaces;
     ui_web_view_t *web_views;
+    ui_shell_t *shell;
 };
 
 struct ui_command_entry {
@@ -154,5 +158,11 @@ ui_status_t ui_platform_prepare_dpi(void);
 
 ui_status_t ui_layout_recompute(ui_host_t *host);
 int ui_layout_region_valid(ui_layout_region_t region);
+void ui_shell_layout_changed(ui_host_t *host);
+int ui_shell_surface_bound(ui_host_t *host, const ui_surface_t *surface);
+int ui_shell_web_view_bound(ui_host_t *host, const ui_web_view_t *view);
+uint32_t ui_shell_surface_dpi(ui_host_t *host, const ui_surface_t *surface);
+void ui_shell_surface_destroyed(ui_host_t *host, ui_surface_t *surface);
+void ui_shell_web_view_destroyed(ui_host_t *host, ui_web_view_t *view);
 
 #endif

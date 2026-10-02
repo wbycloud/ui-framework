@@ -105,6 +105,8 @@ struct webview2_view {
     navigation_starting_handler_t *starting_handler;
     EventRegistrationToken starting_token;
     webview2_view_t *backend_next;
+    ui_web_backend_message_fn message_callback;
+    void *message_user_data;
 };
 
 static webview2_binding_t *bindings;
@@ -117,7 +119,12 @@ static const wchar_t bridge_script[] =
     L"throw new TypeError('invalid command');"
     L"var json=typeof params==='string'?params:JSON.stringify(params||{});"
     L"JSON.parse(json);chrome.webview.postMessage('ui.invoke\\n'+command+'\\n'+json);"
-    L"},value:function(id){var e=document.getElementById(id);return e?e.value:'';}};}";
+    L"},value:function(id){var e=document.getElementById(id);return e?e.value:'';},"
+    L"postMessage:function(value){var json=typeof value==='string'?value:JSON.stringify(value);"
+    L"JSON.parse(json);chrome.webview.postMessage('ui.json\\n'+json);}};"
+    L"chrome.webview.addEventListener('message',function(event){"
+    L"if(typeof ui.onmessage==='function')ui.onmessage(event.data);"
+    L"window.dispatchEvent(new MessageEvent('message',{data:event.data}));});}";
 
 static void backend_add_ref(webview2_backend_t *backend)
 {
@@ -424,7 +431,16 @@ static HRESULT STDMETHODCALLTYPE message_received(
     if (FAILED(ICoreWebView2WebMessageReceivedEventArgs_TryGetWebMessageAsString(
                    args, &message)) || message == NULL) goto done;
     utf8 = wide_to_utf8(message);
-    if (utf8 == NULL || strncmp(utf8, "ui.invoke\n", 10u) != 0) goto done;
+    if (utf8 == NULL) goto done;
+    if (strncmp(utf8, "ui.json\n", 8u) == 0) {
+        if (view->message_callback && strlen(utf8 + 8) <= 1048576u) {
+            ui_dispatch_enter(view->host);
+            view->message_callback(utf8 + 8, view->message_user_data);
+            ui_dispatch_leave(view->host);
+        }
+        goto done;
+    }
+    if (strncmp(utf8, "ui.invoke\n", 10u) != 0) goto done;
     command = utf8 + 10;
     params = strchr(command, '\n');
     if (params == NULL) goto done;
@@ -1040,6 +1056,44 @@ static ui_status_t webview2_invalidate(void *backend_user_data,
     return UI_STATUS_OK;
 }
 
+static ui_status_t webview2_set_message_handler(void *backend_data, void *view_data,
+    ui_web_backend_message_fn callback, void *user_data)
+{
+    webview2_view_t *view = (webview2_view_t *)view_data;
+    (void)backend_data;
+    if (!view || view->destroyed) return UI_STATUS_INVALID_ARGUMENT;
+    view->message_callback = callback;
+    view->message_user_data = user_data;
+    return UI_STATUS_OK;
+}
+
+static ui_status_t webview2_post_json(void *backend_data, void *view_data,
+                                     const char *json)
+{
+    webview2_view_t *view = (webview2_view_t *)view_data;
+    wchar_t *wide;
+    HRESULT hr;
+    (void)backend_data;
+    if (!json || !view || view->destroyed) return UI_STATUS_INVALID_ARGUMENT;
+    if (view_status(view) != UI_STATUS_OK) return view_status(view);
+    if (!view->webview || !view->navigation_completed) return UI_STATUS_PLATFORM_ERROR;
+    wide = utf8_to_wide(json);
+    if (!wide) return UI_STATUS_INVALID_ARGUMENT;
+    hr = ICoreWebView2_PostWebMessageAsJson(view->webview, wide);
+    free(wide);
+    return hresult_status(hr);
+}
+
+static ui_status_t webview2_capabilities(void *backend_data, void *view_data,
+                                        uint64_t *caps)
+{
+    (void)backend_data;
+    if (!view_data || !caps) return UI_STATUS_INVALID_ARGUMENT;
+    *caps = UI_WEB_CAP_JSON_MESSAGES | UI_WEB_CAP_DYNAMIC_DOM |
+            UI_WEB_CAP_RESPONSIVE_LAYOUT | UI_WEB_CAP_TEXT_INPUT;
+    return UI_STATUS_OK;
+}
+
 static const ui_web_backend_ops_t backend_ops = {
     sizeof(ui_web_backend_ops_t),
     webview2_create_view,
@@ -1049,7 +1103,11 @@ static const ui_web_backend_ops_t backend_ops = {
     webview2_dispatch_input,
     webview2_invalidate,
     NULL,
-    webview2_set_rect
+    webview2_set_rect,
+    webview2_set_message_handler,
+    webview2_post_json,
+    webview2_capabilities,
+    NULL
 };
 
 ui_status_t ui_webview2_runtime_status(void)

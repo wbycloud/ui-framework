@@ -246,6 +246,7 @@ ui_status_t ui_layout_recompute(ui_host_t *host)
     host->layout_rects[UI_LAYOUT_REGION_STATUS_BAR].height = status_height;
 
     for (surface = host->surfaces; surface != NULL; surface = surface->next) {
+        if (ui_shell_surface_bound(host, surface)) continue;
         const ui_rect_t *target_rect =
             surface->layout_region != UI_LAYOUT_REGION_NONE
                 ? &host->layout_rects[surface->layout_region]
@@ -257,6 +258,7 @@ ui_status_t ui_layout_recompute(ui_host_t *host)
     }
 
     for (view = host->web_views; view != NULL; view = view->host_next) {
+        if (ui_shell_web_view_bound(host, view)) continue;
         if (view->layout_region != UI_LAYOUT_REGION_NONE) {
             ui_status_t status = ui_web_view_set_rect(view,
                 &host->layout_rects[view->layout_region], host->dpi);
@@ -264,6 +266,7 @@ ui_status_t ui_layout_recompute(ui_host_t *host)
         }
     }
 
+    ui_shell_layout_changed(host);
     if (host->event_callback != NULL) {
         char payload[160];
         (void)snprintf(payload, sizeof(payload),
@@ -338,13 +341,18 @@ void ui_dispatch_leave(ui_host_t *host)
         host->dispatch_idle(host->dispatch_idle_data);
 }
 
+int ui_framework_supports_api(uint32_t api_version)
+{
+    return api_version == 1u || api_version == 2u;
+}
+
 ui_host_t *ui_host_create(const ui_host_config_t *config)
 {
     ui_host_t *host;
 
     if (config == NULL ||
         !valid_size(config->size, sizeof(*config)) ||
-        config->api_version != UI_FRAMEWORK_API_VERSION) {
+        !ui_framework_supports_api(config->api_version)) {
         return NULL;
     }
 
@@ -493,6 +501,7 @@ ui_status_t ui_host_set_dpi(ui_host_t *host, uint32_t dpi)
     }
 
     for (view = host->web_views; view != NULL; view = view->host_next) {
+        if (ui_shell_web_view_bound(host, view)) continue;
         if (view->dpi != dpi) {
             const ui_rect_t *target = view->layout_region == UI_LAYOUT_REGION_NONE ?
                 &view->rect : &host->layout_rects[view->layout_region];
@@ -996,6 +1005,18 @@ ui_web_backend_t *ui_web_backend_create(const ui_web_backend_desc_t *desc)
     if (desc->ops->size >= offsetof(ui_web_backend_ops_t, set_rect) +
                           sizeof(desc->ops->set_rect))
         backend->ops.set_rect = desc->ops->set_rect;
+    if (desc->ops->size >= offsetof(ui_web_backend_ops_t, set_message_handler) +
+                          sizeof(desc->ops->set_message_handler))
+        backend->ops.set_message_handler = desc->ops->set_message_handler;
+    if (desc->ops->size >= offsetof(ui_web_backend_ops_t, post_json) +
+                          sizeof(desc->ops->post_json))
+        backend->ops.post_json = desc->ops->post_json;
+    if (desc->ops->size >= offsetof(ui_web_backend_ops_t, get_capabilities) +
+                          sizeof(desc->ops->get_capabilities))
+        backend->ops.get_capabilities = desc->ops->get_capabilities;
+    if (desc->ops->size >= offsetof(ui_web_backend_ops_t, native_handle) +
+                          sizeof(desc->ops->native_handle))
+        backend->ops.native_handle = desc->ops->native_handle;
     backend->user_data = desc->user_data;
     return backend;
 }
@@ -1055,6 +1076,7 @@ void ui_web_view_destroy(ui_web_view_t *view)
         return;
     }
 
+    ui_shell_web_view_destroyed(view->host, view);
     if (view->host != NULL) {
         it = &view->host->web_views;
         while (*it != NULL && *it != view) {
@@ -1220,6 +1242,77 @@ ui_status_t ui_web_view_get_element_rect(ui_web_view_t *view,
     ui_dispatch_leave(view->host); return status;
 }
 
+static void forward_web_message(const char *json, void *data)
+{
+    ui_web_view_t *view = (ui_web_view_t *)data;
+    ui_host_t *host = view->host;
+    ui_web_message_fn callback = view->message_callback;
+    void *user_data = view->message_user_data;
+    char *copy;
+    if (!callback || !json || host->dispatch_blocked || strlen(json) > 1048576u)
+        return;
+    copy = ui_strdup(json);
+    if (!copy) return;
+    ui_dispatch_enter(host);
+    callback(view, copy, user_data);
+    free(copy);
+    ui_dispatch_leave(host);
+}
+
+ui_status_t ui_web_view_set_message_callback(ui_web_view_t *view,
+    ui_web_message_fn callback, void *user_data)
+{
+    ui_status_t status;
+    if (!view) return UI_STATUS_INVALID_ARGUMENT;
+    if (!view->backend->ops.set_message_handler) return UI_STATUS_UNSUPPORTED;
+    ui_dispatch_enter(view->host);
+    status = view->backend->ops.set_message_handler(view->backend->user_data,
+        view->user_data, callback ? forward_web_message : NULL, view);
+    if (status == UI_STATUS_OK) {
+        view->message_callback = callback;
+        view->message_user_data = user_data;
+    }
+    ui_dispatch_leave(view->host);
+    return status;
+}
+
+ui_status_t ui_web_view_post_json(ui_web_view_t *view, const char *json)
+{
+    ui_status_t status;
+    if (!view || !json || strlen(json) > 1048576u)
+        return UI_STATUS_INVALID_ARGUMENT;
+    if (!view->backend->ops.post_json) return UI_STATUS_UNSUPPORTED;
+    ui_dispatch_enter(view->host);
+    status = view->backend->ops.post_json(view->backend->user_data,
+                                        view->user_data, json);
+    ui_dispatch_leave(view->host);
+    return status;
+}
+
+ui_status_t ui_web_view_get_capabilities(ui_web_view_t *view, uint64_t *caps)
+{
+    ui_status_t status;
+    if (!view || !caps) return UI_STATUS_INVALID_ARGUMENT;
+    *caps = 0;
+    if (!view->backend->ops.get_capabilities) return UI_STATUS_UNSUPPORTED;
+    ui_dispatch_enter(view->host);
+    status = view->backend->ops.get_capabilities(view->backend->user_data,
+                                              view->user_data, caps);
+    ui_dispatch_leave(view->host);
+    return status;
+}
+
+void *ui_web_view_native_handle(ui_web_view_t *view)
+{
+    void *handle;
+    if (!view || !view->backend->ops.native_handle) return NULL;
+    ui_dispatch_enter(view->host);
+    handle = view->backend->ops.native_handle(view->backend->user_data,
+                                            view->user_data);
+    ui_dispatch_leave(view->host);
+    return handle;
+}
+
 static ui_surface_t *create_surface(ui_host_t *host,
                                     const ui_surface_desc_t *desc,
                                     const ui_opengl_config_t *config,
@@ -1303,6 +1396,7 @@ void ui_surface_destroy(ui_surface_t *surface)
         return;
     }
 
+    ui_shell_surface_destroyed(surface->host, surface);
     it = &surface->host->surfaces;
     while (*it != NULL && *it != surface) {
         it = &(*it)->next;

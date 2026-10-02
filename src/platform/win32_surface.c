@@ -165,8 +165,8 @@ static int surface_dispatch_native_input(ui_surface_t *surface, HWND hwnd,
     case WM_LBUTTONDOWN: case WM_LBUTTONUP:
     case WM_RBUTTONDOWN: case WM_RBUTTONUP:
     case WM_MBUTTONDOWN: case WM_MBUTTONUP: {
-        event.x = input_pixels_to_logical(GET_X_LPARAM(l_param), surface->host->dpi);
-        event.y = input_pixels_to_logical(GET_Y_LPARAM(l_param), surface->host->dpi);
+        event.x = input_pixels_to_logical(GET_X_LPARAM(l_param), ui_shell_surface_dpi(surface->host, surface));
+        event.y = input_pixels_to_logical(GET_Y_LPARAM(l_param), ui_shell_surface_dpi(surface->host, surface));
         if (w_param & MK_CONTROL) event.modifiers |= UI_INPUT_MODIFIER_CONTROL;
         if (w_param & MK_SHIFT) event.modifiers |= UI_INPUT_MODIFIER_SHIFT;
         if (message == WM_MOUSEMOVE) event.kind = UI_INPUT_POINTER_MOVE;
@@ -193,8 +193,8 @@ static int surface_dispatch_native_input(ui_surface_t *surface, HWND hwnd,
         POINT point = {GET_X_LPARAM(l_param), GET_Y_LPARAM(l_param)};
         if (!ScreenToClient(hwnd, &point)) return 0;
         event.kind = UI_INPUT_WHEEL;
-        event.x = input_pixels_to_logical(point.x, surface->host->dpi);
-        event.y = input_pixels_to_logical(point.y, surface->host->dpi);
+        event.x = input_pixels_to_logical(point.x, ui_shell_surface_dpi(surface->host, surface));
+        event.y = input_pixels_to_logical(point.y, ui_shell_surface_dpi(surface->host, surface));
         event.wheel_delta = GET_WHEEL_DELTA_WPARAM(w_param);
         if (GET_KEYSTATE_WPARAM(w_param) & MK_CONTROL) event.modifiers |= UI_INPUT_MODIFIER_CONTROL;
         if (GET_KEYSTATE_WPARAM(w_param) & MK_SHIFT) event.modifiers |= UI_INPUT_MODIFIER_SHIFT;
@@ -672,13 +672,17 @@ ui_status_t ui_platform_surface_set_rect(ui_surface_t *surface,
 
     platform = (ui_win32_surface_t *)surface->platform;
     (void)rect;
-    if (!MoveWindow(platform->hwnd,
-                    surface->pixel_rect.x,
-                    surface->pixel_rect.y,
-                    surface->pixel_rect.width,
-                    surface->pixel_rect.height,
-                    TRUE)) {
-        return UI_STATUS_PLATFORM_ERROR;
+    {
+        RECT target = { surface->pixel_rect.x, surface->pixel_rect.y,
+                        surface->pixel_rect.x + surface->pixel_rect.width,
+                        surface->pixel_rect.y + surface->pixel_rect.height };
+        HWND parent = GetParent(platform->hwnd);
+        if (parent != (HWND)surface->host->native_parent)
+            MapWindowPoints((HWND)surface->host->native_parent, parent,
+                            (POINT *)&target, 2);
+        if (!MoveWindow(platform->hwnd, target.left, target.top,
+                        target.right - target.left, target.bottom - target.top,
+                        TRUE)) return UI_STATUS_PLATFORM_ERROR;
     }
     return UI_STATUS_OK;
 }

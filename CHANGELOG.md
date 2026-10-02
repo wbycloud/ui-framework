@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## 0.2.0 — 开发版，尚未发布稳定标签
+
+当前源码的 SDK 版本为 0.2.0，开发标准修订为 2；最近稳定标签仍是 `v0.1.0`。框架 API 升为 2，运行库接受 API 1 和 2；应用 ABI、`ui_app_query_v1` 入口及包格式仍为 1。清单与 DLL 的 API 声明必须一致。
+
+### 变化
+
+- 独立宿主改用 Lexbor/QuickJS-NG/GDI 的 Web 外壳，提供标签、应用菜单、工具入口、面板外框、全局助手和浅色/深色切换，保留 Windows 标准标题栏。
+- Windows 默认开启独立宿主和轻量 Web 后端；首次构建需要另行准备固定 `.deps/`。原生嵌入式构建需同时关闭 `UI_BUILD_STANDALONE_HOST` 和 `UI_FRAMEWORK_ENABLE_LIGHT_WEB`。
+- 新增 [shell.h](include/ui_framework/shell.h) 的借用 shell/content-slot 接口；`ui_shell_refresh()` 增量更新注册项并保留已有内容容器。
+- 新增统一 Web JSON 消息、能力位和借用 native handle 接口；轻量后端扩展受控动态 DOM、样式/布局、事件与文本输入。
+- 新增 API 2 的 [Web Counter](examples/web_counter/app.c) 纯 Web 内容示例及 API 1/2、内容槽、动态 DOM、Web 宿主验证目标。旧应用 fixture 使用冻结的 `tests/sdk_v1` 头文件。
+
+### 兼容性与迁移
+
+**无需修改的兼容目标**：符合 v0.1.0 公共接口约定、通过框架注册菜单/工具栏/面板并在内容容器挂载的 API 1 二进制 `.uapp`。应用继续选择原生、OpenGL 或 Web 内容；标签切换与停靠/浮动保留内容容器和 GL context。原生嵌入式 API 保留。
+
+**可选升级**：重新构建或采用 API 2 时，同步清单与 DLL 的 API 声明，使用新 shell/content-slot 和 JSON 消息接口。自定义 Web backend 可追加能力回调；旧 ops 尺寸继续接受，缺少新增可选回调返回 UNSUPPORTED。
+
+**必须迁移**：依赖独立宿主 Win32 外壳内部结构的应用，包括直接安装/修改 HMENU、枚举 Common Controls toolbar 或依赖外壳窗口类。独立宿主不提供原生外壳选项。旧 `ui_native_shell_refresh()` 仍重建面板并使旧容器/内容句柄失效，调用方继续遵守原有重建约定。
+
+具体步骤见[从 v0.1.0 迁移到 0.2.0](docs/migration-v0.1-to-v0.2.md)。默认 Web 与 native-only 的干净构建成功；原 EDA 二进制兼容、6 项新增集成测试及真实浅色/深色界面通过。完整可选 CTest 为 21 通过、2 失败、1 跳过；失败为保留的旧版本/子集断言，跳过为单屏硬件条件，详见[当前迁移验收](docs/build-and-validation.md#51-020-开发版本迁移验收)。本节不宣称原测试全绿或稳定版本已发布。
+
 ## v0.1.0 — 2026-10-02
 
 首个公开 SDK 基准。框架 API 1、应用 ABI 1、应用包格式 1；应用开发标准修订 1。
@@ -15,11 +37,11 @@
 
 ### 兼容性与迁移
 
-这是首个公开标签，没有更早的公开 SDK 迁移路径。发布前开发的应用按本标签的[开发标准](docs/application-development-standard.md)与头文件核查，并记录适配基准。
+这是首个公开标签，没有更早的公开 SDK 迁移路径。发布前开发的应用按[该标签的开发标准](https://github.com/wbycloud/ui-framework/blob/v0.1.0/docs/application-development-standard.md)与头文件核查，并记录适配基准。
 
 当前加载器严格检查 API/ABI 版本；尚未实现多版本兼容协商或自动迁移工具。异步关闭、内存所有权和应用自有 UI 回调 scope 是必须遵守的使用约定。助手尚未连接模型服务，真实跨显示器行为需要多屏硬件验证。
 
-本次干净源码构建成功，原生测试为 15 通过、1 失败、1 跳过；窗口尺寸失败经纯 Win32 对照确认为本机最大窗口跟踪高度限制，真实跨显示器测试因单屏跳过。实际条件见[验证记录](docs/build-and-validation.md#51-本次干净源码验收)。
+该版本的干净源码构建成功，原生测试为 15 通过、1 失败、1 跳过；窗口尺寸失败经纯 Win32 对照确认为本机最大窗口跟踪高度限制，真实跨显示器测试因单屏跳过。实际条件见[历史验证记录](docs/build-and-validation.md#52-v010-干净源码验收)。
 
 ## 后续版本记录规则
 

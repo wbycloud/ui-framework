@@ -1,0 +1,180 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+body { margin:0; font-family:"Microsoft YaHei UI"; font-size:14px; color:#243047; background:#f4f6fa; }
+button { height:30px; padding:5px 10px; border:1px solid #dce2ec; border-radius:6px; background:#ffffff; color:#34425b; }
+button:hover { background:#e8eef8; }
+button:focus { border-color:#3674d9; }
+button:disabled { color:#8a93a2; background:#edf0f5; }
+.row { display:flex; flex-direction:row; gap:6px; align-items:center; }
+.column { display:flex; flex-direction:column; gap:8px; }
+.muted { color:#748098; font-size:12px; }
+.label { color:#64718a; font-size:12px; }
+.primary { background:#3674d9; color:#ffffff; border-color:#3674d9; }
+.active { background:#e7eefb; border-color:#7b9fdc; color:#254f91; }
+.chrome { background:#ffffff; border:1px solid #e1e6ef; }
+.panel-title { height:28px; padding:4px 8px; display:flex; flex-direction:row; gap:4px; align-items:center; background:#eaf0f8; }
+.panel-title button { height:22px; padding:1px 5px; font-size:12px; }
+input, textarea { padding:6px; background:#ffffff; border:1px solid #dce2ec; border-radius:5px; color:#243047; font-size:13px; }
+textarea { width:100%; }
+#shell { display:flex; flex-direction:column; width:100%; height:100%; }
+#top { height:44px; padding:6px 8px; background:#edf1f7; gap:6px; }
+#menu, #theme { width:32px; padding:4px; }
+#open { width:88px; }
+#assistant-toggle { width:36px; padding:4px; }
+#tabs { display:flex; flex-direction:row; flex:1; gap:4px; overflow-x:auto; height:32px; }
+.tab { display:flex; flex-direction:row; gap:2px; }
+.tab-name { width:150px; height:30px; }
+.tab-close { width:26px; height:30px; padding:4px; }
+#body { display:flex; flex-direction:row; flex:1; }
+#workspace { flex:1; height:100%; position:relative; overflow:hidden; background:#f4f6fa; }
+#empty { padding:48px 28px; gap:14px; }
+#empty-title { font-size:26px; color:#2f425f; }
+#app-chrome { position:absolute; left:0; top:0; width:100%; height:100%; }
+#assistant { width:320px; height:100%; padding:12px; gap:8px; background:#ffffff; border-left:1px solid #dce2ec; overflow-y:auto; }
+#assistant-title { font-size:16px; }
+#target, #command { width:100%; text-align:left; }
+#schema { height:56px; font-size:12px; }
+#params { height:66px; }
+#actions button { flex:1; }
+#transactions button { flex:1; padding:4px 2px; font-size:12px; }
+#log { height:200px; font-size:12px; }
+#popup { width:100%; height:100%; padding:12px; gap:8px; background:#ffffff; overflow-y:auto; }
+#popup-title { font-size:16px; }
+#popup-detail { max-height:160px; overflow-y:auto; }
+#popup-items { gap:4px; }
+#popup-items button { text-align:left; width:100%; }
+.dark { background:#1c2230; color:#dbe4f2; }
+.dark button, .dark input, .dark textarea { background:#283244; border-color:#3e4b60; color:#dbe4f2; }
+.dark button:hover { background:#34435b; }
+.dark .primary { background:#467fd9; color:#ffffff; }
+.dark .active { background:#354866; border-color:#6589c0; }
+.dark .chrome, .dark #assistant, .dark #popup { background:#222b3b; border-color:#3e4b60; }
+.dark #top, .dark .panel-title { background:#283244; }
+.dark #workspace { background:#1c2230; }
+.dark .muted, .dark .label { color:#a4b2ca; }
+.dark #empty-title { color:#dbe4f2; }
+@media (max-width:799px) { #assistant { display:none; } }
+</style></head><body>
+<div id="shell">
+ <header id="top" class="row">
+  <button id="menu" title="框架及应用菜单">☰</button><div id="tabs"></div>
+  <button id="open" title="打开应用包 · Ctrl+O">＋ 打开</button>
+  <button id="assistant-toggle" title="助手命令及状态">AI</button>
+  <button id="theme" title="浅色 / 深色主题">◐</button>
+ </header>
+ <main id="body">
+  <section id="workspace"><div id="empty" class="column"><span id="empty-title">你的应用工作区</span>
+   <span class="muted">打开 .uapp 应用包，在标签间切换。应用自行选择原生、OpenGL 或 Web 内容。</span>
+   <button id="empty-open" class="primary" style="width:160px">打开应用包</button>
+  </div><div id="app-chrome"></div></section>
+  <aside id="assistant" class="column">
+   <div id="assistant-title">助手工作台</div><span class="muted">调用固定目标实例；切换标签不会改变任务目标。</span>
+   <span class="label">目标实例</span><button id="target">选择应用</button>
+   <span class="label">语义命令</span><button id="command">选择命令</button>
+   <textarea id="schema" readonly="readonly"></textarea><span class="label">参数 · JSON</span>
+   <textarea id="params">{}</textarea><div id="actions" class="row">
+    <button id="invoke" class="primary">调用</button><button id="cancel">取消任务</button></div>
+   <button id="snapshot">查看状态快照</button><div id="transactions" class="row">
+    <button id="begin">开始</button><button id="commit">提交</button>
+    <button id="rollback">回滚</button><button id="undo">撤销</button></div>
+   <span class="label">结果 / 进度 / 事件</span><textarea id="log" readonly="readonly"></textarea>
+  </aside>
+ </main>
+</div>
+<div id="popup" class="column" style="display:none"><div id="popup-title"></div>
+ <div id="popup-detail" class="muted"></div><div id="popup-items" class="column"></div>
+ <div id="popup-actions" class="row"></div></div>
+<script>
+(function () {
+ var model = null, popupToken = '', dark = false;
+ function element(id) { return document.getElementById(id); }
+ function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
+ function send(action, extra) { var m = extra || {}; m.action = action; ui.postMessage(m); }
+ function button(id, title, action, extra, style) {
+  var b = document.createElement('button'); b.id = id; b.textContent = title;
+  if (style) b.className = style;
+  b.addEventListener('click', function () { send(action, extra); }); return b;
+ }
+ function action(id, name) { element(id).addEventListener('click', function () { send(name); }); }
+ function setTheme(value) { dark = !!value; document.body.className = dark ? 'dark' : ''; }
+ action('menu', 'menu'); action('open', 'open'); action('empty-open', 'open');
+ action('assistant-toggle', 'assistant'); action('theme', 'theme');
+ action('target', 'targets'); action('command', 'commands');
+ action('invoke', 'invoke'); action('cancel', 'cancel'); action('snapshot', 'snapshot');
+ action('begin', 'begin'); action('commit', 'commit'); action('rollback', 'rollback'); action('undo', 'undo');
+ element('params').addEventListener('input', function () { send('params', {params:element('params').value}); });
+ function place(node, rect) {
+  node.style.position='absolute'; node.style.left=rect.x+'px'; node.style.top=rect.y+'px';
+  node.style.width=rect.width+'px'; node.style.height=rect.height+'px';
+ }
+ function paintChrome(state) {
+  var root=element('app-chrome'); clear(root);
+  if (!state.active) return;
+  var menu=document.createElement('div'); menu.className='row chrome'; place(menu,state.menuRect);
+  menu.appendChild(button('app-menu','应用菜单 ▾','menu')); root.appendChild(menu);
+  var tools=document.createElement('div'); tools.className='row chrome'; place(tools,state.toolbarRect);
+  tools.style.overflowX='auto';
+  for(var i=0;i<state.tools.length;i++) {
+   var tool=state.tools[i]; tools.appendChild(button('tool-'+i,tool.title,'app-command', {id:state.active,command:tool.command}));
+  }
+  root.appendChild(tools);
+  for(var p=0;p<state.panels.length;p++) {
+   var panel=state.panels[p]; if(panel.floating) continue;
+   var box=document.createElement('div'); box.className='chrome'; place(box,panel.frame);
+   if(panel.collapsed) {
+    box.appendChild(button('panel-'+p,panel.title,'panel-float',{id:state.active,panel:panel.id}));
+   } else {
+    var title=document.createElement('div'); title.className='panel-title';
+    var text=document.createElement('span');text.textContent=panel.title;text.style.flex='1';title.appendChild(text);
+    title.appendChild(button('panel-'+p,'↗','panel-float',{id:state.active,panel:panel.id}));box.appendChild(title);
+   }
+   root.appendChild(box);
+  }
+  var status=document.createElement('div');status.className='muted chrome';place(status,state.statusRect);
+  status.textContent=state.activeLabel+' · '+state.dpi+' DPI';root.appendChild(status);
+ }
+ function paintState(state) {
+  model=state;setTheme(state.dark);var tabs=element('tabs');clear(tabs);
+  for(var i=0;i<state.tabs.length;i++) {
+   var tab=state.tabs[i], row=document.createElement('div');row.className='tab';
+   var name=button('tab-'+tab.id,tab.title,'activate',{id:tab.id},'tab-name'+(tab.active?' active':''));
+   name.disabled=tab.closing;row.appendChild(name);
+   row.appendChild(button('close-'+tab.id,'×','close',{id:tab.id},'tab-close'));tabs.appendChild(row);
+  }
+  element('empty').style.display=state.tabs.length?'none':'flex';
+  element('assistant').style.display=state.assistant?'flex':'none';
+  element('target').textContent=state.targetLabel||'选择应用';
+  element('command').textContent=state.command||'选择命令';element('schema').value=state.schema||'';
+  element('log').value=state.log||'';element('invoke').disabled=!state.canInvoke;
+  element('cancel').disabled=!state.canCancel;
+  if(element('params').value!==state.params)element('params').value=state.params;
+  paintChrome(state);
+ }
+ function paintPopup(state) {
+  popupToken=state.token;setTheme(state.dark);element('shell').style.display='none';element('popup').style.display='flex';
+  element('popup-title').textContent=state.title;
+  var detail=element('popup-detail');clear(detail);
+  for(var d=0;d<state.detailParts.length;d++) {
+   var part=document.createElement('div');part.textContent=state.detailParts[d];detail.appendChild(part);
+  }
+  var items=element('popup-items');clear(items);var actions=element('popup-actions');clear(actions);
+  for(var i=0;i<state.items.length;i++) {
+   var item=state.items[i];var extra={token:popupToken,id:item.id||'',command:item.command||'',answer:item.answer||''};
+   items.appendChild(button('popup-item-'+i,item.title,item.action,extra));
+  }
+  if(state.confirm) {
+   actions.appendChild(button('confirm-no','取消','confirm',{token:popupToken,answer:'no'}));
+   actions.appendChild(button('confirm-yes','允许','confirm',{token:popupToken,answer:'yes'},'primary'));
+  } else actions.appendChild(button('popup-dismiss','关闭','dismiss',{token:popupToken}));
+ }
+ ui.onmessage=function(state) { if(state.type==='popup')paintPopup(state);else if(state.type==='state')paintState(state); };
+ document.addEventListener('keydown',function(event) {
+  if(event.keyCode===27)send('dismiss',{token:popupToken});
+ });
+ ['menu','open','assistant-toggle','theme'].forEach(function(id) {
+  var node=element(id);node.addEventListener('mouseenter',function(){send('tooltip',{id:id});});
+  node.addEventListener('mouseleave',function(){send('tooltip-hide');});
+ });
+ send('ready');
+})();
+</script></body></html>
