@@ -1,0 +1,12 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+@media (max-width: 600px) { #assistant { display: none; } }
+</style></head><body style="margin:0">
+<div id="app" style="display:flex;flex-direction:row;width:100%;height:100%">
+  <div id="main" style="flex:1;background:#202020">
+    <button id="add" onclick='ui.invoke("probe.clicked","{}")'>Add block</button>
+    <input id="name" value="EDA" oninput='ui.invoke("probe.input",JSON.stringify({value:ui.value("name")}))'>
+  </div>
+  <aside id="assistant" style="width:30%;background:#303840">Assistant</aside>
+</div>
+</body></html>

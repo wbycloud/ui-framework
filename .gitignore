@@ -1,0 +1,12 @@
+# Generated builds and optional dependency checkouts/downloads.
+/build/
+/.deps/
+
+# Local agent planning and validation notes.
+/task_plan.md
+/findings.md
+/progress.md
+
+# Local IDE state.
+/.vs/
+*.user
