@@ -2,7 +2,7 @@
 
 适用于已有 C/C++ 应用项目，目标为 SDK0.3.0开发版、API3、标准修订3。代码基准为 `f8eb3504f4682720967d631e53c985530343a2e0`，应用ABI/包格式仍为1；本文件只补充应用升级指令，没有新增框架接口。
 
-当前API3交付在本地 `codex/generic-web-ui` 分支，尚未推送GitHub。其他项目在本机可直接读取框架目录；远程使用前必须取得包含该提交的源码，核对README、头文件和标准，不能把远程旧版当作API3。后续升级也应记录实际使用的commit。
+通过[GitHub仓库的main分支](https://github.com/wbycloud/ui-framework/tree/main)获取框架源码和说明，核对是否包含以上代码基准、README、公共头文件和标准修订3。采用开发版须记录实际取得的commit；后续升级重新核对版本和迁移说明，不能只依赖会变化的分支名。
 
 将下面内容复制给负责应用项目的开发者或代码助手。完整实现边界见[接入约定](generic-web-ui.md)，待补验项见[验收记录](validation/api3-validation.md#41-未验证项目与补验清单)。
 
@@ -10,12 +10,12 @@
 请在当前应用项目实际完成向以下框架版本的适配，不要只给建议或修改版本号。
 
 框架仓库：https://github.com/wbycloud/ui-framework
-本机SDK目录：D:\应用软件框架\应用层序框架
+目标分支：main，须包含以下代码基准。
 目标：SDK 0.3.0开发版、框架API 3、开发标准修订3。
 代码基准：f8eb3504f4682720967d631e53c985530343a2e0。
 应用ABI、导出入口ui_app_query_v1、应用包格式均保持1。
 
-1. 先读取所取得SDK的README.md、CHANGELOG.md、docs/application-development-standard.md、docs/generic-web-ui.md、docs/migration-v0.2-to-v0.3.md、docs/validation/api3-validation.md，以及include/ui_framework公共头文件和examples/generic_components示例。API1应用还读0.1到0.2迁移说明。核对实际SDK commit；远程尚无API3时使用上述本机SDK，不能按旧main猜测接口。两者都无法取得时报告缺少正确SDK，并继续不依赖SDK的现状盘点。
+1. 从以上GitHub仓库获取main分支，记录实际SDK commit，核对API3、标准修订3及代码基准。读取README.md、CHANGELOG.md、docs/application-development-standard.md、docs/generic-web-ui.md、docs/migration-v0.2-to-v0.3.md、docs/validation/api3-validation.md，以及include/ui_framework公共头文件和examples/generic_components示例。API1应用还读0.1到0.2迁移说明。若取得的源码或说明不符合目标，报告版本差异并继续不依赖SDK的现状盘点，不按旧版或未来其他版本猜测API3接口。
 
 2. 盘点应用的SDK/API/ABI、包清单、界面、命令、数据源、图片、线程和卸载流程，列出已符合、需要修改、可选迁移及框架能力不足的部分。保留业务文档模型、算法、文件格式和应用渲染器，只修改接入与界面层；不要修改框架内部源码。
 

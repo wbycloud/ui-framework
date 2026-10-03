@@ -16,6 +16,8 @@
 
 当前工作源码为 0.3.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；稳定基准仍为 v0.1.0。清单与 DLL 的 API 声明必须一致，API3 应用不能加载到只支持 API1/2 的旧运行库。
 
+当前开发源码和接入说明位于 [main 分支](https://github.com/wbycloud/ui-framework/tree/main)。API3 实现基准为 [f8eb350](https://github.com/wbycloud/ui-framework/commit/f8eb3504f4682720967d631e53c985530343a2e0)，取得源码后仍需记录实际 commit，升级指令见[应用升级提示词](docs/application-upgrade-prompt.md)。
+
 建议按以下顺序阅读：
 
 1. [CHANGELOG](CHANGELOG.md)：版本变化和兼容性分类。
