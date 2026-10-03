@@ -24,6 +24,7 @@
 4. [构建与验证](docs/build-and-validation.md)：固定依赖、构建开关、测试和发布检查。
 5. [通用 Web UI](docs/generic-web-ui.md)及[纯 C 示例](examples/generic_components/README.md)：框架管理的树、表格、表单、对话框、缩略图和绘图内容槽。
 6. [Web Counter](examples/web_counter/app.c)及其[清单](examples/web_counter/manifest.ini)：API 2 的纯 Web 内容示例；[最小 EDA](examples/minimal_eda/app.c)展示 API 1 原生/OpenGL 内容兼容路径。
+7. [应用升级提示词](docs/application-upgrade-prompt.md)：交给其他应用项目的适配指令，包含版本核对和未验证项的处理要求。
 
 ## 获取、构建与运行
 
