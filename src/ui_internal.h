@@ -4,6 +4,7 @@
 #include "ui_framework/ui.h"
 #include "ui_framework/opengl.h"
 #include "ui_framework/shell.h"
+#include "ui_framework/components.h"
 
 typedef struct ui_command_entry ui_command_entry_t;
 typedef struct ui_menu_entry ui_menu_entry_t;
@@ -77,6 +78,14 @@ struct ui_host {
     ui_surface_t *surfaces;
     ui_web_view_t *web_views;
     ui_shell_t *shell;
+    ui_component_t *components;
+    struct ui_image_entry *images;
+    size_t image_bytes, image_metadata_bytes, image_limit, image_evictions;
+    uint64_t component_generation;
+    ui_component_t *modal_component;
+    ui_component_t *focused_component;
+    int app_active;
+    ui_host_t *image_source; /* Trusted shell chrome may display its active application's images. */
 };
 
 struct ui_command_entry {
@@ -85,6 +94,8 @@ struct ui_command_entry {
     char *params_schema_json;
     ui_command_handler_fn handler;
     void *user_data;
+    uint32_t shortcut_key, shortcut_modifiers;
+    ui_command_state_t state;
     ui_command_entry_t *next;
 };
 
@@ -94,6 +105,8 @@ struct ui_menu_entry {
     char *title;
     char *command_id;
     int order;
+    uint64_t image_id;
+    ui_command_state_t state;
     ui_menu_entry_t *next;
 };
 
@@ -112,6 +125,8 @@ struct ui_toolbar_item_entry {
     char *command_id;
     char *icon_url;
     int order;
+    uint64_t image_id;
+    ui_command_state_t state;
     ui_toolbar_item_entry_t *next;
 };
 
@@ -135,6 +150,20 @@ struct ui_pending_request {
 char *ui_strdup(const char *value);
 void ui_dispatch_enter(ui_host_t *host);
 void ui_dispatch_leave(ui_host_t *host);
+void ui_components_destroy(ui_host_t *host);
+void ui_components_commands_changed(ui_host_t *host);
+void ui_components_layout(ui_host_t *host);
+void ui_components_active(ui_host_t *host, int active);
+void ui_images_destroy(ui_host_t *host);
+ui_status_t ui_images_reserve_metadata(ui_host_t *host,size_t bytes);
+void ui_images_release_metadata(ui_host_t *host,size_t bytes);
+void ui_image_changed(ui_host_t *host, uint64_t id);
+ui_status_t ui_image_set_evictable(ui_host_t *host, uint64_t id);
+/* Private GDI rendering adapter; draw accepts an HDC/RECT on Windows. */
+int ui_image_draw(const ui_host_t *host, uint64_t id, void *dc, const void *rect, int disabled);
+void ui_web_image_changed(ui_web_view_t *, uint64_t);
+ui_component_batch_t *ui_component_batch_copy(const ui_component_batch_t *, size_t *bytes);
+void ui_component_batch_free(ui_component_batch_t *);
 
 ui_status_t ui_platform_surface_create(ui_surface_t *surface);
 ui_status_t ui_platform_surface_create_configured(

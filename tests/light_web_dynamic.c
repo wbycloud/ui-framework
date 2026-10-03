@@ -57,7 +57,7 @@ int main(void)
         "text:document.getElementById('box').textContent,edits:edits,children:holder.children.length});};"
         "window.addEventListener('message',function(event){if(event.data.op==='window')ui.postMessage({window:true});});"
         "ui.postMessage({ready:true});</script>";
-    HWND parent, edit, textarea, web_hwnd;
+    HWND parent, web_hwnd;
     ui_host_config_t hc = {0};
     ui_light_web_config_t config = {0};
     ui_host_t *host;
@@ -100,19 +100,21 @@ int main(void)
     CHECK(ui_web_view_post_json(view,"invalid JSON") == UI_STATUS_VALIDATION_FAILED);
     CHECK(ui_web_view_post_json(view,"{\"op\":\"window\"}") == UI_STATUS_OK && strstr(last_message,"\"window\":true") != NULL);
     web_hwnd = (HWND)ui_web_view_native_handle(view); CHECK(web_hwnd != NULL);
-    edit = FindWindowExW(web_hwnd,NULL,L"EDIT",NULL); CHECK(edit != NULL);
-    textarea = FindWindowExW(web_hwnd,edit,L"EDIT",NULL); CHECK(textarea != NULL);
-    CHECK((GetWindowLongW(textarea,GWL_STYLE) & ES_MULTILINE) != 0);
-    ShowWindow(parent,SW_SHOWNOACTIVATE); SetFocus(edit);
-    SetWindowTextW(edit,L"中文 input");
+    CHECK(FindWindowExW(web_hwnd,NULL,L"EDIT",NULL) == NULL);
+    ShowWindow(parent,SW_SHOWNOACTIVATE);SetFocus(web_hwnd);
+    CHECK(ui_web_view_get_element_rect(view,"text",&rect) == UI_STATUS_OK);
+    CHECK(input(view,UI_INPUT_POINTER_DOWN,rect.x+5,rect.y+5,0,0) == UI_STATUS_OK);
+    {ui_input_event_t event={0};event.size=sizeof(event);event.kind=UI_INPUT_KEY_DOWN;event.key_code='A';event.modifiers=UI_INPUT_MODIFIER_CONTROL;
+     CHECK(ui_web_view_dispatch_input(view,&event)==UI_STATUS_OK);event.kind=UI_INPUT_TEXT;event.text_utf8="中文 input";
+     CHECK(ui_web_view_dispatch_input(view,&event)==UI_STATUS_OK);}
     CHECK(ui_web_view_post_json(view,"{\"op\":\"snapshot\"}") == UI_STATUS_OK);
     CHECK(strstr(last_message,"中文 input") != NULL && strstr(last_message,"\"edits\":1") != NULL);
     CHECK(ui_web_view_get_element_rect(view,"scroll",&rect) == UI_STATUS_OK);
     CHECK(input(view,UI_INPUT_WHEEL,rect.x+10,rect.y+10,0,-120) == UI_STATUS_OK);
     CHECK(ui_web_view_get_element_rect(view,"one",&before) == UI_STATUS_OK);
     for (i = 0; i < 250; ++i) CHECK(ui_web_view_post_json(view,"{\"op\":\"rebuild\"}") == UI_STATUS_OK);
-    CHECK(GetFocus() == edit);
-    CHECK(FindWindowExW(web_hwnd,NULL,L"EDIT",NULL) == edit);
+    CHECK(GetFocus() == web_hwnd);
+    CHECK(FindWindowExW(web_hwnd,NULL,L"EDIT",NULL) == NULL);
     CHECK(ui_web_view_get_element_rect(view,"one",&after) == UI_STATUS_OK);
     /* Rebuild inserts a fixed 110px sibling before scroll, preserving offset. */
     CHECK(after.y - before.y == 110);

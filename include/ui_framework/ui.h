@@ -18,7 +18,7 @@
 extern "C" {
 #endif
 
-#define UI_FRAMEWORK_API_VERSION 2u
+#define UI_FRAMEWORK_API_VERSION 3u
 #define UI_FRAMEWORK_MIN_API_VERSION 1u
 
 typedef struct ui_host ui_host_t;
@@ -100,7 +100,8 @@ typedef enum ui_status {
     /* Appended statuses preserve the numeric values of the original ABI. */
     UI_STATUS_PERMISSION_DENIED = -7,
     UI_STATUS_CANCELLED = -8,
-    UI_STATUS_VALIDATION_FAILED = -9
+    UI_STATUS_VALIDATION_FAILED = -9,
+    UI_STATUS_LIMIT_EXCEEDED = -10
 } ui_status_t;
 
 typedef enum ui_surface_kind {
@@ -153,7 +154,13 @@ typedef struct ui_command_desc {
     const char *params_schema_json;
     ui_command_handler_fn handler;
     void *user_data;
+    uint32_t shortcut_key, shortcut_modifiers;
 } ui_command_desc_t;
+
+typedef struct ui_command_state {
+    uint32_t size;
+    int visible, enabled, checked, busy;
+} ui_command_state_t;
 
 typedef struct ui_menu_item_desc {
     uint32_t size;
@@ -162,6 +169,8 @@ typedef struct ui_menu_item_desc {
     const char *title;
     const char *command_id;
     int order;
+    uint32_t reserved_v2;
+    uint64_t image_id;
 } ui_menu_item_desc_t;
 
 /* Toolbars are registered separately from their command-backed items. */
@@ -181,6 +190,8 @@ typedef struct ui_toolbar_item_desc {
     const char *command_id;
     const char *icon_url;
     int order;
+    uint32_t reserved_v2;
+    uint64_t image_id;
 } ui_toolbar_item_desc_t;
 
 typedef struct ui_panel_desc {
@@ -285,6 +296,9 @@ typedef void *(*ui_web_native_handle_fn)(void *backend_user_data,
 #define UI_WEB_CAP_RESPONSIVE_LAYOUT UINT64_C(4)
 #define UI_WEB_CAP_NATIVE_WINDOW UINT64_C(8)
 #define UI_WEB_CAP_TEXT_INPUT UINT64_C(16)
+#define UI_WEB_CAP_IMAGES UINT64_C(32)
+#define UI_WEB_CAP_WEB_TEXT_EDIT UINT64_C(64)
+#define UI_WEB_CAP_COMPONENTS UINT64_C(128)
 
 typedef struct ui_web_backend_ops {
     uint32_t size;
@@ -300,6 +314,7 @@ typedef struct ui_web_backend_ops {
     ui_web_post_json_fn post_json;
     ui_web_get_capabilities_fn get_capabilities;
     ui_web_native_handle_fn native_handle;
+    void (*image_changed)(void *backend_user_data, void *view_user_data, uint64_t image_id);
 } ui_web_backend_ops_t;
 
 typedef struct ui_web_backend_desc {
@@ -358,6 +373,13 @@ UI_API ui_status_t ui_host_register_toolbar_item(
     const ui_toolbar_item_desc_t *desc);
 UI_API ui_status_t ui_host_register_panel(ui_host_t *host,
                                            const ui_panel_desc_t *desc);
+UI_API ui_status_t ui_host_set_command_state(ui_host_t *, const char *, const ui_command_state_t *);
+UI_API ui_status_t ui_host_get_command_state(const ui_host_t *, const char *, ui_command_state_t *);
+UI_API ui_status_t ui_host_set_item_state(ui_host_t *, const char *, const ui_command_state_t *);
+/* Updates all registered menu/toolbar items with this ID. Zero clears. */
+UI_API ui_status_t ui_host_set_item_image(ui_host_t *, const char *, uint64_t image_id);
+UI_API uint64_t ui_host_dispatch_shortcut(ui_host_t *, uint32_t key,
+    uint32_t modifiers, int text_editing);
 
 /* Returns a non-zero request ID. The handler may reply immediately or later. */
 UI_API uint64_t ui_host_invoke(ui_host_t *host,

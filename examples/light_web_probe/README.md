@@ -1,6 +1,6 @@
 # 受控轻量 Web 后端与验证程序
 
-轻量后端以 C11 实现，静态链接 Lexbor 和 QuickJS-NG，通过公共 `ui_web_backend_t` 接入 host。当前 Windows 独立宿主默认使用它，不需要浏览器 Runtime。布局与绘制由框架的 C/GDI 实现，文本输入可使用 Unicode Win32 EDIT。它面向随应用分发的受控工具页，不提供完整浏览器的 DOM/CSS/Web API。
+轻量后端以 C11 实现，静态链接 Lexbor 和 QuickJS-NG，通过公共 `ui_web_backend_t` 接入 host。当前 Windows 独立宿主默认使用它，不需要浏览器 Runtime。布局与绘制由框架的 C/GDI 实现，文本由 Web view 编辑和绘制，使用 Uniscribe/IMM32 平台适配，不创建 EDIT 代理。它面向随应用分发的受控工具页，不提供完整浏览器的 DOM/CSS/Web API。
 
 ## 构建和运行
 
@@ -22,7 +22,7 @@ ctest --test-dir build/light_web_probe --output-on-failure
 
 自建 CMake 项目可在创建框架 target 后 include `cmake/light_web.cmake`，调用 `ui_enable_light_web(ui_framework)`。依赖默认位于 `.deps/lexbor`、`.deps/quickjs`，也可通过 `UI_LEXBOR_SOURCE_DIR`、`UI_QUICKJS_SOURCE_DIR` 指定。
 
-[`probe.c`](probe.c) 读取两种后端共用的 [`assistant.html`](../web_common/assistant.html)，验证布局/命令、UTF-8、滚动、资源限制和错误返回。原 probe 保留“class 属性应被拒绝”和“193 节点应被拒绝”两条修订 1 断言；当前实现新增 class 支持并扩展至 1024 内部节点，与这两条断言冲突，当前不能把它报告为 `0 failure(s)`。新增动态行为由 [`tests/light_web_dynamic.c`](../../tests/light_web_dynamic.c) 验证，最终实际结果见[迁移验收记录](../../docs/build-and-validation.md#51-020-开发版本迁移验收)。
+[`probe.c`](probe.c) 读取两种后端共用的 [`assistant.html`](../web_common/assistant.html)，验证布局/命令、UTF-8、滚动、资源限制和错误返回。旧 class/193 节点断言已作为历史快照保存在 [tests/api2_baseline](../../tests/api2_baseline/README.md)，当前测试按动态 class 和 1024 节点上限验证。新增编辑和组件验收见[API3 记录](../../docs/validation/api3-validation.md)。
 
 ## HTML 和内容结构
 
@@ -34,10 +34,11 @@ Lexbor 解析 HTML 文档，body 是参与布局的根节点，body 的 class/st
 | `button` | 按钮文字、禁用状态和受控事件 |
 | `input` | 默认或 `type="text"` 的单行输入 |
 | `textarea` | 多行文本输入 |
+| `img` | C 图片资源 ID，等比居中并裁剪，不自动加载网络 URL |
 | `script` | 同步内联 JavaScript，拒绝外部 `src`/模块 |
 | `style` | 下述受控 CSS 规则 |
 
-内容属性支持 `id`、`class`、`style`、`onclick`、`onmousedown`、`oninput`、`value`、文本 `type`、`disabled`、`readonly`。未知属性/元素返回 `UI_STATUS_UNSUPPORTED`，重复非空 ID 返回 `UI_STATUS_ALREADY_EXISTS`。容器中的混合文字不是浏览器式排版，使用叶子 `span` 或 `p` 表达文字。资源 URL 不自动加载为图片、脚本或页面。
+内容属性支持 `id`、`class`、`style`、`onclick`、`onmousedown`、`oninput`、`value`、文本 `type`、`disabled`、`readonly`；img 的 src 为本实例图片资源十进制 ID。未知属性/元素返回 `UI_STATUS_UNSUPPORTED`，重复非空 ID 返回 `UI_STATUS_ALREADY_EXISTS`。容器中的混合文字不是浏览器式排版，使用叶子 `span` 或 `p` 表达文字。资源 URL 不自动加载为图片、脚本或页面。
 
 ## CSS 和布局子集
 
@@ -86,11 +87,11 @@ ui.onmessage = function (data) {
 
 C 侧用 `ui_web_view_set_message_callback()` 接收，`ui_web_view_post_json()` 发送。页面也可用 `window.addEventListener('message', callback)` 读取 `event.data`。消息按 JSON 数据解析，不拼接成脚本；C 参数只在本次调用/回调内借用，异步保留时复制。消息 callback、业务 command 和脚本执行期间不得销毁当前 view/backend/host，也不得重载当前文档；将关闭或重载延迟到回调返回后。
 
-增量修改保留未删除节点的输入值、原生 EDIT、焦点和滚动状态。`load_html()` 会重新创建文档和 JS 全局状态。只执行同步脚本，没有网络 fetch、定时器、外部 script/module 或 Promise job 调度。助手和模型输出仍经过应用的语义命令、校验、权限和确认路径。
+增量修改保留未删除节点的输入值、Web 编辑草稿、焦点和滚动状态。`load_html()` 会重新创建文档和 JS 全局状态。只执行同步脚本，没有网络 fetch、定时器、外部 script/module 或 Promise job 调度。助手和模型输出仍经过应用的语义命令、校验、权限和确认路径。
 
 ## 输入、DPI 和能力查询
 
-公共输入 API 使用 view 内的逻辑坐标，支持主按钮命中、move/down/up、滚轮、文本和退格等受控输入；可选 Win32 EDIT 提供单行/多行原生编辑。布局、命中和元素查询使用逻辑像素，GDI/字体/child 位置按当前 DPI 转换。未实现的输入返回 `UI_STATUS_UNSUPPORTED`，不能把接口可调用当成完整浏览器输入协议。
+公共输入 API 使用 view 内的逻辑坐标，支持主按钮命中、move/down/up、滚轮、文本和退格等受控输入；单行/多行编辑由 Web view 自己保存和绘制，原生输入开关已废弃且忽略。布局、命中和元素查询使用逻辑像素，GDI/字体/child 位置按当前 DPI 转换。未实现的输入返回 `UI_STATUS_UNSUPPORTED`，不能把接口可调用当成完整浏览器输入协议。
 
 `ui_web_view_set_rect(view, &rect, dpi)` 设置相对 parent 的逻辑位置和尺寸，`get_rect()` 查询；后续 resize 保留 x/y。元素矩形和输入坐标仍相对 view 原点。像素矩形采用两边缩放后求差，避免非整数 DPI 的边缘空隙。`ui_web_view_set_layout_region()` 或[内容槽绑定](../../include/ui_framework/shell.h)使 view 跟随 host 布局/DPI；手动 view 的尺寸由应用维护。
 
@@ -111,6 +112,6 @@ C 侧用 `ui_web_view_set_message_callback()` 接收，`ui_web_view_post_json()`
 | 单次同步脚本执行 | 50 ms 中断预算，由解释器安全点检查 |
 | viewport | 宽高 0–32767、x/y -32767–32767 逻辑像素，DPI 1–768 |
 
-文本上限按 UTF-8 字节计，不是中文字符数；原生 EDIT 另外设置保守的字符输入上限。50 ms 预算不会抢占应用 C handler，耗时业务仍需异步实现。
+文本上限按 UTF-8 字节计，不是中文字符数；Web 编辑统一使用相同字节上限。50 ms 预算不会抢占应用 C handler，耗时业务仍需异步实现。
 
 超限、非法 UTF-8、脚本异常/中断返回 `UI_STATUS_VALIDATION_FAILED`，不支持的元素/属性/CSS 返回 `UI_STATUS_UNSUPPORTED`。整体 HTML 超限或非法 UTF-8 在替换文档前被拒绝；载入过程开始后失败会清理当前文档，可随后重新载入。引擎面向可信应用 UI，不能把受控脚本资源上限当成不可信网页的浏览器安全边界。

@@ -16,7 +16,7 @@ typedef struct ui_light_web_config {
     uint32_t size;
     void *parent_hwnd;       /* HWND on Windows; may be NULL for headless use. */
     uint32_t narrow_width;   /* Reserved legacy field; HTML media rule sets breakpoint. */
-    int enable_native_input;
+    int enable_native_input; /* Deprecated, ignored. Text editing is entirely Web-owned. */
 } ui_light_web_config_t;
 
 /* The returned pointer is the common ui_web_backend_t handle. */

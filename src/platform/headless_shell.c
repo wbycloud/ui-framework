@@ -60,7 +60,7 @@ void ui_native_shell_destroy(ui_native_shell_t *shell)
 
 ui_status_t ui_native_shell_set_active(ui_native_shell_t *shell, int active)
 {
-    (void)active;
+    if (shell != NULL) ui_components_active(shell->host, active);
     return shell == NULL ? UI_STATUS_INVALID_ARGUMENT : UI_STATUS_OK;
 }
 
@@ -237,7 +237,7 @@ ui_status_t ui_shell_get_slot_state(ui_shell_t *shell, const char *panel_id,
     return UI_STATUS_OK;
 }
 
-void ui_shell_layout_changed(ui_host_t *host) { (void)host; }
+void ui_shell_layout_changed(ui_host_t *host) { if(host)ui_components_layout(host); }
 int ui_shell_surface_bound(ui_host_t *host, const ui_surface_t *surface)
 {
     (void)host; (void)surface; return 0;

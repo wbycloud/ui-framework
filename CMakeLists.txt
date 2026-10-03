@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ui_framework VERSION 0.2.0 LANGUAGES C)
+project(ui_framework VERSION 0.3.0 LANGUAGES C)
 
 option(UI_BUILD_STANDALONE_HOST "Build the Windows Web application host" ${WIN32})
 
@@ -16,14 +16,29 @@ endif()
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_EXTENSIONS OFF)
+if(MSVC)
+    add_compile_options($<$<COMPILE_LANGUAGE:C>:/utf-8>)
+endif()
 
 option(UI_BUILD_TESTS "Build framework integration tests" ON)
+set_source_files_properties(examples/framework_host/host.rc PROPERTIES
+    OBJECT_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/examples/framework_host/host.html")
 configure_file(examples/web_common/assistant.html web_parity.html COPYONLY)
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS src/components.html)
+file(READ "${CMAKE_CURRENT_SOURCE_DIR}/src/components.html" _component_page)
+string(REPLACE "\\" "\\\\" _component_page "${_component_page}")
+string(REPLACE "\"" "\\\"" _component_page "${_component_page}")
+string(REPLACE "\n" "\\n\"\n\"" _component_page "${_component_page}")
+file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/generated")
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/generated/component_page.h"
+    "static const char ui_component_page[] = \"${_component_page}\";\n")
 
 add_library(ui_framework STATIC
     src/ui.c
     src/assistant.c
     src/package.c
+    src/images.c
+    src/components.c
 )
 
 target_include_directories(ui_framework
@@ -31,13 +46,15 @@ target_include_directories(ui_framework
         ${CMAKE_CURRENT_SOURCE_DIR}/include
     PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/src
+        ${CMAKE_CURRENT_BINARY_DIR}/generated
 )
 
 if(WIN32)
     target_sources(ui_framework PRIVATE
         src/platform/win32_surface.c
         src/platform/win32_shell.c)
-    target_link_libraries(ui_framework PUBLIC user32 gdi32 opengl32 comctl32)
+    target_link_libraries(ui_framework PUBLIC user32 gdi32 opengl32 comctl32
+        imm32 usp10 msimg32 ole32 windowscodecs uuid)
 else()
     target_sources(ui_framework PRIVATE
         src/platform/headless_surface.c
@@ -46,13 +63,15 @@ endif()
 
 if(WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
     add_library(ui_framework_shared SHARED src/ui.c src/assistant.c src/package.c
+        src/images.c src/components.c
         src/workspace.c src/platform/win32_surface.c src/platform/win32_shell.c)
     set_target_properties(ui_framework_shared PROPERTIES
         OUTPUT_NAME ui_framework ARCHIVE_OUTPUT_NAME ui_framework_runtime)
-    target_include_directories(ui_framework_shared PUBLIC include PRIVATE src)
+    target_include_directories(ui_framework_shared PUBLIC include PRIVATE src ${CMAKE_CURRENT_BINARY_DIR}/generated)
     target_compile_definitions(ui_framework_shared PUBLIC UI_FRAMEWORK_BUILD_SHARED
         PRIVATE UI_FRAMEWORK_BUILDING _CRT_SECURE_NO_WARNINGS)
-    target_link_libraries(ui_framework_shared PUBLIC user32 gdi32 opengl32 comctl32)
+    target_link_libraries(ui_framework_shared PUBLIC user32 gdi32 opengl32 comctl32
+        imm32 usp10 msimg32 ole32 windowscodecs uuid)
     if(MSVC)
         target_compile_options(ui_framework_shared PRIVATE /W4 /WX /utf-8)
     endif()
@@ -125,6 +144,19 @@ if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
     include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/light_web.cmake)
     ui_enable_light_web(ui_framework)
     if(TARGET ui_framework_shared)
+        add_library(generic_components_app MODULE examples/generic_components/app.c)
+        target_link_libraries(generic_components_app PRIVATE ui_framework_shared)
+        target_compile_definitions(generic_components_app PRIVATE _CRT_SECURE_NO_WARNINGS)
+        if(MSVC)
+            target_compile_options(generic_components_app PRIVATE /W4 /WX /utf-8)
+        endif()
+        add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/generic_components.uapp"
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/generic_package"
+            COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:generic_components_app>" "${CMAKE_CURRENT_BINARY_DIR}/generic_package/generic_components_app.dll"
+            COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/examples/generic_components/icon.png" "${CMAKE_CURRENT_BINARY_DIR}/generic_package/icon.png"
+            COMMAND $<TARGET_FILE:uapp_pack> "${CMAKE_CURRENT_SOURCE_DIR}/examples/generic_components/manifest.ini" "${CMAKE_CURRENT_BINARY_DIR}/generic_package" "${CMAKE_CURRENT_BINARY_DIR}/generic_components.uapp"
+            DEPENDS generic_components_app uapp_pack examples/generic_components/manifest.ini examples/generic_components/icon.png VERBATIM)
+        add_custom_target(generic_components_package ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/generic_components.uapp")
         ui_enable_light_web(ui_framework_shared)
     endif()
     add_executable(light_web_probe examples/light_web_probe/probe.c)
@@ -134,6 +166,7 @@ if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
     if(TARGET ui_framework_shared)
         add_library(web_counter_app MODULE examples/web_counter/app.c)
         target_link_libraries(web_counter_app PRIVATE ui_framework_shared)
+        target_include_directories(web_counter_app BEFORE PRIVATE tests/sdk_v2)
         if(MSVC)
             target_compile_options(web_counter_app PRIVATE /W4 /WX /utf-8)
             set_property(TARGET web_counter_app PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
@@ -182,10 +215,16 @@ if(UI_BUILD_TESTS)
     add_executable(ui_package_format_test tests/package_format.c)
     target_link_libraries(ui_package_format_test PRIVATE ui_framework)
     add_test(NAME ui_package_format COMMAND ui_package_format_test)
-    add_library(ui_framework_headless STATIC src/ui.c src/assistant.c
+    add_library(ui_framework_headless STATIC src/ui.c src/assistant.c src/images.c src/components.c
         src/platform/headless_surface.c src/platform/headless_shell.c)
     target_include_directories(ui_framework_headless PUBLIC include PRIVATE src)
-    foreach(test_name IN ITEMS responsive_layout assistant_lifecycle dpi_web_failure)
+    if(WIN32)
+        target_link_libraries(ui_framework_headless PUBLIC user32 gdi32 imm32 usp10 msimg32 ole32 windowscodecs uuid)
+        add_executable(ui_images_windows_test tests/images_windows.c)
+        target_link_libraries(ui_images_windows_test PRIVATE ui_framework_headless)
+        add_test(NAME ui_images_windows COMMAND ui_images_windows_test)
+    endif()
+    foreach(test_name IN ITEMS responsive_layout assistant_lifecycle dpi_web_failure components_core)
         add_executable(ui_${test_name}_test tests/${test_name}.c)
         target_link_libraries(ui_${test_name}_test PRIVATE ui_framework_headless)
         add_test(NAME ui_${test_name} COMMAND ui_${test_name}_test)
@@ -217,12 +256,24 @@ if(UI_BUILD_TESTS)
         set_tests_properties(ui_webview2_messages PROPERTIES TIMEOUT 25 SKIP_RETURN_CODE 77)
     endif()
     if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
+        add_executable(ui_web_text_edit_test tests/web_text_edit.c)
+        target_link_libraries(ui_web_text_edit_test PRIVATE ui_framework)
+        add_test(NAME ui_web_text_edit COMMAND ui_web_text_edit_test)
+        set(UI_LEGACY_EDA_PACKAGE "${CMAKE_CURRENT_BINARY_DIR}/minimal_eda.uapp" CACHE FILEPATH
+            "Previously built v0.1.0 EDA package for binary compatibility validation")
+        add_executable(ui_generic_web_host_test tests/generic_web_host.c examples/framework_host/host.rc)
+        target_include_directories(ui_generic_web_host_test PRIVATE src examples/framework_host)
+        target_compile_definitions(ui_generic_web_host_test PRIVATE _CRT_SECURE_NO_WARNINGS)
+        target_link_libraries(ui_generic_web_host_test PRIVATE ui_framework_shared comdlg32 shell32)
+        add_dependencies(ui_generic_web_host_test generic_components_package)
+        add_test(NAME ui_generic_web_host COMMAND ui_generic_web_host_test
+            "${CMAKE_CURRENT_BINARY_DIR}/generic_components.uapp"
+            "${UI_LEGACY_EDA_PACKAGE}" "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp")
+        set_tests_properties(ui_generic_web_host PROPERTIES TIMEOUT 45)
         add_executable(ui_application_versions_test tests/application_versions.c)
         target_link_libraries(ui_application_versions_test PRIVATE ui_framework_shared)
         target_compile_definitions(ui_application_versions_test PRIVATE _CRT_SECURE_NO_WARNINGS)
         add_dependencies(ui_application_versions_test minimal_eda_package web_counter_package counter_mismatch_package)
-        set(UI_LEGACY_EDA_PACKAGE "${CMAKE_CURRENT_BINARY_DIR}/minimal_eda.uapp" CACHE FILEPATH
-            "Previously built v0.1.0 EDA package for binary compatibility validation")
         add_test(NAME ui_application_versions COMMAND ui_application_versions_test
             "${UI_LEGACY_EDA_PACKAGE}" "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp"
             "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.uapp")

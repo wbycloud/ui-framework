@@ -1,6 +1,8 @@
 # 构建与验证
 
-本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.2.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API 1 EDA 和 API 2 Web Counter 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
+本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.3.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 和 API3 generic_components 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
+
+当前 API3 构建和验收见[独立记录](validation/api3-validation.md)，新接入见[通用示例](../examples/generic_components/README.md)和[0.2 → 0.3 迁移](migration-v0.2-to-v0.3.md)。第5节保留旧版本历史结果，不作为当前测试状态。
 
 ## 1. 构建环境
 
@@ -26,7 +28,7 @@ ctest --test-dir build/web-shell --output-on-failure
 & .\build\web-shell\framework_host.exe
 ```
 
-空启动后点击“打开应用”，选择 `build/web-shell/web_counter.uapp` 验证纯 Web 内容，无需 OpenGL；也可选择 `minimal_eda.uapp` 验证原生/OpenGL 内容。两个示例都允许多实例。直接启动多个包：
+空启动后点击“打开应用”，选择 `build/web-shell/web_counter.uapp` 验证纯 Web 内容，无需 OpenGL；也可选择 `minimal_eda.uapp` 验证原生/OpenGL 内容。三个示例都允许多实例。API3 优先打开 generic_components.uapp，组件 UI 不依赖原生业务控件。直接启动多个包：
 
 ```powershell
 & .\build\web-shell\framework_host.exe .\build\web-shell\web_counter.uapp .\build\web-shell\minimal_eda.uapp

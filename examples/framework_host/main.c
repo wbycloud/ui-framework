@@ -337,9 +337,12 @@ static int menu_compare(const void *a,const void *b)
     const ui_menu_entry_t *left=*(ui_menu_entry_t *const *)a,*right=*(ui_menu_entry_t *const *)b;
     if(left->order!=right->order)return left->order<right->order?-1:1;return strcmp(left->id,right->id);
 }
-static int tool_compare(const void *a,const void *b)
+static int tool_compare(void *context,const void *a,const void *b)
 {
     const ui_toolbar_item_entry_t *left=*(ui_toolbar_item_entry_t *const *)a,*right=*(ui_toolbar_item_entry_t *const *)b;
+    const ui_host_t *host=(const ui_host_t *)context;ui_toolbar_entry_t *toolbar;int lo=0,ro=0,group;
+    for(toolbar=host->toolbars;toolbar;toolbar=toolbar->next){if(!strcmp(toolbar->id,left->toolbar_id))lo=toolbar->order;if(!strcmp(toolbar->id,right->toolbar_id))ro=toolbar->order;}
+    if(lo!=ro)return lo<ro?-1:1;group=strcmp(left->toolbar_id,right->toolbar_id);if(group)return group;
     if(left->order!=right->order)return left->order<right->order?-1:1;return strcmp(left->id,right->id);
 }
 static int toolbar_visible(const ui_host_t *host,const char *id)
@@ -347,15 +350,21 @@ static int toolbar_visible(const ui_host_t *host,const char *id)
     ui_toolbar_entry_t *toolbar;for(toolbar=host->toolbars;toolbar;toolbar=toolbar->next)
         if(!strcmp(toolbar->id,id))return toolbar->visible;return 0;
 }
+static int tool_visible(const ui_host_t *host,const ui_toolbar_item_entry_t *item)
+{ui_command_state_t state={0};state.size=sizeof(state);
+ return item->state.visible&&toolbar_visible(host,item->toolbar_id)&&
+     ui_host_get_command_state(host,item->command_id,&state)==UI_STATUS_OK&&state.visible;}
 static void state_tools(json_buffer_t *json,const ui_host_t *host)
 {
     ui_toolbar_item_entry_t *item,**items;size_t count=0,index=0;
-    for(item=host->toolbar_items;item;item=item->next)if(toolbar_visible(host,item->toolbar_id))++count;
+    for(item=host->toolbar_items;item;item=item->next)if(tool_visible(host,item))++count;
     items=count?(ui_toolbar_item_entry_t **)malloc(count*sizeof(*items)):NULL;if(count&&!items){json->failed=1;return;}
-    for(item=host->toolbar_items;item;item=item->next)if(toolbar_visible(host,item->toolbar_id))items[index++]=item;
-    if(count)qsort(items,count,sizeof(*items),tool_compare);
-    for(index=0;index<count;++index){if(index)json_append(json,",");json_append(json,"{\"title\":");json_string(json,items[index]->title);
-        json_append(json,",\"command\":");json_string(json,items[index]->command_id);json_append(json,"}");}free(items);
+    for(item=host->toolbar_items;item;item=item->next)if(tool_visible(host,item))items[index++]=item;
+    if(count)qsort_s(items,count,sizeof(*items),tool_compare,(void *)host);
+    for(index=0;index<count;++index){if(index)json_append(json,",");json_append(json,"{\"id\":");json_string(json,items[index]->id);json_append(json,",\"title\":");json_string(json,items[index]->title);
+        json_append(json,",\"command\":");json_string(json,items[index]->command_id);{ui_command_state_t state={0};state.size=sizeof(state);(void)ui_host_get_command_state(host,items[index]->command_id,&state);
+        json_format(json,",\"image\":\"%llu\",\"enabled\":%s,\"checked\":%s,\"busy\":%s}",(unsigned long long)items[index]->image_id,
+            state.enabled&&items[index]->state.enabled?"true":"false",state.checked||items[index]->state.checked?"true":"false",state.busy||items[index]->state.busy?"true":"false");}}free(items);
 }
 static void state_panels(json_buffer_t *json,ui_app_instance_info_t *info)
 {
@@ -390,11 +399,12 @@ static void send_state(host_window_t *s)
     json_append(&json,",\"schema\":");json_preview(&json,schema,0);free(schema);
     json_append(&json,",\"params\":");json_string(&json,s->params?s->params:"{}");json_append(&json,",\"log\":");json_preview(&json,s->log,1);
     json_format(&json,",\"canInvoke\":%s,\"canCancel\":%s",target.instance_id&&!target.closing&&s->command&&s->command[0]?"true":"false",s->last_request?"true":"false");
-    if(get_instance(s,active,&info)){ui_rect_t rect;json_append(&json,",\"activeLabel\":");json_string(&json,info.name_utf8);
+    s->chrome_host->image_source=NULL;
+    if(get_instance(s,active,&info)){ui_rect_t rect;s->chrome_host->image_source=info.host;json_append(&json,",\"activeLabel\":");json_string(&json,info.name_utf8);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_MENU_BAR,&rect);json_append(&json,",\"menuRect\":");json_rect(&json,&rect);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_TOOLBAR,&rect);json_append(&json,",\"toolbarRect\":");json_rect(&json,&rect);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_STATUS_BAR,&rect);json_append(&json,",\"statusRect\":");json_rect(&json,&rect);
-        json_append(&json,",\"tools\":[");state_tools(&json,info.host);json_append(&json,"],\"panels\":[");state_panels(&json,&info);json_append(&json,"]");
+        json_append(&json,",\"tools\":[");state_tools(&json,info.host);json_append(&json,"],\"panels\":[");state_panels(&json,&info);json_append(&json,"],\"status\":");json_string(&json,ui_host_status_text(info.host));
     }else json_append(&json,",\"activeLabel\":\"\",\"tools\":[],\"panels\":[]");
     json_append(&json,"}");(void)post_json(s->view,&json);
 }
@@ -438,10 +448,12 @@ static void on_result(uint64_t id,const ui_result_t *result,void *data)
     if(!line.failed)append_log(s,line.text);free(line.text);s->completed_id=id;s->completed_request=result->request_id;
     if(s->last_id==id&&s->last_request==result->request_id)s->last_request=0;schedule_refresh(s);
 }
+static void refresh_menu_states(host_window_t *,uint64_t);
 static void on_event(uint64_t id,const char *event,const char *json,void *data)
 {
     host_window_t *s=(host_window_t *)data;json_buffer_t line={0};
-    if(!strncmp(event,"ui.host.",8)){if(!s->refreshing)schedule_refresh(s);return;}
+    if(!strcmp(event,"ui.commands.changed"))refresh_menu_states(s,id);
+    if(!strncmp(event,"ui.host.",8)||!strncmp(event,"ui.commands.",12)||!strncmp(event,"ui.image.",9)||!strncmp(event,"ui.components.",14)){if(!s->refreshing)schedule_refresh(s);return;}
     json_format(&line,"[#%llu] ",(unsigned long long)id);json_append(&line,event);json_append(&line," ");json_append(&line,json);
     if(!line.failed)append_log(s,line.text);free(line.text);
 }
@@ -517,8 +529,25 @@ static void menu_popup(host_window_t *s)
         for(item=info.host->menus;item;item=item->next)++n;items=n?(ui_menu_entry_t **)malloc(n*sizeof(*items)):NULL;
         if(items){for(item=info.host->menus;item;item=item->next)items[i++]=item;qsort(items,n,sizeof(*items),menu_compare);
             for(i=0;i<n;++i){json_buffer_t title={0};json_append(&title,items[i]->menu_path);json_append(&title," / ");json_append(&title,items[i]->title);
-                if(!title.failed)popup_item(&json,&count,title.text,"app-command",info.instance_id,items[i]->command_id);free(title.text);}}free(items);}
+                if(!title.failed){ui_command_state_t state={0};ui_command_entry_t *command;state.size=sizeof(state);(void)ui_host_get_command_state(info.host,items[i]->command_id,&state);
+                    for(command=info.host->commands;command;command=command->next)if(!strcmp(command->id,items[i]->command_id))break;
+                    if(command&&command->shortcut_key)json_format(&title," · %s%s%s%c",command->shortcut_modifiers&UI_INPUT_MODIFIER_CONTROL?"Ctrl+":"",command->shortcut_modifiers&UI_INPUT_MODIFIER_SHIFT?"Shift+":"",command->shortcut_modifiers&UI_INPUT_MODIFIER_ALT?"Alt+":"",(char)command->shortcut_key);
+                    if(state.visible&&items[i]->state.visible){popup_item(&json,&count,title.text,"app-command",info.instance_id,items[i]->command_id);
+                        --json.length;json.text[json.length]=0;json_format(&json,",\"image\":\"%llu\",\"enabled\":%s,\"checked\":%s,\"busy\":%s}",(unsigned long long)items[i]->image_id,
+                            state.enabled&&items[i]->state.enabled?"true":"false",state.checked||items[i]->state.checked?"true":"false",state.busy||items[i]->state.busy?"true":"false");}}
+                free(title.text);}}free(items);}
     popup_item(&json,&count,"退出","exit",0,NULL);popup_finish(s,&json);
+}
+static void refresh_menu_states(host_window_t *s,uint64_t id)
+{
+    ui_app_instance_info_t info;ui_menu_entry_t *m;json_buffer_t json={0};int count=0;
+    if(s->popup_kind!=1||!s->popup_view||!get_instance(s,id,&info))return;
+    json_append(&json,"{\"type\":\"command-states\",\"items\":[");
+    for(m=info.host->menus;m;m=m->next){ui_command_state_t state={0};state.size=sizeof(state);(void)ui_host_get_command_state(info.host,m->command_id,&state);
+        if(count++)json_append(&json,",");json_append(&json,"{\"command\":");json_string(&json,m->command_id);
+        json_format(&json,",\"visible\":%s,\"enabled\":%s,\"checked\":%s,\"busy\":%s,\"image\":\"%llu\"}",
+            state.visible&&m->state.visible?"true":"false",state.enabled&&m->state.enabled?"true":"false",state.checked||m->state.checked?"true":"false",state.busy||m->state.busy?"true":"false",(unsigned long long)m->image_id);
+    }json_append(&json,"]}");(void)post_json(s->popup_view,&json);
 }
 typedef struct command_popup { json_buffer_t *json;int count;uint64_t target; } command_popup_t;
 static void command_popup_item(const ui_assistant_command_desc_t *command,void *data)
@@ -547,7 +576,7 @@ static void tooltip_popup(host_window_t *s,const char *id)
     popup_start(s,&json,text,"",0);popup_finish(s,&json);
 }
 static int registered_command(const ui_host_t *host,const char *id)
-{ui_command_entry_t *entry;for(entry=host->commands;entry;entry=entry->next)if(!strcmp(entry->id,id))return 1;return 0;}
+{ui_command_entry_t *entry;for(entry=host->commands;entry;entry=entry->next)if(!strcmp(entry->id,id))return entry->state.visible&&entry->state.enabled&&!entry->state.busy;return 0;}
 static void process_action(host_window_t *s,host_action_t *action)
 {
     const char *name=action->action;uint64_t id=read_id(action->id);ui_app_instance_info_t info;

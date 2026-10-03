@@ -33,12 +33,17 @@ struct app_instance {
     int mounted, closing, close_ready, active;
     app_instance_t *next;
 };
-enum post_kind { POST_RESULT, POST_EVENT, POST_PROGRESS, POST_CLOSE };
+typedef struct post_budget { uint64_t id; size_t bytes,limit; struct post_budget *next; } post_budget_t;
+enum post_kind { POST_RESULT, POST_EVENT, POST_PROGRESS, POST_CLOSE, POST_COMPONENT, POST_THUMBNAIL };
 struct posted_message {
     enum post_kind kind;
     uint64_t id, request;
     int value;
     char *name, *text;
+    ui_component_batch_t *batch;
+    ui_thumbnail_result_t thumbnail;
+    void *pixels;
+    size_t bytes;
     posted_message_t *next;
 };
 struct ui_workspace {
@@ -52,10 +57,21 @@ struct ui_workspace {
     int depth, polling, deferred_poll;
     CRITICAL_SECTION queue_lock;
     posted_message_t *queue_head, *queue_tail;
+    post_budget_t *budgets;
     char error[512];
 };
 static volatile LONG64 instance_sequence;
 
+static post_budget_t *budget(ui_workspace_t *w,uint64_t id)
+{post_budget_t *p;for(p=w->budgets;p;p=p->next)if(p->id==id)return p;return NULL;}
+static int add_budget(ui_workspace_t *w,uint64_t id)
+{post_budget_t *p=(post_budget_t *)calloc(1,sizeof(*p));if(!p)return 0;p->id=id;p->limit=8u*1024u*1024u;
+ EnterCriticalSection(&w->queue_lock);p->next=w->budgets;w->budgets=p;LeaveCriticalSection(&w->queue_lock);return 1;}
+static void remove_budget(ui_workspace_t *w,uint64_t id)
+{post_budget_t **p;EnterCriticalSection(&w->queue_lock);for(p=&w->budgets;*p&&(*p)->id!=id;p=&(*p)->next){}
+ if(*p){post_budget_t *old=*p;*p=old->next;free(old);}LeaveCriticalSection(&w->queue_lock);}
+static void free_post(posted_message_t *p)
+{free(p->name);free(p->text);ui_component_batch_free(p->batch);free(p->pixels);free(p);}
 static char *copy_text(const char *s)
 {
     size_t n; char *p;
@@ -338,6 +354,7 @@ static ui_status_t extract_module(ui_workspace_t *w, app_module_t *m)
 static void unmount_instance(app_instance_t *p)
 {
     ui_workspace_t *w = p->workspace;
+    remove_budget(w,p->context.instance_id);
     ++w->depth;
     if (p->mounted) { p->module->api.unmount(p->state); p->mounted = 0; }
     if (p->context.shell != NULL) {
@@ -377,6 +394,7 @@ static ui_status_t create_instance(ui_workspace_t *w, app_module_t *m,
     p->context.host->dispatch_idle_data = w;
     /* Establish host geometry before application create/mount can start work.
        Opening one application must not resize unrelated existing instances. */
+    if(!add_budget(w,p->context.instance_id)){status=UI_STATUS_OUT_OF_MEMORY;goto fail;}
     status = ui_host_set_dpi(p->context.host, w->dpi);
     if (status != UI_STATUS_OK) goto fail;
     (void)SetWindowPos(p->container, NULL, MulDiv(w->rect.x,(int)w->dpi,96),
@@ -665,6 +683,41 @@ ui_status_t ui_workspace_post_progress(ui_workspace_t *w, uint64_t id,
 ui_status_t ui_workspace_post_close_complete(ui_workspace_t *w, uint64_t id,
     ui_app_close_decision_t decision)
 { return decision == UI_APP_CLOSE_ALLOW || decision == UI_APP_CLOSE_REFUSE ? post_copy(w, POST_CLOSE, id, 0, (int)decision, NULL, NULL) : UI_STATUS_INVALID_ARGUMENT; }
+static ui_status_t enqueue_component(ui_workspace_t *w,posted_message_t *p)
+{
+    post_budget_t *b;ui_status_t status=UI_STATUS_OK;
+    EnterCriticalSection(&w->queue_lock);b=budget(w,p->id);
+    if(!b)status=UI_STATUS_CANCELLED;
+    else if(p->bytes>b->limit||b->bytes>b->limit-p->bytes)status=UI_STATUS_LIMIT_EXCEEDED;
+    else{b->bytes+=p->bytes;if(w->queue_tail)w->queue_tail->next=p;else w->queue_head=p;w->queue_tail=p;}
+    LeaveCriticalSection(&w->queue_lock);if(status!=UI_STATUS_OK)free_post(p);else wake(w);return status;
+}
+ui_status_t ui_workspace_set_component_queue_limit(ui_workspace_t *w,uint64_t id,size_t limit)
+{post_budget_t *b;ui_status_t status=UI_STATUS_OK;if(!w||!id||!limit)return UI_STATUS_INVALID_ARGUMENT;
+ EnterCriticalSection(&w->queue_lock);b=budget(w,id);if(!b)status=UI_STATUS_NOT_FOUND;else if(limit<b->bytes)status=UI_STATUS_LIMIT_EXCEEDED;else b->limit=limit;
+ LeaveCriticalSection(&w->queue_lock);return status;}
+ui_status_t ui_workspace_post_component_batch(ui_workspace_t *w,uint64_t id,const char *component,const ui_component_batch_t *batch)
+{
+    posted_message_t *p;if(!w||!id||!component||strlen(component)>4095)return UI_STATUS_INVALID_ARGUMENT;
+    p=(posted_message_t *)calloc(1,sizeof(*p));if(!p)return UI_STATUS_OUT_OF_MEMORY;
+    p->kind=POST_COMPONENT;p->id=id;p->batch=ui_component_batch_copy(batch,&p->bytes);p->name=copy_text(component);
+    if(!p->batch||!p->name){free_post(p);return UI_STATUS_INVALID_ARGUMENT;}p->bytes+=sizeof(*p)+strlen(component)+1;return enqueue_component(w,p);
+}
+ui_status_t ui_workspace_post_thumbnail(ui_workspace_t *w,uint64_t id,const char *component,const ui_thumbnail_result_t *result)
+{
+    posted_message_t *p;size_t row,bytes,y;const ui_rgba_desc_t *r;
+    if(!w||!id||!component||strlen(component)>4095||!result||result->size<sizeof(*result))return UI_STATUS_INVALID_ARGUMENT;
+    r=&result->rgba;row=(size_t)r->width*4;bytes=row*r->height;
+    if(!result->failed&&(r->size<sizeof(*r)||!r->pixels||!r->width||!r->height||r->width>4096||r->height>4096||
+        r->stride<row||r->stride>SIZE_MAX/r->height||r->bytes<r->stride*(r->height-1)+row||bytes>8u*1024u*1024u))return UI_STATUS_INVALID_ARGUMENT;
+    p=(posted_message_t *)calloc(1,sizeof(*p));if(!p)return UI_STATUS_OUT_OF_MEMORY;
+    p->kind=POST_THUMBNAIL;p->id=id;p->thumbnail=*result;p->name=copy_text(component);
+    if(!result->failed){p->pixels=malloc(bytes);if(p->pixels)for(y=0;y<r->height;++y)memcpy((char *)p->pixels+y*row,r->pixels+y*r->stride,row);
+        p->thumbnail.rgba.pixels=(const uint8_t *)p->pixels;p->thumbnail.rgba.stride=row;p->thumbnail.rgba.bytes=bytes;}
+    else{memset(&p->thumbnail.rgba,0,sizeof(p->thumbnail.rgba));bytes=0;}
+    if(!p->name||(!result->failed&&!p->pixels)){free_post(p);return UI_STATUS_OUT_OF_MEMORY;}
+    p->bytes=sizeof(*p)+strlen(component)+1+bytes;return enqueue_component(w,p);
+}
 void ui_workspace_poll(ui_workspace_t *w)
 {
     posted_message_t *messages, *next; app_instance_t **link;
@@ -688,6 +741,10 @@ void ui_workspace_poll(ui_workspace_t *w)
             case POST_RESULT: (void)ui_host_reply(p->context.host, messages->request, messages->value, messages->text); break;
             case POST_EVENT: (void)ui_host_emit_event(p->context.host, messages->name, messages->text); break;
             case POST_PROGRESS: (void)ui_assistant_report_progress(p->context.assistant, messages->request, messages->value, messages->text); break;
+            case POST_COMPONENT: {ui_component_t *c=ui_component_find(p->context.host,messages->name);
+                if(c&&!p->closing)(void)ui_component_submit(c,messages->batch);break;}
+            case POST_THUMBNAIL: {ui_component_t *c=ui_component_find(p->context.host,messages->name);
+                if(c&&!p->closing)(void)ui_component_thumbnail(c,&messages->thumbnail);break;}
             case POST_CLOSE:
                 if (p->closing) {
                     p->close_ready = messages->value == UI_APP_CLOSE_ALLOW;
@@ -698,7 +755,8 @@ void ui_workspace_poll(ui_workspace_t *w)
             }
             leave_callback(w);
         }
-        free(messages->name); free(messages->text); free(messages); messages = next;
+        EnterCriticalSection(&w->queue_lock);{post_budget_t *b=budget(w,messages->id);if(b)b->bytes-=messages->bytes;}LeaveCriticalSection(&w->queue_lock);
+        free_post(messages); messages = next;
     }
     link = &w->instances;
     while (*link) {
@@ -759,7 +817,8 @@ ui_status_t ui_workspace_destroy(ui_workspace_t *w)
     if (w->modules) return UI_STATUS_PLATFORM_ERROR;
     EnterCriticalSection(&w->queue_lock); p = w->queue_head; w->queue_head = w->queue_tail = NULL;
     LeaveCriticalSection(&w->queue_lock);
-    while (p) { posted_message_t *next = p->next; free(p->name); free(p->text); free(p); p = next; }
+    while (p) { posted_message_t *next = p->next; free_post(p); p = next; }
+    while(w->budgets){post_budget_t *b=w->budgets;w->budgets=b->next;free(b);}
     DeleteCriticalSection(&w->queue_lock); free(w); return UI_STATUS_OK;
 }
 ui_status_t ui_app_resource_read(const ui_app_context_t *context,

@@ -1348,7 +1348,7 @@ ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
     if (shell == NULL || shell->host == NULL || shell->parent == NULL) {
         return UI_STATUS_INVALID_ARGUMENT;
     }
-    if (shell->web_chrome) return web_shell_reflow(shell);
+    if (shell->web_chrome) {ui_status_t status=web_shell_reflow(shell);ui_components_layout(shell->host);return status;}
     (void)ui_host_get_dpi(shell->host, &dpi);
     if (!update_font(shell, dpi)) return UI_STATUS_PLATFORM_ERROR;
 
@@ -1555,6 +1555,7 @@ ui_status_t ui_native_shell_set_active(ui_native_shell_t *shell, int active)
         (void)DrawMenuBar(shell->menu_owner);
     }
     shell->active = active;
+    ui_components_active(shell->host, active);
     if (shell->managed_activation) ShowWindow(shell->parent, active ? SW_SHOWNOACTIVATE : SW_HIDE);
     return ui_native_shell_reflow(shell);
 }
@@ -1833,6 +1834,7 @@ void ui_shell_layout_changed(ui_host_t *host)
 {
     if (host != NULL && host->shell != NULL && host->shell->native->web_chrome)
         (void)web_shell_reflow(host->shell->native);
+    if (host != NULL) ui_components_layout(host);
 }
 
 int ui_shell_surface_bound(ui_host_t *host, const ui_surface_t *surface)

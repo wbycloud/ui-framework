@@ -99,13 +99,13 @@ int wmain(int argc,wchar_t **argv)
     send_selection(&host,"select-target",first,NULL);send_selection(&host,"select-command",first,"eda.add_block");
     click(host.view,"invoke");pump();check(snapshot_value(&host,first,"blocks")==1&&snapshot_value(&host,second,"blocks")==0,"assistant targets background instance");
     check(host.target==first&&strstr(host.log?host.log:"","eda.add_block"),"fixed target and routed semantic result");
-    click(host.view,"tool-0");pump();check(snapshot_value(&host,second,"blocks")==1,"Web toolbar calls active application command");
+    click(host.view,"tool-eda.add_block");pump();check(snapshot_value(&host,second,"blocks")==1,"Web toolbar calls active application command");
     {
         char long_text[12001];json_buffer_t popup={0};
         memset(long_text,'x',sizeof(long_text)-1);long_text[sizeof(long_text)-1]=0;
         append_log(&host,long_text);pump();
         check(host.log&&strlen(host.log)>HOST_DISPLAY_TEXT_LIMIT,"full log storage is retained");
-        check(ui_web_view_get_element_rect(host.view,"tool-0",&control)==UI_STATUS_OK&&control.width>0,
+        check(ui_web_view_get_element_rect(host.view,"tool-eda.add_block",&control)==UI_STATUS_OK&&control.width>0,
             "long read-only preview does not interrupt chrome refresh");
         check(create_popup(&host,4,500,300),"long detail popup");
         popup_start(&host,&popup,"Long detail",long_text,0);popup_finish(&host,&popup);

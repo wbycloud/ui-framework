@@ -343,7 +343,7 @@ void ui_dispatch_leave(ui_host_t *host)
 
 int ui_framework_supports_api(uint32_t api_version)
 {
-    return api_version == 1u || api_version == 2u;
+    return api_version >= 1u && api_version <= 3u;
 }
 
 ui_host_t *ui_host_create(const ui_host_config_t *config)
@@ -367,6 +367,8 @@ ui_host_t *ui_host_create(const ui_host_config_t *config)
     host->result_callback = config->result_callback;
     host->event_callback = config->event_callback;
     host->next_request_id = 1u;
+    host->image_limit = 32u * 1024u * 1024u;
+    host->app_active = 1;
     host->dpi = ui_platform_get_dpi(config->native_parent);
     if (host->dpi == 0u) {
         host->dpi = 96u;
@@ -454,6 +456,7 @@ void ui_host_destroy(ui_host_t *host)
         return;
     }
 
+    ui_components_destroy(host);
     while (host->surfaces != NULL) {
         ui_surface_destroy(host->surfaces);
     }
@@ -462,6 +465,7 @@ void ui_host_destroy(ui_host_t *host)
         ui_web_view_destroy(host->web_views);
     }
 
+    ui_images_destroy(host);
     free_commands(host->commands);
     free_menus(host->menus);
     free_toolbar_items(host->toolbar_items);
@@ -661,7 +665,7 @@ ui_status_t ui_host_register_command(ui_host_t *host,
     ui_command_entry_t *entry;
 
     if (host == NULL || desc == NULL ||
-        !valid_size(desc->size, sizeof(*desc)) ||
+        !valid_size(desc->size, offsetof(ui_command_desc_t, shortcut_key)) ||
         desc->id == NULL || desc->id[0] == '\0' ||
         desc->handler == NULL) {
         return UI_STATUS_INVALID_ARGUMENT;
@@ -681,6 +685,12 @@ ui_status_t ui_host_register_command(ui_host_t *host,
     entry->params_schema_json = ui_strdup(desc->params_schema_json);
     entry->handler = desc->handler;
     entry->user_data = desc->user_data;
+    entry->state.size = sizeof(entry->state);
+    entry->state.visible = entry->state.enabled = 1;
+    if (desc->size >= sizeof(*desc)) {
+        entry->shortcut_key = desc->shortcut_key;
+        entry->shortcut_modifiers = desc->shortcut_modifiers;
+    }
     if (entry->id == NULL || entry->title == NULL ||
         entry->params_schema_json == NULL) {
         free(entry->id);
@@ -702,7 +712,7 @@ ui_status_t ui_host_register_menu_item(ui_host_t *host,
     ui_menu_entry_t *it;
 
     if (host == NULL || desc == NULL ||
-        !valid_size(desc->size, sizeof(*desc)) ||
+        !valid_size(desc->size, offsetof(ui_menu_item_desc_t, reserved_v2)) ||
         desc->id == NULL || desc->id[0] == '\0' ||
         desc->menu_path == NULL || desc->title == NULL ||
         desc->command_id == NULL || find_command(host, desc->command_id) == NULL) {
@@ -725,6 +735,9 @@ ui_status_t ui_host_register_menu_item(ui_host_t *host,
     entry->title = ui_strdup(desc->title);
     entry->command_id = ui_strdup(desc->command_id);
     entry->order = desc->order;
+    entry->state.size = sizeof(entry->state);
+    entry->state.visible = entry->state.enabled = 1;
+    if (desc->size >= sizeof(*desc)) entry->image_id = desc->image_id;
     if (entry->id == NULL || entry->menu_path == NULL ||
         entry->title == NULL || entry->command_id == NULL) {
         free(entry->id);
@@ -785,7 +798,7 @@ ui_status_t ui_host_register_toolbar_item(
     ui_toolbar_item_entry_t *it;
 
     if (host == NULL || desc == NULL ||
-        !valid_size(desc->size, sizeof(*desc)) ||
+        !valid_size(desc->size, offsetof(ui_toolbar_item_desc_t, reserved_v2)) ||
         desc->id == NULL || desc->id[0] == '\0' ||
         desc->toolbar_id == NULL || desc->toolbar_id[0] == '\0' ||
         desc->title == NULL || desc->command_id == NULL ||
@@ -811,6 +824,9 @@ ui_status_t ui_host_register_toolbar_item(
     entry->command_id = ui_strdup(desc->command_id);
     entry->icon_url = ui_strdup(desc->icon_url);
     entry->order = desc->order;
+    entry->state.size = sizeof(entry->state);
+    entry->state.visible = entry->state.enabled = 1;
+    if (desc->size >= sizeof(*desc)) entry->image_id = desc->image_id;
     if (entry->id == NULL || entry->toolbar_id == NULL ||
         entry->title == NULL || entry->command_id == NULL ||
         entry->icon_url == NULL) {
@@ -881,6 +897,63 @@ ui_status_t ui_host_register_panel(ui_host_t *host,
     return UI_STATUS_OK;
 }
 
+ui_status_t ui_host_set_command_state(ui_host_t *host, const char *id,
+    const ui_command_state_t *state)
+{
+    ui_command_entry_t *entry;
+    if (!host || !id || !state || state->size < sizeof(*state)) return UI_STATUS_INVALID_ARGUMENT;
+    entry = find_command(host, id); if (!entry) return UI_STATUS_NOT_FOUND;
+    entry->state = *state;
+    ui_components_commands_changed(host);
+    return ui_host_emit_event(host, "ui.commands.changed", "{}");
+}
+ui_status_t ui_host_get_command_state(const ui_host_t *host, const char *id,
+    ui_command_state_t *state)
+{
+    ui_command_entry_t *entry;
+    if (!host || !id || !state || state->size < sizeof(*state)) return UI_STATUS_INVALID_ARGUMENT;
+    entry = find_command((ui_host_t *)host, id); if (!entry) return UI_STATUS_NOT_FOUND;
+    *state = entry->state; return UI_STATUS_OK;
+}
+ui_status_t ui_host_set_item_state(ui_host_t *host, const char *id,
+    const ui_command_state_t *state)
+{
+    ui_menu_entry_t *menu; ui_toolbar_item_entry_t *tool;int found=0;
+    if (!host || !id || !state || state->size < sizeof(*state)) return UI_STATUS_INVALID_ARGUMENT;
+    for (menu=host->menus; menu; menu=menu->next) if (!strcmp(menu->id,id)) {
+        menu->state=*state; found=1;
+    }
+    for (tool=host->toolbar_items; tool; tool=tool->next) if (!strcmp(tool->id,id)) {
+        tool->state=*state; found=1;
+    }
+    if(found)ui_components_commands_changed(host);
+    return found?ui_host_emit_event(host,"ui.commands.changed","{}"):UI_STATUS_NOT_FOUND;
+}
+ui_status_t ui_host_set_item_image(ui_host_t *host,const char *id,uint64_t image)
+{
+    ui_menu_entry_t *m;ui_toolbar_item_entry_t *t;ui_image_info_t info={0};int found=0;
+    if(!host||!id)return UI_STATUS_INVALID_ARGUMENT;info.size=sizeof(info);
+    if(image&&ui_image_get_info(host,image,&info)!=UI_STATUS_OK)return UI_STATUS_NOT_FOUND;
+    for(m=host->menus;m;m=m->next)if(!strcmp(m->id,id)){m->image_id=image;found=1;}
+    for(t=host->toolbar_items;t;t=t->next)if(!strcmp(t->id,id)){t->image_id=image;found=1;}
+    return found?ui_host_emit_event(host,"ui.commands.changed","{}"):UI_STATUS_NOT_FOUND;
+}
+uint64_t ui_host_dispatch_shortcut(ui_host_t *host, uint32_t key,
+    uint32_t modifiers, int text_editing)
+{
+    ui_command_entry_t *command;
+    if (!host) return 0;
+    /* Edit gestures remain with the focused Web/native editor. */
+    if (text_editing && (key==8 || key==46 || key==37 || key==38 || key==39 || key==40 ||
+        key==36 || key==35 || ((modifiers&UI_INPUT_MODIFIER_CONTROL) &&
+        (key=='A'||key=='C'||key=='V'||key=='X'||key=='Z'||key=='Y')))) return 0;
+    for (command=host->commands; command; command=command->next)
+        if (command->shortcut_key==key && command->shortcut_modifiers==modifiers &&
+            command->state.visible && command->state.enabled && !command->state.busy)
+            return ui_host_invoke(host,command->id,"{}","shortcut");
+    return 0;
+}
+
 uint64_t ui_host_invoke(ui_host_t *host,
                         const char *command_id,
                         const char *params_json,
@@ -893,6 +966,7 @@ uint64_t ui_host_invoke(ui_host_t *host,
     if (host == NULL || host->dispatch_blocked || command_id == NULL || command_id[0] == '\0') {
         return 0u;
     }
+    if (host->modal_component && (!source || strcmp(source,"component") != 0)) return 0u;
 
     command = find_command(host, command_id);
     if (command == NULL) {
@@ -974,9 +1048,11 @@ ui_status_t ui_host_emit_event(ui_host_t *host,
     }
 
     if (host->event_callback != NULL) {
+        ui_dispatch_enter(host);
         host->event_callback(event_id,
                              payload_json != NULL ? payload_json : "{}",
                              host->user_data);
+        ui_dispatch_leave(host);
     }
     return UI_STATUS_OK;
 }
@@ -1017,6 +1093,8 @@ ui_web_backend_t *ui_web_backend_create(const ui_web_backend_desc_t *desc)
     if (desc->ops->size >= offsetof(ui_web_backend_ops_t, native_handle) +
                           sizeof(desc->ops->native_handle))
         backend->ops.native_handle = desc->ops->native_handle;
+    if (desc->ops->size >= offsetof(ui_web_backend_ops_t, image_changed) + sizeof(desc->ops->image_changed))
+        backend->ops.image_changed = desc->ops->image_changed;
     backend->user_data = desc->user_data;
     return backend;
 }
@@ -1287,6 +1365,11 @@ ui_status_t ui_web_view_post_json(ui_web_view_t *view, const char *json)
                                         view->user_data, json);
     ui_dispatch_leave(view->host);
     return status;
+}
+void ui_web_image_changed(ui_web_view_t *view,uint64_t id)
+{
+    if(view->backend->ops.image_changed)view->backend->ops.image_changed(view->backend->user_data,view->user_data,id);
+    else (void)ui_web_view_invalidate(view);
 }
 
 ui_status_t ui_web_view_get_capabilities(ui_web_view_t *view, uint64_t *caps)

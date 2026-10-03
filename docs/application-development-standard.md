@@ -1,22 +1,16 @@
 # Windows C/Web UI 框架应用开发标准
 
-开发标准修订：`2`。对应当前 SDK `0.2.0` 开发源码，尚未发布 `v0.2.0` 稳定标签。框架 API `2`，运行库接受 API `1`、`2`；应用 ABI `1`、应用包格式 `1`。最近稳定基准仍是 `v0.1.0` 及其修订 1 标准。版本变化见 [CHANGELOG](../CHANGELOG.md)，旧应用升级见[迁移指南](migration-v0.1-to-v0.2.md)。
+开发标准修订：**3**。对应 **SDK 0.3.0 开发版、框架 API 3**；运行库接受 API 1/2/3，应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
 
-本文面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的应用开发者。目标是让应用通过公共 C ABI 接入窗口布局、原生控件、绘制区域、Web UI 和助手命令，并明确每项能力的实际边界。
+面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的开发者。新应用通过公共 C 接口注册组件、提供数据、绑定已有语义命令，通用 HTML/CSS/JavaScript、草稿、焦点和交互由框架维护。菜单、工具、面板内组件、状态、参数及确认界面使用 Web；Win32 仅承载窗口、消息、输入法及绘制。旧 API1/2 应用自有原生内容和原生嵌入式保留，系统文件/目录选择器是例外。
 
-## 0. 本次接入变化
+## 0. 阅读入口与版本约定
 
-独立宿主改用 Lexbor/QuickJS-NG/GDI 驱动的受控 HTML/CSS/JS 外壳。标签、菜单、工具入口、助手和浮动面板外框由 Web 绘制，支持浅色/深色切换，顶层窗口保留 Windows 标准标题栏。应用继续选择原生、OpenGL 或 Web 内容，不把引擎类型或 JS 对象传入应用 ABI。
+先读[通用 Web UI 接入约定](generic-web-ui.md)，再参考[通用纯 C 示例](../examples/generic_components/README.md)。新接口见 [components.h](../include/ui_framework/components.h)、[images.h](../include/ui_framework/images.h)；命令、面板、内容槽、助手和应用生命周期仍以原公共头文件为准。
 
-当前 SDK 为 0.2.0，新增框架 API 2；新运行库同时支持 API 1 和 2。应用 ABI、`ui_app_query_v1`、实例上下文和生命周期函数表布局及包格式保持 1。包清单与 DLL 的 API 声明必须相同，API 2 包在 API 1 宿主上被拒绝。
+[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)说明必须同步的 API 声明和废弃输入开关；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[实际验收](validation/api3-validation.md)记录构建、自动化与真实宿主证据。API3 包不能加载到只支持 API1/2 的运行库，清单与 DLL 声明必须相同。
 
-无需重新编译的兼容目标是通过框架注册 UI、遵守生命周期并在约定内容区域挂载的 API 1 旧二进制包。面板内容仍有真实 HWND 容器，标签切换和停靠/浮动不销毁内容或 GL context；旧 `ui_native_shell_refresh()` 仍会重建面板并使旧句柄失效。直接修改/安装 Win32 菜单或枚举原生工具栏的应用必须迁移；独立宿主不提供原生外壳模式。旧原生嵌入式使用方式继续保留。
-
-全局 Web 布局划分标签、助手和实例工作区；实例 C 核心计算内部区域，`ui_host_get_rect()` 保持相对实例容器的逻辑坐标。新 shell/content-slot 接口返回借用对象，应用在 UI 线程挂载内容并在 unmount 中释放内容。JSON 消息复制数据，助手调用固定实例和请求 ID，权限、确认、取消、事务与卸载保护继续适用。
-
-本文说明当前实现的接口和使用约定。本轮已完成构建、原 EDA 二进制兼容与真实界面验证，仍保留旧测试契约失败和单屏硬件限制，详见[构建与验证](build-and-validation.md#51-020-开发版本迁移验收)。这些结果不表示任意第三方旧包都已验证，也不表示已经发布稳定版本。
-
-独立应用入口以 [`application.h`](../include/ui_framework/application.h) 为准；内容槽见 [`shell.h`](../include/ui_framework/shell.h)，其他接口见 [`ui.h`](../include/ui_framework/ui.h)、[`native.h`](../include/ui_framework/native.h)、[`opengl.h`](../include/ui_framework/opengl.h)、[`assistant.h`](../include/ui_framework/assistant.h)、[`light_web.h`](../include/ui_framework/light_web.h) 和 [`webview2.h`](../include/ui_framework/webview2.h)。示例对应仓库内可构建的样例或测试，构建步骤见 [构建与验证](build-and-validation.md)。
+受控轻量后端实现本版框架组件；WebView2 保留已有自定义 HTML/消息能力，不提供新增 C 图片 ID 和组件呈现。OpenGL 仍由应用自行选择、通过内容槽挂载，框架没有应用文档模型或业务渲染器。具体子集、预算及未实现能力以接入约定的能力清单为准，不把 HTML 支持视为完整浏览器。
 
 ## 1. 架构和应用职责
 
@@ -30,7 +24,7 @@
 | --- | --- | --- |
 | 独立宿主 | 应用包验证和加载、标签切换、实例 ID、关闭和 DLL 卸载、全局助手 | 应用清单、多实例声明、生命周期回调 |
 | C 核心 | host 生命周期、布局与 DPI、命令和异步结果、事件、surface 回调、Web 后端接口 | 文档模型、业务校验、工作任务、文件格式 |
-| 外壳与内容容器 | 独立宿主的 Web 菜单/工具入口/面板外框、借用内容槽；原生嵌入式的菜单/工具栏/面板和消息转发 | 面板内容、原生控件或 view/surface、自定义快捷键 |
+| 外壳与内容容器 | 独立宿主的 Web 菜单/工具入口/面板外框、借用内容槽；原生嵌入式的菜单/工具栏/面板和消息转发 | 注册框架组件和业务数据；绘图 surface；旧内容兼容 |
 | OpenGL 层 | 显式版本/profile/MSAA/debug 配置、兼容路径、GPU/context 信息查询 | 绘制、资源、文档坐标、缩放、滚动、选择和拾取 |
 | 助手协议 | 命令允许列表、schema 元数据、校验和确认回调、进度、取消、快照、事务接口 | 模型服务连接、权限界面、实际事务和撤销数据 |
 | 轻量 Web 后端 | Lexbor HTML 解析、QuickJS-NG 脚本、GDI 绘制、受控动态 DOM/布局/控件和 JSON 消息 | 遵守受控子集、页面资源、语义命令 |
@@ -62,7 +56,7 @@ multiple_instances=true
 
 `app_id` 是稳定身份，`version` 标识版本；同一 ID 的不同版本不能同时加载。`multiple_instances=false` 时，重复打开包激活已有标签；为 true 时创建新的私有状态和标签。不要通过进程全局变量保存实例数据。
 
-清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前支持 `architecture=x64`、应用 ABI 1 和框架 API 1/2。清单 API 必须与 DLL descriptor 一致；使用当前头文件构建的新应用通常声明 2，原 API 1 包保持 1。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
+清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前支持 `architecture=x64`、应用 ABI 1 和框架 API 1/2/3。清单 API 必须与 DLL descriptor 一致；使用当前头文件构建的新组件应用声明 3，旧 API 1/2 包保持原值。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
 
 ### 2.2 UAPP v1 容器格式
 
@@ -156,7 +150,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 ### 3.3 size 和兼容性
 
-使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 2。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前接受 1、2，拒绝 0、3。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
+使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 3。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前接受 1、2、3，拒绝 0、4。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
 
 布局接口接受原始六字段布局描述，省略的新字段按零值处理；Web ops 支持旧尺寸，缺少追加的定位、消息或能力回调时对应操作返回 UNSUPPORTED。`ui_workspace_config_t` 在保留完整 v1 布局后追加 `shell_mode`；清零时选择 `UI_WORKSPACE_SHELL_NATIVE`，自建 Web workspace 可显式选择 `UI_WORKSPACE_SHELL_WEB`。独立宿主固定使用 WEB。并非所有结构都允许截断，不能人为缩小 `size` 来假装某个版本。C++ 应用通过 `extern "C"` 调用同一接口；[`tests/public_headers.cpp`](../tests/public_headers.cpp) 覆盖公共头文件调用路径。
 
@@ -188,7 +182,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 面板通过 `ui_host_register_panel()` 注册。`UI_PANEL_SIDEBAR` 按 `dock_region` 停靠到左/右侧，`NONE` 保留默认右侧行为；`UI_PANEL_FLOATING` 创建独立浮动面板。`preferred_width` 控制浮动初始宽度，停靠侧栏总宽由 host 布局决定。`entry_url` 是兼容描述的必填非 NULL 字段，原生面板设置为 `""`；它不自动读取资源、打开页面或创建 backend。
 
-新应用在 mount 后通过 `ui_host_get_shell(host)` 取得借用 shell。调用 `ui_shell_get_content_slot(shell, NULL)` 选主内容区，传已注册的 panel ID 选面板内容区；不存在时返回 NULL。slot 到 shell 销毁时才失效。`ui_content_slot_native_handle()` 返回借用容器 HWND，应用可在其中创建自己的原生 child，但不得销毁容器。
+新应用在 mount 后通过 `ui_host_get_shell(host)` 取得借用 shell。调用 `ui_shell_get_content_slot(shell, NULL)` 选主内容区，传已注册的 panel ID 选面板内容区；不存在时返回 NULL。slot 到 shell 销毁时才失效。`ui_content_slot_native_handle()` 返回借用容器 HWND，新应用在其中挂载框架组件或绘图内容；原生 child 仅作为旧应用兼容路径，禁止销毁容器。
 
 `ui_content_slot_attach_surface()` 挂载原生/OpenGL surface，`ui_content_slot_attach_web_view()` 挂载 Web view；内容必须属于该槽的 host，传 NULL 解除对应绑定。这些操作不转移所有权，应用仍在 unmount 中销毁内容、清空保存指针，并在销毁 view 后销毁其专用 backend。主内容槽的 Web backend 使用 host 的 native parent 和 host 坐标；面板 Web backend 必须以槽容器为 parent，view 使用容器局部坐标。一个槽只能绑定一种内容，内容对象也不能同时绑定到其他槽。
 
@@ -328,7 +322,7 @@ Web view 是独立的对象族；`ui_surface_create()` 的 `UI_SURFACE_WEB` 仍�
 
 API 2 使用 `ui_web_view_set_message_callback()` 接收页面的 `ui.postMessage(data)`，用 `ui_web_view_post_json()` 交付 C 侧 JSON。页面通过 `ui.onmessage = function(data) { ... }` 或 `window.addEventListener('message', function(event) { ... })` 接收数据。后端解析 JSON，不把内容拼接成脚本。消息参数在调用/回调期间借用，异步保存时自行复制；回调在 UI 线程执行，不得在其中销毁 view/backend/host，关闭应延迟到回调返回后。
 
-`ui_web_view_get_capabilities()` 查询 `UI_WEB_CAP_JSON_MESSAGES`、`DYNAMIC_DOM`、`RESPONSIVE_LAYOUT`、`NATIVE_WINDOW`、`TEXT_INPUT` 位。能力位表示接口类别可用，不表示完整 DOM/CSS 或所有输入形式。缺少回调的旧自定义后端返回 UNSUPPORTED。`ui_web_view_native_handle()` 返回借用呈现窗口或 NULL，不能销毁它；轻量 Windows 后端返回 HWND，当前 WebView2 适配器未提供此查询。完整示例见 [`examples/web_counter/app.c`](../examples/web_counter/app.c)。
+`ui_web_view_get_capabilities()` 查询 `UI_WEB_CAP_JSON_MESSAGES`、`DYNAMIC_DOM`、`RESPONSIVE_LAYOUT`、`NATIVE_WINDOW`、`TEXT_INPUT` 位；API 3 增加 `IMAGES/WEB_TEXT_EDIT/COMPONENTS`。能力位表示接口类别可用，不表示完整 DOM/CSS 或所有输入形式。缺少回调的旧自定义后端返回 UNSUPPORTED。`ui_web_view_native_handle()` 返回借用呈现窗口或 NULL，不能销毁它；轻量 Windows 后端返回 HWND，当前 WebView2 适配器未提供此查询。完整示例见 [`examples/web_counter/app.c`](../examples/web_counter/app.c)。
 
 TypeScript 需在构建阶段离线编译为 JavaScript，再交给后端执行。框架不直接执行 `.ts`，也不附带 Node.js 开发运行时。
 
@@ -338,21 +332,21 @@ TypeScript 需在构建阶段离线编译为 JavaScript，再交给后端执行�
 
 | 类别 | 已实现范围 |
 | --- | --- |
-| HTML 内容元素 | `div`、`header`、`footer`、`nav`、`aside`、`section`、`main`、`p`、`span`、`button`、文本 `input`、`textarea` |
+| HTML 内容元素 | `div`、`header`、`footer`、`nav`、`aside`、`section`、`main`、`p`、`span`、`button`、文本 `input`、`textarea`、资源 ID `img` |
 | 内容属性 | `id`、`class`、`style`、`onclick`、`onmousedown`、`oninput`、`value`、文本 `type`、`disabled`、`readonly` |
 | 布局 | `display:block/flex/none`、row/column、整数 flex 权重、整数 px/百分比宽高、absolute 定位、padding/margin/gap、min/max尺寸和基本对齐 |
 | 样式 | 十六进制颜色、solid 边框、圆角、字体大小/粗细、受限字体族、裁剪和滚动 |
 | 样式表 | 标签/class/ID/后代选择器、hover/focus/disabled、有限优先级与 width min/max media 规则 |
 | DOM 脚本 | `document.body`、`getElementById/createElement`、`appendChild/removeChild/remove`、`textContent/className/value/disabled/style`、受限属性访问、`focus()` |
-| 事件/消息 | click/input/keydown/focus/blur/mouseenter/mouseleave/mousedown 监听、document keydown、`ui.invoke/value/postMessage/onmessage` 和 window message |
-| 输入 | 逻辑像素命中、按钮点击、滚轮、文本和退格；可选 Unicode Win32 EDIT 支持单行/多行输入 |
+| 事件/消息 | click/input/keydown/focus/blur/mouseenter/mouseleave/mousedown/wheel/contextmenu 监听、document keydown、`ui.invoke/value/postMessage/onmessage` 和 window message |
+| 输入 | 逻辑像素命中、按钮/滚轮；Uniscribe 和 IMM32 平台适配的 Web 单行/多行编辑、选择、剪贴板及撤销，无 EDIT 代理 |
 | 元素查询 | `ui_web_view_get_element_rect()`，隐藏元素为零矩形，缺失 ID 为 NOT_FOUND |
 
-尚无完整 DOM、完整 CSS cascade/选择器、通用 Flexbox、Grid、任意媒体查询、图像/Canvas/SVG、网络 fetch、外部 script/module 或浏览器定时器/Promise job 调度。CSS/DOM 的同名接口只覆盖表中子集，浏览器框架生成的结构仍可能超出允许列表。不支持的页面结构或样式返回 `UI_STATUS_UNSUPPORTED`，超出资源/格式约束返回 validation 错误，不能把错误当成静默忽略。
+尚无完整 DOM、完整 CSS cascade/选择器、通用 Flexbox、Grid、任意媒体查询、Canvas/SVG、网络 fetch、外部 script/module 或浏览器定时器/Promise job 调度。CSS/DOM 的同名接口只覆盖表中子集，浏览器框架生成的结构仍可能超出允许列表。不支持的页面结构或样式返回 `UI_STATUS_UNSUPPORTED`，超出资源/格式约束返回 validation 错误，不能把错误当成静默忽略。
 
 当前约束是：HTML 最多 256 KiB、最多 1024 个内部节点和 256 条 CSS 规则，ID 最多 95 UTF-8 字节，文本/value 最多 4095 字节，style/handler 属性最多 2047 字节，单个内联 script/style 文本最多 64 KiB；宽高不超过 32767 逻辑像素，DPI 为 1–768。QuickJS 每个 view 限制 8 MiB JS 内存、256 KiB stack，每次同步脚本约 50 ms 中断预算。这个预算不会抢占应用 C handler，长业务仍需异步实现。增量 DOM 修改保留未删除节点的输入/焦点/滚动状态；重新 load_html 会重建文档和 JS 状态。
 
-`ui_light_web_backend_capabilities()` 的诊断字符串和能力位可辅助识别后端。详细限制见[轻量后端说明](../examples/light_web_probe/README.md)，动态行为对应 [`tests/light_web_dynamic.c`](../tests/light_web_dynamic.c)。旧 probe 的 class 拒绝和 193 节点拒绝断言来自修订 1，当前能力扩展后不再代表支持上限；保留的失败与本次最终结果见[验证记录](build-and-validation.md#51-020-开发版本迁移验收)。
+`ui_light_web_backend_capabilities()` 的诊断字符串和能力位可辅助识别后端。详细限制见[轻量后端说明](../examples/light_web_probe/README.md)，动态行为对应 [`tests/light_web_dynamic.c`](../tests/light_web_dynamic.c)。旧版本/EDIT/class/193 节点断言保存于 [API 2 基线](../tests/api2_baseline/README.md)，运行测试已经按 API 3 和原生无代理编辑的新合同更新，原因及结果见[验收记录](validation/api3-validation.md)。
 
 ### 9.3 WebView2 后端
 
@@ -376,11 +370,17 @@ view 优先嵌入 `host.native_parent`，config 的 parent_window 是后备值�
 
 [`examples/minimal_eda/main.c`](../examples/minimal_eda/main.c) 仍是完整嵌入式 Win32/OpenGL 样例，由应用创建窗口并预留属性/助手容器。它独立启动，不展示多标签，显式 `--legacy` 可验证旧式 WGL；该开关不适用于 `framework_host.exe` 的 EDA 模块。
 
-[`examples/web_counter/app.c`](../examples/web_counter/app.c) 使用当前公共头文件构建 API 2/ABI 1 DLL，[清单](../examples/web_counter/manifest.ini)声明 API 2。它在 mount 获取主内容槽，创建轻量 backend/view 并设置消息回调，页面发送 increment 数据，C 侧调用业务命令并用 JSON 回推 count。业务数据、助手快照和多实例状态仍由 C 应用维护，unmount 先销毁 view 再销毁 backend。该样例不创建 OpenGL context，可用于验证无 OpenGL 的 Web 内容路径。
+[`examples/web_counter/app.c`](../examples/web_counter/app.c) 使用冻结的 tests/sdk_v2 公共头文件构建 API 2/ABI 1 DLL，[清单](../examples/web_counter/manifest.ini)声明 API 2。它在 mount 获取主内容槽，创建轻量 backend/view 并设置消息回调，页面发送 increment 数据，C 侧调用业务命令并用 JSON 回推 count。业务数据、助手快照和多实例状态仍由 C 应用维护，unmount 先销毁 view 再销毁 backend。该样例不创建 OpenGL context，可用于验证无 OpenGL 的 Web 内容路径。
 
 Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径；轻量后端当前不支持完整 Markdown HTML 排版。画板将画布作为 OpenGL 文档视口，工具栏命令改变应用工具状态。自研 PPT/Excel 将幻灯片/工作表数据、编辑、布局和撤销留在应用，框架只提供外壳、视口和命令通路。
 
 跨应用复用应首先统一稳定命令 ID、参数验证、结果 JSON 和文档状态事件，再根据实际显示需求选择 native/OpenGL 或 Web 后端。
+
+### 10.3 API 3 通用组件
+
+[generic_components/app.c](../examples/generic_components/app.c) 和[说明](../examples/generic_components/README.md)展示公共接口注册菜单、工具、按需树、100000×16 表格、属性、Web 对话框、异步 RGBA 缩略图、包内 PNG、填充样式及 OpenGL 内容槽。应用不含组件 HTML；独立实例拥有数据、草稿、请求及资源。关闭先停止并 join 后台线程，再销毁绘图内容，宿主统一回收组件与图片。
+
+组件协议、字段所有权、分页、缓存预算和未实测条件完整定义于[通用 Web UI](generic-web-ui.md)。该示例仅有测试数据和有限编辑记录，不构成任何具体应用的业务模型。
 
 ## 11. 常见错误
 
@@ -418,7 +418,7 @@ Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径
 11. 两个实例注册同名命令后分别修改，切换保持画布、GLcontext和属性内容，关闭后台实例不改变前台菜单。
 12. 助手跨实例调用，切换或关闭标签后结果/进度仍按原ID交付或丢弃，危险确认显示正确目标；等待关闭时拒绝新命令。
 13. 应用自有 WndProc/subclass/COM UI callback 的 scope 成对覆盖所有分支和默认窗口过程；嵌套模态消息中关闭后，DLL 仍保留到完整回调退出。确认后台线程不使用 scope，也没有从 query/DllMain/静态构造启动任务。
-14. 用未重新构建的 v0.1.0 包验证兼容，用 API 2 包验证新能力；检查清单/DLL API 不一致及不支持版本被拒绝。
+14. 用未重新构建的 v0.1.0 包与冻结 SDK2 构建包验证兼容，用 API3 通用示例验证新能力；检查清单/DLL API 不一致及不支持版本被拒绝。
 15. 检查 Web JSON 的 UTF-8/转义/非法数据、能力差异、内容槽借用与关闭顺序；浅色/深色、窄窗和浮动面板的内容保持可用。
 
 将该清单与应用自身的数据和文件操作测试一起执行，再把应用交给用户使用。

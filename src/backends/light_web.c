@@ -14,8 +14,11 @@
 
 #include <windows.h>
 #include <windowsx.h>
+#include <imm.h>
+#include <usp10.h>
 
 #define LW_MAX_NODES 1024
+#define LW_EVENTS 10
 #define LW_MAX_RULES 256
 #define LW_TEXT_CAP 4096
 #define LW_ATTR_CAP 2048
@@ -65,14 +68,15 @@ typedef struct lw_node {
     ui_rect_t clip;
     int visible;
     int scroll_y, content_height, scroll_x, content_width;
-    HWND edit;
+    int caret, anchor, text_scroll_x, text_scroll_y;
+    wchar_t composition[1024];
+    struct lw_history *undo, *redo;
+    uint64_t image;
     HFONT font;
     int font_size, font_weight, font_family;
     uint32_t font_dpi;
-    HBRUSH edit_background;
     JSValue object;
-    JSValue listeners[8]; /* click, input, keydown, focus, blur, mouseenter, mouseleave, mousedown */
-    WNDPROC edit_proc;
+    JSValue listeners[LW_EVENTS]; /* click, input, keydown, focus, blur, mouseenter, mouseleave, mousedown */
 } lw_node_t;
 
 typedef struct lw_backend {
@@ -97,7 +101,10 @@ typedef struct lw_view {
     int media_breakpoint;
     int media_hide_assistant;
     int focused, pressed;
-    int suppress_edit;
+    int dragging, composing;
+    wchar_t high_surrogate;
+    uint32_t event_modifiers;
+    int wheel_delta;
     int hovered, dispatch_depth, dirty;
     int default_prevented;
     int layout_depth;
@@ -115,9 +122,21 @@ static lw_backend_t *g_backends;
 static ui_status_t lw_dispatch_input(void *user, void *data,
                                       const ui_input_event_t *event);
 static void lw_layout(lw_view_t *view);
-static ui_status_t lw_create_edits(lw_view_t *view);
+static int lw_hit(const lw_view_t *view, int x, int y);
+static void lw_text_paint(lw_view_t *, lw_node_t *, HDC, RECT);
+static void lw_text_free(lw_node_t *);
+static void lw_caret(lw_view_t *);
+static int lw_text_key(lw_view_t *, const ui_input_event_t *);
+static ui_status_t lw_text_insert(lw_view_t *, const char *);
+static void lw_text_pointer(lw_view_t *, int, int, int, int);
+static int lw_input(const lw_node_t *n) { return n->kind == 3 || n->kind == 4; }
 static ui_status_t lw_event(lw_view_t *view, int index, int kind, uint32_t key);
 
+static void lw_cancel_composition(lw_view_t *view)
+{
+    if(view->composing){HIMC imc=ImmGetContext(view->hwnd);if(imc){ImmNotifyIME(imc,NI_COMPOSITIONSTR,CPS_CANCEL,0);ImmReleaseContext(view->hwnd,imc);}
+        if(view->focused>=0)*view->nodes[view->focused].composition=0;view->composing=0;}
+}
 static ui_status_t lw_reserve_nodes(lw_view_t *view, int count)
 {
     lw_node_t *nodes;
@@ -151,24 +170,6 @@ static wchar_t *lw_wide(const char *s)
         free(w); return NULL;
     }
     return w;
-}
-
-static wchar_t *lw_edit_wide(const char *s, int multiline)
-{
-    wchar_t *wide = lw_wide(s), *native;
-    size_t i, at = 0;
-    if (!wide || !multiline) return wide;
-    native = (wchar_t *)malloc((wcslen(wide) * 2 + 1) * sizeof(*native));
-    if (native) {
-        for (i = 0; wide[i]; ++i) {
-            if (wide[i] == L'\r' || wide[i] == L'\n') {
-                if (wide[i] == L'\r' && wide[i + 1] == L'\n') ++i;
-                native[at++] = L'\r'; native[at++] = L'\n';
-            } else native[at++] = wide[i];
-        }
-        native[at] = 0;
-    }
-    free(wide); return native;
 }
 
 static ui_status_t lw_copy(char *dst, size_t cap, const lxb_char_t *s,
@@ -209,6 +210,7 @@ static ui_status_t lw_validate_attributes(lxb_dom_element_t *element)
             !lw_name((const char *)name, length, "onmousedown") &&
             !lw_name((const char *)name, length, "oninput") &&
             !lw_name((const char *)name, length, "value") &&
+            !lw_name((const char *)name, length, "src") &&
             !lw_name((const char *)name, length, "type")) return UI_STATUS_UNSUPPORTED;
     }
     return UI_STATUS_OK;
@@ -563,7 +565,7 @@ static ui_status_t lw_collect(lw_view_t *view, lxb_dom_node_t *parent,
         node = &view->nodes[index];
         memset(node, 0, sizeof(*node));
         node->object = JS_UNDEFINED;
-        { int k; for (k = 0; k < 8; ++k) node->listeners[k] = JS_UNDEFINED; }
+        { int k; for (k = 0; k < LW_EVENTS; ++k) node->listeners[k] = JS_UNDEFINED; }
         node->used = node->attached = 1; node->uid = ++view->next_uid;
         if (length >= sizeof(node->tag)) return UI_STATUS_UNSUPPORTED;
         memcpy(node->tag,name,length); node->tag[length] = 0;
@@ -571,6 +573,7 @@ static ui_status_t lw_collect(lw_view_t *view, lxb_dom_node_t *parent,
         if (lw_name((const char *)name, length, "button")) node->kind = 2;
         else if (lw_name((const char *)name, length, "input")) node->kind = 3;
         else if (lw_name((const char *)name, length, "textarea")) node->kind = 4;
+        else if (lw_name((const char *)name, length, "img")) node->kind = 5;
         else if (lw_name((const char *)name, length, "div") ||
                  lw_name((const char *)name, length, "header") ||
                  lw_name((const char *)name, length, "footer") ||
@@ -595,6 +598,7 @@ static ui_status_t lw_collect(lw_view_t *view, lxb_dom_node_t *parent,
         LW_READ_ATTR("value", node->value);
         LW_READ_ATTR("style", node->inline_style);
         LW_READ_ATTR("type", type);
+        { char image[64]; LW_READ_ATTR("src", image); node->image = _strtoui64(image,NULL,10); }
 #undef LW_READ_ATTR
         node->disabled = lxb_dom_element_has_attribute(lxb_dom_interface_element(child),
             (const lxb_char_t *)"disabled",8);
@@ -627,7 +631,7 @@ static ui_status_t lw_collect(lw_view_t *view, lxb_dom_node_t *parent,
             if (status != UI_STATUS_OK) return status;
             if (node->kind == 4) strcpy(node->value,node->text);
         }
-        if (node->kind >= 3 && node->first_child >= 0) return UI_STATUS_UNSUPPORTED;
+        if (lw_input(node) && node->first_child >= 0) return UI_STATUS_UNSUPPORTED;
     }
     return UI_STATUS_OK;
 }
@@ -807,29 +811,11 @@ static void lw_layout_node(lw_view_t *view, int index, ui_rect_t rect, ui_rect_t
 
 static void lw_layout(lw_view_t *view)
 {
-    int i;
     ui_rect_t viewport = {0, 0, view->width, view->height};
     if (view->layout_depth) return;
     ++view->layout_depth;
     if (view->root >= 0) { lw_compute_style(view,view->root); lw_layout_node(view, view->root, viewport, viewport); }
-    (void)lw_create_edits(view);
-    for (i = 0; i < view->node_count; ++i) {
-        lw_node_t *n = &view->nodes[i];
-        if (!n->used || n->edit == NULL) continue;
-        ShowWindow(n->edit, n->visible && n->clip.width && n->clip.height ? SW_SHOW : SW_HIDE);
-        SetWindowPos(n->edit, NULL, lw_pixel(n->rect.x, view->dpi),
-            lw_pixel(n->rect.y, view->dpi), lw_pixel(n->rect.width, view->dpi),
-            lw_pixel(n->rect.height, view->dpi), SWP_NOZORDER | SWP_NOACTIVATE);
-        {
-            HRGN clip = CreateRectRgn(lw_pixel(n->clip.x - n->rect.x, view->dpi),
-                lw_pixel(n->clip.y - n->rect.y, view->dpi),
-                lw_pixel(n->clip.x + n->clip.width - n->rect.x, view->dpi),
-                lw_pixel(n->clip.y + n->clip.height - n->rect.y, view->dpi));
-            if (clip && !SetWindowRgn(n->edit, clip, TRUE)) DeleteObject(clip);
-        }
-        SendMessageW(n->edit, WM_SETFONT, (WPARAM)n->font, TRUE);
-        EnableWindow(n->edit,!n->disabled);
-    }
+    lw_caret(view);
     if (view->hwnd) InvalidateRect(view->hwnd, NULL, FALSE);
     view->dirty = 0;
     --view->layout_depth;
@@ -875,7 +861,7 @@ static JSValue lw_js_value(JSContext *ctx, JSValueConst this_value,
     id = JS_ToCString(ctx, argv[0]);
     if (id == NULL) return JS_EXCEPTION;
     for (i = 0; i < view->node_count; ++i)
-        if (view->nodes[i].used && view->nodes[i].kind >= 3 && strcmp(view->nodes[i].id, id) == 0) {
+        if (view->nodes[i].used && lw_input(&view->nodes[i]) && strcmp(view->nodes[i].id, id) == 0) {
             JS_FreeCString(ctx, id); return JS_NewString(ctx, view->nodes[i].value);
         }
     JS_FreeCString(ctx, id);
@@ -903,12 +889,11 @@ static int lw_js_index(JSContext *ctx, JSValueConst object)
 
 static void lw_sync_value(lw_view_t *view, lw_node_t *node)
 {
-    if (node->edit) {
-        wchar_t *wide = lw_edit_wide(node->value,node->kind == 4);
-        view->suppress_edit = 1;
-        if (wide) SetWindowTextW(node->edit,wide);
-        view->suppress_edit = 0; free(wide);
-    }
+    wchar_t *wide = lw_wide(node->value);
+    int length = wide ? (int)wcslen(wide) : 0;
+    if (node->caret > length) node->caret = length;
+    if (node->anchor > length) node->anchor = length;
+    free(wide); lw_caret(view);
 }
 
 static void lw_unlink(lw_view_t *view, int index)
@@ -929,36 +914,30 @@ static void lw_release_node(lw_view_t *view, int index)
     for (child = node->first_child; child >= 0; child = next) {
         next = view->nodes[child].next_sibling; lw_release_node(view,child);
     }
-    if (node->edit) {
-        HWND edit = node->edit; node->edit = NULL;
-        SetWindowLongPtrW(edit,GWLP_WNDPROC,(LONG_PTR)node->edit_proc);
-        SetWindowLongPtrW(edit,GWLP_USERDATA,0);
-        DestroyWindow(edit);
-    }
+    lw_text_free(node);
     if (node->font) DeleteObject(node->font);
-    if (node->edit_background) DeleteObject(node->edit_background);
     if (view->context) {
         JS_FreeValue(view->context,node->object);
-        for (k = 0; k < 8; ++k) JS_FreeValue(view->context,node->listeners[k]);
+        for (k = 0; k < LW_EVENTS; ++k) JS_FreeValue(view->context,node->listeners[k]);
     }
     node->used = node->attached = node->visible = 0;
-    node->edit = NULL; node->font = NULL; node->edit_background = NULL;
+    node->font = NULL;
     node->object = JS_UNDEFINED;
-    for (k = 0; k < 8; ++k) node->listeners[k] = JS_UNDEFINED;
+    for (k = 0; k < LW_EVENTS; ++k) node->listeners[k] = JS_UNDEFINED;
     if (view->focused == index) view->focused = -1;
     if (view->hovered == index) view->hovered = -1;
 }
 
 static int lw_event_kind(const char *name)
 {
-    static const char *names[] = {"click","input","keydown","focus","blur","mouseenter","mouseleave","mousedown"};
+    static const char *names[] = {"click","input","keydown","focus","blur","mouseenter","mouseleave","mousedown","wheel","contextmenu"};
     int i;
-    for (i = 0; i < 8; ++i) if (!strcmp(name,names[i])) return i;
+    for (i = 0; i < LW_EVENTS; ++i) if (!strcmp(name,names[i])) return i;
     return -1;
 }
 
 enum { LW_PROP_ID, LW_PROP_TEXT, LW_PROP_CLASS, LW_PROP_VALUE, LW_PROP_DISABLED,
-       LW_PROP_FIRST, LW_PROP_PARENT, LW_PROP_CHILDREN, LW_PROP_STYLE };
+       LW_PROP_FIRST, LW_PROP_PARENT, LW_PROP_CHILDREN, LW_PROP_STYLE, LW_PROP_SRC, LW_PROP_READONLY };
 
 static JSValue lw_dom_get(JSContext *ctx, JSValueConst object, int property)
 {
@@ -975,6 +954,8 @@ static JSValue lw_dom_get(JSContext *ctx, JSValueConst object, int property)
     case LW_PROP_CLASS: return JS_NewString(ctx,node->classes);
     case LW_PROP_VALUE: return JS_NewString(ctx,node->value);
     case LW_PROP_DISABLED: return JS_NewBool(ctx,node->disabled);
+    case LW_PROP_READONLY: return JS_NewBool(ctx,node->readonly);
+    case LW_PROP_SRC: { char id[32]; sprintf_s(id,sizeof(id),"%llu",(unsigned long long)node->image); return JS_NewString(ctx,id); }
     case LW_PROP_FIRST: return node->first_child >= 0 ? lw_element(view,node->first_child) : JS_NULL;
     case LW_PROP_PARENT: return node->parent >= 0 ? lw_element(view,node->parent) : JS_NULL;
     case LW_PROP_CHILDREN:
@@ -996,10 +977,13 @@ static JSValue lw_dom_set(JSContext *ctx, JSValueConst object, JSValueConst valu
     lw_node_t *node;
     if (index < 0) return JS_ThrowReferenceError(ctx,"removed element");
     node = &view->nodes[index];
-    if (property == LW_PROP_DISABLED) {
-        node->disabled = JS_ToBool(ctx,value); view->dirty = 1; return JS_UNDEFINED;
+    if (property == LW_PROP_DISABLED || property == LW_PROP_READONLY) {
+        if (property == LW_PROP_DISABLED) node->disabled = JS_ToBool(ctx,value);
+        else node->readonly = JS_ToBool(ctx,value); view->dirty = 1; return JS_UNDEFINED;
     }
     text = JS_ToCString(ctx,value); if (!text) return JS_EXCEPTION;
+    if (property == LW_PROP_SRC) { node->image = _strtoui64(text,NULL,10); JS_FreeCString(ctx,text); view->dirty = 1; return JS_UNDEFINED; }
+    if (property == LW_PROP_VALUE && !strcmp(text,node->value)) { JS_FreeCString(ctx,text); return JS_UNDEFINED; }
     destination = property == LW_PROP_ID ? node->id : property == LW_PROP_TEXT ? node->text :
         property == LW_PROP_CLASS ? node->classes : node->value;
     capacity = property == LW_PROP_ID ? sizeof(node->id) : property == LW_PROP_CLASS ? sizeof(node->classes) : sizeof(node->text);
@@ -1094,7 +1078,7 @@ static JSValue lw_dom_method(JSContext *ctx, JSValueConst object, int argc,
     if (method == 0 || method == 1) { /* appendChild/removeChild */
         if (argc < 1 || (child = lw_js_index(ctx,argv[0])) < 0) return JS_ThrowTypeError(ctx,"element required");
         if (method == 0) {
-            if (node->kind >= 3) return JS_ThrowTypeError(ctx,"input cannot contain children");
+            if ((lw_input(node) || node->kind == 5)) return JS_ThrowTypeError(ctx,"input cannot contain children");
             for (ancestor = index; ancestor >= 0; ancestor = view->nodes[ancestor].parent)
                 if (ancestor == child) return JS_ThrowTypeError(ctx,"DOM cycle");
             lw_unlink(view,child);
@@ -1130,7 +1114,7 @@ static JSValue lw_dom_method(JSContext *ctx, JSValueConst object, int argc,
         if (!argc) return JS_ThrowTypeError(ctx,"attribute name required");
         name = JS_ToCString(ctx,argv[0]); if (!name) return JS_EXCEPTION;
         kind = !strcmp(name,"id") ? LW_PROP_ID : !strcmp(name,"class") ? LW_PROP_CLASS :
-            !strcmp(name,"value") ? LW_PROP_VALUE : !strcmp(name,"disabled") ? LW_PROP_DISABLED : -1;
+            !strcmp(name,"value") ? LW_PROP_VALUE : !strcmp(name,"disabled") ? LW_PROP_DISABLED : !strcmp(name,"src") ? LW_PROP_SRC : !strcmp(name,"readonly") ? LW_PROP_READONLY : -1;
         if (kind >= 0) {
             JSValue result;
             if (method == 5) result = lw_dom_get(ctx,object,kind);
@@ -1153,7 +1137,8 @@ static JSValue lw_dom_method(JSContext *ctx, JSValueConst object, int argc,
         return JS_ThrowTypeError(ctx,"unsupported attribute");
     }
     if (method == 7) {
-        view->focused = index; if (node->edit) SetFocus(node->edit); view->dirty = 1; return lw_event(view,index,3,0) == UI_STATUS_OK ? JS_UNDEFINED : JS_EXCEPTION;
+        if(view->focused!=index)lw_cancel_composition(view);
+        view->focused = index; if (view->hwnd&&IsWindowVisible(view->hwnd)&&IsWindowEnabled(view->hwnd)) SetFocus(view->hwnd); lw_caret(view); view->dirty = 1; return lw_event(view,index,3,0) == UI_STATUS_OK ? JS_UNDEFINED : JS_EXCEPTION;
     }
     return JS_UNDEFINED;
 }
@@ -1183,6 +1168,8 @@ static JSValue lw_element(lw_view_t *view, int index)
     if (JS_IsUndefined(element_proto)) {
         JS_FreeValue(ctx,element_proto); JS_FreeValue(ctx,style_proto);
         element_proto = JS_NewObject(ctx); style_proto = JS_NewObject(ctx);
+        lw_js_property(ctx,element_proto,"src",LW_PROP_SRC,lw_dom_get,lw_dom_set);
+        lw_js_property(ctx,element_proto,"readOnly",LW_PROP_READONLY,lw_dom_get,lw_dom_set);
         for (i = 0; i < 8; ++i) lw_js_property(ctx,element_proto,properties[i],i,lw_dom_get,i < 5 ? lw_dom_set : NULL);
         for (i = 0; i < 8; ++i) JS_SetPropertyStr(ctx,element_proto,methods[i],JS_NewCFunctionMagic(ctx,lw_dom_method,methods[i],2,JS_CFUNC_generic_magic,i));
         for (i = 0; i < (int)(sizeof(lw_style_names) / sizeof(lw_style_names[0])); ++i) {
@@ -1237,6 +1224,7 @@ static JSValue lw_js_document(JSContext *ctx, JSValueConst object, int argc,
     if (!strcmp(name,"button")) kind = 2;
     else if (!strcmp(name,"input")) kind = 3;
     else if (!strcmp(name,"textarea")) kind = 4;
+    else if (!strcmp(name,"img")) kind = 5;
     else if (strcmp(name,"div") && strcmp(name,"span") && strcmp(name,"p") && strcmp(name,"main") && strcmp(name,"section") && strcmp(name,"aside") && strcmp(name,"header") && strcmp(name,"footer") && strcmp(name,"nav")) {
         JS_FreeCString(ctx,name); return JS_ThrowTypeError(ctx,"unsupported element");
     }
@@ -1246,11 +1234,19 @@ static JSValue lw_js_document(JSContext *ctx, JSValueConst object, int argc,
     if (i == view->node_count) ++view->node_count;
     memset(&view->nodes[i],0,sizeof(view->nodes[i]));
     view->nodes[i].object = JS_UNDEFINED;
-    for (k = 0; k < 8; ++k) view->nodes[i].listeners[k] = JS_UNDEFINED;
+    for (k = 0; k < LW_EVENTS; ++k) view->nodes[i].listeners[k] = JS_UNDEFINED;
     view->nodes[i].used = 1; view->nodes[i].uid = ++view->next_uid; view->nodes[i].kind = kind;
     view->nodes[i].parent = view->nodes[i].first_child = view->nodes[i].next_sibling = -1;
     strcpy(view->nodes[i].tag,name); JS_FreeCString(ctx,name); lw_style_default(&view->nodes[i].style);
     return lw_element(view,i);
+}
+
+static JSValue lw_document_get(JSContext *ctx, JSValueConst object, int property)
+{
+    lw_view_t *view=(lw_view_t *)JS_GetContextOpaque(ctx);int i,count=0;(void)object;
+    if(property==0)return view->focused>=0?lw_element(view,view->focused):JS_NULL;
+    for(i=0;i<view->node_count;++i)if(view->nodes[i].used)++count;
+    return JS_NewInt32(ctx,count);
 }
 
 static JSValue lw_js_post(JSContext *ctx, JSValueConst object, int argc,
@@ -1299,6 +1295,8 @@ static ui_status_t lw_setup_js(lw_view_t *view)
     JS_SetPropertyStr(view->context, ui, "postMessage", JS_NewCFunction(view->context,lw_js_post,"postMessage",1));
     JS_SetPropertyStr(view->context, global, "ui", ui);
     document = JS_NewObject(view->context);
+    lw_js_property(view->context,document,"activeElement",0,lw_document_get,NULL);
+    lw_js_property(view->context,document,"nodeCount",1,lw_document_get,NULL);
     JS_SetPropertyStr(view->context,document,"getElementById",JS_NewCFunctionMagic(view->context,lw_js_document,"getElementById",1,JS_CFUNC_generic_magic,0));
     JS_SetPropertyStr(view->context,document,"createElement",JS_NewCFunctionMagic(view->context,lw_js_document,"createElement",1,JS_CFUNC_generic_magic,1));
     JS_SetPropertyStr(view->context,document,"addEventListener",JS_NewCFunction(view->context,lw_document_listener,"addEventListener",2));
@@ -1362,9 +1360,10 @@ static ui_status_t lw_event(lw_view_t *view, int index, int kind, uint32_t key)
     event = JS_NewObject(ctx); target = lw_element(view,index);
     JS_SetPropertyStr(ctx,event,"target",target);
     JS_SetPropertyStr(ctx,event,"keyCode",JS_NewUint32(ctx,key));
-    JS_SetPropertyStr(ctx,event,"ctrlKey",JS_NewBool(ctx,(GetKeyState(VK_CONTROL) & 0x8000) != 0));
-    JS_SetPropertyStr(ctx,event,"shiftKey",JS_NewBool(ctx,(GetKeyState(VK_SHIFT) & 0x8000) != 0));
-    JS_SetPropertyStr(ctx,event,"altKey",JS_NewBool(ctx,(GetKeyState(VK_MENU) & 0x8000) != 0));
+    JS_SetPropertyStr(ctx,event,"ctrlKey",JS_NewBool(ctx,(view->event_modifiers & UI_INPUT_MODIFIER_CONTROL) != 0));
+    JS_SetPropertyStr(ctx,event,"shiftKey",JS_NewBool(ctx,(view->event_modifiers & UI_INPUT_MODIFIER_SHIFT) != 0));
+    JS_SetPropertyStr(ctx,event,"altKey",JS_NewBool(ctx,(view->event_modifiers & UI_INPUT_MODIFIER_ALT) != 0));
+    JS_SetPropertyStr(ctx,event,"deltaY",JS_NewInt32(ctx,-view->wheel_delta));
     JS_SetPropertyStr(ctx,event,"preventDefault",JS_NewCFunction(ctx,lw_js_prevent,"preventDefault",0));
     ++view->dispatch_depth;
     view->script_deadline = GetTickCount64() + LW_SCRIPT_MILLISECONDS;
@@ -1469,30 +1468,6 @@ static RECT lw_pixel_rect(const lw_view_t *view, ui_rect_t rect)
     return r;
 }
 
-static ui_status_t lw_edit_changed(lw_view_t *view, int index)
-{
-    lw_node_t *node = &view->nodes[index];
-    wchar_t wide[LW_TEXT_CAP * 2];
-    int bytes, length = GetWindowTextLengthW(node->edit);
-    if (length >= LW_TEXT_CAP * 2) return UI_STATUS_VALIDATION_FAILED;
-    GetWindowTextW(node->edit, wide, LW_TEXT_CAP * 2);
-    if (node->kind == 4) {
-        int i, at = 0;
-        for (i = 0; wide[i]; ++i) {
-            if (wide[i] == L'\r') {
-                if (wide[i + 1] == L'\n') ++i;
-                wide[at++] = L'\n';
-            } else wide[at++] = wide[i];
-        }
-        wide[at] = 0;
-    }
-    bytes = WideCharToMultiByte(CP_UTF8, WC_ERR_INVALID_CHARS, wide, -1, NULL, 0, NULL, NULL);
-    if (bytes <= 0 || bytes > LW_TEXT_CAP) return UI_STATUS_VALIDATION_FAILED;
-    WideCharToMultiByte(CP_UTF8, WC_ERR_INVALID_CHARS, wide, -1, node->value, LW_TEXT_CAP, NULL, NULL);
-    view->focused = index;
-    return lw_event(view,index,1,0);
-}
-
 static COLORREF lw_rgb(unsigned color)
 {
     return RGB((color >> 16) & 255,(color >> 8) & 255,color & 255);
@@ -1508,6 +1483,8 @@ static int lw_next_node(const lw_view_t *view, int index)
     }
     return -1;
 }
+
+#include "light_text.inc"
 
 static void lw_paint(lw_view_t *view, HDC dc)
 {
@@ -1536,6 +1513,8 @@ static void lw_paint(lw_view_t *view, HDC dc)
             else Rectangle(dc,rect.left,rect.top,rect.right,rect.bottom);
             SelectObject(dc,old_pen); SelectObject(dc,old_brush); DeleteObject(pen); DeleteObject(brush);
         }
+        if (lw_input(node)) lw_text_paint(view,node,dc,rect);
+        if (node->kind == 5 && node->image) ui_image_draw(view->host,node->image,dc,&rect,node->disabled);
         if (node->kind < 3 && *node->text) {
             UINT flags = DT_NOPREFIX | (node->style.text_align == 1 ? DT_CENTER : node->style.text_align == 2 ? DT_RIGHT : DT_LEFT);
             SetTextColor(dc,lw_rgb(node->disabled ? 0x8e969fu : node->style.color));
@@ -1563,13 +1542,12 @@ static void lw_paint(lw_view_t *view, HDC dc)
 static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
 {
     lw_view_t *view = (lw_view_t *)GetWindowLongPtrW(hwnd, GWLP_USERDATA);
-    int i;
     if (message == WM_NCCREATE) {
         view = (lw_view_t *)((CREATESTRUCTW *)lp)->lpCreateParams;
         SetWindowLongPtrW(hwnd, GWLP_USERDATA, (LONG_PTR)view); view->hwnd = hwnd; return TRUE;
     }
     if (view == NULL) return DefWindowProcW(hwnd, message, wp, lp);
-    if (message == WM_LBUTTONDOWN || message == WM_LBUTTONUP || message == WM_MOUSEWHEEL || message == WM_MOUSEMOVE) {
+    if (message == WM_LBUTTONDOWN || message == WM_LBUTTONUP || message == WM_MOUSEWHEEL || message == WM_MOUSEMOVE || message == WM_RBUTTONUP) {
         ui_input_event_t event = {0};
         POINT point = {GET_X_LPARAM(lp), GET_Y_LPARAM(lp)};
         if (message == WM_MOUSEWHEEL) ScreenToClient(hwnd, &point);
@@ -1577,7 +1555,10 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         event.y = point.y * 96 / (int)view->dpi; event.pointer_button = 1;
         event.kind = message == WM_MOUSEMOVE ? UI_INPUT_POINTER_MOVE : message == WM_LBUTTONDOWN ? UI_INPUT_POINTER_DOWN :
                      message == WM_LBUTTONUP ? UI_INPUT_POINTER_UP : UI_INPUT_WHEEL;
-        event.wheel_delta = GET_WHEEL_DELTA_WPARAM(wp);
+        event.wheel_delta = message == WM_MOUSEWHEEL ? GET_WHEEL_DELTA_WPARAM(wp) : 0;
+        if (GetKeyState(VK_SHIFT) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_SHIFT;
+        if (GetKeyState(VK_CONTROL) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_CONTROL;
+        if (message == WM_RBUTTONUP) { (void)lw_event(view,lw_hit(view,event.x,event.y),9,0); return 0; }
         if (message == WM_MOUSEMOVE) {
             TRACKMOUSEEVENT track = {sizeof(track),TME_LEAVE,hwnd,0}; TrackMouseEvent(&track);
         }
@@ -1588,37 +1569,16 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         if (view->hovered >= 0) (void)lw_event(view,view->hovered,6,0);
         view->hovered = -1; lw_layout(view); return 0;
     }
-    if (message == WM_KEYDOWN) {
+    if (message == WM_KEYDOWN || message == WM_SYSKEYDOWN) {
         ui_input_event_t event = {0};
         event.size = sizeof(event); event.kind = UI_INPUT_KEY_DOWN; event.key_code = (uint32_t)wp;
         if (GetKeyState(VK_SHIFT) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_SHIFT;
         if (GetKeyState(VK_CONTROL) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_CONTROL;
+        if (GetKeyState(VK_MENU) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_ALT;
         if (lw_dispatch_input(NULL,view,&event) == UI_STATUS_OK) return 0;
     }
+    if (lw_text_message(view,message,wp,lp)) return 0;
     if (message == WM_ERASEBKGND) return 1;
-    if (message == WM_CTLCOLOREDIT || message == WM_CTLCOLORSTATIC) {
-        for (i = 0; i < view->node_count; ++i) if (view->nodes[i].used && view->nodes[i].edit == (HWND)lp) {
-            lw_node_t *node = &view->nodes[i];
-            unsigned background = node->style.background_set ? node->style.background : 0xffffffu;
-            if (node->edit_background) DeleteObject(node->edit_background);
-            node->edit_background = CreateSolidBrush(lw_rgb(background));
-            SetTextColor((HDC)wp,lw_rgb(node->style.color)); SetBkColor((HDC)wp,lw_rgb(background));
-            return (LRESULT)node->edit_background;
-        }
-    }
-    if (message == WM_COMMAND && HIWORD(wp) == EN_CHANGE && !view->suppress_edit) {
-        for (i = 0; i < view->node_count; ++i)
-            if (view->nodes[i].edit == (HWND)lp) {
-                if (lw_edit_changed(view, i) != UI_STATUS_OK) {
-                    wchar_t *old = lw_edit_wide(view->nodes[i].value,view->nodes[i].kind == 4);
-                    view->suppress_edit = 1; if (old) SetWindowTextW((HWND)lp, old);
-                    view->suppress_edit = 0; free(old);
-                }
-                break;
-            }
-        if (view->dirty && !view->layout_depth) lw_layout(view);
-        return 0;
-    }
     if (message == WM_PAINT) {
         PAINTSTRUCT ps;
         HDC dc = BeginPaint(hwnd, &ps), memory = CreateCompatibleDC(dc);
@@ -1644,53 +1604,6 @@ static LRESULT CALLBACK lw_wnd_proc(HWND hwnd, UINT message, WPARAM wp, LPARAM l
     host = view->host; ui_dispatch_enter(host);
     result = lw_wnd_inner(hwnd,message,wp,lp);
     ui_dispatch_leave(host); return result;
-}
-
-static LRESULT CALLBACK lw_edit_proc(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
-{
-    lw_view_t *view = (lw_view_t *)GetWindowLongPtrW(hwnd,GWLP_USERDATA);
-    int index = GetDlgCtrlID(hwnd) - 1000;
-    ui_host_t *host;
-    WNDPROC previous;
-    LRESULT result = 0;
-    if (!view || index < 0 || index >= view->node_count) return DefWindowProcW(hwnd,message,wp,lp);
-    host = view->host; previous = view->nodes[index].edit_proc;
-    ui_dispatch_enter(host);
-    if (message == WM_KEYDOWN && wp == VK_TAB) {
-        ui_input_event_t event = {0}; event.size = sizeof(event); event.kind = UI_INPUT_KEY_DOWN; event.key_code = VK_TAB;
-        if (GetKeyState(VK_SHIFT) & 0x8000) event.modifiers = UI_INPUT_MODIFIER_SHIFT;
-        (void)lw_dispatch_input(NULL,view,&event);
-    } else {
-        if (message == WM_SETFOCUS) { view->focused = index; if (!view->layout_depth) (void)lw_event(view,index,3,0); }
-        if (message == WM_KILLFOCUS) { if (!view->layout_depth) (void)lw_event(view,index,4,0); if (view->focused == index) view->focused = -1; }
-        if (message == WM_KEYDOWN) { (void)lw_event(view,index,2,(uint32_t)wp); }
-        if (IsWindow(hwnd) && !(message == WM_KEYDOWN && view->default_prevented)) result = CallWindowProcW(previous,hwnd,message,wp,lp);
-        if (view->dirty && !view->layout_depth) lw_layout(view);
-    }
-    ui_dispatch_leave(host); return result;
-}
-
-static ui_status_t lw_create_edits(lw_view_t *view)
-{
-    int i;
-    if (!view->backend->enable_native_input || !view->hwnd) return UI_STATUS_OK;
-    view->suppress_edit = 1;
-    for (i = 0; i < view->node_count; ++i) if (view->nodes[i].used && view->nodes[i].kind >= 3 && !view->nodes[i].edit) {
-        lw_node_t *node = &view->nodes[i];
-        wchar_t *value = lw_edit_wide(node->value,node->kind == 4);
-        if (!value) { view->suppress_edit = 0; return UI_STATUS_VALIDATION_FAILED; }
-        node->edit = CreateWindowExW(0, L"EDIT", value,
-            WS_CHILD | WS_VISIBLE | WS_TABSTOP | (node->kind == 4 ? ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN | WS_VSCROLL : ES_AUTOHSCROLL), 0, 0, 1, 1,
-            view->hwnd, (HMENU)(INT_PTR)(1000 + i), GetModuleHandleW(NULL), NULL);
-        free(value);
-        if (!node->edit) { view->suppress_edit = 0; return UI_STATUS_PLATFORM_ERROR; }
-        SetWindowLongPtrW(node->edit,GWLP_USERDATA,(LONG_PTR)view);
-        node->edit_proc = (WNDPROC)SetWindowLongPtrW(node->edit,GWLP_WNDPROC,(LONG_PTR)lw_edit_proc);
-        SendMessageW(node->edit, EM_SETLIMITTEXT, (LW_TEXT_CAP - 1) / 3, 0);
-        if (node->readonly) SendMessageW(node->edit,EM_SETREADONLY,TRUE,0);
-    }
-    view->suppress_edit = 0;
-    return UI_STATUS_OK;
 }
 
 static ui_status_t lw_create_view(void *user, ui_host_t *host, void **out)
@@ -1762,7 +1675,7 @@ static ui_status_t lw_load_html(void *user, void *data, const char *html)
         root->uid = ++view->next_uid; root->kind = 1;
         root->parent = root->first_child = root->next_sibling = -1;
         root->object = JS_UNDEFINED;
-        for (k = 0; k < 8; ++k) root->listeners[k] = JS_UNDEFINED;
+        for (k = 0; k < LW_EVENTS; ++k) root->listeners[k] = JS_UNDEFINED;
         strcpy(root->tag,"body");
         view->node_count = 1; view->root = 0;
         status = lw_attr(lxb_dom_interface_element(body),"id",root->id,sizeof(root->id));
@@ -1777,7 +1690,7 @@ static ui_status_t lw_load_html(void *user, void *data, const char *html)
         JS_FreeValue(view->context,document); JS_FreeValue(view->context,global);
     }
     if (status == UI_STATUS_OK) status = lw_collect_scripts(view, lxb_dom_interface_node(view->document), 1, 0);
-    if (status == UI_STATUS_OK) status = lw_create_edits(view);
+
     if (status != UI_STATUS_OK) lw_free_document(view);
     lw_layout(view);
     return status;
@@ -1831,6 +1744,8 @@ static int lw_hit(const lw_view_t *view, int x, int y)
     }
     return hit;
 }
+static int lw_disabled(const lw_view_t *view,int index)
+{for(;index>=0;index=view->nodes[index].parent)if(view->nodes[index].disabled)return 1;return 0;}
 
 static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_event_t *event)
 {
@@ -1839,26 +1754,32 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
     (void)user;
     if (!view || !event || event->size < sizeof(*event)) return UI_STATUS_INVALID_ARGUMENT;
     if (!view->context) return UI_STATUS_NOT_FOUND;
+    view->event_modifiers = event->modifiers; view->wheel_delta = event->wheel_delta;
     hit = lw_hit(view, event->x, event->y);
     if (event->kind == UI_INPUT_POINTER_DOWN || event->kind == UI_INPUT_POINTER_UP) {
         if (event->pointer_button > 1) return UI_STATUS_UNSUPPORTED;
         if (event->kind == UI_INPUT_POINTER_DOWN) {
-            int previous = view->focused;
+            int previous = view->focused, focus_hit=hit;
+            while(focus_hit>=0&&view->nodes[focus_hit].kind!=2&&!lw_input(&view->nodes[focus_hit]))focus_hit=view->nodes[focus_hit].parent;
+            if(view->focused!=focus_hit)lw_cancel_composition(view);
             view->pressed = hit;
-            view->focused = hit >= 0 && !view->nodes[hit].disabled && view->nodes[hit].kind >= 2 ? hit : -1;
-            if (view->focused >= 0 && view->nodes[hit].edit) SetFocus(view->nodes[hit].edit);
+            view->focused = focus_hit>=0&&!lw_disabled(view,focus_hit)?focus_hit:-1;
+            if (view->hwnd) SetFocus(view->hwnd);
+            lw_text_pointer(view,hit,event->x,event->y,0);
             if (previous != view->focused) { (void)lw_event(view,previous,4,0); (void)lw_event(view,view->focused,3,0); }
-            if (hit >= 0 && !view->nodes[hit].disabled) (void)lw_event(view,hit,7,0);
+            if (hit >= 0 && !lw_disabled(view,hit)) (void)lw_event(view,hit,7,0);
             lw_layout(view);
             return UI_STATUS_OK;
         }
-        if (hit >= 0 && hit == view->pressed && !view->nodes[hit].disabled) {
+        view->dragging = 0; if (view->hwnd && GetCapture() == view->hwnd) ReleaseCapture();
+        if (hit >= 0 && hit == view->pressed && !lw_disabled(view,hit)) {
             ui_status_t status;
             view->pressed = -1; status = lw_event(view,hit,0,0); lw_layout(view); return status;
         }
         view->pressed = -1; return UI_STATUS_OK;
     }
     if (event->kind == UI_INPUT_POINTER_MOVE) {
+        if (view->dragging) lw_text_pointer(view,view->focused,event->x,event->y,1);
         if (hit != view->hovered) {
             (void)lw_event(view,view->hovered,6,0); view->hovered = hit;
             (void)lw_event(view,hit,5,0); lw_layout(view);
@@ -1866,6 +1787,8 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
         return UI_STATUS_OK;
     }
     if (event->kind == UI_INPUT_WHEEL) {
+        (void)lw_event(view,hit,8,0);
+        if (view->default_prevented) return UI_STATUS_OK;
         while (hit >= 0 && !view->nodes[hit].style.scroll && !view->nodes[hit].style.scroll_x) hit = view->nodes[hit].parent;
         if (hit < 0) return UI_STATUS_UNSUPPORTED;
         {
@@ -1877,39 +1800,18 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
         }
         lw_layout(view); return UI_STATUS_OK;
     }
-    if (event->kind == UI_INPUT_TEXT || (event->kind == UI_INPUT_KEY_DOWN && event->key_code == VK_BACK)) {
-        lw_node_t *n;
-        size_t length;
-        wchar_t *wide;
-        if (view->focused < 0 || view->nodes[view->focused].kind < 3 || view->nodes[view->focused].disabled || view->nodes[view->focused].readonly) return UI_STATUS_NOT_FOUND;
-        n = &view->nodes[view->focused]; length = strlen(n->value);
-        if (event->kind == UI_INPUT_TEXT) {
-            size_t added;
-            if (!event->text_utf8) return UI_STATUS_INVALID_ARGUMENT;
-            added = strlen(event->text_utf8);
-            wide = lw_wide(event->text_utf8);
-            if (!wide || length + added >= sizeof(n->value)) { free(wide); return UI_STATUS_VALIDATION_FAILED; }
-            free(wide); memcpy(n->value + length, event->text_utf8, added + 1);
-        } else if (length) {
-            do { --length; } while (length && ((unsigned char)n->value[length] & 0xc0) == 0x80);
-            n->value[length] = 0;
-        }
-        if (n->edit) {
-            wide = lw_edit_wide(n->value,n->kind == 4); view->suppress_edit = 1;
-            if (wide) SetWindowTextW(n->edit, wide);
-            view->suppress_edit = 0; free(wide);
-        }
-        { ui_status_t status = lw_event(view,view->focused,1,0); if (view->dirty) lw_layout(view); return status; }
-    }
+    if (event->kind == UI_INPUT_TEXT) return lw_text_insert(view,event->text_utf8);
     if (event->kind == UI_INPUT_KEY_DOWN) {
+        if (view->composing && (event->key_code == VK_RETURN || event->key_code == VK_ESCAPE)) return UI_STATUS_OK;
+        if (lw_text_key(view,event)) return UI_STATUS_OK;
         if (event->key_code == VK_TAB) {
             int direction = event->modifiers & UI_INPUT_MODIFIER_SHIFT ? -1 : 1;
             int i, start = view->focused;
             for (i = 0; i < view->node_count; ++i) {
                 start = (start + direction + view->node_count) % view->node_count;
-                if (view->nodes[start].used && view->nodes[start].visible && !view->nodes[start].disabled && view->nodes[start].kind >= 2) {
-                    (void)lw_event(view,view->focused,4,0); view->focused = start;
-                    if (view->nodes[start].edit) SetFocus(view->nodes[start].edit); else if (view->hwnd) SetFocus(view->hwnd);
+                if (view->nodes[start].used && view->nodes[start].visible && !view->nodes[start].disabled && (view->nodes[start].kind == 2 || lw_input(&view->nodes[start]))) {
+                    lw_cancel_composition(view);(void)lw_event(view,view->focused,4,0); view->focused = start;
+                    if (view->hwnd) SetFocus(view->hwnd); lw_caret(view);
                     (void)lw_event(view,start,3,0); lw_layout(view); return UI_STATUS_OK;
                 }
             }
@@ -1917,11 +1819,14 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
         if (view->focused >= 0) {
             int focused = view->focused;
             ui_status_t status = lw_event(view,focused,2,event->key_code);
-            if (view->focused == focused && view->nodes[focused].used && view->nodes[focused].kind == 2 && (event->key_code == VK_RETURN || event->key_code == VK_SPACE)) status = lw_event(view,focused,0,0);
+            if (!view->default_prevented && view->focused == focused && view->nodes[focused].used && view->nodes[focused].kind == 2 && (event->key_code == VK_RETURN || event->key_code == VK_SPACE)) status = lw_event(view,focused,0,0);
+            if (!view->default_prevented) (void)ui_host_dispatch_shortcut(view->host,event->key_code,event->modifiers,lw_input(&view->nodes[focused]));
             if (view->dirty) lw_layout(view);
             return status;
         }
-        { ui_status_t status = lw_event(view,view->root,2,event->key_code); if (view->dirty) lw_layout(view); return status; }
+        { ui_status_t status = lw_event(view,view->root,2,event->key_code);
+          if(!view->default_prevented)(void)ui_host_dispatch_shortcut(view->host,event->key_code,event->modifiers,0);
+          if (view->dirty) lw_layout(view); return status; }
     }
     return UI_STATUS_UNSUPPORTED;
 }
@@ -1982,7 +1887,7 @@ static ui_status_t lw_post_json(void *user, void *data, const char *json)
     callback = JS_GetPropertyStr(ctx,ui,"onmessage");
     if (JS_IsFunction(ctx,callback)) {
         result = JS_Call(ctx,callback,ui,1,&parsed);
-        if (JS_IsException(result)) { JSValue exception = JS_GetException(ctx); JS_FreeValue(ctx,exception); status = UI_STATUS_VALIDATION_FAILED; }
+        if (JS_IsException(result)) { JSValue exception = JS_GetException(ctx);const char *error=JS_ToCString(ctx,exception);fprintf(stderr,"Web update: %s\n",error?error:"unknown");JS_FreeCString(ctx,error);JS_FreeValue(ctx,exception);status = UI_STATUS_VALIDATION_FAILED; }
         JS_FreeValue(ctx,result);
     }
     JS_FreeValue(ctx,callback); JS_FreeValue(ctx,ui);
@@ -1993,7 +1898,7 @@ static ui_status_t lw_post_json(void *user, void *data, const char *json)
     for (i = 0; i < count && status == UI_STATUS_OK; ++i) {
         callback = JS_GetPropertyUint32(ctx,listeners,i);
         result = JS_Call(ctx,callback,global,1,&event);
-        if (JS_IsException(result)) { JSValue exception = JS_GetException(ctx); JS_FreeValue(ctx,exception); status = UI_STATUS_VALIDATION_FAILED; }
+        if (JS_IsException(result)) { JSValue exception=JS_GetException(ctx);const char *error=JS_ToCString(ctx,exception);fprintf(stderr,"Web listener: %s\n",error?error:"unknown");JS_FreeCString(ctx,error);JS_FreeValue(ctx,exception);status=UI_STATUS_VALIDATION_FAILED; }
         JS_FreeValue(ctx,result); JS_FreeValue(ctx,callback);
     }
     JS_FreeValue(ctx,event); JS_FreeValue(ctx,listeners); JS_FreeValue(ctx,global); JS_FreeValue(ctx,parsed);
@@ -2008,7 +1913,7 @@ static ui_status_t lw_get_capabilities(void *user, void *data, uint64_t *capabil
     (void)user;
     if (!view || !capabilities) return UI_STATUS_INVALID_ARGUMENT;
     *capabilities = UI_WEB_CAP_JSON_MESSAGES | UI_WEB_CAP_DYNAMIC_DOM |
-        UI_WEB_CAP_RESPONSIVE_LAYOUT | UI_WEB_CAP_TEXT_INPUT;
+        UI_WEB_CAP_RESPONSIVE_LAYOUT | UI_WEB_CAP_TEXT_INPUT | UI_WEB_CAP_IMAGES | UI_WEB_CAP_WEB_TEXT_EDIT | UI_WEB_CAP_COMPONENTS;
     if (view->hwnd) *capabilities |= UI_WEB_CAP_NATIVE_WINDOW;
     return UI_STATUS_OK;
 }
@@ -2019,10 +1924,17 @@ static void *lw_native_handle(void *user, void *data)
     return view ? view->hwnd : NULL;
 }
 
+static void lw_image_changed(void *user,void *data,uint64_t id)
+{
+    lw_view_t *view=(lw_view_t *)data;int i;(void)user;
+    if(!view||!view->hwnd)return;
+    for(i=0;i<view->node_count;++i)if(view->nodes[i].used&&view->nodes[i].image==id&&view->nodes[i].visible){
+        RECT rect=lw_pixel_rect(view,view->nodes[i].clip);InvalidateRect(view->hwnd,&rect,FALSE);}
+}
 static const ui_web_backend_ops_t lw_ops = {
     sizeof(ui_web_backend_ops_t), lw_create_view, lw_destroy_view, lw_load_html,
     lw_resize, lw_dispatch_input, lw_invalidate, lw_get_element_rect, lw_set_rect,
-    lw_set_message_handler,lw_post_json,lw_get_capabilities,lw_native_handle
+    lw_set_message_handler,lw_post_json,lw_get_capabilities,lw_native_handle,lw_image_changed
 };
 
 ui_web_backend_t *ui_light_web_backend_create(const ui_light_web_config_t *config)

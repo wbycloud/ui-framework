@@ -153,6 +153,11 @@ static int surface_dispatch_native_input(ui_surface_t *surface, HWND hwnd,
         if (GetCapture() == hwnd) ReleaseCapture();
         return 0;
     }
+    if (!surface->host->dispatch_blocked && (message == WM_KEYDOWN || message == WM_SYSKEYDOWN)) {
+        uint32_t modifiers = input_modifiers();
+        if ((uintptr_t)l_param & ((uintptr_t)1u << 29)) modifiers |= UI_INPUT_MODIFIER_ALT;
+        if (ui_host_dispatch_shortcut(surface->host, (uint32_t)w_param, modifiers, 0) != 0) return 1;
+    }
     if (surface->input == NULL || surface->host->dispatch_blocked) {
         platform->pending_high_surrogate = 0;
         return 0;

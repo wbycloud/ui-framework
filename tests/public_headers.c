@@ -4,6 +4,8 @@
 #include "ui_framework/assistant.h"
 #include "ui_framework/light_web.h"
 #include "ui_framework/webview2.h"
+#include "ui_framework/components.h"
+#include "ui_framework/images.h"
 int main(void)
 {
     ui_host_config_t config = {0};
