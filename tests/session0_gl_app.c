@@ -124,7 +124,11 @@ static ui_status_t UI_APP_CALL mount(void *data,const ui_app_context_t *context)
      for(size_t i=0;i<sizeof(ids)/sizeof(ids[0]);++i){cmd.id=ids[i];st=ui_assistant_register_command(context->assistant,&cmd);if(st!=UI_STATUS_OK)return st;}}
     EXPECT(s,ui_host_get_run_mode(context->host,&mode)==UI_STATUS_OK&&mode==UI_RUN_OFFSCREEN);
     st=ui_app_resource_read(context,"marker.txt",&resource,&bytes);if(st!=UI_STATUS_OK)return st;
-    EXPECT(s,bytes==strlen("Session0 real application resource\n")&&!memcmp(resource,"Session0 real application resource\n",bytes));
+    /* Windows checkout may use CRLF. Validate the actual packaged bytes and
+     * the resource API's trailing NUL, accepting either text line ending. */
+    {const char *marker="Session0 real application resource";size_t n=strlen(marker);const char *text=(const char *)resource;
+     EXPECT(s,((bytes==n+1&&text[n]=='\n')||(bytes==n+2&&text[n]=='\r'&&text[n+1]=='\n'))&&
+         !memcmp(text,marker,n)&&text[bytes]=='\0');}
     ui_app_resource_release(resource);
     length=GetEnvironmentVariableW(L"UI_SESSION0_OSMESA_DLL",path,32768);
     if(!length||length>=32768||!WideCharToMultiByte(CP_UTF8,WC_ERR_INVALID_CHARS,path,-1,utf8,sizeof(utf8),NULL,NULL))return UI_STATUS_INVALID_ARGUMENT;
