@@ -1,0 +1,56 @@
+name: Windows C11 regression matrix
+on:
+  push:
+    branches: [main, codex/menus-offscreen]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    runs-on: windows-2022
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        configuration: [native, light, webview2, osmesa]
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - name: Pinned dependencies and real Runtime
+        shell: pwsh
+        run: ./tools/windows-ci.ps1 -Configuration ${{ matrix.configuration }} -Stage prepare
+      - name: C11 x64 build
+        shell: pwsh
+        run: ./tools/windows-ci.ps1 -Configuration ${{ matrix.configuration }} -Stage build
+      - name: Necessary regressions
+        shell: pwsh
+        run: ./tools/windows-ci.ps1 -Configuration ${{ matrix.configuration }} -Stage test
+      - name: Public result and environment
+        if: always()
+        shell: pwsh
+        run: |
+          $directory = 'build/ci-evidence-${{ matrix.configuration }}'
+          foreach ($file in @('manifest.json','dependencies.log','runtime.log','regression.log')) {
+            $path = "$directory/$file"
+            if (Test-Path $path) {
+              $value = Get-Content $path -Raw
+              "$file`n``````text`n$value`n``````" | Add-Content $env:GITHUB_STEP_SUMMARY
+              for ($offset=0;$offset -lt $value.Length;$offset+=3000) {
+                $part = $value.Substring($offset,[Math]::Min(3000,$value.Length-$offset)).Replace('%','%25').Replace("`r",'%0D').Replace("`n",'%0A')
+                Write-Output "::notice file=.github/workflows/windows-regression.yml,line=1,title=${{ matrix.configuration }} $file offset=${offset}::$part"
+              }
+            }
+          }
+          foreach ($file in @('configure.log','build.log')) {
+            $path = "$directory/$file"
+            if (Test-Path $path) { Get-Content $path -Tail 60 }
+          }
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: windows-${{ matrix.configuration }}-${{ github.sha }}-${{ github.run_attempt }}
+          path: build/ci-evidence-${{ matrix.configuration }}/
+          if-no-files-found: error
+          retention-days: 30
