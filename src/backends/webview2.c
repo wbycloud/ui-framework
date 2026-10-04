@@ -39,6 +39,7 @@ struct navigation_handler {
     ICoreWebView2NavigationCompletedEventHandler iface;
     LONG refs;
     webview2_view_t *view;
+    int drain_cancelled;
 };
 
 struct message_handler {
@@ -387,6 +388,7 @@ static ULONG STDMETHODCALLTYPE navigation_release(
     navigation_handler_t *handler = (navigation_handler_t *)self;
     LONG refs = InterlockedDecrement(&handler->refs);
     if (refs == 0) {
+        if(handler->drain_cancelled)view_release(handler->view);
         free(handler);
     }
     return (ULONG)refs;
@@ -400,7 +402,13 @@ static HRESULT STDMETHODCALLTYPE navigation_completed(
     navigation_handler_t *handler = (navigation_handler_t *)self;
     BOOL success = FALSE;
     UINT64 navigation_id = 0;
-    (void)sender;
+    if(handler->drain_cancelled){
+        webview2_view_t *view=handler->view;
+        ICoreWebView2_remove_NavigationCompleted(sender,view->navigation_token);
+        view->navigation_handler=NULL;
+        self->lpVtbl->Release(self);
+        return S_OK;
+    }
     if (handler->view != NULL) {
         (void)ICoreWebView2NavigationCompletedEventArgs_get_NavigationId(args, &navigation_id);
         if (navigation_id != handler->view->navigation_id) return S_OK;
@@ -816,17 +824,23 @@ static HRESULT STDMETHODCALLTYPE controller_completed(
          * Retain only the SDK object; deferred view cleanup closes it after
          * this completion stack has returned, without touching the host. */
         if (controller != NULL) {
-            script_handler_t *completion;
+            navigation_handler_t *completion;
             view->controller=controller;ICoreWebView2Controller_AddRef(controller);
             /* Runtime creation can complete before its initial renderer is
-             * ready. An inert script completion drains that startup work;
-             * no application callback or document is installed on this view. */
+             * ready. Complete an inert navigation before deferred Close;
+             * ExecuteScript on the initial document can leave startup work
+             * retained. No application callback or document is installed. */
             if(SUCCEEDED(ICoreWebView2Controller_get_CoreWebView2(controller,&view->webview))&&
-               (completion=(script_handler_t *)calloc(1,sizeof(*completion)))!=NULL){
-                completion->iface.lpVtbl=&script_vtable;completion->refs=1;completion->view=view;
-                view_add_ref(view);
-                (void)ICoreWebView2_ExecuteScript(view->webview,L"void 0;",&completion->iface);
-                completion->iface.lpVtbl->Release(&completion->iface);
+               (completion=(navigation_handler_t *)calloc(1,sizeof(*completion)))!=NULL){
+                completion->iface.lpVtbl=&navigation_vtable;completion->refs=1;completion->view=view;completion->drain_cancelled=1;
+                view_add_ref(view);view->navigation_handler=completion;
+                hr=ICoreWebView2_add_NavigationCompleted(view->webview,&completion->iface,&view->navigation_token);
+                if(SUCCEEDED(hr))hr=ICoreWebView2_NavigateToString(view->webview,L"<!doctype html><html></html>");
+                if(FAILED(hr)){
+                    ICoreWebView2_remove_NavigationCompleted(view->webview,view->navigation_token);
+                    view->navigation_handler=NULL;
+                    completion->iface.lpVtbl->Release(&completion->iface);
+                }
             }
         }
         return S_OK;
