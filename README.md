@@ -80,6 +80,8 @@ ctest --test-dir build/native --output-on-failure
 
 该配置不产生 `framework_host.exe`。[嵌入式 EDA](examples/minimal_eda/main.c)自行创建顶层窗口和原生外壳；显式添加 `--legacy` 可验证旧式 WGL 路径。这个参数不适用于宿主加载的 EDA 模块。
 
+Session0／无登录 Windows CI使用独立实际应用DLL、OSMesa frame和资源回收测试，入口及环境硬性检查见[专门验收记录](docs/validation/session0-osmesa-validation.md)。CTest的 `ui_session0_interactive_control` 仅为准备性对照，目标结果单独记录。
+
 ## 开发应用
 
 应用 DLL 使用公共头文件，链接共享框架的 `ui_framework_runtime.lib`，导出 `ui_app_query_v1`，实现实例生命周期并注册 UI 和语义命令。CMake 模块链接 `ui_framework_shared` 可获得公共 include 路径和 shared 编译定义。应用不重复静态链接框架，也不携带替换宿主的 `ui_framework.dll`。

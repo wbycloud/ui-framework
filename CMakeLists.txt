@@ -313,6 +313,25 @@ if(UI_BUILD_TESTS)
         set_tests_properties(ui_webview2_messages PROPERTIES TIMEOUT 25 SKIP_RETURN_CODE 77)
     endif()
     if(WIN32)
+        add_library(ui_session0_gl_app MODULE tests/session0_gl_app.c)
+        target_link_libraries(ui_session0_gl_app PRIVATE ui_framework_shared)
+        add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/session0_gl_app.uapp"
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/session0_gl_package"
+            COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ui_session0_gl_app>" "${CMAKE_CURRENT_BINARY_DIR}/session0_gl_package/ui_session0_gl_app.dll"
+            COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/tests/session0-resources/marker.txt" "${CMAKE_CURRENT_BINARY_DIR}/session0_gl_package/marker.txt"
+            COMMAND $<TARGET_FILE:uapp_pack> "${CMAKE_CURRENT_SOURCE_DIR}/tests/session0_gl_app.ini" "${CMAKE_CURRENT_BINARY_DIR}/session0_gl_package" "${CMAKE_CURRENT_BINARY_DIR}/session0_gl_app.uapp"
+            DEPENDS ui_session0_gl_app uapp_pack tests/session0_gl_app.ini tests/session0-resources/marker.txt VERBATIM)
+        add_custom_target(ui_session0_gl_package ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/session0_gl_app.uapp")
+        add_executable(ui_session0_gl_test tests/session0_gl.c)
+        target_link_libraries(ui_session0_gl_test PRIVATE ui_framework_shared secur32 wtsapi32 psapi advapi32)
+        add_dependencies(ui_session0_gl_test ui_session0_gl_package)
+        if(UI_OSMESA_LIBRARY)
+            file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/session0-control")
+            add_test(NAME ui_session0_interactive_control COMMAND ui_session0_gl_test
+                "${CMAKE_CURRENT_BINARY_DIR}/session0_gl_app.uapp" "${UI_OSMESA_LIBRARY}"
+                "${CMAKE_CURRENT_BINARY_DIR}/session0-control" --allow-interactive)
+            set_tests_properties(ui_session0_interactive_control PROPERTIES TIMEOUT 60)
+        endif()
         add_executable(ui_offscreen_msaa_test tests/offscreen_msaa.c)
         target_link_libraries(ui_offscreen_msaa_test PRIVATE ui_framework_shared)
         add_test(NAME ui_offscreen_msaa COMMAND ui_offscreen_msaa_test)
@@ -547,7 +566,7 @@ endif()
 
 # CMake can double-decode Chinese MSVC /showIncludes diagnostics on a UTF-8
 if(MSVC)
-    foreach(_api5_target ui_menu_access_test ui_offscreen_msaa_test ui_webview2_render_test ui_api5_fixture ui_api5_integration_test ui_api5_native_host_test ui_api4_compat_test)
+    foreach(_api5_target ui_menu_access_test ui_offscreen_msaa_test ui_webview2_render_test ui_api5_fixture ui_api5_integration_test ui_api5_native_host_test ui_api4_compat_test ui_session0_gl_app ui_session0_gl_test)
         if(TARGET ${_api5_target})
             target_compile_options(${_api5_target} PRIVATE /W4 /WX /utf-8)
             target_compile_definitions(${_api5_target} PRIVATE _CRT_SECURE_NO_WARNINGS)

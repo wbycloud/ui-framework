@@ -1,0 +1,95 @@
+name: Session0 OSMesa application
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/session0-osmesa.yml'
+      - 'tools/run-session0-validation.ps1'
+      - 'tests/session0_gl*'
+      - 'tests/session0-resources/**'
+      - 'src/platform/win32_surface.c'
+      - 'src/workspace.c'
+      - 'CMakeLists.txt'
+permissions:
+  contents: read
+jobs:
+  actual-application:
+    runs-on: windows-2022
+    timeout-minutes: 15
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - name: Prepare pinned OSMesa
+        run: |
+          New-Item -ItemType Directory -Force .deps,build/session0-evidence | Out-Null
+          $url = 'https://github.com/pal1000/mesa-dist-win/releases/download/24.3.4/mesa3d-24.3.4-release-msvc.7z'
+          Invoke-WebRequest $url -OutFile .deps/mesa.7z
+          $sha = (Get-FileHash .deps/mesa.7z -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($sha -ne '7ebc711ad1896ac88ab21e142f1017f8ff035f0f342bdb72fbb5e2eb881ba363') { throw 'OSMesa archive hash mismatch' }
+          & 7z x .deps/mesa.7z '-o.deps/mesa-24.3.4' -y | Out-File build/session0-evidence/dependency.log
+          if ($LASTEXITCODE) { throw 'OSMesa extraction failed' }
+          "source=$url`nsha256=$sha" | Add-Content build/session0-evidence/dependency.log
+      - name: Build C11 x64 DLL and runner
+        run: |
+          $vs = & "${env:ProgramFiles(x86)}/Microsoft Visual Studio/Installer/vswhere.exe" -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+          if (!$vs) { throw 'x64 MSVC tools missing' }
+          $env:UI_SESSION0_VS = "$vs/Common7/Tools/VsDevCmd.bat"
+          $env:UI_SESSION0_PROVIDER = (Resolve-Path .deps/mesa-24.3.4/x64/osmesa.dll).Path
+          @'
+          @echo off
+          call "%UI_SESSION0_VS%" -arch=x64 -host_arch=x64 >nul
+          if errorlevel 1 exit /b 1
+          cl 2>build/session0-evidence/compiler.log
+          cmake --version >>build/session0-evidence/compiler.log
+          cmake -S . -B build/session0 -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_BUILD_STANDALONE_HOST=OFF -DUI_FRAMEWORK_ENABLE_LIGHT_WEB=OFF -DUI_FRAMEWORK_ENABLE_WEBVIEW2=OFF "-DUI_OSMESA_LIBRARY=%UI_SESSION0_PROVIDER%" >build/session0-evidence/configure.log 2>&1
+          if errorlevel 1 exit /b 1
+          cmake --build build/session0 --target ui_session0_gl_test >build/session0-evidence/build.log 2>&1
+          exit /b %errorlevel%
+          '@ | Set-Content build/session0-evidence/build.cmd -Encoding ascii
+          & cmd.exe /c build\session0-evidence\build.cmd
+          if ($LASTEXITCODE) { Get-Content build/session0-evidence/build.log -ErrorAction SilentlyContinue; throw 'Build failed' }
+      - name: Actual Session0 and no-login application acceptance
+        run: |
+          ./tools/run-session0-validation.ps1 -BuildDirectory build/session0 -OSMesaLibrary .deps/mesa-24.3.4/x64/osmesa.dll -OutputDirectory build/session0-evidence/target -RequireNoLogin
+      - name: Publish environment and result summary
+        if: always()
+        run: |
+          "Source commit: $env:GITHUB_SHA`n" | Add-Content $env:GITHUB_STEP_SUMMARY
+          foreach ($file in @('manifest.json','run.log','resources.csv','service-cleanup.log')) {
+            $path = "build/session0-evidence/target/$file"
+            if (Test-Path $path) {
+              "`n$file`n``````text" | Add-Content $env:GITHUB_STEP_SUMMARY
+              Get-Content $path | Add-Content $env:GITHUB_STEP_SUMMARY
+              '```' | Add-Content $env:GITHUB_STEP_SUMMARY
+            }
+          }
+          # Public check annotations retain small exact evidence even when
+          # artifact downloads require GitHub login. Escape command payloads.
+          $evidence = @()
+          $log = 'build/session0-evidence/target/run.log'
+          if (Test-Path $log) {
+            $evidence += Get-Content $log | Where-Object { $_ -match '^(Environment|Resources|SESSION0 |NO_LOGIN |Application [1-4] GL|Runner line|App line)' }
+          }
+          foreach ($file in @('manifest.json','resources.csv','service-cleanup.log')) {
+            $path = "build/session0-evidence/target/$file"
+            if (Test-Path $path) { $evidence += "$file`n" + (Get-Content $path -Raw) }
+          }
+          $message = ($evidence -join "`n").Replace('%','%25').Replace("`r",'%0D').Replace("`n",'%0A')
+          Write-Output "::notice file=tests/session0_gl.c,line=1,title=Session0 exact evidence::$message"
+          foreach ($frame in @(Get-ChildItem build/session0-evidence/target -Filter '*.ppm' -ErrorAction SilentlyContinue)) {
+            $sha = (Get-FileHash $frame.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+            $bytes = [Convert]::ToBase64String([IO.File]::ReadAllBytes($frame.FullName))
+            Write-Output "::notice file=tests/session0_gl_app.c,line=1,title=Session0 frame $($frame.Name)::sha256=$sha base64=$bytes"
+          }
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: session0-osmesa-${{ github.sha }}-${{ github.run_attempt }}
+          path: build/session0-evidence/
+          if-no-files-found: error
+          retention-days: 30

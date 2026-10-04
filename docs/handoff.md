@@ -129,6 +129,8 @@ API4未实现的Alt访问键、真正无窗口GL、离屏MSAA、WebView2呈现/�
 
 ## 7. API5本轮交付与接续
 
+2026-10-04优先补验Session0／无登录Windows CI：[独立DLL、OSMesa与服务测试记录](validation/session0-osmesa-validation.md)。准备性200轮对照及原生回归已通过，目标CI尚待实测；不要继承Session1通过结论。新增测试不改产品ABI或版本，原业务应用及SDK/原包保留。
+
 四项实现、依赖、取舍、结构尺寸、失败复现、真实像素和最终日志见[API5验收](validation/api5-validation.md)。完整42项为41PASS/1跨屏SKIP；原生20项为19PASS/1SKIP。原API1/2/3混合宿主及原API4包均0失败，四个原包哈希不变。SDK4完整12个头文件从1f77b2e冻结，原SDK1/2/3未修改。
 
 真正无窗口路径为固定OSMesa24.3.4/llvmpipe软件GL，实际运行应用DLL frame，不创建隐藏HWND或取得窗口DC。旧隐藏WGL独立保留；精确MSAA在两条路径实际为4。OSMesa模块/worker缓存保持到进程结束，16次context重开句柄稳定；不要强制卸载私有提供方模块。Session0/无登录CI仍未验收，没有硬件EGL实现。
