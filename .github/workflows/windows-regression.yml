@@ -45,7 +45,13 @@ jobs:
           }
           foreach ($file in @('configure.log','build.log')) {
             $path = "$directory/$file"
-            if (Test-Path $path) { Get-Content $path -Tail 60 }
+            if (Test-Path $path) {
+              $value = (Get-Content $path -Tail 80) -join "`n"
+              for ($offset=0;$offset -lt $value.Length;$offset+=3000) {
+                $part = $value.Substring($offset,[Math]::Min(3000,$value.Length-$offset)).Replace('%','%25').Replace("`r",'%0D').Replace("`n",'%0A')
+                Write-Output "::notice file=.github/workflows/windows-regression.yml,line=1,title=${{ matrix.configuration }} $file offset=${offset}::$part"
+              }
+            }
           }
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
