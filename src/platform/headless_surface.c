@@ -103,3 +103,6 @@ ui_status_t ui_platform_surface_swap_buffers(ui_surface_t *surface)
     (void)surface;
     return UI_STATUS_UNSUPPORTED;
 }
+
+ui_status_t ui_platform_offscreen_render(ui_surface_t *surface,ui_pixel_buffer_t *pixels)
+{(void)surface;(void)pixels;return UI_STATUS_UNSUPPORTED;}

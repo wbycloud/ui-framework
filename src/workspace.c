@@ -120,7 +120,7 @@ static void changed(ui_workspace_t *w)
 }
 static void wake(ui_workspace_t *w)
 {
-    (void)PostMessageW(w->parent, UI_WORKSPACE_WAKE_MESSAGE, 0, 0);
+    if(w->parent)(void)PostMessageW(w->parent, UI_WORKSPACE_WAKE_MESSAGE, 0, 0);
 }
 static void leave_callback(ui_workspace_t *w)
 {
@@ -381,15 +381,16 @@ static ui_status_t create_instance(ui_workspace_t *w, app_module_t *m,
     p->context.abi_version = UI_APPLICATION_ABI_VERSION;
     p->context.workspace = w;
     p->context.instance_id = (uint64_t)InterlockedIncrement64(&instance_sequence);
-    p->container = CreateWindowExW(0, L"UiFrameworkApplicationContainerV1", L"",
+    if(w->config.run_mode==UI_RUN_WINDOWED)p->container = CreateWindowExW(0, L"UiFrameworkApplicationContainerV1", L"",
         WS_CHILD | WS_CLIPCHILDREN | WS_CLIPSIBLINGS, 0, 0, 1, 1,
         w->parent, NULL, GetModuleHandleW(L"ui_framework.dll"), p);
-    if (p->container == NULL) { free(p); return windows_error(w, "Cannot create application container"); }
+    if (w->config.run_mode==UI_RUN_WINDOWED&&p->container == NULL) { free(p); return windows_error(w, "Cannot create application container"); }
     ZeroMemory(&host, sizeof(host)); host.size = sizeof(host);
     host.api_version = UI_FRAMEWORK_API_VERSION; host.native_parent = p->container;
     host.user_data = p; host.result_callback = result_received; host.event_callback = event_received;
     p->context.host = ui_host_create(&host);
     if (!p->context.host) { DestroyWindow(p->container); free(p); return error_text(w, UI_STATUS_PLATFORM_ERROR, "Cannot create application host"); }
+    p->context.host->run_mode=w->config.run_mode;
     p->context.host->dispatch_idle = host_idle;
     p->context.host->dispatch_idle_data = w;
     /* Establish host geometry before application create/mount can start work.
@@ -397,7 +398,7 @@ static ui_status_t create_instance(ui_workspace_t *w, app_module_t *m,
     if(!add_budget(w,p->context.instance_id)){status=UI_STATUS_OUT_OF_MEMORY;goto fail;}
     status = ui_host_set_dpi(p->context.host, w->dpi);
     if (status != UI_STATUS_OK) goto fail;
-    (void)SetWindowPos(p->container, NULL, MulDiv(w->rect.x,(int)w->dpi,96),
+    if(p->container)(void)SetWindowPos(p->container, NULL, MulDiv(w->rect.x,(int)w->dpi,96),
         MulDiv(w->rect.y,(int)w->dpi,96), MulDiv(w->rect.width,(int)w->dpi,96),
         MulDiv(w->rect.height,(int)w->dpi,96), SWP_NOZORDER|SWP_NOACTIVATE);
     status = ui_host_resize(p->context.host,w->rect.width,w->rect.height);
@@ -423,7 +424,7 @@ static ui_status_t create_instance(ui_workspace_t *w, app_module_t *m,
     ZeroMemory(&shell, sizeof(shell)); shell.size = sizeof(shell);
     shell.host = p->context.host; shell.native_parent = p->container;
     shell.menu_owner = w->parent; shell.flags = UI_NATIVE_SHELL_MANAGED_ACTIVATION;
-    p->context.shell = w->config.shell_mode == UI_WORKSPACE_SHELL_WEB ?
+    p->context.shell = w->config.run_mode==UI_RUN_OFFSCREEN?ui_native_shell_create_offscreen(&shell):w->config.shell_mode == UI_WORKSPACE_SHELL_WEB ?
         ui_native_shell_create_web(&shell) : ui_native_shell_create(&shell);
     if (!p->context.shell) { status = UI_STATUS_PLATFORM_ERROR; goto fail; }
     /* Add before mount so resource reads and callbacks can resolve the instance. */
@@ -449,7 +450,7 @@ static void set_closing(app_instance_t *p, int closing)
     ++p->workspace->depth;
     p->closing = closing;
     p->context.host->dispatch_blocked = closing;
-    EnableWindow(p->container, !closing);
+    if(p->container)EnableWindow(p->container, !closing);
     if (closing) {
         if(p->active && p->module->api.set_active) p->module->api.set_active(p->state,0);
         (void)ui_native_shell_set_active(p->context.shell, 0);
@@ -464,11 +465,15 @@ ui_workspace_t *ui_workspace_create(const ui_workspace_config_t *config)
 {
     ui_workspace_t *w;
     if (!config || config->size < offsetof(ui_workspace_config_t, reserved_v1) ||
-        !IsWindow((HWND)config->native_parent) || !create_container_class()) return NULL;
+        (config->size<offsetof(ui_workspace_config_t,run_mode)+sizeof(config->run_mode)||config->run_mode==UI_RUN_WINDOWED)
+        &&(!IsWindow((HWND)config->native_parent)||!create_container_class())) return NULL;
     w = (ui_workspace_t *)calloc(1, sizeof(*w));
     if (w != NULL) {
         size_t size = config->size < sizeof(w->config) ? config->size : sizeof(w->config);
         memcpy(&w->config, config, size);
+        if(config->size<offsetof(ui_workspace_config_t,run_mode)+sizeof(config->run_mode))w->config.run_mode=UI_RUN_WINDOWED;
+        if(w->config.run_mode!=UI_RUN_WINDOWED&&w->config.run_mode!=UI_RUN_OFFSCREEN){free(w);return NULL;}
+        if(w->config.run_mode==UI_RUN_OFFSCREEN&&config->native_parent){free(w);return NULL;}
         if (w->config.shell_mode != UI_WORKSPACE_SHELL_NATIVE &&
             w->config.shell_mode != UI_WORKSPACE_SHELL_WEB) { free(w); return NULL; }
         w->parent = (HWND)config->native_parent;
@@ -538,10 +543,10 @@ ui_status_t ui_workspace_activate(ui_workspace_t *w, uint64_t id)
         old->active = 0;
         if (old->module->api.set_active) old->module->api.set_active(old->state, 0);
         (void)ui_native_shell_set_active(old->context.shell, 0);
-        ShowWindow(old->container, SW_HIDE);
+        if(old->container)ShowWindow(old->container, SW_HIDE);
     }
     w->active_id = id; p->active = 1;
-    ShowWindow(p->container, SW_SHOW);
+    if(p->container)ShowWindow(p->container, SW_SHOW);
     (void)ui_native_shell_set_active(p->context.shell, 1);
     if (p->module->api.set_active) p->module->api.set_active(p->state, 1);
     leave_callback(w); changed(w);
@@ -615,7 +620,7 @@ ui_status_t ui_workspace_set_rect(ui_workspace_t *w, const ui_rect_t *rect, uint
     for (p = w->instances; p; p = p->next) {
         ui_status_t s = ui_host_set_dpi(p->context.host, dpi);
         if (s != UI_STATUS_OK) result = s;
-        (void)SetWindowPos(p->container, NULL, x, y, right-x, bottom-y,
+        if(p->container)(void)SetWindowPos(p->container, NULL, x, y, right-x, bottom-y,
                            SWP_NOZORDER | SWP_NOACTIVATE);
         s = ui_host_resize(p->context.host, rect->width, rect->height);
         if (s != UI_STATUS_OK) result = s;
@@ -655,6 +660,8 @@ ui_status_t ui_workspace_handle_message(ui_workspace_t *w, void *hwnd,
     status = ui_native_shell_handle_message(p->context.shell, hwnd, message, wp, lp, result);
     leave_callback(w); return status;
 }
+ui_status_t ui_workspace_get_run_mode(const ui_workspace_t *w,ui_run_mode_t *mode)
+{if(!w||!mode)return UI_STATUS_INVALID_ARGUMENT;*mode=w->config.run_mode;return UI_STATUS_OK;}
 const char *ui_workspace_last_error(const ui_workspace_t *w) { return w ? w->error : "Invalid workspace"; }
 static ui_status_t post_copy(ui_workspace_t *w, enum post_kind kind, uint64_t id,
     uint64_t request, int value, const char *name, const char *text)
@@ -718,7 +725,7 @@ ui_status_t ui_workspace_post_thumbnail(ui_workspace_t *w,uint64_t id,const char
     if(!p->name||(!result->failed&&!p->pixels)){free_post(p);return UI_STATUS_OUT_OF_MEMORY;}
     p->bytes=sizeof(*p)+strlen(component)+1+bytes;return enqueue_component(w,p);
 }
-void ui_workspace_poll(ui_workspace_t *w)
+static void workspace_poll_impl(ui_workspace_t *w,uint32_t budget_count)
 {
     posted_message_t *messages, *next; app_instance_t **link;
     app_module_t **module_link; int did_change = 0;
@@ -730,7 +737,9 @@ void ui_workspace_poll(ui_workspace_t *w)
       } }
     w->polling = 1;
     EnterCriticalSection(&w->queue_lock);
-    messages = w->queue_head; w->queue_head = w->queue_tail = NULL;
+    messages = w->queue_head;
+    {posted_message_t *last=messages;uint32_t count=1;while(last&&last->next&&count<budget_count){last=last->next;++count;}
+     if(last){w->queue_head=last->next;last->next=NULL;if(!w->queue_head)w->queue_tail=NULL;}}
     LeaveCriticalSection(&w->queue_lock);
     while (messages) {
         app_instance_t *p = find_instance(w, messages->id);
@@ -807,6 +816,18 @@ void ui_workspace_poll(ui_workspace_t *w)
     }
     w->polling = 0;
     if (did_change) changed(w);
+}
+void ui_workspace_poll(ui_workspace_t *w){workspace_poll_impl(w,UINT32_MAX);}
+ui_status_t ui_workspace_flush(ui_workspace_t *w,uint32_t budget_count)
+{
+    app_instance_t *p;ui_status_t result=UI_STATUS_OK;int pending;
+    if(!w||!budget_count||budget_count>1024)return UI_STATUS_INVALID_ARGUMENT;
+    if(w->depth||w->polling)return UI_STATUS_CANCELLED;
+    workspace_poll_impl(w,budget_count);++w->depth;
+    for(p=w->instances;p;p=p->next)for(ui_web_view_t *v=p->context.host->web_views;v;v=v->host_next){
+        ui_status_t s=ui_web_view_flush(v,budget_count);if(s!=UI_STATUS_OK&&s!=UI_STATUS_UNSUPPORTED&&result==UI_STATUS_OK)result=s;}
+    leave_callback(w);EnterCriticalSection(&w->queue_lock);pending=w->queue_head!=NULL;LeaveCriticalSection(&w->queue_lock);
+    return result==UI_STATUS_OK&&pending?UI_STATUS_CANCELLED:result;
 }
 ui_status_t ui_workspace_destroy(ui_workspace_t *w)
 {

@@ -62,7 +62,8 @@ int wmain(int argc,wchar_t **argv)
     CHECK(ui_component_get_state(tree,&state)==UI_STATUS_OK&&state.total_count==100100&&state.cached_rows<5000&&state.rendered_nodes<1024);
     printf("100k expanded tree actual DOM=%zu cached rows=%zu total=%llu\n",state.rendered_nodes,state.cached_rows,(unsigned long long)state.total_count);
     CHECK(ui_workspace_invoke(window.workspace,first,"demo.context","{\"id\":\"1001\"}",&request)==UI_STATUS_OK);pump_for(10);
-    CHECK(press(content_view(a.host,(HWND)ui_native_shell_panel_handle(a.shell,"tree")),"node-menu-0"));pump_for(30);
+    {ui_element_presentation_t item={0};ui_input_event_t event={0};item.size=sizeof(item);CHECK(ui_host_menu_get_presentation(a.host,"menu-item-node.dialog",&item)==UI_STATUS_OK&&item.visible);
+        event.size=sizeof(event);event.x=item.clip.x+4;event.y=item.clip.y+4;event.pointer_button=1;event.kind=UI_INPUT_POINTER_DOWN;CHECK(ui_host_menu_dispatch_input(a.host,&event)==UI_STATUS_OK);event.kind=UI_INPUT_POINTER_UP;CHECK(ui_host_menu_dispatch_input(a.host,&event)==UI_STATUS_OK);}pump_for(30);
     CHECK(ui_component_get_state(ui_component_find(a.host,"dialog"),&state)==UI_STATUS_OK&&state.modal);
     CHECK(!IsWindowEnabled((HWND)a.native_container)&&IsWindowEnabled((HWND)b.native_container));
     CHECK(ui_workspace_activate(window.workspace,second)==UI_STATUS_OK);CHECK(ui_workspace_activate(window.workspace,first)==UI_STATUS_OK);

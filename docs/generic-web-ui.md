@@ -1,6 +1,6 @@
-# 通用 Web UI：API 3 接入约定
+# 通用 Web UI：API 3/4 接入约定
 
-适用于 **SDK 0.3.0 开发版 / API 3 / 标准修订 3**。应用 ABI、导出入口和包格式保持 1。实际测试及未实测条件见[验收记录](validation/api3-validation.md)。
+本文的 API3 组件合同在 **SDK 0.4.0 开发版 / API4 / 标准修订4** 继续适用，应用 ABI、导出入口和包格式保持1。API4菜单与离屏增补见[接口约定](framework-menu-offscreen.md)；历史及当前测试、未实测条件分别见[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
 
 ## 1. 架构、复用与边界
 
@@ -44,7 +44,7 @@ source 在 UI 线程执行。UI_QUERY_ROWS 包含 component_generation、request
 
 表格按视口查询，上下各两行、左右各一列缓冲；起始边界减少前置缓冲。缓冲节点隐藏/裁剪，数据量不决定 DOM 数。滚轮按行移动，Shift+滚轮及列按钮移动列，支持分页。保留 1024 节点预算，根据列数限制窗口大小，极大视口继续分页。显式 query 则使用调用者范围，不自动加缓冲。
 
-树保存展开分支计数和位置元数据，按扁平窗口定位，不预生成后代。展开按需请求、折叠保留状态、F2 重命名；右键命令可调用 show_menu，复用指定 menu_path 的现有注册项显示 Web 节点菜单，最多32项，命令携带项目ID。LIST 复用行窗口，可显示图标和单元格。
+树保存展开分支计数和位置元数据，按扁平窗口定位，不预生成后代。展开按需请求、折叠保留状态、F2 重命名；右键命令可调用 show_menu，复用指定 menu_path 的现有注册项显示 Web 节点菜单，API4转发到独立公共Web弹窗，单层最多128项并分页；命令携带项目ID。详见[菜单约定](framework-menu-offscreen.md)。LIST 复用行窗口，可显示图标和单元格。
 
 局部更新保留稳定节点、草稿、焦点和选择，更新图片不重建行。缓存之外的行由应用更新数据源后查询；直接 update/remove 按 ID 操作当前缓存。get_state 返回实际 DOM 数、累计行节点创建数、缓存行/字节、呈现错误，注册成功不代表页面呈现成功。
 

@@ -1,0 +1,5 @@
+# 冻结 SDK3 公共头文件
+
+来自074a70fa5d2e04dde3b872a76641571c158db7e6的公共头文件，内容保持原样。generic_components_app优先使用本目录编译并声明API3，测试新运行库接受旧尺寸与API3模块。API4新增能力由framework_features_app使用当前头文件验证。
+
+原API3二进制包另外保存于本地基线，通过UI_LEGACY_COMPONENT_PACKAGE运行原包测试；重新编译调用方不替代原包证据。构建产物不提交仓库。

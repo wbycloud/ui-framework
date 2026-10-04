@@ -95,6 +95,8 @@ typedef struct ui_workspace_config {
     uintptr_t reserved_v1;
     /* Appended. Zero preserves native embedding; standalone uses WEB. */
     ui_workspace_shell_mode_t shell_mode;
+    uint32_t reserved_v3; /* Preserve SDK1/2/3 complete tail padding. Zero. */
+    ui_run_mode_t run_mode; /* API4: explicit optional no-HWND workspace. */
 } ui_workspace_config_t;
 
 typedef struct ui_app_instance_info {
@@ -111,6 +113,7 @@ typedef struct ui_app_instance_info {
     void *native_container;
 } ui_app_instance_info_t;
 
+UI_API ui_status_t ui_workspace_get_run_mode(const ui_workspace_t *,ui_run_mode_t *);
 UI_API ui_workspace_t *ui_workspace_create(const ui_workspace_config_t *config);
 /* Only succeeds after all instances have closed and all modules unloaded.
    On failure the workspace remains valid, including the copied-message queue. */
@@ -139,6 +142,10 @@ UI_API ui_status_t ui_workspace_handle_message(ui_workspace_t *workspace,
     intptr_t *result);
 /* Poll on UI thread after WAKE_MESSAGE. Never destroys a current callback. */
 UI_API void ui_workspace_poll(ui_workspace_t *workspace);
+/* UI-thread: at most budget copied messages, and budget jobs per Web view,
+ * range 1..1024. CANCELLED means more work/deferred callback, not a timeout.
+ * Idle does not imply worker completion; close still waits for ALLOW. */
+UI_API ui_status_t ui_workspace_flush(ui_workspace_t *,uint32_t budget);
 UI_API const char *ui_workspace_last_error(const ui_workspace_t *workspace);
 
 /* Thread-safe copied delivery. Workspace remains alive until workers stop.

@@ -341,9 +341,12 @@ void ui_dispatch_leave(ui_host_t *host)
         host->dispatch_idle(host->dispatch_idle_data);
 }
 
+ui_status_t ui_host_get_run_mode(const ui_host_t *host,ui_run_mode_t *mode)
+{if(!host||!mode)return UI_STATUS_INVALID_ARGUMENT;*mode=host->run_mode;return UI_STATUS_OK;}
+
 int ui_framework_supports_api(uint32_t api_version)
 {
-    return api_version >= 1u && api_version <= 3u;
+    return api_version >= 1u && api_version <= 4u;
 }
 
 ui_host_t *ui_host_create(const ui_host_config_t *config)
@@ -456,6 +459,7 @@ void ui_host_destroy(ui_host_t *host)
         return;
     }
 
+    ui_menus_destroy(host);
     ui_components_destroy(host);
     while (host->surfaces != NULL) {
         ui_surface_destroy(host->surfaces);
@@ -481,6 +485,7 @@ ui_status_t ui_host_resize(ui_host_t *host, int width, int height)
         return UI_STATUS_INVALID_ARGUMENT;
     }
 
+    if(host->host_rect.width!=width||host->host_rect.height!=height)(void)ui_host_close_menu(host);
     host->host_rect.x = 0;
     host->host_rect.y = 0;
     host->host_rect.width = width;
@@ -500,6 +505,7 @@ ui_status_t ui_host_set_dpi(ui_host_t *host, uint32_t dpi)
 
     status = UI_STATUS_OK;
     if (host->dpi != dpi) {
+        (void)ui_host_close_menu(host);
         host->dpi = dpi;
         status = ui_layout_recompute(host);
     }
@@ -759,7 +765,7 @@ ui_status_t ui_host_register_toolbar(ui_host_t *host,
     ui_toolbar_entry_t *entry;
 
     if (host == NULL || desc == NULL ||
-        !valid_size(desc->size, sizeof(*desc)) ||
+        !valid_size(desc->size, offsetof(ui_toolbar_desc_t, display)) ||
         desc->id == NULL || desc->id[0] == '\0' ||
         desc->title == NULL) {
         return UI_STATUS_INVALID_ARGUMENT;
@@ -774,6 +780,8 @@ ui_status_t ui_host_register_toolbar(ui_host_t *host,
         return UI_STATUS_OUT_OF_MEMORY;
     }
 
+    if(desc->size>=sizeof(*desc))entry->display=desc->display;
+    if(entry->display!=UI_TOOLBAR_TEXT_ICONS&&entry->display!=UI_TOOLBAR_COMPACT){free(entry);return UI_STATUS_INVALID_ARGUMENT;}
     entry->id = ui_strdup(desc->id);
     entry->title = ui_strdup(desc->title);
     entry->order = desc->order;
@@ -904,7 +912,7 @@ ui_status_t ui_host_set_command_state(ui_host_t *host, const char *id,
     if (!host || !id || !state || state->size < sizeof(*state)) return UI_STATUS_INVALID_ARGUMENT;
     entry = find_command(host, id); if (!entry) return UI_STATUS_NOT_FOUND;
     entry->state = *state;
-    ui_components_commands_changed(host);
+    ui_menus_commands_changed(host);
     return ui_host_emit_event(host, "ui.commands.changed", "{}");
 }
 ui_status_t ui_host_get_command_state(const ui_host_t *host, const char *id,
@@ -926,7 +934,7 @@ ui_status_t ui_host_set_item_state(ui_host_t *host, const char *id,
     for (tool=host->toolbar_items; tool; tool=tool->next) if (!strcmp(tool->id,id)) {
         tool->state=*state; found=1;
     }
-    if(found)ui_components_commands_changed(host);
+    if(found)ui_menus_commands_changed(host);
     return found?ui_host_emit_event(host,"ui.commands.changed","{}"):UI_STATUS_NOT_FOUND;
 }
 ui_status_t ui_host_set_item_image(ui_host_t *host,const char *id,uint64_t image)
@@ -936,6 +944,7 @@ ui_status_t ui_host_set_item_image(ui_host_t *host,const char *id,uint64_t image
     if(image&&ui_image_get_info(host,image,&info)!=UI_STATUS_OK)return UI_STATUS_NOT_FOUND;
     for(m=host->menus;m;m=m->next)if(!strcmp(m->id,id)){m->image_id=image;found=1;}
     for(t=host->toolbar_items;t;t=t->next)if(!strcmp(t->id,id)){t->image_id=image;found=1;}
+    if(found)ui_menus_commands_changed(host);
     return found?ui_host_emit_event(host,"ui.commands.changed","{}"):UI_STATUS_NOT_FOUND;
 }
 uint64_t ui_host_dispatch_shortcut(ui_host_t *host, uint32_t key,
@@ -1095,6 +1104,9 @@ ui_web_backend_t *ui_web_backend_create(const ui_web_backend_desc_t *desc)
         backend->ops.native_handle = desc->ops->native_handle;
     if (desc->ops->size >= offsetof(ui_web_backend_ops_t, image_changed) + sizeof(desc->ops->image_changed))
         backend->ops.image_changed = desc->ops->image_changed;
+    if (desc->ops->size >= offsetof(ui_web_backend_ops_t, get_presentation)+sizeof(desc->ops->get_presentation)) backend->ops.get_presentation=desc->ops->get_presentation;
+    if (desc->ops->size >= offsetof(ui_web_backend_ops_t, capture_rgba)+sizeof(desc->ops->capture_rgba)) backend->ops.capture_rgba=desc->ops->capture_rgba;
+    if (desc->ops->size >= offsetof(ui_web_backend_ops_t, flush)+sizeof(desc->ops->flush)) backend->ops.flush=desc->ops->flush;
     backend->user_data = desc->user_data;
     return backend;
 }
@@ -1399,7 +1411,7 @@ void *ui_web_view_native_handle(ui_web_view_t *view)
 static ui_surface_t *create_surface(ui_host_t *host,
                                     const ui_surface_desc_t *desc,
                                     const ui_opengl_config_t *config,
-                                    ui_status_t *status)
+                                    ui_status_t *status,int offscreen)
 {
     ui_surface_t *surface;
     ui_surface_t *it;
@@ -1431,6 +1443,7 @@ static ui_surface_t *create_surface(ui_host_t *host,
     }
 
     surface->host = host;
+    surface->offscreen=offscreen;
     surface->id = ui_strdup(desc->id);
     surface->kind = desc->kind;
     surface->rect = desc->rect;
@@ -1456,7 +1469,7 @@ static ui_surface_t *create_surface(ui_host_t *host,
 ui_surface_t *ui_surface_create(ui_host_t *host,
                                 const ui_surface_desc_t *desc)
 {
-    return create_surface(host, desc, NULL, NULL);
+    return create_surface(host, desc, NULL, NULL,0);
 }
 
 ui_surface_t *ui_opengl_surface_create(ui_host_t *host,
@@ -1468,8 +1481,31 @@ ui_surface_t *ui_opengl_surface_create(ui_host_t *host,
         if (status != NULL) *status = UI_STATUS_INVALID_ARGUMENT;
         return NULL;
     }
-    return create_surface(host, desc, config, status);
+    return create_surface(host, desc, config, status,0);
 }
+
+ui_surface_t *ui_opengl_offscreen_surface_create(ui_host_t *host,const ui_surface_desc_t *desc,const ui_opengl_config_t *config,ui_status_t *status)
+{
+    if(!host||!desc||!config||config->size<sizeof(*config)||desc->kind!=UI_SURFACE_OPENGL){if(status)*status=UI_STATUS_INVALID_ARGUMENT;return NULL;}
+    if(config->legacy_context||config->samples||config->profile!=UI_OPENGL_PROFILE_COMPATIBILITY||config->major_version<3||
+       (config->major_version==3&&config->minor_version<3)){if(status)*status=UI_STATUS_UNSUPPORTED;return NULL;}
+    if(desc->rect.width<=0||desc->rect.height<=0){if(status)*status=UI_STATUS_INVALID_ARGUMENT;return NULL;}
+    {uint64_t width=((uint64_t)desc->rect.width*host->dpi+48)/96,height=((uint64_t)desc->rect.height*host->dpi+48)/96;
+     if(width>16384||height>16384||width*height>32u*1024u*1024u/8){if(status)*status=UI_STATUS_LIMIT_EXCEEDED;return NULL;}}
+    return create_surface(host,desc,config,status,1);
+}
+ui_status_t ui_opengl_surface_get_window_dependency(const ui_surface_t *surface,ui_opengl_window_dependency_t *dependency)
+{if(!surface||!dependency||surface->kind!=UI_SURFACE_OPENGL)return UI_STATUS_INVALID_ARGUMENT;
+ *dependency=surface->offscreen?UI_OPENGL_HIDDEN_WINDOW:UI_OPENGL_VISIBLE_WINDOW;return UI_STATUS_OK;}
+ui_status_t ui_opengl_offscreen_render(ui_surface_t *surface,ui_pixel_buffer_t *pixels)
+{ui_status_t status;if(!surface||!surface->offscreen||!pixels||pixels->size<sizeof(*pixels))return UI_STATUS_INVALID_ARGUMENT;
+ if(surface->host->dispatch_blocked)return UI_STATUS_CANCELLED;ui_dispatch_enter(surface->host);status=ui_platform_offscreen_render(surface,pixels);ui_dispatch_leave(surface->host);return status;}
+ui_status_t ui_surface_dispatch_input(ui_surface_t *surface,const ui_input_event_t *event)
+{if(!surface||!event||event->size<sizeof(*event)||event->kind<UI_INPUT_POINTER_MOVE||event->kind>UI_INPUT_TEXT)return UI_STATUS_INVALID_ARGUMENT;
+ if(surface->host->dispatch_blocked||!surface->host->app_active||surface->host->modal_component)return UI_STATUS_CANCELLED;
+ if(event->kind==UI_INPUT_TEXT&&!event->text_utf8)return UI_STATUS_INVALID_ARGUMENT;
+ if(event->kind==UI_INPUT_KEY_DOWN&&ui_host_dispatch_shortcut(surface->host,event->key_code,event->modifiers,0))return UI_STATUS_OK;
+ if(!surface->input)return UI_STATUS_NOT_FOUND;ui_dispatch_enter(surface->host);surface->input(surface,event,surface->input_user_data);ui_dispatch_leave(surface->host);return UI_STATUS_OK;}
 
 void ui_surface_destroy(ui_surface_t *surface)
 {
@@ -1635,4 +1671,26 @@ ui_status_t ui_surface_swap_buffers(ui_surface_t *surface)
         return UI_STATUS_INVALID_ARGUMENT;
     }
     return ui_platform_surface_swap_buffers(surface);
+}
+
+ui_status_t ui_web_view_get_presentation(ui_web_view_t *v,const char *id,ui_element_presentation_t *out)
+{
+    ui_status_t status;
+    if(!v||!id||!out||out->size<sizeof(*out))return UI_STATUS_INVALID_ARGUMENT;
+    if(!v->backend->ops.get_presentation)return UI_STATUS_UNSUPPORTED;
+    ui_dispatch_enter(v->host);status=v->backend->ops.get_presentation(v->backend->user_data,v->user_data,id,out);ui_dispatch_leave(v->host);return status;
+}
+ui_status_t ui_web_view_capture_rgba(ui_web_view_t *v,int width,int height,uint32_t dpi,ui_pixel_buffer_t *out)
+{
+    ui_status_t status;
+    if(!v||!out||out->size<sizeof(*out))return UI_STATUS_INVALID_ARGUMENT;
+    if(!v->backend->ops.capture_rgba)return UI_STATUS_UNSUPPORTED;
+    status=ui_web_view_resize(v,width,height,dpi);if(status!=UI_STATUS_OK)return status;
+    ui_dispatch_enter(v->host);status=v->backend->ops.capture_rgba(v->backend->user_data,v->user_data,out);ui_dispatch_leave(v->host);return status;
+}
+ui_status_t ui_web_view_flush(ui_web_view_t *v,uint32_t budget)
+{
+    ui_status_t status;if(!v||!budget||budget>1024)return UI_STATUS_INVALID_ARGUMENT;
+    if(!v->backend->ops.flush)return UI_STATUS_UNSUPPORTED;
+    ui_dispatch_enter(v->host);status=v->backend->ops.flush(v->backend->user_data,v->user_data,budget);ui_dispatch_leave(v->host);return status;
 }

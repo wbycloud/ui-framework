@@ -40,8 +40,25 @@ typedef BOOL (WINAPI *get_pixel_format_attrib_arb_fn)(
     HDC, int, int, UINT, const int *, int *);
 typedef const char *(WINAPI *get_extensions_string_arb_fn)(HDC);
 
+typedef void (APIENTRY *fbo_gen_fn)(GLsizei,GLuint *);
+typedef void (APIENTRY *fbo_delete_fn)(GLsizei,const GLuint *);
+typedef void (APIENTRY *fbo_bind_fn)(GLenum,GLuint);
+typedef void (APIENTRY *fbo_texture_fn)(GLenum,GLenum,GLenum,GLuint,GLint);
+typedef GLenum (APIENTRY *fbo_status_fn)(GLenum);
+typedef void (APIENTRY *rb_storage_fn)(GLenum,GLenum,GLsizei,GLsizei);
+typedef void (APIENTRY *fbo_rb_fn)(GLenum,GLenum,GLenum,GLuint);
 typedef struct ui_win32_surface {
     HWND hwnd;
+    DWORD owner_thread;
+    GLuint fbo, color, depth;
+    int fbo_width,fbo_height;
+    fbo_gen_fn gen_fbo,gen_rb;
+    fbo_delete_fn delete_fbo,delete_rb;
+    fbo_bind_fn bind_fbo,bind_rb,bind_buffer;
+    fbo_texture_fn attach_texture;
+    fbo_status_fn check_fbo;
+    rb_storage_fn storage_rb;
+    fbo_rb_fn attach_rb;
     HDC dc;
     HGLRC glrc;
     int is_opengl;
@@ -256,7 +273,7 @@ static LRESULT CALLBACK surface_window_proc(HWND hwnd,
         PAINTSTRUCT paint;
         BeginPaint(hwnd, &paint);
         EndPaint(hwnd, &paint);
-        if (surface != NULL && !surface->host->dispatch_blocked && surface->frame != NULL &&
+        if (surface != NULL && !surface->offscreen && !surface->host->dispatch_blocked && surface->frame != NULL &&
             surface->pixel_rect.width > 0 && surface->pixel_rect.height > 0) {
             ui_dispatch_enter(surface->host);
             surface->frame(surface, surface->callback_user_data);
@@ -578,7 +595,7 @@ ui_status_t ui_platform_surface_create_configured(
     }
 
     parent = (HWND)surface->host->native_parent;
-    if (parent == NULL) {
+    if (parent == NULL&&!surface->offscreen) {
         return UI_STATUS_INVALID_ARGUMENT;
     }
 
@@ -592,12 +609,12 @@ ui_status_t ui_platform_surface_create_configured(
         0,
         surface_class_name,
         L"",
-        WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN,
+        surface->offscreen?WS_POPUP:WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS | WS_CLIPCHILDREN,
         surface->pixel_rect.x,
         surface->pixel_rect.y,
         surface->pixel_rect.width,
         surface->pixel_rect.height,
-        parent,
+        surface->offscreen?NULL:parent,
         NULL,
         GetModuleHandleW(NULL),
         surface);
@@ -628,9 +645,10 @@ ui_status_t ui_platform_surface_create_configured(
         return status;
     }
 
+    platform->owner_thread=GetCurrentThreadId();
     surface->platform = platform;
     surface->native_handle = (void *)platform->hwnd;
-    ShowWindow(platform->hwnd, surface->visible ? SW_SHOW : SW_HIDE);
+    if(!surface->offscreen)ShowWindow(platform->hwnd, surface->visible ? SW_SHOW : SW_HIDE);
     return UI_STATUS_OK;
 }
 
@@ -649,6 +667,9 @@ void ui_platform_surface_destroy(ui_surface_t *surface)
 
     platform = (ui_win32_surface_t *)surface->platform;
     if (platform->glrc != NULL) {
+        if(platform->fbo){HDC old_dc=wglGetCurrentDC();HGLRC old_ctx=wglGetCurrentContext();
+            if(wglMakeCurrent(platform->dc,platform->glrc)){platform->delete_fbo(1,&platform->fbo);platform->delete_rb(1,&platform->depth);glDeleteTextures(1,&platform->color);}
+            if(old_ctx!=platform->glrc)(void)wglMakeCurrent(old_dc,old_ctx);}
         if (wglGetCurrentContext() == platform->glrc) {
             wglMakeCurrent(NULL, NULL);
         }
@@ -702,7 +723,7 @@ ui_status_t ui_platform_surface_set_visible(ui_surface_t *surface,
     }
 
     platform = (ui_win32_surface_t *)surface->platform;
-    ShowWindow(platform->hwnd, visible ? SW_SHOW : SW_HIDE);
+    if(!surface->offscreen)ShowWindow(platform->hwnd, visible ? SW_SHOW : SW_HIDE);
     return UI_STATUS_OK;
 }
 
@@ -713,6 +734,7 @@ ui_status_t ui_platform_surface_invalidate(ui_surface_t *surface)
         return UI_STATUS_INVALID_ARGUMENT;
     }
     platform = (ui_win32_surface_t *)surface->platform;
+    if(surface->offscreen)return UI_STATUS_OK;
     return InvalidateRect(platform->hwnd, NULL, FALSE)
                ? UI_STATUS_OK : UI_STATUS_PLATFORM_ERROR;
 }
@@ -726,6 +748,7 @@ ui_status_t ui_platform_surface_make_current(ui_surface_t *surface)
     }
 
     platform = (ui_win32_surface_t *)surface->platform;
+    if(platform->owner_thread!=GetCurrentThreadId())return UI_STATUS_INVALID_ARGUMENT;
     if (!platform->is_opengl || !wglMakeCurrent(platform->dc, platform->glrc)) {
         return UI_STATUS_UNSUPPORTED;
     }
@@ -741,6 +764,7 @@ ui_status_t ui_platform_surface_swap_buffers(ui_surface_t *surface)
     }
 
     platform = (ui_win32_surface_t *)surface->platform;
+    if(surface->offscreen){if(wglGetCurrentContext()!=platform->glrc)return UI_STATUS_INVALID_ARGUMENT;glFlush();return UI_STATUS_OK;}
     if (!platform->is_opengl || !SwapBuffers(platform->dc)) {
         return UI_STATUS_UNSUPPORTED;
     }
@@ -961,4 +985,52 @@ ui_status_t ui_platform_host_handle_message(ui_host_t *host,
     }
 
     return UI_STATUS_NOT_FOUND;
+}
+
+ui_status_t ui_platform_offscreen_render(ui_surface_t *surface,ui_pixel_buffer_t *out)
+{
+    ui_win32_surface_t *p=(ui_win32_surface_t *)surface->platform;
+    int width=surface->pixel_rect.width,height=surface->pixel_rect.height;size_t stride,bytes;uint8_t *pixels=NULL;
+    HDC old_dc;HGLRC old_ctx;GLint viewport[4],draw,read,texture,rb,pack,row_length,skip_rows,skip_pixels,pack_buffer,unpack_buffer,max_texture;ui_status_t status=UI_STATUS_OK;
+    if(!p||p->owner_thread!=GetCurrentThreadId())return UI_STATUS_INVALID_ARGUMENT;
+    if(width<=0||height<=0||width>16384||height>16384||(uint64_t)width*(uint64_t)height>32u*1024u*1024u/8)return UI_STATUS_LIMIT_EXCEEDED;
+    stride=out->stride?out->stride:(size_t)width*4;if(stride<(size_t)width*4||stride>SIZE_MAX/(size_t)height)return UI_STATUS_INVALID_ARGUMENT;
+    bytes=stride*(height-1)+(size_t)width*4;out->width=(uint32_t)width;out->height=(uint32_t)height;out->stride=stride;
+    if(!out->pixels)return UI_STATUS_OK;if(bytes>out->capacity)return UI_STATUS_LIMIT_EXCEEDED;
+    pixels=(uint8_t *)malloc((size_t)width*height*4);if(!pixels)return UI_STATUS_OUT_OF_MEMORY;
+    old_dc=wglGetCurrentDC();old_ctx=wglGetCurrentContext();if(!wglMakeCurrent(p->dc,p->glrc)){free(pixels);return UI_STATUS_PLATFORM_ERROR;}
+#define LOAD_MEMBER(member,type,name) p->member=(type)get_wgl_proc(name)
+    if(!p->bind_fbo){LOAD_MEMBER(gen_fbo,fbo_gen_fn,"glGenFramebuffers");LOAD_MEMBER(delete_fbo,fbo_delete_fn,"glDeleteFramebuffers");
+        LOAD_MEMBER(bind_fbo,fbo_bind_fn,"glBindFramebuffer");LOAD_MEMBER(attach_texture,fbo_texture_fn,"glFramebufferTexture2D");
+        LOAD_MEMBER(check_fbo,fbo_status_fn,"glCheckFramebufferStatus");LOAD_MEMBER(gen_rb,fbo_gen_fn,"glGenRenderbuffers");
+        LOAD_MEMBER(delete_rb,fbo_delete_fn,"glDeleteRenderbuffers");LOAD_MEMBER(bind_rb,fbo_bind_fn,"glBindRenderbuffer");
+        LOAD_MEMBER(storage_rb,rb_storage_fn,"glRenderbufferStorage");LOAD_MEMBER(attach_rb,fbo_rb_fn,"glFramebufferRenderbuffer");LOAD_MEMBER(bind_buffer,fbo_bind_fn,"glBindBuffer");}
+#undef LOAD_MEMBER
+    if(!p->gen_fbo||!p->delete_fbo||!p->bind_fbo||!p->attach_texture||!p->check_fbo||!p->gen_rb||!p->delete_rb||!p->bind_rb||!p->storage_rb||!p->attach_rb||!p->bind_buffer){status=UI_STATUS_UNSUPPORTED;goto restore_context;}
+    glGetIntegerv(GL_VIEWPORT,viewport);glGetIntegerv(0x8ca6,&draw);glGetIntegerv(0x8caa,&read);
+    glGetIntegerv(GL_TEXTURE_BINDING_2D,&texture);glGetIntegerv(0x8ca7,&rb);glGetIntegerv(GL_PACK_ALIGNMENT,&pack);glGetIntegerv(GL_PACK_ROW_LENGTH,&row_length);
+    glGetIntegerv(GL_PACK_SKIP_ROWS,&skip_rows);glGetIntegerv(GL_PACK_SKIP_PIXELS,&skip_pixels);glGetIntegerv(0x88ed,&pack_buffer);glGetIntegerv(0x88ef,&unpack_buffer);
+    glGetIntegerv(GL_MAX_TEXTURE_SIZE,&max_texture);if(width>max_texture||height>max_texture){status=UI_STATUS_UNSUPPORTED;goto restore_state;}
+    if(p->fbo_width!=width||p->fbo_height!=height){
+        p->fbo_width=p->fbo_height=0;
+        if(p->fbo){p->delete_fbo(1,&p->fbo);p->delete_rb(1,&p->depth);glDeleteTextures(1,&p->color);p->fbo=p->depth=p->color=0;}
+        p->gen_fbo(1,&p->fbo);p->bind_fbo(0x8d40,p->fbo);glGenTextures(1,&p->color);glBindTexture(GL_TEXTURE_2D,p->color);
+        glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+        p->bind_buffer(0x88ec,0);glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA8,width,height,0,GL_RGBA,GL_UNSIGNED_BYTE,NULL);p->bind_buffer(0x88ec,(GLuint)unpack_buffer);p->attach_texture(0x8d40,0x8ce0,GL_TEXTURE_2D,p->color,0);
+        p->gen_rb(1,&p->depth);p->bind_rb(0x8d41,p->depth);p->storage_rb(0x8d41,0x88f0,width,height);p->attach_rb(0x8d40,0x821a,0x8d41,p->depth);
+        if(p->check_fbo(0x8d40)!=0x8cd5){status=UI_STATUS_PLATFORM_ERROR;goto restore_state;}p->fbo_width=width;p->fbo_height=height;
+    }
+    glBindTexture(GL_TEXTURE_2D,(GLuint)texture);p->bind_rb(0x8d41,(GLuint)rb);p->bind_fbo(0x8d40,p->fbo);glViewport(0,0,width,height);
+    if(surface->frame)surface->frame(surface,surface->callback_user_data);
+    if(!wglMakeCurrent(p->dc,p->glrc)){status=UI_STATUS_PLATFORM_ERROR;goto restore_context;}
+    p->bind_fbo(0x8ca8,p->fbo);glReadBuffer(0x8ce0);glPixelStorei(GL_PACK_ALIGNMENT,4);glPixelStorei(GL_PACK_ROW_LENGTH,0);
+    glPixelStorei(GL_PACK_SKIP_ROWS,0);glPixelStorei(GL_PACK_SKIP_PIXELS,0);p->bind_buffer(0x88eb,0);
+    glReadPixels(0,0,width,height,GL_RGBA,GL_UNSIGNED_BYTE,pixels);
+    for(int y=0;y<height;++y)memcpy(out->pixels+(size_t)y*stride,pixels+(size_t)(height-1-y)*width*4,(size_t)width*4);
+restore_state:
+    p->bind_fbo(0x8ca9,(GLuint)draw);p->bind_fbo(0x8ca8,(GLuint)read);glViewport(viewport[0],viewport[1],viewport[2],viewport[3]);
+    glBindTexture(GL_TEXTURE_2D,(GLuint)texture);p->bind_rb(0x8d41,(GLuint)rb);glPixelStorei(GL_PACK_ALIGNMENT,pack);glPixelStorei(GL_PACK_ROW_LENGTH,row_length);
+    glPixelStorei(GL_PACK_SKIP_ROWS,skip_rows);glPixelStorei(GL_PACK_SKIP_PIXELS,skip_pixels);p->bind_buffer(0x88eb,(GLuint)pack_buffer);p->bind_buffer(0x88ec,(GLuint)unpack_buffer);
+restore_context:
+    if(!wglMakeCurrent(old_dc,old_ctx))status=UI_STATUS_PLATFORM_ERROR;free(pixels);return status;
 }

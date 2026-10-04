@@ -8,20 +8,20 @@
 
 | 项目 | 当前开发值 | 定义位置 |
 | --- | --- | --- |
-| SDK | `0.3.0` 开发版，尚未发布对应稳定标签 | [CMakeLists.txt](CMakeLists.txt) |
+| SDK | `0.4.0` 开发版，尚未发布对应稳定标签 | [CMakeLists.txt](CMakeLists.txt) |
 | 最近稳定标签 | `v0.1.0` | [稳定源码](https://github.com/wbycloud/ui-framework/tree/v0.1.0) |
-| 框架 API | `3`；当前运行库接受 `1`、`2`、`3` | [ui.h](include/ui_framework/ui.h) |
+| 框架 API | `4`；当前运行库接受 `1`、`2`、`3`、`4` | [ui.h](include/ui_framework/ui.h) |
 | 应用 ABI / 包格式 | `1` / `1` | [application.h](include/ui_framework/application.h)、[package.h](include/ui_framework/package.h) |
-| 开发标准修订 | `3`，对应当前 `0.3.0` 开发源码 | [应用开发标准](docs/application-development-standard.md) |
+| 开发标准修订 | `4`，对应当前 `0.4.0` 开发源码 | [应用开发标准](docs/application-development-standard.md) |
 
-当前工作源码为 0.3.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；稳定基准仍为 v0.1.0。清单与 DLL 的 API 声明必须一致，API3 应用不能加载到只支持 API1/2 的旧运行库。
+当前工作源码为 0.4.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；稳定基准仍为 v0.1.0。清单与 DLL 的 API 声明必须一致，应用不能加载到不支持其声明 API 的旧运行库。
 
-当前开发源码和接入说明位于 [main 分支](https://github.com/wbycloud/ui-framework/tree/main)。API3 实现基准为 [f8eb350](https://github.com/wbycloud/ui-framework/commit/f8eb3504f4682720967d631e53c985530343a2e0)，取得源码后仍需记录实际 commit，升级指令见[应用升级提示词](docs/application-upgrade-prompt.md)。
+当前开发源码和接入说明位于 [main 分支](https://github.com/wbycloud/ui-framework/tree/main)。API3 历史实现基准为 [f8eb350](https://github.com/wbycloud/ui-framework/commit/f8eb3504f4682720967d631e53c985530343a2e0)，取得源码后仍需记录实际 commit，当前API4说明见[菜单与离屏接口](docs/framework-menu-offscreen.md)及[0.3 → 0.4迁移](docs/migration-v0.3-to-v0.4.md)，升级指令见[应用升级提示词](docs/application-upgrade-prompt.md)。
 
 建议按以下顺序阅读：
 
 1. [CHANGELOG](CHANGELOG.md)：版本变化和兼容性分类。
-2. [0.2 → 0.3 迁移](docs/migration-v0.2-to-v0.3.md)：通用组件、图片资源及输入行为；更早版本参考 [0.1 → 0.2](docs/migration-v0.1-to-v0.2.md)。
+2. [0.3 → 0.4 迁移](docs/migration-v0.3-to-v0.4.md)：分组菜单和可选离屏；[0.2 → 0.3 迁移](docs/migration-v0.2-to-v0.3.md)：通用组件、图片资源及输入行为；更早版本参考 [0.1 → 0.2](docs/migration-v0.1-to-v0.2.md)。
 3. [应用开发标准](docs/application-development-standard.md)：生命周期、线程、所有权、DPI、内容后端与助手约定。
 4. [构建与验证](docs/build-and-validation.md)：固定依赖、构建开关、测试和发布检查。
 5. [通用 Web UI](docs/generic-web-ui.md)及[纯 C 示例](examples/generic_components/README.md)：框架管理的树、表格、表单、对话框、缩略图和绘图内容槽。
@@ -55,7 +55,7 @@ ctest --test-dir build/web-shell --output-on-failure
 & .\build\web-shell\framework_host.exe .\build\web-shell\web_counter.uapp .\build\web-shell\minimal_eda.uapp
 ```
 
-打开两个 API3 通用示例：
+API4菜单/工具溢出示例使用 `framework_features.uapp`；可打开两个实例。原API3通用示例仍保留：
 
 ```powershell
 & .\build\web-shell\framework_host.exe .\build\web-shell\generic_components.uapp .\build\web-shell\generic_components.uapp
@@ -63,7 +63,7 @@ ctest --test-dir build/web-shell --output-on-failure
 
 示例无需编写组件 HTML，展示按需树、表格/复选框/图片/样式、单位和混合值表单、Web 参数对话框、后台缩略图及绘图浮窗。菜单“Web 对话框”或 Ctrl+D 打开参数界面；Enter 提交表格编辑，Esc 取消；表格 Shift+滚轮切换列。它的 OpenGL 三角形仅为内容槽验证，不是框架业务渲染器。
 
-EDA 需要驱动支持 OpenGL 3.3 compatibility profile。点击画布后，`A` 添加矩形、`Z` 放大、`C` 清空。不同实例的数据、缩放和属性笔记独立保存。`Ctrl+O` 打开应用，`Ctrl+W` 关闭标签，`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手可选目标实例、查看命令/schema、提交 JSON、查看结果与快照；危险命令经过权限和确认接口。
+EDA 需要驱动支持 OpenGL 3.3 compatibility profile。点击画布后，`A` 添加矩形、`Z` 放大、`C` 清空。不同实例的数据、缩放和属性笔记独立保存。`Ctrl+Shift+O` 打开应用包，`Ctrl+W` 关闭标签，`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手可选目标实例、查看命令/schema、提交 JSON、查看结果与快照；危险命令经过权限和确认接口。
 
 分发宿主时，保留同目录的 `framework_host.exe` 与匹配的 `ui_framework.dll`，并提供应用包、工具链运行依赖及第三方许可。默认轻量引擎静态链接到运行库；当前共享运行库使用动态 CRT，部署要求见[构建与验证](docs/build-and-validation.md#21-打包自己的应用)。Git 仓库不提交构建产物。
 
@@ -110,7 +110,7 @@ git rev-parse HEAD
 
 符合 v0.1.0 公共接口约定、通过框架注册 UI 并在内容容器中挂载的 API 1 二进制包，属于无需重新编译的兼容目标。直接安装/修改 Win32 菜单、枚举原生工具栏或依赖外壳窗口类的应用必须迁移。独立宿主只提供 Web 外壳；原生嵌入式 API 保留。
 
-升级时先保存原应用包，对照[迁移指南](docs/migration-v0.1-to-v0.2.md)核查依赖，并对照 [0.2 → 0.3 指南](docs/migration-v0.2-to-v0.3.md)，在目标宿主验证加载、多实例、助手路由、DPI/绘制和卸载。采用 API3 新组件或重新构建应用时，同步清单与 DLL 的 API 版本。旧包无需修改的兼容目标与本次实际验收结果分别记录，不能用重新编译的示例代替原二进制兼容证据。
+升级时先保存原应用包，对照[迁移指南](docs/migration-v0.1-to-v0.2.md)核查依赖，并对照 [0.2 → 0.3 指南](docs/migration-v0.2-to-v0.3.md)，再对照 [0.3 → 0.4 指南](docs/migration-v0.3-to-v0.4.md)，在目标宿主验证加载、多实例、助手路由、DPI/绘制和卸载。采用 API3/4 新接口或重新构建应用时，同步清单与 DLL 的 API 版本。旧包无需修改的兼容目标与本次实际验收结果分别记录，不能用重新编译的示例代替原二进制兼容证据。
 
 ## Web 后端和能力边界
 
@@ -118,7 +118,7 @@ git rev-parse HEAD
 
 应用需要现代浏览器内容时，可另行启用 `UI_FRAMEWORK_ENABLE_WEBVIEW2=ON`，准备固定 WebView2 SDK `1.0.4129.50` 并部署 Runtime；该开关默认 OFF，不改变独立宿主的轻量 Web 外壳。TypeScript 需要离线编译为 JavaScript，框架不直接执行 `.ts`。
 
-本轮完整可选构建测试为 27 通过、1 跳过；跳过为真实跨显示器条件。实际宿主已验证两实例、十万行/十万节点、异步图片、草稿、实例模态和旧应用混合加载；实际中文 IME、物理跨屏及长时间手动滚动仍未验证，见[API3 验收记录](docs/validation/api3-validation.md)。
+API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离屏Web/workspace与隐藏WGL的结果见[API4验收](docs/validation/api4-validation.md)。实际宿主已验证两实例、十万行/十万节点、异步图片、草稿、实例模态和旧应用混合加载；实际中文 IME、物理跨屏及长时间手动滚动仍未验证，见[API3 验收记录](docs/validation/api3-validation.md)。
 
 应用在同一进程执行，应用崩溃可能影响宿主。助手 UI 尚未连接模型服务。框架不实现 EDA、Markdown、画板、PPT 或电子表格的完整文档模型，也不直接加载任意现成 EXE。
 

@@ -1136,6 +1136,18 @@ static JSValue lw_dom_method(JSContext *ctx, JSValueConst object, int argc,
         JS_FreeCString(ctx,name);
         return JS_ThrowTypeError(ctx,"unsupported attribute");
     }
+    if (method == 8) {
+        int parent;
+        if(view->dirty)lw_layout(view);
+        for(parent=node->parent;parent>=0;parent=view->nodes[parent].parent){lw_node_t *p=&view->nodes[parent];
+            if(p->style.scroll){if(node->rect.y<p->clip.y)p->scroll_y-=p->clip.y-node->rect.y;
+                else if(node->rect.y+node->rect.height>p->clip.y+p->clip.height)p->scroll_y+=node->rect.y+node->rect.height-p->clip.y-p->clip.height;
+                if(p->scroll_y<0)p->scroll_y=0;}
+            if(p->style.scroll_x){if(node->rect.x<p->clip.x)p->scroll_x-=p->clip.x-node->rect.x;
+                else if(node->rect.x+node->rect.width>p->clip.x+p->clip.width)p->scroll_x+=node->rect.x+node->rect.width-p->clip.x-p->clip.width;
+                if(p->scroll_x<0)p->scroll_x=0;}}
+        view->dirty=1;return JS_UNDEFINED;
+    }
     if (method == 7) {
         if(view->focused!=index)lw_cancel_composition(view);
         view->focused = index; if (view->hwnd&&IsWindowVisible(view->hwnd)&&IsWindowEnabled(view->hwnd)) SetFocus(view->hwnd); lw_caret(view); view->dirty = 1; return lw_event(view,index,3,0) == UI_STATUS_OK ? JS_UNDEFINED : JS_EXCEPTION;
@@ -1160,7 +1172,7 @@ static JSValue lw_element(lw_view_t *view, int index)
     JSValue object, style, global, element_proto, style_proto;
     int i;
     static const char *properties[] = {"id","textContent","className","value","disabled","firstChild","parentNode","children"};
-    static const char *methods[] = {"appendChild","removeChild","remove","addEventListener","setAttribute","getAttribute","removeAttribute","focus"};
+    static const char *methods[] = {"appendChild","removeChild","remove","addEventListener","setAttribute","getAttribute","removeAttribute","focus","scrollIntoView"};
     if (!JS_IsUndefined(node->object)) return JS_DupValue(ctx,node->object);
     global = JS_GetGlobalObject(ctx);
     element_proto = JS_GetPropertyStr(ctx,global,"__lwElementPrototype");
@@ -1171,7 +1183,7 @@ static JSValue lw_element(lw_view_t *view, int index)
         lw_js_property(ctx,element_proto,"src",LW_PROP_SRC,lw_dom_get,lw_dom_set);
         lw_js_property(ctx,element_proto,"readOnly",LW_PROP_READONLY,lw_dom_get,lw_dom_set);
         for (i = 0; i < 8; ++i) lw_js_property(ctx,element_proto,properties[i],i,lw_dom_get,i < 5 ? lw_dom_set : NULL);
-        for (i = 0; i < 8; ++i) JS_SetPropertyStr(ctx,element_proto,methods[i],JS_NewCFunctionMagic(ctx,lw_dom_method,methods[i],2,JS_CFUNC_generic_magic,i));
+        for (i = 0; i < (int)(sizeof(methods)/sizeof(methods[0])); ++i) JS_SetPropertyStr(ctx,element_proto,methods[i],JS_NewCFunctionMagic(ctx,lw_dom_method,methods[i],2,JS_CFUNC_generic_magic,i));
         for (i = 0; i < (int)(sizeof(lw_style_names) / sizeof(lw_style_names[0])); ++i) {
             char camel[64]; int j = 0, capital = 0; const char *s = lw_style_names[i];
             lw_js_property(ctx,style_proto,s,i,lw_style_get,lw_style_set);
@@ -1486,12 +1498,11 @@ static int lw_next_node(const lw_view_t *view, int index)
 
 #include "light_text.inc"
 
-static void lw_paint(lw_view_t *view, HDC dc)
+static void lw_paint(lw_view_t *view, HDC dc, RECT client)
 {
     int i;
-    RECT client;
     HBRUSH brush = CreateSolidBrush(RGB(32,34,38));
-    GetClientRect(view->hwnd,&client); FillRect(dc,&client,brush); DeleteObject(brush);
+    FillRect(dc,&client,brush); DeleteObject(brush);
     SetBkMode(dc,TRANSPARENT);
     for (i = view->root; i >= 0; i = lw_next_node(view,i)) {
         lw_node_t *node = &view->nodes[i];
@@ -1558,7 +1569,7 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         event.wheel_delta = message == WM_MOUSEWHEEL ? GET_WHEEL_DELTA_WPARAM(wp) : 0;
         if (GetKeyState(VK_SHIFT) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_SHIFT;
         if (GetKeyState(VK_CONTROL) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_CONTROL;
-        if (message == WM_RBUTTONUP) { (void)lw_event(view,lw_hit(view,event.x,event.y),9,0); return 0; }
+        if (message == WM_RBUTTONUP) { event.pointer_button=2;event.kind=UI_INPUT_POINTER_UP; }
         if (message == WM_MOUSEMOVE) {
             TRACKMOUSEEVENT track = {sizeof(track),TME_LEAVE,hwnd,0}; TrackMouseEvent(&track);
         }
@@ -1586,7 +1597,7 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         GetClientRect(hwnd,&client);
         bitmap = CreateCompatibleBitmap(dc,client.right > 0 ? client.right : 1,client.bottom > 0 ? client.bottom : 1);
         previous = bitmap && memory ? SelectObject(memory,bitmap) : NULL;
-        lw_paint(view,previous ? memory : dc);
+        lw_paint(view,previous ? memory : dc,client);
         if (previous) { BitBlt(dc,0,0,client.right,client.bottom,memory,0,0,SRCCOPY); SelectObject(memory,previous); }
         if (bitmap) DeleteObject(bitmap); if (memory) DeleteDC(memory);
         EndPaint(hwnd, &ps); return 0;
@@ -1757,6 +1768,12 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
     view->event_modifiers = event->modifiers; view->wheel_delta = event->wheel_delta;
     hit = lw_hit(view, event->x, event->y);
     if (event->kind == UI_INPUT_POINTER_DOWN || event->kind == UI_INPUT_POINTER_UP) {
+        if (event->pointer_button == 2) {
+            if(event->kind==UI_INPUT_POINTER_UP&&hit>=0&&!lw_disabled(view,hit)) {
+                ui_status_t status=lw_event(view,hit,9,0);lw_layout(view);return status;
+            }
+            return UI_STATUS_OK;
+        }
         if (event->pointer_button > 1) return UI_STATUS_UNSUPPORTED;
         if (event->kind == UI_INPUT_POINTER_DOWN) {
             int previous = view->focused, focus_hit=hit;
@@ -1913,7 +1930,7 @@ static ui_status_t lw_get_capabilities(void *user, void *data, uint64_t *capabil
     (void)user;
     if (!view || !capabilities) return UI_STATUS_INVALID_ARGUMENT;
     *capabilities = UI_WEB_CAP_JSON_MESSAGES | UI_WEB_CAP_DYNAMIC_DOM |
-        UI_WEB_CAP_RESPONSIVE_LAYOUT | UI_WEB_CAP_TEXT_INPUT | UI_WEB_CAP_IMAGES | UI_WEB_CAP_WEB_TEXT_EDIT | UI_WEB_CAP_COMPONENTS;
+        UI_WEB_CAP_RESPONSIVE_LAYOUT | UI_WEB_CAP_TEXT_INPUT | UI_WEB_CAP_IMAGES | UI_WEB_CAP_WEB_TEXT_EDIT | UI_WEB_CAP_COMPONENTS | UI_WEB_CAP_OFFSCREEN_CAPTURE | UI_WEB_CAP_PRESENTATION_QUERY;
     if (view->hwnd) *capabilities |= UI_WEB_CAP_NATIVE_WINDOW;
     return UI_STATUS_OK;
 }
@@ -1931,10 +1948,51 @@ static void lw_image_changed(void *user,void *data,uint64_t id)
     for(i=0;i<view->node_count;++i)if(view->nodes[i].used&&view->nodes[i].image==id&&view->nodes[i].visible){
         RECT rect=lw_pixel_rect(view,view->nodes[i].clip);InvalidateRect(view->hwnd,&rect,FALSE);}
 }
+static ui_status_t lw_get_presentation(void *user,void *data,const char *id,ui_element_presentation_t *out)
+{
+    lw_view_t *v=(lw_view_t *)data;int i;(void)user;
+    if(!v||!id||!out||out->size<sizeof(*out))return UI_STATUS_INVALID_ARGUMENT;
+    if(v->dirty)lw_layout(v);
+    for(i=0;i<v->node_count;++i)if(v->nodes[i].used&&!strcmp(v->nodes[i].id,id)){
+        lw_node_t *n=&v->nodes[i];memset(out,0,sizeof(*out));out->size=sizeof(*out);out->rect=n->rect;out->clip=n->clip;
+        out->visible=n->visible&&n->clip.width>0&&n->clip.height>0;out->enabled=!lw_disabled(v,i);out->focused=v->focused==i;
+        strcpy_s(out->text_utf8,sizeof(out->text_utf8),lw_input(n)?n->value:n->text);
+        out->text_overflow=n->natural_width>n->rect.width||n->natural_height>n->rect.height;
+        return UI_STATUS_OK;
+    }return UI_STATUS_NOT_FOUND;
+}
+static ui_status_t lw_capture(void *user,void *data,ui_pixel_buffer_t *out)
+{
+    lw_view_t *v=(lw_view_t *)data;uint64_t width,height,bytes;size_t stride;HDC dc;HBITMAP bitmap;HGDIOBJ old;void *bits;BITMAPINFO info={0};RECT r;uint32_t y,x;(void)user;
+    if(!v||!out||out->size<sizeof(*out))return UI_STATUS_INVALID_ARGUMENT;
+    width=((uint64_t)v->width*v->dpi+48)/96;height=((uint64_t)v->height*v->dpi+48)/96;
+    if(!width||!height||width>32767||height>32767||width*height>32u*1024u*1024u/4)return UI_STATUS_LIMIT_EXCEEDED;
+    out->width=(uint32_t)width;out->height=(uint32_t)height;stride=out->stride?out->stride:(size_t)width*4;
+    if(stride<width*4||stride>SIZE_MAX/(size_t)height)return UI_STATUS_INVALID_ARGUMENT;
+    bytes=(height-1)*stride+width*4;out->stride=stride;
+    if(!out->pixels)return UI_STATUS_OK;if(bytes>out->capacity)return UI_STATUS_LIMIT_EXCEEDED;
+    info.bmiHeader.biSize=sizeof(info.bmiHeader);info.bmiHeader.biWidth=(LONG)width;info.bmiHeader.biHeight=-(LONG)height;
+    info.bmiHeader.biPlanes=1;info.bmiHeader.biBitCount=32;info.bmiHeader.biCompression=BI_RGB;
+    dc=CreateCompatibleDC(NULL);if(!dc)return UI_STATUS_PLATFORM_ERROR;
+    bitmap=CreateDIBSection(dc,&info,DIB_RGB_COLORS,&bits,NULL,0);if(!bitmap){DeleteDC(dc);return UI_STATUS_OUT_OF_MEMORY;}
+    old=SelectObject(dc,bitmap);r.left=r.top=0;r.right=(LONG)width;r.bottom=(LONG)height;
+    if(v->dirty)lw_layout(v);lw_paint(v,dc,r);GdiFlush();
+    for(y=0;y<height;++y)for(x=0;x<width;++x){uint8_t *src=(uint8_t *)bits+((size_t)y*(size_t)width+x)*4,*dst=out->pixels+(size_t)y*stride+(size_t)x*4;
+        dst[0]=src[2];dst[1]=src[1];dst[2]=src[0];dst[3]=255;}
+    SelectObject(dc,old);DeleteObject(bitmap);DeleteDC(dc);return UI_STATUS_OK;
+}
+static ui_status_t lw_flush(void *user,void *data,uint32_t budget)
+{
+    lw_view_t *v=(lw_view_t *)data;JSContext *ctx;uint32_t i;int result;(void)user;
+    if(!v||!v->runtime)return UI_STATUS_NOT_FOUND;
+    v->script_deadline=GetTickCount64()+LW_SCRIPT_MILLISECONDS;
+    for(i=0;i<budget;++i){result=JS_ExecutePendingJob(v->runtime,&ctx);if(result<0){JSValue exception=JS_GetException(ctx);JS_FreeValue(ctx,exception);return UI_STATUS_PLATFORM_ERROR;}if(!result)break;}
+    if(v->dirty)lw_layout(v);return JS_IsJobPending(v->runtime)?UI_STATUS_CANCELLED:UI_STATUS_OK;
+}
 static const ui_web_backend_ops_t lw_ops = {
     sizeof(ui_web_backend_ops_t), lw_create_view, lw_destroy_view, lw_load_html,
     lw_resize, lw_dispatch_input, lw_invalidate, lw_get_element_rect, lw_set_rect,
-    lw_set_message_handler,lw_post_json,lw_get_capabilities,lw_native_handle,lw_image_changed
+    lw_set_message_handler,lw_post_json,lw_get_capabilities,lw_native_handle,lw_image_changed,lw_get_presentation,lw_capture,lw_flush
 };
 
 ui_web_backend_t *ui_light_web_backend_create(const ui_light_web_config_t *config)

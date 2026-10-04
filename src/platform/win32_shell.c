@@ -69,6 +69,7 @@ struct ui_native_shell {
     ui_shell_t shell;
     ui_content_slot_t *slots;
     int web_chrome;
+    int offscreen;
     int reflowing;
     ui_host_t *host;
     HWND parent;
@@ -1331,6 +1332,25 @@ static ui_status_t web_shell_reflow(ui_native_shell_t *shell)
     return status;
 }
 
+static ui_status_t offscreen_reflow(ui_native_shell_t *shell)
+{
+    ui_content_slot_t *slot;ui_status_t status=UI_STATUS_OK;
+    for(slot=shell->slots;slot;slot=slot->next){ui_panel_entry_t *entry=NULL;RECT pixels;
+        if(slot->panel_id)for(entry=shell->host->panels;entry&&strcmp(entry->id,slot->panel_id);entry=entry->next){}
+        if(!slot->panel_id)(void)ui_host_get_rect(shell->host,UI_LAYOUT_REGION_MAIN,&slot->rect);
+        else if(!entry)return UI_STATUS_NOT_FOUND;
+        else if(entry->kind==UI_PANEL_FLOATING)slot->rect=(ui_rect_t){0,0,entry->preferred_width>0?entry->preferred_width:320,240};
+        else{size_t count=0,index=0;ui_panel_entry_t *p;ui_rect_t side={0};
+            for(p=shell->host->panels;p;p=p->next)if(p->dock_region==entry->dock_region&&p->kind==entry->kind){if(!strcmp(p->id,entry->id))index=count;++count;}
+            (void)ui_host_get_rect(shell->host,entry->dock_region,&side);slot->rect=side;
+            if(count){slot->rect.y+=side.height*(int)index/(int)count;slot->rect.height=side.height*(int)(index+1)/(int)count-side.height*(int)index/(int)count;}}
+        slot->frame_rect=slot->rect;slot->floating=entry&&entry->kind==UI_PANEL_FLOATING;
+        slot->visible=shell->active&&slot->rect.width>0&&slot->rect.height>0;
+        pixels=logical_rect_to_pixels(&slot->rect,shell->host->dpi);slot->pixel_rect=(ui_rect_t){pixels.left,pixels.top,pixels.right-pixels.left,pixels.bottom-pixels.top};
+        if((slot->web_view||slot->surface)&&(status=apply_slot(slot))!=UI_STATUS_OK)return status;
+    }ui_components_layout(shell->host);return status;
+}
+
 ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
 {
     ui_rect_t logical;
@@ -1345,6 +1365,7 @@ ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
     size_t tag_indices[2] = {0, 0};
     size_t dock_indices[2] = {0, 0};
 
+    if(shell&&shell->offscreen)return offscreen_reflow(shell);
     if (shell == NULL || shell->host == NULL || shell->parent == NULL) {
         return UI_STATUS_INVALID_ARGUMENT;
     }
@@ -1473,8 +1494,9 @@ static ui_native_shell_t *create_shell(
         config->menu_owner != NULL) menu_owner = (HWND)config->menu_owner;
     if (config->size >= offsetof(ui_native_shell_config_t, flags) + sizeof(config->flags))
         flags = config->flags;
-    if (parent == NULL || !IsWindow(parent) || !IsWindow(menu_owner) ||
-        (GetWindowLongPtrW(menu_owner, GWL_STYLE) & WS_CHILD) != 0 ||
+    if ((web_chrome!=2&&(parent==NULL||!IsWindow(parent)||!IsWindow(menu_owner)||
+         (GetWindowLongPtrW(menu_owner,GWL_STYLE)&WS_CHILD)!=0))||
+        (web_chrome==2&&(parent||config->host->native_parent))||
         (flags & ~UI_NATIVE_SHELL_MANAGED_ACTIVATION) != 0u) {
         return NULL;
     }
@@ -1484,14 +1506,15 @@ static ui_native_shell_t *create_shell(
     }
     shell->host = config->host;
     shell->shell.native = shell;
-    shell->web_chrome = web_chrome;
+    shell->web_chrome = web_chrome!=0;
+    shell->offscreen = web_chrome==2;
     shell->parent = parent;
     shell->menu_owner = menu_owner;
     shell->managed_activation = (flags & UI_NATIVE_SHELL_MANAGED_ACTIVATION) != 0u;
     shell->active = !shell->managed_activation;
     shell->previous_menu = shell->managed_activation || web_chrome ? NULL : GetMenu(menu_owner);
     if (create_slot(shell, NULL) == NULL) { free(shell); return NULL; }
-    if (shell->managed_activation) ShowWindow(parent, SW_HIDE);
+    if (shell->managed_activation&&parent) ShowWindow(parent, SW_HIDE);
     if (ui_native_shell_refresh(shell) != UI_STATUS_OK) {
         ui_native_shell_destroy(shell);
         return NULL;
@@ -1504,6 +1527,9 @@ ui_native_shell_t *ui_native_shell_create(const ui_native_shell_config_t *config
 {
     return create_shell(config, 0);
 }
+
+ui_native_shell_t *ui_native_shell_create_offscreen(const ui_native_shell_config_t *config)
+{return create_shell(config,2);}
 
 ui_native_shell_t *ui_native_shell_create_web(const ui_native_shell_config_t *config)
 {
@@ -1521,6 +1547,7 @@ void ui_native_shell_destroy(ui_native_shell_t *shell)
     if (shell == NULL) {
         return;
     }
+    (void)ui_host_close_menu(shell->host);
     if (shell->host->shell == &shell->shell) shell->host->shell = NULL;
     free_panels(shell);
     if (shell->toolbar != NULL) {
@@ -1556,7 +1583,7 @@ ui_status_t ui_native_shell_set_active(ui_native_shell_t *shell, int active)
     }
     shell->active = active;
     ui_components_active(shell->host, active);
-    if (shell->managed_activation) ShowWindow(shell->parent, active ? SW_SHOWNOACTIVATE : SW_HIDE);
+    if (shell->managed_activation&&shell->parent) ShowWindow(shell->parent, active ? SW_SHOWNOACTIVATE : SW_HIDE);
     return ui_native_shell_reflow(shell);
 }
 
@@ -1579,6 +1606,7 @@ ui_status_t ui_native_shell_set_panel_floating(ui_native_shell_t *shell,
 {
     ui_native_panel_t *panel;
     if (shell == NULL || panel_id == NULL) return UI_STATUS_INVALID_ARGUMENT;
+    if (shell->offscreen) return UI_STATUS_UNSUPPORTED;
     panel = find_panel(shell, panel_id);
     if (panel == NULL) return UI_STATUS_NOT_FOUND;
     if (panel->kind != UI_PANEL_SIDEBAR) return UI_STATUS_UNSUPPORTED;
@@ -1591,6 +1619,7 @@ ui_status_t ui_native_shell_refresh(ui_native_shell_t *shell)
 {
     ui_status_t status;
 
+    if(shell&&shell->offscreen)return ui_shell_refresh(&shell->shell);
     if (shell == NULL || shell->host == NULL || shell->parent == NULL) {
         return UI_STATUS_INVALID_ARGUMENT;
     }
@@ -1775,7 +1804,7 @@ ui_status_t ui_content_slot_attach_surface(ui_content_slot_t *slot,
     slot->surface = surface;
     if (surface == NULL) return UI_STATUS_OK;
     (void)ui_surface_set_layout_region(surface, UI_LAYOUT_REGION_NONE);
-    if (slot->panel_id != NULL) {
+    if (slot->panel_id != NULL&&!shell->offscreen) {
         HWND parent = (HWND)ui_content_slot_native_handle(slot);
         HWND window = (HWND)ui_surface_native_handle(surface);
         if (parent == NULL || window == NULL) { slot->surface = NULL; return UI_STATUS_PLATFORM_ERROR; }
@@ -1813,6 +1842,8 @@ ui_status_t ui_shell_refresh(ui_shell_t *shell)
     ui_status_t status;
     if (shell == NULL || shell->native == NULL) return UI_STATUS_INVALID_ARGUMENT;
     native = shell->native;
+    if(native->offscreen){for(entry=native->host->panels;entry;entry=entry->next)if(!create_slot(native,entry->id))return UI_STATUS_OUT_OF_MEMORY;
+        return offscreen_reflow(native);}
     free_bindings(native);
     status = refresh_menu(native);
     if (status != UI_STATUS_OK) return status;
@@ -1832,6 +1863,7 @@ ui_status_t ui_shell_refresh(ui_shell_t *shell)
 
 void ui_shell_layout_changed(ui_host_t *host)
 {
+    if(host&&host->shell&&host->shell->native->offscreen){(void)offscreen_reflow(host->shell->native);return;}
     if (host != NULL && host->shell != NULL && host->shell->native->web_chrome)
         (void)web_shell_reflow(host->shell->native);
     if (host != NULL) ui_components_layout(host);
@@ -1884,3 +1916,6 @@ void ui_shell_web_view_destroyed(ui_host_t *host, ui_web_view_t *view)
     for (slot = host->shell->native->slots; slot != NULL; slot = slot->next)
         if (slot->web_view == view) slot->web_view = NULL;
 }
+
+int ui_content_slot_belongs_to(const ui_content_slot_t *slot,const ui_host_t *host)
+{return slot&&slot->shell&&slot->shell->native->host==host;}

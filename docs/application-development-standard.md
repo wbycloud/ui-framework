@@ -1,6 +1,6 @@
 # Windows C/Web UI 框架应用开发标准
 
-开发标准修订：**3**。对应 **SDK 0.3.0 开发版、框架 API 3**；运行库接受 API 1/2/3，应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
+开发标准修订：**4**。对应 **SDK 0.4.0 开发版、框架 API 4**；运行库接受 API 1/2/3/4，应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
 
 面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的开发者。新应用通过公共 C 接口注册组件、提供数据、绑定已有语义命令，通用 HTML/CSS/JavaScript、草稿、焦点和交互由框架维护。菜单、工具、面板内组件、状态、参数及确认界面使用 Web；Win32 仅承载窗口、消息、输入法及绘制。旧 API1/2 应用自有原生内容和原生嵌入式保留，系统文件/目录选择器是例外。
 
@@ -11,6 +11,8 @@
 [0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)说明必须同步的 API 声明和废弃输入开关；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[实际验收](validation/api3-validation.md)记录构建、自动化与真实宿主证据。API3 包不能加载到只支持 API1/2 的运行库，清单与 DLL 声明必须相同。
 
 受控轻量后端实现本版框架组件；WebView2 保留已有自定义 HTML/消息能力，不提供新增 C 图片 ID 和组件呈现。OpenGL 仍由应用自行选择、通过内容槽挂载，框架没有应用文档模型或业务渲染器。具体子集、预算及未实现能力以接入约定的能力清单为准，不把 HTML 支持视为完整浏览器。
+
+本版追加[分组菜单与离屏约定](framework-menu-offscreen.md)、[0.3 → 0.4迁移](migration-v0.3-to-v0.4.md)及[API4验收](validation/api4-validation.md)。公共菜单、呈现查询、复制像素输出、显式无窗口workspace及隐藏WGL均遵守原线程、所有权和卸载规则。离屏是可选运行模式，旧包可保持原API；新的可构建接入示例见[framework_features](../examples/framework_features/README.md)。
 
 ## 1. 架构和应用职责
 
@@ -30,7 +32,7 @@
 | 轻量 Web 后端 | Lexbor HTML 解析、QuickJS-NG 脚本、GDI 绘制、受控动态 DOM/布局/控件和 JSON 消息 | 遵守受控子集、页面资源、语义命令 |
 | WebView2 后端 | 纯 C COM 适配、异步 HTML/JS、可信页面命令桥接 | Runtime 部署、消息循环、页面和浏览器能力选择 |
 
-构建同时保留静态框架和原有嵌入式样例，并提供独立宿主所需的共享框架。Windows 默认开启独立宿主与轻量 Web 后端，WebView2 默认关闭。只构建原生/OpenGL 时，同时设置 `UI_BUILD_STANDALONE_HOST=OFF` 与 `UI_FRAMEWORK_ENABLE_LIGHT_WEB=OFF`，无需 HTML/JS 引擎；此配置不生成独立宿主。headless 目标可验证核心布局、命令和助手逻辑，但不提供原生窗口或 OpenGL renderer。
+构建同时保留静态框架和原有嵌入式样例，并提供独立宿主所需的共享框架。Windows 默认开启独立宿主与轻量 Web 后端，WebView2 默认关闭。只构建原生/OpenGL 时，同时设置 `UI_BUILD_STANDALONE_HOST=OFF` 与 `UI_FRAMEWORK_ENABLE_LIGHT_WEB=OFF`，无需 HTML/JS 引擎；此配置不生成独立宿主。原ui_framework_headless目标仍只验证核心状态；真实轻量无HWND和隐藏WGL由Windows完整运行库的显式路径提供，两者分别验收。
 
 框架没有内置 EDA、Markdown、画板、PPT、Excel 文档模型，也没有自动加载 `app://` 资源、完整停靠管理器、网络模型客户端或 TypeScript 编译器。将这些能力实现为应用逻辑，保持公共 C 接口作为接入边界。
 
@@ -322,7 +324,7 @@ Web view 是独立的对象族；`ui_surface_create()` 的 `UI_SURFACE_WEB` 仍�
 
 API 2 使用 `ui_web_view_set_message_callback()` 接收页面的 `ui.postMessage(data)`，用 `ui_web_view_post_json()` 交付 C 侧 JSON。页面通过 `ui.onmessage = function(data) { ... }` 或 `window.addEventListener('message', function(event) { ... })` 接收数据。后端解析 JSON，不把内容拼接成脚本。消息参数在调用/回调期间借用，异步保存时自行复制；回调在 UI 线程执行，不得在其中销毁 view/backend/host，关闭应延迟到回调返回后。
 
-`ui_web_view_get_capabilities()` 查询 `UI_WEB_CAP_JSON_MESSAGES`、`DYNAMIC_DOM`、`RESPONSIVE_LAYOUT`、`NATIVE_WINDOW`、`TEXT_INPUT` 位；API 3 增加 `IMAGES/WEB_TEXT_EDIT/COMPONENTS`。能力位表示接口类别可用，不表示完整 DOM/CSS 或所有输入形式。缺少回调的旧自定义后端返回 UNSUPPORTED。`ui_web_view_native_handle()` 返回借用呈现窗口或 NULL，不能销毁它；轻量 Windows 后端返回 HWND，当前 WebView2 适配器未提供此查询。完整示例见 [`examples/web_counter/app.c`](../examples/web_counter/app.c)。
+`ui_web_view_get_capabilities()` 查询 `UI_WEB_CAP_JSON_MESSAGES`、`DYNAMIC_DOM`、`RESPONSIVE_LAYOUT`、`NATIVE_WINDOW`、`TEXT_INPUT` 位；API 3 增加 `IMAGES/WEB_TEXT_EDIT/COMPONENTS`。能力位表示接口类别可用，不表示完整 DOM/CSS 或所有输入形式。缺少回调的旧自定义后端返回 UNSUPPORTED。`ui_web_view_native_handle()` 返回借用呈现窗口或 NULL，不能销毁它；轻量 Windows 后端在有parent时返回HWND、NULL parent时返回NULL，当前 WebView2 适配器未提供此查询。完整示例见 [`examples/web_counter/app.c`](../examples/web_counter/app.c)。
 
 TypeScript 需在构建阶段离线编译为 JavaScript，再交给后端执行。框架不直接执行 `.ts`，也不附带 Node.js 开发运行时。
 

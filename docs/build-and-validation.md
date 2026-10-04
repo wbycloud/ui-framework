@@ -1,8 +1,8 @@
 # 构建与验证
 
-本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.3.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 和 API3 generic_components 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
+本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.4.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 、API3 generic_components 和 API4 framework_features 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
 
-当前 API3 构建和验收见[独立记录](validation/api3-validation.md)，新接入见[通用示例](../examples/generic_components/README.md)和[0.2 → 0.3 迁移](migration-v0.2-to-v0.3.md)。第5节保留旧版本历史结果，不作为当前测试状态。
+当前API4新增能力见[菜单与离屏](framework-menu-offscreen.md)、[验收记录](validation/api4-validation.md)和[样例](../examples/framework_features/README.md)。历史 API3 构建和验收见[独立记录](validation/api3-validation.md)，新接入见[通用示例](../examples/generic_components/README.md)和[0.2 → 0.3 迁移](migration-v0.2-to-v0.3.md)。第5节保留旧版本历史结果，不作为当前测试状态。
 
 ## 1. 构建环境
 
@@ -28,13 +28,13 @@ ctest --test-dir build/web-shell --output-on-failure
 & .\build\web-shell\framework_host.exe
 ```
 
-空启动后点击“打开应用”，选择 `build/web-shell/web_counter.uapp` 验证纯 Web 内容，无需 OpenGL；也可选择 `minimal_eda.uapp` 验证原生/OpenGL 内容。三个示例都允许多实例。API3 优先打开 generic_components.uapp，组件 UI 不依赖原生业务控件。直接启动多个包：
+空启动后点击“打开应用”，选择 `build/web-shell/web_counter.uapp` 验证纯 Web 内容，无需 OpenGL；也可选择 `minimal_eda.uapp` 验证原生/OpenGL 内容。四个示例都允许多实例。API3 优先打开 generic_components.uapp，组件 UI 不依赖原生业务控件。直接启动多个包：
 
 ```powershell
 & .\build\web-shell\framework_host.exe .\build\web-shell\web_counter.uapp .\build\web-shell\minimal_eda.uapp
 ```
 
-Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标签，支持浅色/深色切换；顶层保留 Windows 标准标题栏。`Ctrl+O` 打开、`Ctrl+W` 关闭、`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手可选择目标实例，查看命令/schema，输入 `{}` 调用 EDA 命令并观察结果/快照；`eda.clear` 请求确认。事务按钮调用应用的 begin/commit/rollback/undo callback，EDA 未提供时返回 UNSUPPORTED。这个区域用于协议验证，尚未连接模型服务。
+Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标签，支持浅色/深色切换；顶层保留 Windows 标准标题栏。`Ctrl+Shift+O` 打开应用包、`Ctrl+W` 关闭、`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手可选择目标实例，查看命令/schema，输入 `{}` 调用 EDA 命令并观察结果/快照；`eda.clear` 请求确认。事务按钮调用应用的 begin/commit/rollback/undo callback，EDA 未提供时返回 UNSUPPORTED。这个区域用于协议验证，尚未连接模型服务。
 
 宿主日志存储上限为 32000 字节，日志/schema 的显示预览按 UTF-8 边界限制到 4095 字节。危险操作确认参数采用完整分块显示和滚动，不能用被截断的日志预览代替确认内容。应用自身仍负责参数 schema 的业务校验。
 

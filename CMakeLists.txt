@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ui_framework VERSION 0.3.0 LANGUAGES C)
+project(ui_framework VERSION 0.4.0 LANGUAGES C)
 
 option(UI_BUILD_STANDALONE_HOST "Build the Windows Web application host" ${WIN32})
 
@@ -33,12 +33,20 @@ file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/generated")
 file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/generated/component_page.h"
     "static const char ui_component_page[] = \"${_component_page}\";\n")
 
+set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS src/menu.html)
+file(READ "${CMAKE_CURRENT_SOURCE_DIR}/src/menu.html" _menu_page)
+string(REPLACE "\\" "\\\\" _menu_page "${_menu_page}")
+string(REPLACE "\"" "\\\"" _menu_page "${_menu_page}")
+string(REPLACE "\n" "\\n\"\n\"" _menu_page "${_menu_page}")
+file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/generated/menu_page.h" "static const char ui_menu_page[] = \"${_menu_page}\";\n")
+
 add_library(ui_framework STATIC
     src/ui.c
     src/assistant.c
     src/package.c
     src/images.c
     src/components.c
+    src/menus.c
 )
 
 target_include_directories(ui_framework
@@ -63,7 +71,7 @@ endif()
 
 if(WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
     add_library(ui_framework_shared SHARED src/ui.c src/assistant.c src/package.c
-        src/images.c src/components.c
+        src/images.c src/components.c src/menus.c
         src/workspace.c src/platform/win32_surface.c src/platform/win32_shell.c)
     set_target_properties(ui_framework_shared PROPERTIES
         OUTPUT_NAME ui_framework ARCHIVE_OUTPUT_NAME ui_framework_runtime)
@@ -146,6 +154,7 @@ if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
     if(TARGET ui_framework_shared)
         add_library(generic_components_app MODULE examples/generic_components/app.c)
         target_link_libraries(generic_components_app PRIVATE ui_framework_shared)
+        target_include_directories(generic_components_app BEFORE PRIVATE tests/sdk_v3)
         target_compile_definitions(generic_components_app PRIVATE _CRT_SECURE_NO_WARNINGS)
         if(MSVC)
             target_compile_options(generic_components_app PRIVATE /W4 /WX /utf-8)
@@ -157,6 +166,19 @@ if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
             COMMAND $<TARGET_FILE:uapp_pack> "${CMAKE_CURRENT_SOURCE_DIR}/examples/generic_components/manifest.ini" "${CMAKE_CURRENT_BINARY_DIR}/generic_package" "${CMAKE_CURRENT_BINARY_DIR}/generic_components.uapp"
             DEPENDS generic_components_app uapp_pack examples/generic_components/manifest.ini examples/generic_components/icon.png VERBATIM)
         add_custom_target(generic_components_package ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/generic_components.uapp")
+        add_library(framework_features_app MODULE examples/generic_components/app.c)
+        target_link_libraries(framework_features_app PRIVATE ui_framework_shared)
+        target_compile_definitions(framework_features_app PRIVATE UI_SAMPLE_API4 _CRT_SECURE_NO_WARNINGS)
+        if(MSVC)
+            target_compile_options(framework_features_app PRIVATE /W4 /WX /utf-8)
+        endif()
+        add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/framework_features.uapp"
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/features_package"
+            COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:framework_features_app>" "${CMAKE_CURRENT_BINARY_DIR}/features_package/framework_features_app.dll"
+            COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/examples/generic_components/icon.png" "${CMAKE_CURRENT_BINARY_DIR}/features_package/icon.png"
+            COMMAND $<TARGET_FILE:uapp_pack> "${CMAKE_CURRENT_SOURCE_DIR}/examples/framework_features/manifest.ini" "${CMAKE_CURRENT_BINARY_DIR}/features_package" "${CMAKE_CURRENT_BINARY_DIR}/framework_features.uapp"
+            DEPENDS framework_features_app uapp_pack examples/framework_features/manifest.ini examples/generic_components/icon.png VERBATIM)
+        add_custom_target(framework_features_package ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/framework_features.uapp")
         ui_enable_light_web(ui_framework_shared)
     endif()
     add_executable(light_web_probe examples/light_web_probe/probe.c)
@@ -215,9 +237,9 @@ if(UI_BUILD_TESTS)
     add_executable(ui_package_format_test tests/package_format.c)
     target_link_libraries(ui_package_format_test PRIVATE ui_framework)
     add_test(NAME ui_package_format COMMAND ui_package_format_test)
-    add_library(ui_framework_headless STATIC src/ui.c src/assistant.c src/images.c src/components.c
+    add_library(ui_framework_headless STATIC src/ui.c src/assistant.c src/images.c src/components.c src/menus.c
         src/platform/headless_surface.c src/platform/headless_shell.c)
-    target_include_directories(ui_framework_headless PUBLIC include PRIVATE src)
+    target_include_directories(ui_framework_headless PUBLIC include PRIVATE src ${CMAKE_CURRENT_BINARY_DIR}/generated)
     if(WIN32)
         target_link_libraries(ui_framework_headless PUBLIC user32 gdi32 imm32 usp10 msimg32 ole32 windowscodecs uuid)
         add_executable(ui_images_windows_test tests/images_windows.c)
@@ -256,6 +278,33 @@ if(UI_BUILD_TESTS)
         set_tests_properties(ui_webview2_messages PROPERTIES TIMEOUT 25 SKIP_RETURN_CODE 77)
     endif()
     if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
+        add_executable(ui_offscreen_gl_test tests/offscreen_gl.c)
+        target_link_libraries(ui_offscreen_gl_test PRIVATE ui_framework)
+        add_test(NAME ui_offscreen_gl COMMAND ui_offscreen_gl_test)
+        set_tests_properties(ui_offscreen_gl PROPERTIES SKIP_RETURN_CODE 77 TIMEOUT 20)
+        add_executable(ui_workspace_offscreen_test tests/workspace_offscreen.c)
+        target_link_libraries(ui_workspace_offscreen_test PRIVATE ui_framework_shared)
+        add_dependencies(ui_workspace_offscreen_test framework_features_package)
+        add_test(NAME ui_workspace_offscreen COMMAND ui_workspace_offscreen_test "${CMAKE_CURRENT_BINARY_DIR}/framework_features.uapp")
+        set_tests_properties(ui_workspace_offscreen PROPERTIES TIMEOUT 20)
+        if(MSVC)
+            foreach(test IN ITEMS ui_offscreen_gl_test ui_workspace_offscreen_test)
+                target_compile_options(${test} PRIVATE /W4 /WX /utf-8)
+            endforeach()
+        endif()
+        add_executable(ui_framework_features_host_test tests/framework_features_host.c examples/framework_host/host.rc)
+        target_include_directories(ui_framework_features_host_test PRIVATE src examples/framework_host)
+        target_compile_definitions(ui_framework_features_host_test PRIVATE _CRT_SECURE_NO_WARNINGS)
+        target_link_libraries(ui_framework_features_host_test PRIVATE ui_framework_shared comdlg32 shell32)
+        add_dependencies(ui_framework_features_host_test framework_features_package)
+        add_test(NAME ui_framework_features_host COMMAND ui_framework_features_host_test "${CMAKE_CURRENT_BINARY_DIR}/framework_features.uapp" "${CMAKE_CURRENT_BINARY_DIR}/features-host.bmp")
+        set_tests_properties(ui_framework_features_host PROPERTIES TIMEOUT 30)
+        if(MSVC)
+            target_compile_options(ui_framework_features_host_test PRIVATE /W4 /WX /utf-8)
+        endif()
+        add_executable(ui_menu_offscreen_test tests/menu_offscreen.c)
+        target_link_libraries(ui_menu_offscreen_test PRIVATE ui_framework)
+        add_test(NAME ui_menu_offscreen COMMAND ui_menu_offscreen_test)
         add_executable(ui_web_text_edit_test tests/web_text_edit.c)
         target_link_libraries(ui_web_text_edit_test PRIVATE ui_framework)
         add_test(NAME ui_web_text_edit COMMAND ui_web_text_edit_test)
@@ -270,6 +319,12 @@ if(UI_BUILD_TESTS)
             "${CMAKE_CURRENT_BINARY_DIR}/generic_components.uapp"
             "${UI_LEGACY_EDA_PACKAGE}" "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp")
         set_tests_properties(ui_generic_web_host PROPERTIES TIMEOUT 45)
+        set(UI_LEGACY_COMPONENT_PACKAGE "" CACHE FILEPATH "Optional pre-API4 binary API3 generic_components package")
+        if(UI_LEGACY_COMPONENT_PACKAGE)
+            add_test(NAME ui_api3_original_package COMMAND ui_generic_web_host_test
+                "${UI_LEGACY_COMPONENT_PACKAGE}" "${UI_LEGACY_EDA_PACKAGE}" "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp")
+            set_tests_properties(ui_api3_original_package PROPERTIES TIMEOUT 45)
+        endif()
         add_executable(ui_application_versions_test tests/application_versions.c)
         target_link_libraries(ui_application_versions_test PRIVATE ui_framework_shared)
         target_compile_definitions(ui_application_versions_test PRIVATE _CRT_SECURE_NO_WARNINGS)

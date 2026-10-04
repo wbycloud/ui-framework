@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## 0.4.0 — 开发版，未创建稳定标签
+
+框架API4/标准修订4，运行库接受API1/2/3/4，ABI1/包格式1不变。分组菜单、独立Web弹层、工具溢出及TREE标题复用原注册、命令、状态和内容槽；移除组件内部旧菜单。新增真实轻量Web/组件输入、呈现查询、RGBA截图及flush；新增显式无HWND workspace和隐藏WGL/FBO读回。
+
+**兼容变化**：旧尺寸及枚举保持，冻结SDK3；原API3包实际复验。NULL parent默认workspace仍无效，离屏必须显式选择。WebView2缺少新增诊断/组件能力时返回UNSUPPORTED。
+
+**可选升级**：应用采用menus.h、COMPACT及离屏测试接口时升级SDK/API声明；旧包可留原API。框架外壳快捷键变为Ctrl+Shift+O，应用Ctrl+O单独路由。
+
+**必须核对**：依赖旧私有node-menu DOM或严格校验菜单params的应用需调整到公共锚点入口；菜单源menu，params保留id并追加target。使用新函数的DLL/清单一致声明API4，链接匹配运行库。
+
+第一阶段GL离屏仍依赖隐藏HWND/DC，拒绝core/legacy/MSAA降级；不提供完全无窗口GL或Session0承诺。Alt访问键、真实中文输入法、物理跨屏、长时压力及请求方业务应用接入边界见[API4验收](docs/validation/api4-validation.md)。详见[迁移](docs/migration-v0.3-to-v0.4.md)。
+
 ## 0.3.0 — 开发版，未创建稳定标签
 
 框架 API 3 接受 API1/2/3，标准修订3；应用 ABI1、ui_app_query_v1、包格式1不变。实现基准为 3375459ca2d85d0627e3072e3f1e83fc4fa84aae。

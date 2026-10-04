@@ -1,41 +1,39 @@
-# 应用项目升级到 API 3 的提示词
+# 应用项目升级到当前 API4 的提示词
 
-适用于已有 C/C++ 应用项目，目标为 SDK0.3.0开发版、API3、标准修订3。代码基准为 `f8eb3504f4682720967d631e53c985530343a2e0`，应用ABI/包格式仍为1；本文件只补充应用升级指令，没有新增框架接口。
+目标SDK0.4.0开发版、API4、标准修订4，ABI和包格式仍为1。源码入口为[GitHub main](https://github.com/wbycloud/ui-framework/tree/main)。采用开发版必须记录取得的确切commit；不要用稳定标签v0.1.0替代本轮接口，也不要把离屏测试通过写成真实输入法/跨屏通过。
 
-通过[GitHub仓库的main分支](https://github.com/wbycloud/ui-framework/tree/main)获取框架源码和说明，核对是否包含以上代码基准、README、公共头文件和标准修订3。采用开发版须记录实际取得的commit；后续升级重新核对版本和迁移说明，不能只依赖会变化的分支名。
-
-将下面内容复制给负责应用项目的开发者或代码助手。完整实现边界见[接入约定](generic-web-ui.md)，待补验项见[验收记录](validation/api3-validation.md#41-未验证项目与补验清单)。
+复制以下内容给负责应用项目的开发者或代码助手。所有入口均来自GitHub；提示词不包含个人本地目录。
 
 ```text
-请在当前应用项目实际完成向以下框架版本的适配，不要只给建议或修改版本号。
+请实际完成当前应用项目向以下框架版本的适配，不要只修改版本号或提供建议。
 
-框架仓库：https://github.com/wbycloud/ui-framework
-目标分支：main，须包含以下代码基准。
-目标：SDK 0.3.0开发版、框架API 3、开发标准修订3。
-代码基准：f8eb3504f4682720967d631e53c985530343a2e0。
-应用ABI、导出入口ui_app_query_v1、应用包格式均保持1。
+仓库：https://github.com/wbycloud/ui-framework
+分支：main。目标SDK0.4.0开发版、框架API4、开发标准修订4。
+应用ABI、导出入口ui_app_query_v1、包格式均保持1。
 
-1. 从以上GitHub仓库获取main分支，记录实际SDK commit，核对API3、标准修订3及代码基准。读取README.md、CHANGELOG.md、docs/application-development-standard.md、docs/generic-web-ui.md、docs/migration-v0.2-to-v0.3.md、docs/validation/api3-validation.md，以及include/ui_framework公共头文件和examples/generic_components示例。API1应用还读0.1到0.2迁移说明。若取得的源码或说明不符合目标，报告版本差异并继续不依赖SDK的现状盘点，不按旧版或未来其他版本猜测API3接口。
+1. 从上述GitHub仓库获取main，记录实际commit，核对CMake版本0.4.0、UI_FRAMEWORK_API_VERSION=4和标准修订4。读取README.md、CHANGELOG.md、docs/application-development-standard.md、docs/generic-web-ui.md、docs/framework-menu-offscreen.md、docs/migration-v0.3-to-v0.4.md、docs/validation/api4-validation.md、include/ui_framework公共头文件及examples/framework_features/README.md。API1/2应用同时读取此前迁移指南。若取得源码不符合目标，报告差异，不猜测接口。
 
-2. 盘点应用的SDK/API/ABI、包清单、界面、命令、数据源、图片、线程和卸载流程，列出已符合、需要修改、可选迁移及框架能力不足的部分。保留业务文档模型、算法、文件格式和应用渲染器，只修改接入与界面层；不要修改框架内部源码。
+2. 盘点应用SDK/API/ABI、包清单、菜单与toolbar分组、组件/内容槽、命令、图片、线程和卸载；区分已符合、需要修改、可选离屏适配及框架限制。保留业务模型、算法、文件格式和应用渲染器，只修改应用接入与界面层，不修改框架内部代码。
 
-3. 拟迁移的菜单、工具栏、侧栏内部控件、状态栏、属性表单和业务对话框通过框架公共接口注册、提供数据和绑定命令。复用components.h、images.h、现有面板和内容槽；通用组件HTML/CSS/JS由框架维护。不要另建平行组件、命令或生命周期系统，不用TreeView/ListView/Button/Edit/MessageBox或隐藏EDIT代理实现新业务界面。系统文件/目录选择器允许保留。已有OpenGL等绘图通过内容槽接入，由应用决定是否使用。
+3. 菜单、工具栏、面板内部控件、状态栏及业务对话框使用公共C接口注册、提供数据和绑定语义命令。复用components.h、images.h、menus.h、现有面板与内容槽；通用HTML/CSS/JS由框架维护。不用TreeView/ListView/Button/Edit/MessageBox或隐藏EDIT代理实现新业务界面。系统文件/目录选择器可保留，OpenGL由应用按需使用。
 
-4. 菜单、快捷键、组件和助手复用同一语义命令、校验、权限及撤销路径。按稳定ID更新可见、启用、选中、忙碌及数据状态，避免一次操作重复执行。保留文本编辑快捷键、焦点、展开、选择、滚动和未提交草稿；成功提交后接受草稿，失败显示字段错误或Web对话框。
+4. 菜单路径用/表达嵌套，可用menu_group描述给根组明确顺序和名称。工具保留所属toolbar，可选COMPACT加图标；宽度不足使用框架溢出入口。工具/画布菜单用HOST或CONTENT_SLOT锚点，树行用ROW或兼容show_menu，不借用无关业务行来显示工具菜单，不复制内部node-menu。业务target_id独立于位置；核对params.id/target十进制字符串和menu源。
 
-5. 树和大表格按需查询/分页/虚拟化，不生成全量DOM，不提高预算掩盖问题。后台结果保留实例ID、组件代次、项目ID、内容版本、请求ID及DPI等请求身份，处理过期、取消和超限。JSON中的64位对象、资源及请求ID使用十进制字符串。
+5. 应用Ctrl+O与宿主Ctrl+Shift+O区分。菜单、快捷键、组件和助手复用同一语义命令、业务校验和撤销；助手保持权限确认路径。局部更新使用稳定ID并保留焦点、选择、展开、滚动和草稿。一次操作不得重复执行，数据回填不得再次触发提交，文本编辑快捷键留在编辑区。
 
-6. 图标与缩略图通过RGBA或包内PNG接口发布，像素不走JSON/Base64。遵守顶向下RGBA8、非预乘透明度、正行跨度、缓冲长度与复制约定。缩略图由应用渲染器生成，框架显示。区分显式图片和可再生成资源，特殊样式引用图片为借用；遵守每实例32MiB图片/索引和8MiB新投递队列预算及接口所有权。
+6. 树/表格按需查询和虚拟化，不生成全量DOM或提高预算掩盖问题。后台通过workspace复制投递，保留实例、组件代次、项目ID、内容版本、请求ID、DPI；旧/迟到结果安全丢弃。JSON内64位ID使用十进制字符串。
 
-7. UI对象接口在UI线程调用；后台只通过已有workspace复制投递，不携带应用函数指针、host指针或HWND。实例状态独立，组件注销/换源/项目删除后旧结果失效。关闭和初始化失败沿完整清理路径处理；unmount停止并join线程、清理回调/GPU资源，在所有调用退出后才允许卸载模块。
+7. RGBA/包内PNG通过C接口发布；像素不经JSON/Base64。遵守顶向下RGBA8、非预乘输入、正stride、缓冲长度、复制和资源预算；缩略图由应用自己的渲染器生成，框架负责显示。借用图片、字符串和回调参数按公共所有权合同使用，跨模块内存由分配方释放。
 
-8. 使用API3接口时以匹配的SDK和import library重建应用，在host配置、DLL descriptor与.uapp清单中一致声明API3，ABI/包格式仍为1。只共享宿主的ui_framework.dll，不重复静态链接框架或包入替换运行库。新描述清零并设置size，不改packing；SDK commit和标准修订记录在应用开发说明或锁定文件，不添加到严格八字段的包清单中。旧API1/2包可兼容加载，但不能靠改清单把旧二进制变成API3应用。
+8. 使用API4新函数时，以匹配头文件和ui_framework_runtime.lib重建DLL，DLL descriptor和严格八字段.uapp清单一致声明API4；ABI/包格式仍1。只共享宿主ui_framework.dll。SDK commit及标准记录在应用文档或锁定文件，不往包清单添加字段。旧API1/2/3包可保留原声明兼容加载，不能只改清单假装已迁移。
 
-9. 按实际后端能力处理限制。新增通用组件和C图片资源桥接使用轻量后端；WebView2目前保留已有HTML/消息能力，不能假定新增能力等价。框架缺少的需求列出并说明影响，不以原生业务控件或未定义接口绕过。
+9. 默认任务是正常宿主适配。离屏接入可选：查询run_mode，避免自有HWND/timer/显示/系统选择器依赖；无窗口workspace用原内容槽、组件及复制队列，UI线程显式flush/poll。Web捕获使用显式尺寸和调用方RGBA缓冲，先查询能力。绘图需要GPU时显式使用隐藏WGL离屏入口、原frame和input回调；至少3.3 compatibility，不静默降级。隐藏HWND/DC、Session0未验证和桌面SwapBuffers的区别写清楚，不宣称普通旧应用自动无头兼容。
 
-10. 构建DLL和.uapp，在真实宿主验证两实例隔离、助手目标、增量更新保留状态、可见数据规模、图片更新/过期结果/预算、快捷键与单次命令、实例模态、关闭卸载及重新打开。覆盖窗口尺寸、96/144/192 DPI、最小化恢复和实际使用的绘图内容槽；提供自动测试及真实界面证据。
+10. 实例独立；部分初始化失败与关闭沿同一清理路径。停止并join worker，取消订阅/投递，unmount释放GPU和自有窗口，所有回调退出后才可卸载模块。REFUSE/WAIT保持正常含义，flush空闲不等于worker停止，关闭重开后的旧结果不得进入新实例。
 
-11. 单独执行或记录框架验收清单UV-01实际中文输入法、UV-02不同DPI物理跨屏、UV-03长期人工滚动与资源压力、UV-04复杂编辑/布局组合。没有条件的标为未验证，记录原因和复验步骤。程序设置中文文本、模拟消息或设置DPI不能代替这些实操；不要把框架未验证项写成已通过。
+11. 构建DLL和.uapp，在匹配真实宿主验证七类菜单分组、嵌套/最后一项/窄窗工具溢出、动态状态、一次快捷键、双实例及固定目标、草稿/焦点、图片更新和过期结果、大数据DOM、对话框及失败/卸载/重开。覆盖四种窗口尺寸、96/144/192程序DPI和实际绘图内容槽。离屏适配若做，额外运行真实模板输入、像素、队列及GL读回测试；不以直接调handler代替交互。
 
-12. 更新应用README、SDK/API/标准版本记录、迁移说明及验证记录，交付可构建源码和应用包，说明已完成、部分支持、未实现、未验证、实际命令和结果，以及剩余阻塞。
+12. 对照验收记录的UV项补验实际中文输入法、物理跨屏、长时人工压力、复杂编辑布局、Session0和应用自己的完整业务接入。没有条件明确标未验证并记录原因/复验步骤，不继承框架不存在的全功能通过结论。WebView2新增诊断和组件能力没有等价支持，缺失接口使用能力查询/UNSUPPORTED处理。
+
+13. 更新应用README、SDK/API/标准/commit记录、迁移与验收记录，交付可构建源码及应用包，分别列已完成、部分支持、未实现、未验证、执行命令与真实结果，以及剩余阻塞。
 ```

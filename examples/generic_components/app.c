@@ -7,6 +7,9 @@
 #include "ui_framework/components.h"
 #include "ui_framework/opengl.h"
 #include "command_json.h"
+#ifdef UI_SAMPLE_API4
+#include "ui_framework/menus.h"
+#endif
 
 typedef struct job { ui_component_query_t query; char component[64]; struct job *next; } job_t;
 typedef struct sample {
@@ -16,7 +19,7 @@ typedef struct sample {
     HANDLE worker,wake,stop;
     CRITICAL_SECTION lock;
     job_t *head,*tail;
-    int active,closing;
+    int active,closing,refuse_close;
     unsigned operations,version;
     struct {uint64_t id;char column[33],text[256];} changes[64];
     size_t change_count;
@@ -71,8 +74,16 @@ static void source(ui_component_t *component,const ui_component_query_t *q,void 
 static void run(ui_host_t *host,uint64_t request,const char *command,const char *params,const char *origin,void *data)
 {
     sample_t *s=(sample_t *)data;char status[128];(void)origin;++s->operations;
+    if(!strcmp(command,"demo.close_refuse"))s->refuse_close=1;
+    if(!strcmp(command,"demo.close_allow"))s->refuse_close=0;
     if(!strcmp(command,"demo.dialog"))(void)ui_component_show_dialog(s->dialog);
-    if(!strcmp(command,"demo.context")){uint64_t id=uj_u64(params,"id");(void)ui_component_show_menu(id>=9007199254741000ULL?s->table:s->tree,id,"节点");}
+    if(!strcmp(command,"demo.context")){uint64_t id=uj_u64(params,"id");(void)ui_component_show_menu(id>=9007199254741000ULL?s->table:s->tree,id,
+#ifdef UI_SAMPLE_API4
+        "Tools/节点"
+#else
+        "节点"
+#endif
+        );}
     if(!strcmp(command,"demo.cancel"))(void)ui_component_close_dialog(s->dialog);
     if(!strcmp(command,"demo.submit")){ui_component_state_t state={0};ui_cell_t size={0};ui_component_t *target=s->form;state.size=sizeof(state);size.size=sizeof(size);
         (void)ui_component_get_state(s->dialog,&state);if(state.modal)target=s->dialog;
@@ -115,18 +126,55 @@ static ui_status_t UI_APP_CALL create(const ui_app_context_t *context,void **out
     sample_t *s=(sample_t *)calloc(1,sizeof(*s));ui_component_desc_t d={0};ui_column_desc_t columns[16]={0};ui_panel_desc_t panel={0};ui_toolbar_desc_t toolbar={0};ui_layout_desc_t layout={0};ui_status_t status;size_t i;
     if(!s)return UI_STATUS_OUT_OF_MEMORY;s->context=*context;s->version=1;*out=s;InitializeCriticalSection(&s->lock);s->wake=CreateEventW(NULL,FALSE,FALSE,NULL);s->stop=CreateEventW(NULL,TRUE,FALSE,NULL);
     if(!s->wake||!s->stop)return UI_STATUS_PLATFORM_ERROR;
+#ifdef UI_SAMPLE_API4
+    if(GetEnvironmentVariableA("UI_FEATURES_FAIL_CREATE",NULL,0))return UI_STATUS_PLATFORM_ERROR;
+#endif
     layout.size=sizeof(layout);layout.menu_bar_height=28;layout.toolbar_height=36;layout.status_bar_height=24;
     layout.left_sidebar_preferred_width=layout.right_sidebar_preferred_width=250;
     layout.left_sidebar_min_width=layout.right_sidebar_min_width=220;
     layout.left_sidebar_max_width=layout.right_sidebar_max_width=300;layout.collapsed_tag_width=32;
     status=ui_host_set_layout(context->host,&layout);if(status!=UI_STATUS_OK)return status;
     for(i=0;i<8;++i){ui_command_desc_t c={0};ui_menu_item_desc_t m={0};c.size=sizeof(c);c.id=commands[i];c.title=titles[i];c.params_schema_json="{\"type\":\"object\"}";c.handler=run;c.user_data=s;
+        #ifdef UI_SAMPLE_API4
+        if(i==1){c.shortcut_key='O';c.shortcut_modifiers=UI_INPUT_MODIFIER_CONTROL;}
+#endif
         if(i==0){c.shortcut_key='D';c.shortcut_modifiers=UI_INPUT_MODIFIER_CONTROL;}status=ui_host_register_command(context->host,&c);if(status!=UI_STATUS_OK)return status;
-        m.size=sizeof(m);m.id=commands[i];m.title=titles[i];m.menu_path="组件";m.command_id=commands[i];m.order=(int)i;status=ui_host_register_menu_item(context->host,&m);if(status!=UI_STATUS_OK)return status;}
-    for(i=0;i<2;++i){ui_menu_item_desc_t item={0};item.size=sizeof(item);item.id=i?"node.refresh":"node.dialog";item.title=titles[i];item.menu_path="节点";item.command_id=commands[i];item.order=(int)i;
+        m.size=sizeof(m);m.id=commands[i];m.title=titles[i];m.menu_path=
+#ifdef UI_SAMPLE_API4
+"Tools";
+#else
+"组件";
+#endif
+m.command_id=commands[i];m.order=(int)i;status=ui_host_register_menu_item(context->host,&m);if(status!=UI_STATUS_OK)return status;}
+    for(i=0;i<2;++i){ui_menu_item_desc_t item={0};item.size=sizeof(item);item.id=i?"node.refresh":"node.dialog";item.title=titles[i];item.menu_path=
+#ifdef UI_SAMPLE_API4
+"Tools/节点";
+#else
+"节点";
+#endif
+item.command_id=commands[i];item.order=(int)i;
         status=ui_host_register_menu_item(context->host,&item);if(status!=UI_STATUS_OK)return status;}
-    toolbar.size=sizeof(toolbar);toolbar.id="demo.tools";toolbar.title="组件";toolbar.visible=1;status=ui_host_register_toolbar(context->host,&toolbar);if(status!=UI_STATUS_OK)return status;
+    toolbar.size=sizeof(toolbar);toolbar.id="demo.tools";toolbar.title="组件";toolbar.visible=1;
+#ifdef UI_SAMPLE_API4
+    toolbar.display=UI_TOOLBAR_COMPACT;
+#endif
+    status=ui_host_register_toolbar(context->host,&toolbar);if(status!=UI_STATUS_OK)return status;
     for(i=0;i<2;++i){ui_toolbar_item_desc_t item={0};item.size=sizeof(item);item.id=commands[i];item.title=titles[i];item.toolbar_id=toolbar.id;item.command_id=commands[i];item.order=(int)i;status=ui_host_register_toolbar_item(context->host,&item);if(status!=UI_STATUS_OK)return status;}
+#ifdef UI_SAMPLE_API4
+    {const char *groups[]={"File","Edit","View","Tools","Cell","Layer","Help"};
+     for(i=0;i<7;++i){ui_menu_group_desc_t g={0};ui_menu_item_desc_t m={0};char id[40];g.size=sizeof(g);g.path=groups[i];g.title=groups[i];g.order=(int)i;
+        status=ui_host_register_menu_group(context->host,&g);if(status!=UI_STATUS_OK)return status;
+        snprintf(id,sizeof(id),"feature.menu.%zu",i);m.size=sizeof(m);m.id=id;m.menu_path=g.path;m.title=titles[i];m.command_id=commands[i];m.order=(int)i;
+        status=ui_host_register_menu_item(context->host,&m);if(status!=UI_STATUS_OK)return status;}
+     {ui_toolbar_desc_t t={0};t.size=sizeof(t);t.visible=1;t.order=1;t.id="features.edit";t.title="编辑";
+      status=ui_host_register_toolbar(context->host,&t);if(status!=UI_STATUS_OK)return status;t.order=2;t.id="features.view";t.title="视图";
+      status=ui_host_register_toolbar(context->host,&t);if(status!=UI_STATUS_OK)return status;}
+     for(i=0;i<13;++i){ui_toolbar_item_desc_t t={0};char id[40],title[80];snprintf(id,sizeof(id),"feature.tool.%02zu",i);snprintf(title,sizeof(title),"工具 %02zu 中文%s",i,i%3==0?"长标题示例":"");
+        t.size=sizeof(t);t.id=id;t.title=title;t.toolbar_id=i<5?toolbar.id:i<9?"features.edit":"features.view";t.command_id=commands[i%8];t.order=(int)i+2;
+        status=ui_host_register_toolbar_item(context->host,&t);if(status!=UI_STATUS_OK)return status;}
+     for(i=0;i<2;++i){ui_command_desc_t c={0};c.size=sizeof(c);c.id=i?"demo.close_allow":"demo.close_refuse";c.title=c.id;c.handler=run;c.user_data=s;
+        status=ui_host_register_command(context->host,&c);if(status!=UI_STATUS_OK)return status;}}
+#endif
     for(i=0;i<3;++i){panel.size=sizeof(panel);panel.entry_url="";panel.id=i==0?"tree":i==1?"form":"drawing";panel.title=i==0?"按需树":i==1?"属性":"绘图内容槽";
         panel.kind=i==2?UI_PANEL_FLOATING:UI_PANEL_SIDEBAR;panel.dock_region=i==0?UI_LAYOUT_REGION_LEFT_SIDEBAR:UI_LAYOUT_REGION_RIGHT_SIDEBAR;panel.preferred_width=i==2?360:250;
         status=ui_host_register_panel(context->host,&panel);if(status!=UI_STATUS_OK)return status;}
@@ -150,23 +198,46 @@ static ui_status_t UI_APP_CALL mount(void *data,const ui_app_context_t *context)
     sample_t *s=(sample_t *)data;ui_shell_t *shell=ui_host_get_shell(context->host);ui_surface_desc_t surface={0};ui_opengl_config_t gl={0};ui_status_t status;size_t i;s->context=*context;
     s->worker=CreateThread(NULL,0,worker,s,0,NULL);if(!s->worker)return UI_STATUS_PLATFORM_ERROR;
     {ui_image_id_t icon;status=ui_image_load_resource(context,"icon.png",&icon);if(status!=UI_STATUS_OK)return status;
-     (void)ui_host_set_item_image(context->host,"demo.dialog",icon);(void)ui_host_set_item_image(context->host,"demo.refresh",icon);}
+     (void)ui_host_set_item_image(context->host,"demo.dialog",icon);(void)ui_host_set_item_image(context->host,"demo.refresh",icon);
+#ifdef UI_SAMPLE_API4
+     for(i=0;i<13;++i){char id[40];snprintf(id,sizeof(id),"feature.tool.%02zu",i);(void)ui_host_set_item_image(context->host,id,icon);}
+#endif
+    }
     for(i=0;i<8;++i){ui_assistant_command_desc_t c={0};c.size=sizeof(c);c.id=commands[i];c.permission=UI_ASSISTANT_PERMISSION_EDIT;c.params_schema_json="{\"type\":\"object\"}";status=ui_assistant_register_command(context->assistant,&c);if(status!=UI_STATUS_OK)return status;}
     status=ui_component_mount(s->table,ui_shell_get_content_slot(shell,NULL));if(status!=UI_STATUS_OK)return status;
     status=ui_component_mount(s->tree,ui_shell_get_content_slot(shell,"tree"));if(status!=UI_STATUS_OK)return status;
     status=ui_component_mount(s->form,ui_shell_get_content_slot(shell,"form"));if(status!=UI_STATUS_OK)return status;
+#ifdef UI_SAMPLE_API4
+    if(GetEnvironmentVariableA("UI_FEATURES_FAIL_MOUNT",NULL,0))return UI_STATUS_PLATFORM_ERROR;
+    {ui_run_mode_t mode;ui_assistant_command_desc_t c={0};c.size=sizeof(c);c.permission=UI_ASSISTANT_PERMISSION_EDIT;
+     c.id="demo.close_refuse";(void)ui_assistant_register_command(context->assistant,&c);c.id="demo.close_allow";(void)ui_assistant_register_command(context->assistant,&c);
+     (void)ui_host_get_run_mode(context->host,&mode);if(mode==UI_RUN_OFFSCREEN&&GetEnvironmentVariableA("UI_FEATURES_NO_GL",NULL,0))return UI_STATUS_OK;}
+#endif
     surface.size=sizeof(surface);surface.id="drawing";surface.kind=UI_SURFACE_OPENGL;surface.visible=1;gl.size=sizeof(gl);gl.legacy_context=1;
-    s->canvas=ui_opengl_surface_create(context->host,&surface,&gl,&status);if(!s->canvas)return status;
+#ifdef UI_SAMPLE_API4
+    {ui_run_mode_t mode;gl.legacy_context=0;gl.major_version=3;gl.minor_version=3;gl.profile=UI_OPENGL_PROFILE_COMPATIBILITY;
+     (void)ui_host_get_run_mode(context->host,&mode);surface.rect=(ui_rect_t){0,0,360,240};s->canvas=mode==UI_RUN_OFFSCREEN?
+     ui_opengl_offscreen_surface_create(context->host,&surface,&gl,&status):ui_opengl_surface_create(context->host,&surface,&gl,&status);}
+#else
+    s->canvas=ui_opengl_surface_create(context->host,&surface,&gl,&status);
+#endif
+    if(!s->canvas)return status;
     (void)ui_surface_set_callbacks(s->canvas,NULL,frame,s);return ui_content_slot_attach_surface(ui_shell_get_content_slot(shell,"drawing"),s->canvas);
 }
 static void UI_APP_CALL active(void *data,int active_value)
 {sample_t *s=(sample_t *)data;s->active=active_value;if(s->active&&s->canvas)(void)ui_surface_invalidate(s->canvas);}
 static ui_app_close_decision_t UI_APP_CALL close_app(void *data,ui_app_close_reason_t reason)
-{sample_t *s=(sample_t *)data;(void)reason;s->closing=1;SetEvent(s->stop);return s->worker?UI_APP_CLOSE_WAIT:UI_APP_CLOSE_ALLOW;}
+{sample_t *s=(sample_t *)data;(void)reason;if(s->refuse_close)return UI_APP_CLOSE_REFUSE;s->closing=1;SetEvent(s->stop);return s->worker?UI_APP_CLOSE_WAIT:UI_APP_CLOSE_ALLOW;}
 static void UI_APP_CALL unmount(void *data)
 {sample_t *s=(sample_t *)data;SetEvent(s->stop);if(s->worker){WaitForSingleObject(s->worker,INFINITE);CloseHandle(s->worker);s->worker=NULL;}if(s->canvas){ui_surface_destroy(s->canvas);s->canvas=NULL;}}
 static void UI_APP_CALL destroy(void *data)
 {sample_t *s=(sample_t *)data;job_t *j;while(s->head){j=s->head;s->head=j->next;free(j);}if(s->wake)CloseHandle(s->wake);if(s->stop)CloseHandle(s->stop);DeleteCriticalSection(&s->lock);free(s);}
 static ui_status_t UI_APP_CALL shutdown_module(void){return UI_STATUS_OK;}
 UI_APP_EXPORT const ui_app_descriptor_t *UI_APP_CALL ui_app_query_v1(void)
-{static const ui_app_descriptor_t d={sizeof(d),1,3,create,mount,active,close_app,unmount,destroy,shutdown_module};return &d;}
+{static const ui_app_descriptor_t d={sizeof(d),1,
+#ifdef UI_SAMPLE_API4
+4,
+#else
+3,
+#endif
+create,mount,active,close_app,unmount,destroy,shutdown_module};return &d;}

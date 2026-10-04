@@ -264,3 +264,8 @@ void ui_shell_web_view_destroyed(ui_host_t *host, ui_web_view_t *view)
     for (slot = host->shell->native->slots; slot != NULL; slot = slot->next)
         if (slot->view == view) slot->view = NULL;
 }
+
+ui_native_shell_t *ui_native_shell_create_offscreen(const ui_native_shell_config_t *config)
+{return ui_native_shell_create(config);}
+int ui_content_slot_belongs_to(const ui_content_slot_t *slot,const ui_host_t *host)
+{return slot&&slot->shell&&slot->shell->native->host==host;}

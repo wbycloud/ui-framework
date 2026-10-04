@@ -18,7 +18,7 @@
 extern "C" {
 #endif
 
-#define UI_FRAMEWORK_API_VERSION 3u
+#define UI_FRAMEWORK_API_VERSION 4u
 #define UI_FRAMEWORK_MIN_API_VERSION 1u
 
 typedef struct ui_host ui_host_t;
@@ -174,12 +174,14 @@ typedef struct ui_menu_item_desc {
 } ui_menu_item_desc_t;
 
 /* Toolbars are registered separately from their command-backed items. */
+typedef enum ui_toolbar_display { UI_TOOLBAR_TEXT_ICONS = 0, UI_TOOLBAR_COMPACT = 1 } ui_toolbar_display_t;
 typedef struct ui_toolbar_desc {
     uint32_t size;
     const char *id;
     const char *title;
     int order;
     int visible;
+    ui_toolbar_display_t display; /* Appended; missing => TEXT_ICONS. */
 } ui_toolbar_desc_t;
 
 typedef struct ui_toolbar_item_desc {
@@ -300,6 +302,24 @@ typedef void *(*ui_web_native_handle_fn)(void *backend_user_data,
 #define UI_WEB_CAP_WEB_TEXT_EDIT UINT64_C(64)
 #define UI_WEB_CAP_COMPONENTS UINT64_C(128)
 
+/* API4 diagnostic output. Rectangles use view-local logical pixels. */
+typedef struct ui_element_presentation {
+    uint32_t size;
+    ui_rect_t rect, clip;
+    int visible, enabled, focused, text_overflow;
+    char text_utf8[4096];
+} ui_element_presentation_t;
+/* Caller-owned top-down RGBA8. Web capture is straight RGBA with alpha=255;
+ * OpenGL readback retains the framebuffer's application-defined alpha.
+ * pixels=NULL queries width/height/required stride without allocating. */
+typedef struct ui_pixel_buffer {
+    uint32_t size, width, height;
+    size_t stride, capacity;
+    uint8_t *pixels;
+} ui_pixel_buffer_t;
+#define UI_WEB_CAP_OFFSCREEN_CAPTURE UINT64_C(256)
+#define UI_WEB_CAP_PRESENTATION_QUERY UINT64_C(512)
+
 typedef struct ui_web_backend_ops {
     uint32_t size;
     ui_web_view_create_fn create_view;
@@ -315,6 +335,10 @@ typedef struct ui_web_backend_ops {
     ui_web_get_capabilities_fn get_capabilities;
     ui_web_native_handle_fn native_handle;
     void (*image_changed)(void *backend_user_data, void *view_user_data, uint64_t image_id);
+    ui_status_t (*get_presentation)(void *, void *, const char *, ui_element_presentation_t *);
+    ui_status_t (*capture_rgba)(void *, void *, ui_pixel_buffer_t *);
+    ui_status_t (*flush)(void *, void *, uint32_t budget);
+
 } ui_web_backend_ops_t;
 
 typedef struct ui_web_backend_desc {
@@ -323,9 +347,18 @@ typedef struct ui_web_backend_desc {
     void *user_data;
 } ui_web_backend_desc_t;
 
+UI_API ui_status_t ui_web_view_get_presentation(ui_web_view_t *, const char *, ui_element_presentation_t *);
+UI_API ui_status_t ui_web_view_capture_rgba(ui_web_view_t *, int width, int height,
+    uint32_t dpi, ui_pixel_buffer_t *);
+/* UI-thread; bounded pending JS jobs/layout, not OS input or workspace messages. */
+UI_API ui_status_t ui_web_view_flush(ui_web_view_t *, uint32_t budget);
+
 UI_API ui_host_t *ui_host_create(const ui_host_config_t *config);
 UI_API void ui_host_destroy(ui_host_t *host);
 /* Call before creating the application's first Win32 window. */
+typedef enum ui_run_mode { UI_RUN_WINDOWED=0, UI_RUN_OFFSCREEN=1 } ui_run_mode_t;
+/* Explicit workspace mode. NULL parent alone does not select this mode. */
+UI_API ui_status_t ui_host_get_run_mode(const ui_host_t *,ui_run_mode_t *);
 UI_API ui_status_t ui_framework_initialize(void);
 UI_API int ui_framework_supports_api(uint32_t api_version);
 /* Width and height are logical client pixels. */

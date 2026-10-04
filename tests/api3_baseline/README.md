@@ -1,0 +1,3 @@
+# API3 测试合同原本
+
+保存API4修改前的application_versions、components_core、generic_web_host、package_format。原未知API4拒绝断言现改为接受4并拒绝5；generic_web_host的旧内部菜单点击改为公共独立菜单输入路径。保留原文件作审查参考，不把旧测试的预期改动隐藏为回归通过。

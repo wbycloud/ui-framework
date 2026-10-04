@@ -40,6 +40,17 @@ typedef struct ui_opengl_info {
 } ui_opengl_info_t;
 
 typedef void (*ui_opengl_proc_t)(void);
+typedef enum ui_opengl_window_dependency { UI_OPENGL_VISIBLE_WINDOW=0, UI_OPENGL_HIDDEN_WINDOW=1 } ui_opengl_window_dependency_t;
+/* Windows hidden WGL drawable + private FBO; requires >=3.3 compatibility.
+ * No MSAA/legacy fallback. UI/context owner thread only. Not Session0 support. */
+UI_API ui_surface_t *ui_opengl_offscreen_surface_create(ui_host_t *,const ui_surface_desc_t *,const ui_opengl_config_t *,ui_status_t *);
+UI_API ui_status_t ui_opengl_surface_get_window_dependency(const ui_surface_t *,ui_opengl_window_dependency_t *);
+/* NULL pixels queries size without executing frame. Otherwise invokes existing
+ * frame once and synchronously reads RGBA8, top-down, caller-owned positive
+ * stride/capacity. Alpha is the framebuffer alpha, unmodified. Restores previous
+ * WGL context, framebuffer bindings and viewport. Does not present to desktop. */
+UI_API ui_status_t ui_opengl_offscreen_render(ui_surface_t *,ui_pixel_buffer_t *);
+UI_API ui_status_t ui_surface_dispatch_input(ui_surface_t *,const ui_input_event_t *);
 
 /*
  * Creates an OpenGL surface with an explicit configuration. Modern requests

@@ -1,0 +1,38 @@
+<!doctype html><html><head><style>
+body{margin:0;padding:4px;display:flex;flex-direction:column;gap:3px;background:#f3f6fb;color:#18243a;font-family:Segoe UI}
+#heading{height:28px}#items{flex:1;display:flex;flex-direction:column;overflow-y:auto;gap:2px}
+button{height:30px;padding:4px 8px;display:flex;flex-direction:row;gap:6px;text-align:left;border:1px solid #cbd5e1;background:#ffffff}
+img{width:20px;height:20px}span{flex:1;white-space:nowrap}#detail{flex:1;overflow-y:auto}
+#navigation{height:30px;display:flex;flex-direction:row;gap:3px}
+</style></head><body><div id="heading"></div><div id="detail" style="display:none"></div><div id="items"></div>
+<div id="navigation"><button id="back">返回</button><button id="up">↑</button><button id="down">↓</button><button id="close">关闭</button></div>
+<script>
+var model=null,buttons=[],selected=-1,nodes={};
+function send(action,extra){var m=extra||{};m.action=action;ui.postMessage(m)}
+function focusAt(index,step){step=step||1;if(!buttons.length)return;if(index>=buttons.length&&model.first+buttons.length<model.total){selected=buttons.length-1;send('scroll',{delta:1});return}if(index<0&&model.first>0){selected=0;send('scroll',{delta:-1});return}for(var i=0;i<buttons.length;i++){index=(index+buttons.length)%buttons.length;if(!buttons[index].disabled){selected=index;buttons[index].focus();buttons[index].scrollIntoView();return}index+=step}}
+document.getElementById('close').addEventListener('click',function(){send('close')});
+document.getElementById('back').addEventListener('click',function(){send('back')});
+document.getElementById('up').addEventListener('click',function(){send('scroll',{delta:-1})});
+document.getElementById('down').addEventListener('click',function(){send('scroll',{delta:1})});
+document.addEventListener('keydown',function(e){if(!model)return;
+ if(e.keyCode===27){e.preventDefault();send('close')}
+ else if(e.keyCode===13&&selected>=0&&buttons[selected]&&!buttons[selected].disabled){e.preventDefault();send('choose',{id:buttons[selected].item.id})}
+ else if(e.keyCode===38||e.keyCode===40){e.preventDefault();focusAt(selected+(e.keyCode===38?-1:1),e.keyCode===38?-1:1)}
+ else if(e.keyCode===37||e.keyCode===39){e.preventDefault();send('group',{delta:e.keyCode===37?-1:1})}
+});
+ui.onmessage=function(s){model=s;var root=document.getElementById('items'),keep={};buttons=[];
+ document.getElementById('heading').textContent=s.title;document.getElementById('detail').textContent=s.detail||'';
+ document.getElementById('detail').style.display=s.detail?'flex':'none';root.style.display=s.detail?'none':'flex';
+ var existing=nodes;
+ for(var i=0;i<s.items.length;i++){var m=s.items[i],id=m.dom,b=existing[id];keep[id]=true;
+  if(!b){b=document.createElement('button');b.id=id;nodes[id]=b;b.icon=document.createElement('img');b.label=document.createElement('span');b.appendChild(b.icon);b.appendChild(b.label);
+   b.addEventListener('click',function(){send('choose',{id:this.item.id})});b.addEventListener('focus',function(){selected=buttons.indexOf(this)});}
+  b.item=m;b.label.textContent=(m.checked?'✓ ':m.busy?'◌ ':'')+(m.section?m.title+' / '+m.section:m.title)+(m.group?' ▸':'');
+  b.icon.src=m.image;b.icon.style.display=m.image==='0'?'none':'flex';b.disabled=!m.enabled||m.busy;root.appendChild(b);buttons.push(b);
+ }
+ for(var key in existing)if(!keep[key]){root.removeChild(existing[key]);delete nodes[key]}
+ document.getElementById('back').disabled=!s.back;document.getElementById('up').disabled=s.first===0;
+ document.getElementById('down').disabled=s.first+s.items.length>=s.total;
+ var at=buttons.indexOf(document.activeElement);if(at>=0)selected=at;else focusAt(selected>=0&&selected<buttons.length?selected:0);
+};
+</script></body></html>

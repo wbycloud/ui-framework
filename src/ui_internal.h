@@ -5,6 +5,7 @@
 #include "ui_framework/opengl.h"
 #include "ui_framework/shell.h"
 #include "ui_framework/components.h"
+#include "ui_framework/menus.h"
 
 typedef struct ui_command_entry ui_command_entry_t;
 typedef struct ui_menu_entry ui_menu_entry_t;
@@ -20,6 +21,7 @@ struct ui_surface {
     ui_rect_t rect;
     ui_rect_t pixel_rect;
     int visible;
+    int offscreen;
     ui_layout_region_t layout_region;
     ui_surface_resize_fn resized;
     ui_surface_frame_fn frame;
@@ -71,6 +73,7 @@ struct ui_host {
     void *narrow_user_data;
     ui_command_entry_t *commands;
     ui_menu_entry_t *menus;
+    void *menu_groups, *menu_popup;
     ui_toolbar_entry_t *toolbars;
     ui_toolbar_item_entry_t *toolbar_items;
     ui_panel_entry_t *panels;
@@ -85,6 +88,7 @@ struct ui_host {
     ui_component_t *modal_component;
     ui_component_t *focused_component;
     int app_active;
+    ui_run_mode_t run_mode;
     ui_host_t *image_source; /* Trusted shell chrome may display its active application's images. */
 };
 
@@ -115,6 +119,7 @@ struct ui_toolbar_entry {
     char *title;
     int order;
     int visible;
+    ui_toolbar_display_t display;
     ui_toolbar_entry_t *next;
 };
 
@@ -148,10 +153,17 @@ struct ui_pending_request {
 };
 
 char *ui_strdup(const char *value);
+ui_native_shell_t *ui_native_shell_create_offscreen(const ui_native_shell_config_t *);
+int ui_content_slot_belongs_to(const ui_content_slot_t *,const ui_host_t *);
 void ui_dispatch_enter(ui_host_t *host);
 void ui_dispatch_leave(ui_host_t *host);
 void ui_components_destroy(ui_host_t *host);
-void ui_components_commands_changed(ui_host_t *host);
+void ui_menus_destroy(ui_host_t *);
+void ui_menus_commands_changed(ui_host_t *);
+void ui_menus_hide_tooltip(ui_host_t *);
+void ui_menus_component_invalidated(ui_host_t *,ui_component_t *,uint64_t);
+int ui_component_menu_target_valid(ui_component_t *,uint64_t,uint64_t);
+ui_status_t ui_component_menu_anchor(ui_component_t *,ui_host_t *,uint64_t,ui_rect_t *,void **,uint64_t *);
 void ui_components_layout(ui_host_t *host);
 void ui_components_active(ui_host_t *host, int active);
 void ui_images_destroy(ui_host_t *host);
@@ -168,6 +180,7 @@ void ui_component_batch_free(ui_component_batch_t *);
 ui_status_t ui_platform_surface_create(ui_surface_t *surface);
 ui_status_t ui_platform_surface_create_configured(
     ui_surface_t *surface, const ui_opengl_config_t *config);
+ui_status_t ui_platform_offscreen_render(ui_surface_t *,ui_pixel_buffer_t *);
 ui_status_t ui_platform_surface_invalidate(ui_surface_t *surface);
 void ui_platform_surface_destroy(ui_surface_t *surface);
 ui_status_t ui_platform_surface_set_rect(ui_surface_t *surface,

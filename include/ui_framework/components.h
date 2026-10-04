@@ -106,6 +106,12 @@ UI_API ui_status_t ui_component_register(ui_host_t *, const ui_component_desc_t 
 UI_API ui_status_t ui_component_unregister(ui_component_t *);
 UI_API ui_component_t *ui_component_find(ui_host_t *, const char *);
 UI_API ui_status_t ui_component_mount(ui_component_t *, ui_content_slot_t *);
+/* Explicit real-template mode, no HWND. UI-thread. */
+UI_API ui_status_t ui_component_mount_offscreen(ui_component_t *, int width, int height, uint32_t dpi);
+UI_API ui_status_t ui_component_dispatch_input(ui_component_t *, const ui_input_event_t *);
+UI_API ui_status_t ui_component_get_presentation(ui_component_t *, const char *, ui_element_presentation_t *);
+UI_API ui_status_t ui_component_capture_rgba(ui_component_t *, int width, int height, uint32_t dpi, ui_pixel_buffer_t *);
+UI_API ui_status_t ui_component_flush(ui_component_t *, uint32_t budget);
 UI_API ui_status_t ui_component_get_state(const ui_component_t *, ui_component_state_t *);
 UI_API ui_status_t ui_component_set_source(ui_component_t *, ui_component_source_fn, void *);
 UI_API ui_status_t ui_component_query(ui_component_t *, uint64_t parent, uint64_t first,

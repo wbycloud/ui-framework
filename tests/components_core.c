@@ -14,7 +14,7 @@ int main(void)
     ui_row_t rows[10]={0};ui_cell_t cells[10]={0};ui_component_batch_t batch={0};ui_component_state_t state={0};
     char names[16][16],titles[10][32];size_t i;uint64_t old_generation,removed=9007199254741001ULL;uint8_t rgba[24]={255,0,0,128};
     ui_rgba_desc_t image={0};ui_image_id_t id;ui_image_info_t info={0};ui_image_stats_t stats={0};
-    CHECK(a&&b);CHECK(ui_framework_supports_api(1)&&ui_framework_supports_api(2)&&ui_framework_supports_api(3)&&!ui_framework_supports_api(4));
+    CHECK(a&&b);CHECK(ui_framework_supports_api(1)&&ui_framework_supports_api(2)&&ui_framework_supports_api(3)&&ui_framework_supports_api(4)&&!ui_framework_supports_api(5));
     for(i=0;i<16;++i){snprintf(names[i],16,"c%zu",i);columns[i].size=sizeof(columns[i]);columns[i].id=names[i];columns[i].title=names[i];columns[i].kind=UI_VALUE_TEXT;columns[i].width=120;}
     d.size=sizeof(d);d.id="table";d.title="100k table";d.kind=UI_COMPONENT_TABLE;d.columns=columns;d.column_count=16;d.source=source;
     CHECK(ui_component_register(a,&d,&table)==UI_STATUS_OK);CHECK(ui_component_register(b,&d,&tree)==UI_STATUS_OK);

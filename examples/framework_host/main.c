@@ -24,7 +24,7 @@ enum { ID_OPEN=0x1001, ID_CLOSE, ID_EXIT, ID_NEXT, ID_PREVIOUS };
 
 typedef struct json_buffer { char *text; size_t length,capacity; int failed; } json_buffer_t;
 typedef struct host_action {
-    char *action,*id,*command,*params,*panel,*token,*answer;
+    char *action,*id,*command,*params,*panel,*token,*answer,*menu,*key,*modifiers,*editing;
     uint64_t popup_token;
 } host_action_t;
 typedef struct host_window {
@@ -176,7 +176,7 @@ invalid:free(result);return NULL;
 static void action_free(host_action_t *action)
 {
     if(!action)return;free(action->action);free(action->id);free(action->command);free(action->params);
-    free(action->panel);free(action->token);free(action->answer);free(action);
+    free(action->panel);free(action->token);free(action->answer);free(action->menu);free(action->key);free(action->modifiers);free(action->editing);free(action);
 }
 static host_action_t *parse_action(const char *text)
 {
@@ -191,8 +191,9 @@ static host_action_t *parse_action(const char *text)
         if(!value){free(key);goto invalid;}
         if(!strcmp(key,"action"))field=&action->action;else if(!strcmp(key,"id"))field=&action->id;
         else if(!strcmp(key,"command"))field=&action->command;else if(!strcmp(key,"params"))field=&action->params;
-        else if(!strcmp(key,"panel"))field=&action->panel;else if(!strcmp(key,"token"))field=&action->token;
+        else if(!strcmp(key,"menu"))field=&action->menu;else if(!strcmp(key,"panel"))field=&action->panel;else if(!strcmp(key,"token"))field=&action->token;
         else if(!strcmp(key,"answer"))field=&action->answer;
+        else if(!strcmp(key,"key"))field=&action->key;else if(!strcmp(key,"modifiers"))field=&action->modifiers;else if(!strcmp(key,"editing"))field=&action->editing;
         free(key);if(!field||*field){free(value);goto invalid;}*field=value;skip_space(&position);
         if(*position=='}')break;if(*position++!=',')goto invalid;skip_space(&position);if(*position=='}')goto invalid;
     }
@@ -332,11 +333,6 @@ static char *refresh_command(host_window_t *s,ui_app_instance_info_t *target)
         query.id=s->command;query.found=0;(void)ui_assistant_visit_commands(target->assistant,visit_command,&query);}
     free(query.first);return query.schema?query.schema:copy_text("");
 }
-static int menu_compare(const void *a,const void *b)
-{
-    const ui_menu_entry_t *left=*(ui_menu_entry_t *const *)a,*right=*(ui_menu_entry_t *const *)b;
-    if(left->order!=right->order)return left->order<right->order?-1:1;return strcmp(left->id,right->id);
-}
 static int tool_compare(void *context,const void *a,const void *b)
 {
     const ui_toolbar_item_entry_t *left=*(ui_toolbar_item_entry_t *const *)a,*right=*(ui_toolbar_item_entry_t *const *)b;
@@ -354,6 +350,13 @@ static int tool_visible(const ui_host_t *host,const ui_toolbar_item_entry_t *ite
 {ui_command_state_t state={0};state.size=sizeof(state);
  return item->state.visible&&toolbar_visible(host,item->toolbar_id)&&
      ui_host_get_command_state(host,item->command_id,&state)==UI_STATUS_OK&&state.visible;}
+typedef struct menu_state_writer { json_buffer_t *json;size_t count; } menu_state_writer_t;
+static void state_menu_group(const ui_menu_model_entry_t *entry,void *data)
+{
+    menu_state_writer_t *writer=(menu_state_writer_t *)data;json_buffer_t *json=writer->json;uint64_t hash=UINT64_C(1469598103934665603);const unsigned char *cursor=(const unsigned char *)entry->path;
+    while(*cursor){hash^=*cursor++;hash*=UINT64_C(1099511628211);}if(writer->count++)json_append(json,",");
+    json_format(json,"{\"key\":\"%llu\",\"path\":",(unsigned long long)hash);json_string(json,entry->path);json_append(json,",\"title\":");json_string(json,entry->title);json_append(json,"}");
+}
 static void state_tools(json_buffer_t *json,const ui_host_t *host)
 {
     ui_toolbar_item_entry_t *item,**items;size_t count=0,index=0;
@@ -362,6 +365,9 @@ static void state_tools(json_buffer_t *json,const ui_host_t *host)
     for(item=host->toolbar_items;item;item=item->next)if(tool_visible(host,item))items[index++]=item;
     if(count)qsort_s(items,count,sizeof(*items),tool_compare,(void *)host);
     for(index=0;index<count;++index){if(index)json_append(json,",");json_append(json,"{\"id\":");json_string(json,items[index]->id);json_append(json,",\"title\":");json_string(json,items[index]->title);
+        json_append(json,",\"group\":");json_string(json,items[index]->toolbar_id);
+        {ui_toolbar_entry_t *bar;for(bar=host->toolbars;bar&&strcmp(bar->id,items[index]->toolbar_id);bar=bar->next){}
+            json_format(json,",\"compact\":%s",bar&&bar->display==UI_TOOLBAR_COMPACT?"true":"false");}
         json_append(json,",\"command\":");json_string(json,items[index]->command_id);{ui_command_state_t state={0};state.size=sizeof(state);(void)ui_host_get_command_state(host,items[index]->command_id,&state);
         json_format(json,",\"image\":\"%llu\",\"enabled\":%s,\"checked\":%s,\"busy\":%s}",(unsigned long long)items[index]->image_id,
             state.enabled&&items[index]->state.enabled?"true":"false",state.checked||items[index]->state.checked?"true":"false",state.busy||items[index]->state.busy?"true":"false");}}free(items);
@@ -404,8 +410,9 @@ static void send_state(host_window_t *s)
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_MENU_BAR,&rect);json_append(&json,",\"menuRect\":");json_rect(&json,&rect);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_TOOLBAR,&rect);json_append(&json,",\"toolbarRect\":");json_rect(&json,&rect);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_STATUS_BAR,&rect);json_append(&json,",\"statusRect\":");json_rect(&json,&rect);
+        json_append(&json,",\"menuGroups\":[");{menu_state_writer_t writer={&json,0};if(ui_host_visit_menu(info.host,"",state_menu_group,&writer)!=UI_STATUS_OK)json.failed=1;}json_append(&json,"]");
         json_append(&json,",\"tools\":[");state_tools(&json,info.host);json_append(&json,"],\"panels\":[");state_panels(&json,&info);json_append(&json,"],\"status\":");json_string(&json,ui_host_status_text(info.host));
-    }else json_append(&json,",\"activeLabel\":\"\",\"tools\":[],\"panels\":[]");
+    }else json_append(&json,",\"activeLabel\":\"\",\"menuGroups\":[],\"tools\":[],\"panels\":[]");
     json_append(&json,"}");(void)post_json(s->view,&json);
 }
 static void cut_region(HRGN full,const ui_rect_t *rect,uint32_t dpi,int offset_x,int offset_y)
@@ -520,22 +527,10 @@ static void transaction_action(host_window_t *s,const char *action)
 }
 static void menu_popup(host_window_t *s)
 {
-    json_buffer_t json={0};int count=0;ui_app_instance_info_t info;ui_menu_entry_t *item,**items=NULL;size_t n=0,i=0;
-    if(!create_popup(s,1,440,500))return;popup_start(s,&json,"框架与应用菜单","",0);
-    popup_item(&json,&count,"打开应用… · Ctrl+O","open",0,NULL);
+    json_buffer_t json={0};int count=0;if(!create_popup(s,1,440,420))return;popup_start(s,&json,"框架菜单","应用菜单位于工作区上方",0);
+    popup_item(&json,&count,"打开应用包… · Ctrl+Shift+O","open",0,NULL);
     popup_item(&json,&count,"关闭当前标签 · Ctrl+W","close",ui_workspace_active(s->workspace),NULL);
     popup_item(&json,&count,"下一个标签 · Ctrl+Tab","next",0,NULL);popup_item(&json,&count,"上一个标签 · Ctrl+Shift+Tab","previous",0,NULL);
-    if(get_instance(s,ui_workspace_active(s->workspace),&info)&&!info.closing){
-        for(item=info.host->menus;item;item=item->next)++n;items=n?(ui_menu_entry_t **)malloc(n*sizeof(*items)):NULL;
-        if(items){for(item=info.host->menus;item;item=item->next)items[i++]=item;qsort(items,n,sizeof(*items),menu_compare);
-            for(i=0;i<n;++i){json_buffer_t title={0};json_append(&title,items[i]->menu_path);json_append(&title," / ");json_append(&title,items[i]->title);
-                if(!title.failed){ui_command_state_t state={0};ui_command_entry_t *command;state.size=sizeof(state);(void)ui_host_get_command_state(info.host,items[i]->command_id,&state);
-                    for(command=info.host->commands;command;command=command->next)if(!strcmp(command->id,items[i]->command_id))break;
-                    if(command&&command->shortcut_key)json_format(&title," · %s%s%s%c",command->shortcut_modifiers&UI_INPUT_MODIFIER_CONTROL?"Ctrl+":"",command->shortcut_modifiers&UI_INPUT_MODIFIER_SHIFT?"Shift+":"",command->shortcut_modifiers&UI_INPUT_MODIFIER_ALT?"Alt+":"",(char)command->shortcut_key);
-                    if(state.visible&&items[i]->state.visible){popup_item(&json,&count,title.text,"app-command",info.instance_id,items[i]->command_id);
-                        --json.length;json.text[json.length]=0;json_format(&json,",\"image\":\"%llu\",\"enabled\":%s,\"checked\":%s,\"busy\":%s}",(unsigned long long)items[i]->image_id,
-                            state.enabled&&items[i]->state.enabled?"true":"false",state.checked||items[i]->state.checked?"true":"false",state.busy||items[i]->state.busy?"true":"false");}}
-                free(title.text);}}free(items);}
     popup_item(&json,&count,"退出","exit",0,NULL);popup_finish(s,&json);
 }
 static void refresh_menu_states(host_window_t *s,uint64_t id)
@@ -566,7 +561,7 @@ static void tooltip_popup(host_window_t *s,const char *id)
 {
     const char *text=NULL;json_buffer_t json={0};RECT origin;ui_rect_t rect;if(s->popup_hwnd&&s->popup_kind!=5)return;
     if(!strcmp(id?id:"","menu"))text="框架及当前应用菜单";
-    else if(!strcmp(id?id:"","open"))text="打开 .uapp 应用包 · Ctrl+O";
+    else if(!strcmp(id?id:"","open"))text="打开 .uapp 应用包 · Ctrl+Shift+O";
     else if(!strcmp(id?id:"","theme"))text="切换浅色 / 深色主题";
     else if(!strcmp(id?id:"","assistant-toggle"))text="显示或收起助手工作台";
     if(!text||!create_popup(s,5,300,100))return;
@@ -595,6 +590,21 @@ static void process_action(host_window_t *s,host_action_t *action)
     else if(!strcmp(name,"exit"))PostMessageW(s->hwnd,WM_CLOSE,0,0);else if(!strcmp(name,"theme"))s->dark=!s->dark;
     else if(!strcmp(name,"assistant")){RECT client;GetClientRect(s->hwnd,&client);s->assistant_expanded=assistant_visible(s,MulDiv(client.right,96,(int)s->dpi))?-1:1;}
     else if(!strcmp(name,"menu")){menu_popup(s);return;}else if(!strcmp(name,"targets")){selector_popup(s,0);return;}
+    else if(!strcmp(name,"app-shortcut")){
+        uint64_t key=read_id(action->key),modifiers=read_id(action->modifiers);
+        if(key&&key<=UINT32_MAX&&modifiers<=7&&get_instance(s,id,&info)&&info.active&&!info.closing)
+            (void)ui_host_dispatch_shortcut(info.host,(uint32_t)key,(uint32_t)modifiers,action->editing&&!strcmp(action->editing,"1"));return;}
+    else if(!strcmp(name,"app-menu")||!strcmp(name,"menu-more")||!strcmp(name,"tool-more")||!strcmp(name,"tool-tip")){
+        ui_menu_popup_desc_t popup={0};ui_rect_t anchor={0};char element[160];
+        if(!get_instance(s,id,&info)||!info.active||info.closing)return;
+        snprintf(element,sizeof(element),"%s",action->panel?action->panel:"menu-more");
+        if(ui_web_view_get_element_rect(s->view,element,&anchor)!=UI_STATUS_OK)return;
+        anchor.x-=s->workspace_rect.x;anchor.y-=s->workspace_rect.y;popup.size=sizeof(popup);popup.anchor.size=sizeof(popup.anchor);popup.anchor.rect=anchor;
+        if(!strcmp(name,"tool-more"))(void)ui_host_show_toolbar_menu(info.host,&popup.anchor,0);
+        else if(!strcmp(name,"tool-tip")){ui_toolbar_item_entry_t *tool;const char *tool_id=action->panel&&strlen(action->panel)>5?action->panel+5:"";
+            for(tool=info.host->toolbar_items;tool&&strcmp(tool->id,tool_id);tool=tool->next){}if(tool)(void)ui_host_show_tooltip(info.host,&popup.anchor,tool->title);}
+        else{popup.path=action->menu?action->menu:"";(void)ui_host_show_menu(info.host,&popup);}return;}
+    else if(!strcmp(name,"tool-tip-hide")){if(get_instance(s,id,&info))(void)ui_host_hide_tooltip(info.host);return;}
     else if(!strcmp(name,"commands")){selector_popup(s,1);return;}
     else if(!strcmp(name,"select-target")){if(get_instance(s,id,&info)&&!info.closing)s->target=id;}
     else if(!strcmp(name,"select-command")){if(id==s->target&&action->command)replace_text(&s->command,action->command);}
@@ -675,7 +685,7 @@ static HWND create_host(host_window_t *state,HINSTANCE instance)
 int WINAPI wWinMain(HINSTANCE instance,HINSTANCE previous,PWSTR command,int show)
 {
     host_window_t state;HWND hwnd;MSG message={0};int count,i;wchar_t **args;
-    ACCEL keys[]={{FVIRTKEY|FCONTROL,'O',ID_OPEN},{FVIRTKEY|FCONTROL,'W',ID_CLOSE},
+    ACCEL keys[]={{FVIRTKEY|FCONTROL|FSHIFT,'O',ID_OPEN},{FVIRTKEY|FCONTROL,'W',ID_CLOSE},
         {FVIRTKEY|FCONTROL,VK_TAB,ID_NEXT},{FVIRTKEY|FCONTROL|FSHIFT,VK_TAB,ID_PREVIOUS}};HACCEL accelerators;
     (void)previous;(void)command;if(ui_framework_initialize()!=UI_STATUS_OK)return 1;memset(&state,0,sizeof(state));
     hwnd=create_host(&state,instance);if(!hwnd)return 1;ShowWindow(hwnd,show);UpdateWindow(hwnd);
