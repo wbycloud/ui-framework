@@ -151,7 +151,7 @@ static void test_manifest_variants(const char *path)
             {"abi_version=1", "abi_version=-1", UI_STATUS_VALIDATION_FAILED},
             {"abi_version=1", "abi_version=+1", UI_STATUS_VALIDATION_FAILED},
             {"abi_version=1", "abi_version=1x", UI_STATUS_VALIDATION_FAILED},
-            {"framework_api_version=1", "framework_api_version=7", UI_STATUS_UNSUPPORTED},
+            {"framework_api_version=1", "framework_api_version=6", UI_STATUS_UNSUPPORTED},
             {"architecture=x64", "architecture=x86", UI_STATUS_UNSUPPORTED},
             {"name=EDA = example", "name=", UI_STATUS_VALIDATION_FAILED},
             {"app_id=test.eda", "app_id=../eda", UI_STATUS_VALIDATION_FAILED},

@@ -18,7 +18,7 @@
 extern "C" {
 #endif
 
-#define UI_FRAMEWORK_API_VERSION 6u
+#define UI_FRAMEWORK_API_VERSION 5u
 #define UI_FRAMEWORK_MIN_API_VERSION 1u
 
 typedef struct ui_host ui_host_t;

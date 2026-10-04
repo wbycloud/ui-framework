@@ -50,8 +50,7 @@ typedef struct ui_row {
     const ui_cell_t *cells;
     size_t cell_count;
 } ui_row_t;
-typedef enum ui_query_kind { UI_QUERY_ROWS = 1, UI_QUERY_THUMBNAIL = 2,
-    UI_QUERY_SELECTION = 3 } ui_query_kind_t;
+typedef enum ui_query_kind { UI_QUERY_ROWS = 1, UI_QUERY_THUMBNAIL = 2 } ui_query_kind_t;
 /* Borrowed only during UI-thread source callback. Copy for async use. Supply
  * data through submit/post, not a pointer to callback-stack arrays. */
 typedef struct ui_component_query {
@@ -61,10 +60,6 @@ typedef struct ui_component_query {
     uint64_t item_id, content_version;
     size_t count, first_column, column_count;
     uint32_t pixel_width, pixel_height, dpi;
-    /* API6: complete-source ordering, borrowed during callback. NONE=0,
-     * ascending=1, descending=-1. Selection query requests stable IDs only. */
-    const char *sort_column;
-    int sort_direction;
 } ui_component_query_t;
 typedef void (*ui_component_source_fn)(ui_component_t *, const ui_component_query_t *, void *);
 typedef struct ui_component_bindings {
@@ -85,11 +80,7 @@ typedef struct ui_component_desc {
     /* API5 borrowed backend, retained through unregister/host teardown.
      * NULL selects the framework-owned light backend. */
     ui_web_backend_t *web_backend;
-    /* API6 optional semantic command, copied. NULL disables user sorting. */
-    const char *sort_command;
-    uint32_t selection_flags;
 } ui_component_desc_t;
-#define UI_SELECTION_MULTIPLE 1u
 typedef struct ui_component_batch {
     uint32_t size;
     uint64_t component_generation, request_id, parent_id, first, total_count;
@@ -104,10 +95,6 @@ typedef struct ui_component_state {
     size_t cached_rows, cached_bytes;
     ui_status_t presentation_status;
     size_t row_nodes_created; /* Actual row allocations reported by the template. */
-    /* API6 complete fields only; sort_column borrowed until sort/unregister. */
-    size_t selected_count;
-    const char *sort_column;
-    int sort_direction;
 } ui_component_state_t;
 typedef struct ui_thumbnail_result {
     uint32_t size;
@@ -139,19 +126,6 @@ UI_API ui_status_t ui_component_insert_rows(ui_component_t *, uint64_t parent,
 UI_API ui_status_t ui_component_remove_rows(ui_component_t *, const uint64_t *, size_t);
 UI_API ui_status_t ui_component_expand(ui_component_t *, uint64_t id, int expanded);
 UI_API ui_status_t ui_component_select(ui_component_t *, uint64_t id);
-/* Stable IDs, at most512, charged to existing2MiB component cache budget.
- * Replacing source clears selection; sort/page changes preserve it; removal
- * removes IDs. Programmatic selection does not invoke semantic commands. */
-UI_API ui_status_t ui_component_set_selection(ui_component_t *, const uint64_t *, size_t);
-UI_API ui_status_t ui_component_get_selection(const ui_component_t *, uint64_t *, size_t, size_t *);
-/* Range in current complete-source order, max512. Async source must return
- * matching generation/request; newer range, source/sort/close invalidates it. */
-UI_API ui_status_t ui_component_select_range(ui_component_t *, uint64_t, size_t, int extend);
-UI_API ui_status_t ui_component_submit_selection(ui_component_t *, uint64_t generation,
-    uint64_t request, const uint64_t *, size_t);
-/* Requeries source and invokes sort_command once with column/direction;
- * never sorts cached pages. Source owns sorting the complete dataset. */
-UI_API ui_status_t ui_component_set_sort(ui_component_t *, const char *, int);
 UI_API ui_status_t ui_component_set_field(ui_component_t *, const char *, const ui_cell_t *);
 /* Borrowed strings until next field update/unregister. Returns the current draft. */
 UI_API ui_status_t ui_component_get_field(const ui_component_t *, const char *, ui_cell_t *);
@@ -173,8 +147,6 @@ UI_API ui_status_t ui_workspace_post_component_batch(ui_workspace_t *, uint64_t,
     const char *, const ui_component_batch_t *);
 UI_API ui_status_t ui_workspace_post_thumbnail(ui_workspace_t *, uint64_t,
     const char *, const ui_thumbnail_result_t *);
-UI_API ui_status_t ui_workspace_post_component_selection(ui_workspace_t *, uint64_t,
-    const char *, uint64_t generation, uint64_t request, const uint64_t *, size_t);
 UI_API ui_status_t ui_workspace_set_component_queue_limit(ui_workspace_t *, uint64_t, size_t);
 #ifdef __cplusplus
 }

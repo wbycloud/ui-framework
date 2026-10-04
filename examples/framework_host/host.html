@@ -61,6 +61,7 @@ textarea { width:100%; }
   <button id="open" title="打开应用包 · Ctrl+O">＋ 打开</button>
   <button id="assistant-toggle" title="助手命令及状态">AI</button>
   <button id="theme" title="浅色 / 深色主题">◐</button>
+  <button id="layout-reset" title="重置当前应用布局">↺</button>
  </header>
  <main id="body">
   <section id="workspace"><div id="empty" class="column"><span id="empty-title">你的应用工作区</span>
@@ -99,6 +100,7 @@ textarea { width:100%; }
  function setTheme(value) { dark = !!value; document.body.className = dark ? 'dark' : ''; }
  action('menu', 'menu'); action('open', 'open'); action('empty-open', 'open');
  action('assistant-toggle', 'assistant'); action('theme', 'theme');
+ element('layout-reset').addEventListener('click',function(){send('layout-reset',{id:model.active})});
  action('target', 'targets'); action('command', 'commands');
  action('invoke', 'invoke'); action('cancel', 'cancel'); action('snapshot', 'snapshot');
  action('begin', 'begin'); action('commit', 'commit'); action('rollback', 'rollback'); action('undo', 'undo');
@@ -129,7 +131,8 @@ textarea { width:100%; }
    b.style.display=!overflow&&toolWidth+gap+width+76<=state.toolbarRect.width?'flex':'none';if(b.style.display==='flex')toolWidth+=gap+width+6;else overflow=true;
   }prune(tools,tools.items,alive);if(!tools.more){tools.more=button('tool-more','更多 ▾','tool-more',{id:state.active,panel:'tool-more'});tools.appendChild(tools.more)}tools.more.style.width='70px';tools.more.style.display=overflow?'flex':'none';tools.appendChild(tools.more);
   for(var p=0;p<state.panels.length;p++){var panel=state.panels[p];if(panel.floating)continue;var k=state.active+':panel:'+panel.id;live[k]=true;
-   var box=keep(root,chromeNodes,k,function(){var n=document.createElement('div');n.className='chrome';n.title=document.createElement('div');n.title.className='panel-title';n.text=document.createElement('span');n.text.style.flex='1';n.title.appendChild(n.text);n.title.appendChild(button('panel-'+panel.id,'↗','panel-float',{id:state.active,panel:panel.id}));n.appendChild(n.title);return n;});place(box,panel.frame);box.text.textContent=panel.title;
+   var box=keep(root,chromeNodes,k,function(){var n=document.createElement('div');n.className='chrome';n.title=document.createElement('div');n.title.className='panel-title';n.text=document.createElement('span');n.text.style.flex='1';n.text.addEventListener('mousedown',function(){send('panel-drag',{id:model.active,panel:n.panel.id})});n.title.appendChild(n.text);n.title.appendChild(button('panel-'+panel.id,'↗','panel-float',{id:state.active,panel:panel.id}));var fold=button('fold-'+panel.id,'▾','panel-collapse',{id:state.active,panel:panel.id});n.title.appendChild(fold);n.appendChild(n.title);n.split=document.createElement('div');n.split.style.height='5px';n.split.style.background='#536c92';n.split.addEventListener('mousedown',function(){send('panel-split',{id:model.active,panel:n.panel.id})});n.appendChild(n.split);return n;});box.panel=panel;place(box,panel.frame);box.text.textContent=(panel.collapsed?'▸ ':'')+panel.title;box.split.style.position='absolute';box.split.style.top=23+'px';box.split.style.width=panel.frame.width+'px';
+   var edgeKey='side:'+panel.region;live[edgeKey]=true;var edge=keep(root,chromeNodes,edgeKey,function(){var n=document.createElement('div');n.className='chrome';n.style.background='#536c92';n.addEventListener('mousedown',function(){send('side-split',{id:model.active,panel:n.region===5?'left':'right'})});return n;});edge.region=panel.region;place(edge,{x:panel.region===5?panel.frame.x+panel.frame.width-4:panel.frame.x,y:panel.frame.y,width:4,height:28});
   }
   var status=keep(root,chromeNodes,'status',function(){var n=document.createElement('div');n.className='muted chrome';return n;});live.status=true;place(status,state.statusRect);status.textContent=state.status||state.activeLabel+' · '+state.dpi+' DPI';prune(root,chromeNodes,live);
  }

@@ -34,7 +34,7 @@ struct app_instance {
     app_instance_t *next;
 };
 typedef struct post_budget { uint64_t id; size_t bytes,limit; struct post_budget *next; } post_budget_t;
-enum post_kind { POST_RESULT, POST_EVENT, POST_PROGRESS, POST_CLOSE, POST_COMPONENT, POST_THUMBNAIL };
+enum post_kind { POST_RESULT, POST_EVENT, POST_PROGRESS, POST_CLOSE, POST_COMPONENT, POST_THUMBNAIL, POST_SELECTION };
 struct posted_message {
     enum post_kind kind;
     uint64_t id, request;
@@ -42,6 +42,8 @@ struct posted_message {
     char *name, *text;
     ui_component_batch_t *batch;
     ui_thumbnail_result_t thumbnail;
+    uint64_t selection_generation;
+    size_t selection_count;
     void *pixels;
     size_t bytes;
     posted_message_t *next;
@@ -725,6 +727,14 @@ ui_status_t ui_workspace_post_thumbnail(ui_workspace_t *w,uint64_t id,const char
     if(!p->name||(!result->failed&&!p->pixels)){free_post(p);return UI_STATUS_OUT_OF_MEMORY;}
     p->bytes=sizeof(*p)+strlen(component)+1+bytes;return enqueue_component(w,p);
 }
+ui_status_t ui_workspace_post_component_selection(ui_workspace_t *w,uint64_t id,const char *component,uint64_t generation,uint64_t request,const uint64_t *ids,size_t count)
+{
+    posted_message_t *p;if(!w||!id||!component||strlen(component)>63||!request||(count&&!ids))return UI_STATUS_INVALID_ARGUMENT;
+    if(count>512)return UI_STATUS_LIMIT_EXCEEDED;p=(posted_message_t *)calloc(1,sizeof(*p));if(!p)return UI_STATUS_OUT_OF_MEMORY;
+    p->kind=POST_SELECTION;p->id=id;p->request=request;p->selection_generation=generation;p->selection_count=count;p->name=copy_text(component);
+    if(count){p->pixels=malloc(count*sizeof(uint64_t));if(p->pixels)memcpy(p->pixels,ids,count*sizeof(uint64_t));}
+    if(!p->name||(count&&!p->pixels)){free_post(p);return UI_STATUS_OUT_OF_MEMORY;}p->bytes=sizeof(*p)+strlen(component)+1+count*sizeof(uint64_t);return enqueue_component(w,p);
+}
 static void workspace_poll_impl(ui_workspace_t *w,uint32_t budget_count)
 {
     posted_message_t *messages, *next; app_instance_t **link;
@@ -754,6 +764,8 @@ static void workspace_poll_impl(ui_workspace_t *w,uint32_t budget_count)
                 if(c&&!p->closing)(void)ui_component_submit(c,messages->batch);break;}
             case POST_THUMBNAIL: {ui_component_t *c=ui_component_find(p->context.host,messages->name);
                 if(c&&!p->closing)(void)ui_component_thumbnail(c,&messages->thumbnail);break;}
+            case POST_SELECTION: {ui_component_t *c=ui_component_find(p->context.host,messages->name);
+                if(c&&!p->closing)(void)ui_component_submit_selection(c,messages->selection_generation,messages->request,(const uint64_t *)messages->pixels,messages->selection_count);break;}
             case POST_CLOSE:
                 if (p->closing) {
                     p->close_ready = messages->value == UI_APP_CLOSE_ALLOW;

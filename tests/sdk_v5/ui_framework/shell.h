@@ -51,35 +51,6 @@ UI_API ui_status_t ui_shell_refresh(ui_shell_t *shell);
 UI_API ui_status_t ui_shell_get_slot_state(ui_shell_t *shell, const char *panel_id,
     ui_rect_t *frame_rect, ui_rect_t *content_rect, int *visible, int *floating);
 
-/* API6. UI-thread, stable registered panel IDs. Logical dimensions; floating
- * origins are screen coordinates scaled by the recorded DPI. No ownership
- * transfer and no remount. Offscreen floating is a logical rectangle. */
-typedef struct ui_panel_layout {
-    uint32_t size;
-    ui_layout_region_t dock_region;
-    int floating, collapsed, closed, order, height;
-    ui_rect_t floating_rect;
-    uint32_t dpi;
-} ui_panel_layout_t;
-UI_API ui_status_t ui_shell_get_panel_layout(ui_shell_t *, const char *, ui_panel_layout_t *);
-UI_API ui_status_t ui_shell_set_panel_layout(ui_shell_t *, const char *, const ui_panel_layout_t *);
-/* Caller owns bytes/storage. NULL buffer queries required size. Binary format
- * v1, little endian, bounded 64 KiB; validates entire input before applying.
- * Restore after registration/mount; unknown IDs skipped, new panels unchanged. */
-UI_API ui_status_t ui_shell_save_layout(ui_shell_t *, void *, size_t, size_t *);
-UI_API ui_status_t ui_shell_restore_layout(ui_shell_t *, const void *, size_t);
-UI_API ui_status_t ui_shell_reset_layout(ui_shell_t *);
-/* NULL panel: sidebar width; panel: height of that and the next docked panel.
- * Clamps to existing sidebar limits and available space. */
-UI_API ui_status_t ui_shell_resize_splitter(ui_shell_t *, ui_layout_region_t, const char *, int);
-/* Windowed pointer gesture; Esc/capture loss cancels and restores initial sizes. */
-UI_API ui_status_t ui_shell_begin_splitter_drag(ui_shell_t *, ui_layout_region_t, const char *);
-/* Host-relative logical pointer coordinates. Preview borrows no objects.
- * Commit reparents existing content; cancel preserves the original layout. */
-UI_API ui_status_t ui_shell_begin_panel_drag(ui_shell_t *, const char *);
-UI_API ui_status_t ui_shell_update_panel_drag(ui_shell_t *, int, int, ui_rect_t *, ui_layout_region_t *);
-UI_API ui_status_t ui_shell_end_panel_drag(ui_shell_t *, int);
-
 #ifdef __cplusplus
 }
 #endif

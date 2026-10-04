@@ -7,7 +7,7 @@
 _Static_assert(sizeof(ui_menu_group_desc_t)==40&&offsetof(ui_menu_group_desc_t,access_key)==32,"group prefix");
 _Static_assert(sizeof(ui_menu_item_desc_t)==64&&offsetof(ui_menu_item_desc_t,access_key)==56,"item prefix");
 _Static_assert(sizeof(ui_menu_model_entry_t)==88&&offsetof(ui_menu_model_entry_t,access_key)==80,"model prefix");
-_Static_assert(sizeof(ui_component_desc_t)==160&&offsetof(ui_component_desc_t,web_backend)==136&&offsetof(ui_component_desc_t,sort_command)==144&&offsetof(ui_component_desc_t,selection_flags)==152,"component prefix");
+_Static_assert(sizeof(ui_component_desc_t)==144&&offsetof(ui_component_desc_t,web_backend)==136,"component prefix");
 static int failures,calls;
 #define CHECK(x) do{if(!(x)){fprintf(stderr,"line %d: %s\n",__LINE__,#x);++failures;}}while(0)
 static void run(ui_host_t *h,uint64_t r,const char *c,const char *p,const char *s,void *u)

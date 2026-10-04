@@ -269,3 +269,4 @@ ui_native_shell_t *ui_native_shell_create_offscreen(const ui_native_shell_config
 {return ui_native_shell_create(config);}
 int ui_content_slot_belongs_to(const ui_content_slot_t *slot,const ui_host_t *host)
 {return slot&&slot->shell&&slot->shell->native->host==host;}
+#include "headless_layout.inc"
