@@ -5,15 +5,17 @@
 /* Inspect only this test's handles. Never print object names or user paths. */
 static void runtime_handle_types(const char *phase)
 {
-    HPSS snapshot=NULL;HPSSWALK marker=NULL;PSS_HANDLE_ENTRY entry;unsigned counts[8]={0},live=0,exited=0;DWORD status;
+    HPSS snapshot=NULL;HPSSWALK marker=NULL;PSS_HANDLE_ENTRY entry;unsigned counts[8]={0},live=0,exited=0,unknown=0;DWORD status;
     status=PssCaptureSnapshot(GetCurrentProcess(),PSS_CAPTURE_HANDLES|PSS_CAPTURE_HANDLE_BASIC_INFORMATION|PSS_CAPTURE_HANDLE_TYPE_SPECIFIC_INFORMATION,0,&snapshot);
     if(status==ERROR_SUCCESS)status=PssWalkMarkerCreate(NULL,&marker);
     if(status==ERROR_SUCCESS)while(PssWalkSnapshot(snapshot,PSS_WALK_HANDLES,marker,&entry,sizeof(entry))==ERROR_SUCCESS){
         if((unsigned)entry.ObjectType<8)++counts[entry.ObjectType];
-        if(entry.ObjectType==PSS_OBJECT_TYPE_PROCESS){if(entry.TypeSpecificInformation.Process.ExitStatus==STILL_ACTIVE)++live;else ++exited;}
+        if(entry.ObjectType==PSS_OBJECT_TYPE_PROCESS){
+            if(!(entry.Flags&PSS_HANDLE_HAVE_TYPE_SPECIFIC_INFORMATION))++unknown;else if(entry.TypeSpecificInformation.Process.ExitStatus==STILL_ACTIVE)++live;else ++exited;
+        }
     }
     if(marker)PssWalkMarkerFree(marker);if(snapshot)PssFreeSnapshot(GetCurrentProcess(),snapshot);
-    printf("Runtime handles %s snapshot=%lu other=%u process=%u(live=%u exited=%u) thread=%u mutant=%u event=%u section=%u semaphore=%u\n",phase,status,counts[0],counts[1],live,exited,counts[2],counts[3],counts[4],counts[5],counts[6]);
+    printf("Runtime handles %s snapshot=%lu other=%u process=%u(live=%u exited=%u unknown=%u) thread=%u mutant=%u event=%u section=%u semaphore=%u\n",phase,status,counts[0],counts[1],live,exited,unknown,counts[2],counts[3],counts[4],counts[5],counts[6]);
 }
 static LONG WINAPI runtime_test_exception(EXCEPTION_POINTERS *error)
 {

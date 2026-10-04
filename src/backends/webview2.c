@@ -179,6 +179,7 @@ static void free_view(webview2_view_t *view)
     if (*it == view) {
         *it = view->backend_next;
     }
+    if(view->webview)ICoreWebView2_Stop(view->webview);
     if (view->controller != NULL) {
         ICoreWebView2Controller_Close(view->controller);
         ICoreWebView2Controller_Release(view->controller);
