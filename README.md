@@ -10,13 +10,13 @@
 | --- | --- | --- |
 | SDK | `0.4.0` 开发版，尚未发布对应稳定标签 | [CMakeLists.txt](CMakeLists.txt) |
 | 最近稳定标签 | `v0.1.0` | [稳定源码](https://github.com/wbycloud/ui-framework/tree/v0.1.0) |
-| 框架 API | `4`；当前运行库接受 `1`、`2`、`3`、`4` | [ui.h](include/ui_framework/ui.h) |
+| 框架 API | `5`；当前运行库接受 `1`、`2`、`3`、`4`、`5` | [ui.h](include/ui_framework/ui.h) |
 | 应用 ABI / 包格式 | `1` / `1` | [application.h](include/ui_framework/application.h)、[package.h](include/ui_framework/package.h) |
-| 开发标准修订 | `4`，对应当前 `0.4.0` 开发源码 | [应用开发标准](docs/application-development-standard.md) |
+| 开发标准修订 | `5`，对应当前 `0.4.0` 开发源码 | [应用开发标准](docs/application-development-standard.md) |
 
-当前工作源码为 0.4.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；稳定基准仍为 v0.1.0。清单与 DLL 的 API 声明必须一致，应用不能加载到不支持其声明 API 的旧运行库。
+当前工作源码为 0.5.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；稳定基准仍为 v0.1.0。清单与 DLL 的 API 声明必须一致，应用不能加载到不支持其声明 API 的旧运行库。
 
-当前开发源码和接入说明位于 [main 分支](https://github.com/wbycloud/ui-framework/tree/main)。API3 历史实现基准为 [f8eb350](https://github.com/wbycloud/ui-framework/commit/f8eb3504f4682720967d631e53c985530343a2e0)，取得源码后仍需记录实际 commit，当前API4说明见[菜单与离屏接口](docs/framework-menu-offscreen.md)及[0.3 → 0.4迁移](docs/migration-v0.3-to-v0.4.md)，升级指令见[应用升级提示词](docs/application-upgrade-prompt.md)。
+当前开发源码和接入说明位于 [main 分支](https://github.com/wbycloud/ui-framework/tree/main)。API3 历史实现基准为 [f8eb350](https://github.com/wbycloud/ui-framework/commit/f8eb3504f4682720967d631e53c985530343a2e0)，取得源码后仍需记录实际 commit，[API5验收](docs/validation/api5-validation.md)及[0.4 → 0.5迁移](docs/migration-v0.4-to-v0.5.md)，接口说明见[菜单与离屏接口](docs/framework-menu-offscreen.md)及[0.3 → 0.4迁移](docs/migration-v0.3-to-v0.4.md)，升级指令见[应用升级提示词](docs/application-upgrade-prompt.md)。
 
 建议按以下顺序阅读：
 

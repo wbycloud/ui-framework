@@ -1,8 +1,8 @@
 # 分组菜单与离屏测试接口
 
-SDK0.4.0开发版、框架API4、开发标准修订4。审查基准为 `074a70fa5d2e04dde3b872a76641571c158db7e6`。运行库接受API1/2/3/4，应用ABI、`ui_app_query_v1`和包格式保持1；不创建稳定标签。
+SDK0.5.0开发版、框架API5、开发标准修订5。审查基准为 `074a70fa5d2e04dde3b872a76641571c158db7e6`。运行库接受API1/2/3/4/5，应用ABI、`ui_app_query_v1`和包格式保持1；不创建稳定标签。
 
-本轮只修改框架和通用样例，没有修改请求方应用、文档模型、业务渲染器或PERF-001。能力状态和实际证据见[验收记录](validation/api4-validation.md)。
+本轮只修改框架和通用验收样例，没有修改请求方应用、文档模型、业务渲染器或PERF-001。能力状态和实际证据见[API5验收](validation/api5-validation.md)；[API4记录](validation/api4-validation.md)保留历史结果。
 
 ## 1. 菜单与工具栏
 
@@ -10,7 +10,7 @@ SDK0.4.0开发版、框架API4、开发标准修订4。审查基准为 `074a70fa
 
 独立宿主常驻显示活动实例顶层分组；宽度不足进入“更多”。工具保留所属toolbar与组序；`ui_toolbar_desc_t.display=UI_TOOLBAR_COMPACT`在有图标时只显示图标和公共提示，无图标时保留标题。旧描述缺少尾部display字段时使用原默认值。
 
-宿主“打开应用包”快捷键改为Ctrl+Shift+O；Ctrl+O留给应用。内容Web、绘图surface和框架外壳使用既有语义命令；外壳消息固定实例目标，处理时检查仍是活动实例。编辑区保留编辑快捷键。菜单支持左右切换根组、上下选择及翻页、Enter执行、Esc关闭并恢复焦点。当前没有Alt访问键。
+宿主“打开应用包”快捷键改为Ctrl+Shift+O；Ctrl+O留给应用。内容Web、绘图surface和框架外壳使用既有语义命令；外壳消息固定实例目标，处理时检查仍是活动实例。编辑区保留编辑快捷键。菜单支持左右切换根组、上下选择及翻页、Enter执行、Esc关闭并恢复焦点。API5 的 Alt 访问键合同见第6节。
 
 `ui_host_show_menu`显示已注册路径，复制popup描述和路径。anchor选择HOST、CONTENT_SLOT或COMPONENT_ROW：HOST.rect相对应用host客户区；SLOT.rect相对该内容槽；ROW使用组件当前可见行的裁剪矩形。业务target_id独立于锚点，以十进制字符串发送为params.id及params.target，action为menu。ROW要求当前缓存中的有效项目；slot和component必须属于同一host。描述清零、设置size，矩形使用逻辑像素。路径最多4095 UTF-8字节，保持旧组件菜单路径预算。
 
@@ -28,7 +28,7 @@ NULL parent轻量view是已有能力。本版增加正常布局/绘制代码的�
 - 组件提供mount_offscreen、dispatch_input、get_presentation、capture_rgba和flush。TREE/TABLE/LIST/FORM/STATUS/DIALOG使用相同模板；输入仍通过命中、焦点、脚本、数据源与语义命令。
 - 菜单提供对应input/presentation/capture/flush；get_item_presentation按注册ID查找，避免应用依赖内部DOM键。页面元素ID仍可用于公共呈现诊断。
 
-新增backend ops只追加并按size读取；旧后端缺少函数返回UNSUPPORTED。轻量报告OFFSCREEN_CAPTURE/PRESENTATION_QUERY能力位，WebView2不报告。捕获不包括应用的OpenGL或原生内容，不包括输入法候选或桌面交换画面。单次GDI目标限制32MiB、单边32767像素；表格/树继续原DOM和数据预算。
+新增backend ops只追加并按size读取；旧后端缺少函数返回UNSUPPORTED。轻量报告OFFSCREEN_CAPTURE/PRESENTATION_QUERY能力位；API5 WebView2也报告并异步完成这两项，运行条件见[共同组件合同](generic-web-ui.md#api5-webview2-与共同组件)。捕获不包括应用的OpenGL或原生内容，不包括输入法候选或桌面交换画面。单次GDI目标限制32MiB、单边32767像素；表格/树继续原DOM和数据预算。
 
 ## 3. 显式无窗口workspace
 
@@ -44,7 +44,7 @@ UI线程主动poll或flush，不依赖WAKE_MESSAGE。flush限制本轮复制消�
 
 ## 4. 隐藏WGL离屏绘图
 
-`ui_opengl_offscreen_surface_create`是显式入口；要求至少3.3 compatibility，不接受legacy、core或MSAA，不静默降级。Windows仍创建隐藏WGL drawable/DC及临时bootstrap窗口，get_window_dependency报告HIDDEN_WINDOW；不声称无Windows图形会话支持。实际vendor/renderer/version/profile通过原get_info读取；硬件/软件类别标为unknown，不凭驱动字符串推测。
+`ui_opengl_offscreen_surface_create`是显式入口；要求至少3.3 compatibility，不接受legacy或core；API5显式正采样数要求精确匹配，不静默降级。Windows仍创建隐藏WGL drawable/DC及临时bootstrap窗口，get_window_dependency报告HIDDEN_WINDOW；不声称无Windows图形会话支持。实际vendor/renderer/version/profile通过原get_info读取；硬件/软件类别标为unknown，不凭驱动字符串推测。
 
 surface可接入原内容槽。`ui_surface_dispatch_input`复用逻辑输入、关闭/模态门控及原快捷键和input回调；不合成WM消息。`ui_opengl_offscreen_render`调用已有frame一次，绑定框架私有FBO、等待RGBA读回完成，恢复此前WGL context、framebuffer、viewport及读回所用像素打包/PBO状态。NULL pixels只查尺寸，不调用frame。输出顶向下RGBA8；alpha保留应用framebuffer的实际值，不推测业务混合方式。stride/capacity由调用方管理，跨模块不转移像素内存。
 
@@ -52,4 +52,20 @@ surface可接入原内容槽。`ui_surface_dispatch_input`复用逻辑输入、�
 
 context、GPU资源、resize及销毁属于创建时UI线程；显式render和make_current拒绝错误线程。颜色/深度附件合计限制32MiB，临时读回和调用方缓冲另外计算，单边限制16384且受驱动最大纹理尺寸限制。卸载前解除surface回调并释放应用GPU资源；host销毁会回收框架FBO和隐藏窗口。
 
-第一阶段不提供完全无窗口的GL context、MSAA离屏或无登录CI承诺。真实输入法、物理跨屏、桌面合成和SwapBuffers呈现仍需单独验收。
+API4第一阶段不提供完全无窗口GL和MSAA；API5增补见第6节，仍不承诺无登录CI。真实输入法、物理跨屏、桌面合成和SwapBuffers呈现仍需单独验收。
+
+## 6. API5 菜单、无窗口 GL 与 MSAA 合同
+
+菜单组和项追加 `access_key`：0 无助记键，ASCII A-Z/a-z/0-9，字母不区分大小写；非法值拒绝。原 SDK4 组的32字节完整前缀（含尾 padding）保留，旧描述不读取新字段。裸 Alt 松开进入根菜单，Alt+助记键打开组，上下/左右、Enter、Esc 使用共同弹窗和命令路由。重复助记键循环同层可用项，再用 Enter 执行；禁用/busy 项忽略。键按住不重复提交，松开后才接受下一次。嵌套 Left 返回父组，溢出分页仍可用助记键访问末项。实例切换、模态与关闭取消旧菜单，焦点只恢复到仍活动且可接收输入的原窗口。
+
+原生嵌入应用在 TranslateMessage 之前调用 `ui_host_menu_dispatch_input`，仅 OK 时吞掉该消息及其 SYSCHAR；NOT_FOUND 按原路由处理。宿主和框架原生 Web/surface 已接入。组合输入期间不传菜单键；Ctrl+Alt（AltGr）、Ctrl/Shift组合及既有已注册 Alt 快捷键保持优先权。真实 IME 仍须在目标机器补验，不能由注入字符推断通过。
+
+`ui_opengl_windowless_surface_create` 显式接收 `ui_opengl_windowless_config_t.library_path_utf8` 的绝对 OSMesa DLL 路径。上下文绑定应用内存，私有 FBO 执行应用 frame，不调用 WGL、GetDC 或创建隐藏 HWND，依赖查询为 NO_WINDOW。原 `ui_opengl_offscreen_surface_create` 继续走隐藏 WGL/DC，依赖查询为 HIDDEN_WINDOW，默认行为不改。两者共用 frame/input、resize、get_info、读回和销毁；应用所有 GL 调用（包括 GL1.1）必须经该 surface 的 get_proc_address，不能把 opengl32 导入函数用于 OSMesa。
+
+选择 OSMesa 是可复验的实际软件桌面 GL 方案，不声称 GPU 加速。Windows EGL/WGL 平台不能自动等同于没有 HWND/DC；本轮未实现硬件 EGL。验证固定提供方为 [mesa-dist-win 24.3.4](https://github.com/pal1000/mesa-dist-win/releases/tag/24.3.4) 的 x64 MSVC 包；[维护方说明](https://github.com/pal1000/mesa-dist-win) 已移除新版 OSMesa，应用必须显式部署兼容 DLL、依赖和许可，不能只升级到最新包。上游 OSMesa 的 screen/worker 缓存是进程级，本机最后一个 context 销毁后模块仍驻留；框架释放自己的引用，不强制卸载外部提供方。上下文/附件回收与模块驻留分别验证。
+
+离屏样本数0表示普通附件，正数是精确请求。创建时实际分配多采样 RGBA8 和 depth24/stencil8 renderbuffer，查询两者 GL_RENDERBUFFER_SAMPLES；超过 GL_MAX_SAMPLES、驱动取整或不完整 FBO 都明确失败，不降级。frame 在多采样 FBO 上绘制，blit resolve 到单采样 RGBA8 再读回顶向下 RGBA8。get_info.samples 报告已验证的实际附件采样数。
+
+每 surface 预算32 MiB。旧隐藏WGL单采样继续按8×像素计颜色/深度，临时读回另计、最多16 MiB，保留API4的2048×2048边界。真正无窗口单采样按12×像素计颜色/深度/临时读回；多采样按(8+8×samples)×像素计多采样附件、resolve和临时读回。OSMesa路径再计4字节 provider drawable，调用方缓冲另计。resize 先验预算，失败保持旧尺寸。UI/创建线程操作，销毁需先停止调用；多上下文保留当前提供方 context，恢复 framebuffer、viewport、texture/renderbuffer、pack/unpack PBO、pack 参数及 multisample/scissor。应用自行改变其他 GL 状态仍由应用负责。
+
+实际 Windows 已登录会话、Session0、无登录CI分别验收。真实软件 GL frame 输出可以证明无窗口渲染；返回 UNSUPPORTED、替代图片和模拟执行都不能证明成功。现有实际结果及未验收条件见 [API5验收](validation/api5-validation.md)。

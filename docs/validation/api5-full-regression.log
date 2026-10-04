@@ -1,0 +1,465 @@
+UpdateCTestConfiguration  from :<repo>/build/fw-next/release/DartConfiguration.tcl
+Test project <repo>/build/fw-next/release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+      Start  1: ui_package_format
+
+1: Test command: <repo>\build\fw-next\release\ui_package_format_test.exe
+1: Working Directory: <repo>/build/fw-next/release
+1: Test timeout computed to be: 10000000
+1: package format and deterministic packing: 0 failures
+ 1/42 Test  #1: ui_package_format ................   Passed    0.12 sec
+test 2
+      Start  2: ui_images_windows
+
+2: Test command: <repo>\build\fw-next\release\ui_images_windows_test.exe
+2: Working Directory: <repo>/build/fw-next/release
+2: Test timeout computed to be: 10000000
+2: PNG/GDI/cache: 0 failures
+ 2/42 Test  #2: ui_images_windows ................   Passed    0.05 sec
+test 3
+      Start  3: ui_responsive_layout
+
+3: Test command: <repo>\build\fw-next\release\ui_responsive_layout_test.exe
+3: Working Directory: <repo>/build/fw-next/release
+3: Test timeout computed to be: 10000000
+3: responsive layout matrix: 0 failures
+ 3/42 Test  #3: ui_responsive_layout .............   Passed    0.03 sec
+test 4
+      Start  4: ui_assistant_lifecycle
+
+4: Test command: <repo>\build\fw-next\release\ui_assistant_lifecycle_test.exe
+4: Working Directory: <repo>/build/fw-next/release
+4: Test timeout computed to be: 10000000
+4: assistant lifecycle and model rollback: 0 failures
+ 4/42 Test  #4: ui_assistant_lifecycle ...........   Passed    0.03 sec
+test 5
+      Start  5: ui_dpi_web_failure
+
+5: Test command: <repo>\build\fw-next\release\ui_dpi_web_failure_test.exe
+5: Working Directory: <repo>/build/fw-next/release
+5: Test timeout computed to be: 10000000
+5: failed Web DPI sync and retry: 0 failures
+ 5/42 Test  #5: ui_dpi_web_failure ...............   Passed    0.03 sec
+test 6
+      Start  6: ui_components_core
+
+6: Test command: <repo>\build\fw-next\release\ui_components_core_test.exe
+6: Working Directory: <repo>/build/fw-next/release
+6: Test timeout computed to be: 10000000
+6: API3 components core: 0 failures, 3 bounded queries
+ 6/42 Test  #6: ui_components_core ...............   Passed    0.04 sec
+test 7
+      Start  7: ui_headless_example
+
+7: Test command: <repo>\build\fw-next\release\ui_headless_example.exe
+7: Working Directory: <repo>/build/fw-next/release
+7: Test timeout computed to be: 10000000
+7: eda.add_block: {"blocks":1}
+ 7/42 Test  #7: ui_headless_example ..............   Passed    0.06 sec
+test 8
+      Start  8: ui_public_headers_c
+
+8: Test command: <repo>\build\fw-next\release\ui_public_headers_c_test.exe
+8: Working Directory: <repo>/build/fw-next/release
+8: Test timeout computed to be: 10000000
+ 8/42 Test  #8: ui_public_headers_c ..............   Passed    0.04 sec
+test 9
+      Start  9: ui_public_headers_cpp
+
+9: Test command: <repo>\build\fw-next\release\ui_public_headers_cpp_test.exe
+9: Working Directory: <repo>/build/fw-next/release
+9: Test timeout computed to be: 10000000
+ 9/42 Test  #9: ui_public_headers_cpp ............   Passed    0.05 sec
+test 10
+      Start 10: ui_webview2_parity
+
+10: Test command: <repo>\build\fw-next\release\webview2_probe.exe
+10: Working Directory: <repo>/build/fw-next/release
+10: Test timeout computed to be: 25
+10: javascript_verified=[800,240,false]
+10: javascript_verified=[500,0,true]
+10: javascript_verified=[800,240,false]
+10: javascript_verified=[500,0,true]
+10: composition_verified=set_rect,resize_preserves_origin,sidebar_binding,host_reflow
+10: javascript_verified=true
+10: state=0 ready=1 html_navigated=1 viewport_cases=4 composition=1 clicks=1 inputs=1 results=2 hresult=0x00000000 elapsed_ms=454
+10/42 Test #10: ui_webview2_parity ...............   Passed    0.60 sec
+test 11
+      Start 11: ui_webview2_messages
+
+11: Test command: <repo>\build\fw-next\release\ui_webview2_messages_test.exe
+11: Working Directory: <repo>/build/fw-next/release
+11: Test timeout computed to be: 25
+11: WebView2 JSON: ready=1 navigated=1 posted=1 echoed=1 status=0
+11/42 Test #11: ui_webview2_messages .............   Passed    0.57 sec
+test 12
+      Start 12: ui_webview2_render
+
+12: Test command: <repo>\build\fw-next\release\ui_webview2_render_test.exe
+12: Working Directory: <repo>/build/fw-next/release
+12: Test timeout computed to be: 30
+12: Runtime close before creation x12 handles 314->322 USER 17->19
+12: Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+12/42 Test #12: ui_webview2_render ...............   Passed    9.08 sec
+test 13
+      Start 13: ui_api5_integration
+
+13: Test command: <repo>\build\fw-next\release\ui_api5_integration_test.exe "<repo>/build/fw-next/release/api5_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll"
+13: Working Directory: <repo>/build/fw-next/release
+13: Test timeout computed to be: 120
+13: click field-name rect 21,117,718,38 clip 21,117,718,38
+13: click tree-label-1 rect 19,93,105,28 clip 19,93,104,28
+13: nested result=0 text=Nested DLL row
+13: click field-name rect 21,117,382,38 clip 21,117,382,38
+13: reopen1 handles=382
+13: reopen2 handles=383
+13: reopen3 handles=383
+13: reopen4 handles=383
+13: reopen5 handles=383
+13: reopen6 handles=383
+13: reopen7 handles=383
+13: reopen8 handles=383
+13: reopen9 handles=383
+13: reopen10 handles=383
+13: reopen11 handles=383
+13: reopen12 handles=385
+13: reopen13 handles=385
+13: reopen14 handles=385
+13: reopen15 handles=385
+13: reopen16 handles=385
+13: reopen17 handles=385
+13: reopen18 handles=385
+13: reopen19 handles=385
+13: reopen20 handles=385
+13: reopen21 handles=385
+13: reopen22 handles=385
+13: reopen23 handles=385
+13: reopen24 handles=383
+13: reopen25 handles=379
+13: reopen26 handles=381
+13: reopen27 handles=381
+13: reopen28 handles=381
+13: reopen29 handles=381
+13: reopen30 handles=381
+13: reopen31 handles=381
+13: reopen32 handles=381
+13: Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+13: DLL reopen32 resources GDI 9->9 USER 17->17 handles 382->381 drained_ms=0
+13: API5 actual Runtime/application DLL: 0 failures
+13/42 Test #13: ui_api5_integration ..............   Passed   79.01 sec
+test 14
+      Start 14: ui_api5_native_host
+
+14: Test command: <repo>\build\fw-next\release\ui_api5_native_host_test.exe "<repo>/build/fw-next/release/api5_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll"
+14: Working Directory: <repo>/build/fw-next/release
+14: Test timeout computed to be: 30
+14: native key msg=260 key=18 handled=1 ctrl=0 shift=0 alt=-127
+14: native key msg=260 key=70 handled=1 ctrl=0 shift=0 alt=-127
+14: native key msg=261 key=70 handled=1 ctrl=0 shift=0 alt=-127
+14: native key msg=257 key=18 handled=1 ctrl=0 shift=0 alt=1
+14: native key msg=256 key=83 handled=1 ctrl=0 shift=0 alt=1
+14: native key msg=256 key=83 handled=1 ctrl=0 shift=0 alt=1
+14: native key msg=257 key=83 handled=1 ctrl=0 shift=0 alt=1
+14: native key msg=260 key=18 handled=1 ctrl=0 shift=0 alt=-128
+14: native key msg=261 key=18 handled=1 ctrl=0 shift=0 alt=0
+14: native key msg=256 key=27 handled=1 ctrl=0 shift=0 alt=0
+14: native key msg=257 key=27 handled=1 ctrl=0 shift=0 alt=0
+14: native key msg=256 key=17 handled=0 ctrl=-127 shift=0 alt=0
+14: native key msg=256 key=79 handled=1 ctrl=-127 shift=0 alt=0
+14: native key msg=257 key=79 handled=0 ctrl=-127 shift=0 alt=0
+14: native key msg=257 key=17 handled=0 ctrl=1 shift=0 alt=0
+14: Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+14/42 Test #14: ui_api5_native_host ..............   Passed    6.04 sec
+test 15
+      Start 15: ui_offscreen_msaa
+
+15: Test command: <repo>\build\fw-next\release\ui_offscreen_msaa_test.exe
+15: Working Directory: <repo>/build/fw-next/release
+15: Test timeout computed to be: 10000000
+15: Actual GL Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079 samples=4
+15: Actual triangle antialias partial pixels=119
+15: Non-MSAA actual samples=0 partial=0
+15: GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+15/42 Test #15: ui_offscreen_msaa ................   Passed    0.34 sec
+test 16
+      Start 16: ui_windowless_gl
+
+16: Test command: <repo>\build\fw-next\release\ui_offscreen_msaa_test.exe "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll"
+16: Working Directory: <repo>/build/fw-next/release
+16: Test timeout computed to be: 10000000
+16: Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+16: Actual triangle antialias partial pixels=119
+16: Non-MSAA actual samples=0 partial=0
+16: OSMesa reopen 1 handles=209 loaded=1
+16: OSMesa reopen 2 handles=209 loaded=1
+16: OSMesa reopen 3 handles=209 loaded=1
+16: OSMesa reopen 4 handles=209 loaded=1
+16: OSMesa reopen 5 handles=209 loaded=1
+16: OSMesa reopen 6 handles=209 loaded=1
+16: OSMesa reopen 7 handles=209 loaded=1
+16: OSMesa reopen 8 handles=209 loaded=1
+16: OSMesa reopen 9 handles=209 loaded=1
+16: OSMesa reopen 10 handles=209 loaded=1
+16: OSMesa reopen 11 handles=209 loaded=1
+16: OSMesa reopen 12 handles=209 loaded=1
+16: OSMesa reopen 13 handles=209 loaded=1
+16: OSMesa reopen 14 handles=209 loaded=1
+16: OSMesa reopen 15 handles=209 loaded=1
+16: OSMesa reopen 16 handles=209 loaded=1
+16: GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=0, process HWNDs=0, HWND dependency=2
+16/42 Test #16: ui_windowless_gl .................   Passed    0.44 sec
+test 17
+      Start 17: ui_offscreen_gl
+
+17: Test command: <repo>\build\fw-next\release\ui_offscreen_gl_test.exe
+17: Working Directory: <repo>/build/fw-next/release
+17: Test timeout computed to be: 20
+17: Offscreen GPU: Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079; hidden HWND dependency; hardware class unknown
+17: Hidden WGL/FBO/frame/input/readback: 0 failures
+17/42 Test #17: ui_offscreen_gl ..................   Passed    0.31 sec
+test 18
+      Start 18: ui_workspace_offscreen
+
+18: Test command: <repo>\build\fw-next\release\ui_workspace_offscreen_test.exe "<repo>/build/fw-next/release/framework_features.uapp"
+18: Working Directory: <repo>/build/fw-next/release
+18: Test timeout computed to be: 20
+18: Offscreen actual DOM=75 cached rows=12 columns=4
+18: Workspace/shared DLL/real templates: 0 failures, HWNDs=0
+18/42 Test #18: ui_workspace_offscreen ...........   Passed    0.42 sec
+test 19
+      Start 19: ui_framework_features_host
+
+19: Test command: <repo>\build\fw-next\release\ui_framework_features_host_test.exe "<repo>/build/fw-next/release/framework_features.uapp" "<repo>/build/fw-next/release/features-host.bmp"
+19: Working Directory: <repo>/build/fw-next/release
+19: Test timeout computed to be: 30
+19: API4 actual host menus/overflow/instances: 0 failures
+19/42 Test #19: ui_framework_features_host .......   Passed    2.56 sec
+test 20
+      Start 20: ui_menu_offscreen
+
+20: Test command: <repo>\build\fw-next\release\ui_menu_offscreen_test.exe
+20: Working Directory: <repo>/build/fw-next/release
+20: Test timeout computed to be: 10000000
+20: Real light/template offscreen: 0 failures; thread windows=0; no physical IME/DPI claim
+20/42 Test #20: ui_menu_offscreen ................   Passed    0.22 sec
+test 21
+      Start 21: ui_menu_access
+
+21: Test command: <repo>\build\fw-next\release\ui_menu_access_test.exe
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 10000000
+21: Menu Alt real template: 0 failures, calls=3
+21/42 Test #21: ui_menu_access ...................   Passed    0.12 sec
+test 22
+      Start 22: ui_api4_compat
+
+22: Test command: <repo>\build\fw-next\release\ui_api4_compat_test.exe
+22: Working Directory: <repo>/build/fw-next/release
+22: Test timeout computed to be: 10000000
+22: Frozen SDK4 prefixes/dirty padding/component: 0 failures, component_size=136
+22/42 Test #22: ui_api4_compat ...................   Passed    0.08 sec
+test 23
+      Start 23: ui_original_api4_package
+
+23: Test command: <repo>\build\fw-next\release\ui_framework_features_host_test.exe "<repo>/build/api5-evidence/original-api4-framework_features.uapp"
+23: Working Directory: <repo>/build/fw-next/release
+23: Test timeout computed to be: 90
+23: API4 actual host menus/overflow/instances: 0 failures
+23/42 Test #23: ui_original_api4_package .........   Passed    2.65 sec
+test 24
+      Start 24: ui_web_text_edit
+
+24: Test command: <repo>\build\fw-next\release\ui_web_text_edit_test.exe
+24: Working Directory: <repo>/build/fw-next/release
+24: Test timeout computed to be: 10000000
+24: Web editor: 0 failures. Physical Chinese IME remains unverified.
+24/42 Test #24: ui_web_text_edit .................   Passed    0.18 sec
+test 25
+      Start 25: ui_generic_web_host
+
+25: Test command: <repo>\build\fw-next\release\ui_generic_web_host_test.exe "<repo>/build/fw-next/release/generic_components.uapp" "<repo>/build/web-shell/baseline/minimal_eda.uapp" "<repo>/build/fw-next/release/web_counter.uapp"
+25: Working Directory: <repo>/build/fw-next/release
+25: Test timeout computed to be: 45
+25: initial actual DOM=169 rows=17 columns=5
+25: 100k tail actual DOM=75 rows=12 columns=4
+25: 100k expanded tree actual DOM=77 cached rows=1800 total=100100
+25: image bytes=413344 limit=33554432 evictions=0
+25: generic Web real host: 0 failures; physical IME/multiple monitors not tested
+25/42 Test #25: ui_generic_web_host ..............   Passed    2.89 sec
+test 26
+      Start 26: ui_component_resilience
+
+26: Test command: <repo>\build\fw-next\release\ui_component_resilience_test.exe "<repo>/build/fw-next/release/framework_features.uapp"
+26: Working Directory: <repo>/build/fw-next/release
+26: Test timeout computed to be: 30
+26: automatic style preview lifetime: 0 failures
+26: resource,0,0,0,15855616,4886528,171,45,4,0,0,0,0,0,0,0
+26: edit/layout mode 0: 0 failures
+26: edit/layout mode 1: 0 failures
+26: edit/layout mode 2: 0 failures
+26: edit/layout mode 3: 0 failures
+26: focus before refloat=00000000033E0976
+26: focus after refloat=00000000033E0976
+26: focus after modal close=00000000033E0976
+26: focus after redock=00000000033E0976
+26: edit/layout mode 4: 0 failures
+26: edit/layout mode 5: 0 failures
+26: record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count
+26: resource,94,1,1,131252224,94875648,345,919,70,188,20,15255,77,9702,313752,76
+26: resource,94,1,2,131252224,94875648,345,919,70,169,17,11030,77,8254,212736,52
+26: resource,1094,18,1,139419648,103342080,345,956,68,150,20,15564,77,21286,400960,95
+26: resource,1094,18,2,139419648,103342080,345,956,68,150,19,14789,77,21286,531560,126
+26: resource,2016,35,1,140005376,103657472,345,1032,68,150,19,14827,77,34318,562192,133
+26: resource,2016,35,2,140005376,103657472,345,1032,68,150,19,14789,77,32870,692736,164
+26: resource,2141,35,0,56868864,36601856,288,57,23,0,0,0,0,0,0,0
+26: resilience: 0 failures; 35 iterations; physical/manual checks remain open
+26/42 Test #26: ui_component_resilience ..........   Passed    3.28 sec
+test 27
+      Start 27: ui_api3_original_package
+
+27: Test command: <repo>\build\fw-next\release\ui_generic_web_host_test.exe "<repo>/build/fw-next/baseline/generic_components.uapp" "<repo>/build/web-shell/baseline/minimal_eda.uapp" "<repo>/build/fw-next/release/web_counter.uapp"
+27: Working Directory: <repo>/build/fw-next/release
+27: Test timeout computed to be: 45
+27: initial actual DOM=169 rows=17 columns=5
+27: 100k tail actual DOM=75 rows=12 columns=4
+27: 100k expanded tree actual DOM=77 cached rows=1800 total=100100
+27: image bytes=413344 limit=33554432 evictions=0
+27: generic Web real host: 0 failures; physical IME/multiple monitors not tested
+27/42 Test #27: ui_api3_original_package .........   Passed    2.78 sec
+test 28
+      Start 28: ui_application_versions
+
+28: Test command: <repo>\build\fw-next\release\ui_application_versions_test.exe "<repo>/build/web-shell/baseline/minimal_eda.uapp" "<repo>/build/fw-next/release/web_counter.uapp" "<repo>/build/fw-next/release/counter_mismatch.uapp"
+28: Working Directory: <repo>/build/fw-next/release
+28: Test timeout computed to be: 45
+28: application API1/API2 and Web/native contents: PASS
+28/42 Test #28: ui_application_versions ..........   Passed    0.32 sec
+test 29
+      Start 29: ui_light_web_dynamic
+
+29: Test command: <repo>\build\fw-next\release\ui_light_web_dynamic_test.exe
+29: Working Directory: <repo>/build/fw-next/release
+29: Test timeout computed to be: 30
+29: Dynamic Web probe: 0 failure(s), 6 messages, 250 incremental rebuilds
+29/42 Test #29: ui_light_web_dynamic .............   Passed    0.24 sec
+test 30
+      Start 30: ui_web_shell_slots
+
+30: Test command: <repo>\build\fw-next\release\ui_web_shell_slots_test.exe
+30: Working Directory: <repo>/build/fw-next/release
+30: Test timeout computed to be: 30
+30: Web shell content slots and legacy facade passed
+30/42 Test #30: ui_web_shell_slots ...............   Passed    0.14 sec
+test 31
+      Start 31: ui_floating_web_dpi
+
+31: Test command: <repo>\build\fw-next\release\ui_floating_web_dpi_test.exe
+31: Working Directory: <repo>/build/fw-next/release
+31: Test timeout computed to be: 30
+31/42 Test #31: ui_floating_web_dpi ..............   Passed    0.16 sec
+test 32
+      Start 32: ui_light_web_parity
+
+32: Test command: <repo>\build\fw-next\release\light_web_probe.exe
+32: Working Directory: <repo>/build/fw-next/release
+32: Test timeout computed to be: 15
+32: Light Web probe: 0 failure(s), clicks=3, inputs=2, reloads=4
+32/42 Test #32: ui_light_web_parity ..............   Passed    0.23 sec
+test 33
+      Start 33: ui_workspace_integration
+
+33: Test command: <repo>\build\fw-next\release\ui_workspace_integration_test.exe "<repo>/build/fw-next/release/minimal_eda.uapp" "<repo>/build/fw-next/release/ui_lifecycle_fixture.dll" "<repo>/build/fw-next/release/ui_application_cpp.dll"
+33: Working Directory: <repo>/build/fw-next/release
+33: Test timeout computed to be: 45
+33: Workspace/module lifecycle: 0 failure(s)
+33/42 Test #33: ui_workspace_integration .........   Passed    1.40 sec
+test 34
+      Start 34: ui_web_host_frontend
+
+34: Test command: <repo>\build\fw-next\release\ui_web_host_frontend_test.exe "<repo>/build/fw-next/release/minimal_eda.uapp" "<repo>/build/fw-next/release/cpp_fixture.uapp"
+34: Working Directory: <repo>/build/fw-next/release
+34: Test timeout computed to be: 60
+34: Web host frontend passed.
+34/42 Test #34: ui_web_host_frontend .............   Passed    0.77 sec
+test 35
+      Start 35: ui_native_activation
+
+35: Test command: <repo>\build\fw-next\release\ui_native_activation_test.exe
+35: Working Directory: <repo>/build/fw-next/release
+35: Test timeout computed to be: 10000000
+35: Native managed activation: 0 failure(s)
+35/42 Test #35: ui_native_activation .............   Passed    0.60 sec
+test 36
+      Start 36: ui_dpi_integration
+
+36: Test command: <repo>\build\fw-next\release\ui_dpi_integration_test.exe
+36: Working Directory: <repo>/build/fw-next/release
+36: Test timeout computed to be: 10000000
+36: DPI integration: 0 failure(s)
+36/42 Test #36: ui_dpi_integration ...............   Passed    0.11 sec
+test 37
+      Start 37: ui_opengl_integration
+
+37: Test command: <repo>\build\fw-next\release\ui_opengl_integration_test.exe
+37: Working Directory: <repo>/build/fw-next/release
+37: Test timeout computed to be: 10000000
+37: legacy: Intel | Intel(R) UHD Graphics 770 | 4.6.0 - Build 32.0.101.7079
+37: gl.core: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+37: gl.compatibility: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+37: gl.msaa_debug: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=4 debug=1
+37: OpenGL integration: 0 failure(s), 3 modern configurations supported
+37/42 Test #37: ui_opengl_integration ............   Passed    0.32 sec
+test 38
+      Start 38: ui_surface_input
+
+38: Test command: <repo>\build\fw-next\release\ui_surface_input_test.exe
+38: Working Directory: <repo>/build/fw-next/release
+38: Test timeout computed to be: 10000000
+38: Surface input integration: 0 failure(s)
+38/42 Test #38: ui_surface_input .................   Passed    0.20 sec
+test 39
+      Start 39: ui_monitor_transition
+
+39: Test command: <repo>\build\fw-next\release\ui_monitor_transition_test.exe
+39: Working Directory: <repo>/build/fw-next/release
+39: Test timeout computed to be: 20
+39: Monitor transition environment: 1 monitor(s)
+39: SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+39/42 Test #39: ui_monitor_transition ............***Skipped   0.11 sec
+test 40
+      Start 40: ui_native_shell_integration
+
+40: Test command: <repo>\build\fw-next\release\ui_native_shell_integration_test.exe
+40: Working Directory: <repo>/build/fw-next/release
+40: Test timeout computed to be: 10000000
+40: native shell integration checks passed
+40/42 Test #40: ui_native_shell_integration ......   Passed    0.17 sec
+test 41
+      Start 41: ui_native_responsive
+
+41: Test command: <repo>\build\fw-next\release\ui_native_responsive_test.exe
+41: Working Directory: <repo>/build/fw-next/release
+41: Test timeout computed to be: 10000000
+41: Native responsive integration: 0 failure(s)
+41/42 Test #41: ui_native_responsive .............   Passed    0.38 sec
+test 42
+      Start 42: ui_assistant_protocol
+
+42: Test command: <repo>\build\fw-next\release\ui_assistant_protocol_test.exe
+42: Working Directory: <repo>/build/fw-next/release
+42: Test timeout computed to be: 10000000
+42: assistant protocol: 0 failure(s)
+42/42 Test #42: ui_assistant_protocol ............   Passed    0.13 sec
+
+100% tests passed, 0 tests failed out of 42
+
+Total Test time (real) = 117.92 sec
+
+The following tests did not run:
+	 39 - ui_monitor_transition (Skipped)

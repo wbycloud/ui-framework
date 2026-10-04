@@ -1,8 +1,8 @@
 # 构建与验证
 
-本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.4.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 、API3 generic_components 和 API4 framework_features 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
+本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.5.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 、API3 generic_components 和 API4 framework_features 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
 
-当前API4新增能力见[菜单与离屏](framework-menu-offscreen.md)、[验收记录](validation/api4-validation.md)和[样例](../examples/framework_features/README.md)。历史 API3 构建和验收见[独立记录](validation/api3-validation.md)，新接入见[通用示例](../examples/generic_components/README.md)和[0.2 → 0.3 迁移](migration-v0.2-to-v0.3.md)。第5节保留旧版本历史结果，不作为当前测试状态。
+当前API5能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[验收记录](validation/api5-validation.md)。[API4样例](../examples/framework_features/README.md)、[API4验收](validation/api4-validation.md)及[API3记录](validation/api3-validation.md)保留历史版本证据；新接口迁移见[0.4→0.5](migration-v0.4-to-v0.5.md)。第5节保留旧版本历史结果，不作为当前测试状态。
 
 ## 1. 构建环境
 
@@ -295,3 +295,20 @@ OpenGL 测试会打印实际 vendor、renderer 和 context 信息。现代配置
 | WebView2 SDK | Microsoft 提供的再分发条款，本地 `.deps/Microsoft.Web.WebView2.1.0.4129.50/LICENSE.txt` 和 `NOTICE.txt`；来源为[官方固定版本包](https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.4129.50) |
 
 应用分发时应保留对应许可和 notices，并单独处理 WebView2 Runtime 的分发要求。此项目尚未选定框架本身的开源许可证；本文不替项目选择 MIT、Apache-2.0 或其他许可。第三方组件的许可证不自动成为框架和应用的许可证。
+
+## API5 可选提供方与复验
+
+OSMesa 运行时采用 [mesa-dist-win 24.3.4 MSVC 包](https://github.com/pal1000/mesa-dist-win/releases/tag/24.3.4)：`mesa3d-24.3.4-release-msvc.7z` 的SHA256为 `7ebc711ad1896ac88ab21e142f1017f8ff035f0f342bdb72fbb5e2eb881ba363`。将x64目录原样保留到 `.deps/mesa-24.3.4/x64`（至少osmesa.dll及libglapi.dll及其运行库）；不会自动下载/安装或替换系统opengl32。新版已移除OSMesa，26.2.3包缺少此DLL不能作为复验提供方。
+
+在x64开发终端，完成原轻量/WebView2依赖准备后执行：
+
+```powershell
+$osmesaPath = (Resolve-Path .deps/mesa-24.3.4/x64/osmesa.dll).Path
+cmake -S . -B build/api5 -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_FRAMEWORK_ENABLE_WEBVIEW2=ON "-DUI_OSMESA_LIBRARY=$osmesaPath"
+cmake --build build/api5
+ctest --test-dir build/api5 --output-on-failure
+```
+
+`UI_OSMESA_LIBRARY`仅注册实际提供方验收，不是隐式运行模式或编译时硬依赖。API5 fixture只用于验收；显式环境路径由integration测试传入。缺少提供方不会注册windowless/integration测试，不得声称这两项通过。原API4包可用 `UI_LEGACY_API4_PACKAGE` 加入原包宿主复验；SDK4重新构建测试单独运行。API1/2/3旧包入口保持原构建合同。
+
+Windows普通账户Session1可运行实际无窗口GL，管理员/服务Session0和无登录CI仍需独立环境；不通过隐藏WGL或软件替代图片推断。WebView2仍需要实际Runtime、图形会话和原生承载窗口，受限执行环境可能禁止浏览器子进程；通过只表示对应实际环境的证据。测试失败保留并修复，不使用skip或提高上限遮盖资源增长。

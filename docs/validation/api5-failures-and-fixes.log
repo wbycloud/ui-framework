@@ -1,0 +1,89 @@
+API5 failures and fixes: exact excerpts, before final code commit.
+Failed local logs retained in build/api5-evidence.
+48-loop summaries originally retained the x12 label; CANCELLED counters show the actual 48 iterations.
+
+integration-32.log SHA256 944f903387637a4bcd4420c3936f8f86e35b47554bb53daad243f39a0194e3c9
+line 44: GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4&&end_handles<=handles+12
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+DLL reopen8 resources GDI 9->9 USER 16->16 handles 377->407 drained_ms=15000
+API5 actual Runtime/application DLL: 1 failures
+
+native-host-key-trace.log SHA256 b473e3897cf322488b02b17323133f3ae530f688f92a8f4839c0de147df63ebf
+native key msg=256 key=229 handled=1 ctrl=0 shift=0 alt=1
+native key msg=256 key=229 handled=1 ctrl=0 shift=0 alt=1
+line 18: !strcmp(ui_host_status_text(info.host),"submitted")
+line 18: info.host->next_request_id==before+1
+line 18: GetFocus()==focus
+line 19: ui_host_menu_get_presentation(info.host,"close",&p)==UI_STATUS_OK
+Actual native WebView focus / host Alt / single command / focus restore: 4 failures
+
+wv-cancel-drained-same-mode.log SHA256 145799fdf52ae345df579310b6cbe7a11e1a3fccc0f8101bcdb059937bfb005b
+line 43: last<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+2
+Runtime close before creation x12 handles 310->407 USER 17->17
+Real WebView2 presentation/capture/images/input/stale/close: 1 failures
+
+wv-cancel-48.log SHA256 c034649f793c5b5214b978e244b409845e6736534ca7ea752f4e70c35a2edf4e
+Process 1
+Process 74
+Process 150
+Process 235
+Process 311
+Process 307
+CANCELLED 12 handles=396 USER=24
+CANCELLED 24 handles=473 USER=25
+CANCELLED 36 handles=554 USER=22
+CANCELLED 48 handles=630 USER=21
+Runtime close before creation x12 handles 313->619 USER 18->17
+Real WebView2 presentation/capture/images/input/stale/close: 1 failures
+
+wv-cancel-48-fixed.log SHA256 ef6bd6a0cad1cbbac16f2c9c031771ffd4f25d03d71b3d0cb6816d00e2605c39
+Process 2
+Process 2
+Process 2
+Process 2
+Process 2
+CANCELLED 12 handles=318 USER=20
+CANCELLED 24 handles=318 USER=19
+CANCELLED 36 handles=318 USER=19
+CANCELLED 48 handles=320 USER=19
+Runtime close before creation x12 handles 310->318 USER 17->19
+Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+
+direct-sdk-cancel.log SHA256 64d02b8e933f327875de268166758e78fd528e33e31fbc3ecf5b8c02896b4d73
+Direct SDK no navigation 0 handles=272
+Process 2
+Direct SDK no navigation 1 handles=277
+Direct SDK no navigation 2 handles=278
+Direct SDK no navigation 3 handles=282
+Direct SDK no navigation 4 handles=285
+Direct SDK no navigation 5 handles=288
+Direct SDK no navigation 6 handles=291
+Direct SDK no navigation 7 handles=294
+Direct SDK no navigation 8 handles=297
+Direct SDK no navigation 9 handles=300
+Direct SDK no navigation 10 handles=303
+Direct SDK no navigation 11 handles=306
+Process 35
+
+direct-sdk-cancel-idle.log SHA256 9ffbdf15d169d6736c1700847b1808331603329702cf4d2aaf9b217a3aafb168
+Direct SDK no navigation 0 handles=273
+Process 3
+Direct SDK no navigation 1 handles=273
+Direct SDK no navigation 2 handles=274
+Direct SDK no navigation 3 handles=274
+Direct SDK no navigation 4 handles=274
+Direct SDK no navigation 5 handles=274
+Direct SDK no navigation 6 handles=274
+Direct SDK no navigation 7 handles=274
+Direct SDK no navigation 8 handles=274
+Direct SDK no navigation 9 handles=274
+Direct SDK no navigation 10 handles=274
+Direct SDK no navigation 11 handles=274
+Process 3
+
+component-partial-field-failure.log SHA256 923a960be1bde9fa318c6be60b625351e5fb594980d8ab521762609c9ce2ddab
+line 47: ui_component_mount_offscreen(component,180,60,96)==UI_STATUS_OK
+Menu Alt real template: 1 failures, calls=3
+
+component-partial-field-fixed.log SHA256 9b8c1dcff39661213087a346b9f593800522f3cafc2c80dc7abd7ffa168b0f16
+Menu Alt real template: 0 failures, calls=3

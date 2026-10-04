@@ -1,5 +1,7 @@
 # API4 菜单与离屏纯 C 示例
 
+本样例继续以冻结SDK4构建，用作兼容调用方；当前API5四项实现及实际Runtime/应用DLL示例见[验收记录](../../docs/validation/api5-validation.md)、[fixture源码](../../tests/api5_fixture.c)和[迁移](../../docs/migration-v0.4-to-v0.5.md)。本文后续API4边界保留为历史样例说明。
+
 本示例以编译开关UI_SAMPLE_API4复用generic_components/app.c，通过公共接口展示七个菜单分组、嵌套菜单、三个toolbar、13个新增工具（加原有2项）、紧凑图标、按需树/表格/表单/对话框、后台缩略图和可选OpenGL内容槽。框架不包含示例数据的业务模型。
 
 在准备固定依赖的x64开发终端运行：

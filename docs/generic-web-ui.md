@@ -1,6 +1,6 @@
-# 通用 Web UI：API 3/4 接入约定
+# 通用 Web UI：API 3/4/5 接入约定
 
-本文的 API3 组件合同在 **SDK 0.4.0 开发版 / API4 / 标准修订4** 继续适用，应用 ABI、导出入口和包格式保持1。API4菜单与离屏增补见[接口约定](framework-menu-offscreen.md)；历史及当前测试、未实测条件分别见[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
+本文的 API3 组件合同在 **SDK 0.5.0 开发版 / API5 / 标准修订5** 继续适用，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API5验收](validation/api5-validation.md)，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
 
 ## 1. 架构、复用与边界
 
@@ -99,7 +99,23 @@ unmount 停止并 join 线程、撤销外部回调、释放 GPU 内容；宿主�
 | RGBA/包 PNG/样式、异步缩略图、缓存/过期结果 | 已实现；WIC、合成、资源压力及宿主测试通过 |
 | API1/2/3、双实例、关闭重开、原生/OpenGL | 所列样例与回归已验证，非任意第三方包保证 |
 | 实际中文 IME、物理跨显示器、长时间手动滚动压力 | 未验证，需相应操作和硬件条件 |
-| WebView2 的新增 C 图片 ID/框架组件呈现 | 未实现；原 HTML/消息能力保留 |
+| WebView2 的 C 图片 ID/框架组件呈现 | API5可选实际Runtime后端；异步呈现/捕获合同见本文增补 |
 | 完整浏览器、Canvas/SVG、富文本、可变行高、拖拽停靠、布局持久化 | 未实现 |
 
-轻量后端报告 IMAGES/WEB_TEXT_EDIT/COMPONENTS；WebView2 不报告这些新增位。组件 mount 固定使用轻量后端，没有 WebView2 组件呈现入口；未编入轻量后端时 mount 返回 UNSUPPORTED。WebView2 的浏览器图片/输入不等于本版 C 资源桥接。
+轻量后端报告 IMAGES/WEB_TEXT_EDIT/COMPONENTS；API5 WebView2也提供图片和编辑桥接，显式framework_components=1才声明COMPONENTS。NULL组件后端默认仍为轻量；可借用WebView2后端，详见本页API5增补。
+
+## API5 WebView2 与共同组件
+
+启用可选 WebView2 后端及实际 Runtime 后，新增 PRESENTATION_QUERY、OFFSCREEN_CAPTURE、IMAGES、WEB_TEXT_EDIT 和 ASYNC_RENDER 能力。此处捕获是窗口承载的 Runtime 图像，不意味着浏览器无 HWND 或 Session0。旧配置尺寸默认不提供 native_handle/COMPONENTS；显式 `framework_components=1` 创建框架承载容器，并声明 COMPONENTS/NATIVE_WINDOW。`ui_component_desc_t.web_backend` 借用这个后端，NULL 沿用轻量后端；应用保留它直到 host 销毁后再在 destroy 回调中用匹配的 destroy 函数释放。
+
+两后端使用同一组件 HTML、C 数据源、64位十进制 ID、语义命令、草稿、模态和实例输入门控。DOM 输入通过 Runtime 执行脚本排队，OK 表示接受，不表示 C 回调完成；应用继续正常 Win32 消息循环。原生 Runtime 输入仍由浏览器处理，程序输入覆盖命中、编辑、选择、撤销和模板键盘行为，真实 IME 需另验。C 图片 ID 通过实例限定的私有虚拟资源 URL 编码 PNG；更新刷新版本，释放返回缺失资源，不跨实例借用。
+
+WebView2 呈现查询和捕获使用正状态 `UI_STATUS_PENDING`，调用方在正常消息循环推进后重试同一请求。框架保存结果，不保存调用方输出缓冲地址；完成一次消费后释放内部像素。导航、resize、数据/图片/输入改变使旧代次失效，关闭后不调用应用回调。查询输出 view 本地逻辑 rect/clip、可见/启用/焦点/溢出及复制文本；input/textarea/select 用值，其他元素用文本。找不到元素的完成结果是 NOT_FOUND。
+
+NULL pixels 同步查询捕获物理宽高/stride。提供像素缓冲后，等待模板投递、图片 decode、字体及两个动画帧，再异步 CapturePreview/WIC 解码为顶向下 RGBA8、alpha255；物理尺寸按逻辑尺寸×DPI/96四舍五入。应用拥有最终缓冲，capacity/stride 需满足公共预算。若 CapturePreview 返回尺寸不符，明确失败而非填充假图。flush 只检查本后端已排队工作，未完成返回 PENDING，不嵌套泵系统消息或冒充业务完成；轻量 flush 的历史 job-budget/CANCELLED 合同保留。
+
+组件承载使用 Runtime 的 ControllerOptions4 AllowHostInputProcessing，让聚焦浏览器时的菜单和宿主/应用快捷键进入正常消息循环。程序键输入在页面未 preventDefault 时走同一语义命令，并保留编辑快捷键。没有该 Runtime 接口时组件承载创建明确失败。公共菜单仍使用框架轻量后端，部署完整宿主需要同时启用轻量与可选 WebView2。
+
+销毁先撤销事件及应用回调，SDK 未完成操作只持有失效的内部 view；controller 关闭和环境释放在 SDK 回调返回后的 UI 消息中执行。controller成功创建后、任何Close之前订阅 BrowserProcessExited，环境保留到对应浏览器退出事件后释放。创建过程中取消时，惰性初始化的Runtime对象仍等待内部无副作用脚本的完成回调，再执行Close；不装载应用文档或调用已失效的应用回调。应用 DLL 可按既有卸载合同释放；UI线程保持STA和正常消息循环，共享框架 DLL 应继续处理 Runtime 的关闭消息。同一用户数据目录的其他 view 仍活动时，浏览器退出和内部环境清理会延后；不要以 destroy 返回或 flush 空闲推断所有浏览器进程已退出。不会清除调用方的用户数据目录。
+
+API5 DLL/Runtime、双实例、图片更新释放、编辑、树数据、模态、异步失效及关闭证据见 [API5验收](validation/api5-validation.md)。全阶段验收状态以该记录为准。

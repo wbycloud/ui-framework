@@ -1,25 +1,25 @@
 # 框架开发交接记录
 
-更新日期：2026-10-04。本文用于新会话或新开发者接手，以可复验的源码和证据为准。代码已交付并推送；人工验收尚未全部完成。不要把“已推送”“测试通过”和“完整验收完成”混为一谈。
+更新日期：2026-10-04。当前SDK0.5/API5四项已实现，本机自动验收通过；目标环境及人工验收尚未全部完成。先读[API5验收](validation/api5-validation.md)与第7节，API3/API4历史证据继续保留。不要把“已推送”“测试通过”和“完整验收完成”混为一谈。
 
 ## 1. 恢复顺序与版本
 
 1. 检查 `git status --short`、`git branch --show-current` 和 `git log -3 --oneline`；先保留接手时的用户改动。
-2. 阅读本文、[应用开发标准](application-development-standard.md)、[当前验收](validation/api4-validation.md)及其引用的[API3未验证项](validation/api3-validation.md#41-未验证项目与补验清单)。
-3. 修改代码前核对[公共头文件](../include/ui_framework/ui.h)、[菜单/离屏合同](framework-menu-offscreen.md)、[迁移指南](migration-v0.3-to-v0.4.md)及相关测试。无需重做已完成的实现。
+2. 阅读本文、[应用开发标准](application-development-standard.md)、[API5验收](validation/api5-validation.md)、[API4记录](validation/api4-validation.md)及[API3未验证项](validation/api3-validation.md#41-未验证项目与补验清单)。
+3. 修改代码前核对[公共头文件](../include/ui_framework/ui.h)、[菜单/离屏合同](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)、[0.4→0.5迁移](migration-v0.4-to-v0.5.md)及相关测试。无需重做已完成的实现。
 
 | 项目 | 交接状态 |
 | --- | --- |
 | 仓库 | [wbycloud/ui-framework](https://github.com/wbycloud/ui-framework) |
-| 已验证代码提交 | [e83a0087f0ef1017c9cd99db3e2f6754b503311c](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c) |
-| 最新补验修复代码 | [48d6aafa451802b2a057fa68ce1f687fb2f2a004](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，修复模态原生输入、自动STYLE预览回收、redock焦点；[补验记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
+| API5功能代码 | [87478fa20d7bb46809c0ef81dd44f972dc193a24](https://github.com/wbycloud/ui-framework/commit/87478fa20d7bb46809c0ef81dd44f972dc193a24)，四项实现及回归；文档另行提交，实际HEAD以Git为准 |
+| API4历史实现/补验 | [e83a008](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c)、[48d6aaf](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，模态原生输入、STYLE回收、redock焦点；[记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
 | 已推送分支 | `main`、`codex/menus-offscreen`；交接文档另行提交，后续以实际 HEAD 为准 |
-| SDK / 框架 API / 标准修订 | `0.4.0` 开发版 / `4` / `4` |
-| 兼容范围 | 运行库接受 API1/2/3/4；包清单和 DLL descriptor 必须一致 |
+| SDK / 框架 API / 标准修订 | `0.5.0` 开发版 / `5` / `5` |
+| 兼容范围 | 运行库接受 API1/2/3/4/5；包清单和 DLL descriptor 必须一致 |
 | 应用 ABI / 导出入口 / 包格式 | `1` / `ui_app_query_v1` / `1` |
 | 稳定标签 | 只有 `v0.1.0`；未创建新的稳定标签 |
 
-交接准备开始时工作区干净，没有待提交的产品代码。当前记录不承诺后续 `main` 仍是同一个提交；应用应锁定 SDK commit。
+本轮起点为干净的1f77b2e，与当时origin/main及工作分支一致，没有需覆盖的用户改动。当前记录不承诺后续 `main` 仍是同一个提交；应用应锁定 SDK commit。
 
 ## 2. 长期要求与责任边界
 
@@ -33,7 +33,7 @@
 
 交接准备及后续补验未启用 graph-engineering，也未修改请求方 KLayout C 应用、冻结应用包或 PERF-001。接手时不要把应用适配或性能重新测量自动扩展进框架任务。后续已完成本机自动补验和三项针对性修复，没有新建会话或移动当前会话。
 
-## 3. 已交付实现与定位
+## 3. API4历史实现与定位
 
 | 能力 | 公共接口 / 实现 / 验证入口 |
 | --- | --- |
@@ -51,7 +51,7 @@
 
 GL 离屏显式要求至少3.3 compatibility，仍依赖隐藏 HWND/DC，不接受 legacy/core/MSAA 静默降级。私有 FBO 复用应用 frame/input，RGBA 同步读回并恢复相关 WGL/FBO/viewport/像素打包/PBO 状态。它不是 Session0 或真正无窗口 GL 的交付。
 
-## 4. 验证事实及复现
+## 4. API4历史验证事实及复现
 
 原交接的验证代码为e83a008，Windows已登录会话、MSVC Build Tools18、Release、单显示器；当时实际离屏驱动返回Intel / Intel(R) UHD Graphics 770 / `3.3.0 - Build 32.0.101.7079`，compatibility profile，没有推断硬件/软件类别。最新补验代码为48d6aaf，结果和资源数据见[新增记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复)。
 
@@ -107,11 +107,11 @@ ctest --test-dir build/native --output-on-failure
 | UV-02 | 物理跨屏 DPI | 至少两台不同缩放显示器，记录 WM_DPICHANGED、矩形、framebuffer和候选位置 |
 | UV-03 | 长期人工滚动/资源压力；十分钟自动补验通过 | 仍需连续人工行列/树/缩略图/双实例操作，记录时长、受管资源统计和进程曲线 |
 | UV-04 | 完整编辑与复杂布局；六种自动组合及三项缺陷修复通过 | 仍需完整编辑手势、草稿/选择期间停靠、浮动、折叠、DPI和模态人工组合，核对状态保留 |
-| UV-05 | Session0/无登录CI/远程驱动 | 在目标环境分别验证无HWND Web与隐藏WGL，不能用软件图像替代真实GL |
+| UV-05 | Session0/无登录CI/远程驱动 | 分别验证无HWND轻量Web、OSMesa真正无窗口GL及隐藏WGL；WebView2另需图形会话及承载窗口，不用替代图片冒充实际GL |
 | UV-06 | 请求方应用完整离屏业务接入 | 应用独立适配窗口依赖、路径/调度和业务renderer；本框架未替应用完成 |
 | UV-07 | 物理屏幕边缘菜单及GL遮挡 | 不同DPI显示器边缘测试三种锚点、翻转、外点关闭、焦点恢复和桌面合成 |
 
-未实现功能单独管理：Alt访问键、真正无窗口 GL、离屏 MSAA、WebView2新增呈现/捕获/框架组件桥接，以及既定范围之外的完整浏览器、Canvas/SVG、富文本、可变行高、拖拽停靠和布局持久化。不要自动把这些变成已承诺的下一轮工作。
+API4未实现的Alt访问键、真正无窗口GL、离屏MSAA、WebView2呈现/捕获/组件桥接已在API5实现，当前证据见第7节。完整浏览器、Canvas/SVG、富文本、可变行高、拖拽停靠和布局持久化仍在既定范围之外；硬件EGL未实现。目标环境或人工待验项不能写成通过。
 
 ## 6. 接手后的执行规则
 
@@ -124,5 +124,17 @@ ctest --test-dir build/native --output-on-failure
 可直接给下一会话以下指令：
 
 ```text
-请接手 https://github.com/wbycloud/ui-framework 。先读 docs/handoff.md，再核对实际Git状态、代码基准、API4开发标准及API3/4验收记录。不要重做已交付能力或把未验证写成通过，不修改请求方应用及PERF-001，不使用graph-engineering。汇报当前状态与下一项可执行的补验/修复；保留旧API1/2/3兼容、原包和线程/卸载合同。按用户的新指令继续，并同步标准、迁移、验收与远程升级提示词。
+请接手 https://github.com/wbycloud/ui-framework 。先读 docs/handoff.md，再核对实际Git状态、HEAD、API5开发标准及API3/4/5验收记录。四项API5功能已实现并有本机真实Runtime/GL证据，不重做或把目标环境未验写成通过。不修改请求方应用、冻结SDK、原包及PERF-001，不使用graph-engineering、子代理或新会话。继续可执行的补验和针对性修复，保留API1/2/3/4兼容、size/字段偏移及线程/卸载合同；同步标准、迁移、验收、handoff与GitHub升级提示词。
 ```
+
+## 7. API5本轮交付与接续
+
+四项实现、依赖、取舍、结构尺寸、失败复现、真实像素和最终日志见[API5验收](validation/api5-validation.md)。完整42项为41PASS/1跨屏SKIP；原生20项为19PASS/1SKIP。原API1/2/3混合宿主及原API4包均0失败，四个原包哈希不变。SDK4完整12个头文件从1f77b2e冻结，原SDK1/2/3未修改。
+
+真正无窗口路径为固定OSMesa24.3.4/llvmpipe软件GL，实际运行应用DLL frame，不创建隐藏HWND或取得窗口DC。旧隐藏WGL独立保留；精确MSAA在两条路径实际为4。OSMesa模块/worker缓存保持到进程结束，16次context重开句柄稳定；不要强制卸载私有提供方模块。Session0/无登录CI仍未验收，没有硬件EGL实现。
+
+WebView2使用SDK1.0.4129.50/实际Runtime154.0.4258.53。组件须显式framework_components，借用后端由调用方保持到host销毁。PENDING通过外层STA消息循环完成，不保留调用方输出缓冲。销毁先切断应用回调，SDK初始化尚未完成时等待内部无副作用脚本完成，再异步Close；环境保留至BrowserProcessExited。应用DLL可卸载，框架DLL/UI线程仍须处理关闭消息。
+
+本轮修复Runtime视口反馈循环、菜单窗口IME干扰/焦点覆盖、提前关闭生命周期及残缺新增指针字段读取。32次实际DLL重开及48次创建期取消资源检查通过，失败记录保留，未提高上限或改skip。当前本地构建为build/fw-next/release与native，新增证据在build/api5-evidence；不混用旧build目录产物。
+
+下一步获取UV-01真实IME、UV-02物理跨屏、UV-03/04人工长时/编辑布局、UV-05目标Session0/无登录CI条件。继续独立补验，不宣称全阶段已完整验收。请求方应用升级另按[提示词](application-upgrade-prompt.md)执行，不自动修改该应用。

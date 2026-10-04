@@ -1,4 +1,13 @@
 # CHANGELOG
+## 0.5.0 — 开发中，未创建稳定标签
+
+API5/标准修订5，接受API1/2/3/4/5，ABI1和包格式1不变。新增显式菜单助记键、正常输入路由与重复键循环；新增显式OSMesa内存上下文入口，准确区分NO_WINDOW与隐藏WGL；离屏支持精确MSAA附件、resolve和RGBA读回；可选WebView2提供实际Runtime呈现查询、捕获、C图片及共同组件模板/数据/语义命令/输入。
+
+**兼容**：完整保留SDK4前缀及padding，原SDK1/2/3不变；旧WebView2配置默认native_handle为空，组件承载须显式开启。新增异步正状态PENDING，调用方正常泵消息后重试，框架不保留调用方输出缓冲；新应用DLL/清单一致声明API5。
+
+**依赖与限制**：实际无窗口提供方是显式固定的x64 OSMesa软件GL，应用所有GL函数经surface解析。Session0/无登录CI、真实IME/跨屏/长期人工压力分别待验。WebView2是窗口承载Runtime，不等同浏览器无窗口；关闭资源断言及全阶段状态见 [API5验收](docs/validation/api5-validation.md)，尚未通过的项目不能宣称完整交付。
+
+迁移与构建见 [0.4→0.5](docs/migration-v0.4-to-v0.5.md)及[构建说明](docs/build-and-validation.md)。
 
 ## 0.4.0 — 开发版，未创建稳定标签
 

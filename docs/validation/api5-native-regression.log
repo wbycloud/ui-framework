@@ -1,0 +1,48 @@
+Test project <repo>/build/fw-next/native
+      Start  1: ui_package_format
+ 1/20 Test  #1: ui_package_format ................   Passed    0.11 sec
+      Start  2: ui_images_windows
+ 2/20 Test  #2: ui_images_windows ................   Passed    0.05 sec
+      Start  3: ui_responsive_layout
+ 3/20 Test  #3: ui_responsive_layout .............   Passed    0.03 sec
+      Start  4: ui_assistant_lifecycle
+ 4/20 Test  #4: ui_assistant_lifecycle ...........   Passed    0.03 sec
+      Start  5: ui_dpi_web_failure
+ 5/20 Test  #5: ui_dpi_web_failure ...............   Passed    0.05 sec
+      Start  6: ui_components_core
+ 6/20 Test  #6: ui_components_core ...............   Passed    0.05 sec
+      Start  7: ui_headless_example
+ 7/20 Test  #7: ui_headless_example ..............   Passed    0.03 sec
+      Start  8: ui_public_headers_c
+ 8/20 Test  #8: ui_public_headers_c ..............   Passed    0.04 sec
+      Start  9: ui_public_headers_cpp
+ 9/20 Test  #9: ui_public_headers_cpp ............   Passed    0.05 sec
+      Start 10: ui_offscreen_msaa
+10/20 Test #10: ui_offscreen_msaa ................   Passed    0.32 sec
+      Start 11: ui_windowless_gl
+11/20 Test #11: ui_windowless_gl .................   Passed    0.43 sec
+      Start 12: ui_workspace_integration
+12/20 Test #12: ui_workspace_integration .........   Passed    1.51 sec
+      Start 13: ui_native_activation
+13/20 Test #13: ui_native_activation .............   Passed    0.56 sec
+      Start 14: ui_dpi_integration
+14/20 Test #14: ui_dpi_integration ...............   Passed    0.10 sec
+      Start 15: ui_opengl_integration
+15/20 Test #15: ui_opengl_integration ............   Passed    0.26 sec
+      Start 16: ui_surface_input
+16/20 Test #16: ui_surface_input .................   Passed    0.20 sec
+      Start 17: ui_monitor_transition
+17/20 Test #17: ui_monitor_transition ............***Skipped   0.10 sec
+      Start 18: ui_native_shell_integration
+18/20 Test #18: ui_native_shell_integration ......   Passed    0.13 sec
+      Start 19: ui_native_responsive
+19/20 Test #19: ui_native_responsive .............   Passed    0.19 sec
+      Start 20: ui_assistant_protocol
+20/20 Test #20: ui_assistant_protocol ............   Passed    0.09 sec
+
+100% tests passed, 0 tests failed out of 20
+
+Total Test time (real) =   4.74 sec
+
+The following tests did not run:
+	 17 - ui_monitor_transition (Skipped)

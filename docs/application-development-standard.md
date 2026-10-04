@@ -1,6 +1,6 @@
 # Windows C/Web UI 框架应用开发标准
 
-开发标准修订：**4**。对应 **SDK 0.4.0 开发版、框架 API 4**；运行库接受 API 1/2/3/4，应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
+开发标准修订：**5**。对应 **SDK 0.5.0 开发版、框架 API 5**；运行库接受 API 1/2/3/4/5，应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
 
 面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的开发者。新应用通过公共 C 接口注册组件、提供数据、绑定已有语义命令，通用 HTML/CSS/JavaScript、草稿、焦点和交互由框架维护。菜单、工具、面板内组件、状态、参数及确认界面使用 Web；Win32 仅承载窗口、消息、输入法及绘制。旧 API1/2 应用自有原生内容和原生嵌入式保留，系统文件/目录选择器是例外。
 
@@ -8,9 +8,9 @@
 
 先读[通用 Web UI 接入约定](generic-web-ui.md)，再参考[通用纯 C 示例](../examples/generic_components/README.md)。新接口见 [components.h](../include/ui_framework/components.h)、[images.h](../include/ui_framework/images.h)；命令、面板、内容槽、助手和应用生命周期仍以原公共头文件为准。
 
-[0.3 → 0.4 迁移指南](migration-v0.3-to-v0.4.md)说明当前菜单及离屏接口，[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)保留通用组件和废弃输入开关的迁移要求；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[当前验收](validation/api4-validation.md)记录构建、自动化与真实宿主证据。API4 包不能加载到只支持 API1/2/3 的运行库，清单与 DLL 声明必须相同。
+[0.3 → 0.4 迁移指南](migration-v0.3-to-v0.4.md)说明API4历史菜单及离屏接口；[0.4→0.5](migration-v0.4-to-v0.5.md)说明当前增补，[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)保留通用组件和废弃输入开关的迁移要求；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[当前验收](validation/api5-validation.md)记录构建、自动化与真实宿主证据。API4 包不能加载到只支持 API1/2/3 的运行库，清单与 DLL 声明必须相同。
 
-受控轻量后端实现本版框架组件；WebView2 保留已有自定义 HTML/消息能力，不提供新增 C 图片 ID 和组件呈现。OpenGL 仍由应用自行选择、通过内容槽挂载，框架没有应用文档模型或业务渲染器。具体子集、预算及未实现能力以接入约定的能力清单为准，不把 HTML 支持视为完整浏览器。
+受控轻量后端实现本版框架组件；WebView2 可选提供实际 Runtime 呈现查询、捕获、C 图片 ID 和共同框架组件，异步合同见本页 API5 增补。OpenGL 仍由应用自行选择、通过内容槽挂载，框架没有应用文档模型或业务渲染器。具体子集、预算及未实现能力以接入约定的能力清单为准，不把 HTML 支持视为完整浏览器。
 
 本版追加[分组菜单与离屏约定](framework-menu-offscreen.md)、[0.3 → 0.4迁移](migration-v0.3-to-v0.4.md)及[API4验收](validation/api4-validation.md)。公共菜单、呈现查询、复制像素输出、显式无窗口workspace及隐藏WGL均遵守原线程、所有权和卸载规则。离屏是可选运行模式，旧包可保持原API；新的可构建接入示例见[framework_features](../examples/framework_features/README.md)。
 
@@ -264,7 +264,7 @@ DPI 变化会更新已存在 surface 的像素矩形，包括手动放置的 sur
 
 最小 EDA 的模块和嵌入样例默认请求 OpenGL 3.3 compatibility profile；它们使用 compatibility 绘制示范，不是 core profile renderer。只有嵌入式 `minimal_eda.exe --legacy` 明确选择旧式 WGL；模块不做隐式降级。旧的 `ui_surface_create()` 创建 OpenGL surface 时仍使用 legacy 路径，应用要请求现代配置应使用新 API。
 
-legacy 配置要求 `legacy_context = 1`，其他 version/profile/sample/debug 字段全为 0。混合这两类设置返回 `UI_STATUS_INVALID_ARGUMENT`。`samples == 0` 禁用 MSAA，正值请求至少对应样本数；是否可用由驱动决定。
+legacy 配置要求 `legacy_context = 1`，其他 version/profile/sample/debug 字段全为 0。混合这两类设置返回 `UI_STATUS_INVALID_ARGUMENT`。`samples == 0` 禁用 MSAA；窗口路径正值请求至少对应样本数，API5离屏/真正无窗口路径要求精确样本数，驱动无法满足明确失败。
 
 将 surface 绑定 `UI_LAYOUT_REGION_MAIN` 后，框架在 layout/DPI 变化时调整它；`UI_LAYOUT_REGION_NONE` 保留手动矩形。`ui_surface_get_rect()` 返回逻辑矩形，`ui_surface_get_pixel_rect()` 返回实际设备像素矩形；OpenGL viewport 必须使用后者的宽高。
 
@@ -424,3 +424,11 @@ Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径
 15. 检查 Web JSON 的 UTF-8/转义/非法数据、能力差异、内容槽借用与关闭顺序；浅色/深色、窄窗和浮动面板的内容保持可用。
 
 将该清单与应用自身的数据和文件操作测试一起执行，再把应用交给用户使用。
+
+## API5 接入与验收要求
+
+新增接口的 DLL 与包清单一致声明 API5，运行库支持 API1/2/3/4/5，ABI1、导出和包格式1不变。新尺寸按字段末端判断，旧 SDK4 描述包含的尾 padding 保留，旧 WebView2 配置默认行为不改。详情见 [0.4→0.5迁移](migration-v0.4-to-v0.5.md)。
+
+Alt 助记键、真正 OSMesa 无窗口 GL、精确离屏 MSAA 和 WebView2 异步呈现/捕获/图片/组件合同分别见 [菜单和离屏](framework-menu-offscreen.md#6-api5-菜单无窗口-gl-与-msaa-合同)与[通用 Web API5](generic-web-ui.md#api5-webview2-与共同组件)。WebView2 后端借用到 host 销毁以后，禁止 DLL 卸载后留应用异步回调；PENDING 需要外层消息循环及重试，不能当 OK。
+
+保持原包与冻结 SDK1/2/3/4 分别验收。物理 IME/跨屏、人工长时压力、Session0及目标CI条件缺失时记录未验收；不以编译、UNSUPPORTED 或轻量后端通过替代真实 Runtime/实际 GL。当前状态见 [API5验收](validation/api5-validation.md)。
