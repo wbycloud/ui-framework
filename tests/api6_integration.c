@@ -24,6 +24,14 @@ static void input(ui_component_t *c,unsigned key,unsigned modifiers,const char *
 {ui_input_event_t e={0};e.size=sizeof(e);e.kind=text?UI_INPUT_TEXT:UI_INPUT_KEY_DOWN;e.key_code=key;e.modifiers=modifiers;e.text_utf8=text;CHECK(ui_component_dispatch_input(c,&e)==UI_STATUS_OK);pump(60);}
 static void close_instance(uint64_t id)
 {ui_status_t status=ui_workspace_close(workspace,id,UI_APP_CLOSE_TAB);CHECK(status==UI_STATUS_OK||status==UI_STATUS_PENDING);for(int i=0;i<100&&ui_workspace_count(workspace);++i){ui_app_instance_info_t info={0};info.size=sizeof(info);if(ui_workspace_get_instance(workspace,id,&info)==UI_STATUS_NOT_FOUND)break;pump(10);}}
+static size_t captured_white(ui_component_t *c)
+{
+    ui_pixel_buffer_t p={0};ui_status_t status;ULONGLONG start;size_t white=0;p.size=sizeof(p);
+    start=GetTickCount64();do{status=ui_component_capture_rgba(c,320,240,96,&p);if(status!=UI_STATUS_PENDING)break;pump(1);}while(GetTickCount64()-start<10000);CHECK(status==UI_STATUS_OK);if(status!=UI_STATUS_OK)return 0;
+    p.capacity=p.stride*p.height;p.pixels=(uint8_t *)malloc(p.capacity);CHECK(p.pixels!=NULL);if(!p.pixels)return 0;
+    start=GetTickCount64();do{status=ui_component_capture_rgba(c,320,240,96,&p);if(status!=UI_STATUS_PENDING)break;pump(1);}while(GetTickCount64()-start<10000);CHECK(status==UI_STATUS_OK);
+    if(status==UI_STATUS_OK)for(size_t at=0;at<p.capacity;at+=4)if(p.pixels[at]==255&&p.pixels[at+1]==255&&p.pixels[at+2]==255)++white;free(p.pixels);return white;
+}
 int wmain(int argc,wchar_t **argv)
 {
     ui_workspace_config_t config={0};HWND root=NULL;HHOOK hook=NULL;ui_host_t *h,*other;ui_component_t *form,*table,*tree,*dialog,*viewport;
@@ -52,6 +60,7 @@ int wmain(int argc,wchar_t **argv)
     CHECK(ui_component_get_field(form,"name",&field)==UI_STATUS_OK&&!strcmp(field.text,"layout draft 中文"));CHECK(ui_component_get_selection(table,ids,512,&n)==UI_STATUS_OK&&n==1&&ids[0]==9007199254741001ULL);
     CHECK(ui_shell_begin_panel_drag(ui_host_get_shell(h),"tree")==UI_STATUS_OK);{ui_rect_t preview;ui_layout_region_t region;CHECK(ui_shell_update_panel_drag(ui_host_get_shell(h),1275,400,&preview,&region)==UI_STATUS_OK&&region==UI_LAYOUT_REGION_RIGHT_SIDEBAR);}CHECK(ui_shell_end_panel_drag(ui_host_get_shell(h),1)==UI_STATUS_OK);pump(100);
     CHECK(ui_host_invoke(h,"test.render","{}","test")!=0);pump(100);field.size=sizeof(field);CHECK(ui_component_get_field(viewport,"pixels",&field)==UI_STATUS_OK&&field.image_id);viewport_image=field.image_id;image.size=sizeof(image);CHECK(ui_image_get_info(h,viewport_image,&image)==UI_STATUS_OK&&image.version>=2);
+    {size_t white=captured_white(viewport);printf("Actual GL C-image component capture white pixels=%zu\n",white);CHECK(white>20);}
     pixels.size=sizeof(pixels);CHECK(ui_opengl_offscreen_render(h->surfaces,&pixels)==UI_STATUS_OK);pixels.capacity=pixels.stride*pixels.height;pixels.pixels=(uint8_t *)malloc(pixels.capacity);CHECK(pixels.pixels!=NULL);CHECK(ui_opengl_offscreen_render(h->surfaces,&pixels)==UI_STATUS_OK);{size_t partial=0;FILE *frame_file=NULL;const char *path=runtime?"api6-runtime-frame.ppm":"api6-light-frame.ppm";
         for(size_t at=0;at<pixels.capacity;at+=4)if(pixels.pixels[at]>0&&pixels.pixels[at]<255)++partial;CHECK(partial>20);CHECK(!fopen_s(&frame_file,path,"wb"));if(frame_file){fprintf(frame_file,"P6\n%u %u\n255\n",pixels.width,pixels.height);for(size_t at=0;at<pixels.capacity;at+=4)fwrite(pixels.pixels+at,1,3,frame_file);CHECK(fclose(frame_file)==0);}
         printf("Actual API6 DLL %s / %s samples=%d edge_pixels=%zu frame=%s\n",info.renderer,info.version,info.samples,partial,path);}free(pixels.pixels);

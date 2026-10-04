@@ -34,8 +34,11 @@ if ($Stage -eq 'prepare') {
         Expand-Archive .deps/ci-webview2.zip .deps/Microsoft.Web.WebView2.1.0.4129.50 -Force
         $runtimeKeys = @('HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}', 'HKCU:\Software\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}')
         $versions = @($runtimeKeys | ForEach-Object { (Get-ItemProperty $_ -ErrorAction SilentlyContinue).pv } | Where-Object { $_ -and $_ -ne '0.0.0.0' })
-        if (!$versions.Count) {
+        $minimumRuntime = [version]'138.0.3351.48' # ControllerOptions4 / AllowHostInputProcessing
+        "before=$($versions -join ',') minimum=$minimumRuntime" | Add-Content "$evidenceDirectory/runtime.log"
+        if (!($versions | Where-Object { [version]$_ -ge $minimumRuntime })) {
             # Ephemeral CI VM only. The real Runtime test is mandatory below.
+            if ($env:GITHUB_ACTIONS -ne 'true') { throw 'Install a compatible WebView2 Runtime before running local preparation' }
             $url = 'https://go.microsoft.com/fwlink/p/?LinkId=2124703'
             Invoke-WebRequest $url -OutFile .deps/MicrosoftEdgeWebview2Setup.exe
             $signature = Get-AuthenticodeSignature .deps/MicrosoftEdgeWebview2Setup.exe
@@ -44,6 +47,8 @@ if ($Stage -eq 'prepare') {
             $installer = Start-Process -FilePath (Resolve-Path .deps/MicrosoftEdgeWebview2Setup.exe).Path -ArgumentList '/silent','/install' -WindowStyle Hidden -Wait -PassThru
             if ($installer.ExitCode) { throw "Runtime installation failed ($($installer.ExitCode))" }
         }
+        $versions = @($runtimeKeys | ForEach-Object { (Get-ItemProperty $_ -ErrorAction SilentlyContinue).pv } | Where-Object { $_ -and $_ -ne '0.0.0.0' })
+        if (!($versions | Where-Object { [version]$_ -ge $minimumRuntime })) { throw "WebView2 Runtime must be at least $minimumRuntime; actual=$($versions -join ',')" }
         foreach ($key in $runtimeKeys) { Get-ItemProperty $key -ErrorAction SilentlyContinue | Select-Object pv | Out-File "$evidenceDirectory/runtime.log" -Append }
     }
     return
@@ -70,14 +75,31 @@ exit /b %errorlevel%
     if ($LASTEXITCODE) { Get-Content "$evidenceDirectory/build.log" -Tail 100; throw 'CI build failed' }
     # Explicit software WGL deployment for the hosted VM's desktop tests.
     # Product code retains strict context requests. Nothing is installed globally.
-    Get-ChildItem .deps/mesa-24.3.4/x64 -Filter '*.dll' | Copy-Item -Destination $buildDirectory
+    foreach ($dll in @('opengl32.dll','libgallium_wgl.dll','libglapi.dll','pipe_swrast.dll')) { Copy-Item ".deps/mesa-24.3.4/x64/$dll" $buildDirectory }
     "WGL provider: application-local Mesa24.3.4 llvmpipe; OSMesa: explicit library; hosted logged-in desktop, not no-login acceptance" | Add-Content "$evidenceDirectory/dependencies.log"
     return
+}
+Add-Type @'
+using System.Runtime.InteropServices;
+public static class UiCiDesktop {
+    [DllImport("user32.dll")] public static extern int GetSystemMetrics(int index);
+    [DllImport("user32.dll")] public static extern uint GetDpiForSystem();
+}
+'@
+$desktopBefore = @([UiCiDesktop]::GetSystemMetrics(0),[UiCiDesktop]::GetSystemMetrics(1))
+if ($env:GITHUB_ACTIONS -eq 'true') {
+    # Wide-window fixtures require a 1920x1080 virtual desktop. Only the
+    # disposable hosted VM is changed; this is not physical-monitor evidence.
+    Set-DisplayResolution -Width 1920 -Height 1080 -Force
+    if ([UiCiDesktop]::GetSystemMetrics(0) -lt 1920 -or [UiCiDesktop]::GetSystemMetrics(1) -lt 1080) { throw 'Hosted GUI desktop is smaller than the required 1920x1080' }
 }
 $manifest = [ordered]@{
     commit = (& git rev-parse HEAD); configuration = $Configuration
     os = [Environment]::OSVersion.VersionString; processSession = (Get-Process -Id $PID).SessionId
     image = $env:ImageVersion; arch = $env:PROCESSOR_ARCHITECTURE
+    desktopBefore = $desktopBefore
+    desktop = @([UiCiDesktop]::GetSystemMetrics(0),[UiCiDesktop]::GetSystemMetrics(1))
+    dpi = [UiCiDesktop]::GetDpiForSystem()
     wgl = 'explicit application-local Mesa24.3.4 software GL'; osmesa = 'explicit Mesa24.3.4 memory context'
     noLoginAccepted = $false; physicalManualAccepted = $false
 }
