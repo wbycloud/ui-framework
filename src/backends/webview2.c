@@ -179,6 +179,10 @@ static void free_view(webview2_view_t *view)
     if (*it == view) {
         *it = view->backend_next;
     }
+    /* A cancelled creation installs only an internal navigation observer. */
+    if(view->starting_handler){view->starting_handler->view=NULL;
+        if(view->webview)ICoreWebView2_remove_NavigationStarting(view->webview,view->starting_token);
+        view->starting_handler->iface.lpVtbl->Release(&view->starting_handler->iface);view->starting_handler=NULL;}
     if(view->webview)ICoreWebView2_Stop(view->webview);
     if (view->controller != NULL) {
         ICoreWebView2Controller_Close(view->controller);
@@ -405,6 +409,9 @@ static HRESULT STDMETHODCALLTYPE navigation_completed(
     UINT64 navigation_id = 0;
     if(handler->drain_cancelled){
         webview2_view_t *view=handler->view;
+        /* Ignore the controller's initial about:blank completion. Only the
+         * inert navigation we started proves that renderer startup drained. */
+        if(view->navigation_handler!=handler||!view->navigation_id||FAILED(ICoreWebView2NavigationCompletedEventArgs_get_NavigationId(args,&navigation_id))||navigation_id!=view->navigation_id)return S_OK;
         ICoreWebView2_remove_NavigationCompleted(sender,view->navigation_token);
         view->navigation_handler=NULL;
         self->lpVtbl->Release(self);
@@ -836,6 +843,13 @@ static HRESULT STDMETHODCALLTYPE controller_completed(
                 completion->iface.lpVtbl=&navigation_vtable;completion->refs=1;completion->view=view;completion->drain_cancelled=1;
                 view_add_ref(view);view->navigation_handler=completion;
                 hr=ICoreWebView2_add_NavigationCompleted(view->webview,&completion->iface,&view->navigation_token);
+                if(SUCCEEDED(hr)){
+                    view->starting_handler=(navigation_starting_handler_t *)calloc(1,sizeof(*view->starting_handler));
+                    if(!view->starting_handler)hr=E_OUTOFMEMORY;
+                    else{view->starting_handler->iface.lpVtbl=&starting_vtable;view->starting_handler->refs=1;view->starting_handler->view=view;
+                        view->trusted_html=view->allow_html_navigation=1;
+                        hr=ICoreWebView2_add_NavigationStarting(view->webview,&view->starting_handler->iface,&view->starting_token);}
+                }
                 if(SUCCEEDED(hr))hr=ICoreWebView2_NavigateToString(view->webview,L"<!doctype html><html></html>");
                 if(FAILED(hr)){
                     ICoreWebView2_remove_NavigationCompleted(view->webview,view->navigation_token);
