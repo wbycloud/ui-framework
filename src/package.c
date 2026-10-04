@@ -451,10 +451,10 @@ UI_API ui_status_t ui_package_open(const char *path_utf8, ui_package_t **out,
     status = parse_manifest(package->bytes + (size_t)manifest_offset, (size_t)manifest_length,
                             &package->metadata, error, error_capacity);
     if (status != UI_STATUS_OK) goto failed;
-    if (sizeof(void *) != 8) {
-        status = package_error(UI_STATUS_UNSUPPORTED, error, error_capacity, "The application requires a 64-bit host.");
-        goto failed;
-    }
+#if UINTPTR_MAX != UINT64_MAX
+    status = package_error(UI_STATUS_UNSUPPORTED, error, error_capacity, "The application requires a 64-bit host.");
+    goto failed;
+#endif
     package->entries = (package_entry_internal_t *)calloc(count, sizeof(*package->entries));
     if (!package->entries) {
         status = package_error(UI_STATUS_OUT_OF_MEMORY, error, error_capacity, "Out of memory reading package index.");
