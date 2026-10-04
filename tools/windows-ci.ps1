@@ -66,7 +66,7 @@ if errorlevel 1 exit /b 1
 cmake --build "%UI_CI_BUILD%" >"%UI_CI_EVIDENCE%/build.log" 2>&1
 exit /b %errorlevel%
 '@ | Set-Content "$evidenceDirectory/build.cmd" -Encoding ascii
-    & cmd.exe /c "$evidenceDirectory/build.cmd"
+    & cmd.exe /c (Resolve-Path "$evidenceDirectory/build.cmd").Path
     if ($LASTEXITCODE) { Get-Content "$evidenceDirectory/build.log" -Tail 100; throw 'CI build failed' }
     # Explicit software WGL deployment for the hosted VM's desktop tests.
     # Product code retains strict context requests. Nothing is installed globally.
