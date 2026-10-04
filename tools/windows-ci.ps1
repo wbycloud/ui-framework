@@ -105,10 +105,27 @@ $manifest = [ordered]@{
 }
 $manifest | ConvertTo-Json | Set-Content "$evidenceDirectory/manifest.json"
 $env:GALLIUM_DRIVER = 'llvmpipe'
-& ctest --test-dir $buildDirectory --output-on-failure --output-junit "$((Resolve-Path $evidenceDirectory).Path)/ctest.xml" *> "$evidenceDirectory/regression.log"
-$testExit = $LASTEXITCODE
+$runtimeTests = 'ui_webview2_|ui_api5_integration|ui_api5_native_host|ui_component_experience_webview2|ui_api6_integration_webview2'
+$phases = if ($Configuration -eq 'webview2') { @('wgl','runtime') } else { @('all') }
+$testExit = 0
+$combined = [xml]'<testsuite name="Windows regression" tests="0" failures="0" skipped="0"/>'
+foreach ($phase in $phases) {
+    if ($phase -eq 'runtime') {
+        # Keep Chromium's platform graphics separate from explicit software WGL.
+        # OSMesa tests still load their independently specified actual provider.
+        foreach ($dll in @('opengl32.dll','libgallium_wgl.dll','libglapi.dll','pipe_swrast.dll')) { Remove-Item -LiteralPath "$buildDirectory/$dll" }
+    }
+    $filter = if ($phase -eq 'wgl') { @('-E',$runtimeTests) } elseif ($phase -eq 'runtime') { @('-R',$runtimeTests) } else { @() }
+    & ctest --test-dir $buildDirectory @filter --output-on-failure --output-junit "$((Resolve-Path $evidenceDirectory).Path)/ctest-$phase.xml" *> "$evidenceDirectory/regression-$phase.log"
+    if ($LASTEXITCODE) { $testExit = $LASTEXITCODE }
+    Get-Content "$evidenceDirectory/regression-$phase.log" | Add-Content "$evidenceDirectory/regression.log"
+    Get-Content "$buildDirectory/Testing/Temporary/LastTest.log" | Add-Content "$evidenceDirectory/test-output.log"
+    [xml]$part = Get-Content "$evidenceDirectory/ctest-$phase.xml" -Raw
+    foreach ($test in $part.testsuite.testcase) { [void]$combined.testsuite.AppendChild($combined.ImportNode($test,$true)) }
+    foreach ($attribute in @('tests','failures','skipped')) { $combined.testsuite.SetAttribute($attribute,[string]([int]$combined.testsuite.GetAttribute($attribute)+[int]$part.testsuite.GetAttribute($attribute))) }
+}
+$combined.Save("$((Resolve-Path $evidenceDirectory).Path)/ctest.xml")
 Get-Content "$evidenceDirectory/regression.log"
-Copy-Item "$buildDirectory/Testing/Temporary/LastTest.log" "$evidenceDirectory/test-output.log"
 Get-ChildItem $buildDirectory -Filter 'api6-*-frame.ppm' | Copy-Item -Destination $evidenceDirectory
 if (Test-Path "$buildDirectory/session0-control/manifest.json") { Copy-Item "$buildDirectory/session0-control" "$evidenceDirectory/session0-interactive-control" -Recurse }
 [xml]$results = Get-Content "$evidenceDirectory/ctest.xml" -Raw
