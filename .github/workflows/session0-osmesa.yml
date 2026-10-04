@@ -75,7 +75,7 @@ jobs:
             $path = "build/session0-evidence/$file"
             if (Test-Path $path) {
               $diagnostic = (Get-Content $path -Raw).Replace('%','%25').Replace("`r",'%0D').Replace("`n",'%0A')
-              Write-Output "::notice file=.github/workflows/session0-osmesa.yml,line=1,title=Session0 $file::$diagnostic"
+              Write-Output "::notice file=.github/workflows/session0-osmesa.yml,line=1,title=Session0 ${file}::$diagnostic"
             }
           }
           $log = 'build/session0-evidence/target/run.log'
