@@ -303,7 +303,7 @@ ui_status_t ui_host_menu_dispatch_input(ui_host_t *host,const ui_input_event_t *
  }
  if(event->kind==UI_INPUT_KEY_DOWN){
    if(event->modifiers&(UI_INPUT_MODIFIER_CONTROL|UI_INPUT_MODIFIER_SHIFT)){host->menu_alt_pending=0;return UI_STATUS_NOT_FOUND;}
-   if(event->key_code==18){if(host->menu_pressed_key==18||host->menu_alt_pending)return UI_STATUS_OK;if(p&&p->open){(void)ui_host_close_menu(host);host->menu_pressed_key=18;}else host->menu_alt_pending=1;return UI_STATUS_OK;}
+   if(event->key_code==18){if(host->menu_pressed_key==18||host->menu_alt_pending)return UI_STATUS_OK;if(p&&p->open&&!p->detail){(void)ui_host_close_menu(host);host->menu_pressed_key=18;}else host->menu_alt_pending=1;return UI_STATUS_OK;}
    host->menu_alt_pending=0;
    if((event->modifiers&UI_INPUT_MODIFIER_ALT)&&(event->key_code<'0'||event->key_code>'Z'))return UI_STATUS_NOT_FOUND;
    for(c=host->commands;c;c=c->next)if(event->modifiers&&c->shortcut_key==event->key_code&&c->shortcut_modifiers==event->modifiers&&c->state.visible&&c->state.enabled&&!c->state.busy)return UI_STATUS_NOT_FOUND;

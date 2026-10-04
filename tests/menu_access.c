@@ -28,6 +28,7 @@ int main(void)
  item.id="child";item.title="Child";item.access_key='C';item.menu_path="File/Nested";CHECK(ui_host_register_menu_item(a,&item)==UI_STATUS_OK);
  g.size=sizeof(g);g.path="File";g.title="File";g.access_key='F';CHECK(ui_host_register_menu_group(a,&g)==UI_STATUS_OK);g.path="File/Nested";g.title="Nested";g.order=3;g.access_key='N';CHECK(ui_host_register_menu_group(a,&g)==UI_STATUS_OK);
  /* API4 public entry already exists; baseline fails Alt activation here. */
+ {ui_menu_anchor_t anchor={0};anchor.size=sizeof(anchor);CHECK(ui_host_show_tooltip(a,&anchor,"Visible tooltip before Alt")==UI_STATUS_OK);press(a,VK_MENU,0);CHECK(focused(a,"File"));press(a,VK_ESCAPE,0);}
  press(a,VK_MENU,0);CHECK(focused(a,"File"));press(a,VK_RETURN,0);CHECK(focused(a,"one"));
  press(a,VK_DOWN,0);CHECK(focused(a,"two"));press(a,VK_RETURN,0);CHECK(calls==1);
  CHECK(key(b,VK_RETURN,0,0)==UI_STATUS_NOT_FOUND&&calls==1);
