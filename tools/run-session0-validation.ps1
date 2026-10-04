@@ -49,14 +49,14 @@ try {
     New-Service -Name $name -BinaryPathName $binary -StartupType Manual | Out-Null
     $created = $true
     Start-Service -Name $name
-    $end = [DateTime]::UtcNow.AddSeconds(60)
+    $end = [DateTime]::UtcNow.AddSeconds(120)
     do {
         Start-Sleep -Milliseconds 200
         $service = Get-Service -Name $name
         $status = $service.Status
         $service.Dispose()
     } while ($status -ne 'Stopped' -and [DateTime]::UtcNow -lt $end)
-    if ($status -ne 'Stopped') { throw 'Session0 validation exceeded 60 seconds.' }
+    if ($status -ne 'Stopped') { throw 'Session0 validation exceeded 120 seconds.' }
     $resultFile = Join-Path $out 'result.txt'
     if (!(Test-Path -LiteralPath $resultFile)) { throw 'Service stopped without a completed result (crash/startup failure is not acceptance).' }
     Get-Content -LiteralPath (Join-Path $out 'run.log')

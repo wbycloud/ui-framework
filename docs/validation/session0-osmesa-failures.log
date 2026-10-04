@@ -1,0 +1,15 @@
+Session0 preparation failures / corrections, 2026-10-04
+Source baseline: 128d03275ec702c373e7ef861a9e4e537dd961f0
+1. Local S4U registration: Windows E_ACCESSDENIED 0x80070005; no task created.
+2. Strict runner in Session1/LogonType2: rejected, commands=0, exit1 (expected negative case).
+3. Missing assistant registration in new fixture: 29 failures / commands=0; register commands during mount.
+4. Initial baseline+8MiB private-commit gate: failed around cycles14/16; retained CSVs. Diagnostic200 showed ~13-106-13MiB fluctuation, handles180-181, no app DLL retained. Formal whole-process budget128MiB, raw peaks retained, no HeapCompact in final test.
+5. Windows CRLF checkout: resource test now validates LF or CRLF plus exact marker bytes and trailing NUL. Actual CRLF package / no-login counterexample runs2000 commands then fails only the logged-session gate.
+6. Windows CI source09d6a63521a0283a89c87206c140ded2d931d74d run37209678540: dependency preparation PASS, compiler/build FAIL; GL stage not executed. Artifact retained. Anonymous log download403; no credentials extracted. Added public build/configure/compiler diagnostics for next run.
+7. Main push of e1087cb interrupted by TLS EOF; work branch push succeeded. Normal fast-forward retry at380f216 updated both branches. No force push.
+8. MSVC19.44 actual build diagnostic: src/package.c(454) C4127 conditional expression is constant, promoted to C2220 by /WX. c93d083 changes sizeof(void*) runtime condition to equivalent UINTPTR_MAX/UINT64_MAX preprocessor guard; x64 restriction and ABI unchanged. CI build then PASS.
+9. Service startup c93d083: no completed test result. Local DETACHED_PROCESS reproduces exit2 / empty run.log; inherited stderr descriptor -2 cannot be dup2 target. Reopening both streams directly fixes the runner (3e1fca5). Detached Session1 control completes2000commands; actual Session0 then completes2000commands.
+10. Public annotation message truncated at4096 chars. Metadata split at3000 chars; PPM GZip/Base64 encodes exact original bytes (<520chars each notice). All8 PPM decoded and SHA256 verified; no generated/substitute image.
+11. Actual run37210914032 / source3e1fca59daa189d15302c52f22394e9f5d37fd0a: SessionId0 SYSTEM SCM ServiceMain1 Service-0x0-3e7$ DesktopDefault. GL PASS /2000commands /1200frames /400instances. HWNDcreated0/process0; handles148flat; privatepeak100663296. Full jobFAIL only because WTS logged_sessions1; user has no no-login runner. No user logoff attempted.
+12. Full regression43:42PASS/1physicalmonitorSKIP; native21:20PASS/1sameSKIP. Exact original API1/2/3 mixture and originalAPI4 actualhost PASS; all4 original hashes unchanged. SDK1/2/3/4, requester apps and PERF-001 unchanged.
+13. Service phase actual duration56s: bounded deadline increased60->120s for200cycles onCI; memorybudget128MiB, handlelimit and cyclecount unchanged.

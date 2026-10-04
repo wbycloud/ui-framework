@@ -2,7 +2,7 @@
 
 日期：2026-10-04。起点为干净的 `codex/menus-offscreen`、HEAD `1f77b2ef278f41f0723fa40b0125135b16f49949`，与当时远程 main/工作分支一致。产品提交：`87478fa20d7bb46809c0ef81dd44f972dc193a24`。SDK0.5.0开发版、API5、标准修订5；ABI1、入口 `ui_app_query_v1`、包格式1不变，未创建稳定标签。没有修改请求方应用、PERF-001、SDK1/2/3冻结头文件或原包，没有使用 graph-engineering、子代理或新会话。
 
-四项均已实现并通过本机实际路径；**全阶段验收尚未完成**。Session0/无登录CI、真实IME、物理跨屏及长期人工压力仍缺少条件，不能由本记录的通过结果代替。
+四项均已实现并通过本机实际路径；**全阶段验收尚未完成**。后续实际Windows CI的Session0 OSMesa/测试DLL通过，见[专门记录](session0-osmesa-validation.md)。整机无登录、真实IME、物理跨屏及长期人工压力仍缺少条件，不能由其他通过结果代替。
 
 ## 1. 实施设计与成功标准
 
@@ -111,7 +111,7 @@ Runtime关闭策略依据微软[Close合同](https://learn.microsoft.com/en-us/m
 
 | 未验收/限制 | 必需条件或下一步 |
 | --- | --- |
-| Session0、无登录Windows及目标CI | 在目标账户/服务/CI分别运行实际OSMesa context与应用frame、窗口计数、资源检查；本机非管理员Session1不代替此项 |
+| 整机无登录Windows；其他后端目标环境 | 实际CI LocalSystem Session0的OSMesa/测试DLL已通过；整机仍有一个登录会话，严格无登录失败，缺专用runner。轻量Web/隐藏WGL/WebView2及请求方业务接入不由这项代验；见[记录](session0-osmesa-validation.md) |
 | 真实中文IME | 人工候选/组合/提交/取消、菜单/焦点/实例切换，保留录屏与应用状态；程序Unicode及SendInput不能代替 |
 | 物理跨屏/DPI/桌面合成 | 不同缩放显示器与实际桌面；单屏SKIP和程序DPI不代替 |
 | 长期人工压力与完整编辑布局组合 | 自动32/48次关闭及历史十分钟压力不等于长期人工操作；API3/API4的UV-03/04人工部分仍开放 |
@@ -119,3 +119,9 @@ Runtime关闭策略依据微软[Close合同](https://learn.microsoft.com/en-us/m
 | 请求方应用适配、目标GPU与分发 | 未修改或运行请求方应用；应用升级需自行固定SDK commit、配置提供方、按迁移合同适配并验收 |
 
 WebView2仍需窗口承载、图形会话及Runtime，不能宣称无HWND浏览器；异步捕获和呈现不代表物理桌面或IME完整验收。[API3](api3-validation.md)和[API4](api4-validation.md)历史证据保留，尚未完成项目继续补验。
+
+## 5. Session0优先补验
+
+实际源码3e1fca5，Windows Server2022/MSVC19.44，LocalSystem服务的SessionId0、私有service window station。实际200轮/400测试DLL实例/1200frame/2000命令GL用例0失败，零HWND，句柄148→148，真实样本0/4及像素复取校验通过；整机无登录因已登录会话1失败，用户确认无专用runner。保留严格失败，不宣称目标整体通过。
+
+CI暴露并修复MSVC19.44/WX下包加载器位宽常量条件警告；测试运行器另外修复无控制台stderr初始化。公共ABI/API版本不变。此后完整43项42PASS/1SKIP、原生21项20PASS/1SKIP，原API1/2/3/4原包再次通过且哈希不变；前述42/20项属于此前历史构建。步骤、精确源码与依赖哈希、原始证据及剩余条件见[专门验收](session0-osmesa-validation.md)。

@@ -1,0 +1,127 @@
+{
+  "source_commit": "3e1fca59daa189d15302c52f22394e9f5d37fd0a",
+  "source_dirty": false,
+  "github_sha": "3e1fca59daa189d15302c52f22394e9f5d37fd0a",
+  "github_run_id": "37210914032",
+  "github_run_attempt": "1",
+  "os": "Microsoft Windows NT 10.0.20348.0",
+  "image_os": "win22",
+  "image_version": "20260927.320.1",
+  "runner_identity": "runnervmdlhio\\runneradmin",
+  "runner_session": 2,
+  "machine_user": "runnervmdlhio\\runneradmin",
+  "require_no_login": true,
+  "files": [
+    {
+      "name": "ui_session0_gl_test.exe",
+      "sha256": "0ae38b8cfd0b1989c4966a40252c02acd66bd7b6adae620c15fd79cc1453f0c7",
+      "bytes": 29696
+    },
+    {
+      "name": "session0_gl_app.uapp",
+      "sha256": "0d20490d3c991fb6823b474233c73d4f377984f25a6d3bbc2aca16471799c6ca",
+      "bytes": 20874
+    },
+    {
+      "name": "ui_session0_gl_app.dll",
+      "sha256": "61c0a8dbf90177840039cd69934de6bcd1e00aff54cce40faaf215fb25086122",
+      "bytes": 20480
+    },
+    {
+      "name": "ui_framework.dll",
+      "sha256": "39d2690d19703593c6bfecb5ff9c2c913622fa2fb27c93b70605af558879724b",
+      "bytes": 333312
+    },
+    {
+      "name": "clon12compiler.dll",
+      "sha256": "cc667bd412ff8404b23c87896e7e5e8ef30325cbd714fe6274e9a754da06430e",
+      "bytes": 80648192
+    },
+    {
+      "name": "d3d10warp.dll",
+      "sha256": "e4f77ccf4847e41b48574090e2fdd690ef5ac2d4043f6ae1797ef8be3902e92b",
+      "bytes": 46541312
+    },
+    {
+      "name": "dxil.dll",
+      "sha256": "e038a9755387fc396a9a5f393d292b9318cf6ac7e520e9283bbc3088c5f8ac93",
+      "bytes": 1462704
+    },
+    {
+      "name": "libEGL.dll",
+      "sha256": "c098f73ec00da7ac6754bfa70c0c3fbec60f790f0cdca0b69a3cc258c9ded0de",
+      "bytes": 278016
+    },
+    {
+      "name": "libgallium_wgl.dll",
+      "sha256": "6ba1d46ae560f051a32b576c34e794a256df23572fdc82c602585d65cca69569",
+      "bytes": 54089216
+    },
+    {
+      "name": "libglapi.dll",
+      "sha256": "38c0c712138e313f72b9fa113e8bc00019915cedff5f0659471fdb63e9b3b392",
+      "bytes": 340480
+    },
+    {
+      "name": "libGLESv1_CM.dll",
+      "sha256": "8bc87cdad7bdc29ef2427d46bf0fae756c07da5dec75e7f77e156cfe5608ab92",
+      "bytes": 117248
+    },
+    {
+      "name": "libGLESv2.dll",
+      "sha256": "25a57a1da6a1577f44cb881575e28c56e9fe9073b19d029836ee3c9bab3a0b95",
+      "bytes": 140800
+    },
+    {
+      "name": "openclon12.dll",
+      "sha256": "f9730c80a8a2239231cfa4f97fa8ad10f94fef86971497ab40ab3acd7769ad43",
+      "bytes": 4127744
+    },
+    {
+      "name": "opengl32.dll",
+      "sha256": "419ab7c45f86300acef8eee53414c639a26893fbd7adb24ba9b8f7700855604c",
+      "bytes": 137216
+    },
+    {
+      "name": "osmesa.dll",
+      "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+      "bytes": 52327936
+    },
+    {
+      "name": "pipe_swrast.dll",
+      "sha256": "6adb34661b5ebb14caa7f2582e22d8f515ec36e7d2c7c80d07d5f1a199beb137",
+      "bytes": 46453248
+    },
+    {
+      "name": "spirv_to_dxil.dll",
+      "sha256": "21ab07121622ff52f315ac309b0e9b187c53e48953dbbd8a44d1f2a96b8ed336",
+      "bytes": 6932480
+    },
+    {
+      "name": "va_win32.dll",
+      "sha256": "aced899c343db465b228581a32a5786858644fa9bf778da2024842ce1040e8ab",
+      "bytes": 105472
+    },
+    {
+      "name": "va.dll",
+      "sha256": "cd4b2b8a78a0973703fb6840830c5884e6ce7fea136f96fb71951f07cce3d4d3",
+      "bytes": 374272
+    },
+    {
+      "name": "vaon12_drv_video.dll",
+      "sha256": "c9bbfb1820856bb525c6abf7edfe7f67f8b90dca96f5b209abcb5070c74abdf4",
+      "bytes": 7511040
+    },
+    {
+      "name": "vulkan_dzn.dll",
+      "sha256": "ba708833a34a1ff521579eec460747087effe38b8e58ee61e2e3e641abd2f674",
+      "bytes": 8200192
+    },
+    {
+      "name": "vulkan_lvp.dll",
+      "sha256": "c5977f75d78587e7d48b3ac869707c78996effdde4841020d16cc28d9e475245",
+      "bytes": 48008192
+    }
+  ],
+  "service_name": "UiFrameworkSession0-a9c01789259445a49df54975809ae0ac"
+}

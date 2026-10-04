@@ -1,0 +1,69 @@
+Session0 follow-up local regression, 2026-10-04
+Product package architecture repair: c93d0836834b4be8abff275098c6b6163f928789
+Windows x64/MSVC19.50.35727; Release; logged-in Session1.
+Full fixture configuration: light backend + actual WebView2 Runtime + pinned OSMesa, original API3/API4 package paths supplied.
+Full verbose log retained locally; exact CTest completion lines:
+10/43 Test #10: ui_webview2_parity ................   Passed    0.62 sec
+11/43 Test #11: ui_webview2_messages ..............   Passed    0.50 sec
+12/43 Test #12: ui_webview2_render ................   Passed    9.11 sec
+13/43 Test #13: ui_api5_integration ...............   Passed   79.54 sec
+14/43 Test #14: ui_api5_native_host ...............   Passed    6.06 sec
+15/43 Test #15: ui_session0_interactive_control ...   Passed   32.62 sec
+16/43 Test #16: ui_offscreen_msaa .................   Passed    0.25 sec
+17/43 Test #17: ui_windowless_gl ..................   Passed    0.46 sec
+18/43 Test #18: ui_offscreen_gl ...................   Passed    0.32 sec
+19/43 Test #19: ui_workspace_offscreen ............   Passed    0.40 sec
+20/43 Test #20: ui_framework_features_host ........   Passed    2.77 sec
+21/43 Test #21: ui_menu_offscreen .................   Passed    0.18 sec
+22/43 Test #22: ui_menu_access ....................   Passed    0.13 sec
+23/43 Test #23: ui_api4_compat ....................   Passed    0.08 sec
+24/43 Test #24: ui_original_api4_package ..........   Passed    2.90 sec
+25/43 Test #25: ui_web_text_edit ..................   Passed    0.20 sec
+26/43 Test #26: ui_generic_web_host ...............   Passed    3.16 sec
+27/43 Test #27: ui_component_resilience ...........   Passed    3.38 sec
+28/43 Test #28: ui_api3_original_package ..........   Passed    2.98 sec
+29/43 Test #29: ui_application_versions ...........   Passed    0.29 sec
+30/43 Test #30: ui_light_web_dynamic ..............   Passed    0.26 sec
+31/43 Test #31: ui_web_shell_slots ................   Passed    0.12 sec
+32/43 Test #32: ui_floating_web_dpi ...............   Passed    0.14 sec
+33/43 Test #33: ui_light_web_parity ...............   Passed    0.26 sec
+34/43 Test #34: ui_workspace_integration ..........   Passed    1.65 sec
+35/43 Test #35: ui_web_host_frontend ..............   Passed    0.83 sec
+36/43 Test #36: ui_native_activation ..............   Passed    0.65 sec
+37/43 Test #37: ui_dpi_integration ................   Passed    0.21 sec
+38/43 Test #38: ui_opengl_integration .............   Passed    0.33 sec
+39/43 Test #39: ui_surface_input ..................   Passed    0.22 sec
+40/43 Test #40: ui_monitor_transition .............***Skipped   0.15 sec
+41/43 Test #41: ui_native_shell_integration .......   Passed    0.17 sec
+42/43 Test #42: ui_native_responsive ..............   Passed    0.22 sec
+43/43 Test #43: ui_assistant_protocol .............   Passed    0.12 sec
+100% tests passed, 0 tests failed out of 43
+Total Test time (real) = 152.06 sec
+The following tests did not run:
+	 40 - ui_monitor_transition (Skipped)
+Native configuration: both Web backends and standalone host OFF; exact CTest result:
+10/21 Test #10: ui_session0_interactive_control ...   Passed   31.18 sec
+11/21 Test #11: ui_offscreen_msaa .................   Passed    0.25 sec
+12/21 Test #12: ui_windowless_gl ..................   Passed    0.44 sec
+13/21 Test #13: ui_workspace_integration ..........   Passed    1.49 sec
+14/21 Test #14: ui_native_activation ..............   Passed    0.60 sec
+15/21 Test #15: ui_dpi_integration ................   Passed    0.10 sec
+16/21 Test #16: ui_opengl_integration .............   Passed    0.27 sec
+17/21 Test #17: ui_surface_input ..................   Passed    0.18 sec
+18/21 Test #18: ui_monitor_transition .............***Skipped   0.09 sec
+19/21 Test #19: ui_native_shell_integration .......   Passed    0.12 sec
+20/21 Test #20: ui_native_responsive ..............   Passed    0.19 sec
+21/21 Test #21: ui_assistant_protocol .............   Passed    0.09 sec
+100% tests passed, 0 tests failed out of 21
+Total Test time (real) =  35.45 sec
+The following tests did not run:
+	 18 - ui_monitor_transition (Skipped)
+Exact original API1/2/3 package mixture, actual host, exit0:
+initial actual DOM=169 rows=17 columns=5
+100k tail actual DOM=75 rows=12 columns=4
+100k expanded tree actual DOM=77 cached rows=1800 total=100100
+image bytes=413344 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+Exact original API4 package, actual host, exit0:
+API4 actual host menus/overflow/instances: 0 failures
+Runner console-free repair3e1fca5: local DETACHED_PROCESS exit2 before -> exit0 after; final2000commands, HWND0, stderr0bytes. Actual CI service proof and no-login failure are separate records.

@@ -68,4 +68,4 @@ API4第一阶段不提供完全无窗口GL和MSAA；API5增补见第6节，仍�
 
 每 surface 预算32 MiB。旧隐藏WGL单采样继续按8×像素计颜色/深度，临时读回另计、最多16 MiB，保留API4的2048×2048边界。真正无窗口单采样按12×像素计颜色/深度/临时读回；多采样按(8+8×samples)×像素计多采样附件、resolve和临时读回。OSMesa路径再计4字节 provider drawable，调用方缓冲另计。resize 先验预算，失败保持旧尺寸。UI/创建线程操作，销毁需先停止调用；多上下文保留当前提供方 context，恢复 framebuffer、viewport、texture/renderbuffer、pack/unpack PBO、pack 参数及 multisample/scissor。应用自行改变其他 GL 状态仍由应用负责。
 
-实际 Windows 已登录会话、Session0、无登录CI分别验收。真实软件 GL frame 输出可以证明无窗口渲染；返回 UNSUPPORTED、替代图片和模拟执行都不能证明成功。现有实际结果及未验收条件见 [API5验收](validation/api5-validation.md)。
+实际 Windows 已登录会话、Session0、整机无登录CI分别验收。真实软件 GL frame 输出可以证明无窗口渲染；返回 UNSUPPORTED、替代图片和模拟执行都不能证明成功。实际测试DLL/OSMesa在CI LocalSystem Session0已通过，整机无登录因登录会话1失败，缺专用runner；[专门证据](validation/session0-osmesa-validation.md)保留两个独立结论。其他结果及未验收条件见[API5验收](validation/api5-validation.md)。

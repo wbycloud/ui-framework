@@ -29,7 +29,7 @@
 
 8. 使用API5新函数时，以匹配头文件和ui_framework_runtime.lib重建DLL，DLL descriptor和严格八字段.uapp清单一致声明API5；ABI/包格式仍1。只共享宿主ui_framework.dll。SDK commit及标准记录在应用文档或锁定文件，不往包清单添加字段。旧API1/2/3/4包可保留原声明兼容加载，不能只改清单假装已迁移。
 
-9. 默认任务是正常宿主适配。离屏接入可选：查询run_mode，避免自有HWND/timer/显示/系统选择器依赖；无窗口workspace用原内容槽、组件及复制队列，UI线程显式flush/poll。Web捕获使用显式尺寸和调用方RGBA缓冲，先查询能力。绘图需要GPU时显式使用隐藏WGL离屏入口、原frame和input回调；至少3.3 compatibility，不静默降级。隐藏HWND/DC、Session0未验证和桌面SwapBuffers的区别写清楚，不宣称普通旧应用自动无头兼容。
+9. 默认任务是正常宿主适配。离屏接入可选：查询run_mode，避免自有HWND/timer/显示/系统选择器依赖；无窗口workspace用原内容槽、组件及复制队列，UI线程显式flush/poll。Web捕获使用显式尺寸和调用方RGBA缓冲，先查询能力。绘图需要GPU时显式使用隐藏WGL离屏入口、原frame和input回调；至少3.3 compatibility，不静默降级。隐藏HWND/DC、真正OSMesa无窗口、整机无登录和桌面SwapBuffers的区别写清楚。框架测试DLL已在实际CI LocalSystem Session0通过，但托管runner仍有登录会话1，整机无登录待验；读取docs/validation/session0-osmesa-validation.md，不将框架测试成功当作本应用业务或无登录通过，不宣称普通旧应用自动无头兼容。
 
 10. 实例独立；部分初始化失败与关闭沿同一清理路径。停止并join worker，取消订阅/投递，unmount释放GPU和自有窗口，所有回调退出后才可卸载模块。REFUSE/WAIT保持正常含义，flush空闲不等于worker停止，关闭重开后的旧结果不得进入新实例。
 

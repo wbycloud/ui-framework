@@ -432,3 +432,5 @@ Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径
 Alt 助记键、真正 OSMesa 无窗口 GL、精确离屏 MSAA 和 WebView2 异步呈现/捕获/图片/组件合同分别见 [菜单和离屏](framework-menu-offscreen.md#6-api5-菜单无窗口-gl-与-msaa-合同)与[通用 Web API5](generic-web-ui.md#api5-webview2-与共同组件)。WebView2 后端借用到 host 销毁以后，禁止 DLL 卸载后留应用异步回调；PENDING 需要外层消息循环及重试，不能当 OK。
 
 保持原包与冻结 SDK1/2/3/4 分别验收。物理 IME/跨屏、人工长时压力、Session0及目标CI条件缺失时记录未验收；不以编译、UNSUPPORTED 或轻量后端通过替代真实 Runtime/实际 GL。当前状态见 [API5验收](validation/api5-validation.md)。
+
+框架测试DLL的OSMesa路径已在实际Windows CI LocalSystem Session0运行；这不等于应用自身业务已适配，或整机无用户登录。无登录必须另核验WTS会话数为0，当前托管runner有登录会话1且严格门槛失败；环境、窗口、frame和资源证据见[Session0记录](validation/session0-osmesa-validation.md)。服务测试无需继承stdin/stdout/stderr或创建控制台；路径、调度、UI线程和生命周期仍由应用适配。

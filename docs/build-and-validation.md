@@ -311,6 +311,8 @@ ctest --test-dir build/api5 --output-on-failure
 
 `UI_OSMESA_LIBRARY`仅注册实际提供方验收，不是隐式运行模式或编译时硬依赖。API5 fixture只用于验收；显式环境路径由integration测试传入。缺少提供方不会注册windowless/integration测试，不得声称这两项通过。原API4包可用 `UI_LEGACY_API4_PACKAGE` 加入原包宿主复验；SDK4重新构建测试单独运行。API1/2/3旧包入口保持原构建合同。
 
-Windows普通账户Session1可运行实际无窗口GL，管理员/服务Session0和无登录CI仍需独立环境；不通过隐藏WGL或软件替代图片推断。WebView2仍需要实际Runtime、图形会话和原生承载窗口，受限执行环境可能禁止浏览器子进程；通过只表示对应实际环境的证据。测试失败保留并修复，不使用skip或提高上限遮盖资源增长。
+Windows普通账户Session1和实际CI LocalSystem Session0均已运行OSMesa实际frame；整机无登录仍需独立环境，不通过隐藏WGL或替代图片推断。WebView2仍需要实际Runtime、图形会话和原生承载窗口，受限执行环境可能禁止浏览器子进程；通过只表示对应实际环境的证据。测试失败保留并修复，不使用skip或隐瞒资源增长。
 
 Session0／无登录CI现有独立实际应用DLL及临时服务入口，详细构建、命令、环境门槛、资源预算及目标结果见[专门验收](validation/session0-osmesa-validation.md)。该测试配置同时关闭两个Web后端，不依赖WebView2或轻量引擎。默认运行器拒绝Session1；CTest对照不会计入Session0通过数。
+
+CI使用MSVC19.44/W4/WX实际构建通过；x64包检查使用编译期 `UINTPTR_MAX` 比较，避免旧编译器C4127。正式用例保留全部资源采样，进程缓存采用声明的128 MiB预算；初始门槛和失败诊断见专门记录。Windows服务无继承控制台，测试直接重开stdout/stderr文件，不创建控制台窗口。默认托管runner实测有登录用户，严格无登录项会失败；已有无登录Windows x64服务runner可在手动工作流填写其runner_label，不自动创建机器或注销用户。

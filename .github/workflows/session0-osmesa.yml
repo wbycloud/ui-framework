@@ -1,6 +1,11 @@
 name: Session0 OSMesa application
 on:
   workflow_dispatch:
+    inputs:
+      runner_label:
+        description: 'Existing Windows x64 runner label; no-login acceptance requires a machine with no logged-in sessions'
+        type: string
+        default: windows-2022
   push:
     branches: [main]
     paths:
@@ -16,7 +21,7 @@ permissions:
   contents: read
 jobs:
   actual-application:
-    runs-on: windows-2022
+    runs-on: ${{ inputs.runner_label || 'windows-2022' }}
     timeout-minutes: 15
     defaults:
       run:

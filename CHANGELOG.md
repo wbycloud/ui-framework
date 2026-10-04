@@ -5,7 +5,9 @@ API5/标准修订5，接受API1/2/3/4/5，ABI1和包格式1不变。新增显式
 
 **兼容**：完整保留SDK4前缀及padding，原SDK1/2/3不变；旧WebView2配置默认native_handle为空，组件承载须显式开启。新增异步正状态PENDING，调用方正常泵消息后重试，框架不保留调用方输出缓冲；新应用DLL/清单一致声明API5。
 
-**依赖与限制**：实际无窗口提供方是显式固定的x64 OSMesa软件GL，应用所有GL函数经surface解析。Session0/无登录CI、真实IME/跨屏/长期人工压力分别待验。WebView2是窗口承载Runtime，不等同浏览器无窗口；关闭资源断言及全阶段状态见 [API5验收](docs/validation/api5-validation.md)，尚未通过的项目不能宣称完整交付。
+**依赖与限制**：实际无窗口提供方是显式固定的x64 OSMesa软件GL，应用所有GL函数经surface解析。实际CI LocalSystem Session0的测试DLL/OSMesa已补验；整机无登录、真实IME/跨屏/长期人工压力仍待验。WebView2是窗口承载Runtime，不等同浏览器无窗口；关闭资源断言及全阶段状态见[API5验收](docs/validation/api5-validation.md)，未通过的项目不能宣称完整交付。
+
+**Session0补验**：新增独立测试DLL、实际frame/输入/resize、临时服务及严格无登录CI；200轮400实例1200frame，HWND0、句柄148→148。修复MSVC19.44/WX下包架构常量警告，位宽合同与ABI不变；测试日志支持无继承控制台。托管runner登录会话1导致无登录门槛失败，缺专用runner；原始像素、资源及失败记录见[专门验收](docs/validation/session0-osmesa-validation.md)。
 
 迁移与构建见 [0.4→0.5](docs/migration-v0.4-to-v0.5.md)及[构建说明](docs/build-and-validation.md)。
 

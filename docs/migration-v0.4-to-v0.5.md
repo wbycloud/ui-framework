@@ -27,3 +27,5 @@ API4 对照样例 `framework_features.uapp` 继续用冻结 SDK4 构建。新实
 ## 5. 验收
 
 按 [构建说明](build-and-validation.md) 与[API5验收](validation/api5-validation.md) 重跑当前源码。原 SDK 调用方、原包、实际 GL、实际 Runtime/DLL 各自提供证据；缺失物理 IME、跨屏、人工长时压力、Session0及CI环境时分别记录待验。当前尚未验收或失败的项目不得对应用宣称完成。
+
+后续[实际Session0补验](validation/session0-osmesa-validation.md)已运行测试应用DLL及OSMesa frame，零HWND、样本0/4和回收通过。整机无登录仍因托管runner登录会话1失败，不能继承Session0结论。补验只修复等价的包位宽编译检查并增加测试/CI，公共接口和SDK版本未再变化，无需为该修复改旧清单或重建原包。

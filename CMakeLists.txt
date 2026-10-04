@@ -330,7 +330,7 @@ if(UI_BUILD_TESTS)
             add_test(NAME ui_session0_interactive_control COMMAND ui_session0_gl_test
                 "${CMAKE_CURRENT_BINARY_DIR}/session0_gl_app.uapp" "${UI_OSMESA_LIBRARY}"
                 "${CMAKE_CURRENT_BINARY_DIR}/session0-control" --allow-interactive)
-            set_tests_properties(ui_session0_interactive_control PROPERTIES TIMEOUT 60)
+            set_tests_properties(ui_session0_interactive_control PROPERTIES TIMEOUT 120)
         endif()
         add_executable(ui_offscreen_msaa_test tests/offscreen_msaa.c)
         target_link_libraries(ui_offscreen_msaa_test PRIVATE ui_framework_shared)

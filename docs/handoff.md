@@ -1,6 +1,6 @@
 # 框架开发交接记录
 
-更新日期：2026-10-04。当前SDK0.5/API5四项已实现，本机自动验收通过；目标环境及人工验收尚未全部完成。先读[API5验收](validation/api5-validation.md)与第7节，API3/API4历史证据继续保留。不要把“已推送”“测试通过”和“完整验收完成”混为一谈。
+更新日期：2026-10-04。当前SDK0.5/API5四项已实现，本机自动验收及实际CI的OSMesa Session0补验通过；整机无登录及人工验收尚未全部完成。先读[API5验收](validation/api5-validation.md)、[Session0记录](validation/session0-osmesa-validation.md)与第7节，API3/API4历史证据继续保留。不要把“已推送”“测试通过”和“完整验收完成”混为一谈。
 
 ## 1. 恢复顺序与版本
 
@@ -107,7 +107,7 @@ ctest --test-dir build/native --output-on-failure
 | UV-02 | 物理跨屏 DPI | 至少两台不同缩放显示器，记录 WM_DPICHANGED、矩形、framebuffer和候选位置 |
 | UV-03 | 长期人工滚动/资源压力；十分钟自动补验通过 | 仍需连续人工行列/树/缩略图/双实例操作，记录时长、受管资源统计和进程曲线 |
 | UV-04 | 完整编辑与复杂布局；六种自动组合及三项缺陷修复通过 | 仍需完整编辑手势、草稿/选择期间停靠、浮动、折叠、DPI和模态人工组合，核对状态保留 |
-| UV-05 | Session0/无登录CI/远程驱动 | 分别验证无HWND轻量Web、OSMesa真正无窗口GL及隐藏WGL；WebView2另需图形会话及承载窗口，不用替代图片冒充实际GL |
+| UV-05 | 整机无登录/远程驱动及其他后端目标环境；OSMesa Session0已补验 | 实际CI LocalSystem Session0的测试DLL/OSMesa通过，整机仍有登录会话1，缺无登录runner；轻量Web、隐藏WGL、WebView2另验，不用替代图片冒充GL |
 | UV-06 | 请求方应用完整离屏业务接入 | 应用独立适配窗口依赖、路径/调度和业务renderer；本框架未替应用完成 |
 | UV-07 | 物理屏幕边缘菜单及GL遮挡 | 不同DPI显示器边缘测试三种锚点、翻转、外点关闭、焦点恢复和桌面合成 |
 
@@ -129,14 +129,16 @@ API4未实现的Alt访问键、真正无窗口GL、离屏MSAA、WebView2呈现/�
 
 ## 7. API5本轮交付与接续
 
-2026-10-04优先补验Session0／无登录Windows CI：[独立DLL、OSMesa与服务测试记录](validation/session0-osmesa-validation.md)。准备性200轮对照及原生回归已通过，目标CI尚待实测；不要继承Session1通过结论。新增测试不改产品ABI或版本，原业务应用及SDK/原包保留。
+2026-10-04优先补验Session0／无登录Windows CI：[独立DLL、OSMesa与服务测试记录](validation/session0-osmesa-validation.md)。真实源码3e1fca5在CI LocalSystem Session0通过200轮、400实例、1200frame、2000命令，HWND0、句柄148→148。整机登录会话1，无登录门槛明确失败；用户确认当前没有无登录runner，继续待验。修复MSVC19.44包加载器编译警告及测试运行器无控制台日志初始化，不改公共ABI或版本，原业务应用/SDK/原包保留。
 
 四项实现、依赖、取舍、结构尺寸、失败复现、真实像素和最终日志见[API5验收](validation/api5-validation.md)。完整42项为41PASS/1跨屏SKIP；原生20项为19PASS/1SKIP。原API1/2/3混合宿主及原API4包均0失败，四个原包哈希不变。SDK4完整12个头文件从1f77b2e冻结，原SDK1/2/3未修改。
 
-真正无窗口路径为固定OSMesa24.3.4/llvmpipe软件GL，实际运行应用DLL frame，不创建隐藏HWND或取得窗口DC。旧隐藏WGL独立保留；精确MSAA在两条路径实际为4。OSMesa模块/worker缓存保持到进程结束，16次context重开句柄稳定；不要强制卸载私有提供方模块。Session0/无登录CI仍未验收，没有硬件EGL实现。
+真正无窗口路径为固定OSMesa24.3.4/llvmpipe软件GL，实际运行应用DLL frame，不创建隐藏HWND或取得窗口DC。旧隐藏WGL独立保留；精确MSAA在两条路径实际为4。OSMesa模块/worker缓存保持到进程结束，不强制卸载私有提供方模块。实际Session0已补验，无登录仍缺条件；没有硬件EGL实现。
 
 WebView2使用SDK1.0.4129.50/实际Runtime154.0.4258.53。组件须显式framework_components，借用后端由调用方保持到host销毁。PENDING通过外层STA消息循环完成，不保留调用方输出缓冲。销毁先切断应用回调，SDK初始化尚未完成时等待内部无副作用脚本完成，再异步Close；环境保留至BrowserProcessExited。应用DLL可卸载，框架DLL/UI线程仍须处理关闭消息。
 
 本轮修复Runtime视口反馈循环、菜单窗口IME干扰/焦点覆盖、提前关闭生命周期及残缺新增指针字段读取。32次实际DLL重开及48次创建期取消资源检查通过，失败记录保留，未提高上限或改skip。当前本地构建为build/fw-next/release与native，新增证据在build/api5-evidence；不混用旧build目录产物。
 
-下一步获取UV-01真实IME、UV-02物理跨屏、UV-03/04人工长时/编辑布局、UV-05目标Session0/无登录CI条件。继续独立补验，不宣称全阶段已完整验收。请求方应用升级另按[提示词](application-upgrade-prompt.md)执行，不自动修改该应用。
+Session0补验后的必要回归为43项42PASS/1SKIP，原生21项20PASS/1SKIP，四个原包再次通过且哈希不变；前文42/20项为此前历史结果。新增日志在build/session0-evidence，永久证据见专门记录。严格CI工作流默认托管runner会因无登录门槛失败，不能仅看job红绿判断独立GL用例；无登录runner到位后手动填真实runner_label重验。
+
+下一步获取UV-01真实IME、UV-02物理跨屏、UV-03/04人工长时/编辑布局、UV-05整机无登录及其他后端目标环境条件。继续独立补验，不宣称全阶段已完整验收。请求方应用升级另按[提示词](application-upgrade-prompt.md)执行，不自动修改该应用。
