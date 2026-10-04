@@ -3,6 +3,8 @@
 #include <windows.h>
 #include <commdlg.h>
 #include <shellapi.h>
+#include <imm.h>
+#include <objbase.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -681,17 +683,33 @@ static HWND create_host(host_window_t *state,HINSTANCE instance)
     return CreateWindowExW(0,wc.lpszClassName,L"C 应用框架 · Web",WS_OVERLAPPEDWINDOW|WS_CLIPCHILDREN,
         CW_USEDEFAULT,CW_USEDEFAULT,1200,800,NULL,NULL,instance,state);
 }
+static int host_menu_key(host_window_t *state,const MSG *message)
+{
+    ui_app_instance_info_t info;ui_input_event_t input={0};HIMC ime;int composing=0;
+    if(message->message!=WM_KEYDOWN&&message->message!=WM_SYSKEYDOWN&&message->message!=WM_KEYUP&&message->message!=WM_SYSKEYUP)return 0;
+    if(!get_instance(state,ui_workspace_active(state->workspace),&info))return 0;
+    ime=ImmGetContext(message->hwnd);if(ime){composing=ImmGetCompositionStringW(ime,GCS_COMPSTR,NULL,0)>0;ImmReleaseContext(message->hwnd,ime);}if(composing)return 0;
+    input.size=sizeof(input);input.key_code=(uint32_t)message->wParam;input.kind=(message->message==WM_KEYUP||message->message==WM_SYSKEYUP)?UI_INPUT_KEY_UP:UI_INPUT_KEY_DOWN;
+    if(GetKeyState(VK_CONTROL)&0x8000)input.modifiers|=UI_INPUT_MODIFIER_CONTROL;
+    if(GetKeyState(VK_SHIFT)&0x8000)input.modifiers|=UI_INPUT_MODIFIER_SHIFT;
+    if(GetKeyState(VK_MENU)&0x8000)input.modifiers|=UI_INPUT_MODIFIER_ALT;
+    if(ui_host_menu_dispatch_input(info.host,&input)==UI_STATUS_OK)return 1;
+    if(input.kind==UI_INPUT_KEY_DOWN){ui_web_view_t *view;
+        for(view=info.host->web_views;view;view=view->host_next){HWND native=(HWND)ui_web_view_native_handle(view);
+            if(native&&IsChild(native,message->hwnd)&&ui_host_dispatch_shortcut(info.host,input.key_code,input.modifiers,1))return 1;}}
+    return 0;
+}
 #ifndef UI_HOST_TEST
 int WINAPI wWinMain(HINSTANCE instance,HINSTANCE previous,PWSTR command,int show)
 {
     host_window_t state;HWND hwnd;MSG message={0};int count,i;wchar_t **args;
     ACCEL keys[]={{FVIRTKEY|FCONTROL|FSHIFT,'O',ID_OPEN},{FVIRTKEY|FCONTROL,'W',ID_CLOSE},
         {FVIRTKEY|FCONTROL,VK_TAB,ID_NEXT},{FVIRTKEY|FCONTROL|FSHIFT,VK_TAB,ID_PREVIOUS}};HACCEL accelerators;
-    (void)previous;(void)command;if(ui_framework_initialize()!=UI_STATUS_OK)return 1;memset(&state,0,sizeof(state));
-    hwnd=create_host(&state,instance);if(!hwnd)return 1;ShowWindow(hwnd,show);UpdateWindow(hwnd);
+    (void)previous;(void)command;if(ui_framework_initialize()!=UI_STATUS_OK)return 1;if(FAILED(CoInitializeEx(NULL,COINIT_APARTMENTTHREADED)))return 1;memset(&state,0,sizeof(state));
+    hwnd=create_host(&state,instance);if(!hwnd){CoUninitialize();return 1;}ShowWindow(hwnd,show);UpdateWindow(hwnd);
     args=CommandLineToArgvW(GetCommandLineW(),&count);if(args){for(i=1;i<count;++i)open_path(&state,args[i]);LocalFree(args);}
     accelerators=CreateAcceleratorTableW(keys,(int)(sizeof(keys)/sizeof(keys[0])));
-    while(GetMessageW(&message,NULL,0,0)>0){if(!TranslateAcceleratorW(hwnd,accelerators,&message)){TranslateMessage(&message);DispatchMessageW(&message);}}
-    DestroyAcceleratorTable(accelerators);return (int)message.wParam;
+    while(GetMessageW(&message,NULL,0,0)>0){if(!TranslateAcceleratorW(hwnd,accelerators,&message)&&!host_menu_key(&state,&message)){TranslateMessage(&message);DispatchMessageW(&message);}}
+    DestroyAcceleratorTable(accelerators);CoUninitialize();return (int)message.wParam;
 }
 #endif

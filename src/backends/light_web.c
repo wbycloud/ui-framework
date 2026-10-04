@@ -1584,9 +1584,9 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         if (view->hovered >= 0) (void)lw_event(view,view->hovered,6,0);
         view->hovered = -1; lw_layout(view); return 0;
     }
-    if (message == WM_KEYDOWN || message == WM_SYSKEYDOWN) {
+    if (message == WM_KEYDOWN || message == WM_SYSKEYDOWN || message == WM_KEYUP || message == WM_SYSKEYUP) {
         ui_input_event_t event = {0};
-        event.size = sizeof(event); event.kind = UI_INPUT_KEY_DOWN; event.key_code = (uint32_t)wp;
+        event.size = sizeof(event); event.kind = (message==WM_KEYUP||message==WM_SYSKEYUP)?UI_INPUT_KEY_UP:UI_INPUT_KEY_DOWN; event.key_code = (uint32_t)wp;
         if (GetKeyState(VK_SHIFT) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_SHIFT;
         if (GetKeyState(VK_CONTROL) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_CONTROL;
         if (GetKeyState(VK_MENU) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_ALT;
@@ -1770,6 +1770,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
     if (!view || !event || event->size < sizeof(*event)) return UI_STATUS_INVALID_ARGUMENT;
     if (!ui_components_input_allowed(view->host,view)) return UI_STATUS_CANCELLED;
     if (!view->context) return UI_STATUS_NOT_FOUND;
+    if(ui_menus_route_input(view->host,view,event,view->composing)==UI_STATUS_OK)return UI_STATUS_OK;
     view->event_modifiers = event->modifiers; view->wheel_delta = event->wheel_delta;
     hit = lw_hit(view, event->x, event->y);
     if (event->kind == UI_INPUT_POINTER_DOWN || event->kind == UI_INPUT_POINTER_UP) {

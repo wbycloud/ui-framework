@@ -52,14 +52,15 @@ int wmain(int argc, wchar_t **wide_argv)
                                 -1, argv[arg], length, NULL, NULL)) return 2;
     }
     CHECK(ui_framework_supports_api(1) && ui_framework_supports_api(2));
-    CHECK(!ui_framework_supports_api(0) && ui_framework_supports_api(4)&&!ui_framework_supports_api(5));
+    CHECK(!ui_framework_supports_api(0) && ui_framework_supports_api(4)&&ui_framework_supports_api(5)&&!ui_framework_supports_api(6));
     host_config.size = sizeof(host_config);
     host_config.api_version = 1; host = ui_host_create(&host_config);
     CHECK(host != NULL); ui_host_destroy(host);
     host_config.api_version = 2; host = ui_host_create(&host_config);
     CHECK(host != NULL); ui_host_destroy(host);
     host_config.api_version = 3; host = ui_host_create(&host_config); CHECK(host != NULL); ui_host_destroy(host);
-    host_config.api_version = 5; CHECK(ui_host_create(&host_config) == NULL);
+    host_config.api_version = 5; host=ui_host_create(&host_config);CHECK(host!=NULL);ui_host_destroy(host);
+    host_config.api_version = 6; CHECK(ui_host_create(&host_config) == NULL);
     CHECK(ui_package_open(argv[1], &package, error, sizeof(error)) == UI_STATUS_OK);
     CHECK(package && ui_package_get_metadata(package)->framework_api_version == 1);
     ui_package_destroy(package); package = NULL;

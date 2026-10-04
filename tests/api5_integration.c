@@ -1,0 +1,48 @@
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#include <objbase.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "../src/ui_internal.h"
+#include "ui_framework/webview2.h"
+static int failures;
+#define CHECK(x) do{if(!(x)){fprintf(stderr,"line %d: %s\n",__LINE__,#x);++failures;}}while(0)
+static void pump(ui_workspace_t *w){MSG m;unsigned n=0;while(n++<1000&&PeekMessageW(&m,NULL,0,0,PM_REMOVE)){TranslateMessage(&m);DispatchMessageW(&m);}if(w)ui_workspace_poll(w);Sleep(1);}
+static void pump_for(ui_workspace_t *w,DWORD ms){ULONGLONG start=GetTickCount64();do{pump(w);}while(GetTickCount64()-start<ms);}
+static ui_host_t *host(ui_workspace_t *w,uint64_t id){ui_app_instance_info_t i={0};i.size=sizeof(i);CHECK(ui_workspace_get_instance(w,id,&i)==UI_STATUS_OK);return i.host;}
+static ui_status_t query(ui_workspace_t *w,ui_component_t *c,const char *id,ui_element_presentation_t *p)
+{ULONGLONG begin=GetTickCount64();ui_status_t s;do{s=ui_component_get_presentation(c,id,p);if(s!=UI_STATUS_PENDING)return s;pump(w);}while(GetTickCount64()-begin<15000);return s;}
+static ui_status_t capture(ui_workspace_t *w,ui_component_t *c,ui_pixel_buffer_t *p)
+{ULONGLONG begin=GetTickCount64();ui_status_t s;do{s=ui_component_capture_rgba(c,320,360,96,p);if(s!=UI_STATUS_PENDING)return s;pump(w);}while(GetTickCount64()-begin<10000);return s;}
+static int color_count(const ui_pixel_buffer_t *p,int green)
+{int n=0;for(unsigned y=0;y<p->height;++y)for(unsigned x=0;x<p->width;++x){const uint8_t *v=p->pixels+y*p->stride+x*4;if(v[green?1:0]>240&&v[green?0:1]<20&&v[2]<20)++n;}return n;}
+static void save_pixels(const char *path,const ui_pixel_buffer_t *p)
+{FILE *file=NULL;CHECK(!fopen_s(&file,path,"wb"));if(!file)return;fprintf(file,"P6\n%u %u\n255\n",p->width,p->height);for(unsigned y=0;y<p->height;++y)for(unsigned x=0;x<p->width;++x)fwrite(p->pixels+y*p->stride+x*4,1,3,file);CHECK(fclose(file)==0);}
+static void click(ui_workspace_t *w,ui_component_t *c,const char *id)
+{ui_element_presentation_t p={0};ui_input_event_t e={0};p.size=sizeof(p);CHECK(query(w,c,id,&p)==UI_STATUS_OK&&p.visible);fprintf(stderr,"click %s rect %d,%d,%d,%d clip %d,%d,%d,%d\n",id,p.rect.x,p.rect.y,p.rect.width,p.rect.height,p.clip.x,p.clip.y,p.clip.width,p.clip.height);e.size=sizeof(e);e.x=p.clip.x+p.clip.width/2;e.y=p.clip.y+p.clip.height/2;e.pointer_button=1;e.kind=UI_INPUT_POINTER_DOWN;CHECK(ui_component_dispatch_input(c,&e)==UI_STATUS_OK);e.kind=UI_INPUT_POINTER_UP;CHECK(ui_component_dispatch_input(c,&e)==UI_STATUS_OK);}
+static void text(ui_component_t *c,const char *value)
+{ui_input_event_t e={0};e.size=sizeof(e);e.kind=UI_INPUT_KEY_DOWN;e.key_code='A';e.modifiers=UI_INPUT_MODIFIER_CONTROL;CHECK(ui_component_dispatch_input(c,&e)==UI_STATUS_OK);e.kind=UI_INPUT_TEXT;e.modifiers=0;e.text_utf8=value;CHECK(ui_component_dispatch_input(c,&e)==UI_STATUS_OK);}
+int wmain(int argc,wchar_t **argv)
+{
+ HWND root;ui_workspace_config_t config={0};ui_workspace_t *w;uint64_t a=0,b=0;ui_host_t *h,*other;ui_component_t *form,*dialog,*tree;ui_element_presentation_t p={0};ui_pixel_buffer_t pixels={0},gl_pixels={0};ui_input_event_t e={0};ui_cell_t value={0};ui_opengl_info_t info={0};ui_surface_t *surface;char package[16384];DWORD gdi,users,handles;int partial=0;
+ if(argc!=3)return 2;CHECK(SUCCEEDED(CoInitializeEx(NULL,COINIT_APARTMENTTHREADED)));CHECK(WideCharToMultiByte(CP_UTF8,0,argv[1],-1,package,sizeof(package),NULL,NULL)>0);SetEnvironmentVariableW(L"UI_API5_OSMESA_DLL",argv[2]);CHECK(ui_framework_initialize()==UI_STATUS_OK);
+ root=CreateWindowW(L"STATIC",L"API5 application DLL real Runtime",WS_OVERLAPPEDWINDOW,0,0,1000,800,NULL,NULL,GetModuleHandleW(NULL),NULL);config.size=sizeof(config);config.native_parent=root;config.shell_mode=UI_WORKSPACE_SHELL_WEB;w=ui_workspace_create(&config);CHECK(w!=NULL);ShowWindow(root,SW_SHOW);{ui_rect_t rect={0,0,980,740};CHECK(ui_workspace_set_rect(w,&rect,96)==UI_STATUS_OK);}
+ CHECK(ui_workspace_open(w,package,&a)==UI_STATUS_OK);if(!a){fprintf(stderr,"Open failed: %s\n",ui_workspace_last_error(w));ui_workspace_destroy(w);DestroyWindow(root);return 1;}h=host(w,a);form=ui_component_find(h,"form");dialog=ui_component_find(h,"dialog");tree=ui_component_find(h,"tree");CHECK(form&&dialog&&tree);p.size=sizeof(p);CHECK(query(w,form,"field-name",&p)==UI_STATUS_OK&&p.visible);
+ click(w,form,"field-name");text(form,"DLL draft 中文😀");CHECK(query(w,form,"field-name",&p)==UI_STATUS_OK&&p.focused&&!strcmp(p.text_utf8,"DLL draft 中文😀"));value.size=sizeof(value);CHECK(ui_component_get_field(form,"name",&value)==UI_STATUS_OK&&!strcmp(value.text,"DLL draft 中文😀"));
+ click(w,tree,"tree-label-1");{ULONGLONG start=GetTickCount64();ui_status_t result;do{result=query(w,tree,"tree-label-2",&p);if(result!=UI_STATUS_NOT_FOUND)break;pump(w);}while(GetTickCount64()-start<15000);fprintf(stderr,"nested result=%d text=%s\n",result,p.text_utf8);CHECK(result==UI_STATUS_OK&&strstr(p.text_utf8,"Nested DLL"));}
+ pixels.size=sizeof(pixels);CHECK(capture(w,form,&pixels)==UI_STATUS_OK);pixels.capacity=pixels.stride*pixels.height;pixels.pixels=(uint8_t *)malloc(pixels.capacity);CHECK(pixels.pixels!=NULL);CHECK(capture(w,form,&pixels)==UI_STATUS_OK);CHECK(color_count(&pixels,0)>500);
+ CHECK(ui_host_invoke(h,"test.image.update","{}","test")!=0);CHECK(capture(w,form,&pixels)==UI_STATUS_OK);CHECK(color_count(&pixels,1)>500&&color_count(&pixels,0)<20);
+ save_pixels("api5-webview2-form.ppm",&pixels);
+ CHECK(ui_host_invoke(h,"test.dialog","{}","test")!=0);CHECK(query(w,dialog,"field-name",&p)==UI_STATUS_OK&&p.visible);e.size=sizeof(e);e.kind=UI_INPUT_TEXT;e.text_utf8="blocked";CHECK(ui_component_dispatch_input(form,&e)==UI_STATUS_CANCELLED);e.kind=UI_INPUT_KEY_DOWN;e.key_code=18;CHECK(ui_host_menu_dispatch_input(h,&e)==UI_STATUS_CANCELLED);
+ click(w,dialog,"field-name");text(dialog,"Modal Runtime 中文");CHECK(query(w,dialog,"field-name",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"Modal Runtime 中文"));CHECK(ui_host_invoke(h,"test.dialog.close","{}","component")!=0);CHECK(query(w,form,"field-name",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"DLL draft 中文😀"));
+ e.kind=UI_INPUT_KEY_DOWN;e.key_code='F';e.modifiers=UI_INPUT_MODIFIER_ALT;CHECK(ui_host_menu_dispatch_input(h,&e)==UI_STATUS_OK);e.kind=UI_INPUT_KEY_UP;CHECK(ui_host_menu_dispatch_input(h,&e)==UI_STATUS_OK);e.kind=UI_INPUT_KEY_DOWN;e.key_code='S';e.modifiers=0;CHECK(ui_host_menu_dispatch_input(h,&e)==UI_STATUS_OK);e.kind=UI_INPUT_KEY_UP;CHECK(ui_host_menu_dispatch_input(h,&e)==UI_STATUS_OK);CHECK(!strcmp(ui_host_status_text(h),"submitted"));
+ surface=h->surfaces;CHECK(surface!=NULL);info.size=sizeof(info);CHECK(ui_opengl_surface_get_info(surface,&info)==UI_STATUS_OK&&info.samples==4&&strstr(info.version,"Mesa"));gl_pixels.size=sizeof(gl_pixels);CHECK(ui_opengl_offscreen_render(surface,&gl_pixels)==UI_STATUS_OK);gl_pixels.capacity=gl_pixels.stride*gl_pixels.height;gl_pixels.pixels=(uint8_t *)malloc(gl_pixels.capacity);CHECK(ui_opengl_offscreen_render(surface,&gl_pixels)==UI_STATUS_OK);CHECK(strstr(ui_host_status_text(h),"frames=1"));for(size_t i=0;i<gl_pixels.capacity;i+=4)if(gl_pixels.pixels[i]>20&&gl_pixels.pixels[i]<245)++partial;CHECK(partial>20);printf("Actual DLL frame %s / %s / %s samples=%d partial=%d\n",info.vendor,info.renderer,info.version,info.samples,partial);free(gl_pixels.pixels);
+ CHECK(ui_workspace_open(w,package,&b)==UI_STATUS_OK&&b!=a);other=host(w,b);CHECK(query(w,ui_component_find(other,"form"),"field-name",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,""));CHECK(ui_component_dispatch_input(form,&e)==UI_STATUS_CANCELLED);CHECK(ui_workspace_activate(w,a)==UI_STATUS_OK);CHECK(query(w,form,"field-name",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"DLL draft 中文😀"));CHECK(ui_workspace_close(w,b,UI_APP_CLOSE_TAB)==UI_STATUS_OK);
+ CHECK(ui_host_invoke(h,"test.image.release","{}","test")!=0);CHECK(capture(w,form,&pixels)==UI_STATUS_OK&&color_count(&pixels,1)<20);free(pixels.pixels);
+ CHECK(ui_component_get_presentation(form,"field-name",&p)==UI_STATUS_PENDING);CHECK(ui_workspace_close(w,a,UI_APP_CLOSE_TAB)==UI_STATUS_OK);pump_for(w,2000);CHECK(GetModuleHandleW(L"ui_api5_fixture.dll")==NULL);
+ gdi=GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS);users=GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS);GetProcessHandleCount(GetCurrentProcess(),&handles);
+ for(int i=0;i<32;++i){CHECK(ui_workspace_open(w,package,&a)==UI_STATUS_OK);h=host(w,a);form=ui_component_find(h,"form");CHECK(query(w,form,"field-name",&p)==UI_STATUS_OK);CHECK(ui_component_get_presentation(form,"field-name",&p)==UI_STATUS_PENDING);CHECK(ui_workspace_close(w,a,UI_APP_CLOSE_TAB)==UI_STATUS_OK);pump_for(w,2000);CHECK(GetModuleHandleW(L"ui_api5_fixture.dll")==NULL);{DWORD n=0;GetProcessHandleCount(GetCurrentProcess(),&n);fprintf(stderr,"reopen%d handles=%lu\n",i+1,n);}}
+ {DWORD end_handles=0;ULONGLONG start=GetTickCount64();do{GetProcessHandleCount(GetCurrentProcess(),&end_handles);if(end_handles<=handles+12)break;pump(w);}while(GetTickCount64()-start<15000);printf("DLL reopen32 resources GDI %lu->%lu USER %lu->%lu handles %lu->%lu drained_ms=%llu\n",gdi,GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS),users,GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS),handles,end_handles,(unsigned long long)(GetTickCount64()-start));CHECK(GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4&&end_handles<=handles+12);}
+ CHECK(ui_workspace_destroy(w)==UI_STATUS_OK);DestroyWindow(root);SetEnvironmentVariableW(L"UI_API5_OSMESA_DLL",NULL);CoUninitialize();printf("API5 actual Runtime/application DLL: %d failures\n",failures);return failures?1:0;
+}

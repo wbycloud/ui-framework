@@ -16,9 +16,6 @@ typedef struct ui_webview2_backend_config {
     /* Fallback HWND; a host's native_parent takes precedence for each view. */
     void *parent_window;
     const wchar_t *user_data_folder;
-    /* API5 opt-in native content container and component templates.
-     * Missing/zero retains API1-4 native_handle=NULL behavior. */
-    int framework_components;
 } ui_webview2_backend_config_t;
 
 /*
@@ -27,10 +24,6 @@ typedef struct ui_webview2_backend_config {
  * loader is unavailable, and UI_STATUS_PLATFORM_ERROR for COM/initialization
  * failures. The caller owns the returned backend and must use the matching
  * destroy function after all views have been destroyed.
- * Destroy cancels application callbacks immediately. Keep the UI thread and
- * shared framework library alive to pump deferred SDK cleanup; environment
- * release follows BrowserProcessExited, which can be delayed by other views
- * sharing the same user data folder. The caller's folder is never deleted.
  */
 UI_API ui_web_backend_t *ui_webview2_backend_create(
     const ui_webview2_backend_config_t *config,
@@ -61,8 +54,7 @@ UI_API ui_status_t ui_webview2_view_execute_script(
 /* Last asynchronous HRESULT as a platform-independent 32-bit diagnostic. */
 UI_API ui_status_t ui_webview2_view_get_error(ui_web_view_t *view,
                                              int32_t *hresult);
-/* Queries actual presentation bounds in parent-relative device pixels.
- * With framework_components, includes the framework container's position.
+/* Queries the actual controller bounds in parent-relative device pixels.
  * Returns NOT_FOUND while the controller is still being created. */
 UI_API ui_status_t ui_webview2_view_get_bounds(ui_web_view_t *view,
                                                ui_rect_t *pixel_rect);

@@ -5,6 +5,8 @@
 #include <math.h>
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
 #include "ui_framework/light_web.h"
+#endif
+#if defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2)
 #include "component_page.h"
 #endif
 #ifdef _WIN32
@@ -46,6 +48,7 @@ struct ui_component {
     component_preview_t *previews;
     ui_content_slot_t *slot;
     ui_web_backend_t *backend;
+    int backend_owned;
     ui_web_view_t *view;
     int visible, dirty, rendering, again, width, height, modal, focused;
     ui_status_t presentation_status;
@@ -57,6 +60,24 @@ struct ui_component {
 static void render_component(ui_component_t *c);
 static uint64_t tree_total(ui_component_t *c);
 static void invoke_component(ui_component_t *c,const char *command,const char *params);
+#if defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2)
+static ui_web_backend_t *component_backend(ui_component_t *c,void *parent)
+{
+    c->backend_owned=!c->desc.web_backend;if(c->desc.web_backend)return c->desc.web_backend;
+#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
+    {ui_light_web_config_t config={0};config.size=sizeof(config);config.parent_hwnd=parent;return ui_light_web_backend_create(&config);}
+#else
+    (void)parent;return NULL;
+#endif
+}
+#endif
+static void release_backend(ui_component_t *c)
+{
+#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
+    if(c->backend&&c->backend_owned)ui_light_web_backend_destroy(c->backend);
+#endif
+    c->backend=NULL;
+}
 
 static char *copy_string(const char *text, size_t *bytes)
 {
@@ -190,12 +211,14 @@ ui_component_t *ui_component_find(ui_host_t *host,const char *id)
 ui_status_t ui_component_register(ui_host_t *host,const ui_component_desc_t *d,ui_component_t **out)
 {
     ui_component_t *c;size_t i,j,bytes=0;ui_status_t status=UI_STATUS_OUT_OF_MEMORY;
-    if(!host||!d||d->size<sizeof(*d)||!out||!d->id||!*d->id||strlen(d->id)>63||d->kind<UI_COMPONENT_TREE||d->kind>UI_COMPONENT_DIALOG||
+    if(!host||!d||d->size<offsetof(ui_component_desc_t,web_backend)||!out||!d->id||!*d->id||strlen(d->id)>63||d->kind<UI_COMPONENT_TREE||d->kind>UI_COMPONENT_DIALOG||
         d->column_count>64||d->field_count>64||(d->column_count&&!d->columns)||(d->field_count&&!d->fields)||
         (d->row_height&&d->row_height<24))return UI_STATUS_INVALID_ARGUMENT;
     *out=NULL;if(ui_component_find(host,d->id))return UI_STATUS_ALREADY_EXISTS;
     c=(ui_component_t *)calloc(1,sizeof(*c));if(!c)return UI_STATUS_OUT_OF_MEMORY;
-    c->host=host;c->desc=*d;c->desc.column_count=c->desc.field_count=0;
+    c->host=host;memcpy(&c->desc,d,offsetof(ui_component_desc_t,web_backend));
+    if(d->size>=offsetof(ui_component_desc_t,web_backend)+sizeof(d->web_backend))c->desc.web_backend=d->web_backend;
+    c->desc.column_count=c->desc.field_count=0;
     memset(&c->desc.commands,0,sizeof(c->desc.commands));
     c->desc.id=copy_string(d->id,&bytes);c->desc.title=copy_string(d->title,&bytes);
     if(!c->desc.id||!c->desc.title)goto failed;
@@ -266,15 +289,15 @@ ui_status_t ui_component_query(ui_component_t *c,uint64_t parent,uint64_t first,
     c->buffered=0;c->first_column=c->render_column=first_column;c->column_count=column_count;
     return request_rows(c,parent,first,count,first_column,column_count);
 }
-static ui_status_t query_viewport(ui_component_t *c,uint64_t first,size_t column)
+static ui_status_t query_viewport(ui_component_t *c,uint64_t first,size_t column,int viewport_height)
 {
-    size_t columns=0;int used=0,height=c->height>64?c->height-64:0;ui_rect_t rows;
+    size_t columns=0;int used=0,height=viewport_height>0?viewport_height:c->height>64?c->height-64:0;ui_rect_t rows;
     c->buffered=1;c->first=first;c->first_column=column;
     c->render_column=column?column-1:0;
     while(column+columns<c->desc.column_count&&used<c->width){used+=c->columns[column+columns].width;++columns;}
     if(column+columns<c->desc.column_count)++columns;
     if(column)++columns;c->column_count=columns;
-    if(c->view&&ui_web_view_get_element_rect(c->view,"rows",&rows)==UI_STATUS_OK&&rows.height>0)height=rows.height;
+    if(viewport_height<=0&&c->view&&ui_web_view_get_element_rect(c->view,"rows",&rows)==UI_STATUS_OK&&rows.height>0)height=rows.height;
     c->visible_count=(size_t)((height+c->desc.row_height-1)/c->desc.row_height)+2+(size_t)(first<2?first:2);
     if(c->visible_count<4)c->visible_count=4;
     {size_t budget=900/(columns*2+6);if(c->visible_count>budget)c->visible_count=budget;}
@@ -561,20 +584,21 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
     if(!strcmp(action,"focus")){c->focused=uj_get(json,"focused",field,sizeof(field))&&*field;
         if(c->focused)c->host->focused_component=c;else if(c->host->focused_component==c)c->host->focused_component=NULL;return;}
     if(!strcmp(action,"metrics")){ui_rect_t rows;size_t wanted,budget;
+        int has_height=uj_get(json,"rows_height",field,sizeof(field));memset(&rows,0,sizeof(rows));if(has_height)rows.height=atoi(field);
         c->rendered_nodes=(size_t)uj_u64(json,"nodes");c->row_nodes_created=(size_t)uj_u64(json,"mounts");c->focused=uj_get(json,"focused",field,sizeof(field))&&*field;
 #ifdef _WIN32
         if(c->view&&GetFocus()==(HWND)ui_web_view_native_handle(c->view))c->host->focused_component=c;
 #endif
-        if(c->buffered&&c->desc.source&&c->desc.kind<=UI_COMPONENT_LIST&&ui_web_view_get_element_rect(c->view,"rows",&rows)==UI_STATUS_OK&&rows.height>0){
+        if(c->buffered&&c->desc.source&&c->desc.kind<=UI_COMPONENT_LIST&&(has_height||ui_web_view_get_element_rect(c->view,"rows",&rows)==UI_STATUS_OK)&&rows.height>0){
             wanted=(size_t)((rows.height+c->desc.row_height-1)/c->desc.row_height)+2+(size_t)(c->first<2?c->first:2);budget=900/(c->column_count*2+6);
             if(wanted<4)wanted=4;if(wanted>128)wanted=128;if(wanted>budget)wanted=budget;
-            if(wanted!=c->visible_count)(void)query_viewport(c,c->first,c->first_column);}return;}
+            if(wanted!=c->visible_count)(void)query_viewport(c,c->first,c->first_column,rows.height);}return;}
     if(!strcmp(action,"scroll")){uint64_t first=uj_u64(json,"first");component_page_t *p=page(c,0,0);
-        if(c->desc.kind==UI_COMPONENT_TREE){uint64_t total=tree_total(c);first=first<total?first:total?total-1:0;(void)query_viewport(c,first,c->first_column);render_component(c);return;}
+        if(c->desc.kind==UI_COMPONENT_TREE){uint64_t total=tree_total(c);first=first<total?first:total?total-1:0;(void)query_viewport(c,first,c->first_column,0);render_component(c);return;}
         if(p&&first>=p->total)first=p->total?p->total-1:0;
-        (void)query_viewport(c,first,c->first_column);return;}
+        (void)query_viewport(c,first,c->first_column,0);return;}
     if(!strcmp(action,"columns")){size_t first=(size_t)uj_u64(json,"first");if(first<c->desc.column_count)
-        (void)query_viewport(c,c->first,first);return;}
+        (void)query_viewport(c,c->first,first,0);return;}
     id=uj_u64(json,"id");
     if(!strcmp(action,"expand")){component_page_t *p=page(c,id,0);(void)ui_component_expand(c,id,!p||!p->expanded);return;}
     if(!strcmp(action,"select")){(void)ui_component_select(c,id);invoke_component(c,c->desc.commands.select,json);return;}
@@ -596,16 +620,19 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
 }
 ui_status_t ui_component_mount(ui_component_t *c,ui_content_slot_t *slot)
 {
-#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
-    ui_light_web_config_t config={0};ui_status_t status;ui_rect_t rect;
-    if(!c||!slot||c->slot)return UI_STATUS_INVALID_ARGUMENT;
-    config.size=sizeof(config);config.parent_hwnd=ui_content_slot_native_handle(slot);
-    c->backend=ui_light_web_backend_create(&config);if(!c->backend)return UI_STATUS_OUT_OF_MEMORY;
-    c->view=ui_web_view_create(c->host,c->backend);if(!c->view){ui_light_web_backend_destroy(c->backend);c->backend=NULL;return UI_STATUS_OUT_OF_MEMORY;}
+#if defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2)
+    ui_status_t status;ui_rect_t rect;uint64_t caps=0;
+    if(!c||!slot||c->view||!ui_content_slot_belongs_to(slot,c->host))return UI_STATUS_INVALID_ARGUMENT;
+    c->backend=component_backend(c,ui_content_slot_native_handle(slot));if(!c->backend)return UI_STATUS_UNSUPPORTED;
+    c->view=ui_web_view_create(c->host,c->backend);if(!c->view){release_backend(c);return UI_STATUS_OUT_OF_MEMORY;}
+    if(c->desc.web_backend&&(ui_web_view_get_capabilities(c->view,&caps)!=UI_STATUS_OK||!(caps&UI_WEB_CAP_COMPONENTS)||!ui_web_view_native_handle(c->view))){ui_web_view_destroy(c->view);c->view=NULL;release_backend(c);return UI_STATUS_UNSUPPORTED;}
+#ifdef _WIN32
+    if(c->desc.web_backend)(void)SetParent((HWND)ui_web_view_native_handle(c->view),(HWND)ui_content_slot_native_handle(slot));
+#endif
     status=ui_web_view_set_message_callback(c->view,component_message,c);
     if(status==UI_STATUS_OK)status=ui_web_view_load_html(c->view,ui_component_page);
     if(status==UI_STATUS_OK)status=ui_content_slot_attach_web_view(slot,c->view);
-    if(status!=UI_STATUS_OK){ui_web_view_destroy(c->view);c->view=NULL;ui_light_web_backend_destroy(c->backend);c->backend=NULL;return status;}
+    if(status!=UI_STATUS_OK){ui_web_view_destroy(c->view);c->view=NULL;release_backend(c);return status;}
     c->slot=slot;c->width=-1;c->height=-1;(void)rect;
     ui_components_layout(c->host);render_component(c);return UI_STATUS_OK;
 #else
@@ -619,9 +646,9 @@ void ui_components_layout(ui_host_t *host)
     ui_component_t *c;for(c=host->components;c;c=c->next)if(c->slot){ui_rect_t rect;
         if(ui_content_slot_get_rect(c->slot,&rect)==UI_STATUS_OK&&(rect.width!=c->width||rect.height!=c->height||c->dpi!=c->view->dpi)){
             c->width=rect.width;c->height=rect.height;c->dpi=c->view->dpi;
-            if(c->desc.source)(void)query_viewport(c,c->first,c->first_column);render_component(c);}}
+            if(c->desc.source)(void)query_viewport(c,c->first,c->first_column,0);render_component(c);}}
 }
-#if defined(_WIN32) && defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
+#if defined(_WIN32) && (defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2))
 static LRESULT CALLBACK dialog_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
 {
     ui_component_t *c=(ui_component_t *)GetWindowLongPtrW(hwnd,GWLP_USERDATA);
@@ -635,22 +662,23 @@ static LRESULT CALLBACK dialog_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
 }
 static ui_status_t create_dialog(ui_component_t *c)
 {
-    WNDCLASSW wc={0};ui_light_web_config_t config={0};ui_status_t status;RECT owner;HWND parent=(HWND)c->host->native_parent;
+    WNDCLASSW wc={0};ui_status_t status;RECT owner;HWND parent=(HWND)c->host->native_parent;
     wc.lpfnWndProc=dialog_proc;wc.hInstance=GetModuleHandleW(L"ui_framework.dll");wc.lpszClassName=L"UIFrameworkWebDialog3";wc.hCursor=LoadCursorW(NULL,MAKEINTRESOURCEW(32512));
     if(!RegisterClassW(&wc)&&GetLastError()!=ERROR_CLASS_ALREADY_EXISTS)return UI_STATUS_PLATFORM_ERROR;
     GetWindowRect(parent,&owner);c->dialog_window=CreateWindowExW(WS_EX_TOOLWINDOW,wc.lpszClassName,L"Application dialog",
         WS_POPUP|WS_CAPTION|WS_THICKFRAME,owner.left+40,owner.top+40,MulDiv(440,(int)c->host->dpi,96),MulDiv(380,(int)c->host->dpi,96),GetAncestor(parent,GA_ROOT),NULL,wc.hInstance,c);
     if(!c->dialog_window)return UI_STATUS_PLATFORM_ERROR;
-    config.size=sizeof(config);config.parent_hwnd=c->dialog_window;c->backend=ui_light_web_backend_create(&config);
+    c->backend=component_backend(c,c->dialog_window);
     c->view=c->backend?ui_web_view_create(c->host,c->backend):NULL;
     if(!c->view){status=UI_STATUS_OUT_OF_MEMORY;goto fail;}
+    if(c->desc.web_backend){HWND child=(HWND)ui_web_view_native_handle(c->view);if(!child){status=UI_STATUS_UNSUPPORTED;goto fail;}(void)SetParent(child,(HWND)c->dialog_window);}
     status=ui_web_view_set_message_callback(c->view,component_message,c);
     if(status==UI_STATUS_OK)status=ui_web_view_load_html(c->view,ui_component_page);
     if(status!=UI_STATUS_OK)goto fail;
     SendMessageW((HWND)c->dialog_window,WM_SIZE,0,0);return UI_STATUS_OK;
 fail:
     if(c->view)ui_web_view_destroy(c->view);c->view=NULL;
-    if(c->backend)ui_light_web_backend_destroy(c->backend);c->backend=NULL;
+    release_backend(c);
     DestroyWindow((HWND)c->dialog_window);c->dialog_window=NULL;return status;
 }
 #endif
@@ -658,10 +686,11 @@ ui_status_t ui_component_show_dialog(ui_component_t *c)
 {
     if(!c||c->desc.kind!=UI_COMPONENT_DIALOG)return UI_STATUS_INVALID_ARGUMENT;
     if(c->host->modal_component&&c->host->modal_component!=c)return UI_STATUS_ALREADY_EXISTS;
-#if defined(_WIN32) && !defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
+    (void)ui_host_close_menu(c->host);c->host->menu_pressed_key=0;
+#if defined(_WIN32) && !defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) && !defined(UI_FRAMEWORK_HAS_WEBVIEW2)
     return UI_STATUS_UNSUPPORTED;
 #else
-#if defined(_WIN32) && defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
+#if defined(_WIN32) && (defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2))
     if(c->host->run_mode==UI_RUN_OFFSCREEN||(!c->host->native_parent&&c->view)){
         if(!c->view){ui_status_t status=ui_component_mount_offscreen(c,440,380,c->host->dpi);if(status!=UI_STATUS_OK)return status;}
     }else{
@@ -695,7 +724,7 @@ ui_status_t ui_component_close_dialog(ui_component_t *c)
 }
 void ui_components_active(ui_host_t *host,int active)
 {
-    ui_component_t *c;host->app_active=active!=0;if(!active)(void)ui_host_close_menu(host);
+    ui_component_t *c;host->app_active=active!=0;if(!active){host->menu_pressed_key=0;(void)ui_host_close_menu(host);}
     for(c=host->components;c;c=c->next){
 #ifdef _WIN32
         if(c->dialog_window)ShowWindow((HWND)c->dialog_window,active&&c->modal?SW_SHOWNOACTIVATE:SW_HIDE);
@@ -712,9 +741,7 @@ static void destroy_component(ui_component_t *c)
 #ifdef _WIN32
     if(c->dialog_window)DestroyWindow((HWND)c->dialog_window);
 #endif
-#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
-    if(c->backend)ui_light_web_backend_destroy(c->backend);
-#endif
+    release_backend(c);
     free_pages(c);free_thumbs(c);release_previews(c,1);free_description(c);free(c);
 }
 ui_status_t ui_component_unregister(ui_component_t *c)
@@ -732,13 +759,14 @@ ui_status_t ui_component_mount_offscreen(ui_component_t *c,int width,int height,
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
     ui_light_web_config_t config={0};ui_status_t status;
     if(!c||c->view||width<=0||height<=0||dpi<48||dpi>768)return UI_STATUS_INVALID_ARGUMENT;
-    config.size=sizeof(config);c->backend=ui_light_web_backend_create(&config);if(!c->backend)return UI_STATUS_OUT_OF_MEMORY;
+    if(c->desc.web_backend)return UI_STATUS_UNSUPPORTED;
+    config.size=sizeof(config);c->backend_owned=1;c->backend=ui_light_web_backend_create(&config);if(!c->backend)return UI_STATUS_OUT_OF_MEMORY;
     c->view=ui_web_view_create(c->host,c->backend);if(!c->view){ui_light_web_backend_destroy(c->backend);c->backend=NULL;return UI_STATUS_OUT_OF_MEMORY;}
     status=ui_web_view_set_message_callback(c->view,component_message,c);
     if(status==UI_STATUS_OK)status=ui_web_view_load_html(c->view,ui_component_page);
     if(status==UI_STATUS_OK)status=ui_web_view_resize(c->view,width,height,dpi);
     if(status!=UI_STATUS_OK){ui_web_view_destroy(c->view);c->view=NULL;ui_light_web_backend_destroy(c->backend);c->backend=NULL;return status;}
-    c->width=width;c->height=height;c->dpi=dpi;if(c->desc.source)(void)query_viewport(c,c->first,c->first_column);render_component(c);return UI_STATUS_OK;
+    c->width=width;c->height=height;c->dpi=dpi;if(c->desc.source)(void)query_viewport(c,c->first,c->first_column,0);render_component(c);return UI_STATUS_OK;
 #else
     (void)c;(void)width;(void)height;(void)dpi;return UI_STATUS_UNSUPPORTED;
 #endif
@@ -759,7 +787,8 @@ ui_status_t ui_component_dispatch_input(ui_component_t *c,const ui_input_event_t
 ui_status_t ui_component_get_presentation(ui_component_t *c,const char *id,ui_element_presentation_t *out)
 {return !c?UI_STATUS_INVALID_ARGUMENT:!c->view?UI_STATUS_NOT_FOUND:ui_web_view_get_presentation(c->view,id,out);}
 ui_status_t ui_component_capture_rgba(ui_component_t *c,int width,int height,uint32_t dpi,ui_pixel_buffer_t *out)
-{if(!c||!c->view||width<=0||height<=0||dpi<48||dpi>768||!out||out->size<sizeof(*out))return UI_STATUS_INVALID_ARGUMENT;c->width=width;c->height=height;c->dpi=dpi;render_component(c);return ui_web_view_capture_rgba(c->view,width,height,dpi,out);}
+{if(!c||!c->view||width<=0||height<=0||dpi<48||dpi>768||!out||out->size<sizeof(*out))return UI_STATUS_INVALID_ARGUMENT;
+ if(c->width!=width||c->height!=height||c->dpi!=dpi){c->width=width;c->height=height;c->dpi=dpi;render_component(c);}return ui_web_view_capture_rgba(c->view,width,height,dpi,out);}
 ui_status_t ui_component_flush(ui_component_t *c,uint32_t budget)
 {return !c?UI_STATUS_INVALID_ARGUMENT:!c->view?UI_STATUS_NOT_FOUND:ui_web_view_flush(c->view,budget);}
 

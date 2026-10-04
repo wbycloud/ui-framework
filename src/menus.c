@@ -4,6 +4,7 @@
 #include <stdio.h>
 #ifdef _WIN32
 #include <windows.h>
+#include <imm.h>
 #endif
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
 #include "ui_framework/light_web.h"
@@ -13,6 +14,7 @@
 typedef struct menu_group {
     char *path, *title;
     int order;
+    uint32_t access_key;
     struct menu_group *next;
 } menu_group_t;
 typedef struct menu_row {
@@ -27,6 +29,7 @@ typedef struct ui_menu_popup {
     ui_web_view_t *view;
     void *window, *previous_focus;
     char *path, *detail;
+    char keyboard_focus[4096];
     ui_menu_anchor_t anchor;
     uint64_t target_id, generation;
     int open, toolbar, width, height;
@@ -51,10 +54,13 @@ static menu_group_t *find_group(ui_host_t *host,const char *path)
 ui_status_t ui_host_register_menu_group(ui_host_t *host,const ui_menu_group_desc_t *desc)
 {
     menu_group_t *g;
-    if(!host||!desc||desc->size<sizeof(*desc)||!desc->path||!*desc->path||strlen(desc->path)>4095||!desc->title)return UI_STATUS_INVALID_ARGUMENT;
+    if(!host||!desc||desc->size<offsetof(ui_menu_group_desc_t,access_key)||!desc->path||!*desc->path||strlen(desc->path)>4095||!desc->title)return UI_STATUS_INVALID_ARGUMENT;
     if(find_group(host,desc->path))return UI_STATUS_ALREADY_EXISTS;
     g=(menu_group_t *)calloc(1,sizeof(*g));if(!g)return UI_STATUS_OUT_OF_MEMORY;
     g->path=ui_strdup(desc->path);g->title=ui_strdup(desc->title);g->order=desc->order;
+    if(desc->size>=offsetof(ui_menu_group_desc_t,access_key)+sizeof(desc->access_key))g->access_key=desc->access_key;
+    if(g->access_key>='a'&&g->access_key<='z')g->access_key-=32;
+    if(g->access_key&&!(g->access_key>='A'&&g->access_key<='Z')&&!(g->access_key>='0'&&g->access_key<='9')){free(g->path);free(g->title);free(g);return UI_STATUS_INVALID_ARGUMENT;}
     if(!g->path||!g->title){free(g->path);free(g->title);free(g);return UI_STATUS_OUT_OF_MEMORY;}
     g->next=(menu_group_t *)host->menu_groups;host->menu_groups=g;return ui_host_emit_event(host,"ui.commands.changed","{}");
 }
@@ -84,8 +90,8 @@ static ui_status_t collect_menu(ui_host_t *host,const char *path,menu_rows_t *ou
         if(*tail){if(prefix)snprintf(row->path,sizeof(row->path),"%s/%.*s",path,(int)length,tail);else snprintf(row->path,sizeof(row->path),"%.*s",(int)length,tail);
             group=find_group(host,row->path);row->entry.group=1;row->entry.path=row->path;row->entry.id=row->path;
             row->entry.title=group?group->title:strrchr(row->path,'/');if(!group)row->entry.title=row->entry.title?row->entry.title+1:row->path;
-            if(group)row->entry.order=group->order;row->entry.command_id="";row->entry.state.enabled=1;row->entry.state.busy=0;
-        }else{row->entry.id=m->id;row->entry.title=m->title;row->entry.path=m->menu_path;row->entry.command_id=m->command_id;row->entry.image_id=m->image_id;}
+            if(group){row->entry.order=group->order;row->entry.access_key=group->access_key;}row->entry.command_id="";row->entry.state.enabled=1;row->entry.state.busy=0;
+        }else{row->entry.id=m->id;row->entry.title=m->title;row->entry.path=m->menu_path;row->entry.command_id=m->command_id;row->entry.image_id=m->image_id;row->entry.access_key=m->access_key;}
     }
     /* Group strings point into rows, so repair them after sorting. */
     qsort(out->rows,out->count,sizeof(out->rows[0]),row_compare);
@@ -132,10 +138,10 @@ static int valid_target(ui_menu_popup_t *p)
 ui_status_t ui_host_close_menu(ui_host_t *host)
 {
     ui_menu_popup_t *p;if(!host)return UI_STATUS_INVALID_ARGUMENT;p=(ui_menu_popup_t *)host->menu_popup;
-    if(!p||!p->open)return UI_STATUS_OK;p->open=0;
+    host->menu_alt_pending=0;if(!p||!p->open)return UI_STATUS_OK;p->open=0;
 #ifdef _WIN32
     if(p->window)ShowWindow((HWND)p->window,SW_HIDE);
-    if(p->previous_focus&&IsWindow((HWND)p->previous_focus)&&IsWindowEnabled((HWND)p->previous_focus))SetFocus((HWND)p->previous_focus);
+    if(host->app_active&&!host->dispatch_blocked&&!host->modal_component&&p->previous_focus&&IsWindow((HWND)p->previous_focus)&&IsWindowEnabled((HWND)p->previous_focus)&&IsWindowVisible((HWND)p->previous_focus))SetFocus((HWND)p->previous_focus);
 #endif
     return UI_STATUS_OK;
 }
@@ -148,10 +154,11 @@ static ui_status_t paint_popup(ui_menu_popup_t *p)
     status=p->detail?UI_STATUS_OK:popup_rows(p,rows);if(status!=UI_STATUS_OK){free(rows);return status;}
     if(page_count<1)page_count=1;if(start>=rows->count&&rows->count){p->first=0;start=p->toolbar_first;}end=start+page_count;if(end>rows->count)end=rows->count;
     uj_add(&json,"{\"title\":");uj_string(&json,p->toolbar?"工具":p->path?p->path:"菜单");uj_add(&json,",\"detail\":");uj_string(&json,p->detail?p->detail:"");
+    uj_add(&json,",\"focus\":");uj_string(&json,p->keyboard_focus);p->keyboard_focus[0]=0;
     uj_fmt(&json,",\"first\":%zu,\"total\":%zu,\"back\":%s,\"items\":[",start,rows->count,p->path&&*p->path?"true":"false");
     for(size_t i=start;i<end;++i){ui_menu_model_entry_t *e=&rows->rows[i].entry;if(i>start)uj_add(&json,",");uj_add(&json,"{\"id\":");uj_string(&json,e->id);{char dom[80];menu_dom_id(e->id,dom);uj_add(&json,",\"dom\":");uj_string(&json,dom);}
         uj_add(&json,",\"title\":");if(p->toolbar){ui_toolbar_entry_t *bar;for(bar=p->host->toolbars;bar&&strcmp(bar->id,e->path);bar=bar->next){}uj_string(&json,bar?bar->title:"");uj_add(&json,",\"section\":");}uj_string(&json,e->title);
-        uj_fmt(&json,",\"group\":%s,\"image\":\"%llu\",\"enabled\":%s,\"checked\":%s,\"busy\":%s}",e->group?"true":"false",(unsigned long long)e->image_id,e->state.enabled?"true":"false",e->state.checked?"true":"false",e->state.busy?"true":"false");}
+        uj_fmt(&json,",\"access\":%u,\"group\":%s,\"image\":\"%llu\",\"enabled\":%s,\"checked\":%s,\"busy\":%s}",e->access_key,e->group?"true":"false",(unsigned long long)e->image_id,e->state.enabled?"true":"false",e->state.checked?"true":"false",e->state.busy?"true":"false");}
     uj_add(&json,"]}");free(rows);status=json.failed?UI_STATUS_LIMIT_EXCEEDED:ui_web_view_post_json(p->view,json.data);free(json.data);return status;
 }
 static void popup_message(ui_web_view_t *view,const char *json,void *data)
@@ -203,6 +210,9 @@ static ui_status_t ensure_popup(ui_host_t *host,ui_menu_popup_t **out)
 #endif
     config.size=sizeof(config);config.parent_hwnd=p->window;p->backend=ui_light_web_backend_create(&config);
     p->view=p->backend?ui_web_view_create(host,p->backend):NULL;status=p->view?ui_web_view_set_message_callback(p->view,popup_message,p):UI_STATUS_OUT_OF_MEMORY;
+#ifdef _WIN32
+    if(p->view&&p->window)(void)ImmAssociateContextEx((HWND)ui_web_view_native_handle(p->view),NULL,IACE_CHILDREN);
+#endif
     if(status==UI_STATUS_OK)status=ui_web_view_load_html(p->view,ui_menu_page);
     if(status!=UI_STATUS_OK){if(p->view)ui_web_view_destroy(p->view);if(p->backend)ui_light_web_backend_destroy(p->backend);
 #ifdef _WIN32
@@ -229,7 +239,7 @@ static ui_status_t show_popup(ui_menu_popup_t *p)
         x=point.x;y=point.y;if(y+height>monitor.rcWork.bottom)y=point.y-MulDiv(rect.height,(int)dpi,96)-height;
         if(x+width>monitor.rcWork.right)x=point.x+MulDiv(rect.width,(int)dpi,96)-width;
         if(x<monitor.rcWork.left)x=monitor.rcWork.left;if(y<monitor.rcWork.top)y=monitor.rcWork.top;
-        p->width=MulDiv(width,96,(int)dpi);p->height=MulDiv(height,96,(int)dpi);p->previous_focus=GetFocus();
+        p->width=MulDiv(width,96,(int)dpi);p->height=MulDiv(height,96,(int)dpi);if(!p->open)p->previous_focus=GetFocus();
         SetWindowPos((HWND)p->window,HWND_TOP,x,y,width,height,SWP_NOACTIVATE);
     }
 #endif
@@ -282,8 +292,47 @@ ui_status_t ui_host_show_tooltip(ui_host_t *host,const ui_menu_anchor_t *anchor,
 #endif
 }
 ui_status_t ui_host_menu_dispatch_input(ui_host_t *host,const ui_input_event_t *event)
-{ui_menu_popup_t *p=host?(ui_menu_popup_t *)host->menu_popup:NULL;if(!p||!p->open)return UI_STATUS_NOT_FOUND;
- if(!valid_target(p)){(void)ui_host_close_menu(host);return UI_STATUS_CANCELLED;}return ui_web_view_dispatch_input(p->view,event);}
+{
+ ui_menu_popup_t *p;ui_status_t status;ui_command_entry_t *c;
+ if(!host||!event||event->size<sizeof(*event))return UI_STATUS_INVALID_ARGUMENT;p=(ui_menu_popup_t *)host->menu_popup;
+ if(host->dispatch_blocked||!host->app_active||host->modal_component){host->menu_alt_pending=0;host->menu_pressed_key=0;(void)ui_host_close_menu(host);return UI_STATUS_CANCELLED;}
+ if(event->kind==UI_INPUT_KEY_UP){
+   if(event->key_code==18&&host->menu_alt_pending){ui_menu_popup_desc_t d={0};host->menu_alt_pending=0;d.size=sizeof(d);d.path="";d.anchor.size=sizeof(d.anchor);d.anchor.rect.height=host->layout_rects[UI_LAYOUT_REGION_MENU_BAR].height;return ui_host_show_menu(host,&d);}
+   if(host->menu_pressed_key==event->key_code){host->menu_pressed_key=0;return UI_STATUS_OK;}
+   return p&&p->open?UI_STATUS_OK:UI_STATUS_NOT_FOUND;
+ }
+ if(event->kind==UI_INPUT_KEY_DOWN){
+   if(event->modifiers&(UI_INPUT_MODIFIER_CONTROL|UI_INPUT_MODIFIER_SHIFT)){host->menu_alt_pending=0;return UI_STATUS_NOT_FOUND;}
+   if(event->key_code==18){if(host->menu_pressed_key==18||host->menu_alt_pending)return UI_STATUS_OK;if(p&&p->open){(void)ui_host_close_menu(host);host->menu_pressed_key=18;}else host->menu_alt_pending=1;return UI_STATUS_OK;}
+   host->menu_alt_pending=0;
+   if((event->modifiers&UI_INPUT_MODIFIER_ALT)&&(event->key_code<'0'||event->key_code>'Z'))return UI_STATUS_NOT_FOUND;
+   for(c=host->commands;c;c=c->next)if(event->modifiers&&c->shortcut_key==event->key_code&&c->shortcut_modifiers==event->modifiers&&c->state.visible&&c->state.enabled&&!c->state.busy)return UI_STATUS_NOT_FOUND;
+   if((!p||!p->open)&&(event->modifiers&UI_INPUT_MODIFIER_ALT)){
+     menu_rows_t *rows=(menu_rows_t *)malloc(sizeof(*rows));int found=0;if(!rows)return UI_STATUS_OUT_OF_MEMORY;
+     status=collect_menu(host,"",rows);if(status==UI_STATUS_OK)for(size_t i=0;i<rows->count;++i)if(rows->rows[i].entry.access_key==event->key_code){found=1;break;}free(rows);if(!found)return UI_STATUS_NOT_FOUND;
+     {ui_menu_popup_desc_t d={0};d.size=sizeof(d);d.path="";d.anchor.size=sizeof(d.anchor);d.anchor.rect.height=host->layout_rects[UI_LAYOUT_REGION_MENU_BAR].height;status=ui_host_show_menu(host,&d);if(status!=UI_STATUS_OK)return status;}p=(ui_menu_popup_t *)host->menu_popup;
+   }
+   if(host->menu_pressed_key==event->key_code)return UI_STATUS_OK;
+   if(!p||!p->open||p->detail)return UI_STATUS_NOT_FOUND;host->menu_pressed_key=event->key_code;
+#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
+   if(event->key_code>='0'&&event->key_code<='Z'){
+     menu_rows_t *rows=(menu_rows_t *)malloc(sizeof(*rows));size_t hits[UI_MENU_MAX_ITEMS],n=0,next=0;
+     if(!rows)return UI_STATUS_OUT_OF_MEMORY;status=popup_rows(p,rows);if(status==UI_STATUS_OK)for(size_t i=0;i<rows->count;++i){ui_menu_model_entry_t *e=&rows->rows[i].entry;
+       if(e->access_key==event->key_code&&e->state.enabled&&!e->state.busy){ui_element_presentation_t at={0};at.size=sizeof(at);hits[n++]=i;
+         if(ui_host_menu_get_item_presentation(host,e->id,&at)==UI_STATUS_OK&&at.focused)next=n;}}
+     if(n){ui_menu_model_entry_t *e=&rows->rows[hits[next%n]].entry;
+       if(n==1){ui_json_t j={0};uj_add(&j,"{\"action\":\"choose\",\"id\":");uj_string(&j,e->id);uj_add(&j,"}");free(rows);if(!j.failed)popup_message(p->view,j.data,p);status=j.failed?UI_STATUS_LIMIT_EXCEEDED:UI_STATUS_OK;free(j.data);return status;}
+       snprintf(p->keyboard_focus,sizeof(p->keyboard_focus),"%s",e->id);p->first=hits[next%n];free(rows);return paint_popup(p);
+     }free(rows);host->menu_pressed_key=0;return UI_STATUS_NOT_FOUND;
+   }
+#endif
+ }
+ if(!p||!p->open)return UI_STATUS_NOT_FOUND;
+ if(!valid_target(p)){(void)ui_host_close_menu(host);return UI_STATUS_CANCELLED;}
+ host->menu_routing=1;status=ui_web_view_dispatch_input(p->view,event);host->menu_routing=0;return status;
+}
+ui_status_t ui_menus_route_input(ui_host_t *host,const void *view_data,const ui_input_event_t *event,int composing)
+{(void)view_data;if(!host||host->menu_routing||composing||(event->kind!=UI_INPUT_KEY_DOWN&&event->kind!=UI_INPUT_KEY_UP))return UI_STATUS_NOT_FOUND;return ui_host_menu_dispatch_input(host,event);}
 ui_status_t ui_host_menu_get_presentation(ui_host_t *host,const char *id,ui_element_presentation_t *out)
 {ui_menu_popup_t *p=host?(ui_menu_popup_t *)host->menu_popup:NULL;return !p||!p->open?UI_STATUS_NOT_FOUND:ui_web_view_get_presentation(p->view,id,out);}
 ui_status_t ui_host_menu_capture_rgba(ui_host_t *host,ui_pixel_buffer_t *out)
@@ -322,7 +371,7 @@ ui_status_t ui_host_hide_tooltip(ui_host_t *host)
 ui_status_t ui_host_menu_get_capabilities(ui_host_t *host,uint64_t *out)
 {if(!host||!out)return UI_STATUS_INVALID_ARGUMENT;*out=UI_MENU_CAP_MODEL;
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
-*out|=UI_MENU_CAP_POPUP|UI_MENU_CAP_OFFSCREEN;
+*out|=UI_MENU_CAP_POPUP|UI_MENU_CAP_OFFSCREEN|UI_MENU_CAP_ACCESS_KEYS;
 #endif
 return UI_STATUS_OK;}
 

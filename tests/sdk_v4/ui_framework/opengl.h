@@ -18,8 +18,7 @@ typedef struct ui_opengl_config {
     int major_version;
     int minor_version;
     ui_opengl_profile_t profile;
-    /* Zero disables MSAA. Windowed: requests at least this many samples.
-     * Offscreen/windowless: exact positive count, or UNSUPPORTED. */
+    /* Zero disables MSAA; a positive value requests at least this many samples. */
     int samples;
     int debug_context;
     /* Explicit legacy path: all version/profile/sample/debug fields must be zero. */
@@ -41,21 +40,9 @@ typedef struct ui_opengl_info {
 } ui_opengl_info_t;
 
 typedef void (*ui_opengl_proc_t)(void);
-typedef enum ui_opengl_window_dependency { UI_OPENGL_VISIBLE_WINDOW=0, UI_OPENGL_HIDDEN_WINDOW=1, UI_OPENGL_NO_WINDOW=2 } ui_opengl_window_dependency_t;
-typedef struct ui_opengl_windowless_config {
-    uint32_t size;
-    /* Absolute UTF-8 path to an x64 OSMesa DLL and adjacent dependencies.
-     * Explicit software desktop GL provider. No HWND/DC is created or used.
-     * All frame GL calls MUST use this surface's get_proc_address, including
-     * GL1.1 calls. opengl32 imports belong to WGL, a different provider.
-     * Contexts and attachments are released on destruction. OSMesa's process
-     * screen/worker cache keeps the provider module loaded until process exit. */
-    const char *library_path_utf8;
-} ui_opengl_windowless_config_t;
-UI_API ui_surface_t *ui_opengl_windowless_surface_create(ui_host_t *,const ui_surface_desc_t *,const ui_opengl_config_t *,const ui_opengl_windowless_config_t *,ui_status_t *);
+typedef enum ui_opengl_window_dependency { UI_OPENGL_VISIBLE_WINDOW=0, UI_OPENGL_HIDDEN_WINDOW=1 } ui_opengl_window_dependency_t;
 /* Windows hidden WGL drawable + private FBO; requires >=3.3 compatibility.
- * Exact FBO samples (0 => single sample), no legacy fallback.
- * UI/context owner thread only. Not Session0 support. */
+ * No MSAA/legacy fallback. UI/context owner thread only. Not Session0 support. */
 UI_API ui_surface_t *ui_opengl_offscreen_surface_create(ui_host_t *,const ui_surface_desc_t *,const ui_opengl_config_t *,ui_status_t *);
 UI_API ui_status_t ui_opengl_surface_get_window_dependency(const ui_surface_t *,ui_opengl_window_dependency_t *);
 /* NULL pixels queries size without executing frame. Otherwise invokes existing

@@ -22,6 +22,7 @@ struct ui_surface {
     ui_rect_t pixel_rect;
     int visible;
     int offscreen;
+    const char *gl_library_path; /* Borrowed only during provider creation. */
     ui_layout_region_t layout_region;
     ui_surface_resize_fn resized;
     ui_surface_frame_fn frame;
@@ -74,6 +75,8 @@ struct ui_host {
     ui_command_entry_t *commands;
     ui_menu_entry_t *menus;
     void *menu_groups, *menu_popup;
+    int menu_alt_pending, menu_routing;
+    uint32_t menu_pressed_key;
     ui_toolbar_entry_t *toolbars;
     ui_toolbar_item_entry_t *toolbar_items;
     ui_panel_entry_t *panels;
@@ -110,6 +113,7 @@ struct ui_menu_entry {
     char *command_id;
     int order;
     uint64_t image_id;
+    uint32_t access_key;
     ui_command_state_t state;
     ui_menu_entry_t *next;
 };
@@ -161,6 +165,7 @@ void ui_components_destroy(ui_host_t *host);
 void ui_menus_destroy(ui_host_t *);
 void ui_menus_commands_changed(ui_host_t *);
 void ui_menus_hide_tooltip(ui_host_t *);
+ui_status_t ui_menus_route_input(ui_host_t *,const void *,const ui_input_event_t *,int composing);
 void ui_menus_component_invalidated(ui_host_t *,ui_component_t *,uint64_t);
 int ui_component_menu_target_valid(ui_component_t *,uint64_t,uint64_t);
 ui_status_t ui_component_menu_anchor(ui_component_t *,ui_host_t *,uint64_t,ui_rect_t *,void **,uint64_t *);
@@ -168,6 +173,7 @@ void ui_components_layout(ui_host_t *host);
 void ui_components_active(ui_host_t *host, int active);
 int ui_components_input_allowed(const ui_host_t *host, const void *view_data);
 void ui_images_destroy(ui_host_t *host);
+ui_status_t ui_image_png_stream(const ui_host_t *,uint64_t,void **);
 ui_status_t ui_images_reserve_metadata(ui_host_t *host,size_t bytes);
 void ui_images_release_metadata(ui_host_t *host,size_t bytes);
 void ui_image_changed(ui_host_t *host, uint64_t id);

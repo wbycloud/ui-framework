@@ -9,8 +9,6 @@ typedef struct ui_menu_group_desc {
     uint32_t size;
     const char *path, *title;
     int order;
-    uint32_t reserved_v4; /* Retains the complete old 32-byte prefix. */
-    uint32_t access_key; /* API5 optional ASCII letter/digit; missing => 0. */
 } ui_menu_group_desc_t;
 typedef struct ui_menu_model_entry {
     uint32_t size;
@@ -18,8 +16,6 @@ typedef struct ui_menu_model_entry {
     int group, order;
     uint64_t image_id;
     ui_command_state_t state;
-    uint32_t reserved_v4; /* Preserve the old model's 80-byte full prefix. */
-    uint32_t access_key;
 } ui_menu_model_entry_t;
 /* Strings and entry borrowed only during the UI-thread visitor. */
 typedef void (*ui_menu_visit_fn)(const ui_menu_model_entry_t *, void *);
@@ -55,12 +51,6 @@ UI_API ui_status_t ui_host_menu_get_capabilities(ui_host_t *, uint64_t *);
 #define UI_MENU_CAP_MODEL UINT64_C(1)
 #define UI_MENU_CAP_POPUP UINT64_C(2)
 #define UI_MENU_CAP_OFFSCREEN UINT64_C(4)
-#define UI_MENU_CAP_ACCESS_KEYS UINT64_C(8)
-/* Feed KEY_DOWN/KEY_UP before ordinary shortcuts. Bare Alt release opens root;
- * Alt+access key opens a group. Ctrl/AltGr and registered Alt shortcuts retain
- * priority. Same-level duplicates cycle focus; Enter executes once per press.
- * NOT_FOUND means not consumed. Native callers suppress translated SYSCHAR
- * when consumed and do not feed composition keys. UI thread only. */
 UI_API ui_status_t ui_host_menu_dispatch_input(ui_host_t *, const ui_input_event_t *);
 UI_API ui_status_t ui_host_menu_get_presentation(ui_host_t *, const char *, ui_element_presentation_t *);
 UI_API ui_status_t ui_host_menu_get_item_presentation(ui_host_t *,const char *registered_id,ui_element_presentation_t *);

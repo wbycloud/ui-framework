@@ -77,9 +77,6 @@ typedef struct ui_component_desc {
     ui_component_source_fn source;
     void *user_data;
     int row_height; /* zero => 32 logical pixels; minimum 24 */
-    /* API5 borrowed backend, retained through unregister/host teardown.
-     * NULL selects the framework-owned light backend. */
-    ui_web_backend_t *web_backend;
 } ui_component_desc_t;
 typedef struct ui_component_batch {
     uint32_t size;

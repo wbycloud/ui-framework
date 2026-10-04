@@ -215,6 +215,36 @@ int ui_image_draw(const ui_host_t *host,uint64_t id, void *context, const void *
     (void)host; (void)id; (void)context; (void)rectangle; (void)disabled; return 0;
 #endif
 }
+ui_status_t ui_image_png_stream(const ui_host_t *host,uint64_t id,void **output)
+{
+#ifdef _WIN32
+    ui_image_entry_t *p;IWICImagingFactory *factory=NULL;IWICBitmapEncoder *encoder=NULL;IWICBitmapFrameEncode *frame=NULL;IStream *stream=NULL;
+    uint8_t *pixels=NULL;UINT width,height;size_t bytes;HRESULT hr;WICPixelFormatGUID format=GUID_WICPixelFormat32bppBGRA;
+    if(!host||!output)return UI_STATUS_INVALID_ARGUMENT;*output=NULL;
+    LOCK();for(p=all_images;p&&p->id!=id;p=p->global_next){}
+    if(!p||(p->host!=host&&p->host!=host->image_source)){UNLOCK();return UI_STATUS_NOT_FOUND;}
+    width=p->width;height=p->height;bytes=p->bytes;pixels=(uint8_t *)malloc(bytes);if(!pixels){UNLOCK();return UI_STATUS_OUT_OF_MEMORY;}
+    for(size_t i=0;i<bytes;i+=4){unsigned a=p->pixels[i+3];for(size_t k=0;k<3;++k)pixels[i+k]=a?(uint8_t)((p->pixels[i+k]*255u+a/2)/a):0;pixels[i+3]=(uint8_t)a;}
+    p->used=++use_sequence;UNLOCK();
+    hr=CreateStreamOnHGlobal(NULL,TRUE,&stream);
+    if(SUCCEEDED(hr))hr=CoCreateInstance(&CLSID_WICImagingFactory,NULL,CLSCTX_INPROC_SERVER,&IID_IWICImagingFactory,(void **)&factory);
+    if(SUCCEEDED(hr))hr=IWICImagingFactory_CreateEncoder(factory,&GUID_ContainerFormatPng,NULL,&encoder);
+    if(SUCCEEDED(hr))hr=IWICBitmapEncoder_Initialize(encoder,stream,WICBitmapEncoderNoCache);
+    if(SUCCEEDED(hr))hr=IWICBitmapEncoder_CreateNewFrame(encoder,&frame,NULL);
+    if(SUCCEEDED(hr))hr=IWICBitmapFrameEncode_Initialize(frame,NULL);
+    if(SUCCEEDED(hr))hr=IWICBitmapFrameEncode_SetSize(frame,width,height);
+    if(SUCCEEDED(hr))hr=IWICBitmapFrameEncode_SetPixelFormat(frame,&format);
+    if(SUCCEEDED(hr)&&!IsEqualGUID(&format,&GUID_WICPixelFormat32bppBGRA))hr=E_FAIL;
+    if(SUCCEEDED(hr))hr=IWICBitmapFrameEncode_WritePixels(frame,height,width*4,(UINT)bytes,pixels);
+    if(SUCCEEDED(hr))hr=IWICBitmapFrameEncode_Commit(frame);
+    if(SUCCEEDED(hr))hr=IWICBitmapEncoder_Commit(encoder);
+    if(SUCCEEDED(hr)){LARGE_INTEGER zero={0};hr=IStream_Seek(stream,zero,STREAM_SEEK_SET,NULL);}
+    free(pixels);if(frame)IWICBitmapFrameEncode_Release(frame);if(encoder)IWICBitmapEncoder_Release(encoder);if(factory)IWICImagingFactory_Release(factory);
+    if(FAILED(hr)){if(stream)IStream_Release(stream);return UI_STATUS_PLATFORM_ERROR;}*output=stream;return UI_STATUS_OK;
+#else
+    (void)host;(void)id;(void)output;return UI_STATUS_UNSUPPORTED;
+#endif
+}
 ui_status_t ui_image_load_png(ui_host_t *host, const void *data, size_t bytes, ui_image_id_t *id)
 {
 #ifdef _WIN32

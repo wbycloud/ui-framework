@@ -18,7 +18,7 @@
 extern "C" {
 #endif
 
-#define UI_FRAMEWORK_API_VERSION 5u
+#define UI_FRAMEWORK_API_VERSION 4u
 #define UI_FRAMEWORK_MIN_API_VERSION 1u
 
 typedef struct ui_host ui_host_t;
@@ -90,7 +90,6 @@ typedef ui_narrow_window_policy_t (*ui_narrow_policy_fn)(
     ui_narrow_window_policy_t configured_policy, void *user_data);
 
 typedef enum ui_status {
-    UI_STATUS_PENDING = 1, /* API5 asynchronous rendering; pump UI and poll. */
     UI_STATUS_OK = 0,
     UI_STATUS_INVALID_ARGUMENT = -1,
     UI_STATUS_OUT_OF_MEMORY = -2,
@@ -172,8 +171,6 @@ typedef struct ui_menu_item_desc {
     int order;
     uint32_t reserved_v2;
     uint64_t image_id;
-    /* API5: 0 disables; ASCII A-Z/a-z/0-9 mnemonic, independent of title. */
-    uint32_t access_key;
 } ui_menu_item_desc_t;
 
 /* Toolbars are registered separately from their command-backed items. */
@@ -322,7 +319,6 @@ typedef struct ui_pixel_buffer {
 } ui_pixel_buffer_t;
 #define UI_WEB_CAP_OFFSCREEN_CAPTURE UINT64_C(256)
 #define UI_WEB_CAP_PRESENTATION_QUERY UINT64_C(512)
-#define UI_WEB_CAP_ASYNC_RENDER UINT64_C(1024)
 
 typedef struct ui_web_backend_ops {
     uint32_t size;
@@ -351,9 +347,6 @@ typedef struct ui_web_backend_desc {
     void *user_data;
 } ui_web_backend_desc_t;
 
-/* UI-thread. Async backends return PENDING; pump normally then retry the same
- * query/capture. No caller buffer is retained. A completed result is consumed
- * once; navigation/resize/input/data changes invalidate previous results. */
 UI_API ui_status_t ui_web_view_get_presentation(ui_web_view_t *, const char *, ui_element_presentation_t *);
 UI_API ui_status_t ui_web_view_capture_rgba(ui_web_view_t *, int width, int height,
     uint32_t dpi, ui_pixel_buffer_t *);

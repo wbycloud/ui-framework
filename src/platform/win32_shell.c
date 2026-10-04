@@ -133,6 +133,11 @@ static void detach_slot(ui_content_slot_t *slot)
         if (window != NULL && IsWindow(window))
             (void)SetParent(window, slot->shell->native->parent);
     }
+    if (slot->web_view != NULL && slot->panel_id != NULL) {
+        HWND window = (HWND)ui_web_view_native_handle(slot->web_view);
+        if (window != NULL && IsWindow(window))
+            (void)SetParent(window, slot->shell->native->parent);
+    }
     slot->surface = NULL;
     slot->web_view = NULL;
     slot->visible = 0;

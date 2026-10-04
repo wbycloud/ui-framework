@@ -346,7 +346,7 @@ ui_status_t ui_host_get_run_mode(const ui_host_t *host,ui_run_mode_t *mode)
 
 int ui_framework_supports_api(uint32_t api_version)
 {
-    return api_version >= 1u && api_version <= 4u;
+    return api_version >= 1u && api_version <= UI_FRAMEWORK_API_VERSION;
 }
 
 ui_host_t *ui_host_create(const ui_host_config_t *config)
@@ -743,7 +743,12 @@ ui_status_t ui_host_register_menu_item(ui_host_t *host,
     entry->order = desc->order;
     entry->state.size = sizeof(entry->state);
     entry->state.visible = entry->state.enabled = 1;
-    if (desc->size >= sizeof(*desc)) entry->image_id = desc->image_id;
+    if (desc->size >= offsetof(ui_menu_item_desc_t,image_id)+sizeof(desc->image_id)) entry->image_id = desc->image_id;
+    if (desc->size >= offsetof(ui_menu_item_desc_t,access_key)+sizeof(desc->access_key)) {
+        uint32_t key=desc->access_key;if(key>='a'&&key<='z')key-=32;
+        if(key&&!(key>='A'&&key<='Z')&&!(key>='0'&&key<='9')){free(entry->id);free(entry->menu_path);free(entry->title);free(entry->command_id);free(entry);return UI_STATUS_INVALID_ARGUMENT;}
+        entry->access_key=key;
+    }
     if (entry->id == NULL || entry->menu_path == NULL ||
         entry->title == NULL || entry->command_id == NULL) {
         free(entry->id);
@@ -1411,7 +1416,7 @@ void *ui_web_view_native_handle(ui_web_view_t *view)
 static ui_surface_t *create_surface(ui_host_t *host,
                                     const ui_surface_desc_t *desc,
                                     const ui_opengl_config_t *config,
-                                    ui_status_t *status,int offscreen)
+                                    ui_status_t *status,int offscreen,const char *gl_library)
 {
     ui_surface_t *surface;
     ui_surface_t *it;
@@ -1444,6 +1449,7 @@ static ui_surface_t *create_surface(ui_host_t *host,
 
     surface->host = host;
     surface->offscreen=offscreen;
+    surface->gl_library_path=gl_library;
     surface->id = ui_strdup(desc->id);
     surface->kind = desc->kind;
     surface->rect = desc->rect;
@@ -1453,6 +1459,8 @@ static ui_surface_t *create_surface(ui_host_t *host,
     result = surface->id == NULL ? UI_STATUS_OUT_OF_MEMORY :
         config != NULL ? ui_platform_surface_create_configured(surface, config) :
                          ui_platform_surface_create(surface);
+    if(result==UI_STATUS_OK&&offscreen){ui_pixel_buffer_t query={0};query.size=sizeof(query);result=ui_platform_offscreen_render(surface,&query);if(result!=UI_STATUS_OK)ui_platform_surface_destroy(surface);}
+    surface->gl_library_path=NULL;
     if (result != UI_STATUS_OK) {
         if (status != NULL) *status = result;
         free(surface->id);
@@ -1469,7 +1477,7 @@ static ui_surface_t *create_surface(ui_host_t *host,
 ui_surface_t *ui_surface_create(ui_host_t *host,
                                 const ui_surface_desc_t *desc)
 {
-    return create_surface(host, desc, NULL, NULL,0);
+    return create_surface(host, desc, NULL, NULL,0,NULL);
 }
 
 ui_surface_t *ui_opengl_surface_create(ui_host_t *host,
@@ -1481,22 +1489,30 @@ ui_surface_t *ui_opengl_surface_create(ui_host_t *host,
         if (status != NULL) *status = UI_STATUS_INVALID_ARGUMENT;
         return NULL;
     }
-    return create_surface(host, desc, config, status,0);
+    return create_surface(host, desc, config, status,0,NULL);
 }
 
 ui_surface_t *ui_opengl_offscreen_surface_create(ui_host_t *host,const ui_surface_desc_t *desc,const ui_opengl_config_t *config,ui_status_t *status)
 {
     if(!host||!desc||!config||config->size<sizeof(*config)||desc->kind!=UI_SURFACE_OPENGL){if(status)*status=UI_STATUS_INVALID_ARGUMENT;return NULL;}
-    if(config->legacy_context||config->samples||config->profile!=UI_OPENGL_PROFILE_COMPATIBILITY||config->major_version<3||
+    if(config->legacy_context||config->samples<0||config->profile!=UI_OPENGL_PROFILE_COMPATIBILITY||config->major_version<3||
        (config->major_version==3&&config->minor_version<3)){if(status)*status=UI_STATUS_UNSUPPORTED;return NULL;}
     if(desc->rect.width<=0||desc->rect.height<=0){if(status)*status=UI_STATUS_INVALID_ARGUMENT;return NULL;}
     {uint64_t width=((uint64_t)desc->rect.width*host->dpi+48)/96,height=((uint64_t)desc->rect.height*host->dpi+48)/96;
      if(width>16384||height>16384||width*height>32u*1024u*1024u/8){if(status)*status=UI_STATUS_LIMIT_EXCEEDED;return NULL;}}
-    return create_surface(host,desc,config,status,1);
+    return create_surface(host,desc,config,status,1,NULL);
+}
+ui_surface_t *ui_opengl_windowless_surface_create(ui_host_t *host,const ui_surface_desc_t *desc,const ui_opengl_config_t *config,const ui_opengl_windowless_config_t *provider,ui_status_t *status)
+{
+ if(status)*status=UI_STATUS_INVALID_ARGUMENT;
+ if(!host||!desc||!config||config->size<sizeof(*config)||!provider||provider->size<sizeof(*provider)||!provider->library_path_utf8||desc->kind!=UI_SURFACE_OPENGL)return NULL;
+ if(config->legacy_context||config->debug_context||config->samples<0||config->profile!=UI_OPENGL_PROFILE_COMPATIBILITY||config->major_version<3||(config->major_version==3&&config->minor_version<3)){if(status)*status=UI_STATUS_UNSUPPORTED;return NULL;}
+ if(desc->rect.width<=0||desc->rect.height<=0)return NULL;
+ return create_surface(host,desc,config,status,2,provider->library_path_utf8);
 }
 ui_status_t ui_opengl_surface_get_window_dependency(const ui_surface_t *surface,ui_opengl_window_dependency_t *dependency)
 {if(!surface||!dependency||surface->kind!=UI_SURFACE_OPENGL)return UI_STATUS_INVALID_ARGUMENT;
- *dependency=surface->offscreen?UI_OPENGL_HIDDEN_WINDOW:UI_OPENGL_VISIBLE_WINDOW;return UI_STATUS_OK;}
+ *dependency=surface->offscreen==2?UI_OPENGL_NO_WINDOW:surface->offscreen?UI_OPENGL_HIDDEN_WINDOW:UI_OPENGL_VISIBLE_WINDOW;return UI_STATUS_OK;}
 ui_status_t ui_opengl_offscreen_render(ui_surface_t *surface,ui_pixel_buffer_t *pixels)
 {ui_status_t status;if(!surface||!surface->offscreen||!pixels||pixels->size<sizeof(*pixels))return UI_STATUS_INVALID_ARGUMENT;
  if(surface->host->dispatch_blocked)return UI_STATUS_CANCELLED;ui_dispatch_enter(surface->host);status=ui_platform_offscreen_render(surface,pixels);ui_dispatch_leave(surface->host);return status;}
@@ -1504,6 +1520,7 @@ ui_status_t ui_surface_dispatch_input(ui_surface_t *surface,const ui_input_event
 {if(!surface||!event||event->size<sizeof(*event)||event->kind<UI_INPUT_POINTER_MOVE||event->kind>UI_INPUT_TEXT)return UI_STATUS_INVALID_ARGUMENT;
  if(surface->host->dispatch_blocked||!surface->host->app_active||surface->host->modal_component)return UI_STATUS_CANCELLED;
  if(event->kind==UI_INPUT_TEXT&&!event->text_utf8)return UI_STATUS_INVALID_ARGUMENT;
+ if(ui_menus_route_input(surface->host,NULL,event,0)==UI_STATUS_OK)return UI_STATUS_OK;
  if(event->kind==UI_INPUT_KEY_DOWN&&ui_host_dispatch_shortcut(surface->host,event->key_code,event->modifiers,0))return UI_STATUS_OK;
  if(!surface->input)return UI_STATUS_NOT_FOUND;ui_dispatch_enter(surface->host);surface->input(surface,event,surface->input_user_data);ui_dispatch_leave(surface->host);return UI_STATUS_OK;}
 
@@ -1600,11 +1617,11 @@ ui_status_t ui_surface_set_rect(ui_surface_t *surface,
     old_pixel_rect = surface->pixel_rect;
     surface->rect = *rect;
     surface->pixel_rect = logical_to_pixel_rect(rect, surface->host->dpi);
-    if (ui_platform_surface_set_rect(surface, rect) != UI_STATUS_OK) {
+    {ui_status_t status=ui_platform_surface_set_rect(surface,rect);if(status!=UI_STATUS_OK){
         surface->rect = old_rect;
         surface->pixel_rect = old_pixel_rect;
-        return UI_STATUS_PLATFORM_ERROR;
-    }
+        return status;
+    }}
 
     if (memcmp(&old_rect, &surface->rect, sizeof(old_rect)) != 0 ||
         memcmp(&old_pixel_rect, &surface->pixel_rect, sizeof(old_pixel_rect)) != 0) {

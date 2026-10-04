@@ -39,6 +39,7 @@ int wmain(int argc,wchar_t **argv)
  CHECK(ui_host_show_menu(b.host,&menu)==UI_STATUS_OK);CHECK(ui_workspace_activate(host.workspace,first)==UI_STATUS_OK);pump();p.size=sizeof(p);CHECK(ui_host_menu_get_presentation(b.host,"close",&p)==UI_STATUS_NOT_FOUND);
  /* Normal Web dispatch reserves Ctrl+O for the application and executes once. */
  e.size=sizeof(e);e.kind=UI_INPUT_KEY_DOWN;e.key_code='O';e.modifiers=UI_INPUT_MODIFIER_CONTROL;CHECK(ui_web_view_dispatch_input(host.view,&e)==UI_STATUS_OK);pump();CHECK(operations(&a)==1);
+ {MSG key={0};key.hwnd=root;key.wParam=VK_MENU;key.message=WM_SYSKEYDOWN;CHECK(host_menu_key(&host,&key));key.message=WM_SYSKEYUP;CHECK(host_menu_key(&host,&key));p.size=sizeof(p);CHECK(ui_host_menu_get_presentation(a.host,"close",&p)==UI_STATUS_OK);key.message=WM_KEYDOWN;key.wParam=VK_ESCAPE;CHECK(host_menu_key(&host,&key));key.message=WM_KEYUP;CHECK(host_menu_key(&host,&key));}
  for(i=0;i<4;++i)for(j=0;j<3;++j){MoveWindow(root,30,30,sizes[i],heights[i],TRUE);pump();host.dpi=dpis[j];layout(&host);pump();
   p.size=sizeof(p);CHECK(ui_web_view_get_presentation(host.view,"tool-more",&p)==UI_STATUS_OK);if(sizes[i]<=800)CHECK(p.visible&&p.enabled);
   if(p.visible){CHECK(click(host.view,"tool-more"));pump();for(int n=0;n<6;++n){ui_element_presentation_t down={0};down.size=sizeof(down);if(ui_host_menu_get_presentation(a.host,"down",&down)!=UI_STATUS_OK||!down.enabled)break;
