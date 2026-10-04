@@ -71,6 +71,13 @@ jobs:
           # Public check annotations retain small exact evidence even when
           # artifact downloads require GitHub login. Escape command payloads.
           $evidence = @()
+          foreach ($file in @('configure.log','build.log','compiler.log')) {
+            $path = "build/session0-evidence/$file"
+            if (Test-Path $path) {
+              $diagnostic = (Get-Content $path -Raw).Replace('%','%25').Replace("`r",'%0D').Replace("`n",'%0A')
+              Write-Output "::notice file=.github/workflows/session0-osmesa.yml,line=1,title=Session0 $file::$diagnostic"
+            }
+          }
           $log = 'build/session0-evidence/target/run.log'
           if (Test-Path $log) {
             $evidence += Get-Content $log | Where-Object { $_ -match '^(Environment|Resources|SESSION0 |NO_LOGIN |Application [1-4] GL|Runner line|App line)' }
