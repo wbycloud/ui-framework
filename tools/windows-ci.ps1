@@ -82,6 +82,7 @@ $manifest = [ordered]@{
     noLoginAccepted = $false; physicalManualAccepted = $false
 }
 $manifest | ConvertTo-Json | Set-Content "$evidenceDirectory/manifest.json"
+$env:GALLIUM_DRIVER = 'llvmpipe'
 & ctest --test-dir $buildDirectory --output-on-failure --output-junit "$((Resolve-Path $evidenceDirectory).Path)/ctest.xml" *> "$evidenceDirectory/regression.log"
 $testExit = $LASTEXITCODE
 Get-Content "$evidenceDirectory/regression.log"

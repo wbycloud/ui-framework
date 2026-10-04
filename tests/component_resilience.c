@@ -29,6 +29,7 @@ static void insert(ui_component_t *c,const char *value)
 static void click(ui_component_t *c,const char *id)
 {
     ui_element_presentation_t p={0};ui_input_event_t e={0};p.size=sizeof(p);
+    {ui_status_t status=ui_component_get_presentation(c,id,&p);if(status!=UI_STATUS_OK||!p.visible||!p.enabled)fprintf(stderr,"Component presentation %s status=%d visible=%d enabled=%d rect=%d,%d,%d,%d\n",id,status,p.visible,p.enabled,p.rect.x,p.rect.y,p.rect.width,p.rect.height);}
     CHECK(ui_component_get_presentation(c,id,&p)==UI_STATUS_OK&&p.visible&&p.enabled);
     e.size=sizeof(e);e.kind=UI_INPUT_POINTER_DOWN;e.pointer_button=1;e.x=p.clip.x+5;e.y=p.clip.y+5;
     CHECK(ui_component_dispatch_input(c,&e)==UI_STATUS_OK);e.kind=UI_INPUT_POINTER_UP;

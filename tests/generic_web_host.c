@@ -41,6 +41,7 @@ int wmain(int argc,wchar_t **argv)
     CHECK(ui_component_select(table,9007199254741000ULL)==UI_STATUS_OK);CHECK(ui_component_get_state(ui_component_find(b.host,"table"),&state)==UI_STATUS_OK&&state.selected_id==0);
     CHECK(ui_workspace_activate(window.workspace,first)==UI_STATUS_OK);pump_for(30);
     table_view=content_view(a.host,(HWND)a.native_container);form_view=content_view(a.host,(HWND)ui_native_shell_panel_handle(a.shell,"form"));CHECK(table_view&&form_view);
+    {ui_rect_t form_rect={0},view_rect={0};ui_status_t field_status=ui_web_view_get_element_rect(form_view,"field-name",&form_rect);(void)ui_web_view_get_rect(form_view,&view_rect);printf("Initial form dpi=%u status=%d field=%d,%d,%d,%d view=%d,%d,%d,%d\n",window.dpi,field_status,form_rect.x,form_rect.y,form_rect.width,form_rect.height,view_rect.x,view_rect.y,view_rect.width,view_rect.height);}
     CHECK(press(form_view,"field-name"));text(form_view,"未提交中文 draft");CHECK(ui_component_get_state(form,&state)==UI_STATUS_OK&&state.dirty);
     CHECK(ui_workspace_activate(window.workspace,second)==UI_STATUS_OK);CHECK(ui_workspace_activate(window.workspace,first)==UI_STATUS_OK);pump_for(30);
     CHECK(ui_component_get_state(form,&state)==UI_STATUS_OK&&state.dirty);CHECK(ui_web_view_get_element_rect(form_view,"field-name",&r)==UI_STATUS_OK);CHECK(GetFocus()==(HWND)ui_web_view_native_handle(form_view));

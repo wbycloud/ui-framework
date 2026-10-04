@@ -12,7 +12,7 @@ static void group(const ui_menu_model_entry_t *entry,void *data)
 {host_window_t *host=(host_window_t *)data;menu_state_writer_t writer={0};json_buffer_t json={0};char id[80];const char *key;size_t n;ui_element_presentation_t p={0};
  const char *names[]={"File","Edit","View","Tools","Cell","Layer","Help"};CHECK(group_count<7);if(group_count>=7)return;
  CHECK(!strcmp(entry->path,names[group_count++]));writer.json=&json;state_menu_group(entry,&writer);key=strstr(json.text,"\"key\":\"")+7;n=strcspn(key,"\"");snprintf(id,sizeof(id),"app-menu-%.*s",(int)n,key);
- p.size=sizeof(p);CHECK(ui_web_view_get_presentation(host->view,id,&p)==UI_STATUS_OK&&p.visible&&!p.text_overflow&&!strcmp(p.text_utf8,entry->title));free(json.text);}
+ p.size=sizeof(p);{ui_status_t status=ui_web_view_get_presentation(host->view,id,&p);if(status!=UI_STATUS_OK||!p.visible||p.text_overflow||strcmp(p.text_utf8,entry->title))fprintf(stderr,"Menu presentation id=%s dpi=%u status=%d visible=%d overflow=%d rect=%d,%d,%d,%d text=%s expected=%s\n",id,host->dpi,status,p.visible,p.text_overflow,p.rect.x,p.rect.y,p.rect.width,p.rect.height,p.text_utf8,entry->title);CHECK(status==UI_STATUS_OK&&p.visible&&!p.text_overflow&&!strcmp(p.text_utf8,entry->title));}free(json.text);}
 static int menu_click(ui_host_t *host,const char *id)
 {ui_element_presentation_t p={0};ui_input_event_t e={0};p.size=sizeof(p);if(ui_host_menu_get_item_presentation(host,id,&p)!=UI_STATUS_OK||!p.visible||!p.enabled)return 0;
  e.size=sizeof(e);e.kind=UI_INPUT_POINTER_DOWN;e.x=p.clip.x+3;e.y=p.clip.y+3;e.pointer_button=1;if(ui_host_menu_dispatch_input(host,&e)!=UI_STATUS_OK)return 0;e.kind=UI_INPUT_POINTER_UP;return ui_host_menu_dispatch_input(host,&e)==UI_STATUS_OK;}
