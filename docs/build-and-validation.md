@@ -56,7 +56,7 @@ Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标
 
 ### 2.1 打包自己的应用
 
-应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 2，清单应与 DLL descriptor 声明相同版本。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
+应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 4；使用新接口的应用将清单与 DLL descriptor 一致声明为4，旧 API1/2/3 包可保留原声明。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
 
 ```text
 minimal_eda_app.dll
