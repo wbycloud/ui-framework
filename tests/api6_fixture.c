@@ -14,7 +14,7 @@ typedef struct fixture {
     ui_app_context_t context;ui_component_t *table,*tree,*form,*viewport,*dialog,*status;
     ui_web_backend_t *backend;ui_surface_t *gl;ui_image_id_t image;ui_component_query_t late;
     HANDLE stop,worker;CRITICAL_SECTION lock;ui_component_query_t thumbnails[128];size_t head,count;
-    unsigned frames,commands,edits,version;int runtime;
+    unsigned frames,commands,edits,version,gl_errors;GLuint gl_list;int runtime;
 } fixture_t;
 static LONG live_instances,live_workers,live_surfaces;
 typedef void (APIENTRY *color_fn)(float,float,float,float);
@@ -22,11 +22,18 @@ typedef void (APIENTRY *clear_fn)(unsigned);
 typedef void (APIENTRY *begin_fn)(unsigned);
 typedef void (APIENTRY *end_fn)(void);
 typedef void (APIENTRY *vertex_fn)(float,float);
+typedef GLuint (APIENTRY *gen_list_fn)(GLsizei);
+typedef void (APIENTRY *new_list_fn)(GLuint,GLenum);
+typedef GLboolean (APIENTRY *is_list_fn)(GLuint);
 static void frame(ui_surface_t *surface,void *data)
 {
     fixture_t *s=(fixture_t *)data;color_fn color=(color_fn)ui_opengl_surface_get_proc_address(surface,"glClearColor");
     clear_fn clear=(clear_fn)ui_opengl_surface_get_proc_address(surface,"glClear");begin_fn begin=(begin_fn)ui_opengl_surface_get_proc_address(surface,"glBegin");
     end_fn end=(end_fn)ui_opengl_surface_get_proc_address(surface,"glEnd");vertex_fn vertex=(vertex_fn)ui_opengl_surface_get_proc_address(surface,"glVertex2f");
+    gen_list_fn gen=(gen_list_fn)ui_opengl_surface_get_proc_address(surface,"glGenLists");new_list_fn compile=(new_list_fn)ui_opengl_surface_get_proc_address(surface,"glNewList");
+    end_fn finish=(end_fn)ui_opengl_surface_get_proc_address(surface,"glEndList");is_list_fn exists=(is_list_fn)ui_opengl_surface_get_proc_address(surface,"glIsList");
+    if(!s->gl_list){s->gl_list=gen(1);if(s->gl_list){compile(s->gl_list,GL_COMPILE);finish();}else ++s->gl_errors;}
+    else if(!exists(s->gl_list))++s->gl_errors;
     color(0,0,0,1);clear(GL_COLOR_BUFFER_BIT);color=(color_fn)ui_opengl_surface_get_proc_address(surface,"glColor4f");color(1,1,1,1);
     begin(GL_TRIANGLES);vertex(-.83f,-.71f);vertex(.77f,-.66f);vertex(-.23f,.89f);end();++s->frames;
 }
@@ -59,6 +66,7 @@ static ui_status_t render(fixture_t *s)
 {
     ui_pixel_buffer_t p={0};ui_cell_t value={0};ui_status_t status;p.size=sizeof(p);status=ui_opengl_offscreen_render(s->gl,&p);if(status!=UI_STATUS_OK){fprintf(stderr,"fixture %d status %d\n",__LINE__,status);return status;}
     p.capacity=p.stride*p.height;p.pixels=(uint8_t *)malloc(p.capacity);if(!p.pixels)return UI_STATUS_OUT_OF_MEMORY;status=ui_opengl_offscreen_render(s->gl,&p);
+    if(status==UI_STATUS_OK&&(s->gl_errors||!s->gl_list))status=UI_STATUS_VALIDATION_FAILED;
     if(status==UI_STATUS_OK){ui_rgba_desc_t r={sizeof(r),p.width,p.height,p.stride,p.capacity,p.pixels};status=s->image?ui_image_update(s->context.host,s->image,&r):ui_image_create(s->context.host,&r,&s->image);}
     free(p.pixels);if(status==UI_STATUS_OK){value.size=sizeof(value);value.kind=UI_VALUE_IMAGE;value.flags=UI_VALUE_READONLY;value.image_id=s->image;status=ui_component_set_field(s->viewport,"pixels",&value);}return status;
 }

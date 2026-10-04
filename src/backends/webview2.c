@@ -138,6 +138,7 @@ static void invalidate_render(webview2_view_t *v)
 {++v->epoch;v->query_ready=v->capture_ready=0;if(v->capture_pending==1)v->capture_pending=0;free(v->capture_pixels);v->capture_pixels=NULL;}
 static HRESULT begin_capture(webview2_view_t *);
 static ui_status_t webview2_post_json(void *,void *,const char *);
+static ui_status_t start_script(webview2_view_t *,const char *,ui_webview2_script_callback_fn,void *);
 
 static webview2_binding_t *bindings;
 
@@ -412,8 +413,12 @@ static HRESULT STDMETHODCALLTYPE navigation_completed(
         /* Ignore the controller's initial about:blank completion. Only the
          * inert navigation we started proves that renderer startup drained. */
         if(view->navigation_handler!=handler||!view->navigation_id||FAILED(ICoreWebView2NavigationCompletedEventArgs_get_NavigationId(args,&navigation_id))||navigation_id!=view->navigation_id)return S_OK;
-        ICoreWebView2_remove_NavigationCompleted(sender,view->navigation_token);
         view->navigation_handler=NULL;
+        ICoreWebView2_remove_NavigationCompleted(sender,view->navigation_token);
+        /* A renderer acknowledgement on the completed inert document keeps
+         * Close behind startup IPC, without entering unloaded app code. */
+        view->navigation_completed=1;
+        (void)start_script(view,"void 0",NULL,NULL);
         self->lpVtbl->Release(self);
         return S_OK;
     }

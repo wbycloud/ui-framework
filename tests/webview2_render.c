@@ -44,10 +44,8 @@ int main(void)
  CHECK(ui_web_view_get_presentation(v,"box",&p)==UI_STATUS_PENDING);puts("Runtime render: close");free(pixels.pixels);ui_web_view_destroy(v);ui_webview2_backend_destroy(b);for(int i=0;i<100;++i)pump();
  {DWORD handles=0,last=0,users;ULONGLONG drain_start=GetTickCount64();while(runtime_cleanup_pending()&&GetTickCount64()-drain_start<15000)pump();CHECK(!runtime_cleanup_pending());
   users=GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS);GetProcessHandleCount(GetCurrentProcess(),&handles);cfg.framework_components=1;
-  runtime_handle_types("before cancellation");
   for(int i=0;i<12;++i){b=ui_webview2_backend_create(&cfg,&s);CHECK(b&&s==UI_STATUS_OK);v=ui_web_view_create(h,b);CHECK(v!=NULL);CHECK(ui_web_view_load_html(v,"<div>cancel before creation</div>")==UI_STATUS_OK);ui_web_view_destroy(v);ui_webview2_backend_destroy(b);ULONGLONG start=GetTickCount64();do{pump();}while(GetTickCount64()-start<500);}
   {ULONGLONG start=GetTickCount64();do{GetProcessHandleCount(GetCurrentProcess(),&last);if(last<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+2&&!runtime_cleanup_pending())break;pump();}while(GetTickCount64()-start<15000);}
   CHECK(last<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+2);CHECK(!runtime_cleanup_pending());printf("Runtime close before creation x12 handles %lu->%lu USER %lu->%lu pending cleanup=%d\n",handles,last,users,GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS),runtime_cleanup_pending());}
- runtime_handle_types("after cancellation");
  ui_host_destroy(h);DestroyWindow(root);CoUninitialize();printf("Real WebView2 presentation/capture/images/input/stale/close: %d failures\n",failures);return failures?1:0;
 }
