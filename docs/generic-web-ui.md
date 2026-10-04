@@ -1,6 +1,6 @@
-# 通用 Web UI：API 3/4/5 接入约定
+# 通用 Web UI：API 3/4/5/6 接入约定
 
-本文的 API3 组件合同在 **SDK 0.5.0 开发版 / API5 / 标准修订5** 继续适用，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API5验收](validation/api5-validation.md)，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
+本文的 API3 组件合同在 **SDK 0.6.0 开发版 / API6 / 标准修订6** 继续适用，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API6验收](validation/api6-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
 
 ## 1. 架构、复用与边界
 
@@ -100,7 +100,9 @@ unmount 停止并 join 线程、撤销外部回调、释放 GPU 内容；宿主�
 | API1/2/3、双实例、关闭重开、原生/OpenGL | 所列样例与回归已验证，非任意第三方包保证 |
 | 实际中文 IME、物理跨显示器、长时间手动滚动压力 | 未验证，需相应操作和硬件条件 |
 | WebView2 的 C 图片 ID/框架组件呈现 | API5可选实际Runtime后端；异步呈现/捕获合同见本文增补 |
-| 完整浏览器、Canvas/SVG、富文本、可变行高、拖拽停靠、布局持久化 | 未实现 |
+| 枚举下拉、颜色回填、表格键盘/排序/多选 | API6共同模板；排序和范围由完整数据源提供 |
+| 布局持久化、约束分隔条、左右栈拖拽/浮动 | API6 Windows workspace；[范围与格式](workspace-layout.md) |
+| 完整浏览器、Canvas/SVG、富文本、可变行高、任意嵌套/标签式停靠 | 未实现 |
 
 轻量后端报告 IMAGES/WEB_TEXT_EDIT/COMPONENTS；API5 WebView2也提供图片和编辑桥接，显式framework_components=1才声明COMPONENTS。NULL组件后端默认仍为轻量；可借用WebView2后端，详见本页API5增补。
 
@@ -114,8 +116,24 @@ WebView2 呈现查询和捕获使用正状态 `UI_STATUS_PENDING`，调用方在
 
 NULL pixels 同步查询捕获物理宽高/stride。提供像素缓冲后，等待模板投递、图片 decode、字体及两个动画帧，再异步 CapturePreview/WIC 解码为顶向下 RGBA8、alpha255；物理尺寸按逻辑尺寸×DPI/96四舍五入。应用拥有最终缓冲，capacity/stride 需满足公共预算。若 CapturePreview 返回尺寸不符，明确失败而非填充假图。flush 只检查本后端已排队工作，未完成返回 PENDING，不嵌套泵系统消息或冒充业务完成；轻量 flush 的历史 job-budget/CANCELLED 合同保留。
 
-组件承载使用 Runtime 的 ControllerOptions4 AllowHostInputProcessing，让聚焦浏览器时的菜单和宿主/应用快捷键进入正常消息循环。程序键输入在页面未 preventDefault 时走同一语义命令，并保留编辑快捷键。没有该 Runtime 接口时组件承载创建明确失败。公共菜单仍使用框架轻量后端，部署完整宿主需要同时启用轻量与可选 WebView2。
+组件承载使用 Runtime 的 ControllerOptions4 AllowHostInputProcessing，让聚焦浏览器时的菜单和宿主/应用快捷键进入正常消息循环。[最低Runtime为138.0.3351.48](https://learn.microsoft.com/en-us/microsoft-edge/webview2/release-notes/sdk/1-0-3351-48)，接口仍按实际QueryInterface结果核验。程序键输入在页面未 preventDefault 时走同一语义命令，并保留编辑快捷键。没有该 Runtime 接口时组件承载创建明确失败。公共菜单仍使用框架轻量后端，部署完整宿主需要同时启用轻量与可选 WebView2。
 
-销毁先撤销事件及应用回调，SDK 未完成操作只持有失效的内部 view；controller 关闭和环境释放在 SDK 回调返回后的 UI 消息中执行。controller成功创建后、任何Close之前订阅 BrowserProcessExited，环境保留到对应浏览器退出事件后释放。创建过程中取消时，惰性初始化的Runtime对象仍等待内部无副作用脚本的完成回调，再执行Close；不装载应用文档或调用已失效的应用回调。应用 DLL 可按既有卸载合同释放；UI线程保持STA和正常消息循环，共享框架 DLL 应继续处理 Runtime 的关闭消息。同一用户数据目录的其他 view 仍活动时，浏览器退出和内部环境清理会延后；不要以 destroy 返回或 flush 空闲推断所有浏览器进程已退出。不会清除调用方的用户数据目录。
+销毁先撤销事件及应用回调，SDK 未完成操作只持有失效的内部 view；在 SDK 回调返回后的 UI 消息中停止导航、关闭controller并释放环境。controller成功创建后、任何Close之前订阅 BrowserProcessExited，环境保留到对应浏览器退出事件后释放。创建过程中取消时，API6等待内部空白文档NavigationCompleted再执行上述清理；不装载应用文档或调用已失效的应用回调。此前只执行初始文档的无副作用脚本，在实际CI仍出现关闭句柄增长，失败和修复见API6验收。应用 DLL 可按既有卸载合同释放；UI线程保持STA和正常消息循环，共享框架 DLL 应继续处理 Runtime 的关闭消息。同一用户数据目录的其他 view 仍活动时，浏览器退出和内部环境清理会延后；不要以 destroy 返回或 flush 空闲推断所有浏览器进程已退出。不会清除调用方的用户数据目录。
 
-API5 DLL/Runtime、双实例、图片更新释放、编辑、树数据、模态、异步失效及关闭证据见 [API5验收](validation/api5-validation.md)。全阶段验收状态以该记录为准。
+API5 DLL/Runtime、双实例、图片更新释放、编辑、树数据、模态、异步失效及关闭的历史证据见 [API5验收](validation/api5-validation.md)。当前布局、共同组件及综合回归状态见[API6验收](validation/api6-validation.md)，不继承历史记录中未覆盖的新功能结论。
+
+## API6 组件交互、完整排序与选择
+
+轻量和显式WebView2组件共享模板及C消息处理。枚举字段展开真实选项列表，每页至多8项，保持原128选项限制；上下/Enter/Esc用于选择/取消，readonly/disabled不编辑。颜色字段提供六种基础RGBA色和任意#RRGGBB/#RRGGBBAA文本输入，选择同步填回文本与color_rgba；非法颜色提交显示字段错误，不发语义提交。颜色预览只使用合法CSS值，避免轻量后端在校验前抛脚本异常。
+
+TABLE在配置sort_command或selection_flags后单击选择并聚焦单元格，方向键/Home/End/Tab导航，跨页/列按原虚拟化窗口重新请求，Enter/F2编辑、Enter只提交一次、Esc取消。语义edit带稳定行ID、列和文本；应用更新真实模型并用update_rows/source回填，框架不把编辑命令接受当作业务保存成功。旧描述保持原点击编辑。布局变化保留仍有效的草稿、焦点和节点，换源/排序换代取消旧编辑和异步身份。
+
+desc.sort_command是复制的已注册命令ID。ui_component_set_sort(table,column,direction)的direction为0/1/-1（无/升/降），保存状态、命令一次、generation换代、清页/缩略图/预览后查询。命令params含column、direction和字符串generation；同状态调用不重复命令，禁用/busy或模态拒绝。source每次query收到借用sort_column和sort_direction，必须按完整数据集排序后的顺序提供数据；默认顺序由source定义。框架不对缓存页作假完整排序，列头按升→降→无循环。sort_column由描述列限定，get_state返回借用字符串。
+
+selection_flags=UI_SELECTION_MULTIPLE启用Ctrl切换、Shift范围，选择身份始终是uint64非零稳定ID，JSON用十进制字符串，不能用缓存下标冒充身份。set/get_selection至多512个，拒绝重复/零ID，内存计入原2MiB缓存；程序调用不发select命令。页切换/排序保留有效ID，换source清空，remove_rows剔除删除项；排序或结构更新重置范围锚点，首次新手势重新建立锚点。两个实例独立存储选择。
+
+范围查询ui_component_select_range(first,count,extend)中的first/count是当前完整数据源排序中的位置，框架发UI_QUERY_SELECTION，请source返回这些位置的稳定ID；无需加载范围内所有行。同步submit_selection或后台post_component_selection都核对generation/request及精确count，下一范围/排序/换源/结构变化/关闭使迟到结果失效。source需要保留请求数据时复制全部完整字段，sort_column只在回调期间借用。超过512范围或合并后超过512明确失败，不提高预算。
+
+用户select语义命令表示手势意图，params保留id/index及ctrl/shift，命令只发一次；异步范围尚未返回时get_selection仍是上次完成的结果，不能在命令回调中把它当作完整新范围。应用在投递消费之后查询选择状态；如果业务需要立即获得范围，source可同步返回ID。程序排序会发sort_command，程序选择不会发select，这是两个接口的明确合同。
+
+选择数据复制投递复用每实例8MiB预算，无应用回调指针。缓存2MiB、DOM1024、单批512、列64、字段64、图片32MiB、JS8MiB和旧队列/过期结果门槛保持。[实际100000行、>2^53 ID及两后端测试](../tests/component_experience.c)与[真实DLL集成](../tests/api6_integration.c)见[验收记录](validation/api6-validation.md)。

@@ -1,8 +1,8 @@
 # 构建与验证
 
-本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.5.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 、API3 generic_components 和 API4 framework_features 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
+本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.6.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 、API3 generic_components 和 API4 framework_features 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
 
-当前API5能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[验收记录](validation/api5-validation.md)。[API4样例](../examples/framework_features/README.md)、[API4验收](validation/api4-validation.md)及[API3记录](validation/api3-validation.md)保留历史版本证据；新接口迁移见[0.4→0.5](migration-v0.4-to-v0.5.md)。第5节保留旧版本历史结果，不作为当前测试状态。
+API5已有能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[历史验收](validation/api5-validation.md)。当前API6接口迁移见[0.5→0.6](migration-v0.5-to-v0.6.md)、[布局](workspace-layout.md)及[验收](validation/api6-validation.md)。API3/4样例和第5节保留历史版本结果，不作为当前测试状态。
 
 ## 1. 构建环境
 
@@ -56,7 +56,7 @@ Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标
 
 ### 2.1 打包自己的应用
 
-应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 4；使用新接口的应用将清单与 DLL descriptor 一致声明为4，旧 API1/2/3 包可保留原声明。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
+应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 6；使用新接口的应用将清单与 DLL descriptor 一致声明为6，旧 API1–5 包可保留原声明。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
 
 ```text
 minimal_eda_app.dll
@@ -316,3 +316,26 @@ Windows普通账户Session1和实际CI LocalSystem Session0均已运行OSMesa实
 Session0／无登录CI现有独立实际应用DLL及临时服务入口，详细构建、命令、环境门槛、资源预算及目标结果见[专门验收](validation/session0-osmesa-validation.md)。该测试配置同时关闭两个Web后端，不依赖WebView2或轻量引擎。默认运行器拒绝Session1；CTest对照不会计入Session0通过数。
 
 CI使用MSVC19.44/W4/WX实际构建通过；x64包检查使用编译期 `UINTPTR_MAX` 比较，避免旧编译器C4127。正式用例保留全部资源采样，进程缓存采用声明的128 MiB预算；初始门槛和失败诊断见专门记录。Windows服务无继承控制台，测试直接重开stdout/stderr文件，不创建控制台窗口。默认托管runner实测有登录用户，严格无登录项会失败；已有无登录Windows x64服务runner可在手动工作流填写其runner_label，不自动创建机器或注销用户。
+
+## API6 回归矩阵与独立应用
+
+[windows-regression.yml](../.github/workflows/windows-regression.yml)与[执行脚本](../tools/windows-ci.ps1)建立四种Windows-2022 x64/C11 Release配置。native关闭两种Web和宿主；light开启轻量但不配置OSMesa；webview2开启两种Web、真实Runtime和显式OSMesa；osmesa开启轻量/实际OSMesa测试DLL，关闭WebView2。四行都执行被配置的必要CTest。只有物理ui_monitor_transition允许缺条件跳过，其余跳过及失败均拒绝。
+
+依赖沿用固定Lexbor/QuickJS-NG commit、WebView2 SDK1.0.4129.50及Mesa24.3.4 SHA256。组件输入桥接需要Runtime至少138.0.3351.48，依据[微软发布记录](https://learn.microsoft.com/en-us/microsoft-edge/webview2/release-notes/sdk/1-0-3351-48)；仅有SDK或旧Runtime不能提供ControllerOptions4。临时CI VM缺失或版本过旧时，用微软签名的官方Evergreen Bootstrapper安装/更新，再核验并记录实际版本及安装器哈希；本地准备脚本不自动安装Runtime。
+
+托管GUI用例需要1920×1080虚拟桌面，脚本仅在GitHub临时VM调用Set-DisplayResolution并核验实际尺寸/DPI，记录原尺寸。这不能替代物理跨屏。依据[runner维护者说明](https://github.com/actions/runner-images/issues/2935)，默认1024×768不能满足宽窗断言。窄窗用例仍按原尺寸矩阵执行。
+
+软件WGL在新build目录仅部署opengl32.dll、libgallium_wgl.dll、libglapi.dll及pipe_swrast.dll，显式GALLIUM_DRIVER=llvmpipe，记录实际renderer；不复制整个Mesa DLL目录污染其他系统库加载，也不修改系统OpenGL或冒充硬件GL。WebView2行先运行40个非Runtime用例，再移除这四个本行部署的DLL，使用平台图形运行7个实际Runtime用例；两个阶段合并逐项结果和完整输出，任一阶段失败仍失败。OSMesa仍用绝对库路径与实际内存上下文及其提供方依赖，不受WGL部署移除影响。
+
+最终本机与CI结果见[API6验收](validation/api6-validation.md)，Session0及严格无登录门槛保持[独立工作流](../.github/workflows/session0-osmesa.yml)。GitHub托管runner有已登录用户；矩阵绿色不能替代整机无登录通过。专用runner缺失时保持待验，不注销用户或改既有服务。
+
+准备上述依赖，在x64开发终端使用新目录：
+
+```powershell
+$osmesa = (Resolve-Path .deps/mesa-24.3.4/x64/osmesa.dll).Path
+cmake -S . -B build/api6 -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_FRAMEWORK_ENABLE_WEBVIEW2=ON "-DUI_OSMESA_LIBRARY=$osmesa"
+cmake --build build/api6
+ctest --test-dir build/api6 --output-on-failure
+```
+
+UI_BUILD_TESTS下生成api6_fixture.uapp，public-C应用包含树/表格、属性、实际OSMesa frame的C图片、真实异步缩略图、语义命令、双实例/失败/模态/卸载。ui_api6_integration与ui_api6_integration_webview2是独立框架集成证据；原API5四项及普通非MSAA路径另行回归。原二进制可用UI_LEGACY_EDA_PACKAGE、UI_LEGACY_API2_PACKAGE、UI_LEGACY_COMPONENT_PACKAGE、UI_LEGACY_API4_PACKAGE、UI_LEGACY_API5_PACKAGE指定；文件缺失必须单列，冻结SDK重编译不代表原包验收。
