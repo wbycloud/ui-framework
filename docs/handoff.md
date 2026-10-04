@@ -14,7 +14,7 @@
 | API5功能代码 | [87478fa20d7bb46809c0ef81dd44f972dc193a24](https://github.com/wbycloud/ui-framework/commit/87478fa20d7bb46809c0ef81dd44f972dc193a24)，四项实现及回归；文档另行提交，实际HEAD以Git为准 |
 | API6实现/最终测试与CI条件 | [1cdc50e](https://github.com/wbycloud/ui-framework/commit/1cdc50e)、[9705565](https://github.com/wbycloud/ui-framework/commit/9705565)，完整提交序列及失败修复见API6验收；文档提交不改运行代码 |
 | API4历史实现/补验 | [e83a008](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c)、[48d6aaf](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，模态原生输入、STYLE回收、redock焦点；[记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
-| 已推送分支 | `main`、`codex/menus-offscreen`；交接文档另行提交，后续以实际 HEAD 为准 |
+| 实际远端分支 | `main`仍为`ea5b108`，`codex/menus-offscreen`为`9705565`；最终API6证据`559b802`已本地提交，未推送；交付状态修订另行提交，实际HEAD以Git为准 |
 | SDK / 框架 API / 标准修订 | `0.6.0` 开发版 / `6` / `6` |
 | 兼容范围 | 运行库接受 API1/2/3/4/5/6；包清单和 DLL descriptor 必须一致 |
 | 应用 ABI / 导出入口 / 包格式 | `1` / `ui_app_query_v1` / `1` |
@@ -30,7 +30,7 @@ API6本轮起点为干净ea5b108，与当时origin/main及工作分支一致，�
 
 优先复用原菜单、工具、面板、内容槽、命令、队列和生命周期。新增接口不暴露第三方私有类型；保持旧字段偏移、枚举值和默认行为，新字段按 size 判断。64位身份在 JSON 中为十进制字符串，图像像素通过 C 接口复制传递。线程、所有权和 DLL 卸载合同不能绕过。
 
-文档面向 C/C++ 应用开发者，不署名；给其他应用的[升级提示词](application-upgrade-prompt.md)只使用 GitHub 入口，不包含个人本地目录。此前授权包括提交并推送框架和说明；不要强推或创建新的稳定标签。
+文档面向 C/C++ 应用开发者，不署名；给其他应用的[升级提示词](application-upgrade-prompt.md)只使用 GitHub 入口，不包含个人本地目录。历史任务曾授权提交并推送框架和说明；本轮最终推送被自动审批拒绝，当前可核验授权不足以覆盖默认分支发布，完整交付先保留本地，见第8节。不要强推或创建新的稳定标签。
 
 交接准备及后续补验未启用 graph-engineering，也未修改请求方 KLayout C 应用、冻结应用包或 PERF-001。接手时不要把应用适配或性能重新测量自动扩展进框架任务。后续已完成本机自动补验和三项针对性修复，没有新建会话或移动当前会话。
 
@@ -159,3 +159,5 @@ Session0补验后的必要回归为43项42PASS/1SKIP，原生21项20PASS/1SKIP�
 真实CI额外暴露创建期取消回收失败：12轮句柄301→316超过原+12，本机相同Mesa部署综合用例一次487→500也超限。最终[9705565](https://github.com/wbycloud/ui-framework/commit/9705565)仅接受内部空白导航ID，忽略初始about:blank，在完成文档上等待renderer确认，再在UI消息中Stop/Close；事件所有权只释放一次。取代第7节历史初始文档脚本排空方案；没有应用内容/回调、ABI变化或预算增加。测试要求初始/重复周期同样排空、内部STA清理归零及正常退出；新增快照诊断在目标系统干扰回归后已移除，原断言保留。完整必要回归和实际CI结果见API6验收，历史失败保留。
 
 最后审计：用户当前无无登录Windows服务runner；真实中文IME、不同缩放物理屏幕/边缘/桌面合成和长期人工条件缺失；未指定并授权真实业务应用试点；没有实测OSMesa瓶颈和明确硬件GL需求。继续保留这些待验，不注销用户、不改既有服务、不扩大到硬件无窗口方案。可独立完成的实现、回归和文档交付与这些待验分别报告。
+
+本轮最终交付状态：实现及最终回归源码9705565已在工作分支发布，四行实际CI通过；559b802保存最终文档、失败修复、完整本机日志、CI摘录和实际像素，已本地提交。2026-10-05最终推送自动审批拒绝，理由为当前可核验用户授权不足以覆盖默认分支发布；操作未执行。实查origin/main仍ea5b108、工作分支9705565，未强推或创建标签。待明确发布授权后才快进推送完整交付。本轮API6源码未重新触发Session0工作流；已通过的Session0证据严格属于专门记录中的78c24cb，不冒充当前源码目标环境验收。
