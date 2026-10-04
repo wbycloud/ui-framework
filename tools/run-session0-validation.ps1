@@ -60,7 +60,15 @@ try {
     $resultFile = Join-Path $out 'result.txt'
     if (!(Test-Path -LiteralPath $resultFile)) { throw 'Service stopped without a completed result (crash/startup failure is not acceptance).' }
     Get-Content -LiteralPath (Join-Path $out 'run.log')
+    Get-Content -LiteralPath (Join-Path $out 'errors.log')
     if ((Get-Content -LiteralPath $resultFile -Raw).Trim() -ne '0') { throw 'Session0 / no-login application validation failed; retain all artifacts.' }
+} catch {
+    $_ | Format-List * -Force | Out-File -LiteralPath (Join-Path $out 'service-error.log')
+    if ($created) {
+        Get-CimInstance Win32_Service -Filter "Name='$name'" | Select-Object Name,State,ExitCode,ProcessId,PathName |
+            Format-List | Out-File -LiteralPath (Join-Path $out 'service-error.log') -Append
+    }
+    throw
 } finally {
     if ($created) {
         $service = Get-Service -Name $name

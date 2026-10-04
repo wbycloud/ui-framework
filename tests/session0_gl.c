@@ -4,7 +4,6 @@
 #include <ntsecapi.h>
 #include <wtsapi32.h>
 #include <psapi.h>
-#include <io.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -173,7 +172,10 @@ int wmain(int argc,wchar_t **argv)
     for(int i=4;i<argc;++i){if(!wcscmp(argv[i],L"--allow-interactive"))allow_interactive=1;else if(!wcscmp(argv[i],L"--require-no-login"))require_no_login=1;
         else if(!wcscmp(argv[i],L"--service")&&i+1<argc)service_name=argv[++i];else return 2;}
     swprintf_s(path,32768,L"%s/run.log",argv[3]);if(_wfreopen_s(&log,path,L"wb",stdout))return 2;
-    if(_dup2(_fileno(stdout),_fileno(stderr)))return 2;setvbuf(stdout,NULL,_IONBF,0);
+    /* SCM/DETACHED_PROCESS has no inherited stderr descriptor (-2). Reopen
+     * each stream directly; do not dup to that invalid descriptor. */
+    swprintf_s(path,32768,L"%s/errors.log",argv[3]);if(_wfreopen_s(&log,path,L"wb",stderr))return 2;
+    setvbuf(stdout,NULL,_IONBF,0);setvbuf(stderr,NULL,_IONBF,0);
     if(service_name){SERVICE_TABLE_ENTRYW table[2]={{service_name,service_main},{NULL,NULL}};
         registered_service_name=service_name;
         if(!StartServiceCtrlDispatcherW(table)){fprintf(stderr,"SCM dispatch error=%lu\n",GetLastError());return 1;}return service_status.dwServiceSpecificExitCode?1:0;

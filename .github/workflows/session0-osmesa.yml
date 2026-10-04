@@ -61,7 +61,7 @@ jobs:
         if: always()
         run: |
           "Source commit: $env:GITHUB_SHA`n" | Add-Content $env:GITHUB_STEP_SUMMARY
-          foreach ($file in @('manifest.json','run.log','resources.csv','service-cleanup.log')) {
+          foreach ($file in @('manifest.json','run.log','errors.log','resources.csv','service-cleanup.log','service-error.log')) {
             $path = "build/session0-evidence/target/$file"
             if (Test-Path $path) {
               "`n$file`n``````text" | Add-Content $env:GITHUB_STEP_SUMMARY
@@ -70,29 +70,51 @@ jobs:
             }
           }
           # Public check annotations retain small exact evidence even when
-          # artifact downloads require GitHub login. Escape command payloads.
-          $evidence = @()
-          foreach ($file in @('configure.log','build.log','compiler.log')) {
-            $path = "build/session0-evidence/$file"
-            if (Test-Path $path) {
-              $diagnostic = (Get-Content $path -Raw).Replace('%','%25').Replace("`r",'%0D').Replace("`n",'%0A')
-              Write-Output "::notice file=.github/workflows/session0-osmesa.yml,line=1,title=Session0 ${file}::$diagnostic"
+          # artifact downloads require GitHub login. Messages truncate at4096;
+          # keep metadata chunks below3000 and compress real PPM bytes below.
+          function NoticeChunks($title,$value) {
+            for ($offset=0;$offset -lt $value.Length;$offset+=3000) {
+              $part=$value.Substring($offset,[Math]::Min(3000,$value.Length-$offset))
+              $part=$part.Replace('%','%25').Replace("`r",'%0D').Replace("`n",'%0A')
+              Write-Output "::notice file=tests/session0_gl.c,line=1,title=$title offset=${offset}::$part"
             }
           }
+          $evidence = @()
           $log = 'build/session0-evidence/target/run.log'
           if (Test-Path $log) {
             $evidence += Get-Content $log | Where-Object { $_ -match '^(Environment|Resources|SESSION0 |NO_LOGIN |Application [1-4] GL|Runner line|App line)' }
           }
-          foreach ($file in @('manifest.json','resources.csv','service-cleanup.log')) {
+          NoticeChunks 'Session0 result' ($evidence -join "`n")
+          foreach ($file in @('manifest.json','resources.csv','errors.log','service-cleanup.log','service-error.log')) {
             $path = "build/session0-evidence/target/$file"
-            if (Test-Path $path) { $evidence += "$file`n" + (Get-Content $path -Raw) }
+            if (Test-Path $path) { NoticeChunks "Session0 $file" (Get-Content $path -Raw) }
           }
-          $message = ($evidence -join "`n").Replace('%','%25').Replace("`r",'%0D').Replace("`n",'%0A')
-          Write-Output "::notice file=tests/session0_gl.c,line=1,title=Session0 exact evidence::$message"
+      - name: Publish exact frame bytes
+        if: always()
+        run: |
           foreach ($frame in @(Get-ChildItem build/session0-evidence/target -Filter '*.ppm' -ErrorAction SilentlyContinue)) {
             $sha = (Get-FileHash $frame.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
-            $bytes = [Convert]::ToBase64String([IO.File]::ReadAllBytes($frame.FullName))
-            Write-Output "::notice file=tests/session0_gl_app.c,line=1,title=Session0 frame $($frame.Name)::sha256=$sha base64=$bytes"
+            $memory=[IO.MemoryStream]::new()
+            $zip=[IO.Compression.GZipStream]::new($memory,[IO.Compression.CompressionMode]::Compress,$true)
+            $raw=[IO.File]::ReadAllBytes($frame.FullName)
+            $zip.Write($raw,0,$raw.Length);$zip.Dispose()
+            $bytes=[Convert]::ToBase64String($memory.ToArray());$memory.Dispose()
+            if ($bytes.Length -gt 3000) { throw 'Frame evidence exceeds the public annotation budget; artifact still retains original pixels.' }
+            Write-Output "::notice file=tests/session0_gl_app.c,line=1,title=Session0 frame $($frame.Name)::sha256=$sha gzip_base64=$bytes"
+          }
+      - name: Publish compiler diagnostics
+        if: always()
+        run: |
+          foreach ($file in @('configure.log','build.log','compiler.log')) {
+            $path="build/session0-evidence/$file"
+            if (Test-Path $path) {
+              $text=Get-Content $path -Raw
+              for ($offset=0;$offset -lt $text.Length;$offset+=3000) {
+                $part=$text.Substring($offset,[Math]::Min(3000,$text.Length-$offset))
+                $part=$part.Replace('%','%25').Replace("`r",'%0D').Replace("`n",'%0A')
+                Write-Output "::notice file=.github/workflows/session0-osmesa.yml,line=1,title=Session0 $file offset=${offset}::$part"
+              }
+            }
           }
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         if: always()
