@@ -1605,14 +1605,21 @@ ui_status_t ui_native_shell_set_panel_floating(ui_native_shell_t *shell,
                                                int floating)
 {
     ui_native_panel_t *panel;
+    HWND focus;
+    ui_status_t status;
     if (shell == NULL || panel_id == NULL) return UI_STATUS_INVALID_ARGUMENT;
     if (shell->offscreen) return UI_STATUS_UNSUPPORTED;
     panel = find_panel(shell, panel_id);
     if (panel == NULL) return UI_STATUS_NOT_FOUND;
     if (panel->kind != UI_PANEL_SIDEBAR) return UI_STATUS_UNSUPPORTED;
+    focus = GetFocus();
+    if (focus != panel->hwnd && !IsChild(panel->hwnd, focus)) focus = NULL;
     panel->manual_floating = floating != 0;
     panel->closed = 0;
-    return ui_native_shell_reflow(shell);
+    status = ui_native_shell_reflow(shell);
+    if (status == UI_STATUS_OK && shell->active && !shell->host->modal_component &&
+        focus && IsWindowVisible(focus) && IsWindowEnabled(focus)) SetFocus(focus);
+    return status;
 }
 
 ui_status_t ui_native_shell_refresh(ui_native_shell_t *shell)

@@ -1558,6 +1558,10 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         SetWindowLongPtrW(hwnd, GWLP_USERDATA, (LONG_PTR)view); view->hwnd = hwnd; return TRUE;
     }
     if (view == NULL) return DefWindowProcW(hwnd, message, wp, lp);
+    if ((message==WM_LBUTTONDOWN||message==WM_LBUTTONUP||message==WM_MOUSEWHEEL||
+         message==WM_MOUSEMOVE||message==WM_RBUTTONUP||message==WM_KEYDOWN||
+         message==WM_SYSKEYDOWN||message==WM_CHAR||message==WM_IME_STARTCOMPOSITION||
+         message==WM_IME_COMPOSITION)&&!ui_components_input_allowed(view->host,view)) return 0;
     if (message == WM_LBUTTONDOWN || message == WM_LBUTTONUP || message == WM_MOUSEWHEEL || message == WM_MOUSEMOVE || message == WM_RBUTTONUP) {
         ui_input_event_t event = {0};
         POINT point = {GET_X_LPARAM(lp), GET_Y_LPARAM(lp)};
@@ -1764,6 +1768,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
     int hit;
     (void)user;
     if (!view || !event || event->size < sizeof(*event)) return UI_STATUS_INVALID_ARGUMENT;
+    if (!ui_components_input_allowed(view->host,view)) return UI_STATUS_CANCELLED;
     if (!view->context) return UI_STATUS_NOT_FOUND;
     view->event_modifiers = event->modifiers; view->wheel_delta = event->wheel_delta;
     hit = lw_hit(view, event->x, event->y);

@@ -26,6 +26,11 @@ typedef struct component_thumb {
     int failed;
     struct component_thumb *next;
 } component_thumb_t;
+typedef struct component_preview {
+    uint64_t image;
+    int used;
+    struct component_preview *next;
+} component_preview_t;
 struct ui_component {
     ui_host_t *host;
     ui_component_desc_t desc;
@@ -38,6 +43,7 @@ struct ui_component {
     int buffered;
     component_page_t *pages;
     component_thumb_t *thumbs;
+    component_preview_t *previews;
     ui_content_slot_t *slot;
     ui_web_backend_t *backend;
     ui_web_view_t *view;
@@ -138,6 +144,28 @@ static void free_thumbs(ui_component_t *c)
 {
     while(c->thumbs){component_thumb_t *t=c->thumbs;c->thumbs=t->next;
         if(t->image)(void)ui_image_release(c->host,t->image);ui_images_release_metadata(c->host,sizeof(*t));free(t);}
+}
+static void release_previews(ui_component_t *c,int all)
+{
+    component_preview_t **link=&c->previews;
+    while(*link){component_preview_t *p=*link;
+        if(all||!p->used){*link=p->next;(void)ui_image_release(c->host,p->image);ui_images_release_metadata(c->host,sizeof(*p));free(p);}
+        else link=&p->next;}
+}
+/* Only framework-generated previews are owned here; application IDs are borrowed. */
+static ui_status_t cell_preview(ui_component_t *c,ui_cell_t *cell)
+{
+    component_preview_t *p;ui_image_info_t info={0};ui_status_t status;info.size=sizeof(info);
+    if(cell->image_id&&ui_image_get_info(c->host,cell->image_id,&info)!=UI_STATUS_OK)cell->image_id=0;
+    if(!cell->image_id){
+        p=NULL;if(!cell->style.image_id){
+            p=(component_preview_t *)calloc(1,sizeof(*p));if(!p)return UI_STATUS_OUT_OF_MEMORY;
+            status=ui_images_reserve_metadata(c->host,sizeof(*p));if(status!=UI_STATUS_OK){free(p);return status;}}
+        status=ui_image_create_preview(c->host,&cell->style,40,24,&cell->image_id);
+        if(status!=UI_STATUS_OK){if(p){ui_images_release_metadata(c->host,sizeof(*p));free(p);}return status;}
+        if(p){p->image=cell->image_id;p->next=c->previews;c->previews=p;(void)ui_image_set_evictable(c->host,p->image);}}
+    for(p=c->previews;p;p=p->next)if(p->image==cell->image_id){p->used=1;break;}
+    return UI_STATUS_OK;
 }
 const char *ui_host_status_text(const ui_host_t *host)
 {const ui_component_t *c;for(c=host->components;c;c=c->next)if(c->desc.kind==UI_COMPONENT_STATUS&&c->visible)return c->desc.title;return "";}
@@ -447,9 +475,8 @@ static void json_row(ui_component_t *c,ui_json_t *json,const ui_row_t *r,int dep
             if(k>=c->desc.column_count||k>=c->render_column+c->column_count)continue;}
         if(emitted++)uj_add(json,",");
         if(cell.kind==UI_VALUE_IMAGE&&!cell.image_id)cell.image_id=image;
-        if(cell.kind==UI_VALUE_STYLE&&cell.image_id){ui_image_info_t info={0};info.size=sizeof(info);if(ui_image_get_info(c->host,cell.image_id,&info)!=UI_STATUS_OK)cell.image_id=0;}
-        if(cell.kind==UI_VALUE_STYLE&&!cell.image_id){ui_image_id_t preview=0;
-            ui_status_t status=ui_image_create_preview(c->host,&cell.style,40,24,&preview);if(status!=UI_STATUS_OK)c->resource_status=status;if(status==UI_STATUS_OK){cell.image_id=preview;if(!cell.style.image_id)(void)ui_image_set_evictable(c->host,preview);((ui_cell_t *)&r->cells[j])->image_id=preview;}}
+        if(cell.kind==UI_VALUE_STYLE){ui_status_t status=cell_preview(c,&cell);
+            if(status!=UI_STATUS_OK)c->resource_status=status;else ((ui_cell_t *)&r->cells[j])->image_id=cell.image_id;}
         json_cell(json,&cell);}
     uj_add(json,"]}");
 }
@@ -494,8 +521,9 @@ static void render_rows(ui_component_t *c,ui_json_t *json,component_page_t *p,in
 }
 static void render_component(ui_component_t *c)
 {
-    ui_json_t json={0};size_t i,j,position=0;component_page_t *root;
+    ui_json_t json={0};size_t i,j,position=0;component_page_t *root;component_preview_t *preview;
     if(!c->view)return;if(c->rendering){c->again=1;return;}c->rendering=1;ui_dispatch_enter(c->host);
+    for(preview=c->previews;preview;preview=preview->next)preview->used=0;
     root=page(c,0,0);
     uj_fmt(&json,"{\"kind\":%d,\"rowHeight\":%d,\"width\":%d,\"height\":%d,\"first\":\"%llu\",\"total\":\"%llu\",\"selected\":\"%llu\",\"title\":",
         c->desc.kind,c->desc.row_height,c->width,c->height,(unsigned long long)c->first,(unsigned long long)(c->desc.kind==UI_COMPONENT_TREE?tree_total(c):(root?root->total:0)),(unsigned long long)c->selected);
@@ -508,12 +536,12 @@ static void render_component(ui_component_t *c)
         uj_add(&json,"{\"id\":");uj_string(&json,f->id);uj_add(&json,",\"title\":");uj_string(&json,f->title);
         uj_add(&json,",\"unit\":");uj_string(&json,f->unit);uj_add(&json,",\"group\":");uj_string(&json,f->group);
         uj_fmt(&json,",\"kind\":%d,\"flags\":%u,\"value\":",f->kind,c->drafts[i].flags);
-        if(f->kind==UI_VALUE_STYLE&&!c->drafts[i].image_id){ui_image_id_t preview=0;ui_status_t status=ui_image_create_preview(c->host,&c->drafts[i].style,40,24,&preview);if(status!=UI_STATUS_OK)c->resource_status=status;if(status==UI_STATUS_OK){c->drafts[i].image_id=preview;if(!c->drafts[i].style.image_id)(void)ui_image_set_evictable(c->host,preview);}}
+        if(f->kind==UI_VALUE_STYLE){ui_status_t status=cell_preview(c,&c->drafts[i]);if(status!=UI_STATUS_OK)c->resource_status=status;}
         json_cell(&json,&c->drafts[i]);uj_add(&json,",\"options\":[");
         for(j=0;j<f->option_count;++j){if(j)uj_add(&json,",");uj_string(&json,f->options[j]);}uj_add(&json,"]}");}
     uj_fmt(&json,"],\"modal\":%s,\"visible\":%s}",c->modal?"true":"false",c->visible?"true":"false");
     c->presentation_status=json.failed?UI_STATUS_LIMIT_EXCEEDED:ui_web_view_post_json(c->view,json.data);
-    free(json.data);
+    free(json.data);release_previews(c,0);
     c->rendering=0;ui_dispatch_leave(c->host);if(c->again){c->again=0;render_component(c);}
 }
 static void invoke_component(ui_component_t *c,const char *command,const char *params)
@@ -687,7 +715,7 @@ static void destroy_component(ui_component_t *c)
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
     if(c->backend)ui_light_web_backend_destroy(c->backend);
 #endif
-    free_pages(c);free_thumbs(c);free_description(c);free(c);
+    free_pages(c);free_thumbs(c);release_previews(c,1);free_description(c);free(c);
 }
 ui_status_t ui_component_unregister(ui_component_t *c)
 {
@@ -715,10 +743,17 @@ ui_status_t ui_component_mount_offscreen(ui_component_t *c,int width,int height,
     (void)c;(void)width;(void)height;(void)dpi;return UI_STATUS_UNSUPPORTED;
 #endif
 }
+int ui_components_input_allowed(const ui_host_t *host,const void *view_data)
+{
+    ui_component_t *c;
+    for(c=host->components;c;c=c->next)if(c->view&&c->view->user_data==view_data)
+        return !host->dispatch_blocked&&host->app_active&&c->visible&&(!host->modal_component||host->modal_component==c);
+    return 1;
+}
 ui_status_t ui_component_dispatch_input(ui_component_t *c,const ui_input_event_t *event)
 {
     if(!c||!event)return UI_STATUS_INVALID_ARGUMENT;if(!c->view)return UI_STATUS_NOT_FOUND;
-    if(c->host->dispatch_blocked||!c->host->app_active||!c->visible||(c->host->modal_component&&c->host->modal_component!=c))return UI_STATUS_CANCELLED;
+    if(!ui_components_input_allowed(c->host,c->view->user_data))return UI_STATUS_CANCELLED;
     return ui_web_view_dispatch_input(c->view,event);
 }
 ui_status_t ui_component_get_presentation(ui_component_t *c,const char *id,ui_element_presentation_t *out)
