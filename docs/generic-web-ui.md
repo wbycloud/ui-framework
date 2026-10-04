@@ -118,7 +118,7 @@ NULL pixels 同步查询捕获物理宽高/stride。提供像素缓冲后，等�
 
 组件承载使用 Runtime 的 ControllerOptions4 AllowHostInputProcessing，让聚焦浏览器时的菜单和宿主/应用快捷键进入正常消息循环。[最低Runtime为138.0.3351.48](https://learn.microsoft.com/en-us/microsoft-edge/webview2/release-notes/sdk/1-0-3351-48)，接口仍按实际QueryInterface结果核验。程序键输入在页面未 preventDefault 时走同一语义命令，并保留编辑快捷键。没有该 Runtime 接口时组件承载创建明确失败。公共菜单仍使用框架轻量后端，部署完整宿主需要同时启用轻量与可选 WebView2。
 
-销毁先撤销事件及应用回调，SDK 未完成操作只持有失效的内部 view；在 SDK 回调返回后的 UI 消息中停止导航、关闭controller并释放环境。controller成功创建后、任何Close之前订阅 BrowserProcessExited，环境保留到对应浏览器退出事件后释放。创建过程中取消时，API6等待内部空白文档NavigationCompleted再执行上述清理；不装载应用文档或调用已失效的应用回调。此前只执行初始文档的无副作用脚本，在实际CI仍出现关闭句柄增长，失败和修复见API6验收。应用 DLL 可按既有卸载合同释放；UI线程保持STA和正常消息循环，共享框架 DLL 应继续处理 Runtime 的关闭消息。同一用户数据目录的其他 view 仍活动时，浏览器退出和内部环境清理会延后；不要以 destroy 返回或 flush 空闲推断所有浏览器进程已退出。不会清除调用方的用户数据目录。
+销毁先撤销事件及应用回调，SDK 未完成操作只持有失效的内部 view；在 SDK 回调返回后的 UI 消息中停止导航、关闭controller并释放环境。controller成功创建后、任何Close之前订阅 BrowserProcessExited，环境保留到对应浏览器退出事件后释放。创建过程中取消时，API6仅接受所启动内部空白导航ID的NavigationCompleted，忽略初始about:blank完成，只释放一次事件所有权，并等待该完成文档的renderer脚本确认后再清理；不装载应用文档或调用已失效的应用回调。此前只执行初始文档脚本或接受任意完成事件，在实际CI仍出现关闭句柄增长，失败和修复见API6验收。应用 DLL 可按既有卸载合同释放；UI线程保持STA和正常消息循环，共享框架 DLL 应继续处理 Runtime 的关闭消息。同一用户数据目录的其他 view 仍活动时，浏览器退出和内部环境清理会延后；不要以 destroy 返回或 flush 空闲推断所有浏览器进程已退出。不会清除调用方的用户数据目录。
 
 API5 DLL/Runtime、双实例、图片更新释放、编辑、树数据、模态、异步失效及关闭的历史证据见 [API5验收](validation/api5-validation.md)。当前布局、共同组件及综合回归状态见[API6验收](validation/api6-validation.md)，不继承历史记录中未覆盖的新功能结论。
 

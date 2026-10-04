@@ -1,0 +1,84 @@
+
+Internal ctest changing into directory: D:/a/ui-framework/ui-framework/build/ci-light
+Test project D:/a/ui-framework/ui-framework/build/ci-light
+      Start  1: ui_package_format
+ 1/37 Test  #1: ui_package_format ................   Passed    0.02 sec
+      Start  2: ui_images_windows
+ 2/37 Test  #2: ui_images_windows ................   Passed    0.02 sec
+      Start  3: ui_responsive_layout
+ 3/37 Test  #3: ui_responsive_layout .............   Passed    0.01 sec
+      Start  4: ui_assistant_lifecycle
+ 4/37 Test  #4: ui_assistant_lifecycle ...........   Passed    0.01 sec
+      Start  5: ui_dpi_web_failure
+ 5/37 Test  #5: ui_dpi_web_failure ...............   Passed    0.01 sec
+      Start  6: ui_components_core
+ 6/37 Test  #6: ui_components_core ...............   Passed    0.01 sec
+      Start  7: ui_headless_example
+ 7/37 Test  #7: ui_headless_example ..............   Passed    0.01 sec
+      Start  8: ui_public_headers_c
+ 8/37 Test  #8: ui_public_headers_c ..............   Passed    0.01 sec
+      Start  9: ui_public_headers_cpp
+ 9/37 Test  #9: ui_public_headers_cpp ............   Passed    0.01 sec
+      Start 10: ui_workspace_layout
+10/37 Test #10: ui_workspace_layout ..............   Passed    0.35 sec
+      Start 11: ui_api5_compat
+11/37 Test #11: ui_api5_compat ...................   Passed    0.02 sec
+      Start 12: ui_component_experience
+12/37 Test #12: ui_component_experience ..........   Passed    0.53 sec
+      Start 13: ui_offscreen_msaa
+13/37 Test #13: ui_offscreen_msaa ................   Passed    0.60 sec
+      Start 14: ui_offscreen_gl
+14/37 Test #14: ui_offscreen_gl ..................   Passed    0.28 sec
+      Start 15: ui_workspace_offscreen
+15/37 Test #15: ui_workspace_offscreen ...........   Passed    0.58 sec
+      Start 16: ui_framework_features_host
+16/37 Test #16: ui_framework_features_host .......   Passed    5.56 sec
+      Start 17: ui_menu_offscreen
+17/37 Test #17: ui_menu_offscreen ................   Passed    0.12 sec
+      Start 18: ui_menu_access
+18/37 Test #18: ui_menu_access ...................   Passed    0.06 sec
+      Start 19: ui_api4_compat
+19/37 Test #19: ui_api4_compat ...................   Passed    0.03 sec
+      Start 20: ui_web_text_edit
+20/37 Test #20: ui_web_text_edit .................   Passed    0.18 sec
+      Start 21: ui_generic_web_host
+21/37 Test #21: ui_generic_web_host ..............   Passed    4.99 sec
+      Start 22: ui_component_resilience
+22/37 Test #22: ui_component_resilience ..........   Passed    3.99 sec
+      Start 23: ui_application_versions
+23/37 Test #23: ui_application_versions ..........   Passed    0.29 sec
+      Start 24: ui_light_web_dynamic
+24/37 Test #24: ui_light_web_dynamic .............   Passed    0.17 sec
+      Start 25: ui_web_shell_slots
+25/37 Test #25: ui_web_shell_slots ...............   Passed    0.05 sec
+      Start 26: ui_floating_web_dpi
+26/37 Test #26: ui_floating_web_dpi ..............   Passed    0.04 sec
+      Start 27: ui_light_web_parity
+27/37 Test #27: ui_light_web_parity ..............   Passed    0.15 sec
+      Start 28: ui_workspace_integration
+28/37 Test #28: ui_workspace_integration .........   Passed    0.95 sec
+      Start 29: ui_web_host_frontend
+29/37 Test #29: ui_web_host_frontend .............   Passed    1.11 sec
+      Start 30: ui_native_activation
+30/37 Test #30: ui_native_activation .............   Passed    0.44 sec
+      Start 31: ui_dpi_integration
+31/37 Test #31: ui_dpi_integration ...............   Passed    0.03 sec
+      Start 32: ui_opengl_integration
+32/37 Test #32: ui_opengl_integration ............   Passed    0.44 sec
+      Start 33: ui_surface_input
+33/37 Test #33: ui_surface_input .................   Passed    0.09 sec
+      Start 34: ui_monitor_transition
+34/37 Test #34: ui_monitor_transition ............***Skipped   0.02 sec
+      Start 35: ui_native_shell_integration
+35/37 Test #35: ui_native_shell_integration ......   Passed    0.04 sec
+      Start 36: ui_native_responsive
+36/37 Test #36: ui_native_responsive .............   Passed    0.14 sec
+      Start 37: ui_assistant_protocol
+37/37 Test #37: ui_assistant_protocol ............   Passed    0.02 sec
+
+100% tests passed, 0 tests failed out of 37
+
+Total Test time (real) =  21.41 sec
+
+The following tests did not run:
+	 34 - ui_monitor_transition (Skipped)

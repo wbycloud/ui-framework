@@ -1,0 +1,78 @@
+UpdateCTestConfiguration  from :<repo>/build/fw-next/release/DartConfiguration.tcl
+Test project <repo>/build/fw-next/release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 12
+    Start 12: ui_webview2_render
+
+12: Test command: <repo>\build\fw-next\release\ui_webview2_render_test.exe
+12: Working Directory: <repo>/build/fw-next/release
+12: Test timeout computed to be: 30
+12: Runtime render: initialize
+12: Runtime render: ready
+12: Runtime render: capture/images complete
+12: Runtime render: close
+12: Runtime close before creation x12 handles 318->328 USER 26->28
+12: Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+1/2 Test #12: ui_webview2_render ...............   Passed    9.64 sec
+test 21
+    Start 21: ui_api6_integration_webview2
+
+21: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 120
+21: API6 integration: initialize
+21: API6 integration: init-failure cleanup complete
+21: API6 integration: component editing complete
+21: API6 integration: layout complete
+21: Actual GL C-image component capture white pixels=180
+21: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+21: API6 integration: modal complete
+21: API6 integration: instances/resize complete
+21: API6 integration: reopen 0
+21: API6 integration: reopen 1
+21: API6 integration: reopen 2
+21: API6 integration: reopen 3
+21: API6 integration: reopen 4
+21: API6 integration: reopen 5
+21: API6 integration: reopen 6
+21: API6 integration: reopen 7
+21: API6 reopen8 handles 487->500 GDI 12->12 USER 126->126
+21: integration line75: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+21: API6 independent WebView2 DLL integration: 1 failures
+2/2 Test #21: ui_api6_integration_webview2 .....***Failed   26.21 sec
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 487->500 GDI 12->12 USER 126->126
+integration line75: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+API6 independent WebView2 DLL integration: 1 failures
+
+
+The following tests passed:
+	ui_webview2_render
+
+50% tests passed, 1 tests failed out of 2
+
+Total Test time (real) =  35.91 sec
+
+The following tests FAILED:
+	 21 - ui_api6_integration_webview2 (Failed)
+Errors while running CTest

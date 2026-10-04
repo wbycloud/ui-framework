@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="21"
+	failures="5"
+	disabled="0"
+	skipped="1"
+	hostname=""
+	time="4"
+	timestamp="2026-10-05T02:17:44"
+	>
+	<testcase name="ui_package_format" classname="ui_package_format" time="0.10066" status="run">
+		<properties/>
+		<system-out>package format and deterministic packing: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_images_windows" classname="ui_images_windows" time="0.0357197" status="run">
+		<properties/>
+		<system-out>PNG/GDI/cache: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_responsive_layout" classname="ui_responsive_layout" time="0.0206612" status="run">
+		<properties/>
+		<system-out>responsive layout matrix: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_assistant_lifecycle" classname="ui_assistant_lifecycle" time="0.0221441" status="run">
+		<properties/>
+		<system-out>assistant lifecycle and model rollback: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_dpi_web_failure" classname="ui_dpi_web_failure" time="0.0224124" status="run">
+		<properties/>
+		<system-out>failed Web DPI sync and retry: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_components_core" classname="ui_components_core" time="0.0328396" status="run">
+		<properties/>
+		<system-out>API3 components core: 0 failures, 3 bounded queries
+</system-out>
+	</testcase>
+	<testcase name="ui_headless_example" classname="ui_headless_example" time="0.0217963" status="run">
+		<properties/>
+		<system-out>eda.add_block: {"blocks":1}
+</system-out>
+	</testcase>
+	<testcase name="ui_public_headers_c" classname="ui_public_headers_c" time="0.0220942" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_public_headers_cpp" classname="ui_public_headers_cpp" time="0.0214091" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_workspace_layout" classname="ui_workspace_layout" time="1.46763" status="fail">
+		<failure message="Exit code 0xc0000409"/>
+		<properties/>
+		<system-out>unknown TGSI opcode: RET
+</system-out>
+	</testcase>
+	<testcase name="ui_api5_compat" classname="ui_api5_compat" time="0.068151" status="run">
+		<properties/>
+		<system-out>frozen SDK5 guarded descriptor/state/source: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_offscreen_msaa" classname="ui_offscreen_msaa" time="0.299592" status="run">
+		<properties/>
+		<system-out>Actual GL Microsoft Corporation / D3D12 (Intel(R) UHD Graphics 770) / 4.1 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+</system-out>
+	</testcase>
+	<testcase name="ui_workspace_integration" classname="ui_workspace_integration" time="1.04474" status="fail">
+		<failure message="Exit code 0xc0000409"/>
+		<properties/>
+		<system-out>unknown TGSI opcode: RET
+</system-out>
+	</testcase>
+	<testcase name="ui_native_activation" classname="ui_native_activation" time="0.377791" status="fail">
+		<failure message="Exit code 0xc0000409"/>
+		<properties/>
+		<system-out>unknown TGSI opcode: RET
+</system-out>
+	</testcase>
+	<testcase name="ui_dpi_integration" classname="ui_dpi_integration" time="0.0607623" status="run">
+		<properties/>
+		<system-out>DPI integration: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_opengl_integration" classname="ui_opengl_integration" time="0.234374" status="run">
+		<properties/>
+		<system-out>legacy: Microsoft Corporation | D3D12 (Intel(R) UHD Graphics 770) | 4.1 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c)
+gl.core: Microsoft Corporation | D3D12 (Intel(R) UHD Graphics 770) | 4.1 (Core Profile) Mesa 24.3.4 (git-1950a8b78c) samples=0 debug=0
+gl.compatibility: Microsoft Corporation | D3D12 (Intel(R) UHD Graphics 770) | 4.1 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=0 debug=0
+gl.msaa_debug: Microsoft Corporation | D3D12 (Intel(R) UHD Graphics 770) | 4.1 (Core Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 debug=1
+OpenGL integration: 0 failure(s), 3 modern configurations supported
+</system-out>
+	</testcase>
+	<testcase name="ui_surface_input" classname="ui_surface_input" time="0.250464" status="fail">
+		<failure message="Exit code 0xc0000409"/>
+		<properties/>
+		<system-out>unknown TGSI opcode: RET
+</system-out>
+	</testcase>
+	<testcase name="ui_monitor_transition" classname="ui_monitor_transition" time="0.0676259" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties/>
+		<system-out>Monitor transition environment: 1 monitor(s)
+SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+</system-out>
+	</testcase>
+	<testcase name="ui_native_shell_integration" classname="ui_native_shell_integration" time="0.0784491" status="run">
+		<properties/>
+		<system-out>native shell integration checks passed
+</system-out>
+	</testcase>
+	<testcase name="ui_native_responsive" classname="ui_native_responsive" time="0.246924" status="fail">
+		<failure message="Exit code 0xc0000409"/>
+		<properties/>
+		<system-out>unknown TGSI opcode: RET
+</system-out>
+	</testcase>
+	<testcase name="ui_assistant_protocol" classname="ui_assistant_protocol" time="0.0568376" status="run">
+		<properties/>
+		<system-out>assistant protocol: 0 failure(s)
+</system-out>
+	</testcase>
+</testsuite>

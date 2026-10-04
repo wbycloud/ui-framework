@@ -1,0 +1,19 @@
+Test project <repo>/build/fw-next/release
+    Start 16: ui_workspace_layout
+1/7 Test #16: ui_workspace_layout ................   Passed    0.48 sec
+    Start 17: ui_api5_compat
+2/7 Test #17: ui_api5_compat .....................   Passed    0.14 sec
+    Start 18: ui_component_experience
+3/7 Test #18: ui_component_experience ............   Passed    0.18 sec
+    Start 19: ui_component_experience_webview2
+4/7 Test #19: ui_component_experience_webview2 ...   Passed    9.30 sec
+    Start 20: ui_api6_integration
+5/7 Test #20: ui_api6_integration ................   Passed    6.57 sec
+    Start 21: ui_api6_integration_webview2
+6/7 Test #21: ui_api6_integration_webview2 .......   Passed   11.07 sec
+    Start 37: ui_original_api2_package
+7/7 Test #37: ui_original_api2_package ...........   Passed    0.26 sec
+
+100% tests passed, 0 tests failed out of 7
+
+Total Test time (real) =  28.11 sec

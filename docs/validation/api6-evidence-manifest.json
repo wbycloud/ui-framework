@@ -1,0 +1,65 @@
+{
+  "recorded_at": "2026-10-04T20:31:40.504504+00:00",
+  "product_commit": "9705565bea9b74afcad7f27aa92df9e1050c4e97",
+  "ci_run": 37231692624,
+  "full_local": {
+    "tests": 51,
+    "passed": 50,
+    "skipped": 1,
+    "failed": 0,
+    "seconds": 256.11
+  },
+  "raw_logs": {
+    "final-fixed.log": {
+      "sha256": "b5c9653194bb30702127b42a2e80a59dec62a49d64eda7d90521544eb3922edb",
+      "encoding": "UTF-8"
+    },
+    "final-fixed.xml": {
+      "sha256": "c36a46370ff459f5225157b61e5191a5fc020ff3e9964ecf87c0e05e7fc8ce1d",
+      "encoding": "UTF-8"
+    },
+    "final-output.log": {
+      "sha256": "b5413e1b537824bc56e51680b92573a065d09f1928d9a02bdda84be14947d15c",
+      "encoding": "Windows GB18030/GBK"
+    },
+    "runtime-renderer-ack-repeat.log": {
+      "sha256": "30ff8d766fd15263d7fb90a04ab3ffcbe33a1e8424948ad0ca278cf9ea6f8401",
+      "encoding": "UTF-8"
+    },
+    "runtime-navigation-id-repeat.log": {
+      "sha256": "edeb3ca136c64d262fe4066d9eb56862179f1252320714fc964e01756e26af20",
+      "encoding": "UTF-8"
+    },
+    "runtime-without-snapshot-failure.log": {
+      "sha256": "6e38aa30cfb63f4c8eddf66f34c882f89fa8d349fbf9e6b9a146523efa2a04a8",
+      "encoding": "UTF-8"
+    }
+  },
+  "current_binaries": {
+    "ui_framework.dll": "fa6c51fcfa324a846457f51ea6be295fc93c79e41984c904e096b54ddb2af65f",
+    "api6_fixture.uapp": "b493adda01f6dc5d8562a52e3648b2ce8b4e233a07d9c8def28646241cf084e4",
+    "ui_api6_integration_test.exe": "5f8f7782b75e198202df11a9132962d6e974544c9c234e4b40fe89c72da5bd6f"
+  },
+  "pixel_source": {
+    "api6-light-frame": {
+      "ppm_sha256": "7d2c0527f4a5dd66db565ffbdad3961eac7f4cd5b33863c1e675d1fc92f69921",
+      "png_sha256": "c930c05bdab7cc61bfca034d0f7013c3d02de8278c568ee13b5c8c2dc971d52d",
+      "size": [
+        64,
+        64
+      ],
+      "samples": 4,
+      "partial_pixels": 123
+    },
+    "api6-runtime-frame": {
+      "ppm_sha256": "7d2c0527f4a5dd66db565ffbdad3961eac7f4cd5b33863c1e675d1fc92f69921",
+      "png_sha256": "c930c05bdab7cc61bfca034d0f7013c3d02de8278c568ee13b5c8c2dc971d52d",
+      "size": [
+        64,
+        64
+      ],
+      "samples": 4,
+      "partial_pixels": 123
+    }
+  }
+}

@@ -1,0 +1,4 @@
+source=https://github.com/pal1000/mesa-dist-win/releases/download/24.3.4/mesa3d-24.3.4-release-msvc.7z sha256=7ebc711ad1896ac88ab21e142f1017f8ff035f0f342bdb72fbb5e2eb881ba363
+source=https://github.com/lexbor/lexbor.git commit=7fb22cf5664a331d7c24b113489e566767c9c25a
+source=https://github.com/quickjs-ng/quickjs.git commit=2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278
+WGL provider: application-local Mesa24.3.4 llvmpipe; OSMesa: explicit library; hosted logged-in desktop, not no-login acceptance

@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="51"
+	failures="0"
+	disabled="0"
+	skipped="1"
+	hostname=""
+	time="256"
+	timestamp="2026-10-05T04:20:10"
+	>
+	<testcase name="ui_package_format" classname="ui_package_format" time="0.10238" status="run">
+		<properties/>
+		<system-out>package format and deterministic packing: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_images_windows" classname="ui_images_windows" time="0.0254057" status="run">
+		<properties/>
+		<system-out>PNG/GDI/cache: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_responsive_layout" classname="ui_responsive_layout" time="0.0129761" status="run">
+		<properties/>
+		<system-out>responsive layout matrix: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_assistant_lifecycle" classname="ui_assistant_lifecycle" time="0.0191194" status="run">
+		<properties/>
+		<system-out>assistant lifecycle and model rollback: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_dpi_web_failure" classname="ui_dpi_web_failure" time="0.012258" status="run">
+		<properties/>
+		<system-out>failed Web DPI sync and retry: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_components_core" classname="ui_components_core" time="0.016616" status="run">
+		<properties/>
+		<system-out>API3 components core: 0 failures, 3 bounded queries
+</system-out>
+	</testcase>
+	<testcase name="ui_headless_example" classname="ui_headless_example" time="0.0123485" status="run">
+		<properties/>
+		<system-out>eda.add_block: {"blocks":1}
+</system-out>
+	</testcase>
+	<testcase name="ui_public_headers_c" classname="ui_public_headers_c" time="0.0139534" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_public_headers_cpp" classname="ui_public_headers_cpp" time="0.0175739" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_webview2_parity" classname="ui_webview2_parity" time="0.593475" status="run">
+		<properties/>
+		<system-out>javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+composition_verified=set_rect,resize_preserves_origin,sidebar_binding,host_reflow
+javascript_verified=true
+state=0 ready=1 html_navigated=1 viewport_cases=4 composition=1 clicks=1 inputs=1 results=2 hresult=0x00000000 elapsed_ms=437
+</system-out>
+	</testcase>
+	<testcase name="ui_webview2_messages" classname="ui_webview2_messages" time="0.510506" status="run">
+		<properties/>
+		<system-out>WebView2 JSON: ready=1 navigated=1 posted=1 echoed=1 status=0
+</system-out>
+	</testcase>
+	<testcase name="ui_webview2_render" classname="ui_webview2_render" time="9.30996" status="run">
+		<properties/>
+		<system-out>Runtime render: initialize
+Runtime render: ready
+Runtime render: capture/images complete
+Runtime render: close
+Runtime close before creation x12 handles 314-&gt;315 USER 17-&gt;17 pending cleanup=0
+Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+Runtime test: normal CRT exit callback reached
+</system-out>
+	</testcase>
+	<testcase name="ui_api5_integration" classname="ui_api5_integration" time="78.702" status="run">
+		<properties/>
+		<system-out>click field-name rect 21,117,718,38 clip 21,117,718,38
+click tree-label-1 rect 19,93,105,28 clip 19,93,104,28
+nested result=0 text=Nested DLL row
+click field-name rect 21,117,382,38 clip 21,117,382,38
+reopen1 handles=382
+reopen2 handles=383
+reopen3 handles=383
+reopen4 handles=383
+reopen5 handles=383
+reopen6 handles=383
+reopen7 handles=383
+reopen8 handles=383
+reopen9 handles=383
+reopen10 handles=383
+reopen11 handles=383
+reopen12 handles=385
+reopen13 handles=385
+reopen14 handles=385
+reopen15 handles=385
+reopen16 handles=385
+reopen17 handles=385
+reopen18 handles=385
+reopen19 handles=385
+reopen20 handles=385
+reopen21 handles=385
+reopen22 handles=385
+reopen23 handles=385
+reopen24 handles=385
+reopen25 handles=379
+reopen26 handles=381
+reopen27 handles=381
+reopen28 handles=381
+reopen29 handles=381
+reopen30 handles=381
+reopen31 handles=381
+reopen32 handles=381
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+DLL reopen32 resources...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_api5_native_host" classname="ui_api5_native_host" time="6.04419" status="run">
+		<properties/>
+		<system-out>native key msg=260 key=18 handled=1 ctrl=0 shift=0 alt=-127
+native key msg=260 key=70 handled=1 ctrl=0 shift=0 alt=-127
+native key msg=261 key=70 handled=1 ctrl=0 shift=0 alt=-127
+native key msg=257 key=18 handled=1 ctrl=0 shift=0 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=0 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=0 alt=1
+native key msg=257 key=83 handled=1 ctrl=0 shift=0 alt=1
+native key msg=260 key=18 handled=1 ctrl=0 shift=0 alt=-128
+native key msg=261 key=18 handled=1 ctrl=0 shift=0 alt=0
+native key msg=256 key=27 handled=1 ctrl=0 shift=0 alt=0
+native key msg=257 key=27 handled=1 ctrl=0 shift=0 alt=0
+native key msg=256 key=17 handled=0 ctrl=-127 shift=0 alt=0
+native key msg=256 key=79 handled=1 ctrl=-127 shift=0 alt=0
+native key msg=257 key=79 handled=0 ctrl=-127 shift=0 alt=0
+native key msg=257 key=17 handled=0 ctrl=1 shift=0 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_original_api5_package" classname="ui_original_api5_package" time="78.7911" status="run">
+		<properties/>
+		<system-out>click field-name rect 21,117,718,38 clip 21,117,718,38
+click tree-label-1 rect 19,93,105,28 clip 19,93,104,28
+nested result=0 text=Nested DLL row
+click field-name rect 21,117,382,38 clip 21,117,382,38
+reopen1 handles=382
+reopen2 handles=383
+reopen3 handles=383
+reopen4 handles=383
+reopen5 handles=383
+reopen6 handles=383
+reopen7 handles=383
+reopen8 handles=383
+reopen9 handles=383
+reopen10 handles=383
+reopen11 handles=383
+reopen12 handles=385
+reopen13 handles=385
+reopen14 handles=385
+reopen15 handles=385
+reopen16 handles=385
+reopen17 handles=385
+reopen18 handles=385
+reopen19 handles=385
+reopen20 handles=385
+reopen21 handles=385
+reopen22 handles=385
+reopen23 handles=385
+reopen24 handles=385
+reopen25 handles=379
+reopen26 handles=381
+reopen27 handles=381
+reopen28 handles=381
+reopen29 handles=381
+reopen30 handles=381
+reopen31 handles=381
+reopen32 handles=381
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+DLL reopen32 resources...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_workspace_layout" classname="ui_workspace_layout" time="0.636055" status="run">
+		<properties/>
+		<system-out>workspace layout: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_api5_compat" classname="ui_api5_compat" time="0.119554" status="run">
+		<properties/>
+		<system-out>frozen SDK5 guarded descriptor/state/source: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_experience" classname="ui_component_experience" time="0.169276" status="run">
+		<properties/>
+		<system-out>component experience light: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_experience_webview2" classname="ui_component_experience_webview2" time="9.27196" status="run">
+		<properties/>
+		<system-out>component experience actual WebView2: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_api6_integration" classname="ui_api6_integration" time="6.61277" status="run">
+		<properties/>
+		<system-out>API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=240
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-light-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 220-&gt;220 GDI 3-&gt;3 USER 3-&gt;3 pending Runtime cleanup=0
+API6 complete offscreen lifecycle created HWNDs=0
+API6 independent light offscreen DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+</system-out>
+	</testcase>
+	<testcase name="ui_api6_integration_webview2" classname="ui_api6_integration_webview2" time="11.0744" status="run">
+		<properties/>
+		<system-out>API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 383-&gt;384 GDI 12-&gt;12 USER 17-&gt;17 pending Runtime cleanup=0
+API6 independent WebView2 DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+</system-out>
+	</testcase>
+	<testcase name="ui_session0_interactive_control" classname="ui_session0_interactive_control" time="31.5926" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_offscreen_msaa" classname="ui_offscreen_msaa" time="0.240717" status="run">
+		<properties/>
+		<system-out>Actual GL Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079 samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+</system-out>
+	</testcase>
+	<testcase name="ui_windowless_gl" classname="ui_windowless_gl" time="0.432842" status="run">
+		<properties/>
+		<system-out>Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+OSMesa reopen 1 handles=209 loaded=1
+OSMesa reopen 2 handles=209 loaded=1
+OSMesa reopen 3 handles=209 loaded=1
+OSMesa reopen 4 handles=209 loaded=1
+OSMesa reopen 5 handles=209 loaded=1
+OSMesa reopen 6 handles=209 loaded=1
+OSMesa reopen 7 handles=209 loaded=1
+OSMesa reopen 8 handles=209 loaded=1
+OSMesa reopen 9 handles=209 loaded=1
+OSMesa reopen 10 handles=209 loaded=1
+OSMesa reopen 11 handles=209 loaded=1
+OSMesa reopen 12 handles=209 loaded=1
+OSMesa reopen 13 handles=209 loaded=1
+OSMesa reopen 14 handles=209 loaded=1
+OSMesa reopen 15 handles=209 loaded=1
+OSMesa reopen 16 handles=209 loaded=1
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=0, process HWNDs=0, HWND dependency=2
+</system-out>
+	</testcase>
+	<testcase name="ui_offscreen_gl" classname="ui_offscreen_gl" time="0.257467" status="run">
+		<properties/>
+		<system-out>Offscreen GPU: Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079; hidden HWND dependency; hardware class unknown
+Hidden WGL/FBO/frame/input/readback: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_workspace_offscreen" classname="ui_workspace_offscreen" time="0.423019" status="run">
+		<properties/>
+		<system-out>Offscreen actual DOM=75 cached rows=12 columns=4
+Workspace/shared DLL/real templates: 0 failures, HWNDs=0
+</system-out>
+	</testcase>
+	<testcase name="ui_framework_features_host" classname="ui_framework_features_host" time="2.56451" status="run">
+		<properties/>
+		<system-out>API4 actual host menus/overflow/instances: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_menu_offscreen" classname="ui_menu_offscreen" time="0.178716" status="run">
+		<properties/>
+		<system-out>Real light/template offscreen: 0 failures; thread windows=0; no physical IME/DPI claim
+</system-out>
+	</testcase>
+	<testcase name="ui_menu_access" classname="ui_menu_access" time="0.1589" status="run">
+		<properties/>
+		<system-out>Menu Alt real template: 0 failures, calls=3
+</system-out>
+	</testcase>
+	<testcase name="ui_api4_compat" classname="ui_api4_compat" time="0.0747704" status="run">
+		<properties/>
+		<system-out>Frozen SDK4 prefixes/dirty padding/component: 0 failures, component_size=136
+</system-out>
+	</testcase>
+	<testcase name="ui_original_api4_package" classname="ui_original_api4_package" time="2.62332" status="run">
+		<properties/>
+		<system-out>API4 actual host menus/overflow/instances: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_web_text_edit" classname="ui_web_text_edit" time="0.210675" status="run">
+		<properties/>
+		<system-out>Web editor: 0 failures. Physical Chinese IME remains unverified.
+</system-out>
+	</testcase>
+	<testcase name="ui_generic_web_host" classname="ui_generic_web_host" time="2.97281" status="run">
+		<properties/>
+		<system-out>initial actual DOM=169 rows=17 columns=5
+Initial form dpi=96 status=0 field=13,122,194,28 view=0,0,220,601
+100k tail actual DOM=75 rows=12 columns=4
+100k expanded tree actual DOM=77 cached rows=1800 total=100100
+image bytes=413344 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+</system-out>
+	</testcase>
+	<testcase name="ui_component_resilience" classname="ui_component_resilience" time="3.2968" status="run">
+		<properties/>
+		<system-out>automatic style preview lifetime: 0 failures
+resource,0,0,0,16056320,5394432,171,46,4,0,0,0,0,0,0,0
+edit/layout mode 0: 0 failures
+edit/layout mode 1: 0 failures
+edit/layout mode 2: 0 failures
+edit/layout mode 3: 0 failures
+focus before refloat=0000000005AE0F6E
+focus after refloat=0000000005AE0F6E
+focus after modal close=0000000005AE0F6E
+focus after redock=0000000005AE0F6E
+edit/layout mode 4: 0 failures
+edit/layout mode 5: 0 failures
+record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count
+resource,78,1,1,131260416,94703616,345,926,70,188,20,15255,77,9702,313752,76
+resource,78,1,2,131260416,94703616,345,926,70,169,17,11030,77,8254,212736,52
+resource,1078,18,1,139186176,102633472,345,963,68,150,20,15564,77,21286,400960,95
+resource,1078,18,2,139186176,102633472,345,963,68,150,19,14789,77,21286,531560,126
+resource,2000,35,1,139501568,102948864,345,1039,68,150,19,14827,77,34318,562192,133
+resource,2000,35,2,139501...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_api3_original_package" classname="ui_api3_original_package" time="2.86744" status="run">
+		<properties/>
+		<system-out>initial actual DOM=169 rows=17 columns=5
+Initial form dpi=96 status=0 field=13,122,194,28 view=0,0,220,601
+100k tail actual DOM=75 rows=12 columns=4
+100k expanded tree actual DOM=77 cached rows=1800 total=100100
+image bytes=413344 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+</system-out>
+	</testcase>
+	<testcase name="ui_application_versions" classname="ui_application_versions" time="0.296944" status="run">
+		<properties/>
+		<system-out>application API1/API2 and Web/native contents: PASS
+</system-out>
+	</testcase>
+	<testcase name="ui_original_api2_package" classname="ui_original_api2_package" time="0.268435" status="run">
+		<properties/>
+		<system-out>application API1/API2 and Web/native contents: PASS
+</system-out>
+	</testcase>
+	<testcase name="ui_light_web_dynamic" classname="ui_light_web_dynamic" time="0.283949" status="run">
+		<properties/>
+		<system-out>Dynamic Web probe: 0 failure(s), 6 messages, 250 incremental rebuilds
+</system-out>
+	</testcase>
+	<testcase name="ui_web_shell_slots" classname="ui_web_shell_slots" time="0.148597" status="run">
+		<properties/>
+		<system-out>Web shell content slots and legacy facade passed
+</system-out>
+	</testcase>
+	<testcase name="ui_floating_web_dpi" classname="ui_floating_web_dpi" time="0.133429" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_light_web_parity" classname="ui_light_web_parity" time="0.247101" status="run">
+		<properties/>
+		<system-out>Light Web probe: 0 failure(s), clicks=3, inputs=2, reloads=4
+</system-out>
+	</testcase>
+	<testcase name="ui_workspace_integration" classname="ui_workspace_integration" time="1.48104" status="run">
+		<properties/>
+		<system-out>Workspace/module lifecycle: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_web_host_frontend" classname="ui_web_host_frontend" time="0.785215" status="run">
+		<properties/>
+		<system-out>Web host frontend passed.
+</system-out>
+	</testcase>
+	<testcase name="ui_native_activation" classname="ui_native_activation" time="0.588998" status="run">
+		<properties/>
+		<system-out>Native managed activation: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_dpi_integration" classname="ui_dpi_integration" time="0.151002" status="run">
+		<properties/>
+		<system-out>DPI integration: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_opengl_integration" classname="ui_opengl_integration" time="0.301166" status="run">
+		<properties/>
+		<system-out>legacy: Intel | Intel(R) UHD Graphics 770 | 4.6.0 - Build 32.0.101.7079
+gl.core: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.compatibility: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.msaa_debug: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=4 debug=1
+OpenGL integration: 0 failure(s), 3 modern configurations supported
+</system-out>
+	</testcase>
+	<testcase name="ui_surface_input" classname="ui_surface_input" time="0.223332" status="run">
+		<properties/>
+		<system-out>Surface input integration: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_monitor_transition" classname="ui_monitor_transition" time="0.126333" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties/>
+		<system-out>Monitor transition environment: 1 monitor(s)
+SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+</system-out>
+	</testcase>
+	<testcase name="ui_native_shell_integration" classname="ui_native_shell_integration" time="0.152371" status="run">
+		<properties/>
+		<system-out>native shell integration checks passed
+</system-out>
+	</testcase>
+	<testcase name="ui_native_responsive" classname="ui_native_responsive" time="0.229154" status="run">
+		<properties/>
+		<system-out>Native responsive integration: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_assistant_protocol" classname="ui_assistant_protocol" time="0.0998462" status="run">
+		<properties/>
+		<system-out>assistant protocol: 0 failure(s)
+</system-out>
+	</testcase>
+</testsuite>

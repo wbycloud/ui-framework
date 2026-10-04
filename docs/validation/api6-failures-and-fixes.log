@@ -1,0 +1,849 @@
+API6 failures: raw excerpts, original SHA256 and reproduction filename.
+Product implementation 1cdc50e; menu/Runtime fixes f269cd8, 376bf6b, 4d41dc5, 5479105 and 9705565; strict cleanup diagnostics fc6a626. Explicit WGL/Runtime CI isolation 44809cd.
+layout-final.log was empty: Windows heap failure exit -1073740940 (0xc0000374), before ownership fix.
+Final local corresponding cases pass; CI results recorded separately. No failure assertions/budgets removed.
+
+
+=== layout-before.log SHA256=2e34259429d52755f10639c93056298b88537bc8c39e626722186dc8e7bf9fff ===
+[1/2] Building C object CMakeFiles\ui_workspace_layout_test.dir\tests\workspace_layout.c.obj
+[2/2] Linking C executable ui_workspace_layout_test.exe
+
+
+=== layout-run1.log SHA256=de3abe24744d4ffe6819adcfc548973f6a816176143dc3ba410681c3b1e950ef ===
+layout line19: ui_host_register_panel(h,&p)==UI_STATUS_OK
+layout line20: ui_host_register_panel(h,&p)==UI_STATUS_OK
+layout line20: ui_host_register_panel(h,&p)==UI_STATUS_OK
+layout line22: ui_shell_get_panel_layout(s,"tools",&a)==UI_STATUS_OK
+layout line23: ui_shell_set_panel_layout(s,"tools",&a)==UI_STATUS_OK
+layout line23: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.collapsed&&b.dock_region==a.dock_region
+layout line24: ui_shell_save_layout(s,NULL,0,&bytes)==UI_STATUS_OK&&bytes>100
+layout line26: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.collapsed&&b.order==10
+layout line27: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.collapsed
+layout line30: ui_shell_resize_splitter(s,UI_LAYOUT_REGION_LEFT_SIDEBAR,"tools",120)==UI_STATUS_OK
+layout line31: ui_shell_begin_panel_drag(s,"tools")==UI_STATUS_OK
+layout line31: ui_shell_update_panel_drag(s,995,240,&preview,&region)==UI_STATUS_OK&&region==UI_LAYOUT_REGION_RIGHT_SIDEBAR&&preview.width>0
+layout line32: ui_shell_end_panel_drag(s,0)==UI_STATUS_OK
+layout line32: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.dock_region==UI_LAYOUT_REGION_LEFT_SIDEBAR
+layout line33: ui_shell_begin_panel_drag(s,"tools")==UI_STATUS_OK
+layout line33: ui_shell_update_panel_drag(s,995,240,&preview,&region)==UI_STATUS_OK
+layout line33: ui_shell_end_panel_drag(s,1)==UI_STATUS_OK
+layout line34: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.dock_region==UI_LAYOUT_REGION_RIGHT_SIDEBAR&&!b.floating
+layout line35: ui_shell_set_panel_layout(s,"tools",&a)==UI_STATUS_OK
+layout line36: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.floating
+layout line37: GetWindowRect(GetAncestor(window,GA_ROOT),&wr)
+layout line19: ui_host_register_panel(h,&p)==UI_STATUS_OK
+layout line20: ui_host_register_panel(h,&p)==UI_STATUS_OK
+layout line20: ui_host_register_panel(h,&p)==UI_STATUS_OK
+layout line22: ui_shell_get_panel_layout(s,"tools",&a)==UI_STATUS_OK
+layout line23: ui_shell_set_panel_layout(s,"tools",&a)==UI_STATUS_OK
+layout line23: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.collapsed&&b.dock_region==a.dock_region
+layout line24: ui_shell_save_layout(s,NULL,0,&bytes)==UI_STATUS_OK&&bytes>100
+layout line26: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.collapsed&&b.order==10
+layout line27: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.collapsed
+layout line30: ui_shell_resize_splitter(s,UI_LAYOUT_REGION_LEFT_SIDEBAR,"tools",120)==UI_STATUS_OK
+layout line31: ui_shell_begin_panel_drag(s,"tools")==UI_STATUS_OK
+layout line31: ui_shell_update_panel_drag(s,995,240,&preview,&region)==UI_STATUS_OK&&region==UI_LAYOUT_REGION_RIGHT_SIDEBAR&&preview.width>0
+layout line32: ui_shell_end_panel_drag(s,0)==UI_STATUS_OK
+layout line32: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.dock_region==UI_LAYOUT_REGION_LEFT_SIDEBAR
+layout line33: ui_shell_begin_panel_drag(s,"tools")==UI_STATUS_OK
+layout line33: ui_shell_update_panel_drag(s,995,240,&preview,&region)==UI_STATUS_OK
+layout line33: ui_shell_end_panel_drag(s,1)==UI_STATUS_OK
+layout line34: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.dock_region==UI_LAYOUT_REGION_RIGHT_SIDEBAR&&!b.floating
+layout line35: ui_shell_set_panel_layout(s,"tools",&a)==UI_STATUS_OK
+layout line36: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.floating
+workspace layout: 41 failures
+
+
+=== layout-boundary-before.log SHA256=05601bc3a4d1e762892541cfc53e8182cd6422dc089c80650590190016d4983a ===
+layout line30: ui_shell_restore_layout(s,data,bytes)==UI_STATUS_INVALID_ARGUMENT
+layout line33: ui_shell_restore_layout(s,large,large_bytes)==UI_STATUS_OK
+layout line48: status==UI_STATUS_OK
+layout line30: ui_shell_restore_layout(s,data,bytes)==UI_STATUS_INVALID_ARGUMENT
+layout line33: ui_shell_restore_layout(s,large,large_bytes)==UI_STATUS_OK
+layout line48: status==UI_STATUS_OK
+workspace layout: 6 failures
+
+
+=== experience-before.log SHA256=4d987a7f094dbd83a1e2dd5bc2a20eca0abe7658a639fb412d08332571c72a32 ===
+experience line44: click(form,"choice-mode")
+experience line44: click(form,"option-mode-2")
+experience line44: ui_component_get_field(form,"mode",&value)==UI_STATUS_OK&&!strcmp(value.text,"high")
+experience line45: click(form,"color-color")
+experience line45: click(form,"swatch-color-1")
+experience line45: ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&!strcmp(value.text,"#00ff00ff")&&value.color_rgba==0x00ff00ff
+experience line46: click(table,"sort-name")
+experience line46: sorts==2
+component experience: 8 failures
+
+
+=== experience-runtime1.log SHA256=b781dc87dbbee7bda0ecc2865be81b2214de3b23a5371458f802dac8e214d080 ===
+experience line67: click(form,"choice-mode")
+experience line67: click(form,"option-mode-2")
+experience line67: ui_component_get_field(form,"mode",&value)==UI_STATUS_OK&&!strcmp(value.text,"high")
+experience line68: click(form,"color-color")
+experience line68: click(form,"swatch-color-1")
+experience line68: ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&!strcmp(value.text,"#00ff00ff")&&value.color_rgba==0x00ff00ff
+experience line69: click(table,"sort-name")
+experience line69: sorts==2
+experience line71: click(table,"cell-9007199254741000-name")
+experience line71: dispatch(table,&e)==UI_STATUS_OK
+experience line71: ui_component_get_selection(table,ids,512,&n)==UI_STATUS_OK&&n==1&&ids[0]==9007199254741001ULL
+experience line72: dispatch(table,&e)==UI_STATUS_OK
+experience line72: presentation(table,"edit-9007199254741001-name",&p)==UI_STATUS_OK&&p.focused
+experience line73: dispatch(table,&e)==UI_STATUS_OK
+experience line73: dispatch(table,&e)==UI_STATUS_OK
+experience line73: dispatch(table,&e)==UI_STATUS_OK&&edit_count==1
+experience line74: dispatch(table,&e)==UI_STATUS_OK
+experience line74: dispatch(table,&e)==UI_STATUS_OK&&edit_count==1
+experience line75: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: dispatch(table,&e)==UI_STATUS_OK
+experience line76: ui_component_get_state(table,&s)==UI_STATUS_OK&&s.first>0&&s.rendered_nodes<=1024
+component experience actual WebView2: 50 failures
+
+
+=== experience-runtime2.log SHA256=656eb04017444d5cea09719a097719429cebe1b92949a3c33997d57a989bb9fc ===
+experience line71: ui_component_get_selection(table,ids,512,&n)==UI_STATUS_OK&&n==1&&ids[0]==9007199254741001ULL
+experience line72: presentation(table,"edit-9007199254741001-name",&p)==UI_STATUS_OK&&p.focused
+experience line73: dispatch(table,&e)==UI_STATUS_OK&&edit_count==1
+experience line74: dispatch(table,&e)==UI_STATUS_OK&&edit_count==1
+experience line75: ui_component_get_selection(table,ids,512,&n)==UI_STATUS_OK&&n==2
+experience line76: ui_component_get_state(table,&s)==UI_STATUS_OK&&s.first>0&&s.rendered_nodes<=1024
+component experience actual WebView2: 6 failures
+
+
+=== experience-light-final2.log SHA256=d621c7e7570d5b22ac234080f3367dcad3523ec2958ab20312bb0c62dbfd4030 ===
+experience line73: click(form,"submit")&&submits==1
+experience line73: ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&*value.error
+component experience light: 2 failures
+
+
+=== integration-light3.log SHA256=f52699f325a40f58c79b62af1f22f16000637a566a033c920fe9d9f587f005b2 ===
+integration line53: ui_host_invoke(h,"test.modal.close","{}","test")!=0
+integration line56: ui_host_invoke(h,"test.image.release","{}","test")!=0
+integration line56: ui_image_get_info(h,viewport_image,&image)==UI_STATUS_NOT_FOUND
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123
+API6 reopen8 handles 188->188 GDI 0->0 USER 2->2
+API6 independent light offscreen DLL integration: 3 failures
+
+
+=== menu-hover-before.log SHA256=13af73fae619903fb297741c0788dce0f2bda3922e2cc9369658ecc21600d54c ===
+line 31: focused(a,"File")
+line 18: key(h,k,m,0)==UI_STATUS_OK
+line 18: key(h,k,m,1)==UI_STATUS_OK
+Menu Alt real template: 3 failures, calls=3
+
+
+=== ci-path-repro.log SHA256=2078759b16ef1eda9f813d273107b084286f7aa0f696b1868270dc0900d6f013 ===
+'build' is not recognized as an internal or external command,
+operable program or batch file.
+
+
+=== full-regression-final.log SHA256=b78a7adaa7b3144d884c210528077d9161aecbad2ee5112fe285f4a0ed92f81c ===
+Test project <repo>/build/fw-next/release
+      Start  1: ui_package_format
+ 1/51 Test  #1: ui_package_format ..................   Passed    0.16 sec
+      Start  2: ui_images_windows
+ 2/51 Test  #2: ui_images_windows ..................   Passed    0.06 sec
+      Start  3: ui_responsive_layout
+ 3/51 Test  #3: ui_responsive_layout ...............   Passed    0.03 sec
+      Start  4: ui_assistant_lifecycle
+ 4/51 Test  #4: ui_assistant_lifecycle .............   Passed    0.05 sec
+      Start  5: ui_dpi_web_failure
+ 5/51 Test  #5: ui_dpi_web_failure .................   Passed    0.03 sec
+      Start  6: ui_components_core
+ 6/51 Test  #6: ui_components_core .................   Passed    0.07 sec
+      Start  7: ui_headless_example
+ 7/51 Test  #7: ui_headless_example ................   Passed    0.04 sec
+      Start  8: ui_public_headers_c
+ 8/51 Test  #8: ui_public_headers_c ................   Passed    0.05 sec
+      Start  9: ui_public_headers_cpp
+ 9/51 Test  #9: ui_public_headers_cpp ..............   Passed    0.07 sec
+      Start 10: ui_webview2_parity
+10/51 Test #10: ui_webview2_parity .................   Passed    0.54 sec
+      Start 11: ui_webview2_messages
+11/51 Test #11: ui_webview2_messages ...............   Passed    0.46 sec
+      Start 12: ui_webview2_render
+12/51 Test #12: ui_webview2_render .................   Passed    8.96 sec
+      Start 13: ui_api5_integration
+13/51 Test #13: ui_api5_integration ................   Passed   78.48 sec
+      Start 14: ui_api5_native_host
+14/51 Test #14: ui_api5_native_host ................   Passed    6.07 sec
+      Start 15: ui_original_api5_package
+15/51 Test #15: ui_original_api5_package ...........   Passed   78.67 sec
+      Start 16: ui_workspace_layout
+16/51 Test #16: ui_workspace_layout ................   Passed    0.45 sec
+      Start 17: ui_api5_compat
+17/51 Test #17: ui_api5_compat .....................   Passed    0.07 sec
+      Start 18: ui_component_experience
+18/51 Test #18: ui_component_experience ............   Passed    0.13 sec
+      Start 19: ui_component_experience_webview2
+19/51 Test #19: ui_component_experience_webview2 ...   Passed    9.32 sec
+      Start 20: ui_api6_integration
+20/51 Test #20: ui_api6_integration ................   Passed    6.59 sec
+      Start 21: ui_api6_integration_webview2
+21/51 Test #21: ui_api6_integration_webview2 .......   Passed   10.88 sec
+      Start 22: ui_session0_interactive_control
+22/51 Test #22: ui_session0_interactive_control ....   Passed   31.35 sec
+      Start 23: ui_offscreen_msaa
+23/51 Test #23: ui_offscreen_msaa ..................   Passed    0.23 sec
+      Start 24: ui_windowless_gl
+24/51 Test #24: ui_windowless_gl ...................   Passed    0.43 sec
+      Start 25: ui_offscreen_gl
+25/51 Test #25: ui_offscreen_gl ....................   Passed    0.25 sec
+      Start 26: ui_workspace_offscreen
+26/51 Test #26: ui_workspace_offscreen .............   Passed    0.40 sec
+      Start 27: ui_framework_features_host
+27/51 Test #27: ui_framework_features_host .........***Failed    2.63 sec
+line 42: ui_host_menu_get_presentation(a.host,"close",&p)==UI_STATUS_OK
+line 42: host_menu_key(&host,&key)
+line 42: host_menu_key(&host,&key)
+API4 actual host menus/overflow/instances: 3 failures
+
+      Start 28: ui_menu_offscreen
+28/51 Test #28: ui_menu_offscreen ..................   Passed    0.17 sec
+      Start 29: ui_menu_access
+29/51 Test #29: ui_menu_access .....................   Passed    0.11 sec
+      Start 30: ui_api4_compat
+30/51 Test #30: ui_api4_compat .....................   Passed    0.08 sec
+      Start 31: ui_original_api4_package
+31/51 Test #31: ui_original_api4_package ...........***Failed    2.66 sec
+line 42: ui_host_menu_get_presentation(a.host,"close",&p)==UI_STATUS_OK
+line 42: host_menu_key(&host,&key)
+line 42: host_menu_key(&host,&key)
+API4 actual host menus/overflow/instances: 3 failures
+
+      Start 32: ui_web_text_edit
+32/51 Test #32: ui_web_text_edit ...................   Passed    0.19 sec
+      Start 33: ui_generic_web_host
+33/51 Test #33: ui_generic_web_host ................   Passed    2.85 sec
+      Start 34: ui_component_resilience
+34/51 Test #34: ui_component_resilience ............   Passed    3.36 sec
+      Start 35: ui_api3_original_package
+35/51 Test #35: ui_api3_original_package ...........   Passed    2.85 sec
+      Start 36: ui_application_versions
+36/51 Test #36: ui_application_versions ............   Passed    0.34 sec
+      Start 37: ui_original_api2_package
+37/51 Test #37: ui_original_api2_package ...........   Passed    0.26 sec
+      Start 38: ui_light_web_dynamic
+38/51 Test #38: ui_light_web_dynamic ...............   Passed    0.27 sec
+      Start 39: ui_web_shell_slots
+39/51 Test #39: ui_web_shell_slots .................   Passed    0.15 sec
+      Start 40: ui_floating_web_dpi
+40/51 Test #40: ui_floating_web_dpi ................   Passed    0.13 sec
+      Start 41: ui_light_web_parity
+41/51 Test #41: ui_light_web_parity ................   Passed    0.22 sec
+      Start 42: ui_workspace_integration
+42/51 Test #42: ui_workspace_integration ...........   Passed    1.54 sec
+      Start 43: ui_web_host_frontend
+43/51 Test #43: ui_web_host_frontend ...............   Passed    0.79 sec
+      Start 44: ui_native_activation
+44/51 Test #44: ui_native_activation ...............   Passed    0.57 sec
+      Start 45: ui_dpi_integration
+45/51 Test #45: ui_dpi_integration .................   Passed    0.11 sec
+      Start 46: ui_opengl_integration
+46/51 Test #46: ui_opengl_integration ..............   Passed    0.30 sec
+      Start 47: ui_surface_input
+47/51 Test #47: ui_surface_input ...................   Passed    0.19 sec
+      Start 48: ui_monitor_transition
+48/51 Test #48: ui_monitor_transition ..............***Skipped   0.12 sec
+      Start 49: ui_native_shell_integration
+49/51 Test #49: ui_native_shell_integration ........   Passed    0.15 sec
+      Start 50: ui_native_responsive
+50/51 Test #50: ui_native_responsive ...............   Passed    0.33 sec
+      Start 51: ui_assistant_protocol
+51/51 Test #51: ui_assistant_protocol ..............   Passed    0.13 sec
+
+96% tests passed, 2 tests failed out of 51
+
+Total Test time (real) = 254.90 sec
+
+The following tests did not run:
+	 48 - ui_monitor_transition (Skipped)
+
+The following tests FAILED:
+	 27 - ui_framework_features_host (Failed)
+	 31 - ui_original_api4_package (Failed)
+Errors while running CTest
+
+
+=== ci-runtime-local-resource-failure.log SHA256=cbf88659f4b399030d16732b4db1b3bc62da5496816430f1b1de497edda6a23d ===
+UpdateCTestConfiguration  from :<repo>/build/fw-next/release/DartConfiguration.tcl
+Test project <repo>/build/fw-next/release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 12
+    Start 12: ui_webview2_render
+
+12: Test command: <repo>\build\fw-next\release\ui_webview2_render_test.exe
+12: Working Directory: <repo>/build/fw-next/release
+12: Test timeout computed to be: 30
+12: Runtime render: initialize
+12: Runtime render: ready
+12: Runtime render: capture/images complete
+12: Runtime render: close
+12: Runtime close before creation x12 handles 318->328 USER 26->28
+12: Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+1/2 Test #12: ui_webview2_render ...............   Passed    9.64 sec
+test 21
+    Start 21: ui_api6_integration_webview2
+
+21: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 120
+21: API6 integration: initialize
+21: API6 integration: init-failure cleanup complete
+21: API6 integration: component editing complete
+21: API6 integration: layout complete
+21: Actual GL C-image component capture white pixels=180
+21: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+21: API6 integration: modal complete
+21: API6 integration: instances/resize complete
+21: API6 integration: reopen 0
+21: API6 integration: reopen 1
+21: API6 integration: reopen 2
+21: API6 integration: reopen 3
+21: API6 integration: reopen 4
+21: API6 integration: reopen 5
+21: API6 integration: reopen 6
+21: API6 integration: reopen 7
+21: API6 reopen8 handles 487->500 GDI 12->12 USER 126->126
+21: integration line75: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+21: API6 independent WebView2 DLL integration: 1 failures
+2/2 Test #21: ui_api6_integration_webview2 .....***Failed   26.21 sec
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 487->500 GDI 12->12 USER 126->126
+integration line75: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+API6 independent WebView2 DLL integration: 1 failures
+
+
+The following tests passed:
+	ui_webview2_render
+
+50% tests passed, 1 tests failed out of 2
+
+Total Test time (real) =  35.91 sec
+
+The following tests FAILED:
+	 21 - ui_api6_integration_webview2 (Failed)
+Errors while running CTest
+
+
+=== ci-runtime-pending-resource-failure.log SHA256=76c0d6f8f7e69ba69cec708e6344c37b4ce705a879be26ccf079f955736b0372 ===
+UpdateCTestConfiguration  from :<repo>/build/fw-next/release/DartConfiguration.tcl
+Test project <repo>/build/fw-next/release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 12
+    Start 12: ui_webview2_render
+
+12: Test command: <repo>\build\fw-next\release\ui_webview2_render_test.exe
+12: Working Directory: <repo>/build/fw-next/release
+12: Test timeout computed to be: 30
+12: Runtime render: initialize
+12: Runtime render: ready
+12: Runtime render: capture/images complete
+12: Runtime render: close
+12: Runtime close before creation x12 handles 314->317 USER 17->17 pending cleanup=0
+12: Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+1/2 Test #12: ui_webview2_render ...............   Passed    9.79 sec
+test 21
+    Start 21: ui_api6_integration_webview2
+
+21: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 120
+21: API6 integration: initialize
+21: API6 integration: init-failure cleanup complete
+21: API6 integration: component editing complete
+21: API6 integration: layout complete
+21: Actual GL C-image component capture white pixels=180
+21: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+21: API6 integration: modal complete
+21: API6 integration: instances/resize complete
+21: API6 integration: reopen 0
+21: API6 integration: reopen 1
+21: API6 integration: reopen 2
+21: API6 integration: reopen 3
+21: API6 integration: reopen 4
+21: API6 integration: reopen 5
+21: API6 integration: reopen 6
+21: API6 integration: reopen 7
+21: API6 reopen8 handles 383->396 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+21: integration line77: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+21: API6 independent WebView2 DLL integration: 1 failures
+2/2 Test #21: ui_api6_integration_webview2 .....***Failed   26.92 sec
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 383->396 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+integration line77: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+API6 independent WebView2 DLL integration: 1 failures
+
+
+The following tests passed:
+	ui_webview2_render
+
+50% tests passed, 1 tests failed out of 2
+
+Total Test time (real) =  36.76 sec
+
+The following tests FAILED:
+	 21 - ui_api6_integration_webview2 (Failed)
+Errors while running CTest
+
+
+=== runtime-handle-failure1.log SHA256=7416f41606a510cc2ff5a01bae86a4fc26d192a05c494521ceaf305e414f89c7 ===
+UpdateCTestConfiguration  from :<repo>/build/fw-next/release/DartConfiguration.tcl
+Test project <repo>/build/fw-next/release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 21
+    Start 21: ui_api6_integration_webview2
+
+21: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 120
+21: API6 integration: initialize
+21: API6 integration: init-failure cleanup complete
+21: API6 integration: component editing complete
+21: API6 integration: layout complete
+21: Actual GL C-image component capture white pixels=180
+21: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+21: API6 integration: modal complete
+21: API6 integration: instances/resize complete
+21: Runtime handles before reopen snapshot=0 other=249 process=5(live=0 exited=5) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: API6 integration: reopen 0
+21: API6 integration: reopen 1
+21: API6 integration: reopen 2
+21: API6 integration: reopen 3
+21: API6 integration: reopen 4
+21: API6 integration: reopen 5
+21: API6 integration: reopen 6
+21: API6 integration: reopen 7
+21: API6 reopen8 handles 383->396 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+21: integration line80: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+21: Runtime handles after reopen snapshot=0 other=250 process=17(live=0 exited=17) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: API6 independent WebView2 DLL integration: 1 failures
+21: Runtime test: normal CRT exit callback reached
+    Test #21: ui_api6_integration_webview2 .....***Failed   26.45 sec
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =  26.48 sec
+
+The following tests FAILED:
+	 21 - ui_api6_integration_webview2 (Failed)
+Errors while running CTest
+Output from these tests are in: <repo>/build/fw-next/release/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
+
+
+=== runtime-handle-failure2.log SHA256=2ad2887d3bdf5a88f29e830adb90a0cdf141809d78d5b142213ed6f4568985cd ===
+UpdateCTestConfiguration  from :<repo>/build/fw-next/release/DartConfiguration.tcl
+Test project <repo>/build/fw-next/release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 21
+    Start 21: ui_api6_integration_webview2
+
+21: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 120
+21: API6 integration: initialize
+21: API6 integration: init-failure cleanup complete
+21: API6 integration: component editing complete
+21: API6 integration: layout complete
+21: Actual GL C-image component capture white pixels=180
+21: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+21: API6 integration: modal complete
+21: API6 integration: instances/resize complete
+21: Runtime handles before reopen snapshot=0 other=250 process=5(live=0 exited=5) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: API6 integration: reopen 0
+21: API6 integration: reopen 1
+21: API6 integration: reopen 2
+21: API6 integration: reopen 3
+21: API6 integration: reopen 4
+21: API6 integration: reopen 5
+21: API6 integration: reopen 6
+21: API6 integration: reopen 7
+21: API6 reopen8 handles 384->391 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+21: Runtime handles after reopen snapshot=0 other=251 process=11(live=0 exited=11) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: Runtime handles after COM uninitialize snapshot=0 other=251 process=11(live=0 exited=11) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: API6 independent WebView2 DLL integration: 0 failures
+21: Runtime test: normal CRT exit callback reached
+    Test #21: ui_api6_integration_webview2 .....   Passed   11.93 sec
+    Start 21: ui_api6_integration_webview2
+
+21: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 120
+21: API6 integration: initialize
+21: API6 integration: init-failure cleanup complete
+21: API6 integration: component editing complete
+21: API6 integration: layout complete
+21: Actual GL C-image component capture white pixels=180
+21: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+21: API6 integration: modal complete
+21: API6 integration: instances/resize complete
+21: Runtime handles before reopen snapshot=0 other=250 process=5(live=0 exited=5) thread=57 mutant=4 event=52 section=9 semaphore=6
+21: API6 integration: reopen 0
+21: API6 integration: reopen 1
+21: API6 integration: reopen 2
+21: API6 integration: reopen 3
+21: API6 integration: reopen 4
+21: API6 integration: reopen 5
+21: API6 integration: reopen 6
+21: API6 integration: reopen 7
+21: API6 reopen8 handles 383->394 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+21: Runtime handles after reopen snapshot=0 other=251 process=15(live=0 exited=15) thread=57 mutant=4 event=52 section=9 semaphore=6
+21: Runtime handles after COM uninitialize snapshot=0 other=251 process=15(live=0 exited=15) thread=57 mutant=4 event=52 section=9 semaphore=6
+21: API6 independent WebView2 DLL integration: 0 failures
+21: Runtime test: normal CRT exit callback reached
+    Test #21: ui_api6_integration_webview2 .....   Passed   12.07 sec
+    Start 21: ui_api6_integration_webview2
+
+21: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 120
+21: API6 integration: initialize
+21: API6 integration: init-failure cleanup complete
+21: API6 integration: component editing complete
+21: API6 integration: layout complete
+21: Actual GL C-image component capture white pixels=180
+21: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+21: API6 integration: modal complete
+21: API6 integration: instances/resize complete
+21: Runtime handles before reopen snapshot=0 other=250 process=5(live=0 exited=5) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: API6 integration: reopen 0
+21: API6 integration: reopen 1
+21: API6 integration: reopen 2
+21: API6 integration: reopen 3
+21: API6 integration: reopen 4
+21: API6 integration: reopen 5
+21: API6 integration: reopen 6
+21: API6 integration: reopen 7
+21: API6 reopen8 handles 384->397 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+21: integration line80: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+21: Runtime handles after reopen snapshot=0 other=251 process=17(live=0 exited=17) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: Runtime handles after COM uninitialize snapshot=0 other=251 process=17(live=0 exited=17) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: API6 independent WebView2 DLL integration: 1 failures
+21: Runtime test: normal CRT exit callback reached
+1/1 Test #21: ui_api6_integration_webview2 .....***Failed   26.32 sec
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =  50.35 sec
+
+The following tests FAILED:
+	 21 - ui_api6_integration_webview2 (Failed)
+Errors while running CTest
+Output from these tests are in: <repo>/build/fw-next/release/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
+
+
+=== runtime-trace-failure.log SHA256=451c92b98f3054d1bf9cd46b0994a0bfc8dfa525e457aa1e439249d3ed814173 ===
+UpdateCTestConfiguration  from :<repo>/build/fw-next/release/DartConfiguration.tcl
+Test project <repo>/build/fw-next/release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 21
+    Start 21: ui_api6_integration_webview2
+
+21: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 120
+21: Trace enabled=00000000
+21: API6 integration: initialize
+21: API6 integration: init-failure cleanup complete
+21: API6 integration: component editing complete
+21: API6 integration: layout complete
+21: Actual GL C-image component capture white pixels=180
+21: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+21: API6 integration: modal complete
+21: API6 integration: instances/resize complete
+21: Runtime handles before reopen snapshot=0 other=250 process=5(live=0 exited=5 unknown=0) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: API6 integration: reopen 0
+21: API6 integration: reopen 1
+21: API6 integration: reopen 2
+21: API6 integration: reopen 3
+21: API6 integration: reopen 4
+21: API6 integration: reopen 5
+21: API6 integration: reopen 6
+21: API6 integration: reopen 7
+21: API6 reopen8 handles 384->395 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=2
+21:
+21: Trace handle status=00000000 count=2
+21:
+21: Trace handle status=00000000 count=2
+21:
+21: Trace handle status=00000000 count=2
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Runtime handles after reopen snapshot=0 other=251 process=15(live=0 exited=15 unknown=0) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: API6 independent WebView2 DLL integration: 0 failures
+21: Runtime test: normal CRT exit callback reached
+    Test #21: ui_api6_integration_webview2 .....   Passed   13.55 sec
+    Start 21: ui_api6_integration_webview2
+
+21: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 120
+21: Trace enabled=00000000
+21: API6 integration: initialize
+21: API6 integration: init-failure cleanup complete
+21: API6 integration: component editing complete
+21: API6 integration: layout complete
+21: Actual GL C-image component capture white pixels=180
+21: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+21: API6 integration: modal complete
+21: API6 integration: instances/resize complete
+21: Runtime handles before reopen snapshot=0 other=250 process=7(live=0 exited=7 unknown=0) thread=57 mutant=4 event=53 section=10 semaphore=6
+21: API6 integration: reopen 0
+21: API6 integration: reopen 1
+21: API6 integration: reopen 2
+21: API6 integration: reopen 3
+21: API6 integration: reopen 4
+21: API6 integration: reopen 5
+21: API6 integration: reopen 6
+21: API6 integration: reopen 7
+21: API6 reopen8 handles 387->402 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+21: integration line81: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=1
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Trace handle status=00000000 count=3
+21:
+21: Runtime handles after reopen snapshot=0 other=250 process=23(live=0 exited=23 unknown=0) thread=57 mutant=4 event=53 section=9 semaphore=6
+21: API6 independent WebView2 DLL integration: 1 failures
+21: Runtime test: normal CRT exit callback reached
+    Test #21: ui_api6_integration_webview2 .....***Failed   26.71 sec
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =  40.29 sec
+
+The following tests FAILED:
+	 21 - ui_api6_integration_webview2 (Failed)
+Errors while running CTest
+Output from these tests are in: <repo>/build/fw-next/release/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.
+
+
+=== runtime-without-snapshot-failure.log SHA256=6e38aa30cfb63f4c8eddf66f34c882f89fa8d349fbf9e6b9a146523efa2a04a8 ===
+UpdateCTestConfiguration  from :<repo>/build/fw-next/release/DartConfiguration.tcl
+Test project <repo>/build/fw-next/release
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 20
+    Start 20: ui_api6_integration
+
+20: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+20: Working Directory: <repo>/build/fw-next/release
+20: Test timeout computed to be: 90
+20: API6 integration: initialize
+20: API6 integration: init-failure cleanup complete
+20: API6 integration: component editing complete
+20: API6 integration: layout complete
+20: API6 layout retains the application's actual GL display-list resource
+20: Actual GL C-image component capture white pixels=240
+20: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-light-frame.ppm
+20: API6 integration: modal complete
+20: API6 integration: instances/resize complete
+20: API6 integration: reopen 0
+20: API6 integration: reopen 1
+20: API6 integration: reopen 2
+20: API6 integration: reopen 3
+20: API6 integration: reopen 4
+20: API6 integration: reopen 5
+20: API6 integration: reopen 6
+20: API6 integration: reopen 7
+20: API6 reopen8 handles 220->220 GDI 3->3 USER 3->3 pending Runtime cleanup=0
+20: API6 complete offscreen lifecycle created HWNDs=0
+20: API6 independent light offscreen DLL integration: 0 failures
+20: Runtime test: normal CRT exit callback reached
+1/2 Test #20: ui_api6_integration ..............   Passed    6.58 sec
+test 21
+    Start 21: ui_api6_integration_webview2
+
+21: Test command: <repo>\build\fw-next\release\ui_api6_integration_test.exe "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+21: Working Directory: <repo>/build/fw-next/release
+21: Test timeout computed to be: 120
+21: API6 integration: initialize
+21: API6 integration: init-failure cleanup complete
+21: API6 integration: component editing complete
+21: API6 integration: layout complete
+21: API6 layout retains the application's actual GL display-list resource
+21: Actual GL C-image component capture white pixels=180
+21: Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+21: API6 integration: modal complete
+21: API6 integration: instances/resize complete
+21: API6 integration: reopen 0
+21: API6 integration: reopen 1
+21: API6 integration: reopen 2
+21: API6 integration: reopen 3
+21: API6 integration: reopen 4
+21: API6 integration: reopen 5
+21: API6 integration: reopen 6
+21: API6 integration: reopen 7
+21: API6 reopen8 handles 383->398 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+21: integration line80: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+21: API6 independent WebView2 DLL integration: 1 failures
+21: Runtime test: normal CRT exit callback reached
+2/2 Test #21: ui_api6_integration_webview2 .....***Failed   26.69 sec
+
+The following tests passed:
+	ui_api6_integration
+
+50% tests passed, 1 tests failed out of 2
+
+Total Test time (real) =  33.36 sec
+
+The following tests FAILED:
+	 21 - ui_api6_integration_webview2 (Failed)
+Errors while running CTest
+Output from these tests are in: <repo>/build/fw-next/release/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.

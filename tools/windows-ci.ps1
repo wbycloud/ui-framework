@@ -100,7 +100,8 @@ $manifest = [ordered]@{
     desktopBefore = $desktopBefore
     desktop = @([UiCiDesktop]::GetSystemMetrics(0),[UiCiDesktop]::GetSystemMetrics(1))
     dpi = [UiCiDesktop]::GetDpiForSystem()
-    wgl = 'explicit application-local Mesa24.3.4 software GL'; osmesa = 'explicit Mesa24.3.4 memory context'
+    wgl = 'explicit application-local Mesa24.3.4 software GL'
+    osmesa = if ($Configuration -in @('osmesa','webview2')) { 'explicit Mesa24.3.4 memory context' } else { 'acceptance disabled; provider not configured' }
     runtimeGraphics = if ($Configuration -eq 'webview2') { 'platform graphics; software WGL DLLs removed before real Runtime tests' } else { 'Runtime disabled' }
     noLoginAccepted = $false; physicalManualAccepted = $false
 }

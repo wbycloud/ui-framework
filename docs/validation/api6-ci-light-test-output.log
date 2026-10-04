@@ -1,0 +1,386 @@
+
+Start testing: Oct 04 20:21 Coordinated Universal Time
+----------------------------------------------------------
+1/37 Testing: ui_package_format
+1/37 Test: ui_package_format
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_package_format_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_package_format" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+package format and deterministic packing: 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_package_format" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_package_format" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/37 Testing: ui_images_windows
+2/37 Test: ui_images_windows
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_images_windows_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_images_windows" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+PNG/GDI/cache: 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_images_windows" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_images_windows" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/37 Testing: ui_responsive_layout
+3/37 Test: ui_responsive_layout
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_responsive_layout_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_responsive_layout" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+responsive layout matrix: 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_responsive_layout" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_responsive_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/37 Testing: ui_assistant_lifecycle
+4/37 Test: ui_assistant_lifecycle
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_assistant_lifecycle_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_assistant_lifecycle" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+assistant lifecycle and model rollback: 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_lifecycle" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_assistant_lifecycle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/37 Testing: ui_dpi_web_failure
+5/37 Test: ui_dpi_web_failure
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_dpi_web_failure_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_dpi_web_failure" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+failed Web DPI sync and retry: 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_web_failure" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_dpi_web_failure" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/37 Testing: ui_components_core
+6/37 Test: ui_components_core
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_components_core_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_components_core" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+API3 components core: 0 failures, 3 bounded queries
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_components_core" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_components_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/37 Testing: ui_headless_example
+7/37 Test: ui_headless_example
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_headless_example.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_headless_example" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+eda.add_block: {"blocks":1}
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_headless_example" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_headless_example" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/37 Testing: ui_public_headers_c
+8/37 Test: ui_public_headers_c
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_public_headers_c_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_public_headers_c" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_c" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_public_headers_c" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/37 Testing: ui_public_headers_cpp
+9/37 Test: ui_public_headers_cpp
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_public_headers_cpp_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_public_headers_cpp" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_cpp" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_public_headers_cpp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/37 Testing: ui_workspace_layout
+10/37 Test: ui_workspace_layout
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_workspace_layout_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_workspace_layout" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+workspace layout: 0 failures
+<end of output>
+Test time =   0.35 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_layout" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_workspace_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/37 Testing: ui_api5_compat
+11/37 Test: ui_api5_compat
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_api5_compat_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_api5_compat" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+frozen SDK5 guarded descriptor/state/source: 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_compat" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_api5_compat" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/37 Testing: ui_component_experience
+12/37 Test: ui_component_experience
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_component_experience_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_component_experience" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+component experience light: 0 failures
+<end of output>
+Test time =   0.53 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_experience" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_component_experience" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/37 Testing: ui_offscreen_msaa
+13/37 Test: ui_offscreen_msaa
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_offscreen_msaa_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_offscreen_msaa" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+<end of output>
+Test time =   0.60 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_msaa" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_offscreen_msaa" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/37 Testing: ui_offscreen_gl
+14/37 Test: ui_offscreen_gl
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_offscreen_gl_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_offscreen_gl" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+Offscreen GPU: Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c); hidden HWND dependency; hardware class unknown
+Hidden WGL/FBO/frame/input/readback: 0 failures
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_gl" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_offscreen_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/37 Testing: ui_workspace_offscreen
+15/37 Test: ui_workspace_offscreen
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_workspace_offscreen_test.exe" "D:/a/ui-framework/ui-framework/build/ci-light/framework_features.uapp"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_workspace_offscreen" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+Offscreen actual DOM=75 cached rows=12 columns=4
+Workspace/shared DLL/real templates: 0 failures, HWNDs=0
+<end of output>
+Test time =   0.58 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_offscreen" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_workspace_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/37 Testing: ui_framework_features_host
+16/37 Test: ui_framework_features_host
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_framework_features_host_test.exe" "D:/a/ui-framework/ui-framework/build/ci-light/framework_features.uapp" "D:/a/ui-framework/ui-framework/build/ci-light/features-host.bmp"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_framework_features_host" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+API4 actual host menus/overflow/instances: 0 failures
+<end of output>
+Test time =   5.56 sec
+----------------------------------------------------------
+Test Passed.
+"ui_framework_features_host" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_framework_features_host" time elapsed: 00:00:05
+----------------------------------------------------------
+
+17/37 Testing: ui_menu_offscreen
+17/37 Test: ui_menu_offscreen
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_menu_offscreen_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_menu_offscreen" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+Real light/template offscreen: 0 failures; thread windows=0; no physical IME/DPI claim
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_offscreen" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_menu_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/37 Testing: ui_menu_access
+18/37 Test: ui_menu_access
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_menu_access_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_menu_access" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+Menu Alt real template: 0 failures, calls=3
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_access" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_menu_access" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/37 Testing: ui_api4_compat
+19/37 Test: ui_api4_compat
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_api4_compat_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_api4_compat" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+Frozen SDK4 prefixes/dirty padding/component: 0 failures, component_size=136
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api4_compat" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_api4_compat" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/37 Testing: ui_web_text_edit
+20/37 Test: ui_web_text_edit
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_web_text_edit_test.exe"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_web_text_edit" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+Web editor: 0 failures. Physical Chinese IME remains unverified.
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_text_edit" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_web_text_edit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/37 Testing: ui_generic_web_host
+21/37 Test: ui_generic_web_host
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_generic_web_host_test.exe" "D:/a/ui-framework/ui-framework/build/ci-light/generic_components.uapp" "D:/a/ui-framework/ui-framework/build/ci-light/minimal_eda.uapp" "D:/a/ui-framework/ui-framework/build/ci-light/web_counter.uapp"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_generic_web_host" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+initial actual DOM=169 rows=17 columns=5
+Initial form dpi=96 status=0 field=13,122,194,28 view=0,0,220,601
+100k tail actual DOM=75 rows=12 columns=4
+100k expanded tree actual DOM=77 cached rows=1800 total=100100
+image bytes=413344 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+<end of output>
+Test time =   4.99 sec
+----------------------------------------------------------
+Test Passed.
+"ui_generic_web_host" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_generic_web_host" time elapsed: 00:00:04
+----------------------------------------------------------
+
+22/37 Testing: ui_component_resilience
+22/37 Test: ui_component_resilience
+Command: "D:/a/ui-framework/ui-framework/build/ci-light/ui_component_resilience_test.exe" "D:/a/ui-framework/ui-framework/build/ci-light/framework_features.uapp"
+Directory: D:/a/ui-framework/ui-framework/build/ci-light
+"ui_component_resilience" start time: Oct 04 20:21 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+automatic style preview lifetime: 0 failures
+resource,0,0,0,19288064,6041600,145,46,5,0,0,0,0,0,0,0
+edit/layout mode 0: 0 failures
+edit/layout mode 1: 0 failures
+edit/layout mode 2: 0 failures
+edit/layout mode 3: 0 failures
+focus before refloat=000000000009003A
+focus after refloat=000000000009003A
+focus after modal close=000000000009003A
+focus after redock=000000000009003A
+edit/layout mode 4: 0 failures
+edit/layout mode 5: 0 failures
+record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count
+resource,157,1,1,120295424,133820416,237,924,77,188,20,15255,77,9702,313752,76
+resource,157,1,2,120295424,133820416,237,924,77,169,17,11030,77,8254,212736,52
+resource,1235,14,1,128442368,141660160,237,958,76,110,19,10495,77,18390,319280,76
+resource,1235,14,2,128442368,141660160,237,958,76,207,19,14884,77,18390,526032,126
+resource,2000,24,1,128520192,141737984,237,960,76,150,19,14865,77,25630,400960,95
+resource,2000,24,2,128520192,141737984,237,960,76,150,19,14903,77,25630,531560,126
+resource,2125,24,0,44093440,12201984,227,57,29,0,0,0,0,0,0,0
+resilience: 0 failures; 24 iterations; physical/manual checks remain open
+<end of output>
+Test time =   3.99 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_resilience" end time: Oct 04 20:21 Coordinated Universal Time
+"ui_component_resilience" time elapsed: 00:00:03
+----------------------------------------------------------
+
+23/37 Testing: ui_application_versions
+23/37 Test: ui_application_versions
+Command: "D:/a/ui-framework/ui-framework/b
