@@ -80,3 +80,5 @@ cmake --build build/session0 --target ui_session0_gl_test
 修复后[必要回归日志](session0-osmesa-regression.log)：完整43项42PASS/1物理跨屏SKIP，原生21项20PASS/1同项SKIP。原API1/2/3二进制混合宿主及原API4包分别0失败，四个原包SHA256均保持[API5历史值](api5-validation.md#3-可复验步骤与最终检查)。原SDK1/2/3/4未修改，版本仍SDK0.5/API5/ABI1/包1，只有测试和等价编译兼容修复。
 
 待补：取得整机无用户登录的Windows x64服务模式runner，再手动选择其真实标签执行同一严格工作流；要求WTS已登录会话0及GL/回收断言全部通过。用户目前无此runner，不能记录无登录通过。此证据也不代替轻量Web/隐藏WGL/WebView2的目标环境验收、真实IME、物理跨屏、长期人工压力或请求方应用完整业务接入。
+
+最终执行源码78c24cbd07592cda99e755d13e6af1d4d9f28d0d再次运行：[run37212185391](https://github.com/wbycloud/ui-framework/actions/runs/37212185391)。[原始复验摘要](session0-osmesa-final-head.log)记录同一真实SYSTEM Session0、2000命令0个GL失败、HWND0、句柄147/147/147，私有峰值100,478,976字节；整机登录会话1仍失败。8张PPM的SHA256与前次完全一致，全部201条CSV仍为零HWND且应用DLL已卸载。新runner_label及120秒配置在此运行中生效；后续只提交本段交付说明，不改执行代码。

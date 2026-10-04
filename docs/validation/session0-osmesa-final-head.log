@@ -1,0 +1,15 @@
+Final execution-source revalidation (documentation-only commits follow)
+Source: 78c24cbd07592cda99e755d13e6af1d4d9f28d0d
+Run: https://github.com/wbycloud/ui-framework/actions/runs/37212185391
+Strict full job: FAILURE; independent Session0 GL: PASS; no-login:FAIL logged_sessions1.
+All8 PPM SHA256 match the original3e1fca5 run. All201 CSV rows: noHWND, applicationDLLunloaded.
+Raw public check annotation:
+Environment PID=5188 SessionId=0 LogonType=0 LocalSystem=1 ServiceMain=1 WindowStation=Service-0x0-3e7$ Desktop=Default logged_sessions=1 mode=SESSION0 require_no_login=1
+Application 1 GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) requested=0 actual=0 HWND=NULL dependency=2
+Application 2 GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) requested=0 actual=0 HWND=NULL dependency=2
+Application 3 GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) requested=4 actual=4 HWND=NULL dependency=2
+Application 4 GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) requested=4 actual=4 HWND=NULL dependency=2
+Resources baseline/final/peak handles=147/147/147 GDI=0/0 USER=1/1 private=10584064/97067008/100478976; provider_loaded=1 (process cache)
+SESSION0 GL PASS: failures=0 commands=2000
+NO_LOGIN FAIL: logged_sessions=1 inventory_valid=1
+SESSION0 FAIL: failures=1 commands=2000 created_HWNDs=0 process_HWNDs=0
