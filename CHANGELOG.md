@@ -10,6 +10,8 @@
 
 **必须核对**：依赖旧私有node-menu DOM或严格校验菜单params的应用需调整到公共锚点入口；菜单源menu，params保留id并追加target。使用新函数的DLL/清单一致声明API4，链接匹配运行库。
 
+**补验修复**：浮动Web组件的原生输入执行同一实例模态/激活/关闭门控，回到停靠后保留原编辑窗口焦点；自动STYLE预览在换页、回填及注销后回收，避免在字节预算内积累位图并耗尽GDI对象。应用提供的图片ID保持借用，公共ABI不变。新增真实宿主编辑布局/资源压力回归，证据见[API4补验](docs/validation/api4-validation.md#5-2026-10-04-接手补验与修复)。
+
 第一阶段GL离屏仍依赖隐藏HWND/DC，拒绝core/legacy/MSAA降级；不提供完全无窗口GL或Session0承诺。Alt访问键、真实中文输入法、物理跨屏、长时压力及请求方业务应用接入边界见[API4验收](docs/validation/api4-validation.md)。详见[迁移](docs/migration-v0.3-to-v0.4.md)。
 
 ## 0.3.0 — 开发版，未创建稳定标签

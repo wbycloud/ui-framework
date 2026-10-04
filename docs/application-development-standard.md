@@ -8,7 +8,7 @@
 
 先读[通用 Web UI 接入约定](generic-web-ui.md)，再参考[通用纯 C 示例](../examples/generic_components/README.md)。新接口见 [components.h](../include/ui_framework/components.h)、[images.h](../include/ui_framework/images.h)；命令、面板、内容槽、助手和应用生命周期仍以原公共头文件为准。
 
-[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)说明必须同步的 API 声明和废弃输入开关；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[实际验收](validation/api3-validation.md)记录构建、自动化与真实宿主证据。API3 包不能加载到只支持 API1/2 的运行库，清单与 DLL 声明必须相同。
+[0.3 → 0.4 迁移指南](migration-v0.3-to-v0.4.md)说明当前菜单及离屏接口，[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)保留通用组件和废弃输入开关的迁移要求；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[当前验收](validation/api4-validation.md)记录构建、自动化与真实宿主证据。API4 包不能加载到只支持 API1/2/3 的运行库，清单与 DLL 声明必须相同。
 
 受控轻量后端实现本版框架组件；WebView2 保留已有自定义 HTML/消息能力，不提供新增 C 图片 ID 和组件呈现。OpenGL 仍由应用自行选择、通过内容槽挂载，框架没有应用文档模型或业务渲染器。具体子集、预算及未实现能力以接入约定的能力清单为准，不把 HTML 支持视为完整浏览器。
 
@@ -58,7 +58,7 @@ multiple_instances=true
 
 `app_id` 是稳定身份，`version` 标识版本；同一 ID 的不同版本不能同时加载。`multiple_instances=false` 时，重复打开包激活已有标签；为 true 时创建新的私有状态和标签。不要通过进程全局变量保存实例数据。
 
-清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前支持 `architecture=x64`、应用 ABI 1 和框架 API 1/2/3。清单 API 必须与 DLL descriptor 一致；使用当前头文件构建的新组件应用声明 3，旧 API 1/2 包保持原值。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
+清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前支持 `architecture=x64`、应用 ABI 1 和框架 API 1/2/3/4。清单 API 必须与 DLL descriptor 一致；使用当前头文件构建的新应用声明 4，旧 API 1/2/3 包保持原值。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
 
 ### 2.2 UAPP v1 容器格式
 
@@ -152,7 +152,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 ### 3.3 size 和兼容性
 
-使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 3。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前接受 1、2、3，拒绝 0、4。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
+使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 4。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前接受 1、2、3、4，拒绝 0 和未支持的更高版本。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
 
 布局接口接受原始六字段布局描述，省略的新字段按零值处理；Web ops 支持旧尺寸，缺少追加的定位、消息或能力回调时对应操作返回 UNSUPPORTED。`ui_workspace_config_t` 在保留完整 v1 布局后追加 `shell_mode`；清零时选择 `UI_WORKSPACE_SHELL_NATIVE`，自建 Web workspace 可显式选择 `UI_WORKSPACE_SHELL_WEB`。独立宿主固定使用 WEB。并非所有结构都允许截断，不能人为缩小 `size` 来假装某个版本。C++ 应用通过 `extern "C"` 调用同一接口；[`tests/public_headers.cpp`](../tests/public_headers.cpp) 覆盖公共头文件调用路径。
 

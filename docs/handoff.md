@@ -12,6 +12,7 @@
 | --- | --- |
 | 仓库 | [wbycloud/ui-framework](https://github.com/wbycloud/ui-framework) |
 | 已验证代码提交 | [e83a0087f0ef1017c9cd99db3e2f6754b503311c](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c) |
+| 最新补验修复代码 | [48d6aafa451802b2a057fa68ce1f687fb2f2a004](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，修复模态原生输入、自动STYLE预览回收、redock焦点；[补验记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
 | 已推送分支 | `main`、`codex/menus-offscreen`；交接文档另行提交，后续以实际 HEAD 为准 |
 | SDK / 框架 API / 标准修订 | `0.4.0` 开发版 / `4` / `4` |
 | 兼容范围 | 运行库接受 API1/2/3/4；包清单和 DLL descriptor 必须一致 |
@@ -30,7 +31,7 @@
 
 文档面向 C/C++ 应用开发者，不署名；给其他应用的[升级提示词](application-upgrade-prompt.md)只使用 GitHub 入口，不包含个人本地目录。此前授权包括提交并推送框架和说明；不要强推或创建新的稳定标签。
 
-本轮未使用 graph-engineering，也未修改请求方 KLayout C 应用、冻结应用包或 PERF-001。接手时不要把应用适配或性能重新测量自动扩展进框架任务。当前只准备交接，没有新建会话或移动当前会话。
+交接准备及后续补验未启用 graph-engineering，也未修改请求方 KLayout C 应用、冻结应用包或 PERF-001。接手时不要把应用适配或性能重新测量自动扩展进框架任务。后续已完成本机自动补验和三项针对性修复，没有新建会话或移动当前会话。
 
 ## 3. 已交付实现与定位
 
@@ -52,13 +53,14 @@ GL 离屏显式要求至少3.3 compatibility，仍依赖隐藏 HWND/DC，不接�
 
 ## 4. 验证事实及复现
 
-已验证代码为上述 e83a008，Windows 已登录会话、MSVC Build Tools18、Release、单显示器。实际离屏驱动返回 Intel / Intel(R) UHD Graphics 770 / `3.3.0 - Build 32.0.101.7079`，compatibility profile；没有自行推断硬件/软件类别。
+原交接的验证代码为e83a008，Windows已登录会话、MSVC Build Tools18、Release、单显示器；当时实际离屏驱动返回Intel / Intel(R) UHD Graphics 770 / `3.3.0 - Build 32.0.101.7079`，compatibility profile，没有推断硬件/软件类别。最新补验代码为48d6aaf，结果和资源数据见[新增记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复)。
 
 | 验证 | 结果与边界 |
 | --- | --- |
-| 完整轻量 + 可选 WebView2 | 33项，32通过，1个 `ui_monitor_transition` 因物理条件跳过；含本地原API3二进制包额外测试 |
+| 完整轻量 + 可选 WebView2 | 最新补验34项，33通过，1个 `ui_monitor_transition` 因物理条件跳过；含新增resilience及本地原API3包。原交接e83a008为33项/32通过/1跳过 |
 | 干净源码原生配置 | 未复制 .git/.deps/build；18项，17通过，同一跨屏项跳过 |
-| 原 API1/2/3 二进制包混合 | 实际宿主运行，0失败；另保留冻结SDK重新构建的调用方，二者不等同 |
+| 原 API1/2/3 二进制包混合 | 最新补验再次指定三个原包运行真实宿主，0失败；另保留冻结SDK重新构建的调用方，二者不等同 |
+| UV-03/04 自动补验 | 十分钟10155轮、50次重开0失败，GDI峰值2003；六种草稿/选区/撤销/实际焦点组合通过。仍不等于长期人工与完整编辑验收 |
 | 新真实路径 | 七组菜单、末项/工具溢出、双实例、普通右键、模板草稿/模态、按需大表格、队列、REFUSE/WAIT、初始化失败、卸载重开、GL读回通过 |
 | 公开交付 | main/工作分支 SHA 已核对，README/标准/提示词/迁移/验收的公开文件 HTTP200；文件链接已检查 |
 
@@ -73,7 +75,7 @@ ctest --test-dir build/web-shell --output-on-failure
 & .\build\web-shell\framework_host.exe .\build\web-shell\framework_features.uapp .\build\web-shell\framework_features.uapp
 ```
 
-新 clone 默认轻量配置为30项；可选 WebView2为32项。只有设置 `UI_LEGACY_COMPONENT_PACKAGE` 指向原API3包才额外产生第33项，不得把未提供的原包写成已复验。WebView2需固定 SDK1.0.4129.50 和 Runtime；受限环境曾两项创建超时，在允许浏览器子进程环境复验通过，不能把超时记为通过。
+新增resilience后，新 clone 默认轻量配置为31项；可选 WebView2为33项。只有设置 `UI_LEGACY_COMPONENT_PACKAGE` 指向原API3包才额外产生第34项，不得把未提供的原包写成已复验。WebView2需固定 SDK1.0.4129.50 和 Runtime；受限环境曾两项创建超时，在允许浏览器子进程环境复验通过，不能把超时记为通过。
 
 原生配置需要同时关闭宿主、轻量后端和 WebView2；不产生 Web 宿主：
 
@@ -84,6 +86,8 @@ ctest --test-dir build/native --output-on-failure
 ```
 
 当前机器的 API4 验证构建位于 `build/fw-next/release`；`build/web-shell` 等旧目录可能残留旧版本，使用前重建，不混用运行库。本地保留 `build/fw-next/ctest-final.log`、`build/fw-next/clean-test.log`、`build/fw-next/build.log`、`build/fw-next/build.cmd` 和原生构建脚本。它们被忽略，不属于远程可获取证据；公开证据以验收文档和可构建测试为准。
+
+本次补验日志另存 `build/acceptance-20261004/`，历史失败日志保留。最终回归日志为 `final-regression.log`、`native-regression.log`、`original-packages.log`；十分钟数据为 `stress-fixed-600s.log`。公开[采样CSV](validation/api4-resilience-20261004.csv)及[曲线](validation/api4-resilience-20261004.png)已保存。十分钟曲线在最终焦点补丁前采集；该补丁随后通过原复现环境和完整回归。
 
 以下原包尚在本地忽略目录，不应清理或用新编译结果覆盖：
 
@@ -101,8 +105,8 @@ ctest --test-dir build/native --output-on-failure
 | --- | --- | --- |
 | UV-01 | 实际中文 IME | 真实输入法组合、候选、提交/取消及焦点/标签/DPI变化，记录操作证据 |
 | UV-02 | 物理跨屏 DPI | 至少两台不同缩放显示器，记录 WM_DPICHANGED、矩形、framebuffer和候选位置 |
-| UV-03 | 长期人工滚动/资源压力 | 连续行列/树/缩略图/双实例操作，记录时长、受管资源统计和进程曲线 |
-| UV-04 | 完整编辑与复杂布局 | 草稿/选中文本期间执行停靠、浮动、折叠、DPI和模态组合，核对状态保留 |
+| UV-03 | 长期人工滚动/资源压力；十分钟自动补验通过 | 仍需连续人工行列/树/缩略图/双实例操作，记录时长、受管资源统计和进程曲线 |
+| UV-04 | 完整编辑与复杂布局；六种自动组合及三项缺陷修复通过 | 仍需完整编辑手势、草稿/选择期间停靠、浮动、折叠、DPI和模态人工组合，核对状态保留 |
 | UV-05 | Session0/无登录CI/远程驱动 | 在目标环境分别验证无HWND Web与隐藏WGL，不能用软件图像替代真实GL |
 | UV-06 | 请求方应用完整离屏业务接入 | 应用独立适配窗口依赖、路径/调度和业务renderer；本框架未替应用完成 |
 | UV-07 | 物理屏幕边缘菜单及GL遮挡 | 不同DPI显示器边缘测试三种锚点、翻转、外点关闭、焦点恢复和桌面合成 |
