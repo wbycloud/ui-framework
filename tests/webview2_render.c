@@ -6,7 +6,10 @@
 #include <string.h>
 #include "ui_framework/webview2.h"
 #include "ui_framework/images.h"
+#include "runtime_diagnostics.h"
 static int failures,shortcuts;
+static int runtime_cleanup_pending(void)
+{HWND w=NULL;int count=0;while((w=FindWindowExW(HWND_MESSAGE,w,L"UIFrameworkWebView2Cleanup5",NULL))!=NULL)if(GetWindowThreadProcessId(w,NULL)==GetCurrentThreadId())++count;return count;}
 static void shortcut(ui_host_t *h,uint64_t request,const char *id,const char *params,const char *origin,void *data)
 {(void)id;(void)params;(void)origin;(void)data;++shortcuts;(void)ui_host_reply(h,request,1,"{}");}
 #define CHECK(x) do{if(!(x)){fprintf(stderr,"line %d: %s\n",__LINE__,#x);++failures;}}while(0)
@@ -20,6 +23,7 @@ int main(void)
 {
  HWND root;ui_host_config_t hc={0};ui_webview2_backend_config_t cfg={0};ui_host_t *h;ui_web_backend_t *b;ui_web_view_t *v;ui_status_t s;ui_element_presentation_t p={0};ui_pixel_buffer_t pixels={0};ui_input_event_t input={0};ui_rgba_desc_t rgba={0};ui_image_id_t image;uint8_t color[4]={255,0,0,255};char html[1000];
  setvbuf(stdout,NULL,_IONBF,0);setvbuf(stderr,NULL,_IONBF,0);SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX);
+ runtime_diagnostics_initialize();
  puts("Runtime render: initialize");CHECK(SUCCEEDED(CoInitializeEx(NULL,COINIT_APARTMENTTHREADED)));CHECK(ui_framework_initialize()==UI_STATUS_OK);CHECK(ui_webview2_runtime_status()==UI_STATUS_OK);
  root=CreateWindowW(L"STATIC",L"Real Runtime render",WS_OVERLAPPEDWINDOW,0,0,500,300,NULL,NULL,GetModuleHandleW(NULL),NULL);hc.size=sizeof(hc);hc.api_version=5;hc.native_parent=root;h=ui_host_create(&hc);CHECK(h!=NULL);
  cfg.size=sizeof(cfg);cfg.framework_components=1;b=ui_webview2_backend_create(&cfg,&s);CHECK(b&&s==UI_STATUS_OK);v=ui_web_view_create(h,b);CHECK(v!=NULL);CHECK(ui_web_view_resize(v,200,100,144)==UI_STATUS_OK);
@@ -39,8 +43,10 @@ int main(void)
  CHECK(ui_web_view_get_presentation(v,"box",&p)==UI_STATUS_PENDING);CHECK(ui_web_view_load_html(v,"<div id='box'>REPLACED</div>")==UI_STATUS_OK);ready(v);CHECK(query(v,"box",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"REPLACED"));
  CHECK(ui_web_view_get_presentation(v,"box",&p)==UI_STATUS_PENDING);puts("Runtime render: close");free(pixels.pixels);ui_web_view_destroy(v);ui_webview2_backend_destroy(b);for(int i=0;i<100;++i)pump();
  {DWORD handles=0,last=0,users=GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS);GetProcessHandleCount(GetCurrentProcess(),&handles);cfg.framework_components=1;
+  runtime_handle_types("before cancellation");
   for(int i=0;i<12;++i){b=ui_webview2_backend_create(&cfg,&s);CHECK(b&&s==UI_STATUS_OK);v=ui_web_view_create(h,b);CHECK(v!=NULL);CHECK(ui_web_view_load_html(v,"<div>cancel before creation</div>")==UI_STATUS_OK);ui_web_view_destroy(v);ui_webview2_backend_destroy(b);ULONGLONG start=GetTickCount64();do{pump();}while(GetTickCount64()-start<500);}
-  {ULONGLONG start=GetTickCount64();do{GetProcessHandleCount(GetCurrentProcess(),&last);if(last<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+2)break;pump();}while(GetTickCount64()-start<15000);}
-  CHECK(last<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+2);printf("Runtime close before creation x12 handles %lu->%lu USER %lu->%lu\n",handles,last,users,GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS));}
+  {ULONGLONG start=GetTickCount64();do{GetProcessHandleCount(GetCurrentProcess(),&last);if(last<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+2&&!runtime_cleanup_pending())break;pump();}while(GetTickCount64()-start<15000);}
+  CHECK(last<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+2);CHECK(!runtime_cleanup_pending());printf("Runtime close before creation x12 handles %lu->%lu USER %lu->%lu pending cleanup=%d\n",handles,last,users,GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS),runtime_cleanup_pending());}
+ runtime_handle_types("after cancellation");
  ui_host_destroy(h);DestroyWindow(root);CoUninitialize();printf("Real WebView2 presentation/capture/images/input/stale/close: %d failures\n",failures);return failures?1:0;
 }

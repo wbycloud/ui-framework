@@ -101,6 +101,7 @@ $manifest = [ordered]@{
     desktop = @([UiCiDesktop]::GetSystemMetrics(0),[UiCiDesktop]::GetSystemMetrics(1))
     dpi = [UiCiDesktop]::GetDpiForSystem()
     wgl = 'explicit application-local Mesa24.3.4 software GL'; osmesa = 'explicit Mesa24.3.4 memory context'
+    runtimeGraphics = if ($Configuration -eq 'webview2') { 'platform graphics; software WGL DLLs removed before real Runtime tests' } else { 'Runtime disabled' }
     noLoginAccepted = $false; physicalManualAccepted = $false
 }
 $manifest | ConvertTo-Json | Set-Content "$evidenceDirectory/manifest.json"
@@ -108,6 +109,8 @@ $env:GALLIUM_DRIVER = 'llvmpipe'
 $runtimeTests = 'ui_webview2_|ui_api5_integration|ui_api5_native_host|ui_component_experience_webview2|ui_api6_integration_webview2'
 $phases = if ($Configuration -eq 'webview2') { @('wgl','runtime') } else { @('all') }
 $testExit = 0
+'' | Set-Content "$evidenceDirectory/regression.log"
+'' | Set-Content "$evidenceDirectory/test-output.log"
 $combined = [xml]'<testsuite name="Windows regression" tests="0" failures="0" skipped="0"/>'
 foreach ($phase in $phases) {
     if ($phase -eq 'runtime') {

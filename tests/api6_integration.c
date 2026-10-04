@@ -6,8 +6,11 @@
 #include <string.h>
 #include "../src/ui_internal.h"
 #include "ui_framework/webview2.h"
+#include "runtime_diagnostics.h"
 static int failures;static ui_workspace_t *workspace;
 static int created_windows;
+static int runtime_cleanup_pending(void)
+{HWND w=NULL;int count=0;while((w=FindWindowExW(HWND_MESSAGE,w,L"UIFrameworkWebView2Cleanup5",NULL))!=NULL)if(GetWindowThreadProcessId(w,NULL)==GetCurrentThreadId())++count;return count;}
 static LRESULT CALLBACK window_hook(int code,WPARAM w,LPARAM p)
 {if(code==HCBT_CREATEWND)++created_windows;return CallNextHookEx(NULL,code,w,p);}
 #define CHECK(x) do{if(!(x)){fprintf(stderr,"integration line%d: %s\n",__LINE__,#x);++failures;}}while(0)
@@ -38,6 +41,7 @@ int wmain(int argc,wchar_t **argv)
     uint64_t a=0,b=0,ids[512];ui_image_id_t viewport_image;size_t n=0,bytes;char package[16384];wchar_t provider_path[4096];int runtime;ui_rect_t root_rect={0,0,1280,900};ui_panel_layout_t layout={0};
     ui_element_presentation_t p={0};ui_cell_t field={0};ui_opengl_info_t info={0};ui_pixel_buffer_t pixels={0};ui_image_info_t image={0};ui_image_stats_t images={0};ui_component_state_t state={0};unsigned char *saved;DWORD handles,gdi,users;
     setvbuf(stdout,NULL,_IONBF,0);setvbuf(stderr,NULL,_IONBF,0);SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX);
+    runtime_diagnostics_initialize();
     puts("API6 integration: initialize");if(argc!=4||!WideCharToMultiByte(CP_UTF8,WC_ERR_INVALID_CHARS,argv[1],-1,package,sizeof(package),NULL,NULL))return 2;
     runtime=!wcscmp(argv[3],L"webview2");CHECK(SUCCEEDED(CoInitializeEx(NULL,COINIT_APARTMENTTHREADED)));CHECK(ui_framework_initialize()==UI_STATUS_OK);
     if(!runtime){hook=SetWindowsHookExW(WH_CBT,window_hook,NULL,GetCurrentThreadId());CHECK(hook!=NULL);}
@@ -71,7 +75,9 @@ int wmain(int argc,wchar_t **argv)
     root_rect.width=800;root_rect.height=600;CHECK(ui_workspace_set_rect(workspace,&root_rect,144)==UI_STATUS_OK);pump(150);state.size=sizeof(state);CHECK(ui_component_get_state(table,&state)==UI_STATUS_OK&&state.cached_bytes<=2097152&&state.rendered_nodes<=1024);images.size=sizeof(images);CHECK(ui_image_get_stats(h,&images)==UI_STATUS_OK&&images.bytes<=33554432);
     puts("API6 integration: instances/resize complete");CHECK(ui_host_invoke(h,"test.image.release","{}","test")!=0);CHECK(ui_image_get_info(h,viewport_image,&image)==UI_STATUS_NOT_FOUND);close_instance(a);pump(2000);CHECK(ui_workspace_count(workspace)==0&&GetModuleHandleW(L"ui_api6_fixture.dll")==NULL);
     GetProcessHandleCount(GetCurrentProcess(),&handles);gdi=GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS);users=GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS);
+    if(runtime)runtime_handle_types("before reopen");
     for(int cycle=0;cycle<8;++cycle){printf("API6 integration: reopen %d\n",cycle);CHECK(ui_workspace_open(workspace,package,&a)==UI_STATUS_OK);if(a){h=host(a);CHECK(ui_host_invoke(h,"test.render","{}","test")!=0);close_instance(a);pump(runtime?500:20);CHECK(GetModuleHandleW(L"ui_api6_fixture.dll")==NULL);}}
-    {DWORD end=0;ULONGLONG start=GetTickCount64();do{GetProcessHandleCount(GetCurrentProcess(),&end);if(end<=handles+12)break;pump(10);}while(GetTickCount64()-start<15000);printf("API6 reopen8 handles %lu->%lu GDI %lu->%lu USER %lu->%lu\n",handles,end,gdi,GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS),users,GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS));CHECK(end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4);}
+    {DWORD end=0;ULONGLONG start=GetTickCount64();do{GetProcessHandleCount(GetCurrentProcess(),&end);if(end<=handles+12&&(!runtime||!runtime_cleanup_pending()))break;pump(10);}while(GetTickCount64()-start<15000);printf("API6 reopen8 handles %lu->%lu GDI %lu->%lu USER %lu->%lu pending Runtime cleanup=%d\n",handles,end,gdi,GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS),users,GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS),runtime_cleanup_pending());CHECK(end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4);CHECK(!runtime_cleanup_pending());}
+    if(runtime)runtime_handle_types("after reopen");
     CHECK(ui_workspace_destroy(workspace)==UI_STATUS_OK);workspace=NULL;if(root)DestroyWindow(root);if(hook){CHECK(created_windows==0);UnhookWindowsHookEx(hook);printf("API6 complete offscreen lifecycle created HWNDs=%d\n",created_windows);}SetEnvironmentVariableW(L"UI_API6_OSMESA_DLL",NULL);SetEnvironmentVariableW(L"UI_API6_BACKEND",NULL);CoUninitialize();printf("API6 independent %s DLL integration: %d failures\n",runtime?"WebView2":"light offscreen",failures);return failures?1:0;
 }
