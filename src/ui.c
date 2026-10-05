@@ -881,7 +881,8 @@ ui_status_t ui_host_register_panel(ui_host_t *host,
         desc->dock_region != UI_LAYOUT_REGION_NONE)
         region = desc->dock_region;
     if (region != UI_LAYOUT_REGION_LEFT_SIDEBAR &&
-        region != UI_LAYOUT_REGION_RIGHT_SIDEBAR) return UI_STATUS_INVALID_ARGUMENT;
+        region != UI_LAYOUT_REGION_RIGHT_SIDEBAR &&
+        region != UI_LAYOUT_REGION_BOTTOM) return UI_STATUS_INVALID_ARGUMENT;
 
     for (it = host->panels; it != NULL; it = it->next) {
         if (strcmp(it->id, desc->id) == 0) {

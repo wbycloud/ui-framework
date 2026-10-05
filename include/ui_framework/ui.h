@@ -208,7 +208,7 @@ typedef struct ui_panel_desc {
     const char *entry_url;
     int preferred_width;
     uint32_t reserved_v1;
-    /* Sidebar destination. NONE preserves the original right sidebar default. */
+    /* LEFT/RIGHT/BOTTOM destination; NONE preserves the right sidebar default. */
     ui_layout_region_t dock_region;
 } ui_panel_desc_t;
 

@@ -33,8 +33,17 @@ static void run(int offscreen,int web){
  CHECK(ui_shell_reset_layout(s)==UI_STATUS_OK);CHECK(ui_host_get_rect(h,UI_LAYOUT_REGION_BOTTOM,&bottom)==UI_STATUS_OK&&bottom.height==0);
  ui_native_shell_destroy(native);ui_host_destroy(h);if(root)DestroyWindow(root);
 }
-int main(void){CHECK(ui_framework_initialize()==UI_STATUS_OK);run(1,0);run(0,0);
+static void registered_bottom(int offscreen,int web){
+ HWND root=offscreen?NULL:CreateWindowW(L"STATIC",L"Registered bottom default",WS_OVERLAPPEDWINDOW,0,0,1000,700,NULL,NULL,NULL,NULL);ui_host_config_t hc={0};ui_native_shell_config_t nc={0};ui_panel_desc_t p={0};ui_panel_layout_t layout={0};ui_rect_t r={0};ui_native_shell_t *native;ui_shell_t *shell;ui_host_t *h;ui_status_t status;
+ hc.size=sizeof(hc);hc.api_version=UI_FRAMEWORK_API_VERSION;hc.native_parent=root;h=ui_host_create(&hc);CHECK(h!=NULL);if(!h){if(root)DestroyWindow(root);return;}h->run_mode=offscreen?UI_RUN_OFFSCREEN:UI_RUN_WINDOWED;CHECK(ui_host_resize(h,1000,700)==UI_STATUS_OK);
+ p.size=sizeof(p);p.id="default-bottom";p.title="Bottom";p.entry_url="";p.kind=UI_PANEL_SIDEBAR;p.dock_region=UI_LAYOUT_REGION_BOTTOM;status=ui_host_register_panel(h,&p);CHECK(status==UI_STATUS_OK);if(status!=UI_STATUS_OK){ui_host_destroy(h);if(root)DestroyWindow(root);return;}
+ nc.size=sizeof(nc);nc.host=h;native=offscreen?ui_native_shell_create_offscreen(&nc):web?ui_native_shell_create_web(&nc):ui_native_shell_create(&nc);CHECK(native!=NULL);if(!native){ui_host_destroy(h);if(root)DestroyWindow(root);return;}shell=ui_host_get_shell(h);layout.size=sizeof(layout);
+ CHECK(ui_host_get_rect(h,UI_LAYOUT_REGION_BOTTOM,&r)==UI_STATUS_OK&&r.height==220);CHECK(ui_shell_get_panel_layout(shell,p.id,&layout)==UI_STATUS_OK&&layout.dock_region==UI_LAYOUT_REGION_BOTTOM);
+ layout.dock_region=UI_LAYOUT_REGION_LEFT_SIDEBAR;CHECK(ui_shell_set_panel_layout(shell,p.id,&layout)==UI_STATUS_OK);CHECK(ui_host_get_rect(h,UI_LAYOUT_REGION_BOTTOM,&r)==UI_STATUS_OK&&r.height==0);CHECK(ui_shell_reset_layout(shell)==UI_STATUS_OK);CHECK(ui_shell_get_panel_layout(shell,p.id,&layout)==UI_STATUS_OK&&layout.dock_region==UI_LAYOUT_REGION_BOTTOM);CHECK(ui_host_get_rect(h,UI_LAYOUT_REGION_BOTTOM,&r)==UI_STATUS_OK&&r.height==220);
+ ui_native_shell_destroy(native);ui_host_destroy(h);if(root)DestroyWindow(root);
+}
+int main(void){CHECK(ui_framework_initialize()==UI_STATUS_OK);run(1,0);run(0,0);registered_bottom(1,0);registered_bottom(0,0);
 #ifdef UI_WORKSPACE7_WEB
-run(0,1);
+run(0,1);registered_bottom(0,1);
 #endif
 printf("API7 bottom/tabs: %d failures\n",failures);return failures?1:0;}

@@ -1376,6 +1376,7 @@ static ui_status_t web_shell_reflow(ui_native_shell_t *shell)
 static ui_status_t offscreen_reflow(ui_native_shell_t *shell)
 {
     ui_content_slot_t *slot;ui_status_t status=UI_STATUS_OK;
+    prepare_layout(shell);
     for(slot=shell->slots;slot;slot=slot->next){ui_panel_entry_t *entry=NULL;RECT pixels;
         ui_native_panel_t *panel=slot->panel_id?find_panel(shell,slot->panel_id):NULL;
         if(slot->panel_id)for(entry=shell->host->panels;entry&&strcmp(entry->id,slot->panel_id);entry=entry->next){}
