@@ -302,7 +302,7 @@ static int create_popup(host_window_t *s,int kind,int width,int height)
 static void popup_start(host_window_t *s,json_buffer_t *json,const char *title,const char *detail,int confirm)
 {
     json_append(json,"{\"type\":\"popup\",\"token\":");json_id(json,s->popup_token);
-    json_format(json,",\"dark\":%s,\"confirm\":%s,\"title\":",s->dark?"true":"false",confirm?"true":"false");
+    json_format(json,",\"dark\":%s,\"menu\":%s,\"confirm\":%s,\"title\":",s->dark?"true":"false",s->popup_kind==1?"true":"false",confirm?"true":"false");
     json_preview(json,title,0);json_append(json,",\"detailParts\":");json_text_chunks(json,detail);json_append(json,",\"items\":[");
 }
 static void popup_item(json_buffer_t *json,int *count,const char *title,const char *action,uint64_t id,const char *command)
@@ -409,7 +409,7 @@ static void send_state(host_window_t *s)
     json_append(&json,",\"params\":");json_string(&json,s->params?s->params:"{}");json_append(&json,",\"log\":");json_preview(&json,s->log,1);
     json_format(&json,",\"canInvoke\":%s,\"canCancel\":%s",target.instance_id&&!target.closing&&s->command&&s->command[0]?"true":"false",s->last_request?"true":"false");
     s->chrome_host->image_source=NULL;
-    if(get_instance(s,active,&info)){ui_rect_t rect;s->chrome_host->image_source=info.host;json_append(&json,",\"activeLabel\":");json_string(&json,info.name_utf8);
+    if(get_instance(s,active,&info)){ui_rect_t rect;info.host->menu_dark=s->dark;json_append(&json,",\"menuOpen\":");if(info.host->menu_open_path)json_string(&json,info.host->menu_open_path);else json_append(&json,"null");s->chrome_host->image_source=info.host;json_append(&json,",\"activeLabel\":");json_string(&json,info.name_utf8);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_MENU_BAR,&rect);json_append(&json,",\"menuRect\":");json_rect(&json,&rect);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_TOOLBAR,&rect);json_append(&json,",\"toolbarRect\":");json_rect(&json,&rect);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_STATUS_BAR,&rect);json_append(&json,",\"statusRect\":");json_rect(&json,&rect);
@@ -530,7 +530,7 @@ static void transaction_action(host_window_t *s,const char *action)
 }
 static void menu_popup(host_window_t *s)
 {
-    json_buffer_t json={0};int count=0;if(!create_popup(s,1,440,420))return;popup_start(s,&json,"框架菜单","应用菜单位于工作区上方",0);
+    json_buffer_t json={0};int count=0;if(!create_popup(s,1,360,156))return;popup_start(s,&json,"框架菜单","应用菜单位于工作区上方",0);
     popup_item(&json,&count,"打开应用包… · Ctrl+Shift+O","open",0,NULL);
     popup_item(&json,&count,"关闭当前标签 · Ctrl+W","close",ui_workspace_active(s->workspace),NULL);
     popup_item(&json,&count,"下一个标签 · Ctrl+Tab","next",0,NULL);popup_item(&json,&count,"上一个标签 · Ctrl+Shift+Tab","previous",0,NULL);
@@ -562,8 +562,8 @@ static void selector_popup(host_window_t *s,int commands)
 }
 static void tooltip_popup(host_window_t *s,const char *id)
 {
-    const char *text=NULL;json_buffer_t json={0};RECT origin;ui_rect_t rect;if(s->popup_hwnd&&s->popup_kind!=5)return;
-    if(!strcmp(id?id:"","menu"))text="框架及当前应用菜单";
+    const char *text=NULL;json_buffer_t json={0};RECT origin;ui_rect_t rect;ui_app_instance_info_t active;if(get_instance(s,ui_workspace_active(s->workspace),&active)&&active.host->menu_open_path)return;if(s->popup_hwnd&&s->popup_kind!=5)return;
+    if(!strcmp(id?id:"","menu"))text="框架菜单";
     else if(!strcmp(id?id:"","open"))text="打开 .uapp 应用包 · Ctrl+Shift+O";
     else if(!strcmp(id?id:"","theme"))text="切换浅色 / 深色主题";
     else if(!strcmp(id?id:"","assistant-toggle"))text="显示或收起助手工作台";
@@ -592,12 +592,12 @@ static void process_action(host_window_t *s,host_action_t *action)
     else if(!strcmp(name,"next"))switch_tab(s,1);else if(!strcmp(name,"previous"))switch_tab(s,-1);
     else if(!strcmp(name,"exit"))PostMessageW(s->hwnd,WM_CLOSE,0,0);else if(!strcmp(name,"theme"))s->dark=!s->dark;
     else if(!strcmp(name,"assistant")){RECT client;GetClientRect(s->hwnd,&client);s->assistant_expanded=assistant_visible(s,MulDiv(client.right,96,(int)s->dpi))?-1:1;}
-    else if(!strcmp(name,"menu")){menu_popup(s);return;}else if(!strcmp(name,"targets")){selector_popup(s,0);return;}
+    else if(!strcmp(name,"menu")){if(s->popup_kind==1)close_popup(s);else menu_popup(s);return;}else if(!strcmp(name,"targets")){selector_popup(s,0);return;}
     else if(!strcmp(name,"app-shortcut")){
         uint64_t key=read_id(action->key),modifiers=read_id(action->modifiers);
         if(key&&key<=UINT32_MAX&&modifiers<=7&&get_instance(s,id,&info)&&info.active&&!info.closing)
             (void)ui_host_dispatch_shortcut(info.host,(uint32_t)key,(uint32_t)modifiers,action->editing&&!strcmp(action->editing,"1"));return;}
-    else if(!strcmp(name,"app-menu")||!strcmp(name,"menu-more")||!strcmp(name,"tool-more")||!strcmp(name,"tool-tip")){
+    else if(!strcmp(name,"app-menu")||!strcmp(name,"app-menu-hover")||!strcmp(name,"menu-more")||!strcmp(name,"tool-more")||!strcmp(name,"tool-tip")){
         ui_menu_popup_desc_t popup={0};ui_rect_t anchor={0};char element[160];
         if(!get_instance(s,id,&info)||!info.active||info.closing)return;
         snprintf(element,sizeof(element),"%s",action->panel?action->panel:"menu-more");
@@ -606,7 +606,7 @@ static void process_action(host_window_t *s,host_action_t *action)
         if(!strcmp(name,"tool-more"))(void)ui_host_show_toolbar_menu(info.host,&popup.anchor,0);
         else if(!strcmp(name,"tool-tip")){ui_toolbar_item_entry_t *tool;const char *tool_id=action->panel&&strlen(action->panel)>5?action->panel+5:"";
             for(tool=info.host->toolbar_items;tool&&strcmp(tool->id,tool_id);tool=tool->next){}if(tool)(void)ui_host_show_tooltip(info.host,&popup.anchor,tool->title);}
-        else{popup.path=action->menu?action->menu:"";(void)ui_host_show_menu(info.host,&popup);}return;}
+        else{popup.path=action->menu?action->menu:"";if(!strcmp(name,"app-menu-hover")){if(!info.host->menu_open_path||!strcmp(info.host->menu_open_path,popup.path))return;}else if(info.host->menu_open_path&&!strcmp(info.host->menu_open_path,popup.path)){(void)ui_host_close_menu(info.host);return;}close_popup(s);info.host->menu_dark=s->dark;(void)ui_host_show_menu(info.host,&popup);}return;}
     else if(!strcmp(name,"tool-tip-hide")){if(get_instance(s,id,&info))(void)ui_host_hide_tooltip(info.host);return;}
     else if(!strcmp(name,"commands")){selector_popup(s,1);return;}
     else if(!strcmp(name,"select-target")){if(get_instance(s,id,&info)&&!info.closing)s->target=id;}
