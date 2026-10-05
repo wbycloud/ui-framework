@@ -113,7 +113,11 @@ int wmain(int argc,wchar_t **argv)
         check(!host.popup_hwnd,"long detail popup remains interactive");
     }
     click(host.view,"menu");pump();check(host.popup_hwnd&&host.popup_view&&GetWindow(host.popup_hwnd,GW_OWNER)==root,"menu is an owned Web popup");
-    click(host.popup_view,"popup-dismiss");pump();check(!host.popup_hwnd,"popup dismiss is deferred out of JS callback");
+    {ui_input_event_t key={0};key.size=sizeof(key);key.kind=UI_INPUT_KEY_DOWN;key.key_code=VK_ESCAPE;
+        check(ui_web_view_dispatch_input(host.popup_view,&key)==UI_STATUS_OK,"menu Esc closes through JS bridge");
+        check(host.popup_hwnd!=NULL,"menu dismissal is queued outside JS callback");pump();check(!host.popup_hwnd,"popup dismiss is deferred out of JS callback");}
+    click(host.view,"menu");pump();click(host.view,"menu");pump();check(!host.popup_hwnd,"repeated framework menu entry closes");
+    click(host.view,"menu");pump();PostMessageW(root,WM_LBUTTONDOWN,MK_LBUTTON,MAKELPARAM(800,750));pump();check(!host.popup_hwnd,"outside native click closes framework menu");
     send_selection(&host,"select-command",first,"eda.clear");confirm_host=&host;confirm_activate=second;confirm_allow=0;
     SetTimer(root,50,10,confirm_timer);click(host.view,"invoke");pump();check(snapshot_value(&host,first,"blocks")==1,"Web confirmation denial preserves original target");
     confirm_allow=1;SetTimer(root,51,10,confirm_timer);click(host.view,"invoke");pump();

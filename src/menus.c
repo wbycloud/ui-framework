@@ -181,6 +181,16 @@ ui_status_t ui_host_close_menu(ui_host_t *host)
     (void)ui_host_emit_event(host,"ui.host.menu_changed","{}");return UI_STATUS_OK;
 }
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
+static void shortcut_text(const ui_command_entry_t *c,char out[80])
+{
+    char key[20]="";const char *name=NULL;
+    if(!c||!c->shortcut_key){out[0]=0;return;}
+    if(c->shortcut_key>=112&&c->shortcut_key<=135)snprintf(key,sizeof(key),"F%u",c->shortcut_key-111);
+    else if((c->shortcut_key>='A'&&c->shortcut_key<='Z')||(c->shortcut_key>='0'&&c->shortcut_key<='9'))snprintf(key,sizeof(key),"%c",(char)c->shortcut_key);
+    else{switch(c->shortcut_key){case 8:name="Backspace";break;case 9:name="Tab";break;case 13:name="Enter";break;case 27:name="Esc";break;case 32:name="Space";break;case 33:name="PgUp";break;case 34:name="PgDn";break;case 35:name="End";break;case 36:name="Home";break;case 37:name="Left";break;case 38:name="Up";break;case 39:name="Right";break;case 40:name="Down";break;case 45:name="Ins";break;case 46:name="Del";break;default:break;}
+        if(name)snprintf(key,sizeof(key),"%s",name);else snprintf(key,sizeof(key),"0x%X",c->shortcut_key);}
+    snprintf(out,80,"%s%s%s%s",c->shortcut_modifiers&1?"Ctrl+":"",c->shortcut_modifiers&2?"Shift+":"",c->shortcut_modifiers&4?"Alt+":"",key);
+}
 static ui_status_t paint_popup(ui_menu_popup_t *p)
 {
     ui_json_t json={0};menu_rows_t *rows=(menu_rows_t *)calloc(1,sizeof(*rows));ui_status_t status;
@@ -193,7 +203,7 @@ static ui_status_t paint_popup(ui_menu_popup_t *p)
     uj_fmt(&json,",\"dark\":%s,\"first\":%zu,\"total\":%zu,\"back\":%s,\"expanded\":",p->host->menu_dark?"true":"false",start,rows->count,p->parent?"true":"false");uj_string(&json,p->child&&p->child->open?p->child->path:"");uj_add(&json,",\"items\":[");
     for(size_t i=start;i<end;++i){ui_menu_model_entry_t *e=&rows->rows[i].entry;if(i>start)uj_add(&json,",");uj_add(&json,"{\"id\":");uj_string(&json,e->id);{char dom[80];menu_dom_id(e->id,dom);uj_add(&json,",\"dom\":");uj_string(&json,dom);}
         uj_add(&json,",\"title\":");if(p->toolbar){ui_toolbar_entry_t *bar;for(bar=p->host->toolbars;bar&&strcmp(bar->id,e->path);bar=bar->next){}uj_string(&json,bar?bar->title:"");uj_add(&json,",\"section\":");}uj_string(&json,e->title);
-        {char shortcut[80]="";ui_command_entry_t *c;for(c=p->host->commands;c&&strcmp(c->id,e->command_id);c=c->next){}if(c&&c->shortcut_key){snprintf(shortcut,sizeof(shortcut),"%s%s%s%c",c->shortcut_modifiers&1?"Ctrl+":"",c->shortcut_modifiers&2?"Shift+":"",c->shortcut_modifiers&4?"Alt+":"",c->shortcut_key>=32&&c->shortcut_key<=126?(char)c->shortcut_key:63);}uj_add(&json,",\"shortcut\":");uj_string(&json,shortcut);}
+        {char shortcut[80];ui_command_entry_t *c;for(c=p->host->commands;c&&strcmp(c->id,e->command_id);c=c->next){}shortcut_text(c,shortcut);uj_add(&json,",\"shortcut\":");uj_string(&json,shortcut);}
         uj_fmt(&json,",\"access\":%u,\"group\":%s,\"image\":\"%llu\",\"enabled\":%s,\"checked\":%s,\"busy\":%s}",e->access_key,e->group?"true":"false",(unsigned long long)e->image_id,e->state.enabled?"true":"false",e->state.checked?"true":"false",e->state.busy?"true":"false");}
     uj_add(&json,"]}");free(rows);status=json.failed?UI_STATUS_LIMIT_EXCEEDED:ui_web_view_post_json(p->view,json.data);free(json.data);return status;
 }

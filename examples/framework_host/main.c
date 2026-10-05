@@ -44,12 +44,30 @@ typedef struct host_window {
     int refreshing,refresh_pending,exiting,dark,assistant_expanded;
     int popup_kind,confirm_answer,confirm_waiting;
     char reported_error[512];
+    HHOOK menu_hook;
+    RECT menu_anchor;
+    HWND menu_previous_focus;
 } host_window_t;
 
 static void refresh_workspace(void *data);
 static void layout(host_window_t *s);
 static void close_popup(host_window_t *s);
 static void show_error(host_window_t *s,const char *text);
+__declspec(thread) static host_window_t *pointer_menu;
+
+static LRESULT CALLBACK host_menu_messages(int code,WPARAM wp,LPARAM lp)
+{
+    host_window_t *s=pointer_menu;
+    if(code>=0&&wp==PM_REMOVE&&s&&s->popup_kind==1){MSG *m=(MSG *)lp;
+        if((m->message==WM_LBUTTONDOWN||m->message==WM_RBUTTONDOWN||m->message==WM_MBUTTONDOWN||m->message==WM_NCLBUTTONDOWN)&&
+            m->hwnd!=s->popup_hwnd&&!IsChild(s->popup_hwnd,m->hwnd)){
+            POINT pt={(short)LOWORD(m->lParam),(short)HIWORD(m->lParam)};
+            if(m->message!=WM_NCLBUTTONDOWN)ClientToScreen(m->hwnd,&pt);
+            if(!PtInRect(&s->menu_anchor,pt))close_popup(s);
+        }
+    }
+    return CallNextHookEx(NULL,code,wp,lp);
+}
 
 static char *copy_text(const char *text)
 {
@@ -257,6 +275,7 @@ static LRESULT CALLBACK popup_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
     host_window_t *s=(host_window_t *)GetWindowLongPtrW(hwnd,GWLP_USERDATA);
     if(message==WM_NCCREATE){s=(host_window_t *)((CREATESTRUCTW *)lp)->lpCreateParams;SetWindowLongPtrW(hwnd,GWLP_USERDATA,(LONG_PTR)s);}
     if(!s)return DefWindowProcW(hwnd,message,wp,lp);
+    if(message==WM_ACTIVATE&&LOWORD(wp)==WA_INACTIVE&&s->popup_kind==1&&(HWND)lp!=s->hwnd){s->menu_previous_focus=NULL;SendMessageW(hwnd,WM_CLOSE,0,0);return 0;}
     if(message==WM_CLOSE){
         if(s->confirm_waiting)s->confirm_answer=-1;
         else{host_action_t *action=(host_action_t *)calloc(1,sizeof(*action));
@@ -272,10 +291,12 @@ static LRESULT CALLBACK popup_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
 static void close_popup(host_window_t *s)
 {
     if(s->confirm_waiting){s->confirm_answer=-1;return;}
+    if(s->menu_hook){UnhookWindowsHookEx(s->menu_hook);s->menu_hook=NULL;if(pointer_menu==s)pointer_menu=NULL;}
     if(s->popup_hwnd||s->popup_view)++s->popup_token;
     if(s->popup_view){ui_web_view_destroy(s->popup_view);s->popup_view=NULL;}
     if(s->popup_backend){ui_light_web_backend_destroy(s->popup_backend);s->popup_backend=NULL;}
     if(s->popup_hwnd){HWND window=s->popup_hwnd;s->popup_hwnd=NULL;DestroyWindow(window);}s->popup_kind=0;
+    if(s->menu_previous_focus&&IsWindow(s->menu_previous_focus)&&IsWindowVisible(s->menu_previous_focus)&&IsWindowEnabled(s->menu_previous_focus))SetFocus(s->menu_previous_focus);s->menu_previous_focus=NULL;
 }
 static int create_popup(host_window_t *s,int kind,int width,int height)
 {
@@ -297,7 +318,12 @@ static int create_popup(host_window_t *s,int kind,int width,int height)
     GetClientRect(s->popup_hwnd,&client);view_rect.x=view_rect.y=0;
     view_rect.width=MulDiv(client.right,96,(int)s->dpi);view_rect.height=MulDiv(client.bottom,96,(int)s->dpi);
     (void)ui_web_view_set_rect(s->popup_view,&view_rect,s->dpi);(void)ui_web_view_resize(s->popup_view,view_rect.width,view_rect.height,s->dpi);
-    ShowWindow(s->popup_hwnd,kind==5?SW_SHOWNOACTIVATE:SW_SHOW);return 1;
+    if(kind==1){ui_rect_t at={0};POINT origin={0,0};if(pointer_menu&&pointer_menu!=s)close_popup(pointer_menu);
+        s->menu_previous_focus=GetFocus();(void)ui_web_view_get_element_rect(s->view,"menu",&at);ClientToScreen(s->web_hwnd,&origin);
+        s->menu_anchor.left=origin.x+MulDiv(at.x,(int)s->dpi,96);s->menu_anchor.top=origin.y+MulDiv(at.y,(int)s->dpi,96);
+        s->menu_anchor.right=s->menu_anchor.left+MulDiv(at.width,(int)s->dpi,96);s->menu_anchor.bottom=s->menu_anchor.top+MulDiv(at.height,(int)s->dpi,96);
+        pointer_menu=s;s->menu_hook=SetWindowsHookExW(WH_GETMESSAGE,host_menu_messages,NULL,GetCurrentThreadId());if(!s->menu_hook){close_popup(s);return 0;}}
+    ShowWindow(s->popup_hwnd,kind==5?SW_SHOWNOACTIVATE:SW_SHOW);if(kind==1&&IsWindowVisible(s->hwnd))SetFocus((HWND)ui_web_view_native_handle(s->popup_view));return 1;
 }
 static void popup_start(host_window_t *s,json_buffer_t *json,const char *title,const char *detail,int confirm)
 {
