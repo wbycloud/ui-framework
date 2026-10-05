@@ -5,7 +5,9 @@
 #include <string.h>
 #include "ui_framework/components.h"
 #include "ui_framework/light_web.h"
+#ifdef UI_SCROLL_WEBVIEW2
 #include "ui_framework/webview2.h"
+#endif
 #include "../src/ui_internal.h"
 static int failures,runtime_mode,delayed;static uint64_t total=100000;static ui_component_query_t late;
 #define CHECK(x) do{if(!(x)){fprintf(stderr,"scroll line%d: %s\n",__LINE__,#x);++failures;}}while(0)
@@ -19,8 +21,15 @@ static void source(ui_component_t *c,const ui_component_query_t *q,void *user){u
 static void drag_end(ui_component_t *c,const char *thumb_id,const char *track_id,int horizontal,int cancel){ui_element_presentation_t thumb={0},track={0};thumb.size=track.size=sizeof(thumb);CHECK(present(c,thumb_id,&thumb)==UI_STATUS_OK&&thumb.visible);CHECK(present(c,track_id,&track)==UI_STATUS_OK&&track.visible);if(!thumb.visible||!track.visible)return;
     input(c,UI_INPUT_POINTER_DOWN,thumb.rect.x+thumb.rect.width/2,thumb.rect.y+thumb.rect.height/2,0);input(c,UI_INPUT_POINTER_MOVE,horizontal?track.rect.x+track.rect.width+100:thumb.rect.x+thumb.rect.width/2,horizontal?thumb.rect.y+thumb.rect.height/2:track.rect.y+track.rect.height+100,0);
     if(cancel)input(c,UI_INPUT_KEY_DOWN,0,0,27);else input(c,UI_INPUT_POINTER_UP,horizontal?track.rect.x+track.rect.width+100:thumb.rect.x+thumb.rect.width/2,horizontal?thumb.rect.y+thumb.rect.height/2:track.rect.y+track.rect.height+100,0);}
-int main(int argc,char **argv){ui_host_config_t hc={0};ui_host_t *h;ui_component_t *c;ui_component_desc_t d={0};ui_column_desc_t columns[64]={0};char ids[64][12];ui_native_shell_t *native=NULL;ui_web_backend_t *backend=NULL;HWND root=NULL;ui_component_state_t s={0};ui_element_presentation_t p={0};ui_status_t status;
-    runtime_mode=argc==2&&!strcmp(argv[1],"--webview2");CHECK(ui_framework_initialize()==UI_STATUS_OK);if(runtime_mode){ui_webview2_backend_config_t config={0};root=CreateWindowW(L"STATIC",L"Complete data scrollbar Runtime",WS_OVERLAPPEDWINDOW,0,0,850,550,NULL,NULL,NULL,NULL);ShowWindow(root,SW_SHOWNOACTIVATE);hc.native_parent=root;config.size=sizeof(config);config.framework_components=1;backend=ui_webview2_backend_create(&config,&status);CHECK(backend!=NULL);if(!backend)return 1;}
+int main(int argc,char **argv){ui_host_config_t hc={0};ui_host_t *h;ui_component_t *c;ui_component_desc_t d={0};ui_column_desc_t columns[64]={0};char ids[64][12];ui_native_shell_t *native=NULL;ui_web_backend_t *backend=NULL;HWND root=NULL;ui_component_state_t s={0};ui_element_presentation_t p={0};
+    runtime_mode=argc==2&&!strcmp(argv[1],"--webview2");
+#ifndef UI_SCROLL_WEBVIEW2
+    if(runtime_mode){fprintf(stderr,"WebView2 was not enabled for this test\n");return 1;}
+#endif
+    CHECK(ui_framework_initialize()==UI_STATUS_OK);
+#ifdef UI_SCROLL_WEBVIEW2
+    if(runtime_mode){ui_webview2_backend_config_t config={0};ui_status_t status;root=CreateWindowW(L"STATIC",L"Complete data scrollbar Runtime",WS_OVERLAPPEDWINDOW,0,0,850,550,NULL,NULL,NULL,NULL);ShowWindow(root,SW_SHOWNOACTIVATE);hc.native_parent=root;config.size=sizeof(config);config.framework_components=1;backend=ui_webview2_backend_create(&config,&status);CHECK(backend!=NULL);if(!backend)return 1;}
+#endif
     hc.size=sizeof(hc);hc.api_version=UI_FRAMEWORK_API_VERSION;h=ui_host_create(&hc);CHECK(h!=NULL);if(!h)return 1;if(runtime_mode){ui_native_shell_config_t config={0};CHECK(ui_host_resize(h,800,500)==UI_STATUS_OK);config.size=sizeof(config);config.host=h;native=ui_native_shell_create_web(&config);CHECK(native!=NULL);}
     for(size_t i=0;i<64;++i){snprintf(ids[i],sizeof(ids[i]),"c%zu",i);columns[i].size=sizeof(columns[i]);columns[i].id=ids[i];columns[i].title=ids[i];columns[i].width=180;columns[i].kind=UI_VALUE_TEXT;}
     {ui_command_desc_t cmd={0};cmd.size=sizeof(cmd);cmd.id="sort";cmd.title="Datasource sort";cmd.handler=command;CHECK(ui_host_register_command(h,&cmd)==UI_STATUS_OK);}
@@ -48,4 +57,8 @@ int main(int argc,char **argv){ui_host_config_t hc={0};ui_host_t *h;ui_component
      CHECK((runtime_mode?ui_component_mount(simple,ui_shell_get_content_slot(ui_host_get_shell(h),NULL)):ui_component_mount_offscreen(simple,800,500,96))==UI_STATUS_OK);
      if(kind==UI_COMPONENT_TREE){CHECK(ui_component_expand(simple,1,1)==UI_STATUS_OK);CHECK(ui_component_get_state(simple,&s)==UI_STATUS_OK&&s.total_count==200000);drag_end(simple,"scroll-v-thumb","scroll-v-track",0,0);CHECK(ui_component_get_state(simple,&s)==UI_STATUS_OK&&s.first>199900);CHECK(ui_component_expand(simple,1,0)==UI_STATUS_OK);CHECK(ui_component_get_state(simple,&s)==UI_STATUS_OK&&s.first<100000&&s.total_count==100000);}
      drag_end(simple,"scroll-v-thumb","scroll-v-track",0,0);CHECK(ui_component_get_state(simple,&s)==UI_STATUS_OK&&s.first>99900&&s.first<100000&&s.rendered_nodes<=1024&&s.cached_bytes<=2097152);}
-    CHECK(ui_component_get_state(c,&s)==UI_STATUS_OK&&s.rendered_nodes<=1024&&s.cached_bytes<=2097152);if(native)ui_native_shell_destroy(native);ui_host_destroy(h);if(backend){ui_webview2_backend_destroy(backend);pump(2000);}if(root)DestroyWindow(root);printf("complete range scroll %s: %d failures\n",runtime_mode?"actual Runtime":"light offscreen",failures);return failures?1:0;}
+    CHECK(ui_component_get_state(c,&s)==UI_STATUS_OK&&s.rendered_nodes<=1024&&s.cached_bytes<=2097152);if(native)ui_native_shell_destroy(native);ui_host_destroy(h);
+#ifdef UI_SCROLL_WEBVIEW2
+    if(backend){ui_webview2_backend_destroy(backend);pump(2000);}
+#endif
+    if(root)DestroyWindow(root);printf("complete range scroll %s: %d failures\n",runtime_mode?"actual Runtime":"light offscreen",failures);return failures?1:0;}
