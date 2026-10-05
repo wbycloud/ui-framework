@@ -445,6 +445,12 @@ static HRESULT STDMETHODCALLTYPE navigation_completed(
         if (SUCCEEDED(ICoreWebView2NavigationCompletedEventArgs_get_IsSuccess(
                           args, &success)) && success) {
             handler->view->navigation_completed = 1;
+            /* A modal can focus its container before async controller creation.
+             * Transfer that still-current focus once the document is ready. */
+            if(handler->view->container&&GetFocus()==handler->view->container&&
+               handler->view->host->app_active&&!handler->view->host->dispatch_blocked&&
+               ui_components_input_allowed(handler->view->host,handler->view))
+                ICoreWebView2Controller_MoveFocus(handler->view->controller,COREWEBVIEW2_MOVE_FOCUS_REASON_PROGRAMMATIC);
             if(handler->view->pending_json){handler->view->render_pending=1;view_add_ref(handler->view);if(!PostMessageW(handler->view->backend->cleanup_window,WM_APP+52,0,(LPARAM)handler->view)){handler->view->async_error=HRESULT_FROM_WIN32(GetLastError());view_release(handler->view);}}
         } else {
             COREWEBVIEW2_WEB_ERROR_STATUS web_error = COREWEBVIEW2_WEB_ERROR_STATUS_UNKNOWN;
