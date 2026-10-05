@@ -1,5 +1,11 @@
 # Shared by the existing matrix runner and its isolated contract tests.
 $UiCiRuntimeTests = 'ui_webview2_|ui_api5_integration|ui_api5_native_host|ui_original_api5_package|ui_legacy_api6_webview2|ui_component_experience_webview2|ui_api6_integration_webview2|ui_component_scroll_webview2|ui_api7_integration_webview2'
+$UiCiProviderTests = '^(ui_windowless_gl|ui_session0_interactive_control|ui_api6_integration|ui_api7_integration|ui_legacy_api6_light)$'
+function Assert-UiCiCTestVersion([string]$VersionText) {
+    if ($VersionText -notmatch '^ctest version ([0-9]+\.[0-9]+\.[0-9]+)' -or [version]$Matches[1] -lt [version]'3.26.0') {
+        throw 'CI evidence requires CTest >=3.26 (JUnit and explicit empty-test errors)'
+    }
+}
 function Assert-UiCiResults([xml]$Results, [string[]]$Expected, [string]$Configuration) {
     $tests = @($Results.testsuite.testcase)
     if (!$Expected.Count -or !$tests.Count) { throw 'Empty CTest plan/results are not acceptance' }

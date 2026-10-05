@@ -7,10 +7,19 @@ function MustReject($action, $message) {
     try { & $action } catch { $rejected = $true }
     Assert $rejected $message
 }
+Assert-UiCiCTestVersion 'ctest version 3.26.0'
+Assert-UiCiCTestVersion 'ctest version 4.1.2'
+MustReject { Assert-UiCiCTestVersion 'ctest version 3.25.0' } 'Old CI CTest accepted'
+MustReject { Assert-UiCiCTestVersion 'unknown version' } 'Unknown CTest version accepted'
 foreach ($name in @('ui_api5_integration','ui_api5_native_host','ui_original_api5_package','ui_legacy_api6_webview2','ui_component_scroll_webview2','ui_api7_integration_webview2')) {
     Assert ($name -match $UiCiRuntimeTests) "Runtime test misclassified: $name"
 }
 Assert ('ui_legacy_api6_light' -notmatch $UiCiRuntimeTests) 'Light test misclassified'
+foreach ($name in @('ui_windowless_gl','ui_session0_interactive_control','ui_api6_integration','ui_api7_integration','ui_legacy_api6_light')) {
+    Assert ($name -match $UiCiProviderTests -and $name -notmatch $UiCiRuntimeTests) "OSMesa-only test misclassified: $name"
+}
+Assert ('ui_api7_integration_webview2' -notmatch $UiCiProviderTests) 'Runtime test also selected in provider phase'
+Assert ('ui_offscreen_msaa' -notmatch $UiCiProviderTests) 'Hidden WGL test selected in provider phase'
 MustReject { Assert-UiCiResults ([xml]'<testsuite/>') @() native } 'Empty tests accepted'
 MustReject { Assert-UiCiResults ([xml]'<testsuite><testcase name="ui_workspace7" status="notrun"/></testsuite>') @('ui_workspace7') native } 'Unexpected skip accepted'
 MustReject { Assert-UiCiResults ([xml]'<testsuite><testcase name="ui_workspace7" status="fail"><failure/></testcase></testsuite>') @('ui_workspace7') native } 'Failure accepted'
@@ -44,4 +53,4 @@ try {
     # Only this invocation's fresh temporary directory is removed.
     Remove-Item -LiteralPath $directory -Recurse -Force
 }
-Write-Output 'CI checks PASS: partition, empty/missing/duplicate/failure/skip, Runtime requirements, original provenance'
+Write-Output 'CI checks PASS: CTest version, WGL/provider/Runtime partition, empty/missing/duplicate/failure/skip, Runtime requirements, original provenance'

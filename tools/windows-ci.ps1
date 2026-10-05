@@ -105,7 +105,8 @@ $manifest = [ordered]@{
     dpi = [UiCiDesktop]::GetDpiForSystem()
     wgl = 'explicit application-local Mesa24.3.4 software GL'
     osmesa = if ($Configuration -in @('osmesa','webview2')) { 'explicit Mesa24.3.4 memory context' } else { 'acceptance disabled; provider not configured' }
-    runtimeGraphics = if ($Configuration -eq 'webview2') { 'platform graphics; software WGL DLLs removed before real Runtime tests' } else { 'Runtime disabled' }
+    runtimeGraphics = if ($Configuration -eq 'webview2') { 'platform graphics; software WGL DLLs removed before provider and real Runtime tests' } else { 'Runtime disabled' }
+    providerGraphics = 'explicit OSMesa tests isolated from application-local software WGL deployment'
     noLoginAccepted = $false; physicalManualAccepted = $false
     files = @()
 }
@@ -113,6 +114,9 @@ $manifest.runtimeVersions = if ($Configuration -eq 'webview2') {
     @(@('HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}', 'HKCU:\Software\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}') |
         ForEach-Object { (Get-ItemProperty $_ -ErrorAction SilentlyContinue).pv } | Where-Object { $_ -and $_ -ne '0.0.0.0' })
 } else { @() }
+$manifest.ctestVersion = (& ctest --version | Select-Object -First 1)
+CheckExit 'CTest version'
+Assert-UiCiCTestVersion $manifest.ctestVersion
 foreach ($file in @(Get-ChildItem -LiteralPath $buildDirectory -File | Where-Object { $_.Extension -in @('.dll','.exe','.uapp') })) {
     $manifest.files += [ordered]@{path=$file.FullName; bytes=$file.Length; sha256=(Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()}
 }
@@ -129,18 +133,19 @@ if (!$expected.Count) { throw 'Empty configured CTest plan' }
 @(Get-UiCiOriginalPackages $buildDirectory ([xml]'<testsuite/>')) | ConvertTo-Json -Depth 6 | Set-Content "$evidenceDirectory/original-packages.json"
 $env:GALLIUM_DRIVER = 'llvmpipe'
 $runtimeTests = $UiCiRuntimeTests
-$phases = if ($Configuration -eq 'webview2') { @('wgl','runtime') } else { @('all') }
+$phases = if ($Configuration -eq 'webview2') { @('wgl','provider','runtime') } elseif ($Configuration -eq 'osmesa') { @('wgl','provider') } else { @('all') }
 $testExit = 0
 '' | Set-Content "$evidenceDirectory/regression.log"
 '' | Set-Content "$evidenceDirectory/test-output.log"
 $combined = [xml]'<testsuite name="Windows regression" tests="0" failures="0" skipped="0"/>'
 foreach ($phase in $phases) {
-    if ($phase -eq 'runtime') {
-        # Keep Chromium's platform graphics separate from explicit software WGL.
-        # OSMesa tests still load their independently specified actual provider.
+    if ($phase -eq 'provider') {
+        # An unused Mesa WGL import still initializes process resources. Keep
+        # explicit OSMesa and Chromium's platform graphics separate from it.
         foreach ($dll in @('opengl32.dll','libgallium_wgl.dll','libglapi.dll','pipe_swrast.dll')) { Remove-Item -LiteralPath "$buildDirectory/$dll" }
     }
-    $filter = if ($phase -eq 'wgl') { @('-E',$runtimeTests) } elseif ($phase -eq 'runtime') { @('-R',$runtimeTests) } else { @() }
+    $excluded = if ($Configuration -eq 'webview2') { "$runtimeTests|$UiCiProviderTests" } else { $UiCiProviderTests }
+    $filter = if ($phase -eq 'wgl') { @('-E',$excluded) } elseif ($phase -eq 'provider') { @('-R',$UiCiProviderTests) } elseif ($phase -eq 'runtime') { @('-R',$runtimeTests) } else { @() }
     & ctest --test-dir $buildDirectory @filter --no-tests=error --output-on-failure --output-junit "$((Resolve-Path $evidenceDirectory).Path)/ctest-$phase.xml" *> "$evidenceDirectory/regression-$phase.log"
     if ($LASTEXITCODE) { $testExit = $LASTEXITCODE }
     Get-Content "$evidenceDirectory/regression-$phase.log" | Add-Content "$evidenceDirectory/regression.log"
