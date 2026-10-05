@@ -34,7 +34,7 @@ ctest --test-dir build/web-shell --output-on-failure
 & .\build\web-shell\framework_host.exe .\build\web-shell\web_counter.uapp .\build\web-shell\minimal_eda.uapp
 ```
 
-Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标签，支持浅色/深色切换；顶层保留 Windows 标准标题栏。`Ctrl+Shift+O` 打开应用包、`Ctrl+W` 关闭、`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手可选择目标实例，查看命令/schema，输入 `{}` 调用 EDA 命令并观察结果/快照；`eda.clear` 请求确认。事务按钮调用应用的 begin/commit/rollback/undo callback，EDA 未提供时返回 UNSUPPORTED。这个区域用于协议验证，尚未连接模型服务。
+Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标签，支持浅色/深色切换；顶层采用融合标题区的浏览器式标签栏，下方为活动应用菜单；AI位于窗口按钮左侧，主题/布局重置位于第二行右端宿主选项。最近历史与当前标签分开，详见[宿主说明](standalone-host.md)。`Ctrl+Shift+O` 打开应用包、`Ctrl+W` 关闭、`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手可选择目标实例，查看命令/schema，输入 `{}` 调用 EDA 命令并观察结果/快照；`eda.clear` 请求确认。事务按钮调用应用的 begin/commit/rollback/undo callback，EDA 未提供时返回 UNSUPPORTED。这个区域用于协议验证，尚未连接模型服务。
 
 宿主日志存储上限为 32000 字节，日志/schema 的显示预览按 UTF-8 边界限制到 4095 字节。危险操作确认参数采用完整分块显示和滚动，不能用被截断的日志预览代替确认内容。应用自身仍负责参数 schema 的业务校验。
 

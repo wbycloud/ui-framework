@@ -1,6 +1,6 @@
 # Windows C/Web UI Framework
 
-面向 Windows x64 的轻量 C 应用框架。独立宿主 `framework_host.exe` 加载 `.uapp` 应用包，以浏览器风格的 Web 外壳提供多应用标签、菜单、工具入口、侧栏外框和全局助手。外壳使用 Lexbor、QuickJS-NG 与 GDI 实现受控 HTML/CSS/JS 子集，支持浅色/深色切换，并保留 Windows 标准标题栏。
+面向 Windows x64 的轻量 C 应用框架。独立宿主 `framework_host.exe` 加载 `.uapp` 应用包，以浏览器风格的 Web 外壳提供多应用标签、菜单、工具入口、侧栏外框和全局助手。外壳使用 Lexbor、QuickJS-NG 与 GDI 实现受控 HTML/CSS/JS 子集，支持浅色/深色切换；第一行为融合标题区的实例标签栏，第二行为活动应用菜单。[宿主操作与最近记录](docs/standalone-host.md)。
 
 新应用通过公共 C ABI 注册框架 Web 组件、提供数据并绑定语义命令；绘图内容按需要使用 OpenGL 内容槽，文档和业务逻辑由应用维护。旧 API1/2 应用自有原生内容继续兼容。框架同时保留静态库及应用自行创建窗口的原生嵌入式模式。WebView2 是可选的应用内容后端。
 

@@ -12,6 +12,8 @@ API7/标准7，支持API1–7，ABI1/包格式1保持。轻量overflow新增框�
 
 API7交付收敛：修正当前文档仍称标签式停靠/颜色拾取未实现及API6接手提示；CI记录精确清单/二进制与原包缺项，拒绝空测试/遗漏/重复/异常跳过，原API5/6 Runtime用例进入相应阶段。修复关闭WebView2时滚动测试仍引用可选函数的链接错误，仅测试编译条件变化，API7/ABI1不变。[实测和保留失败](docs/validation/api7-delivery-validation.md)、[业务试点准备](docs/business-pilot.md)分别交付；未授权修改业务应用或触发远程工作流。
 
+浏览器式独立宿主：移除重复传统标题区域，第一行融合实例标签、最近箭头、加号、AI及窗口控制，第二行复用活动应用菜单。实际DOM命中、Windows拖动/双击/边缘/系统菜单、窄窗标签分页及12项成功包历史，继续REFUSE/WAIT合同；内部变化保持API7/ABI1。主题/布局重置迁到宿主选项。[使用](docs/standalone-host.md)、[证据与待验](docs/validation/browser-host-validation.md)。
+
 ## 0.6.0 — 开发版，未创建稳定标签
 
 API6/标准6，运行库接受API1–6，ABI1/包格式1保持。追加应用负责存储的布局格式1、稳定面板ID、恢复/重置、约束分隔条与左右栈/浮动拖拽，内容槽和GL context沿用原生命周期；Windows无窗口提供逻辑布局。

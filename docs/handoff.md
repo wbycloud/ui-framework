@@ -1,6 +1,6 @@
 # 框架开发交接记录
 
-更新日期：2026-10-06。本次接续见[API7交付收敛](validation/api7-delivery-validation.md)与第11节；真实业务准备见[试点清单](business-pilot.md)。当前SDK0.7/API7本地开发，先读[本轮验收](validation/api7-validation.md)、[稳定性记录](validation/runtime-stability-validation.md)和末尾第10节；API6已有工作区布局和共同组件体验保留；API5四项保留且继续回归，历史OSMesa Session0已有通过证据，当前源码受服务权限限制待验。菜单外观与侧向鼠标交互已后续修正，见[菜单验收](validation/menu-desktop-validation.md)与第9节。先读[API6验收](validation/api6-validation.md)、[Session0记录](validation/session0-osmesa-validation.md)与第8节；API3/4/5历史记录保留。整机无登录、物理/长期人工及真实业务试点尚未全部验收，不把“已推送”“测试通过”和“完整验收完成”混为一谈。
+更新日期：2026-10-06。本次浏览器式宿主见[使用说明](standalone-host.md)、[验收](validation/browser-host-validation.md)与第12节；此前接续见[API7交付收敛](validation/api7-delivery-validation.md)与第11节；真实业务准备见[试点清单](business-pilot.md)。当前SDK0.7/API7本地开发，先读[本轮验收](validation/api7-validation.md)、[稳定性记录](validation/runtime-stability-validation.md)和末尾第10节；API6已有工作区布局和共同组件体验保留；API5四项保留且继续回归，历史OSMesa Session0已有通过证据，当前源码受服务权限限制待验。菜单外观与侧向鼠标交互已后续修正，见[菜单验收](validation/menu-desktop-validation.md)与第9节。先读[API6验收](validation/api6-validation.md)、[Session0记录](validation/session0-osmesa-validation.md)与第8节；API3/4/5历史记录保留。整机无登录、物理/长期人工及真实业务试点尚未全部验收，不把“已推送”“测试通过”和“完整验收完成”混为一谈。
 
 ## 1. 恢复顺序与版本
 
@@ -12,6 +12,7 @@
 | --- | --- |
 | 仓库 | [wbycloud/ui-framework](https://github.com/wbycloud/ui-framework) |
 | API5功能代码 | [87478fa20d7bb46809c0ef81dd44f972dc193a24](https://github.com/wbycloud/ui-framework/commit/87478fa20d7bb46809c0ef81dd44f972dc193a24)，四项实现及回归；文档另行提交，实际HEAD以Git为准 |
+| 浏览器式宿主 | d7030b3：单行标签标题栏、第二行应用菜单、原Windows/关闭合同及12项最近成功包；完整结果/限制见第12节，文档提交不改执行代码 |
 | API7当前交付 | 产品源码2c0c52b、原生测试cb42660；本次CI/测试修正ae4dc7f、2fde15e、e4a33bf；运行身份和待验见第11节及收敛记录，实际HEAD以Git为准 |
 | API6实现/最终测试与CI条件 | [1cdc50e](https://github.com/wbycloud/ui-framework/commit/1cdc50e)、[9705565](https://github.com/wbycloud/ui-framework/commit/9705565)，完整提交序列及失败修复见API6验收；文档提交不改运行代码 |
 | 菜单后续本地实现 | `6bf59f8`、`2917b44`、`d907fbd`、`d2e4a61`及测试收敛`b1f4c7b`；最终产品源码d2e4a61，仅内部菜单改动，API6/ABI1不变；最终证据另提交 |
@@ -127,7 +128,7 @@ API4未实现的Alt访问键、真正无窗口GL、离屏MSAA、WebView2呈现/�
 可直接给下一会话以下指令：
 
 ```text
-请接手 https://github.com/wbycloud/ui-framework 。先读docs/handoff.md、docs/application-development-standard.md、docs/build-and-validation.md、docs/generic-web-ui.md、docs/workspace-layout.md、docs/framework-menu-offscreen.md及API7、Runtime稳定性、API5/6、菜单和Session0验收。核对实际Git状态、HEAD、API7公共头文件和现有四行CI/严格Session0工作流，保留用户改动。API5/6/7及菜单已实现，不重复开发。保持API1–7兼容、完整size字段/偏移、线程、所有权和卸载合同；旧SDK重编译与原包分别报告，本地运行不冒充托管CI，历史Session0不替代当前源码。先给简短计划，持续补验/修复和文档交付，缺环境或授权最后汇总。业务试点按docs/business-pilot.md先核对指定应用及修改授权；没有授权只准备方案。不得修改冻结SDK、原包、PERF-001或未授权请求方应用，不使用graph-engineering、子代理或新会话；没有明确授权不推送、不触发远程工作流、不强推或创建稳定标签。
+请接手 https://github.com/wbycloud/ui-framework 。先读docs/handoff.md、docs/application-development-standard.md、docs/build-and-validation.md、docs/generic-web-ui.md、docs/workspace-layout.md、docs/framework-menu-offscreen.md及API7、Runtime稳定性、API5/6、菜单、浏览器式宿主和Session0验收。核对实际Git状态、HEAD、API7公共头文件和现有四行CI/严格Session0工作流，保留用户改动。API5/6/7及菜单已实现，不重复开发。保持API1–7兼容、完整size字段/偏移、线程、所有权和卸载合同；旧SDK重编译与原包分别报告，本地运行不冒充托管CI，历史Session0不替代当前源码。先给简短计划，持续补验/修复和文档交付，缺环境或授权最后汇总。业务试点按docs/business-pilot.md先核对指定应用及修改授权；没有授权只准备方案。不得修改冻结SDK、原包、PERF-001或未授权请求方应用，不使用graph-engineering、子代理或新会话；没有明确授权不推送、不触发远程工作流、不强推或创建稳定标签。
 ```
 
 ## 7. API5本轮交付与接续
@@ -200,3 +201,11 @@ Session0补验后的必要回归为43项42PASS/1SKIP，原生21项20PASS/1SKIP�
 当前结果、原失败及精确运行身份见[交付收敛验收](validation/api7-delivery-validation.md)。四行脚本的本机运行与GitHub托管CI分别报告；本轮无远程推送/工作流触发授权，保留本地提交。当前Session0权限与严格无登录runner、真实IME/物理多屏/桌面边缘合成/长期人工待验，不继承78c24cb历史成功。
 
 真实业务接入按[试点准备](business-pilot.md)先取得指定应用和明确修改范围。旧KLayout只读观察不授权迁移；框架DLL集成不作为业务验收。继续复用API7布局2读取1、旧API1–7/C ABI及线程/所有权/卸载合同，不扩大硬件GL。
+
+## 12. 浏览器式独立宿主本地交付
+
+2026-10-06接手干净7ce1f2c，已有API5/6/7、菜单和关闭实现复用。产品/测试单元d7030b3f85e73e98284fdaec15c88b77ac0789b8：融合标签标题栏、第二行活动菜单、Windows命中/拖动/缩放/系统菜单、12项成功绝对路径历史、窄窗独立标签分页；主题与布局重置迁到宿主选项，AI和REFUSE/WAIT保持原合同。API7/ABI1不升级，public/src/冻结SDK/原包/PERF-001与请求方应用保留。
+
+[宿主使用](standalone-host.md)记录存储和能力边界；[当前验收](validation/browser-host-validation.md)含前后真实截图、失败/修复和全部原字节证据。冻结源码本机62项61PASS/1物理SKIP、0失败340.52秒，正常桌面专项6/6；实际拖动、最大化/还原/边缘、右键及Alt+Space、窄窗程序DPI、双实例/最后标签、模态/焦点/一次命令、24次实际DLL与原六包分别通过。公共接口和原阈值保留；本机结果不冒充托管CI。
+
+OSMesa当前Session1独立DLL200轮、HWND0/原预算通过；Session0严格服务脚本非管理员检查退出1、未创建服务，历史成功不替代。无无登录runner/真实中文IME/不同DPI物理多屏/边缘Snap及DWM/长期人工/授权业务试点；均待验，无硬件无窗口扩展。首版样式UNSUPPORTED、初始标题区域和系统菜单失败及受限桌面输入失败保留；普通桌面及最终完整矩阵随后通过，不把共享桌面或历史Runtime不确定性称永久根治。本轮只本地提交，不推送/远程工作流/新稳定标签。

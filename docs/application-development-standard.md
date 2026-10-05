@@ -18,6 +18,8 @@ API4历史菜单、隐藏WGL及无窗口workspace合同保留在[菜单与离屏
 
 框架由独立 Web 宿主、C 核心、Win32/OpenGL 适配层和 Web 内容后端组成。`framework_host.exe` 拥有顶层窗口、Web 标签/菜单及全局助手。它加载 `.uapp` 内的 C ABI DLL，为每个实例创建独立 host、带真实内容容器的兼容 shell 和 assistant；应用维护文档数据、业务行为和内容。应用不应包含 `src/ui_internal.h`，也不应依赖 Lexbor、QuickJS 或 WebView2 的私有类型。
 
+独立宿主采用单行标签标题栏和第二行活动应用菜单；Windows系统操作、最近成功包历史及二级选项见[宿主说明](standalone-host.md)。这不新增SDK接口；应用不依赖外壳DOM/窗口类，也不管理其最近记录。REFUSE/WAIT、确认、异步清理及卸载合同保持；历史跨重启保存包路径，不恢复标签或业务文档。
+
 同一进程中的应用共享 `ui_framework.dll`。应用 DLL 链接对应 import library，不能再静态链接一份独立框架。此模型不是进程隔离：应用的非法指针或崩溃可能影响整个宿主。第一目标是 Windows x64；框架不自动恢复上次会话，也不把任意现成 EXE 嵌入标签。
 
 宿主不提供私有依赖 DLL 的命名空间或版本隔离。除共享框架和系统 DLL 外，应用应静态链接依赖，或给私有 DLL 使用应用专属文件名并让 module 的 imports 引用该名称，避免不同应用的同名依赖互相影响。
