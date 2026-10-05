@@ -192,7 +192,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 `ui_content_slot_get_rect()` 返回相对实例 host 的逻辑矩形，`get_pixel_rect()` 返回设备像素矩形。浮动内容的矩形以 `(0,0)` 为原点，尺寸属于浮窗内容区。`ui_shell_get_slot_state()` 可查询 frame/content、visible 和 floating；停靠矩形使用 host 坐标。OpenGL framebuffer 仍使用 surface 的像素查询结果，不能把逻辑宽高直接用于 viewport。
 
-旧应用继续用 `ui_native_shell_panel_handle(context->shell, panel_id)` 获取真实容器。停靠/浮动及标签切换保留容器 HWND、内容 child 和 GL context；原生 child 的内部布局仍由应用根据实际容器尺寸调整。多个同侧停靠面板按垂直空间分配；折叠标签可临时打开浮窗，`ui_native_shell_set_panel_floating()` 可主动浮动/返回停靠，返回时仍受窄窗口策略限制。浮窗独立处理 DPI 和 suggested RECT。当前没有拖拽停靠树、分隔条调整或布局持久化。
+旧应用继续用 `ui_native_shell_panel_handle(context->shell, panel_id)` 获取真实容器。停靠/浮动及标签切换保留容器 HWND、内容 child 和 GL context；原生 child 的内部布局仍由应用根据实际容器尺寸调整。多个同侧停靠面板按垂直空间分配；折叠标签可临时打开浮窗，`ui_native_shell_set_panel_floating()` 可主动浮动/返回停靠，返回时仍受窄窗口策略限制。浮窗独立处理 DPI 和 suggested RECT。API6支持保存/恢复、分隔条调整和左右区域拖拽，复用内容槽及GL context；合同见[工作区布局](workspace-layout.md)。任意嵌套分割树仍未实现。
 
 ### 5.3 增量刷新与旧重建接口
 

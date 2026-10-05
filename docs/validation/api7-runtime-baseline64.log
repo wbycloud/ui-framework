@@ -1,0 +1,560 @@
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+Resources baseline pid=41924 handles=384 File=35 Event=53 Key=20 WaitCompletionPacket=16 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=22 Thread=57 Process=5 Timer=2 IoCompletionReserve=1
+API6 integration: reopen 0
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=392 File=37 Event=54 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=7 Timer=2 IoCompletionReserve=1
+ Runtime process pid=42576 parent=41924 handles=1083
+ Runtime process pid=45596 parent=42576 handles=150
+ Runtime process pid=43904 parent=42576 handles=483
+ Runtime process pid=27172 parent=42576 handles=302
+ Runtime process pid=40944 parent=42576 handles=181
+API6 integration: reopen 1
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=395 File=37 Event=55 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=7 Timer=2 IoCompletionReserve=1
+ Runtime process pid=42576 parent=41924 handles=931
+ Runtime process pid=45464 parent=41924 handles=115
+ Runtime process pid=45596 parent=42576 handles=129
+ Runtime process pid=38712 parent=45464 handles=129
+API6 integration: reopen 2
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=396 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=10 Timer=2 IoCompletionReserve=1
+ Runtime process pid=45464 parent=41924 handles=1115
+ Runtime process pid=38712 parent=45464 handles=150
+ Runtime process pid=38068 parent=45464 handles=507
+ Runtime process pid=23516 parent=45464 handles=302
+ Runtime process pid=33592 parent=45464 handles=177
+API6 integration: reopen 3
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=399 File=38 Event=55 Key=20 WaitCompletionPacket=20 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=9 Timer=2 IoCompletionReserve=1
+ Runtime process pid=45464 parent=41924 handles=1078
+ Runtime process pid=40164 parent=41924 handles=115
+ Runtime process pid=38712 parent=45464 handles=150
+ Runtime process pid=38068 parent=45464 handles=507
+ Runtime process pid=23516 parent=45464 handles=289
+ Runtime process pid=33592 parent=45464 handles=177
+ Runtime process pid=1532 parent=40164 handles=129
+API6 integration: reopen 4
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=430 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=40 Thread=57 Process=28 Timer=2 IoCompletionReserve=1
+ Runtime process pid=40164 parent=41924 handles=1557
+ Runtime process pid=1532 parent=40164 handles=206
+ Runtime process pid=22088 parent=40164 handles=584
+ Runtime process pid=17732 parent=40164 handles=311
+ Runtime process pid=38008 parent=40164 handles=177
+ Runtime process pid=23500 parent=40164 handles=227
+ Runtime process pid=44892 parent=40164 handles=227
+ Runtime process pid=35540 parent=40164 handles=227
+ Runtime process pid=30284 parent=40164 handles=227
+ Runtime process pid=27076 parent=40164 handles=227
+ Runtime process pid=5712 parent=40164 handles=227
+ Runtime process pid=32332 parent=40164 handles=227
+ Runtime process pid=17964 parent=40164 handles=227
+API6 integration: reopen 5
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=400 File=37 Event=54 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=13 Timer=2 IoCompletionReserve=1
+ Runtime process pid=40164 parent=41924 handles=1082
+ Runtime process pid=1532 parent=40164 handles=150
+ Runtime process pid=22088 parent=40164 handles=467
+ Runtime process pid=17732 parent=40164 handles=289
+ Runtime process pid=38008 parent=40164 handles=175
+API6 integration: reopen 6
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=397 File=37 Event=55 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=10 Timer=2 IoCompletionReserve=1
+ Runtime process pid=45436 parent=41924 handles=760
+ Runtime process pid=43244 parent=45436 handles=143
+ Runtime process pid=25396 parent=45436 handles=114
+ Runtime process pid=41440 parent=45436 handles=93
+ Runtime process pid=28084 parent=45436 handles=52
+API6 integration: reopen 7
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=404 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=18 Timer=2 IoCompletionReserve=1
+ Runtime process pid=45436 parent=41924 handles=1218
+ Runtime process pid=43244 parent=45436 handles=150
+ Runtime process pid=25396 parent=45436 handles=491
+ Runtime process pid=41440 parent=45436 handles=289
+ Runtime process pid=28084 parent=45436 handles=177
+API6 integration: reopen 8
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=407 File=37 Event=55 Key=20 WaitCompletionPacket=20 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=18 Timer=2 IoCompletionReserve=1
+ Runtime process pid=45436 parent=41924 handles=0
+ Runtime process pid=43472 parent=41924 handles=117
+ Runtime process pid=43244 parent=45436 handles=129
+ Runtime process pid=24688 parent=43472 handles=129
+API6 integration: reopen 9
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=404 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=18 Timer=2 IoCompletionReserve=1
+ Runtime process pid=43472 parent=41924 handles=1086
+ Runtime process pid=24688 parent=43472 handles=150
+ Runtime process pid=34896 parent=43472 handles=497
+ Runtime process pid=42560 parent=43472 handles=309
+ Runtime process pid=45868 parent=43472 handles=177
+API6 integration: reopen 10
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=409 File=38 Event=55 Key=20 WaitCompletionPacket=20 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=19 Timer=2 IoCompletionReserve=1
+ Runtime process pid=43472 parent=41924 handles=1065
+ Runtime process pid=23484 parent=41924 handles=115
+ Runtime process pid=24688 parent=43472 handles=150
+ Runtime process pid=34896 parent=43472 handles=497
+ Runtime process pid=42560 parent=43472 handles=0
+ Runtime process pid=45868 parent=43472 handles=175
+ Runtime process pid=19668 parent=23484 handles=129
+API6 integration: reopen 11
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=406 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=20 Timer=2 IoCompletionReserve=1
+ Runtime process pid=23484 parent=41924 handles=1088
+ Runtime process pid=19668 parent=23484 handles=150
+ Runtime process pid=43420 parent=23484 handles=497
+ Runtime process pid=21924 parent=23484 handles=309
+ Runtime process pid=29736 parent=23484 handles=177
+API6 integration: reopen 12
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=414 File=37 Event=54 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=27 Timer=2 IoCompletionReserve=1
+ Runtime process pid=23484 parent=41924 handles=1257
+ Runtime process pid=19668 parent=23484 handles=150
+ Runtime process pid=43420 parent=23484 handles=467
+ Runtime process pid=21924 parent=23484 handles=290
+ Runtime process pid=29736 parent=23484 handles=181
+API6 integration: reopen 13
+ Framework pending cleanup=4
+Resources cycle pid=41924 handles=419 File=38 Event=55 Key=20 WaitCompletionPacket=21 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=28 Timer=2 IoCompletionReserve=1
+ Runtime process pid=23484 parent=41924 handles=1271
+ Runtime process pid=36800 parent=41924 handles=115
+ Runtime process pid=19668 parent=23484 handles=150
+ Runtime process pid=43420 parent=23484 handles=467
+ Runtime process pid=21924 parent=23484 handles=287
+ Runtime process pid=29736 parent=23484 handles=182
+ Runtime process pid=38576 parent=36800 handles=129
+API6 integration: reopen 14
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=448 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=40 Thread=57 Process=46 Timer=2 IoCompletionReserve=1
+ Runtime process pid=36800 parent=41924 handles=1545
+ Runtime process pid=38576 parent=36800 handles=206
+ Runtime process pid=2600 parent=36800 handles=591
+ Runtime process pid=45060 parent=36800 handles=318
+ Runtime process pid=39888 parent=36800 handles=177
+ Runtime process pid=45360 parent=36800 handles=227
+ Runtime process pid=1092 parent=36800 handles=227
+ Runtime process pid=26852 parent=36800 handles=227
+ Runtime process pid=27544 parent=36800 handles=227
+ Runtime process pid=24692 parent=36800 handles=227
+ Runtime process pid=43368 parent=36800 handles=227
+ Runtime process pid=27840 parent=36800 handles=227
+ Runtime process pid=45372 parent=36800 handles=227
+API6 integration: reopen 15
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=418 File=37 Event=54 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=31 Timer=2 IoCompletionReserve=1
+ Runtime process pid=36800 parent=41924 handles=1069
+ Runtime process pid=38576 parent=36800 handles=150
+ Runtime process pid=2600 parent=36800 handles=467
+ Runtime process pid=45060 parent=36800 handles=289
+ Runtime process pid=39888 parent=36800 handles=175
+API6 integration: reopen 16
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=437 File=37 Event=54 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=32 Thread=57 Process=44 Timer=2 IoCompletionReserve=1
+ Runtime process pid=45912 parent=41924 handles=1377
+ Runtime process pid=42024 parent=45912 handles=178
+ Runtime process pid=45796 parent=45912 handles=499
+ Runtime process pid=1820 parent=45912 handles=319
+ Runtime process pid=33208 parent=45912 handles=177
+ Runtime process pid=45040 parent=45912 handles=227
+ Runtime process pid=27996 parent=45912 handles=227
+ Runtime process pid=43960 parent=45912 handles=227
+ Runtime process pid=38964 parent=45912 handles=227
+API6 integration: reopen 17
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=418 File=36 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=33 Timer=2 IoCompletionReserve=1
+ Runtime process pid=45912 parent=41924 handles=941
+ Runtime process pid=42024 parent=45912 handles=129
+API6 integration: reopen 18
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=441 File=37 Event=54 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=32 Thread=57 Process=48 Timer=2 IoCompletionReserve=1
+ Runtime process pid=27524 parent=41924 handles=1382
+ Runtime process pid=45880 parent=27524 handles=178
+ Runtime process pid=43476 parent=27524 handles=499
+ Runtime process pid=43408 parent=27524 handles=311
+ Runtime process pid=43936 parent=27524 handles=177
+ Runtime process pid=21824 parent=27524 handles=227
+ Runtime process pid=24772 parent=27524 handles=227
+ Runtime process pid=30104 parent=27524 handles=227
+ Runtime process pid=37136 parent=27524 handles=227
+API6 integration: reopen 19
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=424 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=38 Timer=2 IoCompletionReserve=1
+ Runtime process pid=27524 parent=41924 handles=1080
+ Runtime process pid=45880 parent=27524 handles=150
+ Runtime process pid=43476 parent=27524 handles=467
+ Runtime process pid=43408 parent=27524 handles=289
+ Runtime process pid=43936 parent=27524 handles=175
+API6 integration: reopen 20
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=423 File=37 Event=55 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=36 Timer=2 IoCompletionReserve=1
+ Runtime process pid=32848 parent=41924 handles=765
+ Runtime process pid=45556 parent=32848 handles=150
+ Runtime process pid=18212 parent=32848 handles=114
+ Runtime process pid=17708 parent=32848 handles=93
+ Runtime process pid=45100 parent=32848 handles=99
+API6 integration: reopen 21
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=428 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=42 Timer=2 IoCompletionReserve=1
+ Runtime process pid=32848 parent=41924 handles=1081
+ Runtime process pid=45556 parent=32848 handles=150
+ Runtime process pid=18212 parent=32848 handles=491
+ Runtime process pid=17708 parent=32848 handles=289
+ Runtime process pid=45100 parent=32848 handles=177
+API6 integration: reopen 22
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=431 File=37 Event=55 Key=20 WaitCompletionPacket=20 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=42 Timer=2 IoCompletionReserve=1
+ Runtime process pid=32848 parent=41924 handles=944
+ Runtime process pid=43712 parent=41924 handles=115
+ Runtime process pid=45556 parent=32848 handles=129
+ Runtime process pid=34388 parent=43712 handles=129
+API6 integration: reopen 23
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=430 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=44 Timer=2 IoCompletionReserve=1
+ Runtime process pid=43712 parent=41924 handles=1117
+ Runtime process pid=34388 parent=43712 handles=150
+ Runtime process pid=45796 parent=43712 handles=497
+ Runtime process pid=30604 parent=43712 handles=311
+ Runtime process pid=19668 parent=43712 handles=177
+API6 integration: reopen 24
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=430 File=37 Event=54 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=43 Timer=2 IoCompletionReserve=1
+ Runtime process pid=43712 parent=41924 handles=1081
+ Runtime process pid=34388 parent=43712 handles=150
+ Runtime process pid=45796 parent=43712 handles=473
+ Runtime process pid=30604 parent=43712 handles=290
+ Runtime process pid=19668 parent=43712 handles=182
+API6 integration: reopen 25
+ Framework pending cleanup=4
+Resources cycle pid=41924 handles=433 File=37 Event=55 Key=20 WaitCompletionPacket=21 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=43 Timer=2 IoCompletionReserve=1
+ Runtime process pid=43712 parent=41924 handles=945
+ Runtime process pid=34640 parent=41924 handles=115
+ Runtime process pid=34388 parent=43712 handles=129
+ Runtime process pid=46024 parent=34640 handles=129
+API6 integration: reopen 26
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=430 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=44 Timer=2 IoCompletionReserve=1
+ Runtime process pid=34640 parent=41924 handles=1119
+ Runtime process pid=46024 parent=34640 handles=150
+ Runtime process pid=35764 parent=34640 handles=497
+ Runtime process pid=21768 parent=34640 handles=310
+ Runtime process pid=28020 parent=34640 handles=177
+API6 integration: reopen 27
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=438 File=37 Event=54 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=51 Timer=2 IoCompletionReserve=1
+ Runtime process pid=34640 parent=41924 handles=1186
+ Runtime process pid=46024 parent=34640 handles=150
+ Runtime process pid=35764 parent=34640 handles=461
+ Runtime process pid=21768 parent=34640 handles=292
+ Runtime process pid=28020 parent=34640 handles=182
+API6 integration: reopen 28
+ Framework pending cleanup=4
+Resources cycle pid=41924 handles=443 File=38 Event=55 Key=20 WaitCompletionPacket=21 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=52 Timer=2 IoCompletionReserve=1
+ Runtime process pid=34640 parent=41924 handles=1203
+ Runtime process pid=28804 parent=41924 handles=115
+ Runtime process pid=46024 parent=34640 handles=150
+ Runtime process pid=35764 parent=34640 handles=461
+ Runtime process pid=21768 parent=34640 handles=290
+ Runtime process pid=28020 parent=34640 handles=182
+ Runtime process pid=36784 parent=28804 handles=129
+API6 integration: reopen 29
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=472 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=40 Thread=57 Process=70 Timer=2 IoCompletionReserve=1
+ Runtime process pid=28804 parent=41924 handles=1554
+ Runtime process pid=36784 parent=28804 handles=206
+ Runtime process pid=30056 parent=28804 handles=576
+ Runtime process pid=28692 parent=28804 handles=319
+ Runtime process pid=24900 parent=28804 handles=177
+ Runtime process pid=37816 parent=28804 handles=228
+ Runtime process pid=43812 parent=28804 handles=228
+ Runtime process pid=45764 parent=28804 handles=228
+ Runtime process pid=26280 parent=28804 handles=227
+ Runtime process pid=43180 parent=28804 handles=227
+ Runtime process pid=43384 parent=28804 handles=227
+ Runtime process pid=29032 parent=28804 handles=227
+ Runtime process pid=34468 parent=28804 handles=227
+API6 integration: reopen 30
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=442 File=37 Event=54 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=55 Timer=2 IoCompletionReserve=1
+ Runtime process pid=28804 parent=41924 handles=1080
+ Runtime process pid=36784 parent=28804 handles=150
+ Runtime process pid=30056 parent=28804 handles=477
+ Runtime process pid=28692 parent=28804 handles=289
+ Runtime process pid=24900 parent=28804 handles=177
+API6 integration: reopen 31
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=441 File=37 Event=54 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=56 Timer=2 IoCompletionReserve=1
+ Runtime process pid=21884 parent=41924 handles=1106
+ Runtime process pid=8004 parent=21884 handles=157
+ Runtime process pid=37692 parent=21884 handles=335
+ Runtime process pid=45796 parent=21884 handles=309
+ Runtime process pid=18632 parent=21884 handles=177
+ Runtime process pid=44244 parent=21884 handles=110
+API6 integration: reopen 32
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=456 File=37 Event=54 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=70 Timer=2 IoCompletionReserve=1
+ Runtime process pid=21884 parent=41924 handles=1206
+ Runtime process pid=8004 parent=21884 handles=150
+ Runtime process pid=37692 parent=21884 handles=491
+ Runtime process pid=45796 parent=21884 handles=282
+ Runtime process pid=18632 parent=21884 handles=177
+API6 integration: reopen 33
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=459 File=37 Event=55 Key=20 WaitCompletionPacket=20 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=57 Process=70 Timer=2 IoCompletionReserve=1
+ Runtime process pid=21884 parent=41924 handles=1080
+ Runtime process pid=37992 parent=41924 handles=115
+ Runtime process pid=8004 parent=21884 handles=129
+ Runtime process pid=21084 parent=37992 handles=129
+API6 integration: reopen 34
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=493 File=37 Event=55 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=40 Thread=58 Process=90 Timer=2 IoCompletionReserve=1
+ Runtime process pid=37992 parent=41924 handles=1554
+ Runtime process pid=21084 parent=37992 handles=206
+ Runtime process pid=30708 parent=37992 handles=591
+ Runtime process pid=38448 parent=37992 handles=318
+ Runtime process pid=44932 parent=37992 handles=177
+ Runtime process pid=33932 parent=37992 handles=227
+ Runtime process pid=45556 parent=37992 handles=227
+ Runtime process pid=45772 parent=37992 handles=227
+ Runtime process pid=29864 parent=37992 handles=227
+ Runtime process pid=24064 parent=37992 handles=227
+ Runtime process pid=45028 parent=37992 handles=227
+ Runtime process pid=45564 parent=37992 handles=227
+ Runtime process pid=37816 parent=37992 handles=227
+API6 integration: reopen 35
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=463 File=37 Event=55 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=75 Timer=2 IoCompletionReserve=1
+ Runtime process pid=37992 parent=41924 handles=1080
+ Runtime process pid=21084 parent=37992 handles=150
+ Runtime process pid=30708 parent=37992 handles=467
+ Runtime process pid=38448 parent=37992 handles=289
+ Runtime process pid=44932 parent=37992 handles=175
+API6 integration: reopen 36
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=478 File=37 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=32 Thread=58 Process=84 Timer=2 IoCompletionReserve=1
+ Runtime process pid=13252 parent=41924 handles=1382
+ Runtime process pid=27800 parent=13252 handles=178
+ Runtime process pid=44372 parent=13252 handles=509
+ Runtime process pid=45464 parent=13252 handles=311
+ Runtime process pid=45420 parent=13252 handles=177
+ Runtime process pid=43196 parent=13252 handles=227
+ Runtime process pid=44356 parent=13252 handles=227
+ Runtime process pid=45212 parent=13252 handles=227
+ Runtime process pid=29512 parent=13252 handles=227
+API6 integration: reopen 37
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=465 File=37 Event=55 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=78 Timer=2 IoCompletionReserve=1
+ Runtime process pid=13252 parent=41924 handles=1081
+ Runtime process pid=27800 parent=13252 handles=150
+ Runtime process pid=44372 parent=13252 handles=477
+ Runtime process pid=45464 parent=13252 handles=289
+ Runtime process pid=45420 parent=13252 handles=177
+API6 integration: reopen 38
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=468 File=37 Event=56 Key=20 WaitCompletionPacket=20 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=78 Timer=2 IoCompletionReserve=1
+ Runtime process pid=13252 parent=41924 handles=944
+ Runtime process pid=19100 parent=41924 handles=115
+ Runtime process pid=27800 parent=13252 handles=129
+ Runtime process pid=30592 parent=19100 handles=129
+API6 integration: reopen 39
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=467 File=37 Event=55 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=80 Timer=2 IoCompletionReserve=1
+ Runtime process pid=19100 parent=41924 handles=1114
+ Runtime process pid=30592 parent=19100 handles=150
+ Runtime process pid=21192 parent=19100 handles=497
+ Runtime process pid=45304 parent=19100 handles=310
+ Runtime process pid=27996 parent=19100 handles=177
+API6 integration: reopen 40
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=467 File=37 Event=55 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=79 Timer=2 IoCompletionReserve=1
+ Runtime process pid=19100 parent=41924 handles=1088
+ Runtime process pid=30592 parent=19100 handles=150
+ Runtime process pid=21192 parent=19100 handles=473
+ Runtime process pid=45304 parent=19100 handles=288
+ Runtime process pid=27996 parent=19100 handles=182
+API6 integration: reopen 41
+ Framework pending cleanup=4
+Resources cycle pid=41924 handles=470 File=37 Event=56 Key=20 WaitCompletionPacket=21 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=79 Timer=2 IoCompletionReserve=1
+ Runtime process pid=19100 parent=41924 handles=952
+ Runtime process pid=43812 parent=41924 handles=115
+ Runtime process pid=30592 parent=19100 handles=129
+ Runtime process pid=46024 parent=43812 handles=129
+API6 integration: reopen 42
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=467 File=37 Event=55 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=80 Timer=2 IoCompletionReserve=1
+ Runtime process pid=43812 parent=41924 handles=1114
+ Runtime process pid=46024 parent=43812 handles=150
+ Runtime process pid=19016 parent=43812 handles=491
+ Runtime process pid=45380 parent=43812 handles=308
+ Runtime process pid=1348 parent=43812 handles=177
+API6 integration: reopen 43
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=475 File=37 Event=55 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=87 Timer=2 IoCompletionReserve=1
+ Runtime process pid=43812 parent=41924 handles=1203
+ Runtime process pid=46024 parent=43812 handles=150
+ Runtime process pid=19016 parent=43812 handles=455
+ Runtime process pid=45380 parent=43812 handles=290
+ Runtime process pid=1348 parent=43812 handles=182
+API6 integration: reopen 44
+ Framework pending cleanup=4
+Resources cycle pid=41924 handles=480 File=38 Event=56 Key=20 WaitCompletionPacket=21 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=88 Timer=2 IoCompletionReserve=1
+ Runtime process pid=43812 parent=41924 handles=1203
+ Runtime process pid=19240 parent=41924 handles=115
+ Runtime process pid=46024 parent=43812 handles=150
+ Runtime process pid=19016 parent=43812 handles=455
+ Runtime process pid=45380 parent=43812 handles=287
+ Runtime process pid=1348 parent=43812 handles=182
+ Runtime process pid=7632 parent=19240 handles=129
+API6 integration: reopen 45
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=509 File=37 Event=55 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=40 Thread=58 Process=106 Timer=2 IoCompletionReserve=1
+ Runtime process pid=19240 parent=41924 handles=1563
+ Runtime process pid=7632 parent=19240 handles=206
+ Runtime process pid=23648 parent=19240 handles=572
+ Runtime process pid=37808 parent=19240 handles=311
+ Runtime process pid=38956 parent=19240 handles=177
+ Runtime process pid=40164 parent=19240 handles=228
+ Runtime process pid=36384 parent=19240 handles=228
+ Runtime process pid=13252 parent=19240 handles=228
+ Runtime process pid=15924 parent=19240 handles=227
+ Runtime process pid=30660 parent=19240 handles=227
+ Runtime process pid=43192 parent=19240 handles=227
+ Runtime process pid=34732 parent=19240 handles=227
+ Runtime process pid=19468 parent=19240 handles=227
+API6 integration: reopen 46
+ Framework pending cleanup=3
+Resources cycle pid=41924 handles=481 File=37 Event=55 Key=20 WaitCompletionPacket=19 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=93 Timer=2 IoCompletionReserve=1
+ Runtime process pid=19240 parent=41924 handles=1207
+ Runtime process pid=7632 parent=19240 handles=150
+ Runtime process pid=23648 parent=19240 handles=467
+ Runtime process pid=37808 parent=19240 handles=290
+ Runtime process pid=38956 parent=19240 handles=175
+API6 integration: reopen 47
+ Framework pending cleanup=4
+Resources cycle pid=41924 handles=484 File=37 Event=56 Key=20 WaitCompletionPacket=21 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=93 Timer=2 IoCompletionReserve=1
+ Runtime process pid=19240 parent=41924 handles=775
+ Runtime process pid=29400 parent=41924 handles=117
+ Runtime process pid=7632 parent=19240 handles=129
+ Runtime process pid=45564 parent=29400 handles=129
+API6 integration: reopen 48
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=487 File=37 Event=55 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=100 Timer=2 IoCompletionReserve=1
+ Runtime process pid=29400 parent=41924 handles=1204
+ Runtime process pid=45564 parent=29400 handles=150
+ Runtime process pid=37816 parent=29400 handles=491
+ Runtime process pid=19756 parent=29400 handles=289
+ Runtime process pid=11696 parent=29400 handles=177
+API6 integration: reopen 49
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=508 File=37 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=32 Thread=58 Process=114 Timer=2 IoCompletionReserve=1
+ Runtime process pid=45320 parent=41924 handles=1376
+ Runtime process pid=13340 parent=45320 handles=178
+ Runtime process pid=14724 parent=45320 handles=515
+ Runtime process pid=36220 parent=45320 handles=311
+ Runtime process pid=28596 parent=45320 handles=177
+ Runtime process pid=14372 parent=45320 handles=227
+ Runtime process pid=40584 parent=45320 handles=227
+ Runtime process pid=26028 parent=45320 handles=227
+ Runtime process pid=45100 parent=45320 handles=227
+API6 integration: reopen 50
+ Framework pending cleanup=2
+Resources cycle pid=41924 handles=491 File=37 Event=55 Key=20 WaitCompletionPacket=18 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=104 Timer=2 IoCompletionReserve=1
+ Runtime process pid=45320 parent=41924 handles=1077
+ Runtime process pid=13340 parent=45320 handles=150
+ Runtime process pid=14724 parent=45320 handles=477
+ Runtime process pid=36220 parent=45320 handles=288
+ Runtime process pid=28596 parent=45320 handles=177
+API6 integration: reopen 51
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=510 File=37 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=32 Thread=58 Process=116 Timer=2 IoCompletionReserve=1
+ Runtime process pid=36384 parent=41924 handles=1379
+ Runtime process pid=26020 parent=36384 handles=178
+ Runtime process pid=16672 parent=36384 handles=499
+ Runtime process pid=3212 parent=36384 handles=318
+ Runtime process pid=33568 parent=36384 handles=177
+ Runtime process pid=40728 parent=36384 handles=227
+ Runtime process pid=33784 parent=36384 handles=227
+ Runtime process pid=15764 parent=36384 handles=227
+ Runtime process pid=38956 parent=36384 handles=229
+API6 integration: reopen 52
+ Framework pending cleanup=0
+Resources cycle pid=41924 handles=486 File=35 Event=54 Key=20 WaitCompletionPacket=16 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=23 Thread=58 Process=105 Timer=2 IoCompletionReserve=1
+API6 integration: reopen 53
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=491 File=36 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=106 Timer=2 IoCompletionReserve=1
+ Runtime process pid=33384 parent=41924 handles=934
+ Runtime process pid=37684 parent=33384 handles=129
+API6 integration: reopen 54
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=491 File=36 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=106 Timer=2 IoCompletionReserve=1
+API6 integration: reopen 55
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=491 File=36 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=106 Timer=2 IoCompletionReserve=1
+ Runtime process pid=28780 parent=41924 handles=946
+ Runtime process pid=29636 parent=28780 handles=129
+API6 integration: reopen 56
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=493 File=37 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=107 Timer=2 IoCompletionReserve=1
+ Runtime process pid=24988 parent=41924 handles=993
+ Runtime process pid=28328 parent=24988 handles=136
+ Runtime process pid=44376 parent=24988 handles=452
+API6 integration: reopen 57
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=493 File=37 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=107 Timer=2 IoCompletionReserve=1
+ Runtime process pid=39632 parent=41924 handles=1075
+ Runtime process pid=44164 parent=39632 handles=150
+ Runtime process pid=40140 parent=39632 handles=477
+ Runtime process pid=37108 parent=39632 handles=290
+ Runtime process pid=37464 parent=39632 handles=177
+API6 integration: reopen 58
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=493 File=37 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=107 Timer=2 IoCompletionReserve=1
+ Runtime process pid=44048 parent=41924 handles=1089
+ Runtime process pid=7880 parent=44048 handles=150
+ Runtime process pid=45420 parent=44048 handles=467
+ Runtime process pid=9504 parent=44048 handles=309
+ Runtime process pid=45232 parent=44048 handles=177
+API6 integration: reopen 59
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=495 File=37 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=109 Timer=2 IoCompletionReserve=1
+ Runtime process pid=18632 parent=41924 handles=1116
+ Runtime process pid=40952 parent=18632 handles=150
+ Runtime process pid=25000 parent=18632 handles=473
+ Runtime process pid=29032 parent=18632 handles=301
+ Runtime process pid=43120 parent=18632 handles=177
+API6 integration: reopen 60
+ Framework pending cleanup=0
+Resources cycle pid=41924 handles=494 File=35 Event=54 Key=20 WaitCompletionPacket=16 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=23 Thread=58 Process=113 Timer=2 IoCompletionReserve=1
+API6 integration: reopen 61
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=501 File=37 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=115 Timer=2 IoCompletionReserve=1
+ Runtime process pid=43540 parent=41924 handles=1075
+ Runtime process pid=24688 parent=43540 handles=150
+ Runtime process pid=45896 parent=43540 handles=467
+ Runtime process pid=38712 parent=43540 handles=289
+ Runtime process pid=28868 parent=43540 handles=175
+API6 integration: reopen 62
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=499 File=36 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=114 Timer=2 IoCompletionReserve=1
+ Runtime process pid=21192 parent=41924 handles=934
+ Runtime process pid=30068 parent=21192 handles=129
+API6 integration: reopen 63
+ Framework pending cleanup=1
+Resources cycle pid=41924 handles=501 File=37 Event=55 Key=20 WaitCompletionPacket=17 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=24 Thread=58 Process=115 Timer=2 IoCompletionReserve=1
+ Runtime process pid=44896 parent=41924 handles=996
+ Runtime process pid=6688 parent=44896 handles=136
+ Runtime process pid=45072 parent=44896 handles=457
+ Runtime process pid=36792 parent=44896 handles=0
+API6 reopen8 handles 384->491 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+integration line83: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+Resources settled pid=41924 handles=491 File=35 Event=53 Key=20 WaitCompletionPacket=16 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=10 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=23 Thread=58 Process=113 Timer=1 IoCompletionReserve=1
+API6 independent WebView2 DLL integration: 1 failures
+Runtime test: normal CRT exit callback reached

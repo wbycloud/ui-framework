@@ -1,0 +1,969 @@
+API6 integration: initialize
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+API6 integration: init-failure cleanup complete
+Drain navigation id=10 success=1
+Drain navigation id=9 success=1
+Drain navigation id=11 success=1
+Drain navigation id=12 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=9
+Free Runtime view controller=1 bridge=0 navigation=1 id=10
+Free Runtime view controller=1 bridge=0 navigation=1 id=11
+Free Runtime view controller=1 bridge=0 navigation=1 id=12
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=26
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=25
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=24
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=23
+Free Runtime view controller=1 bridge=1 navigation=1 id=24
+Drain navigation id=29 success=1
+Drain navigation id=27 success=1
+Drain navigation id=28 success=1
+Free Runtime view controller=1 bridge=1 navigation=1 id=29
+Free Runtime view controller=1 bridge=1 navigation=1 id=27
+Free Runtime view controller=1 bridge=1 navigation=1 id=28
+API6 integration: instances/resize complete
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=16
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=18
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=15
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=14
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=13
+Free Runtime view controller=1 bridge=1 navigation=1 id=16
+Free Runtime view controller=1 bridge=1 navigation=1 id=18
+Free Runtime view controller=1 bridge=1 navigation=1 id=15
+Free Runtime view controller=1 bridge=1 navigation=1 id=14
+Free Runtime view controller=1 bridge=1 navigation=1 id=13
+Resources baseline pid=43056 handles=384 File=35 Event=53 Key=20 WaitCompletionPacket=16 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=12 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=22 Thread=57 Timer=2 Process=5 IoCompletionReserve=1
+API6 integration: reopen 0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+ Framework pending cleanup=1 process handles=392
+API6 integration: reopen 1
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=7 success=1
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=390
+API6 integration: reopen 2
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=390
+API6 integration: reopen 3
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=390
+API6 integration: reopen 4
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=6 success=1
+Drain navigation id=5 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=392
+API6 integration: reopen 5
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=392
+API6 integration: reopen 6
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=390
+API6 integration: reopen 7
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=392
+API6 integration: reopen 8
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=392
+API6 integration: reopen 9
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=1 process handles=413
+API6 integration: reopen 10
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=16
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=15
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=14
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=13
+Drain navigation id=17 success=1
+Free Runtime view controller=1 bridge=1 navigation=1 id=17
+Drain navigation id=19 success=1
+Drain navigation id=20 success=1
+Drain navigation id=18 success=1
+Free Runtime view controller=1 bridge=1 navigation=1 id=18
+Free Runtime view controller=1 bridge=1 navigation=1 id=19
+Free Runtime view controller=1 bridge=1 navigation=1 id=20
+ Framework pending cleanup=2 process handles=396
+API6 integration: reopen 11
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+ Framework pending cleanup=1 process handles=394
+API6 integration: reopen 12
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=7 success=1
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=394
+API6 integration: reopen 13
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=7 success=1
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=396
+API6 integration: reopen 14
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+ Framework pending cleanup=1 process handles=394
+API6 integration: reopen 15
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=394
+API6 integration: reopen 16
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=394
+API6 integration: reopen 17
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+ Framework pending cleanup=1 process handles=396
+API6 integration: reopen 18
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=394
+API6 integration: reopen 19
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=7 success=1
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=396
+API6 integration: reopen 20
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=396
+API6 integration: reopen 21
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+ Framework pending cleanup=1 process handles=396
+API6 integration: reopen 22
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=8 success=1
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+ Framework pending cleanup=1 process handles=398
+API6 integration: reopen 23
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=0
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=15
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=14
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=13
+Drain navigation id=16 success=0
+Free Runtime view controller=1 bridge=1 navigation=1 id=16
+Drain navigation id=20 success=1
+Drain navigation id=19 success=1
+Drain navigation id=18 success=1
+Free Runtime view controller=1 bridge=1 navigation=1 id=20
+Free Runtime view controller=1 bridge=1 navigation=1 id=19
+Free Runtime view controller=1 bridge=1 navigation=1 id=18
+ Framework pending cleanup=0 process handles=393
+API6 integration: reopen 24
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=398
+API6 integration: reopen 25
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=400
+API6 integration: reopen 26
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=2 process handles=405
+API6 integration: reopen 27
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=3 process handles=405
+API6 integration: reopen 28
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=4 process handles=405
+API6 integration: reopen 29
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=5 process handles=405
+API6 integration: reopen 30
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=6 process handles=405
+API6 integration: reopen 31
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=7 process handles=405
+API6 integration: reopen 32
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=8 process handles=405
+API6 integration: reopen 33
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=9 process handles=405
+API6 integration: reopen 34
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=10 process handles=405
+API6 integration: reopen 35
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=11 process handles=405
+API6 integration: reopen 36
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+ Framework pending cleanup=11 process handles=609
+API6 integration: reopen 37
+Drain navigation id=46 success=1
+Drain navigation id=45 success=1
+Drain navigation id=65 success=1
+Drain navigation id=66 success=1
+Drain navigation id=67 success=1
+Drain navigation id=68 success=1
+Drain navigation id=69 success=1
+Drain navigation id=70 success=1
+Drain navigation id=49 success=1
+Drain navigation id=71 success=1
+Drain navigation id=72 success=1
+Drain navigation id=73 success=1
+Drain navigation id=74 success=1
+Drain navigation id=47 success=1
+Drain navigation id=50 success=1
+Drain navigation id=75 success=1
+Drain navigation id=76 success=1
+Drain navigation id=77 success=1
+Drain navigation id=78 success=1
+Drain navigation id=51 success=1
+Drain navigation id=79 success=1
+Drain navigation id=80 success=1
+Drain navigation id=81 success=1
+Drain navigation id=82 success=1
+Drain navigation id=83 success=1
+Drain navigation id=84 success=1
+Drain navigation id=48 success=1
+Drain navigation id=85 success=1
+Drain navigation id=52 success=1
+Drain navigation id=86 success=1
+Drain navigation id=87 success=1
+Drain navigation id=88 success=1
+Drain navigation id=53 success=1
+Drain navigation id=54 success=1
+Drain navigation id=55 success=1
+Drain navigation id=56 success=1
+Drain navigation id=57 success=1
+Drain navigation id=58 success=1
+Drain navigation id=59 success=1
+Drain navigation id=60 success=1
+Drain navigation id=61 success=1
+Drain navigation id=62 success=1
+Drain navigation id=63 success=1
+Drain navigation id=64 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=46
+Free Runtime view controller=1 bridge=0 navigation=1 id=45
+Free Runtime view controller=1 bridge=0 navigation=1 id=65
+Free Runtime view controller=1 bridge=0 navigation=1 id=66
+Free Runtime view controller=1 bridge=0 navigation=1 id=67
+Free Runtime view controller=1 bridge=0 navigation=1 id=68
+Free Runtime view controller=1 bridge=0 navigation=1 id=69
+Free Runtime view controller=1 bridge=0 navigation=1 id=70
+Free Runtime view controller=1 bridge=0 navigation=1 id=49
+Free Runtime view controller=1 bridge=0 navigation=1 id=71
+Free Runtime view controller=1 bridge=0 navigation=1 id=72
+Free Runtime view controller=1 bridge=0 navigation=1 id=73
+Free Runtime view controller=1 bridge=0 navigation=1 id=74
+Free Runtime view controller=1 bridge=0 navigation=1 id=47
+Free Runtime view controller=1 bridge=0 navigation=1 id=50
+Free Runtime view controller=1 bridge=0 navigation=1 id=75
+Free Runtime view controller=1 bridge=0 navigation=1 id=76
+Free Runtime view controller=1 bridge=0 navigation=1 id=77
+Free Runtime view controller=1 bridge=0 navigation=1 id=78
+Free Runtime view controller=1 bridge=0 navigation=1 id=51
+Free Runtime view controller=1 bridge=0 navigation=1 id=79
+Free Runtime view controller=1 bridge=0 navigation=1 id=80
+Free Runtime view controller=1 bridge=0 navigation=1 id=81
+Free Runtime view controller=1 bridge=0 navigation=1 id=82
+Free Runtime view controller=1 bridge=0 navigation=1 id=83
+Free Runtime view controller=1 bridge=0 navigation=1 id=84
+Free Runtime view controller=1 bridge=0 navigation=1 id=48
+Free Runtime view controller=1 bridge=0 navigation=1 id=85
+Free Runtime view controller=1 bridge=0 navigation=1 id=52
+Free Runtime view controller=1 bridge=0 navigation=1 id=86
+Free Runtime view controller=1 bridge=0 navigation=1 id=87
+Free Runtime view controller=1 bridge=0 navigation=1 id=88
+Free Runtime view controller=1 bridge=0 navigation=1 id=53
+Free Runtime view controller=1 bridge=0 navigation=1 id=54
+Free Runtime view controller=1 bridge=0 navigation=1 id=55
+Free Runtime view controller=1 bridge=0 navigation=1 id=56
+Free Runtime view controller=1 bridge=0 navigation=1 id=57
+Free Runtime view controller=1 bridge=0 navigation=1 id=58
+Free Runtime view controller=1 bridge=0 navigation=1 id=59
+Free Runtime view controller=1 bridge=0 navigation=1 id=60
+Free Runtime view controller=1 bridge=0 navigation=1 id=61
+Free Runtime view controller=1 bridge=0 navigation=1 id=62
+Free Runtime view controller=1 bridge=0 navigation=1 id=63
+Free Runtime view controller=1 bridge=0 navigation=1 id=64
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=93
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=96
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=95
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=94
+Drain navigation id=98 success=1
+Drain navigation id=100 success=1
+Drain navigation id=97 success=1
+Free Runtime view controller=1 bridge=1 navigation=1 id=100
+Free Runtime view controller=1 bridge=1 navigation=1 id=98
+Free Runtime view controller=1 bridge=1 navigation=1 id=97
+Drain navigation id=99 success=1
+Free Runtime view controller=1 bridge=1 navigation=1 id=99
+ Framework pending cleanup=0 process handles=398
+API6 integration: reopen 38
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=6 success=1
+Drain navigation id=5 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=403
+API6 integration: reopen 39
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=6 success=1
+Drain navigation id=5 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=403
+API6 integration: reopen 40
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=6 success=1
+Drain navigation id=5 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=405
+API6 integration: reopen 41
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=405
+API6 integration: reopen 42
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=403
+API6 integration: reopen 43
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=7 success=1
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=403
+API6 integration: reopen 44
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=403
+API6 integration: reopen 45
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=6 success=1
+Drain navigation id=5 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=405
+API6 integration: reopen 46
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=7 success=1
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=403
+API6 integration: reopen 47
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=405
+API6 integration: reopen 48
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=405
+API6 integration: reopen 49
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=407
+API6 integration: reopen 50
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=0
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=15
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=13
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=14
+Drain navigation id=16 success=0
+Free Runtime view controller=1 bridge=1 navigation=1 id=16
+Drain navigation id=18 success=1
+Drain navigation id=20 success=1
+Drain navigation id=19 success=1
+Free Runtime view controller=1 bridge=1 navigation=1 id=18
+Free Runtime view controller=1 bridge=1 navigation=1 id=20
+Free Runtime view controller=1 bridge=1 navigation=1 id=19
+ Framework pending cleanup=2 process handles=409
+API6 integration: reopen 51
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=7 success=1
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=409
+API6 integration: reopen 52
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=411
+API6 integration: reopen 53
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=0
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=15
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=13
+Destroy Runtime view controller=1 bridge=1 navigation=0 id=14
+Drain navigation id=16 success=0
+Free Runtime view controller=1 bridge=1 navigation=1 id=16
+Drain navigation id=20 success=1
+Drain navigation id=19 success=1
+Drain navigation id=18 success=1
+Free Runtime view controller=1 bridge=1 navigation=1 id=20
+Free Runtime view controller=1 bridge=1 navigation=1 id=19
+Free Runtime view controller=1 bridge=1 navigation=1 id=18
+ Framework pending cleanup=2 process handles=413
+API6 integration: reopen 54
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+ Framework pending cleanup=1 process handles=411
+API6 integration: reopen 55
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=411
+API6 integration: reopen 56
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+ Framework pending cleanup=1 process handles=411
+API6 integration: reopen 57
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=411
+API6 integration: reopen 58
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=6 success=1
+Drain navigation id=5 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=411
+API6 integration: reopen 59
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=7 success=1
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=411
+API6 integration: reopen 60
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=7 success=1
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=413
+API6 integration: reopen 61
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=413
+API6 integration: reopen 62
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=413
+API6 integration: reopen 63
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Destroy Runtime view controller=0 bridge=0 navigation=0 id=0
+Drain navigation id=5 success=1
+Drain navigation id=6 success=1
+Drain navigation id=7 success=1
+Drain navigation id=8 success=1
+Free Runtime view controller=1 bridge=0 navigation=1 id=5
+Free Runtime view controller=1 bridge=0 navigation=1 id=6
+Free Runtime view controller=1 bridge=0 navigation=1 id=7
+Free Runtime view controller=1 bridge=0 navigation=1 id=8
+ Framework pending cleanup=1 process handles=413
+API6 reopen8 handles 384->405 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+integration line83: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+Resources settled pid=43056 handles=405
+ Retained process handle=000000000000043C pid=32912 exit=0
+ Retained process handle=0000000000000520 pid=44236 exit=0
+ Retained process handle=0000000000000558 pid=45756 exit=0
+ Retained process handle=000000000000056C pid=45756 exit=0
+ Retained process handle=000000000000059C pid=45472 exit=0
+ Retained process handle=00000000000005CC pid=45756 exit=0
+ Retained process handle=00000000000005F0 pid=44236 exit=0
+ Retained process handle=00000000000006B4 pid=45756 exit=0
+ Retained process handle=00000000000006BC pid=45472 exit=0
+ Retained process handle=0000000000000724 pid=45756 exit=0
+ Retained process handle=0000000000000730 pid=44236 exit=0
+ Retained process handle=0000000000000754 pid=44236 exit=0
+ Retained process handle=0000000000000778 pid=44344 exit=0
+ Retained process handle=0000000000000790 pid=45472 exit=0
+ Retained process handle=00000000000007F4 pid=45472 exit=0
+ Retained process handle=0000000000000960 pid=44344 exit=0
+ Retained process handle=0000000000000964 pid=26468 exit=0
+ Retained process handle=000000000000096C pid=44344 exit=0
+ Retained process handle=0000000000000984 pid=44344 exit=0
+ Retained process handle=00000000000009B0 pid=26468 exit=0
+ Retained process handle=0000000000000ABC pid=32912 exit=0
+ Retained process handle=0000000000000BC4 pid=26468 exit=0
+ Retained process handle=0000000000000C04 pid=26468 exit=0
+ Retained process handle=0000000000000C0C pid=32912 exit=0
+ Retained process handle=0000000000000C44 pid=32912 exit=0 File=35 Event=54 Key=20 WaitCompletionPacket=16 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=125 Directory=2 SchedulerSharedData=1 ALPC Port=10 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=23 Thread=58 Process=25 Timer=2 IoCompletionReserve=1
+API6 independent WebView2 DLL integration: 1 failures
+Runtime test: normal CRT exit callback reached

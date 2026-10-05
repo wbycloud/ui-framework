@@ -61,6 +61,7 @@ typedef struct script_handler {
     ui_webview2_script_callback_fn callback;
     void *user_data;
     uint64_t epoch;
+    int drain_cancelled;
 } script_handler_t;
 
 typedef struct bridge_handler {
@@ -108,7 +109,9 @@ struct webview2_view {
     HRESULT async_error;
     LONG refs;
     int destroyed;
+    int creation_deferred;
     int navigation_completed;
+    int drain_attempts;
     int trusted_html;
     int bridge_installed;
     int allow_html_navigation;
@@ -139,6 +142,8 @@ static void invalidate_render(webview2_view_t *v)
 static HRESULT begin_capture(webview2_view_t *);
 static ui_status_t webview2_post_json(void *,void *,const char *);
 static ui_status_t start_script(webview2_view_t *,const char *,ui_webview2_script_callback_fn,void *);
+static ui_status_t start_view_creation(webview2_view_t *);
+static const char drain_check_script[]="document.documentElement.id==='ui-runtime-drain'";
 
 static webview2_binding_t *bindings;
 
@@ -173,6 +178,7 @@ static void view_add_ref(webview2_view_t *view)
 static void free_view(webview2_view_t *view)
 {
     webview2_view_t **it;
+    if(GetEnvironmentVariableW(L"UI_RUNTIME_RESOURCES",NULL,0))fprintf(stderr,"Free Runtime view controller=%d bridge=%d navigation=%d id=%llu\n",view->controller!=NULL,view->bridge_installed,view->navigation_completed,(unsigned long long)view->navigation_id);
     it = &view->backend->views;
     while (*it != NULL && *it != view) {
         it = &(*it)->backend_next;
@@ -212,19 +218,29 @@ static LRESULT CALLBACK cleanup_proc(HWND window,UINT message,WPARAM wp,LPARAM l
 {
     if(message==WM_APP+51){free_view((webview2_view_t *)lp);return 0;}
     if(message==WM_APP+53){backend_release((webview2_backend_t *)lp);return 0;}
+    if(message==WM_APP+54){webview2_view_t *view=(webview2_view_t *)lp;
+        if(!view->destroyed){
+            if(view->host->dispatch_blocked)view->creation_deferred=1;
+            else{ui_status_t status=start_view_creation(view);if(status!=UI_STATUS_OK)view->async_error=E_FAIL;}
+        }
+        view_release(view);return 0;}
     if(message==WM_APP+52){webview2_view_t *view=(webview2_view_t *)lp;
         if(!view->destroyed&&view->pending_json){char *json=view->pending_json;view->pending_json=NULL;(void)webview2_post_json(NULL,view,json);free(json);}
         view_release(view);return 0;}
     return DefWindowProcW(window,message,wp,lp);
 }
 
-static ui_status_t view_status(const webview2_view_t *view)
+static ui_status_t view_status(webview2_view_t *view)
 {
     if (view == NULL || view->destroyed) {
         return UI_STATUS_INVALID_ARGUMENT;
     }
     if (view->backend->thread_id != GetCurrentThreadId()) {
         return UI_STATUS_PLATFORM_ERROR;
+    }
+    if(view->creation_deferred&&!view->host->dispatch_blocked){
+        view->creation_deferred=0;view_add_ref(view);
+        if(!PostMessageW(view->backend->cleanup_window,WM_APP+54,0,(LPARAM)view)){view_release(view);view->async_error=E_FAIL;}
     }
     return FAILED(view->async_error) ? UI_STATUS_PLATFORM_ERROR : UI_STATUS_OK;
 }
@@ -413,12 +429,13 @@ static HRESULT STDMETHODCALLTYPE navigation_completed(
         /* Ignore the controller's initial about:blank completion. Only the
          * inert navigation we started proves that renderer startup drained. */
         if(view->navigation_handler!=handler||!view->navigation_id||FAILED(ICoreWebView2NavigationCompletedEventArgs_get_NavigationId(args,&navigation_id))||navigation_id!=view->navigation_id)return S_OK;
+        (void)ICoreWebView2NavigationCompletedEventArgs_get_IsSuccess(args,&success);
+        if(GetEnvironmentVariableW(L"UI_RUNTIME_RESOURCES",NULL,0))fprintf(stderr,"Drain navigation id=%llu success=%d\n",(unsigned long long)navigation_id,success);
         view->navigation_handler=NULL;
         ICoreWebView2_remove_NavigationCompleted(sender,view->navigation_token);
         /* A renderer acknowledgement on the completed inert document keeps
          * Close behind startup IPC, without entering unloaded app code. */
-        view->navigation_completed=1;
-        (void)start_script(view,"void 0",NULL,NULL);
+        (void)start_script(view,drain_check_script,NULL,NULL);
         self->lpVtbl->Release(self);
         return S_OK;
     }
@@ -446,6 +463,7 @@ static ICoreWebView2NavigationCompletedEventHandlerVtbl navigation_vtable = {
     navigation_release,
     navigation_completed
 };
+static void drain_cancelled_view(webview2_view_t *view);
 
 /* Event subscriptions hold a handler reference. The view unregisters them and
  * clears these back pointers before releasing its own reference. */
@@ -599,6 +617,35 @@ static ICoreWebView2NavigationStartingEventHandlerVtbl starting_vtable = {
     navigation_starting_query, navigation_starting_add_ref,
     navigation_starting_release, navigation_starting
 };
+/* Cancellation can race either controller creation or the first navigation.
+ * Both paths must finish renderer startup before closing the SDK object. */
+static void drain_cancelled_view(webview2_view_t *view)
+{
+    navigation_handler_t *completion;HRESULT hr;
+    if(!view->webview||view->navigation_completed)return;
+    if(view->drain_attempts++>=3){view->async_error=E_FAIL;return;}
+    if(view->starting_handler){
+        ICoreWebView2_remove_NavigationStarting(view->webview,view->starting_token);
+        view->starting_handler->iface.lpVtbl->Release(&view->starting_handler->iface);view->starting_handler=NULL;
+    }
+    completion=(navigation_handler_t *)calloc(1,sizeof(*completion));
+    if(!completion)return;
+    completion->iface.lpVtbl=&navigation_vtable;completion->refs=1;completion->view=view;completion->drain_cancelled=1;
+    view_add_ref(view);view->navigation_handler=completion;view->navigation_id=0;
+    hr=ICoreWebView2_add_NavigationCompleted(view->webview,&completion->iface,&view->navigation_token);
+    if(SUCCEEDED(hr)){
+        view->starting_handler=(navigation_starting_handler_t *)calloc(1,sizeof(*view->starting_handler));
+        if(!view->starting_handler)hr=E_OUTOFMEMORY;
+        else{view->starting_handler->iface.lpVtbl=&starting_vtable;view->starting_handler->refs=1;view->starting_handler->view=view;
+            view->trusted_html=view->allow_html_navigation=1;
+            hr=ICoreWebView2_add_NavigationStarting(view->webview,&view->starting_handler->iface,&view->starting_token);}
+    }
+    if(SUCCEEDED(hr)){ICoreWebView2_Stop(view->webview);hr=ICoreWebView2_NavigateToString(view->webview,L"<!doctype html><html id='ui-runtime-drain'></html>");}
+    if(FAILED(hr)){
+        ICoreWebView2_remove_NavigationCompleted(view->webview,view->navigation_token);
+        view->navigation_handler=NULL;completion->iface.lpVtbl->Release(&completion->iface);
+    }
+}
 
 static HRESULT STDMETHODCALLTYPE bridge_query(
     ICoreWebView2AddScriptToExecuteOnDocumentCreatedCompletedHandler *self,
@@ -696,6 +743,11 @@ static HRESULT STDMETHODCALLTYPE script_completed(
 {
     script_handler_t *handler = (script_handler_t *)self;
     char *result = wide_to_utf8(result_json);
+    if(handler->drain_cancelled){
+        if(SUCCEEDED(error_code)&&result&&!strcmp(result,"true"))handler->view->navigation_completed=1;
+        else drain_cancelled_view(handler->view);
+        if(GetEnvironmentVariableW(L"UI_RUNTIME_RESOURCES",NULL,0))fprintf(stderr,"Drain renderer document confirmed=%d attempts=%d hr=%08lx result=%s\n",handler->view->navigation_completed,handler->view->drain_attempts,error_code,result?result:"null");
+    }
     if (!handler->view->destroyed && handler->callback != NULL) {
         handler->callback(handler->epoch==handler->view->epoch?hresult_status(error_code):UI_STATUS_CANCELLED,
                           handler->epoch==handler->view->epoch?result:NULL, handler->user_data);
@@ -837,31 +889,12 @@ static HRESULT STDMETHODCALLTYPE controller_completed(
          * Retain only the SDK object; deferred view cleanup closes it after
          * this completion stack has returned, without touching the host. */
         if (controller != NULL) {
-            navigation_handler_t *completion;
             view->controller=controller;ICoreWebView2Controller_AddRef(controller);
             /* Runtime creation can complete before its initial renderer is
              * ready. Complete an inert navigation before deferred Close;
              * ExecuteScript on the initial document can leave startup work
              * retained. No application callback or document is installed. */
-            if(SUCCEEDED(ICoreWebView2Controller_get_CoreWebView2(controller,&view->webview))&&
-               (completion=(navigation_handler_t *)calloc(1,sizeof(*completion)))!=NULL){
-                completion->iface.lpVtbl=&navigation_vtable;completion->refs=1;completion->view=view;completion->drain_cancelled=1;
-                view_add_ref(view);view->navigation_handler=completion;
-                hr=ICoreWebView2_add_NavigationCompleted(view->webview,&completion->iface,&view->navigation_token);
-                if(SUCCEEDED(hr)){
-                    view->starting_handler=(navigation_starting_handler_t *)calloc(1,sizeof(*view->starting_handler));
-                    if(!view->starting_handler)hr=E_OUTOFMEMORY;
-                    else{view->starting_handler->iface.lpVtbl=&starting_vtable;view->starting_handler->refs=1;view->starting_handler->view=view;
-                        view->trusted_html=view->allow_html_navigation=1;
-                        hr=ICoreWebView2_add_NavigationStarting(view->webview,&view->starting_handler->iface,&view->starting_token);}
-                }
-                if(SUCCEEDED(hr))hr=ICoreWebView2_NavigateToString(view->webview,L"<!doctype html><html></html>");
-                if(FAILED(hr)){
-                    ICoreWebView2_remove_NavigationCompleted(view->webview,view->navigation_token);
-                    view->navigation_handler=NULL;
-                    completion->iface.lpVtbl->Release(&completion->iface);
-                }
-            }
+            if(SUCCEEDED(ICoreWebView2Controller_get_CoreWebView2(controller,&view->webview)))drain_cancelled_view(view);
         }
         return S_OK;
     }
@@ -1018,9 +1051,7 @@ static ui_status_t webview2_create_view(void *backend_user_data,
                                         void **view_user_data)
 {
     webview2_backend_t *backend = (webview2_backend_t *)backend_user_data;
-    environment_handler_t *handler;
     webview2_view_t *view;
-    HRESULT hr;
 
     if (backend == NULL || host == NULL ||
         backend->thread_id != GetCurrentThreadId() ||
@@ -1051,11 +1082,23 @@ static ui_status_t webview2_create_view(void *backend_user_data,
     view->refs = 1;
     view->backend_next = backend->views;
     backend->views = view;
-    if(backend->environment){(void)create_controller(view,backend->environment);*view_user_data=view;return UI_STATUS_OK;}
-    if(backend->environment_creating){*view_user_data=view;return UI_STATUS_OK;}
+    view_add_ref(view);
+    if(!PostMessageW(backend->cleanup_window,WM_APP+54,0,(LPARAM)view)){
+        view_release(view);view_release(view);return UI_STATUS_PLATFORM_ERROR;
+    }
+    *view_user_data=view;return UI_STATUS_OK;
+}
+/* Begin SDK work on the next STA turn. An application cancelled before that
+ * turn needs no Runtime startup or synthetic controller solely for teardown. */
+static ui_status_t start_view_creation(webview2_view_t *view)
+{
+    webview2_backend_t *backend=view->backend;
+    environment_handler_t *handler;HRESULT hr;
+    if(view->environment)return UI_STATUS_OK;
+    if(backend->environment){(void)create_controller(view,backend->environment);return UI_STATUS_OK;}
+    if(backend->environment_creating){return UI_STATUS_OK;}
     handler = (environment_handler_t *)calloc(1u, sizeof(*handler));
     if (handler == NULL) {
-        view_release(view);
         return UI_STATUS_OUT_OF_MEMORY;
     }
     handler->iface.lpVtbl = &environment_vtable;
@@ -1071,10 +1114,8 @@ static ui_status_t webview2_create_view(void *backend_user_data,
     handler->iface.lpVtbl->Release(&handler->iface);
     if (FAILED(hr)) {
         backend->environment_creating=0;
-        view_release(view);
         return hresult_status(hr);
     }
-    *view_user_data = view;
     return UI_STATUS_OK;
 }
 
@@ -1086,6 +1127,7 @@ static void webview2_destroy_view(void *backend_user_data, void *view_user_data)
     if (view == NULL) {
         return;
     }
+    if(GetEnvironmentVariableW(L"UI_RUNTIME_RESOURCES",NULL,0))fprintf(stderr,"Destroy Runtime view controller=%d bridge=%d navigation=%d id=%llu\n",view->controller!=NULL,view->bridge_installed,view->navigation_completed,(unsigned long long)view->navigation_id);
     view->destroyed = 1;
     invalidate_render(view);
     if(view->resource_handler){view->resource_handler->view=NULL;if(view->webview)ICoreWebView2_remove_WebResourceRequested(view->webview,view->resource_token);view->resource_handler->iface.lpVtbl->Release(&view->resource_handler->iface);view->resource_handler=NULL;}
@@ -1119,6 +1161,7 @@ static void webview2_destroy_view(void *backend_user_data, void *view_user_data)
             &view->navigation_handler->iface);
         view->navigation_handler = NULL;
     }
+    drain_cancelled_view(view);
     /* Let in-flight SDK operations release their inert view before Close.
        Its app container may disappear immediately after this call. */
     if(view->container){HWND root=GetAncestor(view->container,GA_ROOT);ShowWindow(view->container,SW_HIDE);if(root&&root!=view->container)(void)SetParent(view->container,root);}
@@ -1213,9 +1256,10 @@ static ui_status_t webview2_resize(void *backend_user_data,
 static ui_status_t start_script(webview2_view_t *v,const char *script,ui_webview2_script_callback_fn callback,void *user)
 {
  script_handler_t *h;wchar_t *wide;HRESULT hr;
- if(!v->webview||!v->navigation_completed)return UI_STATUS_PENDING;
+ int drain=v->destroyed&&!strcmp(script,drain_check_script);
+ if(!v->webview||(!v->navigation_completed&&!drain))return UI_STATUS_PENDING;
  wide=utf8_to_wide(script);if(!wide)return UI_STATUS_INVALID_ARGUMENT;h=(script_handler_t *)calloc(1,sizeof(*h));if(!h){free(wide);return UI_STATUS_OUT_OF_MEMORY;}
- h->iface.lpVtbl=&script_vtable;h->refs=1;h->view=v;h->epoch=v->epoch;h->callback=callback;h->user_data=user;view_add_ref(v);
+ h->iface.lpVtbl=&script_vtable;h->refs=1;h->view=v;h->epoch=v->epoch;h->callback=callback;h->user_data=user;h->drain_cancelled=drain;view_add_ref(v);
  hr=ICoreWebView2_ExecuteScript(v->webview,wide,&h->iface);free(wide);h->iface.lpVtbl->Release(&h->iface);return hresult_status(hr);
 }
 static void presentation_completed(ui_status_t status,const char *json,void *data)
