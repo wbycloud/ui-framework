@@ -291,7 +291,7 @@ static LRESULT CALLBACK popup_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
 static void close_popup(host_window_t *s)
 {
     if(s->confirm_waiting){s->confirm_answer=-1;return;}
-    if(s->menu_hook){UnhookWindowsHookEx(s->menu_hook);s->menu_hook=NULL;if(pointer_menu==s)pointer_menu=NULL;}
+    if(s->menu_hook){UnhookWindowsHookEx(s->menu_hook);s->menu_hook=NULL;}if(pointer_menu==s)pointer_menu=NULL;
     if(s->popup_hwnd||s->popup_view)++s->popup_token;
     if(s->popup_view){ui_web_view_destroy(s->popup_view);s->popup_view=NULL;}
     if(s->popup_backend){ui_light_web_backend_destroy(s->popup_backend);s->popup_backend=NULL;}

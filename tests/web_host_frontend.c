@@ -74,6 +74,8 @@ int wmain(int argc,wchar_t **argv)
     host_window_t host;HWND root,panel_a,panel_b,surface_a,surface_b;ui_app_instance_info_t info;
     uint64_t first,second,cpp=0;ui_rect_t workspace,main,pixel,logical,control;char tab[80];int native_chrome=0;
     HRGN mask;int i,j;const int sizes[][2]={{1920,1080},{1280,720},{800,600},{640,480}};const uint32_t dpis[]={96,144,192};
+    {host_window_t incomplete={0};pointer_menu=&incomplete;close_popup(&incomplete);
+        check(pointer_menu==NULL,"failed framework menu hook creation clears borrowed host");}
     test_bridge();if(argc<2){fprintf(stderr,"Usage: web_host_frontend minimal_eda.uapp [cpp_fixture.uapp]\n");return 2;}
     check(ui_framework_initialize()==UI_STATUS_OK,"initialize per-monitor DPI");memset(&host,0,sizeof(host));
     root=create_host(&host,GetModuleHandleW(NULL));check(root!=NULL,"create standalone Web host");if(!root)return 1;
