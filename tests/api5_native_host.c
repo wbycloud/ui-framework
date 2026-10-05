@@ -10,10 +10,11 @@ static void activate_test_host(host_window_t *host)
  if(SetForegroundWindow(host->hwnd))return;
  if(!GetWindowRect(host->hwnd,&r)||width<2||height<2)return;GetCursorPos(&previous);target=(POINT){r.left+100,r.top+12};
  SetWindowPos(host->hwnd,HWND_TOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE|SWP_NOACTIVATE);
+ fprintf(stderr,"Activate fallback frame=%ld,%ld,%ld,%ld target=%ld,%ld hit=%p owner=%p expected=%p visible=%d iconic=%d\n",r.left,r.top,r.right,r.bottom,target.x,target.y,WindowFromPoint(target),GetAncestor(WindowFromPoint(target),GA_ROOTOWNER),host->hwnd,IsWindowVisible(host->hwnd),IsIconic(host->hwnd));
  /* Only our exposed title bar is eligible; no input into other applications. */
  if(GetAncestor(WindowFromPoint(target),GA_ROOTOWNER)==host->hwnd){
   events[0].type=INPUT_MOUSE;events[0].mi.dx=MulDiv(target.x-GetSystemMetrics(SM_XVIRTUALSCREEN),65535,width-1);events[0].mi.dy=MulDiv(target.y-GetSystemMetrics(SM_YVIRTUALSCREEN),65535,height-1);events[0].mi.dwFlags=MOUSEEVENTF_MOVE|MOUSEEVENTF_ABSOLUTE|MOUSEEVENTF_VIRTUALDESK;
-  events[1].type=events[2].type=INPUT_MOUSE;events[1].mi.dwFlags=MOUSEEVENTF_LEFTDOWN;events[2].mi.dwFlags=MOUSEEVENTF_LEFTUP;CHECK(SendInput(3,events,sizeof(events[0]))==3);pump(host,100);
+  events[1].type=events[2].type=INPUT_MOUSE;events[1].mi.dwFlags=MOUSEEVENTF_LEFTDOWN;events[2].mi.dwFlags=MOUSEEVENTF_LEFTUP;CHECK(SendInput(3,events,sizeof(events[0]))==3);pump(host,100);SetForegroundWindow(host->hwnd);
  }SetWindowPos(host->hwnd,HWND_NOTOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE|SWP_NOACTIVATE);SetCursorPos(previous.x,previous.y);
 }
 static void send_key(host_window_t *host,WORD key,int up)
@@ -23,7 +24,8 @@ int wmain(int argc,wchar_t **argv)
  host_window_t host={0};ui_app_instance_info_t info={0};ui_web_view_t *view;ui_element_presentation_t p={0};ui_cell_t field={0};uint64_t before;HWND focus;
  if(argc!=3)return 2;CHECK(SUCCEEDED(CoInitializeEx(NULL,COINIT_APARTMENTTHREADED)));CHECK(ui_framework_initialize()==UI_STATUS_OK);SetEnvironmentVariableW(L"UI_API5_OSMESA_DLL",argv[2]);
  host.hwnd=create_host(&host,GetModuleHandleW(NULL));CHECK(host.hwnd!=NULL);if(!host.hwnd)return 1;ShowWindow(host.hwnd,SW_SHOW);open_path(&host,argv[1]);CHECK(get_instance(&host,ui_workspace_active(host.workspace),&info));if(!info.host)return 1;
- pump(&host,2000);view=info.host->web_views;while(view&&(!ui_web_view_native_handle(view)||GetParent((HWND)ui_web_view_native_handle(view))!=(HWND)info.host->native_parent))view=view->host_next;CHECK(view!=NULL);if(!view)return 1;
+ pump(&host,2000);{ui_element_presentation_t ready={0};ui_status_t status;ULONGLONG start=GetTickCount64();ready.size=sizeof(ready);do{status=ui_component_get_presentation(ui_component_find(info.host,"form"),"field-name",&ready);if(status!=UI_STATUS_PENDING)break;pump(&host,10);}while(GetTickCount64()-start<15000);CHECK(status==UI_STATUS_OK&&ready.visible);}
+ view=info.host->web_views;while(view&&(!ui_web_view_native_handle(view)||GetParent((HWND)ui_web_view_native_handle(view))!=(HWND)info.host->native_parent))view=view->host_next;CHECK(view!=NULL);if(!view)return 1;
  {wchar_t thread_desktop[128]={0},input_desktop[128]={0};DWORD bytes=0;HDESK desktop=OpenInputDesktop(0,FALSE,DESKTOP_READOBJECTS);
  GetUserObjectInformationW(GetThreadDesktop(GetCurrentThreadId()),UOI_NAME,thread_desktop,sizeof(thread_desktop),&bytes);if(desktop){GetUserObjectInformationW(desktop,UOI_NAME,input_desktop,sizeof(input_desktop),&bytes);CloseDesktop(desktop);}
  fprintf(stderr,"Native input desktop thread=%ls input=%ls available=%d foreground=%p expected=%p\n",thread_desktop,input_desktop,desktop!=NULL,GetForegroundWindow(),host.hwnd);}
