@@ -3,6 +3,7 @@ param(
     [Parameter(Mandatory)][ValidateSet('prepare','build','test')][string]$Stage
 )
 $ErrorActionPreference = 'Stop'
+. "$PSScriptRoot/windows-ci-checks.ps1"
 $buildDirectory = "build/ci-$Configuration"
 $evidenceDirectory = "build/ci-evidence-$Configuration"
 New-Item -ItemType Directory -Force $evidenceDirectory | Out-Null
@@ -95,6 +96,8 @@ if ($env:GITHUB_ACTIONS -eq 'true') {
 }
 $manifest = [ordered]@{
     commit = (& git rev-parse HEAD); configuration = $Configuration
+    sourceDirty = [bool]@(& git status --porcelain).Count
+    githubRunId = $env:GITHUB_RUN_ID; githubRunAttempt = $env:GITHUB_RUN_ATTEMPT
     os = [Environment]::OSVersion.VersionString; processSession = (Get-Process -Id $PID).SessionId
     image = $env:ImageVersion; arch = $env:PROCESSOR_ARCHITECTURE
     desktopBefore = $desktopBefore
@@ -104,10 +107,28 @@ $manifest = [ordered]@{
     osmesa = if ($Configuration -in @('osmesa','webview2')) { 'explicit Mesa24.3.4 memory context' } else { 'acceptance disabled; provider not configured' }
     runtimeGraphics = if ($Configuration -eq 'webview2') { 'platform graphics; software WGL DLLs removed before real Runtime tests' } else { 'Runtime disabled' }
     noLoginAccepted = $false; physicalManualAccepted = $false
+    files = @()
 }
-$manifest | ConvertTo-Json | Set-Content "$evidenceDirectory/manifest.json"
+$manifest.runtimeVersions = if ($Configuration -eq 'webview2') {
+    @(@('HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}', 'HKCU:\Software\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}') |
+        ForEach-Object { (Get-ItemProperty $_ -ErrorAction SilentlyContinue).pv } | Where-Object { $_ -and $_ -ne '0.0.0.0' })
+} else { @() }
+foreach ($file in @(Get-ChildItem -LiteralPath $buildDirectory -File | Where-Object { $_.Extension -in @('.dll','.exe','.uapp') })) {
+    $manifest.files += [ordered]@{path=$file.FullName; bytes=$file.Length; sha256=(Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash.ToLowerInvariant()}
+}
+$provider = if ($Configuration -in @('osmesa','webview2')) { (Resolve-Path .deps/mesa-24.3.4/x64/osmesa.dll).Path } else { $null }
+if ($provider) {
+    $manifest.osmesaFile = [ordered]@{path=$provider; sha256=(Get-FileHash -LiteralPath $provider -Algorithm SHA256).Hash.ToLowerInvariant()}
+}
+$manifest | ConvertTo-Json -Depth 6 | Set-Content "$evidenceDirectory/manifest.json"
+& ctest --test-dir $buildDirectory --show-only=json-v1 > "$evidenceDirectory/test-plan.json"
+CheckExit 'CTest inventory'
+$plan = Get-Content "$evidenceDirectory/test-plan.json" -Raw | ConvertFrom-Json
+$expected = @($plan.tests | ForEach-Object name)
+if (!$expected.Count) { throw 'Empty configured CTest plan' }
+@(Get-UiCiOriginalPackages $buildDirectory ([xml]'<testsuite/>')) | ConvertTo-Json -Depth 6 | Set-Content "$evidenceDirectory/original-packages.json"
 $env:GALLIUM_DRIVER = 'llvmpipe'
-$runtimeTests = 'ui_webview2_|ui_api5_integration|ui_api5_native_host|ui_component_experience_webview2|ui_api6_integration_webview2|ui_component_scroll_webview2|ui_api7_integration_webview2'
+$runtimeTests = $UiCiRuntimeTests
 $phases = if ($Configuration -eq 'webview2') { @('wgl','runtime') } else { @('all') }
 $testExit = 0
 '' | Set-Content "$evidenceDirectory/regression.log"
@@ -120,7 +141,7 @@ foreach ($phase in $phases) {
         foreach ($dll in @('opengl32.dll','libgallium_wgl.dll','libglapi.dll','pipe_swrast.dll')) { Remove-Item -LiteralPath "$buildDirectory/$dll" }
     }
     $filter = if ($phase -eq 'wgl') { @('-E',$runtimeTests) } elseif ($phase -eq 'runtime') { @('-R',$runtimeTests) } else { @() }
-    & ctest --test-dir $buildDirectory @filter --output-on-failure --output-junit "$((Resolve-Path $evidenceDirectory).Path)/ctest-$phase.xml" *> "$evidenceDirectory/regression-$phase.log"
+    & ctest --test-dir $buildDirectory @filter --no-tests=error --output-on-failure --output-junit "$((Resolve-Path $evidenceDirectory).Path)/ctest-$phase.xml" *> "$evidenceDirectory/regression-$phase.log"
     if ($LASTEXITCODE) { $testExit = $LASTEXITCODE }
     Get-Content "$evidenceDirectory/regression-$phase.log" | Add-Content "$evidenceDirectory/regression.log"
     Get-Content "$buildDirectory/Testing/Temporary/LastTest.log" | Add-Content "$evidenceDirectory/test-output.log"
@@ -133,12 +154,6 @@ Get-Content "$evidenceDirectory/regression.log"
 Get-ChildItem $buildDirectory -Filter 'api*-*-frame.ppm' | Copy-Item -Destination $evidenceDirectory
 if (Test-Path "$buildDirectory/session0-control/manifest.json") { Copy-Item "$buildDirectory/session0-control" "$evidenceDirectory/session0-interactive-control" -Recurse }
 [xml]$results = Get-Content "$evidenceDirectory/ctest.xml" -Raw
-foreach ($test in $results.testsuite.testcase) {
-    if ($test.status -eq 'notrun' -and $test.name -ne 'ui_monitor_transition') { throw "Unexpected skipped test: $($test.name)" }
-}
-if ($Configuration -eq 'webview2') {
-    foreach ($required in @('ui_component_scroll_webview2','ui_api7_integration_webview2','ui_component_experience_webview2','ui_api6_integration_webview2','ui_api5_integration','ui_webview2_render')) {
-        if (!($results.testsuite.testcase | Where-Object name -eq $required)) { throw "Required real Runtime test absent: $required" }
-    }
-}
+@(Get-UiCiOriginalPackages $buildDirectory $results) | ConvertTo-Json -Depth 6 | Set-Content "$evidenceDirectory/original-packages.json"
 if ($testExit) { throw "Regression failed ($testExit)" }
+Assert-UiCiResults $results $expected $Configuration
