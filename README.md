@@ -18,10 +18,12 @@
 
 本轮开发保留本地提交，未推送；GitHub main不代表这些本地变更。取得源码后记录实际 commit，再读[API7验收](docs/validation/api7-validation.md)、[0.6 → 0.7迁移](docs/migration-v0.6-to-v0.7.md)和[应用升级提示词](docs/application-upgrade-prompt.md)。API3/4/5历史记录保留原结果，当前菜单及离屏合同见[接口说明](docs/framework-menu-offscreen.md)。
 
+本轮[交付收敛与CI审计](docs/validation/api7-delivery-validation.md)区分本机运行、托管CI和待验条件；真实应用准备见[业务试点](docs/business-pilot.md)。当前本地API7提交尚未发布，新clone必须先核对`UI_FRAMEWORK_API_VERSION=7`和CMake版本0.7.0；不符合时取得维护方明确提供的API7 commit后再接入，不能把main或稳定标签当作该提交。
+
 建议按以下顺序阅读：
 
 1. [CHANGELOG](CHANGELOG.md)：版本变化和兼容性分类。
-2. [0.5 → 0.6 迁移](docs/migration-v0.5-to-v0.6.md)：布局和组件交互；[0.4 → 0.5](docs/migration-v0.4-to-v0.5.md)：Alt、OSMesa、MSAA和Runtime；更早版本按原API阅读相应迁移指南。
+2. [0.6 → 0.7 迁移](docs/migration-v0.6-to-v0.7.md)：当前API7；[0.5 → 0.6 迁移](docs/migration-v0.5-to-v0.6.md)：布局和组件交互；[0.4 → 0.5](docs/migration-v0.4-to-v0.5.md)：Alt、OSMesa、MSAA和Runtime；更早版本按原API阅读相应迁移指南。
 3. [应用开发标准](docs/application-development-standard.md)：生命周期、线程、所有权、DPI、内容后端与助手约定。
 4. [构建与验证](docs/build-and-validation.md)：固定依赖、构建开关、测试和发布检查。
 5. [通用 Web UI](docs/generic-web-ui.md)及[纯 C 示例](examples/generic_components/README.md)：框架管理的树、表格、表单、对话框、缩略图和绘图内容槽。

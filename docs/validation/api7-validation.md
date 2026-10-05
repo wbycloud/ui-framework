@@ -142,3 +142,7 @@ cb42660最后实际只读检查：[环境JSON](api7-environment.json)。本机Se
 ## 7. 归档字节完整性
 
 39bcedf归档后发现Git换行转换使10份current/frozen证据blob与实测SHA256不同。41fb643只为这两种新前缀在[.gitattributes](../../.gitattributes)设置-text并恢复工作区原始字节；未改变源码、断言、运行结果或原包。两个清单中的日志SHA256与Git blob均[零差异](api7-archive-byte-check.log)。其他历史记录保留，二进制身份不以换行归一比较。
+
+## 8. 2026-10-06后续交付收敛
+
+上述历史运行/失败保持原身份。后续CI/测试修正ae4dc7f、2fde15e、e4a33bf及实际本机四行、两个独立64周期、六原包7项复验见[收敛记录](api7-delivery-validation.md)。不把本机结果写为托管CI；当前Session0/无登录和物理/业务条件仍待验。

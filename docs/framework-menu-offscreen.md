@@ -2,7 +2,7 @@
 
 SDK0.7.0开发版、框架API7、开发标准修订7。API5四项已有实现继续保留，当前源码以实际commit为准。运行库接受API1/2/3/4/5/6/7，应用ABI、`ui_app_query_v1`和包格式保持1；不创建稳定标签。
 
-本轮只修改框架和通用验收样例，没有修改请求方应用、文档模型、业务渲染器或PERF-001。能力状态和实际证据见[API6验收](validation/api6-validation.md)与[API5历史验收](validation/api5-validation.md)；[API4记录](validation/api4-validation.md)保留历史结果。
+本轮只修改框架和通用验收样例，没有修改请求方应用、文档模型、业务渲染器或PERF-001。当前能力及证据见[API7验收](validation/api7-validation.md)，历史结果见[API6验收](validation/api6-validation.md)与[API5历史验收](validation/api5-validation.md)；[API4记录](validation/api4-validation.md)保留历史结果。
 
 ## 1. 菜单与工具栏
 

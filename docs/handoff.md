@@ -1,17 +1,18 @@
 # 框架开发交接记录
 
-更新日期：2026-10-05。当前SDK0.7/API7本地开发，先读[本轮验收](validation/api7-validation.md)、[稳定性记录](validation/runtime-stability-validation.md)和末尾第10节；API6已有工作区布局和共同组件体验保留；API5四项保留且继续回归，历史OSMesa Session0已有通过证据，当前源码受服务权限限制待验。菜单外观与侧向鼠标交互已后续修正，见[菜单验收](validation/menu-desktop-validation.md)与第9节。先读[API6验收](validation/api6-validation.md)、[Session0记录](validation/session0-osmesa-validation.md)与第8节；API3/4/5历史记录保留。整机无登录、物理/长期人工及真实业务试点尚未全部验收，不把“已推送”“测试通过”和“完整验收完成”混为一谈。
+更新日期：2026-10-06。本次接续见[API7交付收敛](validation/api7-delivery-validation.md)与第11节；真实业务准备见[试点清单](business-pilot.md)。当前SDK0.7/API7本地开发，先读[本轮验收](validation/api7-validation.md)、[稳定性记录](validation/runtime-stability-validation.md)和末尾第10节；API6已有工作区布局和共同组件体验保留；API5四项保留且继续回归，历史OSMesa Session0已有通过证据，当前源码受服务权限限制待验。菜单外观与侧向鼠标交互已后续修正，见[菜单验收](validation/menu-desktop-validation.md)与第9节。先读[API6验收](validation/api6-validation.md)、[Session0记录](validation/session0-osmesa-validation.md)与第8节；API3/4/5历史记录保留。整机无登录、物理/长期人工及真实业务试点尚未全部验收，不把“已推送”“测试通过”和“完整验收完成”混为一谈。
 
 ## 1. 恢复顺序与版本
 
 1. 检查 `git status --short`、`git branch --show-current` 和 `git log -3 --oneline`；先保留接手时的用户改动。
-2. 阅读本文、[应用开发标准](application-development-standard.md)、[API6验收](validation/api6-validation.md)、[API5验收](validation/api5-validation.md)、[API4记录](validation/api4-validation.md)及[API3未验证项](validation/api3-validation.md#41-未验证项目与补验清单)。
+2. 阅读本文、[应用开发标准](application-development-standard.md)、[API7验收](validation/api7-validation.md)、[Runtime稳定性](validation/runtime-stability-validation.md)、[构建与CI](build-and-validation.md)、[API6验收](validation/api6-validation.md)、[API5验收](validation/api5-validation.md)、[API4记录](validation/api4-validation.md)及[API3未验证项](validation/api3-validation.md#41-未验证项目与补验清单)。
 3. 修改代码前核对[公共头文件](../include/ui_framework/ui.h)、[布局](workspace-layout.md)、[菜单/离屏合同](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)、[0.6→0.7迁移](migration-v0.6-to-v0.7.md)及相关测试。无需重做已完成的实现。
 
 | 项目 | 交接状态 |
 | --- | --- |
 | 仓库 | [wbycloud/ui-framework](https://github.com/wbycloud/ui-framework) |
 | API5功能代码 | [87478fa20d7bb46809c0ef81dd44f972dc193a24](https://github.com/wbycloud/ui-framework/commit/87478fa20d7bb46809c0ef81dd44f972dc193a24)，四项实现及回归；文档另行提交，实际HEAD以Git为准 |
+| API7当前交付 | 产品源码2c0c52b、原生测试cb42660；本次CI/测试修正ae4dc7f、2fde15e、e4a33bf；运行身份和待验见第11节及收敛记录，实际HEAD以Git为准 |
 | API6实现/最终测试与CI条件 | [1cdc50e](https://github.com/wbycloud/ui-framework/commit/1cdc50e)、[9705565](https://github.com/wbycloud/ui-framework/commit/9705565)，完整提交序列及失败修复见API6验收；文档提交不改运行代码 |
 | 菜单后续本地实现 | `6bf59f8`、`2917b44`、`d907fbd`、`d2e4a61`及测试收敛`b1f4c7b`；最终产品源码d2e4a61，仅内部菜单改动，API6/ABI1不变；最终证据另提交 |
 | API4历史实现/补验 | [e83a008](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c)、[48d6aaf](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，模态原生输入、STYLE回收、redock焦点；[记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
@@ -31,7 +32,7 @@ API6本轮起点为干净ea5b108，与当时origin/main及工作分支一致，�
 
 优先复用原菜单、工具、面板、内容槽、命令、队列和生命周期。新增接口不暴露第三方私有类型；保持旧字段偏移、枚举值和默认行为，新字段按 size 判断。64位身份在 JSON 中为十进制字符串，图像像素通过 C 接口复制传递。线程、所有权和 DLL 卸载合同不能绕过。
 
-文档面向 C/C++ 应用开发者，不署名；给其他应用的[升级提示词](application-upgrade-prompt.md)只使用 GitHub 入口，不包含个人本地目录。历史任务曾授权提交并推送框架和说明；本轮最终推送被自动审批拒绝，当前可核验授权不足以覆盖默认分支发布，完整交付先保留本地，见第8节。不要强推或创建新的稳定标签。
+文档面向 C/C++ 应用开发者，不署名；给其他应用的[升级提示词](application-upgrade-prompt.md)只使用 GitHub 入口，不包含个人本地目录。历史任务曾授权推送，API6阶段最终推送曾被自动审批拒绝（第8节）；该拒绝属于历史记录。本轮API7收敛没有新的推送或远程执行授权，先保留本地提交。不要强推或创建新的稳定标签。
 
 交接准备及后续补验未启用 graph-engineering，也未修改请求方 KLayout C 应用、冻结应用包或 PERF-001。接手时不要把应用适配或性能重新测量自动扩展进框架任务。后续已完成本机自动补验和三项针对性修复，没有新建会话或移动当前会话。
 
@@ -113,7 +114,7 @@ API4历史验证曾使用`build/fw-next/release`，菜单阶段同目录重建�
 | UV-06 | 请求方应用完整离屏业务接入 | 应用独立适配窗口依赖、路径/调度和业务renderer；本框架未替应用完成 |
 | UV-07 | 物理屏幕边缘菜单及GL遮挡 | 不同DPI显示器边缘测试三种锚点、翻转、外点关闭、焦点恢复和桌面合成 |
 
-API4未实现的Alt访问键、真正无窗口GL、离屏MSAA、WebView2呈现/捕获/组件桥接已在API5实现，历史证据见第7节。布局持久化、约束分隔条与左右栈/浮动拖拽已在API6实现，见第8节。完整浏览器、Canvas/SVG、富文本、可变行高、任意嵌套/标签式停靠及硬件EGL未实现；目标环境或人工待验项不能写成通过。
+API4未实现的Alt访问键、真正无窗口GL、离屏MSAA、WebView2呈现/捕获/组件桥接已在API5实现，历史证据见第7节。布局持久化、约束分隔条与左右栈/浮动拖拽已在API6实现，见第8节。API7已实现底部与同区域标签式停靠、完整范围滚动和连续RGBA；完整浏览器、Canvas/SVG、富文本、可变行高、任意嵌套分割树及硬件EGL未实现；目标环境或人工待验项不能写成通过。
 
 ## 6. 接手后的执行规则
 
@@ -126,7 +127,7 @@ API4未实现的Alt访问键、真正无窗口GL、离屏MSAA、WebView2呈现/�
 可直接给下一会话以下指令：
 
 ```text
-请接手 https://github.com/wbycloud/ui-framework 。先读docs/handoff.md，再核对实际Git状态、HEAD、API6标准、布局/组件合同及API3/4/5/6和Session0记录。四项API5功能与API6布局/组件体验已有实现及独立DLL/实际Runtime/GL回归，不重复开发，不把环境待验写成通过。不修改请求方应用、冻结SDK、原包及PERF-001，不使用graph-engineering、子代理或新会话。继续独立补验和针对性修复，保持API1–6兼容、完整size字段/偏移、线程和卸载合同；缺环境或授权的项目最后核对，同步文档和GitHub升级提示词。
+请接手 https://github.com/wbycloud/ui-framework 。先读docs/handoff.md、docs/application-development-standard.md、docs/build-and-validation.md、docs/generic-web-ui.md、docs/workspace-layout.md、docs/framework-menu-offscreen.md及API7、Runtime稳定性、API5/6、菜单和Session0验收。核对实际Git状态、HEAD、API7公共头文件和现有四行CI/严格Session0工作流，保留用户改动。API5/6/7及菜单已实现，不重复开发。保持API1–7兼容、完整size字段/偏移、线程、所有权和卸载合同；旧SDK重编译与原包分别报告，本地运行不冒充托管CI，历史Session0不替代当前源码。先给简短计划，持续补验/修复和文档交付，缺环境或授权最后汇总。业务试点按docs/business-pilot.md先核对指定应用及修改授权；没有授权只准备方案。不得修改冻结SDK、原包、PERF-001或未授权请求方应用，不使用graph-engineering、子代理或新会话；没有明确授权不推送、不触发远程工作流、不强推或创建稳定标签。
 ```
 
 ## 7. API5本轮交付与接续
@@ -191,3 +192,11 @@ Session0补验后的必要回归为43项42PASS/1SKIP，原生21项20PASS/1SKIP�
 最后审计：cb42660源码的Session0服务脚本第11行非管理员检查退出1，未创建服务或注销用户/修改既有服务，历史78c24cb不冒充当前验收。最终冻结Session1实际DLL/OSMesa200轮、400实例、2000命令、HWND0、原128MiB门槛通过（185→186句柄，private峰值109,375,488），只算INTERACTIVE_CONTROL。严格无登录runner没有；真实中文IME、物理不同DPI/屏幕边缘/桌面合成、长期人工、当前托管CI与授权业务试点仍待验。没有OSMesa瓶颈/硬件需求证据，不扩大范围。独立实现和本地文档已交付；当前自动矩阵已通过，但历史失败仍保存；上述目标环境和人工限制意味着不宣布整个阶段验收完成。
 
 归档提交39bcedf；41fb643针对current/frozen证据保留原始字节，实测日志哈希与Git blob零差异。后续仅说明/检查记录提交，不改变cb42660已验执行源码。最终HEAD和清洁状态以git log/status核对。
+
+## 11. API7交付收敛、CI复验与业务准备
+
+2026-10-05/06接手干净68c4e9c，当前API7产品功能不重复开发。CI单元ae4dc7f补清单/身份/原包缺项及结果校验；2fde15e修复关闭WebView2时滚动测试仍链接可选函数；e4a33bf把显式OSMesa对照与软件WGL部署隔离，保持原资源断言。没有修改公共接口/ABI、请求方应用、SDK1–6、原包或PERF-001。
+
+当前结果、原失败及精确运行身份见[交付收敛验收](validation/api7-delivery-validation.md)。四行脚本的本机运行与GitHub托管CI分别报告；本轮无远程推送/工作流触发授权，保留本地提交。当前Session0权限与严格无登录runner、真实IME/物理多屏/桌面边缘合成/长期人工待验，不继承78c24cb历史成功。
+
+真实业务接入按[试点准备](business-pilot.md)先取得指定应用和明确修改范围。旧KLayout只读观察不授权迁移；框架DLL集成不作为业务验收。继续复用API7布局2读取1、旧API1–7/C ABI及线程/所有权/卸载合同，不扩大硬件GL。

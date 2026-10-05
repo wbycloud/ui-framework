@@ -32,3 +32,5 @@ source总量缩小时可返回row_count=0的空批报告新total_count，原请�
 冻结SDK6所有12个公共头文件来自658b497，SDK1–5和原包不改。原生、轻量、真实Runtime、OSMesa/MSAA/普通附件分别执行；旧SDK重建调用方与原二进制不是同一项。框架独立DLL集成不等于业务应用验收。实测、失败、commit及环境限制见[API7验收](validation/api7-validation.md)，重开问题见[资源记录](validation/runtime-stability-validation.md)。
 
 API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认；初始有/无窗口布局为其分配底部空间，reset回到注册默认底部。直接声明与事后移动同样保留内容生命周期，见[注册复现和修复](validation/api7-validation.md)。
+
+交付来源与验证再核对[CI收敛记录](validation/api7-delivery-validation.md)。新clone可能仍为旧API，先取得维护方指定且实际可获取的API7 commit。业务接入按[试点清单](business-pilot.md)核对应用和授权；本轮CI/测试内部修正不新增公共接口或升级ABI。

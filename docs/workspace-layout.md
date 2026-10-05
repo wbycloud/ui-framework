@@ -62,3 +62,5 @@ dock_panel_tab(moving,anchor)把已有面板移入anchor同区组并激活，浮
 [workspace7](../tests/workspace7.c)覆盖原生/Web shell、Windows无窗口、底部/标签/关闭重开/同槽、提交取消、格式2/未来/异常/部分字段。原[workspace_layout](../tests/workspace_layout.c)用冻结SDK6保留全部格式1断言。集成与边界见[API7验收](validation/api7-validation.md)。
 
 API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认；初始有/无窗口布局为其分配底部空间，reset回到注册默认底部。直接声明与事后移动同样保留内容生命周期，见[注册复现和修复](validation/api7-validation.md)。
+
+当前交付来源、CI与环境限制见[收敛验收](validation/api7-delivery-validation.md)。真实业务布局存储/恢复试点步骤见[准备清单](business-pilot.md)，框架测试DLL不替代业务文档恢复验收。

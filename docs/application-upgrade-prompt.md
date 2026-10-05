@@ -5,13 +5,13 @@
 复制以下内容给负责应用项目的开发者或代码助手。所有入口均来自GitHub；提示词不包含个人本地目录。
 
 ```text
-请实际完成当前应用项目向以下框架版本的适配，不要只修改版本号或提供建议。
+仅在请求方明确指定本应用并授权接入修改后执行以下适配。未授权时按docs/business-pilot.md准备检查项，不修改应用。授权后实际完成适配，不只修改版本号。
 
 仓库：https://github.com/wbycloud/ui-framework
-分支：main。目标SDK0.7.0开发版、框架API7、开发标准修订7。
+发布后从维护方明确指定的分支和commit接入（不要假定当前main已含本轮本地交付）。目标SDK0.7.0开发版、框架API7、开发标准修订7。
 应用ABI、导出入口ui_app_query_v1、包格式均保持1。
 
-1. 从上述GitHub仓库获取main，记录实际commit，核对CMake版本0.7.0、UI_FRAMEWORK_API_VERSION=7和标准修订7。读取README.md、CHANGELOG.md、docs/application-development-standard.md、docs/generic-web-ui.md、docs/framework-menu-offscreen.md、docs/workspace-layout.md、docs/migration-v0.6-to-v0.7.md、docs/validation/api7-validation.md、include/ui_framework公共头文件及tests/api7_fixture.c。API1–5应用同时读取对应历史迁移指南。若取得源码不符合目标，报告差异，不猜测接口。
+1. 先核对维护方提供的目标commit是否可获取，再从上述GitHub仓库获取该commit，记录实际commit，核对CMake版本0.7.0、UI_FRAMEWORK_API_VERSION=7和标准修订7。读取README.md、CHANGELOG.md、docs/application-development-standard.md、docs/generic-web-ui.md、docs/framework-menu-offscreen.md、docs/workspace-layout.md、docs/migration-v0.6-to-v0.7.md、docs/validation/api7-validation.md、docs/validation/api7-delivery-validation.md、docs/business-pilot.md、include/ui_framework公共头文件及tests/api7_fixture.c。API1–5应用同时读取对应历史迁移指南。若取得源码不符合目标，报告差异，不猜测接口。
 
 2. 盘点应用SDK/API/ABI、包清单、菜单与toolbar分组、组件/内容槽、命令、图片、线程和卸载；区分已符合、需要修改、可选离屏适配及框架限制。保留业务模型、算法、文件格式和应用渲染器，只修改应用接入与界面层，不修改框架内部代码。
 

@@ -48,3 +48,9 @@ PSS观察依据[Microsoft PSS_HANDLE_ENTRY文档](https://learn.microsoft.com/en
 原生输入测试显式等待实际呈现完成后记录焦点，safe title点击后仅重试标准SetForegroundWindow；微软仍允许拒绝前台请求，见[合同](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setforegroundwindow)。没有更改输入设置、桌面、所有者断言或对其他应用发键。共享桌面的额外VK_PACKET/前台丢失失败均保留，最新三个独立通过不称永久消除竞态。下一次资源超限继续保存pending、窗口类/PID和PSS类型，不能以一次通过、未知类型或缓存假说宣布根治。
 
 最终冻结cb42660完整61项60PASS/1物理SKIP、327.82秒，本次原生输入通过；另10个独立原生输入进程60.74秒全通过。API5 built/original各360→357、GDI9/USER17不增长、pending0，原32周期/+12/+4不变；[冻结原输出](api7-frozen-full-output.log)与[完整身份](api7-frozen-binaries.json)。之前全部失败仍保留，当前目标Session0/无登录及长期人工待验。
+
+## 2026-10-06交付收敛复验
+
+执行代码e4a33bf（本次仅CI/测试变化，产品/公共头文件相对68c4e9c未改）：两个独立API7 Runtime进程各64周期，快速及实际呈现后关闭均406→406、GDI12/USER17不增长、末次pending0、逐轮DLL卸载；呈现关闭暂存pending64/handles峰值564，实际排空后仍满足原+12/+4。四行Runtime API5内置32周期384→380/GDI9/USER15平稳，原API5包另32周期实际通过；原生真实输入6.19秒通过。历史未完全归因差值与共享桌面失败继续保留，不宣称永久根治；源码/产物/完整证据见[收敛验收](api7-delivery-validation.md)。
+
+另外，软件WGL部署会影响独立OSMesa资源对照；原341→346/USER99→103失败及三次同二进制移除本行WGL部署后的237→238/USER2对照均保留，CI现隔离WGL/provider/Runtime。该环境修正没有修改关闭产品代码，也不解释历史全部WebView2波动。

@@ -6,7 +6,7 @@
 
 ## 0. 阅读入口与版本约定
 
-先读[通用 Web UI 接入约定](generic-web-ui.md)，再参考[通用纯 C 示例](../examples/generic_components/README.md)。新接口见 [components.h](../include/ui_framework/components.h)、[images.h](../include/ui_framework/images.h)；命令、面板、内容槽、助手和应用生命周期仍以原公共头文件为准。
+当前升级先读[0.6→0.7迁移](migration-v0.6-to-v0.7.md)与[构建及CI](build-and-validation.md)，业务接入准备见[试点清单](business-pilot.md)。再读[通用 Web UI 接入约定](generic-web-ui.md)，再参考[通用纯 C 示例](../examples/generic_components/README.md)。新接口见 [components.h](../include/ui_framework/components.h)、[images.h](../include/ui_framework/images.h)；命令、面板、内容槽、助手和应用生命周期仍以原公共头文件为准。
 
 [0.3 → 0.4 迁移指南](migration-v0.3-to-v0.4.md)说明API4历史菜单及离屏接口；[0.4→0.5](migration-v0.4-to-v0.5.md)说明API5历史增补，[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)保留通用组件和废弃输入开关的迁移要求；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[API5历史验收](validation/api5-validation.md)及[当前API7验收](validation/api7-validation.md)记录构建、自动化与真实宿主证据。API4 包不能加载到只支持 API1/2/3 的运行库，清单与 DLL 声明必须相同。
 
@@ -34,7 +34,7 @@ API4历史菜单、隐藏WGL及无窗口workspace合同保留在[菜单与离屏
 
 构建同时保留静态框架和原有嵌入式样例，并提供独立宿主所需的共享框架。Windows 默认开启独立宿主与轻量 Web 后端，WebView2 默认关闭。只构建原生/OpenGL 时，同时设置 `UI_BUILD_STANDALONE_HOST=OFF` 与 `UI_FRAMEWORK_ENABLE_LIGHT_WEB=OFF`，无需 HTML/JS 引擎；此配置不生成独立宿主。原ui_framework_headless目标仍只验证核心状态；Windows完整运行库分别提供轻量无HWND、HIDDEN_WINDOW隐藏WGL和NO_WINDOW OSMesa内存GL。Session0与整机无登录继续独立验收。
 
-框架没有内置 EDA、Markdown、画板、PPT、Excel 文档模型，也没有自动加载 `app://` 资源、任意嵌套/标签式停靠管理器、网络模型客户端或 TypeScript 编译器。将这些能力实现为应用逻辑，保持公共 C 接口作为接入边界。
+框架没有内置 EDA、Markdown、画板、PPT、Excel 文档模型，也没有自动加载 `app://` 资源、任意嵌套分割树、网络模型客户端或 TypeScript 编译器。将这些能力实现为应用逻辑，保持公共 C 接口作为接入边界。
 
 ## 2. 应用包和生命周期
 

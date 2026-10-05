@@ -1,6 +1,6 @@
 # 构建与验证
 
-本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.7.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 、API3 generic_components 和 API4 framework_features 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
+本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.7.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 、API3 generic_components 和 API4 framework_features 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，当前升级见[0.6→0.7迁移](migration-v0.6-to-v0.7.md)；更早版本按对应历史指南迁移。
 
 API5已有能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[历史验收](validation/api5-validation.md)。当前API7接口迁移见[0.6→0.7](migration-v0.6-to-v0.7.md)、[布局](workspace-layout.md)及[验收](validation/api7-validation.md)。API3–6样例和历史节保留对应版本结果，不作为当前测试状态。
 
@@ -317,7 +317,7 @@ Session0／无登录CI现有独立实际应用DLL及临时服务入口，详细�
 
 CI使用MSVC19.44/W4/WX实际构建通过；x64包检查使用编译期 `UINTPTR_MAX` 比较，避免旧编译器C4127。正式用例保留全部资源采样，进程缓存采用声明的128 MiB预算；初始门槛和失败诊断见专门记录。Windows服务无继承控制台，测试直接重开stdout/stderr文件，不创建控制台窗口。默认托管runner实测有登录用户，严格无登录项会失败；已有无登录Windows x64服务runner可在手动工作流填写其runner_label，不自动创建机器或注销用户。
 
-## API6 回归矩阵与独立应用
+## 当前 Windows 回归矩阵与 API6 保留样例
 
 [windows-regression.yml](../.github/workflows/windows-regression.yml)与[执行脚本](../tools/windows-ci.ps1)建立四种Windows-2022 x64/C11 Release配置。native关闭两种Web和宿主；light开启轻量但不配置OSMesa；webview2开启两种Web、真实Runtime和显式OSMesa；osmesa开启轻量/实际OSMesa测试DLL，关闭WebView2。四行都执行被配置的必要CTest。只有物理ui_monitor_transition允许缺条件跳过，其余跳过及失败均拒绝。
 
@@ -325,7 +325,7 @@ CI使用MSVC19.44/W4/WX实际构建通过；x64包检查使用编译期 `UINTPTR
 
 托管GUI用例需要1920×1080虚拟桌面，脚本仅在GitHub临时VM调用Set-DisplayResolution并核验实际尺寸/DPI，记录原尺寸。这不能替代物理跨屏。依据[runner维护者说明](https://github.com/actions/runner-images/issues/2935)，默认1024×768不能满足宽窗断言。窄窗用例仍按原尺寸矩阵执行。
 
-软件WGL在新build目录仅部署opengl32.dll、libgallium_wgl.dll、libglapi.dll及pipe_swrast.dll，显式GALLIUM_DRIVER=llvmpipe，记录实际renderer；不复制整个Mesa DLL目录污染其他系统库加载，也不修改系统OpenGL或冒充硬件GL。WebView2行先按当前CTest清单运行全部非Runtime用例，再移除这四个本行部署的DLL，使用平台图形运行全部匹配Runtime过滤器的用例，并强制检查新增必跑项；两个阶段合并逐项结果和完整输出，任一阶段失败仍失败。OSMesa仍用绝对库路径与实际内存上下文及其提供方依赖，不受WGL部署移除影响。
+软件WGL在新build目录仅部署opengl32.dll、libgallium_wgl.dll、libglapi.dll及pipe_swrast.dll，显式GALLIUM_DRIVER=llvmpipe，记录实际renderer；不复制整个Mesa DLL目录污染其他系统库加载，也不修改系统OpenGL或冒充硬件GL。OSMesa行分软件WGL与显式provider两个阶段；WebView2行分WGL、provider、Runtime三个阶段。先运行需要软件WGL的用例，再移除这四个本行部署的DLL，运行显式OSMesa用例，最后使用平台图形运行匹配Runtime过滤器的用例；合并逐项结果和完整输出，任一阶段失败仍失败。OSMesa仍用绝对库路径与实际内存上下文及其提供方依赖，不受WGL部署移除影响。
 
 历史API6最终本机与CI结果见[API6验收](validation/api6-validation.md)，Session0及严格无登录门槛保持[独立工作流](../.github/workflows/session0-osmesa.yml)。GitHub托管runner有已登录用户；矩阵绿色不能替代整机无登录通过。专用runner缺失时保持待验，不注销用户或改既有服务。
 
@@ -355,3 +355,29 @@ API7/ABI1/包格式1，见[迁移](migration-v0.6-to-v0.7.md)及[验收](validat
 构建后执行ctest --test-dir build/web-shell --output-on-failure；专测使用-R "ui_workspace7|ui_component_scroll|ui_light_scroll|ui_component_experience|ui_api7_integration"。UI_RUNTIME_CYCLES=64选择64连续周期，UI_RUNTIME_READY_REOPENS=1要求实际Runtime呈现后关闭，再运行ui_api7_integration_test.exe package.uapp osmesa.dll webview2；记录实际绝对提供方路径及hash。
 
 Session0用原[服务脚本](../tools/run-session0-validation.ps1)和[严格工作流](../.github/workflows/session0-osmesa.yml)，仅创建自身GUID临时服务，要求管理员/服务管理权限。不注销用户或改既有服务，RequireNoLogin检查整机登录会话；Session0成功不替代该门槛。当前证据必须有当前二进制hash。
+
+## API7 CI 可复验性与原包来源
+
+沿用四行工作流，不重复搭建。执行脚本需在x64开发终端使用PowerShell 7、Ninja和CMake/CTest至少3.26（JUnit始于3.21，`--no-tests=error`始于3.26，见[CTest官方手册](https://cmake.org/cmake/help/latest/manual/ctest.1.html)）；普通产品CMake最低3.20不因此改变。先核对取得的确切API7 commit，再在新目录运行：
+
+```powershell
+./tools/test-windows-ci.ps1
+# 四行分别执行；本地prepare不自动安装Runtime。
+foreach ($row in @("native","light","webview2","osmesa")) {
+    ./tools/windows-ci.ps1 -Configuration $row -Stage prepare
+    ./tools/windows-ci.ps1 -Configuration $row -Stage build
+    ./tools/windows-ci.ps1 -Configuration $row -Stage test
+}
+```
+
+`prepare`核验固定源码commit、SDK/Mesa归档SHA256；Evergreen Runtime不是固定镜像，只在临时GitHub VM缺失/过旧时使用微软签名Bootstrapper，并记录实际版本。应使用新的构建目录，不从别处复制Runtime配置或用户数据。构建及CTest错误均非零退出；空测试、缺项、重复项、失败或非物理项跳过均拒绝。`test-plan.json`保存命令/参数及配置清单，合并JUnit必须与它一一对应。原API5包和原API6 Runtime用例也按Runtime阶段分配。
+
+每行`build/ci-evidence-<row>/`归档源commit/dirty状态、运行ID、OS/Session/桌面/DPI/Runtime、编译输出、实际DLL/EXE/.uapp及OSMesa哈希、精确测试清单、JUnit、完整LastTest和真实帧；工作流always上传30日保留的artifact。本机运行仍是本机证据，不能将无GitHub run ID的结果写为托管CI。
+
+`original-packages.json`按API1–6分别报告路径、实际/历史原包SHA256与执行情况。新clone没有原包，默认API1指向本次冻结SDK重编的minimal_eda.uapp，标为rebuilt_fixture；其他缺失为not_provided。未知哈希只标unverified_identity。只有已知原包哈希匹配且相关用例实际全部执行通过才标passed；某行只覆盖部分后端标partial，不作全后端验收。冻结SDK调用方编译/运行是另一项，不能替代原包。
+
+六个原包保全位置/哈希见[API7记录](validation/api7-validation.md#5-兼容依赖和复现)。若有授权提供原包，在本行build后、test前对同一build/ci-<row>再次cmake配置UI_LEGACY_EDA_PACKAGE、UI_LEGACY_API2_PACKAGE、UI_LEGACY_COMPONENT_PACKAGE、UI_LEGACY_API4_PACKAGE、UI_LEGACY_API5_PACKAGE、UI_LEGACY_API6_PACKAGE为只读原包绝对路径，再build及test；不得用本轮生成的包填这些路径。现有工作流没有原包下载源，本轮不添加未授权下载或重新编译替代物。
+
+[本轮交付及失败记录](validation/api7-delivery-validation.md)提供实际commit、运行/复现步骤和待运行的远程操作；[业务试点](business-pilot.md)先核对指定应用/修改授权。严格[Session0工作流](../.github/workflows/session0-osmesa.yml)复用原服务脚本，`RequireNoLogin`保持整机登录会话门槛，当前权限不足或无目标runner时分别记待验。
+
+显式provider阶段包含ui_windowless_gl、ui_session0_interactive_control、Light的ui_api6_integration/ui_api7_integration及可选原API6 Light；Runtime变体只在Runtime阶段。软件WGL DLL即使没有调用WGL也可能初始化进程资源；实际对照曾在200周期资源断言失败，原断言保留，三次同二进制移除本行WGL部署的对照通过。详见收敛记录，不把这项环境隔离称为历史WebView2波动的完整根因。
