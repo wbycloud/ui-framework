@@ -18,7 +18,7 @@ static void activate_test_host(host_window_t *host)
  }SetWindowPos(host->hwnd,HWND_NOTOPMOST,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE|SWP_NOACTIVATE);SetCursorPos(previous.x,previous.y);
 }
 static void send_key(host_window_t *host,WORD key,int up)
-{INPUT input={0};HWND foreground=GetForegroundWindow();int owned=foreground&&GetAncestor(foreground,GA_ROOTOWNER)==host->hwnd;CHECK(owned);if(!owned)return;input.type=INPUT_KEYBOARD;input.ki.wVk=key;input.ki.dwFlags=up?KEYEVENTF_KEYUP:0;CHECK(SendInput(1,&input,sizeof(input))==1);pump(host,100);}
+{INPUT input={0};HWND foreground=GetForegroundWindow();int owned=foreground&&GetAncestor(foreground,GA_ROOTOWNER)==host->hwnd;CHECK(owned);if(!owned){DWORD pid=0;wchar_t name[128]={0};GetWindowThreadProcessId(foreground,&pid);GetClassNameW(foreground,name,128);fprintf(stderr,"Rejected input key=%u foreground=%p class=%ls pid=%lu ours=%lu owner=%p rootowner=%p focus=%p\n",key,foreground,name,pid,GetCurrentProcessId(),GetWindow(foreground,GW_OWNER),GetAncestor(foreground,GA_ROOTOWNER),GetFocus());return;}input.type=INPUT_KEYBOARD;input.ki.wVk=key;input.ki.dwFlags=up?KEYEVENTF_KEYUP:0;CHECK(SendInput(1,&input,sizeof(input))==1);pump(host,100);}
 int wmain(int argc,wchar_t **argv)
 {
  host_window_t host={0};ui_app_instance_info_t info={0};ui_web_view_t *view;ui_element_presentation_t p={0};ui_cell_t field={0};uint64_t before;HWND focus;
