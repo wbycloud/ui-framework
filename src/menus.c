@@ -300,14 +300,14 @@ static ui_status_t ensure_popup(ui_host_t *host,ui_menu_popup_t **out)
 {if(host->menu_popup){*out=(ui_menu_popup_t *)host->menu_popup;return UI_STATUS_OK;}return create_popup(host,NULL,out);}
 static ui_status_t show_popup(ui_menu_popup_t *p)
 {
-    ui_rect_t rect=p->anchor.rect;void *native=p->host->native_parent;uint32_t dpi=p->host->dpi;ui_status_t status;
+    ui_rect_t rect=p->anchor.rect;void *native=p->host->native_parent;uint32_t dpi=p->host->dpi;ui_status_t status;size_t total=0;
     if(p->anchor.kind==UI_MENU_ANCHOR_CONTENT_SLOT){ui_rect_t slot;
         if(!ui_content_slot_belongs_to(p->anchor.slot,p->host)||ui_content_slot_get_rect(p->anchor.slot,&slot)!=UI_STATUS_OK)return UI_STATUS_INVALID_ARGUMENT;
         native=ui_content_slot_native_handle(p->anchor.slot);if(!native){rect.x+=slot.x;rect.y+=slot.y;}
     }else if(p->anchor.kind==UI_MENU_ANCHOR_COMPONENT_ROW){
         status=ui_component_menu_anchor(p->anchor.component,p->host,p->anchor.row_id,&rect,&native,&p->generation);if(status!=UI_STATUS_OK)return status;}
     else if(p->anchor.kind!=UI_MENU_ANCHOR_HOST)return UI_STATUS_INVALID_ARGUMENT;
-    {menu_rows_t *rows=(menu_rows_t *)malloc(sizeof(*rows));size_t count=0;if(!rows)return UI_STATUS_OUT_OF_MEMORY;if(!p->detail){status=popup_rows(p,rows);count=rows->count;if(!p->open){p->keyboard_focus[0]=0;for(size_t i=0;i<count;i++)if(rows->rows[i].entry.state.enabled&&!rows->rows[i].entry.state.busy){snprintf(p->keyboard_focus,sizeof(p->keyboard_focus),"%s",rows->rows[i].entry.id);break;}}if(status!=UI_STATUS_OK){free(rows);return status;}}free(rows);p->page_count=count<10?count:10;if(!p->page_count)p->page_count=1;p->width=320;p->height=p->detail?180:(int)p->page_count*28+44;}
+    {menu_rows_t *rows=(menu_rows_t *)malloc(sizeof(*rows));if(!rows)return UI_STATUS_OUT_OF_MEMORY;if(!p->detail){status=popup_rows(p,rows);total=rows->count;if(!p->open){p->keyboard_focus[0]=0;for(size_t i=0;i<total;i++)if(rows->rows[i].entry.state.enabled&&!rows->rows[i].entry.state.busy){snprintf(p->keyboard_focus,sizeof(p->keyboard_focus),"%s",rows->rows[i].entry.id);break;}}if(status!=UI_STATUS_OK){free(rows);return status;}}free(rows);p->page_count=total<10?total:10;if(!p->page_count)p->page_count=1;p->width=320;p->height=p->detail?180:(int)p->page_count*28+8+(total>p->page_count?36:0);}
 #ifdef _WIN32
     if(p->window){POINT point={MulDiv(rect.x,(int)dpi,96),MulDiv(rect.y+rect.height,(int)dpi,96)};MONITORINFO monitor={sizeof(monitor)};
         int width,height,x,y;ClientToScreen((HWND)native,&point);GetMonitorInfoW(MonitorFromPoint(point,MONITOR_DEFAULTTONEAREST),&monitor);
@@ -317,7 +317,7 @@ static ui_status_t show_popup(ui_menu_popup_t *p)
         if(y+height>monitor.rcWork.bottom)y=p->parent?monitor.rcWork.bottom-height:point.y-MulDiv(rect.height,(int)dpi,96)-height;
         if(x+width>monitor.rcWork.right)x=p->parent?monitor.rcWork.right-width:point.x+MulDiv(rect.width,(int)dpi,96)-width;
         if(x<monitor.rcWork.left)x=monitor.rcWork.left;if(y<monitor.rcWork.top)y=monitor.rcWork.top;
-        p->width=MulDiv(width,96,(int)dpi);p->height=MulDiv(height,96,(int)dpi);if((p->height-44)/28<(int)p->page_count)p->page_count=p->height>44?(size_t)(p->height-44)/28:1;if(!p->open)p->previous_focus=GetFocus();
+        p->width=MulDiv(width,96,(int)dpi);p->height=MulDiv(height,96,(int)dpi);if(!p->detail&&height<MulDiv((int)p->page_count*28+8+(total>p->page_count?36:0),(int)dpi,96))p->page_count=p->height>44?(size_t)(p->height-44)/28:1;if(!p->open)p->previous_focus=GetFocus();
         SetWindowPos((HWND)p->window,HWND_TOP,x,y,width,height,SWP_NOACTIVATE);
     }
 #endif
