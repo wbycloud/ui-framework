@@ -83,7 +83,7 @@ int wmain(int argc,wchar_t **argv)
     check(GetMenu(root)==NULL,"Web host never installs a Win32 menu");
     check(host.web_hwnd&&IsWindow(host.web_hwnd),"real lightweight Web rendering window");
     check(ui_web_view_get_element_rect(host.view,"workspace",&workspace)==UI_STATUS_OK&&workspace.width>400&&workspace.height>300,"HTML computes initial viewport");
-    check(click(host.view,"theme"),"Web theme button exists");pump();check(host.dark,"theme action crosses JS/C bridge");
+    check(click(host.view,"menu"),"host options exists");pump();check(click(host.popup_view,"popup-item-4"),"Web secondary theme entry exists");pump();check(host.dark,"theme action crosses JS/C bridge");
     open_path(&host,argv[1]);pump();first=ui_workspace_active(host.workspace);
     open_path(&host,argv[1]);pump();second=ui_workspace_active(host.workspace);
     check(first&&second&&first!=second&&ui_workspace_count(host.workspace)==2,"two independent EDA instances");

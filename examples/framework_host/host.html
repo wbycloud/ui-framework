@@ -17,14 +17,42 @@ button:disabled { color:#8a93a2; background:#edf0f5; }
 input, textarea { padding:6px; background:#ffffff; border:1px solid #dce2ec; border-radius:5px; color:#243047; font-size:13px; }
 textarea { width:100%; }
 #shell { display:flex; flex-direction:column; width:100%; height:100%; }
-#top { height:44px; padding:6px 8px; background:#edf1f7; gap:6px; }
-#menu, #theme { width:32px; padding:4px; }
-#open { width:88px; }
-#assistant-toggle { width:36px; padding:4px; }
-#tabs { display:flex; flex-direction:row; flex:1; gap:4px; overflow-x:auto; height:32px; }
-.tab { display:flex; flex-direction:row; gap:2px; }
-.tab-name { width:150px; height:30px; }
-.tab-close { width:26px; height:30px; padding:4px; }
+#top { height:40px; padding:0; background:#dfe5ef; gap:0; }
+#recent,#tab-more { width:34px; height:40px; padding:4px; font-size:20px; }
+.compact #recent,.compact #tab-more,.compact #open { width:28px; }
+.compact #assistant-toggle { width:32px; }
+.compact .window-button { width:36px; }
+.compact #title-space { min-width:12px; }
+#open { width:34px; height:36px; padding:4px; }
+#assistant-toggle { width:40px; height:40px; padding:4px; }
+#title-space { flex:1; height:40px; min-width:24px; }
+#window-controls { display:flex; flex-direction:row; gap:0; }
+.window-button { width:46px; height:40px; padding:4px; border:0; border-radius:0; background:#dfe5ef; }
+.window-button:hover,.window-button:focus { background:#cbd6e7; }
+#window-close:hover,#window-close:focus { background:#c42b1c; color:#ffffff; }
+#menu-row { display:flex; flex-direction:row; height:28px; background:#f4f6fa; }
+#app-menus { flex:1; min-width:0; height:28px; }
+#menu { width:34px; height:28px; padding:2px; }
+#tabs { display:flex; flex-direction:row; gap:0; height:40px; }
+.tab { display:flex; flex-direction:row; gap:0; height:36px; margin-top:4px; border-radius:6px; background:#dfe5ef; }
+.tab:hover { background:#ccd8e8; }
+.tab.active { background:#f4f6fa; }
+.tab.closing { background:#e4e7ee; color:#8a93a2; }
+.tab-name { height:36px; padding:5px 8px; border:0; border-radius:0; background:#dfe5ef; text-align:left; }
+.tab-name:focus { background:#cbdcf5; }
+.tab-close { width:26px; height:36px; padding:4px; border:0; border-radius:0; background:#dfe5ef; }
+.tab-close:hover,.tab-close:focus { background:#bacbe2; }
+.tab.active .tab-name,.tab.active .tab-close { background:#f4f6fa; color:#243047; }
+.tab.active .tab-close:hover,.tab.active .tab-close:focus { background:#cad9ef; }
+.tab-name:focus,.tab-close:focus { border:1px solid #3674d9; }
+.tab.active .tab-name:focus { background:#e2edff; }
+.dark #top,.dark .window-button,.dark .tab,.dark .tab-name,.dark .tab-close { background:#202735; color:#b5c1d5; border:0; }
+.dark #menu-row,.dark .tab.active,.dark .tab.active .tab-name,.dark .tab.active .tab-close { background:#222b3b; color:#e5edfa; }
+.dark .tab:hover,.dark .tab-name:focus,.dark .tab-close:hover,.dark .tab-close:focus,.dark .window-button:hover,.dark .window-button:focus { background:#354866; }
+.dark .tab.active .tab-name:focus,.dark .tab.active .tab-close:hover,.dark .tab.active .tab-close:focus { background:#354866; }
+.dark #window-close:hover,.dark #window-close:focus { background:#c42b1c; color:#ffffff; }
+.dark .tab.closing { background:#283244; color:#8290a7; }
+
 #body { display:flex; flex-direction:row; flex:1; }
 #workspace { flex:1; height:100%; position:relative; overflow:hidden; background:#f4f6fa; }
 #empty { padding:48px 28px; gap:14px; }
@@ -60,8 +88,8 @@ textarea { width:100%; }
 .host-tool,.app-tool { border:0; border-radius:3px; background:#edf1f7; }
 .app-tool { background:#ffffff; }
 .host-tool:hover,.host-tool:focus,.app-tool:hover,.app-tool:focus { background:#dce8fa; }
-.tab-name { border-radius:6px; }
-.tab-close { border-radius:6px; }
+
+
 .dark .menu-strip,.dark .app-menu { background:#222b3b; color:#dbe4f2; border:0; }
 .dark .app-menu:hover,.dark .app-menu:focus,.dark .app-menu.expanded { background:#354866; }
 .dark .app-menu:disabled { color:#8290a7; background:#222b3b; }
@@ -72,16 +100,19 @@ textarea { width:100%; }
 .dark #popup.popup-menu .popup-menu-row { background:#222b3b; }.dark #popup.popup-menu .popup-menu-row:hover,.dark #popup.popup-menu .popup-menu-row:focus { background:#354866; }
 .popup-shortcut { color:#65738a; font-size:12px; }.dark .popup-shortcut { color:#a4b2ca; }
 #popup.popup-menu .popup-menu-row:hover,#popup.popup-menu .popup-menu-row:focus { background:#e4edf9; }
-@media (max-width:799px) { #assistant { display:none; } }
+
 </style></head><body>
 <div id="shell">
  <header id="top" class="row">
-  <button id="menu" class="host-tool" title="框架菜单">☰</button><div id="tabs"></div>
-  <button id="open" class="host-tool" title="打开应用包 · Ctrl+Shift+O">＋ 打开</button>
-  <button id="assistant-toggle" class="host-tool" title="助手命令及状态">AI</button>
-  <button id="theme" class="host-tool" title="浅色 / 深色主题">◐</button>
-  <button id="layout-reset" class="host-tool" title="重置当前应用布局">↺</button>
+  <button id="recent" class="host-tool" title="最近成功打开的应用">▾</button><div id="tabs"></div>
+  <button id="tab-more" class="host-tool" title="当前打开的标签" style="display:none">…</button>
+  <button id="open" class="host-tool" title="打开应用包 · Ctrl+Shift+O">+</button><div id="title-space"></div>
+  <button id="assistant-toggle" class="host-tool" title="显示或收起助手工作台">AI</button>
+  <div id="window-controls"><button id="window-min" class="window-button" title="最小化">─</button>
+   <button id="window-max" class="window-button" title="最大化 / 还原">□</button>
+   <button id="window-close" class="window-button" title="关闭宿主">×</button></div>
  </header>
+ <div id="menu-row"><div id="app-menus"></div><button id="menu" class="host-tool" title="宿主选项">⋯</button></div>
  <main id="body">
   <section id="workspace"><div id="empty" class="column"><span id="empty-title">你的应用工作区</span>
    <span class="muted">打开 .uapp 应用包，在标签间切换。应用自行选择原生、OpenGL 或 Web 内容。</span>
@@ -117,9 +148,8 @@ textarea { width:100%; }
  }
  function action(id, name) { element(id).addEventListener('click', function () { send(name); }); }
  function setTheme(value) { dark = !!value; document.body.className = dark ? 'dark' : ''; }
- action('menu', 'menu'); action('open', 'open'); action('empty-open', 'open');
- action('assistant-toggle', 'assistant'); action('theme', 'theme');
- element('layout-reset').addEventListener('click',function(){send('layout-reset',{id:model.active})});
+ action('menu','menu');action('recent','recent');action('tab-more','tabs');action('open','open');action('empty-open','open');
+ action('assistant-toggle','assistant');action('window-min','window-min');action('window-max','window-max');action('window-close','exit');
  action('target', 'targets'); action('command', 'commands');
  action('invoke', 'invoke'); action('cancel', 'cancel'); action('snapshot', 'snapshot');
  action('begin', 'begin'); action('commit', 'commit'); action('rollback', 'rollback'); action('undo', 'undo');
@@ -133,12 +163,12 @@ textarea { width:100%; }
  function prune(root,map,live){for(var k in map)if(!live[k]){root.removeChild(map[k]);delete map[k];}}
  function paintChrome(state) {
   var root=element('app-chrome'),live={};
-  if(!state.active){prune(root,chromeNodes,live);return;}
+  if(!state.active){if(chromeNodes.menu){element('app-menus').removeChild(chromeNodes.menu);delete chromeNodes.menu;}prune(root,chromeNodes,live);return;}
   for(var old in chromeNodes)if(old.indexOf(':panel:')>=0&&old.indexOf(state.active+':panel:')!==0){root.removeChild(chromeNodes[old]);delete chromeNodes[old];}
-  var menu=keep(root,chromeNodes,'menu',function(){var n=document.createElement('div');n.className='row menu-strip';n.items={};return n;});live.menu=true;place(menu,state.menuRect);if(menu.instance!==state.active){if(menu.more){menu.removeChild(menu.more);menu.more=null}menu.instance=state.active}var menuLive={},used=0,menuOverflow=false;menu.groups=state.menuGroups||[];menu.target=state.active;for(var prior in menu.items)if(prior.indexOf(state.active+':')!==0){menu.removeChild(menu.items[prior]);delete menu.items[prior]}
+  var menu=keep(element('app-menus'),chromeNodes,'menu',function(){var n=document.createElement('div');n.className='row menu-strip';n.items={};return n;});live.menu=true;menu.style.width=state.menuWidth+'px';menu.style.height='28px';if(menu.instance!==state.active){if(menu.more){menu.removeChild(menu.more);menu.more=null}menu.instance=state.active}var menuLive={},used=0,menuOverflow=false;menu.groups=state.menuGroups||[];menu.target=state.active;for(var prior in menu.items)if(prior.indexOf(state.active+':')!==0){menu.removeChild(menu.items[prior]);delete menu.items[prior]}
   for(var g=0;g<(state.menuGroups||[]).length;g++){var group=state.menuGroups[g],key=state.active+':'+group.path;menuLive[key]=true;
    var item=keep(menu,menu.items,key,function(){var n=button('app-menu-'+group.key,group.title,'app-menu',{id:state.active,menu:group.path,panel:'app-menu-'+group.key},'app-menu');n.addEventListener('mouseenter',function(){send('app-menu-hover',{id:model.active,menu:n.group.path,panel:n.id})});n.addEventListener('keydown',function(e){if(e.keyCode===37||e.keyCode===39){e.preventDefault();var at=menu.groups.indexOf(n.group),next=(at+menu.groups.length+(e.keyCode===37?-1:1))%menu.groups.length;var group=menu.groups[next];send('app-menu',{id:menu.target,menu:group.path,panel:n.id})}});return n;});item.group=group;item.textContent=group.title;item.className='app-menu'+(state.menuOpen===group.path?' expanded':'');
-   var width=Math.max(48,Math.min(220,group.title.length*14+16));item.style.width=width+'px';item.style.display=used+width+76<=state.menuRect.width?'flex':'none';if(item.style.display==='flex')used+=width;else menuOverflow=true;
+   var width=Math.max(48,Math.min(220,group.title.length*14+16));item.style.width=width+'px';item.style.display=used+width+76<=state.menuWidth?'flex':'none';if(item.style.display==='flex')used+=width;else menuOverflow=true;
   }prune(menu,menu.items,menuLive);if(!menu.more){menu.more=button('menu-more','更多 ▾','menu-more',{id:state.active,panel:'menu-more'},'app-menu');menu.more.addEventListener('mouseenter',function(){send('app-menu-hover',{id:model.active,menu:'',panel:'menu-more'})});menu.appendChild(menu.more)}menu.more.className='app-menu'+(state.menuOpen===''?' expanded':'');menu.more.style.width='70px';menu.more.style.display=menuOverflow?'flex':'none';menu.appendChild(menu.more);
   var tools=keep(root,chromeNodes,'tools',function(){var n=document.createElement('div');n.className='row chrome';n.items={};return n;});live.tools=true;place(tools,state.toolbarRect);if(tools.instance!==state.active){if(tools.more){tools.removeChild(tools.more);tools.more=null}tools.instance=state.active}var alive={},toolWidth=0,lastGroup='',overflow=false;
   for(var previous in tools.items)if(previous.indexOf(state.active+':')!==0){tools.removeChild(tools.items[previous]);delete tools.items[previous];}
@@ -160,11 +190,11 @@ textarea { width:100%; }
   var status=keep(root,chromeNodes,'status',function(){var n=document.createElement('div');n.className='muted chrome';return n;});live.status=true;place(status,state.statusRect);status.textContent=state.status||state.activeLabel+' · '+state.dpi+' DPI';prune(root,chromeNodes,live);
  }
  function paintState(state) {
-  model=state;setTheme(state.dark);var tabs=element('tabs'),alive={};
+  model=state;setTheme(state.dark);element('top').className='row'+(state.compact?' compact':'');var tabs=element('tabs'),alive={};
   for(var i=0;i<state.tabs.length;i++){var tab=state.tabs[i];alive[tab.id]=true;
-   var row=keep(tabs,tabNodes,tab.id,function(){var n=document.createElement('div');n.className='tab';n.name=button('tab-'+tab.id,'','activate',{id:tab.id});n.appendChild(n.name);n.appendChild(button('close-'+tab.id,'×','close',{id:tab.id},'tab-close'));return n;});
-   row.name.textContent=tab.title;row.name.className='tab-name'+(tab.active?' active':'');row.name.disabled=tab.closing;
-  }prune(tabs,tabNodes,alive);
+   var row=keep(tabs,tabNodes,tab.id,function(){var n=document.createElement('div');n.className='tab';n.name=button('tab-'+tab.id,'','activate',{id:tab.id});n.appendChild(n.name);n.close=button('close-'+tab.id,'×','close',{id:tab.id},'tab-close');n.appendChild(n.close);return n;});
+   row.name.textContent=tab.title;row.name.className='tab-name';row.name.disabled=tab.closing;row.close.disabled=tab.closing;row.className='tab'+(tab.active?' active':'')+(tab.closing?' closing':'');row.style.display=tab.visible?'flex':'none';row.name.style.width=(state.tabWidth-26)+'px';
+  }prune(tabs,tabNodes,alive);element('tabs').style.width=(state.tabWidth*state.tabCount)+'px';element('tab-more').style.display=state.tabOverflow?'flex':'none';element('window-max').textContent=state.maximized?'❐':'□';
   element('empty').style.display=state.tabs.length?'none':'flex';element('assistant').style.display=state.assistant?'flex':'none';
   element('target').textContent=state.targetLabel||'选择应用';element('command').textContent=state.command||'选择命令';element('schema').value=state.schema||'';element('log').value=state.log||'';element('invoke').disabled=!state.canInvoke;element('cancel').disabled=!state.canCancel;
   if(element('params').value!==state.params)element('params').value=state.params;paintChrome(state);
@@ -181,7 +211,7 @@ textarea { width:100%; }
   var items=element('popup-items');clear(items);var actions=element('popup-actions');clear(actions);
   for(var i=0;i<state.items.length;i++) {
    var item=state.items[i];var extra={token:popupToken,id:item.id||'',command:item.command||'',answer:item.answer||''};
-   var b=button('popup-item-'+i,'',item.action,extra,state.menu?'popup-menu-row':'');b.caption=item.title;b.menuRow=!!state.menu;b.label=document.createElement('span');b.icon=document.createElement('img');if(state.menu){b.mark=document.createElement('span');b.mark.style.width='16px';b.appendChild(b.mark);b.label.style.flex='1';var at=b.caption.lastIndexOf(' · ');b.shortcut=document.createElement('span');b.shortcut.className='popup-shortcut';b.shortcut.textContent=at>=0?b.caption.slice(at+3):'';if(at>=0)b.caption=b.caption.slice(0,at);b.shortcut.style.width='128px';b.shortcut.style.textAlign='right';}b.icon.style.width='20px';b.icon.style.height='20px';b.style.flexDirection='row';b.style.gap='6px';b.appendChild(b.icon);b.appendChild(b.label);if(b.shortcut)b.appendChild(b.shortcut);applyCommand(b,item);if(item.command)popupCommands[item.command]=b;items.appendChild(b);
+   var b=button('popup-item-'+i,'',item.action,extra,state.menu?'popup-menu-row':'');b.caption=item.title;b.menuRow=!!state.menu;b.label=document.createElement('span');b.label.id='popup-label-'+i;b.icon=document.createElement('img');if(state.menu){b.mark=document.createElement('span');b.mark.style.width='16px';b.appendChild(b.mark);b.label.style.flex='1';var at=b.caption.lastIndexOf(' · ');b.shortcut=document.createElement('span');b.shortcut.className='popup-shortcut';b.shortcut.textContent=at>=0?b.caption.slice(at+3):'';if(at>=0)b.caption=b.caption.slice(0,at);b.shortcut.style.width='128px';b.shortcut.style.textAlign='right';}b.icon.style.width='20px';b.icon.style.height='20px';b.style.flexDirection='row';b.style.gap='6px';b.appendChild(b.icon);b.appendChild(b.label);if(b.shortcut)b.appendChild(b.shortcut);applyCommand(b,item);if(item.command)popupCommands[item.command]=b;items.appendChild(b);
   }
   if(state.confirm) {
    actions.appendChild(button('confirm-no','取消','confirm',{token:popupToken,answer:'no'}));
@@ -196,7 +226,7 @@ textarea { width:100%; }
   if(editing&&(event.keyCode<=46||event.ctrlKey&&[65,67,86,88,89,90].indexOf(event.keyCode)>=0))return;
   send('app-shortcut',{id:model.active,key:String(event.keyCode),modifiers:String((event.ctrlKey?1:0)+(event.shiftKey?2:0)+(event.altKey?4:0)),editing:editing?'1':'0'});
  });
- ['menu','open','assistant-toggle','theme'].forEach(function(id) {
+ ['recent','menu','open','assistant-toggle'].forEach(function(id) {
   var node=element(id);node.addEventListener('mouseenter',function(){send('tooltip',{id:id});});
   node.addEventListener('mouseleave',function(){send('tooltip-hide');});
  });

@@ -3,8 +3,10 @@
 #include <windows.h>
 #include <commdlg.h>
 #include <shellapi.h>
+#include <shlobj.h>
 #include <imm.h>
 #include <objbase.h>
+#include <dwmapi.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -23,6 +25,10 @@ enum { ID_OPEN=0x1001, ID_CLOSE, ID_EXIT, ID_NEXT, ID_PREVIOUS };
 #define HOST_MESSAGE_LIMIT 65536u
 #define HOST_LOG_LIMIT 32000u
 #define HOST_DISPLAY_TEXT_LIMIT 4095u
+#define HOST_RECENT_CAPACITY 12u
+#define HOST_RECENT_PATH 4096u
+#define HOST_SELECTOR_PAGE 8u
+typedef struct recent_app { char path[HOST_RECENT_PATH]; } recent_app_t;
 
 typedef struct json_buffer { char *text; size_t length,capacity; int failed; } json_buffer_t;
 typedef struct host_action {
@@ -37,13 +43,18 @@ typedef struct host_window {
     ui_workspace_t *workspace;
     uint32_t dpi;
     ui_rect_t workspace_rect;
-    uint64_t target,last_id,last_request,completed_id,completed_request;
+    uint64_t target,last_id,last_request,completed_id,completed_request,displayed_instance;
     uint64_t transaction_id,transaction_instance,undo_id,undo_instance;
     uint64_t popup_token;
     char *command,*params,*log;
     int refreshing,refresh_pending,exiting,dark,assistant_expanded;
     int popup_kind,confirm_answer,confirm_waiting;
     char reported_error[512];
+    recent_app_t recent[HOST_RECENT_CAPACITY];
+    size_t recent_count,selector_page;
+    wchar_t recent_file[4096];
+    WNDPROC web_proc;
+    int max_pressed;
     HHOOK menu_hook;
     RECT menu_anchor;
     HWND menu_previous_focus;
@@ -242,6 +253,9 @@ static void append_log(host_window_t *s,const char *text)
     memory=(char *)realloc(s->log,old+added+2);if(!memory)return;s->log=memory;
     memcpy(memory+old,text?text:"",added);memory[old+added]='\n';memory[old+added+1]=0;schedule_refresh(s);
 }
+/* Private host chrome/history; no application SDK dependencies. */
+#include "browser_shell.h"
+
 static char *load_page(void)
 {
     HRSRC resource=FindResourceW(GetModuleHandleW(NULL),MAKEINTRESOURCEW(HOST_PAGE_RESOURCE),MAKEINTRESOURCEW(10));
@@ -267,7 +281,11 @@ static ui_web_view_t *create_view(host_window_t *s,HWND parent,ui_web_backend_t 
        (UI_WEB_CAP_JSON_MESSAGES|UI_WEB_CAP_DYNAMIC_DOM|UI_WEB_CAP_NATIVE_WINDOW))goto failed;
     if(ui_web_view_set_message_callback(view,on_web_message,s)!=UI_STATUS_OK)goto failed;
     page=load_page();if(!page)goto failed;
-    if(ui_web_view_load_html(view,page)!=UI_STATUS_OK){free(page);goto failed;}free(page);return view;
+    {ui_status_t status=ui_web_view_load_html(view,page);if(status!=UI_STATUS_OK){
+#ifdef UI_HOST_TEST
+        fprintf(stderr,"Host page load status=%d\n",(int)status);
+#endif
+        free(page);goto failed;}}free(page);return view;
 failed:if(view)ui_web_view_destroy(view);ui_light_web_backend_destroy(*backend);*backend=NULL;return NULL;
 }
 static LRESULT CALLBACK popup_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
@@ -301,7 +319,7 @@ static void close_popup(host_window_t *s)
 static int create_popup(host_window_t *s,int kind,int width,int height)
 {
     WNDCLASSW wc;RECT owner,client;int x,y;ui_rect_t view_rect;
-    if(s->confirm_waiting)return 0;close_popup(s);memset(&wc,0,sizeof(wc));
+    if(s->confirm_waiting)return 0;close_popup(s);{ui_app_instance_info_t info;if(get_instance(s,ui_workspace_active(s->workspace),&info))(void)ui_host_close_menu(info.host);}memset(&wc,0,sizeof(wc));
     wc.lpfnWndProc=popup_proc;wc.hInstance=GetModuleHandleW(NULL);wc.lpszClassName=L"UiFramework.WebPopup.v2";
     wc.hCursor=LoadCursorW(NULL,MAKEINTRESOURCEW(32512));
     if(!RegisterClassW(&wc)&&GetLastError()!=ERROR_CLASS_ALREADY_EXISTS)return 0;
@@ -400,6 +418,8 @@ static void state_tools(json_buffer_t *json,const ui_host_t *host)
         json_format(json,",\"image\":\"%llu\",\"enabled\":%s,\"checked\":%s,\"busy\":%s}",(unsigned long long)items[index]->image_id,
             state.enabled&&items[index]->state.enabled?"true":"false",state.checked||items[index]->state.checked?"true":"false",state.busy||items[index]->state.busy?"true":"false");}}free(items);
 }
+static int app_menu_height(ui_app_instance_info_t *info)
+{ui_rect_t menu={0};(void)ui_host_get_rect(info->host,UI_LAYOUT_REGION_MENU_BAR,&menu);return menu.height;}
 static void state_panels(json_buffer_t *json,ui_app_instance_info_t *info)
 {
     ui_panel_entry_t *panel;int count=0;ui_shell_t *shell=ui_host_get_shell(info->host);
@@ -409,16 +429,17 @@ static void state_panels(json_buffer_t *json,ui_app_instance_info_t *info)
         json_append(json,"{\"id\":");json_string(json,panel->id);json_append(json,",\"title\":");json_string(json,panel->title);
         (void)ui_shell_get_panel_layout(shell,panel->id,&layout);
         json_format(json,",\"region\":%d,\"floating\":%s,\"collapsed\":%s,\"frame\":",layout.dock_region,floating?"true":"false",layout.collapsed?"true":"false");
-        json_rect(json,&frame);json_format(json,",\"group\":\"%llu\",\"tabActive\":%s,\"closed\":%s",(unsigned long long)layout.tab_group_id,layout.tab_active?"true":"false",layout.closed?"true":"false");json_append(json,"}");}
+        frame.y-=app_menu_height(info);json_rect(json,&frame);json_format(json,",\"group\":\"%llu\",\"tabActive\":%s,\"closed\":%s",(unsigned long long)layout.tab_group_id,layout.tab_active?"true":"false",layout.closed?"true":"false");json_append(json,"}");}
 }
 static int assistant_visible(host_window_t *s,int width)
 {return s->assistant_expanded>0||(s->assistant_expanded==0&&width>=800);}
 static void send_state(host_window_t *s)
 {
     json_buffer_t json={0};ui_app_instance_info_t info,target;size_t i,count;
-    char *schema,label[512];uint64_t active;RECT client;int width;
+    char *schema,label[512];uint64_t active;RECT client;int width,tab_width;size_t tab_start,tab_count;
     if(!s->view||!s->workspace)return;count=ui_workspace_count(s->workspace);active=ui_workspace_active(s->workspace);
     GetClientRect(s->hwnd,&client);width=MulDiv(client.right,96,(int)s->dpi);schema=refresh_command(s,&target);
+    tab_window(s,width,&tab_start,&tab_count,&tab_width);
     if(!get_instance(s,s->transaction_instance,&info))s->transaction_id=s->transaction_instance=0;
     if(!get_instance(s,s->undo_instance,&info))s->undo_id=s->undo_instance=0;
     if(!get_instance(s,s->last_id,&info))s->last_request=0;
@@ -427,8 +448,8 @@ static void send_state(host_window_t *s)
     for(i=0;i<count;++i){uint64_t id=ui_workspace_instance_at(s->workspace,i);if(!get_instance(s,id,&info))continue;
         if(i)json_append(&json,",");json_append(&json,"{\"id\":");json_id(&json,id);
         (void)snprintf(label,sizeof(label),"%s #%llu%s",info.name_utf8,(unsigned long long)id,info.closing?" · 关闭中":"");
-        json_append(&json,",\"title\":");json_string(&json,label);json_format(&json,",\"active\":%s,\"closing\":%s}",info.active?"true":"false",info.closing?"true":"false");}
-    json_append(&json,"],\"targetLabel\":");label[0]=0;
+        json_append(&json,",\"title\":");json_string(&json,label);json_format(&json,",\"active\":%s,\"closing\":%s,\"visible\":%s}",info.active?"true":"false",info.closing?"true":"false",i>=tab_start&&i<tab_start+tab_count?"true":"false");}
+    json_format(&json,"],\"tabWidth\":%d,\"tabOverflow\":%s,\"maximized\":%s,\"menuWidth\":%d",tab_width,count>tab_count?"true":"false",IsZoomed(s->hwnd)?"true":"false",width>34?width-34:0);json_format(&json,",\"compact\":%s,\"tabCount\":%u,\"targetLabel\":",width<400?"true":"false",(unsigned)tab_count);label[0]=0;
     if(target.instance_id)(void)snprintf(label,sizeof(label),"%s #%llu%s",target.name_utf8,(unsigned long long)target.instance_id,target.closing?" · 关闭中":"");
     json_string(&json,label);json_append(&json,",\"command\":");json_string(&json,s->command);
     json_append(&json,",\"schema\":");json_preview(&json,schema,0);free(schema);
@@ -437,8 +458,8 @@ static void send_state(host_window_t *s)
     s->chrome_host->image_source=NULL;
     if(get_instance(s,active,&info)){ui_rect_t rect;info.host->menu_dark=s->dark;json_append(&json,",\"menuOpen\":");if(info.host->menu_open_path)json_string(&json,info.host->menu_open_path);else json_append(&json,"null");s->chrome_host->image_source=info.host;json_append(&json,",\"activeLabel\":");json_string(&json,info.name_utf8);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_MENU_BAR,&rect);json_append(&json,",\"menuRect\":");json_rect(&json,&rect);
-        (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_TOOLBAR,&rect);json_append(&json,",\"toolbarRect\":");json_rect(&json,&rect);
-        (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_STATUS_BAR,&rect);json_append(&json,",\"statusRect\":");json_rect(&json,&rect);
+        (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_TOOLBAR,&rect);rect.y-=app_menu_height(&info);json_append(&json,",\"toolbarRect\":");json_rect(&json,&rect);
+        (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_STATUS_BAR,&rect);rect.y-=app_menu_height(&info);json_append(&json,",\"statusRect\":");json_rect(&json,&rect);
         json_append(&json,",\"menuGroups\":[");{menu_state_writer_t writer={&json,0};if(ui_host_visit_menu(info.host,"",state_menu_group,&writer)!=UI_STATUS_OK)json.failed=1;}json_append(&json,"]");
         json_append(&json,",\"tools\":[");state_tools(&json,info.host);json_append(&json,"],\"panels\":[");state_panels(&json,&info);json_append(&json,"],\"status\":");json_string(&json,ui_host_status_text(info.host));
     }else json_append(&json,",\"activeLabel\":\"\",\"menuGroups\":[],\"tools\":[],\"panels\":[]");
@@ -466,12 +487,13 @@ static void update_region(host_window_t *s)
 static void layout(host_window_t *s)
 {
     RECT client;int width,height;ui_rect_t rect;
-    if(!s->view||!s->workspace||s->refreshing)return;s->refreshing=1;GetClientRect(s->hwnd,&client);
+    if(!s->view||!s->workspace||s->refreshing)return;s->refreshing=1;
+    {uint64_t active=ui_workspace_active(s->workspace);if(active!=s->displayed_instance&&s->popup_kind==1)close_popup(s);s->displayed_instance=active;}GetClientRect(s->hwnd,&client);
     width=MulDiv(client.right,96,(int)s->dpi);height=MulDiv(client.bottom,96,(int)s->dpi);
     (void)ui_host_set_dpi(s->chrome_host,s->dpi);(void)ui_host_resize(s->chrome_host,width,height);
     (void)ui_web_view_resize(s->view,width,height,s->dpi);send_state(s);
     if(ui_web_view_get_element_rect(s->view,"workspace",&rect)==UI_STATUS_OK){
-        if(rect.width<0)rect.width=0;if(rect.height<0)rect.height=0;s->workspace_rect=rect;(void)ui_workspace_set_rect(s->workspace,&rect,s->dpi);}
+        if(rect.width<0)rect.width=0;if(rect.height<0)rect.height=0;{ui_app_instance_info_t info;if(get_instance(s,ui_workspace_active(s->workspace),&info)){int menu=app_menu_height(&info);rect.y-=menu;rect.height+=menu;}}s->workspace_rect=rect;(void)ui_workspace_set_rect(s->workspace,&rect,s->dpi);}
     send_state(s);update_region(s);s->refreshing=0;
 }
 static void refresh_workspace(void *data)
@@ -515,7 +537,7 @@ static void open_path(host_window_t *s,const wchar_t *path)
 {
     char *utf8=to_utf8(path);uint64_t id=0;ui_status_t status;if(!utf8)return;
     status=ui_workspace_open(s->workspace,utf8,&id);free(utf8);
-    if(status!=UI_STATUS_OK)show_error(s,ui_workspace_last_error(s->workspace));else schedule_refresh(s);
+    if(status!=UI_STATUS_OK)show_error(s,ui_workspace_last_error(s->workspace));else{close_popup(s);recent_record(s,path);schedule_refresh(s);}
 }
 static void open_dialog(host_window_t *s)
 {
@@ -556,11 +578,25 @@ static void transaction_action(host_window_t *s,const char *action)
 }
 static void menu_popup(host_window_t *s)
 {
-    json_buffer_t json={0};int count=0;if(!create_popup(s,1,360,156))return;popup_start(s,&json,"框架菜单","应用菜单位于工作区上方",0);
+    json_buffer_t json={0};int count=0;if(!create_popup(s,1,360,212))return;anchor_popup(s,"menu");s->selector_page=0;popup_start(s,&json,"宿主选项","应用菜单位于标签栏下方",0);
     popup_item(&json,&count,"打开应用包… · Ctrl+Shift+O","open",0,NULL);
     popup_item(&json,&count,"关闭当前标签 · Ctrl+W","close",ui_workspace_active(s->workspace),NULL);
     popup_item(&json,&count,"下一个标签 · Ctrl+Tab","next",0,NULL);popup_item(&json,&count,"上一个标签 · Ctrl+Shift+Tab","previous",0,NULL);
+    popup_item(&json,&count,"浅色 / 深色主题","theme",0,NULL);popup_item(&json,&count,"重置当前应用布局","layout-reset",ui_workspace_active(s->workspace),NULL);
     popup_item(&json,&count,"退出","exit",0,NULL);popup_finish(s,&json);
+}
+static void list_popup(host_window_t *s,int recent,size_t page)
+{
+    json_buffer_t json={0};ui_app_instance_info_t info;int count=0;size_t i,total=recent?s->recent_count:ui_workspace_count(s->workspace),start;
+    if(page>(total?((total-1)/HOST_SELECTOR_PAGE):0))page=0;start=page*HOST_SELECTOR_PAGE;
+    if(!create_popup(s,1,400,300))return;s->selector_page=recent?1:2;anchor_popup(s,recent?"recent":"tab-more");
+    popup_start(s,&json,recent?"最近成功打开的应用":"当前打开的标签",total?"":"尚无记录",0);
+    if(!total){json_append(&json,"{\"title\":");json_string(&json,recent?"尚无成功打开的应用":"尚无已打开的标签");json_append(&json,",\"enabled\":false,\"action\":\"dismiss\"}");}
+    if(start)popup_item(&json,&count,"上一页",recent?"recent-page":"tabs-page",page-1,NULL);
+    for(i=start;i<total&&i<start+HOST_SELECTOR_PAGE;++i){
+        if(recent){const char *name=strrchr(s->recent[i].path,'\\');popup_item(&json,&count,name?name+1:s->recent[i].path,"recent-open",i+1,NULL);}
+        else if(get_instance(s,ui_workspace_instance_at(s->workspace,i),&info)){char label[512];snprintf(label,sizeof(label),"%s #%llu%s",info.name_utf8,(unsigned long long)info.instance_id,info.closing?" · 关闭中":"");if(count++)json_append(&json,",");json_append(&json,"{\"title\":");json_string(&json,label);json_append(&json,",\"action\":\"activate\",\"id\":");json_id(&json,info.instance_id);json_format(&json,",\"enabled\":%s}",info.closing?"false":"true");}}
+    if(start+HOST_SELECTOR_PAGE<total)popup_item(&json,&count,"下一页",recent?"recent-page":"tabs-page",page+1,NULL);popup_finish(s,&json);
 }
 static void refresh_menu_states(host_window_t *s,uint64_t id)
 {
@@ -589,7 +625,8 @@ static void selector_popup(host_window_t *s,int commands)
 static void tooltip_popup(host_window_t *s,const char *id)
 {
     const char *text=NULL;json_buffer_t json={0};RECT origin;ui_rect_t rect;ui_app_instance_info_t active;if(get_instance(s,ui_workspace_active(s->workspace),&active)&&active.host->menu_open_path)return;if(s->popup_hwnd&&s->popup_kind!=5)return;
-    if(!strcmp(id?id:"","menu"))text="框架菜单";
+    if(!strcmp(id?id:"","menu"))text="宿主选项：主题、布局及窗口操作";
+    else if(!strcmp(id?id:"","recent"))text="最近成功打开的应用（与当前标签分开）";
     else if(!strcmp(id?id:"","open"))text="打开 .uapp 应用包 · Ctrl+Shift+O";
     else if(!strcmp(id?id:"","theme"))text="切换浅色 / 深色主题";
     else if(!strcmp(id?id:"","assistant-toggle"))text="显示或收起助手工作台";
@@ -613,9 +650,14 @@ static void process_action(host_window_t *s,host_action_t *action)
     }else if(s->confirm_waiting)return;
     if(!strcmp(name,"ready")){schedule_refresh(s);return;}
     if(!strcmp(name,"open")){close_popup(s);open_dialog(s);}
-    else if(!strcmp(name,"close")){if(!id)id=ui_workspace_active(s->workspace);if(id)(void)ui_workspace_close(s->workspace,id,UI_APP_CLOSE_TAB);}
-    else if(!strcmp(name,"activate")){if(id)(void)ui_workspace_activate(s->workspace,id);}
+    else if(!strcmp(name,"close")){close_popup(s);if(!id)id=ui_workspace_active(s->workspace);if(id)(void)ui_workspace_close(s->workspace,id,UI_APP_CLOSE_TAB);}
+    else if(!strcmp(name,"activate")){close_popup(s);if(id)(void)ui_workspace_activate(s->workspace,id);}
     else if(!strcmp(name,"next"))switch_tab(s,1);else if(!strcmp(name,"previous"))switch_tab(s,-1);
+    else if(!strcmp(name,"window-min"))PostMessageW(s->hwnd,WM_SYSCOMMAND,SC_MINIMIZE,0);
+    else if(!strcmp(name,"window-max"))PostMessageW(s->hwnd,WM_SYSCOMMAND,IsZoomed(s->hwnd)?SC_RESTORE:SC_MAXIMIZE,0);
+    else if(!strcmp(name,"recent-open")){if(id&&id<=s->recent_count){wchar_t path[HOST_RECENT_PATH];if(MultiByteToWideChar(CP_UTF8,MB_ERR_INVALID_CHARS,s->recent[id-1].path,-1,path,HOST_RECENT_PATH))open_path(s,path);}}
+    else if(!strcmp(name,"recent")||!strcmp(name,"tabs")){int recent=!strcmp(name,"recent");if(s->popup_kind==1&&s->selector_page==(recent?1u:2u))close_popup(s);else list_popup(s,recent,0);return;}
+    else if(!strcmp(name,"recent-page")||!strcmp(name,"tabs-page")){list_popup(s,!strcmp(name,"recent-page"),(size_t)id);return;}
     else if(!strcmp(name,"exit"))PostMessageW(s->hwnd,WM_CLOSE,0,0);else if(!strcmp(name,"theme"))s->dark=!s->dark;
     else if(!strcmp(name,"assistant")){RECT client;GetClientRect(s->hwnd,&client);s->assistant_expanded=assistant_visible(s,MulDiv(client.right,96,(int)s->dpi))?-1:1;}
     else if(!strcmp(name,"menu")){if(s->popup_kind==1)close_popup(s);else menu_popup(s);return;}else if(!strcmp(name,"targets")){selector_popup(s,0);return;}
@@ -676,11 +718,26 @@ static LRESULT CALLBACK host_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
     if(message==WM_NCCREATE){s=(host_window_t *)((CREATESTRUCTW *)lp)->lpCreateParams;s->hwnd=hwnd;SetWindowLongPtrW(hwnd,GWLP_USERDATA,(LONG_PTR)s);}
     if(!s)return DefWindowProcW(hwnd,message,wp,lp);
     switch(message){
+    case WM_NCCALCSIZE:{if(IsZoomed(hwnd)){RECT *r=wp?&((NCCALCSIZE_PARAMS *)lp)->rgrc[0]:(RECT *)lp;MONITORINFO mi={sizeof(mi)};if(GetMonitorInfoW(MonitorFromWindow(hwnd,MONITOR_DEFAULTTONEAREST),&mi))*r=mi.rcWork;}return 0;}
+    case WM_NCHITTEST:return chrome_hit(s,lp);
+    case WM_GETMINMAXINFO:{MINMAXINFO *mm=(MINMAXINFO *)lp;MONITORINFO mi={sizeof(mi)};if(GetMonitorInfoW(MonitorFromWindow(hwnd,MONITOR_DEFAULTTONEAREST),&mi)){mm->ptMaxPosition.x=mi.rcWork.left-mi.rcMonitor.left;mm->ptMaxPosition.y=mi.rcWork.top-mi.rcMonitor.top;mm->ptMaxSize.x=mi.rcWork.right-mi.rcWork.left;mm->ptMaxSize.y=mi.rcWork.bottom-mi.rcWork.top;}mm->ptMinTrackSize.x=MulDiv(320,(int)(s->dpi?s->dpi:96),96);mm->ptMinTrackSize.y=MulDiv(240,(int)(s->dpi?s->dpi:96),96);return 0;}
+    case WM_NCMOUSEMOVE:case WM_NCMOUSELEAVE:{LRESULT result=0;if(DwmDefWindowProc(hwnd,message,wp,lp,&result))return result;break;}
+    case WM_NCRBUTTONUP:if(wp==HTCAPTION){HMENU menu=GetSystemMenu(hwnd,FALSE);UINT command;int zoomed=IsZoomed(hwnd);
+        EnableMenuItem(menu,SC_RESTORE,MF_BYCOMMAND|(zoomed?MF_ENABLED:MF_GRAYED));EnableMenuItem(menu,SC_MOVE,MF_BYCOMMAND|(zoomed?MF_GRAYED:MF_ENABLED));EnableMenuItem(menu,SC_SIZE,MF_BYCOMMAND|(zoomed?MF_GRAYED:MF_ENABLED));EnableMenuItem(menu,SC_MAXIMIZE,MF_BYCOMMAND|(zoomed?MF_GRAYED:MF_ENABLED));
+        SetForegroundWindow(hwnd);command=TrackPopupMenu(menu,TPM_RETURNCMD|TPM_RIGHTBUTTON,(short)LOWORD(lp),(short)HIWORD(lp),0,hwnd,NULL);if(command)PostMessageW(hwnd,WM_SYSCOMMAND,command,0);return 0;}break;
+    case WM_NCLBUTTONDOWN:if(wp==HTMAXBUTTON){s->max_pressed=1;SetCapture(hwnd);return 0;}break;
+    case WM_LBUTTONUP:if(s->max_pressed){POINT p={(short)LOWORD(lp),(short)HIWORD(lp)};s->max_pressed=0;ReleaseCapture();ClientToScreen(hwnd,&p);if(chrome_hit(s,MAKELPARAM(p.x,p.y))==HTMAXBUTTON)PostMessageW(hwnd,WM_SYSCOMMAND,IsZoomed(hwnd)?SC_RESTORE:SC_MAXIMIZE,0);return 0;}break;
+    case WM_CANCELMODE:s->max_pressed=0;if(GetCapture()==hwnd)ReleaseCapture();break;
+    case WM_KEYDOWN:if(wp==VK_ESCAPE&&s->max_pressed){s->max_pressed=0;ReleaseCapture();return 0;}break;
+    case WM_CAPTURECHANGED:s->max_pressed=0;break;
+    case WM_ACTIVATE:schedule_refresh(s);break;
     case WM_CREATE:{ui_workspace_config_t workspace;ui_host_config_t chrome;
-        s->dpi=GetDpiForWindow(hwnd);if(!s->dpi)s->dpi=96;s->params=copy_text("{}");
+        s->dpi=GetDpiForWindow(hwnd);if(!s->dpi)s->dpi=96;s->params=copy_text("{}");recent_initialize(s);
         memset(&chrome,0,sizeof(chrome));chrome.size=sizeof(chrome);chrome.api_version=UI_FRAMEWORK_API_VERSION;chrome.native_parent=hwnd;
         s->chrome_host=ui_host_create(&chrome);if(!s->chrome_host)return -1;
         s->view=create_view(s,hwnd,&s->backend);if(!s->view){destroy_chrome(s);return -1;}s->web_hwnd=(HWND)ui_web_view_native_handle(s->view);
+        s->web_proc=(WNDPROC)SetWindowLongPtrW(s->web_hwnd,GWLP_WNDPROC,(LONG_PTR)chrome_web_proc);
+        {MARGINS margins={1,1,1,1};(void)DwmExtendFrameIntoClientArea(hwnd,&margins);}
         memset(&workspace,0,sizeof(workspace));workspace.size=sizeof(workspace);workspace.native_parent=hwnd;
         workspace.user_data=s;workspace.result=on_result;workspace.event=on_event;workspace.progress=on_progress;
         workspace.confirm=on_confirm;workspace.changed=refresh_workspace;workspace.max_permission=UI_ASSISTANT_PERMISSION_DESTRUCTIVE;
@@ -715,7 +772,7 @@ static LRESULT CALLBACK host_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
 static HWND create_host(host_window_t *state,HINSTANCE instance)
 {
     WNDCLASSW wc;memset(&wc,0,sizeof(wc));wc.lpfnWndProc=host_proc;wc.hInstance=instance;
-    wc.lpszClassName=L"UiFrameworkStandaloneHostV2";wc.hCursor=LoadCursorW(NULL,MAKEINTRESOURCEW(32512));
+    wc.style=CS_DBLCLKS;wc.lpszClassName=L"UiFrameworkStandaloneHostV2";wc.hCursor=LoadCursorW(NULL,MAKEINTRESOURCEW(32512));
     if(!RegisterClassW(&wc)&&GetLastError()!=ERROR_CLASS_ALREADY_EXISTS)return NULL;
     return CreateWindowExW(0,wc.lpszClassName,L"C 应用框架 · Web",WS_OVERLAPPEDWINDOW|WS_CLIPCHILDREN,
         CW_USEDEFAULT,CW_USEDEFAULT,1200,800,NULL,NULL,instance,state);
