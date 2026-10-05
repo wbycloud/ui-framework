@@ -1,6 +1,6 @@
 # 分组菜单与离屏测试接口
 
-SDK0.6.0开发版、框架API6、开发标准修订6。API5四项已有实现继续保留，当前源码以实际commit为准。运行库接受API1/2/3/4/5/6，应用ABI、`ui_app_query_v1`和包格式保持1；不创建稳定标签。
+SDK0.7.0开发版、框架API7、开发标准修订7。API5四项已有实现继续保留，当前源码以实际commit为准。运行库接受API1/2/3/4/5/6/7，应用ABI、`ui_app_query_v1`和包格式保持1；不创建稳定标签。
 
 本轮只修改框架和通用验收样例，没有修改请求方应用、文档模型、业务渲染器或PERF-001。能力状态和实际证据见[API6验收](validation/api6-validation.md)与[API5历史验收](validation/api5-validation.md)；[API4记录](validation/api4-validation.md)保留历史结果。
 
@@ -82,10 +82,14 @@ API4第一阶段不提供完全无窗口GL和MSAA；API5增补见第6节，仍�
 
 每 surface 预算32 MiB。旧隐藏WGL单采样继续按8×像素计颜色/深度，临时读回另计、最多16 MiB，保留API4的2048×2048边界。真正无窗口单采样按12×像素计颜色/深度/临时读回；多采样按(8+8×samples)×像素计多采样附件、resolve和临时读回。OSMesa路径再计4字节 provider drawable，调用方缓冲另计。resize 先验预算，失败保持旧尺寸。UI/创建线程操作，销毁需先停止调用；多上下文保留当前提供方 context，恢复 framebuffer、viewport、texture/renderbuffer、pack/unpack PBO、pack 参数及 multisample/scissor。应用自行改变其他 GL 状态仍由应用负责。
 
-实际 Windows 已登录会话、Session0、整机无登录CI分别验收。真实软件 GL frame 输出可以证明无窗口渲染；返回 UNSUPPORTED、替代图片和模拟执行都不能证明成功。实际测试DLL/OSMesa在CI LocalSystem Session0已通过，整机无登录因登录会话1失败，缺专用runner；[专门证据](validation/session0-osmesa-validation.md)保留两个独立结论。其他结果及未验收条件见[API5验收](validation/api5-validation.md)。
+实际 Windows 已登录会话、Session0、整机无登录CI分别验收。真实软件 GL frame 输出可以证明无窗口渲染；返回 UNSUPPORTED、替代图片和模拟执行都不能证明成功。历史78c24cb实际测试DLL/OSMesa在CI LocalSystem Session0已通过，当前API7源码仍需单独复验，整机无登录因登录会话1失败，缺专用runner；[专门证据](validation/session0-osmesa-validation.md)保留两个独立结论。其他结果及未验收条件见[API5验收](validation/api5-validation.md)。
 
 ## API6 无窗口布局与既有能力回归
 
 workspace在有窗口与Windows UI_RUN_OFFSCREEN路径共享[布局合同](workspace-layout.md)：版本化保存/恢复、分隔条逻辑尺寸和停靠拖拽提交保留内容槽与GL context。无窗口没有实际popup或原生捕获，逻辑布局与frame/input/resize仍走应用原生命周期。真实OSMesa、隐藏WGL、MSAA与普通附件的原能力声明保持准确，不新增硬件无窗口后端。
 
-API5 Alt/嵌套/溢出/模态/焦点、OSMesa实际上下文、离屏MSAA与状态恢复、WebView2真实Runtime查询/捕获/图片/组件继续进入本轮回归。Session0成功和整机无登录未验分别记录，不能把Windows已登录桌面的测试矩阵当作后者通过。
+API5 Alt/嵌套/溢出/模态/焦点、OSMesa实际上下文、离屏MSAA与状态恢复、WebView2真实Runtime查询/捕获/图片/组件继续进入本轮回归。历史Session0成功、当前源码Session0待验和整机无登录未验分别记录，不能把Windows已登录桌面的测试矩阵当作后者通过。
+
+## API7 捕获取消与布局
+
+UI_INPUT_CANCEL=8追加，事件尺寸不变，有窗口捕获丢失和无窗口调用方取消共用；滚动语义见[通用Web](generic-web-ui.md)。底部及同区标签沿用内容生命周期，布局2读取布局1，见[布局](workspace-layout.md)。菜单/Alt/焦点/单次命令及GL/MSAA/普通附件合同不改；没有硬件无窗口扩展。当前GL/Session0与整机无登录分开记于[API7验收](validation/api7-validation.md)。

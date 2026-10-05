@@ -1,0 +1,31 @@
+{
+  "source_commit": "2c0c52baa345a3234bc10ec39e7458afbefd6a8c",
+  "scope": "Three independent API5 original-package processes, each32 cycles, original+12 handles/+4 GDI/USER, pending0 and DLL unload. No diagnostic environment flags in these runs.",
+  "logs": [
+    "api7-modal-focus-fixed-1.log",
+    "api7-modal-focus-fixed-2.log",
+    "api7-modal-focus-fixed-3.log"
+  ],
+  "files": [
+    {
+      "path": "build/fw-next/release/ui_api5_integration_test.exe",
+      "bytes": 31232,
+      "sha256": "9303fd96b8fec3ab7c54a28a64831c1682a64b49f1440a07e27f86c917119472"
+    },
+    {
+      "path": "build/fw-next/release/ui_framework.dll",
+      "bytes": 2121216,
+      "sha256": "8902c8b1b95b09aedde6cfb16bc91d7d7c31efedd9dcf8e2f5287bcfad180e28"
+    },
+    {
+      "path": "build/api6-evidence/original-api5-fixture.uapp",
+      "bytes": 16174,
+      "sha256": "285431bddc0d00bebed153c6441c00fc9be98793a79a50dd0a31c5b800645f19"
+    },
+    {
+      "path": ".deps/mesa-24.3.4/x64/osmesa.dll",
+      "bytes": 52327936,
+      "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+Test project D:/应用软件框架/应用层序框架/build/fw-next/release
+    Start 16: ui_workspace7
+1/5 Test #16: ui_workspace7 ....................***Failed    0.23 sec
+workspace7 line30: ui_shell_update_panel_drag(s,bottom.x+30,bottom.y+10,&preview,&region)==UI_STATUS_OK&&region==UI_LAYOUT_REGION_BOTTOM
+workspace7 line31: ui_shell_get_panel_layout(s,"c",&b)==UI_STATUS_OK&&b.tab_group_id==a.tab_group_id
+API7 bottom/tabs: 2 failures
+
+    Start 17: ui_workspace_layout
+2/5 Test #17: ui_workspace_layout ..............   Passed    0.33 sec
+    Start 19: ui_component_experience
+3/5 Test #19: ui_component_experience ..........   Passed    0.18 sec
+    Start 21: ui_light_scroll
+4/5 Test #21: ui_light_scroll ..................   Passed    0.10 sec
+    Start 22: ui_component_scroll
+5/5 Test #22: ui_component_scroll ..............   Passed    0.14 sec
+
+80% tests passed, 1 tests failed out of 5
+
+Total Test time (real) =   1.09 sec
+
+The following tests FAILED:
+	 16 - ui_workspace7 (Failed)
+Errors while running CTest

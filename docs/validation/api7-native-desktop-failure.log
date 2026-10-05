@@ -1,0 +1,34 @@
+Test project D:/应用软件框架/应用层序框架/build/fw-next/release
+    Start 14: ui_api5_native_host
+1/1 Test #14: ui_api5_native_host ..............***Failed    4.40 sec
+Native input desktop thread=Default input=Default available=1 foreground=0000000006A30954 expected=00000000018D02D8\nline 8: owned
+line 8: owned
+line 8: owned
+line 8: owned
+line 20: ui_host_menu_get_item_presentation(info.host,"submit",&p)==UI_STATUS_OK&&p.visible
+line 8: owned
+line 8: owned
+line 8: owned
+line 21: !strcmp(ui_host_status_text(info.host),"submitted")
+line 21: info.host->next_request_id==before+1
+line 8: owned
+line 8: owned
+line 22: ui_host_menu_get_presentation(info.host,"close",&p)==UI_STATUS_OK
+line 8: owned
+line 8: owned
+line 8: owned
+line 8: owned
+line 8: owned
+line 8: owned
+line 23: ui_component_get_field(ui_component_find(info.host,"form"),"name",&field)==UI_STATUS_OK&&!strcmp(field.text,"DLL updated")
+line 23: info.host->next_request_id==before+1
+Actual native WebView focus / host Alt / single command / focus restore: 21 failures
+
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   4.43 sec
+
+The following tests FAILED:
+	 14 - ui_api5_native_host (Failed)
+Errors while running CTest

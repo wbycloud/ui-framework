@@ -16,7 +16,7 @@
 
 | 模式 | 证据 | 句柄基线→最终 | 结果 |
 | --- | --- | --- | --- |
-| 快速1 | [日志](api7-runtime-close-gate64.log) | 383→386 | PASS |
+| 快速1 | [日志](api7-runtime-close-gate64.log) | 384→386 | PASS |
 | 快速2 | [日志](api7-runtime-fast-2.log) | 385→387 | PASS |
 | 快速3 | [日志](api7-runtime-fast-3.log) | 385→387 | PASS |
 | 呈现1 | [日志](api7-runtime-ready64.log) | 384→386 | PASS |
@@ -27,3 +27,24 @@ GDI均12→12、USER17→17；部分周期因共享浏览器仍活动而有多�
 
 PSS观察依据[Microsoft PSS_HANDLE_ENTRY文档](https://learn.microsoft.com/en-us/windows/win32/api/processsnapshot/ns-processsnapshot-pss_handle_entry)；异步环境/浏览器退出生命周期依据[Microsoft Controller合同](https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/win32/icorewebview2controller)。诊断快照、walk marker和临时进程查询句柄在资源断言前全部释放。
 
+## API7最终源码复验与API5基线
+
+最终产品21e94e5a5f99964fde0de2ab4a32fa5c65858b82：[快速64](api7-final-fast64.log)397→399，[实际呈现后关闭64](api7-final-ready64.log)397→398，均GDI12→12、USER17→17、pending cleanup0、逐轮卸载DLL，原阈值保留。共享Runtime最后退出前可出现临时pending峰值；它与未归还的宿主进程句柄分别记录，最终必须归零。
+
+[API7首轮完整失败](api7-full-first-output.log)保留API5资源425→449、GDI9→9、USER15→17。旧基线未测pending，不能据此断言这次精确来源已全部定位。API5测试现在在基线/末次均等待框架pending0，至多15秒；原32轮、每轮2秒、句柄+12及GDI/USER+4不改，未把等待中的对象当作回收完成。
+
+[独立PSS诊断](api7-api5-diagnose.log)444→443、pending0；后续独立矩阵built/original重复通过，最终二者均399→398、GDI9→9、USER17→17、pending0，见[完整输出](api7-full-final-output.log)。PSS只作可选资源类型诊断，所有快照句柄释放后测断言。不用随后单次通过改写首轮失败，最终本机61项60通过/1物理跳过与原生21通过/1跳过见[API7总记录](api7-validation.md)。当前源码Session0服务权限不足，历史Session0与无登录另记。
+
+## 后续失败与异步模态焦点复现
+
+1262cc0 完整回归再现 API5 原包资源超限：358→395、GDI9→9、USER15→17、pending0，最终等待15秒仍未归还；[失败完整输出](api7-latest-full-failure-output.log)和[JUnit](api7-latest-full-failure.xml)保留，不能用此前通过声称这一情况已修复。三次独立原包诊断中，两次通过，第三次354→378、USER15→17失败；[窗口/模块诊断](api7-input-adapter-reproduction.log)显示新增 SystemUserAdapterWindowClass、CoreMessaging/CoreUIComponents。MSCTFIME UI 和 IME 窗口此前已经存在，因此不能笼统归因为首次 IME 创建。
+
+随后增加异步模态原生焦点断言，[修复前](api7-modal-focus-red.log)容器与实际focus相同、descendant=0。现有WM_SETFOCUS发生在controller创建之前被略过，文档就绪后未转交；这是可稳定复现的独立缺口。修复只在同一容器仍持有焦点、活动且输入未被门控时 MoveFocus，不增加等待/预热、放宽资源阈值或初始化全局输入服务。资源波动与这项缺口的关系以随后独立/完整运行及可选创建调用栈为准；该类窗口/模块出现本身不能证明所有泄漏来源已定位。
+
+2c0c52b之后，原API5三次独立32轮均390→387、GDI9/USER17平稳、pending0；当前完整矩阵built/original各32均394→391。API7两个独立64周期分别390→390、391→392，原阈值及DLL卸载通过，详见[最新产品复验](api7-validation.md)。这证明所列场景的回收，没有把历史所有句柄差值都归为同一种原因。
+
+[实际创建调用栈](api7-input-adapter-creation.log)记录textinputframework/MSCTF→CoreMessaging→USER32，SystemUserAdapter属于Windows输入基础设施；它在该次完整初始场景内已创建。诊断CBT hook仅在UI_RUNTIME_INVENTORY下安装，USER多1前后均计入，结束释放；正常重复运行没有该开关。首帧中文路径受wide fprintf编码影响不完整，其余Windows DLL帧可识别；不借此断言具体框架调用点或解释全部内核句柄差额。PSS只在可选UI_RUNTIME_RESOURCES下运行，UI_RUNTIME_ONLY_SETTLED可避开基线快照影响。
+
+原生输入测试显式等待实际呈现完成后记录焦点，safe title点击后仅重试标准SetForegroundWindow；微软仍允许拒绝前台请求，见[合同](https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setforegroundwindow)。没有更改输入设置、桌面、所有者断言或对其他应用发键。共享桌面的额外VK_PACKET/前台丢失失败均保留，最新三个独立通过不称永久消除竞态。下一次资源超限继续保存pending、窗口类/PID和PSS类型，不能以一次通过、未知类型或缓存假说宣布根治。
+
+最终冻结cb42660完整61项60PASS/1物理SKIP、327.82秒，本次原生输入通过；另10个独立原生输入进程60.74秒全通过。API5 built/original各360→357、GDI9/USER17不增长、pending0，原32周期/+12/+4不变；[冻结原输出](api7-frozen-full-output.log)与[完整身份](api7-frozen-binaries.json)。之前全部失败仍保留，当前目标Session0/无登录及长期人工待验。

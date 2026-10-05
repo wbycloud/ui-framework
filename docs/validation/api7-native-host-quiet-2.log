@@ -1,0 +1,23 @@
+Native input desktop thread=Default input=Default available=1 foreground=0000000002851102 expected=0000000003C40E62
+line 20: owned
+line 20: owned
+line 20: owned
+line 20: owned
+line 32: ui_host_menu_get_item_presentation(info.host,"submit",&p)==UI_STATUS_OK&&p.visible
+line 20: owned
+line 20: owned
+line 20: owned
+line 33: !strcmp(ui_host_status_text(info.host),"submitted")
+line 33: info.host->next_request_id==before+1
+line 20: owned
+line 20: owned
+line 34: ui_host_menu_get_presentation(info.host,"close",&p)==UI_STATUS_OK
+line 20: owned
+line 20: owned
+line 20: owned
+line 20: owned
+line 20: owned
+line 20: owned
+line 35: ui_component_get_field(ui_component_find(info.host,"form"),"name",&field)==UI_STATUS_OK&&!strcmp(field.text,"DLL updated")
+line 35: info.host->next_request_id==before+1
+Actual native WebView focus / host Alt / single command / focus restore: 21 failures

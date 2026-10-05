@@ -1,0 +1,191 @@
+{
+  "source_commit": "21e94e5a5f99964fde0de2ab4a32fa5c65858b82",
+  "source_dirty": true,
+  "dirty_scope": "documentation/evidence only; code committed",
+  "source_whitespace_note": "Only trailing blank/whitespace in owned test sources was normalized after testing; no statement or production source changed.",
+  "sdk6_source": "658b4972f78c4c52fad86ff8c379567dd108d277",
+  "runtime": "154.0.4258.53",
+  "full_suite": {
+    "tests": 61,
+    "passed": 60,
+    "skipped": [
+      "ui_monitor_transition"
+    ],
+    "failures": 0
+  },
+  "native_suite": {
+    "tests": 22,
+    "passed": 21,
+    "skipped": [
+      "ui_monitor_transition"
+    ],
+    "failures": 0
+  },
+  "repeats": {
+    "independent_processes": 2,
+    "cycles_per_process": 64,
+    "fast": {
+      "handles": [
+        397,
+        399
+      ],
+      "gdi": [
+        12,
+        12
+      ],
+      "user": [
+        17,
+        17
+      ],
+      "final_pending": 0
+    },
+    "presented": {
+      "handles": [
+        397,
+        398
+      ],
+      "gdi": [
+        12,
+        12
+      ],
+      "user": [
+        17,
+        17
+      ],
+      "final_pending": 0
+    }
+  },
+  "session0": "Not run: administrator guard; no strict no-login runner",
+  "files": [
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_framework.dll",
+      "bytes": 2120192,
+      "sha256": "23c7e4aa0594f15ea197a0e3b0d38e1a71e28c382ab9e196af1113d77d710d25"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\framework_host.exe",
+      "bytes": 198656,
+      "sha256": "2cf6b253a1a545947c614bd699939abcbfa89722620ae85a76101b6b5744883d"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_api7_integration_test.exe",
+      "bytes": 38400,
+      "sha256": "e57306e6bd3c49ff91a38e95548a77c473f9629cdf3b05dcf1214c16332e1859"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_api7_fixture.dll",
+      "bytes": 21504,
+      "sha256": "bc2d446094f8d05e29cc26b31d9aabe3176e4429f868deccbd461445c09d8031"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\api7_fixture.uapp",
+      "bytes": 21893,
+      "sha256": "e3a35518cb7f2d24be98da3d1f8167c0b2375b6a5389333d3e202dbfb1e2873b"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_component_scroll_test.exe",
+      "bytes": 2040832,
+      "sha256": "4014f07978e53288c0bd0d4667446a78c0cd5ff63d34d5b921b3d7dfb797a67a"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_light_scroll_test.exe",
+      "bytes": 1910784,
+      "sha256": "e04c5f8672671617fb2115d91b180b725ab47242259a6daf3f576d8769c65824"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_workspace7_test.exe",
+      "bytes": 1957888,
+      "sha256": "952df407d3777d543b48345a263454015eae43be2ac43d70017f69025929d6c2"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_component_experience_test.exe",
+      "bytes": 2048512,
+      "sha256": "7180113343f8bf983035dbc81efb67466d37d763ebc4bde526afc657da2ae978"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_api5_integration_test.exe",
+      "bytes": 29184,
+      "sha256": "fff5441501685e156e3d043000e86d52453f35041d81e6c30f621bbb6ab6b544"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_api5_native_host_test.exe",
+      "bytes": 84992,
+      "sha256": "a178a81bd21555e5246cfa3c92d12b3fbb5b23842c8b3cb175a3e3e8ed784ca9"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_session0_gl_test.exe",
+      "bytes": 28672,
+      "sha256": "a7419d524ee13490ef58072842ff845b98d02962b0e7bdaa7e6fe3ce2f073d3b"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_session0_gl_app.dll",
+      "bytes": 19456,
+      "sha256": "77c6e7f9e403c77eb46ebcb9e0816a6e4f6657f421dcebc6a18230220a7e46c9"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\session0_gl_app.uapp",
+      "bytes": 19840,
+      "sha256": "6992b0d24564c63e1b70393d0312ef973c8f37465b3642ae1bceab034366337a"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\api6\\native\\ui_workspace7_test.exe",
+      "bytes": 87040,
+      "sha256": "92b23d767e0d314c57f51b8813c21179813f3052fc7283e013e8d81e4e6bed79"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+      "bytes": 52327936,
+      "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\web-shell\\baseline\\minimal_eda.uapp",
+      "bytes": 151289,
+      "sha256": "86988546516e17b4783c5a9ed1583dfaa9e73ecdfcd1f5b8fad9a4910a5a3503"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\api3\\baseline\\web_counter.uapp",
+      "bytes": 134436,
+      "sha256": "2cf7a9619365184211cb636db6537c6119f03bc40d41d92edfbe6c235d3ccb2f"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\baseline\\generic_components.uapp",
+      "bytes": 25564,
+      "sha256": "d024c191b6fcae0da5eecc71b29c3429e27a74db9ec339a118a9577c691c0745"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\api5-evidence\\original-api4-framework_features.uapp",
+      "bytes": 27113,
+      "sha256": "ccc1ddd03068aaf8d68682ffe9a6d16afbb93939ded65c6925e5deee60ddd568"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\api6-evidence\\original-api5-fixture.uapp",
+      "bytes": 16174,
+      "sha256": "285431bddc0d00bebed153c6441c00fc9be98793a79a50dd0a31c5b800645f19"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\api7-evidence\\original-api6-fixture.uapp",
+      "bytes": 21920,
+      "sha256": "b493adda01f6dc5d8562a52e3648b2ce8b4e233a07d9c8def28646241cf084e4"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\api7-light-frame.ppm",
+      "bytes": 12301,
+      "sha256": "7d2c0527f4a5dd66db565ffbdad3961eac7f4cd5b33863c1e675d1fc92f69921"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\api7-runtime-frame.ppm",
+      "bytes": 12301,
+      "sha256": "7d2c0527f4a5dd66db565ffbdad3961eac7f4cd5b33863c1e675d1fc92f69921"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\session0-control\\frame-1-samples0-1.ppm",
+      "bytes": 12301,
+      "sha256": "15b8af8320872e6f3e3e17be1fe44976027eb8415c649703eb3fe049e0396977"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\session0-control\\frame-3-samples4-1.ppm",
+      "bytes": 12301,
+      "sha256": "f40160df00c04114c3a80ca8665689993bc594d6aeeaaf56b4728aed260a1e35"
+    }
+  ]
+}

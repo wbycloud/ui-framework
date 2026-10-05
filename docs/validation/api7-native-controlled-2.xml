@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="1"
+	failures="1"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="4"
+	timestamp="2026-10-05T20:15:33"
+	>
+	<testcase name="ui_api5_native_host" classname="ui_api5_native_host" time="4.86534" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out>Native input desktop thread=Default input=Default available=1 foreground=00000000077B0BD4 expected=000000000487110E
+Activate fallback frame=78,78,1278,878 target=178,90 hit=000000000487110E owner=000000000487110E expected=000000000487110E visible=1 iconic=0
+native key msg=260 key=18 handled=1 ctrl=1 shift=0 alt=-127
+native key msg=260 key=70 handled=1 ctrl=1 shift=0 alt=-127
+native key msg=261 key=70 handled=1 ctrl=1 shift=0 alt=-127
+line 21: owned
+line 21: owned
+line 21: owned
+line 21: owned
+line 35: !strcmp(ui_host_status_text(info.host),"submitted")
+line 35: info.host-&gt;next_request_id==before+1
+line 35: GetFocus()==focus
+line 21: owned
+line 21: owned
+line 21: owned
+line 21: owned
+line 36: GetFocus()==focus
+line 21: owned
+line 21: owned
+line 21: owned
+line 21: owned
+line 37: ui_component_get_field(ui_component_find(info.host,"form"),"name",&amp;field)==UI_STATUS_OK&amp;&amp;!strcmp(field.text,"DLL updated")
+line 37: info.host-&gt;next_request_id==before+1
+Actual native WebView focus / host Alt / single command / focus restore: 18 failures
+</system-out>
+	</testcase>
+</testsuite>

@@ -1,12 +1,12 @@
 # 框架开发交接记录
 
-更新日期：2026-10-05。当前SDK0.6/API6增加工作区布局和共同组件体验；API5四项保留且继续回归，实际OSMesa Session0已有通过证据。菜单外观与侧向鼠标交互已后续修正，见[菜单验收](validation/menu-desktop-validation.md)与第9节。先读[API6验收](validation/api6-validation.md)、[Session0记录](validation/session0-osmesa-validation.md)与第8节；API3/4/5历史记录保留。整机无登录、物理/长期人工及真实业务试点尚未全部验收，不把“已推送”“测试通过”和“完整验收完成”混为一谈。
+更新日期：2026-10-05。当前SDK0.7/API7本地开发，先读[本轮验收](validation/api7-validation.md)、[稳定性记录](validation/runtime-stability-validation.md)和末尾第10节；API6已有工作区布局和共同组件体验保留；API5四项保留且继续回归，历史OSMesa Session0已有通过证据，当前源码受服务权限限制待验。菜单外观与侧向鼠标交互已后续修正，见[菜单验收](validation/menu-desktop-validation.md)与第9节。先读[API6验收](validation/api6-validation.md)、[Session0记录](validation/session0-osmesa-validation.md)与第8节；API3/4/5历史记录保留。整机无登录、物理/长期人工及真实业务试点尚未全部验收，不把“已推送”“测试通过”和“完整验收完成”混为一谈。
 
 ## 1. 恢复顺序与版本
 
 1. 检查 `git status --short`、`git branch --show-current` 和 `git log -3 --oneline`；先保留接手时的用户改动。
 2. 阅读本文、[应用开发标准](application-development-standard.md)、[API6验收](validation/api6-validation.md)、[API5验收](validation/api5-validation.md)、[API4记录](validation/api4-validation.md)及[API3未验证项](validation/api3-validation.md#41-未验证项目与补验清单)。
-3. 修改代码前核对[公共头文件](../include/ui_framework/ui.h)、[布局](workspace-layout.md)、[菜单/离屏合同](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)、[0.5→0.6迁移](migration-v0.5-to-v0.6.md)及相关测试。无需重做已完成的实现。
+3. 修改代码前核对[公共头文件](../include/ui_framework/ui.h)、[布局](workspace-layout.md)、[菜单/离屏合同](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)、[0.6→0.7迁移](migration-v0.6-to-v0.7.md)及相关测试。无需重做已完成的实现。
 
 | 项目 | 交接状态 |
 | --- | --- |
@@ -15,9 +15,9 @@
 | API6实现/最终测试与CI条件 | [1cdc50e](https://github.com/wbycloud/ui-framework/commit/1cdc50e)、[9705565](https://github.com/wbycloud/ui-framework/commit/9705565)，完整提交序列及失败修复见API6验收；文档提交不改运行代码 |
 | 菜单后续本地实现 | `6bf59f8`、`2917b44`、`d907fbd`、`d2e4a61`及测试收敛`b1f4c7b`；最终产品源码d2e4a61，仅内部菜单改动，API6/ABI1不变；最终证据另提交 |
 | API4历史实现/补验 | [e83a008](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c)、[48d6aaf](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，模态原生输入、STYLE回收、redock焦点；[记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
-| 实际远端分支 | `main`仍为`ea5b108`，`codex/menus-offscreen`为`9705565`；最终API6证据`559b802`已本地提交，未推送；交付状态修订另行提交，实际HEAD以Git为准 |
-| SDK / 框架 API / 标准修订 | `0.6.0` 开发版 / `6` / `6` |
-| 兼容范围 | 运行库接受 API1/2/3/4/5/6；包清单和 DLL descriptor 必须一致 |
+| API6阶段最后核对的远端分支（历史） | `main`仍为`ea5b108`，`codex/menus-offscreen`为`9705565`；最终API6证据`559b802`已本地提交，未推送；交付状态修订另行提交，实际HEAD以Git为准 |
+| SDK / 框架 API / 标准修订 | `0.7.0` 本地开发版 / `7` / `7` |
+| 兼容范围 | 运行库接受 API1/2/3/4/5/6/7；包清单和 DLL descriptor 必须一致 |
 | 应用 ABI / 导出入口 / 包格式 | `1` / `ui_app_query_v1` / `1` |
 | 稳定标签 | 只有 `v0.1.0`；未创建新的稳定标签 |
 
@@ -87,7 +87,7 @@ cmake --build build/native
 ctest --test-dir build/native --output-on-failure
 ```
 
-API4历史验证曾使用`build/fw-next/release`，当前同目录已重建为API6及菜单后续源码，本轮最终配置53项、原生21项，见第9节；`build/web-shell` 等旧目录可能残留旧版本，使用前重建，不混用运行库。本地保留 `build/fw-next/ctest-final.log`、`build/fw-next/clean-test.log`、`build/fw-next/build.log`、`build/fw-next/build.cmd` 和原生构建脚本。它们被忽略，不属于远程可获取证据；公开证据以验收文档和可构建测试为准。
+API4历史验证曾使用`build/fw-next/release`，菜单阶段同目录重建为API6、配置53项/原生21项（第9节）；当前已重建API7，最终配置及身份见第10节；`build/web-shell` 等旧目录可能残留旧版本，使用前重建，不混用运行库。本地保留 `build/fw-next/ctest-final.log`、`build/fw-next/clean-test.log`、`build/fw-next/build.log`、`build/fw-next/build.cmd` 和原生构建脚本。它们被忽略，不属于远程可获取证据；公开证据以验收文档和可构建测试为准。
 
 本次补验日志另存 `build/acceptance-20261004/`，历史失败日志保留。最终回归日志为 `final-regression.log`、`native-regression.log`、`original-packages.log`；十分钟数据为 `stress-fixed-600s.log`。公开[采样CSV](validation/api4-resilience-20261004.csv)及[曲线](validation/api4-resilience-20261004.png)已保存。十分钟曲线在最终焦点补丁前采集；该补丁随后通过原复现环境和完整回归。
 
@@ -175,3 +175,17 @@ Session0补验后的必要回归为43项42PASS/1SKIP，原生21项20PASS/1SKIP�
 失败记录不能丢：首版样式/选择错误、旧关闭按钮用例、缓存首次建立口径、F1字符映射与无分页空白均有复现及修正。2917b44完整矩阵出现一次API6 WebView2重开句柄374→416超原+12，相同源码独立复验386→387通过，原因未定位；保留原断言及完整失败，继续追查，不把菜单改动说成其修复。受限环境Runtime超时也独立保留。
 
 仅本地交付，不推送或创建稳定标签；旧API6四行CI属于9705565，不能算本轮源码的新CI。整机无登录runner仍缺，历史Session0成功仍归专门记录；真实IME、不同缩放物理显示器/边缘、桌面合成和长期人工待验。本轮有KLayout只读观察授权，没有业务修改/适配授权，独立DLL仅算框架集成。缺少这些条件不阻塞本轮菜单独立开发，但不能宣布全部验收通过。
+
+## 10. API7稳定性、滚动与平面布局本地交付
+
+接手干净658b4972f78c4c52fad86ff8c379567dd108d277，既有API5/6及菜单保留。独立开发依次完成关闭门控、完整范围横纵滚动、底部/标签、连续RGBA、独立DLL与文档。Windows x64/C11，SDK0.7/API7/标准7、ABI1/包格式1；不扩展嵌套分割树或硬件无窗口GL。
+
+本地单元：3055bab（关闭门控/资源复现）、87f829a（SDK6冻结）、21e94e5（API7实现/测试/CI）、d79a59f（捕获变化测试）、1262cc0（直接注册BOTTOM/无窗口初始布局）、2c0c52b（稳定复现的异步模态原生焦点修复）、ae4ee3a/cb42660（仅原生输入就绪/失败诊断）。最后可执行源码HEAD为cb426600d25175261eeaee3ccd23ad859b138b16；文档和证据是包含本节的后续提交，以git log/status为准。没有推送/强推/新标签、代理/新会话、请求方/PERF-001/冻结SDK或原包编辑。
+
+旧21e矩阵60PASS/1SKIP仍归原身份。1262矩阵又复现原API5超限358→395、USER15→17、pending0，不能用之前通过称已根治。观察到Windows输入适配窗口/模块延迟初始化，另稳定复现模态容器在controller未创建时得到焦点而文档就绪后未转交；2c只转交仍有效当前焦点。三个原包独立32周期均390→387；当前完整矩阵built/original各32均394→391。最新API7两个独立64周期390→390和391→392、pending0、逐轮DLL卸载通过。原资源门槛不改，历史全部波动精确归因不主张。
+
+2c产品61项矩阵初跑为59PASS/1FAIL/1物理SKIP（348.69秒）；ui_api5_native_host受到未由用例发送的VK_PACKET输入，其后独立运行也保留前台获取失败。原生配置22项21PASS/1SKIP（5.35秒）。当前原生输入等待实际呈现就绪，所有owned/次数/焦点断言保留，最后cb42660三个独立CTest各1/1通过。没有把初跑失败改写成全绿，也没有把后续通过称共享桌面竞态永久解决；随后冻结cb42660在后台启动器中完整61项60PASS/1物理SKIP、0失败（327.82秒）；原生输入另连续10个独立进程全部通过（60.74秒）。这些通过限定于实际条件，不能宣布共享桌面竞态永久消失。精确每次身份、失败、步骤、依赖及hash见[API7验收](validation/api7-validation.md)、[最终清单](validation/api7-frozen-binaries.json)和[资源记录](validation/runtime-stability-validation.md)。
+
+滚动条按完整total/列宽，用BigInt精确处理uint64，支持空批总量缩小/树缓存外折叠、换源/排序/捕获失效、窗口/无窗口输入，保持分页和预算。底部9/旧COUNT8、CANCEL8追加、panel旧48前缀及完整字段兼容；格式2读1、旧host写1、新host写2，应用负责存储。标签槽、草稿/选择/焦点/GL复用；连续颜色只改草稿、业务提交一次。SDK1–6调用方及六个原二进制分别通过且hash不变，旧布局1断言保留。[迁移](migration-v0.6-to-v0.7.md)、开发标准、构建、接口、README/CHANGELOG和升级提示词同步。
+
+最后审计：cb42660源码的Session0服务脚本第11行非管理员检查退出1，未创建服务或注销用户/修改既有服务，历史78c24cb不冒充当前验收。最终冻结Session1实际DLL/OSMesa200轮、400实例、2000命令、HWND0、原128MiB门槛通过（185→186句柄，private峰值109,375,488），只算INTERACTIVE_CONTROL。严格无登录runner没有；真实中文IME、物理不同DPI/屏幕边缘/桌面合成、长期人工、当前托管CI与授权业务试点仍待验。没有OSMesa瓶颈/硬件需求证据，不扩大范围。独立实现和本地文档已交付；当前自动矩阵已通过，但历史失败仍保存；上述目标环境和人工限制意味着不宣布整个阶段验收完成。

@@ -1,0 +1,1626 @@
+click field-name rect 13,109,734,38 clip 13,109,734,38
+click tree-label-1 rect 11,85,168,28 clip 11,85,168,28
+nested result=0 text=Nested DLL row
+click field-name rect 13,109,398,38 clip 13,109,398,38
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=9
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=10
+Free Runtime view controller=1 bridge=1 navigation=1 id=9
+Free Runtime view controller=1 bridge=1 navigation=1 id=10
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=6
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=6
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+API5 baseline pending cleanup=0
+Baseline native focus=0000000005071134 foreground=0000000002C5074A USER=15
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen1 handles=354 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen2 handles=355 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen3 handles=355 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen4 handles=355 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+reopen5 handles=355 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen6 handles=355 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen7 handles=355 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen8 handles=355 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen9 handles=355 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen10 handles=355 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen11 handles=357 USER=15 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen12 handles=382 USER=18 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen13 handles=382 USER=17 focus=0000000005071134
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+Inventory api5 baseline
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen14 handles=382 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen15 handles=382 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen16 handles=382 USER=17 focus=0000000005071134
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen17 handles=382 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen18 handles=382 USER=17 focus=0000000005071134
+class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+reopen19 handles=382 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen20 handles=382 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen21 handles=382 USER=17 focus=0000000005071134
+dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME tDestroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen22 handles=382 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen23 handles=382 USER=17 focus=0000000005071134
+hread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ ModuleDestroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen24 handles=380 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen25 handles=376 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen26 handles=378 USER=17 focus=0000000005071134
+=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowCDestroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen27 handles=378 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen28 handles=378 USER=17 focus=0000000005071134
+lass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinpDestroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen29 handles=378 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen30 handles=378 USER=17 focus=0000000005071134
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen31 handles=378 USER=17 focus=0000000005071134
+utframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClassDestroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen32 handles=378 USER=17 focus=0000000005071134
+line 49: GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4&&end_handles<=handles+12
+API5 final pending cleanup=0
+ thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Inventory USER changed
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+DLL reopen32 resources GDI 9->9 USER 15->17 handles 354->378 drained_ms=15000
+Inventory api5 settled
+ Window=0000000005071134 class=Static thread=38396
+ Window=0000000003670B14 class=MSCTFIME UI thread=38396
+ Window=00000000051F10C0 class=IME thread=38396
+ Window=0000000002C6074A class=SystemUserAdapterWindowClass thread=38396
+ Window=0000000005460C42 class=CicMarshalWndClass thread=38396
+ Window=0000000001990FAE class=OleMainThreadWndClass thread=38396
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=IMM32.dll
+ Module=combase.dll
+ Module=ADVAPI32.dll
+ Module=RPCRT4.dll
+ Module=OPENGL32.dll
+ Module=msvcrt.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=MSIMG32.dll
+ Module=USP10.dll
+ Module=GLU32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+Resources api5 settled pid=47136 handles=378 File=32 Event=54 Key=20 WaitCompletionPacket=16 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=126 Directory=2 SchedulerSharedData=1 ALPC Port=10 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=23 Thread=58 Timer=1 Process=1 IoCompletionReserve=1
+API5 actual Runtime/application DLL: 1 failures

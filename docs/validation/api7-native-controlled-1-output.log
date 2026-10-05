@@ -1,0 +1,36 @@
+Start testing: Oct 05 20:15 中国标准时间
+----------------------------------------------------------
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api5_native_host_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/api5_fixture.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:15 中国标准时间
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=0000000006D31076 expected=0000000001CD08BA
+Activate fallback frame=208,208,1408,1008 target=308,220 hit=0000000001CD08BA owner=0000000001CD08BA expected=0000000001CD08BA visible=1 iconic=0
+native key msg=260 key=18 handled=1 ctrl=0 shift=0 alt=-127
+native key msg=260 key=70 handled=1 ctrl=0 shift=0 alt=-127
+native key msg=261 key=70 handled=1 ctrl=0 shift=0 alt=-127
+native key msg=257 key=18 handled=1 ctrl=0 shift=0 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=0 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=0 alt=1
+native key msg=257 key=83 handled=1 ctrl=0 shift=0 alt=1
+native key msg=260 key=18 handled=1 ctrl=0 shift=0 alt=-128
+native key msg=261 key=18 handled=1 ctrl=0 shift=0 alt=0
+native key msg=256 key=27 handled=1 ctrl=0 shift=0 alt=0
+native key msg=257 key=27 handled=1 ctrl=0 shift=0 alt=0
+native key msg=256 key=17 handled=0 ctrl=-127 shift=0 alt=0
+native key msg=256 key=79 handled=1 ctrl=-127 shift=0 alt=0
+native key msg=257 key=79 handled=0 ctrl=-127 shift=0 alt=0
+native key msg=257 key=17 handled=0 ctrl=1 shift=0 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.21 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:15 中国标准时间
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+End testing: Oct 05 20:15 中国标准时间

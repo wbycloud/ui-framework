@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 0.7.0 — 本地开发交付，未创建稳定标签
+
+API7/标准7，支持API1–7，ABI1/包格式1保持。轻量overflow新增框架绘制横纵条，共同树/表格/列表新增完整数据范围条、宽表横条、uint64精确映射和捕获失效处理，保留分页/预算。连续RGBA/透明度预览及文本沿用草稿/一次业务提交。
+
+底部停靠与同区标签复用内容槽和GL；布局格式2读取1、完整异常验证、缺失/新增面板恢复和reset。ui_panel_layout在48/56追加字段，旧48前缀兼容；原host布局大小/COUNT8不改，BOTTOM9/CANCEL8追加。冻结SDK6及原API1–6包分别验证。
+
+修复关闭WAIT期间仍启动Runtime环境创建，保留内部文档确认/延后Close/BrowserProcessExited合同。原资源阈值不改，保留复现、中间失败和独立连续周期证据；API5基线与最终都要求框架关闭排空；修复异步模态先聚焦容器、文档就绪后漏转交Runtime的缺口，只转交仍有效的当前焦点。详情见[稳定性](docs/validation/runtime-stability-validation.md)和[本轮验收](docs/validation/api7-validation.md)。
+
+四配置CI继续，增加真实Runtime滚动和API7独立DLL必跑项。本轮未推送；整机无登录/真实IME/物理跨屏/桌面合成/长期人工及业务试点不继承历史通过。没有硬件无窗口GL范围扩展。迁移见[0.6→0.7](docs/migration-v0.6-to-v0.7.md)。
+
 ## 0.6.0 — 开发版，未创建稳定标签
 
 API6/标准6，运行库接受API1–6，ABI1/包格式1保持。追加应用负责存储的布局格式1、稳定面板ID、恢复/重置、约束分隔条与左右栈/浮动拖拽，内容槽和GL context沿用原生命周期；Windows无窗口提供逻辑布局。

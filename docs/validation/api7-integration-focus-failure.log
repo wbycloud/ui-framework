@@ -1,0 +1,67 @@
+Test project D:/应用软件框架/应用层序框架/build/fw-next/release
+    Start 26: ui_api7_integration
+1/2 Test #26: ui_api7_integration ..............***Failed    7.90 sec
+API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+integration line72: query(form,"field-name",&p)==UI_STATUS_OK&&p.focused&&!strcmp(p.text_utf8,"layout draft 中文")
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=240
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-light-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+API7 integration: reopen 1
+API7 integration: reopen 2
+API7 integration: reopen 3
+API7 integration: reopen 4
+API7 integration: reopen 5
+API7 integration: reopen 6
+API7 integration: reopen 7
+API7 reopen8 handles 289->289 GDI 3->3 USER 3->3 pending Runtime cleanup=0
+API7 complete offscreen lifecycle created HWNDs=0
+API7 independent light offscreen DLL integration: 1 failures
+Runtime test: normal CRT exit callback reached
+
+    Start 27: ui_api7_integration_webview2
+2/2 Test #27: ui_api7_integration_webview2 .....***Failed   13.74 sec
+API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+integration line72: query(form,"field-name",&p)==UI_STATUS_OK&&p.focused&&!strcmp(p.text_utf8,"layout draft 中文")
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=180
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-runtime-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+ Framework pending cleanup=0 process handles=453
+API7 integration: reopen 1
+ Framework pending cleanup=0 process handles=453
+API7 integration: reopen 2
+ Framework pending cleanup=0 process handles=453
+API7 integration: reopen 3
+ Framework pending cleanup=0 process handles=453
+API7 integration: reopen 4
+ Framework pending cleanup=0 process handles=453
+API7 integration: reopen 5
+ Framework pending cleanup=0 process handles=453
+API7 integration: reopen 6
+ Framework pending cleanup=0 process handles=453
+API7 integration: reopen 7
+ Framework pending cleanup=0 process handles=453
+API7 reopen8 handles 453->453 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+API7 independent WebView2 DLL integration: 1 failures
+Runtime test: normal CRT exit callback reached
+
+
+0% tests passed, 2 tests failed out of 2
+
+Total Test time (real) =  22.93 sec
+
+The following tests FAILED:
+	 26 - ui_api7_integration (Failed)
+	 27 - ui_api7_integration_webview2 (Failed)
+Errors while running CTest

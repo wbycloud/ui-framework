@@ -1,0 +1,60 @@
+[1/75] Building C object CMakeFiles\ui_workspace7_test.dir\tests\workspace7.c.obj
+[2/75] Building C object CMakeFiles\ui_api7_fixture.dir\tests\api7_fixture.c.obj
+[3/75] Building C object CMakeFiles\ui_component_scroll_test.dir\tests\component_scroll.c.obj
+[4/75] Building C object CMakeFiles\ui_light_scroll_test.dir\tests\light_scroll.c.obj
+[5/75] Building C object CMakeFiles\ui_component_experience_test.dir\tests\component_experience.c.obj
+[6/75] Building C object CMakeFiles\ui_framework.dir\src\backends\light_web.c.obj
+[7/75] Building C object CMakeFiles\ui_framework_shared.dir\src\backends\light_web.c.obj
+[8/75] Linking C static library ui_framework.lib
+[9/75] Linking C executable uapp_pack.exe
+[10/75] Linking C shared library ui_framework.dll
+[11/50] Linking C executable light_web_probe.exe
+[12/50] Linking C executable minimal_eda.exe
+[13/50] Linking C executable webview2_probe.exe
+[14/50] Linking C executable ui_workspace_layout_test.exe
+[15/50] Linking C executable ui_package_format_test.exe
+[16/50] Generating web_counter.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/fw-next/release/web_counter.uapp
+[17/50] Linking C executable ui_webview2_messages_test.exe
+[18/50] Generating minimal_eda.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/fw-next/release/minimal_eda.uapp
+[19/50] Generating generic_components.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/fw-next/release/generic_components.uapp
+[20/50] Generating counter_mismatch.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/fw-next/release/counter_mismatch.uapp
+[21/50] Linking C executable ui_api5_compat_test.exe
+[22/50] Generating api5_fixture.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp
+[23/50] Linking C executable ui_light_scroll_test.exe
+[24/50] Linking C executable ui_component_experience_test.exe
+[25/50] Linking C executable ui_component_scroll_test.exe
+[26/50] Generating framework_features.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/fw-next/release/framework_features.uapp
+[27/50] Generating cpp_fixture.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/fw-next/release/cpp_fixture.uapp
+[28/50] Generating api6_fixture.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/fw-next/release/api6_fixture.uapp
+[29/50] Generating session0_gl_app.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/fw-next/release/session0_gl_app.uapp
+[30/50] Linking C executable ui_dpi_integration_test.exe
+[31/50] Linking C executable ui_floating_web_dpi_test.exe
+[32/50] Linking C executable ui_menu_cascade_offscreen_test.exe
+[33/50] Linking C executable ui_web_text_edit_test.exe
+[34/50] Linking C executable ui_surface_input_test.exe
+[35/50] Linking C executable ui_menu_access_test.exe
+[36/50] Linking C executable ui_native_activation_test.exe
+[37/50] Linking C executable ui_opengl_integration_test.exe
+[38/50] Linking C executable ui_menu_offscreen_test.exe
+[39/50] Linking C executable ui_offscreen_gl_test.exe
+[40/50] Linking C executable ui_light_web_dynamic_test.exe
+[41/50] Linking C executable ui_web_shell_slots_test.exe
+[42/50] Linking C executable ui_monitor_transition_test.exe
+[43/50] Linking C executable ui_native_shell_integration_test.exe
+[44/50] Linking C executable ui_workspace7_test.exe
+[45/50] Linking C executable ui_native_responsive_test.exe
+[46/50] Linking C executable ui_assistant_protocol_test.exe
+[47/50] Linking C shared module ui_api7_fixture.dll
+[48/50] Generating api7_fixture.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/fw-next/release/api7_fixture.uapp
+[49/50] Building C object CMakeFiles\ui_api7_integration_test.dir\tests\api7_integration.c.obj
+[50/50] Linking C executable ui_api7_integration_test.exe

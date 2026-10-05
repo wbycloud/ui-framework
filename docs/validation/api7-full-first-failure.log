@@ -1,0 +1,187 @@
+Test project D:/应用软件框架/应用层序框架/build/fw-next/release
+      Start  1: ui_package_format
+ 1/59 Test  #1: ui_package_format ..................***Failed    0.42 sec
+unexpected package status 0, expected -5: 
+FAIL line 117: status == expected
+FAIL line 120: package == NULL
+FAIL line 120: error[0] != 0
+package format and deterministic packing: 3 failures
+
+      Start  2: ui_images_windows
+ 2/59 Test  #2: ui_images_windows ..................   Passed    0.05 sec
+      Start  3: ui_responsive_layout
+ 3/59 Test  #3: ui_responsive_layout ...............   Passed    0.04 sec
+      Start  4: ui_assistant_lifecycle
+ 4/59 Test  #4: ui_assistant_lifecycle .............   Passed    0.03 sec
+      Start  5: ui_dpi_web_failure
+ 5/59 Test  #5: ui_dpi_web_failure .................   Passed    0.03 sec
+      Start  6: ui_components_core
+ 6/59 Test  #6: ui_components_core .................   Passed    0.05 sec
+      Start  7: ui_headless_example
+ 7/59 Test  #7: ui_headless_example ................   Passed    0.04 sec
+      Start  8: ui_public_headers_c
+ 8/59 Test  #8: ui_public_headers_c ................   Passed    0.04 sec
+      Start  9: ui_public_headers_cpp
+ 9/59 Test  #9: ui_public_headers_cpp ..............   Passed    0.03 sec
+      Start 10: ui_webview2_parity
+10/59 Test #10: ui_webview2_parity .................   Passed    0.66 sec
+      Start 11: ui_webview2_messages
+11/59 Test #11: ui_webview2_messages ...............   Passed    0.53 sec
+      Start 12: ui_webview2_render
+12/59 Test #12: ui_webview2_render .................   Passed    9.09 sec
+      Start 13: ui_api5_integration
+13/59 Test #13: ui_api5_integration ................***Failed   97.19 sec
+click field-name rect 13,109,734,38 clip 13,109,734,38
+click tree-label-1 rect 11,85,168,28 clip 11,85,168,28
+nested result=0 text=Nested DLL row
+click field-name rect 13,109,398,38 clip 13,109,398,38
+reopen1 handles=425
+reopen2 handles=426
+reopen3 handles=426
+reopen4 handles=426
+reopen5 handles=426
+reopen6 handles=426
+reopen7 handles=426
+reopen8 handles=426
+reopen9 handles=426
+reopen10 handles=426
+reopen11 handles=428
+reopen12 handles=428
+reopen13 handles=428
+reopen14 handles=433
+reopen15 handles=428
+reopen16 handles=428
+reopen17 handles=428
+reopen18 handles=428
+reopen19 handles=428
+reopen20 handles=428
+reopen21 handles=428
+reopen22 handles=428
+reopen23 handles=426
+reopen24 handles=422
+reopen25 handles=424
+reopen26 handles=424
+reopen27 handles=424
+reopen28 handles=424
+reopen29 handles=424
+reopen30 handles=424
+reopen31 handles=449
+reopen32 handles=449
+line 46: GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4&&end_handles<=handles+12
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+DLL reopen32 resources GDI 9->9 USER 15->17 handles 425->449 drained_ms=15000
+API5 actual Runtime/application DLL: 1 failures
+
+      Start 14: ui_api5_native_host
+14/59 Test #14: ui_api5_native_host ................   Passed    6.11 sec
+      Start 15: ui_original_api5_package
+15/59 Test #15: ui_original_api5_package ...........   Passed   80.42 sec
+      Start 16: ui_workspace7
+16/59 Test #16: ui_workspace7 ......................   Passed    0.18 sec
+      Start 17: ui_workspace_layout
+17/59 Test #17: ui_workspace_layout ................   Passed    0.54 sec
+      Start 18: ui_api5_compat
+18/59 Test #18: ui_api5_compat .....................   Passed    0.10 sec
+      Start 19: ui_component_experience
+19/59 Test #19: ui_component_experience ............***Failed    0.20 sec
+experience line71: click(form,"swatch-color-1")
+experience line71: ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&!strcmp(value.text,"#00ff00ff")&&value.color_rgba==0x00ff00ff
+experience line72: presentation(form,"color-channel-color-a",&track)==UI_STATUS_OK&&track.visible
+experience line76: click(form,"color-picker-cancel-color")
+experience line76: ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&value.color_rgba==0x00ff00ff&&submits==0
+experience line81: click(form,"swatch-color-1")
+component experience light: 6 failures
+
+      Start 20: ui_component_experience_webview2
+20/59 Test #20: ui_component_experience_webview2 ...   Passed   10.75 sec
+      Start 21: ui_light_scroll
+21/59 Test #21: ui_light_scroll ....................   Passed    0.14 sec
+      Start 22: ui_component_scroll
+22/59 Test #22: ui_component_scroll ................   Passed    0.22 sec
+      Start 23: ui_component_scroll_webview2
+23/59 Test #23: ui_component_scroll_webview2 .......   Passed    6.59 sec
+      Start 24: ui_api6_integration
+24/59 Test #24: ui_api6_integration ................   Passed    6.95 sec
+      Start 25: ui_api6_integration_webview2
+25/59 Test #25: ui_api6_integration_webview2 .......   Passed   12.81 sec
+      Start 26: ui_api7_integration
+26/59 Test #26: ui_api7_integration ................   Passed    8.02 sec
+      Start 27: ui_api7_integration_webview2
+27/59 Test #27: ui_api7_integration_webview2 .......   Passed   16.56 sec
+      Start 28: ui_session0_interactive_control
+28/59 Test #28: ui_session0_interactive_control ....   Passed   34.43 sec
+      Start 29: ui_offscreen_msaa
+29/59 Test #29: ui_offscreen_msaa ..................   Passed    0.66 sec
+      Start 30: ui_windowless_gl
+30/59 Test #30: ui_windowless_gl ...................   Passed    0.58 sec
+      Start 31: ui_offscreen_gl
+31/59 Test #31: ui_offscreen_gl ....................   Passed    0.23 sec
+      Start 32: ui_workspace_offscreen
+32/59 Test #32: ui_workspace_offscreen .............   Passed    1.01 sec
+      Start 33: ui_framework_features_host
+33/59 Test #33: ui_framework_features_host .........   Passed    5.60 sec
+      Start 34: ui_menu_desktop
+34/59 Test #34: ui_menu_desktop ....................   Passed    4.94 sec
+      Start 35: ui_menu_offscreen
+35/59 Test #35: ui_menu_offscreen ..................   Passed    0.17 sec
+      Start 36: ui_menu_cascade_offscreen
+36/59 Test #36: ui_menu_cascade_offscreen ..........   Passed    0.20 sec
+      Start 37: ui_menu_access
+37/59 Test #37: ui_menu_access .....................   Passed    0.11 sec
+      Start 38: ui_api4_compat
+38/59 Test #38: ui_api4_compat .....................   Passed    0.10 sec
+      Start 39: ui_original_api4_package
+39/59 Test #39: ui_original_api4_package ...........   Passed    5.79 sec
+      Start 40: ui_web_text_edit
+40/59 Test #40: ui_web_text_edit ...................   Passed    0.38 sec
+      Start 41: ui_generic_web_host
+41/59 Test #41: ui_generic_web_host ................   Passed    5.23 sec
+      Start 42: ui_component_resilience
+42/59 Test #42: ui_component_resilience ............   Passed    4.39 sec
+      Start 43: ui_api3_original_package
+43/59 Test #43: ui_api3_original_package ...........   Passed    4.99 sec
+      Start 44: ui_application_versions
+44/59 Test #44: ui_application_versions ............   Passed    0.32 sec
+      Start 45: ui_original_api2_package
+45/59 Test #45: ui_original_api2_package ...........   Passed    0.29 sec
+      Start 46: ui_light_web_dynamic
+46/59 Test #46: ui_light_web_dynamic ...............   Passed    0.31 sec
+      Start 47: ui_web_shell_slots
+47/59 Test #47: ui_web_shell_slots .................   Passed    0.13 sec
+      Start 48: ui_floating_web_dpi
+48/59 Test #48: ui_floating_web_dpi ................   Passed    0.12 sec
+      Start 49: ui_light_web_parity
+49/59 Test #49: ui_light_web_parity ................   Passed    0.25 sec
+      Start 50: ui_workspace_integration
+50/59 Test #50: ui_workspace_integration ...........   Passed    1.52 sec
+      Start 51: ui_web_host_frontend
+51/59 Test #51: ui_web_host_frontend ...............   Passed    1.08 sec
+      Start 52: ui_native_activation
+52/59 Test #52: ui_native_activation ...............   Passed    0.70 sec
+      Start 53: ui_dpi_integration
+53/59 Test #53: ui_dpi_integration .................   Passed    0.11 sec
+      Start 54: ui_opengl_integration
+54/59 Test #54: ui_opengl_integration ..............   Passed    0.30 sec
+      Start 55: ui_surface_input
+55/59 Test #55: ui_surface_input ...................   Passed    0.28 sec
+      Start 56: ui_monitor_transition
+56/59 Test #56: ui_monitor_transition ..............***Skipped   0.10 sec
+      Start 57: ui_native_shell_integration
+57/59 Test #57: ui_native_shell_integration ........   Passed    0.12 sec
+      Start 58: ui_native_responsive
+58/59 Test #58: ui_native_responsive ...............   Passed    0.26 sec
+      Start 59: ui_assistant_protocol
+59/59 Test #59: ui_assistant_protocol ..............   Passed    0.10 sec
+
+95% tests passed, 3 tests failed out of 59
+
+Total Test time (real) = 333.96 sec
+
+The following tests did not run:
+	 56 - ui_monitor_transition (Skipped)
+
+The following tests FAILED:
+	  1 - ui_package_format (Failed)
+	 13 - ui_api5_integration (Failed)
+	 19 - ui_component_experience (Failed)
+Errors while running CTest

@@ -1,0 +1,9 @@
+scroll line18: ui_component_submit(c,&b)==UI_STATUS_OK
+scroll line32: ui_component_get_state(c,&s)==UI_STATUS_OK&&s.first==0&&s.total_count==1
+end row first=99991 total=100000 rows=11 query=99989+14 nodes=99 status=0
+end column first=0 col=0 rows=12 query=0+12
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551606 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=778,124,12,310
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=778,124,12,310
+complete range scroll light offscreen: 2 failures

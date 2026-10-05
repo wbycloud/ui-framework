@@ -1,0 +1,262 @@
+{
+  "product_commit": "2c0c52baa345a3234bc10ec39e7458afbefd6a8c",
+  "native_test_commit": "cb426600d25175261eeaee3ccd23ad859b138b16",
+  "source_dirty": true,
+  "dirty_scope": "documentation/evidence only; no executable source changes",
+  "full_suite": {
+    "source_commit": "2c0c52baa345a3234bc10ec39e7458afbefd6a8c",
+    "tests": 61,
+    "passed": 59,
+    "failures": 1,
+    "skipped": 1,
+    "failure": "ui_api5_native_host; unexpected VK_PACKET input observed; failed assertions preserved",
+    "seconds": 348.69
+  },
+  "later_test_only_changes": [
+    "ae4ee3a: actual Runtime readiness and foreground diagnostics",
+    "cb42660: rejected-window owner/pid diagnostics"
+  ],
+  "native_suite": {
+    "tests": 22,
+    "passed": 21,
+    "failures": 0,
+    "skipped": 1,
+    "seconds": 5.35
+  },
+  "native_runtime_inputs": {
+    "independent_processes": 3,
+    "each_tests": 1,
+    "each_failures": 0,
+    "earlier_foreground_failures_retained": true,
+    "permanent_shared_desktop_resolution_claimed": false
+  },
+  "api7_repeats": {
+    "cycles_per_process": 64,
+    "independent_processes": 2,
+    "fast": {
+      "handles": [
+        390,
+        390
+      ],
+      "gdi": [
+        12,
+        12
+      ],
+      "user": [
+        17,
+        17
+      ],
+      "final_pending": 0
+    },
+    "rendered": {
+      "handles": [
+        391,
+        392
+      ],
+      "gdi": [
+        12,
+        12
+      ],
+      "user": [
+        19,
+        17
+      ],
+      "final_pending": 0
+    }
+  },
+  "api5_repeats": {
+    "original_independent_processes": 3,
+    "cycles_each": 32,
+    "handles_each": [
+      390,
+      387
+    ],
+    "gdi_each": [
+      9,
+      9
+    ],
+    "user_each": [
+      17,
+      17
+    ],
+    "final_pending": 0,
+    "full_built_original_handles_each": [
+      394,
+      391
+    ]
+  },
+  "session1_control": {
+    "cycles": 200,
+    "instances": 400,
+    "commands": 2000,
+    "handles": [
+      219,
+      220
+    ],
+    "gdi": [
+      0,
+      0
+    ],
+    "user": [
+      2,
+      2
+    ],
+    "private_bytes": [
+      12541952,
+      99434496
+    ],
+    "private_peak": 105897984,
+    "created_hwnds": 0,
+    "process_hwnds": 0,
+    "failures": 0
+  },
+  "session0": "Not executed beyond original administrator guard, exit1 before service creation; strict no-login runner unavailable",
+  "files": [
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_framework.dll",
+      "bytes": 2121216,
+      "sha256": "ff20aee4ba93e81e5c3fcb73b047a16c9b509e4866c818b6bdc91b3e90133c4e"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\framework_host.exe",
+      "bytes": 198656,
+      "sha256": "c2611bdf909b9f315149256b5852fbefcbf79647337cfe09606e932a62f8aac9"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_api7_integration_test.exe",
+      "bytes": 39424,
+      "sha256": "dda0191f87e2a98c348a812c2556fe34733e15e4372bebd3bfa152718e5cff15"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_api7_fixture.dll",
+      "bytes": 21504,
+      "sha256": "9b0a0b253bd0b4b85ad3f4d69ed4d1fa435f373264e2875c6a8c1f051a031101"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\api7_fixture.uapp",
+      "bytes": 21893,
+      "sha256": "13a05aaba0c9bb539e38169b59a75850bdb0366f0e443b7c5033bdbfcd7c2b7e"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_component_scroll_test.exe",
+      "bytes": 2042880,
+      "sha256": "e142e23483af50f15f6c267e3973219337402ab6cb2ac47fd2d5148629451195"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_light_scroll_test.exe",
+      "bytes": 1911808,
+      "sha256": "f8968d20b0d396ae3b72e0a4ca03e83341f086322c1cc85bb72b70126eabca11"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_workspace7_test.exe",
+      "bytes": 1959424,
+      "sha256": "94097fa7a019cee13b98c478638c00878263e504fd7f1362de54459e5ecb7a99"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_component_experience_test.exe",
+      "bytes": 2049536,
+      "sha256": "c46bfa118c421d6b6ab99b2a53b75840c734a392ba3493ce1926710a202b4462"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_api5_integration_test.exe",
+      "bytes": 31232,
+      "sha256": "9303fd96b8fec3ab7c54a28a64831c1682a64b49f1440a07e27f86c917119472"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_api5_native_host_test.exe",
+      "bytes": 86016,
+      "sha256": "99a2a26881ba51eea6f19c91f53e11e8d4ce45257ded6ad582c3e80b3b31ead3"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_session0_gl_test.exe",
+      "bytes": 28672,
+      "sha256": "d6334db902cdf5f139d4bda5b007ddc92e0a3d0cd87d96d39af01ddf32e718fb"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\ui_session0_gl_app.dll",
+      "bytes": 19456,
+      "sha256": "0bea73716466c786c2716baf9365ce3ea148da5870d9da29893168686504be48"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\session0_gl_app.uapp",
+      "bytes": 19840,
+      "sha256": "a2bf9a2c56a5e5aeb429358866cc865523171f176e532e1b3bc36ea3e742c75d"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\api6\\native\\ui_workspace7_test.exe",
+      "bytes": 89088,
+      "sha256": "f283fa128e921f1de0f946725961c047610a5d2dc641f00334f60421c4c297f7"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+      "bytes": 52327936,
+      "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\web-shell\\baseline\\minimal_eda.uapp",
+      "bytes": 151289,
+      "sha256": "86988546516e17b4783c5a9ed1583dfaa9e73ecdfcd1f5b8fad9a4910a5a3503"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\api3\\baseline\\web_counter.uapp",
+      "bytes": 134436,
+      "sha256": "2cf7a9619365184211cb636db6537c6119f03bc40d41d92edfbe6c235d3ccb2f"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\baseline\\generic_components.uapp",
+      "bytes": 25564,
+      "sha256": "d024c191b6fcae0da5eecc71b29c3429e27a74db9ec339a118a9577c691c0745"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\api5-evidence\\original-api4-framework_features.uapp",
+      "bytes": 27113,
+      "sha256": "ccc1ddd03068aaf8d68682ffe9a6d16afbb93939ded65c6925e5deee60ddd568"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\api6-evidence\\original-api5-fixture.uapp",
+      "bytes": 16174,
+      "sha256": "285431bddc0d00bebed153c6441c00fc9be98793a79a50dd0a31c5b800645f19"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\api7-evidence\\original-api6-fixture.uapp",
+      "bytes": 21920,
+      "sha256": "b493adda01f6dc5d8562a52e3648b2ce8b4e233a07d9c8def28646241cf084e4"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\api7-light-frame.ppm",
+      "bytes": 12301,
+      "sha256": "7d2c0527f4a5dd66db565ffbdad3961eac7f4cd5b33863c1e675d1fc92f69921"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\api7-runtime-frame.ppm",
+      "bytes": 12301,
+      "sha256": "7d2c0527f4a5dd66db565ffbdad3961eac7f4cd5b33863c1e675d1fc92f69921"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\session0-control\\frame-1-samples0-1.ppm",
+      "bytes": 12301,
+      "sha256": "15b8af8320872e6f3e3e17be1fe44976027eb8415c649703eb3fe049e0396977"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\fw-next\\release\\session0-control\\frame-3-samples4-1.ppm",
+      "bytes": 12301,
+      "sha256": "f40160df00c04114c3a80ca8665689993bc594d6aeeaaf56b4728aed260a1e35"
+    }
+  ],
+  "log_sha256": {
+    "api7-current-application-frame.png": "c930c05bdab7cc61bfca034d0f7013c3d02de8278c568ee13b5c8c2dc971d52d",
+    "api7-current-fast64.log": "a3678c5eb14fafbe6528875a00a16a702049a2eaef818147ce3e6d188a4377e0",
+    "api7-current-full-output.log": "712ce60a97ce951d0386212a3051e64068cecbf00f5658ed7e029a142d2e1790",
+    "api7-current-full.log": "e5c283ad916c0c9c0fd1f8699f1c8ca586dfad7ce8a7cf03f33afecd8ecf8c27",
+    "api7-current-full.xml": "5c10bc8eca9b6a70ae816630d4b203b835ec96a193e0b12b3d4af375902bc1ff",
+    "api7-current-native-output.log": "753a53b0413b3e44d7c7ce57bcb0c8723ddd0a316471338a98d75108e155e4be",
+    "api7-current-native.log": "694dfa7ff2e78e73f8c7f963f9280a87e22abed4f9b49c7045d4f1edcfbe0507",
+    "api7-current-native.xml": "e3445aca896fd75a1ef4b344a0e7c88ee29313e5b85c0eb0b0c15a4bde1217b1",
+    "api7-current-ready64.log": "5e6ef4e3e727573561fe20e9d0cfc39956c32bd70ef630370131454714549dad",
+    "api7-current-session0-attempt.log": "ddd10544bc8b4a20cc711e7a3c6dedc001862e2a37955d7fc0f9ec23ea31c500",
+    "api7-current-session1-frame.png": "c62351e4d5e2ac3260fc0e2bd84911c0c2bba93b15efd6b797cbc29a9a781672",
+    "api7-current-session1-resources.csv": "b62eed97988b87f65a152f0e01bea15a0f89c7c0ed67eba0a6324d6df327638e",
+    "api7-current-session1-result.txt": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "api7-current-session1-run.log": "fcb8532a0ff73d1d1eb705d0f08f61444550ffddb0c78d9e5e736d7d7474103f"
+  }
+}

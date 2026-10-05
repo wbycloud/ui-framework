@@ -1,0 +1,44 @@
+click field-name rect 13,109,734,38 clip 13,109,734,38
+click tree-label-1 rect 11,85,168,28 clip 11,85,168,28
+nested result=0 text=Nested DLL row
+Async modal native focus container=0000000002F90FE4 actual=0000000002F90FE4 descendant=0
+line 41: IsChild(dialog_focus,GetFocus())
+click field-name rect 13,109,398,38 clip 13,109,398,38
+API5 baseline pending cleanup=0
+Baseline native focus=0000000004AC0A52 foreground=0000000004AC0A52 USER=17
+reopen1 handles=379 USER=17 focus=0000000004AC0A52
+reopen2 handles=380 USER=17 focus=0000000004AC0A52
+reopen3 handles=380 USER=17 focus=0000000004AC0A52
+reopen4 handles=380 USER=17 focus=0000000004AC0A52
+reopen5 handles=380 USER=17 focus=0000000004AC0A52
+reopen6 handles=380 USER=17 focus=0000000004AC0A52
+reopen7 handles=380 USER=17 focus=0000000004AC0A52
+reopen8 handles=380 USER=17 focus=0000000004AC0A52
+reopen9 handles=380 USER=17 focus=0000000004AC0A52
+reopen10 handles=380 USER=17 focus=0000000004AC0A52
+reopen11 handles=382 USER=17 focus=0000000004AC0A52
+reopen12 handles=382 USER=17 focus=0000000004AC0A52
+reopen13 handles=382 USER=17 focus=0000000004AC0A52
+reopen14 handles=382 USER=17 focus=0000000004AC0A52
+reopen15 handles=382 USER=17 focus=0000000004AC0A52
+reopen16 handles=382 USER=17 focus=0000000004AC0A52
+reopen17 handles=382 USER=17 focus=0000000004AC0A52
+reopen18 handles=382 USER=17 focus=0000000004AC0A52
+reopen19 handles=382 USER=17 focus=0000000004AC0A52
+reopen20 handles=382 USER=17 focus=0000000004AC0A52
+reopen21 handles=382 USER=17 focus=0000000004AC0A52
+reopen22 handles=382 USER=17 focus=0000000004AC0A52
+reopen23 handles=382 USER=17 focus=0000000004AC0A52
+reopen24 handles=380 USER=17 focus=0000000004AC0A52
+reopen25 handles=376 USER=17 focus=0000000004AC0A52
+reopen26 handles=378 USER=17 focus=0000000004AC0A52
+reopen27 handles=378 USER=17 focus=0000000004AC0A52
+reopen28 handles=378 USER=17 focus=0000000004AC0A52
+reopen29 handles=378 USER=17 focus=0000000004AC0A52
+reopen30 handles=378 USER=17 focus=0000000004AC0A52
+reopen31 handles=378 USER=17 focus=0000000004AC0A52
+reopen32 handles=378 USER=17 focus=0000000004AC0A52
+API5 final pending cleanup=0
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+DLL reopen32 resources GDI 9->9 USER 17->17 handles 379->378 drained_ms=0
+API5 actual Runtime/application DLL: 1 failures

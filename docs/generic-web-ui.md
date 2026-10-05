@@ -1,6 +1,6 @@
-# 通用 Web UI：API 3/4/5/6 接入约定
+# 通用 Web UI：API 3–7 接入约定
 
-本文的 API3 组件合同在 **SDK 0.6.0 开发版 / API6 / 标准修订6** 继续适用，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API6验收](validation/api6-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
+本文的 API3 组件合同在 **SDK 0.7.0 开发版 / API7 / 标准修订7** 继续适用，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API7验收](validation/api7-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
 
 ## 1. 架构、复用与边界
 
@@ -120,7 +120,7 @@ NULL pixels 同步查询捕获物理宽高/stride。提供像素缓冲后，等�
 
 销毁先撤销事件及应用回调，SDK 未完成操作只持有失效的内部 view；在 SDK 回调返回后的 UI 消息中停止导航、关闭controller并释放环境。controller成功创建后、任何Close之前订阅 BrowserProcessExited，环境保留到对应浏览器退出事件后释放。创建过程中取消时，API6仅接受所启动内部空白导航ID的NavigationCompleted，忽略初始about:blank完成，只释放一次事件所有权，并等待该完成文档的renderer脚本确认后再清理；不装载应用文档或调用已失效的应用回调。此前只执行初始文档脚本或接受任意完成事件，在实际CI仍出现关闭句柄增长，失败和修复见API6验收。应用 DLL 可按既有卸载合同释放；UI线程保持STA和正常消息循环，共享框架 DLL 应继续处理 Runtime 的关闭消息。同一用户数据目录的其他 view 仍活动时，浏览器退出和内部环境清理会延后；不要以 destroy 返回或 flush 空闲推断所有浏览器进程已退出。不会清除调用方的用户数据目录。
 
-API5 DLL/Runtime、双实例、图片更新释放、编辑、树数据、模态、异步失效及关闭的历史证据见 [API5验收](validation/api5-validation.md)。当前布局、共同组件及综合回归状态见[API6验收](validation/api6-validation.md)，不继承历史记录中未覆盖的新功能结论。
+API5 DLL/Runtime、双实例、图片更新释放、编辑、树数据、模态、异步失效及关闭的历史证据见 [API5验收](validation/api5-validation.md)。API6历史布局、共同组件及综合回归状态见[API6验收](validation/api6-validation.md)，当前见[API7验收](validation/api7-validation.md)，不继承历史记录中未覆盖的新功能结论。
 
 ## API6 组件交互、完整排序与选择
 
@@ -137,3 +137,17 @@ selection_flags=UI_SELECTION_MULTIPLE启用Ctrl切换、Shift范围，选择身�
 用户select语义命令表示手势意图，params保留id/index及ctrl/shift，命令只发一次；异步范围尚未返回时get_selection仍是上次完成的结果，不能在命令回调中把它当作完整新范围。应用在投递消费之后查询选择状态；如果业务需要立即获得范围，source可同步返回ID。程序排序会发sort_command，程序选择不会发select，这是两个接口的明确合同。
 
 选择数据复制投递复用每实例8MiB预算，无应用回调指针。缓存2MiB、DOM1024、单批512、列64、字段64、图片32MiB、JS8MiB和旧队列/过期结果门槛保持。[实际100000行、>2^53 ID及两后端测试](../tests/component_experience.c)与[真实DLL集成](../tests/api6_integration.c)见[验收记录](validation/api6-validation.md)。
+
+## API7 完整数据范围滚动和颜色
+
+共同TREE/TABLE/LIST纵条基于source的total_count（TREE加入展开分支计数）；宽表横条基于最多64列的全部宽度，浏览器自身overflow不替代虚拟数据条。缓存仍是窗口，纵向BigInt映射uint64，横向按列边界停靠，不预加载全数据。轨道12、最小滑块24逻辑像素，无溢出隐藏，点击轨道一视口、交汇留白，分页/滚轮/Shift滚轮/键盘和稳定选择合同保留。
+
+数据总量缩小时，source可以为原请求返回空批（row_count=0），报告新的total_count，即使请求first已超出新总量；非空批仍要求first及数量在总量内。框架夹紧位置并按需重查有效窗口，不用旧缓存推算总量。树可折叠已知但当前不在缓存中的展开分支，重新计算完整扁平范围；祖先已移除的分支不计入范围。
+
+轻量overflow:auto/scroll在GDI层绘制两轴条，无系统滚动控件；窗口和NULL-HWND输入均支持。公共UI_INPUT_CANCEL、Esc/捕获丢失恢复手势起点；失活/模态/resize/代次变化解除捕获，保留最新有效状态。数据更换和完整源排序按原代次处理迟到结果。
+
+COLOR增加RGBA滑轨和暗/白底透明度预览，保留#RRGGBB/#RRGGBBAA校验。拖动/键盘只写草稿，保留颜色不等于业务提交，提交复用commands.submit。撤销/选择器Esc恢复打开前值，捕获取消恢复拖动前值；只读/禁用不修改。Runtime有窗口、轻量支持无HWND，各自实际验收。
+
+Runtime创建排入STA并在开始时检查dispatch_blocked；WAIT拒绝后有效操作可恢复创建。已开始的操作继续特定内部文档确认、回调返回后Close和BrowserProcessExited释放环境。失败、资源类型诊断及重复复验见[稳定性记录](validation/runtime-stability-validation.md)，最终结果见[API7验收](validation/api7-validation.md)。
+
+Runtime模态在controller尚未创建时可能先获得容器焦点。文档就绪后仅当该容器仍持有焦点、实例活动且输入门控允许时转交给Runtime；失活、关闭、模态变更或已转移焦点不会由异步就绪强行取回。原输入命令/所有权及PENDING合同保持。

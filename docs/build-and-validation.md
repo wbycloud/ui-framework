@@ -1,8 +1,8 @@
 # 构建与验证
 
-本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.6.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 、API3 generic_components 和 API4 framework_features 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
+本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.7.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、API1 EDA、API2 Web Counter 、API3 generic_components 和 API4 framework_features 应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，升级见[迁移指南](migration-v0.1-to-v0.2.md)。
 
-API5已有能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[历史验收](validation/api5-validation.md)。当前API6接口迁移见[0.5→0.6](migration-v0.5-to-v0.6.md)、[布局](workspace-layout.md)及[验收](validation/api6-validation.md)。API3/4样例和第5节保留历史版本结果，不作为当前测试状态。
+API5已有能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[历史验收](validation/api5-validation.md)。当前API7接口迁移见[0.6→0.7](migration-v0.6-to-v0.7.md)、[布局](workspace-layout.md)及[验收](validation/api7-validation.md)。API3–6样例和历史节保留对应版本结果，不作为当前测试状态。
 
 ## 1. 构建环境
 
@@ -311,7 +311,7 @@ ctest --test-dir build/api5 --output-on-failure
 
 `UI_OSMESA_LIBRARY`仅注册实际提供方验收，不是隐式运行模式或编译时硬依赖。API5 fixture只用于验收；显式环境路径由integration测试传入。缺少提供方不会注册windowless/integration测试，不得声称这两项通过。原API4包可用 `UI_LEGACY_API4_PACKAGE` 加入原包宿主复验；SDK4重新构建测试单独运行。API1/2/3旧包入口保持原构建合同。
 
-Windows普通账户Session1和实际CI LocalSystem Session0均已运行OSMesa实际frame；整机无登录仍需独立环境，不通过隐藏WGL或替代图片推断。WebView2仍需要实际Runtime、图形会话和原生承载窗口，受限执行环境可能禁止浏览器子进程；通过只表示对应实际环境的证据。测试失败保留并修复，不使用skip或隐瞒资源增长。
+历史API5（78c24cb）在Windows普通账户Session1和实际CI LocalSystem Session0均已运行OSMesa实际frame；当前API7源码Session0仍需另验；整机无登录仍需独立环境，不通过隐藏WGL或替代图片推断。WebView2仍需要实际Runtime、图形会话和原生承载窗口，受限执行环境可能禁止浏览器子进程；通过只表示对应实际环境的证据。测试失败保留并修复，不使用skip或隐瞒资源增长。
 
 Session0／无登录CI现有独立实际应用DLL及临时服务入口，详细构建、命令、环境门槛、资源预算及目标结果见[专门验收](validation/session0-osmesa-validation.md)。该测试配置同时关闭两个Web后端，不依赖WebView2或轻量引擎。默认运行器拒绝Session1；CTest对照不会计入Session0通过数。
 
@@ -325,9 +325,9 @@ CI使用MSVC19.44/W4/WX实际构建通过；x64包检查使用编译期 `UINTPTR
 
 托管GUI用例需要1920×1080虚拟桌面，脚本仅在GitHub临时VM调用Set-DisplayResolution并核验实际尺寸/DPI，记录原尺寸。这不能替代物理跨屏。依据[runner维护者说明](https://github.com/actions/runner-images/issues/2935)，默认1024×768不能满足宽窗断言。窄窗用例仍按原尺寸矩阵执行。
 
-软件WGL在新build目录仅部署opengl32.dll、libgallium_wgl.dll、libglapi.dll及pipe_swrast.dll，显式GALLIUM_DRIVER=llvmpipe，记录实际renderer；不复制整个Mesa DLL目录污染其他系统库加载，也不修改系统OpenGL或冒充硬件GL。WebView2行先运行40个非Runtime用例，再移除这四个本行部署的DLL，使用平台图形运行7个实际Runtime用例；两个阶段合并逐项结果和完整输出，任一阶段失败仍失败。OSMesa仍用绝对库路径与实际内存上下文及其提供方依赖，不受WGL部署移除影响。
+软件WGL在新build目录仅部署opengl32.dll、libgallium_wgl.dll、libglapi.dll及pipe_swrast.dll，显式GALLIUM_DRIVER=llvmpipe，记录实际renderer；不复制整个Mesa DLL目录污染其他系统库加载，也不修改系统OpenGL或冒充硬件GL。WebView2行先按当前CTest清单运行全部非Runtime用例，再移除这四个本行部署的DLL，使用平台图形运行全部匹配Runtime过滤器的用例，并强制检查新增必跑项；两个阶段合并逐项结果和完整输出，任一阶段失败仍失败。OSMesa仍用绝对库路径与实际内存上下文及其提供方依赖，不受WGL部署移除影响。
 
-最终本机与CI结果见[API6验收](validation/api6-validation.md)，Session0及严格无登录门槛保持[独立工作流](../.github/workflows/session0-osmesa.yml)。GitHub托管runner有已登录用户；矩阵绿色不能替代整机无登录通过。专用runner缺失时保持待验，不注销用户或改既有服务。
+历史API6最终本机与CI结果见[API6验收](validation/api6-validation.md)，Session0及严格无登录门槛保持[独立工作流](../.github/workflows/session0-osmesa.yml)。GitHub托管runner有已登录用户；矩阵绿色不能替代整机无登录通过。专用runner缺失时保持待验，不注销用户或改既有服务。
 
 准备上述依赖，在x64开发终端使用新目录：
 
@@ -345,3 +345,13 @@ UI_BUILD_TESTS下生成api6_fixture.uapp，public-C应用包含树/表格、属�
 保持现有API6依赖和配置，执行`ctest --test-dir build/fw-next/release -R "ui_menu_desktop|ui_menu_cascade_offscreen|ui_menu_access|ui_menu_offscreen|ui_framework_features_host|ui_web_host_frontend" --output-on-failure`。`ui_menu_desktop_test`加载框架维护的framework_features.uapp，覆盖实际宿主/GL、三层鼠标、翻转、模态、双实例、焦点和40次重开；`ui_menu_cascade_offscreen_test`覆盖128项末项、超限、展开链预算与零菜单HWND。
 
 只读观察现有应用时，可向`ui_menu_desktop_test.exe`传入原.uapp、证据输出前缀和`--observe`。该分支只打开/关闭菜单和切换宿主主题，不调用应用命令；输出真实PrintWindow客户区BMP，证据PNG只作无损转换。包及原应用目录保持只读，不覆盖它的运行库。菜单截图、窗口命中和程序DPI不能替代真实IME、物理跨屏、桌面合成人工及长期操作验收。详见[菜单验收](validation/menu-desktop-validation.md)。
+
+## API7 本地交付和必要矩阵
+
+API7/ABI1/包格式1，见[迁移](migration-v0.6-to-v0.7.md)及[验收](validation/api7-validation.md)。本轮本地交付，工作流配置不等于当前commit已在托管CI运行。固定Lexbor/QuickJS与WebView2 SDK1.0.4129.50、显式x64 Mesa24.3.4 OSMesa路径保持。
+
+原生/轻量/Runtime/OSMesa四配置沿用[windows-ci.ps1](../tools/windows-ci.ps1)。Runtime阶段显式纳入ui_component_scroll_webview2、ui_api7_integration_webview2并要求实际执行，仍与显式软件WGL隔离。API7独立DLL/.uapp组合100k/64列、底部/标签、RGBA、GL/缩略图/双实例/卸载；冻结SDK6调用方及旧包单独验证。
+
+构建后执行ctest --test-dir build/web-shell --output-on-failure；专测使用-R "ui_workspace7|ui_component_scroll|ui_light_scroll|ui_component_experience|ui_api7_integration"。UI_RUNTIME_CYCLES=64选择64连续周期，UI_RUNTIME_READY_REOPENS=1要求实际Runtime呈现后关闭，再运行ui_api7_integration_test.exe package.uapp osmesa.dll webview2；记录实际绝对提供方路径及hash。
+
+Session0用原[服务脚本](../tools/run-session0-validation.ps1)和[严格工作流](../.github/workflows/session0-osmesa.yml)，仅创建自身GUID临时服务，要求管理员/服务管理权限。不注销用户或改既有服务，RequireNoLogin检查整机登录会话；Session0成功不替代该门槛。当前证据必须有当前二进制hash。

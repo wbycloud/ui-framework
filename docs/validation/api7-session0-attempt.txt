@@ -1,0 +1,9 @@
+Current source 21e94e5a5f99964fde0de2ab4a32fa5c65858b82.
+Tool-output transcription, because PowerShell terminating error escaped the requested stream redirection (the original local redirect file is empty).
+Command: tools/run-session0-validation.ps1 -BuildDirectory build/fw-next/release -OSMesaLibrary .deps/mesa-24.3.4/x64/osmesa.dll -OutputDirectory build/api7-evidence/session0-current
+Exit code: 1
+Exception at tools/run-session0-validation.ps1:11:
+Session0 service validation requires an elevated administrator or Windows CI service-management rights.
+Guard precedes output/service creation. No GUID service was created or modified.
+Readonly audit: administrator=false, Session1 and machine_user present; see api7-environment.json.
+No current-source Session0 or strict whole-machine no-login success inferred.

@@ -1,0 +1,1319 @@
+Start testing: Oct 05 18:04 中国标准时间
+----------------------------------------------------------
+1/61 Testing: ui_package_format
+1/61 Test: ui_package_format
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_package_format_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_package_format" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+package format and deterministic packing: 0 failures
+<end of output>
+Test time =   0.19 sec
+----------------------------------------------------------
+Test Passed.
+"ui_package_format" end time: Oct 05 18:04 中国标准时间
+"ui_package_format" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/61 Testing: ui_images_windows
+2/61 Test: ui_images_windows
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_images_windows_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_images_windows" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+PNG/GDI/cache: 0 failures
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_images_windows" end time: Oct 05 18:04 中国标准时间
+"ui_images_windows" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/61 Testing: ui_responsive_layout
+3/61 Test: ui_responsive_layout
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_responsive_layout_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_responsive_layout" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+responsive layout matrix: 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_responsive_layout" end time: Oct 05 18:04 中国标准时间
+"ui_responsive_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/61 Testing: ui_assistant_lifecycle
+4/61 Test: ui_assistant_lifecycle
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_assistant_lifecycle_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_assistant_lifecycle" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+assistant lifecycle and model rollback: 0 failures
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_lifecycle" end time: Oct 05 18:04 中国标准时间
+"ui_assistant_lifecycle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/61 Testing: ui_dpi_web_failure
+5/61 Test: ui_dpi_web_failure
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_dpi_web_failure_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_dpi_web_failure" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+failed Web DPI sync and retry: 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_web_failure" end time: Oct 05 18:04 中国标准时间
+"ui_dpi_web_failure" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/61 Testing: ui_components_core
+6/61 Test: ui_components_core
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_components_core_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_components_core" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+API3 components core: 0 failures, 3 bounded queries
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"ui_components_core" end time: Oct 05 18:04 中国标准时间
+"ui_components_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/61 Testing: ui_headless_example
+7/61 Test: ui_headless_example
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_headless_example.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_headless_example" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+eda.add_block: {"blocks":1}
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_headless_example" end time: Oct 05 18:04 中国标准时间
+"ui_headless_example" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/61 Testing: ui_public_headers_c
+8/61 Test: ui_public_headers_c
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_public_headers_c_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_public_headers_c" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_c" end time: Oct 05 18:04 中国标准时间
+"ui_public_headers_c" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/61 Testing: ui_public_headers_cpp
+9/61 Test: ui_public_headers_cpp
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_public_headers_cpp_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_public_headers_cpp" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_cpp" end time: Oct 05 18:04 中国标准时间
+"ui_public_headers_cpp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/61 Testing: ui_webview2_parity
+10/61 Test: ui_webview2_parity
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/webview2_probe.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_webview2_parity" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+composition_verified=set_rect,resize_preserves_origin,sidebar_binding,host_reflow
+javascript_verified=true
+state=0 ready=1 html_navigated=1 viewport_cases=4 composition=1 clicks=1 inputs=1 results=2 hresult=0x00000000 elapsed_ms=579
+<end of output>
+Test time =   0.80 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_parity" end time: Oct 05 18:04 中国标准时间
+"ui_webview2_parity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/61 Testing: ui_webview2_messages
+11/61 Test: ui_webview2_messages
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_webview2_messages_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_webview2_messages" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+WebView2 JSON: ready=1 navigated=1 posted=1 echoed=1 status=0
+<end of output>
+Test time =   0.58 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_messages" end time: Oct 05 18:04 中国标准时间
+"ui_webview2_messages" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/61 Testing: ui_webview2_render
+12/61 Test: ui_webview2_render
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_webview2_render_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_webview2_render" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+Runtime render: initialize
+Runtime render: ready
+Runtime render: capture/images complete
+Runtime render: close
+Runtime close before creation x12 handles 343->343 USER 15->15 pending cleanup=0
+Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =   9.29 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_render" end time: Oct 05 18:04 中国标准时间
+"ui_webview2_render" time elapsed: 00:00:09
+----------------------------------------------------------
+
+13/61 Testing: ui_api5_integration
+13/61 Test: ui_api5_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api5_integration_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/api5_fixture.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_api5_integration" start time: Oct 05 18:04 中国标准时间
+Output:
+----------------------------------------------------------
+click field-name rect 13,109,734,38 clip 13,109,734,38
+click tree-label-1 rect 11,85,168,28 clip 11,85,168,28
+nested result=0 text=Nested DLL row
+click field-name rect 13,109,398,38 clip 13,109,398,38
+API5 baseline pending cleanup=0
+reopen1 handles=410
+reopen2 handles=411
+reopen3 handles=411
+reopen4 handles=411
+reopen5 handles=411
+reopen6 handles=411
+reopen7 handles=411
+reopen8 handles=411
+reopen9 handles=411
+reopen10 handles=411
+reopen11 handles=413
+reopen12 handles=413
+reopen13 handles=413
+reopen14 handles=413
+reopen15 handles=413
+reopen16 handles=413
+reopen17 handles=413
+reopen18 handles=413
+reopen19 handles=413
+reopen20 handles=413
+reopen21 handles=413
+reopen22 handles=413
+reopen23 handles=411
+reopen24 handles=407
+reopen25 handles=409
+reopen26 handles=409
+reopen27 handles=409
+reopen28 handles=409
+reopen29 handles=409
+reopen30 handles=409
+reopen31 handles=409
+reopen32 handles=409
+API5 final pending cleanup=0
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+DLL reopen32 resources GDI 9->9 USER 15->15 handles 410->409 drained_ms=0
+API5 actual Runtime/application DLL: 0 failures
+<end of output>
+Test time =  82.86 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_integration" end time: Oct 05 18:05 中国标准时间
+"ui_api5_integration" time elapsed: 00:01:22
+----------------------------------------------------------
+
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api5_native_host_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/api5_fixture.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 18:05 中国标准时间
+Output:
+----------------------------------------------------------
+line 8: owned
+line 8: owned
+line 8: owned
+line 8: owned
+line 17: ui_host_menu_get_item_presentation(info.host,"submit",&p)==UI_STATUS_OK&&p.visible
+line 8: owned
+line 8: owned
+line 8: owned
+line 18: !strcmp(ui_host_status_text(info.host),"submitted")
+line 18: info.host->next_request_id==before+1
+line 8: owned
+line 8: owned
+line 19: ui_host_menu_get_presentation(info.host,"close",&p)==UI_STATUS_OK
+line 8: owned
+line 8: owned
+line 8: owned
+line 8: owned
+line 8: owned
+line 8: owned
+line 20: ui_component_get_field(ui_component_find(info.host,"form"),"name",&field)==UI_STATUS_OK&&!strcmp(field.text,"DLL updated")
+line 20: info.host->next_request_id==before+1
+Actual native WebView focus / host Alt / single command / focus restore: 21 failures
+<end of output>
+Test time =   4.43 sec
+----------------------------------------------------------
+Test Failed.
+"ui_api5_native_host" end time: Oct 05 18:05 中国标准时间
+"ui_api5_native_host" time elapsed: 00:00:04
+----------------------------------------------------------
+
+15/61 Testing: ui_original_api5_package
+15/61 Test: ui_original_api5_package
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api5_integration_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/api6-evidence/original-api5-fixture.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_original_api5_package" start time: Oct 05 18:05 中国标准时间
+Output:
+----------------------------------------------------------
+click field-name rect 13,109,734,38 clip 13,109,734,38
+click tree-label-1 rect 11,85,168,28 clip 11,85,168,28
+nested result=0 text=Nested DLL row
+click field-name rect 13,109,398,38 clip 13,109,398,38
+API5 baseline pending cleanup=0
+reopen1 handles=410
+reopen2 handles=411
+reopen3 handles=411
+reopen4 handles=411
+reopen5 handles=411
+reopen6 handles=411
+reopen7 handles=411
+reopen8 handles=411
+reopen9 handles=411
+reopen10 handles=411
+reopen11 handles=413
+reopen12 handles=413
+reopen13 handles=413
+reopen14 handles=413
+reopen15 handles=413
+reopen16 handles=413
+reopen17 handles=413
+reopen18 handles=413
+reopen19 handles=413
+reopen20 handles=413
+reopen21 handles=413
+reopen22 handles=413
+reopen23 handles=411
+reopen24 handles=407
+reopen25 handles=409
+reopen26 handles=409
+reopen27 handles=409
+reopen28 handles=409
+reopen29 handles=409
+reopen30 handles=409
+reopen31 handles=409
+reopen32 handles=409
+API5 final pending cleanup=0
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+DLL reopen32 resources GDI 9->9 USER 15->15 handles 410->409 drained_ms=0
+API5 actual Runtime/application DLL: 0 failures
+<end of output>
+Test time =  82.37 sec
+----------------------------------------------------------
+Test Passed.
+"ui_original_api5_package" end time: Oct 05 18:07 中国标准时间
+"ui_original_api5_package" time elapsed: 00:01:22
+----------------------------------------------------------
+
+16/61 Testing: ui_workspace_layout
+16/61 Test: ui_workspace_layout
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_workspace_layout_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_workspace_layout" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+workspace layout: 0 failures
+<end of output>
+Test time =   0.61 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_layout" end time: Oct 05 18:07 中国标准时间
+"ui_workspace_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/61 Testing: ui_api5_compat
+17/61 Test: ui_api5_compat
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api5_compat_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_api5_compat" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+frozen SDK5 guarded descriptor/state/source: 0 failures
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_compat" end time: Oct 05 18:07 中国标准时间
+"ui_api5_compat" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/61 Testing: ui_component_experience
+18/61 Test: ui_component_experience
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_component_experience_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_component_experience" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+component experience light: 0 failures
+<end of output>
+Test time =   0.21 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_experience" end time: Oct 05 18:07 中国标准时间
+"ui_component_experience" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/61 Testing: ui_component_experience_webview2
+19/61 Test: ui_component_experience_webview2
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_component_experience_test.exe" "--webview2"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_component_experience_webview2" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+component experience actual WebView2: 0 failures
+<end of output>
+Test time =  10.95 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_experience_webview2" end time: Oct 05 18:07 中国标准时间
+"ui_component_experience_webview2" time elapsed: 00:00:10
+----------------------------------------------------------
+
+20/61 Testing: ui_light_scroll
+20/61 Test: ui_light_scroll
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_light_scroll_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_light_scroll" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+visible overflow bars windowless: 0 failures
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_scroll" end time: Oct 05 18:07 中国标准时间
+"ui_light_scroll" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/61 Testing: ui_component_scroll
+21/61 Test: ui_component_scroll
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_component_scroll_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_component_scroll" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+scroll line18: ui_component_submit(c,&b)==UI_STATUS_OK
+scroll line32: ui_component_get_state(c,&s)==UI_STATUS_OK&&s.first==0&&s.total_count==1
+end row first=99991 total=100000 rows=11 query=99989+14 nodes=99 status=0
+end column first=0 col=0 rows=12 query=0+12
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551606 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=778,124,12,310
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=778,124,12,310
+complete range scroll light offscreen: 2 failures
+<end of output>
+Test time =   0.19 sec
+----------------------------------------------------------
+Test Failed.
+"ui_component_scroll" end time: Oct 05 18:07 中国标准时间
+"ui_component_scroll" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/61 Testing: ui_component_scroll_webview2
+22/61 Test: ui_component_scroll_webview2
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_component_scroll_test.exe" "--webview2"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_component_scroll_webview2" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+scroll line18: ui_component_submit(c,&b)==UI_STATUS_OK
+scroll line32: ui_component_get_state(c,&s)==UI_STATUS_OK&&s.first==0&&s.total_count==1
+end row first=99991 total=100000 rows=11 query=99989+14 nodes=103 status=0
+end column first=0 col=0 rows=12 query=0+12
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551606 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+complete range scroll actual Runtime: 2 failures
+<end of output>
+Test time =   6.58 sec
+----------------------------------------------------------
+Test Failed.
+"ui_component_scroll_webview2" end time: Oct 05 18:07 中国标准时间
+"ui_component_scroll_webview2" time elapsed: 00:00:06
+----------------------------------------------------------
+
+23/61 Testing: ui_api6_integration
+23/61 Test: ui_api6_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api6_integration_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/api6_fixture.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_api6_integration" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=240
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-light-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 274->274 GDI 3->3 USER 3->3 pending Runtime cleanup=0
+API6 complete offscreen lifecycle created HWNDs=0
+API6 independent light offscreen DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =   6.92 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api6_integration" end time: Oct 05 18:07 中国标准时间
+"ui_api6_integration" time elapsed: 00:00:06
+----------------------------------------------------------
+
+24/61 Testing: ui_api6_integration_webview2
+24/61 Test: ui_api6_integration_webview2
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api6_integration_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/api6_fixture.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_api6_integration_webview2" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 1
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 2
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 3
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 4
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 5
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 6
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 7
+ Framework pending cleanup=0 process handles=412
+API6 reopen8 handles 412->412 GDI 12->12 USER 15->15 pending Runtime cleanup=0
+API6 independent WebView2 DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =  13.30 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api6_integration_webview2" end time: Oct 05 18:07 中国标准时间
+"ui_api6_integration_webview2" time elapsed: 00:00:13
+----------------------------------------------------------
+
+25/61 Testing: ui_legacy_api6_light
+25/61 Test: ui_legacy_api6_light
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api6_integration_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/api7-evidence/original-api6-fixture.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_legacy_api6_light" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=240
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-light-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 274->274 GDI 3->3 USER 3->3 pending Runtime cleanup=0
+API6 complete offscreen lifecycle created HWNDs=0
+API6 independent light offscreen DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =   7.00 sec
+----------------------------------------------------------
+Test Passed.
+"ui_legacy_api6_light" end time: Oct 05 18:07 中国标准时间
+"ui_legacy_api6_light" time elapsed: 00:00:07
+----------------------------------------------------------
+
+26/61 Testing: ui_legacy_api6_webview2
+26/61 Test: ui_legacy_api6_webview2
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api6_integration_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/api7-evidence/original-api6-fixture.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_legacy_api6_webview2" start time: Oct 05 18:07 中国标准时间
+Output:
+----------------------------------------------------------
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 1
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 2
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 3
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 4
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 5
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 6
+ Framework pending cleanup=0 process handles=412
+API6 integration: reopen 7
+ Framework pending cleanup=0 process handles=412
+API6 reopen8 handles 412->412 GDI 12->12 USER 15->15 pending Runtime cleanup=0
+API6 independent WebView2 DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =  13.42 sec
+----------------------------------------------------------
+Test Passed.
+"ui_legacy_api6_webview2" end time: Oct 05 18:08 中国标准时间
+"ui_legacy_api6_webview2" time elapsed: 00:00:13
+----------------------------------------------------------
+
+27/61 Testing: ui_api7_integration
+27/61 Test: ui_api7_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api7_integration_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/api7_fixture.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_api7_integration" start time: Oct 05 18:08 中国标准时间
+Output:
+----------------------------------------------------------
+API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=240
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-light-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+API7 integration: reopen 1
+API7 integration: reopen 2
+API7 integration: reopen 3
+API7 integration: reopen 4
+API7 integration: reopen 5
+API7 integration: reopen 6
+API7 integration: reopen 7
+API7 reopen8 handles 274->274 GDI 3->3 USER 3->3 pending Runtime cleanup=0
+API7 complete offscreen lifecycle created HWNDs=0
+API7 independent light offscreen DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =   8.12 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api7_integration" end time: Oct 05 18:08 中国标准时间
+"ui_api7_integration" time elapsed: 00:00:08
+----------------------------------------------------------
+
+28/61 Testing: ui_api7_integration_webview2
+28/61 Test: ui_api7_integration_webview2
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api7_integration_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/api7_fixture.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_api7_integration_webview2" start time: Oct 05 18:08 中国标准时间
+Output:
+----------------------------------------------------------
+API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=180
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-runtime-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+ Framework pending cleanup=0 process handles=412
+API7 integration: reopen 1
+ Framework pending cleanup=0 process handles=412
+API7 integration: reopen 2
+ Framework pending cleanup=0 process handles=412
+API7 integration: reopen 3
+ Framework pending cleanup=0 process handles=412
+API7 integration: reopen 4
+ Framework pending cleanup=0 process handles=412
+API7 integration: reopen 5
+ Framework pending cleanup=0 process handles=412
+API7 integration: reopen 6
+ Framework pending cleanup=0 process handles=412
+API7 integration: reopen 7
+ Framework pending cleanup=0 process handles=412
+API7 reopen8 handles 412->412 GDI 12->12 USER 15->15 pending Runtime cleanup=0
+API7 independent WebView2 DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =  14.12 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api7_integration_webview2" end time: Oct 05 18:08 中国标准时间
+"ui_api7_integration_webview2" time elapsed: 00:00:14
+----------------------------------------------------------
+
+29/61 Testing: ui_session0_interactive_control
+29/61 Test: ui_session0_interactive_control
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_session0_gl_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/session0_gl_app.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/session0-control" "--allow-interactive"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_session0_interactive_control" start time: Oct 05 18:08 中国标准时间
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =  38.70 sec
+----------------------------------------------------------
+Test Passed.
+"ui_session0_interactive_control" end time: Oct 05 18:09 中国标准时间
+"ui_session0_interactive_control" time elapsed: 00:00:38
+----------------------------------------------------------
+
+30/61 Testing: ui_offscreen_msaa
+30/61 Test: ui_offscreen_msaa
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_offscreen_msaa_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_offscreen_msaa" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Actual GL Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079 samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_msaa" end time: Oct 05 18:09 中国标准时间
+"ui_offscreen_msaa" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/61 Testing: ui_windowless_gl
+31/61 Test: ui_windowless_gl
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_offscreen_msaa_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_windowless_gl" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+OSMesa reopen 1 handles=263 loaded=1
+OSMesa reopen 2 handles=263 loaded=1
+OSMesa reopen 3 handles=263 loaded=1
+OSMesa reopen 4 handles=263 loaded=1
+OSMesa reopen 5 handles=263 loaded=1
+OSMesa reopen 6 handles=263 loaded=1
+OSMesa reopen 7 handles=263 loaded=1
+OSMesa reopen 8 handles=263 loaded=1
+OSMesa reopen 9 handles=263 loaded=1
+OSMesa reopen 10 handles=263 loaded=1
+OSMesa reopen 11 handles=263 loaded=1
+OSMesa reopen 12 handles=263 loaded=1
+OSMesa reopen 13 handles=263 loaded=1
+OSMesa reopen 14 handles=263 loaded=1
+OSMesa reopen 15 handles=263 loaded=1
+OSMesa reopen 16 handles=263 loaded=1
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=0, process HWNDs=0, HWND dependency=2
+<end of output>
+Test time =   0.52 sec
+----------------------------------------------------------
+Test Passed.
+"ui_windowless_gl" end time: Oct 05 18:09 中国标准时间
+"ui_windowless_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/61 Testing: ui_offscreen_gl
+32/61 Test: ui_offscreen_gl
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_offscreen_gl_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_offscreen_gl" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Offscreen GPU: Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079; hidden HWND dependency; hardware class unknown
+Hidden WGL/FBO/frame/input/readback: 0 failures
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_gl" end time: Oct 05 18:09 中国标准时间
+"ui_offscreen_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/61 Testing: ui_workspace_offscreen
+33/61 Test: ui_workspace_offscreen
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_workspace_offscreen_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/framework_features.uapp"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_workspace_offscreen" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Offscreen actual DOM=80 cached rows=12 columns=4
+Workspace/shared DLL/real templates: 0 failures, HWNDs=0
+<end of output>
+Test time =   0.93 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_offscreen" end time: Oct 05 18:09 中国标准时间
+"ui_workspace_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+34/61 Testing: ui_framework_features_host
+34/61 Test: ui_framework_features_host
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_framework_features_host_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/framework_features.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/features-host.bmp"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_framework_features_host" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+API4 actual host menus/overflow/instances: 0 failures
+<end of output>
+Test time =   5.88 sec
+----------------------------------------------------------
+Test Passed.
+"ui_framework_features_host" end time: Oct 05 18:09 中国标准时间
+"ui_framework_features_host" time elapsed: 00:00:05
+----------------------------------------------------------
+
+35/61 Testing: ui_menu_desktop
+35/61 Test: ui_menu_desktop
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_menu_desktop_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/framework_features.uapp"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_menu_desktop" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Input desktop cursor available: 1
+Function key presentation: status 0; text Ctrl+F1
+Menu hit 0 at 698,146: expected 0000000003A00FC8; actual 0000000003A00FC8 UIFrameworkRegisteredMenu4; foreground 0000000006A30954
+Menu hit 1 at 380,145: expected 000000000BCC1020; actual 000000000BCC1020 UIFrameworkRegisteredMenu4; foreground 0000000006A30954
+Menu hit 2 at 62,144: expected 0000000003960FEE; actual 0000000003960FEE UIFrameworkRegisteredMenu4; foreground 0000000006A30954
+40 menu reopen cycles: handles 351 -> 351; GDI 639 -> 639; USER 46 -> 46
+After instance switch: visible menus=0; first path=closed second path=closed
+Desktop menu real host: 0 failures; command calls=1
+<end of output>
+Test time =   4.74 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_desktop" end time: Oct 05 18:09 中国标准时间
+"ui_menu_desktop" time elapsed: 00:00:04
+----------------------------------------------------------
+
+36/61 Testing: ui_menu_offscreen
+36/61 Test: ui_menu_offscreen
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_menu_offscreen_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_menu_offscreen" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Real light/template offscreen: 0 failures; thread windows=0; no physical IME/DPI claim
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_offscreen" end time: Oct 05 18:09 中国标准时间
+"ui_menu_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/61 Testing: ui_menu_cascade_offscreen
+37/61 Test: ui_menu_cascade_offscreen
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_menu_cascade_offscreen_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_menu_cascade_offscreen" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+128 items, 118 page steps; shared cascade budget boundary at 13; command once; no menu HWND: 0 failures
+<end of output>
+Test time =   0.25 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_cascade_offscreen" end time: Oct 05 18:09 中国标准时间
+"ui_menu_cascade_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+38/61 Testing: ui_menu_access
+38/61 Test: ui_menu_access
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_menu_access_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_menu_access" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Menu Alt real template: 0 failures, calls=3
+<end of output>
+Test time =   0.22 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_access" end time: Oct 05 18:09 中国标准时间
+"ui_menu_access" time elapsed: 00:00:00
+----------------------------------------------------------
+
+39/61 Testing: ui_api4_compat
+39/61 Test: ui_api4_compat
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_api4_compat_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_api4_compat" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Frozen SDK4 prefixes/dirty padding/component: 0 failures, component_size=136
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api4_compat" end time: Oct 05 18:09 中国标准时间
+"ui_api4_compat" time elapsed: 00:00:00
+----------------------------------------------------------
+
+40/61 Testing: ui_original_api4_package
+40/61 Test: ui_original_api4_package
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_framework_features_host_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/api5-evidence/original-api4-framework_features.uapp"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_original_api4_package" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+API4 actual host menus/overflow/instances: 0 failures
+<end of output>
+Test time =   5.78 sec
+----------------------------------------------------------
+Test Passed.
+"ui_original_api4_package" end time: Oct 05 18:09 中国标准时间
+"ui_original_api4_package" time elapsed: 00:00:05
+----------------------------------------------------------
+
+41/61 Testing: ui_web_text_edit
+41/61 Test: ui_web_text_edit
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_web_text_edit_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_web_text_edit" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Web editor: 0 failures. Physical Chinese IME remains unverified.
+<end of output>
+Test time =   0.21 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_text_edit" end time: Oct 05 18:09 中国标准时间
+"ui_web_text_edit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/61 Testing: ui_generic_web_host
+42/61 Test: ui_generic_web_host
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_generic_web_host_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/generic_components.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/web-shell/baseline/minimal_eda.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/web_counter.uapp"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_generic_web_host" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+initial actual DOM=165 rows=16 columns=5
+Initial form dpi=96 status=0 field=13,122,182,28 view=0,0,220,601
+100k tail actual DOM=80 rows=12 columns=4
+100k expanded tree actual DOM=82 cached rows=1800 total=100100
+image bytes=409160 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+<end of output>
+Test time =   5.51 sec
+----------------------------------------------------------
+Test Passed.
+"ui_generic_web_host" end time: Oct 05 18:09 中国标准时间
+"ui_generic_web_host" time elapsed: 00:00:05
+----------------------------------------------------------
+
+43/61 Testing: ui_component_resilience
+43/61 Test: ui_component_resilience
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_component_resilience_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/framework_features.uapp"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_component_resilience" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+automatic style preview lifetime: 0 failures
+resource,0,0,0,17203200,6201344,225,46,4,0,0,0,0,0,0,0
+edit/layout mode 0: 0 failures
+edit/layout mode 1: 0 failures
+edit/layout mode 2: 0 failures
+edit/layout mode 3: 0 failures
+focus before refloat=00000000031C10D6
+focus after refloat=00000000031C10D6
+focus after modal close=00000000031C10D6
+focus after redock=00000000031C10D6
+edit/layout mode 4: 0 failures
+edit/layout mode 5: 0 failures
+record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count
+resource,171,1,1,131436544,96210944,375,942,66,184,20,15255,82,9702,305560,74
+resource,171,1,2,131436544,96210944,375,942,66,165,16,10382,82,8254,204600,50
+resource,1171,10,1,139292672,104480768,375,925,66,148,20,15504,82,15494,310800,74
+resource,1171,10,2,139292672,104480768,375,925,66,148,18,13960,82,15494,357664,85
+resource,2000,17,1,139726848,104386560,375,1033,66,148,20,15564,82,21286,388184,92
+resource,2000,17,2,139726848,104386560,375,1033,66,184,18,14122,82,19838,581552,139
+resource,2218,17,0,55410688,37556224,318,59,20,0,0,0,0,0,0,0
+resilience: 0 failures; 17 iterations; physical/manual checks remain open
+<end of output>
+Test time =   4.29 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_resilience" end time: Oct 05 18:09 中国标准时间
+"ui_component_resilience" time elapsed: 00:00:04
+----------------------------------------------------------
+
+44/61 Testing: ui_api3_original_package
+44/61 Test: ui_api3_original_package
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_generic_web_host_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/baseline/generic_components.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/web-shell/baseline/minimal_eda.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/web_counter.uapp"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_api3_original_package" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+initial actual DOM=165 rows=16 columns=5
+Initial form dpi=96 status=0 field=13,122,182,28 view=0,0,220,601
+100k tail actual DOM=80 rows=12 columns=4
+100k expanded tree actual DOM=82 cached rows=1800 total=100100
+image bytes=409160 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+<end of output>
+Test time =   5.26 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api3_original_package" end time: Oct 05 18:09 中国标准时间
+"ui_api3_original_package" time elapsed: 00:00:05
+----------------------------------------------------------
+
+45/61 Testing: ui_application_versions
+45/61 Test: ui_application_versions
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_application_versions_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/web-shell/baseline/minimal_eda.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/web_counter.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/counter_mismatch.uapp"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_application_versions" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+application API1/API2 and Web/native contents: PASS
+<end of output>
+Test time =   0.32 sec
+----------------------------------------------------------
+Test Passed.
+"ui_application_versions" end time: Oct 05 18:09 中国标准时间
+"ui_application_versions" time elapsed: 00:00:00
+----------------------------------------------------------
+
+46/61 Testing: ui_original_api2_package
+46/61 Test: ui_original_api2_package
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_application_versions_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/web-shell/baseline/minimal_eda.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/api3/baseline/web_counter.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/counter_mismatch.uapp"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_original_api2_package" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+application API1/API2 and Web/native contents: PASS
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"ui_original_api2_package" end time: Oct 05 18:09 中国标准时间
+"ui_original_api2_package" time elapsed: 00:00:00
+----------------------------------------------------------
+
+47/61 Testing: ui_light_web_dynamic
+47/61 Test: ui_light_web_dynamic
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_light_web_dynamic_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_light_web_dynamic" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Dynamic Web probe: 0 failure(s), 6 messages, 250 incremental rebuilds
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_web_dynamic" end time: Oct 05 18:09 中国标准时间
+"ui_light_web_dynamic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+48/61 Testing: ui_web_shell_slots
+48/61 Test: ui_web_shell_slots
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_web_shell_slots_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_web_shell_slots" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Web shell content slots and legacy facade passed
+<end of output>
+Test time =   0.15 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_shell_slots" end time: Oct 05 18:09 中国标准时间
+"ui_web_shell_slots" time elapsed: 00:00:00
+----------------------------------------------------------
+
+49/61 Testing: ui_floating_web_dpi
+49/61 Test: ui_floating_web_dpi
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_floating_web_dpi_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_floating_web_dpi" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"ui_floating_web_dpi" end time: Oct 05 18:09 中国标准时间
+"ui_floating_web_dpi" time elapsed: 00:00:00
+----------------------------------------------------------
+
+50/61 Testing: ui_light_web_parity
+50/61 Test: ui_light_web_parity
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/light_web_probe.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_light_web_parity" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Light Web probe: 0 failure(s), clicks=3, inputs=2, reloads=4
+<end of output>
+Test time =   0.25 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_web_parity" end time: Oct 05 18:09 中国标准时间
+"ui_light_web_parity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+51/61 Testing: ui_workspace_integration
+51/61 Test: ui_workspace_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_workspace_integration_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/minimal_eda.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_lifecycle_fixture.dll" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_application_cpp.dll"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_workspace_integration" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Workspace/module lifecycle: 0 failure(s)
+<end of output>
+Test time =   1.63 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_integration" end time: Oct 05 18:09 中国标准时间
+"ui_workspace_integration" time elapsed: 00:00:01
+----------------------------------------------------------
+
+52/61 Testing: ui_web_host_frontend
+52/61 Test: ui_web_host_frontend
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_web_host_frontend_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/minimal_eda.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/cpp_fixture.uapp"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_web_host_frontend" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Web host frontend passed.
+<end of output>
+Test time =   1.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_host_frontend" end time: Oct 05 18:09 中国标准时间
+"ui_web_host_frontend" time elapsed: 00:00:01
+----------------------------------------------------------
+
+53/61 Testing: ui_native_activation
+53/61 Test: ui_native_activation
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_native_activation_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_native_activation" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Native managed activation: 0 failure(s)
+<end of output>
+Test time =   0.58 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_activation" end time: Oct 05 18:09 中国标准时间
+"ui_native_activation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+54/61 Testing: ui_dpi_integration
+54/61 Test: ui_dpi_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_dpi_integration_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_dpi_integration" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+DPI integration: 0 failure(s)
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_integration" end time: Oct 05 18:09 中国标准时间
+"ui_dpi_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+55/61 Testing: ui_opengl_integration
+55/61 Test: ui_opengl_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_opengl_integration_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_opengl_integration" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+legacy: Intel | Intel(R) UHD Graphics 770 | 4.6.0 - Build 32.0.101.7079
+gl.core: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.compatibility: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.msaa_debug: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=4 debug=1
+OpenGL integration: 0 failure(s), 3 modern configurations supported
+<end of output>
+Test time =   0.35 sec
+----------------------------------------------------------
+Test Passed.
+"ui_opengl_integration" end time: Oct 05 18:09 中国标准时间
+"ui_opengl_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+56/61 Testing: ui_surface_input
+56/61 Test: ui_surface_input
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_surface_input_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_surface_input" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Surface input integration: 0 failure(s)
+<end of output>
+Test time =   0.22 sec
+----------------------------------------------------------
+Test Passed.
+"ui_surface_input" end time: Oct 05 18:09 中国标准时间
+"ui_surface_input" time elapsed: 00:00:00
+----------------------------------------------------------
+
+57/61 Testing: ui_monitor_transition
+57/61 Test: ui_monitor_transition
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_monitor_transition_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_monitor_transition" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Monitor transition environment: 1 monitor(s)
+SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"ui_monitor_transition" end time: Oct 05 18:09 中国标准时间
+"ui_monitor_transition" time elapsed: 00:00:00
+----------------------------------------------------------
+
+58/61 Testing: ui_workspace7
+58/61 Test: ui_workspace7
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_workspace7_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_workspace7" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+API7 bottom/tabs: 0 failures
+<end of output>
+Test time =   0.16 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace7" end time: Oct 05 18:09 中国标准时间
+"ui_workspace7" time elapsed: 00:00:00
+----------------------------------------------------------
+
+59/61 Testing: ui_native_shell_integration
+59/61 Test: ui_native_shell_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_native_shell_integration_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_native_shell_integration" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+native shell integration checks passed
+<end of output>
+Test time =   0.16 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_shell_integration" end time: Oct 05 18:09 中国标准时间
+"ui_native_shell_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+60/61 Testing: ui_native_responsive
+60/61 Test: ui_native_responsive
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_native_responsive_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_native_responsive" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+Native responsive integration: 0 failure(s)
+<end of output>
+Test time =   0.20 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_responsive" end time: Oct 05 18:09 中国标准时间
+"ui_native_responsive" time elapsed: 00:00:00
+----------------------------------------------------------
+
+61/61 Testing: ui_assistant_protocol
+61/61 Test: ui_assistant_protocol
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release/ui_assistant_protocol_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/fw-next/release
+"ui_assistant_protocol" start time: Oct 05 18:09 中国标准时间
+Output:
+----------------------------------------------------------
+assistant protocol: 0 failure(s)
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_protocol" end time: Oct 05 18:09 中国标准时间
+"ui_assistant_protocol" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 05 18:09 中国标准时间

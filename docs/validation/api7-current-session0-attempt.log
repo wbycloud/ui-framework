@@ -1,0 +1,8 @@
+Session0 service validation requires an elevated administrator or Windows CI service-management rights.
+At D:\应用软件框架\应用层序框架\tools\run-session0-validation.ps1:11 char:5
++     throw 'Session0 service validation requires an elevated administr ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Session0 servic...agement rights.:String) [], RuntimeException
+    + FullyQualifiedErrorId : Session0 service validation requires an elevated administrator or Windows CI service-man 
+   agement rights.
+ 

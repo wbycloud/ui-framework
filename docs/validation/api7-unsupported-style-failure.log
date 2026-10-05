@@ -1,0 +1,194 @@
+Test project D:/应用软件框架/应用层序框架/build/fw-next/release
+    Start 16: ui_workspace7
+1/7 Test #16: ui_workspace7 ......................   Passed    0.43 sec
+    Start 17: ui_workspace_layout
+2/7 Test #17: ui_workspace_layout ................   Passed    0.90 sec
+    Start 19: ui_component_experience
+3/7 Test #19: ui_component_experience ............***Failed    0.15 sec
+experience line61: (runtime_mode?ui_component_mount(table,ui_shell_get_content_slot(ui_host_get_shell(h),NULL)):ui_component_mount_offscreen(table,700,450,96))==UI_STATUS_OK
+experience line62: ui_component_select_range(table,90000,5,0)==UI_STATUS_OK
+experience line62: ui_component_get_selection(table,ids,512,&n)==UI_STATUS_OK&&n==5&&ids[0]==9007199254831000ULL
+experience line63: ui_component_select_range(table,20,2,0)==UI_STATUS_OK
+experience line69: (runtime_mode?ui_component_mount(form,ui_shell_get_content_slot(ui_host_get_shell(h),"form")):ui_component_mount_offscreen(form,500,650,96))==UI_STATUS_OK
+experience line70: click(form,"choice-mode")
+experience line70: click(form,"option-mode-2")
+experience line70: ui_component_get_field(form,"mode",&value)==UI_STATUS_OK&&!strcmp(value.text,"high")
+experience line71: click(form,"color-color")
+experience line71: click(form,"swatch-color-1")
+experience line71: ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&!strcmp(value.text,"#00ff00ff")&&value.color_rgba==0x00ff00ff
+experience line72: click(form,"color-color")
+experience line72: presentation(form,"color-channel-color-a",&track)==UI_STATUS_OK&&track.visible
+experience line74: dispatch(form,&e)==UI_STATUS_OK
+experience line74: dispatch(form,&e)==UI_STATUS_OK
+experience line74: dispatch(form,&e)==UI_STATUS_OK
+experience line76: click(form,"color-picker-cancel-color")
+experience line76: ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&value.color_rgba==0x00ff00ff&&submits==0
+experience line77: click(form,"color-color")
+experience line77: presentation(form,"color-channel-color-r",&track)==UI_STATUS_OK&&track.visible
+experience line77: dispatch(form,&e)==UI_STATUS_OK
+experience line77: dispatch(form,&e)==UI_STATUS_OK
+experience line78: click(form,"color-picker-accept-color")
+experience line79: click(form,"submit")&&submits==1
+experience line80: click(form,"field-color")
+experience line80: presentation(form,"field-color",&check)==UI_STATUS_OK&&check.focused
+experience line80: dispatch(form,&e)==UI_STATUS_OK
+experience line80: dispatch(form,&e)==UI_STATUS_OK
+experience line80: !strcmp(value.text,"#gggggggg")
+experience line80: click(form,"submit")&&submits==1
+experience line80: ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&*value.error
+experience line81: click(form,"color-color")
+experience line81: click(form,"swatch-color-1")
+experience line81: click(form,"choice-mode")
+experience line81: dispatch(form,&e)==UI_STATUS_OK
+experience line81: dispatch(form,&e)==UI_STATUS_OK
+experience line81: ui_component_get_field(form,"mode",&value)==UI_STATUS_OK&&!strcmp(value.text,"medium")
+experience line82: click(table,"sort-name")
+experience line82: sorts==2
+experience line84: click(table,"cell-9007199254741000-name")
+experience line85: dispatch(table,&e)==UI_STATUS_OK
+experience line85: ui_component_get_selection(table,ids,512,&n)==UI_STATUS_OK&&n==1&&ids[0]==9007199254741001ULL
+experience line86: dispatch(table,&e)==UI_STATUS_OK
+experience line86: presentation(table,"edit-9007199254741001-name",&p)==UI_STATUS_OK&&p.focused
+experience line87: dispatch(table,&e)==UI_STATUS_OK
+experience line87: dispatch(table,&e)==UI_STATUS_OK
+experience line87: dispatch(table,&e)==UI_STATUS_OK&&edit_count==1
+experience line88: dispatch(table,&e)==UI_STATUS_OK
+experience line88: dispatch(table,&e)==UI_STATUS_OK&&edit_count==1
+experience line89: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: dispatch(table,&e)==UI_STATUS_OK
+experience line90: ui_component_get_state(table,&s)==UI_STATUS_OK&&s.first>0&&s.rendered_nodes<=1024
+experience line91: ui_component_get_selection(table,ids,512,&n)==UI_STATUS_OK&&n==1
+experience line91: click_mod(table,selected_cell,UI_INPUT_MODIFIER_CONTROL)
+experience line91: ui_component_get_selection(table,ids,512,&n)==UI_STATUS_OK&&n==0
+component experience light: 84 failures
+
+    Start 20: ui_component_experience_webview2
+4/7 Test #20: ui_component_experience_webview2 ...   Passed   10.85 sec
+    Start 21: ui_light_scroll
+5/7 Test #21: ui_light_scroll ....................   Passed    0.15 sec
+    Start 22: ui_component_scroll
+6/7 Test #22: ui_component_scroll ................***Failed    0.12 sec
+scroll line27: (runtime_mode?ui_component_mount(c,ui_shell_get_content_slot(ui_host_get_shell(h),NULL)):ui_component_mount_offscreen(c,800,500,96))==UI_STATUS_OK
+scroll line28: present(c,"scroll-v-thumb",&p)==UI_STATUS_OK&&p.visible&&p.rect.height>=24
+scroll line19: present(c,thumb_id,&thumb)==UI_STATUS_OK&&thumb.visible
+scroll line19: present(c,track_id,&track)==UI_STATUS_OK&&track.visible
+scroll line28: ui_component_get_state(c,&s)==UI_STATUS_OK&&s.first>99900&&s.first<100000
+scroll line28: present(c,row,&p)==UI_STATUS_OK&&p.visible
+scroll line19: present(c,thumb_id,&thumb)==UI_STATUS_OK&&thumb.visible
+scroll line19: present(c,track_id,&track)==UI_STATUS_OK&&track.visible
+scroll line19: present(c,thumb_id,&thumb)==UI_STATUS_OK&&thumb.visible
+scroll line19: present(c,track_id,&track)==UI_STATUS_OK&&track.visible
+scroll line30: ui_component_get_state(c,&s)==UI_STATUS_OK&&s.first_column==63
+scroll line30: present(c,"cell-1-c63",&p)==UI_STATUS_OK&&p.visible
+scroll line19: present(c,thumb_id,&thumb)==UI_STATUS_OK&&thumb.visible
+scroll line19: present(c,track_id,&track)==UI_STATUS_OK&&track.visible
+scroll line31: ui_component_get_state(c,&s)==UI_STATUS_OK&&s.first>UINT64_MAX-128
+scroll line32: present(c,"scroll-v-track",&p)==UI_STATUS_OK&&!p.visible
+scroll line32: present(c,"scroll-v-track",&p)==UI_STATUS_OK&&!p.visible
+scroll line36: present(c,"scroll-v-thumb",&thumb)==UI_STATUS_OK
+scroll line36: present(c,"scroll-v-track",&track)==UI_STATUS_OK
+scroll line14: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line14: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line37: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line14: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line14: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line14: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line14: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line39: present(c,"scroll-v-thumb",&thumb)==UI_STATUS_OK
+scroll line14: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line14: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line40: present(c,"scroll-v-track",&track)==UI_STATUS_OK
+scroll line14: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line14: ui_component_dispatch_input(c,&e)==UI_STATUS_OK
+scroll line40: ui_component_get_state(c,&s)==UI_STATUS_OK&&s.first>0&&s.first<128
+scroll line42: (runtime_mode?ui_component_mount(simple,ui_shell_get_content_slot(ui_host_get_shell(h),NULL)):ui_component_mount_offscreen(simple,800,500,96))==UI_STATUS_OK
+scroll line43: ui_component_expand(simple,1,1)==UI_STATUS_OK
+scroll line43: ui_component_get_state(simple,&s)==UI_STATUS_OK&&s.total_count==100001
+scroll line43: ui_component_expand(simple,1,0)==UI_STATUS_OK
+scroll line19: present(c,thumb_id,&thumb)==UI_STATUS_OK&&thumb.visible
+scroll line19: present(c,track_id,&track)==UI_STATUS_OK&&track.visible
+scroll line44: ui_component_get_state(simple,&s)==UI_STATUS_OK&&s.first>99900&&s.first<100000&&s.rendered_nodes<=1024&&s.cached_bytes<=2097152
+scroll line42: (runtime_mode?ui_component_mount(simple,ui_shell_get_content_slot(ui_host_get_shell(h),NULL)):ui_component_mount_offscreen(simple,800,500,96))==UI_STATUS_OK
+scroll line19: present(c,thumb_id,&thumb)==UI_STATUS_OK&&thumb.visible
+scroll line19: present(c,track_id,&track)==UI_STATUS_OK&&track.visible
+scroll line44: ui_component_get_state(simple,&s)==UI_STATUS_OK&&s.first>99900&&s.first<100000&&s.rendered_nodes<=1024&&s.cached_bytes<=2097152
+presentation scroll-v-thumb status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-thumb status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+end row first=0 total=0 rows=0 query=0+0 nodes=0 status=0
+presentation cell-100000-c0 status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-thumb status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-h-thumb status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-h-track status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+end column first=0 col=0 rows=16 query=0+16
+presentation cell-1-c63 status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+presentation scroll-v-thumb status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+uint64 endpoint first=0 total=18446744073709551615
+presentation scroll-v-track status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-thumb status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-thumb status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-thumb status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-thumb status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+complete range scroll light offscreen: 44 failures
+
+    Start 23: ui_component_scroll_webview2
+7/7 Test #23: ui_component_scroll_webview2 .......***Failed    6.57 sec
+scroll line39: ui_component_get_state(c,&s)==UI_STATUS_OK&&s.first==0
+scroll line40: ui_component_get_state(c,&s)==UI_STATUS_OK&&s.first>0&&s.first<128
+scroll line18: ui_component_submit(c,&b)==UI_STATUS_OK
+scroll line43: ui_component_get_state(simple,&s)==UI_STATUS_OK&&s.total_count==100001
+end row first=99991 total=100000 rows=11 query=99989+14 nodes=103 status=0
+end column first=0 col=0 rows=12 query=0+12
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551606 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+complete range scroll actual Runtime: 4 failures
+
+
+57% tests passed, 3 tests failed out of 7
+
+Total Test time (real) =  19.31 sec
+
+The following tests FAILED:
+	 19 - ui_component_experience (Failed)
+	 22 - ui_component_scroll (Failed)
+	 23 - ui_component_scroll_webview2 (Failed)
+Errors while running CTest

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="1"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="6"
+	timestamp="2026-10-05T20:18:30"
+	>
+	<testcase name="ui_api5_native_host" classname="ui_api5_native_host" time="6.05195" status="run">
+		<properties/>
+		<system-out>Native input desktop thread=Default input=Default available=1 foreground=0000000005AE1008 expected=0000000005AE1008
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=260 key=70 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=261 key=70 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=257 key=18 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=0
+native key msg=257 key=83 handled=1 ctrl=1 shift=1 alt=0
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=261 key=18 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=27 handled=1 ctrl=1 shift=1 alt=1
+native key msg=257 key=27 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=17 handled=0 ctrl=-128 shift=1 alt=1
+native key msg=256 key=79 handled=1 ctrl=-128 shift=1 alt=1
+native key msg=257 key=79 handled=0 ctrl=-128 shift=1 alt=1
+native key msg=257 key=17 handled=0 ctrl=0 shift=1 alt=1
+Actual native WebView focus / ho...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

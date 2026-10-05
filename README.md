@@ -8,15 +8,15 @@
 
 | 项目 | 当前开发值 | 定义位置 |
 | --- | --- | --- |
-| SDK | `0.6.0` 开发版，尚未发布对应稳定标签 | [CMakeLists.txt](CMakeLists.txt) |
+| SDK | `0.7.0` 开发版，尚未发布对应稳定标签 | [CMakeLists.txt](CMakeLists.txt) |
 | 最近稳定标签 | `v0.1.0` | [稳定源码](https://github.com/wbycloud/ui-framework/tree/v0.1.0) |
-| 框架 API | `6`；当前运行库接受 `1`、`2`、`3`、`4`、`5`、`6` | [ui.h](include/ui_framework/ui.h) |
+| 框架 API | `7`；当前运行库接受 `1`、`2`、`3`、`4`、`5`、`6`、`7` | [ui.h](include/ui_framework/ui.h) |
 | 应用 ABI / 包格式 | `1` / `1` | [application.h](include/ui_framework/application.h)、[package.h](include/ui_framework/package.h) |
-| 开发标准修订 | `6`，对应当前 `0.6.0` 开发源码 | [应用开发标准](docs/application-development-standard.md) |
+| 开发标准修订 | `7`，对应当前 `0.7.0` 开发源码 | [应用开发标准](docs/application-development-standard.md) |
 
-当前工作源码为 0.6.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；稳定基准仍为 v0.1.0。清单与 DLL 的 API 声明必须一致，应用不能加载到不支持其声明 API 的旧运行库。
+当前工作源码为 0.7.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；稳定基准仍为 v0.1.0。清单与 DLL 的 API 声明必须一致，应用不能加载到不支持其声明 API 的旧运行库。
 
-当前开发源码和接入说明位于 [main 分支](https://github.com/wbycloud/ui-framework/tree/main)。取得源码后记录实际 commit，再读[API6验收](docs/validation/api6-validation.md)、[0.5 → 0.6迁移](docs/migration-v0.5-to-v0.6.md)和[应用升级提示词](docs/application-upgrade-prompt.md)。API3/4/5历史记录保留原结果，当前菜单及离屏合同见[接口说明](docs/framework-menu-offscreen.md)。
+本轮开发保留本地提交，未推送；GitHub main不代表这些本地变更。取得源码后记录实际 commit，再读[API7验收](docs/validation/api7-validation.md)、[0.6 → 0.7迁移](docs/migration-v0.6-to-v0.7.md)和[应用升级提示词](docs/application-upgrade-prompt.md)。API3/4/5历史记录保留原结果，当前菜单及离屏合同见[接口说明](docs/framework-menu-offscreen.md)。
 
 建议按以下顺序阅读：
 
@@ -112,7 +112,7 @@ git rev-parse HEAD
 
 符合 v0.1.0 公共接口约定、通过框架注册 UI 并在内容容器中挂载的 API 1 二进制包，属于无需重新编译的兼容目标。直接安装/修改 Win32 菜单、枚举原生工具栏或依赖外壳窗口类的应用必须迁移。独立宿主只提供 Web 外壳；原生嵌入式 API 保留。
 
-升级时先保存原应用包，对照[迁移指南](docs/migration-v0.1-to-v0.2.md)核查依赖，并对照 [0.2 → 0.3 指南](docs/migration-v0.2-to-v0.3.md)，再对照 [0.3 → 0.4 指南](docs/migration-v0.3-to-v0.4.md)，在目标宿主验证加载、多实例、助手路由、DPI/绘制和卸载。采用 API6 新接口或用当前 SDK 重新构建应用时，同步清单与 DLL 的 API 版本。旧包无需修改的兼容目标与本次实际验收结果分别记录，不能用重新编译的示例代替原二进制兼容证据。
+升级时先保存原应用包，按原版本阅读对应迁移指南；本轮见[0.6 → 0.7](docs/migration-v0.6-to-v0.7.md)。在目标宿主验证加载、多实例、助手路由、DPI/绘制和卸载。采用 API7 新接口或用当前 SDK 重新构建应用时，同步清单与 DLL 的 API 版本。旧包无需修改的兼容目标与本次实际验收结果分别记录，不能用重新编译的示例代替原二进制兼容证据。
 
 ## Web 后端和能力边界
 
@@ -126,7 +126,7 @@ API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离
 
 ## 维护与接手
 
-新会话或开发者先读[框架开发交接记录](docs/handoff.md)，核对实际 commit、构建目录、证据和 UV-01..07 待补验项。代码及说明已推送，不等于全部人工验收已完成。
+开发者先读[框架开发交接记录](docs/handoff.md)，核对实际 commit、构建目录、证据和 UV-01..07 待补验项。本轮提交保留本地，未推送；测试通过与全部人工验收完成分别记录。
 
 ## 许可证
 
@@ -138,6 +138,10 @@ API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离
 
 共同组件模板增加枚举下拉、颜色选择与RGBA文本、表格键盘导航及Enter/F2编辑、Enter提交/Esc取消、完整数据源排序、稳定ID多选与范围查询。轻量和显式WebView2组件后端使用相同语义；资源预算保持原值。[通用组件](docs/generic-web-ui.md)及[迁移](docs/migration-v0.5-to-v0.6.md)说明应用责任。
 
-四种Windows x64/C11配置由[CI矩阵](.github/workflows/windows-regression.yml)验证；WebView2必须启动实际Runtime，OSMesa执行真实测试DLL的GL frame。Session0 GL已有成功证据，整机无登录仍待专用runner，物理IME/跨屏/桌面合成/长期人工与真实业务试点未验收。独立测试应用不代表请求方业务应用验收。最新结果见[API6记录](docs/validation/api6-validation.md)。
+四种Windows x64/C11配置由[CI矩阵](.github/workflows/windows-regression.yml)定义；本轮本机实际运行与未执行的目标CI分别记录。WebView2必须启动实际Runtime，OSMesa执行真实测试DLL的GL frame。历史Session0 GL已有成功证据，当前源码须另验；整机无登录仍待专用runner，物理IME/跨屏/桌面合成/长期人工与真实业务试点未验收。独立测试应用不代表请求方业务应用验收。历史结果见[API6记录](docs/validation/api6-validation.md)，当前见[API7记录](docs/validation/api7-validation.md)。
 
 菜单外观、侧向鼠标交互与只读前后图见[桌面菜单验收](docs/validation/menu-desktop-validation.md)，公共API6/ABI1不变。
+
+## API7 本轮增补
+
+轻量overflow与共同TREE/TABLE/LIST提供可拖动的完整数据范围滚动条；宽表按全部列宽横向导航，保留分页。底部停靠、同区标签组与读取格式1的布局格式2复用内容槽和GL context。连续RGBA选择与文本使用同一草稿/提交合同。关闭稳定性失败、资源诊断和6次独立64轮复验见[记录](docs/validation/runtime-stability-validation.md)，当前源码及限制见[API7验收](docs/validation/api7-validation.md)。

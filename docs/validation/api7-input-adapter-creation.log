@@ -1,0 +1,368 @@
+SystemUserAdapter creation stack
+ D:\ C:\WINDOWS\System32\USER32.dll+27cad
+ C:\WINDOWS\System32\USER32.dll+27b5e
+ C:\WINDOWS\SYSTEM32\ntdll.dll+164de4
+ C:\WINDOWS\System32\win32u.dll+20a4
+ C:\WINDOWS\System32\USER32.dll+1c7fa
+ C:\WINDOWS\System32\USER32.dll+1c387
+ C:\WINDOWS\System32\USER32.dll+1c192
+ C:\WINDOWS\SYSTEM32\CoreMessaging.dll+2e27e
+ C:\WINDOWS\SYSTEM32\CoreMessaging.dll+2e123
+ C:\WINDOWS\SYSTEM32\CoreMessaging.dll+2dffb
+ C:\WINDOWS\SYSTEM32\CoreMessaging.dll+2de93
+ C:\WINDOWS\SYSTEM32\CoreMessaging.dll+2dade
+ C:\WINDOWS\SYSTEM32\CoreMessaging.dll+2d90c
+ C:\WINDOWS\SYSTEM32\CoreMessaging.dll+8a3f4
+ C:\WINDOWS\SYSTEM32\CoreMessaging.dll+5c1dc
+ C:\WINDOWS\SYSTEM32\textinputframework.dll+1d51d
+ C:\WINDOWS\SYSTEM32\textinputframework.dll+667bc
+ C:\WINDOWS\SYSTEM32\textinputframework.dll+666c2
+ C:\WINDOWS\System32\MSCTF.dll+631db
+ C:\WINDOWS\System32\MSCTF.dll+9c279
+ C:\WINDOWS\SYSTEM32\textinputframework.dll+315b5
+ C:\WINDOWS\SYSTEM32\textinputframework.dll+82de2
+ C:\WINDOWS\System32\MSCTF.dll+9eb6a
+click field-name rect 13,109,734,38 clip 13,109,734,38
+click tree-label-1 rect 11,85,168,28 clip 11,85,168,28
+nested result=0 text=Nested DLL row
+Async modal native focus container=00000000028B111A actual=00000000048010F0 descendant=1
+click field-name rect 13,109,398,38 clip 13,109,398,38
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=9
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=10
+Free Runtime view controller=1 bridge=1 navigation=1 id=9
+Free Runtime view controller=1 bridge=1 navigation=1 id=10
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=6
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=6
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+API5 baseline pending cleanup=0
+Baseline native focus=0000000004B00A52 foreground=0000000004B00A52 USER=18
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen1 handles=390 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+reopen2 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen3 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen4 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen5 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen6 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen7 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen8 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen9 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen10 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen11 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen12 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen13 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen14 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen15 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen16 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen17 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen18 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+reopen19 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen20 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen21 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen22 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen23 handles=391 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen24 handles=389 USER=18 focus=0000000000000000
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+reopen25 handles=385 USER=18 focus=0000000000000000
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen26 handles=387 USER=18 focus=0000000000000000
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen27 handles=387 USER=18 focus=0000000000000000
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen28 handles=387 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen29 handles=387 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen30 handles=387 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen31 handles=387 USER=18 focus=0000000004B00A52
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=3
+Destroy Runtime view controller=1 bridge=1 navigation=1 id=4
+Free Runtime view controller=1 bridge=1 navigation=1 id=3
+Free Runtime view controller=1 bridge=1 navigation=1 id=4
+reopen32 handles=387 USER=18 focus=0000000004B00A52
+API5 final pending cleanup=0
+Inventory startup baseline
+ Window=00000000054D091C class=OleMainThreadWndClass thread=45428
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=combase.dll
+ Module=OPENGL32.dll
+ Module=IMM32.dll
+ Module=RPCRT4.dll
+ Module=msvcrt.dll
+ Module=ADVAPI32.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=USP10.dll
+ Module=MSIMG32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=GLU32.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+Inventory api5 baseline
+ Window=0000000004B00A52 class=Static thread=45428
+ Window=00000000166A078C class=MSCTFIME UI thread=45428
+ Window=00000000029C05DA class=IME thread=45428
+ Window=000000000B501140 class=SystemUserAdapterWindowClass thread=45428
+ Window=0000000001D00C56 class=CicMarshalWndClass thread=45428
+ Window=00000000054D091C class=OleMainThreadWndClass thread=45428
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=combase.dll
+ Module=OPENGL32.dll
+ Module=IMM32.dll
+ Module=RPCRT4.dll
+ Module=msvcrt.dll
+ Module=ADVAPI32.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=USP10.dll
+ Module=MSIMG32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=GLU32.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=twinapi.dll
+ Module=ActXPrxy.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+DLL reopen32 resources GDI 9->9 USER 18->18 handles 390->387 drained_ms=0
+Inventory api5 settled
+ Window=0000000004B00A52 class=Static thread=45428
+ Window=00000000166A078C class=MSCTFIME UI thread=45428
+ Window=00000000029C05DA class=IME thread=45428
+ Window=000000000B501140 class=SystemUserAdapterWindowClass thread=45428
+ Window=0000000001D00C56 class=CicMarshalWndClass thread=45428
+ Window=00000000054D091C class=OleMainThreadWndClass thread=45428
+ Module=ui_api5_integration_test.exe
+ Module=ntdll.dll
+ Module=KERNEL32.DLL
+ Module=KERNELBASE.dll
+ Module=apphelp.dll
+ Module=USER32.dll
+ Module=win32u.dll
+ Module=GDI32.dll
+ Module=ui_framework.dll
+ Module=gdi32full.dll
+ Module=msvcp_win.dll
+ Module=ucrtbase.dll
+ Module=ole32.dll
+ Module=combase.dll
+ Module=OPENGL32.dll
+ Module=IMM32.dll
+ Module=RPCRT4.dll
+ Module=msvcrt.dll
+ Module=ADVAPI32.dll
+ Module=COMCTL32.dll
+ Module=sechost.dll
+ Module=USP10.dll
+ Module=MSIMG32.dll
+ Module=VCRUNTIME140.dll
+ Module=VCRUNTIME140_1.dll
+ Module=GLU32.dll
+ Module=dxcore.dll
+ Module=kernel.appcore.dll
+ Module=bcryptPrimitives.dll
+ Module=uxtheme.dll
+ Module=MSCTF.dll
+ Module=OLEAUT32.dll
+ Module=textinputframework.dll
+ Module=CoreMessaging.dll
+ Module=CoreUIComponents.dll
+ Module=wintypes.dll
+ Module=CRYPTBASE.DLL
+ Module=Oleacc.dll
+ Module=osmesa.dll
+ Module=SHELL32.dll
+ Module=libglapi.dll
+ Module=EmbeddedBrowserWebView.dll
+ Module=windows.storage.dll
+ Module=SHCORE.dll
+ Module=shlwapi.dll
+ Module=VERSION.dll
+ Module=PROPSYS.dll
+ Module=clbcatq.dll
+ Module=edputil.dll
+ Module=TextShaping.dll
+ Module=Windows.UI.dll
+ Module=dataexchange.dll
+ Module=twinapi.appcore.dll
+ Module=windowscodecs.dll
+ Module=twinapi.dll
+ Module=ActXPrxy.dll
+ Module=UIAutomationCore.DLL
+ Module=sxs.dll
+Resources api5 settled pid=19904 handles=387 File=32 Event=56 Key=20 WaitCompletionPacket=16 IRTimer=8 TpWorkerFactory=4 IoCompletion=8 unknown=132 Directory=2 SchedulerSharedData=1 ALPC Port=11 Mutant=4 Semaphore=6 WindowStation=2 Desktop=1 Section=23 Thread=58 IoCompletionReserve=1 Timer=1 Process=1
+API5 actual Runtime/application DLL: 0 failures

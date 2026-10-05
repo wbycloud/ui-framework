@@ -1,0 +1,323 @@
+Start testing: Oct 05 20:41 �й���׼ʱ��
+----------------------------------------------------------
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/应用软件框架/应用层序框架/build/fw-next/release/ui_api5_native_host_test.exe" "D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:41 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=0000000004800B9A expected=0000000004800B9A
+native key msg=260 key=18 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=260 key=70 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=261 key=70 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=257 key=18 handled=1 ctrl=0 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=257 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=260 key=18 handled=1 ctrl=0 shift=1 alt=-128
+native key msg=261 key=18 handled=1 ctrl=0 shift=1 alt=0
+native key msg=256 key=27 handled=1 ctrl=0 shift=1 alt=0
+native key msg=257 key=27 handled=1 ctrl=0 shift=1 alt=0
+native key msg=256 key=17 handled=0 ctrl=-127 shift=1 alt=0
+native key msg=256 key=79 handled=1 ctrl=-127 shift=1 alt=0
+native key msg=257 key=79 handled=0 ctrl=-127 shift=1 alt=0
+native key msg=257 key=17 handled=0 ctrl=1 shift=1 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.10 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:41 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/应用软件框架/应用层序框架/build/fw-next/release/ui_api5_native_host_test.exe" "D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:41 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=0000000017A60B3E expected=0000000017A60B3E
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=260 key=70 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=261 key=70 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=257 key=18 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=257 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=261 key=18 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=27 handled=1 ctrl=1 shift=1 alt=0
+native key msg=257 key=27 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=17 handled=0 ctrl=-128 shift=1 alt=0
+native key msg=256 key=79 handled=1 ctrl=-128 shift=1 alt=0
+native key msg=257 key=79 handled=0 ctrl=-128 shift=1 alt=0
+native key msg=257 key=17 handled=0 ctrl=0 shift=1 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.10 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:42 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/应用软件框架/应用层序框架/build/fw-next/release/ui_api5_native_host_test.exe" "D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:42 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=00000000069210D6 expected=00000000069210D6
+native key msg=260 key=18 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=260 key=70 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=261 key=70 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=257 key=18 handled=1 ctrl=0 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=257 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=260 key=18 handled=1 ctrl=0 shift=1 alt=-128
+native key msg=261 key=18 handled=1 ctrl=0 shift=1 alt=0
+native key msg=256 key=27 handled=1 ctrl=0 shift=1 alt=0
+native key msg=257 key=27 handled=1 ctrl=0 shift=1 alt=0
+native key msg=256 key=17 handled=0 ctrl=-127 shift=1 alt=0
+native key msg=256 key=79 handled=1 ctrl=-127 shift=1 alt=0
+native key msg=257 key=79 handled=0 ctrl=-127 shift=1 alt=0
+native key msg=257 key=17 handled=0 ctrl=1 shift=1 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:42 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/应用软件框架/应用层序框架/build/fw-next/release/ui_api5_native_host_test.exe" "D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:42 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=0000000005710760 expected=0000000005710760
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=260 key=70 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=261 key=70 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=257 key=18 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=257 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=261 key=18 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=27 handled=1 ctrl=1 shift=1 alt=0
+native key msg=257 key=27 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=17 handled=0 ctrl=-128 shift=1 alt=0
+native key msg=256 key=79 handled=1 ctrl=-128 shift=1 alt=0
+native key msg=257 key=79 handled=0 ctrl=-128 shift=1 alt=0
+native key msg=257 key=17 handled=0 ctrl=0 shift=1 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.09 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:42 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/应用软件框架/应用层序框架/build/fw-next/release/ui_api5_native_host_test.exe" "D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:42 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=0000000004840B9A expected=0000000004840B9A
+native key msg=260 key=18 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=260 key=70 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=261 key=70 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=257 key=18 handled=1 ctrl=0 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=257 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=260 key=18 handled=1 ctrl=0 shift=1 alt=-128
+native key msg=261 key=18 handled=1 ctrl=0 shift=1 alt=0
+native key msg=256 key=27 handled=1 ctrl=0 shift=1 alt=0
+native key msg=257 key=27 handled=1 ctrl=0 shift=1 alt=0
+native key msg=256 key=17 handled=0 ctrl=-127 shift=1 alt=0
+native key msg=256 key=79 handled=1 ctrl=-127 shift=1 alt=0
+native key msg=257 key=79 handled=0 ctrl=-127 shift=1 alt=0
+native key msg=257 key=17 handled=0 ctrl=1 shift=1 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.06 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:42 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/应用软件框架/应用层序框架/build/fw-next/release/ui_api5_native_host_test.exe" "D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:42 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=000000000AF40EE6 expected=000000000AF40EE6
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=260 key=70 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=261 key=70 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=257 key=18 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=257 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=261 key=18 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=27 handled=1 ctrl=1 shift=1 alt=0
+native key msg=257 key=27 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=17 handled=0 ctrl=-128 shift=1 alt=0
+native key msg=256 key=79 handled=1 ctrl=-128 shift=1 alt=0
+native key msg=257 key=79 handled=0 ctrl=-128 shift=1 alt=0
+native key msg=257 key=17 handled=0 ctrl=0 shift=1 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.07 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:42 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/应用软件框架/应用层序框架/build/fw-next/release/ui_api5_native_host_test.exe" "D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:42 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=00000000069610D6 expected=00000000069610D6
+native key msg=260 key=18 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=260 key=70 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=261 key=70 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=257 key=18 handled=1 ctrl=0 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=257 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=260 key=18 handled=1 ctrl=0 shift=1 alt=-128
+native key msg=261 key=18 handled=1 ctrl=0 shift=1 alt=0
+native key msg=256 key=27 handled=1 ctrl=0 shift=1 alt=0
+native key msg=257 key=27 handled=1 ctrl=0 shift=1 alt=0
+native key msg=256 key=17 handled=0 ctrl=-127 shift=1 alt=0
+native key msg=256 key=79 handled=1 ctrl=-127 shift=1 alt=0
+native key msg=257 key=79 handled=0 ctrl=-127 shift=1 alt=0
+native key msg=257 key=17 handled=0 ctrl=1 shift=1 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.06 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:42 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/应用软件框架/应用层序框架/build/fw-next/release/ui_api5_native_host_test.exe" "D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:42 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=00000000057B07EE expected=00000000057B07EE
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=260 key=70 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=261 key=70 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=257 key=18 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=257 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=261 key=18 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=27 handled=1 ctrl=1 shift=1 alt=0
+native key msg=257 key=27 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=17 handled=0 ctrl=-128 shift=1 alt=0
+native key msg=256 key=79 handled=1 ctrl=-128 shift=1 alt=0
+native key msg=257 key=79 handled=0 ctrl=-128 shift=1 alt=0
+native key msg=257 key=17 handled=0 ctrl=0 shift=1 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.10 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:42 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/应用软件框架/应用层序框架/build/fw-next/release/ui_api5_native_host_test.exe" "D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:42 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=0000000004880B9A expected=0000000004880B9A
+native key msg=260 key=18 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=260 key=70 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=261 key=70 handled=1 ctrl=0 shift=1 alt=-127
+native key msg=257 key=18 handled=1 ctrl=0 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=257 key=83 handled=1 ctrl=0 shift=1 alt=1
+native key msg=260 key=18 handled=1 ctrl=0 shift=1 alt=-128
+native key msg=261 key=18 handled=1 ctrl=0 shift=1 alt=0
+native key msg=256 key=27 handled=1 ctrl=0 shift=1 alt=0
+native key msg=257 key=27 handled=1 ctrl=0 shift=1 alt=0
+native key msg=256 key=17 handled=0 ctrl=-127 shift=1 alt=0
+native key msg=256 key=79 handled=1 ctrl=-127 shift=1 alt=0
+native key msg=257 key=79 handled=0 ctrl=-127 shift=1 alt=0
+native key msg=257 key=17 handled=0 ctrl=1 shift=1 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.06 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:42 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+14/61 Testing: ui_api5_native_host
+14/61 Test: ui_api5_native_host
+Command: "D:/应用软件框架/应用层序框架/build/fw-next/release/ui_api5_native_host_test.exe" "D:/应用软件框架/应用层序框架/build/fw-next/release/api5_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 20:42 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native input desktop thread=Default input=Default available=1 foreground=000000000AF80EE6 expected=000000000AF80EE6
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=260 key=70 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=261 key=70 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=257 key=18 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=257 key=83 handled=1 ctrl=1 shift=1 alt=1
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=261 key=18 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=27 handled=1 ctrl=1 shift=1 alt=0
+native key msg=257 key=27 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=17 handled=0 ctrl=-128 shift=1 alt=0
+native key msg=256 key=79 handled=1 ctrl=-128 shift=1 alt=0
+native key msg=257 key=79 handled=0 ctrl=-128 shift=1 alt=0
+native key msg=257 key=17 handled=0 ctrl=0 shift=1 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 20:42 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+End testing: Oct 05 20:42 �й���׼ʱ��

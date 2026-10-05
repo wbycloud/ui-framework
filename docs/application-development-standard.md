@@ -1,6 +1,6 @@
 # Windows C/Web UI 框架应用开发标准
 
-开发标准修订：**6**。对应 **SDK 0.6.0 开发版、框架 API 6**；运行库接受 API 1/2/3/4/5/6，应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
+开发标准修订：**7**。对应 **SDK 0.7.0 开发版、框架 API 7**；运行库接受 API 1/2/3/4/5/6/7，应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
 
 面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的开发者。新应用通过公共 C 接口注册组件、提供数据、绑定已有语义命令，通用 HTML/CSS/JavaScript、草稿、焦点和交互由框架维护。菜单、工具、面板内组件、状态、参数及确认界面使用 Web；Win32 仅承载窗口、消息、输入法及绘制。旧 API1/2 应用自有原生内容和原生嵌入式保留，系统文件/目录选择器是例外。
 
@@ -8,11 +8,11 @@
 
 先读[通用 Web UI 接入约定](generic-web-ui.md)，再参考[通用纯 C 示例](../examples/generic_components/README.md)。新接口见 [components.h](../include/ui_framework/components.h)、[images.h](../include/ui_framework/images.h)；命令、面板、内容槽、助手和应用生命周期仍以原公共头文件为准。
 
-[0.3 → 0.4 迁移指南](migration-v0.3-to-v0.4.md)说明API4历史菜单及离屏接口；[0.4→0.5](migration-v0.4-to-v0.5.md)说明API5历史增补，[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)保留通用组件和废弃输入开关的迁移要求；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[API5历史验收](validation/api5-validation.md)及[当前API6验收](validation/api6-validation.md)记录构建、自动化与真实宿主证据。API4 包不能加载到只支持 API1/2/3 的运行库，清单与 DLL 声明必须相同。
+[0.3 → 0.4 迁移指南](migration-v0.3-to-v0.4.md)说明API4历史菜单及离屏接口；[0.4→0.5](migration-v0.4-to-v0.5.md)说明API5历史增补，[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)保留通用组件和废弃输入开关的迁移要求；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[API5历史验收](validation/api5-validation.md)及[当前API7验收](validation/api7-validation.md)记录构建、自动化与真实宿主证据。API4 包不能加载到只支持 API1/2/3 的运行库，清单与 DLL 声明必须相同。
 
 受控轻量后端实现本版框架组件；WebView2 可选提供实际 Runtime 呈现查询、捕获、C 图片 ID 和共同框架组件，异步合同见本页 API5 增补。OpenGL 仍由应用自行选择、通过内容槽挂载，框架没有应用文档模型或业务渲染器。具体子集、预算及未实现能力以接入约定的能力清单为准，不把 HTML 支持视为完整浏览器。
 
-API4历史菜单、隐藏WGL及无窗口workspace合同保留在[菜单与离屏约定](framework-menu-offscreen.md)。API5补齐Alt、OSMesa、MSAA和Runtime，API6增加[持久布局与手势](workspace-layout.md)及本文末尾的共同组件交互。所有路径遵守原线程、所有权和卸载规则；离屏仍是可选运行模式，旧包可保持原API。独立框架集成应用见[API6验收](validation/api6-validation.md)，历史接入示例仍见[framework_features](../examples/framework_features/README.md)。
+API4历史菜单、隐藏WGL及无窗口workspace合同保留在[菜单与离屏约定](framework-menu-offscreen.md)。API5补齐Alt、OSMesa、MSAA和Runtime，API6增加[持久布局与手势](workspace-layout.md)及共同组件交互，API7追加完整范围滚动、底部/标签和连续颜色。所有路径遵守原线程、所有权和卸载规则；离屏仍是可选运行模式，旧包可保持原API。独立框架集成应用见[API7验收](validation/api7-validation.md)，历史接入示例仍见[framework_features](../examples/framework_features/README.md)。
 
 ## 1. 架构和应用职责
 
@@ -58,7 +58,7 @@ multiple_instances=true
 
 `app_id` 是稳定身份，`version` 标识版本；同一 ID 的不同版本不能同时加载。`multiple_instances=false` 时，重复打开包激活已有标签；为 true 时创建新的私有状态和标签。不要通过进程全局变量保存实例数据。
 
-清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前支持 `architecture=x64`、应用 ABI 1 和框架 API 1/2/3/4/5/6。清单 API 必须与 DLL descriptor 一致；使用当前头文件构建的新应用声明 6，旧 API1–5 包保持原值。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
+清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前支持 `architecture=x64`、应用 ABI 1 和框架 API 1/2/3/4/5/6/7。清单 API 必须与 DLL descriptor 一致；使用当前头文件构建的新应用声明 7，旧 API1–6 包保持原值。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
 
 ### 2.2 UAPP v1 容器格式
 
@@ -152,7 +152,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 ### 3.3 size 和兼容性
 
-使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 6。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前接受 1、2、3、4、5、6，拒绝 0 和未支持的更高版本。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
+使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 7。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前接受 1、2、3、4、5、6、7，拒绝 0 和未支持的更高版本。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
 
 布局接口接受原始六字段布局描述，省略的新字段按零值处理；Web ops 支持旧尺寸，缺少追加的定位、消息或能力回调时对应操作返回 UNSUPPORTED。`ui_workspace_config_t` 在保留完整 v1 布局后追加 `shell_mode`；清零时选择 `UI_WORKSPACE_SHELL_NATIVE`，自建 Web workspace 可显式选择 `UI_WORKSPACE_SHELL_WEB`。独立宿主固定使用 WEB。并非所有结构都允许截断，不能人为缩小 `size` 来假装某个版本。C++ 应用通过 `extern "C"` 调用同一接口；[`tests/public_headers.cpp`](../tests/public_headers.cpp) 覆盖公共头文件调用路径。
 
@@ -184,7 +184,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 ### 5.2 内容槽与面板挂载
 
-面板通过 `ui_host_register_panel()` 注册。`UI_PANEL_SIDEBAR` 按 `dock_region` 停靠到左/右侧，`NONE` 保留默认右侧行为；`UI_PANEL_FLOATING` 创建独立浮动面板。`preferred_width` 控制浮动初始宽度，停靠侧栏总宽由 host 布局决定。`entry_url` 是兼容描述的必填非 NULL 字段，原生面板设置为 `""`；它不自动读取资源、打开页面或创建 backend。
+面板通过 `ui_host_register_panel()` 注册。`UI_PANEL_SIDEBAR` 按 `dock_region` 停靠到左/右侧或 API7 底部，`NONE` 保留默认右侧行为；`UI_PANEL_FLOATING` 创建独立浮动面板。`preferred_width` 控制浮动初始宽度，停靠侧栏总宽和底部高度由框架布局决定。`entry_url` 是兼容描述的必填非 NULL 字段，原生面板设置为 `""`；它不自动读取资源、打开页面或创建 backend。
 
 新应用在 mount 后通过 `ui_host_get_shell(host)` 取得借用 shell。调用 `ui_shell_get_content_slot(shell, NULL)` 选主内容区，传已注册的 panel ID 选面板内容区；不存在时返回 NULL。slot 到 shell 销毁时才失效。`ui_content_slot_native_handle()` 返回借用容器 HWND，新应用在其中挂载框架组件或绘图内容；原生 child 仅作为旧应用兼容路径，禁止销毁容器。
 
@@ -204,7 +204,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 ### 6.1 逻辑矩形和侧栏约束
 
-`ui_host_resize()` 接受逻辑客户区尺寸，96 DPI 对应 100% 缩放。`ui_host_get_rect()` 查询 ROOT、MENU_BAR、TOOLBAR、MAIN、左右 SIDEBAR、STATUS_BAR 的逻辑矩形。顶部和底部区域先占用高度，主区与左右侧栏共享剩余区域。
+`ui_host_resize()` 接受逻辑客户区尺寸，96 DPI 对应 100% 缩放。`ui_host_get_rect()` 查询 ROOT、MENU_BAR、TOOLBAR、MAIN、左右 SIDEBAR、STATUS_BAR 及 API7 BOTTOM 的逻辑矩形。菜单/工具/状态栏先占用高度，左右侧栏使用剩余高度；BOTTOM 位于左右侧栏之间，占用主区底部空间。
 
 侧栏宽度按首选宽度、旧的 width 字段、最小/最大约束计算。`preferred_width` 为 0 时使用旧 width；`max_width` 为 0 时不设置额外上限。`main_min_width` 为 0 时采用 400 的策略目标。这个目标不能在任意微小窗口下强制保证；可用空间不足且侧栏不可折叠时，主区仍会压缩。
 
@@ -429,17 +429,17 @@ Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径
 
 ## API5 接入与验收要求
 
-API5历史迁移要求DLL与包清单一致声明API5；当前SDK0.6重建并采用API6接口时同步声明API6，旧API5包保留原声明兼容。当前运行库支持API1–6，ABI1、导出和包格式1不变。新尺寸按字段末端判断，旧SDK4描述包含的尾padding保留，旧WebView2配置默认行为不改。历史增补见[0.4→0.5迁移](migration-v0.4-to-v0.5.md)，当前升级见[0.5→0.6](migration-v0.5-to-v0.6.md)。
+API5历史迁移要求DLL与包清单一致声明API5；当前SDK0.7重建并采用API7接口时同步声明API7，旧API1–6包保留原声明兼容。当前运行库支持API1–7，ABI1、导出和包格式1不变。新尺寸按字段末端判断，旧SDK4描述包含的尾padding保留，旧WebView2配置默认行为不改。历史增补见[0.4→0.5迁移](migration-v0.4-to-v0.5.md)，当前升级见[0.6→0.7](migration-v0.6-to-v0.7.md)。
 
 Alt 助记键、真正 OSMesa 无窗口 GL、精确离屏 MSAA 和 WebView2 异步呈现/捕获/图片/组件合同分别见 [菜单和离屏](framework-menu-offscreen.md#6-api5-菜单无窗口-gl-与-msaa-合同)与[通用 Web API5](generic-web-ui.md#api5-webview2-与共同组件)。WebView2 后端借用到 host 销毁以后，禁止 DLL 卸载后留应用异步回调；PENDING 需要外层消息循环及重试，不能当 OK。
 
-保持原包与冻结 SDK1/2/3/4/5 分别验收。物理 IME/跨屏、人工长时压力、Session0及目标CI条件缺失时记录未验收；不以编译、UNSUPPORTED 或轻量后端通过替代真实 Runtime/实际 GL。当前状态见 [API6验收](validation/api6-validation.md)，API5原结果继续保留。
+保持原包与冻结 SDK1/2/3/4/5/6 分别验收。物理 IME/跨屏、人工长时压力、Session0及目标CI条件缺失时记录未验收；不以编译、UNSUPPORTED 或轻量后端通过替代真实 Runtime/实际 GL。当前状态见 [API7验收](validation/api7-validation.md)，API5/6原结果继续保留。
 
-框架测试DLL的OSMesa路径已在实际Windows CI LocalSystem Session0运行；这不等于应用自身业务已适配，或整机无用户登录。无登录必须另核验WTS会话数为0，当前托管runner有登录会话1且严格门槛失败；环境、窗口、frame和资源证据见[Session0记录](validation/session0-osmesa-validation.md)。服务测试无需继承stdin/stdout/stderr或创建控制台；路径、调度、UI线程和生命周期仍由应用适配。
+历史框架测试DLL的OSMesa路径已在实际Windows CI LocalSystem Session0运行；这不等于当前源码复验、应用自身业务已适配，或整机无用户登录。无登录必须另核验WTS会话数为0，历史托管runner有登录会话1且严格门槛失败；环境、窗口、frame和资源证据见[Session0记录](validation/session0-osmesa-validation.md)。服务测试无需继承stdin/stdout/stderr或创建控制台；路径、调度、UI线程和生命周期仍由应用适配。
 
-## API6 工作区与共同组件规范
+## API6 保留的工作区与共同组件规范
 
-新增公共接口升级到API6/SDK0.6/标准6，ABI1和包格式1保持；旧API1–5头文件、描述前缀、枚举、默认行为及原二进制验收分别保留。新字段按完整字段末端读取，不能读旧尾padding；部分字段不读、不写。[0.5→0.6迁移](migration-v0.5-to-v0.6.md)列出实际x64字段偏移。
+这些接口在API6/SDK0.6/标准6引入，当前版本为API7/SDK0.7/标准7，ABI1和包格式1保持；旧API1–5头文件、描述前缀、枚举、默认行为及原二进制验收分别保留。新字段按完整字段末端读取，不能读旧尾padding；部分字段不读、不写。[0.5→0.6迁移](migration-v0.5-to-v0.6.md)列出实际x64字段偏移。
 
 布局的存储责任属于应用；在注册和mount之后恢复框架版本化字节，稳定面板ID与标题分离。异常数据先完整验证，缺失ID忽略，新增面板保留默认状态，可reset。支持左右栈、尺寸、折叠、关闭与浮动；分隔条和拖拽保留原内容，DPI/work area夹紧不等于物理跨屏通过。[布局接口](workspace-layout.md)是格式、手势、窄窗与有/无窗口边界的合同。
 
@@ -448,3 +448,19 @@ Alt 助记键、真正 OSMesa 无窗口 GL、精确离屏 MSAA 和 WebView2 异�
 排序由注册sort_command和source协作：框架保存列/方向状态、发命令、换代并重新查询；source按完整数据集顺序返回窗口和范围ID。禁止把缓存页排序称为完整排序。多选最多512个稳定非零ID，范围结果带generation/request，可复制投递；换源清空，页切换/排序保留ID，删除移除ID，结构更新重置范围锚点，实例状态独立。详见[共同组件](generic-web-ui.md)。
 
 预算仍为组件缓存2MiB、DOM1024、单批512、图片32MiB、投递8MiB与JS8MiB；选择内存计入缓存。线程只允许后台复制投递，关闭仍需停止/join所有应用工作线程并平衡Runtime及GL资源。框架独立API6应用的集成证据不能代替真实业务应用授权与验收。
+
+## API7 滚动、平面停靠与颜色规范
+
+API7/SDK0.7/标准7，ABI/包格式1不变。ui_panel_layout在原48字节之后追加tab_group_id（48..55）、tab_active（56..59），只读/写完整字段，旧48字节描述有效。原ui_layout_desc大小不变，COUNT=8保持旧哨兵（8保留）、BOTTOM=9，UI_INPUT_CANCEL=8追加且事件尺寸不变。详见[迁移](migration-v0.6-to-v0.7.md)。
+
+共同树/表格/列表纵条映射完整数据源总量，宽表横条按全部列宽计算，按需取页，保留分页、滚轮和键盘。索引、总量、ID以十进制字符串传递，JS用BigInt映射行范围。轨道12、最小滑块24逻辑像素，短轨道限制为轨道长度，无溢出隐藏；点击轨道移动一视口，交汇留白。Esc/捕获丢失/公共CANCEL恢复本次拖动起点；失活/模态/换源/排序/resize解除捕获，保留最新有效状态，禁止旧代次重置新源。缓存2MiB、DOM1024、单批512、图片32MiB、投递8MiB、JS8MiB不变。
+
+总量缩小时允许空批报告新total_count，原first可在新范围外；非空批范围仍严格验证。框架夹紧并按需重查有效窗口，已知树分支移出缓存仍可折叠，祖先已移除的展开元数据不计入总量。
+
+底部位于左右侧栏之间；默认220，实际高度给主区保留120，空间不足分配一半。平面区域内仍是有序栈，标签组共享一个框，仅活动内容显示；关闭、浮动和恢复不重建内容或GL。组ID属于一个shell，0为独立面板，UINT64_MAX保留；活动关闭选未关闭成员，activate可重开，reset保留业务状态。布局格式2读取格式1，异常输入原子拒绝，未来版本UNSUPPORTED。应用负责存储，不写业务文档。详见[布局](workspace-layout.md)。
+
+连续RGBA通道0..255，暗/白底合成透明度预览，回填#RRGGBBAA；拖动/键盘只写草稿，保留颜色关闭选择器，表单提交才调用业务一次。撤销颜色/选择器Esc恢复打开前文本，捕获取消恢复本次拖动前值。只读/禁用不启动选择，非法文本受既有提交校验。两后端共同模板，无富文本或可变行高。
+
+当前独立DLL证据见[API7验收](validation/api7-validation.md)。历史Session0不得替代当前源码复验；严格整机无登录、真实IME/物理跨屏/桌面合成/长期人工及真实业务试点分别记录。
+
+API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认；初始有/无窗口布局为其分配底部空间，reset回到注册默认底部。直接声明与事后移动同样保留内容生命周期，见[注册复现和修复](validation/api7-validation.md)。

@@ -1,0 +1,36 @@
+{
+  "source_commit": "cb426600d25175261eeaee3ccd23ad859b138b16",
+  "branch": "codex/menus-offscreen",
+  "source_dirty": true,
+  "dirty_scope": "documentation/evidence only; executable sources committed",
+  "os": "Microsoft Windows NT 10.0.26300.0",
+  "identity": "COMPUTER_BYWAN\\wbycl",
+  "session": 1,
+  "administrator": false,
+  "machine_user": "computer_bywan\\wbycl",
+  "monitors": [
+    {
+      "device": "\\\\.\\DISPLAY1",
+      "bounds": "{X=0,Y=0,Width=1920,Height=1080}",
+      "work_area": "{X=0,Y=0,Width=1920,Height=1032}",
+      "primary": true
+    }
+  ],
+  "runtime": [
+    {
+      "name": "Microsoft Edge WebView2 Runtime",
+      "pv": "154.0.4258.53"
+    }
+  ],
+  "query_session": "quser executable unavailable; no WTS count inferred. Session and machine_user independently recorded.",
+  "desktop_compositor": [
+    {
+      "Id": 2324,
+      "SessionId": 1
+    }
+  ],
+  "no_login_runner": "User explicitly confirmed unavailable; no runner provisioned, no logout, no existing service changed",
+  "manual_acceptance": "No real Chinese IME, physical different-DPI displays, desktop-composition edge verification or long-term human proof",
+  "business_pilot": "No specified new authorized real business application; independent framework fixture only",
+  "hardware_gl_scope": "No measured OSMesa bottleneck or explicit hardware no-window requirement; not expanded"
+}

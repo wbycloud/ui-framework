@@ -1,0 +1,18 @@
+Native input desktop thread=Default input=Default available=1 foreground=0000000008DE082E expected=00000000023F10BC
+Activate fallback frame=182,182,1382,982 target=282,194 hit=00000000023F10BC owner=00000000023F10BC expected=00000000023F10BC visible=1 iconic=0
+native key msg=260 key=18 handled=1 ctrl=1 shift=0 alt=-127
+native key msg=260 key=70 handled=1 ctrl=1 shift=0 alt=-127
+native key msg=261 key=70 handled=1 ctrl=1 shift=0 alt=-127
+native key msg=257 key=18 handled=1 ctrl=1 shift=0 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=0 alt=1
+native key msg=256 key=83 handled=1 ctrl=1 shift=0 alt=1
+native key msg=257 key=83 handled=1 ctrl=1 shift=0 alt=1
+native key msg=260 key=18 handled=1 ctrl=1 shift=0 alt=-128
+native key msg=261 key=18 handled=1 ctrl=1 shift=0 alt=0
+native key msg=256 key=27 handled=1 ctrl=1 shift=0 alt=0
+native key msg=257 key=27 handled=1 ctrl=1 shift=0 alt=0
+native key msg=256 key=17 handled=0 ctrl=-128 shift=0 alt=0
+native key msg=256 key=79 handled=1 ctrl=-128 shift=0 alt=0
+native key msg=257 key=79 handled=0 ctrl=-128 shift=0 alt=0
+native key msg=257 key=17 handled=0 ctrl=0 shift=0 alt=0
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
