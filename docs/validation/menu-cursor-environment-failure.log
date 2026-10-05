@@ -1,0 +1,29 @@
+Test project D:/应用软件框架/应用层序框架/build/fw-next/release
+    Start 27: ui_framework_features_host
+1/5 Test #27: ui_framework_features_host .......   Passed    3.35 sec
+    Start 28: ui_menu_desktop
+2/5 Test #28: ui_menu_desktop ..................***Failed    3.39 sec
+line 21: restore_cursor
+line 21: SetCursorPos(mi.rcWork.right-1,mi.rcWork.bottom-1)
+Function key presentation: status 0; text Ctrl+F1
+Menu hit 0 at 698,146: expected 0000000001C91104; actual 0000000001C91104 UIFrameworkRegisteredMenu4; foreground 0000000000000000
+Menu hit 1 at 380,145: expected 0000000004F40976; actual 0000000004F40976 UIFrameworkRegisteredMenu4; foreground 0000000000000000
+Menu hit 2 at 62,144: expected 0000000003D90A0A; actual 0000000003D90A0A UIFrameworkRegisteredMenu4; foreground 0000000000000000
+40 menu reopen cycles: handles 478 -> 478; GDI 669 -> 667; USER 79 -> 78
+After instance switch: visible menus=0; first path=closed second path=closed
+Desktop menu real host: 2 failures; command calls=1
+
+    Start 29: ui_menu_offscreen
+3/5 Test #29: ui_menu_offscreen ................   Passed    0.13 sec
+    Start 30: ui_menu_cascade_offscreen
+4/5 Test #30: ui_menu_cascade_offscreen ........   Passed    0.18 sec
+    Start 31: ui_menu_access
+5/5 Test #31: ui_menu_access ...................   Passed    0.09 sec
+
+80% tests passed, 1 tests failed out of 5
+
+Total Test time (real) =   7.18 sec
+
+The following tests FAILED:
+	 28 - ui_menu_desktop (Failed)
+Errors while running CTest

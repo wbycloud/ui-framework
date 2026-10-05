@@ -339,3 +339,9 @@ ctest --test-dir build/api6 --output-on-failure
 ```
 
 UI_BUILD_TESTS下生成api6_fixture.uapp，public-C应用包含树/表格、属性、实际OSMesa frame的C图片、真实异步缩略图、语义命令、双实例/失败/模态/卸载。ui_api6_integration与ui_api6_integration_webview2是独立框架集成证据；原API5四项及普通非MSAA路径另行回归。原二进制可用UI_LEGACY_EDA_PACKAGE、UI_LEGACY_API2_PACKAGE、UI_LEGACY_COMPONENT_PACKAGE、UI_LEGACY_API4_PACKAGE、UI_LEGACY_API5_PACKAGE指定；文件缺失必须单列，冻结SDK重编译不代表原包验收。
+
+## 菜单外观与鼠标回归
+
+保持现有API6依赖和配置，执行`ctest --test-dir build/fw-next/release -R "ui_menu_desktop|ui_menu_cascade_offscreen|ui_menu_access|ui_menu_offscreen|ui_framework_features_host|ui_web_host_frontend" --output-on-failure`。`ui_menu_desktop_test`加载框架维护的framework_features.uapp，覆盖实际宿主/GL、三层鼠标、翻转、模态、双实例、焦点和40次重开；`ui_menu_cascade_offscreen_test`覆盖128项末项、超限、展开链预算与零菜单HWND。
+
+只读观察现有应用时，可向`ui_menu_desktop_test.exe`传入原.uapp、证据输出前缀和`--observe`。该分支只打开/关闭菜单和切换宿主主题，不调用应用命令；输出真实PrintWindow客户区BMP，证据PNG只作无损转换。包及原应用目录保持只读，不覆盖它的运行库。菜单截图、窗口命中和程序DPI不能替代真实IME、物理跨屏、桌面合成人工及长期操作验收。详见[菜单验收](validation/menu-desktop-validation.md)。

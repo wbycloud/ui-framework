@@ -1,0 +1,38 @@
+Test project <repo>/build/fw-next/release
+      Start  1: ui_package_format
+ 1/53 Test  #1: ui_package_format ..................   Passed    0.20 sec
+      Start  2: ui_images_windows
+ 2/53 Test  #2: ui_images_windows ..................   Passed    0.06 sec
+      Start  3: ui_responsive_layout
+ 3/53 Test  #3: ui_responsive_layout ...............   Passed    0.03 sec
+      Start  4: ui_assistant_lifecycle
+ 4/53 Test  #4: ui_assistant_lifecycle .............   Passed    0.05 sec
+      Start  5: ui_dpi_web_failure
+ 5/53 Test  #5: ui_dpi_web_failure .................   Passed    0.05 sec
+      Start  6: ui_components_core
+ 6/53 Test  #6: ui_components_core .................   Passed    0.04 sec
+      Start  7: ui_headless_example
+ 7/53 Test  #7: ui_headless_example ................   Passed    0.05 sec
+      Start  8: ui_public_headers_c
+ 8/53 Test  #8: ui_public_headers_c ................   Passed    0.04 sec
+      Start  9: ui_public_headers_cpp
+ 9/53 Test  #9: ui_public_headers_cpp ..............   Passed    0.05 sec
+      Start 10: ui_webview2_parity
+10/53 Test #10: ui_webview2_parity .................***Failed   15.15 sec
+state=0 ready=0 html_navigated=0 viewport_cases=0 composition=0 clicks=0 inputs=0 results=0 hresult=0x00000000 elapsed_ms=15000
+
+      Start 11: ui_webview2_messages
+11/53 Test #11: ui_webview2_messages ...............***Failed   15.16 sec
+WebView2 JSON: ready=0 navigated=0 posted=0 echoed=0 status=0
+
+      Start 12: ui_webview2_render
+12/53 Test #12: ui_webview2_render .................***Timeout  30.03 sec
+Runtime render: initialize
+line 17: r&&n
+Runtime render: ready
+line 33: query(v,"box",&p)==UI_STATUS_OK&&p.visible&&p.rect.width==80&&p.text_overflow&&strstr(p.text_utf8,"REAL Runtime")
+line 35: capture(v,&pixels)==UI_STATUS_OK
+line 35: pixels.pixels[0]>200&&pixels.pixels[1]<30&&pixels.pixels[3]==255
+line 36: pixels.pixels[at]==255&&pixels.pixels[at+1]==0
+
+      Start 13: ui_api5_integration

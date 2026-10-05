@@ -139,3 +139,5 @@ API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离
 共同组件模板增加枚举下拉、颜色选择与RGBA文本、表格键盘导航及Enter/F2编辑、Enter提交/Esc取消、完整数据源排序、稳定ID多选与范围查询。轻量和显式WebView2组件后端使用相同语义；资源预算保持原值。[通用组件](docs/generic-web-ui.md)及[迁移](docs/migration-v0.5-to-v0.6.md)说明应用责任。
 
 四种Windows x64/C11配置由[CI矩阵](.github/workflows/windows-regression.yml)验证；WebView2必须启动实际Runtime，OSMesa执行真实测试DLL的GL frame。Session0 GL已有成功证据，整机无登录仍待专用runner，物理IME/跨屏/桌面合成/长期人工与真实业务试点未验收。独立测试应用不代表请求方业务应用验收。最新结果见[API6记录](docs/validation/api6-validation.md)。
+
+菜单外观、侧向鼠标交互与只读前后图见[桌面菜单验收](docs/validation/menu-desktop-validation.md)，公共API6/ABI1不变。

@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-05T03:37:30.2005804Z",
+  "productCommit": "d2e4a61a6519935c90b521ae56e5e94dba89fd9f",
+  "os": "Microsoft Windows NT 10.0.26300.0",
+  "processSession": 1,
+  "primaryPixels": [
+    1920,
+    1080
+  ],
+  "dpi": 96,
+  "displayCount": 1,
+  "webview2Runtime": "154.0.4258.53",
+  "noLoginRunner": "User confirmed none; no service or logon changes",
+  "realImeAcceptancePerformed": false,
+  "physicalCrossMonitorAccepted": false,
+  "desktopCompositionAccepted": false,
+  "longManualAccepted": false,
+  "requesterObservation": "Existing KLayoutC package read-only; no business commands or document edits",
+  "requesterPackageSha256": "47ebf008fa7f049da0999ae601142023c6a7182d6c4580e8b9e88ef8480702a0",
+  "hardwareWindowless": "No measured OSMesa bottleneck or requested hardware GL expansion",
+  "baselineCommit": "c4c5a91b11c0ab0a3b2d405d9e385fac76bab861",
+  "compiler": "MSVC 19.50, x64 C11 /W4 /WX",
+  "windowsSdk": "10.0.26100.0",
+  "dependencies": {
+    "lexbor": "7fb22cf5664a331d7c24b113489e566767c9c25a",
+    "quickjsNg": "2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278",
+    "webview2Sdk": "1.0.4129.50",
+    "osmesa": "24.3.4",
+    "osmesaDllSha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+  },
+  "configuration": {
+    "UI_FRAMEWORK_ENABLE_LIGHT_WEB": "ON",
+    "UI_FRAMEWORK_ENABLE_WEBVIEW2": "ON",
+    "UI_LEGACY_API2_PACKAGE": "<repo>/build/api3/baseline/web_counter.uapp",
+    "UI_LEGACY_API4_PACKAGE": "<repo>/build/api5-evidence/original-api4-framework_features.uapp",
+    "UI_LEGACY_API5_PACKAGE": "<repo>/build/api6-evidence/original-api5-fixture.uapp",
+    "UI_LEGACY_COMPONENT_PACKAGE": "<repo>/build/fw-next/baseline/generic_components.uapp",
+    "UI_LEGACY_EDA_PACKAGE": "<repo>/build/web-shell/baseline/minimal_eda.uapp",
+    "UI_OSMESA_LIBRARY": "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll"
+  },
+  "publicAndFrozenChanges": "",
+  "finalAcceptanceSource": "b1f4c7bfcaf19af4990dbd8f791b457c838257e7",
+  "desktopFixture": {
+    "testWindowTopmost": true,
+    "cursor": "save/move outside fixture/restore only when input desktop accessible",
+    "observer": "no topmost or cursor changes"
+  },
+  "results": {
+    "full": {
+      "tests": 53,
+      "pass": 52,
+      "skip": 1,
+      "fail": 0,
+      "seconds": 264.36
+    },
+    "native": {
+      "tests": 21,
+      "pass": 20,
+      "skip": 1,
+      "fail": 0,
+      "seconds": 4.78
+    },
+    "requesterCommandInvocations": 0,
+    "menuFixtureCommandInvocations": 1
+  }
+}

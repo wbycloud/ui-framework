@@ -1,0 +1,16 @@
+Menu failures retained, source and interpretation:
+1. c4c5a91 new desktop test: 11 failures. menu-first-failure-extract.log is transcribed, not original raw bytes.
+2. first implementation: unsupported four-value CSS radius prevents host init; cached focus wrong. Raw menu-first-implementation-failure.log.
+3. compact top entries fit640: fixture adjusted to480 for actual overflow. Raw menu-overflow-fixture-failure.log.
+4. 6bf59f8 normal full53: desktop GDI623->629 fails +4; Web frontend clicks hidden old Close button. menu-first-full-failure.log.
+5. Diagnosis first reopen GDI657->669, 20/40 remain667: child cache contents change on first cycle. Measure repeated reuse after prebuilding same chain, retain original limits; no GDI leak fix claimed. menu-cache-diagnosis-failure.log.
+6. Framework outside click new assertion failed before hook addition. Original tool output transcribed: Web host: outside native click closes framework menu (Windows error 0); 1 failure. Raw file later overwritten; do not label as original raw evidence.
+7. F1 actual child text Ctrl+p fails; virtual-key display corrected. menu-function-key-reproduction.log.
+8. Single-row RGBA height72 fails <=36; trim unpaged footer, keep128 items/118 paging steps/node and pixel caps. menu-compact-height-reproduction.log.
+9. Sandbox WebView2 navigation/init failures: this task execution interrupted and logged; normal Runtime runs retain exact original assertions. menu-sandbox-interrupted.log is not a completed full result.
+10. 2917b44 full: API6 actual Runtime handles374->416 fails +12, pending cleanup0. Isolated same source/runtime386->387 passes. Cause remains unlocated, not claimed fixed by menus. menu-runtime-resource-failure-output.log and menu-runtime-isolated-output.log.
+11. d907fbd full: 52PASS/1physicalSKIP,271.43s, including real API6 Runtime; preserved locally full-d907-pass*. Final source rerun separately recorded.
+12. Hook-init failure state cleanup unit reproduces dangling borrowed host with zero HHOOK. menu-hook-failure.log. Clear borrowed reference independently of nonzero hook; actual host/Esc/outside/instance/modal regressions retain their assertions. This unit models partial initialization; it is not a real OS hook-failure injection or substitute for actual menu tests.
+Log normalization: UTF-8 with replacement only for undecodable locale timestamps; CRLF->LF, trailing whitespace stripped, repository absolute root becomes <repo>. Raw source SHA256 recorded in menu-evidence-manifest.json; originals remain build/menu-evidence locally.
+13. d2e4a61 normal full: new menu test3 WindowFromPoint + instance window-count failures; other tests pass. Old output lacks hit-class diagnostic, exact obstruction cannot be reconstructed. Retain menu-desktop-interference-failure.log. b1f4c7b test-only setup uses topmost owned fixture, cursor save/park/restore when available, and explicit same-class tooltip verification. All original feature/resource assertions remain. Observer path unchanged.
+14. New cursor setup fails in isolated sandbox (no input desktop rights). Record condition, only move/restore if GetCursorPos succeeds. Native window and synthetic input assertions still run; no feature assertion skipped. menu-cursor-environment-failure.log retains initial setup failure. Final full runs normal desktop with actual cursor available1.

@@ -1,0 +1,22 @@
+Test project <repo>/build/fw-next/release
+    Start 27: ui_framework_features_host
+1/4 Test #27: ui_framework_features_host .......   Passed    3.53 sec
+    Start 28: ui_menu_desktop
+2/4 Test #28: ui_menu_desktop ..................***Failed    1.51 sec
+line 28: ui_web_view_get_presentation(h.view,"menu-more",&p)==UI_STATUS_OK&&p.visible
+line 28: input(h.view,"menu-more",0)
+line 28: menus()==1
+Desktop menu real host: 3 failures; command calls=1
+
+    Start 29: ui_menu_offscreen
+3/4 Test #29: ui_menu_offscreen ................   Passed    0.26 sec
+    Start 30: ui_menu_access
+4/4 Test #30: ui_menu_access ...................   Passed    0.13 sec
+
+75% tests passed, 1 tests failed out of 4
+
+Total Test time (real) =   5.53 sec
+
+The following tests FAILED:
+	 28 - ui_menu_desktop (Failed)
+Errors while running CTest

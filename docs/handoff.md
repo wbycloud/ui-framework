@@ -1,6 +1,6 @@
 # 框架开发交接记录
 
-更新日期：2026-10-05。当前SDK0.6/API6增加工作区布局和共同组件体验；API5四项保留且继续回归，实际OSMesa Session0已有通过证据。先读[API6验收](validation/api6-validation.md)、[Session0记录](validation/session0-osmesa-validation.md)与第8节；API3/4/5历史记录保留。整机无登录、物理/长期人工及真实业务试点尚未全部验收，不把“已推送”“测试通过”和“完整验收完成”混为一谈。
+更新日期：2026-10-05。当前SDK0.6/API6增加工作区布局和共同组件体验；API5四项保留且继续回归，实际OSMesa Session0已有通过证据。菜单外观与侧向鼠标交互已后续修正，见[菜单验收](validation/menu-desktop-validation.md)与第9节。先读[API6验收](validation/api6-validation.md)、[Session0记录](validation/session0-osmesa-validation.md)与第8节；API3/4/5历史记录保留。整机无登录、物理/长期人工及真实业务试点尚未全部验收，不把“已推送”“测试通过”和“完整验收完成”混为一谈。
 
 ## 1. 恢复顺序与版本
 
@@ -13,6 +13,7 @@
 | 仓库 | [wbycloud/ui-framework](https://github.com/wbycloud/ui-framework) |
 | API5功能代码 | [87478fa20d7bb46809c0ef81dd44f972dc193a24](https://github.com/wbycloud/ui-framework/commit/87478fa20d7bb46809c0ef81dd44f972dc193a24)，四项实现及回归；文档另行提交，实际HEAD以Git为准 |
 | API6实现/最终测试与CI条件 | [1cdc50e](https://github.com/wbycloud/ui-framework/commit/1cdc50e)、[9705565](https://github.com/wbycloud/ui-framework/commit/9705565)，完整提交序列及失败修复见API6验收；文档提交不改运行代码 |
+| 菜单后续本地实现 | `6bf59f8`、`2917b44`、`d907fbd`、`d2e4a61`及测试收敛`b1f4c7b`；最终产品源码d2e4a61，仅内部菜单改动，API6/ABI1不变；最终证据另提交 |
 | API4历史实现/补验 | [e83a008](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c)、[48d6aaf](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，模态原生输入、STYLE回收、redock焦点；[记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
 | 实际远端分支 | `main`仍为`ea5b108`，`codex/menus-offscreen`为`9705565`；最终API6证据`559b802`已本地提交，未推送；交付状态修订另行提交，实际HEAD以Git为准 |
 | SDK / 框架 API / 标准修订 | `0.6.0` 开发版 / `6` / `6` |
@@ -76,7 +77,7 @@ ctest --test-dir build/web-shell --output-on-failure
 & .\build\web-shell\framework_host.exe .\build\web-shell\framework_features.uapp .\build\web-shell\framework_features.uapp
 ```
 
-新增resilience后，新 clone 默认轻量配置为31项；可选 WebView2为33项。只有设置 `UI_LEGACY_COMPONENT_PACKAGE` 指向原API3包才额外产生第34项，不得把未提供的原包写成已复验。WebView2需固定 SDK1.0.4129.50 和 Runtime；受限环境曾两项创建超时，在允许浏览器子进程环境复验通过，不能把超时记为通过。
+API4历史口径：新增resilience后，当时默认轻量配置为31项；可选 WebView2为33项。只有设置 `UI_LEGACY_COMPONENT_PACKAGE` 指向原API3包才额外产生第34项，不得把未提供的原包写成已复验。WebView2需固定 SDK1.0.4129.50 和 Runtime；受限环境曾两项创建超时，在允许浏览器子进程环境复验通过，不能把超时记为通过。
 
 原生配置需要同时关闭宿主、轻量后端和 WebView2；不产生 Web 宿主：
 
@@ -86,7 +87,7 @@ cmake --build build/native
 ctest --test-dir build/native --output-on-failure
 ```
 
-当前机器的 API4 验证构建位于 `build/fw-next/release`；`build/web-shell` 等旧目录可能残留旧版本，使用前重建，不混用运行库。本地保留 `build/fw-next/ctest-final.log`、`build/fw-next/clean-test.log`、`build/fw-next/build.log`、`build/fw-next/build.cmd` 和原生构建脚本。它们被忽略，不属于远程可获取证据；公开证据以验收文档和可构建测试为准。
+API4历史验证曾使用`build/fw-next/release`，当前同目录已重建为API6及菜单后续源码，本轮最终配置53项、原生21项，见第9节；`build/web-shell` 等旧目录可能残留旧版本，使用前重建，不混用运行库。本地保留 `build/fw-next/ctest-final.log`、`build/fw-next/clean-test.log`、`build/fw-next/build.log`、`build/fw-next/build.cmd` 和原生构建脚本。它们被忽略，不属于远程可获取证据；公开证据以验收文档和可构建测试为准。
 
 本次补验日志另存 `build/acceptance-20261004/`，历史失败日志保留。最终回归日志为 `final-regression.log`、`native-regression.log`、`original-packages.log`；十分钟数据为 `stress-fixed-600s.log`。公开[采样CSV](validation/api4-resilience-20261004.csv)及[曲线](validation/api4-resilience-20261004.png)已保存。十分钟曲线在最终焦点补丁前采集；该补丁随后通过原复现环境和完整回归。
 
@@ -161,3 +162,16 @@ Session0补验后的必要回归为43项42PASS/1SKIP，原生21项20PASS/1SKIP�
 最后审计：用户当前无无登录Windows服务runner；真实中文IME、不同缩放物理屏幕/边缘/桌面合成和长期人工条件缺失；未指定并授权真实业务应用试点；没有实测OSMesa瓶颈和明确硬件GL需求。继续保留这些待验，不注销用户、不改既有服务、不扩大到硬件无窗口方案。可独立完成的实现、回归和文档交付与这些待验分别报告。
 
 本轮最终交付状态：实现及最终回归源码9705565已在工作分支发布，四行实际CI通过；559b802保存最终文档、失败修复、完整本机日志、CI摘录和实际像素，已本地提交。2026-10-05最终推送自动审批拒绝，理由为当前可核验用户授权不足以覆盖默认分支发布；操作未执行。实查origin/main仍ea5b108、工作分支9705565，未强推或创建标签。待明确发布授权后才快进推送完整交付。本轮API6源码未重新触发Session0工作流；已通过的Session0证据严格属于专门记录中的78c24cb，不冒充当前源码目标环境验收。
+
+
+## 9. 2026-10-05 菜单外观与鼠标修正
+
+接手基线干净c4c5a91，已读合同/API5/API6并核对实现，保留既有工作。本轮按用户要求仅本地提交：6bf59f8引入作用域菜单/工具/标签样式及缓存侧向菜单，2917b44补齐框架☰外点/Esc/重复点击与F1名称，d907fbd按实际行数去掉无分页旧页脚；d2e4a61补充hook初始化失败借用宿主引用回收；产品源码d2e4a61、最终验收源码b1f4c7b，完整SHA见专门记录，文档提交不变更运行代码。
+
+菜单打开时顶层悬停切换；嵌套侧展、work area翻转、160ms跨层宽限、外点关闭、重复入口关闭；键盘、模态、焦点、实例和一次命令继续原合同。单层128项及原分页/节点/像素预算保留，缓存链按共同预算最多13层；完整深路径仍可直接打开。呈现/输入/捕获当前最深可见层；无窗口逻辑展开不创建菜单HWND。公共头文件、冻结SDK、原包及PERF-001未改，不升级公共API。
+
+最终完整53项52PASS/1物理SKIP（264.36s），原生21项20PASS/1物理SKIP（4.78s），结果与源码/条件见[菜单验收](validation/menu-desktop-validation.md)：包括实际宿主GL内容上方菜单窗口命中、三级展开、480px窄窗/程序DPI、双实例/模态/焦点/40次重开、128项末项/预算、原生及完整矩阵。KLayout现有原包仅只读观察，菜单命令0调用，前后哈希一致；正常桌面用例采用受控测试窗口与可恢复鼠标位置，保留原窗口命中断言及同类工具提示验证；只读观察分支不作这些桌面准备。真实前后PrintWindow客户区图保留，不代替GL业务、桌面交换或IME验收。
+
+失败记录不能丢：首版样式/选择错误、旧关闭按钮用例、缓存首次建立口径、F1字符映射与无分页空白均有复现及修正。2917b44完整矩阵出现一次API6 WebView2重开句柄374→416超原+12，相同源码独立复验386→387通过，原因未定位；保留原断言及完整失败，继续追查，不把菜单改动说成其修复。受限环境Runtime超时也独立保留。
+
+仅本地交付，不推送或创建稳定标签；旧API6四行CI属于9705565，不能算本轮源码的新CI。整机无登录runner仍缺，历史Session0成功仍归专门记录；真实IME、不同缩放物理显示器/边缘、桌面合成和长期人工待验。本轮有KLayout只读观察授权，没有业务修改/适配授权，独立DLL仅算框架集成。缺少这些条件不阻塞本轮菜单独立开发，但不能宣布全部验收通过。

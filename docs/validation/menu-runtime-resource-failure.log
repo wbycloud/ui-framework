@@ -1,0 +1,140 @@
+Test project <repo>/build/fw-next/release
+      Start  1: ui_package_format
+ 1/53 Test  #1: ui_package_format ..................   Passed    0.24 sec
+      Start  2: ui_images_windows
+ 2/53 Test  #2: ui_images_windows ..................   Passed    0.06 sec
+      Start  3: ui_responsive_layout
+ 3/53 Test  #3: ui_responsive_layout ...............   Passed    0.06 sec
+      Start  4: ui_assistant_lifecycle
+ 4/53 Test  #4: ui_assistant_lifecycle .............   Passed    0.06 sec
+      Start  5: ui_dpi_web_failure
+ 5/53 Test  #5: ui_dpi_web_failure .................   Passed    0.05 sec
+      Start  6: ui_components_core
+ 6/53 Test  #6: ui_components_core .................   Passed    0.06 sec
+      Start  7: ui_headless_example
+ 7/53 Test  #7: ui_headless_example ................   Passed    0.06 sec
+      Start  8: ui_public_headers_c
+ 8/53 Test  #8: ui_public_headers_c ................   Passed    0.07 sec
+      Start  9: ui_public_headers_cpp
+ 9/53 Test  #9: ui_public_headers_cpp ..............   Passed    0.05 sec
+      Start 10: ui_webview2_parity
+10/53 Test #10: ui_webview2_parity .................   Passed    0.64 sec
+      Start 11: ui_webview2_messages
+11/53 Test #11: ui_webview2_messages ...............   Passed    0.51 sec
+      Start 12: ui_webview2_render
+12/53 Test #12: ui_webview2_render .................   Passed    9.25 sec
+      Start 13: ui_api5_integration
+13/53 Test #13: ui_api5_integration ................   Passed   80.31 sec
+      Start 14: ui_api5_native_host
+14/53 Test #14: ui_api5_native_host ................   Passed    6.12 sec
+      Start 15: ui_original_api5_package
+15/53 Test #15: ui_original_api5_package ...........   Passed   79.01 sec
+      Start 16: ui_workspace_layout
+16/53 Test #16: ui_workspace_layout ................   Passed    0.53 sec
+      Start 17: ui_api5_compat
+17/53 Test #17: ui_api5_compat .....................   Passed    0.13 sec
+      Start 18: ui_component_experience
+18/53 Test #18: ui_component_experience ............   Passed    0.17 sec
+      Start 19: ui_component_experience_webview2
+19/53 Test #19: ui_component_experience_webview2 ...   Passed    9.33 sec
+      Start 20: ui_api6_integration
+20/53 Test #20: ui_api6_integration ................   Passed    6.51 sec
+      Start 21: ui_api6_integration_webview2
+21/53 Test #21: ui_api6_integration_webview2 .......***Failed   26.47 sec
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 374->416 GDI 12->12 USER 15->17 pending Runtime cleanup=0
+integration line80: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+API6 independent WebView2 DLL integration: 1 failures
+Runtime test: normal CRT exit callback reached
+
+      Start 22: ui_session0_interactive_control
+22/53 Test #22: ui_session0_interactive_control ....   Passed   33.06 sec
+      Start 23: ui_offscreen_msaa
+23/53 Test #23: ui_offscreen_msaa ..................   Passed    0.26 sec
+      Start 24: ui_windowless_gl
+24/53 Test #24: ui_windowless_gl ...................   Passed    0.46 sec
+      Start 25: ui_offscreen_gl
+25/53 Test #25: ui_offscreen_gl ....................   Passed    0.24 sec
+      Start 26: ui_workspace_offscreen
+26/53 Test #26: ui_workspace_offscreen .............   Passed    0.42 sec
+      Start 27: ui_framework_features_host
+27/53 Test #27: ui_framework_features_host .........   Passed    3.34 sec
+      Start 28: ui_menu_desktop
+28/53 Test #28: ui_menu_desktop ....................   Passed    4.17 sec
+      Start 29: ui_menu_offscreen
+29/53 Test #29: ui_menu_offscreen ..................   Passed    0.16 sec
+      Start 30: ui_menu_cascade_offscreen
+30/53 Test #30: ui_menu_cascade_offscreen ..........   Passed    0.18 sec
+      Start 31: ui_menu_access
+31/53 Test #31: ui_menu_access .....................   Passed    0.12 sec
+      Start 32: ui_api4_compat
+32/53 Test #32: ui_api4_compat .....................   Passed    0.08 sec
+      Start 33: ui_original_api4_package
+33/53 Test #33: ui_original_api4_package ...........   Passed    3.38 sec
+      Start 34: ui_web_text_edit
+34/53 Test #34: ui_web_text_edit ...................   Passed    0.19 sec
+      Start 35: ui_generic_web_host
+35/53 Test #35: ui_generic_web_host ................   Passed    3.11 sec
+      Start 36: ui_component_resilience
+36/53 Test #36: ui_component_resilience ............   Passed    3.46 sec
+      Start 37: ui_api3_original_package
+37/53 Test #37: ui_api3_original_package ...........   Passed    3.14 sec
+      Start 38: ui_application_versions
+38/53 Test #38: ui_application_versions ............   Passed    0.31 sec
+      Start 39: ui_original_api2_package
+39/53 Test #39: ui_original_api2_package ...........   Passed    0.28 sec
+      Start 40: ui_light_web_dynamic
+40/53 Test #40: ui_light_web_dynamic ...............   Passed    0.30 sec
+      Start 41: ui_web_shell_slots
+41/53 Test #41: ui_web_shell_slots .................   Passed    0.14 sec
+      Start 42: ui_floating_web_dpi
+42/53 Test #42: ui_floating_web_dpi ................   Passed    0.14 sec
+      Start 43: ui_light_web_parity
+43/53 Test #43: ui_light_web_parity ................   Passed    0.24 sec
+      Start 44: ui_workspace_integration
+44/53 Test #44: ui_workspace_integration ...........   Passed    1.55 sec
+      Start 45: ui_web_host_frontend
+45/53 Test #45: ui_web_host_frontend ...............   Passed    0.97 sec
+      Start 46: ui_native_activation
+46/53 Test #46: ui_native_activation ...............   Passed    0.67 sec
+      Start 47: ui_dpi_integration
+47/53 Test #47: ui_dpi_integration .................   Passed    0.10 sec
+      Start 48: ui_opengl_integration
+48/53 Test #48: ui_opengl_integration ..............   Passed    0.29 sec
+      Start 49: ui_surface_input
+49/53 Test #49: ui_surface_input ...................   Passed    0.19 sec
+      Start 50: ui_monitor_transition
+50/53 Test #50: ui_monitor_transition ..............***Skipped   0.12 sec
+      Start 51: ui_native_shell_integration
+51/53 Test #51: ui_native_shell_integration ........   Passed    0.13 sec
+      Start 52: ui_native_responsive
+52/53 Test #52: ui_native_responsive ...............   Passed    0.20 sec
+      Start 53: ui_assistant_protocol
+53/53 Test #53: ui_assistant_protocol ..............   Passed    0.13 sec
+
+98% tests passed, 1 tests failed out of 53
+
+Total Test time (real) = 281.86 sec
+
+The following tests did not run:
+	 50 - ui_monitor_transition (Skipped)
+
+The following tests FAILED:
+	 21 - ui_api6_integration_webview2 (Failed)
+Errors while running CTest

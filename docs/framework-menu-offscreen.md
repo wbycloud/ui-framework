@@ -14,9 +14,23 @@ SDK0.6.0开发版、框架API6、开发标准修订6。API5四项已有实现继
 
 `ui_host_show_menu`显示已注册路径，复制popup描述和路径。anchor选择HOST、CONTENT_SLOT或COMPONENT_ROW：HOST.rect相对应用host客户区；SLOT.rect相对该内容槽；ROW使用组件当前可见行的裁剪矩形。业务target_id独立于锚点，以十进制字符串发送为params.id及params.target，action为menu。ROW要求当前缓存中的有效项目；slot和component必须属于同一host。描述清零、设置size，矩形使用逻辑像素。路径最多4095 UTF-8字节，保持旧组件菜单路径预算。
 
-Windows使用独立的框架Web弹窗，可覆盖原生OpenGL子窗口。按锚点所在显示器work area翻转、夹紧位置；内容分页，单层最多128项，超限返回LIMIT_EXCEEDED。分页和键盘可到达最后一项，不悄悄丢弃项目。`ui_component_show_menu`兼容入口转发到这个共同实现，已移除固定在组件内部的旧菜单模板。
+Windows使用独立的框架Web弹窗承载连续菜单行，嵌套组侧向展开，父层仍可见，可覆盖原生OpenGL子窗口。按锚点所在显示器work area翻转、夹紧位置；内容分页，单层最多128项，超限返回LIMIT_EXCEEDED。分页和键盘可到达最后一项，不悄悄丢弃项目。`ui_component_show_menu`兼容入口转发到这个共同实现，已移除固定在组件内部的旧菜单模板。
 
 点击重新检查实例、行代次和命令状态；切换实例、关闭、删除锚点行、换源、组件注销、shell销毁、尺寸/DPI改变会关闭旧菜单。`ui_host_show_toolbar_menu`重用已注册工具和命令；提示使用show_tooltip/hide_tooltip。菜单本身没有新建业务命令系统，也不代替业务校验和助手权限。
+
+### 桌面菜单样式与指针交互
+
+宿主应用菜单使用独立的`app-menu`样式：26逻辑像素高、平面文字项，默认无独立边框/圆角；悬停、聚焦及展开高亮。宿主☰/打开/AI/主题与应用工具使用工具样式，标签保留标签形态，其他业务按钮不随菜单样式改变。☰只包含框架操作，提示为“框架菜单”；打开包提示为Ctrl+Shift+O。浅色/深色通过宿主同一主题同步到菜单，应用自身内容主题仍由应用管理。
+
+共同弹窗使用28逻辑像素连续行，勾选/忙碌、图片、文字、已注册快捷键和子菜单箭头各有固定对齐区域。缺图也保留对齐空间；若标题尾部与注册的组合快捷键重复，仅在展示中去掉重复后缀，注册字符串和命令保持。默认隐藏路径标题及返回/关闭按钮；无分页只留8px外沿，有分页保留上下入口和原键盘导航。快捷键按虚拟键名称显示（含F1–F24与导航键），不把F1当作ASCII字符。
+
+有菜单打开时，宿主悬停其他顶层入口切换根菜单；重复点击当前入口关闭，其他入口打开对应菜单。悬停可用子组向侧面展开，右侧不足则翻到左侧并按work area夹紧。已有子层时，父层其他行的切换保留160毫秒跨层宽限；进入子层或离开候选行取消待切换。外部点击关闭，不吞原点击；失活、模态、实例切换、锚点失效及销毁关闭整链。鼠标悬停本身不执行命令，点击仍重新校验状态和身份。
+
+Alt/助记键/方向键/Enter沿原合同；键盘的根组选择直接打开组内容，Left返回父层，Esc关闭整链。焦点只恢复到仍活动、可见且可接收输入的原窗口；切到其他顶层窗口时不夺回焦点。组合输入及旧宿主/应用快捷键路由保持，真实IME仍另验。
+
+每层128项、路径4095字节、原分页窗口最多10项保持。整条缓存展开链按每层最坏76个节点预留，合计不超过1024，最多13层；可见层按实际DPI共同计入32MiB像素预算。超预算关闭链，不静默提高限制或丢弃注册项；程序仍可按完整注册路径直接打开深层组。子层缓存复用，host销毁回收全部view、窗口、timer和本UI线程消息hook。无窗口路径执行同样的逻辑展开、输入和当前层捕获，不创建菜单HWND或原生hook，不把它当作桌面合成证据。
+
+本次是内部模板和交互修正，公共C头文件、size、字段偏移、枚举、ABI及菜单注册/命令参数合同未改。当前实现、失败复现、真实宿主/原包回归和请求方只读前后截图见[菜单修正验收](validation/menu-desktop-validation.md)。
 
 ## 2. 真实轻量Web离屏接口
 
@@ -26,7 +40,7 @@ NULL parent轻量view是已有能力。本版增加正常布局/绘制代码的�
 - `ui_web_view_capture_rgba`使用显式逻辑尺寸、DPI和调用方缓冲；轻量输出顶向下RGBA8、不透明alpha255。NULL pixels查询宽高/stride；否则必须给足capacity及正stride，调用结束后应用拥有缓冲。
 - `ui_web_view_flush`执行至多budget个脚本job（1..1024）并完成当前布局，仍有job返回CANCELLED。这个状态不是业务任务完成。
 - 组件提供mount_offscreen、dispatch_input、get_presentation、capture_rgba和flush。TREE/TABLE/LIST/FORM/STATUS/DIALOG使用相同模板；输入仍通过命中、焦点、脚本、数据源与语义命令。
-- 菜单提供对应input/presentation/capture/flush；get_item_presentation按注册ID查找，避免应用依赖内部DOM键。页面元素ID仍可用于公共呈现诊断。
+- 菜单提供对应input/presentation/capture/flush，均针对当前最深的展开层；get_item_presentation按注册ID查找，避免应用依赖内部DOM键。原生鼠标按各层实际窗口命中；无窗口调用方的坐标相对当前层。页面元素ID仍可用于公共呈现诊断。
 
 新增backend ops只追加并按size读取；旧后端缺少函数返回UNSUPPORTED。轻量报告OFFSCREEN_CAPTURE/PRESENTATION_QUERY能力位；API5 WebView2也报告并异步完成这两项，运行条件见[共同组件合同](generic-web-ui.md#api5-webview2-与共同组件)。捕获不包括应用的OpenGL或原生内容，不包括输入法候选或桌面交换画面。单次GDI目标限制32MiB、单边32767像素；表格/树继续原DOM和数据预算。
 

@@ -1,0 +1,26 @@
+Test project <repo>/build/fw-next/release
+    Start 27: ui_framework_features_host
+1/5 Test #27: ui_framework_features_host .......   Passed    3.37 sec
+    Start 28: ui_menu_desktop
+2/5 Test #28: ui_menu_desktop ..................***Failed    3.39 sec
+line 26: ui_host_menu_get_item_presentation(a.host,"desktop.fkey",&disabled)==UI_STATUS_OK&&strstr(disabled.text_utf8,"Ctrl+F1")
+line 35: GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdiBefore+4
+Reopen cycle 1: GDI 669
+Reopen cycle 20: GDI 667
+40 menu reopen cycles: handles 481 -> 481; GDI 657 -> 667; USER 80 -> 79
+Desktop menu real host: 2 failures; command calls=1
+
+    Start 29: ui_menu_offscreen
+3/5 Test #29: ui_menu_offscreen ................   Passed    0.13 sec
+    Start 30: ui_menu_cascade_offscreen
+4/5 Test #30: ui_menu_cascade_offscreen ........   Passed    0.19 sec
+    Start 31: ui_menu_access
+5/5 Test #31: ui_menu_access ...................   Passed    0.09 sec
+
+80% tests passed, 1 tests failed out of 5
+
+Total Test time (real) =   7.21 sec
+
+The following tests FAILED:
+	 28 - ui_menu_desktop (Failed)
+Errors while running CTest

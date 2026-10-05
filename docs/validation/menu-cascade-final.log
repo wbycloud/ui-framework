@@ -1,0 +1,8 @@
+Input desktop cursor available: 1
+Function key presentation: status 0; text Ctrl+F1
+Menu hit 0 at 698,146: expected 0000000002EF0854; actual 0000000002EF0854 UIFrameworkRegisteredMenu4; foreground 0000000002EF0854
+Menu hit 1 at 380,145: expected 0000000005340C62; actual 0000000005340C62 UIFrameworkRegisteredMenu4; foreground 0000000002EF0854
+Menu hit 2 at 62,144: expected 0000000000C90AA0; actual 0000000000C90AA0 UIFrameworkRegisteredMenu4; foreground 0000000002EF0854
+40 menu reopen cycles: handles 318 -> 318; GDI 635 -> 635; USER 49 -> 49
+After instance switch: visible menus=0; first path=closed second path=closed
+Desktop menu real host: 0 failures; command calls=1

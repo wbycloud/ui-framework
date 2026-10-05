@@ -1,0 +1,1051 @@
+Start testing: Oct 05 11:34 �й���׼ʱ��
+----------------------------------------------------------
+1/53 Testing: ui_package_format
+1/53 Test: ui_package_format
+Command: "<repo>/build/fw-next/release/ui_package_format_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_package_format" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+package format and deterministic packing: 0 failures
+<end of output>
+Test time =   0.24 sec
+----------------------------------------------------------
+Test Passed.
+"ui_package_format" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_package_format" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/53 Testing: ui_images_windows
+2/53 Test: ui_images_windows
+Command: "<repo>/build/fw-next/release/ui_images_windows_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_images_windows" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+PNG/GDI/cache: 0 failures
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"ui_images_windows" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_images_windows" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/53 Testing: ui_responsive_layout
+3/53 Test: ui_responsive_layout
+Command: "<repo>/build/fw-next/release/ui_responsive_layout_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_responsive_layout" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+responsive layout matrix: 0 failures
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"ui_responsive_layout" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_responsive_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/53 Testing: ui_assistant_lifecycle
+4/53 Test: ui_assistant_lifecycle
+Command: "<repo>/build/fw-next/release/ui_assistant_lifecycle_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_assistant_lifecycle" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+assistant lifecycle and model rollback: 0 failures
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_lifecycle" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_assistant_lifecycle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/53 Testing: ui_dpi_web_failure
+5/53 Test: ui_dpi_web_failure
+Command: "<repo>/build/fw-next/release/ui_dpi_web_failure_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_dpi_web_failure" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+failed Web DPI sync and retry: 0 failures
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_web_failure" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_dpi_web_failure" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/53 Testing: ui_components_core
+6/53 Test: ui_components_core
+Command: "<repo>/build/fw-next/release/ui_components_core_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_components_core" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API3 components core: 0 failures, 3 bounded queries
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"ui_components_core" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_components_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/53 Testing: ui_headless_example
+7/53 Test: ui_headless_example
+Command: "<repo>/build/fw-next/release/ui_headless_example.exe"
+Directory: <repo>/build/fw-next/release
+"ui_headless_example" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+eda.add_block: {"blocks":1}
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"ui_headless_example" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_headless_example" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/53 Testing: ui_public_headers_c
+8/53 Test: ui_public_headers_c
+Command: "<repo>/build/fw-next/release/ui_public_headers_c_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_public_headers_c" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_c" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_public_headers_c" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/53 Testing: ui_public_headers_cpp
+9/53 Test: ui_public_headers_cpp
+Command: "<repo>/build/fw-next/release/ui_public_headers_cpp_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_public_headers_cpp" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_cpp" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_public_headers_cpp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/53 Testing: ui_webview2_parity
+10/53 Test: ui_webview2_parity
+Command: "<repo>/build/fw-next/release/webview2_probe.exe"
+Directory: <repo>/build/fw-next/release
+"ui_webview2_parity" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+composition_verified=set_rect,resize_preserves_origin,sidebar_binding,host_reflow
+javascript_verified=true
+state=0 ready=1 html_navigated=1 viewport_cases=4 composition=1 clicks=1 inputs=1 results=2 hresult=0x00000000 elapsed_ms=469
+<end of output>
+Test time =   0.64 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_parity" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_webview2_parity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/53 Testing: ui_webview2_messages
+11/53 Test: ui_webview2_messages
+Command: "<repo>/build/fw-next/release/ui_webview2_messages_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_webview2_messages" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+WebView2 JSON: ready=1 navigated=1 posted=1 echoed=1 status=0
+<end of output>
+Test time =   0.51 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_messages" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_webview2_messages" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/53 Testing: ui_webview2_render
+12/53 Test: ui_webview2_render
+Command: "<repo>/build/fw-next/release/ui_webview2_render_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_webview2_render" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Runtime render: initialize
+Runtime render: ready
+Runtime render: capture/images complete
+Runtime render: close
+Runtime close before creation x12 handles 330->331 USER 17->17 pending cleanup=0
+Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =   9.25 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_render" end time: Oct 05 11:34 �й���׼ʱ��
+"ui_webview2_render" time elapsed: 00:00:09
+----------------------------------------------------------
+
+13/53 Testing: ui_api5_integration
+13/53 Test: ui_api5_integration
+Command: "<repo>/build/fw-next/release/ui_api5_integration_test.exe" "<repo>/build/fw-next/release/api5_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: <repo>/build/fw-next/release
+"ui_api5_integration" start time: Oct 05 11:34 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+click field-name rect 21,117,718,38 clip 21,117,718,38
+click tree-label-1 rect 19,93,105,28 clip 19,93,104,28
+nested result=0 text=Nested DLL row
+click field-name rect 21,117,382,38 clip 21,117,382,38
+reopen1 handles=397
+reopen2 handles=398
+reopen3 handles=398
+reopen4 handles=398
+reopen5 handles=398
+reopen6 handles=398
+reopen7 handles=398
+reopen8 handles=398
+reopen9 handles=398
+reopen10 handles=405
+reopen11 handles=400
+reopen12 handles=400
+reopen13 handles=400
+reopen14 handles=400
+reopen15 handles=400
+reopen16 handles=400
+reopen17 handles=400
+reopen18 handles=400
+reopen19 handles=400
+reopen20 handles=400
+reopen21 handles=400
+reopen22 handles=400
+reopen23 handles=400
+reopen24 handles=394
+reopen25 handles=396
+reopen26 handles=396
+reopen27 handles=396
+reopen28 handles=396
+reopen29 handles=396
+reopen30 handles=396
+reopen31 handles=396
+reopen32 handles=396
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+DLL reopen32 resources GDI 9->9 USER 17->17 handles 397->396 drained_ms=0
+API5 actual Runtime/application DLL: 0 failures
+<end of output>
+Test time =  80.31 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_integration" end time: Oct 05 11:35 �й���׼ʱ��
+"ui_api5_integration" time elapsed: 00:01:20
+----------------------------------------------------------
+
+14/53 Testing: ui_api5_native_host
+14/53 Test: ui_api5_native_host
+Command: "<repo>/build/fw-next/release/ui_api5_native_host_test.exe" "<repo>/build/fw-next/release/api5_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: <repo>/build/fw-next/release
+"ui_api5_native_host" start time: Oct 05 11:35 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=260 key=70 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=261 key=70 handled=1 ctrl=1 shift=1 alt=-128
+native key msg=257 key=18 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=0
+native key msg=256 key=83 handled=1 ctrl=1 shift=1 alt=0
+native key msg=257 key=83 handled=1 ctrl=1 shift=1 alt=0
+native key msg=260 key=18 handled=1 ctrl=1 shift=1 alt=-127
+native key msg=261 key=18 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=27 handled=1 ctrl=1 shift=1 alt=1
+native key msg=257 key=27 handled=1 ctrl=1 shift=1 alt=1
+native key msg=256 key=17 handled=0 ctrl=-128 shift=1 alt=1
+native key msg=256 key=79 handled=1 ctrl=-128 shift=1 alt=1
+native key msg=257 key=79 handled=0 ctrl=-128 shift=1 alt=1
+native key msg=257 key=17 handled=0 ctrl=0 shift=1 alt=1
+Actual native WebView focus / host Alt / single command / focus restore: 0 failures
+<end of output>
+Test time =   6.12 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_native_host" end time: Oct 05 11:35 �й���׼ʱ��
+"ui_api5_native_host" time elapsed: 00:00:06
+----------------------------------------------------------
+
+15/53 Testing: ui_original_api5_package
+15/53 Test: ui_original_api5_package
+Command: "<repo>/build/fw-next/release/ui_api5_integration_test.exe" "<repo>/build/api6-evidence/original-api5-fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: <repo>/build/fw-next/release
+"ui_original_api5_package" start time: Oct 05 11:35 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+click field-name rect 21,117,718,38 clip 21,117,718,38
+click tree-label-1 rect 19,93,105,28 clip 19,93,104,28
+nested result=0 text=Nested DLL row
+click field-name rect 21,117,382,38 clip 21,117,382,38
+reopen1 handles=397
+reopen2 handles=398
+reopen3 handles=398
+reopen4 handles=398
+reopen5 handles=398
+reopen6 handles=398
+reopen7 handles=398
+reopen8 handles=398
+reopen9 handles=398
+reopen10 handles=398
+reopen11 handles=398
+reopen12 handles=400
+reopen13 handles=400
+reopen14 handles=400
+reopen15 handles=400
+reopen16 handles=400
+reopen17 handles=400
+reopen18 handles=400
+reopen19 handles=400
+reopen20 handles=400
+reopen21 handles=400
+reopen22 handles=400
+reopen23 handles=400
+reopen24 handles=398
+reopen25 handles=394
+reopen26 handles=396
+reopen27 handles=396
+reopen28 handles=396
+reopen29 handles=396
+reopen30 handles=396
+reopen31 handles=396
+reopen32 handles=396
+Actual DLL frame Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 partial=121
+DLL reopen32 resources GDI 9->9 USER 17->17 handles 397->396 drained_ms=0
+API5 actual Runtime/application DLL: 0 failures
+<end of output>
+Test time =  79.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_original_api5_package" end time: Oct 05 11:37 �й���׼ʱ��
+"ui_original_api5_package" time elapsed: 00:01:19
+----------------------------------------------------------
+
+16/53 Testing: ui_workspace_layout
+16/53 Test: ui_workspace_layout
+Command: "<repo>/build/fw-next/release/ui_workspace_layout_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_workspace_layout" start time: Oct 05 11:37 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+workspace layout: 0 failures
+<end of output>
+Test time =   0.53 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_layout" end time: Oct 05 11:37 �й���׼ʱ��
+"ui_workspace_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/53 Testing: ui_api5_compat
+17/53 Test: ui_api5_compat
+Command: "<repo>/build/fw-next/release/ui_api5_compat_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_api5_compat" start time: Oct 05 11:37 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+frozen SDK5 guarded descriptor/state/source: 0 failures
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api5_compat" end time: Oct 05 11:37 �й���׼ʱ��
+"ui_api5_compat" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/53 Testing: ui_component_experience
+18/53 Test: ui_component_experience
+Command: "<repo>/build/fw-next/release/ui_component_experience_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_component_experience" start time: Oct 05 11:37 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+component experience light: 0 failures
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_experience" end time: Oct 05 11:37 �й���׼ʱ��
+"ui_component_experience" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/53 Testing: ui_component_experience_webview2
+19/53 Test: ui_component_experience_webview2
+Command: "<repo>/build/fw-next/release/ui_component_experience_test.exe" "--webview2"
+Directory: <repo>/build/fw-next/release
+"ui_component_experience_webview2" start time: Oct 05 11:37 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+component experience actual WebView2: 0 failures
+<end of output>
+Test time =   9.33 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_experience_webview2" end time: Oct 05 11:37 �й���׼ʱ��
+"ui_component_experience_webview2" time elapsed: 00:00:09
+----------------------------------------------------------
+
+20/53 Testing: ui_api6_integration
+20/53 Test: ui_api6_integration
+Command: "<repo>/build/fw-next/release/ui_api6_integration_test.exe" "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+Directory: <repo>/build/fw-next/release
+"ui_api6_integration" start time: Oct 05 11:37 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=240
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-light-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 236->236 GDI 3->3 USER 3->3 pending Runtime cleanup=0
+API6 complete offscreen lifecycle created HWNDs=0
+API6 independent light offscreen DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =   6.51 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api6_integration" end time: Oct 05 11:37 �й���׼ʱ��
+"ui_api6_integration" time elapsed: 00:00:06
+----------------------------------------------------------
+
+21/53 Testing: ui_api6_integration_webview2
+21/53 Test: ui_api6_integration_webview2
+Command: "<repo>/build/fw-next/release/ui_api6_integration_test.exe" "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+Directory: <repo>/build/fw-next/release
+"ui_api6_integration_webview2" start time: Oct 05 11:37 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 374->416 GDI 12->12 USER 15->17 pending Runtime cleanup=0
+integration line80: end<=handles+12&&GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4
+API6 independent WebView2 DLL integration: 1 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =  26.47 sec
+----------------------------------------------------------
+Test Failed.
+"ui_api6_integration_webview2" end time: Oct 05 11:37 �й���׼ʱ��
+"ui_api6_integration_webview2" time elapsed: 00:00:26
+----------------------------------------------------------
+
+22/53 Testing: ui_session0_interactive_control
+22/53 Test: ui_session0_interactive_control
+Command: "<repo>/build/fw-next/release/ui_session0_gl_test.exe" "<repo>/build/fw-next/release/session0_gl_app.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "<repo>/build/fw-next/release/session0-control" "--allow-interactive"
+Directory: <repo>/build/fw-next/release
+"ui_session0_interactive_control" start time: Oct 05 11:37 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =  33.06 sec
+----------------------------------------------------------
+Test Passed.
+"ui_session0_interactive_control" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_session0_interactive_control" time elapsed: 00:00:33
+----------------------------------------------------------
+
+23/53 Testing: ui_offscreen_msaa
+23/53 Test: ui_offscreen_msaa
+Command: "<repo>/build/fw-next/release/ui_offscreen_msaa_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_offscreen_msaa" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Actual GL Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079 samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+<end of output>
+Test time =   0.26 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_msaa" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_offscreen_msaa" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/53 Testing: ui_windowless_gl
+24/53 Test: ui_windowless_gl
+Command: "<repo>/build/fw-next/release/ui_offscreen_msaa_test.exe" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: <repo>/build/fw-next/release
+"ui_windowless_gl" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+OSMesa reopen 1 handles=225 loaded=1
+OSMesa reopen 2 handles=225 loaded=1
+OSMesa reopen 3 handles=225 loaded=1
+OSMesa reopen 4 handles=225 loaded=1
+OSMesa reopen 5 handles=225 loaded=1
+OSMesa reopen 6 handles=225 loaded=1
+OSMesa reopen 7 handles=225 loaded=1
+OSMesa reopen 8 handles=225 loaded=1
+OSMesa reopen 9 handles=225 loaded=1
+OSMesa reopen 10 handles=225 loaded=1
+OSMesa reopen 11 handles=225 loaded=1
+OSMesa reopen 12 handles=225 loaded=1
+OSMesa reopen 13 handles=225 loaded=1
+OSMesa reopen 14 handles=225 loaded=1
+OSMesa reopen 15 handles=225 loaded=1
+OSMesa reopen 16 handles=225 loaded=1
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=0, process HWNDs=0, HWND dependency=2
+<end of output>
+Test time =   0.46 sec
+----------------------------------------------------------
+Test Passed.
+"ui_windowless_gl" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_windowless_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/53 Testing: ui_offscreen_gl
+25/53 Test: ui_offscreen_gl
+Command: "<repo>/build/fw-next/release/ui_offscreen_gl_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_offscreen_gl" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Offscreen GPU: Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079; hidden HWND dependency; hardware class unknown
+Hidden WGL/FBO/frame/input/readback: 0 failures
+<end of output>
+Test time =   0.24 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_gl" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_offscreen_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/53 Testing: ui_workspace_offscreen
+26/53 Test: ui_workspace_offscreen
+Command: "<repo>/build/fw-next/release/ui_workspace_offscreen_test.exe" "<repo>/build/fw-next/release/framework_features.uapp"
+Directory: <repo>/build/fw-next/release
+"ui_workspace_offscreen" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Offscreen actual DOM=75 cached rows=12 columns=4
+Workspace/shared DLL/real templates: 0 failures, HWNDs=0
+<end of output>
+Test time =   0.42 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_offscreen" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_workspace_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/53 Testing: ui_framework_features_host
+27/53 Test: ui_framework_features_host
+Command: "<repo>/build/fw-next/release/ui_framework_features_host_test.exe" "<repo>/build/fw-next/release/framework_features.uapp" "<repo>/build/fw-next/release/features-host.bmp"
+Directory: <repo>/build/fw-next/release
+"ui_framework_features_host" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API4 actual host menus/overflow/instances: 0 failures
+<end of output>
+Test time =   3.34 sec
+----------------------------------------------------------
+Test Passed.
+"ui_framework_features_host" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_framework_features_host" time elapsed: 00:00:03
+----------------------------------------------------------
+
+28/53 Testing: ui_menu_desktop
+28/53 Test: ui_menu_desktop
+Command: "<repo>/build/fw-next/release/ui_menu_desktop_test.exe" "<repo>/build/fw-next/release/framework_features.uapp"
+Directory: <repo>/build/fw-next/release
+"ui_menu_desktop" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Function key presentation: status 0; text Ctrl+F1
+40 menu reopen cycles: handles 336 -> 336; GDI 635 -> 635; USER 49 -> 49
+Desktop menu real host: 0 failures; command calls=1
+<end of output>
+Test time =   4.17 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_desktop" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_menu_desktop" time elapsed: 00:00:04
+----------------------------------------------------------
+
+29/53 Testing: ui_menu_offscreen
+29/53 Test: ui_menu_offscreen
+Command: "<repo>/build/fw-next/release/ui_menu_offscreen_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_menu_offscreen" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Real light/template offscreen: 0 failures; thread windows=0; no physical IME/DPI claim
+<end of output>
+Test time =   0.16 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_offscreen" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_menu_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/53 Testing: ui_menu_cascade_offscreen
+30/53 Test: ui_menu_cascade_offscreen
+Command: "<repo>/build/fw-next/release/ui_menu_cascade_offscreen_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_menu_cascade_offscreen" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+128 items, 118 page steps; shared cascade budget boundary at 13; command once; no menu HWND: 0 failures
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_cascade_offscreen" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_menu_cascade_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/53 Testing: ui_menu_access
+31/53 Test: ui_menu_access
+Command: "<repo>/build/fw-next/release/ui_menu_access_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_menu_access" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Menu Alt real template: 0 failures, calls=3
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_access" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_menu_access" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/53 Testing: ui_api4_compat
+32/53 Test: ui_api4_compat
+Command: "<repo>/build/fw-next/release/ui_api4_compat_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_api4_compat" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Frozen SDK4 prefixes/dirty padding/component: 0 failures, component_size=136
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api4_compat" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_api4_compat" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/53 Testing: ui_original_api4_package
+33/53 Test: ui_original_api4_package
+Command: "<repo>/build/fw-next/release/ui_framework_features_host_test.exe" "<repo>/build/api5-evidence/original-api4-framework_features.uapp"
+Directory: <repo>/build/fw-next/release
+"ui_original_api4_package" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API4 actual host menus/overflow/instances: 0 failures
+<end of output>
+Test time =   3.38 sec
+----------------------------------------------------------
+Test Passed.
+"ui_original_api4_package" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_original_api4_package" time elapsed: 00:00:03
+----------------------------------------------------------
+
+34/53 Testing: ui_web_text_edit
+34/53 Test: ui_web_text_edit
+Command: "<repo>/build/fw-next/release/ui_web_text_edit_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_web_text_edit" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web editor: 0 failures. Physical Chinese IME remains unverified.
+<end of output>
+Test time =   0.19 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_text_edit" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_web_text_edit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+35/53 Testing: ui_generic_web_host
+35/53 Test: ui_generic_web_host
+Command: "<repo>/build/fw-next/release/ui_generic_web_host_test.exe" "<repo>/build/fw-next/release/generic_components.uapp" "<repo>/build/web-shell/baseline/minimal_eda.uapp" "<repo>/build/fw-next/release/web_counter.uapp"
+Directory: <repo>/build/fw-next/release
+"ui_generic_web_host" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+initial actual DOM=169 rows=17 columns=5
+Initial form dpi=96 status=0 field=13,122,194,28 view=0,0,220,601
+100k tail actual DOM=75 rows=12 columns=4
+100k expanded tree actual DOM=77 cached rows=1800 total=100100
+image bytes=413344 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+<end of output>
+Test time =   3.11 sec
+----------------------------------------------------------
+Test Passed.
+"ui_generic_web_host" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_generic_web_host" time elapsed: 00:00:03
+----------------------------------------------------------
+
+36/53 Testing: ui_component_resilience
+36/53 Test: ui_component_resilience
+Command: "<repo>/build/fw-next/release/ui_component_resilience_test.exe" "<repo>/build/fw-next/release/framework_features.uapp"
+Directory: <repo>/build/fw-next/release
+"ui_component_resilience" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+automatic style preview lifetime: 0 failures
+resource,0,0,0,16150528,5636096,187,46,4,0,0,0,0,0,0,0
+edit/layout mode 0: 0 failures
+edit/layout mode 1: 0 failures
+edit/layout mode 2: 0 failures
+edit/layout mode 3: 0 failures
+focus before refloat=000000000196078A
+focus after refloat=000000000196078A
+focus after modal close=000000000196078A
+focus after redock=000000000196078A
+edit/layout mode 4: 0 failures
+edit/layout mode 5: 0 failures
+record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count
+resource,94,1,1,131448832,94945280,361,926,70,188,20,15255,77,9702,313752,76
+resource,94,1,2,131448832,94945280,361,926,70,169,17,11030,77,8254,212736,52
+resource,1141,17,1,139448320,102944768,361,1020,68,150,20,15564,77,21286,400960,95
+resource,1141,17,2,139448320,102944768,361,1020,68,188,19,14903,77,19838,606648,145
+resource,2016,31,1,139874304,103268352,361,1077,68,150,19,14789,77,31422,562192,133
+resource,2016,31,2,139874304,103268352,361,1077,68,169,19,14846,77,29974,767824,183
+resource,2141,31,0,55992320,35459072,304,58,23,0,0,0,0,0,0,0
+resilience: 0 failures; 31 iterations; physical/manual checks remain open
+<end of output>
+Test time =   3.46 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_resilience" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_component_resilience" time elapsed: 00:00:03
+----------------------------------------------------------
+
+37/53 Testing: ui_api3_original_package
+37/53 Test: ui_api3_original_package
+Command: "<repo>/build/fw-next/release/ui_generic_web_host_test.exe" "<repo>/build/fw-next/baseline/generic_components.uapp" "<repo>/build/web-shell/baseline/minimal_eda.uapp" "<repo>/build/fw-next/release/web_counter.uapp"
+Directory: <repo>/build/fw-next/release
+"ui_api3_original_package" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+initial actual DOM=169 rows=17 columns=5
+Initial form dpi=96 status=0 field=13,122,194,28 view=0,0,220,601
+100k tail actual DOM=75 rows=12 columns=4
+100k expanded tree actual DOM=77 cached rows=1800 total=100100
+image bytes=413344 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+<end of output>
+Test time =   3.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api3_original_package" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_api3_original_package" time elapsed: 00:00:03
+----------------------------------------------------------
+
+38/53 Testing: ui_application_versions
+38/53 Test: ui_application_versions
+Command: "<repo>/build/fw-next/release/ui_application_versions_test.exe" "<repo>/build/web-shell/baseline/minimal_eda.uapp" "<repo>/build/fw-next/release/web_counter.uapp" "<repo>/build/fw-next/release/counter_mismatch.uapp"
+Directory: <repo>/build/fw-next/release
+"ui_application_versions" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+application API1/API2 and Web/native contents: PASS
+<end of output>
+Test time =   0.31 sec
+----------------------------------------------------------
+Test Passed.
+"ui_application_versions" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_application_versions" time elapsed: 00:00:00
+----------------------------------------------------------
+
+39/53 Testing: ui_original_api2_package
+39/53 Test: ui_original_api2_package
+Command: "<repo>/build/fw-next/release/ui_application_versions_test.exe" "<repo>/build/web-shell/baseline/minimal_eda.uapp" "<repo>/build/api3/baseline/web_counter.uapp" "<repo>/build/fw-next/release/counter_mismatch.uapp"
+Directory: <repo>/build/fw-next/release
+"ui_original_api2_package" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+application API1/API2 and Web/native contents: PASS
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"ui_original_api2_package" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_original_api2_package" time elapsed: 00:00:00
+----------------------------------------------------------
+
+40/53 Testing: ui_light_web_dynamic
+40/53 Test: ui_light_web_dynamic
+Command: "<repo>/build/fw-next/release/ui_light_web_dynamic_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_light_web_dynamic" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Dynamic Web probe: 0 failure(s), 6 messages, 250 incremental rebuilds
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_web_dynamic" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_light_web_dynamic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/53 Testing: ui_web_shell_slots
+41/53 Test: ui_web_shell_slots
+Command: "<repo>/build/fw-next/release/ui_web_shell_slots_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_web_shell_slots" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web shell content slots and legacy facade passed
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_shell_slots" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_web_shell_slots" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/53 Testing: ui_floating_web_dpi
+42/53 Test: ui_floating_web_dpi
+Command: "<repo>/build/fw-next/release/ui_floating_web_dpi_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_floating_web_dpi" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_floating_web_dpi" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_floating_web_dpi" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/53 Testing: ui_light_web_parity
+43/53 Test: ui_light_web_parity
+Command: "<repo>/build/fw-next/release/light_web_probe.exe"
+Directory: <repo>/build/fw-next/release
+"ui_light_web_parity" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Light Web probe: 0 failure(s), clicks=3, inputs=2, reloads=4
+<end of output>
+Test time =   0.24 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_web_parity" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_light_web_parity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+44/53 Testing: ui_workspace_integration
+44/53 Test: ui_workspace_integration
+Command: "<repo>/build/fw-next/release/ui_workspace_integration_test.exe" "<repo>/build/fw-next/release/minimal_eda.uapp" "<repo>/build/fw-next/release/ui_lifecycle_fixture.dll" "<repo>/build/fw-next/release/ui_application_cpp.dll"
+Directory: <repo>/build/fw-next/release
+"ui_workspace_integration" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Workspace/module lifecycle: 0 failure(s)
+<end of output>
+Test time =   1.55 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_integration" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_workspace_integration" time elapsed: 00:00:01
+----------------------------------------------------------
+
+45/53 Testing: ui_web_host_frontend
+45/53 Test: ui_web_host_frontend
+Command: "<repo>/build/fw-next/release/ui_web_host_frontend_test.exe" "<repo>/build/fw-next/release/minimal_eda.uapp" "<repo>/build/fw-next/release/cpp_fixture.uapp"
+Directory: <repo>/build/fw-next/release
+"ui_web_host_frontend" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web host frontend passed.
+<end of output>
+Test time =   0.97 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_host_frontend" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_web_host_frontend" time elapsed: 00:00:00
+----------------------------------------------------------
+
+46/53 Testing: ui_native_activation
+46/53 Test: ui_native_activation
+Command: "<repo>/build/fw-next/release/ui_native_activation_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_native_activation" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native managed activation: 0 failure(s)
+<end of output>
+Test time =   0.67 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_activation" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_native_activation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+47/53 Testing: ui_dpi_integration
+47/53 Test: ui_dpi_integration
+Command: "<repo>/build/fw-next/release/ui_dpi_integration_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_dpi_integration" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+DPI integration: 0 failure(s)
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_integration" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_dpi_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+48/53 Testing: ui_opengl_integration
+48/53 Test: ui_opengl_integration
+Command: "<repo>/build/fw-next/release/ui_opengl_integration_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_opengl_integration" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+legacy: Intel | Intel(R) UHD Graphics 770 | 4.6.0 - Build 32.0.101.7079
+gl.core: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.compatibility: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.msaa_debug: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=4 debug=1
+OpenGL integration: 0 failure(s), 3 modern configurations supported
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"ui_opengl_integration" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_opengl_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+49/53 Testing: ui_surface_input
+49/53 Test: ui_surface_input
+Command: "<repo>/build/fw-next/release/ui_surface_input_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_surface_input" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Surface input integration: 0 failure(s)
+<end of output>
+Test time =   0.19 sec
+----------------------------------------------------------
+Test Passed.
+"ui_surface_input" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_surface_input" time elapsed: 00:00:00
+----------------------------------------------------------
+
+50/53 Testing: ui_monitor_transition
+50/53 Test: ui_monitor_transition
+Command: "<repo>/build/fw-next/release/ui_monitor_transition_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_monitor_transition" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Monitor transition environment: 1 monitor(s)
+SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"ui_monitor_transition" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_monitor_transition" time elapsed: 00:00:00
+----------------------------------------------------------
+
+51/53 Testing: ui_native_shell_integration
+51/53 Test: ui_native_shell_integration
+Command: "<repo>/build/fw-next/release/ui_native_shell_integration_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_native_shell_integration" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+native shell integration checks passed
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_shell_integration" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_native_shell_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+52/53 Testing: ui_native_responsive
+52/53 Test: ui_native_responsive
+Command: "<repo>/build/fw-next/release/ui_native_responsive_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_native_responsive" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native responsive integration: 0 failure(s)
+<end of output>
+Test time =   0.20 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_responsive" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_native_responsive" time elapsed: 00:00:00
+----------------------------------------------------------
+
+53/53 Testing: ui_assistant_protocol
+53/53 Test: ui_assistant_protocol
+Command: "<repo>/build/fw-next/release/ui_assistant_protocol_test.exe"
+Directory: <repo>/build/fw-next/release
+"ui_assistant_protocol" start time: Oct 05 11:38 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+assistant protocol: 0 failure(s)
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_protocol" end time: Oct 05 11:38 �й���׼ʱ��
+"ui_assistant_protocol" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 05 11:38 �й���׼ʱ��

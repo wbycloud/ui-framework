@@ -1,0 +1,14 @@
+Test project D:/应用软件框架/应用层序框架/build/fw-next/release
+    Start 45: ui_web_host_frontend
+1/1 Test #45: ui_web_host_frontend .............***Failed    0.72 sec
+Web host: failed framework menu hook creation clears borrowed host (Windows error 0)
+Web frontend failures: 1
+
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   0.77 sec
+
+The following tests FAILED:
+	 45 - ui_web_host_frontend (Failed)
+Errors while running CTest

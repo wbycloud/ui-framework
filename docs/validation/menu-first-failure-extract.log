@@ -1,0 +1,11 @@
+Initial c4c5a91 real host desktop-menu run: 11 failures; commands=0.
+Transcribed from tool output. Original raw file was subsequently overwritten.
+- menu entry height > 28
+- nested pointer group did not keep two visible panes
+- deep hover/input failed; three panes absent
+- nested leaf command not executed once
+- hover Edit did not change current root
+- repeated entry did not close
+- edge case lacked two side-by-side panes
+- outside native click did not close
+- modal close/disabled command check failed

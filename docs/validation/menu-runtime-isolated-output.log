@@ -1,0 +1,38 @@
+Start testing: Oct 05 11:39 �й���׼ʱ��
+----------------------------------------------------------
+21/53 Testing: ui_api6_integration_webview2
+21/53 Test: ui_api6_integration_webview2
+Command: "<repo>/build/fw-next/release/ui_api6_integration_test.exe" "<repo>/build/fw-next/release/api6_fixture.uapp" "<repo>/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+Directory: <repo>/build/fw-next/release
+"ui_api6_integration_webview2" start time: Oct 05 11:39 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API6 integration: initialize
+API6 integration: init-failure cleanup complete
+API6 integration: component editing complete
+API6 integration: layout complete
+API6 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=180
+Actual API6 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api6-runtime-frame.ppm
+API6 integration: modal complete
+API6 integration: instances/resize complete
+API6 integration: reopen 0
+API6 integration: reopen 1
+API6 integration: reopen 2
+API6 integration: reopen 3
+API6 integration: reopen 4
+API6 integration: reopen 5
+API6 integration: reopen 6
+API6 integration: reopen 7
+API6 reopen8 handles 386->387 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+API6 independent WebView2 DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =  11.45 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api6_integration_webview2" end time: Oct 05 11:39 �й���׼ʱ��
+"ui_api6_integration_webview2" time elapsed: 00:00:11
+----------------------------------------------------------
+
+End testing: Oct 05 11:39 �й���׼ʱ��

@@ -1,0 +1,22 @@
+Test project <repo>/build/fw-next/release
+    Start 27: ui_framework_features_host
+1/5 Test #27: ui_framework_features_host .......   Passed    3.29 sec
+    Start 28: ui_menu_desktop
+2/5 Test #28: ui_menu_desktop ..................   Passed    3.32 sec
+    Start 29: ui_menu_offscreen
+3/5 Test #29: ui_menu_offscreen ................   Passed    0.12 sec
+    Start 30: ui_menu_cascade_offscreen
+4/5 Test #30: ui_menu_cascade_offscreen ........***Failed    0.22 sec
+line 22: ui_host_menu_capture_rgba(h,&pixels)==UI_STATUS_OK&&pixels.height<=36
+128 items, 118 page steps; shared cascade budget boundary at 13; command once; no menu HWND: 1 failures
+
+    Start 31: ui_menu_access
+5/5 Test #31: ui_menu_access ...................   Passed    0.09 sec
+
+80% tests passed, 1 tests failed out of 5
+
+Total Test time (real) =   7.07 sec
+
+The following tests FAILED:
+	 30 - ui_menu_cascade_offscreen (Failed)
+Errors while running CTest

@@ -1,0 +1,29 @@
+Test project <repo>/build/fw-next/release
+    Start 27: ui_framework_features_host
+1/4 Test #27: ui_framework_features_host .......***Failed    0.16 sec
+line 34: root!=NULL
+
+    Start 28: ui_menu_desktop
+2/4 Test #28: ui_menu_desktop ..................***Failed    0.11 sec
+line 18: root!=NULL
+
+    Start 29: ui_menu_offscreen
+3/4 Test #29: ui_menu_offscreen ................   Passed    0.18 sec
+    Start 30: ui_menu_access
+4/4 Test #30: ui_menu_access ...................***Failed    0.15 sec
+line 38: focused(a,"one")
+line 38: focused(a,"two")&&calls==1
+line 38: focused(a,"one")&&calls==1
+line 39: focused(a,"one")
+Menu Alt real template: 4 failures, calls=3
+
+
+25% tests passed, 3 tests failed out of 4
+
+Total Test time (real) =   0.69 sec
+
+The following tests FAILED:
+	 27 - ui_framework_features_host (Failed)
+	 28 - ui_menu_desktop (Failed)
+	 30 - ui_menu_access (Failed)
+Errors while running CTest

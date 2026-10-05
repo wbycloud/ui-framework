@@ -125,3 +125,7 @@ WebView2仍需窗口承载、图形会话及Runtime，不能宣称无HWND浏览�
 实际源码3e1fca5，Windows Server2022/MSVC19.44，LocalSystem服务的SessionId0、私有service window station。实际200轮/400测试DLL实例/1200frame/2000命令GL用例0失败，零HWND，句柄148→148，真实样本0/4及像素复取校验通过；整机无登录因已登录会话1失败，用户确认无专用runner。保留严格失败，不宣称目标整体通过。
 
 CI暴露并修复MSVC19.44/WX下包加载器位宽常量条件警告；测试运行器另外修复无控制台stderr初始化。公共ABI/API版本不变。此后完整43项42PASS/1SKIP、原生21项20PASS/1SKIP，原API1/2/3/4原包再次通过且哈希不变；前述42/20项属于此前历史构建。步骤、精确源码与依赖哈希、原始证据及剩余条件见[专门验收](session0-osmesa-validation.md)。
+
+## 2026-10-05 菜单内部后续修正
+
+此前菜单记录保留为历史证据；当前菜单样式、侧向鼠标交互及键盘兼容补验见[专门记录](menu-desktop-validation.md)。公共API6/ABI1未变，SDK/原包不改。专门记录分开真实宿主、请求方只读观察和物理/IME/桌面合成/人工待验；此前CI绿色或Session0成功不代表本轮源码的新目标环境验收。

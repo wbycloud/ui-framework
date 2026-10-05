@@ -172,6 +172,8 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 ## 5. 菜单、工具栏、面板和内容槽
 
+菜单、工具入口与应用标签采用各自样式，不以全局button样式定义菜单。顶层文字菜单紧凑且平面，展开/悬停/聚焦有高亮；嵌套侧向展开，外部点击和重复点击当前入口关闭。应用只注册组、项和语义命令，无需自行绘制返回/关闭按钮或维护另一套菜单状态。布局/鼠标/主题及预算细节见[菜单合同](framework-menu-offscreen.md#桌面菜单样式与指针交互)，[本轮记录](validation/menu-desktop-validation.md)保留只读请求方截图与人工待验边界。此次内部修正不要求应用升级API或重编原包。部署宿主和运行库应取同一源码版本。
+
 ### 5.1 通过注册项接入外壳
 
 `ui_host_register_menu_item()` 的 `menu_path` 使用 `/` 表示层级，例如 `File/Actions`，`order` 决定排列。先注册业务 command，再注册引用其 ID 的菜单或工具项。工具栏先注册 `ui_toolbar_desc_t`，再注册属于该 toolbar ID 的 item。`icon_url` 是注册元数据，当前没有自动下载或解码图标。
