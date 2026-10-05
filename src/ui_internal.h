@@ -95,6 +95,9 @@ struct ui_host {
     ui_host_t *image_source; /* Trusted shell chrome may display its active application's images. */
     const char *menu_open_path; /* Borrowed current root path; NULL when closed. */
     int menu_dark;
+    ui_rect_t bottom_rect;
+    int bottom_height;
+    uint32_t api_version;
 };
 
 struct ui_command_entry {

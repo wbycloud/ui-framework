@@ -405,11 +405,11 @@ static void state_panels(json_buffer_t *json,ui_app_instance_info_t *info)
     ui_panel_entry_t *panel;int count=0;ui_shell_t *shell=ui_host_get_shell(info->host);
     for(panel=info->host->panels;panel;panel=panel->next){ui_rect_t frame={0},content={0};int visible=0,floating=0;ui_panel_layout_t layout={0};layout.size=sizeof(layout);
         if(ui_shell_get_slot_state(shell,panel->id,&frame,&content,&visible,&floating)!=UI_STATUS_OK)continue;
-        if(!floating&&(!frame.width||!frame.height))continue;if(count++)json_append(json,",");
+        if(count++)json_append(json,",");
         json_append(json,"{\"id\":");json_string(json,panel->id);json_append(json,",\"title\":");json_string(json,panel->title);
         (void)ui_shell_get_panel_layout(shell,panel->id,&layout);
         json_format(json,",\"region\":%d,\"floating\":%s,\"collapsed\":%s,\"frame\":",layout.dock_region,floating?"true":"false",layout.collapsed?"true":"false");
-        json_rect(json,&frame);json_append(json,"}");}
+        json_rect(json,&frame);json_format(json,",\"group\":\"%llu\",\"tabActive\":%s,\"closed\":%s",(unsigned long long)layout.tab_group_id,layout.tab_active?"true":"false",layout.closed?"true":"false");json_append(json,"}");}
 }
 static int assistant_visible(host_window_t *s,int width)
 {return s->assistant_expanded>0||(s->assistant_expanded==0&&width>=800);}
@@ -649,10 +649,11 @@ static void process_action(host_window_t *s,host_action_t *action)
         (void)ui_host_invoke(info.host,action->command,"{}","web.user");}
     else if(!strcmp(name,"panel-float")){if(action->panel&&get_instance(s,id,&info)&&info.active&&!info.closing)
         (void)ui_native_shell_set_panel_floating(info.shell,action->panel,1);}
-    else if(!strcmp(name,"panel-drag")||!strcmp(name,"panel-collapse")||!strcmp(name,"panel-split")||!strcmp(name,"side-split")||!strcmp(name,"layout-reset")){
+    else if(!strcmp(name,"panel-drag")||!strcmp(name,"panel-collapse")||!strcmp(name,"panel-split")||!strcmp(name,"side-split")||!strcmp(name,"layout-reset")||!strcmp(name,"panel-activate")){
         if(get_instance(s,id,&info)&&info.active&&!info.closing){ui_shell_t *shell=ui_host_get_shell(info.host);ui_panel_layout_t layout={0};layout.size=sizeof(layout);
             if(!strcmp(name,"layout-reset"))(void)ui_shell_reset_layout(shell);
-            else if(!strcmp(name,"side-split"))(void)ui_shell_begin_splitter_drag(shell,action->panel&&!strcmp(action->panel,"left")?UI_LAYOUT_REGION_LEFT_SIDEBAR:UI_LAYOUT_REGION_RIGHT_SIDEBAR,NULL);
+            else if(!strcmp(name,"panel-activate"))(void)ui_shell_activate_panel(shell,action->panel);
+            else if(!strcmp(name,"side-split"))(void)ui_shell_begin_splitter_drag(shell,action->panel&&!strcmp(action->panel,"left")?UI_LAYOUT_REGION_LEFT_SIDEBAR:action->panel&&!strcmp(action->panel,"bottom")?UI_LAYOUT_REGION_BOTTOM:UI_LAYOUT_REGION_RIGHT_SIDEBAR,NULL);
             else if(action->panel&&ui_shell_get_panel_layout(shell,action->panel,&layout)==UI_STATUS_OK){
                 if(!strcmp(name,"panel-drag"))(void)ui_shell_begin_panel_drag(shell,action->panel);
                 else if(!strcmp(name,"panel-split"))(void)ui_shell_begin_splitter_drag(shell,layout.dock_region,action->panel);

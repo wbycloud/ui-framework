@@ -66,6 +66,8 @@ typedef struct ui_native_panel {
     ui_web_backend_t *popup_backend;
     ui_web_view_t *popup_view;
     ui_content_slot_t *slot;
+    uint64_t tab_group;
+    int tab_active;
 } ui_native_panel_t;
 
 struct ui_native_shell {
@@ -101,6 +103,9 @@ struct ui_native_shell {
     size_t split_bytes;
     HWND gesture_focus;
     ui_layout_desc_t default_layout;
+    int bottom_extent;
+    uint64_t next_tab_group;
+    char drag_tab[64];
 };
 
 static HFONT create_font_for_dpi(uint32_t dpi);
@@ -114,6 +119,8 @@ static void position_panel(ui_native_shell_t *, ui_native_panel_t *, HWND);
 static LRESULT CALLBACK layout_subclass(HWND,UINT,WPARAM,LPARAM,UINT_PTR,DWORD_PTR);
 static void end_splitter(ui_native_shell_t *,int);
 static void clamp_floating_windows(ui_native_shell_t *);
+static void prepare_layout(ui_native_shell_t *);
+static int panel_tab_visible(const ui_native_panel_t *);
 
 static ui_content_slot_t *find_slot(ui_native_shell_t *shell,
                                      const char *panel_id)
@@ -1281,9 +1288,9 @@ static ui_status_t apply_slot(ui_content_slot_t *slot)
 
 static ui_status_t web_shell_reflow(ui_native_shell_t *shell)
 {
-    ui_rect_t side_rects[2];
-    ui_sidebar_state_t states[2];
-    size_t dock_count[2] = {0, 0}, dock_index[2] = {0, 0}, i;
+    ui_rect_t side_rects[3];
+    ui_sidebar_state_t states[3];
+    size_t dock_count[3] = {0, 0, 0}, dock_index[3] = {0, 0, 0}, i;
     uint32_t dpi = shell->host->dpi;
     ui_status_t status = UI_STATUS_OK;
     ui_content_slot_t *main_slot = find_slot(shell, NULL);
@@ -1299,27 +1306,27 @@ static ui_status_t web_shell_reflow(ui_native_shell_t *shell)
         main_slot->visible = shell->active && main_slot->rect.width > 0 && main_slot->rect.height > 0;
         status = apply_slot(main_slot);
     }
-    for (i = 0; i < 2; ++i) {
-        ui_layout_region_t region = i == 0 ? UI_LAYOUT_REGION_LEFT_SIDEBAR : UI_LAYOUT_REGION_RIGHT_SIDEBAR;
+    for (i = 0; i < 3; ++i) {
+        ui_layout_region_t region = i == 0 ? UI_LAYOUT_REGION_LEFT_SIDEBAR : i == 1 ? UI_LAYOUT_REGION_RIGHT_SIDEBAR : UI_LAYOUT_REGION_BOTTOM;
         (void)ui_host_get_rect(shell->host, region, &side_rects[i]);
-        (void)ui_host_get_sidebar_state(shell->host, region, &states[i]);
+        if(i==2)states[i]=UI_SIDEBAR_VISIBLE;else (void)ui_host_get_sidebar_state(shell->host, region, &states[i]);
     }
     for (i = 0; i < shell->panel_count; ++i) {
         ui_native_panel_t *panel = &shell->panels[i];
-        size_t side = panel->dock_region == UI_LAYOUT_REGION_LEFT_SIDEBAR ? 0 : 1;
+        size_t side = panel->dock_region == UI_LAYOUT_REGION_LEFT_SIDEBAR ? 0 : panel->dock_region == UI_LAYOUT_REGION_BOTTOM ? 2 : 1;
         if (panel->kind == UI_PANEL_SIDEBAR && !panel->manual_floating && states[side] == UI_SIDEBAR_VISIBLE)
             ++dock_count[side];
     }
     for (i = 0; i < shell->panel_count && status == UI_STATUS_OK; ++i) {
         ui_native_panel_t *panel = &shell->panels[i];
         ui_content_slot_t *slot = panel->slot;
-        size_t side = panel->dock_region == UI_LAYOUT_REGION_LEFT_SIDEBAR ? 0 : 1;
+        size_t side = panel->dock_region == UI_LAYOUT_REGION_LEFT_SIDEBAR ? 0 : panel->dock_region == UI_LAYOUT_REGION_BOTTOM ? 2 : 1;
         int floating = panel->kind == UI_PANEL_FLOATING || panel->manual_floating ||
                        states[side] == UI_SIDEBAR_FLOATING;
         status = web_set_floating(shell, panel, floating);
         if (status != UI_STATUS_OK) break;
         slot->floating = floating;
-        slot->visible = shell->active && !panel->closed && shell->host->host_rect.width > 0 &&
+        slot->visible = shell->active && !panel->closed && panel_tab_visible(panel) && shell->host->host_rect.width > 0 &&
             shell->host->host_rect.height > 0 && (floating || states[side] == UI_SIDEBAR_VISIBLE);
         if (floating) {
             if (!panel->positioned) {
@@ -1351,6 +1358,7 @@ static ui_status_t web_shell_reflow(ui_native_shell_t *shell)
                 int title = slot->rect.height < UI_WEB_PANEL_TITLE_HEIGHT ? slot->rect.height : UI_WEB_PANEL_TITLE_HEIGHT;
                 slot->rect.y += title; slot->rect.height -= title;
             } else slot->rect.width = slot->rect.height = 0;
+            if(shell->layout_enabled){if(side==2){slot->rect.y+=5;slot->rect.height-=slot->rect.height>5?5:slot->rect.height;}else{if(side==1)slot->rect.x+=5;slot->rect.width-=slot->rect.width>5?5:slot->rect.width;}}
             if (panel->collapsed) slot->rect.height = 0;
             pixels = logical_rect_to_pixels(&slot->rect, dpi);
             slot->pixel_rect = (ui_rect_t){pixels.left, pixels.top,
@@ -1383,7 +1391,7 @@ static ui_status_t offscreen_reflow(ui_native_shell_t *shell)
             if(count){slot->rect.y+=side.height*(int)index/(int)count;slot->rect.height=side.height*(int)(index+1)/(int)count-side.height*(int)index/(int)count;}}
         slot->frame_rect=slot->rect;slot->floating=panel?(panel->kind==UI_PANEL_FLOATING||panel->manual_floating):entry&&entry->kind==UI_PANEL_FLOATING;
         if(panel&&panel->collapsed)slot->rect.height=0;
-        slot->visible=shell->active&&(!panel||!panel->closed)&&slot->rect.width>0&&slot->rect.height>0;
+        slot->visible=shell->active&&(!panel||(!panel->closed&&panel_tab_visible(panel)))&&slot->rect.width>0&&slot->rect.height>0;
         pixels=logical_rect_to_pixels(&slot->rect,shell->host->dpi);slot->pixel_rect=(ui_rect_t){pixels.left,pixels.top,pixels.right-pixels.left,pixels.bottom-pixels.top};
         if((slot->web_view||slot->surface)&&(status=apply_slot(slot))!=UI_STATUS_OK)return status;
     }ui_components_layout(shell->host);return status;
@@ -1393,16 +1401,17 @@ ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
 {
     ui_rect_t logical;
     RECT pixel;
-    ui_rect_t sidebar_rects[2];
-    RECT sidebar_pixels[2];
-    ui_sidebar_state_t states[2];
+    ui_rect_t sidebar_rects[3];
+    RECT sidebar_pixels[3];
+    ui_sidebar_state_t states[3];
     uint32_t dpi = 96u;
     size_t index;
-    size_t counts[2] = {0, 0};
-    size_t dock_counts[2] = {0, 0};
-    size_t tag_indices[2] = {0, 0};
-    size_t dock_indices[2] = {0, 0};
+    size_t counts[3] = {0, 0, 0};
+    size_t dock_counts[3] = {0, 0, 0};
+    size_t tag_indices[3] = {0, 0, 0};
+    size_t dock_indices[3] = {0, 0, 0};
 
+    if(shell)prepare_layout(shell);
     if(shell&&shell->offscreen)return offscreen_reflow(shell);
     if (shell == NULL || shell->host == NULL || shell->parent == NULL) {
         return UI_STATUS_INVALID_ARGUMENT;
@@ -1424,18 +1433,19 @@ ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
                    shell->active && logical.width > 0 && logical.height > 0 ? SW_SHOW : SW_HIDE);
     }
 
-    for (index = 0; index < 2; ++index) {
-        ui_layout_region_t region = index == 0 ? UI_LAYOUT_REGION_LEFT_SIDEBAR : UI_LAYOUT_REGION_RIGHT_SIDEBAR;
+    for (index = 0; index < 3; ++index) {
+        ui_layout_region_t region = index == 0 ? UI_LAYOUT_REGION_LEFT_SIDEBAR : index == 1 ? UI_LAYOUT_REGION_RIGHT_SIDEBAR : UI_LAYOUT_REGION_BOTTOM;
         if (ui_host_get_rect(shell->host, region, &sidebar_rects[index]) != UI_STATUS_OK ||
-            ui_host_get_sidebar_state(shell->host, region, &states[index]) != UI_STATUS_OK) {
+            (index<2 && ui_host_get_sidebar_state(shell->host, region, &states[index]) != UI_STATUS_OK)) {
             return UI_STATUS_PLATFORM_ERROR;
         }
+        if(index==2)states[index]=UI_SIDEBAR_VISIBLE;
         sidebar_pixels[index] = logical_rect_to_pixels(&sidebar_rects[index], dpi);
     }
     for (index = 0; index < shell->panel_count; ++index) {
         ui_native_panel_t *panel = &shell->panels[index];
         if (panel->kind == UI_PANEL_SIDEBAR) {
-            size_t side = panel->dock_region == UI_LAYOUT_REGION_LEFT_SIDEBAR ? 0 : 1;
+            size_t side = panel->dock_region == UI_LAYOUT_REGION_LEFT_SIDEBAR ? 0 : panel->dock_region == UI_LAYOUT_REGION_BOTTOM ? 2 : 1;
             ++counts[side];
             if (!panel->manual_floating && states[side] == UI_SIDEBAR_VISIBLE)
                 ++dock_counts[side];
@@ -1443,7 +1453,7 @@ ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
     }
     for (index = 0u; index < shell->panel_count; ++index) {
         ui_native_panel_t *panel = &shell->panels[index];
-        size_t side = panel->dock_region == UI_LAYOUT_REGION_LEFT_SIDEBAR ? 0 : 1;
+        size_t side = panel->dock_region == UI_LAYOUT_REGION_LEFT_SIDEBAR ? 0 : panel->dock_region == UI_LAYOUT_REGION_BOTTOM ? 2 : 1;
         int floating = panel->kind == UI_PANEL_FLOATING || panel->manual_floating ||
                         states[side] == UI_SIDEBAR_FLOATING;
         set_floating(shell, panel, floating);
@@ -1475,7 +1485,7 @@ ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
                 panel->positioned = 1;
                 }
             }
-            ShowWindow(panel->hwnd, shell->active && !panel->closed && shell->host->host_rect.width > 0 &&
+            ShowWindow(panel->hwnd, shell->active && !panel->closed && panel_tab_visible(panel) && shell->host->host_rect.width > 0 &&
                          shell->host->host_rect.height > 0 ? SW_SHOWNOACTIVATE : SW_HIDE);
         } else if (states[side] == UI_SIDEBAR_VISIBLE && dock_counts[side] > 0) {
             RECT dock_rect = sidebar_pixels[side];
@@ -1484,10 +1494,16 @@ ui_status_t ui_native_shell_reflow(ui_native_shell_t *shell)
             dock_rect.bottom = ++dock_indices[side] == dock_counts[side]
                                  ? sidebar_pixels[side].bottom : dock_rect.top + height;
             if(shell->layout_enabled){ui_rect_t r=panel_dock_rect(shell,panel,sidebar_rects[side]);dock_rect=logical_rect_to_pixels(&r,dpi);}
-            if(panel->collapsed&&panel->tag){(void)MoveWindow(panel->tag,dock_rect.left,dock_rect.top,dock_rect.right-dock_rect.left,logical_to_pixels(28,dpi),TRUE);ShowWindow(panel->tag,shell->active&&!panel->closed?SW_SHOW:SW_HIDE);}
+            if(panel->tab_group&&panel->tag){size_t j,count=0,ordinal=0,active=0;int tab_width;
+                for(j=0;j<shell->panel_count;++j)if(shell->panels[j].tab_group==panel->tab_group){if(j<index)++ordinal;if(shell->panels[j].tab_active)active=count;++count;}
+                tab_width=(dock_rect.right-dock_rect.left)/4;MoveWindow(panel->tag,dock_rect.left+(int)(ordinal%4)*tab_width,dock_rect.top,tab_width,logical_to_pixels(28,dpi),TRUE);
+                ShowWindow(panel->tag,shell->active&&ordinal/4==active/4?SW_SHOW:SW_HIDE);SetWindowPos(panel->tag,HWND_TOP,0,0,0,0,SWP_NOMOVE|SWP_NOSIZE|SWP_NOACTIVATE);
+            }else if(panel->collapsed&&panel->tag){MoveWindow(panel->tag,dock_rect.left,dock_rect.top,dock_rect.right-dock_rect.left,logical_to_pixels(28,dpi),TRUE);ShowWindow(panel->tag,shell->active&&!panel->closed?SW_SHOW:SW_HIDE);}
+
+            if(panel->tab_group){int title=logical_to_pixels(28,dpi);dock_rect.top+=dock_rect.bottom-dock_rect.top<title?dock_rect.bottom-dock_rect.top:title;}
             (void)MoveWindow(panel->hwnd, dock_rect.left, dock_rect.top,
                              dock_rect.right - dock_rect.left, dock_rect.bottom - dock_rect.top, TRUE);
-            ShowWindow(panel->hwnd, shell->active && !panel->collapsed && !panel->closed && sidebar_rects[side].width > 0 &&
+            ShowWindow(panel->hwnd, shell->active && !panel->collapsed && !panel->closed && panel_tab_visible(panel) && sidebar_rects[side].width > 0 &&
                          sidebar_rects[side].height > 0 ? SW_SHOW : SW_HIDE);
         } else {
             ShowWindow(panel->hwnd, SW_HIDE);
@@ -1664,7 +1680,7 @@ ui_status_t ui_native_shell_set_panel_floating(ui_native_shell_t *shell,
     if (panel->kind != UI_PANEL_SIDEBAR) return UI_STATUS_UNSUPPORTED;
     focus = GetFocus();
     if (focus != panel->hwnd && !IsChild(panel->hwnd, focus)) focus = NULL;
-    panel->manual_floating = floating != 0;
+    panel->manual_floating = floating != 0;if(floating){panel->tab_group=0;panel->tab_active=0;}
     panel->closed = 0;
     status = ui_native_shell_reflow(shell);
     if (status == UI_STATUS_OK && shell->active && !shell->host->modal_component &&
@@ -1737,6 +1753,8 @@ ui_status_t ui_native_shell_handle_message(ui_native_shell_t *shell,
     if (HIWORD(w_param) == BN_CLICKED && l_param != 0) {
         for (index = 0; index < shell->panel_count; ++index) {
             if (shell->panels[index].tag == (HWND)l_param) {
+                if(shell->panels[index].tab_group&&!shell->panels[index].tab_active)return ui_shell_activate_panel(&shell->shell,shell->panels[index].id);
+                if(shell->panels[index].tab_group){size_t j;for(j=1;j<=shell->panel_count;++j){ui_native_panel_t *next=&shell->panels[(index+j)%shell->panel_count];if(next->tab_group==shell->panels[index].tab_group)return ui_shell_activate_panel(&shell->shell,next->id);}}
                 if(shell->panels[index].collapsed)shell->panels[index].collapsed=0;else shell->panels[index].manual_floating = 1;
                 shell->panels[index].closed = 0;
                 return ui_native_shell_reflow(shell);
@@ -1778,7 +1796,7 @@ void *ui_content_slot_native_handle(const ui_content_slot_t *slot)
 static void update_native_slot(ui_content_slot_t *slot)
 {
     ui_native_shell_t *shell = slot->shell->native;
-    ui_native_panel_t *panel;
+    ui_native_panel_t *panel=NULL;
     RECT pixels;
     uint32_t dpi = shell->host->dpi;
     if (shell->web_chrome) return;
@@ -1808,6 +1826,7 @@ static void update_native_slot(ui_content_slot_t *slot)
         slot->visible = shell->active && (GetWindowLongPtrW(panel->hwnd, GWL_STYLE) & WS_VISIBLE) != 0;
     }
     slot->frame_rect = slot->rect;
+    if(panel&&panel->tab_group&&!panel->floating){slot->frame_rect.y-=28;slot->frame_rect.height+=28;}
 }
 
 ui_status_t ui_content_slot_get_rect(const ui_content_slot_t *slot,

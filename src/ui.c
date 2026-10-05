@@ -32,7 +32,7 @@ static int valid_size(uint32_t size, size_t expected)
 static int valid_web_input_event(const ui_input_event_t *event)
 {
     return event != NULL && valid_size(event->size, sizeof(*event)) &&
-           event->kind >= UI_INPUT_POINTER_MOVE && event->kind <= UI_INPUT_TEXT;
+           event->kind >= UI_INPUT_POINTER_MOVE && event->kind <= UI_INPUT_CANCEL;
 }
 
 static int scale_coordinate(int64_t value, uint32_t dpi)
@@ -74,7 +74,7 @@ static ui_rect_t logical_to_pixel_rect(const ui_rect_t *rect, uint32_t dpi)
 int ui_layout_region_valid(ui_layout_region_t region)
 {
     return region > UI_LAYOUT_REGION_NONE &&
-           region < UI_LAYOUT_REGION_COUNT;
+           (region < UI_LAYOUT_REGION_COUNT || region == UI_LAYOUT_REGION_BOTTOM);
 }
 
 static int clamp_dimension(int value, int maximum)
@@ -232,7 +232,9 @@ ui_status_t ui_layout_recompute(ui_host_t *host)
     host->layout_rects[UI_LAYOUT_REGION_MAIN].x = left_width;
     host->layout_rects[UI_LAYOUT_REGION_MAIN].y = content_top;
     host->layout_rects[UI_LAYOUT_REGION_MAIN].width = content_width;
-    host->layout_rects[UI_LAYOUT_REGION_MAIN].height = content_height;
+    host->bottom_rect=(ui_rect_t){left_width,content_bottom,content_width,0};
+    if(host->bottom_height>0){int height=clamp_dimension(host->bottom_height,content_height>120?content_height-120:content_height/2);host->bottom_rect.y-=height;host->bottom_rect.height=height;}
+    host->layout_rects[UI_LAYOUT_REGION_MAIN].height = content_height-host->bottom_rect.height;
 
     host->layout_rects[UI_LAYOUT_REGION_RIGHT_SIDEBAR].x =
         left_width + content_width;
@@ -249,7 +251,7 @@ ui_status_t ui_layout_recompute(ui_host_t *host)
         if (ui_shell_surface_bound(host, surface)) continue;
         const ui_rect_t *target_rect =
             surface->layout_region != UI_LAYOUT_REGION_NONE
-                ? &host->layout_rects[surface->layout_region]
+                ? (surface->layout_region==UI_LAYOUT_REGION_BOTTOM?&host->bottom_rect:&host->layout_rects[surface->layout_region])
                 : &surface->rect;
 
         if (ui_surface_set_rect(surface, target_rect) != UI_STATUS_OK) {
@@ -261,7 +263,7 @@ ui_status_t ui_layout_recompute(ui_host_t *host)
         if (ui_shell_web_view_bound(host, view)) continue;
         if (view->layout_region != UI_LAYOUT_REGION_NONE) {
             ui_status_t status = ui_web_view_set_rect(view,
-                &host->layout_rects[view->layout_region], host->dpi);
+                (view->layout_region==UI_LAYOUT_REGION_BOTTOM?&host->bottom_rect:&host->layout_rects[view->layout_region]), host->dpi);
             if (status != UI_STATUS_OK) return status;
         }
     }
@@ -366,6 +368,7 @@ ui_host_t *ui_host_create(const ui_host_config_t *config)
     }
 
     host->native_parent = config->native_parent;
+    host->api_version = config->api_version;
     host->user_data = config->user_data;
     host->result_callback = config->result_callback;
     host->event_callback = config->event_callback;
@@ -514,7 +517,7 @@ ui_status_t ui_host_set_dpi(ui_host_t *host, uint32_t dpi)
         if (ui_shell_web_view_bound(host, view)) continue;
         if (view->dpi != dpi) {
             const ui_rect_t *target = view->layout_region == UI_LAYOUT_REGION_NONE ?
-                &view->rect : &host->layout_rects[view->layout_region];
+                &view->rect : (view->layout_region==UI_LAYOUT_REGION_BOTTOM?&host->bottom_rect:&host->layout_rects[view->layout_region]);
             ui_status_t view_status = ui_web_view_set_rect(view, target, dpi);
             if (status == UI_STATUS_OK) status = view_status;
         }
@@ -642,7 +645,7 @@ ui_status_t ui_host_get_rect(const ui_host_t *host,
         return UI_STATUS_INVALID_ARGUMENT;
     }
 
-    *rect = host->layout_rects[region];
+    *rect = region==UI_LAYOUT_REGION_BOTTOM?host->bottom_rect:host->layout_rects[region];
 
     return UI_STATUS_OK;
 }
@@ -1278,7 +1281,7 @@ ui_status_t ui_web_view_set_layout_region(ui_web_view_t *view,
                          !ui_layout_region_valid(region)))
         return UI_STATUS_INVALID_ARGUMENT;
     if (region != UI_LAYOUT_REGION_NONE) {
-        status = ui_web_view_set_rect(view, &view->host->layout_rects[region],
+        status = ui_web_view_set_rect(view, (region==UI_LAYOUT_REGION_BOTTOM?&view->host->bottom_rect:&view->host->layout_rects[region]),
                                       view->host->dpi);
         if (status != UI_STATUS_OK) return status;
     }
@@ -1646,7 +1649,7 @@ ui_status_t ui_surface_set_layout_region(ui_surface_t *surface,
     }
 
     if (region != UI_LAYOUT_REGION_NONE &&
-        ui_surface_set_rect(surface, &surface->host->layout_rects[region]) !=
+        ui_surface_set_rect(surface, (region==UI_LAYOUT_REGION_BOTTOM?&surface->host->bottom_rect:&surface->host->layout_rects[region])) !=
             UI_STATUS_OK) {
         return UI_STATUS_PLATFORM_ERROR;
     }

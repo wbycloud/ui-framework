@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../src/ui_internal.h"
+#include "runtime_resources.h"
 #include "ui_framework/webview2.h"
+static int pending_cleanup(void){HWND window=NULL;int count=0;while((window=FindWindowExW(HWND_MESSAGE,window,L"UIFrameworkWebView2Cleanup5",NULL))!=NULL)if(GetWindowThreadProcessId(window,NULL)==GetCurrentThreadId())++count;return count;}
 static int failures;
 #define CHECK(x) do{if(!(x)){fprintf(stderr,"line %d: %s\n",__LINE__,#x);++failures;}}while(0)
 static void pump(ui_workspace_t *w){MSG m;unsigned n=0;while(n++<1000&&PeekMessageW(&m,NULL,0,0,PM_REMOVE)){TranslateMessage(&m);DispatchMessageW(&m);}if(w)ui_workspace_poll(w);Sleep(1);}
@@ -41,8 +43,10 @@ int wmain(int argc,wchar_t **argv)
  CHECK(ui_workspace_open(w,package,&b)==UI_STATUS_OK&&b!=a);other=host(w,b);CHECK(query(w,ui_component_find(other,"form"),"field-name",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,""));CHECK(ui_component_dispatch_input(form,&e)==UI_STATUS_CANCELLED);CHECK(ui_workspace_activate(w,a)==UI_STATUS_OK);CHECK(query(w,form,"field-name",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"DLL draft 中文😀"));CHECK(ui_workspace_close(w,b,UI_APP_CLOSE_TAB)==UI_STATUS_OK);
  CHECK(ui_host_invoke(h,"test.image.release","{}","test")!=0);CHECK(capture(w,form,&pixels)==UI_STATUS_OK&&color_count(&pixels,1)<20);free(pixels.pixels);
  CHECK(ui_component_get_presentation(form,"field-name",&p)==UI_STATUS_PENDING);CHECK(ui_workspace_close(w,a,UI_APP_CLOSE_TAB)==UI_STATUS_OK);pump_for(w,2000);CHECK(GetModuleHandleW(L"ui_api5_fixture.dll")==NULL);
+ {ULONGLONG start=GetTickCount64();while(pending_cleanup()&&GetTickCount64()-start<15000)pump(w);fprintf(stderr,"API5 baseline pending cleanup=%d\n",pending_cleanup());CHECK(!pending_cleanup());}runtime_resources("api5 baseline");
  gdi=GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS);users=GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS);GetProcessHandleCount(GetCurrentProcess(),&handles);
  for(int i=0;i<32;++i){CHECK(ui_workspace_open(w,package,&a)==UI_STATUS_OK);h=host(w,a);form=ui_component_find(h,"form");CHECK(query(w,form,"field-name",&p)==UI_STATUS_OK);CHECK(ui_component_get_presentation(form,"field-name",&p)==UI_STATUS_PENDING);CHECK(ui_workspace_close(w,a,UI_APP_CLOSE_TAB)==UI_STATUS_OK);pump_for(w,2000);CHECK(GetModuleHandleW(L"ui_api5_fixture.dll")==NULL);{DWORD n=0;GetProcessHandleCount(GetCurrentProcess(),&n);fprintf(stderr,"reopen%d handles=%lu\n",i+1,n);}}
- {DWORD end_handles=0;ULONGLONG start=GetTickCount64();do{GetProcessHandleCount(GetCurrentProcess(),&end_handles);if(end_handles<=handles+12)break;pump(w);}while(GetTickCount64()-start<15000);printf("DLL reopen32 resources GDI %lu->%lu USER %lu->%lu handles %lu->%lu drained_ms=%llu\n",gdi,GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS),users,GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS),handles,end_handles,(unsigned long long)(GetTickCount64()-start));CHECK(GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4&&end_handles<=handles+12);}
+ {DWORD end_handles=0;ULONGLONG start=GetTickCount64();do{GetProcessHandleCount(GetCurrentProcess(),&end_handles);if(end_handles<=handles+12&&!pending_cleanup())break;pump(w);}while(GetTickCount64()-start<15000);printf("DLL reopen32 resources GDI %lu->%lu USER %lu->%lu handles %lu->%lu drained_ms=%llu\n",gdi,GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS),users,GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS),handles,end_handles,(unsigned long long)(GetTickCount64()-start));CHECK(GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4&&GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=users+4&&end_handles<=handles+12);}
+ fprintf(stderr,"API5 final pending cleanup=%d\n",pending_cleanup());CHECK(!pending_cleanup());runtime_resources("api5 settled");
  CHECK(ui_workspace_destroy(w)==UI_STATUS_OK);DestroyWindow(root);SetEnvironmentVariableW(L"UI_API5_OSMESA_DLL",NULL);CoUninitialize();printf("API5 actual Runtime/application DLL: %d failures\n",failures);return failures?1:0;
 }

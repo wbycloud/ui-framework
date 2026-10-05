@@ -26,14 +26,15 @@ if (window === window.top) {
  new MutationObserver(function(list){list.forEach(function(m){if(m.type==='attributes')images(m.target);else m.addedNodes.forEach(images);});}).observe(document,{subtree:true,childList:true,attributes:true,attributeFilter:['src']});
  ui.capture=function(token){Promise.all(Array.from(document.images).map(function(e){return e.decode().catch(function(){});})).then(function(){return document.fonts.ready;}).then(function(){requestAnimationFrame(function(){requestAnimationFrame(function(){chrome.webview.postMessage('ui.capture\n'+token);});});});};
  ui.dispatchInput=function(p){
-  var e=p.kind<=4?document.elementFromPoint(p.x,p.y):document.activeElement;
+  if(p.kind===8){var captured=ui.inputCapture;ui.pressed=null;if(captured)captured.dispatchEvent(new PointerEvent('pointercancel',{bubbles:true,pointerId:1}));ui.inputCapture=null;chrome.webview.postMessage('ui.rendered\n'+p.epoch);return;}
+  var e=(p.kind===1||p.kind===3)&&ui.inputCapture?ui.inputCapture:p.kind<=4?document.elementFromPoint(p.x,p.y):document.activeElement;
   var edit=e&&(e.tagName==='INPUT'||e.tagName==='TEXTAREA')&&!e.disabled&&!e.readOnly;
   var options={bubbles:true,cancelable:true,ctrlKey:!!(p.mods&1),shiftKey:!!(p.mods&2),altKey:!!(p.mods&4),keyCode:p.key,which:p.key};
   if(e&&!e.disabled){
    var mouse={bubbles:true,cancelable:true,clientX:p.x,clientY:p.y,button:p.button===2?2:0,ctrlKey:options.ctrlKey,shiftKey:options.shiftKey,altKey:options.altKey};
-   if(p.kind===2){var focus=e.closest('input,textarea,button,select,[tabindex]');if(focus)focus.focus();ui.pressed=e;e.dispatchEvent(new MouseEvent('mousedown',mouse));}
-   if(p.kind===3){e.dispatchEvent(new MouseEvent('mouseup',mouse));if(e===ui.pressed){if(p.button===2)e.dispatchEvent(new MouseEvent('contextmenu',mouse));else e.click();}ui.pressed=null;}
-   if(p.kind===1)e.dispatchEvent(new MouseEvent('mousemove',{bubbles:true,clientX:p.x,clientY:p.y}));
+   if(p.kind===2){var focus=e.closest('input,textarea,button,select,[tabindex]');if(focus)focus.focus();ui.pressed=e;e.dispatchEvent(new MouseEvent('mousedown',mouse));e.dispatchEvent(new PointerEvent('pointerdown',Object.assign({pointerId:1},mouse)));}
+   if(p.kind===3){e.dispatchEvent(new PointerEvent('pointerup',Object.assign({pointerId:1},mouse)));e.dispatchEvent(new MouseEvent('mouseup',mouse));if(e===ui.pressed){if(p.button===2)e.dispatchEvent(new MouseEvent('contextmenu',mouse));else e.click();}ui.pressed=null;}
+   if(p.kind===1){e.dispatchEvent(new PointerEvent('pointermove',Object.assign({pointerId:1},mouse)));e.dispatchEvent(new MouseEvent('mousemove',mouse));}
    if(p.kind===4){var wheel=new WheelEvent('wheel',{bubbles:true,cancelable:true,deltaY:-p.delta,shiftKey:!!(p.mods&2)});if(e.dispatchEvent(wheel)){for(var n=e;n;n=n.parentElement)if(n.scrollHeight>n.clientHeight||n.scrollWidth>n.clientWidth){if(p.mods&2)n.scrollLeft-=p.delta;else n.scrollTop-=p.delta;break;}}}
    if(p.kind===7&&edit)document.execCommand('insertText',false,p.text);
    if(p.kind===5&&e.dispatchEvent(new KeyboardEvent('keydown',options))){

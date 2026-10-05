@@ -60,11 +60,13 @@ typedef struct ui_panel_layout {
     int floating, collapsed, closed, order, height;
     ui_rect_t floating_rect;
     uint32_t dpi;
+    uint64_t tab_group_id; /* API7, 0 = independent stack panel. */
+    int tab_active;
 } ui_panel_layout_t;
 UI_API ui_status_t ui_shell_get_panel_layout(ui_shell_t *, const char *, ui_panel_layout_t *);
 UI_API ui_status_t ui_shell_set_panel_layout(ui_shell_t *, const char *, const ui_panel_layout_t *);
 /* Caller owns bytes/storage. NULL buffer queries required size. Binary format
- * v1, little endian, bounded 64 KiB; validates entire input before applying.
+ * v2 (reads v1), little endian, bounded 64 KiB; validates entire input before applying.
  * Restore after registration/mount; unknown IDs skipped, new panels unchanged. */
 UI_API ui_status_t ui_shell_save_layout(ui_shell_t *, void *, size_t, size_t *);
 UI_API ui_status_t ui_shell_restore_layout(ui_shell_t *, const void *, size_t);
@@ -79,6 +81,11 @@ UI_API ui_status_t ui_shell_begin_splitter_drag(ui_shell_t *, ui_layout_region_t
 UI_API ui_status_t ui_shell_begin_panel_drag(ui_shell_t *, const char *);
 UI_API ui_status_t ui_shell_update_panel_drag(ui_shell_t *, int, int, ui_rect_t *, ui_layout_region_t *);
 UI_API ui_status_t ui_shell_end_panel_drag(ui_shell_t *, int);
+/* API7. Flat bottom region and same-region tabs; no remount/ownership change.
+ * Group IDs are workspace-local and persistent. Activating reopens a closed tab. */
+UI_API ui_status_t ui_shell_set_bottom_height(ui_shell_t *, int);
+UI_API ui_status_t ui_shell_dock_panel_tab(ui_shell_t *, const char *, const char *);
+UI_API ui_status_t ui_shell_activate_panel(ui_shell_t *, const char *);
 
 #ifdef __cplusplus
 }

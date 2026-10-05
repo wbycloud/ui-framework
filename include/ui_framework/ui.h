@@ -18,7 +18,7 @@
 extern "C" {
 #endif
 
-#define UI_FRAMEWORK_API_VERSION 6u
+#define UI_FRAMEWORK_API_VERSION 7u
 #define UI_FRAMEWORK_MIN_API_VERSION 1u
 
 typedef struct ui_host ui_host_t;
@@ -43,7 +43,8 @@ typedef enum ui_layout_region {
     UI_LAYOUT_REGION_LEFT_SIDEBAR = 5,
     UI_LAYOUT_REGION_RIGHT_SIDEBAR = 6,
     UI_LAYOUT_REGION_STATUS_BAR = 7,
-    UI_LAYOUT_REGION_COUNT = 8
+    UI_LAYOUT_REGION_COUNT = 8, /* Legacy ABI sentinel; 8 remains reserved. */
+    UI_LAYOUT_REGION_BOTTOM = 9
 } ui_layout_region_t;
 
 typedef enum ui_narrow_window_policy {
@@ -227,7 +228,8 @@ typedef enum ui_input_kind {
     UI_INPUT_WHEEL = 4,
     UI_INPUT_KEY_DOWN = 5,
     UI_INPUT_KEY_UP = 6,
-    UI_INPUT_TEXT = 7
+    UI_INPUT_TEXT = 7,
+    UI_INPUT_CANCEL = 8 /* Capture loss/cancel, including offscreen input. */
 } ui_input_kind_t;
 
 typedef enum ui_input_modifier {

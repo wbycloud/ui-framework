@@ -1331,8 +1331,8 @@ static ui_status_t webview2_dispatch_input(void *backend_user_data,
 {
     webview2_view_t *v=(webview2_view_t *)view_user_data;ui_json_t script={0};ui_status_t status;(void)backend_user_data;
     status=view_status(v);if(status!=UI_STATUS_OK)return status;
-    if(!event||event->size<sizeof(*event)||event->kind<UI_INPUT_POINTER_MOVE||event->kind>UI_INPUT_TEXT||(event->kind==UI_INPUT_TEXT&&!event->text_utf8))return UI_STATUS_INVALID_ARGUMENT;
-    if(!ui_components_input_allowed(v->host,v)||v->host->dispatch_blocked||!v->host->app_active)return UI_STATUS_CANCELLED;
+    if(!event||event->size<sizeof(*event)||event->kind<UI_INPUT_POINTER_MOVE||event->kind>UI_INPUT_CANCEL||(event->kind==UI_INPUT_TEXT&&!event->text_utf8))return UI_STATUS_INVALID_ARGUMENT;
+    if(event->kind!=UI_INPUT_CANCEL&&(!ui_components_input_allowed(v->host,v)||v->host->dispatch_blocked||!v->host->app_active))return UI_STATUS_CANCELLED;
     if(!v->navigation_completed)return UI_STATUS_PENDING;
     if(ui_menus_route_input(v->host,v,event,0)==UI_STATUS_OK)return UI_STATUS_OK;
     invalidate_render(v);

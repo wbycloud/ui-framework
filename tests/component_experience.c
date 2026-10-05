@@ -69,7 +69,18 @@ int main(int argc,char **argv)
     memset(&d,0,sizeof(d));d.size=sizeof(d);d.id="form";d.kind=UI_COMPONENT_FORM;d.fields=f;d.field_count=2;d.commands.submit="submit";d.web_backend=backend;CHECK(ui_component_register(h,&d,&form)==UI_STATUS_OK);CHECK((runtime_mode?ui_component_mount(form,ui_shell_get_content_slot(ui_host_get_shell(h),"form")):ui_component_mount_offscreen(form,500,650,96))==UI_STATUS_OK);
     CHECK(click(form,"choice-mode"));CHECK(click(form,"option-mode-2"));value.size=sizeof(value);CHECK(ui_component_get_field(form,"mode",&value)==UI_STATUS_OK&&!strcmp(value.text,"high"));
     CHECK(click(form,"color-color"));CHECK(click(form,"swatch-color-1"));CHECK(ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&!strcmp(value.text,"#00ff00ff")&&value.color_rgba==0x00ff00ff);
-    CHECK(click(form,"submit")&&submits==1);
+    {ui_element_presentation_t track={0};ui_input_event_t e={0};track.size=sizeof(track);CHECK(click(form,"color-color"));CHECK(presentation(form,"color-channel-color-a",&track)==UI_STATUS_OK&&track.visible);
+ e.size=sizeof(e);e.pointer_button=1;e.kind=UI_INPUT_POINTER_DOWN;e.x=track.rect.x+track.rect.width/2;e.y=track.rect.y+track.rect.height/2;
+ CHECK(dispatch(form,&e)==UI_STATUS_OK);e.kind=UI_INPUT_POINTER_MOVE;e.x=track.rect.x+track.rect.width/3;CHECK(dispatch(form,&e)==UI_STATUS_OK);e.kind=UI_INPUT_POINTER_UP;CHECK(dispatch(form,&e)==UI_STATUS_OK);
+ CHECK(ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&value.color_rgba!=0x00ff00ff&&submits==0);
+ CHECK(click(form,"color-picker-cancel-color"));CHECK(ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&value.color_rgba==0x00ff00ff&&submits==0);
+ CHECK(click(form,"color-color"));CHECK(presentation(form,"color-channel-color-r",&track)==UI_STATUS_OK&&track.visible);e.kind=UI_INPUT_POINTER_DOWN;e.x=track.rect.x+track.rect.width/2;e.y=track.rect.y+track.rect.height/2;CHECK(dispatch(form,&e)==UI_STATUS_OK);e.kind=UI_INPUT_POINTER_UP;CHECK(dispatch(form,&e)==UI_STATUS_OK);
+ CHECK(click(form,"color-picker-accept-color"));CHECK(ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&value.color_rgba!=0x00ff00ff&&submits==0);}
+ CHECK(click(form,"submit")&&submits==1);
+    {ui_cell_t six={0};ui_element_presentation_t track={0};ui_input_event_t e={0};CHECK(ui_component_accept_fields(form)==UI_STATUS_OK);six.size=sizeof(six);six.kind=UI_VALUE_COLOR;six.text="#112233";six.color_rgba=0x112233ff;CHECK(ui_component_set_field(form,"color",&six)==UI_STATUS_OK);
+     CHECK(click(form,"color-color"));track.size=sizeof(track);CHECK(presentation(form,"color-channel-color-a",&track)==UI_STATUS_OK&&track.visible);e.size=sizeof(e);e.kind=UI_INPUT_POINTER_DOWN;e.pointer_button=1;e.x=track.rect.x+track.rect.width/2;e.y=track.rect.y+track.rect.height/2;CHECK(dispatch(form,&e)==UI_STATUS_OK);
+     CHECK(ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&(value.color_rgba>>8)==0x112233&&submits==1);
+     e.kind=UI_INPUT_CANCEL;CHECK(dispatch(form,&e)==UI_STATUS_OK);CHECK(ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&!strcmp(value.text,"#112233"));CHECK(click(form,"color-picker-cancel-color")&&submits==1);}
     {ui_input_event_t e={0};e.size=sizeof(e);CHECK(click(form,"field-color"));{ui_element_presentation_t check={0};check.size=sizeof(check);CHECK(presentation(form,"field-color",&check)==UI_STATUS_OK&&check.focused);}e.kind=UI_INPUT_KEY_DOWN;e.key_code='A';e.modifiers=UI_INPUT_MODIFIER_CONTROL;CHECK(dispatch(form,&e)==UI_STATUS_OK);e.kind=UI_INPUT_TEXT;e.modifiers=0;e.text_utf8="#gggggggg";CHECK(dispatch(form,&e)==UI_STATUS_OK);CHECK(ui_component_get_field(form,"color",&value)==UI_STATUS_OK);CHECK(!strcmp(value.text,"#gggggggg"));CHECK(click(form,"submit")&&submits==1);CHECK(ui_component_get_field(form,"color",&value)==UI_STATUS_OK&&*value.error);
         CHECK(click(form,"color-color"));CHECK(click(form,"swatch-color-1"));CHECK(click(form,"choice-mode"));e.kind=UI_INPUT_KEY_DOWN;e.key_code=38;e.text_utf8=NULL;CHECK(dispatch(form,&e)==UI_STATUS_OK);e.key_code=13;CHECK(dispatch(form,&e)==UI_STATUS_OK);CHECK(ui_component_get_field(form,"mode",&value)==UI_STATUS_OK&&!strcmp(value.text,"medium"));}
     CHECK(click(table,"sort-name"));CHECK(sorts==2);
@@ -83,6 +94,9 @@ int main(int argc,char **argv)
         for(int at=0;at<30;++at)CHECK(dispatch(table,&e)==UI_STATUS_OK);CHECK(ui_component_get_state(table,&s)==UI_STATUS_OK&&s.first>0&&s.rendered_nodes<=1024);
         {char selected_cell[96];CHECK(ui_component_get_selection(table,ids,512,&n)==UI_STATUS_OK&&n==1);snprintf(selected_cell,sizeof(selected_cell),"cell-%llu-name",(unsigned long long)ids[0]);CHECK(click_mod(table,selected_cell,UI_INPUT_MODIFIER_CONTROL));CHECK(ui_component_get_selection(table,ids,512,&n)==UI_STATUS_OK&&n==0);}
     }
+
+    {ui_component_t *readonly;ui_field_desc_t field={0};ui_component_desc_t view={0};ui_element_presentation_t button={0};field.size=sizeof(field);field.id="locked";field.title="Read only RGBA";field.kind=UI_VALUE_COLOR;field.flags=UI_VALUE_READONLY|UI_VALUE_DISABLED;view.size=sizeof(view);view.id="readonly-color";view.kind=UI_COMPONENT_FORM;view.fields=&field;view.field_count=1;view.web_backend=backend;CHECK(ui_component_register(h,&view,&readonly)==UI_STATUS_OK);CHECK((runtime_mode?ui_component_mount(readonly,ui_shell_get_content_slot(ui_host_get_shell(h),NULL)):ui_component_mount_offscreen(readonly,500,650,96))==UI_STATUS_OK);
+     button.size=sizeof(button);CHECK(presentation(readonly,"color-locked",&button)==UI_STATUS_OK&&button.visible&&!button.enabled);}
     if(native)ui_native_shell_destroy(native);ui_host_destroy(h);
 #ifdef UI_EXPERIENCE_WEBVIEW2
     if(backend){ui_webview2_backend_destroy(backend);pump_for(2000);CoUninitialize();}

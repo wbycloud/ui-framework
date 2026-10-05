@@ -20,3 +20,10 @@ ui_status_t ui_shell_update_panel_drag(ui_shell_t *s,int x,int y,ui_rect_t *p,ui
 {(void)x;(void)y;(void)p;(void)r;return s?UI_STATUS_UNSUPPORTED:UI_STATUS_INVALID_ARGUMENT;}
 ui_status_t ui_shell_end_panel_drag(ui_shell_t *s,int commit)
 {(void)commit;return s?UI_STATUS_UNSUPPORTED:UI_STATUS_INVALID_ARGUMENT;}
+
+ui_status_t ui_shell_set_bottom_height(ui_shell_t *s,int n)
+{(void)n;return s?UI_STATUS_UNSUPPORTED:UI_STATUS_INVALID_ARGUMENT;}
+ui_status_t ui_shell_dock_panel_tab(ui_shell_t *s,const char *a,const char *b)
+{(void)a;(void)b;return s?UI_STATUS_UNSUPPORTED:UI_STATUS_INVALID_ARGUMENT;}
+ui_status_t ui_shell_activate_panel(ui_shell_t *s,const char *a)
+{(void)a;return s?UI_STATUS_UNSUPPORTED:UI_STATUS_INVALID_ARGUMENT;}

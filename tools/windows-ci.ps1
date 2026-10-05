@@ -107,7 +107,7 @@ $manifest = [ordered]@{
 }
 $manifest | ConvertTo-Json | Set-Content "$evidenceDirectory/manifest.json"
 $env:GALLIUM_DRIVER = 'llvmpipe'
-$runtimeTests = 'ui_webview2_|ui_api5_integration|ui_api5_native_host|ui_component_experience_webview2|ui_api6_integration_webview2'
+$runtimeTests = 'ui_webview2_|ui_api5_integration|ui_api5_native_host|ui_component_experience_webview2|ui_api6_integration_webview2|ui_component_scroll_webview2|ui_api7_integration_webview2'
 $phases = if ($Configuration -eq 'webview2') { @('wgl','runtime') } else { @('all') }
 $testExit = 0
 '' | Set-Content "$evidenceDirectory/regression.log"
@@ -130,14 +130,14 @@ foreach ($phase in $phases) {
 }
 $combined.Save("$((Resolve-Path $evidenceDirectory).Path)/ctest.xml")
 Get-Content "$evidenceDirectory/regression.log"
-Get-ChildItem $buildDirectory -Filter 'api6-*-frame.ppm' | Copy-Item -Destination $evidenceDirectory
+Get-ChildItem $buildDirectory -Filter 'api*-*-frame.ppm' | Copy-Item -Destination $evidenceDirectory
 if (Test-Path "$buildDirectory/session0-control/manifest.json") { Copy-Item "$buildDirectory/session0-control" "$evidenceDirectory/session0-interactive-control" -Recurse }
 [xml]$results = Get-Content "$evidenceDirectory/ctest.xml" -Raw
 foreach ($test in $results.testsuite.testcase) {
     if ($test.status -eq 'notrun' -and $test.name -ne 'ui_monitor_transition') { throw "Unexpected skipped test: $($test.name)" }
 }
 if ($Configuration -eq 'webview2') {
-    foreach ($required in @('ui_component_experience_webview2','ui_api6_integration_webview2','ui_api5_integration','ui_webview2_render')) {
+    foreach ($required in @('ui_component_scroll_webview2','ui_api7_integration_webview2','ui_component_experience_webview2','ui_api6_integration_webview2','ui_api5_integration','ui_webview2_render')) {
         if (!($results.testsuite.testcase | Where-Object name -eq $required)) { throw "Required real Runtime test absent: $required" }
     }
 }

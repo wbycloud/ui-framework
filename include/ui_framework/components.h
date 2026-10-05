@@ -94,7 +94,8 @@ typedef struct ui_component_batch {
     uint32_t size;
     uint64_t component_generation, request_id, parent_id, first, total_count;
     const ui_row_t *rows;
-    size_t row_count;
+    size_t row_count; /* Empty batch may report a shrunken total below first.
+                      * Nonempty first/count must stay within total_count. */
 } ui_component_batch_t;
 typedef struct ui_component_state {
     uint32_t size;

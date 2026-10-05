@@ -110,8 +110,7 @@ ui_component_batch_t *ui_component_batch_copy(const ui_component_batch_t *source
 {
     ui_component_batch_t *batch;ui_row_t *rows;size_t i,j;
     if(!source||source->size<sizeof(*source)||source->row_count>COMPONENT_MAX_BATCH||
-        (source->row_count&&!source->rows)||source->first>source->total_count||
-        source->row_count>source->total_count-source->first)return NULL;
+        (source->row_count&&(!source->rows||source->first>source->total_count||source->row_count>source->total_count-source->first)))return NULL;
     *bytes=sizeof(*batch)+source->row_count*sizeof(*rows);
     batch=(ui_component_batch_t *)calloc(1,sizeof(*batch));if(!batch)return NULL;
     *batch=*source;batch->rows=NULL;batch->row_count=0;
@@ -396,7 +395,7 @@ ui_status_t ui_component_expand(ui_component_t *c,uint64_t id,int expanded)
 {
     component_page_t *p;ui_row_t *r;ui_status_t status=UI_STATUS_OK;
     if(!c||c->desc.kind!=UI_COMPONENT_TREE)return UI_STATUS_INVALID_ARGUMENT;
-    r=cached_row(c,id);if(!r||!r->has_children)return UI_STATUS_NOT_FOUND;
+    r=cached_row(c,id);p=page(c,id,0);if((!r||!r->has_children)&&!(p&&p->expanded&&!expanded))return UI_STATUS_NOT_FOUND;
     p=page(c,id,1);if(!p)return UI_STATUS_OUT_OF_MEMORY;p->expanded=expanded!=0;
     {component_page_t *at;size_t i;for(at=c->pages;at;at=at->next)if(at->batch)for(i=0;i<at->batch->row_count;++i)if(at->batch->rows[i].id==id){p->ancestor=at->parent;p->parent_index=at->batch->first+i;}}
     if(expanded)status=ui_component_query(c,id,0,c->visible_count,0,c->desc.column_count);
@@ -525,13 +524,13 @@ static void json_row(ui_component_t *c,ui_json_t *json,const ui_row_t *r,int dep
 static uint64_t tree_extra(ui_component_t *c,component_page_t *p,int depth)
 {
     component_page_t *child;uint64_t total=p&&p->expanded?p->total:0;if(!total||depth>32)return total;
-    for(child=c->pages;child;child=child->next)if(child!=p&&child->ancestor==p->parent&&child->expanded){uint64_t extra=tree_extra(c,child,depth+1);if(UINT64_MAX-total<extra)return UINT64_MAX;total+=extra;}
+    for(child=c->pages;child;child=child->next)if(child!=p&&child->ancestor==p->parent&&child->parent_index<p->total&&child->expanded){uint64_t extra=tree_extra(c,child,depth+1);if(UINT64_MAX-total<extra)return UINT64_MAX;total+=extra;}
     return total;
 }
 static uint64_t tree_total(ui_component_t *c)
 {
     component_page_t *root=page(c,0,0),*child;uint64_t total=root?root->total:0;
-    for(child=c->pages;child;child=child->next)if(child->parent&&child->ancestor==0&&child->expanded){uint64_t extra=tree_extra(c,child,0);if(UINT64_MAX-total<extra)return UINT64_MAX;total+=extra;}return total;
+    for(child=c->pages;child;child=child->next)if(child->parent&&child->ancestor==0&&child->parent_index<(root?root->total:0)&&child->expanded){uint64_t extra=tree_extra(c,child,0);if(UINT64_MAX-total<extra)return UINT64_MAX;total+=extra;}return total;
 }
 static component_page_t *expanded_at(ui_component_t *c,uint64_t parent,uint64_t index)
 {component_page_t *p;for(p=c->pages;p;p=p->next)if(p->parent&&p->ancestor==parent&&p->parent_index==index&&p->expanded)return p;return NULL;}
@@ -567,6 +566,8 @@ static void render_component(ui_component_t *c)
     if(!c->view)return;if(c->rendering){c->again=1;return;}c->rendering=1;ui_dispatch_enter(c->host);
     for(preview=c->previews;preview;preview=preview->next)preview->used=0;
     root=page(c,0,0);
+    if(root&&c->first){uint64_t total=c->desc.kind==UI_COMPONENT_TREE?tree_total(c):root->total;
+        if(c->first>=total){(void)query_viewport(c,total?total-1:0,c->first_column,0);root=page(c,0,0);}}
     uj_fmt(&json,"{\"kind\":%d,\"rowHeight\":%d,\"width\":%d,\"height\":%d,\"first\":\"%llu\",\"total\":\"%llu\",\"selected\":\"%llu\",\"title\":",
         c->desc.kind,c->desc.row_height,c->width,c->height,(unsigned long long)c->first,(unsigned long long)(c->desc.kind==UI_COMPONENT_TREE?tree_total(c):(root?root->total:0)),(unsigned long long)c->selected);
     uj_string(&json,c->desc.title);uj_add(&json,",\"selection\":[");for(i=0;i<c->selection_count;++i){if(i)uj_add(&json,",");uj_fmt(&json,"\"%llu\"",(unsigned long long)c->selection[i]);}
@@ -574,6 +575,7 @@ static void render_component(ui_component_t *c)
     for(i=c->render_column;i<c->desc.column_count&&i<c->render_column+c->column_count;++i){if(i>c->render_column)uj_add(&json,",");
         uj_add(&json,"{\"id\":");uj_string(&json,c->columns[i].id);uj_add(&json,",\"title\":");uj_string(&json,c->columns[i].title);
         uj_fmt(&json,",\"width\":%d,\"kind\":%d,\"buffer\":%s}",c->columns[i].width,c->columns[i].kind,c->buffered&&i<c->first_column?"true":"false");}
+    uj_add(&json,"],\"columnWidths\":[");for(i=0;i<c->desc.column_count;++i){if(i)uj_add(&json,",");uj_fmt(&json,"%d",c->columns[i].width);}
     uj_fmt(&json,"],\"firstColumn\":%zu,\"visibleCount\":%zu,\"bufferStart\":%zu,\"buffered\":%s,\"rows\":[",c->first_column,c->visible_count,c->buffered?(size_t)(c->first<2?c->first:2):0,c->buffered?"true":"false");render_rows(c,&json,root,0,&position);uj_add(&json,"],\"fields\":[");
     for(i=0;i<c->desc.field_count;++i){const ui_field_desc_t *f=&c->fields[i];if(i)uj_add(&json,",");
         uj_add(&json,"{\"id\":");uj_string(&json,f->id);uj_add(&json,",\"title\":");uj_string(&json,f->title);
@@ -582,7 +584,7 @@ static void render_component(ui_component_t *c)
         if(f->kind==UI_VALUE_STYLE){ui_status_t status=cell_preview(c,&c->drafts[i]);if(status!=UI_STATUS_OK)c->resource_status=status;}
         json_cell(&json,&c->drafts[i]);uj_add(&json,",\"options\":[");
         for(j=0;j<f->option_count;++j){if(j)uj_add(&json,",");uj_string(&json,f->options[j]);}uj_add(&json,"]}");}
-    uj_fmt(&json,"],\"modal\":%s,\"visible\":%s}",c->modal?"true":"false",c->visible?"true":"false");
+    uj_fmt(&json,"],\"modal\":%s,\"visible\":%s,\"inputAllowed\":%s}",c->modal?"true":"false",c->visible?"true":"false",c->host->app_active&&!c->host->dispatch_blocked&&(!c->host->modal_component||c->host->modal_component==c)?"true":"false");
     c->presentation_status=json.failed?UI_STATUS_LIMIT_EXCEEDED:ui_web_view_post_json(c->view,json.data);
     free(json.data);release_previews(c,0);
     c->rendering=0;ui_dispatch_leave(c->host);if(c->again){c->again=0;render_component(c);}
@@ -614,6 +616,7 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
             wanted=(size_t)((rows.height+c->desc.row_height-1)/c->desc.row_height)+2+(size_t)(c->first<2?c->first:2);budget=900/(c->column_count*2+6);
             if(wanted<4)wanted=4;if(wanted>128)wanted=128;if(wanted>budget)wanted=budget;
             if(wanted!=c->visible_count)(void)query_viewport(c,c->first,c->first_column,rows.height);}return;}
+    if((!strcmp(action,"scroll")||!strcmp(action,"columns"))&&uj_get(json,"generation",field,sizeof(field))&&uj_u64(json,"generation")!=c->generation)return;
     if(!strcmp(action,"scroll")){uint64_t first=uj_u64(json,"first");component_page_t *p=page(c,0,0);
         if(c->desc.kind==UI_COMPONENT_TREE){uint64_t total=tree_total(c);first=first<total?first:total?total-1:0;(void)query_viewport(c,first,c->first_column,0);render_component(c);return;}
         if(p&&first>=p->total)first=p->total?p->total-1:0;
@@ -725,7 +728,7 @@ ui_status_t ui_component_show_dialog(ui_component_t *c)
     if(c->host->app_active)SetFocus((HWND)ui_web_view_native_handle(c->view));
     }
 #endif
-    c->modal=1;c->visible=1;c->host->modal_component=c;render_component(c);return UI_STATUS_OK;
+    c->modal=1;c->visible=1;c->host->modal_component=c;{ui_component_t *other;for(other=c->host->components;other;other=other->next){if(other!=c&&other->view){ui_input_event_t cancel={0};cancel.size=sizeof(cancel);cancel.kind=UI_INPUT_CANCEL;(void)ui_web_view_dispatch_input(other->view,&cancel);}render_component(other);}}return UI_STATUS_OK;
 #endif
 }
 ui_status_t ui_component_get_field(const ui_component_t *c,const char *id,ui_cell_t *value)
@@ -751,6 +754,7 @@ void ui_components_active(ui_host_t *host,int active)
 {
     ui_component_t *c;host->app_active=active!=0;if(!active){host->menu_pressed_key=0;(void)ui_host_close_menu(host);}
     for(c=host->components;c;c=c->next){
+        render_component(c);
 #ifdef _WIN32
         if(c->dialog_window)ShowWindow((HWND)c->dialog_window,active&&c->modal?SW_SHOWNOACTIVATE:SW_HIDE);
         if(active&&c->view&&c->visible&&(host->focused_component==c||host->modal_component==c))SetFocus((HWND)ui_web_view_native_handle(c->view));
@@ -806,7 +810,7 @@ int ui_components_input_allowed(const ui_host_t *host,const void *view_data)
 ui_status_t ui_component_dispatch_input(ui_component_t *c,const ui_input_event_t *event)
 {
     if(!c||!event)return UI_STATUS_INVALID_ARGUMENT;if(!c->view)return UI_STATUS_NOT_FOUND;
-    if(!ui_components_input_allowed(c->host,c->view->user_data))return UI_STATUS_CANCELLED;
+    if(event&&event->kind!=UI_INPUT_CANCEL&&!ui_components_input_allowed(c->host,c->view->user_data))return UI_STATUS_CANCELLED;
     return ui_web_view_dispatch_input(c->view,event);
 }
 ui_status_t ui_component_get_presentation(ui_component_t *c,const char *id,ui_element_presentation_t *out)

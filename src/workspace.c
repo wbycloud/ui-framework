@@ -388,7 +388,7 @@ static ui_status_t create_instance(ui_workspace_t *w, app_module_t *m,
         w->parent, NULL, GetModuleHandleW(L"ui_framework.dll"), p);
     if (w->config.run_mode==UI_RUN_WINDOWED&&p->container == NULL) { free(p); return windows_error(w, "Cannot create application container"); }
     ZeroMemory(&host, sizeof(host)); host.size = sizeof(host);
-    host.api_version = UI_FRAMEWORK_API_VERSION; host.native_parent = p->container;
+    host.api_version = m->api.framework_api_version; host.native_parent = p->container;
     host.user_data = p; host.result_callback = result_received; host.event_callback = event_received;
     p->context.host = ui_host_create(&host);
     if (!p->context.host) { DestroyWindow(p->container); free(p); return error_text(w, UI_STATUS_PLATFORM_ERROR, "Cannot create application host"); }

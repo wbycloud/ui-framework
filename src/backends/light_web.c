@@ -18,7 +18,7 @@
 #include <usp10.h>
 
 #define LW_MAX_NODES 1024
-#define LW_EVENTS 10
+#define LW_EVENTS 15
 #define LW_MAX_RULES 256
 #define LW_TEXT_CAP 4096
 #define LW_ATTR_CAP 2048
@@ -68,6 +68,8 @@ typedef struct lw_node {
     ui_rect_t clip;
     int visible;
     int scroll_y, content_height, scroll_x, content_width;
+    ui_rect_t viewport;
+    int bar_x,bar_y;
     int caret, anchor, text_scroll_x, text_scroll_y;
     wchar_t composition[1024];
     struct lw_history *undo, *redo;
@@ -108,6 +110,10 @@ typedef struct lw_view {
     int hovered, dispatch_depth, dirty;
     int default_prevented;
     int layout_depth;
+    int pointer_x,pointer_y;
+    unsigned captured;
+    unsigned scroll_uid;
+    int scroll_axis,scroll_origin,scroll_start,scroll_position,scroll_travel,scroll_max,scroll_focus;
     unsigned next_uid;
     lw_rule_t *rules;
     int rule_count, rule_capacity;
@@ -119,10 +125,18 @@ typedef struct lw_view {
 } lw_view_t;
 
 static lw_backend_t *g_backends;
+static void lw_report_exception(lw_view_t *view)
+{
+    JSValue exception=JS_GetException(view->context);const char *message=JS_ToCString(view->context,exception);
+    if(GetEnvironmentVariableW(L"UI_LIGHT_SCRIPT_DIAGNOSTICS",NULL,0))fprintf(stderr,"Light script: %s\n",message?message:"unknown");
+    if(message)JS_FreeCString(view->context,message);JS_FreeValue(view->context,exception);
+}
 static ui_status_t lw_dispatch_input(void *user, void *data,
                                       const ui_input_event_t *event);
 static void lw_layout(lw_view_t *view);
+static void lw_scroll_cancel(lw_view_t *,int);
 static int lw_hit(const lw_view_t *view, int x, int y);
+static int lw_disabled(const lw_view_t *,int);
 static void lw_text_paint(lw_view_t *, lw_node_t *, HDC, RECT);
 static void lw_text_free(lw_node_t *);
 static void lw_caret(lw_view_t *);
@@ -763,10 +777,18 @@ static void lw_layout_node(lw_view_t *view, int index, ui_rect_t rect, ui_rect_t
     }
     gap = node->style.gap;
     if (count > 1) fixed += gap * (count - 1);
+    node->content_height=node->style.row?node->natural_height-node->style.padding[0]-node->style.padding[2]-2*node->style.border:fixed;
+    node->content_width=node->style.row?fixed:node->natural_width-node->style.padding[1]-node->style.padding[3]-2*node->style.border;
+    node->bar_x=node->bar_y=0;
+    for(int pass=0;pass<2;++pass){
+        if(!node->bar_y&&node->style.scroll&&node->content_height>inner.height){node->bar_y=1;inner.width=inner.width>12?inner.width-12:0;}
+        if(!node->bar_x&&node->style.scroll_x&&node->content_width>inner.width){node->bar_x=1;inner.height=inner.height>12?inner.height-12:0;}
+    }
+    node->viewport=inner;axis=node->style.row?inner.width:inner.height;
     remaining = axis > fixed ? axis - fixed : 0;
     if (!weights && node->style.justify == 3 && count > 1) gap += remaining / (count - 1);
-    node->content_height = node->style.row ? inner.height : fixed;
-    node->content_width = node->style.row ? fixed : inner.width;
+    if(node->content_height<inner.height)node->content_height=inner.height;
+    if(node->content_width<inner.width)node->content_width=inner.width;
     if (weights && node->content_height < inner.height) node->content_height = inner.height;
     if (node->scroll_y > node->content_height - inner.height)
         node->scroll_y = node->content_height - inner.height;
@@ -798,13 +820,13 @@ static void lw_layout_node(lw_view_t *view, int index, ui_rect_t rect, ui_rect_t
         if (node->style.row && (c->style.height >= 0 || node->style.align == 1 || node->style.align == 2)) cross = lw_size(c,inner.height,0);
         if (!node->style.row && (c->style.width >= 0 || node->style.align == 1 || node->style.align == 2)) cross = lw_size(c,inner.width,1);
         cursor += node->style.row ? c->style.margin[3] : c->style.margin[0];
-        child_rect.x = node->style.row ? cursor : inner.x + c->style.margin[3];
-        child_rect.y = node->style.row ? inner.y + c->style.margin[0] : cursor;
+        child_rect.x = node->style.row ? cursor : inner.x + c->style.margin[3] - node->scroll_x;
+        child_rect.y = node->style.row ? inner.y + c->style.margin[0] - node->scroll_y : cursor;
         if (node->style.align == 1) { if (node->style.row) child_rect.y += (inner.height - cross) / 2; else child_rect.x += (inner.width - cross) / 2; }
         if (node->style.align == 2) { if (node->style.row) child_rect.y += inner.height - cross; else child_rect.x += inner.width - cross; }
         child_rect.width = node->style.row ? size : cross;
         child_rect.height = node->style.row ? cross : size;
-        lw_layout_node(view, child, child_rect, node->clip);
+        lw_layout_node(view, child, child_rect, node->bar_x||node->bar_y?lw_intersect(node->clip,inner):node->clip);
         cursor += size + gap + (node->style.row ? c->style.margin[1] : c->style.margin[2]);
     }
 }
@@ -930,7 +952,7 @@ static void lw_release_node(lw_view_t *view, int index)
 
 static int lw_event_kind(const char *name)
 {
-    static const char *names[] = {"click","input","keydown","focus","blur","mouseenter","mouseleave","mousedown","wheel","contextmenu"};
+    static const char *names[] = {"click","input","keydown","focus","blur","mouseenter","mouseleave","mousedown","wheel","contextmenu","pointerdown","pointermove","pointerup","pointercancel","lostpointercapture"};
     int i;
     for (i = 0; i < LW_EVENTS; ++i) if (!strcmp(name,names[i])) return i;
     return -1;
@@ -1148,6 +1170,13 @@ static JSValue lw_dom_method(JSContext *ctx, JSValueConst object, int argc,
                 if(p->scroll_x<0)p->scroll_x=0;}}
         view->dirty=1;return JS_UNDEFINED;
     }
+    if(method==9){JSValue r=JS_NewObject(ctx);if(view->dirty)lw_layout(view);
+        JS_SetPropertyStr(ctx,r,"x",JS_NewInt32(ctx,node->rect.x));JS_SetPropertyStr(ctx,r,"left",JS_NewInt32(ctx,node->rect.x));
+        JS_SetPropertyStr(ctx,r,"y",JS_NewInt32(ctx,node->rect.y));JS_SetPropertyStr(ctx,r,"top",JS_NewInt32(ctx,node->rect.y));
+        JS_SetPropertyStr(ctx,r,"width",JS_NewInt32(ctx,node->rect.width));JS_SetPropertyStr(ctx,r,"height",JS_NewInt32(ctx,node->rect.height));return r;}
+    if(method==10){view->captured=node->uid;if(view->hwnd)SetCapture(view->hwnd);return JS_UNDEFINED;}
+    if(method==11){if(view->captured==node->uid){view->captured=0;if(view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();}return JS_UNDEFINED;}
+    if(method==12)return JS_NewBool(ctx,view->captured==node->uid);
     if (method == 7) {
         if(view->focused!=index)lw_cancel_composition(view);
         view->focused = index; if (view->hwnd&&IsWindowVisible(view->hwnd)&&IsWindowEnabled(view->hwnd)) SetFocus(view->hwnd); lw_caret(view); view->dirty = 1; return lw_event(view,index,3,0) == UI_STATUS_OK ? JS_UNDEFINED : JS_EXCEPTION;
@@ -1172,7 +1201,7 @@ static JSValue lw_element(lw_view_t *view, int index)
     JSValue object, style, global, element_proto, style_proto;
     int i;
     static const char *properties[] = {"id","textContent","className","value","disabled","firstChild","parentNode","children"};
-    static const char *methods[] = {"appendChild","removeChild","remove","addEventListener","setAttribute","getAttribute","removeAttribute","focus","scrollIntoView"};
+    static const char *methods[] = {"appendChild","removeChild","remove","addEventListener","setAttribute","getAttribute","removeAttribute","focus","scrollIntoView","getBoundingClientRect","setPointerCapture","releasePointerCapture","hasPointerCapture"};
     if (!JS_IsUndefined(node->object)) return JS_DupValue(ctx,node->object);
     global = JS_GetGlobalObject(ctx);
     element_proto = JS_GetPropertyStr(ctx,global,"__lwElementPrototype");
@@ -1210,10 +1239,11 @@ static JSValue lw_document_listener(JSContext *ctx, JSValueConst object,
     uint32_t n = 0;
     if (argc < 2 || !JS_IsFunction(ctx,argv[1])) return JS_ThrowTypeError(ctx,"listener function required");
     name = JS_ToCString(ctx,argv[0]); if (!name) return JS_EXCEPTION;
-    if (strcmp(name,"keydown")) { JS_FreeCString(ctx,name); return JS_ThrowTypeError(ctx,"unsupported document event"); }
+    {int kind=lw_event_kind(name);if(kind<0){JS_FreeCString(ctx,name);return JS_ThrowTypeError(ctx,"unsupported document event");}}
+    {char property[64];snprintf(property,sizeof(property),"__%s",name);
+    listeners = JS_GetPropertyStr(ctx,object,property);
+    if (JS_IsUndefined(listeners)) { JS_FreeValue(ctx,listeners); listeners = JS_NewArray(ctx); JS_SetPropertyStr(ctx,object,property,JS_DupValue(ctx,listeners)); }}
     JS_FreeCString(ctx,name);
-    listeners = JS_GetPropertyStr(ctx,object,"__keydown");
-    if (JS_IsUndefined(listeners)) { JS_FreeValue(ctx,listeners); listeners = JS_NewArray(ctx); JS_SetPropertyStr(ctx,object,"__keydown",JS_DupValue(ctx,listeners)); }
     length = JS_GetPropertyStr(ctx,listeners,"length"); (void)JS_ToUint32(ctx,&n,length); JS_FreeValue(ctx,length);
     if (n >= 32) { JS_FreeValue(ctx,listeners); return JS_ThrowRangeError(ctx,"too many listeners"); }
     JS_SetPropertyUint32(ctx,listeners,n,JS_DupValue(ctx,argv[1])); JS_FreeValue(ctx,listeners); return JS_UNDEFINED;
@@ -1376,6 +1406,8 @@ static ui_status_t lw_event(lw_view_t *view, int index, int kind, uint32_t key)
     JS_SetPropertyStr(ctx,event,"shiftKey",JS_NewBool(ctx,(view->event_modifiers & UI_INPUT_MODIFIER_SHIFT) != 0));
     JS_SetPropertyStr(ctx,event,"altKey",JS_NewBool(ctx,(view->event_modifiers & UI_INPUT_MODIFIER_ALT) != 0));
     JS_SetPropertyStr(ctx,event,"deltaY",JS_NewInt32(ctx,-view->wheel_delta));
+    JS_SetPropertyStr(ctx,event,"clientX",JS_NewInt32(ctx,view->pointer_x));JS_SetPropertyStr(ctx,event,"clientY",JS_NewInt32(ctx,view->pointer_y));
+    JS_SetPropertyStr(ctx,event,"pointerId",JS_NewInt32(ctx,1));JS_SetPropertyStr(ctx,event,"button",JS_NewInt32(ctx,0));
     JS_SetPropertyStr(ctx,event,"preventDefault",JS_NewCFunction(ctx,lw_js_prevent,"preventDefault",0));
     ++view->dispatch_depth;
     view->script_deadline = GetTickCount64() + LW_SCRIPT_MILLISECONDS;
@@ -1397,7 +1429,7 @@ static ui_status_t lw_event(lw_view_t *view, int index, int kind, uint32_t key)
             for (i = 0; i < n; ++i) {
                 JSValue callback = JS_GetPropertyUint32(ctx,listeners,i);
                 result = JS_Call(ctx,callback,object,1,&event);
-                if (JS_IsException(result)) { JSValue exception = JS_GetException(ctx); JS_FreeValue(ctx,exception); status = UI_STATUS_VALIDATION_FAILED; }
+                if (JS_IsException(result)) { lw_report_exception(view);status = UI_STATUS_VALIDATION_FAILED; }
                 JS_FreeValue(ctx,result); JS_FreeValue(ctx,callback);
                 if (status != UI_STATUS_OK) break;
             }
@@ -1405,9 +1437,10 @@ static ui_status_t lw_event(lw_view_t *view, int index, int kind, uint32_t key)
         JS_FreeValue(ctx,listeners); JS_FreeValue(ctx,object);
         if (kind == 3 || kind == 4 || kind == 5 || kind == 6) break;
     }
-    if (kind == 2) {
+    if (kind == 2 || kind>=10) {
         JSValue global = JS_GetGlobalObject(ctx), document = JS_GetPropertyStr(ctx,global,"document");
-        JSValue listeners = JS_GetPropertyStr(ctx,document,"__keydown");
+        static const char *names[]={"__pointerdown","__pointermove","__pointerup","__pointercancel","__lostpointercapture"};
+        JSValue listeners = JS_GetPropertyStr(ctx,document,kind==2?"__keydown":names[kind-10]);
         if (!JS_IsUndefined(listeners)) {
             JSValue length = JS_GetPropertyStr(ctx,listeners,"length"); uint32_t n = 0, i;
             (void)JS_ToUint32(ctx,&n,length); JS_FreeValue(ctx,length);
@@ -1497,6 +1530,7 @@ static int lw_next_node(const lw_view_t *view, int index)
 }
 
 #include "light_text.inc"
+#include "light_scroll.inc"
 
 static void lw_paint(lw_view_t *view, HDC dc, RECT client)
 {
@@ -1546,6 +1580,7 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
         if (view->focused == i && node->kind == 2) {
             RECT focus = rect; InflateRect(&focus,-3,-3); DrawFocusRect(dc,&focus);
         }
+        lw_scroll_paint(view,node,dc);
         RestoreDC(dc,saved);
     }
 }
@@ -1558,6 +1593,9 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         SetWindowLongPtrW(hwnd, GWLP_USERDATA, (LONG_PTR)view); view->hwnd = hwnd; return TRUE;
     }
     if (view == NULL) return DefWindowProcW(hwnd, message, wp, lp);
+    if(message==WM_CAPTURECHANGED||message==WM_CANCELMODE||(message==WM_SHOWWINDOW&&!wp))lw_scroll_cancel(view,1);
+    if((message==WM_CAPTURECHANGED||message==WM_CANCELMODE||message==WM_SHOWWINDOW&&!wp)&&view->captured){
+        int index=lw_uid_index(view,view->captured);view->captured=0;(void)lw_event(view,index,14,0);if(view->dirty)lw_layout(view);}
     if ((message==WM_LBUTTONDOWN||message==WM_LBUTTONUP||message==WM_MOUSEWHEEL||
          message==WM_MOUSEMOVE||message==WM_RBUTTONUP||message==WM_KEYDOWN||
          message==WM_SYSKEYDOWN||message==WM_CHAR||message==WM_IME_STARTCOMPOSITION||
@@ -1630,7 +1668,7 @@ static ui_status_t lw_create_view(void *user, ui_host_t *host, void **out)
     view = (lw_view_t *)calloc(1, sizeof(*view));
     if (!view) return UI_STATUS_OUT_OF_MEMORY;
     view->backend = backend; view->host = host; view->dpi = 96;
-    view->root = view->focused = view->pressed = -1;
+    view->root = view->focused = view->pressed = -1;view->scroll_focus=-1;
     view->font = CreateFontW(-14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
         DEFAULT_PITCH, L"Segoe UI");
@@ -1652,7 +1690,7 @@ static void lw_destroy_view(void *user, void *data)
     lw_view_t *view = (lw_view_t *)data;
     (void)user;
     if (!view) return;
-    lw_free_document(view);
+    lw_scroll_cancel(view,0);lw_free_document(view);
     if (view->hwnd) DestroyWindow(view->hwnd);
     DeleteObject(view->font); free(view);
 }
@@ -1671,6 +1709,7 @@ static ui_status_t lw_load_html(void *user, void *data, const char *html)
     length = strlen(html);
     if (length > LW_HTML_LIMIT) return UI_STATUS_VALIDATION_FAILED;
     valid = lw_wide(html); if (!valid) return UI_STATUS_VALIDATION_FAILED; free(valid);
+    lw_scroll_cancel(view,0);view->captured=0;view->scroll_focus=-1;if(view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();
     lw_free_document(view);
     parser = lxb_html_parser_create();
     if (!parser) return UI_STATUS_OUT_OF_MEMORY;
@@ -1734,6 +1773,7 @@ static ui_status_t lw_set_rect(void *user, void *data, const ui_rect_t *rect,
         pixel_width, pixel_height, SWP_NOZORDER | SWP_NOACTIVATE)) {
         DeleteObject(font); return UI_STATUS_PLATFORM_ERROR;
     }
+    if(view->width!=rect->width||view->height!=rect->height||view->dpi!=dpi)lw_scroll_cancel(view,1);
     view->x = rect->x; view->y = rect->y;
     view->width = rect->width; view->height = rect->height; view->dpi = dpi;
     old_font = view->font; view->font = font;
@@ -1768,11 +1808,18 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
     int hit;
     (void)user;
     if (!view || !event || event->size < sizeof(*event)) return UI_STATUS_INVALID_ARGUMENT;
-    if (!ui_components_input_allowed(view->host,view)) return UI_STATUS_CANCELLED;
+    if (event->kind==UI_INPUT_CANCEL||!ui_components_input_allowed(view->host,view)) {
+        lw_scroll_cancel(view,1);
+        if(view->captured){int index=lw_uid_index(view,view->captured);view->captured=0;(void)lw_event(view,index,14,0);if(view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();}
+        return event->kind==UI_INPUT_CANCEL?UI_STATUS_OK:UI_STATUS_CANCELLED;
+    }
     if (!view->context) return UI_STATUS_NOT_FOUND;
     if(ui_menus_route_input(view->host,view,event,view->composing)==UI_STATUS_OK)return UI_STATUS_OK;
+    if(lw_scroll_input(view,event))return UI_STATUS_OK;
     view->event_modifiers = event->modifiers; view->wheel_delta = event->wheel_delta;
+    view->pointer_x=event->x;view->pointer_y=event->y;
     hit = lw_hit(view, event->x, event->y);
+    if(view->captured&&(event->kind==UI_INPUT_POINTER_MOVE||event->kind==UI_INPUT_POINTER_UP))hit=lw_uid_index(view,view->captured);
     if (event->kind == UI_INPUT_POINTER_DOWN || event->kind == UI_INPUT_POINTER_UP) {
         if (event->pointer_button == 2) {
             if(event->kind==UI_INPUT_POINTER_UP&&hit>=0&&!lw_disabled(view,hit)) {
@@ -1791,10 +1838,12 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
             lw_text_pointer(view,hit,event->x,event->y,0);
             if (previous != view->focused) { (void)lw_event(view,previous,4,0); (void)lw_event(view,view->focused,3,0); }
             if (hit >= 0 && !lw_disabled(view,hit)) (void)lw_event(view,hit,7,0);
+            if (hit >= 0 && !lw_disabled(view,hit)) (void)lw_event(view,hit,10,0);
             lw_layout(view);
             return UI_STATUS_OK;
         }
-        view->dragging = 0; if (view->hwnd && GetCapture() == view->hwnd) ReleaseCapture();
+        if(hit>=0&&!lw_disabled(view,hit))(void)lw_event(view,hit,12,0);
+        view->captured=0;view->dragging = 0; if (view->hwnd && GetCapture() == view->hwnd) ReleaseCapture();
         if (hit >= 0 && hit == view->pressed && !lw_disabled(view,hit)) {
             ui_status_t status;
             view->pressed = -1; status = lw_event(view,hit,0,0); lw_layout(view); return status;
@@ -1802,12 +1851,13 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
         view->pressed = -1; return UI_STATUS_OK;
     }
     if (event->kind == UI_INPUT_POINTER_MOVE) {
+        (void)lw_event(view,hit,11,0);
         if (view->dragging) lw_text_pointer(view,view->focused,event->x,event->y,1);
         if (hit != view->hovered) {
             (void)lw_event(view,view->hovered,6,0); view->hovered = hit;
             (void)lw_event(view,hit,5,0); lw_layout(view);
         }
-        return UI_STATUS_OK;
+        if(view->dirty)lw_layout(view);return UI_STATUS_OK;
     }
     if (event->kind == UI_INPUT_WHEEL) {
         (void)lw_event(view,hit,8,0);
@@ -1903,7 +1953,7 @@ static ui_status_t lw_post_json(void *user, void *data, const char *json)
     view->script_deadline = GetTickCount64() + LW_SCRIPT_MILLISECONDS;
     parsed = JS_ParseJSON(ctx,json,strlen(json),"host-message");
     if (JS_IsException(parsed)) {
-        JSValue exception = JS_GetException(ctx); JS_FreeValue(ctx,exception);
+        lw_report_exception(view);
         JS_FreeValue(ctx,parsed); --view->dispatch_depth; return UI_STATUS_VALIDATION_FAILED;
     }
     global = JS_GetGlobalObject(ctx); ui = JS_GetPropertyStr(ctx,global,"ui");
