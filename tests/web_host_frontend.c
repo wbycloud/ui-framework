@@ -80,6 +80,7 @@ int wmain(int argc,wchar_t **argv)
     check(ui_framework_initialize()==UI_STATUS_OK,"initialize per-monitor DPI");memset(&host,0,sizeof(host));
     root=create_host(&host,GetModuleHandleW(NULL));check(root!=NULL,"create standalone Web host");if(!root)return 1;
     ShowWindow(root,SW_HIDE);pump();check(ui_workspace_count(host.workspace)==0,"empty start");
+    check(!assistant_visible(&host),"assistant starts collapsed");
     check(GetMenu(root)==NULL,"Web host never installs a Win32 menu");
     check(host.web_hwnd&&IsWindow(host.web_hwnd),"real lightweight Web rendering window");
     check(ui_web_view_get_element_rect(host.view,"workspace",&workspace)==UI_STATUS_OK&&workspace.width>400&&workspace.height>300,"HTML computes initial viewport");
@@ -98,6 +99,7 @@ int wmain(int argc,wchar_t **argv)
     check(get_instance(&host,first,&info)&&ui_native_shell_panel_handle(info.shell,"eda.properties")==panel_a&&
         (HWND)ui_surface_native_handle(info.host->surfaces)==surface_a,"switch preserves HWND and GL surface");
     (void)snprintf(tab,sizeof(tab),"tab-%llu",(unsigned long long)second);click(host.view,tab);pump();
+    check(click(host.view,"assistant-toggle"),"explicitly expand assistant");pump();check(assistant_visible(&host),"assistant expanded by user");
     send_selection(&host,"select-target",first,NULL);send_selection(&host,"select-command",first,"eda.add_block");
     click(host.view,"invoke");pump();check(snapshot_value(&host,first,"blocks")==1&&snapshot_value(&host,second,"blocks")==0,"assistant targets background instance");
     check(host.target==first&&strstr(host.log?host.log:"","eda.add_block"),"fixed target and routed semantic result");
@@ -128,7 +130,7 @@ int wmain(int argc,wchar_t **argv)
     if(argc>2){
         open_path(&host,argv[2]);pump();cpp=ui_workspace_active(host.workspace);
         check(cpp&&cpp!=first&&cpp!=second,"C++ application loads");send_selection(&host,"select-target",cpp,NULL);
-        send_selection(&host,"select-command",cpp,"fixture.cpp.count");click(host.view,"begin");pump();
+        send_selection(&host,"select-command",cpp,"fixture.cpp.count");check(click(host.view,"advanced-toggle"),"expand original transaction controls");pump();click(host.view,"begin");pump();
         check(host.transaction_id&&host.transaction_instance==cpp,"begin transaction through Web control");
         click(host.view,"invoke");pump();check(snapshot_value(&host,cpp,"count")==1,"C++ command works without OpenGL");
         click(host.view,"commit");pump();check(host.undo_id&&host.undo_instance==cpp&&!host.transaction_id,"commit records original instance");

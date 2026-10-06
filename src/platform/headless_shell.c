@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+void ui_shell_sync_visual(ui_host_t *host) { (void)host; }
+
 struct ui_shell { ui_native_shell_t *native; };
 struct ui_content_slot {
     ui_shell_t *shell;

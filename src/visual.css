@@ -1,0 +1,46 @@
+/* Shared controlled-CSS palette. Included into framework templates at build time. */
+body,div,span,button,input,textarea,img,header,section,main,aside { box-sizing:border-box; }
+body { margin:0; font-family:"Microsoft YaHei UI"; font-size:13px; color:#242424; background:#f7f7f8; }
+button { font-family:"Microsoft YaHei UI"; font-size:13px; height:28px; padding:4px 8px; border:1px solid #d4d4d4; border-radius:4px; background:#ffffff; color:#242424; white-space:nowrap; }
+button:hover { background:#eeeeef; }
+button:active { background:#dedee0; }
+button:focus { border-color:#0078d4; }
+button:disabled { color:#919191; background:#f1f1f2; border-color:#dddddf; }
+input,textarea { height:28px; padding:4px 8px; border:1px solid #c8c8cb; border-radius:3px; background:#ffffff; color:#242424; font-family:"Microsoft YaHei UI"; font-size:13px; }
+input:focus,textarea:focus { border-color:#0078d4; }
+input:disabled,textarea:disabled,.readonly { background:#f0f0f2; color:#707074; }
+.invalid { border-color:#c42b1c; }
+.primary { background:#0067b8; color:#ffffff; border-color:#0067b8; }
+.primary:hover { background:#005a9e; }
+.primary:active { background:#004a83; }
+.muted,.label,.unit { color:#646468; font-size:12px; }
+.error { color:#b42318; font-size:12px; }
+.glyph { font-family:"Segoe MDL2 Assets"; font-size:12px; }
+.dark { background:#202020; color:#ededed; }
+.dark button { background:#2b2b2b; color:#ededed; border-color:#484848; }
+.dark button:hover { background:#383838; }
+.dark button:active { background:#454545; }
+.dark button:focus,.dark input:focus,.dark textarea:focus { border-color:#60b7ff; }
+.dark input,.dark textarea { background:#252525; color:#ededed; border-color:#555555; }
+.dark button:disabled,.dark input:disabled,.dark textarea:disabled,.dark .readonly { background:#292929; color:#999999; border-color:#3c3c3c; }
+.dark .invalid { border-color:#ff9a8f; }
+.dark .primary { background:#0067b8; color:#ffffff; border-color:#3189c5; }
+.dark .primary:hover { background:#0078d4; }
+.dark .primary:active { background:#005a9e; }
+.dark .muted,.dark .label,.dark .unit { color:#b3b3b7; }
+.dark .error { color:#ff9a8f; }
+
+.panel-title { height:28px; padding:4px 8px; display:flex; flex-direction:row; gap:4px; align-items:center; background:#f0f0f2; }
+.panel-title span { height:20px; white-space:nowrap; font-size:12px; }
+.panel-title button { height:20px; padding:2px 4px; border:0; border-radius:2px; background:#f0f0f2; font-size:12px; }
+.panel-title button:hover,.panel-title button:focus { background:#dedee0; }
+.dark .panel-title,.dark .panel-title button { background:#2b2b2b; color:#ededed; }
+.dark .panel-title button:hover,.dark .panel-title button:focus { background:#454545; }
+
+::-webkit-scrollbar { width:12px; height:12px; }
+::-webkit-scrollbar-track,::-webkit-scrollbar-corner { background:#eeeeef; }
+::-webkit-scrollbar-thumb { background:#a8a8af; border-radius:3px; min-height:24px; }
+::-webkit-scrollbar-thumb:hover { background:#777780; }
+.dark ::-webkit-scrollbar-track,.dark ::-webkit-scrollbar-corner { background:#292929; }
+.dark ::-webkit-scrollbar-thumb { background:#66666c; }
+.dark ::-webkit-scrollbar-thumb:hover { background:#9999a0; }

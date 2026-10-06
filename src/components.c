@@ -584,10 +584,18 @@ static void render_component(ui_component_t *c)
         if(f->kind==UI_VALUE_STYLE){ui_status_t status=cell_preview(c,&c->drafts[i]);if(status!=UI_STATUS_OK)c->resource_status=status;}
         json_cell(&json,&c->drafts[i]);uj_add(&json,",\"options\":[");
         for(j=0;j<f->option_count;++j){if(j)uj_add(&json,",");uj_string(&json,f->options[j]);}uj_add(&json,"]}");}
-    uj_fmt(&json,"],\"modal\":%s,\"visible\":%s,\"inputAllowed\":%s}",c->modal?"true":"false",c->visible?"true":"false",c->host->app_active&&!c->host->dispatch_blocked&&(!c->host->modal_component||c->host->modal_component==c)?"true":"false");
+    uj_fmt(&json,"],\"dark\":%s,\"loading\":%s,\"modal\":%s,\"visible\":%s,\"inputAllowed\":%s}",c->host->menu_dark?"true":"false",root&&root->pending?"true":"false",c->modal?"true":"false",c->visible?"true":"false",c->host->app_active&&!c->host->dispatch_blocked&&(!c->host->modal_component||c->host->modal_component==c)?"true":"false");
     c->presentation_status=json.failed?UI_STATUS_LIMIT_EXCEEDED:ui_web_view_post_json(c->view,json.data);
     free(json.data);release_previews(c,0);
     c->rendering=0;ui_dispatch_leave(c->host);if(c->again){c->again=0;render_component(c);}
+}
+void ui_components_set_theme(ui_host_t *host,int dark)
+{
+    ui_component_t *c;if(host->menu_dark==dark)return;host->menu_dark=dark;
+#ifdef _WIN32
+    ui_shell_sync_visual(host);
+#endif
+    for(c=host->components;c;c=c->next)render_component(c);
 }
 static void invoke_component(ui_component_t *c,const char *command,const char *params)
 {

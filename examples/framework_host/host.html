@@ -1,118 +1,110 @@
 <!doctype html>
 <html><head><meta charset="utf-8"><style>
-body { margin:0; font-family:"Microsoft YaHei UI"; font-size:14px; color:#243047; background:#f4f6fa; }
-button { height:30px; padding:5px 10px; border:1px solid #dce2ec; border-radius:6px; background:#ffffff; color:#34425b; }
-button:hover { background:#e8eef8; }
-button:focus { border-color:#3674d9; }
-button:disabled { color:#8a93a2; background:#edf0f5; }
-.row { display:flex; flex-direction:row; gap:6px; align-items:center; }
+.row { display:flex; flex-direction:row; gap:4px; align-items:center; }
 .column { display:flex; flex-direction:column; gap:8px; }
-.muted { color:#748098; font-size:12px; }
-.label { color:#64718a; font-size:12px; }
-.primary { background:#3674d9; color:#ffffff; border-color:#3674d9; }
-.active { background:#e7eefb; border-color:#7b9fdc; color:#254f91; }
-.chrome { background:#ffffff; border:1px solid #e1e6ef; }
-.panel-title { height:28px; padding:4px 8px; display:flex; flex-direction:row; gap:4px; align-items:center; background:#eaf0f8; }
-.panel-title button { height:22px; padding:1px 5px; font-size:12px; }
-input, textarea { padding:6px; background:#ffffff; border:1px solid #dce2ec; border-radius:5px; color:#243047; font-size:13px; }
-textarea { width:100%; }
+.chrome { background:#ffffff; border:0; }
+.panel-tab.active { background:#ffffff; color:#0067b8; }
+.splitter { background:#dddddf; border:0; }
+.splitter:hover { background:#0078d4; }
 #shell { display:flex; flex-direction:column; width:100%; height:100%; }
-#top { height:40px; padding:0; background:#dfe5ef; gap:0; }
-#recent,#tab-more { width:34px; height:40px; padding:4px; font-size:20px; }
+#top { height:40px; padding:0; background:#e9e9ec; gap:0; }
+#recent,#tab-more { width:34px; height:40px; padding:4px; }
 .compact #recent,.compact #tab-more,.compact #open { width:28px; }
 .compact #assistant-toggle { width:32px; }
 .compact .window-button { width:36px; }
 .compact #title-space { min-width:12px; }
 #open { width:34px; height:36px; padding:4px; }
-#assistant-toggle { width:40px; height:40px; padding:4px; }
+#assistant-toggle { width:40px; height:40px; padding:4px; font-size:12px; }
 #title-space { flex:1; height:40px; min-width:24px; }
 #window-controls { display:flex; flex-direction:row; gap:0; }
-.window-button { width:46px; height:40px; padding:4px; border:0; border-radius:0; background:#dfe5ef; }
-.window-button:hover,.window-button:focus { background:#cbd6e7; }
-#window-close:hover,#window-close:focus { background:#c42b1c; color:#ffffff; }
-#menu-row { display:flex; flex-direction:row; height:28px; background:#f4f6fa; }
+.window-button { width:46px; height:40px; padding:4px; border:0; border-radius:0; background:#e9e9ec; }
+.window-button:hover,.window-button:focus { background:#d7d7dc; }
+#window-close:hover,#window-close:focus,#window-close:active { background:#c42b1c; color:#ffffff; }
+#menu-row { display:flex; flex-direction:row; height:28px; background:#f7f7f8; }
 #app-menus { flex:1; min-width:0; height:28px; }
 #menu { width:34px; height:28px; padding:2px; }
 #tabs { display:flex; flex-direction:row; gap:0; height:40px; }
-.tab { display:flex; flex-direction:row; gap:0; height:36px; margin-top:4px; border-radius:6px; background:#dfe5ef; }
-.tab:hover { background:#ccd8e8; }
-.tab.active { background:#f4f6fa; }
-.tab.closing { background:#e4e7ee; color:#8a93a2; }
-.tab-name { height:36px; padding:5px 8px; border:0; border-radius:0; background:#dfe5ef; text-align:left; }
-.tab-name:focus { background:#cbdcf5; }
-.tab-close { width:26px; height:36px; padding:4px; border:0; border-radius:0; background:#dfe5ef; }
-.tab-close:hover,.tab-close:focus { background:#bacbe2; }
-.tab.active .tab-name,.tab.active .tab-close { background:#f4f6fa; color:#243047; }
-.tab.active .tab-close:hover,.tab.active .tab-close:focus { background:#cad9ef; }
-.tab-name:focus,.tab-close:focus { border:1px solid #3674d9; }
-.tab.active .tab-name:focus { background:#e2edff; }
-.dark #top,.dark .window-button,.dark .tab,.dark .tab-name,.dark .tab-close { background:#202735; color:#b5c1d5; border:0; }
-.dark #menu-row,.dark .tab.active,.dark .tab.active .tab-name,.dark .tab.active .tab-close { background:#222b3b; color:#e5edfa; }
-.dark .tab:hover,.dark .tab-name:focus,.dark .tab-close:hover,.dark .tab-close:focus,.dark .window-button:hover,.dark .window-button:focus { background:#354866; }
-.dark .tab.active .tab-name:focus,.dark .tab.active .tab-close:hover,.dark .tab.active .tab-close:focus { background:#354866; }
-.dark #window-close:hover,.dark #window-close:focus { background:#c42b1c; color:#ffffff; }
-.dark .tab.closing { background:#283244; color:#8290a7; }
-
+.tab { display:flex; flex-direction:row; gap:0; height:36px; margin-top:4px; border-radius:4px; background:#e9e9ec; }
+.tab-name { height:36px; padding:4px 12px; border:0; border-radius:0; background:#e9e9ec; text-align:left; font-size:12px; }
+.tab-close { width:26px; height:36px; padding:4px; border:0; border-radius:2px; background:#e9e9ec; }
+.tab-name:hover,.tab-close:hover { background:#dcdce0; }
+.tab.active,.tab.active .tab-name,.tab.active .tab-close { background:#f7f7f8; color:#242424; }
+.tab.active .tab-close:hover,.tab.active .tab-close:focus { background:#e3e3e7; }
+.tab-name:focus,.tab-close:focus { border:1px solid #0078d4; }
+.tab.closing,.tab.closing .tab-name,.tab.closing .tab-close { background:#e5e5e7; color:#919191; }
 #body { display:flex; flex-direction:row; flex:1; }
-#workspace { flex:1; height:100%; position:relative; overflow:hidden; background:#f4f6fa; }
-#empty { padding:48px 28px; gap:14px; }
-#empty-title { font-size:26px; color:#2f425f; }
+#workspace { flex:1; height:100%; position:relative; overflow:hidden; background:#f7f7f8; }
+#empty { padding:48px 32px; gap:16px; }
+#empty-title { font-size:24px; color:#242424; }
 #app-chrome { position:absolute; left:0; top:0; width:100%; height:100%; }
-#assistant { width:320px; height:100%; padding:12px; gap:8px; background:#ffffff; border-left:1px solid #dce2ec; overflow-y:auto; }
-#assistant-title { font-size:16px; }
-#target, #command { width:100%; text-align:left; }
-#schema { height:56px; font-size:12px; }
-#params { height:66px; }
-#actions button { flex:1; }
-#transactions button { flex:1; padding:4px 2px; font-size:12px; }
-#log { height:200px; font-size:12px; }
-#popup { width:100%; height:100%; padding:12px; gap:8px; background:#ffffff; overflow-y:auto; }
-#popup-title { font-size:16px; }
+#assistant { width:320px; height:100%; padding:16px; gap:8px; background:#ffffff; overflow-y:auto; }
+#assistant-title { height:24px; font-size:16px; font-weight:600; }
+#target,#command { width:100%; text-align:left; }
+#params { height:64px; width:100%; }
+#schema { height:72px; width:100%; font-size:12px; }
+#actions button,#transactions button { flex:1; }
+#transactions button { padding:4px; font-size:12px; }
+#advanced { gap:8px; display:none; }
+#advanced-toggle { height:28px; text-align:left; border:0; background:#f7f7f8; }
+#result { min-height:40px; padding:8px; background:#f7f7f8; font-size:12px; }
+#log { height:160px; width:100%; font-size:12px; }
+#popup { width:100%; height:100%; padding:16px; gap:8px; background:#ffffff; overflow-y:auto; }
+#popup-title { height:24px; font-size:16px; font-weight:600; }
 #popup-detail { max-height:160px; overflow-y:auto; }
 #popup-items { gap:4px; }
 #popup-items button { text-align:left; width:100%; }
-.dark { background:#1c2230; color:#dbe4f2; }
-.dark button, .dark input, .dark textarea { background:#283244; border-color:#3e4b60; color:#dbe4f2; }
-.dark button:hover { background:#34435b; }
-.dark .primary { background:#467fd9; color:#ffffff; }
-.dark .active { background:#354866; border-color:#6589c0; }
-.dark .chrome, .dark #assistant, .dark #popup { background:#222b3b; border-color:#3e4b60; }
-.dark #top, .dark .panel-title { background:#283244; }
-.dark #workspace { background:#1c2230; }
-.dark .muted, .dark .label { color:#a4b2ca; }
-.dark #empty-title { color:#dbe4f2; }
-.menu-strip { gap:0; padding:0 4px; border:0; background:#f4f6fa; }
-.app-menu { height:26px; padding:3px 8px; border:0; border-radius:0; background:#f4f6fa; color:#243047; align-items:center; }
-.app-menu:hover,.app-menu:focus,.app-menu.expanded { background:#dce8fa; color:#254f91; }
-.app-menu:disabled { color:#8a93a2; background:#f4f6fa; }
-.host-tool,.app-tool { border:0; border-radius:3px; background:#edf1f7; }
+.menu-strip { gap:0; padding:0 4px; border:0; background:#f7f7f8; }
+.app-menu { height:26px; padding:3px 8px; border:0; border-radius:2px; background:#f7f7f8; color:#242424; align-items:center; }
+.app-menu:hover,.app-menu:focus,.app-menu.expanded { background:#e2eaf2; }
+.app-menu:active { background:#d3e2f1; }
+.app-menu:disabled { color:#919191; background:#f7f7f8; }
+.host-tool,.app-tool { border:0; border-radius:2px; background:#e9e9ec; }
 .app-tool { background:#ffffff; }
-.host-tool:hover,.host-tool:focus,.app-tool:hover,.app-tool:focus { background:#dce8fa; }
-
-
-.dark .menu-strip,.dark .app-menu { background:#222b3b; color:#dbe4f2; border:0; }
-.dark .app-menu:hover,.dark .app-menu:focus,.dark .app-menu.expanded { background:#354866; }
-.dark .app-menu:disabled { color:#8290a7; background:#222b3b; }
-.dark .host-tool { background:#283244; border:0; }.dark .app-tool { background:#222b3b; border:0; }
-.dark .host-tool:hover,.dark .host-tool:focus,.dark .app-tool:hover,.dark .app-tool:focus { background:#354866; }
-#popup.popup-menu { padding:4px; gap:0; }#popup.popup-menu #popup-title,#popup.popup-menu #popup-detail,#popup.popup-menu #popup-actions { display:none; }
-#popup.popup-menu #popup-items { gap:0; }#popup.popup-menu .popup-menu-row { height:28px; padding:3px 8px; border:0; border-radius:0; background:#ffffff; }
-.dark #popup.popup-menu .popup-menu-row { background:#222b3b; }.dark #popup.popup-menu .popup-menu-row:hover,.dark #popup.popup-menu .popup-menu-row:focus { background:#354866; }
-.popup-shortcut { color:#65738a; font-size:12px; }.dark .popup-shortcut { color:#a4b2ca; }
-#popup.popup-menu .popup-menu-row:hover,#popup.popup-menu .popup-menu-row:focus { background:#e4edf9; }
+.app-tool.active { background:#dcecff; color:#0067b8; }
+.window-button.hovered { background:#d7d7dc; }
+.window-button.pressed { background:#cdced3; }
+.dark .app-tool.active { background:#263e50; color:#60b7ff; }
+.dark .window-button.hovered { background:#383838; }
+.dark .window-button.pressed { background:#454545; }
+.host-tool:hover,.host-tool:focus,.app-tool:hover,.app-tool:focus { background:#dedee2; }
+.host-tool:active,.app-tool:active { background:#cdced3; }
+#popup.popup-menu { padding:4px; gap:0; }
+#popup.popup-menu #popup-title,#popup.popup-menu #popup-detail,#popup.popup-menu #popup-actions { display:none; }
+#popup.popup-menu #popup-items { flex:1; gap:0; }
+#popup.popup-menu .popup-menu-row { height:28px; padding:3px 6px; border:0; border-radius:2px; background:#ffffff; }
+#popup.popup-menu .popup-menu-row:hover,#popup.popup-menu .popup-menu-row:focus { background:#e2eaf2; }
+.popup-shortcut { color:#646468; font-size:12px; }
+.dark .chrome,.dark #assistant,.dark #popup { background:#252525; }
+.dark #top,.dark .window-button,.dark .tab-name,.dark .tab-close,.dark .host-tool { background:#181818; color:#d4d4d4; border:0; }
+.dark #menu-row,.dark .tab.active,.dark .tab.active .tab-name,.dark .tab.active .tab-close,.dark .menu-strip,.dark .app-menu,.dark #workspace { background:#202020; color:#ededed; }
+.dark .tab-name:hover,.dark .tab-close:hover,.dark .tab-close:focus,.dark .window-button:hover,.dark .window-button:focus,.dark .host-tool:hover,.dark .host-tool:focus { background:#383838; }
+.dark .tab-name:focus,.dark .tab-close:focus { border:1px solid #60b7ff; }
+.dark .tab.closing,.dark .tab.closing .tab-name,.dark .tab.closing .tab-close { background:#252525; color:#999999; }
+.dark #window-close:hover,.dark #window-close:focus,.dark #window-close:active { background:#c42b1c; color:#ffffff; }
+.dark .panel-tab.active { background:#202020; color:#60b7ff; }
+.dark .splitter { background:#454545; }
+.dark .splitter:hover { background:#60b7ff; }
+.dark .app-menu:hover,.dark .app-menu:focus,.dark .app-menu.expanded { background:#353535; }
+.dark .app-menu:disabled { background:#202020; color:#999999; }
+.dark .app-tool,.dark #advanced-toggle,.dark #result { background:#2b2b2b; }
+.dark .app-tool:hover,.dark .app-tool:focus { background:#454545; }
+.dark #popup.popup-menu .popup-menu-row { background:#252525; }
+.dark #popup.popup-menu .popup-menu-row:hover,.dark #popup.popup-menu .popup-menu-row:focus { background:#353535; }
+.dark .popup-shortcut { color:#b3b3b7; }
+.dark #empty-title { color:#ededed; }
 
 </style></head><body>
 <div id="shell">
  <header id="top" class="row">
-  <button id="recent" class="host-tool" title="最近成功打开的应用">▾</button><div id="tabs"></div>
-  <button id="tab-more" class="host-tool" title="当前打开的标签" style="display:none">…</button>
-  <button id="open" class="host-tool" title="打开应用包 · Ctrl+Shift+O">+</button><div id="title-space"></div>
+  <button id="recent" class="host-tool glyph" title="最近成功打开的应用">&#xE70D;</button><div id="tabs"></div>
+  <button id="tab-more" class="host-tool glyph" title="当前打开的标签" style="display:none">&#xE712;</button>
+  <button id="open" class="host-tool glyph" title="打开应用包 · Ctrl+Shift+O">&#xE710;</button><div id="title-space"></div>
   <button id="assistant-toggle" class="host-tool" title="显示或收起助手工作台">AI</button>
-  <div id="window-controls"><button id="window-min" class="window-button" title="最小化">─</button>
-   <button id="window-max" class="window-button" title="最大化 / 还原">□</button>
-   <button id="window-close" class="window-button" title="关闭宿主">×</button></div>
+  <div id="window-controls"><button id="window-min" class="window-button glyph" title="最小化">&#xE921;</button>
+   <button id="window-max" class="window-button glyph" title="最大化 / 还原">&#xE922;</button>
+   <button id="window-close" class="window-button glyph" title="关闭宿主">&#xE8BB;</button></div>
  </header>
- <div id="menu-row"><div id="app-menus"></div><button id="menu" class="host-tool" title="宿主选项">⋯</button></div>
+ <div id="menu-row"><div id="app-menus"></div><button id="menu" class="host-tool glyph" title="宿主选项">&#xE712;</button></div>
  <main id="body">
   <section id="workspace"><div id="empty" class="column"><span id="empty-title">你的应用工作区</span>
    <span class="muted">打开 .uapp 应用包，在标签间切换。应用自行选择原生、OpenGL 或 Web 内容。</span>
@@ -122,13 +114,17 @@ textarea { width:100%; }
    <div id="assistant-title">助手工作台</div><span class="muted">调用固定目标实例；切换标签不会改变任务目标。</span>
    <span class="label">目标实例</span><button id="target">选择应用</button>
    <span class="label">语义命令</span><button id="command">选择命令</button>
-   <textarea id="schema" readonly="readonly"></textarea><span class="label">参数 · JSON</span>
-   <textarea id="params">{}</textarea><div id="actions" class="row">
-    <button id="invoke" class="primary">调用</button><button id="cancel">取消任务</button></div>
-   <button id="snapshot">查看状态快照</button><div id="transactions" class="row">
-    <button id="begin">开始</button><button id="commit">提交</button>
-    <button id="rollback">回滚</button><button id="undo">撤销</button></div>
-   <span class="label">结果 / 进度 / 事件</span><textarea id="log" readonly="readonly"></textarea>
+   <div id="param-inputs" class="column"></div><span id="param-hint" class="muted"></span>
+   <div id="actions" class="row"><button id="invoke" class="primary">执行操作</button><button id="cancel">取消任务</button></div>
+   <span class="label">执行状态</span><div id="result">选择目标和操作后执行。</div>
+   <button id="advanced-toggle">高级：参数、事务与详细记录 ▸</button>
+   <div id="advanced" class="column">
+    <button id="snapshot">查看状态快照</button><div id="transactions" class="row">
+     <button id="begin">开始</button><button id="commit">提交</button><button id="rollback">回滚</button><button id="undo">撤销</button></div>
+    <span class="label">参数定义 · JSON schema</span><textarea id="schema" readonly="readonly"></textarea>
+    <span class="label">原始参数 · JSON</span><textarea id="params">{}</textarea>
+    <span class="label">详细结果 / 进度 / 事件</span><textarea id="log" readonly="readonly"></textarea>
+   </div>
   </aside>
  </main>
 </div>
@@ -137,7 +133,7 @@ textarea { width:100%; }
  <div id="popup-actions" class="row"></div></div>
 <script>
 (function () {
- var model = null, popupToken = '', dark = false;
+ var model = null, popupToken = '', dark = false, advanced = false, paramKey = '', paramNodes = [];
  function element(id) { return document.getElementById(id); }
  function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
  function send(action, extra) { var m = extra || {}; m.action = action; ui.postMessage(m); }
@@ -150,6 +146,7 @@ textarea { width:100%; }
  function setTheme(value) { dark = !!value; document.body.className = dark ? 'dark' : ''; }
  action('menu','menu');action('recent','recent');action('tab-more','tabs');action('open','open');action('empty-open','open');
  action('assistant-toggle','assistant');action('window-min','window-min');action('window-max','window-max');action('window-close','exit');
+ element('advanced-toggle').addEventListener('click',function(){advanced=!advanced;element('advanced').style.display=advanced?'flex':'none';element('advanced-toggle').textContent=advanced?'高级：参数、事务与详细记录 ▾':'高级：参数、事务与详细记录 ▸'});
  action('target', 'targets'); action('command', 'commands');
  action('invoke', 'invoke'); action('cancel', 'cancel'); action('snapshot', 'snapshot');
  action('begin', 'begin'); action('commit', 'commit'); action('rollback', 'rollback'); action('undo', 'undo');
@@ -180,27 +177,40 @@ textarea { width:100%; }
    b.style.display=!overflow&&toolWidth+gap+width+76<=state.toolbarRect.width?'flex':'none';if(b.style.display==='flex')toolWidth+=gap+width+6;else overflow=true;
   }prune(tools,tools.items,alive);if(!tools.more){tools.more=button('tool-more','更多 ▾','tool-more',{id:state.active,panel:'tool-more'},'app-tool');tools.appendChild(tools.more)}tools.more.style.width='70px';tools.more.style.display=overflow?'flex':'none';tools.appendChild(tools.more);
   for(var p=0;p<state.panels.length;p++){var panel=state.panels[p];if(panel.floating||panel.closed||(panel.group!=='0'&&!panel.tabActive))continue;var k=state.active+':panel:'+panel.id;live[k]=true;
-   var box=keep(root,chromeNodes,k,function(){var n=document.createElement('div');n.className='chrome';n.title=document.createElement('div');n.title.className='panel-title';n.text=document.createElement('span');n.text.style.flex='1';n.text.addEventListener('mousedown',function(){send('panel-drag',{id:model.active,panel:n.panel.id})});n.title.appendChild(n.text);n.title.appendChild(button('panel-'+panel.id,'↗','panel-float',{id:state.active,panel:panel.id}));var fold=button('fold-'+panel.id,'▾','panel-collapse',{id:state.active,panel:panel.id});n.title.appendChild(fold);n.appendChild(n.title);n.split=document.createElement('div');n.split.style.height='5px';n.split.style.background='#536c92';n.split.addEventListener('mousedown',function(){send('panel-split',{id:model.active,panel:n.panel.id})});n.appendChild(n.split);return n;});box.panel=panel;place(box,panel.frame);if(!box.tabs){box.tabs=document.createElement('div');box.tabs.style.display='flex';box.tabs.style.flexDirection='row';box.title.appendChild(box.tabs)}while(box.tabs.firstChild)box.tabs.removeChild(box.tabs.firstChild);
+   var box=keep(root,chromeNodes,k,function(){var n=document.createElement('div');n.className='chrome';n.title=document.createElement('div');n.title.className='panel-title';n.text=document.createElement('span');n.text.style.flex='1';n.text.addEventListener('mousedown',function(){send('panel-drag',{id:model.active,panel:n.panel.id})});n.title.appendChild(n.text);n.title.appendChild(button('panel-'+panel.id,'\uE8A7','panel-float',{id:state.active,panel:panel.id},'glyph'));var fold=button('fold-'+panel.id,'\uE70D','panel-collapse',{id:state.active,panel:panel.id},'glyph');n.title.appendChild(fold);n.appendChild(n.title);n.split=document.createElement('div');n.split.style.height='5px';n.split.className='splitter';n.split.addEventListener('mousedown',function(){send('panel-split',{id:model.active,panel:n.panel.id})});n.appendChild(n.split);return n;});box.panel=panel;place(box,panel.frame);if(!box.tabs){box.tabs=document.createElement('div');box.tabs.style.display='flex';box.tabs.style.flexDirection='row';box.title.appendChild(box.tabs)}while(box.tabs.firstChild)box.tabs.removeChild(box.tabs.firstChild);
    if(panel.group!=='0'){var members=state.panels.filter(function(p){return p.group===panel.group}),at=members.findIndex(function(p){return p.id===panel.id}),start=Math.floor(Math.max(0,at)/4)*4;
     if(start>0)box.tabs.appendChild(button('tab-prev-'+panel.id,'‹','panel-activate',{id:state.active,panel:members[start-1].id}));
-    for(var t=start;t<members.length&&t<start+4;t++)box.tabs.appendChild(button('panel-tab-'+members[t].id,members[t].title+(members[t].closed?' ×':''),'panel-activate',{id:state.active,panel:members[t].id}));
+    for(var t=start;t<members.length&&t<start+4;t++)box.tabs.appendChild(button('panel-tab-'+members[t].id,members[t].title+(members[t].closed?' ×':''),'panel-activate',{id:state.active,panel:members[t].id},'panel-tab'+(members[t].id===panel.id?' active':'')));
     if(start+4<members.length)box.tabs.appendChild(button('tab-next-'+panel.id,'›','panel-activate',{id:state.active,panel:members[start+4].id}));}box.text.textContent=(panel.collapsed?'▸ ':'')+panel.title;box.split.style.position='absolute';box.split.style.top=(panel.region===9?0:23)+'px';box.split.style.width=panel.frame.width+'px';
-   var edgeKey='side:'+panel.region;live[edgeKey]=true;var edge=keep(root,chromeNodes,edgeKey,function(){var n=document.createElement('div');n.className='chrome';n.style.background='#536c92';n.addEventListener('mousedown',function(){send('side-split',{id:model.active,panel:n.region===5?'left':n.region===9?'bottom':'right'})});return n;});edge.region=panel.region;place(edge,{x:panel.region===5?panel.frame.x+panel.frame.width-4:panel.frame.x,y:panel.frame.y,width:panel.region===9?panel.frame.width:4,height:panel.region===9?5:28});
+   var edgeKey='side:'+panel.region;live[edgeKey]=true;var edge=keep(root,chromeNodes,edgeKey,function(){var n=document.createElement('div');n.className='splitter';n.addEventListener('mousedown',function(){send('side-split',{id:model.active,panel:n.region===5?'left':n.region===9?'bottom':'right'})});return n;});edge.region=panel.region;place(edge,{x:panel.region===5?panel.frame.x+panel.frame.width-4:panel.frame.x,y:panel.frame.y,width:panel.region===9?panel.frame.width:4,height:panel.region===9?5:28});
   }
   var status=keep(root,chromeNodes,'status',function(){var n=document.createElement('div');n.className='muted chrome';return n;});live.status=true;place(status,state.statusRect);status.textContent=state.status||state.activeLabel+' · '+state.dpi+' DPI';prune(root,chromeNodes,live);
  }
  function paintState(state) {
   model=state;setTheme(state.dark);element('top').className='row'+(state.compact?' compact':'');var tabs=element('tabs'),alive={};
   for(var i=0;i<state.tabs.length;i++){var tab=state.tabs[i];alive[tab.id]=true;
-   var row=keep(tabs,tabNodes,tab.id,function(){var n=document.createElement('div');n.className='tab';n.name=button('tab-'+tab.id,'','activate',{id:tab.id});n.appendChild(n.name);n.close=button('close-'+tab.id,'×','close',{id:tab.id},'tab-close');n.appendChild(n.close);return n;});
+   var row=keep(tabs,tabNodes,tab.id,function(){var n=document.createElement('div');n.className='tab';n.name=button('tab-'+tab.id,'','activate',{id:tab.id});n.appendChild(n.name);n.close=button('close-'+tab.id,'\uE8BB','close',{id:tab.id},'tab-close glyph');n.appendChild(n.close);return n;});
    row.name.textContent=tab.title;row.name.className='tab-name';row.name.disabled=tab.closing;row.close.disabled=tab.closing;row.className='tab'+(tab.active?' active':'')+(tab.closing?' closing':'');row.style.display=tab.visible?'flex':'none';row.name.style.width=(state.tabWidth-26)+'px';
-  }prune(tabs,tabNodes,alive);element('tabs').style.width=(state.tabWidth*state.tabCount)+'px';element('tab-more').style.display=state.tabOverflow?'flex':'none';element('window-max').textContent=state.maximized?'❐':'□';
+  }prune(tabs,tabNodes,alive);element('tabs').style.width=(state.tabWidth*state.tabCount)+'px';element('tab-more').style.display=state.tabOverflow?'flex':'none';element('window-max').className='window-button glyph'+(state.maxHover?' hovered':'')+(state.maxPressed?' pressed':'');element('window-max').textContent=state.maximized?'\uE923':'\uE922';
   element('empty').style.display=state.tabs.length?'none':'flex';element('assistant').style.display=state.assistant?'flex':'none';
-  element('target').textContent=state.targetLabel||'选择应用';element('command').textContent=state.command||'选择命令';element('schema').value=state.schema||'';element('log').value=state.log||'';element('invoke').disabled=!state.canInvoke;element('cancel').disabled=!state.canCancel;
+  element('target').textContent=state.targetLabel||'选择应用';element('command').textContent=state.commandTitle||state.command||'选择操作';element('result').textContent=state.result||'选择目标和操作后执行。';paintParams(state);element('schema').value=state.schema||'';element('log').value=state.log||'';element('invoke').disabled=!state.canInvoke;element('cancel').disabled=!state.canCancel;
   if(element('params').value!==state.params)element('params').value=state.params;paintChrome(state);
  }
  var popupCommands={};
  function applyCommand(b,item){b.disabled=item.enabled===false||!!item.busy;b.style.display=item.visible===false?'none':'flex';b.label.textContent=(b.menuRow?'':item.busy?'◌ ':item.checked?'✓ ':'')+b.caption;if(b.mark)b.mark.textContent=item.busy?'◌':item.checked?'✓':'';b.icon.src=item.image||'0';b.icon.style.display=b.menuRow||item.image&&item.image!=='0'?'flex':'none';b.icon.disabled=b.disabled;}
+
+ function paintParams(s){
+  var schema,values,props,keys,root=element('param-inputs'),hint=element('param-hint');
+  try{schema=JSON.parse(s.schema||'{}');values=JSON.parse(s.params||'{}');props=schema.properties||{};keys=Object.keys(props);if(keys.length>8||Array.isArray(values)||values===null||typeof values!=='object')throw Error();for(var i=0;i<keys.length;i++)if(['string','number','integer','boolean'].indexOf(props[keys[i]].type)<0||props[keys[i]].enum)throw Error();}
+  catch(error){clear(root);paramKey='';paramNodes=[];hint.textContent='此参数需要在高级区域配置，原有参数保持。';return;}
+  hint.textContent=keys.length?'':'此操作无需填写参数。';var key=s.targetLabel+'|'+s.command+'|'+s.schema;
+  if(key!==paramKey){clear(root);paramNodes=[];paramKey=key;for(var i=0;i<keys.length;i++){(function(name,index){var spec=props[name],box=document.createElement('div');box.className='column';var label=document.createElement('span');label.className='label';label.textContent=spec.title||name;var n=document.createElement(spec.type==='boolean'?'button':'input');n.id='param-'+index;box.appendChild(label);box.appendChild(n);root.appendChild(box);n.name=name;n.spec=spec;paramNodes.push(n);
+    function change(){try{values=JSON.parse(element('params').value)}catch(error){hint.textContent='原始参数不是有效 JSON，请在高级区域修正。';return;}var value=n.value;if(spec.type==='boolean')value=!(values[name]===true);else if(spec.type!=='string'){value=Number(n.value);if(!n.value||!isFinite(value)||spec.type==='integer'&&Math.floor(value)!==value){n.className='invalid';hint.textContent='请输入有效数字。';return;}}n.className='';values[name]=value;element('params').value=JSON.stringify(values);send('params',{params:element('params').value});}
+    n.addEventListener(spec.type==='boolean'?'click':'input',change);
+   })(keys[i],i);}}
+  for(var i=0;i<paramNodes.length;i++){var n=paramNodes[i];n.disabled=!s.canInvoke;if(n.spec.type==='boolean')n.textContent=values[n.name]===true?'是':'否';else if(document.activeElement!==n)n.value=values[n.name]===undefined?'':String(values[n.name]);}
+ }
+
  function paintPopup(state) {
   popupToken=state.token;setTheme(state.dark);element('popup').className='column'+(state.menu?' popup-menu':'');element('shell').style.display='none';element('popup').style.display='flex';
   element('popup-title').textContent=state.title;
@@ -222,7 +232,7 @@ textarea { width:100%; }
  document.addEventListener('keydown',function(event) {
   if(event.keyCode===27){send('dismiss',{token:popupToken});return;}
   if(event.defaultPrevented||event.keyCode===13||event.keyCode===32||!model||!model.active)return;
-  var active=document.activeElement,id=active?active.id:'',editing=id==='params'||id==='schema'||id==='log';
+  var active=document.activeElement,id=active?active.id:'',editing=id==='params'||id==='schema'||id==='log'||id.indexOf('param-')===0;
   if(editing&&(event.keyCode<=46||event.ctrlKey&&[65,67,86,88,89,90].indexOf(event.keyCode)>=0))return;
   send('app-shortcut',{id:model.active,key:String(event.keyCode),modifiers:String((event.ctrlKey?1:0)+(event.shiftKey?2:0)+(event.altKey?4:0)),editing:editing?'1':'0'});
  });

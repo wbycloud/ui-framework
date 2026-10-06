@@ -376,8 +376,8 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
                 else if (!strcmp(value,"normal") || !strcmp(value,"pre-wrap")) style->nowrap = 0;
                 else return UI_STATUS_UNSUPPORTED;
             } else if (!strcmp(key,"font-family")) {
-                /* The controlled renderer uses the system Segoe UI family. */
-                if (strstr(value,"Microsoft YaHei UI")) style->font_family = 1;
+                if (strstr(value,"Segoe MDL2 Assets")) style->font_family = 2;
+                else if (strstr(value,"Microsoft YaHei UI")) style->font_family = 1;
                 else if (strstr(value,"Segoe UI") || !strcmp(value,"sans-serif")) style->font_family = 0;
                 else return UI_STATUS_UNSUPPORTED;
             } else if (!strcmp(key,"font-weight")) {
@@ -528,7 +528,12 @@ static int lw_matches_piece(lw_view_t *view, int index, const char *piece)
         if (kind == '#' && strcmp(node->id,token)) return 0;
         if (kind == '.' && !lw_has_class(node->classes,token)) return 0;
         if (kind == ':') {
-            if (!strcmp(token,"hover")) { if (view->hovered != index) return 0; }
+            if (!strcmp(token,"hover")) { int hovered=view->hovered;while(hovered>=0&&hovered!=index)hovered=view->nodes[hovered].parent;if(hovered<0)return 0; }
+            else if (!strcmp(token,"active")) {
+                int pressed=view->pressed;
+                while(pressed>=0&&pressed!=index)pressed=view->nodes[pressed].parent;
+                if(pressed<0||lw_disabled(view,index))return 0;
+            }
             else if (!strcmp(token,"focus")) { if (view->focused != index) return 0; }
             else if (!strcmp(token,"disabled")) { if (!node->disabled) return 0; }
             else return 0;
@@ -714,7 +719,7 @@ static void lw_compute_style(lw_view_t *view, int index)
         if (node->font) DeleteObject(node->font);
         node->font = CreateFontW(-lw_pixel(node->style.font_size,view->dpi),0,0,0,
             node->style.font_weight,FALSE,FALSE,FALSE,DEFAULT_CHARSET,OUT_DEFAULT_PRECIS,
-            CLIP_DEFAULT_PRECIS,CLEARTYPE_QUALITY,DEFAULT_PITCH,node->style.font_family ? L"Microsoft YaHei UI" : L"Segoe UI");
+            CLIP_DEFAULT_PRECIS,CLEARTYPE_QUALITY,DEFAULT_PITCH,node->style.font_family==2?L"Segoe MDL2 Assets":node->style.font_family?L"Microsoft YaHei UI":L"Segoe UI");
         node->font_size = node->style.font_size; node->font_weight = node->style.font_weight;
         node->font_dpi = view->dpi;
         node->font_family = node->style.font_family;
@@ -1550,13 +1555,13 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
             unsigned color = node->style.background_set ? node->style.background : node->kind == 2 ? 0x3968a8u : 0x202226u;
             HPEN pen = CreatePen(PS_SOLID,lw_pixel(node->style.border,view->dpi),lw_rgb(node->style.border_color));
             HGDIOBJ old_pen, old_brush;
-            brush = CreateSolidBrush(lw_rgb(color));
-            old_brush = SelectObject(dc,brush);
+            brush = node->style.background_set||node->kind==2?CreateSolidBrush(lw_rgb(color)):NULL;
+            old_brush = SelectObject(dc,brush?brush:GetStockObject(NULL_BRUSH));
             old_pen = SelectObject(dc,node->style.border ? pen : GetStockObject(NULL_PEN));
             if (node->style.radius) RoundRect(dc,rect.left,rect.top,rect.right,rect.bottom,
                 lw_pixel(node->style.radius * 2,view->dpi),lw_pixel(node->style.radius * 2,view->dpi));
             else Rectangle(dc,rect.left,rect.top,rect.right,rect.bottom);
-            SelectObject(dc,old_pen); SelectObject(dc,old_brush); DeleteObject(pen); DeleteObject(brush);
+            SelectObject(dc,old_pen); SelectObject(dc,old_brush); DeleteObject(pen); if(brush)DeleteObject(brush);
         }
         if (lw_input(node)) lw_text_paint(view,node,dc,rect);
         if (node->kind == 5 && node->image) ui_image_draw(view->host,node->image,dc,&rect,node->disabled);
@@ -1577,7 +1582,7 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
                 DrawTextW(dc,text,-1,&rect,flags); free(text);
             }
         }
-        if (view->focused == i && node->kind == 2) {
+        if (view->focused == i && !lw_input(node)) {
             RECT focus = rect; InflateRect(&focus,-3,-3); DrawFocusRect(dc,&focus);
         }
         lw_scroll_paint(view,node,dc);
@@ -1593,6 +1598,9 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         SetWindowLongPtrW(hwnd, GWLP_USERDATA, (LONG_PTR)view); view->hwnd = hwnd; return TRUE;
     }
     if (view == NULL) return DefWindowProcW(hwnd, message, wp, lp);
+    if(message==WM_CAPTURECHANGED||message==WM_CANCELMODE||message==WM_KILLFOCUS||(message==WM_SHOWWINDOW&&!wp)){
+        if(view->pressed>=0){view->pressed=-1;lw_layout(view);}
+    }
     if(message==WM_CAPTURECHANGED||message==WM_CANCELMODE||(message==WM_SHOWWINDOW&&!wp))lw_scroll_cancel(view,1);
     if((message==WM_CAPTURECHANGED||message==WM_CANCELMODE||message==WM_SHOWWINDOW&&!wp)&&view->captured){
         int index=lw_uid_index(view,view->captured);view->captured=0;(void)lw_event(view,index,14,0);if(view->dirty)lw_layout(view);}
@@ -1809,9 +1817,10 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
     (void)user;
     if (!view || !event || event->size < sizeof(*event)) return UI_STATUS_INVALID_ARGUMENT;
     if (event->kind==UI_INPUT_CANCEL||!ui_components_input_allowed(view->host,view)) {
+        view->pressed=-1;
         lw_scroll_cancel(view,1);
         if(view->captured){int index=lw_uid_index(view,view->captured);view->captured=0;(void)lw_event(view,index,14,0);if(view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();}
-        return event->kind==UI_INPUT_CANCEL?UI_STATUS_OK:UI_STATUS_CANCELLED;
+        lw_layout(view);return event->kind==UI_INPUT_CANCEL?UI_STATUS_OK:UI_STATUS_CANCELLED;
     }
     if (!view->context) return UI_STATUS_NOT_FOUND;
     if(ui_menus_route_input(view->host,view,event,view->composing)==UI_STATUS_OK)return UI_STATUS_OK;
@@ -1821,6 +1830,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
     hit = lw_hit(view, event->x, event->y);
     if(view->captured&&(event->kind==UI_INPUT_POINTER_MOVE||event->kind==UI_INPUT_POINTER_UP))hit=lw_uid_index(view,view->captured);
     if (event->kind == UI_INPUT_POINTER_DOWN || event->kind == UI_INPUT_POINTER_UP) {
+        int pressed=view->pressed;
         if (event->pointer_button == 2) {
             if(event->kind==UI_INPUT_POINTER_UP&&hit>=0&&!lw_disabled(view,hit)) {
                 ui_status_t status=lw_event(view,hit,9,0);lw_layout(view);return status;
@@ -1835,6 +1845,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
             view->pressed = hit;
             view->focused = focus_hit>=0&&!lw_disabled(view,focus_hit)?focus_hit:-1;
             if (view->hwnd) SetFocus(view->hwnd);
+            if(view->hwnd&&focus_hit>=0&&view->nodes[focus_hit].kind==2&&!lw_disabled(view,focus_hit))SetCapture(view->hwnd);
             lw_text_pointer(view,hit,event->x,event->y,0);
             if (previous != view->focused) { (void)lw_event(view,previous,4,0); (void)lw_event(view,view->focused,3,0); }
             if (hit >= 0 && !lw_disabled(view,hit)) (void)lw_event(view,hit,7,0);
@@ -1844,11 +1855,11 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
         }
         if(hit>=0&&!lw_disabled(view,hit))(void)lw_event(view,hit,12,0);
         view->captured=0;view->dragging = 0; if (view->hwnd && GetCapture() == view->hwnd) ReleaseCapture();
-        if (hit >= 0 && hit == view->pressed && !lw_disabled(view,hit)) {
+        if (hit >= 0 && hit == pressed && !lw_disabled(view,hit)) {
             ui_status_t status;
             view->pressed = -1; status = lw_event(view,hit,0,0); lw_layout(view); return status;
         }
-        view->pressed = -1; return UI_STATUS_OK;
+        view->pressed = -1; lw_layout(view);return UI_STATUS_OK;
     }
     if (event->kind == UI_INPUT_POINTER_MOVE) {
         (void)lw_event(view,hit,11,0);
@@ -2081,5 +2092,5 @@ void ui_light_web_backend_destroy(ui_web_backend_t *handle)
 
 const char *ui_light_web_backend_capabilities(void)
 {
-    return "html:lexbor,1024-nodes,256KiB;js:quickjs-ng,50ms,8MiB;layout:flex,absolute,box-model;controls:button,input,textarea;dom:incremental;events:ui.invoke,ui.value,ui.postMessage,ui.onmessage;scroll:vertical;css:class,id,descendant,hover,focus,disabled,width-media;thread:ui";
+    return "html:lexbor,1024-nodes,256KiB;js:quickjs-ng,50ms,8MiB;layout:flex,absolute,box-model;controls:button,input,textarea;dom:incremental;events:ui.invoke,ui.value,ui.postMessage,ui.onmessage;scroll:vertical;css:class,id,descendant,hover,active,focus,disabled,width-media;thread:ui";
 }

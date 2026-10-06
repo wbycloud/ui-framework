@@ -48,13 +48,14 @@ typedef struct host_window {
     uint64_t popup_token;
     char *command,*params,*log;
     int refreshing,refresh_pending,exiting,dark,assistant_expanded;
+    char result_summary[192];
     int popup_kind,confirm_answer,confirm_waiting;
     char reported_error[512];
     recent_app_t recent[HOST_RECENT_CAPACITY];
     size_t recent_count,selector_page;
     wchar_t recent_file[4096];
     WNDPROC web_proc;
-    int max_pressed;
+    int max_pressed,max_hover;
     HHOOK menu_hook;
     RECT menu_anchor;
     HWND menu_previous_focus;
@@ -431,8 +432,10 @@ static void state_panels(json_buffer_t *json,ui_app_instance_info_t *info)
         json_format(json,",\"region\":%d,\"floating\":%s,\"collapsed\":%s,\"frame\":",layout.dock_region,floating?"true":"false",layout.collapsed?"true":"false");
         frame.y-=app_menu_height(info);json_rect(json,&frame);json_format(json,",\"group\":\"%llu\",\"tabActive\":%s,\"closed\":%s",(unsigned long long)layout.tab_group_id,layout.tab_active?"true":"false",layout.closed?"true":"false");json_append(json,"}");}
 }
-static int assistant_visible(host_window_t *s,int width)
-{return s->assistant_expanded>0||(s->assistant_expanded==0&&width>=800);}
+static const char *command_title(ui_host_t *host,const char *id)
+{ui_command_entry_t *c;for(c=host->commands;c;c=c->next)if(id&&!strcmp(c->id,id))return c->title;return id?id:"";}
+static int assistant_visible(host_window_t *s)
+{return s->assistant_expanded>0;}
 static void send_state(host_window_t *s)
 {
     json_buffer_t json={0};ui_app_instance_info_t info,target;size_t i,count;
@@ -444,14 +447,16 @@ static void send_state(host_window_t *s)
     if(!get_instance(s,s->undo_instance,&info))s->undo_id=s->undo_instance=0;
     if(!get_instance(s,s->last_id,&info))s->last_request=0;
     json_append(&json,"{\"type\":\"state\",\"active\":");if(active)json_id(&json,active);else json_string(&json,"");
-    json_format(&json,",\"dpi\":%u,\"dark\":%s,\"assistant\":%s,\"tabs\":[",s->dpi,s->dark?"true":"false",assistant_visible(s,width)?"true":"false");
+    json_format(&json,",\"dpi\":%u,\"dark\":%s,\"assistant\":%s,\"tabs\":[",s->dpi,s->dark?"true":"false",assistant_visible(s)?"true":"false");
     for(i=0;i<count;++i){uint64_t id=ui_workspace_instance_at(s->workspace,i);if(!get_instance(s,id,&info))continue;
-        if(i)json_append(&json,",");json_append(&json,"{\"id\":");json_id(&json,id);
+        ui_components_set_theme(info.host,s->dark);if(i)json_append(&json,",");json_append(&json,"{\"id\":");json_id(&json,id);
         (void)snprintf(label,sizeof(label),"%s #%llu%s",info.name_utf8,(unsigned long long)id,info.closing?" · 关闭中":"");
         json_append(&json,",\"title\":");json_string(&json,label);json_format(&json,",\"active\":%s,\"closing\":%s,\"visible\":%s}",info.active?"true":"false",info.closing?"true":"false",i>=tab_start&&i<tab_start+tab_count?"true":"false");}
-    json_format(&json,"],\"tabWidth\":%d,\"tabOverflow\":%s,\"maximized\":%s,\"menuWidth\":%d",tab_width,count>tab_count?"true":"false",IsZoomed(s->hwnd)?"true":"false",width>34?width-34:0);json_format(&json,",\"compact\":%s,\"tabCount\":%u,\"targetLabel\":",width<400?"true":"false",(unsigned)tab_count);label[0]=0;
+    json_format(&json,"],\"tabWidth\":%d,\"tabOverflow\":%s,\"maximized\":%s,\"maxHover\":%s,\"maxPressed\":%s,\"menuWidth\":%d",tab_width,count>tab_count?"true":"false",IsZoomed(s->hwnd)?"true":"false",s->max_hover?"true":"false",s->max_pressed?"true":"false",width>34?width-34:0);json_format(&json,",\"compact\":%s,\"tabCount\":%u,\"targetLabel\":",width<400?"true":"false",(unsigned)tab_count);label[0]=0;
     if(target.instance_id)(void)snprintf(label,sizeof(label),"%s #%llu%s",target.name_utf8,(unsigned long long)target.instance_id,target.closing?" · 关闭中":"");
     json_string(&json,label);json_append(&json,",\"command\":");json_string(&json,s->command);
+    json_append(&json,",\"commandTitle\":");json_string(&json,target.instance_id?command_title(target.host,s->command):"");
+    json_append(&json,",\"result\":");json_string(&json,s->result_summary);
     json_append(&json,",\"schema\":");json_preview(&json,schema,0);free(schema);
     json_append(&json,",\"params\":");json_string(&json,s->params?s->params:"{}");json_append(&json,",\"log\":");json_preview(&json,s->log,1);
     json_format(&json,",\"canInvoke\":%s,\"canCancel\":%s",target.instance_id&&!target.closing&&s->command&&s->command[0]?"true":"false",s->last_request?"true":"false");
@@ -501,6 +506,7 @@ static void refresh_workspace(void *data)
 static void on_result(uint64_t id,const ui_result_t *result,void *data)
 {
     host_window_t *s=(host_window_t *)data;json_buffer_t line={0};
+    (void)snprintf(s->result_summary,sizeof(s->result_summary),"应用 #%llu：%s。详细结果见高级记录。",(unsigned long long)id,result->success?"操作完成":"操作未完成");
     json_format(&line,"[#%llu / request %llu] ",(unsigned long long)id,(unsigned long long)result->request_id);
     json_append(&line,result->command_id);json_append(&line,result->success?" · OK: ":" · FAILED: ");json_append(&line,result->result_json);
     if(!line.failed)append_log(s,line.text);free(line.text);s->completed_id=id;s->completed_request=result->request_id;
@@ -517,7 +523,7 @@ static void on_event(uint64_t id,const char *event,const char *json,void *data)
 }
 static void on_progress(uint64_t id,uint64_t request,int percent,const char *text,void *data)
 {
-    json_buffer_t line={0};json_format(&line,"[#%llu / request %llu] %d%% ",(unsigned long long)id,(unsigned long long)request,percent);
+    host_window_t *s=(host_window_t *)data;json_buffer_t line={0};(void)snprintf(s->result_summary,sizeof(s->result_summary),"应用 #%llu：执行中 %d%%",(unsigned long long)id,percent);schedule_refresh(s);json_format(&line,"[#%llu / request %llu] %d%% ",(unsigned long long)id,(unsigned long long)request,percent);
     json_append(&line,text);if(!line.failed)append_log((host_window_t *)data,line.text);free(line.text);
 }
 static int on_confirm(uint64_t id,const char *command,const char *params,ui_assistant_permission_t permission,void *data)
@@ -659,7 +665,7 @@ static void process_action(host_window_t *s,host_action_t *action)
     else if(!strcmp(name,"recent")||!strcmp(name,"tabs")){int recent=!strcmp(name,"recent");if(s->popup_kind==1&&s->selector_page==(recent?1u:2u))close_popup(s);else list_popup(s,recent,0);return;}
     else if(!strcmp(name,"recent-page")||!strcmp(name,"tabs-page")){list_popup(s,!strcmp(name,"recent-page"),(size_t)id);return;}
     else if(!strcmp(name,"exit"))PostMessageW(s->hwnd,WM_CLOSE,0,0);else if(!strcmp(name,"theme"))s->dark=!s->dark;
-    else if(!strcmp(name,"assistant")){RECT client;GetClientRect(s->hwnd,&client);s->assistant_expanded=assistant_visible(s,MulDiv(client.right,96,(int)s->dpi))?-1:1;}
+    else if(!strcmp(name,"assistant"))s->assistant_expanded=assistant_visible(s)?-1:1;
     else if(!strcmp(name,"menu")){if(s->popup_kind==1)close_popup(s);else menu_popup(s);return;}else if(!strcmp(name,"targets")){selector_popup(s,0);return;}
     else if(!strcmp(name,"app-shortcut")){
         uint64_t key=read_id(action->key),modifiers=read_id(action->modifiers);
@@ -718,18 +724,23 @@ static LRESULT CALLBACK host_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
     if(message==WM_NCCREATE){s=(host_window_t *)((CREATESTRUCTW *)lp)->lpCreateParams;s->hwnd=hwnd;SetWindowLongPtrW(hwnd,GWLP_USERDATA,(LONG_PTR)s);}
     if(!s)return DefWindowProcW(hwnd,message,wp,lp);
     switch(message){
-    case WM_NCCALCSIZE:{if(IsZoomed(hwnd)){RECT *r=wp?&((NCCALCSIZE_PARAMS *)lp)->rgrc[0]:(RECT *)lp;MONITORINFO mi={sizeof(mi)};if(GetMonitorInfoW(MonitorFromWindow(hwnd,MONITOR_DEFAULTTONEAREST),&mi))*r=mi.rcWork;}return 0;}
+    case WM_NCCALCSIZE:{RECT *r=wp?&((NCCALCSIZE_PARAMS *)lp)->rgrc[0]:(RECT *)lp;
+        if(IsZoomed(hwnd)){MONITORINFO mi={sizeof(mi)};if(GetMonitorInfoW(MonitorFromWindow(hwnd,MONITOR_DEFAULTTONEAREST),&mi))*r=mi.rcWork;}
+        else{LONG top=r->top;(void)DefWindowProcW(hwnd,message,wp,lp);r->top=top;}return 0;}
     case WM_NCHITTEST:return chrome_hit(s,lp);
     case WM_GETMINMAXINFO:{MINMAXINFO *mm=(MINMAXINFO *)lp;MONITORINFO mi={sizeof(mi)};if(GetMonitorInfoW(MonitorFromWindow(hwnd,MONITOR_DEFAULTTONEAREST),&mi)){mm->ptMaxPosition.x=mi.rcWork.left-mi.rcMonitor.left;mm->ptMaxPosition.y=mi.rcWork.top-mi.rcMonitor.top;mm->ptMaxSize.x=mi.rcWork.right-mi.rcWork.left;mm->ptMaxSize.y=mi.rcWork.bottom-mi.rcWork.top;}mm->ptMinTrackSize.x=MulDiv(320,(int)(s->dpi?s->dpi:96),96);mm->ptMinTrackSize.y=MulDiv(240,(int)(s->dpi?s->dpi:96),96);return 0;}
-    case WM_NCMOUSEMOVE:case WM_NCMOUSELEAVE:{LRESULT result=0;if(DwmDefWindowProc(hwnd,message,wp,lp,&result))return result;break;}
+    case WM_NCMOUSEMOVE:case WM_NCMOUSELEAVE:{LRESULT result=0;int hover=message==WM_NCMOUSEMOVE&&wp==HTMAXBUTTON;
+        if(s->max_hover!=hover){s->max_hover=hover;schedule_refresh(s);}
+        if(hover){TRACKMOUSEEVENT track={sizeof(track),TME_LEAVE|TME_NONCLIENT,hwnd,0};(void)TrackMouseEvent(&track);}
+        if(DwmDefWindowProc(hwnd,message,wp,lp,&result))return result;break;}
     case WM_NCRBUTTONUP:if(wp==HTCAPTION){HMENU menu=GetSystemMenu(hwnd,FALSE);UINT command;int zoomed=IsZoomed(hwnd);
         EnableMenuItem(menu,SC_RESTORE,MF_BYCOMMAND|(zoomed?MF_ENABLED:MF_GRAYED));EnableMenuItem(menu,SC_MOVE,MF_BYCOMMAND|(zoomed?MF_GRAYED:MF_ENABLED));EnableMenuItem(menu,SC_SIZE,MF_BYCOMMAND|(zoomed?MF_GRAYED:MF_ENABLED));EnableMenuItem(menu,SC_MAXIMIZE,MF_BYCOMMAND|(zoomed?MF_GRAYED:MF_ENABLED));
         SetForegroundWindow(hwnd);command=TrackPopupMenu(menu,TPM_RETURNCMD|TPM_RIGHTBUTTON,(short)LOWORD(lp),(short)HIWORD(lp),0,hwnd,NULL);if(command)PostMessageW(hwnd,WM_SYSCOMMAND,command,0);return 0;}break;
-    case WM_NCLBUTTONDOWN:if(wp==HTMAXBUTTON){s->max_pressed=1;SetCapture(hwnd);return 0;}break;
+    case WM_NCLBUTTONDOWN:if(wp==HTMAXBUTTON){s->max_pressed=1;SetCapture(hwnd);schedule_refresh(s);return 0;}break;
     case WM_LBUTTONUP:if(s->max_pressed){POINT p={(short)LOWORD(lp),(short)HIWORD(lp)};s->max_pressed=0;ReleaseCapture();ClientToScreen(hwnd,&p);if(chrome_hit(s,MAKELPARAM(p.x,p.y))==HTMAXBUTTON)PostMessageW(hwnd,WM_SYSCOMMAND,IsZoomed(hwnd)?SC_RESTORE:SC_MAXIMIZE,0);return 0;}break;
     case WM_CANCELMODE:s->max_pressed=0;if(GetCapture()==hwnd)ReleaseCapture();break;
     case WM_KEYDOWN:if(wp==VK_ESCAPE&&s->max_pressed){s->max_pressed=0;ReleaseCapture();return 0;}break;
-    case WM_CAPTURECHANGED:s->max_pressed=0;break;
+    case WM_CAPTURECHANGED:s->max_pressed=0;schedule_refresh(s);break;
     case WM_ACTIVATE:schedule_refresh(s);break;
     case WM_CREATE:{ui_workspace_config_t workspace;ui_host_config_t chrome;
         s->dpi=GetDpiForWindow(hwnd);if(!s->dpi)s->dpi=96;s->params=copy_text("{}");recent_initialize(s);

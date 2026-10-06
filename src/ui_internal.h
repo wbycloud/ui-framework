@@ -174,6 +174,8 @@ ui_status_t ui_menus_route_input(ui_host_t *,const void *,const ui_input_event_t
 void ui_menus_component_invalidated(ui_host_t *,ui_component_t *,uint64_t);
 int ui_component_menu_target_valid(ui_component_t *,uint64_t,uint64_t);
 ui_status_t ui_component_menu_anchor(ui_component_t *,ui_host_t *,uint64_t,ui_rect_t *,void **,uint64_t *);
+void ui_shell_sync_visual(ui_host_t *host);
+UI_API void ui_components_set_theme(ui_host_t *host, int dark);
 void ui_components_layout(ui_host_t *host);
 void ui_components_active(ui_host_t *host, int active);
 int ui_components_input_allowed(const ui_host_t *host, const void *view_data);

@@ -37,7 +37,7 @@ static void test_frame(host_window_t *h){
  {const char *ids[]={"recent","open","assistant-toggle","window-min","window-close"};size_t i;for(i=0;i<5;++i)CHECK(SendMessageW(h->hwnd,WM_NCHITTEST,0,at(h,ids[i],NULL))==HTCLIENT);CHECK(SendMessageW(h->hwnd,WM_NCHITTEST,0,at(h,"window-max",NULL))==HTMAXBUTTON);}
  at(h,"window-max",&p);e[0]=pointer_event(p,MOUSEEVENTF_MOVE);e[1]=pointer_event(p,MOUSEEVENTF_LEFTDOWN);e[2]=pointer_event(p,MOUSEEVENTF_LEFTUP);CHECK(GetAncestor(WindowFromPoint(p),GA_ROOT)==h->hwnd);CHECK(SendInput(3,e,sizeof(e[0]))==3);settle(200);CHECK(IsZoomed(h->hwnd));CHECK(click(h->view,"window-max"));pump();
  GetWindowRect(h->hwnd,&before);p=(POINT){before.right-2,before.top+(before.bottom-before.top)/2};end=(POINT){p.x+30,p.y};CHECK(SendMessageW(h->hwnd,WM_NCHITTEST,0,MAKELPARAM(p.x,p.y))==HTRIGHT);
- e[0]=pointer_event(p,MOUSEEVENTF_MOVE);e[1]=pointer_event(p,MOUSEEVENTF_LEFTDOWN);e[2]=pointer_event(end,MOUSEEVENTF_MOVE);e[3]=pointer_event(end,MOUSEEVENTF_LEFTUP);CHECK(SendInput(4,e,sizeof(e[0]))==4);settle(200);GetWindowRect(h->hwnd,&after);CHECK(after.right-before.right>=20);
+ printf("Resize actual target %p host %p chrome %p capture %p\n",(void *)WindowFromPoint(p),(void *)h->hwnd,(void *)h->web_hwnd,(void *)GetCapture());e[0]=pointer_event(p,MOUSEEVENTF_MOVE);e[1]=pointer_event(p,MOUSEEVENTF_LEFTDOWN);e[2]=pointer_event(end,MOUSEEVENTF_MOVE);e[3]=pointer_event(end,MOUSEEVENTF_LEFTUP);CHECK(SendInput(4,e,sizeof(e[0]))==4);settle(200);GetWindowRect(h->hwnd,&after);printf("Resize actual right %ld -> %ld\n",before.right,after.right);CHECK(after.right-before.right>=20);
  CHECK(GetSystemMenu(h->hwnd,FALSE)!=NULL);CHECK(GetMenuState(GetSystemMenu(h->hwnd,FALSE),SC_CLOSE,MF_BYCOMMAND)!=0xffffffff);
  at(h,"title-space",&p);CHECK(SetTimer(h->hwnd,992,100,cancel_system_menu)!=0);e[0]=pointer_event(p,MOUSEEVENTF_MOVE);e[1]=pointer_event(p,MOUSEEVENTF_RIGHTDOWN);e[2]=pointer_event(p,MOUSEEVENTF_RIGHTUP);CHECK(SendInput(3,e,sizeof(e[0]))==3);settle(200);
  {INPUT keys[4]={0};CHECK(SetTimer(h->hwnd,993,100,cancel_system_menu)!=0);for(int i=0;i<4;++i){keys[i].type=INPUT_KEYBOARD;keys[i].ki.wVk=(i==0||i==3)?VK_MENU:VK_SPACE;keys[i].ki.dwFlags=i>=2?KEYEVENTF_KEYUP:0;}CHECK(SendInput(4,keys,sizeof(keys[0]))==4);settle(200);}
@@ -64,7 +64,7 @@ static void test_tabs(host_window_t *h,uint64_t first,uint64_t second){
  for(dpi=96;dpi<=192;dpi+=48){h->dpi=dpi;MoveWindow(h->hwnd,40,40,480,480,TRUE);layout(h);pump();const char *ids[]={"recent","tab-more","open","assistant-toggle","window-min","window-max","window-close"};for(size_t i=0;i<7;++i){ui_element_presentation_t p={0};p.size=sizeof(p);CHECK(ui_web_view_get_presentation(h->view,ids[i],&p)==UI_STATUS_OK&&p.visible&&p.clip.width==p.rect.width&&p.clip.height==p.rect.height);}CHECK(click(h->view,"tab-more"));pump();CHECK(h->popup_kind==1);CHECK(click(h->popup_view,"popup-item-0"));pump();CHECK(ui_workspace_active(h->workspace)==first);}
  h->dpi=GetDpiForWindow(h->hwnd);MoveWindow(h->hwnd,40,40,1200,800,TRUE);layout(h);pump();snprintf(id,80,"tab-%llu",(unsigned long long)second);CHECK(click(h->view,id));pump();CHECK(ui_workspace_active(h->workspace)==second);
  snprintf(id,80,"close-%llu",(unsigned long long)first);CHECK(click(h->view,id));pump();CHECK(!get_instance(h,first,&info)&&ui_workspace_active(h->workspace)==second);
- CHECK(ui_web_view_get_element_rect(h->view,"workspace",&r)==UI_STATUS_OK);int width=r.width;uint64_t target=h->target;CHECK(click(h->view,"assistant-toggle"));pump();CHECK(ui_web_view_get_element_rect(h->view,"workspace",&r)==UI_STATUS_OK&&r.width>width&&h->target==target);CHECK(click(h->view,"assistant-toggle"));pump();
+ CHECK(!assistant_visible(h));CHECK(ui_web_view_get_element_rect(h->view,"workspace",&r)==UI_STATUS_OK);int width=r.width;uint64_t target=h->target;CHECK(click(h->view,"assistant-toggle"));pump();CHECK(ui_web_view_get_element_rect(h->view,"workspace",&r)==UI_STATUS_OK&&r.width<width&&h->target==target);CHECK(click(h->view,"assistant-toggle"));pump();
 }
 static void test_close_contract(host_window_t *h,const wchar_t *directory,const wchar_t *dll){
  wchar_t stage[1024],file[1024],manifest[1024],package[1024],module[1024];char *m,*d,*p,error[256];FILE *f;ui_app_instance_info_t info={0};uint64_t id;
@@ -86,7 +86,7 @@ int wmain(int argc,wchar_t **argv){
  host_window_t h={0};HWND root;uint64_t first,second;ui_app_instance_info_t a={0},b={0};ui_rect_t rect={0};POINT origin={0,0};RECT frame;
  wchar_t temporary[MAX_PATH],history[MAX_PATH];if(argc<4)return 2;CHECK(GetTempPathW(MAX_PATH,temporary)!=0);CHECK(GetTempFileNameW(temporary,L"ubh",0,history)!=0);DeleteFileW(history);CHECK(CreateDirectoryW(history,NULL));swprintf(h.recent_file,4096,L"%s\\recent.bin",history);CHECK(ui_framework_initialize()==UI_STATUS_OK);root=create_host(&h,GetModuleHandleW(NULL));CHECK(root!=NULL);if(!root)return 1;
  key_host=&h;ShowWindow(root,SW_SHOWNOACTIVATE);MoveWindow(root,30,30,1200,800,TRUE);settle(150);
- CHECK(ui_workspace_count(h.workspace)==0);CHECK(GetMenu(root)==NULL);
+ CHECK(ui_workspace_count(h.workspace)==0);CHECK(GetMenu(root)==NULL);CHECK(!assistant_visible(&h));
  CHECK(click(h.view,"recent"));pump();CHECK(h.popup_hwnd!=NULL);{ui_element_presentation_t p={0};p.size=sizeof(p);CHECK(ui_web_view_get_presentation(h.popup_view,"popup-label-0",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"尚无成功打开的应用"));CHECK(ui_web_view_get_presentation(h.popup_view,"popup-item-0",&p)==UI_STATUS_OK&&!p.enabled);}close_popup(&h);
  open_path(&h,argv[1]);pump();first=ui_workspace_active(h.workspace);
  open_path(&h,argv[1]);pump();second=ui_workspace_active(h.workspace);
@@ -96,7 +96,7 @@ int wmain(int argc,wchar_t **argv){
  CHECK(ui_web_view_get_element_rect(h.view,"window-min",&rect)==UI_STATUS_OK&&rect.width>0);
  CHECK(ui_web_view_get_element_rect(h.view,"window-max",&rect)==UI_STATUS_OK&&rect.width>0);
  CHECK(ui_web_view_get_element_rect(h.view,"window-close",&rect)==UI_STATUS_OK&&rect.width>0);
- CHECK(click(h.view,"assistant-toggle"));pump();CHECK(!assistant_visible(&h,1200));CHECK(click(h.view,"assistant-toggle"));pump();
+ CHECK(click(h.view,"assistant-toggle"));pump();CHECK(assistant_visible(&h));CHECK(click(h.view,"assistant-toggle"));pump();CHECK(!assistant_visible(&h));
  test_history(&h,history,argv[1]);
  test_frame(&h);
  test_tabs(&h,first,second);

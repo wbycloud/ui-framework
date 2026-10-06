@@ -16,6 +16,7 @@
 #include "ui_framework/shell.h"
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
 #include "ui_framework/light_web.h"
+#include "visual_style.h"
 #endif
 
 #pragma comment(lib, "comctl32.lib")
@@ -1112,23 +1113,25 @@ static void popup_command(ui_host_t *host, uint64_t request_id,
 static char *popup_html(const ui_panel_entry_t *entry)
 {
     static const char prefix[] =
-        "<html><body style='margin:0;background:#edf0f5;color:#263143'>"
-        "<div style='display:flex;flex-direction:row;height:28px;align-items:center;padding:0 6px'>"
+        "<html><head><style>";
+    static const char title[] =
+        "</style></head><body><div class='panel-title'>"
         "<span style='flex:1;font-size:13px;font-weight:600' "
         "onmousedown=\"ui.invoke('framework.panel.drag')\">";
     static const char dock[] =
         "<button style='width:46px;height:24px;border:0;border-radius:4px' "
         "onclick=\"ui.invoke('framework.panel.dock')\">Dock</button>";
     static const char suffix[] =
-        "<button style='width:26px;height:24px;border:0;border-radius:4px' "
-        "onclick=\"ui.invoke('framework.panel.close')\">&#215;</button></div></body></html>";
+        "<button class='glyph' style='width:26px;height:24px;border:0;border-radius:2px' "
+        "onclick=\"ui.invoke('framework.panel.close')\">&#xE8BB;</button></div>"
+        "<script>ui.onmessage=function(s){document.body.className=s.dark?'dark':''}</script></body></html>";
     size_t length = strlen(entry->title), i;
     char *html, *cursor;
-    if (length > (SIZE_MAX - sizeof(prefix) - sizeof(dock) - sizeof(suffix) - 8) / 6)
+    if (length > (SIZE_MAX - sizeof(prefix) - sizeof(title) - sizeof(ui_visual_style) - sizeof(dock) - sizeof(suffix) - 8) / 6)
         return NULL;
-    html = (char *)malloc(length * 6 + sizeof(prefix) + sizeof(dock) + sizeof(suffix) + 8);
+    html = (char *)malloc(length * 6 + sizeof(prefix) + sizeof(title) + sizeof(ui_visual_style) + sizeof(dock) + sizeof(suffix) + 8);
     if (html == NULL) return NULL;
-    strcpy(html, prefix); cursor = html + strlen(html);
+    strcpy(html, prefix);strcat(html,ui_visual_style);strcat(html,title);cursor = html + strlen(html);
     for (i = 0; i < length; ++i) {
         const char *replacement = NULL;
         if (entry->title[i] == '&') replacement = "&amp;";
@@ -1219,11 +1222,23 @@ static ui_status_t create_popup(ui_native_shell_t *shell,
         free(html); close_popup(panel); return UI_STATUS_PLATFORM_ERROR;
     }
     free(html);
+    (void)ui_web_view_post_json(panel->popup_view,shell->host->menu_dark?"{\"dark\":true}":"{\"dark\":false}");
     (void)set_panel_dpi(panel, shell->host->dpi);
     return UI_STATUS_OK;
 #else
     (void)shell; (void)panel;
     return UI_STATUS_UNSUPPORTED;
+#endif
+}
+
+void ui_shell_sync_visual(ui_host_t *host)
+{
+#ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
+    ui_native_shell_t *shell=host->shell?host->shell->native:NULL;size_t i;if(!shell)return;
+    for(i=0;i<shell->panel_count;++i)if(shell->panels[i].popup_view)
+        (void)ui_web_view_post_json(shell->panels[i].popup_view,host->menu_dark?"{\"dark\":true}":"{\"dark\":false}");
+#else
+    (void)host;
 #endif
 }
 

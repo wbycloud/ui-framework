@@ -49,8 +49,8 @@ static int lw_scroll_input(lw_view_t *v,const ui_input_event_t *e)
 static void lw_scroll_paint(lw_view_t *v,lw_node_t *n,HDC dc)
 {
     for(int a=0;a<2;++a)if(a?n->bar_x:n->bar_y){ui_rect_t track,thumb;RECT r;int maximum;HBRUSH brush;int dark=n->style.color>0x808080;
-        lw_scroll_rect(n,a,&track,&thumb,&maximum);r=lw_pixel_rect(v,track);brush=CreateSolidBrush(dark?RGB(24,30,40):RGB(234,236,240));FillRect(dc,&r,brush);DeleteObject(brush);
-        r=lw_pixel_rect(v,thumb);brush=CreateSolidBrush(v->scroll_uid==n->uid||v->hovered==(int)(n-v->nodes)?RGB(91,139,200):dark?RGB(90,108,135):RGB(151,160,172));FillRect(dc,&r,brush);DeleteObject(brush);
+        lw_scroll_rect(n,a,&track,&thumb,&maximum);r=lw_pixel_rect(v,track);brush=CreateSolidBrush(dark?RGB(41,41,41):RGB(238,238,239));FillRect(dc,&r,brush);DeleteObject(brush);
+        r=lw_pixel_rect(v,thumb);brush=CreateSolidBrush(v->scroll_uid==n->uid?RGB(0,103,184):v->hovered==(int)(n-v->nodes)?(dark?RGB(153,153,160):RGB(119,119,128)):dark?RGB(102,102,108):RGB(168,168,175));FillRect(dc,&r,brush);DeleteObject(brush);
         if(v->scroll_focus==(int)(n-v->nodes)){InflateRect(&r,-1,-1);DrawFocusRect(dc,&r);}
     }
 }
