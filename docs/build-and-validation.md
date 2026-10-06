@@ -34,7 +34,7 @@ ctest --test-dir build/web-shell --output-on-failure
 & .\build\web-shell\framework_host.exe .\build\web-shell\web_counter.uapp .\build\web-shell\minimal_eda.uapp
 ```
 
-Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标签，支持浅色/深色切换；顶层采用融合标题区的浏览器式标签栏，下方为活动应用菜单；AI位于窗口按钮左侧，主题/布局重置位于第二行右端宿主选项。最近历史与当前标签分开，详见[宿主说明](standalone-host.md)。`Ctrl+Shift+O` 打开应用包、`Ctrl+W` 关闭、`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手可选择目标实例，查看命令/schema，输入 `{}` 调用 EDA 命令并观察结果/快照；`eda.clear` 请求确认。事务按钮调用应用的 begin/commit/rollback/undo callback，EDA 未提供时返回 UNSUPPORTED。这个区域用于协议验证，尚未连接模型服务。
+Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标签，支持浅色/深色切换；顶层采用融合标题区的浏览器式标签栏，下方为活动应用菜单；AI位于窗口按钮左侧，主题/布局重置位于第二行右端宿主选项。最近历史与当前标签分开，详见[宿主说明](standalone-host.md)。`Ctrl+Shift+O` 打开应用包、`Ctrl+W` 关闭、`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手默认收起，点击AI展开后选择目标实例和可读操作，基本参数可在普通视图编辑；高级区保留schema、原始JSON、快照、事务及详细日志。输入 `{}` 可调用 EDA 命令并观察结果；`eda.clear` 请求确认。事务按钮调用应用的 begin/commit/rollback/undo callback，EDA 未提供时返回 UNSUPPORTED。这个区域用于协议验证，尚未连接模型服务。
 
 宿主日志存储上限为 32000 字节，日志/schema 的显示预览按 UTF-8 边界限制到 4095 字节。危险操作确认参数采用完整分块显示和滚动，不能用被截断的日志预览代替确认内容。应用自身仍负责参数 schema 的业务校验。
 
@@ -56,7 +56,7 @@ Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标
 
 ### 2.1 打包自己的应用
 
-应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 6；使用新接口的应用将清单与 DLL descriptor 一致声明为6，旧 API1–5 包可保留原声明。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
+应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 7；使用新接口的应用将清单与 DLL descriptor 一致声明为7，旧 API1–6 包可保留原声明。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
 
 ```text
 minimal_eda_app.dll
@@ -274,7 +274,7 @@ OpenGL 测试会打印实际 vendor、renderer 和 context 信息。现代配置
 
 1. 空启动 `framework_host.exe`，通过菜单打开应用包，再从命令行同时打开两份；分别修改矩形、zoom和笔记，检查切换与关闭后台标签不改变另一实例。
 2. 在实际不同缩放的两台显示器间移动宿主窗口，确认 Per-Monitor 模式、suggested RECT、公共/应用菜单、标签、助手、面板和 OpenGL framebuffer。
-3. 在 1920×1080、1280×720、800×600、640×480 对应目标尺寸下缩放，检查主区、标签/浮动内容可用、全局助手自动折叠且可手动展开；同时记录实际逻辑客户区与设备像素尺寸。
+3. 在 1920×1080、1280×720、800×600、640×480 对应目标尺寸下缩放，检查主区、标签/浮动内容可用、AI默认收起，手动展开/收起后resize和标签切换保留选择；同时记录实际逻辑客户区与设备像素尺寸。
 4. 最小化/恢复，检查画布重新绘制、比例、zoom 和资源仍正确，后台标签激活后也采用当前尺寸/DPI。
 5. 检查面板停靠/浮动及 `ui_shell_refresh()` 保留内容；旧 `ui_native_shell_refresh()` 后重建内容并重新查询 handle，退出不访问旧 handle。
 6. 在应用目标 GPU 上验证默认现代配置，另用嵌入式 EXE显式验证legacy路径；检查renderer，确认是否达到硬件加速要求。
@@ -381,3 +381,25 @@ foreach ($row in @("native","light","webview2","osmesa")) {
 [本轮交付及失败记录](validation/api7-delivery-validation.md)提供实际commit、运行/复现步骤和待运行的远程操作；[业务试点](business-pilot.md)先核对指定应用/修改授权。严格[Session0工作流](../.github/workflows/session0-osmesa.yml)复用原服务脚本，`RequireNoLogin`保持整机登录会话门槛，当前权限不足或无目标runner时分别记待验。
 
 显式provider阶段包含ui_windowless_gl、ui_session0_interactive_control、Light的ui_api6_integration/ui_api7_integration及可选原API6 Light；Runtime变体只在Runtime阶段。软件WGL DLL即使没有调用WGL也可能初始化进程资源；实际对照曾在200周期资源断言失败，原断言保留，三次同二进制移除本行WGL部署的对照通过。详见收敛记录，不把这项环境隔离称为历史WebView2波动的完整根因。
+
+
+## 框架视觉复验
+
+公共API仍7，统一CSS在CMake配置时嵌入生成的宿主资源、组件/菜单字符串及Web浮动标题。修改src/visual.css或模板后执行cmake --build会触发重配置/RC与DLL构建；仅打开源host.html不能代替运行真实宿主。
+
+使用第3节固定依赖、真实Runtime及显式OSMesa配置，在Windows x64开发终端执行：
+
+```powershell
+cmake -S . -B build/visual -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_FRAMEWORK_ENABLE_WEBVIEW2=ON -DUI_OSMESA_LIBRARY="$PWD/.deps/mesa-24.3.4/x64/osmesa.dll"
+cmake --build build/visual
+New-Item -ItemType Directory -Path build/visual-evidence -Force | Out-Null
+ctest --test-dir build/visual --output-on-failure -R '^(ui_visual_ui_light|ui_visual_ui_webview2|ui_browser_host|ui_web_host_frontend|ui_menu_desktop|ui_component_experience|ui_component_scroll|ui_floating_web_dpi)$'
+& .\build\visual\ui_visual_ui_test.exe .\build\visual\api7_fixture.uapp "$PWD/.deps/mesa-24.3.4/x64/osmesa.dll" light "$PWD/build/visual-evidence/light"
+& .\build\visual\ui_visual_ui_test.exe .\build\visual\api7_fixture.uapp "$PWD/.deps/mesa-24.3.4/x64/osmesa.dll" webview2 "$PWD/build/visual-evidence/webview2"
+```
+
+两项视觉目标要求轻量、独立宿主及显式OSMesa；Runtime变体还要求启用WebView2并实际运行Runtime。测试使用框架api7_fixture.uapp，不修改业务应用；真实宿主PrintWindow及C捕获保存BMP，程序DPI96/144/192、双实例、十万行、错误/草稿、颜色/枚举和收起/展开访问均有断言。截图不能替代DWM/物理IME验收，`--baseline`仅是保存旧源码对照的测试模式，不能用于最终通过口径。
+
+现有CI分类把ui_visual_ui_light放入独立OSMesa/provider阶段，把ui_visual_ui_webview2放入实际Runtime阶段；不提高原预算或增加远程执行授权。[本轮实际身份、完整矩阵、原包与失败](validation/visual-ui-validation.md)区别本机结果和未运行托管CI。
+
+若复用含四个应用本地Mesa WGL DLL的旧build目录，直接CTest前必须按现有CI显式设置GALLIUM_DRIVER=llvmpipe。省略时Mesa可能自动选择D3D12；本轮Windows26300/Intel组合在libgallium_wgl崩溃，严格保留原失败。同二进制显式llvmpipe通过不代表D3D12已修复，不删除测试DLL或改变原断言。[环境对照](validation/visual-ui-validation.md#3-测试与失败)。

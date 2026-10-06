@@ -341,8 +341,8 @@ TypeScript 需在构建阶段离线编译为 JavaScript，再交给后端执行�
 | HTML 内容元素 | `div`、`header`、`footer`、`nav`、`aside`、`section`、`main`、`p`、`span`、`button`、文本 `input`、`textarea`、资源 ID `img` |
 | 内容属性 | `id`、`class`、`style`、`onclick`、`onmousedown`、`oninput`、`value`、文本 `type`、`disabled`、`readonly` |
 | 布局 | `display:block/flex/none`、row/column、整数 flex 权重、整数 px/百分比宽高、absolute 定位、padding/margin/gap、min/max尺寸和基本对齐 |
-| 样式 | 十六进制颜色、solid 边框、圆角、字体大小/粗细、受限字体族、裁剪和滚动 |
-| 样式表 | 标签/class/ID/后代选择器、hover/focus/disabled、有限优先级与 width min/max media 规则 |
+| 样式 | 十六进制颜色、solid 边框、圆角、字体大小/粗细、受限字体族（含系统MDL2图标）、box-sizing、裁剪和滚动 |
+| 样式表 | 标签/class/ID/后代选择器、hover/active/focus/disabled（hover/active包含命中祖先）、有限优先级与 width min/max media 规则 |
 | DOM 脚本 | `document.body`、`getElementById/createElement`、`appendChild/removeChild/remove`、`textContent/className/value/disabled/style`、受限属性访问、`focus()` |
 | 事件/消息 | click/input/keydown/focus/blur/mouseenter/mouseleave/mousedown/wheel/contextmenu 监听、document keydown、`ui.invoke/value/postMessage/onmessage` 和 window message |
 | 输入 | 逻辑像素命中、按钮/滚轮；Uniscribe 和 IMM32 平台适配的 Web 单行/多行编辑、选择、剪贴板及撤销，无 EDIT 代理 |
@@ -466,3 +466,7 @@ API7/SDK0.7/标准7，ABI/包格式1不变。ui_panel_layout在原48字节之后
 当前独立DLL证据见[API7验收](validation/api7-validation.md)。历史Session0不得替代当前源码复验；严格整机无登录、真实IME/物理跨屏/桌面合成/长期人工及真实业务试点分别记录。
 
 API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认；初始有/无窗口布局为其分配底部空间，reset回到注册默认底部。直接声明与事后移动同样保留内容生命周期，见[注册复现和修复](validation/api7-validation.md)。
+
+## 框架视觉与宿主呈现
+
+框架自有界面遵循[视觉规范](visual-design.md)：中性浅深主题、紧凑固定行高、角色独立样式及明确hover/pressed/focus/selected/disabled/error/loading状态。轻量与WebView2使用同一共同模板；独立宿主同步其主题，应用自有内容仍由应用管理。AI启动默认收起，基本参数复用原JSON/validator，高级区保留事务/schema/原参数/日志路径。外观变化不要求旧包升级API或依赖宿主DOM，Windows系统控件不能承诺逐像素统一。[实际回归和条件边界](validation/visual-ui-validation.md)。

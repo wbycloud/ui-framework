@@ -152,3 +152,7 @@ COLOR增加RGBA滑轨和暗/白底透明度预览，保留#RRGGBB/#RRGGBBAA校�
 Runtime创建排入STA并在开始时检查dispatch_blocked；WAIT拒绝后有效操作可恢复创建。已开始的操作继续特定内部文档确认、回调返回后Close和BrowserProcessExited释放环境。失败、资源类型诊断及重复复验见[稳定性记录](validation/runtime-stability-validation.md)，最终结果见[API7验收](validation/api7-validation.md)。
 
 Runtime模态在controller尚未创建时可能先获得容器焦点。文档就绪后仅当该容器仍持有焦点、实例活动且输入门控允许时转交给Runtime；失活、关闭、模态变更或已转移焦点不会由异步就绪强行取回。原输入命令/所有权及PENDING合同保持。
+
+## 框架自有视觉与状态
+
+共同模板默认浅色；独立宿主同步全部实例的浅深主题，应用自有HTML/原生/GL不自动注入。紧凑32行高、12像素完整范围滚动条、表单/颜色/枚举、错误/加载/图片失败与焦点状态见[视觉规范](visual-design.md)。本轮只改内部模板与轻量绘制，公共API7、BigInt总量、缓存/节点/图片预算、排序/选择/草稿及输入合同保持；[两后端真实运行与截图](validation/visual-ui-validation.md)不替代物理IME或业务验收。

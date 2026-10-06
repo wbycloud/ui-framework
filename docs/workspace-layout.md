@@ -64,3 +64,7 @@ dock_panel_tab(moving,anchor)把已有面板移入anchor同区组并激活，浮
 API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认；初始有/无窗口布局为其分配底部空间，reset回到注册默认底部。直接声明与事后移动同样保留内容生命周期，见[注册复现和修复](validation/api7-validation.md)。
 
 当前交付来源、CI与环境限制见[收敛验收](validation/api7-delivery-validation.md)。真实业务布局存储/恢复试点步骤见[准备清单](business-pilot.md)，框架测试DLL不替代业务文档恢复验收。
+
+## 自有外框视觉
+
+独立宿主及Web浮动标题使用[统一视觉规范](visual-design.md)：28逻辑像素紧凑标题、20像素标题工具、平面标签及中性分隔条，悬停/拖动有强调状态。主题切换只更新外框/共同模板，不重建内容槽、GL context或组件；格式2读取1、面板ID、恢复/草稿/选择/焦点及布局手势合同不变。原生嵌入标题、屏幕停靠预览仍按实际Win32实现呈现；物理跨屏/桌面合成另验。[本轮回归](validation/visual-ui-validation.md)。

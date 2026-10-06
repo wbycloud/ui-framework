@@ -128,7 +128,7 @@ API4未实现的Alt访问键、真正无窗口GL、离屏MSAA、WebView2呈现/�
 可直接给下一会话以下指令：
 
 ```text
-请接手 https://github.com/wbycloud/ui-framework 。先读docs/handoff.md、docs/application-development-standard.md、docs/build-and-validation.md、docs/generic-web-ui.md、docs/workspace-layout.md、docs/framework-menu-offscreen.md及API7、Runtime稳定性、API5/6、菜单、浏览器式宿主和Session0验收。核对实际Git状态、HEAD、API7公共头文件和现有四行CI/严格Session0工作流，保留用户改动。API5/6/7及菜单已实现，不重复开发。保持API1–7兼容、完整size字段/偏移、线程、所有权和卸载合同；旧SDK重编译与原包分别报告，本地运行不冒充托管CI，历史Session0不替代当前源码。先给简短计划，持续补验/修复和文档交付，缺环境或授权最后汇总。业务试点按docs/business-pilot.md先核对指定应用及修改授权；没有授权只准备方案。不得修改冻结SDK、原包、PERF-001或未授权请求方应用，不使用graph-engineering、子代理或新会话；没有明确授权不推送、不触发远程工作流、不强推或创建稳定标签。
+请接手 https://github.com/wbycloud/ui-framework 。先读docs/handoff.md、docs/application-development-standard.md、docs/build-and-validation.md、docs/generic-web-ui.md、docs/workspace-layout.md、docs/framework-menu-offscreen.md及API7、Runtime稳定性、API5/6、菜单、浏览器式宿主、视觉和Session0验收，并读docs/visual-design.md及docs/standalone-host.md。核对实际Git状态、HEAD、API7公共头文件和现有四行CI/严格Session0工作流，保留用户改动。API5/6/7及菜单已实现，不重复开发。保持API1–7兼容、完整size字段/偏移、线程、所有权和卸载合同；旧SDK重编译与原包分别报告，本地运行不冒充托管CI，历史Session0不替代当前源码。先给简短计划，持续补验/修复和文档交付，缺环境或授权最后汇总。业务试点按docs/business-pilot.md先核对指定应用及修改授权；没有授权只准备方案。不得修改冻结SDK、原包、PERF-001或未授权请求方应用，不使用graph-engineering、子代理或新会话；没有明确授权不推送、不触发远程工作流、不强推或创建稳定标签。
 ```
 
 ## 7. API5本轮交付与接续
@@ -209,3 +209,16 @@ Session0补验后的必要回归为43项42PASS/1SKIP，原生21项20PASS/1SKIP�
 [宿主使用](standalone-host.md)记录存储和能力边界；[当前验收](validation/browser-host-validation.md)含前后真实截图、失败/修复和全部原字节证据。冻结源码本机62项61PASS/1物理SKIP、0失败340.52秒，正常桌面专项6/6；实际拖动、最大化/还原/边缘、右键及Alt+Space、窄窗程序DPI、双实例/最后标签、模态/焦点/一次命令、24次实际DLL与原六包分别通过。公共接口和原阈值保留；本机结果不冒充托管CI。
 
 OSMesa当前Session1独立DLL200轮、HWND0/原预算通过；Session0严格服务脚本非管理员检查退出1、未创建服务，历史成功不替代。无无登录runner/真实中文IME/不同DPI物理多屏/边缘Snap及DWM/长期人工/授权业务试点；均待验，无硬件无窗口扩展。首版样式UNSUPPORTED、初始标题区域和系统菜单失败及受限桌面输入失败保留；普通桌面及最终完整矩阵随后通过，不把共享桌面或历史Runtime不确定性称永久根治。本轮只本地提交，不推送/远程工作流/新稳定标签。
+
+
+## 13. 2026-10-06 框架自有视觉与AI收敛
+
+接手7e87f55及四文件AI默认收起未提交修改，审查保留。内部单元485ef0d（统一中性浅深规范、宿主/共同组件/菜单/浮动/AI及回归）、f733bcc（现有CI分类）、0b306e6（同HWND重复捕获及基本参数即时反馈）、c5df8c0（工具密度/标签对齐及真实尺寸回归）、7d81b8f（非法草稿保持/禁止旧值执行）、01c8780（原参数预算及JSON数值保真）。公共API7/ABI1、布局格式2读1、菜单/编辑/线程/所有权及关闭合同、原预算不变。最后执行源码01c87801aa86d70759c45e333af7ecc6e31699fc，核心完整矩阵绑定0b306e6，不改写身份；后续文档/证据提交不变运行代码。没有推送、远程工作流、新稳定标签、代理或新会话。
+
+[视觉规范](visual-design.md)、[宿主](standalone-host.md)及[验收/前后真实截图](validation/visual-ui-validation.md)给出角色、数字、状态和原生边界。独立宿主同步全部共同组件/菜单/Web浮动标题主题，自有HTML/原生/GL仍由应用管理。AI每次启动收起，仅手动切换，普通视图是目标/可读操作/基本参数/状态结果，事务/快照/schema/原JSON/日志在初始折叠高级区，保留原高级操作和validator，不接模型服务。收起回收原生/GL宽度，resize/实例切换保留手动状态。
+
+初始收起AI暴露右边缘被原生子窗口覆盖，保留系统侧/底缩放框后原实际动作通过。像素断言复现并修复边框节点黑底；完整矩阵稳定复现重复SetCapture同一HWND触发pressed取消，避免重复获取后原点击断言通过。参数红例和初始化用例错误分别记录；未知JSON值保留、无效数字草稿保持并禁用执行、合并参数原4095字节预算及大整数保真高级路径、布尔反馈及一次命令通过；参数边界失败与修复分别保留。工具原240上限用例通过，排除最初flex判断；真实240短项密度红例修正估算后通过，未提高预算或删除失败。
+
+0b306e6本机完整64项63PASS/1物理SKIP，376.85秒；正常WGL Intel/真实Runtime/OSMesa。原生/Light复用目录自动选择Mesa D3D12，2/9项崩溃，事件指向libgallium_wgl偏移0xde41aa；四DLL哈希与固定提供方一致。按既有CI显式GALLIUM_DRIVER=llvmpipe的同二进制对照：22项21PASS/1SKIP（4.94秒）、43项42PASS/1SKIP（47.92秒）。不删除DLL、不改断言，D3D12组合未修复；软件通过不代替D3D12。最后工具单元14/14（68.41秒）、非法草稿单元14/14（68.14秒）、参数边界单元14/14（67.76秒）；01c8780两后端/EDA最终截图各0失败；原SDK1–6/六包哈希再次PASS。测试与原图的精确二进制/计划/原日志在本轮证据包，历史失败不覆盖。
+
+完整矩阵0b306e6中Session1实际DLL/OSMesa200轮、HWND0及原预算通过，最后源码01c8780再次调用Session0服务脚本，非管理员检查退出1且未创建输出/服务；历史成功不替代当前Session0。无严格无登录runner、真实IME/物理不同DPI/桌面边缘Snap及DWM/长期人工/授权业务试点；均待验。没有实测OSMesa瓶颈/硬件需求，不扩大范围。只有本地交付，不能宣称当前托管CI、所有目标环境或完整业务验收通过。
