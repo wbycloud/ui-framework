@@ -1845,7 +1845,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
             view->pressed = hit;
             view->focused = focus_hit>=0&&!lw_disabled(view,focus_hit)?focus_hit:-1;
             if (view->hwnd) SetFocus(view->hwnd);
-            if(view->hwnd&&focus_hit>=0&&view->nodes[focus_hit].kind==2&&!lw_disabled(view,focus_hit))SetCapture(view->hwnd);
+            if(view->hwnd&&focus_hit>=0&&view->nodes[focus_hit].kind==2&&!lw_disabled(view,focus_hit)&&GetCapture()!=view->hwnd)SetCapture(view->hwnd);
             lw_text_pointer(view,hit,event->x,event->y,0);
             if (previous != view->focused) { (void)lw_event(view,previous,4,0); (void)lw_event(view,view->focused,3,0); }
             if (hit >= 0 && !lw_disabled(view,hit)) (void)lw_event(view,hit,7,0);

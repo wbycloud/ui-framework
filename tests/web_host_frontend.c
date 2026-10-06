@@ -47,6 +47,44 @@ static void send_selection(host_window_t *s,const char *name,uint64_t id,const c
     (void)snprintf(number,sizeof(number),"%llu",(unsigned long long)id);
     action.action=(char *)name;action.id=number;action.command=(char *)command;process_action(s,&action);pump();
 }
+
+static unsigned param_calls;
+static void param_command(ui_host_t *host,uint64_t request,const char *command,
+    const char *params,const char *source,void *data)
+{
+    (void)command;(void)source;(void)data;++param_calls;
+    check(ui_host_reply(host,request,1,params)==UI_STATUS_OK,"parameter command replies through original contract");
+}
+static void param_text(host_window_t *host,const char *id,const char *text)
+{
+    ui_input_event_t e={0};check(click(host->view,id),"parameter input focus");
+    e.size=sizeof(e);e.kind=UI_INPUT_KEY_DOWN;e.key_code='A';e.modifiers=UI_INPUT_MODIFIER_CONTROL;
+    check(ui_web_view_dispatch_input(host->view,&e)==UI_STATUS_OK,"select parameter text");
+    e.kind=UI_INPUT_TEXT;e.modifiers=0;e.text_utf8=text;
+    check(ui_web_view_dispatch_input(host->view,&e)==UI_STATUS_OK,"actual parameter text input");pump();
+}
+static void test_params(host_window_t *host,uint64_t instance)
+{
+    static const char schema[]="{\"type\":\"object\",\"properties\":{\"count\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"enabled\":{\"type\":\"boolean\"}}}";
+    ui_app_instance_info_t info={0};ui_command_desc_t cmd={0};ui_assistant_command_desc_t allowed={0};
+    host_action_t action={0};ui_element_presentation_t p={0};char *saved;const char *raw;
+    check(get_instance(host,instance,&info),"parameter fixture actual instance");
+    cmd.size=sizeof(cmd);cmd.id="fixture.visual.params";cmd.title="参数测试";cmd.params_schema_json=schema;cmd.handler=param_command;
+    check(ui_host_register_command(info.host,&cmd)==UI_STATUS_OK,"parameter semantic command");
+    allowed.size=sizeof(allowed);allowed.id=cmd.id;allowed.params_schema_json=schema;allowed.permission=UI_ASSISTANT_PERMISSION_READ;
+    check(ui_assistant_register_command(info.assistant,&allowed)==UI_STATUS_OK,"original assistant allowlist");
+    send_selection(host,"select-target",instance,NULL);send_selection(host,"select-command",instance,cmd.id);
+    action.action="params";action.params="{\"count\":2,\"name\":\"old\",\"enabled\":false,\"extra\":\"keep\"}";process_action(host,&action);schedule_refresh(host);pump();
+    param_text(host,"param-0","12");param_text(host,"param-1","Draft 中");check(click(host->view,"param-2"),"boolean parameter");pump();
+    p.size=sizeof(p);check(ui_web_view_get_presentation(host->view,"param-2",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"是"),"boolean feedback updates immediately");
+    raw=host->params;printf("Basic parameter JSON: %s\n",raw?raw:"<null>");check(raw&&strstr(raw,"\"count\":12")&&strstr(raw,"Draft 中")&&strstr(raw,"\"enabled\":true")&&strstr(raw,"\"extra\":\"keep\""),"basic edits preserve original JSON and unknown values");
+    saved=copy_text(raw);param_text(host,"param-0","bad");raw=host->params;check(raw&&saved&&!strcmp(raw,saved),"invalid number does not mutate command JSON");free(saved);
+    param_text(host,"param-0","13");check(click(host->view,"invoke"),"original invocation control");pump();check(param_calls==1,"parameter command executes once");
+    action.params="not-json";process_action(host,&action);schedule_refresh(host);pump();p.size=sizeof(p);
+    {ui_status_t status=ui_web_view_get_presentation(host->view,"param-hint",&p);printf("Parameter recovery hint: status=%d visible=%d text=%s\n",status,p.visible,p.text_utf8);check(status==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"高级"),"invalid raw JSON exposes advanced recovery");}
+    action.params="{}";process_action(host,&action);send_selection(host,"select-command",instance,"eda.add_block");pump();
+}
+
 static void CALLBACK confirm_timer(HWND hwnd,UINT message,UINT_PTR timer,DWORD time)
 {
     (void)message;(void)time;
@@ -103,6 +141,7 @@ int wmain(int argc,wchar_t **argv)
     send_selection(&host,"select-target",first,NULL);send_selection(&host,"select-command",first,"eda.add_block");
     click(host.view,"invoke");pump();check(snapshot_value(&host,first,"blocks")==1&&snapshot_value(&host,second,"blocks")==0,"assistant targets background instance");
     check(host.target==first&&strstr(host.log?host.log:"","eda.add_block"),"fixed target and routed semantic result");
+    test_params(&host,first);
     click(host.view,"tool-eda.add_block");pump();check(snapshot_value(&host,second,"blocks")==1,"Web toolbar calls active application command");
     {
         char long_text[12001];json_buffer_t popup={0};

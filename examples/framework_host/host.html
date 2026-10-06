@@ -150,7 +150,7 @@
  action('target', 'targets'); action('command', 'commands');
  action('invoke', 'invoke'); action('cancel', 'cancel'); action('snapshot', 'snapshot');
  action('begin', 'begin'); action('commit', 'commit'); action('rollback', 'rollback'); action('undo', 'undo');
- element('params').addEventListener('input', function () { send('params', {params:element('params').value}); });
+ element('params').addEventListener('input', function () { if(model){model.params=element('params').value;paintParams(model);}send('params', {params:element('params').value}); });
  function place(node, rect) {
   node.style.position='absolute'; node.style.left=rect.x+'px'; node.style.top=rect.y+'px';
   node.style.width=rect.width+'px'; node.style.height=rect.height+'px';
@@ -205,7 +205,7 @@
   catch(error){clear(root);paramKey='';paramNodes=[];hint.textContent='此参数需要在高级区域配置，原有参数保持。';return;}
   hint.textContent=keys.length?'':'此操作无需填写参数。';var key=s.targetLabel+'|'+s.command+'|'+s.schema;
   if(key!==paramKey){clear(root);paramNodes=[];paramKey=key;for(var i=0;i<keys.length;i++){(function(name,index){var spec=props[name],box=document.createElement('div');box.className='column';var label=document.createElement('span');label.className='label';label.textContent=spec.title||name;var n=document.createElement(spec.type==='boolean'?'button':'input');n.id='param-'+index;box.appendChild(label);box.appendChild(n);root.appendChild(box);n.name=name;n.spec=spec;paramNodes.push(n);
-    function change(){try{values=JSON.parse(element('params').value)}catch(error){hint.textContent='原始参数不是有效 JSON，请在高级区域修正。';return;}var value=n.value;if(spec.type==='boolean')value=!(values[name]===true);else if(spec.type!=='string'){value=Number(n.value);if(!n.value||!isFinite(value)||spec.type==='integer'&&Math.floor(value)!==value){n.className='invalid';hint.textContent='请输入有效数字。';return;}}n.className='';values[name]=value;element('params').value=JSON.stringify(values);send('params',{params:element('params').value});}
+    function change(){try{values=JSON.parse(element('params').value)}catch(error){hint.textContent='原始参数不是有效 JSON，请在高级区域修正。';return;}var value=n.value;if(spec.type==='boolean')value=!(values[name]===true);else if(spec.type!=='string'){value=Number(n.value);if(!n.value||!isFinite(value)||spec.type==='integer'&&Math.floor(value)!==value){n.className='invalid';hint.textContent='请输入有效数字。';return;}}n.className='';values[name]=value;element('params').value=JSON.stringify(values);if(model){model.params=element('params').value;paintParams(model);}send('params',{params:element('params').value});}
     n.addEventListener(spec.type==='boolean'?'click':'input',change);
    })(keys[i],i);}}
   for(var i=0;i<paramNodes.length;i++){var n=paramNodes[i];n.disabled=!s.canInvoke;if(n.spec.type==='boolean')n.textContent=values[n.name]===true?'是':'否';else if(document.activeElement!==n)n.value=values[n.name]===undefined?'':String(values[n.name]);}
