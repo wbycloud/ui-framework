@@ -150,7 +150,7 @@
  action('target', 'targets'); action('command', 'commands');
  action('invoke', 'invoke'); action('cancel', 'cancel'); action('snapshot', 'snapshot');
  action('begin', 'begin'); action('commit', 'commit'); action('rollback', 'rollback'); action('undo', 'undo');
- element('params').addEventListener('input', function () { if(model){model.params=element('params').value;paintParams(model);}send('params', {params:element('params').value}); });
+ element('params').addEventListener('input', function () { for(var i=0;i<paramNodes.length;i++)paramNodes[i].className='';if(model){model.params=element('params').value;paintParams(model);}updateInvoke();send('params', {params:element('params').value}); });
  function place(node, rect) {
   node.style.position='absolute'; node.style.left=rect.x+'px'; node.style.top=rect.y+'px';
   node.style.width=rect.width+'px'; node.style.height=rect.height+'px';
@@ -193,22 +193,23 @@
    row.name.textContent=tab.title;row.name.className='tab-name';row.name.disabled=tab.closing;row.close.disabled=tab.closing;row.className='tab'+(tab.active?' active':'')+(tab.closing?' closing':'');row.style.display=tab.visible?'flex':'none';row.name.style.width=(state.tabWidth-26)+'px';
   }prune(tabs,tabNodes,alive);element('tabs').style.width=(state.tabWidth*state.tabCount)+'px';element('tab-more').style.display=state.tabOverflow?'flex':'none';element('window-max').className='window-button glyph'+(state.maxHover?' hovered':'')+(state.maxPressed?' pressed':'');element('window-max').textContent=state.maximized?'\uE923':'\uE922';
   element('empty').style.display=state.tabs.length?'none':'flex';element('assistant').style.display=state.assistant?'flex':'none';
-  element('target').textContent=state.targetLabel||'选择应用';element('command').textContent=state.commandTitle||state.command||'选择操作';element('result').textContent=state.result||'选择目标和操作后执行。';paintParams(state);element('schema').value=state.schema||'';element('log').value=state.log||'';element('invoke').disabled=!state.canInvoke;element('cancel').disabled=!state.canCancel;
+  element('target').textContent=state.targetLabel||'选择应用';element('command').textContent=state.commandTitle||state.command||'选择操作';element('result').textContent=state.result||'选择目标和操作后执行。';paintParams(state);element('schema').value=state.schema||'';element('log').value=state.log||'';updateInvoke();element('cancel').disabled=!state.canCancel;
   if(element('params').value!==state.params)element('params').value=state.params;paintChrome(state);
  }
  var popupCommands={};
  function applyCommand(b,item){b.disabled=item.enabled===false||!!item.busy;b.style.display=item.visible===false?'none':'flex';b.label.textContent=(b.menuRow?'':item.busy?'◌ ':item.checked?'✓ ':'')+b.caption;if(b.mark)b.mark.textContent=item.busy?'◌':item.checked?'✓':'';b.icon.src=item.image||'0';b.icon.style.display=b.menuRow||item.image&&item.image!=='0'?'flex':'none';b.icon.disabled=b.disabled;}
 
+ function updateInvoke(){element('invoke').disabled=!model||!model.canInvoke||paramNodes.some(function(n){return n.className==='invalid'});}
  function paintParams(s){
   var schema,values,props,keys,root=element('param-inputs'),hint=element('param-hint');
   try{schema=JSON.parse(s.schema||'{}');values=JSON.parse(s.params||'{}');props=schema.properties||{};keys=Object.keys(props);if(keys.length>8||Array.isArray(values)||values===null||typeof values!=='object')throw Error();for(var i=0;i<keys.length;i++)if(['string','number','integer','boolean'].indexOf(props[keys[i]].type)<0||props[keys[i]].enum)throw Error();}
   catch(error){clear(root);paramKey='';paramNodes=[];hint.textContent='此参数需要在高级区域配置，原有参数保持。';return;}
   hint.textContent=keys.length?'':'此操作无需填写参数。';var key=s.targetLabel+'|'+s.command+'|'+s.schema;
   if(key!==paramKey){clear(root);paramNodes=[];paramKey=key;for(var i=0;i<keys.length;i++){(function(name,index){var spec=props[name],box=document.createElement('div');box.className='column';var label=document.createElement('span');label.className='label';label.textContent=spec.title||name;var n=document.createElement(spec.type==='boolean'?'button':'input');n.id='param-'+index;box.appendChild(label);box.appendChild(n);root.appendChild(box);n.name=name;n.spec=spec;paramNodes.push(n);
-    function change(){try{values=JSON.parse(element('params').value)}catch(error){hint.textContent='原始参数不是有效 JSON，请在高级区域修正。';return;}var value=n.value;if(spec.type==='boolean')value=!(values[name]===true);else if(spec.type!=='string'){value=Number(n.value);if(!n.value||!isFinite(value)||spec.type==='integer'&&Math.floor(value)!==value){n.className='invalid';hint.textContent='请输入有效数字。';return;}}n.className='';values[name]=value;element('params').value=JSON.stringify(values);if(model){model.params=element('params').value;paintParams(model);}send('params',{params:element('params').value});}
+    function change(){try{values=JSON.parse(element('params').value)}catch(error){hint.textContent='原始参数不是有效 JSON，请在高级区域修正。';return;}var value=n.value;if(spec.type==='boolean')value=!(values[name]===true);else if(spec.type!=='string'){value=Number(n.value);if(!n.value||!isFinite(value)||spec.type==='integer'&&Math.floor(value)!==value){n.className='invalid';hint.textContent='请输入有效数字。';updateInvoke();return;}}n.className='';values[name]=value;element('params').value=JSON.stringify(values);if(model){model.params=element('params').value;paintParams(model);}updateInvoke();send('params',{params:element('params').value});}
     n.addEventListener(spec.type==='boolean'?'click':'input',change);
    })(keys[i],i);}}
-  for(var i=0;i<paramNodes.length;i++){var n=paramNodes[i];n.disabled=!s.canInvoke;if(n.spec.type==='boolean')n.textContent=values[n.name]===true?'是':'否';else if(document.activeElement!==n)n.value=values[n.name]===undefined?'':String(values[n.name]);}
+  for(var i=0;i<paramNodes.length;i++){var n=paramNodes[i];n.disabled=!s.canInvoke;if(n.spec.type==='boolean')n.textContent=values[n.name]===true?'是':'否';else if(document.activeElement!==n&&n.className!=='invalid')n.value=values[n.name]===undefined?'':String(values[n.name]);}
  }
 
  function paintPopup(state) {

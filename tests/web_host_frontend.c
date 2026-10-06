@@ -79,6 +79,8 @@ static void test_params(host_window_t *host,uint64_t instance)
     p.size=sizeof(p);check(ui_web_view_get_presentation(host->view,"param-2",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"是"),"boolean feedback updates immediately");
     raw=host->params;printf("Basic parameter JSON: %s\n",raw?raw:"<null>");check(raw&&strstr(raw,"\"count\":12")&&strstr(raw,"Draft 中")&&strstr(raw,"\"enabled\":true")&&strstr(raw,"\"extra\":\"keep\""),"basic edits preserve original JSON and unknown values");
     saved=copy_text(raw);param_text(host,"param-0","bad");raw=host->params;check(raw&&saved&&!strcmp(raw,saved),"invalid number does not mutate command JSON");free(saved);
+    param_text(host,"param-1","Next");p.size=sizeof(p);check(ui_web_view_get_presentation(host->view,"param-0",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"bad"),"invalid draft survives another field edit");
+    check(ui_web_view_get_presentation(host->view,"invoke",&p)==UI_STATUS_OK&&!p.enabled,"invalid basic parameter blocks stale invocation");click(host->view,"invoke");pump();check(param_calls==0,"invalid draft cannot execute previous valid JSON");
     param_text(host,"param-0","13");check(click(host->view,"invoke"),"original invocation control");pump();check(param_calls==1,"parameter command executes once");
     action.params="not-json";process_action(host,&action);schedule_refresh(host);pump();p.size=sizeof(p);
     {ui_status_t status=ui_web_view_get_presentation(host->view,"param-hint",&p);printf("Parameter recovery hint: status=%d visible=%d text=%s\n",status,p.visible,p.text_utf8);check(status==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"高级"),"invalid raw JSON exposes advanced recovery");}
