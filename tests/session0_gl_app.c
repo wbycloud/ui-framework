@@ -156,4 +156,4 @@ static void UI_APP_CALL destroy(void *data){fixture_t *s=(fixture_t *)data;free(
 static ui_status_t UI_APP_CALL shutdown_module(void)
 {printf("Application module_shutdown live_instances=%u live_surfaces=%u\n",live_instances,live_surfaces);return live_instances||live_surfaces?UI_STATUS_PLATFORM_ERROR:UI_STATUS_OK;}
 UI_APP_EXPORT const ui_app_descriptor_t *UI_APP_CALL ui_app_query_v1(void)
-{static const ui_app_descriptor_t descriptor={sizeof(descriptor),1,5,create,mount,active,close_app,unmount,destroy,shutdown_module};return &descriptor;}
+{static const ui_app_descriptor_t descriptor={sizeof(descriptor),1,UI_FRAMEWORK_API_VERSION,create,mount,active,close_app,unmount,destroy,shutdown_module};return &descriptor;}
