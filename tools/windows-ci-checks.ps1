@@ -1,6 +1,6 @@
 # Shared by the existing matrix runner and its isolated contract tests.
-$UiCiRuntimeTests = 'ui_webview2_|ui_api5_integration|ui_api5_native_host|ui_original_api5_package|ui_legacy_api6_webview2|ui_component_experience_webview2|ui_api6_integration_webview2|ui_component_scroll_webview2|ui_api7_integration_webview2'
-$UiCiProviderTests = '^(ui_windowless_gl|ui_session0_interactive_control|ui_api6_integration|ui_api7_integration|ui_legacy_api6_light)$'
+$UiCiRuntimeTests = 'ui_webview2_|ui_api5_integration|ui_api5_native_host|ui_original_api5_package|ui_legacy_api6_webview2|ui_component_experience_webview2|ui_api6_integration_webview2|ui_component_scroll_webview2|ui_api7_integration_webview2|ui_visual_ui_webview2'
+$UiCiProviderTests = '^(ui_windowless_gl|ui_session0_interactive_control|ui_api6_integration|ui_api7_integration|ui_legacy_api6_light|ui_visual_ui_light)$'
 function Assert-UiCiCTestVersion([string]$VersionText) {
     if ($VersionText -notmatch '^ctest version ([0-9]+\.[0-9]+\.[0-9]+)' -or [version]$Matches[1] -lt [version]'3.26.0') {
         throw 'CI evidence requires CTest >=3.26 (JUnit and explicit empty-test errors)'
@@ -20,9 +20,9 @@ function Assert-UiCiResults([xml]$Results, [string[]]$Expected, [string]$Configu
     }
     $required = @('ui_workspace7','ui_workspace_layout','ui_api5_compat','ui_public_headers_c')
     if ($Configuration -ne 'native') { $required += @('ui_light_scroll','ui_component_scroll','ui_menu_access','ui_api4_compat') }
-    if ($Configuration -in @('osmesa','webview2')) { $required += @('ui_windowless_gl','ui_session0_interactive_control','ui_api6_integration','ui_api7_integration') }
+    if ($Configuration -in @('osmesa','webview2')) { $required += @('ui_visual_ui_light','ui_windowless_gl','ui_session0_interactive_control','ui_api6_integration','ui_api7_integration') }
     if ($Configuration -eq 'webview2') {
-        $required += @('ui_component_scroll_webview2','ui_api7_integration_webview2','ui_component_experience_webview2','ui_api6_integration_webview2','ui_api5_integration','ui_api5_native_host','ui_webview2_render','ui_webview2_messages','ui_webview2_parity')
+        $required += @('ui_visual_ui_webview2','ui_component_scroll_webview2','ui_api7_integration_webview2','ui_component_experience_webview2','ui_api6_integration_webview2','ui_api5_integration','ui_api5_native_host','ui_webview2_render','ui_webview2_messages','ui_webview2_parity')
     }
     foreach ($name in $required) { if ($name -notin $names) { throw "Required $Configuration test absent: $name" } }
 }
