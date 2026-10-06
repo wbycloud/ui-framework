@@ -1,11 +1,12 @@
 param(
     [Parameter(Mandatory)][ValidateSet('native','light','webview2','osmesa')][string]$Configuration,
-    [Parameter(Mandatory)][ValidateSet('prepare','build','test')][string]$Stage
+    [Parameter(Mandatory)][ValidateSet('prepare','build','test')][string]$Stage,
+    [string]$EvidenceDirectory
 )
 $ErrorActionPreference = 'Stop'
 . "$PSScriptRoot/windows-ci-checks.ps1"
 $buildDirectory = "build/ci-$Configuration"
-$evidenceDirectory = "build/ci-evidence-$Configuration"
+if (!$EvidenceDirectory) { $EvidenceDirectory = "build/ci-evidence-$Configuration" }
 New-Item -ItemType Directory -Force $evidenceDirectory | Out-Null
 function CheckExit([string]$operation) { if ($LASTEXITCODE) { throw "$operation failed ($LASTEXITCODE)" } }
 function DownloadChecked([string]$url,[string]$path,[string]$expected) {
@@ -130,7 +131,7 @@ CheckExit 'CTest inventory'
 $plan = Get-Content "$evidenceDirectory/test-plan.json" -Raw | ConvertFrom-Json
 $expected = @($plan.tests | ForEach-Object name)
 if (!$expected.Count) { throw 'Empty configured CTest plan' }
-@(Get-UiCiOriginalPackages $buildDirectory ([xml]'<testsuite/>')) | ConvertTo-Json -Depth 6 | Set-Content "$evidenceDirectory/original-packages.json"
+[ordered]@{maintained_api=7; policy='current_only'; historical_sdk_api_callers_and_packages='not_maintained_or_gated'; existing_loader_behavior='not_a_future_compatibility_promise'} | ConvertTo-Json | Set-Content "$evidenceDirectory/compatibility-policy.json"
 $env:GALLIUM_DRIVER = 'llvmpipe'
 $runtimeTests = $UiCiRuntimeTests
 $phases = if ($Configuration -eq 'webview2') { @('wgl','provider','runtime') } elseif ($Configuration -eq 'osmesa') { @('wgl','provider') } else { @('all') }
@@ -159,6 +160,6 @@ Get-Content "$evidenceDirectory/regression.log"
 Get-ChildItem $buildDirectory -Filter 'api*-*-frame.ppm' | Copy-Item -Destination $evidenceDirectory
 if (Test-Path "$buildDirectory/session0-control/manifest.json") { Copy-Item "$buildDirectory/session0-control" "$evidenceDirectory/session0-interactive-control" -Recurse }
 [xml]$results = Get-Content "$evidenceDirectory/ctest.xml" -Raw
-@(Get-UiCiOriginalPackages $buildDirectory $results) | ConvertTo-Json -Depth 6 | Set-Content "$evidenceDirectory/original-packages.json"
+
 if ($testExit) { throw "Regression failed ($testExit)" }
 Assert-UiCiResults $results $expected $Configuration

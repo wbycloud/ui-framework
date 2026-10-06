@@ -35,7 +35,7 @@ int main(void)
     ui_host_config_t hc={0};ui_host_t *host;ui_surface_desc_t d={0};ui_opengl_config_t gl={0};ui_surface_t *a,*b;
     ui_status_t status;ui_opengl_info_t info={0};ui_opengl_window_dependency_t dependency;ui_pixel_buffer_t p={0};ui_input_event_t e={0};
     HGLRC previous;GLint viewport[4],skip;ui_rect_t rect={0,0,20,16};
-    hc.size=sizeof(hc);hc.api_version=4;host=ui_host_create(&hc);CHECK(host!=NULL);CHECK(ui_host_set_dpi(host,144)==UI_STATUS_OK);
+    hc.size=sizeof(hc);hc.api_version=UI_FRAMEWORK_API_VERSION;host=ui_host_create(&hc);CHECK(host!=NULL);CHECK(ui_host_set_dpi(host,144)==UI_STATUS_OK);
     d.size=sizeof(d);d.id="a";d.kind=UI_SURFACE_OPENGL;d.rect=(ui_rect_t){0,0,32,24};d.visible=1;
     gl.size=sizeof(gl);gl.major_version=3;gl.minor_version=3;gl.profile=UI_OPENGL_PROFILE_COMPATIBILITY;
     a=ui_opengl_offscreen_surface_create(host,&d,&gl,&status);if(!a){printf("Strict WGL 3.3 compatibility unavailable, status=%d\n",status);ui_host_destroy(host);return status==UI_STATUS_UNSUPPORTED?77:1;}

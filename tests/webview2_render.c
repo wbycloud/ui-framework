@@ -25,7 +25,7 @@ int main(void)
  setvbuf(stdout,NULL,_IONBF,0);setvbuf(stderr,NULL,_IONBF,0);SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX);
  runtime_diagnostics_initialize();
  puts("Runtime render: initialize");CHECK(SUCCEEDED(CoInitializeEx(NULL,COINIT_APARTMENTTHREADED)));CHECK(ui_framework_initialize()==UI_STATUS_OK);CHECK(ui_webview2_runtime_status()==UI_STATUS_OK);
- root=CreateWindowW(L"STATIC",L"Real Runtime render",WS_OVERLAPPEDWINDOW,0,0,500,300,NULL,NULL,GetModuleHandleW(NULL),NULL);hc.size=sizeof(hc);hc.api_version=5;hc.native_parent=root;h=ui_host_create(&hc);CHECK(h!=NULL);
+ root=CreateWindowW(L"STATIC",L"Real Runtime render",WS_OVERLAPPEDWINDOW,0,0,500,300,NULL,NULL,GetModuleHandleW(NULL),NULL);hc.size=sizeof(hc);hc.api_version=UI_FRAMEWORK_API_VERSION;hc.native_parent=root;h=ui_host_create(&hc);CHECK(h!=NULL);
  cfg.size=sizeof(cfg);cfg.framework_components=1;b=ui_webview2_backend_create(&cfg,&s);CHECK(b&&s==UI_STATUS_OK);v=ui_web_view_create(h,b);CHECK(v!=NULL);CHECK(ui_web_view_resize(v,200,100,144)==UI_STATUS_OK);
  rgba.size=sizeof(rgba);rgba.width=rgba.height=1;rgba.stride=rgba.bytes=4;rgba.pixels=color;CHECK(ui_image_create(h,&rgba,&image)==UI_STATUS_OK);
  snprintf(html,sizeof(html),"<style>body{margin:0;background:#102030}#box{width:80px;height:24px;background:#f00000;overflow:hidden;white-space:nowrap}</style><div id='box'>REAL Runtime 中文 visible text overflow long</div><input id='edit' value='draft 中文'><img id='pic' style='position:absolute;left:150px;top:50px;width:20px;height:20px' src='%llu'>",(unsigned long long)image);

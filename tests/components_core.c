@@ -7,14 +7,14 @@ static int failures,queries;static ui_component_query_t request;
 static void source(ui_component_t *c,const ui_component_query_t *q,void *data)
 {(void)c;(void)data;request=*q;++queries;}
 static ui_host_t *host(void)
-{ui_host_config_t h={0};h.size=sizeof(h);h.api_version=3;return ui_host_create(&h);}
+{ui_host_config_t h={0};h.size=sizeof(h);h.api_version=UI_FRAMEWORK_API_VERSION;return ui_host_create(&h);}
 int main(void)
 {
     ui_host_t *a=host(),*b=host();ui_component_t *table,*tree;ui_component_desc_t d={0};ui_column_desc_t columns[16]={0};
     ui_row_t rows[10]={0};ui_cell_t cells[10]={0};ui_component_batch_t batch={0};ui_component_state_t state={0};
     char names[16][16],titles[10][32];size_t i;uint64_t old_generation,removed=9007199254741001ULL;uint8_t rgba[24]={255,0,0,128};
     ui_rgba_desc_t image={0};ui_image_id_t id;ui_image_info_t info={0};ui_image_stats_t stats={0};
-    CHECK(a&&b);CHECK(ui_framework_supports_api(1)&&ui_framework_supports_api(2)&&ui_framework_supports_api(3)&&ui_framework_supports_api(4)&&ui_framework_supports_api(5)&&ui_framework_supports_api(6)&&ui_framework_supports_api(7)&&!ui_framework_supports_api(8));
+    CHECK(a&&b);CHECK(ui_framework_supports_api(UI_FRAMEWORK_API_VERSION)&&!ui_framework_supports_api(UI_FRAMEWORK_API_VERSION+1));
     for(i=0;i<16;++i){snprintf(names[i],16,"c%zu",i);columns[i].size=sizeof(columns[i]);columns[i].id=names[i];columns[i].title=names[i];columns[i].kind=UI_VALUE_TEXT;columns[i].width=120;}
     d.size=sizeof(d);d.id="table";d.title="100k table";d.kind=UI_COMPONENT_TABLE;d.columns=columns;d.column_count=16;d.source=source;
     CHECK(ui_component_register(a,&d,&table)==UI_STATUS_OK);CHECK(ui_component_register(b,&d,&tree)==UI_STATUS_OK);

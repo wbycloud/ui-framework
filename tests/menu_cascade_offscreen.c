@@ -13,7 +13,7 @@ static int input(ui_host_t *h,const char *id,int move,int generic)
 int main(void)
 {
  ui_host_config_t config={0};ui_host_t *h;ui_command_desc_t c={0};ui_menu_item_desc_t item={0};ui_menu_popup_desc_t menu={0};ui_element_presentation_t p={0};char id[40],path[1024]="Deep",next[1024];int pages=0,depth=0;
- config.size=sizeof(config);config.api_version=6;h=ui_host_create(&config);CHECK(h!=NULL);if(!h)return 1;CHECK(ui_host_resize(h,400,300)==UI_STATUS_OK);
+ config.size=sizeof(config);config.api_version=UI_FRAMEWORK_API_VERSION;h=ui_host_create(&config);CHECK(h!=NULL);if(!h)return 1;CHECK(ui_host_resize(h,400,300)==UI_STATUS_OK);
  c.size=sizeof(c);c.id="probe";c.title="Probe";c.handler=run;CHECK(ui_host_register_command(h,&c)==UI_STATUS_OK);item.size=sizeof(item);item.title="Paged command 中文";item.command_id=c.id;item.menu_path="Many";
  for(int i=0;i<128;i++){snprintf(id,sizeof(id),"paged.%03d",i);item.id=id;item.order=i;CHECK(ui_host_register_menu_item(h,&item)==UI_STATUS_OK);}
  menu.size=sizeof(menu);menu.path="Many";menu.target_id=77;menu.anchor.size=sizeof(menu.anchor);CHECK(ui_host_show_menu(h,&menu)==UI_STATUS_OK);

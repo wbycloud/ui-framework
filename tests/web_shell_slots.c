@@ -63,7 +63,7 @@ int main(void)
         0, 0, 1000, 700, root, NULL, GetModuleHandleW(NULL), NULL);
     if (root == NULL || container == NULL) return 1;
     memset(&host_config, 0, sizeof(host_config));
-    host_config.size = sizeof(host_config); host_config.api_version = 1;
+    host_config.size = sizeof(host_config); host_config.api_version=UI_FRAMEWORK_API_VERSION;
     host_config.native_parent = container;
     host = ui_host_create(&host_config);
     if (host == NULL) return 1;

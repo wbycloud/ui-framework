@@ -51,23 +51,17 @@ int wmain(int argc, wchar_t **wide_argv)
         if (!WideCharToMultiByte(CP_UTF8, WC_ERR_INVALID_CHARS, wide_argv[arg],
                                 -1, argv[arg], length, NULL, NULL)) return 2;
     }
-    CHECK(ui_framework_supports_api(1) && ui_framework_supports_api(2));
-    CHECK(!ui_framework_supports_api(0) && ui_framework_supports_api(4)&&ui_framework_supports_api(5)&&ui_framework_supports_api(6)&&ui_framework_supports_api(7)&&!ui_framework_supports_api(8));
-    host_config.size = sizeof(host_config);
-    host_config.api_version = 1; host = ui_host_create(&host_config);
-    CHECK(host != NULL); ui_host_destroy(host);
-    host_config.api_version = 2; host = ui_host_create(&host_config);
-    CHECK(host != NULL); ui_host_destroy(host);
-    host_config.api_version = 3; host = ui_host_create(&host_config); CHECK(host != NULL); ui_host_destroy(host);
-    host_config.api_version = 5; host=ui_host_create(&host_config);CHECK(host!=NULL);ui_host_destroy(host);
-    host_config.api_version = 6; host=ui_host_create(&host_config);CHECK(host!=NULL);ui_host_destroy(host); host_config.api_version = 8; CHECK(ui_host_create(&host_config) == NULL);
+    CHECK(ui_framework_supports_api(UI_FRAMEWORK_API_VERSION));
+    CHECK(!ui_framework_supports_api(0)&&!ui_framework_supports_api(UI_FRAMEWORK_API_VERSION+1));
+    host_config.size=sizeof(host_config);host_config.api_version=UI_FRAMEWORK_API_VERSION;host=ui_host_create(&host_config);
+    CHECK(host!=NULL);ui_host_destroy(host);host_config.api_version=UI_FRAMEWORK_API_VERSION+1;CHECK(ui_host_create(&host_config)==NULL);
     CHECK(ui_package_open(argv[1], &package, error, sizeof(error)) == UI_STATUS_OK);
-    CHECK(package && ui_package_get_metadata(package)->framework_api_version == 1);
+    CHECK(package && ui_package_get_metadata(package)->framework_api_version == UI_FRAMEWORK_API_VERSION);
     ui_package_destroy(package); package = NULL;
     CHECK(ui_package_open(argv[2], &package, error, sizeof(error)) == UI_STATUS_OK);
-    CHECK(package && ui_package_get_metadata(package)->framework_api_version == 2);
+    CHECK(package && ui_package_get_metadata(package)->framework_api_version == UI_FRAMEWORK_API_VERSION);
     ui_package_destroy(package);
-    parent = CreateWindowExW(0, L"STATIC", L"API compatibility", WS_OVERLAPPEDWINDOW,
+    parent = CreateWindowExW(0, L"STATIC", L"Current application contract", WS_OVERLAPPEDWINDOW,
         0, 0, 1000, 760, NULL, NULL, GetModuleHandleW(NULL), NULL);
     CHECK(parent != NULL);
     config.size = sizeof(config); config.native_parent = parent;
@@ -104,6 +98,6 @@ int wmain(int argc, wchar_t **wide_argv)
     CHECK(ui_workspace_destroy(workspace) == UI_STATUS_OK);
     DestroyWindow(parent);
     for (arg = 1; arg < 4; ++arg) free(argv[arg]);
-    printf("application API1/API2 and Web/native contents: %s\n", failed ? "FAILED" : "PASS");
+    printf("current application declarations and Web/native contents: %s\n", failed ? "FAILED" : "PASS");
     return failed ? 1 : 0;
 }

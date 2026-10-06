@@ -24,14 +24,14 @@ static void run(int offscreen)
     CHECK(ui_shell_save_layout(s,NULL,0,&bytes)==UI_STATUS_OK&&bytes>100);data=(unsigned char *)malloc(bytes);CHECK(data!=NULL);if(!data)return;
     CHECK(ui_shell_save_layout(s,data,bytes-1,&bytes)==UI_STATUS_LIMIT_EXCEEDED);CHECK(ui_shell_save_layout(s,data,bytes,&bytes)==UI_STATUS_OK);
     CHECK(ui_shell_reset_layout(s)==UI_STATUS_OK);CHECK(ui_shell_restore_layout(s,data,bytes)==UI_STATUS_OK);CHECK(ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.collapsed&&b.order==10);
-    data[4]=99;CHECK(ui_shell_restore_layout(s,data,bytes)==UI_STATUS_UNSUPPORTED);CHECK(ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.collapsed);data[4]=1;
+    data[4]=99;CHECK(ui_shell_restore_layout(s,data,bytes)==UI_STATUS_UNSUPPORTED);CHECK(ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.collapsed);data[4]=2;
     CHECK(ui_shell_restore_layout(s,data,bytes-1)==UI_STATUS_INVALID_ARGUMENT);
     p.id="added";p.dock_region=UI_LAYOUT_REGION_LEFT_SIDEBAR;CHECK(ui_host_register_panel(h,&p)==UI_STATUS_OK);CHECK(ui_shell_refresh(s)==UI_STATUS_OK);CHECK(ui_shell_restore_layout(s,data,bytes)==UI_STATUS_OK);CHECK(ui_shell_get_content_slot(s,"added")!=NULL);
-    {unsigned char copy[64];memcpy(copy,data+80,64);memcpy(data+80,data+184,64);CHECK(ui_shell_restore_layout(s,data,bytes)==UI_STATUS_INVALID_ARGUMENT);memcpy(data+80,copy,64);
-        data[80]=0xc0;CHECK(ui_shell_restore_layout(s,data,bytes)==UI_STATUS_INVALID_ARGUMENT);memcpy(data+80,copy,64);
-        memset(data+80,0,64);strcpy((char *)data+80,"missing-panel");CHECK(ui_shell_restore_layout(s,data,bytes)==UI_STATUS_OK);memcpy(data+80,copy,64);
-        {size_t large_bytes=80+512*104;unsigned char *large=(unsigned char *)calloc(1,large_bytes);CHECK(large!=NULL);if(large){memcpy(large,data,80);large[8]=0;large[9]=2;large[12]=(unsigned char)large_bytes;large[13]=(unsigned char)(large_bytes>>8);large[14]=large[15]=0;
-            for(int i=0;i<512;++i){memcpy(large+80+i*104,data+80,104);memset(large+80+i*104,0,64);snprintf((char *)large+80+i*104,64,"unknown-%d",i);}CHECK(ui_shell_restore_layout(s,large,large_bytes)==UI_STATUS_OK);free(large);}}}
+    {unsigned char copy[64];memcpy(copy,data+96,64);memcpy(data+96,data+208,64);CHECK(ui_shell_restore_layout(s,data,bytes)==UI_STATUS_INVALID_ARGUMENT);memcpy(data+96,copy,64);
+        data[96]=0xc0;CHECK(ui_shell_restore_layout(s,data,bytes)==UI_STATUS_INVALID_ARGUMENT);memcpy(data+96,copy,64);
+        memset(data+96,0,64);strcpy((char *)data+96,"missing-panel");CHECK(ui_shell_restore_layout(s,data,bytes)==UI_STATUS_OK);memcpy(data+96,copy,64);
+        {size_t large_bytes=96+512*112;unsigned char *large=(unsigned char *)calloc(1,large_bytes);CHECK(large!=NULL);if(large){memcpy(large,data,96);large[8]=0;large[9]=2;large[12]=(unsigned char)large_bytes;large[13]=(unsigned char)(large_bytes>>8);large[14]=large[15]=0;
+            for(int i=0;i<512;++i){memcpy(large+96+i*112,data+96,112);memset(large+96+i*112,0,64);snprintf((char *)large+96+i*112,64,"unknown-%d",i);}CHECK(ui_shell_restore_layout(s,large,large_bytes)==UI_STATUS_OK);free(large);}}}
     free(data);
     CHECK(ui_shell_reset_layout(s)==UI_STATUS_OK);CHECK(ui_shell_resize_splitter(s,UI_LAYOUT_REGION_LEFT_SIDEBAR,NULL,9999)==UI_STATUS_OK&&h->layout.left_sidebar_width<=400);
     CHECK(ui_shell_resize_splitter(s,UI_LAYOUT_REGION_LEFT_SIDEBAR,"tree",120)==UI_STATUS_OK);
@@ -56,9 +56,9 @@ static void run(int offscreen)
 static void partial_fields(void)
 {
     ui_host_config_t hc={0};ui_host_t *h;ui_component_t *c;ui_component_desc_t d={0};ui_component_state_t state;
-    hc.size=sizeof(hc);hc.api_version=6;h=ui_host_create(&hc);CHECK(h!=NULL);if(!h)return;
-    _Static_assert(offsetof(ui_component_desc_t,sort_command)==144&&offsetof(ui_component_desc_t,selection_flags)==152,"API6 append only");
-    _Static_assert(offsetof(ui_component_state_t,selected_count)==120&&sizeof(ui_component_query_t)==112,"API6 state/query");
+    hc.size=sizeof(hc);hc.api_version=UI_FRAMEWORK_API_VERSION;h=ui_host_create(&hc);CHECK(h!=NULL);if(!h)return;
+    _Static_assert(offsetof(ui_component_desc_t,sort_command)==144&&offsetof(ui_component_desc_t,selection_flags)==152,"current field offsets");
+    _Static_assert(offsetof(ui_component_state_t,selected_count)==120&&sizeof(ui_component_query_t)==112,"current state/query");
     d.size=151;d.id="partial-sort";d.kind=UI_COMPONENT_LIST;d.sort_command=(const char *)(uintptr_t)1;d.selection_flags=0xffffffff;
     CHECK(ui_component_register(h,&d,&c)==UI_STATUS_OK);memset(&state,0xa5,sizeof(state));state.size=127;CHECK(ui_component_get_state(c,&state)==UI_STATUS_OK&&state.selected_count==SIZE_MAX/255*165);
     d.size=155;d.id="partial-flags";d.sort_command=NULL;CHECK(ui_component_register(h,&d,&c)==UI_STATUS_OK);

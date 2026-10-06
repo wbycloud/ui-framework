@@ -35,7 +35,7 @@ int main(void)
     ui_menu_popup_desc_t popup={0};ui_component_desc_t desc={0};ui_component_t *tree,*form,*status;
     ui_element_presentation_t p={0};ui_pixel_buffer_t pixels={0};ui_command_state_t state={0};ui_input_event_t input={0};
     ui_field_desc_t field={0};char id[40],title[96];size_t n=0;uint64_t caps=0;int i;
-    hc.size=sizeof(hc);hc.api_version=4;a=ui_host_create(&hc);b=ui_host_create(&hc);CHECK(a&&b);
+    hc.size=sizeof(hc);hc.api_version=UI_FRAMEWORK_API_VERSION;a=ui_host_create(&hc);b=ui_host_create(&hc);CHECK(a&&b);
     CHECK(ui_host_resize(a,400,300)==UI_STATUS_OK);CHECK(ui_host_menu_get_capabilities(a,&caps)==UI_STATUS_OK&&(caps&UI_MENU_CAP_OFFSCREEN));
     command.size=sizeof(command);command.id="test.action";command.title="Action";command.handler=run;CHECK(ui_host_register_command(a,&command)==UI_STATUS_OK);
     item.size=sizeof(item);item.menu_path="File";item.command_id=command.id;

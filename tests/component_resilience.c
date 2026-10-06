@@ -148,7 +148,7 @@ static void preview_lifetime(void)
     ui_host_config_t hc={0};ui_component_desc_t desc={0};ui_column_desc_t columns[3]={0};ui_field_desc_t field={0};
     ui_cell_t value={0};ui_rgba_desc_t rgba={0};ui_image_id_t supplied=0;ui_image_stats_t stats={0};ui_image_info_t info={0};
     ui_host_t *host;ui_component_t *table=NULL,*form=NULL;uint8_t pixel[4]={0,100,200,255};unsigned i;
-    hc.size=sizeof(hc);hc.api_version=4;host=ui_host_create(&hc);CHECK(host!=NULL);if(!host)return;
+    hc.size=sizeof(hc);hc.api_version=UI_FRAMEWORK_API_VERSION;host=ui_host_create(&hc);CHECK(host!=NULL);if(!host)return;
     rgba.size=sizeof(rgba);rgba.width=rgba.height=1;rgba.stride=rgba.bytes=4;rgba.pixels=pixel;
     CHECK(ui_image_create(host,&rgba,&supplied)==UI_STATUS_OK);
     for(i=0;i<3;++i){columns[i].size=sizeof(columns[i]);columns[i].id=i==0?"generated":i==1?"cell-image":"style-image";columns[i].title=columns[i].id;columns[i].kind=UI_VALUE_STYLE;columns[i].width=80;}

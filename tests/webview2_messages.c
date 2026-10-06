@@ -29,7 +29,7 @@ int main(void)
     root = CreateWindowW(L"STATIC", L"WebView2 JSON", WS_OVERLAPPEDWINDOW,
         0, 0, 800, 600, NULL, NULL, GetModuleHandleW(NULL), NULL);
     if (root == NULL) return 1;
-    hc.size = sizeof(hc); hc.api_version = 2; hc.native_parent = root;
+    hc.size = sizeof(hc); hc.api_version=UI_FRAMEWORK_API_VERSION; hc.native_parent = root;
     host = ui_host_create(&hc); if (host == NULL) return 1;
     config.size = sizeof(config);
     backend = ui_webview2_backend_create(&config, &status); if (backend == NULL) return 1;

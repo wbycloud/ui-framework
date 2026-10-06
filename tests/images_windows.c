@@ -9,7 +9,7 @@ int main(void)
 {
     ui_host_config_t config={0};ui_host_t *host,*other;ui_image_id_t id,other_id;ui_image_info_t info={0};ui_image_stats_t stats={0};uint8_t bytes[4]={255,0,0,128};ui_rgba_desc_t r={0};
     HDC dc;HBITMAP bitmap;HGDIOBJ old;RECT rect={0,0,1,1};COLORREF color;ui_fill_style_t style={0};size_t i,quota;uint8_t corrupt[sizeof(png_fixture)];
-    config.size=sizeof(config);config.api_version=3;host=ui_host_create(&config);other=ui_host_create(&config);CHECK(host&&other);
+    config.size=sizeof(config);config.api_version=UI_FRAMEWORK_API_VERSION;host=ui_host_create(&config);other=ui_host_create(&config);CHECK(host&&other);
     info.size=sizeof(info);CHECK(ui_image_load_png(host,png_fixture,sizeof(png_fixture),&id)==UI_STATUS_OK);CHECK(ui_image_get_info(host,id,&info)==UI_STATUS_OK&&info.width==16&&info.height==16);
     memcpy(corrupt,png_fixture,sizeof(corrupt));memset(corrupt+16,0,sizeof(corrupt)-16);CHECK(ui_image_load_png(host,corrupt,sizeof(corrupt),&other_id)==UI_STATUS_VALIDATION_FAILED);
     CHECK(ui_image_release(host,id)==UI_STATUS_OK);r.size=sizeof(r);r.width=r.height=1;r.stride=r.bytes=4;r.pixels=bytes;CHECK(ui_image_create(host,&r,&id)==UI_STATUS_OK);

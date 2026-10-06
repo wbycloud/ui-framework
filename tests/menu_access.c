@@ -21,7 +21,7 @@ static int focused(ui_host_t *h,const char *id)
 int main(void)
 {
  ui_host_config_t hc={0};ui_host_t *a,*b;ui_command_desc_t cmd={0};ui_menu_item_desc_t item={0};ui_menu_group_desc_t g={0};ui_command_state_t state={0};
- hc.size=sizeof(hc);hc.api_version=4;a=ui_host_create(&hc);b=ui_host_create(&hc);CHECK(a&&b);CHECK(ui_host_resize(a,180,220)==UI_STATUS_OK);
+ hc.size=sizeof(hc);hc.api_version=UI_FRAMEWORK_API_VERSION;a=ui_host_create(&hc);b=ui_host_create(&hc);CHECK(a&&b);CHECK(ui_host_resize(a,180,220)==UI_STATUS_OK);
  cmd.size=sizeof(cmd);cmd.id="test.run";cmd.title="Run";cmd.handler=run;CHECK(ui_host_register_command(a,&cmd)==UI_STATUS_OK);
  item.size=sizeof(item);item.id="one";item.title="One";item.menu_path="File";item.command_id=cmd.id;item.order=1;item.access_key='R';CHECK(ui_host_register_menu_item(a,&item)==UI_STATUS_OK);
  item.id="two";item.title="Two";item.order=2;CHECK(ui_host_register_menu_item(a,&item)==UI_STATUS_OK);

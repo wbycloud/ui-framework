@@ -36,7 +36,7 @@ static void input(ui_surface_t *s,const ui_input_event_t *e,void *u){(void)s;(vo
 int wmain(int argc,wchar_t **argv)
 {
  ui_host_config_t hc={0};ui_host_t *h;ui_surface_desc_t d={0};ui_opengl_config_t gl={0};ui_opengl_windowless_config_t cfg={0};ui_surface_t *s,*other;ui_status_t st;ui_opengl_info_t info={0};ui_opengl_window_dependency_t dep;ui_pixel_buffer_t p={0};ui_input_event_t e={0};int partial=0,base_windows,base_process_windows=process_window_count();ui_rect_t rect={0,0,80,50};
- HHOOK hook=NULL;hc.size=sizeof(hc);hc.api_version=5;h=ui_host_create(&hc);CHECK(h!=NULL);d.size=sizeof(d);d.id="test";d.kind=UI_SURFACE_OPENGL;d.rect=(ui_rect_t){0,0,64,64};gl.size=sizeof(gl);gl.major_version=3;gl.minor_version=3;gl.profile=UI_OPENGL_PROFILE_COMPATIBILITY;gl.samples=4;
+ HHOOK hook=NULL;hc.size=sizeof(hc);hc.api_version=UI_FRAMEWORK_API_VERSION;h=ui_host_create(&hc);CHECK(h!=NULL);d.size=sizeof(d);d.id="test";d.kind=UI_SURFACE_OPENGL;d.rect=(ui_rect_t){0,0,64,64};gl.size=sizeof(gl);gl.major_version=3;gl.minor_version=3;gl.profile=UI_OPENGL_PROFILE_COMPATIBILITY;gl.samples=4;
  hook=SetWindowsHookExW(WH_CBT,window_hook,NULL,GetCurrentThreadId());CHECK(hook!=NULL);
  {static char path[4096];if(argc>1)CHECK(WideCharToMultiByte(CP_UTF8,0,argv[1],-1,path,sizeof(path),NULL,NULL)>0);cfg.library_path_utf8=argc>1?path:NULL;}
  EnumThreadWindows(GetCurrentThreadId(),count_window,0);base_windows=windows;cfg.size=sizeof(cfg);
