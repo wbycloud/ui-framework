@@ -1,0 +1,222 @@
+UpdateCTestConfiguration  from :D:/应用软件框架/应用层序框架/build/native-scroll-20261007/application/DartConfiguration.tcl
+Test project D:/应用软件框架/应用层序框架/build/native-scroll-20261007/application
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 24
+    Start 24: kc_workspace_input
+
+24: Test command: D:\应用软件框架\应用层序框架\build\native-scroll-20261007\application\kc_app_regression.exe "D:/应用软件框架/应用层序框架/build/native-scroll-20261007/application/klayoutc.uapp" "--workspace-input"
+24: Working Directory: D:/应用软件框架/应用层序框架/build/native-scroll-20261007/application
+24: Test timeout computed to be: 180
+24: FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit9df202fb8ae19dc79ae757f730743445fc939518
+24: PASS: strict package parser validates actual UAPP
+24: PASS: manifest ABI1 and unchanged declared API match expected application
+24: PASS: UAPP carries icons and excludes replacement framework runtime
+24: PASS: initialize published SDK
+24: PASS: register application-owned test window
+24: PASS: create matching public WEB workspace
+24: PASS: load real current DLL/package
+24: PASS: load second isolated instance
+24: PASS: activate first and complete OpenGL frame
+24: PASS: current owns foreground before real input
+24: PASS: prepare real geometry without replacing renderer
+24: HIERARCHY_MENU: path Edit item klayoutc.selection_all status 0 located 0 rect 4,190,312,28 clicked 1 results 2 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"6","rendered_generation":"6","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: USER_KEY: key 65 ctrl 1 focus UIFrameworkLightWeb sent 1 results 0 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"6","rendered_generation":"6","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: actual menu and native keyboard create stable property draft
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_bottom status 0 located 0 rect 4,88,312,28 clicked 1 results 3 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: one public menu click docks Properties at bottom once
+24: PASS: bottom operation changes only target instance
+24: PASS: bottom retains mounted component and unsubmitted draft
+24: PASS: bottom retains actual application GL context DC and canvas
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_tabs status 0 located 0 rect 4,116,312,28 clicked 1 results 4 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: one menu click groups Cell and Layer tabs
+24: PASS: tab group preserves both components with one active member
+24: PASS: capture actual app bottom tabs and live drawing
+24: OASIS_CHOOSER: waiting pid 37076 time548848687 cancel0
+24: OASIS_CHOOSER: owned selector 000000000C7F0E60 time548849265 UIthread25980
+24: OASIS_CHOOSER: exact filename confirmed and selector closed
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_save status 0 located 0 rect 4,4,312,28 clicked 1 results 5 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: system chooser saves opaque current workspace
+24: PASS: actual application save uses framework format2
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_reset status 0 located 0 rect 4,60,312,28 clicked 1 results 6 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"8","rendered_generation":"8","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: OASIS_CHOOSER: waiting pid 37076 time548852875 cancel0
+24: OASIS_CHOOSER: owned selector 0000000000840EE2 time548853312 UIthread25980
+24: OASIS_CHOOSER: exact filename confirmed and selector closed
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_restore status 0 located 0 rect 4,32,312,28 clicked 1 results 7 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"9","rendered_generation":"9","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: real menu resets and restores format2 after mount
+24: PASS: opaque file restores stable bottom and tab identities
+24: OASIS_CHOOSER: waiting pid 37076 time548856421 cancel0
+24: OASIS_CHOOSER: owned selector 00000000069C104E time548856859 UIthread25980
+24: OASIS_CHOOSER: exact filename confirmed and selector closed
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_restore status 0 located 0 rect 4,32,312,28 clicked 1 results 8 last {"status":8,"message":"Workspace layout restore failed (framework status -5); document unchanged","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"9","rendered_generation":"9","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: future layout rejected by actual file/menu route
+24: PASS: future layout rejection leaves all mounted state intact
+24: PASS: close original panel for stable reopen fixture
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_activate status 0 located 0 rect 4,144,312,28 clicked 1 results 9 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"11","rendered_generation":"11","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: real Activate menu reopens stable Properties once
+24: PASS: reopen retains same bottom component and unapplied draft
+24: PASS: explicit malformed panel target cannot fall back to a different panel
+24: OASIS_CHOOSER: waiting pid 37076 time548860359 cancel0
+24: OASIS_CHOOSER: owned selector 000000000A50112E time548860796 UIthread25980
+24: OASIS_CHOOSER: exact filename confirmed and selector closed
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_restore status 0 located 0 rect 4,32,312,28 clicked 1 results 11 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"12","rendered_generation":"12","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: real application restores unchanged old current format1 layout
+24: PASS: old format1 restores legacy stacks without remount or fabricated tabs
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_bottom status 0 located 0 rect 4,88,312,28 clicked 1 results 12 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"13","rendered_generation":"13","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_tabs status 0 located 0 rect 4,116,312,28 clicked 1 results 13 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"13","rendered_generation":"13","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: return to current layout through real semantic menus
+24: PASS: program DPI reflows actual GL and docked components
+24: PASS: actual drawing content slot scales at 96/144/192 program DPI
+24: PASS: save real application program DPI evidence
+24: PASS: program DPI reflows actual GL and docked components
+24: PASS: actual drawing content slot scales at 96/144/192 program DPI
+24: PASS: save real application program DPI evidence
+24: PASS: program DPI reflows actual GL and docked components
+24: PASS: actual drawing content slot scales at 96/144/192 program DPI
+24: PASS: save real application program DPI evidence
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_reset status 0 located 0 rect 4,60,312,28 clicked 1 results 14 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"19","rendered_generation":"19","center_x":10,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: reset returns registered stack without remount
+24: PASS: reset retains stable draft after DPI and tabs
+24: PASS: cancel pending business draft through original validation path
+24: PASS: semantic Cancel restores canonical field and clears draft without geometry submission
+24: HIERARCHY_MENU: path Tools item klayoutc.tool_box status 0 located 0 rect 4,60,312,28 clicked 1 results 16 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"19","rendered_generation":"19","center_x":10,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: actual canvas begins rectangle preview before capture loss
+24: PASS: native capture loss cancels preview without committing geometry
+24: PASS: package PNG resources use default 32 MiB image budget
+24: PASS: public straight RGBA create copies caller data
+24: PASS: image update publishes a new content version
+24: PASS: explicit image release stays with allocating module
+24: PASS: oversized image is rejected without raising default budget
+24: PASS: current UI saves official reread fixture
+24: PASS: create real 4201-Cell / 300-layer paging fixture
+24: PASS: replace document with large public component data source
+24: PASS: visible pages report complete model totals without full DOM
+24: PASS: page scrolling targets the actual owned TREE content
+24: PASS: query a distant layer page through public API
+24: PAGE_BEFORE: generation 29 first 60 rows 11 nodes 57 bytes 966 layers-first 240
+24: PASS: scrolled pages use bounded cache and presentation nodes
+24: PASS: select an actual cached occurrence identity from the distant page
+24: PASS: ordinary editing changes only requested pages
+24: PASS: bind a draft before incremental refresh
+24: PASS: rename performs an incremental refresh
+24: PAGE_AFTER: generation 29 first 60 selected 4294967356 expected 4294967356 draft 7 flags 8
+24: PASS: same source preserves generation, scroll, occurrence selection and draft
+24: PASS: public sidebar floating keeps the mounted component slot
+24: PASS: redocking preserves component identity
+24: PASS: finish pinned paging draft before close
+24: WORKSPACE_SCROLL_READY: data_busy0 generation29
+24: WORKSPACE_SCROLL: klayoutc.cells end1 view225,323 thumb205,43,12,24 rail205,40,12,243 queryfirst60 col0
+24: WORKSPACE_NATIVE_MESSAGE: 512 xy211,55 buttons0 time548868609
+24: WORKSPACE_NATIVE_MESSAGE: 513 xy211,55 buttons1 time548868609
+24: WORKSPACE_NATIVE_NOTIFICATION: 7 first60 column0 generation29 status0 focus0000000008940EB6 capture0000000000000000 time548868609
+24: WORKSPACE_SCROLL_FOCUS: thumb1 rect205,42,12,24
+24: WORKSPACE_SCROLL_CAPTURE: 0000000008940EB6 expected0000000008940EB6
+24: WORKSPACE_NATIVE_MESSAGE: 512 xy211,95 buttons1 time548868671
+24: WORKSPACE_SCROLL_INTERMEDIATE: first984 col0
+24: WORKSPACE_NATIVE_MESSAGE: 512 xy211,383 buttons1 time548868875
+24: WORKSPACE_SCROLL_MOVING: first4195 col0 thumb205,219 rect205,43,12,24 railrect205,40,12,243
+24: WORKSPACE_NATIVE_MESSAGE: 514 xy211,383 buttons0 time548869234
+24: WORKSPACE_NATIVE_NOTIFICATION: 533 first4195 column0 generation29 status0 focus0000000008940EB6 capture0000000000000000 time548869234
+24: WORKSPACE_SCROLL_END: moved1 captured1 released1 first4195 col0
+24: PASS: native full-range TREE thumb drags to last data window
+24: WORKSPACE_ENDPOINT_VISIBLE: id8589938792 first4195 cached8 clip8,200,197,32 textPAGE_4200
+24: PASS: last actual Cell is reachable without full DOM or enlarged cache
+24: WORKSPACE_SCROLL_READY: data_busy0 generation29
+24: WORKSPACE_SCROLL: klayoutc.cells end0 view225,323 thumb205,219,12,24 rail205,40,12,203 queryfirst4195 col0
+24: WORKSPACE_NATIVE_MESSAGE: 512 xy211,231 buttons0 time548870234
+24: WORKSPACE_NATIVE_MESSAGE: 513 xy211,231 buttons1 time548870234
+24: WORKSPACE_SCROLL_FOCUS: thumb1 rect205,259,12,24
+24: WORKSPACE_SCROLL_CAPTURE: 0000000008940EB6 expected0000000008940EB6
+24: WORKSPACE_NATIVE_MESSAGE: 512 xy211,191 buttons1 time548870296
+24: WORKSPACE_SCROLL_INTERMEDIATE: first3257 col0
+24: WORKSPACE_NATIVE_MESSAGE: 512 xy211,-60 buttons1 time548870484
+24: WORKSPACE_SCROLL_MOVING: first0 col0 thumb205,40 rect205,219,12,24 railrect205,40,12,203
+24: WORKSPACE_NATIVE_MESSAGE: 514 xy211,-60 buttons0 time548870843
+24: WORKSPACE_NATIVE_NOTIFICATION: 533 first0 column0 generation29 status0 focus0000000008940EB6 capture0000000000000000 time548870843
+24: WORKSPACE_SCROLL_END: moved1 captured1 released1 first0 col0
+24: PASS: native TREE thumb returns to complete-source first window
+24: WORKSPACE_ENDPOINT_VISIBLE: id8589934592 first0 cached10 clip8,40,197,32 textPAGE_0000
+24: PASS: full-range scrollbar reaches first Cell
+24: WORKSPACE_SCROLL_READY: data_busy0 generation30
+24: WORKSPACE_SCROLL: klayoutc.layers end1 view225,323 thumb8,271,163,12 rail8,271,193,12 queryfirst240 col0
+24: WORKSPACE_NATIVE_MESSAGE: 512 xy89,277 buttons0 time548870984
+24: WORKSPACE_NATIVE_MESSAGE: 513 xy89,277 buttons1 time548870984
+24: WORKSPACE_NATIVE_NOTIFICATION: 7 first240 column0 generation30 status0 focus0000000003A007D2 capture0000000000000000 time548870984
+24: WORKSPACE_SCROLL_FOCUS: thumb1 rect8,271,163,12
+24: WORKSPACE_SCROLL_CAPTURE: 0000000003A007D2 expected0000000003A007D2
+24: WORKSPACE_NATIVE_MESSAGE: 512 xy109,277 buttons1 time548871046
+24: WORKSPACE_SCROLL_INTERMEDIATE: first240 col2
+24: WORKSPACE_NATIVE_MESSAGE: 512 xy301,277 buttons1 time548871250
+24: WORKSPACE_SCROLL_MOVING: first240 col3 thumb38,271 rect8,271,163,12 railrect8,271,193,12
+24: WORKSPACE_NATIVE_MESSAGE: 514 xy301,277 buttons0 time548871609
+24: WORKSPACE_NATIVE_NOTIFICATION: 533 first240 column3 generation30 status0 focus0000000003A007D2 capture0000000000000000 time548871609
+24: WORKSPACE_SCROLL_END: moved1 captured1 released1 first240 col3
+24: PASS: actual wide layer table horizontal thumb reaches final columns
+24: PASS: wide table scroll preserves complete row source and reaches uncached columns
+24: USER_KEY: key 35 ctrl 0 focus UIFrameworkLightWeb sent 1 results 0 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":4201,"layers":300,"shapes":301,"cell":"PAGE_CHANGED","cell_id":4000,"selected":"72057594039156736","selected_id":"72057594039156736","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"workflow-pages.gds","dbu":0.001,"generation":"23","rendered_generation":"23","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"22","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61507,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":6,"pending_command":"","dialog_kind":-1,"data_busy":true,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":0,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":1,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":2,"datatype":0,"rgba":"0xF47893FF"},{"index":3,"layer":3,"datatype":0,"rgba":"0x83DC89FF"},{"index":4,"layer":4,"datatype":0,"rgba":"0xC69BFFFF"},{"index":5,"layer":5,"datatype":0,"rgba":"0x64D8C8FF"},{"index":6,"layer":6,"datatype":0,"rgba":"0xE9E178FF"},{"index":7,"layer":7,"datatype":0,"rgba":"0xF3A373FF"},{"index":8,"layer":8,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":9,"layer":9,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":10,"layer":10,"datatype":0,"rgba":"0xB7D988FF"},{"index":11,"layer":11,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":12,"layer":12,"datatype":0,"rgba":"0xF3B33FFF"},{"index":13,"layer":13,"datatype":0,"rgba":"0x72D4FFFF"},{"index":14,"layer":14,"datatype":0,"rgba":"0xF47893FF"},{"index":15,"layer":15,"datatype":0,"rgba":"0x83DC89FF"},{"index":16,"layer":16,"datatype":0,"rgba":"0xC69BFFFF"},{"index":17,"layer":17,"datatype":0,"rgba":"0x64D8C8FF"},{"index":18,"layer":18,"datatype":0,"rgba":"0xE9E178FF"},{"index":19,"layer":19,"datatype":0,"rgba":"0xF3A373FF"},{"index":20,"layer":20,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":21,"layer":21,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":22,"layer":22,"datatype":0,"rgba":"0xB7D988FF"},{"index":23,"layer":23,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":24,"layer":24,"datatype":0,"rgba":"0xF3B33FFF"},{"index":25,"layer":25,"datatype":0,"rgba":"0x72D4FFFF"},{"index":26,"layer":26,"datatype":0,"rgba":"0xF47893FF"},{"index":27,"layer":27,"datatype":0,"rgba":"0x83DC89FF"},{"index":28,"layer":28,"datatype":0,"rgba":"0xC69BFFFF"},{"index":29,"layer":29,"datatype":0,"rgba":"0x64D8C8FF"},{"index":30,"layer":30,"datatype":0,"rgba":"0xE9E178FF"},{"index":31,"layer":31,"datatype":0,"rgba":"0xF3A373FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: native End uses same complete-source tree range
+24: WORKSPACE_ENDPOINT_VISIBLE: id8589938792 first4194 cached9 clip8,232,197,32 textPAGE_4200
+24: PASS: native End reaches last actual Cell independently of thumb dragging
+24: USER_KEY: key 36 ctrl 0 focus UIFrameworkLightWeb sent 1 results 0 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":4201,"layers":300,"shapes":301,"cell":"PAGE_CHANGED","cell_id":4000,"selected":"72057594039156736","selected_id":"72057594039156736","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"workflow-pages.gds","dbu":0.001,"generation":"23","rendered_generation":"23","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"22","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61507,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":0,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":1,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":2,"datatype":0,"rgba":"0xF47893FF"},{"index":3,"layer":3,"datatype":0,"rgba":"0x83DC89FF"},{"index":4,"layer":4,"datatype":0,"rgba":"0xC69BFFFF"},{"index":5,"layer":5,"datatype":0,"rgba":"0x64D8C8FF"},{"index":6,"layer":6,"datatype":0,"rgba":"0xE9E178FF"},{"index":7,"layer":7,"datatype":0,"rgba":"0xF3A373FF"},{"index":8,"layer":8,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":9,"layer":9,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":10,"layer":10,"datatype":0,"rgba":"0xB7D988FF"},{"index":11,"layer":11,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":12,"layer":12,"datatype":0,"rgba":"0xF3B33FFF"},{"index":13,"layer":13,"datatype":0,"rgba":"0x72D4FFFF"},{"index":14,"layer":14,"datatype":0,"rgba":"0xF47893FF"},{"index":15,"layer":15,"datatype":0,"rgba":"0x83DC89FF"},{"index":16,"layer":16,"datatype":0,"rgba":"0xC69BFFFF"},{"index":17,"layer":17,"datatype":0,"rgba":"0x64D8C8FF"},{"index":18,"layer":18,"datatype":0,"rgba":"0xE9E178FF"},{"index":19,"layer":19,"datatype":0,"rgba":"0xF3A373FF"},{"index":20,"layer":20,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":21,"layer":21,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":22,"layer":22,"datatype":0,"rgba":"0xB7D988FF"},{"index":23,"layer":23,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":24,"layer":24,"datatype":0,"rgba":"0xF3B33FFF"},{"index":25,"layer":25,"datatype":0,"rgba":"0x72D4FFFF"},{"index":26,"layer":26,"datatype":0,"rgba":"0xF47893FF"},{"index":27,"layer":27,"datatype":0,"rgba":"0x83DC89FF"},{"index":28,"layer":28,"datatype":0,"rgba":"0xC69BFFFF"},{"index":29,"layer":29,"datatype":0,"rgba":"0x64D8C8FF"},{"index":30,"layer":30,"datatype":0,"rgba":"0xE9E178FF"},{"index":31,"layer":31,"datatype":0,"rgba":"0xF3A373FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: native Home uses same complete-source tree range
+24: WORKSPACE_ENDPOINT_VISIBLE: id8589934592 first0 cached10 clip8,40,197,32 textPAGE_0000
+24: PASS: native Home reaches first actual Cell independently of thumb dragging
+24: PASS: capture actual full-range tree and wide business table
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_bottom status 0 located 0 rect 4,88,312,28 clicked 1 results 23 last {"status":0,"message":"ok","selected":"72057594039156736","selected_id":"72057594039156736"} snapshot {"instance_id":"1","cells":4201,"layers":300,"shapes":301,"cell":"PAGE_CHANGED","cell_id":4000,"selected":"72057594039156736","selected_id":"72057594039156736","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"workflow-pages.gds","dbu":0.001,"generation":"24","rendered_generation":"24","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"22","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61507,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":0,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":1,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":2,"datatype":0,"rgba":"0xF47893FF"},{"index":3,"layer":3,"datatype":0,"rgba":"0x83DC89FF"},{"index":4,"layer":4,"datatype":0,"rgba":"0xC69BFFFF"},{"index":5,"layer":5,"datatype":0,"rgba":"0x64D8C8FF"},{"index":6,"layer":6,"datatype":0,"rgba":"0xE9E178FF"},{"index":7,"layer":7,"datatype":0,"rgba":"0xF3A373FF"},{"index":8,"layer":8,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":9,"layer":9,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":10,"layer":10,"datatype":0,"rgba":"0xB7D988FF"},{"index":11,"layer":11,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":12,"layer":12,"datatype":0,"rgba":"0xF3B33FFF"},{"index":13,"layer":13,"datatype":0,"rgba":"0x72D4FFFF"},{"index":14,"layer":14,"datatype":0,"rgba":"0xF47893FF"},{"index":15,"layer":15,"datatype":0,"rgba":"0x83DC89FF"},{"index":16,"layer":16,"datatype":0,"rgba":"0xC69BFFFF"},{"index":17,"layer":17,"datatype":0,"rgba":"0x64D8C8FF"},{"index":18,"layer":18,"datatype":0,"rgba":"0xE9E178FF"},{"index":19,"layer":19,"datatype":0,"rgba":"0xF3A373FF"},{"index":20,"layer":20,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":21,"layer":21,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":22,"layer":22,"datatype":0,"rgba":"0xB7D988FF"},{"index":23,"layer":23,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":24,"layer":24,"datatype":0,"rgba":"0xF3B33FFF"},{"index":25,"layer":25,"datatype":0,"rgba":"0x72D4FFFF"},{"index":26,"layer":26,"datatype":0,"rgba":"0xF47893FF"},{"index":27,"layer":27,"datatype":0,"rgba":"0x83DC89FF"},{"index":28,"layer":28,"datatype":0,"rgba":"0xC69BFFFF"},{"index":29,"layer":29,"datatype":0,"rgba":"0x64D8C8FF"},{"index":30,"layer":30,"datatype":0,"rgba":"0xE9E178FF"},{"index":31,"layer":31,"datatype":0,"rgba":"0xF3A373FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: leave bottom profile for independent host restart
+24: WORKSPACE_INPUT_RESULT: 79 checks 0 failures
+24: PASS: unsaved close REFUSE exposes instance modal
+24: PASS: close confirmation dispatches through command
+24: PASS: all callbacks workers and modules permit workspace destruction
+24: PASS: launch real independent process for app-owned layout restart
+24: FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit9df202fb8ae19dc79ae757f730743445fc939518
+24: PASS: independent process reads persisted opaque profile
+24: PASS: profile process initializes matched runtime
+24: PASS: new process creates independent workspace
+24: PASS: new process mounts first instance after registered slots
+24: PASS: normal process restart restores bottom without remount
+24: PASS: profile restart joins worker and unloads DLL
+24: PASS: automatic close atomically writes format2 profile
+24: WORKSPACE_RESTART_RESULT: 7 checks 0 failures
+24: PASS: new process restores valid persisted layout
+24: PASS: prepare future version only in isolated test profile
+24: PASS: launch real independent process for app-owned layout restart
+24: FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit9df202fb8ae19dc79ae757f730743445fc939518
+24: PASS: independent process reads persisted opaque profile
+24: PASS: profile process initializes matched runtime
+24: PASS: new process creates independent workspace
+24: PASS: new process mounts first instance after registered slots
+24: PASS: future profile keeps registered defaults
+24: PASS: rejected profile warning survives render status updates
+24: PASS: profile restart joins worker and unloads DLL
+24: PASS: automatic close preserves rejected profile bytes
+24: WORKSPACE_RESTART_RESULT: 8 checks 0 failures
+24: PASS: new process rejects future profile and retains its bytes
+24: PASS: launch real independent process for app-owned layout restart
+24: FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit9df202fb8ae19dc79ae757f730743445fc939518
+24: PASS: independent process reads persisted opaque profile
+24: PASS: profile process initializes matched runtime
+24: PASS: new process creates independent workspace
+24: PASS: new process mounts first instance after registered slots
+24: PASS: future profile keeps registered defaults
+24: PASS: rejected profile warning survives render status updates
+24: HIERARCHY_MENU: path View/Workspace item klayoutc.layout_reset status 0 located 0 rect 4,60,312,28 clicked 1 results 1 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":0,"cell":"TOP","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"","dbu":0.001,"generation":"4","rendered_generation":"4","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS"}
+24: PASS: native Reset menu explicitly permits replacing rejected profile
+24: PASS: profile restart joins worker and unloads DLL
+24: PASS: automatic close atomically writes format2 profile
+24: WORKSPACE_RESTART_RESULT: 9 checks 0 failures
+24: PASS: new process resets rejected profile through actual menu
+24: WORKSPACE_PROFILE_RESULT: 89 checks 0 failures
+24: REGRESSION_RESULT: 89 checks 0 failures
+1/1 Test #24: kc_workspace_input ...............   Passed   28.19 sec
+
+The following tests passed:
+	kc_workspace_input
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =  28.40 sec

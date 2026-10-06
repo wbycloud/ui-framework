@@ -470,3 +470,6 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 ## 框架视觉与宿主呈现
 
 框架自有界面遵循[视觉规范](visual-design.md)：中性浅深主题、紧凑固定行高、角色独立样式及明确hover/pressed/focus/selected/disabled/error/loading状态。轻量与WebView2使用同一共同模板；独立宿主同步其主题，应用自有内容仍由应用管理。AI启动默认收起，基本参数复用原JSON/validator，高级区保留事务/schema/原参数/日志路径。内部外观和本轮分页清理不升级API，现有API7应用无需修改；应用不依赖宿主DOM，Windows系统控件不能承诺逐像素统一。[实际回归和条件边界](validation/visual-ui-validation.md)。
+
+
+标准7原生共同组件输入补验：公共presentation为view-local logical pixels；原生输入定位先按组件DPI缩放到视图客户区物理坐标，再转screen，公共dispatch仍使用逻辑客户区坐标。真实捕获、完整Dispatch后的状态及稳定ID/文字/非空clip分别核验；仅取出消息或离屏通过不算原生鼠标验收。框架内部捕获/异步占位修复不改变API7/ABI1或应用数据源责任，见[证据](validation/native-component-scroll-validation.md)。

@@ -1,0 +1,166 @@
+scroll_repro.c
+LINK : warning LNK4098: 默认库“MSVCRT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
+LINK : warning LNK4286:符号“__stdio_common_vsprintf”(在“libucrt.lib(output.obj)”中定义)已由“ui_framework.lib(win32_surface.c.obj)”导入
+LINK : warning LNK4286:符号“__stdio_common_vsprintf”(在“libucrt.lib(output.obj)”中定义)已由“ui_framework.lib(light_web.c.obj)”导入
+LINK : warning LNK4217:符号“__stdio_common_vsprintf”(在“ libucrt.lib(output.obj)”中定义)已由“ui_framework.lib(ui.c.obj)”(函数“snprintf”中)导入
+LINK : warning LNK4217:符号“__stdio_common_vsprintf”(在“ libucrt.lib(output.obj)”中定义)已由“ui_framework.lib(components.c.obj)”(函数“create_dialog”中)导入
+LINK : warning LNK4286:符号“__stdio_common_vsprintf”(在“libucrt.lib(output.obj)”中定义)已由“ui_framework.lib(images.c.obj)”导入
+LINK : warning LNK4286:符号“__stdio_common_vsprintf”(在“libucrt.lib(output.obj)”中定义)已由“ui_framework.lib(menus.c.obj)”导入
+LINK : warning LNK4286:符号“calloc”(在“libucrt.lib(calloc.obj)”中定义)已由“ui_framework.lib(menus.c.obj)”导入
+LINK : warning LNK4286:符号“calloc”(在“libucrt.lib(calloc.obj)”中定义)已由“ui_framework.lib(light_web.c.obj)”导入
+LINK : warning LNK4217:符号“calloc”(在“ libucrt.lib(calloc.obj)”中定义)已由“ui_framework.lib(ui.c.obj)”(函数“create_surface”中)导入
+LINK : warning LNK4217:符号“calloc”(在“ libucrt.lib(calloc.obj)”中定义)已由“ui_framework.lib(win32_shell.c.obj)”(函数“layout_changed”中)导入
+LINK : warning LNK4217:符号“calloc”(在“ libucrt.lib(calloc.obj)”中定义)已由“ui_framework.lib(components.c.obj)”(函数“ui_component_close_dialog”中)导入
+LINK : warning LNK4286:符号“calloc”(在“libucrt.lib(calloc.obj)”中定义)已由“ui_framework.lib(images.c.obj)”导入
+LINK : warning LNK4286:符号“free”(在“libucrt.lib(free.obj)”中定义)已由“ui_framework.lib(menus.c.obj)”导入
+LINK : warning LNK4286:符号“free”(在“libucrt.lib(free.obj)”中定义)已由“ui_framework.lib(win32_surface.c.obj)”导入
+LINK : warning LNK4286:符号“free”(在“libucrt.lib(free.obj)”中定义)已由“ui_framework.lib(light_web.c.obj)”导入
+LINK : warning LNK4217:符号“free”(在“ libucrt.lib(free.obj)”中定义)已由“ui_framework.lib(ui.c.obj)”(函数“create_surface”中)导入
+LINK : warning LNK4217:符号“free”(在“ libucrt.lib(free.obj)”中定义)已由“ui_framework.lib(win32_shell.c.obj)”(函数“create_popup”中)导入
+LINK : warning LNK4217:符号“free”(在“ libucrt.lib(free.obj)”中定义)已由“ui_framework.lib(components.c.obj)”(函数“dialog_proc”中)导入
+LINK : warning LNK4286:符号“free”(在“libucrt.lib(free.obj)”中定义)已由“ui_framework.lib(images.c.obj)”导入
+LINK : warning LNK4286:符号“malloc”(在“libucrt.lib(malloc.obj)”中定义)已由“ui_framework.lib(menus.c.obj)”导入
+LINK : warning LNK4286:符号“malloc”(在“libucrt.lib(malloc.obj)”中定义)已由“ui_framework.lib(win32_surface.c.obj)”导入
+LINK : warning LNK4286:符号“malloc”(在“libucrt.lib(malloc.obj)”中定义)已由“ui_framework.lib(light_web.c.obj)”导入
+LINK : warning LNK4217:符号“malloc”(在“ libucrt.lib(malloc.obj)”中定义)已由“ui_framework.lib(ui.c.obj)”(函数“ui_strdup”中)导入
+LINK : warning LNK4217:符号“malloc”(在“ libucrt.lib(malloc.obj)”中定义)已由“ui_framework.lib(win32_shell.c.obj)”(函数“close_popup”中)导入
+LINK : warning LNK4217:符号“malloc”(在“ libucrt.lib(malloc.obj)”中定义)已由“ui_framework.lib(components.c.obj)”(函数“ui_component_close_dialog”中)导入
+LINK : warning LNK4286:符号“malloc”(在“libucrt.lib(malloc.obj)”中定义)已由“ui_framework.lib(images.c.obj)”导入
+LINK : warning LNK4217:符号“qsort”(在“ libucrt.lib(qsort.obj)”中定义)已由“ui_framework.lib(win32_shell.c.obj)”(函数“collect_menu_entries”中)导入
+LINK : warning LNK4286:符号“qsort”(在“libucrt.lib(qsort.obj)”中定义)已由“ui_framework.lib(menus.c.obj)”导入
+LINK : warning LNK4217:符号“atoi”(在“ libucrt.lib(atox.obj)”中定义)已由“ui_framework.lib(components.c.obj)”(函数“component_message”中)导入
+LINK : warning LNK4217:符号“atoi”(在“ libucrt.lib(atox.obj)”中定义)已由“ui_framework.lib(menus.c.obj)”(函数“shortcut_text”中)导入
+LINK : warning LNK4286:符号“atoi”(在“libucrt.lib(atox.obj)”中定义)已由“ui_framework.lib(light_web.c.obj)”导入
+LINK : warning LNK4217:符号“__acrt_iob_func”(在“ libucrt.lib(_file.obj)”中定义)已由“ui_framework.lib(light_web.c.obj)”(函数“lw_post_json”中)导入
+LINK : warning LNK4217:符号“__stdio_common_vfprintf”(在“ libucrt.lib(output.obj)”中定义)已由“ui_framework.lib(light_web.c.obj)”(函数“_vfprintf_l”中)导入
+LINK : warning LNK4217:符号“__stdio_common_vsprintf_s”(在“ libucrt.lib(output.obj)”中定义)已由“ui_framework.lib(light_web.c.obj)”(函数“_vsprintf_s_l”中)导入
+LINK : warning LNK4217:符号“strcpy_s”(在“ libucrt.lib(strcpy_s.obj)”中定义)已由“ui_framework.lib(light_web.c.obj)”(函数“lw_get_presentation”中)导入
+LINK : warning LNK4217:符号“_strnicmp”(在“ libucrt.lib(strnicmp.obj)”中定义)已由“ui_framework.lib(light_web.c.obj)”(函数“lw_collect”中)导入
+ui_framework.lib(win32_shell.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CreateFontIndirectW，函数 create_font_for_dpi 中引用了该符号
+ui_framework.lib(win32_shell.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CreateSolidBrush，函数 popup_window_message 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2001: 无法解析的外部符号 __imp_CreateSolidBrush
+ui_framework.lib(win32_shell.c.obj) : error LNK2019: 无法解析的外部符号 __imp_DeleteObject，函数 free_panels 中引用了该符号
+ui_framework.lib(images.c.obj) : error LNK2001: 无法解析的外部符号 __imp_DeleteObject
+ui_framework.lib(light_web.c.obj) : error LNK2001: 无法解析的外部符号 __imp_DeleteObject
+ui_framework.lib(win32_shell.c.obj) : error LNK2019: 无法解析的外部符号 __imp_realloc，函数 collect_menu_entries 中引用了该符号
+ui_framework.lib(components.c.obj) : error LNK2001: 无法解析的外部符号 __imp_realloc
+ui_framework.lib(menus.c.obj) : error LNK2001: 无法解析的外部符号 __imp_realloc
+ui_framework.lib(light_web.c.obj) : error LNK2001: 无法解析的外部符号 __imp_realloc
+ui_framework.lib(components.c.obj) : error LNK2019: 无法解析的外部符号 __imp_strtod，函数 component_message 中引用了该符号
+ui_framework.lib(images.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CreateCompatibleDC，函数 ui_image_draw 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2001: 无法解析的外部符号 __imp_CreateCompatibleDC
+ui_framework.lib(images.c.obj) : error LNK2019: 无法解析的外部符号 __imp_DeleteDC，函数 ui_image_draw 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2001: 无法解析的外部符号 __imp_DeleteDC
+ui_framework.lib(images.c.obj) : error LNK2019: 无法解析的外部符号 __imp_SelectObject，函数 ui_image_draw 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2001: 无法解析的外部符号 __imp_SelectObject
+ui_framework.lib(images.c.obj) : error LNK2019: 无法解析的外部符号 __imp_AlphaBlend，函数 ui_image_draw 中引用了该符号
+ui_framework.lib(images.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CreateDIBSection，函数 copy_rgba 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2001: 无法解析的外部符号 __imp_CreateDIBSection
+ui_framework.lib(images.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CreateStreamOnHGlobal，函数 ui_image_png_stream 中引用了该符号
+ui_framework.lib(images.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CoUninitialize，函数 ui_image_load_png 中引用了该符号
+ui_framework.lib(images.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CoInitializeEx，函数 ui_image_load_png 中引用了该符号
+ui_framework.lib(images.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CoCreateInstance，函数 ui_image_load_png 中引用了该符号
+ui_framework.lib(images.c.obj) : error LNK2019: 无法解析的外部符号 IID_IWICImagingFactory，函数 ui_image_load_png 中引用了该符号
+ui_framework.lib(menus.c.obj) : error LNK2019: 无法解析的外部符号 ImmAssociateContextEx，函数 create_popup 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_ChoosePixelFormat，函数 setup_legacy_opengl 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_DescribePixelFormat，函数 setup_modern_opengl 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_SetPixelFormat，函数 setup_legacy_opengl 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_wglCreateContext，函数 setup_legacy_opengl 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_wglDeleteContext，函数 setup_modern_opengl 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_wglGetCurrentContext，函数 save_binding 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_wglGetCurrentDC，函数 save_binding 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_wglGetProcAddress，函数 get_wgl_proc 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_wglMakeCurrent，函数 provider_current 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_SwapBuffers，函数 ui_platform_surface_swap_buffers 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_glFlush，函数 ui_platform_surface_swap_buffers 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_glGetIntegerv，函数 get_context_profile 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_glGetString，函数 get_context_version 中引用了该符号
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp_strtol，函数 get_context_version 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2001: 无法解析的外部符号 __imp_strtol
+ui_framework.lib(win32_surface.c.obj) : error LNK2019: 无法解析的外部符号 __imp___stdio_common_vsscanf，函数 _vsscanf_l 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_isspace，函数 lw_apply_style 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_toupper，函数 lw_element 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_strtoul，函数 lw_color 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp__strtoui64，函数 lw_collect 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp__stricmp，函数 lw_apply_style 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lexbor_mraw_free，函数 lw_collect 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lxb_dom_node_name，函数 lw_collect 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lxb_dom_node_text_content，函数 lw_collect 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lxb_dom_attr_qualified_name，函数 lw_validate_attributes 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lxb_html_document_destroy，函数 lw_free_document 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lxb_html_parser_create，函数 lw_load_html 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lxb_html_parser_init，函数 lw_load_html 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lxb_html_parser_destroy，函数 lw_load_html 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lxb_html_parse，函数 lw_load_html 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lxb_dom_element_get_attribute，函数 lw_load_html 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 lxb_dom_element_has_attribute，函数 lw_collect 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_NewRuntime，函数 lw_setup_js 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_SetMemoryLimit，函数 lw_setup_js 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_SetMaxStackSize，函数 lw_setup_js 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_FreeRuntime，函数 lw_free_document 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_NewContext，函数 lw_setup_js 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_FreeContext，函数 lw_free_document 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_GetContextOpaque，函数 lw_document_get 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_SetContextOpaque，函数 lw_setup_js 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_NewAtom，函数 lw_element 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_FreeAtom，函数 lw_element 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_GetException，函数 lw_post_json 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_ThrowRangeError，函数 lw_document_listener 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_ThrowReferenceError，函数 lw_dom_method 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_ThrowTypeError，函数 lw_document_listener 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_ThrowOutOfMemory，函数 lw_js_document 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_FreeValue，函数 lw_load_html 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_DupValue，函数 lw_post_json 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_ToBool，函数 lw_dom_set 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_ToInt32，函数 lw_post_json 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_NewStringLen，函数 JS_NewString 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_ToCStringLen2，函数 lw_post_json 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_FreeCString，函数 lw_post_json 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_NewObjectProto，函数 lw_element 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_NewObject，函数 lw_post_json 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_IsFunction，函数 lw_post_json 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_NewArray，函数 lw_document_listener 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_GetPropertyUint32，函数 lw_post_json 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_GetPropertyStr，函数 lw_load_html 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_SetPropertyUint32，函数 lw_document_listener 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_SetPropertyStr，函数 lw_load_html 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_Call，函数 lw_post_json 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_Eval，函数 lw_eval 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_GetGlobalObject，函数 lw_load_html 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_DefinePropertyValueStr，函数 lw_element 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_DefinePropertyGetSet，函数 lw_element 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_ParseJSON，函数 lw_post_json 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_JSONStringify，函数 lw_js_invoke 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_SetInterruptHandler，函数 lw_setup_js 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_IsJobPending，函数 lw_flush 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_ExecutePendingJob，函数 lw_flush 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 JS_NewCFunction2，函数 JS_NewCFunction 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_BitBlt，函数 lw_wnd_inner 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CreateCompatibleBitmap，函数 lw_wnd_inner 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CreateFontW，函数 lw_create_view 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_CreatePen，函数 lw_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_GetStockObject，函数 lw_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_GetTextExtentPoint32W，函数 lw_compute_style 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_IntersectClipRect，函数 lw_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_LineTo，函数 lw_text_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_Rectangle，函数 lw_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_RestoreDC，函数 lw_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_RoundRect，函数 lw_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_SaveDC，函数 lw_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_SetBkMode，函数 lw_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_SetTextColor，函数 lw_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_MoveToEx，函数 lw_text_paint 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 __imp_GdiFlush，函数 lw_capture 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ImmGetContext，函数 lw_cancel_composition 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ImmReleaseContext，函数 lw_cancel_composition 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ImmGetCompositionStringW，函数 lw_text_message 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ImmNotifyIME，函数 lw_cancel_composition 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ImmSetCompositionWindow，函数 lw_caret 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ImmSetCandidateWindow，函数 lw_caret 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ScriptStringAnalyse，函数 lw_shape 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ScriptStringFree，函数 lw_grapheme 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ScriptString_pLogAttr，函数 lw_grapheme 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ScriptStringCPtoX，函数 lw_text_position 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ScriptStringXtoCP，函数 lw_text_pointer 中引用了该符号
+ui_framework.lib(light_web.c.obj) : error LNK2019: 无法解析的外部符号 ScriptStringOut，函数 lw_text_paint 中引用了该符号
+build\native-scroll-20261007\baseline\scroll_repro.exe : fatal error LNK1120: 116 个无法解析的外部命令

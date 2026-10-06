@@ -149,3 +149,6 @@ API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离
 轻量overflow与共同TREE/TABLE/LIST提供可拖动的完整数据范围滚动条；宽表按全部列宽横向导航；共同数据组件不再显示上一页/下一页或列箭头按钮，视口回收原操作栏空间。底部停靠、同区标签组与读取格式1的布局格式2复用内容槽和GL context。连续RGBA选择与文本使用同一草稿/提交合同。关闭稳定性失败、资源诊断和6次独立64轮复验见[记录](docs/validation/runtime-stability-validation.md)，当前源码及限制见[API7验收](docs/validation/api7-validation.md)。
 
 本轮[分页清理与当前版本验收](docs/validation/component-scroll-only-validation.md)提供真实前后截图及本地矩阵；菜单、最近应用、标签溢出的分页保持原合同。
+
+
+原生共同组件滚动首末项与宽表捕获修复见[真实鼠标、业务应用和SDK交付记录](docs/validation/native-component-scroll-validation.md)。使用匹配API7头文件/导入库/运行库/宿主；应用仍提供真实total_count与按需批次，本次无需改业务源或预算。

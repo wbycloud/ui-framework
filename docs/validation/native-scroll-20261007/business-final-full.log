@@ -1,0 +1,59 @@
+Test project D:/应用软件框架/应用层序框架/build/native-scroll-20261007/application
+      Start  1: kc_core
+ 1/27 Test  #1: kc_core ..........................   Passed    0.08 sec
+      Start  2: kc_hierarchy
+ 2/27 Test  #2: kc_hierarchy .....................   Passed    0.03 sec
+      Start  3: kc_clipboard
+ 3/27 Test  #3: kc_clipboard .....................   Passed    0.02 sec
+      Start  4: kc_edit
+ 4/27 Test  #4: kc_edit ..........................   Passed    0.04 sec
+      Start  5: kc_gds
+ 5/27 Test  #5: kc_gds ...........................   Passed    0.09 sec
+      Start  6: kc_oasis
+ 6/27 Test  #6: kc_oasis .........................   Passed    0.02 sec
+      Start  7: kc_properties
+ 7/27 Test  #7: kc_properties ....................   Passed    0.02 sec
+      Start  8: kc_property_completion
+ 8/27 Test  #8: kc_property_completion ...........   Passed    0.02 sec
+      Start  9: kc_region
+ 9/27 Test  #9: kc_region ........................   Passed    0.01 sec
+      Start 10: kc_render
+10/27 Test #10: kc_render ........................   Passed    0.04 sec
+      Start 11: kc_render_tiles
+11/27 Test #11: kc_render_tiles ..................   Passed    0.03 sec
+      Start 12: kc_render_errors
+12/27 Test #12: kc_render_errors .................   Passed    0.01 sec
+      Start 13: kc_edit_fault
+13/27 Test #13: kc_edit_fault ....................   Passed    0.01 sec
+      Start 14: kc_gds_open
+14/27 Test #14: kc_gds_open ......................   Passed    0.03 sec
+      Start 15: kc_gds_read_open
+15/27 Test #15: kc_gds_read_open .................   Passed    0.02 sec
+      Start 16: kc_layer_properties
+16/27 Test #16: kc_layer_properties ..............   Passed    0.12 sec
+      Start 17: kc_host
+17/27 Test #17: kc_host ..........................   Passed   17.71 sec
+      Start 18: kc_application_workflows
+18/27 Test #18: kc_application_workflows .........   Passed    4.48 sec
+      Start 19: kc_usability_input
+19/27 Test #19: kc_usability_input ...............   Passed    4.11 sec
+      Start 20: kc_gl_offscreen
+20/27 Test #20: kc_gl_offscreen ..................   Passed    1.77 sec
+      Start 21: kc_hierarchy_input
+21/27 Test #21: kc_hierarchy_input ...............   Passed    3.82 sec
+      Start 22: kc_menu_input
+22/27 Test #22: kc_menu_input ....................   Passed   11.13 sec
+      Start 23: kc_view_settings
+23/27 Test #23: kc_view_settings .................   Passed    8.65 sec
+      Start 24: kc_workspace_input
+24/27 Test #24: kc_workspace_input ...............   Passed   25.10 sec
+      Start 25: kc_table_layout_input
+25/27 Test #25: kc_table_layout_input ............   Passed   25.06 sec
+      Start 26: kc_advanced_input
+26/27 Test #26: kc_advanced_input ................   Passed   89.78 sec
+      Start 27: kc_oasis_region_input
+27/27 Test #27: kc_oasis_region_input ............   Passed   25.32 sec
+
+100% tests passed, 0 tests failed out of 27
+
+Total Test time (real) = 218.11 sec

@@ -407,3 +407,17 @@ ctest --test-dir build/visual --output-on-failure -R '^(ui_visual_ui_light|ui_vi
 若复用含四个应用本地Mesa WGL DLL的旧build目录，直接CTest前必须按现有CI显式设置GALLIUM_DRIVER=llvmpipe。省略时Mesa可能自动选择D3D12；本轮Windows26300/Intel组合在libgallium_wgl崩溃，严格保留原失败。同二进制显式llvmpipe通过不代表D3D12已修复，不删除测试DLL或改变原断言。[环境对照](validation/visual-ui-validation.md#3-测试与失败)。
 
 本轮当前版本政策及[分页清理实测](validation/component-scroll-only-validation.md)替代旧SDK/原包专项门槛。当前Session0对照包也声明API7，CI按注册的ui_session0_interactive_control归档run.log、resources.csv、result.txt和实际帧；运行器不生成manifest.json，先前该文件条件导致漏存原文件，历史CTest结果不因此改写。
+
+
+## 原生共同组件鼠标复验
+
+当前轻量配置新增 `ui_component_scroll_native`，使用真实SendInput、原生内容槽、同步/受控异步源、TREE/LIST/TABLE和64列。需可用的已登录输入桌面、可见窗口及足够屏幕尺寸（程序192 DPI窗口约1700×1100）；非交互服务环境不能以该用例证明鼠标功能。原断言非零退出，不改预算或使用Home/End替代。
+
+```powershell
+ctest --test-dir build/current -R "^ui_component_scroll_native$" --output-on-failure
+New-Item -ItemType Directory -Force build/native-scroll-images
+$env:UI_NATIVE_SCROLL_EVIDENCE = (Resolve-Path build/native-scroll-images).Path
+& .\build\current\ui_component_scroll_native_test.exe
+```
+
+该用例与原离屏完整范围测试独立，均列入当前轻量CI必要检查；本轮实测身份、业务只读重建、失败记录及完整SDK见[验收](validation/native-component-scroll-validation.md)。本机结果不算托管CI、Session0或物理/人工验收。

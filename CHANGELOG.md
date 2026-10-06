@@ -2,6 +2,8 @@
 
 ## 0.7.0 — 本地开发交付，未创建稳定标签
 
+原生共同组件滚动修复（2026-10-07）：避免同一HWND重复SetCapture触发同步取消；TREE加载/空状态改为行视口内覆盖层，异步批次不再改变轨道尺寸。公共API7/ABI1、输入坐标、按需查询和资源预算保持。[真实鼠标与业务复验](docs/validation/native-component-scroll-validation.md)。
+
 共同组件分页入口清理：TREE/TABLE/LIST移除上一页/下一页与列箭头按钮，回收操作栏并按实际视口重新查询；FORM/DIALOG提交取消、菜单/最近/标签溢出分页保留。完整范围横纵条、uint64/BigInt、按需批次与原预算不变，API7应用无需修改。API/ABI不升级。
 
 维护政策从本轮起改为只维护各轮接手确认的当前版本，停止历史SDK/API/调用方/原二进制兼容保证及专项回归；当前基础功能继续维护。CI撤下旧版专项，当前功能夹具用API7头文件/声明；冻结SDK、原包、历史记录不改。此前条目中的兼容表述属于历史交付，不延续承诺。[政策](docs/version-policy.md)、[本轮真实证据](docs/validation/component-scroll-only-validation.md)。

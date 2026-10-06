@@ -1,0 +1,4 @@
+CI checks PASS: current-only acceptance, WGL/provider/Runtime partition, exact inventory, failures and physical-only skip
+CI current exact plan PASS: 42 tests, including real native scrollbar
+Required light test absent: ui_component_scroll_native
+CI missing native scrollbar correctly rejected

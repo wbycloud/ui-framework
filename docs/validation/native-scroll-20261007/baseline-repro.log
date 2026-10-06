@@ -1,0 +1,77 @@
+FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit0744d17aebe28e6231aa2088f0a33fa6fd34f091
+PASS: initialize current shared framework
+PASS: mount real native content slot
+REPRO_QUERY: first0 count8 col0+0 dpi96
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register and mount public data component
+PASS: public scrollbar geometry visible
+FAIL: actual pointer target owned by reproducer
+REPRO_HIT: classChrome_RenderWidgetHostHWND start814,103 client814,103 thumb780,40 track780,40
+PASS: actual mouse down
+FAIL: native pointer capture belongs to hit window
+PASS: actual mouse drag
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible0 clip0,0,0,0 text
+FAIL: last row visibly reached
+PASS: seed independent return test through real wheel
+FAIL: return test starts away from first row
+PASS: public scrollbar geometry visible
+FAIL: actual pointer target owned by reproducer
+REPRO_HIT: classChrome_RenderWidgetHostHWND start814,103 client814,103 thumb780,40 track780,40
+PASS: actual mouse down
+FAIL: native pointer capture belongs to hit window
+PASS: actual mouse drag
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+REPRO_PUBLIC_CONTROL: down0 move0 up0 first0 col0 status0
+PASS: destroy all component resources after callbacks
+REPRO_QUERY: first0 count8 col0+0 dpi96
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: public input control on same template without native focus
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first4985 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+REPRO_PUBLIC_CONTROL: down0 move0 up0 first4987 col0 status0
+PASS: destroy diagnostic control
+REPRO_QUERY: first0 count8 col0+6 dpi96
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register and mount public data component
+PASS: public scrollbar geometry visible
+FAIL: actual pointer target owned by reproducer
+REPRO_HIT: classChrome_RenderWidgetHostHWND start61,505 client61,505 thumb8,448 track8,448
+PASS: actual mouse down
+FAIL: native pointer capture belongs to hit window
+PASS: actual mouse drag
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col0 total5000 nodes117 bytes102486 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible0 clip0,0,0,0 text
+FAIL: uncached last column visibly reached
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+REPRO_PUBLIC_CONTROL: down0 move0 up0 first0 col0 status0
+PASS: destroy all component resources after callbacks
+REPRO_QUERY: first0 count8 col0+6 dpi96
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: public input control on same template without native focus
+REPRO_QUERY: first0 count14 col62+2 dpi96
+PASS: synchronous copied data batch
+REPRO_PUBLIC_CONTROL: down0 move0 up0 first0 col63 status0
+PASS: destroy diagnostic control
+REPRO_RESULT: 9 failures

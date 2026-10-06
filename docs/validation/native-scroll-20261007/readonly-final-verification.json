@@ -1,0 +1,27 @@
+{
+  "docs/current-input-blockers.md": {
+    "sha256_before": "3bbcc9558bf200088eeceaa703def5af07b1c7148ef9e4088076e587326d5b1d",
+    "sha256_after": "3bbcc9558bf200088eeceaa703def5af07b1c7148ef9e4088076e587326d5b1d",
+    "unchanged": true
+  },
+  "docs/current-acceptance-status.md": {
+    "sha256_before": "02d2157e74817575075d932c6462f99557698fa422b8c5434916c1825236acbd",
+    "sha256_after": "02d2157e74817575075d932c6462f99557698fa422b8c5434916c1825236acbd",
+    "unchanged": true
+  },
+  "tests/scroll_repro.c": {
+    "sha256_before": "267df839b79d2ab4123fe5f011337c2f4d6dd163d23dbce721705c6ebba2df85",
+    "sha256_after": "267df839b79d2ab4123fe5f011337c2f4d6dd163d23dbce721705c6ebba2df85",
+    "unchanged": true
+  },
+  "verification/acceptance-closure/closure.json": {
+    "sha256_before": "1ced5d05c79fececb417244239a941ff80d8caa9c9558e7f295266039fdb32aa",
+    "sha256_after": "1ced5d05c79fececb417244239a941ff80d8caa9c9558e7f295266039fdb32aa",
+    "unchanged": true
+  },
+  "verification/acceptance-closure/README.md": {
+    "sha256_before": "f4e24f655b21ac5b6ce8f47574801131471180701649f69db1575df703919fb9",
+    "sha256_after": "f4e24f655b21ac5b6ce8f47574801131471180701649f69db1575df703919fb9",
+    "unchanged": true
+  }
+}

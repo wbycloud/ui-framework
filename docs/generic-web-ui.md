@@ -158,3 +158,6 @@ Runtime模态在controller尚未创建时可能先获得容器焦点。文档就
 共同模板默认浅色；独立宿主同步全部实例的浅深主题，应用自有HTML/原生/GL不自动注入。紧凑32行高、12像素完整范围滚动条、表单/颜色/枚举、错误/加载/图片失败与焦点状态见[视觉规范](visual-design.md)。本轮只改内部模板与轻量绘制，公共API7、BigInt总量、缓存/节点/图片预算、排序/选择/草稿及输入合同保持；[两后端真实运行与截图](validation/visual-ui-validation.md)不替代物理IME或业务验收。
 
 当前维护范围见[版本政策](version-policy.md)，本轮真实两后端回归及截图见[分页清理验收](validation/component-scroll-only-validation.md)。已有API7应用继续返回真实total_count与first/count，无需修改数据源。菜单、最近应用及标签溢出的分页不在共同数据组件清理范围。
+
+
+原生共同组件滚动修复（2026-10-07）：避免同一HWND重复SetCapture触发同步取消；TREE加载/空状态改为行视口内覆盖层，异步批次不再改变轨道尺寸。公共API7/ABI1、输入坐标、按需查询和资源预算保持。[真实鼠标与业务复验](validation/native-component-scroll-validation.md)。

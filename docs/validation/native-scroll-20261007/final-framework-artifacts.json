@@ -1,0 +1,50 @@
+{
+  "product_commit": "2e87e021443a38dbdd986a2bebd370e658c65242",
+  "framework_light": {
+    "build_directory": "build/native-scroll-20261007/patched",
+    "junit": "framework-light-full.xml",
+    "artifacts": {
+      "ui_framework.dll": {
+        "sha256": "5485aa00cc15c9f65a299b1a9686d3f3c5f4dd55ee707306334e142568df6e29",
+        "bytes": 2069504,
+        "modified": "2026-10-06T18:21:01.164Z"
+      },
+      "ui_framework_runtime.lib": {
+        "sha256": "17d36323761432895183fd4735f43b052002ef6872e51255a7d0ef33ea56cd64",
+        "bytes": 53960,
+        "modified": "2026-10-06T18:02:40.350Z"
+      },
+      "framework_host.exe": {
+        "sha256": "586736acc40698d8daad397c919d135e4dde672dfdb56f20a581b2faf2512c5a",
+        "bytes": 250368,
+        "modified": "2026-10-06T18:21:01.366Z"
+      },
+      "ui_component_scroll_native_test.exe": {
+        "sha256": "5d22a2424ab7672b6629c3e090c18891798c61c687c55f03a4859253ebc69262",
+        "bytes": 26112,
+        "modified": "2026-10-06T18:23:12.990Z"
+      }
+    }
+  },
+  "webview2": {
+    "build_directory": "build/native-scroll-20261007/webview2",
+    "junit": "runtime-related.xml",
+    "artifacts": {
+      "ui_framework.dll": {
+        "sha256": "5d2a87952f6e53d49b68cfe44ad5d96303450e0b08d2601c450c38835725f123",
+        "bytes": 2134528,
+        "modified": "2026-10-06T18:25:16.952Z"
+      },
+      "ui_framework_runtime.lib": {
+        "sha256": "f18fadad11bc7b1e8db8700eaa9e85a8952ee3d3f9c5ff4808221c43a9799064",
+        "bytes": 55818,
+        "modified": "2026-10-06T18:25:16.856Z"
+      },
+      "ui_component_scroll_test.exe": {
+        "sha256": "e802e03bfab4877037bd2ba46387409bf52659b2b48d88baef9d3518dc0656d1",
+        "bytes": 2056704,
+        "modified": "2026-10-06T18:25:16.954Z"
+      }
+    }
+  }
+}

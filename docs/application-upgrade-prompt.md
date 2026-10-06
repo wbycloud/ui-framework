@@ -49,3 +49,6 @@
 ```
 
 宿主现采用浏览器式标签标题栏与第二行活动应用菜单，见[宿主说明](standalone-host.md)。这属于内部变化，已符合当前API7合同的应用无需为外观重编译或升级API；不要访问宿主DOM/窗口类或存储其最近记录。仍按原内容槽、菜单、助手及关闭回调接入，业务文档和未保存确认仍归应用。框架自有模板采用[统一视觉规范](visual-design.md)，独立宿主同步共同组件主题，应用自有HTML/原生/GL主题仍自行管理；AI启动默认收起，高级区保留原参数/事务/日志访问路径。本轮分页入口清理保持API7，不改变当前应用数据源合同；历史包兼容承诺以[当前版本政策](version-policy.md)为准，历史验收原样保留。
+
+
+当前API7原生滚动修复后，核验完整SDK的源码commit、头文件、ui_framework_runtime.lib、ui_framework.dll、framework_host.exe及产物SHA256，再重建当前应用。应用继续按真实total_count及first/count提供稳定非零ID的复制批次；无需增加缓存或业务滚动条。验收须包括真实鼠标首末项/末列、可见文字或样式像素、resize、焦点和关闭；离屏输入通过不替代原生鼠标。[本轮框架记录](validation/native-component-scroll-validation.md)。

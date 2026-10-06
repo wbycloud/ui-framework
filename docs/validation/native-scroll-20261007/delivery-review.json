@@ -1,0 +1,22 @@
+{
+  "checked_documents": [
+    "README.md",
+    "CHANGELOG.md",
+    "docs/application-development-standard.md",
+    "docs/application-upgrade-prompt.md",
+    "docs/build-and-validation.md",
+    "docs/generic-web-ui.md",
+    "docs/handoff.md",
+    "docs/validation/native-component-scroll-validation.md"
+  ],
+  "local_links_checked": 307,
+  "missing_links": [],
+  "checks": [
+    "public headers unchanged relative to 0744d17",
+    "application tracked status clean",
+    "business code diff a727103..42d8624 empty",
+    "five read-only input files SHA256 unchanged",
+    "current CI exact configured plan 42 tests accepted; missing native scrollbar rejected"
+  ],
+  "remote_execution": false
+}

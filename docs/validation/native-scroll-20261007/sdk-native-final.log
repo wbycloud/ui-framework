@@ -1,0 +1,849 @@
+PASS: initialize current shared framework
+PASS: native root visible
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi96
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: save actual native client screenshot
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first18 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first4985 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,744,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: save actual native client screenshot
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,499 client786,448 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,103 client726,52 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+REPRO_QUERY: first4987 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,684,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,459 client726,408 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,684,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: pending test scrollbar visible
+PASS: actual pending-test down
+PASS: actual pending-test drag
+PASS: refresh unchanged visible pending component
+PASS: async source actually displays loading placeholder
+PASS: loading does not shrink complete-source track
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: async delivery does not move track under pointer
+PASS: actual pending-test up
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,300 client786,249 thumb780,237 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+PASS: actual Esc cancels drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+6 dpi96
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: save actual native client screenshot
+PASS: last column initially uncached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start61,505 client33,454 thumb8,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col62+2 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes57 bytes4372 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,30 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: last column queried on demand
+PASS: save actual native client screenshot
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start778,505 client750,454 thumb725,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes117 bytes10552 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,30 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count13 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start57,465 client29,414 thumb8,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col62+2 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes54 bytes4063 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,30 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start722,465 client694,414 thumb673,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes110 bytes9799 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,30 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count14 col31+7 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+PASS: actual Esc cancels drag
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count14 col31+7 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+0 dpi96
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: save actual native client screenshot
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4985 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,744,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: save actual native client screenshot
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,499 client786,448 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,103 client726,52 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4987 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,684,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,459 client726,408 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,684,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+PASS: actual Esc cancels drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi144
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: save actual native client screenshot
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi144
+REPRO_QUERY: first18 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count18 col0+0 dpi144
+REPRO_QUERY: first4985 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,744,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: save actual native client screenshot
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,723 client1179,672 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,129 client1089,78 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+REPRO_QUERY: first4987 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,684,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,663 client1089,612 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,684,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+6 dpi144
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: save actual native client screenshot
+PASS: last column initially uncached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start78,732 client50,681 thumb8,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col62+2 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes57 bytes4372 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,30 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: last column queried on demand
+PASS: save actual native client screenshot
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1153,732 client1125,681 thumb725,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes117 bytes10552 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,30 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count13 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start72,672 client44,621 thumb8,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col62+2 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes54 bytes4063 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,30 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1069,672 client1041,621 thumb673,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes110 bytes9799 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,30 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+0 dpi144
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: save actual native client screenshot
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first1 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4985 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,744,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: save actual native client screenshot
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,723 client1179,672 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,129 client1089,78 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4987 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,684,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,663 client1089,612 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,684,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi192
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: save actual native client screenshot
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi192
+REPRO_QUERY: first18 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count18 col0+0 dpi192
+REPRO_QUERY: first4985 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,744,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: save actual native client screenshot
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,947 client1572,896 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,155 client1452,104 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+REPRO_QUERY: first4987 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,684,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,867 client1452,816 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,684,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+6 dpi192
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: save actual native client screenshot
+PASS: last column initially uncached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start94,959 client66,908 thumb8,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col62+2 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes57 bytes4372 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,30 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: last column queried on demand
+PASS: save actual native client screenshot
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1528,959 client1500,908 thumb725,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes117 bytes10552 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,30 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count13 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start86,879 client58,828 thumb8,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col62+2 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes54 bytes4063 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,30 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1416,879 client1388,828 thumb673,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes110 bytes9799 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,30 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+0 dpi192
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: save actual native client screenshot
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first1 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4985 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,744,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: save actual native client screenshot
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,947 client1572,896 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,744,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,155 client1452,104 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4987 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,684,30 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,867 client1452,816 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,684,30 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+NATIVE_SCROLL_RESULT: 0 failures

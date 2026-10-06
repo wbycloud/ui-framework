@@ -1,0 +1,5 @@
+# Preserve captured evidence byte-for-byte, including original line endings.
+* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Tool outputs include original trailing spaces; do not format the evidence.
+*.log -diff
+ci-final-test-plan.json -diff

@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "archive": {
+    "file": "ui-framework-sdk0.7-api7-native-scroll-2e87e02.zip",
+    "bytes": 81678749,
+    "sha256": "6a65b7b6889f021c47a5f6aa456a95526034175d8acbfcce13727d791c374e8d",
+    "product_commit": "2e87e021443a38dbdd986a2bebd370e658c65242",
+    "files_verified": 1838,
+    "zip_crc": true
+  },
+  "extracted_directory": "build/native-scroll-20261007/sdk-unpacked",
+  "extracted_source_commit": "2e87e021443a38dbdd986a2bebd370e658c65242",
+  "extracted_tracked_status": "clean",
+  "all_1838_manifest_files_verified": true,
+  "offline_rebuild_targets": [
+    "ui_framework_shared",
+    "framework_host",
+    "uapp_pack",
+    "ui_component_scroll_native_test"
+  ],
+  "offline_rebuild_exit": 0,
+  "delivered_dll_sha256": "f6e58ad8a17d07ba720123812a7b80ffa330b58314bd146f7ba1750cbed9c477",
+  "delivered_import_library_sha256": "17d36323761432895183fd4735f43b052002ef6872e51255a7d0ef33ea56cd64",
+  "delivered_host_sha256": "362a9725b2f42253064bdaacd7e79a1e23e167111136064dc0993a3899ac9a6e",
+  "native_test_on_delivered_dll_failures": 0,
+  "business_full": [
+    27,
+    0
+  ],
+  "business_scroll_observation": [
+    95,
+    0
+  ],
+  "framework_light": {
+    "passed": 41,
+    "skipped_physical": 1,
+    "failed": 0
+  },
+  "runtime_related": [
+    3,
+    0
+  ],
+  "offline_rebuilt_native": {
+    "exit_code": 0,
+    "failures": 0,
+    "source_commit": "2e87e021443a38dbdd986a2bebd370e658c65242",
+    "log": "sdk-rebuilt-native.log",
+    "artifacts": [
+      {
+        "file": "ui_component_scroll_native_test.exe",
+        "bytes": 26112,
+        "sha256": "1b5138d0e3f7eb97c0f9e191b507ec5ea9ee57c8df54ba8955b822a27a1336d4"
+      },
+      {
+        "file": "ui_framework.dll",
+        "bytes": 2069504,
+        "sha256": "b3baef5b6e3d924a26d468059590c4fdbae9dda2afb3f916dcdb50f411654892"
+      },
+      {
+        "file": "ui_framework_runtime.lib",
+        "bytes": 53960,
+        "sha256": "17d36323761432895183fd4735f43b052002ef6872e51255a7d0ef33ea56cd64"
+      },
+      {
+        "file": "framework_host.exe",
+        "bytes": 250368,
+        "sha256": "8be95f122a8fa681be794e32b09c9044eea9d26c43e6e34a7be6f272617883b7"
+      }
+    ]
+  }
+}

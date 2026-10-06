@@ -1,0 +1,171 @@
+FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit0744d17aebe28e6231aa2088f0a33fa6fd34f091
+PASS: initialize current shared framework
+PASS: mount real native content slot
+REPRO_QUERY: first0 count8 col0+0 dpi96
+TRACE component repro.tree {"action":"metrics","nodes":"45","mounts":"8","focused":""}
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"77","mounts":"16","focused":""}
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"77","mounts":"16","focused":""}
+TRACE component repro.tree {"action":"metrics","nodes":"77","mounts":"16","focused":""}
+PASS: register and mount public data component
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+TRACE move hit7 cap0 xy786,52
+TRACE pointer kind2 hit7 cap0 xy786,52 size800,500
+TRACE cancel message533 cap8
+TRACE component repro.tree {"action":"scroll","first":"0","generation":"1"}
+REPRO_QUERY: first0 count16 col0+0 dpi96
+TRACE component repro.tree {"action":"metrics","nodes":"77","mounts":"16","focused":"scroll-v-thumb"}
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"77","mounts":"16","focused":"scroll-v-thumb"}
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+TRACE move hit-1 cap0 xy786,560
+PASS: actual mouse release
+TRACE pointer kind3 hit-1 cap0 xy786,560 size800,500
+REPRO_NATIVE: axisscroll-v-thumb end1 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible0 clip0,0,0,0 text
+FAIL: last row visibly reached
+TRACE move hit14 cap0 xy28,60
+TRACE component repro.tree {"action":"tip","id":"1"}
+TRACE move hit14 cap0 xy28,60
+PASS: seed independent return test through real wheel
+TRACE component repro.tree {"action":"scroll","first":"3","generation":"1"}
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first18 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+PASS: return test starts away from first row
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+TRACE move hit7 cap0 xy786,52
+TRACE pointer kind2 hit7 cap0 xy786,52 size800,500
+TRACE cancel message533 cap8
+TRACE component repro.tree {"action":"scroll","first":"3","generation":"1"}
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first18 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+TRACE move hit-1 cap0 xy786,-51
+PASS: actual mouse release
+TRACE pointer kind3 hit-1 cap0 xy786,-51 size800,500
+REPRO_NATIVE: axisscroll-v-thumb end0 first3 col0 total5000 nodes85 bytes1522 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible0 clip0,0,0,0 text
+FAIL: first row visibly restored
+TRACE pointer kind2 hit7 cap0 xy786,52 size800,500
+TRACE cancel message533 cap8
+TRACE component repro.tree {"action":"scroll","first":"3","generation":"1"}
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first18 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+PASS: synchronous copied data batch
+TRACE component repro.tree {"action":"metrics","nodes":"85","mounts":"19","focused":"scroll-v-thumb"}
+TRACE move hit-1 cap0 xy786,560
+TRACE pointer kind3 hit-1 cap0 xy786,560 size800,500
+REPRO_PUBLIC_CONTROL: down0 move0 up0 first3 col0 status0
+PASS: destroy all component resources after callbacks
+REPRO_QUERY: first0 count8 col0+0 dpi96
+TRACE component control.tree {"action":"metrics","nodes":"45","mounts":"8","focused":""}
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+TRACE component control.tree {"action":"metrics","nodes":"77","mounts":"16","focused":""}
+PASS: synchronous copied data batch
+TRACE component control.tree {"action":"metrics","nodes":"77","mounts":"16","focused":""}
+PASS: public input control on same template without native focus
+TRACE pointer kind2 hit7 cap0 xy786,52 size800,500
+TRACE move hit7 cap8 xy786,560
+TRACE component control.tree {"action":"scroll","first":"4987","generation":"2"}
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first4985 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+TRACE component control.tree {"action":"metrics","nodes":"73","mounts":"31","focused":"scroll-v-thumb"}
+TRACE component control.tree {"action":"metrics","nodes":"73","mounts":"31","focused":"scroll-v-thumb"}
+PASS: synchronous copied data batch
+TRACE component control.tree {"action":"metrics","nodes":"73","mounts":"31","focused":"scroll-v-thumb"}
+TRACE pointer kind3 hit7 cap8 xy786,560 size800,500
+REPRO_PUBLIC_CONTROL: down0 move0 up0 first4987 col0 status0
+PASS: destroy diagnostic control
+REPRO_QUERY: first0 count8 col0+6 dpi96
+TRACE component repro.table {"action":"metrics","nodes":"75","mounts":"8","focused":""}
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+TRACE component repro.table {"action":"metrics","nodes":"117","mounts":"14","focused":""}
+PASS: synchronous copied data batch
+TRACE component repro.table {"action":"metrics","nodes":"117","mounts":"14","focused":""}
+TRACE component repro.table {"action":"metrics","nodes":"117","mounts":"14","focused":""}
+PASS: register and mount public data component
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start61,505 client33,454 thumb8,448 track8,448
+PASS: actual mouse down
+TRACE move hit9 cap0 xy33,454
+TRACE pointer kind2 hit9 cap0 xy33,454 size800,500
+TRACE cancel message533 cap10
+TRACE component repro.table {"action":"columns","first":"0","generation":"3"}
+REPRO_QUERY: first0 count14 col0+6 dpi96
+TRACE component repro.table {"action":"metrics","nodes":"117","mounts":"14","focused":"scroll-h-thumb"}
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+TRACE move hit-1 cap0 xy876,454
+PASS: actual mouse release
+TRACE pointer kind3 hit-1 cap0 xy876,454 size800,500
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col0 total5000 nodes117 bytes102486 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible0 clip0,0,0,0 text
+FAIL: uncached last column visibly reached
+TRACE pointer kind2 hit9 cap0 xy33,454 size800,500
+TRACE cancel message533 cap10
+TRACE component repro.table {"action":"columns","first":"0","generation":"3"}
+REPRO_QUERY: first0 count14 col0+6 dpi96
+TRACE component repro.table {"action":"metrics","nodes":"117","mounts":"14","focused":"scroll-h-thumb"}
+PASS: synchronous copied data batch
+TRACE move hit-1 cap0 xy876,454
+TRACE pointer kind3 hit-1 cap0 xy876,454 size800,500
+REPRO_PUBLIC_CONTROL: down0 move0 up0 first0 col0 status0
+PASS: destroy all component resources after callbacks
+REPRO_QUERY: first0 count8 col0+6 dpi96
+TRACE component control.table {"action":"metrics","nodes":"75","mounts":"8","focused":""}
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+TRACE component control.table {"action":"metrics","nodes":"117","mounts":"14","focused":""}
+PASS: synchronous copied data batch
+TRACE component control.table {"action":"metrics","nodes":"117","mounts":"14","focused":""}
+PASS: public input control on same template without native focus
+TRACE pointer kind2 hit9 cap0 xy33,454 size800,500
+TRACE move hit9 cap10 xy876,454
+TRACE component control.table {"action":"columns","first":"63","generation":"4"}
+REPRO_QUERY: first0 count14 col62+2 dpi96
+TRACE component control.table {"action":"metrics","nodes":"57","mounts":"14","focused":"scroll-h-thumb"}
+PASS: synchronous copied data batch
+TRACE pointer kind3 hit9 cap10 xy876,454 size800,500
+REPRO_PUBLIC_CONTROL: down0 move0 up0 first0 col63 status0
+PASS: destroy diagnostic control
+REPRO_RESULT: 3 failures

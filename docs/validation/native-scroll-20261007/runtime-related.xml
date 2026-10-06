@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="3"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="41"
+	timestamp="2026-10-07T02:35:41"
+	>
+	<testcase name="ui_webview2_render" classname="ui_webview2_render" time="17.4342" status="run">
+		<properties/>
+		<system-out>Runtime render: initialize
+Runtime render: ready
+Runtime render: capture/images complete
+Runtime render: close
+Runtime close before creation x12 handles 323-&gt;323 USER 17-&gt;17 pending cleanup=0
+Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+Runtime test: normal CRT exit callback reached
+</system-out>
+	</testcase>
+	<testcase name="ui_component_experience_webview2" classname="ui_component_experience_webview2" time="13.0248" status="run">
+		<properties/>
+		<system-out>component experience actual WebView2: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_scroll_webview2" classname="ui_component_scroll_webview2" time="9.77623" status="run">
+		<properties/>
+		<system-out>presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=table y=76 height=364 query=0+14
+end row first=99989 total=100000 rows=13 query=99987+16 nodes=114 status=0
+end column first=0 col=0 rows=14 query=0+14
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551604 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=tree/list y=40 height=420 query=0+16
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=tree/list y=40 height=420 query=0+16
+complete range scroll actual Ru...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

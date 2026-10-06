@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="27"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="218"
+	timestamp="2026-10-07T02:25:34"
+	>
+	<testcase name="kc_core" classname="kc_core" time="0.0767399" status="run">
+		<properties/>
+		<system-out>core tests passed
+</system-out>
+	</testcase>
+	<testcase name="kc_hierarchy" classname="kc_hierarchy" time="0.0272707" status="run">
+		<properties/>
+		<system-out>PASS stable IDs, shared references, cycles, copy trees, cancellation, undo and GDS holes
+</system-out>
+	</testcase>
+	<testcase name="kc_clipboard" classname="kc_clipboard" time="0.0236462" status="run">
+		<properties/>
+		<system-out>PASS independent clipboard, malformed data, DBU/name/shared graph mapping, billion array, cancellation and history
+</system-out>
+	</testcase>
+	<testcase name="kc_edit" classname="kc_edit" time="0.036356" status="run">
+		<properties/>
+		<system-out>PASS mixed transforms, ID remapping, overflow rollback, attributes and 100000 compact instance records/indexes
+</system-out>
+	</testcase>
+	<testcase name="kc_gds" classname="kc_gds" time="0.0935518" status="run">
+		<properties/>
+		<system-out>GDS roundtrip, reference samples, malformed input, cancellation and atomic replacement passed
+</system-out>
+	</testcase>
+	<testcase name="kc_oasis" classname="kc_oasis" time="0.0206758" status="run">
+		<properties/>
+		<system-out>OASIS: 28/28 checks passed
+</system-out>
+	</testcase>
+	<testcase name="kc_properties" classname="kc_properties" time="0.0173119" status="run">
+		<properties/>
+		<system-out>Properties: 43/43 checks passed
+</system-out>
+	</testcase>
+	<testcase name="kc_property_completion" classname="kc_property_completion" time="0.0240345" status="run">
+		<properties/>
+		<system-out>Property completion: 97/97 checks passed
+</system-out>
+	</testcase>
+	<testcase name="kc_region" classname="kc_region" time="0.0102601" status="run">
+		<properties/>
+		<system-out>Region: 38/38 checks passed
+</system-out>
+	</testcase>
+	<testcase name="kc_render" classname="kc_render" time="0.0373866" status="run">
+		<properties/>
+		<system-out>lazy BVH: full-fit builds=0 nodes=0 order=0; partial builds=2 nodes=24528 order=8192
+render: reference pixels/fonts/camera, bounded exact Cell cache and 2000-level hierarchy passed
+</system-out>
+	</testcase>
+	<testcase name="kc_render_tiles" classname="kc_render_tiles" time="0.0275588" status="run">
+		<properties/>
+		<system-out>PASS 96 dirty-row reconstruction cases per visible-layer progress: empty/hidden first, all hidden, width 1/7/8/9/63/64/65/610, tail pixels, multiline clipped font, overlap color, cached/uncached and actual emitted-tile cancellation
+</system-out>
+	</testcase>
+	<testcase name="kc_render_errors" classname="kc_render_errors" time="0.0101232" status="run">
+		<properties/>
+		<system-out>PASS public renderer status/error agreement: invalid configurations, allocation failures and simultaneous cancellation preserve first error, real callback cancellation, optional error object and successful reuse
+</system-out>
+	</testcase>
+	<testcase name="kc_edit_fault" classname="kc_edit_fault" time="0.0109132" status="run">
+		<properties/>
+		<system-out>PASS typed metadata allocation faults: 4 rollback points, copied bytes and atomic undo
+PASS allocation failures: 10 rollback points, explicit commit failure and independent snapshot root name collision
+</system-out>
+	</testcase>
+	<testcase name="kc_gds_open" classname="kc_gds_open" time="0.0298388" status="run">
+		<properties/>
+		<system-out>GDS Windows temporary-open ownership, collision, Unicode, cancellation and save errors passed
+</system-out>
+	</testcase>
+	<testcase name="kc_gds_read_open" classname="kc_gds_read_open" time="0.0214459" status="run">
+		<properties/>
+		<system-out>GDS Windows read-open Unicode/readonly/sharing/ownership/error/cancellation contracts passed
+</system-out>
+	</testcase>
+	<testcase name="kc_layer_properties" classname="kc_layer_properties" time="0.124074" status="run">
+		<properties/>
+		<system-out>PASS: XML entity/Unicode/source/color/visible decode
+PASS: atomic compatible .lyp writer
+PASS: semantic .lyp roundtrip
+PASS: failed atomic replacement preserves locked destination
+PASS: failed export retains complete old XML
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: signed hexadecimal text is not an RGB color
+PASS: persist three-level independent fixture
+PASS: export solid three-layer .lyp for official oracle
+PASS: root-only hierarchy has exact red box pixels
+PASS: child-only hierarchy has exact green box pixels
+PASS: lower-bound hierarchy has exact blue box ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_host" classname="kc_host" time="17.7082" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: launch matching distribution standalone host
+PASS: standalone host mounts independent current content surfaces without native business panes
+PASS: standalone process actually loads application DLL
+PASS: actual matched standalone Web chrome screenshot
+HOST_AI_BEFORE: visible0000000008A10A96 count1 width714 client1184
+PASS: current assistant starts collapsed with canvas space
+HOST_MOUSE_HELD: xy1016,22 hit00000000038409B4 capture00000000038409B4 focus00000000038409B4 foreground000000000D080BA6 time549674828
+PASS: real AI button expands existing assistant
+HOST_AI_AFTER: visible0000000008A10A96 count1 width400
+PASS: AI expansion retains GL HWND and gives assistant space
+PASS: capture actual readable assistant and basic parameters
+HOST_MOUSE_HELD: xy1004,286 hit00000000038409B4 capture00000000038409B4 focus00000000038409B4 foreground000000000D080BA6 time549675312
+PASS: native command picker opens application command list
+HOS...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_application_workflows" classname="kc_application_workflows" time="4.48125" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+PASS: actual exported descriptor agrees with manifest
+PASS: partial-init probe creates real application state with public host
+PASS: real application context above 2^53 is serialized exactly
+PASS: host without a content shell fails after partial GPU initialization
+PASS: partial initialization follows shared native/GPU cleanup path
+PASS: public TREE TABLE FORM registered
+PASS: application native business controls removed
+PASS: renderer mounted in real content slot
+PASS: asynchronous visible root and layer...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_usability_input" classname="kc_usability_input" time="4.11152" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+PASS: physical workflow owns the foreground canvas
+PARAM_COMMAND: status 0 visible 1 enabled 0 busy 0
+USER_KEY: key 66 ctrl 0 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":0,"cell":"TOP","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"","dbu":0.001,"generation":"5","rendered_generation":"5","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_gl_offscreen" classname="kc_gl_offscreen" time="1.76927" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: explicit OFFSCREEN workspace has no parent HWND
+PASS: offscreen logical and pixel slots
+PASS: load actual current package offscreen
+PASS: two independent offscreen instances
+PASS: original renderer completes first full frame
+PASS: host reports explicit run mode and no container
+PASS: GL explicitly reports hidden HWND dependency
+PASS: actual requested single-sample compatibility GL driver, no fallback
+GL: Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079 samples=0 hardware_class=unknown
+PASS: seven explicitly ordered menu groups
+PASS: nested hierarchy and workspace groups uses public menu path
+PASS: application reserves actual framework menu bar
+PASS: real menu template activates Box from independent slot anchor
+PASS: ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_hierarchy_input" classname="kc_hierarchy_input" time="3.82192" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+PASS: hierarchy input owns the foreground canvas
+PASS: explicit zero Cell-row identity still rejects without menu metadata
+HIERARCHY_MENU: path Cell item klayoutc.cell_new status 0 located 0 rect 4,32,312,28 clicked 1 results 1 last {"status":9,"message":"Not found","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":0,"cell":"TOP","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"","dbu":0.001,"gen...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_menu_input" classname="kc_menu_input" time="11.1319" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+PASS: real create failure leaves cleanup state after partial UI registration
+PASS: failed create cleanup leaves existing application instances live
+PASS: matched runtime reports actual current access keys
+PASS: root group has explicit order and mnemonic
+PASS: root group has explicit order and mnemonic
+PASS: root group has explicit order and mnemonic
+PASS: root group has explicit order and mnemonic
+PASS: root group has explicit order and mnemonic
+PASS: root group has explicit order and mnemonic
+PASS: root...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_view_settings" classname="kc_view_settings" time="8.65138" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+PASS: load three-level GDS fixture using ordinary open command
+PASS: import concrete solid .lyp using canonical file command
+HIERARCHY_MENU: path View item klayoutc.view_settings status 0 located 0 rect 4,116,312,28 clicked 1 results 2 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":3,"layers":3,"shapes":3,"cell":"TOP","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"view-fixture.gds"...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_workspace_input" classname="kc_workspace_input" time="25.0955" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+PASS: current owns foreground before real input
+PASS: prepare real geometry without replacing renderer
+HIERARCHY_MENU: path Edit item klayoutc.selection_all status 0 located 0 rect 4,190,312,28 clicked 1 results 2 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"c...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_table_layout_input" classname="kc_table_layout_input" time="25.0589" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+PASS: own native foreground for current real application input
+PASS: business input uses locked current framework headers
+PASS: prepare business geometry for retained GL content
+PASS: capture actual current application before layout changes
+USER_KEY: key 65 ctrl 1 focus UIFrameworkLightWeb sent 1 results 0 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"ca...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_advanced_input" classname="kc_advanced_input" time="89.776" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+PASS: own desktop foreground for new business input
+OASIS_CHOOSER: waiting pid 13184 time549776296 cancel0
+OASIS_CHOOSER: owned selector 0000000016EC0AA8 time549776562 UIthread29112
+OASIS_CHOOSER: exact filename confirmed and selector closed
+PASS: physical Ctrl O opens typed-metadata OASIS fixture
+PASS: ordinary load preserves shared Cell with compact array
+PASS: typed OASIS import remains instance-local
+PASS: physical Alt F then metadata mnemonic opens the typed editor
+PASS: public typed editor displays...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_oasis_region_input" classname="kc_oasis_region_input" time="25.3204" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.7.0-dev API7 commit2e87e021443a38dbdd986a2bebd370e658c65242
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+INPUT_SEND: time549866125 key79 modifier17 focus000000000A540B2C foreground0000000004C508A8 capture0000000000000000 C0 S0 A0
+OASIS_CHOOSER: waiting pid 28460 time549866125 cancel0
+INPUT_ROUTE: time549866125 message256 key17 modifiers1 hwnd000000000A540B2C focus000000000A540B2C foreground0000000004C508A8 status-4
+INPUT_ROUTE: time549866125 message256 key79 modifiers1 hwnd000000000A540B2C focus000000000A540B2C foreground0000000004C508A8 status-4
+OASIS_CHOOSER: owned selector 000000000A7D0E14 time549866406 ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>
