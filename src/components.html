@@ -2,7 +2,7 @@
 body{box-sizing:border-box;overflow:hidden;padding:8px;gap:8px;display:flex;flex-direction:column}
 .heading{height:24px;font-weight:600;font-size:13px}
 .controls{display:flex;flex-direction:row;height:28px;gap:4px}
-.rows{flex:1;flex-direction:column;min-height:0;min-width:0;overflow-y:hidden;overflow-x:hidden}
+.rows{position:relative;flex:1;flex-direction:column;min-height:0;min-width:0;overflow-y:hidden;overflow-x:hidden}
 .row{box-sizing:border-box;display:flex;flex-direction:row;height:32px;gap:0;border:0;background:#ffffff}
 .row:hover{background:#f0f0f2}
 .selected,.selected:hover{background:#dcecff}
@@ -28,7 +28,7 @@ body{box-sizing:border-box;overflow:hidden;padding:8px;gap:8px;display:flex;flex
 .scroll-thumb:hover,.scroll-thumb:focus{background:#777780}
 .scroll-thumb:active{background:#0067b8}
 .choice-list{padding:8px;gap:4px;background:#f0f0f2;border:1px solid #d4d4d4}
-.empty-state{padding:12px;color:#646468;font-size:13px}
+.empty-state{position:absolute;left:0;top:0;right:0;padding:12px;color:#646468;font-size:13px}
 .dark .row,.dark .tree-label{background:#202020}
 .dark .row:hover,.dark .row:hover .tree-label{background:#303030}
 .dark .selected,.dark .selected:hover,.dark .selected .tree-label{background:#263e50}
@@ -44,7 +44,7 @@ body{box-sizing:border-box;overflow:hidden;padding:8px;gap:8px;display:flex;flex
 .dark .scroll-thumb:active{background:#60b7ff}
 .dark .choice-list{background:#2b2b2b;border-color:#484848}
 
-</style></head><body><div id="title" class="heading"></div><div id="controls" class="controls"></div><div id="columns" class="row"></div><div id="viewport" class="data-viewport"><div id="rows" class="rows"></div><div id="scroll-v-track" class="scroll-track"><button id="scroll-v-thumb" class="scroll-thumb"></button></div></div><div id="scroll-h-track" class="scroll-track"><button id="scroll-h-thumb" class="scroll-thumb"></button></div><div id="empty-state" class="empty-state" style="display:none"></div><div id="fields" class="fields"></div><div id="footer" class="footer"></div><script>
+</style></head><body><div id="title" class="heading"></div><div id="controls" class="controls"></div><div id="columns" class="row"></div><div id="viewport" class="data-viewport"><div id="rows" class="rows"><div id="empty-state" class="empty-state" style="display:none"></div></div><div id="scroll-v-track" class="scroll-track"><button id="scroll-v-thumb" class="scroll-thumb"></button></div></div><div id="scroll-h-track" class="scroll-track"><button id="scroll-h-thumb" class="scroll-thumb"></button></div><div id="fields" class="fields"></div><div id="footer" class="footer"></div><script>
 var state=null, rowNodes={}, fieldNodes={}, edits={}, cols=[], hiddenCols={}, mounts=0, wasModal=false, chooser=null, chooserOwner=null, choicePage=0, choiceIndex=0, cursor=null, pendingCursor=null, generation='';
 function send(x){ui.postMessage(x)}
 function el(tag,cls,text){var n=document.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n}

@@ -11,6 +11,8 @@
 #include "ui_framework/components.h"
 static uint32_t test_dpi=96;
 static unsigned last_column_queries;
+static int defer_rows;
+static ui_component_query_t deferred_query;
 
 static unsigned failures;
 static void check(int ok,const char *text){fprintf(stderr,"%s: %s\n",ok?"PASS":"FAIL",text);if(!ok)++failures;}
@@ -18,6 +20,7 @@ static void pump(unsigned ms)
 {ULONGLONG end=GetTickCount64()+ms;do{MSG m;while(PeekMessageW(&m,NULL,0,0,PM_REMOVE)){TranslateMessage(&m);DispatchMessageW(&m);}Sleep(1);}while(GetTickCount64()<end);}
 static void source(ui_component_t *c,const ui_component_query_t *q,void *user)
 {
+    if(q->kind==UI_QUERY_ROWS&&defer_rows){deferred_query=*q;return;}
     ui_column_desc_t *columns=user;ui_row_t *rows=calloc(128,sizeof(*rows));ui_cell_t (*cells)[64]=calloc(128,sizeof(*cells));char (*titles)[32]=calloc(128,sizeof(*titles)),(*values)[64][32]=calloc(128,sizeof(*values));
     if(q->kind!=UI_QUERY_ROWS||!rows||!cells||!titles||!values){free(rows);free(cells);free(titles);free(values);return;}
     if(columns&&q->first_column+q->column_count==64)++last_column_queries;
@@ -64,6 +67,8 @@ static void cancel_drag(ui_component_t *c,ui_content_slot_t *slot,HWND root,int 
  POINT start=screen_point(slot,thumb.clip.x+thumb.clip.width/2,thumb.clip.y+thumb.clip.height/2);check(mouse(start,MOUSEEVENTF_LEFTDOWN),"real cancel-test down");pump(30);POINT mid=screen_point(slot,horizontal?track.rect.x+track.rect.width/2:thumb.clip.x+thumb.clip.width/2,horizontal?thumb.clip.y+thumb.clip.height/2:track.rect.y+track.rect.height/2);check(mouse(mid,0),"real cancel-test move");pump(100);ui_component_get_state(c,&moved);check(horizontal?moved.first_column!=origin.first_column:moved.first!=origin.first,"cancel test actually moved");
  if(escape){INPUT key[2]={0};key[0].type=key[1].type=INPUT_KEYBOARD;key[0].ki.wVk=key[1].ki.wVk=VK_ESCAPE;key[1].ki.dwFlags=KEYEVENTF_KEYUP;check(SendInput(2,key,sizeof(INPUT))==2,"actual Esc cancels drag");pump(80);}else{SetCapture(root);pump(80);ReleaseCapture();}
  check(mouse(mid,MOUSEEVENTF_LEFTUP),"release cancelled drag");pump(40);ui_component_get_state(c,&restored);check(restored.first==origin.first&&restored.first_column==origin.first_column,"Esc or actual capture loss restores origin");check(GetCapture()==NULL,"cancel releases native capture");}
+static void pending_geometry(ui_component_t *c,ui_content_slot_t *slot,void *data)
+{ui_element_presentation_t rail={0},thumb={0},loading={0},pending={0},complete={0};check(present(c,"scroll-v-track",&rail)&&present(c,"scroll-v-thumb",&thumb),"pending test scrollbar visible");POINT start=screen_point(slot,thumb.clip.x+thumb.clip.width/2,thumb.clip.y+thumb.clip.height/2);check(mouse(start,MOUSEEVENTF_LEFTDOWN),"actual pending-test down");pump(30);defer_rows=1;POINT mid=screen_point(slot,thumb.clip.x+thumb.clip.width/2,rail.rect.y+rail.rect.height/2);check(mouse(mid,0),"actual pending-test drag");pump(50);check(ui_component_set_visible(c,1)==UI_STATUS_OK,"refresh unchanged visible pending component");check(present(c,"empty-state",&loading),"async source actually displays loading placeholder");check(present(c,"scroll-v-track",&pending)&&pending.rect.height==rail.rect.height,"loading does not shrink complete-source track");defer_rows=0;source(c,&deferred_query,data);pump(70);check(present(c,"scroll-v-track",&complete)&&complete.rect.height==pending.rect.height,"async delivery does not move track under pointer");check(mouse(mid,MOUSEEVENTF_LEFTUP),"actual pending-test up");pump(30);drag(c,slot,0,0);}
 int main(void)
 {
     check(ui_framework_initialize()==UI_STATUS_OK,"initialize current shared framework");HWND root=CreateWindowW(L"STATIC",L"Native common scrollbar regression",WS_OVERLAPPEDWINDOW|WS_CLIPCHILDREN,20,20,900,650,NULL,NULL,NULL,NULL);if(!root)return 2;
@@ -76,7 +81,7 @@ int main(void)
         ui_content_slot_t *slot=ui_shell_get_content_slot(ui_host_get_shell(host),NULL);
         for(int kind=1;kind<=3;++kind){int table=kind==2;last_column_queries=0;ui_component_desc_t d={0};d.size=sizeof(d);d.id="native.scroll";d.title="Synchronous complete source";d.kind=(ui_component_kind_t)kind;d.source=source;d.user_data=table?columns:NULL;if(table){d.columns=columns;d.column_count=64;}ui_component_t *c=NULL;check(ui_component_register(host,&d,&c)==UI_STATUS_OK&&ui_component_mount(c,slot)==UI_STATUS_OK,"register native component");if(!c)continue;pump(100);snapshot(root,table?"table-initial":kind==1?"tree-initial":"list-initial");
             if(table){check(last_column_queries==0,"last column initially uncached");drag(c,slot,1,1);check(last_column_queries>0,"last column queried on demand");snapshot(root,"table-last");drag(c,slot,1,0);}else{wheel(c,slot);drag(c,slot,0,0);drag(c,slot,0,1);snapshot(root,kind==1?"tree-last":"list-last");drag(c,slot,0,0);}
-            SetFocus(root);pump(30);SetForegroundWindow(root);check(ui_host_resize(host,740,460)==UI_STATUS_OK&&ui_native_shell_reflow(shell)==UI_STATUS_OK,"resize without component remount");pump(70);drag(c,slot,table,1);drag(c,slot,table,0);check(ui_host_resize(host,800,500)==UI_STATUS_OK&&ui_native_shell_reflow(shell)==UI_STATUS_OK,"restore viewport");if(dpi==96){cancel_drag(c,slot,root,table,1);cancel_drag(c,slot,root,table,0);}check(ui_component_unregister(c)==UI_STATUS_OK,"destroy callbacks and native component");check(GetCapture()==NULL,"native capture released after close");}
+            SetFocus(root);pump(30);SetForegroundWindow(root);check(ui_host_resize(host,740,460)==UI_STATUS_OK&&ui_native_shell_reflow(shell)==UI_STATUS_OK,"resize without component remount");pump(70);drag(c,slot,table,1);drag(c,slot,table,0);check(ui_host_resize(host,800,500)==UI_STATUS_OK&&ui_native_shell_reflow(shell)==UI_STATUS_OK,"restore viewport");if(dpi==96){/* TREE renders a loading placeholder between async pages; LIST retains its old page. */if(kind==1)pending_geometry(c,slot,d.user_data);cancel_drag(c,slot,root,table,1);cancel_drag(c,slot,root,table,0);}check(ui_component_unregister(c)==UI_STATUS_OK,"destroy callbacks and native component");check(GetCapture()==NULL,"native capture released after close");}
     }
     ui_native_shell_destroy(shell);ui_host_destroy(host);DestroyWindow(root);fprintf(stderr,"NATIVE_SCROLL_RESULT: %u failures\n",failures);return failures?1:0;
 }
