@@ -1179,7 +1179,9 @@ static JSValue lw_dom_method(JSContext *ctx, JSValueConst object, int argc,
         JS_SetPropertyStr(ctx,r,"x",JS_NewInt32(ctx,node->rect.x));JS_SetPropertyStr(ctx,r,"left",JS_NewInt32(ctx,node->rect.x));
         JS_SetPropertyStr(ctx,r,"y",JS_NewInt32(ctx,node->rect.y));JS_SetPropertyStr(ctx,r,"top",JS_NewInt32(ctx,node->rect.y));
         JS_SetPropertyStr(ctx,r,"width",JS_NewInt32(ctx,node->rect.width));JS_SetPropertyStr(ctx,r,"height",JS_NewInt32(ctx,node->rect.height));return r;}
-    if(method==10){view->captured=node->uid;if(view->hwnd)SetCapture(view->hwnd);return JS_UNDEFINED;}
+    /* Re-acquiring the same HWND emits WM_CAPTURECHANGED synchronously.
+     * Keep its existing capture when promoting a button press to DOM capture. */
+    if(method==10){view->captured=node->uid;if(view->hwnd&&GetCapture()!=view->hwnd)SetCapture(view->hwnd);return JS_UNDEFINED;}
     if(method==11){if(view->captured==node->uid){view->captured=0;if(view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();}return JS_UNDEFINED;}
     if(method==12)return JS_NewBool(ctx,view->captured==node->uid);
     if (method == 7) {
