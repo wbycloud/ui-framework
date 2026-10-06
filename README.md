@@ -2,7 +2,7 @@
 
 面向 Windows x64 的轻量 C 应用框架。独立宿主 `framework_host.exe` 加载 `.uapp` 应用包，以浏览器风格的 Web 外壳提供多应用标签、菜单、工具入口、侧栏外框和全局助手。外壳使用 Lexbor、QuickJS-NG 与 GDI 实现受控 HTML/CSS/JS 子集，支持浅色/深色切换；第一行为融合标题区的实例标签栏，第二行为活动应用菜单。[宿主操作与最近记录](docs/standalone-host.md)。框架自有界面采用紧凑中性浅深主题，共同组件同步宿主主题，AI每次启动默认收起。[视觉规范](docs/visual-design.md)与[真实截图/回归](docs/validation/visual-ui-validation.md)。
 
-新应用通过公共 C ABI 注册框架 Web 组件、提供数据并绑定语义命令；绘图内容按需要使用 OpenGL 内容槽，文档和业务逻辑由应用维护。旧 API1/2 应用自有原生内容继续兼容。框架同时保留静态库及应用自行创建窗口的原生嵌入式模式。WebView2 是可选的应用内容后端。
+新应用通过公共 C ABI 注册框架 Web 组件、提供数据并绑定语义命令；绘图内容按需要使用 OpenGL 内容槽，文档和业务逻辑由应用维护。当前API7应用可挂载自有原生内容。框架同时保留静态库及应用自行创建窗口的原生嵌入式模式。WebView2 是可选的应用内容后端。
 
 ## 当前版本与开发入口
 
@@ -10,11 +10,11 @@
 | --- | --- | --- |
 | SDK | `0.7.0` 开发版，尚未发布对应稳定标签 | [CMakeLists.txt](CMakeLists.txt) |
 | 最近稳定标签 | `v0.1.0` | [稳定源码](https://github.com/wbycloud/ui-framework/tree/v0.1.0) |
-| 框架 API | `7`；当前运行库接受 `1`、`2`、`3`、`4`、`5`、`6`、`7` | [ui.h](include/ui_framework/ui.h) |
+| 框架 API | `7`；只维护和验收当前版本，现存低版本加载行为不作未来保证 | [ui.h](include/ui_framework/ui.h) |
 | 应用 ABI / 包格式 | `1` / `1` | [application.h](include/ui_framework/application.h)、[package.h](include/ui_framework/package.h) |
 | 开发标准修订 | `7`，对应当前 `0.7.0` 开发源码 | [应用开发标准](docs/application-development-standard.md) |
 
-当前工作源码为 0.7.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；稳定基准仍为 v0.1.0。清单与 DLL 的 API 声明必须一致，应用不能加载到不支持其声明 API 的旧运行库。
+当前工作源码为 0.7.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；v0.1.0仅是历史稳定标签。[当前版本政策](docs/version-policy.md)撤销持续旧版兼容承诺。清单与 DLL 的 API 声明必须一致，应用不能加载到不支持其声明 API 的旧运行库。
 
 本轮开发保留本地提交，未推送；GitHub main不代表这些本地变更。取得源码后记录实际 commit，再读[API7验收](docs/validation/api7-validation.md)、[0.6 → 0.7迁移](docs/migration-v0.6-to-v0.7.md)和[应用升级提示词](docs/application-upgrade-prompt.md)。API3/4/5历史记录保留原结果，当前菜单及离屏合同见[接口说明](docs/framework-menu-offscreen.md)。
 
@@ -27,7 +27,7 @@
 3. [应用开发标准](docs/application-development-standard.md)：生命周期、线程、所有权、DPI、内容后端与助手约定。
 4. [构建与验证](docs/build-and-validation.md)：固定依赖、构建开关、测试和发布检查。
 5. [通用 Web UI](docs/generic-web-ui.md)及[纯 C 示例](examples/generic_components/README.md)：框架管理的树、表格、表单、对话框、缩略图和绘图内容槽。
-6. [Web Counter](examples/web_counter/app.c)及其[清单](examples/web_counter/manifest.ini)：API 2 的纯 Web 内容示例；[最小 EDA](examples/minimal_eda/app.c)展示 API 1 原生/OpenGL 内容兼容路径。
+6. [Web Counter](examples/web_counter/app.c)及其[清单](examples/web_counter/manifest.ini)：使用当前SDK/API7的纯Web内容示例；[最小 EDA](examples/minimal_eda/app.c)展示当前原生/OpenGL内容路径。
 7. [应用升级提示词](docs/application-upgrade-prompt.md)：交给其他应用项目的适配指令，包含版本核对和未验证项的处理要求。
 
 ## 获取、构建与运行
@@ -57,7 +57,7 @@ ctest --test-dir build/web-shell --output-on-failure
 & .\build\web-shell\framework_host.exe .\build\web-shell\web_counter.uapp .\build\web-shell\minimal_eda.uapp
 ```
 
-API4菜单/工具溢出示例使用 `framework_features.uapp`；可打开两个实例。原API3通用示例仍保留：
+当前菜单/工具溢出示例使用 `framework_features.uapp`；可打开两个实例。通用示例也以当前SDK/API7构建：
 
 ```powershell
 & .\build\web-shell\framework_host.exe .\build\web-shell\generic_components.uapp .\build\web-shell\generic_components.uapp
@@ -112,9 +112,9 @@ git pull --ff-only origin main
 git rev-parse HEAD
 ```
 
-符合 v0.1.0 公共接口约定、通过框架注册 UI 并在内容容器中挂载的 API 1 二进制包，属于无需重新编译的兼容目标。直接安装/修改 Win32 菜单、枚举原生工具栏或依赖外壳窗口类的应用必须迁移。独立宿主只提供 Web 外壳；原生嵌入式 API 保留。
+本轮起只维护接手确认的当前版本。历史SDK/API、旧调用方和旧二进制包不再保证兼容，也不作为CI必跑项；冻结SDK、原包与历史结果不改。当前仍接受部分旧声明属于现存实现，不是持续承诺。原生嵌入式等当前基础接口仍受维护。
 
-升级时先保存原应用包，按原版本阅读对应迁移指南；本轮见[0.6 → 0.7](docs/migration-v0.6-to-v0.7.md)。在目标宿主验证加载、多实例、助手路由、DPI/绘制和卸载。采用 API7 新接口或用当前 SDK 重新构建应用时，同步清单与 DLL 的 API 版本。旧包无需修改的兼容目标与本次实际验收结果分别记录，不能用重新编译的示例代替原二进制兼容证据。
+接入当前维护版本应锁定确切commit，使用匹配的API7头文件、导入库及运行库，同步清单与DLL声明，在目标宿主验证加载、多实例、助手、DPI/绘制和卸载。历史迁移指南仅供迁移参考，维护范围以[当前政策](docs/version-policy.md)为准。
 
 ## Web 后端和能力边界
 
@@ -146,4 +146,6 @@ API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离
 
 ## API7 本轮增补
 
-轻量overflow与共同TREE/TABLE/LIST提供可拖动的完整数据范围滚动条；宽表按全部列宽横向导航，保留分页。底部停靠、同区标签组与读取格式1的布局格式2复用内容槽和GL context。连续RGBA选择与文本使用同一草稿/提交合同。关闭稳定性失败、资源诊断和6次独立64轮复验见[记录](docs/validation/runtime-stability-validation.md)，当前源码及限制见[API7验收](docs/validation/api7-validation.md)。
+轻量overflow与共同TREE/TABLE/LIST提供可拖动的完整数据范围滚动条；宽表按全部列宽横向导航；共同数据组件不再显示上一页/下一页或列箭头按钮，视口回收原操作栏空间。底部停靠、同区标签组与读取格式1的布局格式2复用内容槽和GL context。连续RGBA选择与文本使用同一草稿/提交合同。关闭稳定性失败、资源诊断和6次独立64轮复验见[记录](docs/validation/runtime-stability-validation.md)，当前源码及限制见[API7验收](docs/validation/api7-validation.md)。
+
+本轮[分页清理与当前版本验收](docs/validation/component-scroll-only-validation.md)提供真实前后截图及本地矩阵；菜单、最近应用、标签溢出的分页保持原合同。

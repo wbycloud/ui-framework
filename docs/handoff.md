@@ -1,6 +1,6 @@
 # 框架开发交接记录
 
-更新日期：2026-10-06。本次浏览器式宿主见[使用说明](standalone-host.md)、[验收](validation/browser-host-validation.md)与第12节；此前接续见[API7交付收敛](validation/api7-delivery-validation.md)与第11节；真实业务准备见[试点清单](business-pilot.md)。当前SDK0.7/API7本地开发，先读[本轮验收](validation/api7-validation.md)、[稳定性记录](validation/runtime-stability-validation.md)和末尾第10节；API6已有工作区布局和共同组件体验保留；API5四项保留且继续回归，历史OSMesa Session0已有通过证据，当前源码受服务权限限制待验。菜单外观与侧向鼠标交互已后续修正，见[菜单验收](validation/menu-desktop-validation.md)与第9节。先读[API6验收](validation/api6-validation.md)、[Session0记录](validation/session0-osmesa-validation.md)与第8节；API3/4/5历史记录保留。整机无登录、物理/长期人工及真实业务试点尚未全部验收，不把“已推送”“测试通过”和“完整验收完成”混为一谈。
+更新日期：2026-10-06。当前接手确认SDK0.7/API7/标准7；本轮共同组件分页清理见[验收](validation/component-scroll-only-validation.md)及第14节。共同数据组件只保留完整范围滚动，底层按需批次不变；菜单、最近应用及标签溢出的分页仍保留。从本轮起执行[当前版本维护政策](version-policy.md)，历史SDK/API/调用方和原包不再保证兼容或列入专项回归。本文第3–5、7–13节保存历史身份与结果，不能当作当前承诺或运行证据。现行基础功能、size/线程/所有权/卸载合同继续维护。当前Session0、严格无登录runner、真实IME/物理与长期人工仍分别待验，本机运行不冒充托管CI或完整业务验收。
 
 ## 1. 恢复顺序与版本
 
@@ -19,7 +19,7 @@
 | API4历史实现/补验 | [e83a008](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c)、[48d6aaf](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，模态原生输入、STYLE回收、redock焦点；[记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
 | API6阶段最后核对的远端分支（历史） | `main`仍为`ea5b108`，`codex/menus-offscreen`为`9705565`；最终API6证据`559b802`已本地提交，未推送；交付状态修订另行提交，实际HEAD以Git为准 |
 | SDK / 框架 API / 标准修订 | `0.7.0` 本地开发版 / `7` / `7` |
-| 兼容范围 | 运行库接受 API1/2/3/4/5/6/7；包清单和 DLL descriptor 必须一致 |
+| 维护范围 | 只维护和验收本轮确认的API7；运行库现存API1–7接受行为暂存，不作未来旧包兼容保证；清单与DLL声明必须一致 |
 | 应用 ABI / 导出入口 / 包格式 | `1` / `ui_app_query_v1` / `1` |
 | 稳定标签 | 只有 `v0.1.0`；未创建新的稳定标签 |
 
@@ -27,7 +27,7 @@ API6本轮起点为干净ea5b108，与当时origin/main及工作分支一致，�
 
 ## 2. 长期要求与责任边界
 
-第一平台为 Windows x64，框架使用 C11，应用接口为公共 C ABI。独立宿主加载多个 `.uapp`，以标签切换实例；原生嵌入式接口和旧应用内容保留兼容。UI 外壳及新通用业务组件由框架维护 HTML/CSS/JavaScript，应用提供描述、数据和语义命令。OpenGL 是否使用由应用决定。
+第一平台为 Windows x64，框架使用 C11，应用接口为公共 C ABI。独立宿主加载多个 `.uapp`，以标签切换实例；当前API7原生嵌入式接口及应用内容继续维护。UI 外壳及新通用业务组件由框架维护 HTML/CSS/JavaScript，应用提供描述、数据和语义命令。OpenGL 是否使用由应用决定。
 
 新业务 UI 不使用 TreeView、ListView、Button、Edit、MessageBox 或隐藏 EDIT 代理；系统文件/目录选择器是例外。Win32 可用于窗口、消息、IME、字体和绘制适配。框架不拥有具体应用的文档模型、算法或业务渲染器，不是完整浏览器，也没有连接大模型服务。
 
@@ -128,7 +128,7 @@ API4未实现的Alt访问键、真正无窗口GL、离屏MSAA、WebView2呈现/�
 可直接给下一会话以下指令：
 
 ```text
-请接手 https://github.com/wbycloud/ui-framework 。先读docs/handoff.md、docs/application-development-standard.md、docs/build-and-validation.md、docs/generic-web-ui.md、docs/workspace-layout.md、docs/framework-menu-offscreen.md及API7、Runtime稳定性、API5/6、菜单、浏览器式宿主、视觉和Session0验收，并读docs/visual-design.md及docs/standalone-host.md。核对实际Git状态、HEAD、API7公共头文件和现有四行CI/严格Session0工作流，保留用户改动。API5/6/7及菜单已实现，不重复开发。保持API1–7兼容、完整size字段/偏移、线程、所有权和卸载合同；旧SDK重编译与原包分别报告，本地运行不冒充托管CI，历史Session0不替代当前源码。先给简短计划，持续补验/修复和文档交付，缺环境或授权最后汇总。业务试点按docs/business-pilot.md先核对指定应用及修改授权；没有授权只准备方案。不得修改冻结SDK、原包、PERF-001或未授权请求方应用，不使用graph-engineering、子代理或新会话；没有明确授权不推送、不触发远程工作流、不强推或创建稳定标签。
+请接手 https://github.com/wbycloud/ui-framework 。先读docs/handoff.md、docs/application-development-standard.md、docs/build-and-validation.md、docs/generic-web-ui.md、docs/workspace-layout.md、docs/framework-menu-offscreen.md及API7、Runtime稳定性、API5/6、菜单、浏览器式宿主、视觉和Session0验收，并读docs/visual-design.md、docs/standalone-host.md、docs/version-policy.md及docs/validation/component-scroll-only-validation.md。核对实际Git状态、HEAD、API7公共头文件和现有四行CI/严格Session0工作流，保留用户改动。API5/6/7及菜单已实现，不重复开发。按docs/version-policy.md只维护接手时确认的当前版本，停止历史SDK/API/调用方/原包兼容专项；当前基础功能及完整size字段/偏移、线程、所有权和卸载合同继续验证，共同数据组件无分页或列箭头按钮但完整范围滚动/按需查询保留。本地运行不冒充托管CI，历史Session0不替代当前源码。先给简短计划，持续补验/修复和文档交付，缺环境或授权最后汇总。业务试点按docs/business-pilot.md先核对指定应用及修改授权；没有授权只准备方案。不得修改冻结SDK、原包、PERF-001或未授权请求方应用，不使用graph-engineering、子代理或新会话；没有明确授权不推送、不触发远程工作流、不强推或创建稳定标签。
 ```
 
 ## 7. API5本轮交付与接续
@@ -222,3 +222,17 @@ OSMesa当前Session1独立DLL200轮、HWND0/原预算通过；Session0严格服�
 0b306e6本机完整64项63PASS/1物理SKIP，376.85秒；正常WGL Intel/真实Runtime/OSMesa。原生/Light复用目录自动选择Mesa D3D12，2/9项崩溃，事件指向libgallium_wgl偏移0xde41aa；四DLL哈希与固定提供方一致。按既有CI显式GALLIUM_DRIVER=llvmpipe的同二进制对照：22项21PASS/1SKIP（4.94秒）、43项42PASS/1SKIP（47.92秒）。不删除DLL、不改断言，D3D12组合未修复；软件通过不代替D3D12。最后工具单元14/14（68.41秒）、非法草稿单元14/14（68.14秒）、参数边界单元14/14（67.76秒）；01c8780两后端/EDA最终截图各0失败；原SDK1–6/六包哈希再次PASS。测试与原图的精确二进制/计划/原日志在本轮证据包，历史失败不覆盖。
 
 完整矩阵0b306e6中Session1实际DLL/OSMesa200轮、HWND0及原预算通过，最后源码01c8780再次调用Session0服务脚本，非管理员检查退出1且未创建输出/服务；历史成功不替代当前Session0。无严格无登录runner、真实IME/物理不同DPI/桌面边缘Snap及DWM/长期人工/授权业务试点；均待验。没有实测OSMesa瓶颈/硬件需求，不扩大范围。只有本地交付，不能宣称当前托管CI、所有目标环境或完整业务验收通过。
+
+## 14. 2026-10-06 共同组件分页入口清理与当前版本政策
+
+接手干净bfa5b120216acde0bc33fd03ffa6f40e7c0c78db，SDK0.7/API7确认不变；此前视觉和AI修改已在基线中。本地单元a3181d8删除共同TREE/TABLE/LIST分页与列箭头按钮，隐藏数据操作容器并回收36逻辑像素；FORM/DIALOG提交取消和菜单/最近/标签溢出分页保留。完整total_count/列宽横纵条、uint64/BigInt、first/count按需窗口、稳定ID、草稿/焦点/选择及原预算不变，API7应用无需修改。702cd05撤下冻结SDK/API1–6/历史集成/原包专项，当前功能夹具用当前头文件及API7声明；4b3fe3d补当前Session0 GL对照包API7声明与实际日志/CSV/帧归档。公共头文件/运行库旧版本分支不清理，API/ABI不升级。
+
+本轮起仅维护和验收各轮接手确认的当前版本，[政策](version-policy.md)取代持续保证旧SDK/API/调用方/原包兼容的承诺；现存可加载行为不等于未来承诺。当前基础接口仍维护，不能按引入版本删掉；冻结SDK、历史记录与原包原样保全，不再作兼容专项或交付门槛。后续使用匹配当前SDK/API的头文件、导入库、运行库与清单/DLL声明。
+
+[本轮验收](validation/component-scroll-only-validation.md)提供同一未修改API7包、实际宿主及轻量/Runtime两主题/96/144/192 DPI前后图，40张before和40张after原BMP及无损PNG像素索引。测试先行4失败→4通过，当前smoke因格式2夹具仍用旧80字节头出现1失败；按实际96/112只修测试后9/9通过，不改产品布局。最终矩阵身份与详细结果在验收和证据ZIP，不把dirty文档状态改写为clean。
+
+Runtime首轮关闭排空15秒断言失败，后续12取消pending0、句柄291→288/USER18→17；同二进制三个独立进程与Runtime阶段随后通过，完整行两次通过。原因未确定，没有声称根治或改资源/时间门槛，不杀Runtime或清用户数据。启动器解析/PowerShell环境失败另保存，不混同产品结果。当前API7对照包在Session1执行200周期/400实例/2000命令、HWND0和原资源门槛通过，仅为INTERACTIVE_CONTROL；当前Session0/整机无登录不继承历史成功。
+
+仅本地提交，未推送/触发托管CI或创建稳定标签；文档/原字节证据另行提交，最终HEAD以Git为准。没有请求方/PERF-001/原包/冻结SDK修改、代理/新会话、额外依赖或预算提升。严格无登录runner仍无，真实IME/不同缩放物理屏幕/屏幕边缘DWM/长期人工及授权业务试点待验；当前分页开发与本机回归完成不表示全部目标验收完成。
+
+最终执行源码4b3fe3d四行完整重跑：native20PASS/1SKIP、light40PASS/1SKIP、osmesa44PASS/1SKIP、webview2 51PASS/1SKIP；合计155次通过/4次同一物理跨屏跳过，0失败。276.50秒阶段测试时间。四行manifest记录4b3fe3d及仅文档dirty，两提供方行共24个Session1原文件逐字节归档一致；本机证据不冒充远程CI。原失败仍保留，不宣称Runtime不确定性根治。

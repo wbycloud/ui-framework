@@ -1,6 +1,6 @@
 # 独立宿主使用说明
 
-当前为SDK0.7/API7。浏览器式外壳属于宿主内部实现，没有新增公共接口；旧应用仍按原菜单、内容槽、助手和生命周期合同运行。[浏览器式宿主验收](validation/browser-host-validation.md)与[本轮视觉验收](validation/visual-ui-validation.md)。统一数值及后端边界见[视觉规范](visual-design.md)。
+当前为SDK0.7/API7。浏览器式外壳属于宿主内部实现，没有新增公共接口；当前API7应用按现行菜单、内容槽、助手和生命周期合同运行；历史兼容维护已按[版本政策](version-policy.md)撤销。[浏览器式宿主验收](validation/browser-host-validation.md)与[本轮视觉验收](validation/visual-ui-validation.md)。统一数值及后端边界见[视觉规范](visual-design.md)。
 
 ## 1. 打开、标签和菜单
 
@@ -47,3 +47,5 @@ ctest --test-dir build/web-shell --output-on-failure -R '^(ui_browser_host|ui_we
 ```
 
 ui_browser_host使用框架测试包和私有临时历史目录，保留GetCursorPos/SendInput及窗口归属断言；测试不改用户最近记录或请求方应用。真实IME、不同DPI物理屏幕、边缘Snap/DWM及长期人工仍待验。自动截图、程序DPI和独立DLL不替代这些证据。
+
+共同树/列表/表格移除分页和列箭头按钮，完整范围滚动及按需数据查询保留。宿主菜单、最近应用和标签溢出列表是独立入口，其分页仍保留；不将两种列表混同。[本轮真实前后图](validation/component-scroll-only-validation.md)。

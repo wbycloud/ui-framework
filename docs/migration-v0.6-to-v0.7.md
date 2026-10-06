@@ -1,6 +1,6 @@
 # 0.6 → 0.7 迁移
 
-SDK0.7开发版、API7、标准7；ABI1/包格式1/ui_app_query_v1不变。旧API1–6包不需要重编，新接口须匹配头文件/导入库和DLL，DLL descriptor及包清单同步声明7。未推送的本地提交不是GitHub main当前版本。
+SDK0.7开发版、API7、标准7；ABI1/包格式1/ui_app_query_v1不变。从本轮分页清理起，[当前维护政策](version-policy.md)替代旧包免重编兼容承诺；历史结果不改。适配当前API7须匹配头文件/导入库和DLL，DLL descriptor及包清单同步声明7。未推送的本地提交不是GitHub main当前版本。
 
 ## C ABI 与输入
 
@@ -21,7 +21,7 @@ SDK0.7开发版、API7、标准7；ABI1/包格式1/ui_app_query_v1不变。旧AP
 
 布局2用96字节头/112字节记录，仍512记录/64KiB；读格式1（80/104），新组默认0，未来版本UNSUPPORTED，异常输入完整验证后拒绝。旧API1–6且未启用新能力仍保存1，新API7保存2。应用负责存储、版本备份和加载时机，旧运行库不能读2，业务文档仍由应用管理。详见[布局](workspace-layout.md)。
 
-共同虚拟数据纵条基于完整total_count、横条基于全部列宽。无需应用HTML或新组件描述字段；排序/范围仍由完整source负责。保留分页与原节点/缓存/图片/投递预算。索引和ID用字符串，JS BigInt处理uint64，避免Number精度丢失。
+共同虚拟数据纵条基于完整total_count、横条基于全部列宽。无需应用HTML或新组件描述字段；排序/范围仍由完整source负责。共同数据组件移除分页和列箭头按钮，视口回收操作栏；按需批次及原节点/缓存/图片/投递预算不变，已符合API7数据源合同无需修改。索引和ID用字符串，JS BigInt处理uint64，避免Number精度丢失。
 
 source总量缩小时可返回row_count=0的空批报告新total_count，原请求first允许超出新范围；非空批的first/count仍必须有效。框架夹紧并按需重查，不预加载。已知展开分支可在移出缓存后折叠。
 
@@ -29,7 +29,7 @@ source总量缩小时可返回row_count=0的空批报告新total_count，原请�
 
 ## 验证
 
-冻结SDK6所有12个公共头文件来自658b497，SDK1–5和原包不改。原生、轻量、真实Runtime、OSMesa/MSAA/普通附件分别执行；旧SDK重建调用方与原二进制不是同一项。框架独立DLL集成不等于业务应用验收。实测、失败、commit及环境限制见[API7验收](validation/api7-validation.md)，重开问题见[资源记录](validation/runtime-stability-validation.md)。
+冻结SDK、原包和历史验收保持原样，但不再编译或验收历史调用方/原包专项。当前版本的原生、轻量、真实Runtime、OSMesa/MSAA/普通附件分别执行。框架独立DLL集成不等于业务应用验收。实测、失败、commit及环境限制见[API7验收](validation/api7-validation.md)，重开问题见[资源记录](validation/runtime-stability-validation.md)。
 
 API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认；初始有/无窗口布局为其分配底部空间，reset回到注册默认底部。直接声明与事后移动同样保留内容生命周期，见[注册复现和修复](validation/api7-validation.md)。
 

@@ -1,6 +1,6 @@
-# 通用 Web UI：API 3–7 接入约定
+# 通用 Web UI：当前 API7 接入约定
 
-本文的 API3 组件合同在 **SDK 0.7.0 开发版 / API7 / 标准修订7** 继续适用，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API7验收](validation/api7-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
+本文描述 **SDK 0.7.0 开发版 / API7 / 标准修订7** 当前组件合同，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API7验收](validation/api7-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
 
 ## 1. 架构、复用与边界
 
@@ -42,7 +42,7 @@ source 在 UI 线程执行。UI_QUERY_ROWS 包含 component_generation、request
 
 框架复制描述、字符串和数组。一次最多 512 行、每行 64 单元格、字符串 4095 UTF-8 字节；单页和保留数据缓存限制 2 MiB。换数据源增加代次，旧结果 CANCELLED。
 
-表格按视口查询，上下各两行、左右各一列缓冲；起始边界减少前置缓冲。缓冲节点隐藏/裁剪，数据量不决定 DOM 数。滚轮按行移动，Shift+滚轮及列按钮移动列，支持分页。保留 1024 节点预算，根据列数限制窗口大小，极大视口继续分页。显式 query 则使用调用者范围，不自动加缓冲。
+表格按视口查询，上下各两行、左右各一列缓冲；起始边界减少前置缓冲。缓冲节点隐藏/裁剪，数据量不决定 DOM 数。滚轮按行移动，Shift+滚轮及完整列范围横条移动列。共同树/列表/表格移除上一页/下一页及列箭头按钮，操作栏隐藏并回收高度；表单/对话框提交取消保留。视口重新测量后按需请求可见行列。保留1024节点预算，根据列数限制虚拟窗口，超大视口仍用完整范围滚动条访问预算窗口外数据，不预加载全部数据。显式 query 则使用调用者范围，不自动加缓冲。
 
 树保存展开分支计数和位置元数据，按扁平窗口定位，不预生成后代。展开按需请求、折叠保留状态、F2 重命名；右键命令可调用 show_menu，复用指定 menu_path 的现有注册项显示 Web 节点菜单，API4转发到独立公共Web弹窗，单层最多128项并分页；命令携带项目ID。详见[菜单约定](framework-menu-offscreen.md)。LIST 复用行窗口，可显示图标和单元格。
 
@@ -94,15 +94,15 @@ unmount 停止并 join 线程、撤销外部回调、释放 GPU 内容；宿主�
 | 能力 | 当前状态 |
 | --- | --- |
 | Web 菜单/工具/面板外框/状态/确认、命令状态/图标 | 已实现；真实宿主自动测试通过 |
-| 按需树、表格/列表、增量更新 | 已实现固定行高/分页子集；十万数据测试通过 |
+| 按需树、表格/列表、增量更新 | 已实现固定行高/虚拟窗口及完整范围滚动；十万数据测试通过 |
 | 属性、草稿、校验、实例模态、Web 编辑 | 已实现上述子集；输入传输与剪贴板测试通过 |
 | RGBA/包 PNG/样式、异步缩略图、缓存/过期结果 | 已实现；WIC、合成、资源压力及宿主测试通过 |
-| API1/2/3、双实例、关闭重开、原生/OpenGL | 所列样例与回归已验证，非任意第三方包保证 |
+| API7双实例、关闭重开、原生/OpenGL | 当前样例与回归；历史API/原包不再列入兼容维护门槛 |
 | 实际中文 IME、物理跨显示器、长时间手动滚动压力 | 未验证，需相应操作和硬件条件 |
 | WebView2 的 C 图片 ID/框架组件呈现 | API5可选实际Runtime后端；异步呈现/捕获合同见本文增补 |
 | 枚举下拉、颜色回填、表格键盘/排序/多选 | API6共同模板；排序和范围由完整数据源提供 |
 | 布局持久化、约束分隔条、左右/底部栈、同区标签、浮动 | API6/7 Windows workspace；[范围与格式](workspace-layout.md) |
-| 完整范围横纵滚动条、连续RGBA/透明度 | API7共同模板；轻量overflow条由框架绘制，保留分页与原预算 |
+| 完整范围横纵滚动条、连续RGBA/透明度 | API7共同模板；轻量overflow条由框架绘制，无分页按钮，保持原预算 |
 | 完整浏览器、Canvas/SVG、富文本、可变行高、任意嵌套分割树 | 未实现 |
 
 轻量后端报告 IMAGES/WEB_TEXT_EDIT/COMPONENTS；API5 WebView2也提供图片和编辑桥接，显式framework_components=1才声明COMPONENTS。NULL组件后端默认仍为轻量；可借用WebView2后端，详见本页API5增补。
@@ -141,7 +141,7 @@ selection_flags=UI_SELECTION_MULTIPLE启用Ctrl切换、Shift范围，选择身�
 
 ## API7 完整数据范围滚动和颜色
 
-共同TREE/TABLE/LIST纵条基于source的total_count（TREE加入展开分支计数）；宽表横条基于最多64列的全部宽度，浏览器自身overflow不替代虚拟数据条。缓存仍是窗口，纵向BigInt映射uint64，横向按列边界停靠，不预加载全数据。轨道12、最小滑块24逻辑像素，无溢出隐藏，点击轨道一视口、交汇留白，分页/滚轮/Shift滚轮/键盘和稳定选择合同保留。
+共同TREE/TABLE/LIST纵条基于source的total_count（TREE加入展开分支计数）；宽表横条基于最多64列的全部宽度，浏览器自身overflow不替代虚拟数据条。缓存仍是窗口，纵向BigInt映射uint64，横向按列边界停靠，不预加载全数据。轨道12、最小滑块24逻辑像素，无溢出隐藏，点击轨道一视口、交汇留白，滚轮/Shift滚轮/键盘和稳定选择合同保留；数据批次继续按需查询，分页及列箭头按钮不再显示。
 
 数据总量缩小时，source可以为原请求返回空批（row_count=0），报告新的total_count，即使请求first已超出新总量；非空批仍要求first及数量在总量内。框架夹紧位置并按需重查有效窗口，不用旧缓存推算总量。树可折叠已知但当前不在缓存中的展开分支，重新计算完整扁平范围；祖先已移除的分支不计入范围。
 
@@ -156,3 +156,5 @@ Runtime模态在controller尚未创建时可能先获得容器焦点。文档就
 ## 框架自有视觉与状态
 
 共同模板默认浅色；独立宿主同步全部实例的浅深主题，应用自有HTML/原生/GL不自动注入。紧凑32行高、12像素完整范围滚动条、表单/颜色/枚举、错误/加载/图片失败与焦点状态见[视觉规范](visual-design.md)。本轮只改内部模板与轻量绘制，公共API7、BigInt总量、缓存/节点/图片预算、排序/选择/草稿及输入合同保持；[两后端真实运行与截图](validation/visual-ui-validation.md)不替代物理IME或业务验收。
+
+当前维护范围见[版本政策](version-policy.md)，本轮真实两后端回归及截图见[分页清理验收](validation/component-scroll-only-validation.md)。已有API7应用继续返回真实total_count与first/count，无需修改数据源。菜单、最近应用及标签溢出的分页不在共同数据组件清理范围。

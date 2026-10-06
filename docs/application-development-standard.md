@@ -1,8 +1,8 @@
 # Windows C/Web UI 框架应用开发标准
 
-开发标准修订：**7**。对应 **SDK 0.7.0 开发版、框架 API 7**；运行库接受 API 1/2/3/4/5/6/7，应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
+开发标准修订：**7**。对应 **SDK 0.7.0 开发版、框架 API 7**；本轮起按[当前版本政策](version-policy.md)只维护API7，历史声明的现存接受行为不作未来保证；应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
 
-面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的开发者。新应用通过公共 C 接口注册组件、提供数据、绑定已有语义命令，通用 HTML/CSS/JavaScript、草稿、焦点和交互由框架维护。菜单、工具、面板内组件、状态、参数及确认界面使用 Web；Win32 仅承载窗口、消息、输入法及绘制。旧 API1/2 应用自有原生内容和原生嵌入式保留，系统文件/目录选择器是例外。
+面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的开发者。新应用通过公共 C 接口注册组件、提供数据、绑定已有语义命令，通用 HTML/CSS/JavaScript、草稿、焦点和交互由框架维护。菜单、工具、面板内组件、状态、参数及确认界面使用 Web；Win32 仅承载窗口、消息、输入法及绘制。当前API7应用自有原生内容和原生嵌入式保留，系统文件/目录选择器是例外。
 
 ## 0. 阅读入口与版本约定
 
@@ -12,7 +12,7 @@
 
 受控轻量后端实现本版框架组件；WebView2 可选提供实际 Runtime 呈现查询、捕获、C 图片 ID 和共同框架组件，异步合同见本页 API5 增补。OpenGL 仍由应用自行选择、通过内容槽挂载，框架没有应用文档模型或业务渲染器。具体子集、预算及未实现能力以接入约定的能力清单为准，不把 HTML 支持视为完整浏览器。
 
-API4历史菜单、隐藏WGL及无窗口workspace合同保留在[菜单与离屏约定](framework-menu-offscreen.md)。API5补齐Alt、OSMesa、MSAA和Runtime，API6增加[持久布局与手势](workspace-layout.md)及共同组件交互，API7追加完整范围滚动、底部/标签和连续颜色。所有路径遵守原线程、所有权和卸载规则；离屏仍是可选运行模式，旧包可保持原API。独立框架集成应用见[API7验收](validation/api7-validation.md)，历史接入示例仍见[framework_features](../examples/framework_features/README.md)。
+API4历史菜单、隐藏WGL及无窗口workspace合同保留在[菜单与离屏约定](framework-menu-offscreen.md)。API5补齐Alt、OSMesa、MSAA和Runtime，API6增加[持久布局与手势](workspace-layout.md)及共同组件交互，API7追加完整范围滚动、底部/标签和连续颜色。所有路径遵守原线程、所有权和卸载规则；离屏仍是可选运行模式，历史包不在当前维护和专项回归范围。独立框架集成应用见[API7验收](validation/api7-validation.md)，历史接入示例仍见[framework_features](../examples/framework_features/README.md)。
 
 ## 1. 架构和应用职责
 
@@ -28,7 +28,7 @@ API4历史菜单、隐藏WGL及无窗口workspace合同保留在[菜单与离屏
 | --- | --- | --- |
 | 独立宿主 | 应用包验证和加载、标签切换、实例 ID、关闭和 DLL 卸载、全局助手 | 应用清单、多实例声明、生命周期回调 |
 | C 核心 | host 生命周期、布局与 DPI、命令和异步结果、事件、surface 回调、Web 后端接口 | 文档模型、业务校验、工作任务、文件格式 |
-| 外壳与内容容器 | 独立宿主的 Web 菜单/工具入口/面板外框、借用内容槽；原生嵌入式的菜单/工具栏/面板和消息转发 | 注册框架组件和业务数据；绘图 surface；旧内容兼容 |
+| 外壳与内容容器 | 独立宿主的 Web 菜单/工具入口/面板外框、借用内容槽；原生嵌入式的菜单/工具栏/面板和消息转发 | 注册框架组件和业务数据；绘图surface与应用自有内容 |
 | OpenGL 层 | 显式版本/profile/MSAA/debug 配置、兼容路径、GPU/context 信息查询 | 绘制、资源、文档坐标、缩放、滚动、选择和拾取 |
 | 助手协议 | 命令允许列表、schema 元数据、校验和确认回调、进度、取消、快照、事务接口 | 模型服务连接、权限界面、实际事务和撤销数据 |
 | 轻量 Web 后端 | Lexbor HTML 解析、QuickJS-NG 脚本、GDI 绘制、受控动态 DOM/布局/控件和 JSON 消息 | 遵守受控子集、页面资源、语义命令 |
@@ -53,14 +53,14 @@ name=Minimal EDA
 version=1.0.0
 architecture=x64
 abi_version=1
-framework_api_version=1
+framework_api_version=7
 module=minimal_eda_app.dll
 multiple_instances=true
 ```
 
 `app_id` 是稳定身份，`version` 标识版本；同一 ID 的不同版本不能同时加载。`multiple_instances=false` 时，重复打开包激活已有标签；为 true 时创建新的私有状态和标签。不要通过进程全局变量保存实例数据。
 
-清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前支持 `architecture=x64`、应用 ABI 1 和框架 API 1/2/3/4/5/6/7。清单 API 必须与 DLL descriptor 一致；使用当前头文件构建的新应用声明 7，旧 API1–6 包保持原值。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
+清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前维护 `architecture=x64`、应用ABI1和框架API7。清单API必须与DLL descriptor一致；当前头文件构建的应用声明7。运行库中API1–6接受分支暂存，不保证旧包今后兼容。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
 
 ### 2.2 UAPP v1 容器格式
 
@@ -188,7 +188,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 面板通过 `ui_host_register_panel()` 注册。`UI_PANEL_SIDEBAR` 按 `dock_region` 停靠到左/右侧或 API7 底部，`NONE` 保留默认右侧行为；`UI_PANEL_FLOATING` 创建独立浮动面板。`preferred_width` 控制浮动初始宽度，停靠侧栏总宽和底部高度由框架布局决定。`entry_url` 是兼容描述的必填非 NULL 字段，原生面板设置为 `""`；它不自动读取资源、打开页面或创建 backend。
 
-新应用在 mount 后通过 `ui_host_get_shell(host)` 取得借用 shell。调用 `ui_shell_get_content_slot(shell, NULL)` 选主内容区，传已注册的 panel ID 选面板内容区；不存在时返回 NULL。slot 到 shell 销毁时才失效。`ui_content_slot_native_handle()` 返回借用容器 HWND，新应用在其中挂载框架组件或绘图内容；原生 child 仅作为旧应用兼容路径，禁止销毁容器。
+新应用在 mount 后通过 `ui_host_get_shell(host)` 取得借用 shell。调用 `ui_shell_get_content_slot(shell, NULL)` 选主内容区，传已注册的 panel ID 选面板内容区；不存在时返回 NULL。slot 到 shell 销毁时才失效。`ui_content_slot_native_handle()` 返回借用容器 HWND，新应用在其中挂载框架组件或绘图内容；原生child用于现存应用自有内容承载，禁止销毁容器。
 
 `ui_content_slot_attach_surface()` 挂载原生/OpenGL surface，`ui_content_slot_attach_web_view()` 挂载 Web view；内容必须属于该槽的 host，传 NULL 解除对应绑定。这些操作不转移所有权，应用仍在 unmount 中销毁内容、清空保存指针，并在销毁 view 后销毁其专用 backend。主内容槽的 Web backend 使用 host 的 native parent 和 host 坐标；面板 Web backend 必须以槽容器为 parent，view 使用容器局部坐标。一个槽只能绑定一种内容，内容对象也不能同时绑定到其他槽。
 
@@ -368,7 +368,7 @@ view 优先嵌入 `host.native_parent`，config 的 parent_window 是后备值�
 
 ## 10. 最小 EDA 和其他应用的接入方法
 
-[`examples/minimal_eda/app.c`](../examples/minimal_eda/app.c) 是独立宿主应用模块，构建为 `minimal_eda_app.dll` 并打包为 `minimal_eda.uapp`。CMake 使用冻结的 `tests/sdk_v1` 头文件将它编译为 API 1 兼容调用方，与其清单保持一致；新应用使用当前 `include/` 头文件。它在 create 注册 UI 和配置状态快照，在 mount 注册助手允许列表、创建 OpenGL 主区和属性内容；每实例分配自己的 blocks、zoom、context 和笔记窗口。清单声明允许多实例。
+[`examples/minimal_eda/app.c`](../examples/minimal_eda/app.c) 是独立宿主应用模块，构建为 `minimal_eda_app.dll` 并打包为 `minimal_eda.uapp`。CMake使用当前 `include/` 头文件将它编译为API7功能样例，清单与DLL声明一致；不再作为冻结SDK兼容调用方。它在 create 注册 UI 和配置状态快照，在 mount 注册助手允许列表、创建 OpenGL 主区和属性内容；每实例分配自己的 blocks、zoom、context 和笔记窗口。清单声明允许多实例。
 
 点击画布后，`A` 添加矩形、`Z` 放大、`C` 清空；菜单/工具栏复用同一命令。全局助手使用 `{}` 参数调用，validator 拒绝非空对象和无效 JSON；clear 是 DESTRUCTIVE，需要宿主确认。属性区显示 instance ID、矩形数量、zoom，EDIT 初始文本通过包内 `readme.txt` 资源读取。用户可修改笔记，再切换标签、浮动/停靠面板，检查实际子窗口和内容继续保留。
 
@@ -376,7 +376,7 @@ view 优先嵌入 `host.native_parent`，config 的 parent_window 是后备值�
 
 [`examples/minimal_eda/main.c`](../examples/minimal_eda/main.c) 仍是完整嵌入式 Win32/OpenGL 样例，由应用创建窗口并预留属性/助手容器。它独立启动，不展示多标签，显式 `--legacy` 可验证旧式 WGL；该开关不适用于 `framework_host.exe` 的 EDA 模块。
 
-[`examples/web_counter/app.c`](../examples/web_counter/app.c) 使用冻结的 tests/sdk_v2 公共头文件构建 API 2/ABI 1 DLL，[清单](../examples/web_counter/manifest.ini)声明 API 2。它在 mount 获取主内容槽，创建轻量 backend/view 并设置消息回调，页面发送 increment 数据，C 侧调用业务命令并用 JSON 回推 count。业务数据、助手快照和多实例状态仍由 C 应用维护，unmount 先销毁 view 再销毁 backend。该样例不创建 OpenGL context，可用于验证无 OpenGL 的 Web 内容路径。
+[`examples/web_counter/app.c`](../examples/web_counter/app.c) 使用当前公共头文件构建API7/ABI1 DLL，[清单](../examples/web_counter/manifest.ini)声明API7。它在 mount 获取主内容槽，创建轻量 backend/view 并设置消息回调，页面发送 increment 数据，C 侧调用业务命令并用 JSON 回推 count。业务数据、助手快照和多实例状态仍由 C 应用维护，unmount 先销毁 view 再销毁 backend。该样例不创建 OpenGL context，可用于验证无 OpenGL 的 Web 内容路径。
 
 Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径；轻量后端当前不支持完整 Markdown HTML 排版。画板将画布作为 OpenGL 文档视口，工具栏命令改变应用工具状态。自研 PPT/Excel 将幻灯片/工作表数据、编辑、布局和撤销留在应用，框架只提供外壳、视口和命令通路。
 
@@ -386,7 +386,7 @@ Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径
 
 [generic_components/app.c](../examples/generic_components/app.c) 和[说明](../examples/generic_components/README.md)展示公共接口注册菜单、工具、按需树、100000×16 表格、属性、Web 对话框、异步 RGBA 缩略图、包内 PNG、填充样式及 OpenGL 内容槽。应用不含组件 HTML；独立实例拥有数据、草稿、请求及资源。关闭先停止并 join 后台线程，再销毁绘图内容，宿主统一回收组件与图片。
 
-组件协议、字段所有权、分页、缓存预算和未实测条件完整定义于[通用 Web UI](generic-web-ui.md)。该示例仅有测试数据和有限编辑记录，不构成任何具体应用的业务模型。
+组件协议、字段所有权、完整范围滚动与按需批次、缓存预算和未实测条件完整定义于[通用 Web UI](generic-web-ui.md)。该示例仅有测试数据和有限编辑记录，不构成任何具体应用的业务模型。
 
 ## 11. 常见错误
 
@@ -424,28 +424,28 @@ Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径
 11. 两个实例注册同名命令后分别修改，切换保持画布、GLcontext和属性内容，关闭后台实例不改变前台菜单。
 12. 助手跨实例调用，切换或关闭标签后结果/进度仍按原ID交付或丢弃，危险确认显示正确目标；等待关闭时拒绝新命令。
 13. 应用自有 WndProc/subclass/COM UI callback 的 scope 成对覆盖所有分支和默认窗口过程；嵌套模态消息中关闭后，DLL 仍保留到完整回调退出。确认后台线程不使用 scope，也没有从 query/DllMain/静态构造启动任务。
-14. 用未重新构建的 v0.1.0 包与冻结 SDK2 构建包验证兼容，用 API3 通用示例验证新能力；检查清单/DLL API 不一致及不支持版本被拒绝。
+14. 用当前SDK/API7应用验证通用组件、原生及GL基础能力；检查清单/DLL API不一致及不支持版本被拒绝。历史SDK/调用方/原包不再属于专项回归或交付门槛。
 15. 检查 Web JSON 的 UTF-8/转义/非法数据、能力差异、内容槽借用与关闭顺序；浅色/深色、窄窗和浮动面板的内容保持可用。
 
 将该清单与应用自身的数据和文件操作测试一起执行，再把应用交给用户使用。
 
 ## API5 接入与验收要求
 
-API5历史迁移要求DLL与包清单一致声明API5；当前SDK0.7重建并采用API7接口时同步声明API7，旧API1–6包保留原声明兼容。当前运行库支持API1–7，ABI1、导出和包格式1不变。新尺寸按字段末端判断，旧SDK4描述包含的尾padding保留，旧WebView2配置默认行为不改。历史增补见[0.4→0.5迁移](migration-v0.4-to-v0.5.md)，当前升级见[0.6→0.7](migration-v0.6-to-v0.7.md)。
+本节能力最早在API5引入，当前用SDK0.7/API7维护和验收。清单与DLL一致声明7，ABI1、导出和包格式1不变；结构读取按完整字段末端判断，不能读取未包含的字段或padding。现存低版本分支不作持续兼容承诺，不为历史版本增加适配层。历史增补见[0.4→0.5迁移](migration-v0.4-to-v0.5.md)，当前升级见[0.6→0.7](migration-v0.6-to-v0.7.md)。
 
 Alt 助记键、真正 OSMesa 无窗口 GL、精确离屏 MSAA 和 WebView2 异步呈现/捕获/图片/组件合同分别见 [菜单和离屏](framework-menu-offscreen.md#6-api5-菜单无窗口-gl-与-msaa-合同)与[通用 Web API5](generic-web-ui.md#api5-webview2-与共同组件)。WebView2 后端借用到 host 销毁以后，禁止 DLL 卸载后留应用异步回调；PENDING 需要外层消息循环及重试，不能当 OK。
 
-保持原包与冻结 SDK1/2/3/4/5/6 分别验收。物理 IME/跨屏、人工长时压力、Session0及目标CI条件缺失时记录未验收；不以编译、UNSUPPORTED 或轻量后端通过替代真实 Runtime/实际 GL。当前状态见 [API7验收](validation/api7-validation.md)，API5/6原结果继续保留。
+当前版本专项覆盖现行功能，停止原包与冻结SDK1–6兼容专项。历史材料原样保留，不改写过去结果。物理 IME/跨屏、人工长时压力、Session0及目标CI条件缺失时记录未验收；不以编译、UNSUPPORTED 或轻量后端通过替代真实 Runtime/实际 GL。当前状态见 [API7验收](validation/api7-validation.md)，API5/6原结果继续保留。
 
 历史框架测试DLL的OSMesa路径已在实际Windows CI LocalSystem Session0运行；这不等于当前源码复验、应用自身业务已适配，或整机无用户登录。无登录必须另核验WTS会话数为0，历史托管runner有登录会话1且严格门槛失败；环境、窗口、frame和资源证据见[Session0记录](validation/session0-osmesa-validation.md)。服务测试无需继承stdin/stdout/stderr或创建控制台；路径、调度、UI线程和生命周期仍由应用适配。
 
 ## API6 保留的工作区与共同组件规范
 
-这些接口在API6/SDK0.6/标准6引入，当前版本为API7/SDK0.7/标准7，ABI1和包格式1保持；旧API1–5头文件、描述前缀、枚举、默认行为及原二进制验收分别保留。新字段按完整字段末端读取，不能读旧尾padding；部分字段不读、不写。[0.5→0.6迁移](migration-v0.5-to-v0.6.md)列出实际x64字段偏移。
+这些接口在API6/SDK0.6/标准6引入，当前版本为API7/SDK0.7/标准7，ABI1和包格式1保持；这些当前基础功能继续验收，历史SDK与原二进制专项退出CI及交付门槛。新字段按完整字段末端读取，不能读旧尾padding；部分字段不读、不写。[0.5→0.6迁移](migration-v0.5-to-v0.6.md)列出实际x64字段偏移。
 
 布局的存储责任属于应用；在注册和mount之后恢复框架版本化字节，稳定面板ID与标题分离。异常数据先完整验证，缺失ID忽略，新增面板保留默认状态，可reset。支持左右栈、尺寸、折叠、关闭与浮动；分隔条和拖拽保留原内容，DPI/work area夹紧不等于物理跨屏通过。[布局接口](workspace-layout.md)是格式、手势、窄窗与有/无窗口边界的合同。
 
-枚举下拉使用注册options，不循环点击冒充下拉；颜色选择写回#RRGGBBAA，文本接受#RRGGBB或#RRGGBBAA，提交前校验。TABLE使用方向键/Home/End/Tab，Enter/F2进入编辑、Enter语义提交一次、Esc取消；启用API6表格体验须设置sort_command或selection_flags，旧点击编辑继续兼容。
+枚举下拉使用注册options，不循环点击冒充下拉；颜色选择写回#RRGGBBAA，文本接受#RRGGBB或#RRGGBBAA，提交前校验。TABLE使用方向键/Home/End/Tab，Enter/F2进入编辑、Enter语义提交一次、Esc取消；当前表格键盘/选择体验须设置sort_command或selection_flags，未设置时的点击编辑仍是当前合同。
 
 排序由注册sort_command和source协作：框架保存列/方向状态、发命令、换代并重新查询；source按完整数据集顺序返回窗口和范围ID。禁止把缓存页排序称为完整排序。多选最多512个稳定非零ID，范围结果带generation/request，可复制投递；换源清空，页切换/排序保留ID，删除移除ID，结构更新重置范围锚点，实例状态独立。详见[共同组件](generic-web-ui.md)。
 
@@ -455,7 +455,7 @@ Alt 助记键、真正 OSMesa 无窗口 GL、精确离屏 MSAA 和 WebView2 异�
 
 API7/SDK0.7/标准7，ABI/包格式1不变。ui_panel_layout在原48字节之后追加tab_group_id（48..55）、tab_active（56..59），只读/写完整字段，旧48字节描述有效。原ui_layout_desc大小不变，COUNT=8保持旧哨兵（8保留）、BOTTOM=9，UI_INPUT_CANCEL=8追加且事件尺寸不变。详见[迁移](migration-v0.6-to-v0.7.md)。
 
-共同树/表格/列表纵条映射完整数据源总量，宽表横条按全部列宽计算，按需取页，保留分页、滚轮和键盘。索引、总量、ID以十进制字符串传递，JS用BigInt映射行范围。轨道12、最小滑块24逻辑像素，短轨道限制为轨道长度，无溢出隐藏；点击轨道移动一视口，交汇留白。Esc/捕获丢失/公共CANCEL恢复本次拖动起点；失活/模态/换源/排序/resize解除捕获，保留最新有效状态，禁止旧代次重置新源。缓存2MiB、DOM1024、单批512、图片32MiB、投递8MiB、JS8MiB不变。
+共同树/表格/列表纵条映射完整数据源总量，宽表横条按全部列宽计算，按需查询虚拟窗口，保留滚轮和键盘。共同数据组件不再显示上一页/下一页或列箭头按钮，回收36逻辑像素操作栏并按实际视口重算查询范围；菜单、最近应用和标签溢出的分页不受影响。索引、总量、ID以十进制字符串传递，JS用BigInt映射行范围。轨道12、最小滑块24逻辑像素，短轨道限制为轨道长度，无溢出隐藏；点击轨道移动一视口，交汇留白。Esc/捕获丢失/公共CANCEL恢复本次拖动起点；失活/模态/换源/排序/resize解除捕获，保留最新有效状态，禁止旧代次重置新源。缓存2MiB、DOM1024、单批512、图片32MiB、投递8MiB、JS8MiB不变。
 
 总量缩小时允许空批报告新total_count，原first可在新范围外；非空批范围仍严格验证。框架夹紧并按需重查有效窗口，已知树分支移出缓存仍可折叠，祖先已移除的展开元数据不计入总量。
 
@@ -469,4 +469,4 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 
 ## 框架视觉与宿主呈现
 
-框架自有界面遵循[视觉规范](visual-design.md)：中性浅深主题、紧凑固定行高、角色独立样式及明确hover/pressed/focus/selected/disabled/error/loading状态。轻量与WebView2使用同一共同模板；独立宿主同步其主题，应用自有内容仍由应用管理。AI启动默认收起，基本参数复用原JSON/validator，高级区保留事务/schema/原参数/日志路径。外观变化不要求旧包升级API或依赖宿主DOM，Windows系统控件不能承诺逐像素统一。[实际回归和条件边界](validation/visual-ui-validation.md)。
+框架自有界面遵循[视觉规范](visual-design.md)：中性浅深主题、紧凑固定行高、角色独立样式及明确hover/pressed/focus/selected/disabled/error/loading状态。轻量与WebView2使用同一共同模板；独立宿主同步其主题，应用自有内容仍由应用管理。AI启动默认收起，基本参数复用原JSON/validator，高级区保留事务/schema/原参数/日志路径。内部外观和本轮分页清理不升级API，现有API7应用无需修改；应用不依赖宿主DOM，Windows系统控件不能承诺逐像素统一。[实际回归和条件边界](validation/visual-ui-validation.md)。

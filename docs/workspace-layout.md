@@ -63,6 +63,8 @@ dock_panel_tab(moving,anchor)把已有面板移入anchor同区组并激活，浮
 
 API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认；初始有/无窗口布局为其分配底部空间，reset回到注册默认底部。直接声明与事后移动同样保留内容生命周期，见[注册复现和修复](validation/api7-validation.md)。
 
+当前维护范围按[版本政策](version-policy.md)只覆盖接手确认的API7；本文格式1读取及完整size字段行为是当前合同，历史SDK/API调用方兼容专项不再列入CI门槛。
+
 当前交付来源、CI与环境限制见[收敛验收](validation/api7-delivery-validation.md)。真实业务布局存储/恢复试点步骤见[准备清单](business-pilot.md)，框架测试DLL不替代业务文档恢复验收。
 
 ## 自有外框视觉

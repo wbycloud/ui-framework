@@ -1,4 +1,4 @@
-# API3 通用组件纯 C 示例
+# 通用组件纯 C 示例（当前 API7）
 
 应用只注册 C 描述、提供数据、绑定已有语义命令，不提供通用组件 HTML。它是测试数据示例，框架没有加入应用专用文档模型。
 
@@ -13,13 +13,13 @@ ctest --test-dir build/web-shell --output-on-failure
 & .\build\web-shell\framework_host.exe .\build\web-shell\generic_components.uapp .\build\web-shell\generic_components.uapp
 ```
 
-生成应用 DLL、含 icon.png 的包和独立宿主。宿主/DLL 在同目录，应用清单 API3/ABI1/包格式1。默认允许多实例。详细依赖与限制见[构建说明](../../docs/build-and-validation.md)。
+生成应用 DLL、含 icon.png 的包和独立宿主。宿主/DLL 在同目录，当前SDK构建的应用清单API7/ABI1/包格式1。默认允许多实例。详细依赖与限制见[构建说明](../../docs/build-and-validation.md)。
 
 ## 内容与操作
 
 - 注册菜单/工具图标、Ctrl+D 对话框快捷键和状态组件。
 - 左侧按需树：100个父节点，每个1000子节点；展开/折叠、选择、F2重命名、右键菜单命令。
-- 主区100000行×16列：布尔复选框、可编辑文本、RGBA缩略图、样式和颜色单元格。滚轮移动行，Shift+滚轮或按钮移动列，Enter提交、Esc取消。
+- 主区100000行×16列：布尔复选框、可编辑文本、RGBA缩略图、样式和颜色单元格。滚轮移动行，Shift+滚轮或横向滚动条移动列，Enter提交、Esc取消。
 - 右侧属性：文本/数字/单位、布尔、枚举、混合值、多行输入；提交前校验必填/数字，应用额外要求尺寸大于零。
 - Web参数对话框只阻塞当前实例，切换标签隐藏并保留；多行Enter换行/Ctrl+Enter提交。
 - 浮动绘图槽使用应用 OpenGL 三角形，仅验证内容槽共存。示例使用显式旧式 WGL；框架没有强制应用选择 OpenGL。

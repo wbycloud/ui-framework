@@ -11,7 +11,7 @@
 发布后从维护方明确指定的分支和commit接入（不要假定当前main已含本轮本地交付）。目标SDK0.7.0开发版、框架API7、开发标准修订7。
 应用ABI、导出入口ui_app_query_v1、包格式均保持1。
 
-1. 先核对维护方提供的目标commit是否可获取，再从上述GitHub仓库获取该commit，记录实际commit，核对CMake版本0.7.0、UI_FRAMEWORK_API_VERSION=7和标准修订7。读取README.md、CHANGELOG.md、docs/application-development-standard.md、docs/generic-web-ui.md、docs/framework-menu-offscreen.md、docs/workspace-layout.md、docs/migration-v0.6-to-v0.7.md、docs/validation/api7-validation.md、docs/validation/api7-delivery-validation.md、docs/business-pilot.md、include/ui_framework公共头文件及tests/api7_fixture.c。API1–5应用同时读取对应历史迁移指南。若取得源码不符合目标，报告差异，不猜测接口。
+1. 先核对维护方提供的目标commit是否可获取，再从上述GitHub仓库获取该commit，记录实际commit，核对CMake版本0.7.0、UI_FRAMEWORK_API_VERSION=7和标准修订7。读取README.md、CHANGELOG.md、docs/version-policy.md、docs/application-development-standard.md、docs/generic-web-ui.md、docs/framework-menu-offscreen.md、docs/workspace-layout.md、docs/migration-v0.6-to-v0.7.md、docs/validation/api7-validation.md、docs/validation/api7-delivery-validation.md、docs/business-pilot.md、include/ui_framework公共头文件及tests/api7_fixture.c。历史应用可参考对应迁移指南，但旧SDK/API/调用方及原包已退出持续兼容保证与CI门槛；本任务应适配并验证当前API7，不能仅改清单。若取得源码不符合目标，报告差异，不猜测接口。
 
 2. 盘点应用SDK/API/ABI、包清单、菜单与toolbar分组、组件/内容槽、命令、图片、线程和卸载；区分已符合、需要修改、可选离屏适配及框架限制。保留业务模型、算法、文件格式和应用渲染器，只修改应用接入与界面层，不修改框架内部代码。
 
@@ -27,13 +27,13 @@
 
     API6保留能力：面板用稳定UTF-8 ID（至多63字节）。应用负责保存不透明布局字节（API6写格式1，API7写格式2并读1）、所属用户/实例和加载策略；注册及mount后恢复，异常输入检查返回值并提供reset。业务文档仍由应用管理。左右栈/浮动/折叠、约束分隔条及拖拽复用原内容和GL context，不重建组件；Windows无窗口只有逻辑矩形，无原生捕获手势。
 
-    API7：共同树/表格/列表纵条映射完整total_count，宽表横条按全部列宽，uint64索引/ID传十进制字符串；保留分页与预算，不以缓存长度冒充总量。CANCEL/Esc/捕获失效按框架合同，换源/排序/resize/模态/双实例/迟到结果保持代次及有效草稿选择。底部区域9、旧COUNT8保持；同区tab_group_id属于shell，活动成员切换不重建内容。应用保存不透明格式2，恢复读取格式1，异常/未来版本检查并提供reset；不扩大任意分割树。连续RGBA四通道与透明度预览只改草稿，保留颜色不提交业务，提交一次、取消恢复，核对只读/禁用/非法文本。
+    API7：共同树/表格/列表纵条映射完整total_count，宽表横条按全部列宽，uint64索引/ID传十进制字符串；共同数据组件无上一页/下一页或列箭头按钮，以完整范围滚动访问；保留按需批次和预算，不以缓存长度冒充总量。应用继续提供真实total_count，并按first/count返回数据；已经符合API7合同无需改动，不自行添加重复分页栏。CANCEL/Esc/捕获失效按框架合同，换源/排序/resize/模态/双实例/迟到结果保持代次及有效草稿选择。底部区域9、旧COUNT8保持；同区tab_group_id属于shell，活动成员切换不重建内容。应用保存不透明格式2，恢复读取格式1，异常/未来版本检查并提供reset；不扩大任意分割树。连续RGBA四通道与透明度预览只改草稿，保留颜色不提交业务，提交一次、取消恢复，核对只读/禁用/非法文本。
 
     枚举options使用真实下拉，颜色选取/文本回填校验RGBA。TABLE设置sort_command或selection_flags启用键盘/编辑，Enter提交一次、Esc取消。排序由source对完整数据集按query.sort_column/sort_direction提供窗口，不能只排缓存。多选用非零稳定64位ID，最多512且计入原缓存预算；UI_QUERY_SELECTION返回精确范围ID，post_component_selection复制投递。异步范围完成前旧集合仍有效，select命令表示手势意图，不代表范围结果已完成。排序/换源/更新/双实例/关闭按代次合同处理，不提高预算。
 
 7. RGBA/包内PNG通过C接口发布；像素不经JSON/Base64。遵守顶向下RGBA8、非预乘输入、正stride、缓冲长度、复制和资源预算；缩略图由应用自己的渲染器生成，框架负责显示。借用图片、字符串和回调参数按公共所有权合同使用，跨模块内存由分配方释放。
 
-8. 使用API7新函数时，以匹配头文件和ui_framework_runtime.lib重建DLL，DLL descriptor和严格八字段.uapp清单一致声明API7；ABI/包格式仍1。只共享宿主ui_framework.dll。SDK commit及标准记录在应用文档或锁定文件，不往包清单添加字段。旧API1/2/3/4/5/6包可保留原声明兼容加载，不能只改清单假装已迁移；结构先清零再设size，新字段只按完整字段末端读取，保留旧偏移与枚举。
+8. 使用API7新函数时，以匹配头文件和ui_framework_runtime.lib重建DLL，DLL descriptor和严格八字段.uapp清单一致声明API7；ABI/包格式仍1。只共享宿主ui_framework.dll。SDK commit及标准记录在应用文档或锁定文件，不往包清单添加字段。历史API包不再保证兼容或承担专项回归；当前运行库暂存的接受行为不是维护承诺，不能只改清单假装已迁移；结构先清零再设size，新字段只按完整字段末端读取，保留旧偏移与枚举。
 
 9. 默认任务是正常宿主适配。离屏接入可选：查询run_mode，避免自有HWND/timer/显示/系统选择器依赖；无窗口workspace用原内容槽、组件及复制队列，UI线程显式flush/poll。Web捕获使用显式尺寸和调用方RGBA缓冲，先查询能力。绘图需要GPU时显式使用隐藏WGL离屏入口、原frame和input回调；至少3.3 compatibility，不静默降级。隐藏HWND/DC、真正OSMesa无窗口、整机无登录和桌面SwapBuffers的区别写清楚。历史78c24cb框架测试DLL已在实际CI LocalSystem Session0通过，当前API7必须另行复验，但托管runner仍有登录会话1，整机无登录待验；读取docs/validation/session0-osmesa-validation.md，不将框架测试成功当作本应用业务或无登录通过，不宣称普通旧应用自动无头兼容。
 
@@ -48,4 +48,4 @@
 13. 更新应用README、SDK/API/标准/commit记录、迁移与验收记录，交付可构建源码及应用包，分别列已完成、部分支持、未实现、未验证、执行命令与真实结果，以及剩余阻塞。
 ```
 
-宿主现采用浏览器式标签标题栏与第二行活动应用菜单，见[宿主说明](standalone-host.md)。这属于内部变化，旧应用无需为外观重编译或升级API；不要访问宿主DOM/窗口类或存储其最近记录。仍按原内容槽、菜单、助手及关闭回调接入，业务文档和未保存确认仍归应用。框架自有模板采用[统一视觉规范](visual-design.md)，独立宿主同步共同组件主题，应用自有HTML/原生/GL主题仍自行管理；AI启动默认收起，高级区保留原参数/事务/日志访问路径。本轮外观优化保持API7，不要求旧包重编译。
+宿主现采用浏览器式标签标题栏与第二行活动应用菜单，见[宿主说明](standalone-host.md)。这属于内部变化，已符合当前API7合同的应用无需为外观重编译或升级API；不要访问宿主DOM/窗口类或存储其最近记录。仍按原内容槽、菜单、助手及关闭回调接入，业务文档和未保存确认仍归应用。框架自有模板采用[统一视觉规范](visual-design.md)，独立宿主同步共同组件主题，应用自有HTML/原生/GL主题仍自行管理；AI启动默认收起，高级区保留原参数/事务/日志访问路径。本轮分页入口清理保持API7，不改变当前应用数据源合同；历史包兼容承诺以[当前版本政策](version-policy.md)为准，历史验收原样保留。
