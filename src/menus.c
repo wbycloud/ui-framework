@@ -176,7 +176,9 @@ ui_status_t ui_host_close_menu(ui_host_t *host)
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
     {ui_menu_popup_t *r;int any=0;for(r=menu_roots;r;r=r->next_root)if(r->open)any=1;if(!any&&menu_hook){UnhookWindowsHookEx(menu_hook);menu_hook=NULL;}}
 #endif
-    if(host->app_active&&!host->dispatch_blocked&&!host->modal_component&&p->previous_focus&&IsWindow((HWND)p->previous_focus)&&IsWindowEnabled((HWND)p->previous_focus)&&IsWindowVisible((HWND)p->previous_focus))SetFocus((HWND)p->previous_focus);
+    /* A nonactivating tooltip never owned focus. Restoring its old anchor
+     * focus would steal a subsequent click into an editor. */
+    if(!p->detail&&host->app_active&&!host->dispatch_blocked&&!host->modal_component&&p->previous_focus&&IsWindow((HWND)p->previous_focus)&&IsWindowEnabled((HWND)p->previous_focus)&&IsWindowVisible((HWND)p->previous_focus))SetFocus((HWND)p->previous_focus);
 #endif
     (void)ui_host_emit_event(host,"ui.host.menu_changed","{}");return UI_STATUS_OK;
 }

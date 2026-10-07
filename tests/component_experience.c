@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "ui_framework/components.h"
+#include "ui_framework/menus.h"
 #include "../src/ui_internal.h"
 #ifdef UI_EXPERIENCE_WEBVIEW2
 #include "ui_framework/webview2.h"
@@ -101,7 +102,7 @@ int main(int argc,char **argv)
      for(size_t i=0;i<128;++i){snprintf(titles[i],128,"Option%zu — 长中文选项完整内容，选择器键盘访问",i);long_options[i]=titles[i];}
      field.size=sizeof(field);field.id="long-mode";field.title="这是需要完整查看的很长属性名称";field.help="选择由应用声明的128项枚举；键盘可以访问末项";field.unit="单位";field.kind=UI_VALUE_ENUM;field.options=long_options;field.option_count=128;
      view.size=sizeof(view);view.id="long-form";view.kind=UI_COMPONENT_FORM;view.fields=&field;view.field_count=1;view.web_backend=backend;CHECK(ui_component_register(h,&view,&long_form)==UI_STATUS_OK);CHECK((runtime_mode?ui_component_mount(long_form,ui_shell_get_content_slot(ui_host_get_shell(h),NULL)):ui_component_mount_offscreen(long_form,240,480,96))==UI_STATUS_OK);
-     p.size=sizeof(p);CHECK(presentation(long_form,"help-long-mode",&p)==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"128项"));CHECK(click(long_form,"choice-long-mode"));e.size=sizeof(e);e.kind=UI_INPUT_KEY_DOWN;e.key_code=VK_END;CHECK(dispatch(long_form,&e)==UI_STATUS_OK);CHECK(presentation(long_form,"option-long-mode-127",&p)==UI_STATUS_OK&&p.visible&&p.clip.height>0);e.key_code=VK_RETURN;CHECK(dispatch(long_form,&e)==UI_STATUS_OK);value.size=sizeof(value);CHECK(ui_component_get_field(long_form,"long-mode",&value)==UI_STATUS_OK&&!strcmp(value.text,long_options[127]));
+     p.size=sizeof(p);CHECK(presentation(long_form,"help-long-mode",&p)==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"128项"));CHECK(click(long_form,"label-long-mode"));e.size=sizeof(e);e.kind=UI_INPUT_KEY_DOWN;e.key_code=VK_F1;CHECK(dispatch(long_form,&e)==UI_STATUS_OK);pump_for(60);CHECK(ui_host_menu_get_presentation(h,"detail",&p)==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"很长属性名称"));CHECK(ui_host_hide_tooltip(h)==UI_STATUS_OK);CHECK(click(long_form,"choice-long-mode"));e.size=sizeof(e);e.kind=UI_INPUT_KEY_DOWN;e.key_code=VK_END;CHECK(dispatch(long_form,&e)==UI_STATUS_OK);CHECK(presentation(long_form,"option-long-mode-127",&p)==UI_STATUS_OK&&p.visible&&p.clip.height>0);e.key_code=VK_RETURN;CHECK(dispatch(long_form,&e)==UI_STATUS_OK);value.size=sizeof(value);CHECK(ui_component_get_field(long_form,"long-mode",&value)==UI_STATUS_OK&&!strcmp(value.text,long_options[127]));
      CHECK(click(long_form,"choice-long-mode"));e.key_code=VK_HOME;CHECK(dispatch(long_form,&e)==UI_STATUS_OK);e.key_code=VK_ESCAPE;CHECK(dispatch(long_form,&e)==UI_STATUS_OK);CHECK(ui_component_get_field(long_form,"long-mode",&value)==UI_STATUS_OK&&!strcmp(value.text,long_options[127]));}
     if(native)ui_native_shell_destroy(native);ui_host_destroy(h);
 #ifdef UI_EXPERIENCE_WEBVIEW2
