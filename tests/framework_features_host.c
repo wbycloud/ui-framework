@@ -2,8 +2,12 @@
 #define UI_HOST_TEST 1
 #include "../examples/framework_host/main.c"
 static int failures,group_count,forbidden;
-#define CHECK(x) do{if(!(x)){fprintf(stderr,"line %d: %s\n",__LINE__,#x);++failures;}}while(0)
-static void pump(void){MSG m;unsigned n=0;while(PeekMessageW(&m,NULL,0,0,PM_REMOVE)&&n++<3000){if(m.message!=WM_QUIT){TranslateMessage(&m);DispatchMessageW(&m);}}}
+static void trace_step(int line,const char *text)
+{if(GetEnvironmentVariableW(L"UI_FEATURE_TRACE",NULL,0)){fprintf(stderr,"FEATURE_TRACE %llu line%d: %s\n",(unsigned long long)GetTickCount64(),line,text);fflush(stderr);}}
+#define CHECK(x) do{trace_step(__LINE__,#x);if(!(x)){fprintf(stderr,"line %d: %s\n",__LINE__,#x);++failures;}}while(0)
+/* A live rendering queue need not become empty. Check bounds before removal so
+ * every retrieved message is dispatched, including when a paint stays pending. */
+static void pump(void){MSG m;unsigned n=0,timers=0,paints=0;ULONGLONG start=GetTickCount64();while(n<3000&&GetTickCount64()-start<100&&PeekMessageW(&m,NULL,0,0,PM_REMOVE)){++n;if(m.message!=WM_QUIT){timers+=m.message==WM_TIMER;paints+=m.message==WM_PAINT;TranslateMessage(&m);DispatchMessageW(&m);}}if(GetEnvironmentVariableW(L"UI_FEATURE_TRACE",NULL,0)){fprintf(stderr,"FEATURE_PUMP %llu ms messages%u timers%u paints%u\n",(unsigned long long)(GetTickCount64()-start),n,timers,paints);fflush(stderr);}}
 static int click(ui_web_view_t *v,const char *id)
 {ui_element_presentation_t p={0};ui_input_event_t e={0};p.size=sizeof(p);if(ui_web_view_get_presentation(v,id,&p)!=UI_STATUS_OK||!p.visible||!p.enabled)return 0;
  e.size=sizeof(e);e.kind=UI_INPUT_POINTER_DOWN;e.x=p.clip.x+3;e.y=p.clip.y+3;e.pointer_button=1;if(ui_web_view_dispatch_input(v,&e)!=UI_STATUS_OK)return 0;
@@ -36,7 +40,7 @@ int wmain(int argc,wchar_t **argv)
  CHECK(first&&second&&first!=second);if(!first||!second){fprintf(stderr,"%s\n",ui_workspace_last_error(host.workspace));return 1;}
  CHECK(get_instance(&host,first,&a)&&get_instance(&host,second,&b));MoveWindow(root,30,30,1920,1080,TRUE);pump();group_count=0;CHECK(ui_host_visit_menu(b.host,"",group,&host)==UI_STATUS_OK&&group_count==7);
  menu.size=sizeof(menu);menu.path="Edit";menu.anchor.size=sizeof(menu.anchor);CHECK(ui_host_show_menu(b.host,&menu)==UI_STATUS_OK);CHECK(menu_click(b.host,"feature.menu.1"));CHECK(operations(&b)==1&&operations(&a)==0);
- CHECK(ui_host_show_menu(b.host,&menu)==UI_STATUS_OK);CHECK(ui_workspace_activate(host.workspace,first)==UI_STATUS_OK);pump();p.size=sizeof(p);CHECK(ui_host_menu_get_presentation(b.host,"close",&p)==UI_STATUS_NOT_FOUND);
+ CHECK(ui_host_show_menu(b.host,&menu)==UI_STATUS_OK);CHECK(ui_workspace_activate(host.workspace,first)==UI_STATUS_OK);layout(&host);CHECK(ui_web_view_flush(host.view,64)==UI_STATUS_OK);pump();p.size=sizeof(p);CHECK(ui_host_menu_get_presentation(b.host,"close",&p)==UI_STATUS_NOT_FOUND);
  /* Normal Web dispatch reserves Ctrl+O for the application and executes once. */
  e.size=sizeof(e);e.kind=UI_INPUT_KEY_DOWN;e.key_code='O';e.modifiers=UI_INPUT_MODIFIER_CONTROL;CHECK(ui_web_view_dispatch_input(host.view,&e)==UI_STATUS_OK);pump();CHECK(operations(&a)==1);
  {MSG key={0};key.hwnd=root;key.wParam=VK_MENU;key.message=WM_SYSKEYDOWN;CHECK(host_menu_key(&host,&key));key.message=WM_SYSKEYUP;CHECK(host_menu_key(&host,&key));p.size=sizeof(p);CHECK(ui_host_menu_get_presentation(a.host,"close",&p)==UI_STATUS_OK);key.message=WM_KEYDOWN;key.wParam=VK_ESCAPE;CHECK(host_menu_key(&host,&key));key.message=WM_KEYUP;CHECK(host_menu_key(&host,&key));}
