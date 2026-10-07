@@ -2,4 +2,6 @@
 /docs/validation/api7-current-* -text
 /docs/validation/api7-frozen-* -text
 # Preserve exact bytes of current logs, observers and screenshot hash manifests.
-/docs/validation/component-experience-evidence-20261007/** -text
+/docs/validation/component-experience-evidence-20261007/** -text whitespace=cr-at-eol
+# Immutable raw diagnostics retain their original whitespace; production code does not.
+/docs/validation/component-experience-evidence-20261007/raw/** -whitespace
