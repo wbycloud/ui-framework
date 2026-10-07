@@ -1,0 +1,251 @@
+Test project D:/应用软件框架/应用层序框架/build/experience-20261007/business-after
+    Start 20: kc_application_workflows
+1/3 Test #20: kc_application_workflows .........   Passed    7.04 sec
+    Start 21: kc_usability_input
+2/3 Test #21: kc_usability_input ...............   Passed    5.70 sec
+    Start 28: kc_advanced_input
+3/3 Test #28: kc_advanced_input ................***Timeout 180.06 sec
+FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit8986b5de134f212b4db64d549cfc1add53d40a90
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=34304 expected_pid=34304 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+TEST_ACTIVATION: foreground_pid=34304 expected_pid=34304 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: own desktop foreground for new business input
+OASIS_CHOOSER: waiting pid 34304 time615527187 cancel0
+OASIS_CHOOSER: owned selector 0000000003CE070A time615527531 UIthread42612
+OASIS_CHOOSER: exact filename confirmed and selector closed
+PASS: physical Ctrl O opens typed-metadata OASIS fixture
+PASS: ordinary load preserves shared Cell with compact array
+PASS: typed OASIS import remains instance-local
+PASS: physical Alt F then metadata mnemonic opens the typed editor
+PASS: public typed editor displays file scope and the exact encoded value
+PASS: capture real metadata entry and actual drawing
+METADATA_CHOICE: field p8 expected New value actual Apply page flags 0
+FAIL: real typed form adds an ordered value while preserving exact uint64 draft
+FAIL: new ordered value becomes current without modifying document
+METADATA_CHOICE: field p3 expected 11 actual 8 flags 0
+FAIL: real enum and text input enter a binary value beyond the old preview limit
+METADATA_CHOICE: field p8 expected Load value/page actual Apply page flags 0
+FAIL: page navigation first retains the first 64-byte draft page
+FAIL: scrolled typed editor keeps fixed target and byte-page context visible
+PASS: capture actual paged metadata context after navigation
+METADATA_CHOICE: field p8 expected Load value/page actual Apply page flags 0
+FAIL: second binary page is retained before navigating to final page
+METADATA_CHOICE: field p8 expected Move value up actual Apply page flags 0
+FAIL: actual ordered Move up retains final binary page
+METADATA_CHOICE: field p8 expected Move value down actual Apply page flags 0
+FAIL: actual Move down restores ordered binary value after the uint64
+METADATA_CHOICE: field p8 expected New value actual Apply page flags 0
+FAIL: actual draft adds and removes a value without changing document or losing existing pages
+METADATA_CHOICE: field p8 expected Load value/page actual Apply page flags 0
+FAIL: actual navigation selects the retained binary value and semantic Save property
+METADATA_SAVE: submitted 1 success 0 replies 259 expected 259 result {"status":1,"message":"Invalid argument. Target is pinned; scope/index changes require Load property. Hex pages must fit the declared length. No document changes committed.","selected":"0","selected_id":"0"}
+METADATA_FIELD: p0 text File error  flags 0
+METADATA_FIELD: p1 text 0 error  flags 0
+METADATA_FIELD: p2 text 1 error  flags 8
+METADATA_FIELD: p3 text 8 error  flags 0
+METADATA_FIELD: p4 text 18446744073709551615 error  flags 0
+METADATA_FIELD: p5 text 0 error  flags 0
+METADATA_FIELD: p6 text 128 error  flags 8
+METADATA_FIELD: p7 text EF12 error  flags 8
+METADATA_FIELD: p8 text Apply page error Invalid argument. Target is pinned; scope/index changes require Load property. Hex pages must fit the declared length. No document changes committed. flags 0
+METADATA_FIELD: p9 text 0 error  flags 8
+METADATA_FIELD: p10 text 627573696E657373 error  flags 0
+METADATA_FIELD: p11 text 0 error  flags 0
+METADATA_FIELD: p12 text 0 error  flags 0
+METADATA_FIELD: p13 text 8 error  flags 0
+FAIL: one actual typed Save property commits and replies exactly once
+PASS: capture typed editor and restore canvas keyboard focus after close
+OASIS_CHOOSER: waiting pid 34304 time615573343 cancel0
+OASIS_CHOOSER: owned selector 000000000DE91008 time615573718 UIthread42612
+OASIS_CHOOSER: exact filename confirmed and selector closed
+HIERARCHY_MENU: path File item klayoutc.save_as status 0 located 0 rect 4,88,312,28 clicked 1 results 261 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual Save As routes typed edited data through the system chooser
+PASS: actual OASIS save completes atomically after typed edit
+FAIL: actual UI saved exact uint64 ordered values and all three binary pages
+PASS: physical Ctrl Z undoes the entire typed edit in one transaction
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 262 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual File menu reopens the pinned editor after undo
+PASS: undo restores original exact value and removes the complete ordered-value addition
+PASS: undo inspection closes without another submit
+PASS: physical redo and undo restore the complete typed transaction without duplicate operations
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 264 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+METADATA_CHOICE: field p8 expected New property actual Apply page flags 0
+FAIL: real scoped metadata form starts an explicitly new pinned property
+METADATA_CHOICE: field p8 expected New value actual Apply page flags 0
+FAIL: actual scoped form edits exact name bytes and adds an ordered value
+METADATA_CHOICE: field p8 expected Save property actual Apply page flags 0
+FAIL: actual scoped Save adds the property atomically and closes cleanly
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 360 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual scope and property index reload the complete saved typed property
+METADATA_CHOICE: field p8 expected Save property actual Apply page flags 0
+FAIL: real scoped view and modification preserve pinned target and exact value
+USER_KEY_REJECT: key=90 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: physical scoped Undo Redo preserve the individual property transaction
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 392 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual scoped Delete removes the selected property through the same semantic validation
+USER_KEY_REJECT: key=90 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: three physical undos restore delete modify and add without partial metadata
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 392 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: real scoped metadata form starts an explicitly new pinned property
+METADATA_CHOICE: field p8 expected New value actual Apply page flags 0
+FAIL: actual scoped form edits exact name bytes and adds an ordered value
+METADATA_CHOICE: field p8 expected Save property actual Apply page flags 0
+FAIL: actual scoped Save adds the property atomically and closes cleanly
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 456 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual scope and property index reload the complete saved typed property
+METADATA_CHOICE: field p8 expected Save property actual Apply page flags 0
+FAIL: real scoped view and modification preserve pinned target and exact value
+USER_KEY_REJECT: key=90 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: physical scoped Undo Redo preserve the individual property transaction
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 488 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual scoped Delete removes the selected property through the same semantic validation
+USER_KEY_REJECT: key=90 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: three physical undos restore delete modify and add without partial metadata
+USER_KEY_REJECT: key=86 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: physical canvas selects the compact instance for typed property editing
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 488 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: real scoped metadata form starts an explicitly new pinned property
+METADATA_CHOICE: field p8 expected New value actual Apply page flags 0
+FAIL: actual scoped form edits exact name bytes and adds an ordered value
+METADATA_CHOICE: field p8 expected Save property actual Apply page flags 0
+FAIL: actual scoped Save adds the property atomically and closes cleanly
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 552 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual scope and property index reload the complete saved typed property
+METADATA_CHOICE: field p8 expected Save property actual Apply page flags 0
+FAIL: real scoped view and modification preserve pinned target and exact value
+USER_KEY_REJECT: key=90 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: physical scoped Undo Redo preserve the individual property transaction
+FAIL: physical pointer targets only the visible owned canvas
+FAIL: physical canvas repicks the same target after existing Undo Redo clears selection
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 584 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual scoped Delete removes the selected property through the same semantic validation
+USER_KEY_REJECT: key=90 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: three physical undos restore delete modify and add without partial metadata
+FAIL: physical pointer targets only the visible owned canvas
+FAIL: physical hierarchy navigation and canvas select the shared child shape
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 584 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: real scoped metadata form starts an explicitly new pinned property
+METADATA_CHOICE: field p8 expected New value actual Apply page flags 0
+FAIL: actual scoped form edits exact name bytes and adds an ordered value
+METADATA_CHOICE: field p8 expected Save property actual Apply page flags 0
+FAIL: actual scoped Save adds the property atomically and closes cleanly
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 648 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual scope and property index reload the complete saved typed property
+METADATA_CHOICE: field p8 expected Save property actual Apply page flags 0
+FAIL: real scoped view and modification preserve pinned target and exact value
+USER_KEY_REJECT: key=90 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: physical scoped Undo Redo preserve the individual property transaction
+FAIL: physical pointer targets only the visible owned canvas
+FAIL: physical canvas repicks the same target after existing Undo Redo clears selection
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.metadata status -8 located -4 rect 0,0,0,0 clicked 0 results 680 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual scoped Delete removes the selected property through the same semantic validation
+USER_KEY_REJECT: key=90 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: three physical undos restore delete modify and add without partial metadata
+FAIL: physical pointer targets only the visible owned canvas
+FAIL: real canvas and form pin a new legacy property to the child shape
+METADATA_CHOICE: field p8 expected New value actual Apply page flags 0
+FAIL: actual typed inputs build the standard legacy name and ordered attribute/string values
+METADATA_CHOICE: field p3 expected 10 actual 8 flags 0
+FAIL: real typed Save accepts the legal empty string without null-buffer access
+OASIS_CHOOSER: waiting pid 34304 time615666500 cancel0
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.save_as status -8 located -4 rect 0,0,0,0 clicked 0 results 744 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual Save As exports the empty legacy property
+OASIS_CHOOSER: no owned selector within deadline
+OASIS_CHOOSER_JOIN: timed out, cancelled and joined; no late input
+FAIL: real empty-string atomic save completes
+FAIL: saved actual UI property retains attribute7 and a zero-byte string
+USER_KEY_REJECT: key=90 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: physical Undo removes the entire empty legacy property transaction
+USER_KEY_REJECT: key=65 foreground_pid=34304 expected_pid=34304 focus=0000000004C30504 root=000000000F850BA6 ancestor=00000000037F058C class=UIFrameworkLightWeb
+FAIL: physical key stays inside the owned editor
+FAIL: physical ascend and actual Clear selection restore the original root workflow
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path Layer item klayoutc.layer_new status -8 located -4 rect 0,0,0,0 clicked 0 results 744 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual Layer menu creates explicit output layer
+FAIL: real new-layer form commits 99/0
+MENU_FAILURE_DESKTOP: active 1 focus 0000000004C30504 foreground 00000000037F058C cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_size status -8 located -4 rect 0,0,0,0 clicked 0 results 744 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual Region menu opens expanded sizing workflow
+PASS: capture expanded form before input
+FAIL: actual component inputs select bounded hierarchy anisotropic distance and mode 4
+FAIL: hierarchical viewport window is visible and pinned
+PASS: other instance works during hierarchy draft
+FAIL: Y-distance draft survives independent instance activity
+PASS: capture actual hierarchy parameters including scrolled form
+FAIL: one actual Submit computes bounded hierarchy and commits atomically
+FAIL: one transaction emits six results without expanding or replacing shared source
+FAIL: actual table input hides source layers to inspect output
+PASS: capture real WGL hierarchy sizing output
+FAIL: actual WGL pixels show expanded anisotropic region and background
+ADVANCED_KEYBOARD_BEFORE: active 1 requested 1 focus 0000000004C30504 canvas 0000000003060A58 foreground 00000000037F058C root 000000000F850BA6
+TEST_ACTIVATION: foreground_pid=34304 expected_pid=34304 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+FAIL: physical pointer targets only the visible owned canvas
+FAIL: physical undo owns settled foreground canvas focus
+PASS: physical Ctrl Z removes all six Region outputs as one transaction
+ADVANCED_UNDO: results 745 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: physical Ctrl Y restores exactly six outputs
+MENU_FAILURE_DESKTOP: active 1 focus 000000000F850BA6 foreground 000000000F850BA6 cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_merge status -8 located -4 rect 0,0,0,0 clicked 0 results 745 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: submit attributed hierarchy with default Reject policy
+FAIL: attribute rejection keeps original geometry and modal draft
+FAIL: explicit user consent permits geometric output while preserving source properties
+MENU_FAILURE_DESKTOP: active 1 focus 000000000F850BA6 foreground 000000000F850BA6 cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_merge status -8 located -4 rect 0,0,0,0 clicked 0 results 745 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: submit prohibited hierarchy replacement through actual form
+FAIL: shared source protection rejects atomically and Cancel restores focus
+OASIS_CHOOSER: waiting pid 34304 time615685359 cancel0
+MENU_FAILURE_DESKTOP: active 1 focus 000000000F850BA6 foreground 000000000F850BA6 cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path File item klayoutc.save_as status -8 located -4 rect 0,0,0,0 clicked 0 results 745 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: actual format menu saves OASIS with metadata and Region results
+OASIS_CHOOSER: no owned selector within deadline
+OASIS_CHOOSER_JOIN: timed out, cancelled and joined; no late input
+FAIL: ordinary atomic OASIS save finishes successfully
+FAIL: saved real-UI result retains one compact array and unchanged shared source Cell
+PASS: all operations remain isolated from second instance
+MENU_FAILURE_DESKTOP: active 1 focus 000000000F850BA6 foreground 000000000F850BA6 cursor 329,185 owner 0000000004C30504
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_size status -8 located -4 rect 0,0,0,0 clicked 0 results 745 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"6","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: real form submits invalid off-grid distance
+FAIL: off-grid validation retains draft and leaves model unchanged
+FAIL: cancel failed draft restores actual canvas input
+PASS: prepare the independent GDS document for its actual metadata menu
+PASS: physical metadata mnemonic opens the second GDS instance
+PASS: typed editor reports the independent empty GDS file scope
+
+
+67% tests passed, 1 tests failed out of 3
+
+Total Test time (real) = 192.84 sec
+
+The following tests FAILED:
+	 28 - kc_advanced_input (Timeout)
+Errors while running CTest

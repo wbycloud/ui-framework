@@ -1,6 +1,6 @@
 # 独立宿主使用说明
 
-当前为SDK0.7/API7。浏览器式外壳属于宿主内部实现，没有新增公共接口；当前API7应用按现行菜单、内容槽、助手和生命周期合同运行；历史兼容维护已按[版本政策](version-policy.md)撤销。[浏览器式宿主验收](validation/browser-host-validation.md)与[本轮视觉验收](validation/visual-ui-validation.md)。统一数值及后端边界见[视觉规范](visual-design.md)。
+当前为SDK0.8/API8。浏览器式外壳属于宿主内部实现，没有新增公共接口；当前API8应用按现行菜单、内容槽、助手和生命周期合同运行；历史兼容维护已按[版本政策](version-policy.md)撤销。[浏览器式宿主验收](validation/browser-host-validation.md)与[本轮视觉验收](validation/visual-ui-validation.md)。统一数值及后端边界见[视觉规范](visual-design.md)。
 
 ## 1. 打开、标签和菜单
 
@@ -53,3 +53,7 @@ ui_browser_host使用框架测试包和私有临时历史目录，保留GetCurso
 ## 完整窗口视觉打磨
 
 当前宿主继续单行标签标题栏。零内距MDL2图标与名称截断、20像素面板标题工具、位于工具前的有界停靠标签、助手展开高亮和状态栏内距统一；AI仍只由用户切换。共同属性区自动同行/堆叠，实际C图片按比例显示；空标题和只读无操作表单回收空间。主题只作用于框架界面，不改变应用GL/业务配色、内容槽或生命周期。[本轮实际Light、Runtime与只读业务GL对照](validation/visual-polish-validation.md)。
+
+## 当前体验与长名称
+
+面板标题、停靠标签悬停或F1显示完整名称，Esc关闭；溢出标签按面板宽度分页，所有面板仍可激活。窗口最小尺寸/标题工具/空心停靠预览见[布局](workspace-layout.md)。AI仍每次默认收起；展开状态只随用户操作改变，resize或实例切换不会自动打开，原生及GL内容使用重排后的槽尺寸。SDK8的新列宽能力不更改宿主或应用生命周期合同。

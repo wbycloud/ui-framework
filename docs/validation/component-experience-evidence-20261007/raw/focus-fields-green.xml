@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="5"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="25"
+	timestamp="2026-10-07T20:01:16"
+	>
+	<testcase name="ui_component_experience" classname="ui_component_experience" time="0.445555" status="run">
+		<properties/>
+		<system-out>component experience light: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_experience_webview2" classname="ui_component_experience_webview2" time="13.0499" status="run">
+		<properties/>
+		<system-out>component experience actual WebView2: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_visual_ui_light" classname="ui_visual_ui_light" time="5.74142" status="run">
+		<properties/>
+		<system-out>Header/content: 8,200 versus 8,200
+Header/content: 8,200 versus 8,200
+Panel title tooltip kind5 capture0000000000000000
+Dock tab tooltip kind5 capture0000000000000000
+Visual actual light DLL / OSMesa / dual instance: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_visual_ui_webview2" classname="ui_visual_ui_webview2" time="6.3028" status="run">
+		<properties/>
+		<system-out>Header/content: 8,200 versus 8,200
+Header/content: 8,200 versus 8,200
+Panel title tooltip kind5 capture0000000000000000
+Dock tab tooltip kind5 capture0000000000000000
+Visual actual webview2 DLL / OSMesa / dual instance: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_menu_access" classname="ui_menu_access" time="0.19674" status="run">
+		<properties/>
+		<system-out>Menu Alt real template: 0 failures, calls=3
+</system-out>
+	</testcase>
+</testsuite>

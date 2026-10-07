@@ -1,0 +1,5 @@
+experience line104: presentation(long_form,"help-long-mode",&p)==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"128项")
+experience line104: presentation(long_form,"option-long-mode-127",&p)==UI_STATUS_OK&&p.visible&&p.clip.height>0
+experience line104: ui_component_get_field(long_form,"long-mode",&value)==UI_STATUS_OK&&!strcmp(value.text,long_options[127])
+experience line105: ui_component_get_field(long_form,"long-mode",&value)==UI_STATUS_OK&&!strcmp(value.text,long_options[127])
+component experience light: 4 failures

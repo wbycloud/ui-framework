@@ -1,0 +1,5 @@
+features-host-trace.c
+features-host-trace.obj : error LNK2019: 无法解析的外部符号 ImmGetContext，函数 host_menu_key 中引用了该符号
+features-host-trace.obj : error LNK2019: 无法解析的外部符号 ImmReleaseContext，函数 host_menu_key 中引用了该符号
+features-host-trace.obj : error LNK2019: 无法解析的外部符号 ImmGetCompositionStringW，函数 host_menu_key 中引用了该符号
+build\experience-20261007\after\features-host-trace.exe : fatal error LNK1120: 3 个无法解析的外部命令

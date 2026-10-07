@@ -1,0 +1,82 @@
+[
+  {
+    "path": "CMakeLists.txt",
+    "bytes": 44501,
+    "sha256": "9237C50A50F2CD9FAE922FFB9D3369A828EE894EA65D9493B23A40847E26877A"
+  },
+  {
+    "path": "include/ui_framework/ui.h",
+    "bytes": 22804,
+    "sha256": "7D711810816E114CB384C593BA32101EB7FB90E941170953840E71AE4BCB24B4"
+  },
+  {
+    "path": "include/ui_framework/components.h",
+    "bytes": 10893,
+    "sha256": "2C8BC218BB20A5AC483931724678C6101AE492F8E9F1377F8420B9888BA3A4D9"
+  },
+  {
+    "path": "src/components.c",
+    "bytes": 66467,
+    "sha256": "EC28CD57052876CE3EC0756A66B18071BAC215C2FBDC79D7849A58E4F4B9DC5E"
+  },
+  {
+    "path": "src/components.html",
+    "bytes": 39572,
+    "sha256": "63E027551F860D49AF1338A9BFF1C18212634A8B407C36FE58F78F3AEC6D316D"
+  },
+  {
+    "path": "src/component_columns.inc",
+    "bytes": 6567,
+    "sha256": "103E139E361679553F14D12B59CA4FC122B00202761ED6DA14BDE9FD832099DF"
+  },
+  {
+    "path": "src/component_experience.inc",
+    "bytes": 6295,
+    "sha256": "698B6601094DC6FAFC73C5C733D4A13A935DD9A606F1F12FC0141800CCA6386C"
+  },
+  {
+    "path": "src/platform/win32_shell.c",
+    "bytes": 84667,
+    "sha256": "F963C2CB6B6D4E6AFC5FF61DFABC20ED59C74B5FAA63277E639ABD8EC3685E61"
+  },
+  {
+    "path": "src/platform/shell_layout.inc",
+    "bytes": 28695,
+    "sha256": "49E8257CA2A8E471978576013C2D27D4FC3B723B4402A4FD25C0DB1DCB6536E9"
+  },
+  {
+    "path": "examples/framework_host/main.c",
+    "bytes": 64553,
+    "sha256": "7ED1F9B3AAF1E0515056CC39927AC4BE88D94A401908A91CACFFBE27314647A9"
+  },
+  {
+    "path": "examples/framework_host/host.html",
+    "bytes": 30343,
+    "sha256": "0A7F604C4A398EFA7709AEFD390FA82A68131A0D91872E626F999523C3908E5E"
+  },
+  {
+    "path": "build/experience-20261007/after/ui_framework.dll",
+    "bytes": 2152960,
+    "sha256": "EF43BBD9A1C1AF0918E685C400B6FEF63F32A4FA2BAB40FDC5A1A6DB7313A1FC"
+  },
+  {
+    "path": "build/experience-20261007/after/ui_framework_runtime.lib",
+    "bytes": 57402,
+    "sha256": "9B76670069BD4625D52A6C3628C6815D7CDD0A0DC695506B0B515E1B4902F8EA"
+  },
+  {
+    "path": "build/experience-20261007/after/framework_host.exe",
+    "bytes": 251904,
+    "sha256": "0D4D24C12216B3D02B3A1DFF0A8C5E3BF7DDE77E2E7633FE5DCB4780A810CE33"
+  },
+  {
+    "path": "build/experience-20261007/after/ui_api7_fixture.dll",
+    "bytes": 21504,
+    "sha256": "D31F69B5BB7EDEE950C369999E9B8D609610A03183150F96A8B20743C54E4EBA"
+  },
+  {
+    "path": "build/experience-20261007/after/api7_fixture.uapp",
+    "bytes": 21884,
+    "sha256": "F8B61F1620507F67D6E21B0F7736C0C727ADDA7CB7E52D4EDF6B113770DEAE65"
+  }
+]

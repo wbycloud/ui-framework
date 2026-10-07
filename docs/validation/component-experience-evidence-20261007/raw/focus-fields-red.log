@@ -1,0 +1,20 @@
+Test project D:/应用软件框架/应用层序框架/build/experience-20261007/after
+    Start 15: ui_component_experience
+1/2 Test #15: ui_component_experience ..........***Failed    0.45 sec
+experience line105: ui_host_menu_get_presentation(h,"detail",&p)==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"很长属性名称")
+component experience light: 1 failures
+
+    Start 36: ui_menu_access
+2/2 Test #36: ui_menu_access ...................***Failed    0.32 sec
+line 49: GetFocus()==second
+Menu Alt real template: 1 failures, calls=3
+
+
+0% tests passed, 2 tests failed out of 2
+
+Total Test time (real) =   0.84 sec
+
+The following tests FAILED:
+	 15 - ui_component_experience (Failed)
+	 36 - ui_menu_access (Failed)
+Errors while running CTest

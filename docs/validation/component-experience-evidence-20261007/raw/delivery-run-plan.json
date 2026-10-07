@@ -1,0 +1,111 @@
+{
+  "kind": "actual-local-execution-record",
+  "product_commit": "807828147bdfb6959abb49b4668dfa90c34eda56",
+  "test_commit": "0fe08640c3008874449dce77fd7445ef91f6a578",
+  "desktop_execution": "Windows Session1, real Runtime/browser processes require normal desktop approval; all GUI runs serial",
+  "framework_build": "cmd /c build\\experience-20261007\\build.cmd",
+  "framework_full": [
+    "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/ctest.exe",
+    "--test-dir",
+    "build/experience-20261007/after",
+    "--output-on-failure",
+    "-j",
+    "1",
+    "--output-junit",
+    "build/experience-20261007/framework-delivery-final.xml"
+  ],
+  "native_build": "cmd /c build\\experience-20261007\\native-build.cmd",
+  "native_tests": [
+    "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/ctest.exe",
+    "--test-dir",
+    "build/experience-20261007/native",
+    "--output-on-failure",
+    "-j",
+    "1",
+    "--output-junit",
+    "build/experience-20261007/native-8078281.xml"
+  ],
+  "business_build": "cmd /c build\\experience-20261007\\business-after-build.cmd",
+  "business_full": [
+    "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/ctest.exe",
+    "--test-dir",
+    "build/experience-20261007/business-after",
+    "--output-on-failure",
+    "-j",
+    "1",
+    "--output-junit",
+    "build/experience-20261007/business-8078281.xml"
+  ],
+  "business_real_mouse": {
+    "cwd": "build/experience-20261007/business-after",
+    "argv": [
+      "business-scroll-observation.exe",
+      "klayoutc.uapp",
+      "--workspace-input"
+    ],
+    "source_commit": "abc8d870efc6401dc4fa55e50170a5449c11e36b",
+    "result": "102 checks, zero failures",
+    "copy_changes": [
+      "app/manifest.ini",
+      "framework-sdk.lock.json"
+    ]
+  },
+  "runtime_independent_runs": {
+    "count": 2,
+    "environment": {
+      "UI_RUNTIME_CYCLES": "32",
+      "UI_RUNTIME_READY_REOPENS": "1"
+    },
+    "argv": [
+      "build/experience-20261007/after/ui_api7_integration_test.exe",
+      "build/experience-20261007/after/api7_fixture.uapp",
+      ".deps/mesa-24.3.4/x64/osmesa.dll",
+      "webview2"
+    ],
+    "logs": [
+      "runtime32-1.log",
+      "runtime32-2.log"
+    ]
+  },
+  "framework_capture": {
+    "observer": "api8-rich-observer.c",
+    "argv": [
+      "build/experience-20261007/after/api8-rich-observer.exe",
+      "build/experience-20261007/after/api7_fixture.uapp",
+      ".deps/mesa-24.3.4/x64/osmesa.dll",
+      "light|webview2",
+      "build/experience-20261007/capture/light|webview2"
+    ],
+    "result": "actual host/DLL/OSMesa, zero failures per backend"
+  },
+  "business_capture": {
+    "argv": [
+      "build/experience-20261007/after/business-observe.exe",
+      "build/experience-20261007/business-after/klayoutc.uapp",
+      "build/experience-20261007/business-source/tests/reference/precision/precision-official.gds",
+      "build/experience-20261007/capture/current"
+    ],
+    "note": "actual read-only data open through existing permission confirmation, four shapes, modified=false; current observation only"
+  },
+  "ci_local_check": [
+    "powershell",
+    "-NoProfile",
+    "-File",
+    "tools/test-windows-ci.ps1"
+  ],
+  "sdk_consumer_build": "cmd /c build\\experience-20261007\\sdk-consumer-build.cmd",
+  "sdk_offline_build": "cmd /c build\\experience-20261007\\sdk-offline-build.cmd",
+  "sdk_offline_tests": [
+    "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/ctest.exe",
+    "--test-dir",
+    "build/experience-20261007/sdk-offline-rebuild",
+    "-R",
+    "^(ui_public_headers_c|ui_component_widths|ui_component_experience)$",
+    "--output-on-failure",
+    "-j",
+    "1"
+  ],
+  "remote_execution": false,
+  "current_session0_service": "unrun, SCM access denied error5",
+  "strict_no_login_runner": "unavailable"
+}

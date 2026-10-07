@@ -1,0 +1,24 @@
+widths line49: (runtime?ui_component_mount(table,ui_shell_get_content_slot(ui_host_get_shell(h),NULL)):ui_component_mount_offscreen(table,640,480,96))==UI_STATUS_OK
+widths line50: click(table,"sort-col0")&&sorts==1
+widths line34: present(c,id,&p)==UI_STATUS_OK&&p.visible
+widths line50: ui_component_get_column_width(table,"col0",&width)==UI_STATUS_OK&&width==160&&sorts==1
+widths line51: present(table,"sort-col0",&p)==UI_STATUS_OK
+widths line51: present(table,"cell-9007199254741000-col0",&cell)==UI_STATUS_OK&&p.rect.x==cell.rect.x&&cell.rect.width==160
+widths line34: present(c,id,&p)==UI_STATUS_OK&&p.visible
+widths line52: ui_component_get_column_width(table,"col0",&width)==UI_STATUS_OK&&width==160
+widths line34: present(c,id,&p)==UI_STATUS_OK&&p.visible
+widths line52: ui_component_get_column_width(table,"col0",&width)==UI_STATUS_OK&&width==160
+widths line55: ui_component_get_column_width(table,"col0",&width)==UI_STATUS_OK&&width==160
+widths line56: ui_component_get_column_width(table,"col0",&width)==UI_STATUS_OK&&width==160
+widths line57: ui_component_get_column_width(table,"col0",&width)==UI_STATUS_OK&&width>160&&width<=4096
+widths line60: ui_component_capture_rgba(table,640,480,dpi,&capture)==UI_STATUS_OK
+widths line60: ui_component_capture_rgba(table,640,480,dpi,&capture)==UI_STATUS_OK
+widths line60: ui_component_capture_rgba(table,640,480,dpi,&capture)==UI_STATUS_OK
+widths line61: present(table,"scroll-h-thumb",&p)==UI_STATUS_OK&&p.visible
+widths line62: present(table,"scroll-h-track",&track)==UI_STATUS_OK
+widths line20: ui_component_dispatch_input(c,e)==UI_STATUS_OK
+widths line20: ui_component_dispatch_input(c,e)==UI_STATUS_OK
+widths line20: ui_component_dispatch_input(c,e)==UI_STATUS_OK
+widths line63: ui_component_get_state(table,&state)==UI_STATUS_OK&&state.first_column==63&&last_column&&state.cached_bytes<=2097152&&state.rendered_nodes<=1024
+widths line64: present(table,"cell-9007199254741000-col63",&cell)==UI_STATUS_OK&&cell.visible&&cell.clip.width>0&&strstr(cell.text_utf8,"中文")
+Column experience Light queries0: 23 failures

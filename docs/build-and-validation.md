@@ -1,8 +1,8 @@
 # 构建与验证
 
-本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.7.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、以当前SDK/API7构建的EDA、Web Counter、generic_components和framework_features功能应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，当前升级见[0.6→0.7迁移](migration-v0.6-to-v0.7.md)；更早版本按对应历史指南迁移。
+本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.8.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、以当前SDK/API8构建的EDA、Web Counter、generic_components和framework_features功能应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，当前升级见[0.7→0.8迁移](migration-v0.7-to-v0.8.md)；更早版本按对应历史指南迁移。
 
-API5已有能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[历史验收](validation/api5-validation.md)。当前API7接口迁移见[0.6→0.7](migration-v0.6-to-v0.7.md)、[布局](workspace-layout.md)及[验收](validation/api7-validation.md)。历史验收节和冻结源码保留原结果，不作为当前测试状态或未来兼容承诺。当前维护范围见[版本政策](version-policy.md)，本轮结果见[分页清理验收](validation/component-scroll-only-validation.md)。
+API5已有能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[历史验收](validation/api5-validation.md)。当前API8接口迁移见[0.7→0.8](migration-v0.7-to-v0.8.md)、[布局](workspace-layout.md)及[验收](validation/component-experience-validation.md)。历史验收节和冻结源码保留原结果，不作为当前测试状态或未来兼容承诺。当前维护范围见[版本政策](version-policy.md)，本轮结果见[分页清理验收](validation/component-scroll-only-validation.md)。
 
 ## 1. 构建环境
 
@@ -164,7 +164,7 @@ Windows 的 CTest 目标由宿主、后端和 C++ 编译器配置决定；选项
 | `ui_native_activation` | managed shell菜单所有权、前台/后台切换、panel/child保留、浮窗隐藏恢复、后台销毁不覆盖前台菜单 |
 | `ui_workspace_integration` | 实际包/DLL加载和资源、单/多实例与同名命令隔离、关闭拒绝/等待/完成、异步复制投递/取消/进度、迟到消息丢弃、清理和卸载重载、C++模块ABI、EDA/DPI/布局与回调在途保护 |
 | `ui_web_host_frontend` | Web 宿主空启动/加载、多标签、菜单/工具入口、助手/确认/事务、浅色/深色、尺寸/DPI、内容容器/GL 保留和卸载；需独立宿主，C++ fixture 可用时追加覆盖 |
-| `ui_application_contract` | 当前API7/非法版本拒绝、当前包加载、多实例、Web及原生/OpenGL内容、清单/DLL API不一致拒绝；不指定历史原包 |
+| `ui_application_contract` | 当前API8/非法版本拒绝、当前包加载、多实例、Web及原生/OpenGL内容、清单/DLL API不一致拒绝；不指定历史原包 |
 | `ui_web_shell_slots` | 借用内容槽、坐标、surface 绑定、增量刷新、停靠/浮动/DPI 及原生兼容容器 |
 | `ui_floating_web_dpi` | 浮动 Web 内容跟随自身窗口 DPI；主 host 的 DPI/布局更新不覆盖浮窗局部尺寸和像素矩形 |
 | `ui_light_web_dynamic` | 受控 DOM/CSS、动态按钮、JSON 转义、输入/焦点/滚动保留、重复增量更新、能力位和响应式/DPI |
@@ -280,7 +280,7 @@ OpenGL 测试会打印实际 vendor、renderer 和 context 信息。现代配置
 6. 在应用目标 GPU 上验证默认现代配置，另用嵌入式 EXE显式验证legacy路径；检查renderer，确认是否达到硬件加速要求。
 7. 选择后台实例的助手命令，切换标签后检查日志目标；清空确认显示正确实例，拒绝时模型不变。
 8. 用实际应用测试未保存关闭拒绝、异步等待后完成和最后实例卸载；接入模型后验证权限、校验、异步取消和文档rollback/undo。
-9. 使用当前SDK/API7构建的原生/OpenGL和Web应用混合运行；检查浅色/深色、Web 菜单/工具入口、浮动外框及多行/中文输入，长日志预览与完整确认参数都可读取。
+9. 使用当前SDK/API8构建的原生/OpenGL和Web应用混合运行；检查浅色/深色、Web 菜单/工具入口、浮动外框及多行/中文输入，长日志预览与完整确认参数都可读取。
 
 尚未完成真实跨显示器和目标 GPU 的验证时，应将这两项标为待验收，不能由模拟消息或整体 CTest 通过代替。
 
@@ -311,13 +311,13 @@ ctest --test-dir build/current-provider --output-on-failure
 
 `UI_OSMESA_LIBRARY`仅注册实际提供方验收，不是隐式运行模式或编译时硬依赖。当前api7_fixture仅用于框架集成；显式环境路径由integration测试传入。缺少提供方不会注册windowless/integration测试，不得声称通过。旧API集成/冻结SDK/原包注册和UI_LEGACY_*入口已退出当前CMake，历史源码及证据仍保留。
 
-历史API5（78c24cb）在Windows普通账户Session1和实际CI LocalSystem Session0均已运行OSMesa实际frame；当前API7源码Session0仍需另验；整机无登录仍需独立环境，不通过隐藏WGL或替代图片推断。WebView2仍需要实际Runtime、图形会话和原生承载窗口，受限执行环境可能禁止浏览器子进程；通过只表示对应实际环境的证据。测试失败保留并修复，不使用skip或隐瞒资源增长。
+历史API5（78c24cb）在Windows普通账户Session1和实际CI LocalSystem Session0均已运行OSMesa实际frame；当前API8源码Session0仍需另验；整机无登录仍需独立环境，不通过隐藏WGL或替代图片推断。WebView2仍需要实际Runtime、图形会话和原生承载窗口，受限执行环境可能禁止浏览器子进程；通过只表示对应实际环境的证据。测试失败保留并修复，不使用skip或隐瞒资源增长。
 
 Session0／无登录CI现有独立实际应用DLL及临时服务入口，详细构建、命令、环境门槛、资源预算及目标结果见[专门验收](validation/session0-osmesa-validation.md)。该测试配置同时关闭两个Web后端，不依赖WebView2或轻量引擎。默认运行器拒绝Session1；CTest对照不会计入Session0通过数。
 
 CI使用MSVC19.44/W4/WX实际构建通过；x64包检查使用编译期 `UINTPTR_MAX` 比较，避免旧编译器C4127。正式用例保留全部资源采样，进程缓存采用声明的128 MiB预算；初始门槛和失败诊断见专门记录。Windows服务无继承控制台，测试直接重开stdout/stderr文件，不创建控制台窗口。默认托管runner实测有登录用户，严格无登录项会失败；已有无登录Windows x64服务runner可在手动工作流填写其runner_label，不自动创建机器或注销用户。
 
-## 当前 API7 Windows 回归矩阵
+## 当前 API8 Windows 回归矩阵
 
 [windows-regression.yml](../.github/workflows/windows-regression.yml)与[执行脚本](../tools/windows-ci.ps1)建立四种Windows-2022 x64/C11 Release配置。native关闭两种Web和宿主；light开启轻量但不配置OSMesa；webview2开启两种Web、真实Runtime和显式OSMesa；osmesa开启轻量/实际OSMesa测试DLL，关闭WebView2。四行都执行被配置的必要CTest。只有物理ui_monitor_transition允许缺条件跳过，其余跳过及失败均拒绝。
 
@@ -333,24 +333,24 @@ CI使用MSVC19.44/W4/WX实际构建通过；x64包检查使用编译期 `UINTPTR
 
 ```powershell
 $osmesa = (Resolve-Path .deps/mesa-24.3.4/x64/osmesa.dll).Path
-cmake -S . -B build/current-api7 -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_FRAMEWORK_ENABLE_WEBVIEW2=ON "-DUI_OSMESA_LIBRARY=$osmesa"
-cmake --build build/current-api7
-ctest --test-dir build/current-api7 --output-on-failure
+cmake -S . -B build/current-api8 -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_FRAMEWORK_ENABLE_WEBVIEW2=ON "-DUI_OSMESA_LIBRARY=$osmesa"
+cmake --build build/current-api8
+ctest --test-dir build/current-api8 --output-on-failure
 ```
 
 UI_BUILD_TESTS下生成api7_fixture.uapp，public-C应用包含十万行/64列、树/属性、底部/标签布局、实际OSMesa frame C图片、异步缩略图、语义命令、双实例/失败/模态/卸载。ui_api7_integration与Runtime变体只算框架集成证据；当前Alt/无窗口GL/MSAA/非MSAA基础功能仍独立回归。冻结SDK和历史集成/原包专项不再注册，不用新包冒充旧包。
 
 ## 菜单外观与鼠标回归
 
-使用当前API7依赖和配置，执行`ctest --test-dir build/fw-next/release -R "ui_menu_desktop|ui_menu_cascade_offscreen|ui_menu_access|ui_menu_offscreen|ui_framework_features_host|ui_web_host_frontend" --output-on-failure`。`ui_menu_desktop_test`加载框架维护的framework_features.uapp，覆盖实际宿主/GL、三层鼠标、翻转、模态、双实例、焦点和40次重开；`ui_menu_cascade_offscreen_test`覆盖128项末项、超限、展开链预算与零菜单HWND。
+使用当前API8依赖和配置，执行`ctest --test-dir build/fw-next/release -R "ui_menu_desktop|ui_menu_cascade_offscreen|ui_menu_access|ui_menu_offscreen|ui_framework_features_host|ui_web_host_frontend" --output-on-failure`。`ui_menu_desktop_test`加载框架维护的framework_features.uapp，覆盖实际宿主/GL、三层鼠标、翻转、模态、双实例、焦点和40次重开；`ui_menu_cascade_offscreen_test`覆盖128项末项、超限、展开链预算与零菜单HWND。
 
 只读观察现有应用时，可向`ui_menu_desktop_test.exe`传入原.uapp、证据输出前缀和`--observe`。该分支只打开/关闭菜单和切换宿主主题，不调用应用命令；输出真实PrintWindow客户区BMP，证据PNG只作无损转换。包及原应用目录保持只读，不覆盖它的运行库。菜单截图、窗口命中和程序DPI不能替代真实IME、物理跨屏、桌面合成人工及长期操作验收。详见[菜单验收](validation/menu-desktop-validation.md)。
 
-## API7 本地交付和必要矩阵
+## 当前 API8 本地交付和必要矩阵
 
-API7/ABI1/包格式1，见[迁移](migration-v0.6-to-v0.7.md)及[验收](validation/api7-validation.md)。本轮本地交付，工作流配置不等于当前commit已在托管CI运行。固定Lexbor/QuickJS与WebView2 SDK1.0.4129.50、显式x64 Mesa24.3.4 OSMesa路径保持。
+API8/ABI1/包格式1，见[迁移](migration-v0.7-to-v0.8.md)及[验收](validation/component-experience-validation.md)。本轮本地交付，工作流配置不等于当前commit已在托管CI运行。固定Lexbor/QuickJS与WebView2 SDK1.0.4129.50、显式x64 Mesa24.3.4 OSMesa路径保持。
 
-原生/轻量/Runtime/OSMesa四配置沿用[windows-ci.ps1](../tools/windows-ci.ps1)。Runtime阶段显式纳入ui_component_scroll_webview2、ui_api7_integration_webview2并要求实际执行，仍与显式软件WGL隔离。API7独立DLL/.uapp组合100k/64列、底部/标签、RGBA、GL/缩略图/双实例/卸载；当前功能调用方使用当前头文件与API7声明，停止冻结SDK和旧包专项。
+原生/轻量/Runtime/OSMesa四配置沿用[windows-ci.ps1](../tools/windows-ci.ps1)。Runtime阶段显式纳入ui_component_scroll_webview2、ui_api7_integration_webview2并要求实际执行，仍与显式软件WGL隔离。API7独立DLL/.uapp组合100k/64列、底部/标签、RGBA、GL/缩略图/双实例/卸载；当前功能调用方使用当前头文件与API8声明，停止冻结SDK和旧包专项。
 
 构建后执行ctest --test-dir build/web-shell --output-on-failure；专测使用-R "ui_workspace7|ui_component_scroll|ui_light_scroll|ui_component_experience|ui_api7_integration"。UI_RUNTIME_CYCLES=64选择64连续周期，UI_RUNTIME_READY_REOPENS=1要求实际Runtime呈现后关闭，再运行ui_api7_integration_test.exe package.uapp osmesa.dll webview2；记录实际绝对提供方路径及hash。
 
@@ -376,7 +376,7 @@ foreach ($row in @("native","light","webview2","osmesa")) {
 
 每行`build/ci-evidence-<row>/`归档源commit/dirty状态、运行ID、OS/Session/桌面/DPI/Runtime、编译输出、实际DLL/EXE/.uapp及OSMesa哈希、精确测试清单、JUnit、完整LastTest和真实帧；工作流always上传30日保留的artifact。本机运行仍是本机证据，不能将无GitHub run ID的结果写为托管CI。
 
-`compatibility-policy.json`取代原包专项摘要，明确maintained_api=7、current_only及现存加载行为不是未来兼容承诺。当前样例全部使用当前SDK、清单及DLL API7；不编译冻结调用方，不验收旧包，也不以新包代替。
+`compatibility-policy.json`取代原包专项摘要，明确maintained_api=8、current_only及现存加载行为不是未来兼容承诺。当前样例全部使用当前SDK、清单及DLL API8；不编译冻结调用方，不验收旧包，也不以新包代替。
 
 历史原包保全位置/哈希仍见[API7历史记录](validation/api7-validation.md#5-兼容依赖和复现)，保持只读。本轮不修改冻结SDK、历史验收或原包；UI_LEGACY_*不再是当前构建开关，遗留CMakeCache条目不产生旧版测试。
 
@@ -406,7 +406,7 @@ ctest --test-dir build/visual --output-on-failure -R '^(ui_visual_ui_light|ui_vi
 
 若复用含四个应用本地Mesa WGL DLL的旧build目录，直接CTest前必须按现有CI显式设置GALLIUM_DRIVER=llvmpipe。省略时Mesa可能自动选择D3D12；本轮Windows26300/Intel组合在libgallium_wgl崩溃，严格保留原失败。同二进制显式llvmpipe通过不代表D3D12已修复，不删除测试DLL或改变原断言。[环境对照](validation/visual-ui-validation.md#3-测试与失败)。
 
-本轮当前版本政策及[分页清理实测](validation/component-scroll-only-validation.md)替代旧SDK/原包专项门槛。当前Session0对照包也声明API7，CI按注册的ui_session0_interactive_control归档run.log、resources.csv、result.txt和实际帧；运行器不生成manifest.json，先前该文件条件导致漏存原文件，历史CTest结果不因此改写。
+此前当前版本政策及[分页清理实测](validation/component-scroll-only-validation.md)替代旧SDK/原包专项门槛。当前Session0对照包也声明API8，CI按注册的ui_session0_interactive_control归档run.log、resources.csv、result.txt和实际帧；运行器不生成manifest.json，先前该文件条件导致漏存原文件，历史CTest结果不因此改写。
 
 
 ## 原生共同组件鼠标复验
@@ -433,3 +433,9 @@ ctest --test-dir build/visual -R "^(ui_light_glyph_padding|ui_component_scroll_n
 ~~~
 
 [完整窗口实测](validation/visual-polish-validation.md)列出准确源哈希、本地commit、初始菜单失败/修复、两后端真实截图和业务只读观察。当前Session1控制不替代当前源码Session0服务或整机无登录，缺权限时保持服务脚本门控待验。
+
+## API8 当前必跑增补
+
+现有四行CI复用，不新建工作流。light/osmesa/webview2必须包含ui_component_widths，Runtime行另含ui_component_widths_webview2；tools/test-windows-ci.ps1验证分类与缺失测试拒绝。测试名ui_api7_integration与api7_fixture表示既有基础用例，当前编译宏、清单及DLL声明已为8，不能把文件名视为旧SDK兼容专项。
+
+本轮本地构建build/experience-20261007/after；证据见[当前验收](validation/component-experience-validation.md)。真实Runtime测试需要允许浏览器进程的Windows桌面，沙箱内失败需单独保留；使用构建缓存记录的CTest绝对路径并检查真实退出码。当前服务Session0与整机无登录门槛独立，普通桌面OSMesa通过不算服务或无登录成功。

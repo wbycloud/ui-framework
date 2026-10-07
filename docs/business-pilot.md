@@ -1,12 +1,12 @@
-# API7 真实业务试点准备
+# API8 真实业务试点准备
 
-本轮交付准备方案。尚未指定本轮API7试点业务应用，也没有应用接入修改授权；此前 KLayout 的授权只允许只读菜单观察，不延伸为迁移授权。框架测试 DLL/.uapp 的通过属于集成证据，不能填写为本表的业务通过。
+本轮交付准备方案。KLayoutC是已指定的只读观察对象，本轮允许独立源码副本与匹配SDK重建；原应用仓库、默认列宽与旧固定坐标断言不获修改授权。业务接入修改/正式试点仍待明确授权。框架测试 DLL/.uapp 的通过属于集成证据，不能填写为本表的业务通过。
 
 ## 1. 启动条件和最小范围
 
 请求方需明确应用仓库/包及基线 commit、允许修改的接入目录、测试数据和保存位置、试点负责人、运行后端及退出/回退方式。只读盘点可先做，代码接入在授权明确后开始。原包、冻结 SDK、业务模型/算法/格式和 PERF-001 保留；先在应用自身允许的试点分支建立基线，实际提交与包 SHA256 逐项记录。
 
-锁定可取得的 API7 框架 commit，核对 CMake 0.7.0、API7/标准7、ABI1/包格式1。当前本地提交尚未发布，不能仅从 main 获取后假定匹配。参见[迁移](migration-v0.6-to-v0.7.md)、[开发标准](application-development-standard.md)、[构建及 CI](build-and-validation.md)、[本轮证据](validation/api7-delivery-validation.md)。
+锁定可取得的 API8 框架 commit，核对 CMake 0.8.0、API8/标准8、ABI1/包格式1。当前本地提交尚未发布，不能仅从 main 获取后假定匹配。参见[迁移](migration-v0.7-to-v0.8.md)、[开发标准](application-development-standard.md)、[构建及 CI](build-and-validation.md)、[本轮证据](validation/component-experience-validation.md)。
 
 最小试点选一个只读大数据浏览窗口、一组可撤销属性、一个现有 GL 内容槽、一个异步缩略图 source、一个实例模态对话框及两个同时打开的文档。业务存储/排序/撤销仍由应用负责；本轮不扩展模型、任意分割树、富文本或硬件无窗口 GL。
 

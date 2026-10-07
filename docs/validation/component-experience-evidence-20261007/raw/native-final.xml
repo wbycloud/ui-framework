@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="21"
+	failures="0"
+	disabled="0"
+	skipped="1"
+	hostname=""
+	time="5"
+	timestamp="2026-10-07T20:10:40"
+	>
+	<testcase name="ui_package_format" classname="ui_package_format" time="0.0875162" status="run">
+		<properties/>
+		<system-out>package format and deterministic packing: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_images_windows" classname="ui_images_windows" time="0.0602811" status="run">
+		<properties/>
+		<system-out>PNG/GDI/cache: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_responsive_layout" classname="ui_responsive_layout" time="0.0279122" status="run">
+		<properties/>
+		<system-out>responsive layout matrix: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_assistant_lifecycle" classname="ui_assistant_lifecycle" time="0.0422277" status="run">
+		<properties/>
+		<system-out>assistant lifecycle and model rollback: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_dpi_web_failure" classname="ui_dpi_web_failure" time="0.0326216" status="run">
+		<properties/>
+		<system-out>failed Web DPI sync and retry: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_components_core" classname="ui_components_core" time="0.0303408" status="run">
+		<properties/>
+		<system-out>API3 components core: 0 failures, 3 bounded queries
+</system-out>
+	</testcase>
+	<testcase name="ui_headless_example" classname="ui_headless_example" time="0.0315029" status="run">
+		<properties/>
+		<system-out>eda.add_block: {"blocks":1}
+</system-out>
+	</testcase>
+	<testcase name="ui_public_headers_c" classname="ui_public_headers_c" time="0.0495256" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_public_headers_cpp" classname="ui_public_headers_cpp" time="0.0330476" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_workspace_layout" classname="ui_workspace_layout" time="0.527018" status="run">
+		<properties/>
+		<system-out>workspace layout: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_offscreen_msaa" classname="ui_offscreen_msaa" time="0.32875" status="run">
+		<properties/>
+		<system-out>Actual GL Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079 samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+</system-out>
+	</testcase>
+	<testcase name="ui_workspace_integration" classname="ui_workspace_integration" time="1.57264" status="run">
+		<properties/>
+		<system-out>Workspace/module lifecycle: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_native_activation" classname="ui_native_activation" time="0.572306" status="run">
+		<properties/>
+		<system-out>Native managed activation: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_dpi_integration" classname="ui_dpi_integration" time="0.109712" status="run">
+		<properties/>
+		<system-out>DPI integration: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_opengl_integration" classname="ui_opengl_integration" time="0.281027" status="run">
+		<properties/>
+		<system-out>legacy: Intel | Intel(R) UHD Graphics 770 | 4.6.0 - Build 32.0.101.7079
+gl.core: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.compatibility: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.msaa_debug: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=4 debug=1
+OpenGL integration: 0 failure(s), 3 modern configurations supported
+</system-out>
+	</testcase>
+	<testcase name="ui_surface_input" classname="ui_surface_input" time="0.168105" status="run">
+		<properties/>
+		<system-out>Surface input integration: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_monitor_transition" classname="ui_monitor_transition" time="0.0841675" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties/>
+		<system-out>Monitor transition environment: 1 monitor(s)
+SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+</system-out>
+	</testcase>
+	<testcase name="ui_workspace7" classname="ui_workspace7" time="0.147142" status="run">
+		<properties/>
+		<system-out>API7 bottom/tabs: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_native_shell_integration" classname="ui_native_shell_integration" time="0.158536" status="run">
+		<properties/>
+		<system-out>native shell integration checks passed
+</system-out>
+	</testcase>
+	<testcase name="ui_native_responsive" classname="ui_native_responsive" time="0.216392" status="run">
+		<properties/>
+		<system-out>Native responsive integration: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_assistant_protocol" classname="ui_assistant_protocol" time="0.0859763" status="run">
+		<properties/>
+		<system-out>assistant protocol: 0 failure(s)
+</system-out>
+	</testcase>
+</testsuite>

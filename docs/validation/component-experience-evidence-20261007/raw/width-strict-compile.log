@@ -1,0 +1,20 @@
+[1/83] Building C object CMakeFiles\ui_framework.dir\src\menus.c.obj
+[2/83] Building C object CMakeFiles\ui_framework_shared.dir\src\menus.c.obj
+[3/83] Building C object CMakeFiles\ui_framework_shared.dir\src\platform\win32_shell.c.obj
+[4/83] Building C object CMakeFiles\ui_framework.dir\src\backends\webview2.c.obj
+[5/83] Building C object CMakeFiles\ui_framework.dir\src\platform\win32_shell.c.obj
+[6/83] Building C object CMakeFiles\ui_framework_shared.dir\src\backends\webview2.c.obj
+[7/83] Building C object CMakeFiles\ui_public_headers_c_test.dir\tests\public_headers.c.obj
+[8/83] Building RC object CMakeFiles\framework_host.dir\generated\host.rc.res
+[9/83] Building C object CMakeFiles\ui_framework.dir\src\components.c.obj
+[10/83] Building C object CMakeFiles\ui_framework_shared.dir\src\components.c.obj
+[11/83] Building C object CMakeFiles\ui_component_widths_test.dir\tests\component_widths.c.obj
+FAILED: CMakeFiles/ui_component_widths_test.dir/tests/component_widths.c.obj 
+C:\PROGRA~2\MICROS~3\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\cl.exe  /nologo -DUI_EXPERIENCE_WEBVIEW2=1 -D_CRT_SECURE_NO_WARNINGS -ID:\应用软件框架\应用层序框架\include /DWIN32 /D_WINDOWS /O2 /Ob2 /DNDEBUG -std:c11 -MD /utf-8 /W4 /WX /showIncludes /FoCMakeFiles\ui_component_widths_test.dir\tests\component_widths.c.obj /FdCMakeFiles\ui_component_widths_test.dir\ /FS -c D:\应用软件框架\应用层序框架\tests\component_widths.c
+D:\应用软件框架\应用层序框架\tests\component_widths.c(53): error C2220: 以下警告被视为错误
+D:\应用软件框架\应用层序框架\tests\component_widths.c(53): warning C4013: “ui_host_menu_get_presentation”未定义；假设外部返回 int
+D:\应用软件框架\应用层序框架\tests\component_widths.c(53): warning C4013: “ui_host_hide_tooltip”未定义；假设外部返回 int
+[12/83] Linking C static library ui_framework.lib
+[13/83] Linking C executable ui_public_headers_c_test.exe
+[14/83] Linking C shared library ui_framework.dll
+ninja: build stopped: subcommand failed.

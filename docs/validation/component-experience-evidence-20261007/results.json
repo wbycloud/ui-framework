@@ -1,0 +1,33 @@
+{
+  "source": "original JUnit and actual logs, not filenames",
+  "current": {
+    "framework-delivery-final": {
+      "passed": 55,
+      "failed": 0,
+      "skipped": 1
+    },
+    "native-8078281": {
+      "passed": 20,
+      "failed": 0,
+      "skipped": 1
+    },
+    "business-8078281": {
+      "passed": 29,
+      "failed": 1,
+      "skipped": 0
+    },
+    "sdk-offline-tests": {
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "runtime_ready_cycles": [
+    32,
+    32
+  ],
+  "business_framework_observer_checks": 102,
+  "original_business_assertions_modified": false,
+  "strict_service_session0": "pending",
+  "remote_ci_run": false
+}

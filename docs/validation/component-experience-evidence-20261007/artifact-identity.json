@@ -1,0 +1,829 @@
+{
+  "sdk": "0.8.0-dev",
+  "api": 8,
+  "standard": 8,
+  "abi": 1,
+  "package": 1,
+  "baseline_commit": "c62753d55b5f97d97a0a9acba0b0ec93e350b9c7",
+  "product_commit": "807828147bdfb6959abb49b4668dfa90c34eda56",
+  "test_commit": "0fe08640c3008874449dce77fd7445ef91f6a578",
+  "delivery_kind": "local_unpublished",
+  "final_artifacts": [
+    {
+      "path": "build/experience-20261007/after/api7_fixture.uapp",
+      "bytes": 21884,
+      "sha256": "f8b61f1620507f67d6e21b0f7736c0c727adda7cb7e52d4edf6b113770deae65"
+    },
+    {
+      "path": "build/experience-20261007/after/api8-rich-observer.exe",
+      "bytes": 129024,
+      "sha256": "b025b75262dd34a58315e7c3b081b0aed8ee2b200eeda01a19cd59694fe8d1a4"
+    },
+    {
+      "path": "build/experience-20261007/after/business-observe.exe",
+      "bytes": 133632,
+      "sha256": "8e59a7c6bef7003be3c49214ec76ac2e3623d005544808fd0a0829e84b2e7f5f"
+    },
+    {
+      "path": "build/experience-20261007/after/counter_mismatch.uapp",
+      "bytes": 134445,
+      "sha256": "bed0db1e183da56b6194779aea92e2747db3078bc3433ea8a58a7602f74e22b4"
+    },
+    {
+      "path": "build/experience-20261007/after/cpp_fixture.uapp",
+      "bytes": 145195,
+      "sha256": "c5cd425cf78244bed7727beb5c40ba61616f88dbde63155a23c1981bc7e17b37"
+    },
+    {
+      "path": "build/experience-20261007/after/features-host-trace.exe",
+      "bytes": 118784,
+      "sha256": "82cba7493a8ee08d9b6298f2a50f9f818d5d13ab5381f6534d07387c6857533c"
+    },
+    {
+      "path": "build/experience-20261007/after/framework_features.uapp",
+      "bytes": 27104,
+      "sha256": "4140771f8ead7f1b1c2298200d8eb2bb78faee10affb3698aa3ee99c8ef774d8"
+    },
+    {
+      "path": "build/experience-20261007/after/framework_features_app.dll",
+      "bytes": 26624,
+      "sha256": "b26c180dbddc4dbfd9b88c2b61eb8bdd7f02da960ef9ea8b5aa3b78ded44e52b"
+    },
+    {
+      "path": "build/experience-20261007/after/framework_features_app.lib",
+      "bytes": 2006,
+      "sha256": "867e9c895363720b418260c5746de260865ebb5253987ec4d6800b589636fc1e"
+    },
+    {
+      "path": "build/experience-20261007/after/framework_host.exe",
+      "bytes": 251904,
+      "sha256": "378ba4abc362b347e4eafa7c8b4b982ac87c20cf491329e1c402252a90ea43d9"
+    },
+    {
+      "path": "build/experience-20261007/after/generic_components.uapp",
+      "bytes": 25564,
+      "sha256": "e4d7c9f8296e52fac00a8c4bffc39ff3a8cf83383f5843878a81d7ff43fbe201"
+    },
+    {
+      "path": "build/experience-20261007/after/generic_components_app.dll",
+      "bytes": 25088,
+      "sha256": "3cfb76a163f88711366615411db466f6f9dc40a6755595475e8f70f4521405a1"
+    },
+    {
+      "path": "build/experience-20261007/after/generic_components_app.lib",
+      "bytes": 2006,
+      "sha256": "685f0eaf78fac9a15a6e1323e52802b3a1a1b60a812cf0333e92bcf78e9aeae8"
+    },
+    {
+      "path": "build/experience-20261007/after/light_web_probe.exe",
+      "bytes": 1968640,
+      "sha256": "04e6a23e797abeb6bc2e7067fea505ca4a5f0a5cbc7c896ebe3a51a14d4ba500"
+    },
+    {
+      "path": "build/experience-20261007/after/minimal_eda.exe",
+      "bytes": 1997824,
+      "sha256": "2b546eae05e01a840c03e652de25fdc13d9cb5cf865df1b280e8e2bfea705fa6"
+    },
+    {
+      "path": "build/experience-20261007/after/minimal_eda.uapp",
+      "bytes": 151801,
+      "sha256": "a2be91037f7969ea8f2afb8cf66f29f01a6bae7efeb3b47cf8a3221207e1e86c"
+    },
+    {
+      "path": "build/experience-20261007/after/minimal_eda_app.dll",
+      "bytes": 151040,
+      "sha256": "5cae442a82be0f7984e442da61e25268621a34aa1844f32f3bec210b14ad43d5"
+    },
+    {
+      "path": "build/experience-20261007/after/minimal_eda_app.lib",
+      "bytes": 1912,
+      "sha256": "e9b62bae773ce94c4fd468b8768d849331a7a1b61865e81aaa5f54d996588e28"
+    },
+    {
+      "path": "build/experience-20261007/after/session0_gl_app.uapp",
+      "bytes": 19840,
+      "sha256": "86b696f19107b8abd1dfff16553fdad00e02cc079e4d5a78f33081af60d8c245"
+    },
+    {
+      "path": "build/experience-20261007/after/uapp_pack.exe",
+      "bytes": 1923072,
+      "sha256": "02c8f154b4dd440f730e8fee7631d190ab9e43de515608bff66003ac4c426037"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_api7_fixture.dll",
+      "bytes": 21504,
+      "sha256": "d31f69b5bb7edee950c369999e9b8d609610a03183150f96a8b20743c54e4eba"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_api7_fixture.lib",
+      "bytes": 1912,
+      "sha256": "0b83a765647a3b939fc802dc88bd015f7ed81479c933a127287ccaca02f93887"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_api7_integration_test.exe",
+      "bytes": 39424,
+      "sha256": "ed0044daf44bcafac572f99d5428eb2e3c235b8bb102e2a1c668ae221162c923"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_application_contract_test.exe",
+      "bytes": 140288,
+      "sha256": "62f98c785ca8ab10ac8f09745d59789c17eb2fa065dc51609e7132abc8de604d"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_application_cpp.dll",
+      "bytes": 144896,
+      "sha256": "97186e39c283473e13c050d5bc22d1641662fdb998de7de05ea0fadf1471d27b"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_application_cpp.lib",
+      "bytes": 1954,
+      "sha256": "9d3980b2d1a718ce68210e3600cf65557d66e3a1563726e96ca315925f18ecae"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_assistant_lifecycle_test.exe",
+      "bytes": 42496,
+      "sha256": "b86c604bf6d37982f30fc8d2dc84d23f17d93a054a9e864cfeb52af3eaa098a5"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_assistant_protocol_test.exe",
+      "bytes": 1937408,
+      "sha256": "c4b45fe77593602cddb4ae8ae952bae28b23b10832d1fd0f74f8810600e1122a"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_browser_host_test.exe",
+      "bytes": 287232,
+      "sha256": "c2cb063b2ff8f6b40920664867419b47693212fefbde48eab9c534645abb0480"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_components_core_test.exe",
+      "bytes": 54784,
+      "sha256": "acb6ec1a080c1deaa74c874095a08ae6d188a4b743e834d23d45fdfeda3191ab"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_component_experience_test.exe",
+      "bytes": 2085376,
+      "sha256": "3b402e290808b5874fee406cd2e942335b6adeed97c5ea4d1f8e45dff0ca3cb9"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_component_resilience_test.exe",
+      "bytes": 123904,
+      "sha256": "a03cb9f1137db77e03f4448146f5c5b2ffeaa94fa8e347c47298bf81ec40bfa7"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_component_scroll_native_test.exe",
+      "bytes": 31232,
+      "sha256": "fa211d092e4fa6038ad2542b0900d9a2e7435d4b216ea30a969306bc09704640"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_component_scroll_test.exe",
+      "bytes": 2076160,
+      "sha256": "1eb5952eda373f55c071eaa9d9455a97d184bb96cdc3da9ed384948e78d69cab"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_component_widths_test.exe",
+      "bytes": 2082816,
+      "sha256": "3657770a7ab5476e0fc1d465dc0e0f90f8ecf0b8b2ee44d26d7b32501c8c2766"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_dpi_integration_test.exe",
+      "bytes": 1970176,
+      "sha256": "648ccde68c23a5e670bfb546167946a89ba7c767d4b949900aff90f6205170e6"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_dpi_web_failure_test.exe",
+      "bytes": 39936,
+      "sha256": "714ecb2e46718dace0c2aa6d95f049c186e301bbd0aa2c92b291854c92cecca4"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_floating_web_dpi_test.exe",
+      "bytes": 1975808,
+      "sha256": "eadb662839896e2e216e8cc707e36934fb90172f6d84b5eca5fe57174c67f024"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_framework.dll",
+      "bytes": 2156544,
+      "sha256": "f9651474878550f031d291110f1167c03f4e1e9d5dbd2a03a135b078de73d86d"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_framework.lib",
+      "bytes": 1183420,
+      "sha256": "5578d772ff6b0e8d70caf35e6572ac46d59be8e8f83796a423aa28769a1b60c1"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_framework_features_host_test.exe",
+      "bytes": 117760,
+      "sha256": "665f26d0205681e2ab174aee4eaa52ddd67c3476db623617828610e8d7b30e59"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_framework_headless.lib",
+      "bytes": 330730,
+      "sha256": "ad7e1f46323d1788899ed15678e48d6f3ffec772554f4b11c3b6a43d3fe3a6da"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_framework_runtime.lib",
+      "bytes": 57402,
+      "sha256": "9b76670069bd4625d52a6c3628c6815d7cdd0a0dc695506b0b515e1b4902f8ea"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_generic_web_host_test.exe",
+      "bytes": 120320,
+      "sha256": "9a1bc1cd4ee2dd9bd4ed94156e94a70457a23f2e57a9b5204cff1f3d194eae18"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_headless_example.exe",
+      "bytes": 41984,
+      "sha256": "95b3d7dc91930f73d571b90ee5231e974096949088c6124a2811169e5523b9ea"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_images_windows_test.exe",
+      "bytes": 39424,
+      "sha256": "f2fd98bcc3a76e381f2d260a9be094bffb4e1518b1a96f2df49034da19832409"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_lifecycle_fixture.dll",
+      "bytes": 138240,
+      "sha256": "c72df968e1e6ffe371802fe42ae4cfa27b0c4305580dce585661e4be47cc0f79"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_lifecycle_fixture.lib",
+      "bytes": 1980,
+      "sha256": "bba5cd72d21e4ac11ef3f1c11876f59541e0de22836f8b19cf296c9882c8cbfb"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_light_glyph_padding_test.exe",
+      "bytes": 12800,
+      "sha256": "e588e7988e7dcd6a30138d124921c8608329e425dd725a1bd518bfefbbee7d36"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_light_scroll_test.exe",
+      "bytes": 1938432,
+      "sha256": "8f64e26fba6f1aca09ec681fa4251b18e9f2ecd1c5fe046842d3cb105068223b"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_light_web_dynamic_test.exe",
+      "bytes": 1940480,
+      "sha256": "9a67b5dd08086ea52e756fbf8a86325d8ad0b5b945708e6ea753c5b64ec425c4"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_menu_access_test.exe",
+      "bytes": 1981440,
+      "sha256": "915a9b30078a1bf79f5e19cca851afa631eda4efcd407b8918d4d52ea409a55a"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_menu_cascade_offscreen_test.exe",
+      "bytes": 1959424,
+      "sha256": "33ea45d350ab6cceee0c4d462874b7d7858e0aca097e774ccbb3797b5ce4cd80"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_menu_desktop_test.exe",
+      "bytes": 125440,
+      "sha256": "8ae1d9e30784bff8752d11ebf6c47047992b540937c8e3f4bb977287d45a1c10"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_menu_offscreen_test.exe",
+      "bytes": 1987584,
+      "sha256": "37f0a261993a154fe9a353c8f90895ce76003647c748626811f5cc79e2ec01fb"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_monitor_transition_test.exe",
+      "bytes": 1959936,
+      "sha256": "dff385267fe2e6932ae075df347acb94c8d80703cc7d72ecad5565a4d720a6c7"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_native_activation_test.exe",
+      "bytes": 1998336,
+      "sha256": "045a339ffdd04b00f5759903496258303c7d8cb3ca1b24ef2a76a6ada07ab14b"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_native_responsive_test.exe",
+      "bytes": 1987072,
+      "sha256": "7553761a46ecd60fc16447c7a9d5bdf4eac76c1331ddd675132bee05e67777e8"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_native_shell_integration_test.exe",
+      "bytes": 1982464,
+      "sha256": "2ca8d08f9b38c3d80efe1dbeb9e0ff394d0380de291522842fb6df3df41792a8"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_offscreen_gl_test.exe",
+      "bytes": 1976320,
+      "sha256": "f24fa91dc5ed38a7f5da86016eb279ada1bb4f7db2e09f5688fccfd21f87f110"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_offscreen_msaa_test.exe",
+      "bytes": 19968,
+      "sha256": "538604a273b915481c82d3c0ed8431af12e42ff30f28379f599aa98f5af3e88c"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_opengl_integration_test.exe",
+      "bytes": 1976832,
+      "sha256": "9436cb88bfd9b3917a17996a4396fe14c58892d737c260494862de9788f73448"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_package_format_test.exe",
+      "bytes": 1939456,
+      "sha256": "8b33aa147f4c5c28f53462ab96f230677d269909fcba136d6a5d9fccb5fc259c"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_public_headers_cpp_test.exe",
+      "bytes": 33792,
+      "sha256": "4b65829922ac3ee1026c6b3b6babb7fd60b015b4129b667ea4c6b08cf6142896"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_public_headers_c_test.exe",
+      "bytes": 37888,
+      "sha256": "c8a07b9c0a027cda97886a95fe76b5b50a6b521e2fff7ed1b74fe63079385c3a"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_responsive_layout_test.exe",
+      "bytes": 44032,
+      "sha256": "e8bea8abe0abc72ffb100e037bf03499e50a3984eab126f7722fc3e8cb5fc122"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_session0_gl_app.dll",
+      "bytes": 19456,
+      "sha256": "12b1f88cf7844493388fb482f9efa9a6cbc1ebf78778210d6a28fcc58702342e"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_session0_gl_app.lib",
+      "bytes": 1954,
+      "sha256": "eb8df25c75639e8f1216712fa5405e219f8f55d012e18d74c1cf6d1af77a2fc1"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_session0_gl_test.exe",
+      "bytes": 28672,
+      "sha256": "bca2fbda1c2fe5cc5d3f133851e4804da8053d89f1f6adeb827b1ae59ffb5270"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_surface_input_test.exe",
+      "bytes": 1969664,
+      "sha256": "c47531088d8057721085b5bfc26f3b871a519306765d85e5820103ec1242a31c"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_visual_ui_test.exe",
+      "bytes": 124928,
+      "sha256": "60bcc33cf5cac61bdf056e00b9219834eea896ad34cf0f020259dc973983f547"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_webview2_messages_test.exe",
+      "bytes": 1997312,
+      "sha256": "3efcfbb5a7d3f40db459355550f80cd7d7072bbab48fa44548c689231bb33c37"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_webview2_render_test.exe",
+      "bytes": 22016,
+      "sha256": "0e02a69bbe80dcfcd543843379b2d81b6ce52c3e393588514429ba7bbe7a0cc1"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_web_host_frontend_test.exe",
+      "bytes": 300032,
+      "sha256": "e2476a256e5319e220f302fd211f725f6736a645b33e95ab4d18d09ae94bc271"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_web_shell_slots_test.exe",
+      "bytes": 1995264,
+      "sha256": "8d583692471a61b1b4fb639605ccf4cca08ef1724bbccabc427a9b389399e1a4"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_web_text_edit_test.exe",
+      "bytes": 1935360,
+      "sha256": "50c400d42e95f379d661f0ee169511d67d6c8119c15bd5f59619b876c1b3b3e6"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_workspace7_test.exe",
+      "bytes": 1988096,
+      "sha256": "6c76a179804e062716f1fdc21aa563f24abf9fec3d062887dfb5b87eab6bd993"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_workspace_integration_test.exe",
+      "bytes": 196608,
+      "sha256": "fd88e715fdf7ddfb6653b9801f8c3cf455275427616f03fad6064015984ec691"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_workspace_layout_test.exe",
+      "bytes": 1992704,
+      "sha256": "a823a9cd6769992622863b0cd148ebdfe8e3062132902e16bd25bdeb06ae6859"
+    },
+    {
+      "path": "build/experience-20261007/after/ui_workspace_offscreen_test.exe",
+      "bytes": 20480,
+      "sha256": "feafec1a8409e0a7d5ccd87c7920c105ff136a6cad7e640a957ae2bc747ef078"
+    },
+    {
+      "path": "build/experience-20261007/after/webview2_probe.exe",
+      "bytes": 2025472,
+      "sha256": "f996ba810b649a9dbb850dccd42d9dd06c95b9e1a8984f6e9dff6ae96fa6f50c"
+    },
+    {
+      "path": "build/experience-20261007/after/web_counter.uapp",
+      "bytes": 134436,
+      "sha256": "cbecc3e7b6494d7a94982eec76077b4f3098c20c5a989582983142b334bc0c17"
+    },
+    {
+      "path": "build/experience-20261007/after/web_counter_app.dll",
+      "bytes": 134144,
+      "sha256": "5abc3bba1175dbe83be44466d1a0e133975ffd7a073295135f26838307372b9f"
+    },
+    {
+      "path": "build/experience-20261007/after/web_counter_app.lib",
+      "bytes": 1912,
+      "sha256": "fc4c6145adffa7bbd8b795957ee9a0c2563dbe77dc0e482ba1dcb8c6c1eb3988"
+    }
+  ],
+  "additional_artifacts": [
+    {
+      "path": "include/ui_framework/application.h",
+      "bytes": 8306,
+      "sha256": "4c87d5dab2f59eea1a240e1378849604635222452d785b6d928b792b1c6483ab"
+    },
+    {
+      "path": "include/ui_framework/assistant.h",
+      "bytes": 4771,
+      "sha256": "f73a8a11b6faf363710e9bb3d9e92f273ff1fe90ba6863cfd06cb79947e658fe"
+    },
+    {
+      "path": "include/ui_framework/components.h",
+      "bytes": 10893,
+      "sha256": "2c8bc218bb20a5ac483931724678c6101ae492f8e9f1377f8420b9888ba3a4d9"
+    },
+    {
+      "path": "include/ui_framework/images.h",
+      "bytes": 2294,
+      "sha256": "391bb3234a5fbcd89163ca7508be34beb492c7bfe03b81bf4fce0199532d8431"
+    },
+    {
+      "path": "include/ui_framework/light_web.h",
+      "bytes": 1116,
+      "sha256": "98df2ed526240575d8ddea17002515dd8be2eacc3ee7e335848f9024b7b43ee2"
+    },
+    {
+      "path": "include/ui_framework/menus.h",
+      "bytes": 3526,
+      "sha256": "6eae62503fe50a5fc3da53bc18aeb477d386824d8acf6ca3ef2f72498e6d2474"
+    },
+    {
+      "path": "include/ui_framework/native.h",
+      "bytes": 2895,
+      "sha256": "aeda7449989a4d5d516f3e40891b2fcc2bbc927eb2413fc6d669668bde802272"
+    },
+    {
+      "path": "include/ui_framework/opengl.h",
+      "bytes": 4050,
+      "sha256": "55281d2ee7f70de2b3bc6e7f107102b88b367925087126e5e09fbb2d9b1e972d"
+    },
+    {
+      "path": "include/ui_framework/package.h",
+      "bytes": 2503,
+      "sha256": "4fe07537379e6a7a83e05ffacd77a3207134dffa6aee8dbaf3a6f2f733c25bf9"
+    },
+    {
+      "path": "include/ui_framework/shell.h",
+      "bytes": 5268,
+      "sha256": "bb8b607aa35a1936c0f6d9740527082ac6933953cd764df6d1a356283ab4c86c"
+    },
+    {
+      "path": "include/ui_framework/ui.h",
+      "bytes": 22804,
+      "sha256": "7d711810816e114cb384c593ba32101eb7fb90e941170953840e71ae4bcb24b4"
+    },
+    {
+      "path": "include/ui_framework/webview2.h",
+      "bytes": 3296,
+      "sha256": "4ab2433c7b1be86ba1c39a430b6d10c2f6f5515d8c55a0f91f3784c387a9b11c"
+    },
+    {
+      "path": "build/experience-20261007/native/cpp_fixture.uapp",
+      "bytes": 145195,
+      "sha256": "1ecf9878a965aacc0b973538cf1042988fbc7831527c412013cc7a8475185902"
+    },
+    {
+      "path": "build/experience-20261007/native/minimal_eda.exe",
+      "bytes": 105472,
+      "sha256": "bd7b89dfd4c9ef7534602ccd2e2358c22c9db7c38fb70e5d0eb0e1d34205f9c9"
+    },
+    {
+      "path": "build/experience-20261007/native/minimal_eda.uapp",
+      "bytes": 151801,
+      "sha256": "d4f1a388b552283b1cb7a810b92e938a464197427150c1f9eca9befcfcd9f532"
+    },
+    {
+      "path": "build/experience-20261007/native/minimal_eda_app.dll",
+      "bytes": 151040,
+      "sha256": "47522d594e36d5882fd67b6e3f196af25d95828126bc47deba4398f62afd8b7a"
+    },
+    {
+      "path": "build/experience-20261007/native/session0_gl_app.uapp",
+      "bytes": 19840,
+      "sha256": "3e53e079ba62f16d8341d6f8fa2c05060c5c5084e480e7afdf3a3ce2b829d733"
+    },
+    {
+      "path": "build/experience-20261007/native/uapp_pack.exe",
+      "bytes": 25088,
+      "sha256": "170988be2c950412c631a64ed84ad5c042f356f3a444ef160049c2aae1d0a252"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_application_cpp.dll",
+      "bytes": 144896,
+      "sha256": "540ffb8ea2bdceda7673153af382b85f09cdd65be64946ef0867b57042e4a1d3"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_assistant_lifecycle_test.exe",
+      "bytes": 42496,
+      "sha256": "04b50f027703d58483cfdf725b7910ab249284019bdadd9499b02ded6bd25a4c"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_assistant_protocol_test.exe",
+      "bytes": 43520,
+      "sha256": "fd69b857e3fbf523e38573d0ec23f27e0616933ea99f289e110a7c3a23422514"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_components_core_test.exe",
+      "bytes": 54784,
+      "sha256": "6bd2822f623ed294bc45ffe4b88b0bb0ba801d5002e9a6603716781eb4a86c89"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_dpi_integration_test.exe",
+      "bytes": 71168,
+      "sha256": "7168ee24009bf304894f14ffa44163bd86d83c955ebcad3b8c87a91a71a6c081"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_dpi_web_failure_test.exe",
+      "bytes": 39936,
+      "sha256": "a36a89b5398b2ff9e082119f6d10a6115b9f5ed56d1e77e768254258cfbbba2a"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_framework.dll",
+      "bytes": 364544,
+      "sha256": "1d1cda779e1209fcae4af334df17db200eb0a95f30e68350dc50817c63618198"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_headless_example.exe",
+      "bytes": 41984,
+      "sha256": "e4eb5ceb58bcdc2f1c36b10f9e90bd4a2b6a265ef6662e19475a0642f92b4cbe"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_images_windows_test.exe",
+      "bytes": 39424,
+      "sha256": "91e4aa3b90c4762a9bd63898ed52fd0a266e248c0ffcb46af64036965a1f400d"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_lifecycle_fixture.dll",
+      "bytes": 138240,
+      "sha256": "3079c9f7617a6fea5706a673a5ab266c592bce92303ac5498ea21e3f0161afbc"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_monitor_transition_test.exe",
+      "bytes": 56320,
+      "sha256": "c40360b612925e106b8ae8ca4b2a336d1e723de9156221da40d32819ffdf8ead"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_native_activation_test.exe",
+      "bytes": 105984,
+      "sha256": "1bec39eb32c6acee57722e06f1756b3e4bd84d20acc8ef3136280c251b7c268f"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_native_responsive_test.exe",
+      "bytes": 91648,
+      "sha256": "75b6bb525768971ab6e972f6b48a4f1a3fbcce6893d11c28039bd4d1a3b80d24"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_native_shell_integration_test.exe",
+      "bytes": 86016,
+      "sha256": "b76f73e05e5af694292219f5d3ef215eb50ff899b5c410f5f8e8348d76323d5a"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_offscreen_msaa_test.exe",
+      "bytes": 19968,
+      "sha256": "dc520dac73d5a801309ba84c47a731817a300e1f362a74e518d0b9259efe1383"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_opengl_integration_test.exe",
+      "bytes": 77824,
+      "sha256": "c1e16b4f5437b42f67131c4db725a79df1bc7cdf16556eef7c63d93a3106acf7"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_package_format_test.exe",
+      "bytes": 41472,
+      "sha256": "114ca3dd1516d599850b542d09442529fa87c98690e169857e21482569f11f54"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_public_headers_c_test.exe",
+      "bytes": 37888,
+      "sha256": "755d6b73f7540ab4976964c10b9481f91510c34ec4cd35c41d8ac8aa13a1f784"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_public_headers_cpp_test.exe",
+      "bytes": 33792,
+      "sha256": "8f5f1c71d6eddc7d42f5de50de4d774e84e0099652661e71e9f81539b8663d1f"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_responsive_layout_test.exe",
+      "bytes": 44032,
+      "sha256": "42ad0922a98d5a46ce6dbb14911a6708f29da09045ab7fe1b197f5fb83d72992"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_session0_gl_app.dll",
+      "bytes": 19456,
+      "sha256": "a5dcddc7544d1874acdf63a2e3b71be2714551bc0e05cb29650c13c73b01c64b"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_session0_gl_test.exe",
+      "bytes": 28672,
+      "sha256": "59f1aa38935cf61eff3f59be7ff0ad0fc1063c02fec475742326660113b88990"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_surface_input_test.exe",
+      "bytes": 70144,
+      "sha256": "dbcb0830ad342ee89fc8687fbccd6f87b6acde2f103300fdde7778f934685585"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_workspace7_test.exe",
+      "bytes": 91136,
+      "sha256": "ddd12e737854f471c726c7e523eaef312de7c4f1f6e8f7299ba5fbd3876dae6c"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_workspace_integration_test.exe",
+      "bytes": 196608,
+      "sha256": "e5d32898af7a96b5c5c75b1a6115f4fc854dbfe4c1c7fde152d9f00477373af1"
+    },
+    {
+      "path": "build/experience-20261007/native/ui_workspace_layout_test.exe",
+      "bytes": 95232,
+      "sha256": "2d590820d858c8679fb77e9c15bb4361dd150ab49fd28e02bafb380e443e82d0"
+    },
+    {
+      "path": "build/experience-20261007/business-after/business-input-diagnosis.exe",
+      "bytes": 634880,
+      "sha256": "8f52a1846553c6dc955c4f1d313370b13149859e3d6eda27be4ab44f4d3d4e16"
+    },
+    {
+      "path": "build/experience-20261007/business-after/business-scroll-observation.exe",
+      "bytes": 606720,
+      "sha256": "ebd50c9ccb843ea19a8fa7310dd724b85ff980ac0aad55362719ee1361586d6d"
+    },
+    {
+      "path": "build/experience-20261007/business-after/framework_host.exe",
+      "bytes": 251904,
+      "sha256": "378ba4abc362b347e4eafa7c8b4b982ac87c20cf491329e1c402252a90ea43d9"
+    },
+    {
+      "path": "build/experience-20261007/business-after/gds_probe.exe",
+      "bytes": 333824,
+      "sha256": "c4b72591b483d44553dc4adde9133142e8a9346733c49b0e5552e1fa3808af5b"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_app_integration.exe",
+      "bytes": 410112,
+      "sha256": "89ea7f5d4a4ec6c6d93dcf731b7747f3a44af9824fcd8efa252e9ce5bdf68030"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_app_regression.exe",
+      "bytes": 646144,
+      "sha256": "6c174e7dde90453b22b9950afcc4e94fd711d7df55f1e02d95b770ad848285a6"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_clipboard_tests.exe",
+      "bytes": 292864,
+      "sha256": "078328a2d766886b8e8388c155f5cd33aba452fe3071e1c58380bd55173a5774"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_core_tests.exe",
+      "bytes": 286208,
+      "sha256": "1e6063a36726e17429d8f13c363e700a1686bc6214659e2fdb701af80f0d8de3"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_display_preflight.exe",
+      "bytes": 142336,
+      "sha256": "197de8c08c20e0c6f2628eb07632d4d7c1bc7bb1290964672edf3221de673fdf"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_edit_fault_tests.exe",
+      "bytes": 248320,
+      "sha256": "f3c78c88e02c93badbdf77af417476232f8e09d7cb32db3133cb19b07fb81b48"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_edit_tests.exe",
+      "bytes": 233984,
+      "sha256": "1eb7e88fbc3ae66b8d153130e1412c94ee69da921ec75c86296fbfbaa9b16891"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_gds_open_tests.exe",
+      "bytes": 274432,
+      "sha256": "c52d612a48d4a7a86eaffd46d963e052ddbdf9858c5cdcc6f95d82dd55418feb"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_gds_read_open_tests.exe",
+      "bytes": 260096,
+      "sha256": "a9f17e0f07726bd9528cf0544afc2b4d462b6e01191b7f46198d7c346e033804"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_gds_tests.exe",
+      "bytes": 274944,
+      "sha256": "60e55702810e4b03cd58bbbe7dc105ef9ea64fa642e969a7f8ffbc97de51d50c"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_hierarchy_tests.exe",
+      "bytes": 260608,
+      "sha256": "c8dddc96830e9bcdaf24aeaac6281183695079148c4d5880ecf0e74b239f2793"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_host_smoke.exe",
+      "bytes": 267264,
+      "sha256": "c9810bb1b4c7f0b2ba82a27c52ee7c0c5f7b0af7eb58771fac066c8b7183c420"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_layer_properties_tests.exe",
+      "bytes": 311808,
+      "sha256": "8c792398e074db3e05f362a8fea2c4aceebdc6e15e1fab5f29f326abdca5be28"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_oasis_tests.exe",
+      "bytes": 343040,
+      "sha256": "9bd2c30c7fd4ecffed77bdd834e4e8edd917e9699f7744c3cadd29de5ad2662a"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_precision_tests.exe",
+      "bytes": 212992,
+      "sha256": "0c3d08816d396da4060c1b6ce3ee9754219d56de3e125d72ddc0cf7013052617"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_properties_tests.exe",
+      "bytes": 393728,
+      "sha256": "3364e773532be9e043a7c0522faa24a9373089f9c30389a04688b0110178a870"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_property_completion_tests.exe",
+      "bytes": 444928,
+      "sha256": "08d8c97f6f82931193f8c31f8d75fe229ac5d98b3722b01f98ed3640d4e72f4f"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_region_tests.exe",
+      "bytes": 265728,
+      "sha256": "8cebfa990a2c15177744f38f1a1451370d85a66ba3f2bf057d3a9bf0b8b191fa"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_render_errors_tests.exe",
+      "bytes": 256512,
+      "sha256": "37eca630322ff66829a7de282c8b0cacdc56af8a27c291066a01f9920fe8d18d"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_render_tests.exe",
+      "bytes": 313856,
+      "sha256": "c309ffe8712d200f0052117776ffa2c25ba0e5a37c46784a3cb43f77be941296"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_render_tiles_tests.exe",
+      "bytes": 258560,
+      "sha256": "7e7058392dcc1b2df21d12004e22829f770178ebab257cd7e65fb6742b85da2e"
+    },
+    {
+      "path": "build/experience-20261007/business-after/kc_scroll_repro.exe",
+      "bytes": 152576,
+      "sha256": "6168906c3f0c42c47bb71a08c6a7ec45044fd3d6d506260d7529217eed8de523"
+    },
+    {
+      "path": "build/experience-20261007/business-after/klayoutc.uapp",
+      "bytes": 878925,
+      "sha256": "262f100fa78544c6798caf50d56ebf40826227e9ed35d019c84b51f89a0dd2c1"
+    },
+    {
+      "path": "build/experience-20261007/business-after/klayoutc_app.dll",
+      "bytes": 833024,
+      "sha256": "f39ff9bee99497a89539d8a6cf14c235d56512b926050527ce47f02a5e0729d8"
+    },
+    {
+      "path": "build/experience-20261007/business-after/klayoutc_bench.exe",
+      "bytes": 321536,
+      "sha256": "e653b3b90012c4517d004a87d8010241512958070ff1387f749eb1edf3a3def8"
+    },
+    {
+      "path": "build/experience-20261007/business-after/region_probe.exe",
+      "bytes": 493568,
+      "sha256": "22b15e61c5f33b2ee7af476d614237b02b4e5bc47091d0ab883c711aaef8b10f"
+    },
+    {
+      "path": "build/experience-20261007/business-after/ui_framework.dll",
+      "bytes": 2156544,
+      "sha256": "f9651474878550f031d291110f1167c03f4e1e9d5dbd2a03a135b078de73d86d"
+    }
+  ],
+  "source_business_binding": {
+    "original_commit": "abc8d870efc6401dc4fa55e50170a5449c11e36b",
+    "framework_product_commit": "807828147bdfb6959abb49b4668dfa90c34eda56",
+    "changed_copy_metadata_only": [
+      "app/manifest.ini",
+      "framework-sdk.lock.json"
+    ],
+    "original_modified_by_this_task": false,
+    "observed_original_head_at_delivery": "769477b989626ed87e1f877b43165dea280ffbc6",
+    "external_change": "769477b documentation retirement of historical generated outputs",
+    "archive_sha256": "3a716281b338f7d5939f308500aec75ad320749151f6cc44a92458edf1192e10"
+  },
+  "screenshot_counts": {
+    "paired-framework-baseline": 40,
+    "failed-restricted-runtime-capture": 8,
+    "actual-current-capture": 57
+  },
+  "original_business_tracked_status": "",
+  "unchanged_native_backend": true
+}

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="9"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="67"
+	timestamp="2026-10-07T19:39:42"
+	>
+	<testcase name="ui_webview2_render" classname="ui_webview2_render" time="15.241" status="run">
+		<properties/>
+		<system-out>Runtime render: initialize
+Runtime render: ready
+Runtime render: capture/images complete
+Runtime render: close
+Runtime close before creation x12 handles 315-&gt;315 USER 17-&gt;17 pending cleanup=0
+Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+Runtime test: normal CRT exit callback reached
+</system-out>
+	</testcase>
+	<testcase name="ui_component_widths" classname="ui_component_widths" time="1.31444" status="run">
+		<properties/>
+		<system-out>Column experience Light queries23: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_api7_integration_webview2" classname="ui_api7_integration_webview2" time="13.9561" status="run">
+		<properties/>
+		<system-out>API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=8589
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-runtime-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 1
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 2
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 3
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 4
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 5
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 6
+ Framework pending cl...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_framework_features_host" classname="ui_framework_features_host" time="12.6619" status="run">
+		<properties/>
+		<system-out>API4 actual host menus/overflow/instances: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_menu_desktop" classname="ui_menu_desktop" time="8.08158" status="run">
+		<properties/>
+		<system-out>Input desktop cursor available: 1
+Function key presentation: status 0; text Ctrl+F1
+Menu hit 0 at 698,111: expected 000000000B030C62; actual 000000000B030C62 UIFrameworkRegisteredMenu4; foreground 000000000B030C62
+Menu hit 1 at 380,110: expected 00000000123806E2; actual 00000000123806E2 UIFrameworkRegisteredMenu4; foreground 000000000B030C62
+Menu hit 2 at 62,109: expected 00000000032F1064; actual 00000000032F1064 UIFrameworkRegisteredMenu4; foreground 000000000B030C62
+40 menu reopen cycles: handles 321 -&gt; 321; GDI 857 -&gt; 857; USER 50 -&gt; 50
+After instance switch: visible menus=0; first path=closed second path=closed
+Desktop menu real host: 0 failures; command calls=1
+</system-out>
+	</testcase>
+	<testcase name="ui_generic_web_host" classname="ui_generic_web_host" time="9.81214" status="run">
+		<properties/>
+		<system-out>Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+initial actual DOM=311 rows=19 columns=8
+Initial form dpi=96 status=0 field=96,78,146,28 view=0,0,250,636
+100k tail actual DOM=89 rows=12 columns=4
+100k expanded tree actual DOM=93 cached rows=2100 total=100100
+image bytes=462400 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+</system-out>
+	</testcase>
+	<testcase name="ui_component_resilience" classname="ui_component_resilience" time="6.57212" status="run">
+		<properties/>
+		<system-out>automatic style preview lifetime: 0 failures
+resource,0,0,0,16822272,6426624,176,60,5,0,0,0,0,0,0,0
+edit/layout mode 0: 0 failures
+edit/layout mode 1: 0 failures
+edit/layout mode 2: 0 failures
+edit/layout mode 3: 0 failures
+focus before refloat=0000000006F70EB8
+focus after refloat=0000000006F70EB8
+focus after modal close=0000000006F70EB8
+focus after redock=0000000006F70EB8
+edit/layout mode 4: 0 failures
+edit/layout mode 5: 0 failures
+record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count
+resource,515,1,1,149270528,112910336,346,1338,73,329,20,21894,93,9948,343144,83
+resource,515,1,2,149270528,112910336,346,1338,73,311,19,18680,93,8254,241672,59
+resource,1594,3,1,152051712,115695616,346,1448,73,343,21,23479,93,11642,436192,105
+resource,1594,3,2,152051712,115695616,346,1448,73,343,21,23459,93,9948,414992,100
+resource,2062,4,1,152174592,116322304,346,1448,73,343,21,23479,93,11642,436192,105
+resource,2062,4,2,15...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_web_shell_slots" classname="ui_web_shell_slots" time="0.136021" status="run">
+		<properties/>
+		<system-out>Web shell content slots and legacy facade passed
+</system-out>
+	</testcase>
+	<testcase name="ui_floating_web_dpi" classname="ui_floating_web_dpi" time="0.12234" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+</testsuite>

@@ -1,6 +1,6 @@
-# 工作区布局：API7
+# 工作区布局：API8
 
-SDK0.7.0开发版、API7、标准修订7；Windows x64/C11/C ABI。接口见[shell.h](../include/ui_framework/shell.h)，实现见[Win32 shell](../src/platform/win32_shell.c)与[布局实现](../src/platform/shell_layout.inc)。应用ABI和包格式仍为1，当前API7完整size与布局格式合同继续维护；历史调用方兼容不再承诺。
+SDK0.8.0开发版、API8、标准修订8；Windows x64/C11/C ABI。接口见[shell.h](../include/ui_framework/shell.h)，实现见[Win32 shell](../src/platform/win32_shell.c)与[布局实现](../src/platform/shell_layout.inc)。应用ABI和包格式仍为1，当前API8完整size与布局格式合同继续维护；历史调用方兼容不再承诺。
 
 设计顺序是保存/恢复、分隔条、拖拽停靠。当前模型支持左右侧栏的有序面板栈、面板高度、单面板折叠/关闭、浮动窗口与侧栏宽度，复用既有内容槽、组件和surface生命周期。API7新增底部和同区标签组；不支持任意嵌套分割树。
 
@@ -63,12 +63,16 @@ dock_panel_tab(moving,anchor)把已有面板移入anchor同区组并激活，浮
 
 API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认；初始有/无窗口布局为其分配底部空间，reset回到注册默认底部。直接声明与事后移动同样保留内容生命周期，见[注册复现和修复](validation/api7-validation.md)。
 
-当前维护范围按[版本政策](version-policy.md)只覆盖接手确认的API7；本文格式1读取及完整size字段行为是当前合同，历史SDK/API调用方兼容专项不再列入CI门槛。
+当前维护范围按[版本政策](version-policy.md)只覆盖接手确认的API8；本文格式1读取及完整size字段行为是当前合同，历史SDK/API调用方兼容专项不再列入CI门槛。
 
-当前交付来源、CI与环境限制见[收敛验收](validation/api7-delivery-validation.md)。真实业务布局存储/恢复试点步骤见[准备清单](business-pilot.md)，框架测试DLL不替代业务文档恢复验收。
+当前交付来源、CI与环境限制见[体验验收](validation/component-experience-validation.md)；此前API7收敛记录保持原版本和结果。真实业务布局存储/恢复试点步骤见[准备清单](business-pilot.md)，框架测试DLL不替代业务文档恢复验收。
 
 ## 自有外框视觉
 
 独立宿主及Web浮动标题使用[统一视觉规范](visual-design.md)：28逻辑像素紧凑标题、20像素标题工具、平面标签及中性分隔条，悬停/拖动有强调状态。主题切换只更新外框/共同模板，不重建内容槽、GL context或组件；格式2读取1、面板ID、恢复/草稿/选择/焦点及布局手势合同不变。原生嵌入标题、屏幕停靠预览仍按实际Win32实现呈现；物理跨屏/桌面合成另验。[本轮回归](validation/visual-ui-validation.md)。
 
 本轮同组标题不再重复显示活动面板名称，标签列位于浮动/折叠工具前，有限成员页按剩余宽度分配并保留前后入口；浮动按钮20像素与标题28匹配。布局模型/格式、内容槽和GL context不改。[当前视觉和布局回归](validation/visual-polish-validation.md)。
+
+## 当前窗口体验
+
+长面板标题及停靠标签支持悬停/F1完整查看；标签按可用宽度显示1–4项，并保留前后溢出访问。浮动窗口与恢复后的浮动矩形最小160×120逻辑像素，再限制在当前可用显示器；标题工具仍独立命中。停靠预览改用空心轮廓，原拖动/分隔/提交/取消合同不变，格式仍2。列宽状态独立于工作区字节，由应用另存UCW1；不会重建保留的GL context。

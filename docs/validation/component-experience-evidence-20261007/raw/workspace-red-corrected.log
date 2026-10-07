@@ -1,0 +1,3 @@
+layout line44: ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.floating_rect.width>=160&&b.floating_rect.height>=120
+layout line45: limits.ptMinTrackSize.x>=160&&limits.ptMinTrackSize.y>=120
+workspace layout: 2 failures

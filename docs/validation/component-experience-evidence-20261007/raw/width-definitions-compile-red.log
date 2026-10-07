@@ -1,0 +1,7 @@
+[1/2] Building C object CMakeFiles\ui_component_widths_test.dir\tests\component_widths.c.obj
+FAILED: CMakeFiles/ui_component_widths_test.dir/tests/component_widths.c.obj 
+C:\PROGRA~2\MICROS~3\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\cl.exe  /nologo -DUI_EXPERIENCE_WEBVIEW2=1 -D_CRT_SECURE_NO_WARNINGS -ID:\应用软件框架\应用层序框架\include /DWIN32 /D_WINDOWS /O2 /Ob2 /DNDEBUG -std:c11 -MD /utf-8 /W4 /WX /showIncludes /FoCMakeFiles\ui_component_widths_test.dir\tests\component_widths.c.obj /FdCMakeFiles\ui_component_widths_test.dir\ /FS -c D:\应用软件框架\应用层序框架\tests\component_widths.c
+D:\应用软件框架\应用层序框架\tests\component_widths.c(63) : error C2220: 以下警告被视为错误
+D:\应用软件框架\应用层序框架\tests\component_widths.c(63) : warning C4701: 使用了可能未初始化的局部变量“changed”
+D:\应用软件框架\应用层序框架\tests\component_widths.c(63) : warning C4703: 使用了可能未初始化的本地指针变量“changed”
+ninja: build stopped: subcommand failed.

@@ -1,0 +1,3 @@
+widths line52: present(table,"check-9007199254741000-col1",&p)==UI_STATUS_OK&&p.visible&&p.clip.width>=24
+widths line53: ui_host_menu_get_presentation(h,"detail",&p)==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"完整查看")
+Column experience Light queries16: 2 failures

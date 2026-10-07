@@ -1,0 +1,19 @@
+[1/97] Building C object CMakeFiles\ui_framework.dir\src\platform\win32_shell.c.obj
+FAILED: CMakeFiles/ui_framework.dir/src/platform/win32_shell.c.obj 
+C:\PROGRA~2\MICROS~3\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\cl.exe  /nologo -DLEXBOR_STATIC -DUI_FRAMEWORK_ENABLE_LIGHT_WEB=1 -DUI_FRAMEWORK_HAS_WEBVIEW2=1 -ID:\应用软件框架\应用层序框架\include -ID:\应用软件框架\应用层序框架\src -ID:\应用软件框架\应用层序框架\build\experience-20261007\after\generated -ID:\应用软件框架\应用层序框架\cmake\..\.deps\Microsoft.Web.WebView2.1.0.4129.50\build\native\include -ID:\应用软件框架\应用层序框架\cmake\..\.deps\lexbor\source -ID:\应用软件框架\应用层序框架\cmake\..\.deps\quickjs -ID:\应用软件框架\应用层序框架\.deps\lexbor\source -ID:\应用软件框架\应用层序框架\.deps\quickjs /DWIN32 /D_WINDOWS /O2 /Ob2 /DNDEBUG -std:c11 -MD /utf-8 /showIncludes /FoCMakeFiles\ui_framework.dir\src\platform\win32_shell.c.obj /FdCMakeFiles\ui_framework.dir\ui_framework.pdb /FS -c D:\应用软件框架\应用层序框架\src\platform\win32_shell.c
+D:\应用软件框架\应用层序框架\src\platform\win32_shell.c(1109): error C2197: “ui_status_t ui_host_show_tooltip(ui_host_t *,const ui_menu_anchor_t *,const char *)”: 用于调用的参数太多
+D:\应用软件框架\应用层序框架\src\platform\win32_shell.c(1109): error C2197: “ui_status_t ui_host_show_tooltip(ui_host_t *,const ui_menu_anchor_t *,const char *)”: 用于调用的参数太多
+D:\应用软件框架\应用层序框架\src\platform\win32_shell.c(1109): error C2197: “ui_status_t ui_host_show_tooltip(ui_host_t *,const ui_menu_anchor_t *,const char *)”: 用于调用的参数太多
+[2/97] Building C object CMakeFiles\ui_framework_shared.dir\src\platform\win32_shell.c.obj
+FAILED: CMakeFiles/ui_framework_shared.dir/src/platform/win32_shell.c.obj 
+C:\PROGRA~2\MICROS~3\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\cl.exe  /nologo -DLEXBOR_STATIC -DUI_FRAMEWORK_BUILDING -DUI_FRAMEWORK_BUILD_SHARED -DUI_FRAMEWORK_ENABLE_LIGHT_WEB=1 -DUI_FRAMEWORK_HAS_WEBVIEW2=1 -D_CRT_SECURE_NO_WARNINGS -Dui_framework_shared_EXPORTS -ID:\应用软件框架\应用层序框架\include -ID:\应用软件框架\应用层序框架\src -ID:\应用软件框架\应用层序框架\build\experience-20261007\after\generated -ID:\应用软件框架\应用层序框架\cmake\..\.deps\Microsoft.Web.WebView2.1.0.4129.50\build\native\include -ID:\应用软件框架\应用层序框架\cmake\..\.deps\lexbor\source -ID:\应用软件框架\应用层序框架\cmake\..\.deps\quickjs -ID:\应用软件框架\应用层序框架\.deps\lexbor\source -ID:\应用软件框架\应用层序框架\.deps\quickjs /DWIN32 /D_WINDOWS /O2 /Ob2 /DNDEBUG -std:c11 -MD /utf-8 /W4 /WX /showIncludes /FoCMakeFiles\ui_framework_shared.dir\src\platform\win32_shell.c.obj /FdCMakeFiles\ui_framework_shared.dir\ /FS -c D:\应用软件框架\应用层序框架\src\platform\win32_shell.c
+D:\应用软件框架\应用层序框架\src\platform\win32_shell.c(1109): error C2197: “ui_status_t ui_host_show_tooltip(ui_host_t *,const ui_menu_anchor_t *,const char *)”: 用于调用的参数太多
+D:\应用软件框架\应用层序框架\src\platform\win32_shell.c(1109): error C2197: “ui_status_t ui_host_show_tooltip(ui_host_t *,const ui_menu_anchor_t *,const char *)”: 用于调用的参数太多
+D:\应用软件框架\应用层序框架\src\platform\win32_shell.c(1109): error C2197: “ui_status_t ui_host_show_tooltip(ui_host_t *,const ui_menu_anchor_t *,const char *)”: 用于调用的参数太多
+[3/97] Building C object CMakeFiles\ui_framework.dir\src\menus.c.obj
+[4/97] Building C object CMakeFiles\ui_framework_shared.dir\src\menus.c.obj
+[5/97] Building C object CMakeFiles\ui_framework.dir\src\backends\webview2.c.obj
+[6/97] Building C object CMakeFiles\ui_framework_shared.dir\src\backends\webview2.c.obj
+[7/97] Building C object CMakeFiles\ui_framework.dir\src\components.c.obj
+[8/97] Building C object CMakeFiles\ui_framework_shared.dir\src\components.c.obj
+ninja: build stopped: subcommand failed.

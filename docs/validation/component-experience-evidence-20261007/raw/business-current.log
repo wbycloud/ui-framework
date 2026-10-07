@@ -1,0 +1,639 @@
+Test project D:/应用软件框架/应用层序框架/build/experience-20261007/business-after
+      Start  1: kc_precision
+ 1/30 Test  #1: kc_precision .....................   Passed    0.13 sec
+      Start  2: kc_core
+ 2/30 Test  #2: kc_core ..........................   Passed    0.12 sec
+      Start  3: kc_hierarchy
+ 3/30 Test  #3: kc_hierarchy .....................   Passed    0.12 sec
+      Start  4: kc_clipboard
+ 4/30 Test  #4: kc_clipboard .....................   Passed    0.15 sec
+      Start  5: kc_edit
+ 5/30 Test  #5: kc_edit ..........................   Passed    0.08 sec
+      Start  6: kc_gds
+ 6/30 Test  #6: kc_gds ...........................   Passed    0.21 sec
+      Start  7: kc_oasis
+ 7/30 Test  #7: kc_oasis .........................   Passed    0.02 sec
+      Start  8: kc_properties
+ 8/30 Test  #8: kc_properties ....................   Passed    0.03 sec
+      Start  9: kc_property_completion
+ 9/30 Test  #9: kc_property_completion ...........   Passed    0.11 sec
+      Start 10: kc_region
+10/30 Test #10: kc_region ........................   Passed    0.05 sec
+      Start 11: kc_render
+11/30 Test #11: kc_render ........................   Passed    0.08 sec
+      Start 12: kc_render_tiles
+12/30 Test #12: kc_render_tiles ..................   Passed    0.08 sec
+      Start 13: kc_render_errors
+13/30 Test #13: kc_render_errors .................   Passed    0.05 sec
+      Start 14: kc_edit_fault
+14/30 Test #14: kc_edit_fault ....................   Passed    0.07 sec
+      Start 15: kc_gds_open
+15/30 Test #15: kc_gds_open ......................   Passed    0.11 sec
+      Start 16: kc_gds_read_open
+16/30 Test #16: kc_gds_read_open .................   Passed    0.08 sec
+      Start 17: kc_layer_properties
+17/30 Test #17: kc_layer_properties ..............   Passed    0.20 sec
+      Start 18: kc_host
+18/30 Test #18: kc_host ..........................***Failed   22.59 sec
+FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit7051596
+HOST_CELL_COMMAND: stable klayoutc.cell_new registry index82 total95 rows-after12
+PASS: read-only public registry identifies current Cell command and cleans up
+PASS: launch matching distribution standalone host
+PASS: standalone host mounts independent current content surfaces without native business panes
+PASS: standalone process actually loads application DLL
+PASS: actual matched standalone Web chrome screenshot
+HOST_AI_BEFORE: visible000000000DE005F0 count1 width714 client1184
+PASS: current assistant starts collapsed with canvas space
+HOST_MOUSE_HELD: xy1016,22 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612372359
+PASS: real AI button expands existing assistant
+HOST_AI_AFTER: visible000000000DE005F0 count1 width400
+PASS: AI expansion retains GL HWND and gives assistant space
+PASS: capture actual readable assistant and basic parameters
+HOST_MOUSE_HELD: xy1004,286 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612372843
+PASS: native command picker opens application command list
+HOST_MOUSE_HELD: xy440,115 hit0000000002501034 capture0000000002501034 focus0000000002501034 foreground000000000D1D0C62 time612373140
+PASS: real full-range command list scrollbar reaches last entries
+PASS: capture actual application last command entry
+HOST_MOUSE_HELD: xy80,450 hit0000000002501034 capture0000000002501034 focus0000000002501034 foreground000000000D1D0C62 time612373437
+PASS: real picker selects last command
+HOST_MOUSE_HELD: xy1004,286 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612373734
+HOST_MOUSE_HELD: xy440,115 hit0000000002521034 capture0000000002521034 focus0000000002521034 foreground000000000D1F0C62 time612373984
+PASS: capture semantic Cell command after actual wheel navigation
+HOST_MOUSE_HELD: xy80,450 hit0000000002521034 capture0000000002521034 focus0000000002521034 foreground000000000D1F0C62 time612374390
+PASS: actual picker chooses stable Cell command independently of last entry
+PASS: capture actual application selected schema basic input
+HOST_MOUSE_HELD: xy430,435 hit000000000DE005F0 capture000000000DE005F0 focus000000000DE005F0 foreground0000000003F20C54 time612374703
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+HOST_TAB_ACTIVATED: before 000000000DE005F0 after 000000000F310B34 focus 000000000B910C58 visible=0
+HOST_MOUSE_HELD: xy430,435 hit000000000F310B34 capture0000000000000000 focus000000000B910C58 foreground0000000003F20C54 time612374812
+HOST_TAB_SWITCH: before 000000000DE005F0 after 000000000F310B34 focus 000000000F310B34 visible=1
+PASS: actual canvas focus and Ctrl Tab change active instance before pinned-target execution
+PASS: capture active other instance and readable pinned assistant target
+HOST_MOUSE_HELD: xy1004,362 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612374921
+PASS: actual assistant basic Cell name field receives focus
+PASS: native Unicode keys create assistant basic parameter draft
+HOST_MOUSE_HELD: xy954,405 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612375187
+PASS: one actual Execute click invokes existing semantic Cell command
+PASS: capture actual permission result and pinned-instance execution
+HOST_MOUSE_HELD: xy1004,528 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612375593
+PASS: actual advanced drawer remains accessible
+PASS: capture original JSON transaction and result access
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: real Save of active other instance proves AI did not change its model
+HOST_MOUSE_HELD: xy430,435 hit000000000F310B34 capture000000000F310B34 focus000000000F310B34 foreground0000000003F20C54 time612376875
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+HOST_TAB_ACTIVATED: before 000000000F310B34 after 000000000DE005F0 focus 000000000B0A101C visible=0
+HOST_MOUSE_HELD: xy430,435 hit000000000DE005F0 capture0000000000000000 focus000000000B0A101C foreground0000000003F20C54 time612377000
+HOST_TAB_SWITCH: before 000000000F310B34 after 000000000DE005F0 focus 000000000DE005F0 visible=1
+PASS: actual canvas focus and Ctrl Tab return to pinned target before Save
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: real target Save independently contains exactly one AI-created Cell
+PASS: capture actual target drawing and one semantic command result
+PASS: manual AI expansion survives resize
+HOST_MOUSE_HELD: xy1096,22 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612378312
+PASS: real AI button collapses assistant
+PASS: collapse and resize retain canvas and manual preference
+PASS: current standalone physical Alt E opens light menu
+PASS: capture actual application menu in light host
+PASS: real pointer hovers application Region submenu
+TABLE_LAYOUT_HOVER: menu rect 38,98-358,422 target 280,300 count 2
+PASS: parent and side-expanded application submenu remain visible
+HOST_MOUSE_HELD: xy450,650 hit000000000DE005F0 capture000000000DE005F0 focus000000000DE005F0 foreground0000000003F20C54 time612379343
+PASS: real canvas outside click closes menu chain
+PASS: outside click leaves no visible menu popup
+HOST_MOUSE_HELD: xy112,59 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612379546
+PASS: real top-level menu entry click
+PASS: actual repeated-entry fixture starts open
+HOST_MOUSE_HELD: xy112,59 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612379750
+PASS: real repeated top-level click
+PASS: repeated entry closes application menu
+HOST_MOUSE_HELD: xy112,59 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612379937
+PASS: physical hover switches top-level application menu
+PASS: hovered View menu routes Workspace mnemonic
+PASS: hover switch opens registered View Workspace child rather than Edit
+HOST_MOUSE_HELD: xy1159,54 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612380703
+HOST_MOUSE_HELD: xy1174,202 hit00000000030A0E24 capture00000000030A0E24 focus00000000030A0E24 foreground0000000005FD09E0 time612380984
+PASS: real host theme button changes to dark
+PASS: actual light and dark chrome pixels differ
+PASS: actual dark application menu remains usable
+TABLE_LAYOUT_PANEL_BEFORE: 00000000033D05E4 UIFrameworkLightWeb rect 38,160-263,490
+HOST_MOUSE_HELD: xy88,114 hit000000000EF50A80 capture000000000B910C58 focus000000000B910C58 foreground0000000003F20C54 time612382750
+PASS: physical header control collapses mounted Cell panel
+FAIL: collapse hides content without destroying its HWND
+HOST_MOUSE_HELD: xy88,114 hit000000000EF50A80 capture000000000B910C58 focus000000000B910C58 foreground0000000003F20C54 time612382984
+PASS: physical header expands same panel
+PASS: expand restores original content HWND
+HOST_MOUSE_HELD: xy20,120 hit000000000EF50A80 capture000000000B910C58 focus000000000B910C58 foreground0000000003F20C54 time612383234
+PASS: physical title starts panel drag
+PASS: physical move and Escape cancel dock gesture
+PASS: cancel retains original content HWND and rectangle
+HOST_MOUSE_HELD: xy20,120 hit000000000EF50A80 capture000000000B910C58 focus000000000B910C58 foreground0000000003F20C54 time612383875
+PASS: physical title starts committed dock gesture
+PASS: physical move and release commit panel to right stack
+TABLE_LAYOUT_PANEL_AFTER: 00000000033D05E4 rect 769,278-1087,489
+PASS: committed drag reparents same application content HWND
+PASS: physical View Workspace Reset uses application semantic command
+PASS: actual layout reset restores original docked content rectangle
+HOST_MOUSE_HELD: xy229,472 hit000000000EF50A80 capture000000000B910C58 focus000000000B910C58 foreground0000000003F20C54 time612385062
+PASS: physical sidebar separator starts width drag
+PASS: physical splitter move and release commit width
+PASS: physical splitter changes actual content width
+PASS: capture actual standalone layout reset and retained GL content
+HOST_MOUSE_HELD: xy1159,54 hit000000000EF50A80 capture000000000EF50A80 focus000000000EF50A80 foreground0000000003F20C54 time612386187
+HOST_MOUSE_HELD: xy1174,202 hit000000000612062A capture000000000612062A focus000000000612062A foreground0000000003100E24 time612386453
+PASS: actual toolbar pointer belongs to owned host
+PASS: normal queued mouse activates Open toolbar
+PASS: actual toolbar opens owned system file dialog
+PASS: capture actual system file dialog opened from toolbar
+PASS: normal Escape cancels owned file dialog
+PASS: cancel closes modal and restores host input
+REGRESSION_HOST_FOCUS: UiFrameworkSurface C=0 S=0 A=0 dpi=96
+PASS: standalone physical Alt+F enters application menu
+PASS: actual current host displays application-owned registered menu
+PASS: actual host routes menu arrows and Escape
+PASS: standalone Escape closes registered popup
+PASS: original application canvas receives its legacy O shortcut
+PASS: standalone Ctrl+O opens application system GDS chooser
+PASS: standalone application chooser exposes actual GDS and OASIS formats
+PASS: standalone Ctrl+Shift+O targets package opening
+REGRESSION_CHOOSERS: app=PASS: host package chooser is distinct from application GDS chooser
+PASS: cancelling both choosers restores host input
+PASS: actual standalone Alt+V enters View menu
+PASS: actual standalone mnemonic opens View settings
+PASS: standalone mounts and captures public View settings modal
+PASS: actual native Escape cancels View settings
+VIEW_CANCEL_FOCUS: class=UiFrameworkSurface modal_visible=0 owner_enabled=1
+PASS: standalone modal cancellation restores canvas keyboard focus
+PASS: actual standalone Alt+L enters Layer menu
+PASS: actual standalone Import mnemonic opens system .lyp selector
+PASS: standalone Import has actual .lyp file filter
+PASS: cancel .lyp selector restores matching host input
+PASS: four actual host sizes retain visible GL content
+PASS: four actual host sizes retain visible GL content
+PASS: four actual host sizes retain visible GL content
+PASS: four actual host sizes retain visible GL content
+PASS: actual host minimize and restore retain content
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: standalone tab switch changes actual visible application surface
+PASS: capture switched tab with pinned assistant target
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: closing one instance preserves second instance and loaded module
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: last instance closes and actual module unloads after workers exit
+PASS: extracted application module is removed after unload
+PASS: owned standalone host exits normally
+PASS: launch matching distribution standalone host
+PASS: standalone host mounts independent current content surfaces without native business panes
+PASS: standalone process actually loads application DLL
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: last instance closes and actual module unloads after workers exit
+PASS: extracted application module is removed after unload
+PASS: owned standalone host exits normally
+
+      Start 19: kc_precision_input
+19/30 Test #19: kc_precision_input ...............   Passed   50.70 sec
+      Start 20: kc_application_workflows
+20/30 Test #20: kc_application_workflows .........***Failed    5.84 sec
+FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit7051596
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=23944 expected_pid=23944 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: actual exported descriptor agrees with manifest
+PASS: partial-init probe creates real application state with public host
+PASS: real application context above 2^53 is serialized exactly
+PASS: host without a content shell fails after partial GPU initialization
+PASS: partial initialization follows shared native/GPU cleanup path
+PASS: public TREE TABLE FORM registered
+PASS: application native business controls removed
+PASS: renderer mounted in real content slot
+PASS: asynchronous visible root and layer pages arrive
+PASS: create geometry using canonical command
+KEYBOARD_FOCUS: foreground 00000000078710B2 expected 00000000078710B2 focus 0000000005D4113C canvas 0000000005D4113C
+PASS: shortcut input is confined to the owned focused canvas
+PASS: real Ctrl+Z input reaches registered shortcut
+PASS: one physical shortcut executes exactly one semantic Undo
+PASS: text editing keeps its own Ctrl+Y shortcut
+PASS: real Ctrl+Y input reaches registered shortcut
+PASS: one physical shortcut executes exactly one semantic Redo
+PASS: text Ctrl+A is not registered as layout Select All or Ascend
+PASS: stable shape identity is decimal string
+PASS: 64-bit snapshot identities use JSON strings
+PASS: ID above 2^53 takes exact integer parsing and rejects missing object
+PASS: failed identity lookup leaves model and other instance intact
+PASS: select original stable object
+PASS: public draft field input for move
+PASS: navigation may change draft target
+PASS: property target remains explicit after navigation
+PASS: unrelated Cell creation permits submit to pinned original target
+PASS: successful draft accepts and preserves current navigation selection
+PASS: cancel transport rebinds current target
+PASS: create child text
+PASS: create child path
+PASS: return via canonical Cell command
+PASS: place compact skew array with fractional steps
+PASS: array context descent
+PASS: public status preserves hierarchy breadcrumb and array element context
+PASS: edit shared child in context
+PASS: return parent context
+PASS: mixed shape and array selection
+PASS: batch move one history step with undo redo
+PASS: independent clipboard snapshot
+PASS: cross-document paste through canonical pipeline
+PASS: pasted hierarchy retains compact sharing
+PASS: switch back preserves document and renderer
+PASS: current UI saves official reread fixture
+PASS: current UI saves official reread fixture
+PASS: second parent sharing same child
+PASS: complete hierarchy edit before modal
+PASS: package PNG resources use default 32 MiB image budget
+PASS: public straight RGBA create copies caller data
+PASS: image update publishes a new content version
+PASS: explicit image release stays with allocating module
+PASS: oversized image is rejected without raising default budget
+PASS: shared hierarchy root page updates incrementally
+PASS: complete main frame before Save/query overlap
+PASS: Save overlaps a real component read task
+PASS: readonly data publication does not toggle foreground command busy state
+PASS: Save waits for cancelled component query
+PASS: Save/query cancellation preserves complete frame without redundant progressive overwrite
+PASS: query only expanded TOP children
+PASS: first shared child has path-specific stable UI identity
+PASS: query second shared parent without expanding arrays
+PASS: same business Cell in second path has distinct UI identity
+PASS: old component generation posts copy without a UI pointer
+PASS: late obsolete batch cannot overwrite visible project
+PASS: copied thumbnail queue enforces default 8 MiB budget
+PASS: discarding stale thumbnails leaves image ownership bounded
+PASS: prepare original object for deleted-target draft check
+PASS: deleting an object retains its pending draft identity
+PASS: deleted original target refuses draft submit
+PASS: failed draft keeps input and modified flag
+PASS: undo restores original identity and revalidates unchanged properties
+PASS: restore fixture geometry and current Cell after draft test
+PASS: asynchronous parameter command remains pending
+PASS: parameter dialog uses instance modal
+PASS: other instance remains independently usable
+PASS: actual dialog typing targets only this process's modal
+PASS: physical Ctrl+A selects the dialog input text
+PASS: physical Unicode keys replace the selected dialog value
+PASS: real text input preserves Ctrl+A editing behavior and publishes a draft
+PASS: dialog resumes semantic rename and accepts input
+PASS: rename changed expected current Cell
+PASS: duplicate Cell name rejected
+PASS: simulated DPI and shrink path completes actual frame
+PASS: simulated DPI and shrink path completes actual frame
+PASS: simulated DPI and shrink path completes actual frame
+PASS: minimize restore completes actual OpenGL frame
+CANVAS_SCREEN: visible 1 enabled 1 rect 258,115-968,817 center owner 0000000005D4113C canvas 0000000005D4113C currentGL 0000000005D4113C rgb 3FB3F3 state {"instance_id":"1","cells":3,"layers":1,"shapes":4,"cell":"RENAMED","cell_id":2,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"workflow-query-save.gds","dbu":0.001,"generation":"38","rendered_generation":"38","center_x":30.1453521127,"center_y":19.9943661972,"scale":0.102535211268,"scale_y":0.102535211268,"progressive_generation":"9","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual visible OpenGL canvas presents nonblack geometry pixels
+PASS: owned verification window actually becomes foreground
+PASS: capture actual owned current workspace and OpenGL content
+PASS: current UI saves official reread fixture
+PASS: saved close waits for actual worker exit
+PASS: closing one instance keeps second alive
+PASS: actual component menu metadata opens the New Layer editor
+PASS: invalid physical layer retains the editor and rolls back
+FAIL: parameter typing requires the focused public component
+FAIL: real typing corrects the rejected physical layer and Submit creates it atomically
+LAYER_RETRY: field 65536 error Coordinate range exceeded active 1 state {"instance_id":"2","cells":2,"layers":1,"shapes":4,"cell":"TOP","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":true,"can_redo":false,"path":"workflow-paste.gds","dbu":0.001,"generation":"12","rendered_generation":"12","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":1,"render_cache_peak_bytes":68216,"selection_count":2,"selected_instance_id":"1","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":10,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: create real 4201-Cell / 300-layer paging fixture
+PASS: replace document with large public component data source
+PASS: visible pages report complete model totals without full DOM
+TEST_ACTIVATION: foreground_pid=23944 expected_pid=23944 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: page scrolling targets the actual owned TREE content
+PASS: query a distant layer page through public API
+PAGE_BEFORE: generation 32 first 60 rows 12 nodes 61 bytes 1048 layers-first 240
+PASS: scrolled pages use bounded cache and presentation nodes
+PASS: select an actual cached occurrence identity from the distant page
+PASS: ordinary editing changes only requested pages
+PASS: bind a draft before incremental refresh
+PASS: rename performs an incremental refresh
+PAGE_AFTER: generation 32 first 60 selected 4294967356 expected 4294967356 draft 7 flags 8
+PASS: same source preserves generation, scroll, occurrence selection and draft
+PASS: public sidebar floating keeps the mounted component slot
+PASS: redocking preserves component identity
+PASS: finish pinned paging draft before close
+PASS: unsaved close REFUSE exposes instance modal
+PASS: close confirmation dispatches through command
+PASS: unload then reload matched package
+PASS: make reloaded document unsaved for close confirmation
+PASS: current UI saves official reread fixture
+PASS: prepare unsaved document for locked-target close test
+PASS: own target lock prevents atomic replacement
+PASS: unsaved close first returns REFUSE
+PASS: close Save starts the existing asynchronous writer
+PASS: failed close Save preserves the live unsaved document
+PASS: retry close opens a fresh instance confirmation
+PASS: Cancel keeps document open without modification
+PASS: unsaved close REFUSE exposes instance modal
+PASS: close confirmation dispatches through command
+PASS: all callbacks workers and modules permit workspace destruction
+REGRESSION_RESULT: 133 checks 2 failures
+
+      Start 21: kc_usability_input
+21/30 Test #21: kc_usability_input ...............***Failed    2.34 sec
+FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit7051596
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=36264 expected_pid=36264 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: physical workflow owns the foreground canvas
+PARAM_COMMAND: status 0 visible 1 enabled 0 busy 0
+USER_KEY: key 66 ctrl 0 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":0,"cell":"TOP","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"","dbu":0.001,"generation":"6","rendered_generation":"6","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: mouse drag creates one rectangle through the registered tool
+USER_KEY: key 80 ctrl 0 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":64556,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 13 ctrl 0 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":2,"cell":"TOP","cell_id":0,"selected":"144115188075855872","selected_id":"144115188075855872","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"8","rendered_generation":"8","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: mouse vertices and Enter create one polygon
+USER_KEY: key 82 ctrl 0 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":2,"cell":"TOP","cell_id":0,"selected":"144115188075855872","selected_id":"144115188075855872","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"8","rendered_generation":"8","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 69 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":2,"cell":"TOP","cell_id":0,"selected":"144115188075855872","selected_id":"144115188075855872","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"8","rendered_generation":"8","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":6,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: Path and Ctrl+E expose independent creation parameters
+FAIL: parameter typing requires the focused public component
+FAIL: invalid path width keeps the real editor open without changing the document
+FAIL: failed submission preserves typed width draft
+USER_FIELD_OCCLUDED: width point 514,914 owner 0000000000050A3E root 0000000006D20F7E
+FAIL: real typing and Submit change new path width in micrometers
+PASS: unsaved close REFUSE exposes instance modal
+PASS: close confirmation dispatches through command
+PASS: all callbacks workers and modules permit workspace destruction
+REGRESSION_RESULT: 20 checks 4 failures
+
+      Start 22: kc_gl_offscreen
+22/30 Test #22: kc_gl_offscreen ..................   Passed    3.20 sec
+      Start 23: kc_hierarchy_input
+23/30 Test #23: kc_hierarchy_input ...............   Passed    4.47 sec
+      Start 24: kc_menu_input
+24/30 Test #24: kc_menu_input ....................   Passed   12.17 sec
+      Start 25: kc_view_settings
+25/30 Test #25: kc_view_settings .................   Passed    9.19 sec
+      Start 26: kc_workspace_input
+26/30 Test #26: kc_workspace_input ...............   Passed   27.82 sec
+      Start 27: kc_table_layout_input
+27/30 Test #27: kc_table_layout_input ............   Passed   26.10 sec
+      Start 28: kc_advanced_input
+28/30 Test #28: kc_advanced_input ................***Failed   81.47 sec
+FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit7051596
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=47508 expected_pid=47508 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+TEST_ACTIVATION: foreground_pid=47508 expected_pid=47508 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: own desktop foreground for new business input
+OASIS_CHOOSER: waiting pid 47508 time612535078 cancel0
+OASIS_CHOOSER: owned selector 00000000034B058C time612535375 UIthread49540
+OASIS_CHOOSER: exact filename confirmed and selector closed
+PASS: physical Ctrl O opens typed-metadata OASIS fixture
+PASS: ordinary load preserves shared Cell with compact array
+PASS: typed OASIS import remains instance-local
+FAIL: physical Alt F then metadata mnemonic opens the typed editor
+FAIL: public typed editor displays file scope and the exact encoded value
+PASS: capture real metadata entry and actual drawing
+FAIL: real typed form adds an ordered value while preserving exact uint64 draft
+FAIL: new ordered value becomes current without modifying document
+FAIL: real enum and text input enter a binary value beyond the old preview limit
+FAIL: page navigation first retains the first 64-byte draft page
+FAIL: scrolled typed editor keeps fixed target and byte-page context visible
+PASS: capture actual paged metadata context after navigation
+FAIL: second binary page is retained before navigating to final page
+FAIL: actual ordered Move up retains final binary page
+FAIL: actual Move down restores ordered binary value after the uint64
+FAIL: actual draft adds and removes a value without changing document or losing existing pages
+FAIL: actual navigation selects the retained binary value and semantic Save property
+METADATA_SAVE: submitted 0 success 1 replies 1 expected 2 result {"status":0,"message":"ok","selected":"0","selected_id":"0"}
+METADATA_FIELD: p0 text  error  flags 0
+METADATA_FIELD: p1 text  error  flags 0
+METADATA_FIELD: p2 text  error  flags 0
+METADATA_FIELD: p3 text  error  flags 0
+METADATA_FIELD: p4 text  error  flags 0
+METADATA_FIELD: p5 text  error  flags 0
+METADATA_FIELD: p6 text  error  flags 0
+METADATA_FIELD: p7 text  error  flags 0
+METADATA_FIELD: p8 text  error  flags 0
+METADATA_FIELD: p9 text  error  flags 0
+METADATA_FIELD: p10 text  error  flags 0
+METADATA_FIELD: p11 text  error  flags 0
+METADATA_FIELD: p12 text  error  flags 0
+METADATA_FIELD: p13 text  error  flags 0
+FAIL: one actual typed Save property commits and replies exactly once
+FAIL: capture typed editor and restore canvas keyboard focus after close
+OASIS_CHOOSER: waiting pid 47508 time612538453 cancel0
+OASIS_CHOOSER: owned selector 0000000006F60F7A time612538828 UIthread49540
+OASIS_CHOOSER: exact filename confirmed and selector closed
+HIERARCHY_MENU: path File item klayoutc.save_as status 0 located 0 rect 4,88,312,28 clicked 1 results 2 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"0","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual Save As routes typed edited data through the system chooser
+PASS: actual OASIS save completes atomically after typed edit
+FAIL: actual UI saved exact uint64 ordered values and all three binary pages
+PASS: physical Ctrl Z undoes the entire typed edit in one transaction
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 3 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"0","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual File menu reopens the pinned editor after undo
+PASS: undo restores original exact value and removes the complete ordered-value addition
+PASS: undo inspection closes without another submit
+PASS: physical redo and undo restore the complete typed transaction without duplicate operations
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 5 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"0","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real scoped metadata form starts an explicitly new pinned property
+PASS: actual scoped form edits exact name bytes and adds an ordered value
+PASS: actual scoped Save adds the property atomically and closes cleanly
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 10 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"0","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual scope and property index reload the complete saved typed property
+PASS: real scoped view and modification preserve pinned target and exact value
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"8","rendered_generation":"8","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"0","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 89 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"9","rendered_generation":"9","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"0","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical scoped Undo Redo preserve the individual property transaction
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 16 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"9","rendered_generation":"9","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"0","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual scoped Delete removes the selected property through the same semantic validation
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"10","rendered_generation":"10","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"0","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"11","rendered_generation":"11","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"0","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"12","rendered_generation":"12","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"12","progressive_tiles":16,"tiles_published":216,"tiles_dropped":148,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: three physical undos restore delete modify and add without partial metadata
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 23 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"12","rendered_generation":"12","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"12","progressive_tiles":16,"tiles_published":216,"tiles_dropped":148,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real scoped metadata form starts an explicitly new pinned property
+PASS: actual scoped form edits exact name bytes and adds an ordered value
+PASS: actual scoped Save adds the property atomically and closes cleanly
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 28 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"12","rendered_generation":"12","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"12","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual scope and property index reload the complete saved typed property
+PASS: real scoped view and modification preserve pinned target and exact value
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"13","rendered_generation":"13","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"13","progressive_tiles":16,"tiles_published":216,"tiles_dropped":145,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 89 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"14","rendered_generation":"14","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"14","progressive_tiles":16,"tiles_published":216,"tiles_dropped":151,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical scoped Undo Redo preserve the individual property transaction
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 34 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"14","rendered_generation":"14","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"14","progressive_tiles":16,"tiles_published":216,"tiles_dropped":151,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual scoped Delete removes the selected property through the same semantic validation
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"15","rendered_generation":"15","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"15","progressive_tiles":16,"tiles_published":216,"tiles_dropped":141,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"16","rendered_generation":"16","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"15","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"17","rendered_generation":"17","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":16,"tiles_published":216,"tiles_dropped":143,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: three physical undos restore delete modify and add without partial metadata
+USER_KEY: key 86 ctrl 0 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"17","rendered_generation":"17","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":16,"tiles_published":216,"tiles_dropped":143,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical canvas selects the compact instance for typed property editing
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 43 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"17","rendered_generation":"17","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":16,"tiles_published":216,"tiles_dropped":143,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":1,"selected_instance_id":"1","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real scoped metadata form starts an explicitly new pinned property
+PASS: actual scoped form edits exact name bytes and adds an ordered value
+PASS: actual scoped Save adds the property atomically and closes cleanly
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 48 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"17","rendered_generation":"17","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":1,"selected_instance_id":"1","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual scope and property index reload the complete saved typed property
+PASS: real scoped view and modification preserve pinned target and exact value
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"18","rendered_generation":"18","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 89 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"19","rendered_generation":"19","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical scoped Undo Redo preserve the individual property transaction
+PASS: physical canvas repicks the same target after existing Undo Redo clears selection
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 55 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"19","rendered_generation":"19","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":1,"selected_instance_id":"1","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual scoped Delete removes the selected property through the same semantic validation
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"20","rendered_generation":"20","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"21","rendered_generation":"21","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"22","rendered_generation":"22","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: three physical undos restore delete modify and add without partial metadata
+USER_KEY: key 68 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"23","rendered_generation":"23","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":288,"tiles_dropped":224,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical hierarchy navigation and canvas select the shared child shape
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 65 last {"status":0,"message":"ok","selected":"72057594037932032","selected_id":"72057594037932032"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"72057594037932032","selected_id":"72057594037932032","modified":false,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"23","rendered_generation":"23","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":288,"tiles_dropped":224,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":1,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real scoped metadata form starts an explicitly new pinned property
+PASS: actual scoped form edits exact name bytes and adds an ordered value
+PASS: actual scoped Save adds the property atomically and closes cleanly
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 70 last {"status":0,"message":"ok","selected":"72057594037932032","selected_id":"72057594037932032"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"72057594037932032","selected_id":"72057594037932032","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"23","rendered_generation":"23","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":288,"tiles_dropped":224,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":1,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual scope and property index reload the complete saved typed property
+PASS: real scoped view and modification preserve pinned target and exact value
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"24","rendered_generation":"24","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":288,"tiles_dropped":224,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 89 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"25","rendered_generation":"25","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":288,"tiles_dropped":224,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical scoped Undo Redo preserve the individual property transaction
+PASS: physical canvas repicks the same target after existing Undo Redo clears selection
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 77 last {"status":0,"message":"ok","selected":"72057594037932032","selected_id":"72057594037932032"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"72057594037932032","selected_id":"72057594037932032","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"25","rendered_generation":"25","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":288,"tiles_dropped":224,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":1,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual scoped Delete removes the selected property through the same semantic validation
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"26","rendered_generation":"26","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":288,"tiles_dropped":224,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"27","rendered_generation":"27","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"17","progressive_tiles":0,"tiles_published":288,"tiles_dropped":224,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"28","rendered_generation":"28","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":16,"tiles_published":288,"tiles_dropped":223,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: three physical undos restore delete modify and add without partial metadata
+HIERARCHY_MENU: path File item klayoutc.metadata status 0 located 0 rect 4,116,312,28 clicked 1 results 85 last {"status":0,"message":"ok","selected":"72057594037932032","selected_id":"72057594037932032"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"72057594037932032","selected_id":"72057594037932032","modified":false,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-ui.oas","dbu":0.001,"generation":"28","rendered_generation":"28","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":16,"tiles_published":288,"tiles_dropped":223,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":1,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":14,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real canvas and form pin a new legacy property to the child shape
+PASS: actual typed inputs build the standard legacy name and ordered attribute/string values
+PASS: real typed Save accepts the legal empty string without null-buffer access
+OASIS_CHOOSER: waiting pid 47508 time612588031 cancel0
+OASIS_CHOOSER: owned selector 0000000003010ECC time612588406 UIthread49540
+OASIS_CHOOSER: exact filename confirmed and selector closed
+HIERARCHY_MENU: path File item klayoutc.save_as status 0 located 0 rect 4,88,312,28 clicked 1 results 91 last {"status":0,"message":"ok","selected":"72057594037932032","selected_id":"72057594037932032"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"72057594037932032","selected_id":"72057594037932032","modified":false,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-empty-ui.oas","dbu":0.001,"generation":"28","rendered_generation":"28","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":288,"tiles_dropped":224,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":1,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual Save As exports the empty legacy property
+PASS: real empty-string atomic save completes
+PASS: saved actual UI property retains attribute7 and a zero-byte string
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"LEAF","cell_id":0,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-empty-ui.oas","dbu":0.001,"generation":"29","rendered_generation":"29","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":288,"tiles_dropped":224,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":1,"edit_context":true,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical Undo removes the entire empty legacy property transaction
+USER_KEY: key 65 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-empty-ui.oas","dbu":0.001,"generation":"30","rendered_generation":"30","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":1,"selected_instance_id":"1","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+HIERARCHY_MENU: path Edit item klayoutc.selection_clear status 0 located 0 rect 4,246,312,28 clicked 1 results 94 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-empty-ui.oas","dbu":0.001,"generation":"30","rendered_generation":"30","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical ascend and actual Clear selection restore the original root workflow
+HIERARCHY_MENU: path Layer item klayoutc.layer_new status 0 located 0 rect 4,32,312,28 clicked 1 results 94 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":2,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":false,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-empty-ui.oas","dbu":0.001,"generation":"30","rendered_generation":"30","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":10,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual Layer menu creates explicit output layer
+PASS: real new-layer form commits 99/0
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_size status 0 located 0 rect 4,144,312,28 clicked 1 results 96 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-empty-ui.oas","dbu":0.001,"generation":"31","rendered_generation":"31","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":216,"tiles_dropped":152,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":76900,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":13,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual Region menu opens expanded sizing workflow
+PASS: capture expanded form before input
+PASS: actual component inputs select bounded hierarchy anisotropic distance and mode 4
+PASS: hierarchical viewport window is visible and pinned
+PASS: other instance works during hierarchy draft
+PASS: Y-distance draft survives independent instance activity
+PASS: capture actual hierarchy parameters including scrolled form
+PASS: one actual Submit computes bounded hierarchy and commits atomically
+PASS: one transaction emits six results without expanding or replacing shared source
+PASS: actual table input hides source layers to inspect output
+PASS: capture real WGL hierarchy sizing output
+PASS: actual WGL pixels show expanded anisotropic region and background
+ADVANCED_KEYBOARD_BEFORE: active 1 requested 1 focus 0000000005DE113C canvas 00000000004308BE foreground 0000000003FE0C54 root 0000000003FE0C54
+TEST_ACTIVATION: foreground_pid=47508 expected_pid=47508 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: physical undo owns settled foreground canvas focus
+PASS: physical Ctrl Z removes all six Region outputs as one transaction
+ADVANCED_UNDO: results 105 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":2,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-empty-ui.oas","dbu":0.001,"generation":"37","rendered_generation":"37","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical Ctrl Y restores exactly six outputs
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_merge status 0 located 0 rect 4,4,312,28 clicked 1 results 106 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":8,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-empty-ui.oas","dbu":0.001,"generation":"38","rendered_generation":"38","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":13,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: submit attributed hierarchy with default Reject policy
+PASS: attribute rejection keeps original geometry and modal draft
+PASS: explicit user consent permits geometric output while preserving source properties
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_merge status 0 located 0 rect 4,4,312,28 clicked 1 results 110 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-empty-ui.oas","dbu":0.001,"generation":"39","rendered_generation":"39","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":13,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: submit prohibited hierarchy replacement through actual form
+PASS: shared source protection rejects atomically and Cancel restores focus
+OASIS_CHOOSER: waiting pid 47508 time612597625 cancel0
+OASIS_CHOOSER: owned selector 000000000392108E time612597968 UIthread49540
+OASIS_CHOOSER: exact filename confirmed and selector closed
+HIERARCHY_MENU: path File item klayoutc.save_as status 0 located 0 rect 4,88,312,28 clicked 1 results 114 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\advanced-ui-output.oas","dbu":0.001,"generation":"39","rendered_generation":"39","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual format menu saves OASIS with metadata and Region results
+PASS: ordinary atomic OASIS save finishes successfully
+PASS: saved real-UI result retains one compact array and unchanged shared source Cell
+PASS: all operations remain isolated from second instance
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_size status 0 located 0 rect 4,144,312,28 clicked 1 results 114 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\advanced-ui-output.oas","dbu":0.001,"generation":"39","rendered_generation":"39","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":13,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real form submits invalid off-grid distance
+PASS: off-grid validation retains draft and leaves model unchanged
+PASS: cancel failed draft restores actual canvas input
+PASS: prepare the independent GDS document for its actual metadata menu
+PASS: physical metadata mnemonic opens the second GDS instance
+PASS: typed editor reports the independent empty GDS file scope
+PASS: GDS metadata Cancel preserves the original OASIS instance and returns focus
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_merge status 0 located 0 rect 4,4,312,28 clicked 1 results 119 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\advanced-ui-output.oas","dbu":0.001,"generation":"40","rendered_generation":"40","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":13,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real hierarchy Merge with Same attributes preserves six attributed outputs
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_merge status 0 located 0 rect 4,4,312,28 clicked 1 results 121 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":20,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\advanced-ui-output.oas","dbu":0.001,"generation":"41","rendered_generation":"41","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"28","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":13,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual Require identical submits heterogeneous property groups
+PASS: property conflict retains exact policy draft and all geometry before Cancel
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\advanced-ui-output.oas","dbu":0.001,"generation":"42","rendered_generation":"42","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"42","progressive_tiles":16,"tiles_published":132,"tiles_dropped":67,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical Undo removes the complete grouped Merge transaction
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_intersection status 0 located 0 rect 4,60,312,28 clicked 1 results 125 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\advanced-ui-output.oas","dbu":0.001,"generation":"42","rendered_generation":"42","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"42","progressive_tiles":16,"tiles_published":132,"tiles_dropped":67,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":13,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual AND form propagates A attributes through bounded hierarchy
+OASIS_CHOOSER: waiting pid 47508 time612607062 cancel0
+OASIS_CHOOSER: owned selector 000000000328112C time612607406 UIthread49540
+OASIS_CHOOSER: exact filename confirmed and selector closed
+HIERARCHY_MENU: path File item klayoutc.save_as status 0 located 0 rect 4,88,312,28 clicked 1 results 128 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":20,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-region-ui.oas","dbu":0.001,"generation":"43","rendered_generation":"43","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"43","progressive_tiles":16,"tiles_published":132,"tiles_dropped":67,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual Save As exports Region output attributes
+PASS: real atomic property-preserving Region save completes
+PASS: saved real UI outputs contain six exact A property sets
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-region-ui.oas","dbu":0.001,"generation":"44","rendered_generation":"44","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"43","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":2,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical Undo restores all source Cells after Keep A
+USER_KEY: key 68 ctrl 0 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"LEAF","cell_id":0,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-region-ui.oas","dbu":0.001,"generation":"50","rendered_generation":"50","center_x":49.9532763533,"center_y":49.9532763533,"scale":0.16113960114,"scale_y":0.16113960114,"progressive_generation":"43","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":1,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":4,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical table and canvas select the attributed rectangle in the shared child Cell view
+HIERARCHY_MENU: path Edit/Region item klayoutc.region_size status 0 located 0 rect 4,144,312,28 clicked 1 results 136 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"LEAF","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-region-ui.oas","dbu":0.001,"generation":"50","rendered_generation":"50","center_x":49.9532763533,"center_y":49.9532763533,"scale":0.16113960114,"scale_y":0.16113960114,"progressive_generation":"43","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":1,"selected_instance_id":"0","edit_depth":1,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":13,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":4,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real form submits mixed-sign rectangle in excluded mode0
+PASS: unsupported official-contract combination retains parameters and geometry
+PASS: actual supported mode5 mixed sizing adds one attributed polygon atomically
+PASS: actual child-Cell WGL displays mixed sizing output with source layer hidden
+COMPLETION_MIXED_PIXELS: inside 9378F4 outside 241C18 state {"instance_id":"1","cells":2,"layers":3,"shapes":15,"cell":"LEAF","cell_id":0,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-region-ui.oas","dbu":0.001,"generation":"55","rendered_generation":"55","center_x":49.9532763533,"center_y":49.9532763533,"scale":0.16113960114,"scale_y":0.16113960114,"progressive_generation":"43","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":1,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":6,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real WGL pixels show one expanded axis and one contracted axis
+USER_KEY: key 90 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"LEAF","cell_id":0,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-region-ui.oas","dbu":0.001,"generation":"56","rendered_generation":"56","center_x":49.9532763533,"center_y":49.9532763533,"scale":0.16113960114,"scale_y":0.16113960114,"progressive_generation":"43","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":1,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":6,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 65 ctrl 1 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":2,"layers":3,"shapes":14,"cell":"TOP","cell_id":1,"selected":"0","selected_id":"0","modified":true,"busy":false,"can_undo":true,"can_redo":true,"path":"D:\\应用软件框架\\应用层序框架\\build\\experience-20261007\\business-after\\completion-region-ui.oas","dbu":0.001,"generation":"57","rendered_generation":"57","center_x":449.686309859,"center_y":350.107267606,"scale":0.790309859155,"scale_y":0.790309859155,"progressive_generation":"43","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":1,"selected_instance_id":"1","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":2,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":99,"datatype":0,"rgba":"0xF47893FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":6,"display_redo":0,"file_format":"OASIS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: physical Undo and Ascend restore original shared source and context
+ADVANCED_INPUT_RESULT: 130 checks 15 failures
+PASS: unsaved close REFUSE exposes instance modal
+PASS: close confirmation dispatches through command
+PASS: all callbacks workers and modules permit workspace destruction
+REGRESSION_RESULT: 133 checks 15 failures
+
+      Start 29: kc_oasis_input_fixture
+29/30 Test #29: kc_oasis_input_fixture ...........   Passed    0.08 sec
+      Start 30: kc_oasis_region_input
+30/30 Test #30: kc_oasis_region_input ............   Passed   26.89 sec
+
+87% tests passed, 4 tests failed out of 30
+
+Total Test time (real) = 275.43 sec
+
+The following tests FAILED:
+	 18 - kc_host (Failed)
+	 20 - kc_application_workflows (Failed)
+	 21 - kc_usability_input (Failed)
+	 28 - kc_advanced_input (Failed)
+Errors while running CTest

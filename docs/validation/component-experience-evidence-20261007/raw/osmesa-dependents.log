@@ -1,0 +1,27 @@
+Microsoft (R) COFF/PE Dumper Version 14.50.35727.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file .deps\mesa-24.3.4\x64\osmesa.dll
+
+File Type: DLL
+
+  Image has the following dependencies:
+
+    libglapi.dll
+    SHELL32.dll
+    ole32.dll
+    ADVAPI32.dll
+    ntdll.dll
+    KERNEL32.dll
+
+  Summary
+
+      122000 .data
+        1000 .fptable
+      153000 .pdata
+      EE0000 .rdata
+       26000 .reloc
+        1000 .rsrc
+     2101000 .text
+        1000 _RDATA

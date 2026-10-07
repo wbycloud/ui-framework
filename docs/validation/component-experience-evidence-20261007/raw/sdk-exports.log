@@ -1,0 +1,253 @@
+Microsoft (R) COFF/PE Dumper Version 14.50.35727.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file build\experience-20261007\sdk\bin\ui_framework.dll
+
+File Type: DLL
+
+  Section contains the following exports for ui_framework.dll
+
+    00000000 characteristics
+    FFFFFFFF time date stamp
+        0.00 version
+           1 ordinal base
+         225 number of functions
+         225 number of names
+
+    ordinal hint RVA      name
+
+          1    0 0001F7C0 ui_app_callback_enter
+          2    1 0001F7E0 ui_app_callback_leave
+          3    2 0001F800 ui_app_resource_read
+          4    3 0001F860 ui_app_resource_release
+          5    4 00008BF0 ui_assistant_begin_transaction
+          6    5 00008C40 ui_assistant_cancel
+          7    6 00008CB0 ui_assistant_commit_transaction
+          8    7 00008CE0 ui_assistant_create
+          9    8 00008E10 ui_assistant_destroy
+         10    9 00008EA0 ui_assistant_forget_request
+         11    A 00008F10 ui_assistant_get_state_snapshot
+         12    B 00008F70 ui_assistant_invoke
+         13    C 000090E0 ui_assistant_is_cancelled
+         14    D 00009120 ui_assistant_register_command
+         15    E 000092D0 ui_assistant_report_progress
+         16    F 00009360 ui_assistant_rollback_transaction
+         17   10 00009390 ui_assistant_undo_transaction
+         18   11 000093C0 ui_assistant_visit_commands
+         19   12 00013760 ui_component_accept_fields
+         20   13 00013D10 ui_component_capture_rgba
+         21   14 00013E20 ui_component_close_dialog
+         22   15 00013F50 ui_component_dispatch_input
+         23   16 00014000 ui_component_expand
+         24   17 000141C0 ui_component_find
+         25   18 00014220 ui_component_fit_column
+         26   19 000145C0 ui_component_flush
+         27   1A 000145F0 ui_component_get_column_width
+         28   1B 00014680 ui_component_get_field
+         29   1C 00014770 ui_component_get_presentation
+         30   1D 000147A0 ui_component_get_selection
+         31   1E 00014810 ui_component_get_state
+         32   1F 000149E0 ui_component_insert_rows
+         33   20 00014EF0 ui_component_mount
+         34   21 000151D0 ui_component_mount_offscreen
+         35   22 00015390 ui_component_query
+         36   23 000153F0 ui_component_register
+         37   24 00016160 ui_component_remove_rows
+         38   25 00016490 ui_component_reset_columns
+         39   26 00016550 ui_component_restore_columns
+         40   27 000168C0 ui_component_save_columns
+         41   28 00016A70 ui_component_select
+         42   29 00016AA0 ui_component_select_range
+         43   2A 00016C10 ui_component_set_column_width
+         44   2B 00016CE0 ui_component_set_error
+         45   2C 00016DD0 ui_component_set_field
+         46   2D 00017020 ui_component_set_selection
+         47   2E 00017210 ui_component_set_sort
+         48   2F 00017600 ui_component_set_source
+         49   30 00017740 ui_component_set_text
+         50   31 000177C0 ui_component_set_visible
+         51   32 00017850 ui_component_show_dialog
+         52   33 00017A50 ui_component_show_menu
+         53   34 00017B00 ui_component_submit
+         54   35 00017D20 ui_component_submit_selection
+         55   36 00017E80 ui_component_thumbnail
+         56   37 000180F0 ui_component_unregister
+         57   38 00018170 ui_component_update_rows
+         58   39 000188E0 ui_components_set_theme
+         59   3A 00028A40 ui_content_slot_attach_surface
+         60   3B 00028C60 ui_content_slot_attach_web_view
+         61   3C 00028D20 ui_content_slot_get_pixel_rect
+         62   3D 00028D70 ui_content_slot_get_rect
+         63   3E 00028DC0 ui_content_slot_native_handle
+         64   3F 00005570 ui_framework_initialize
+         65   40 00005580 ui_framework_supports_api
+         66   41 0001C860 ui_host_close_menu
+         67   42 00005590 ui_host_create
+         68   43 00005670 ui_host_destroy
+         69   44 000058F0 ui_host_dispatch_shortcut
+         70   45 00005980 ui_host_emit_event
+         71   46 000059F0 ui_host_get_command_state
+         72   47 00005A50 ui_host_get_dpi
+         73   48 00005A70 ui_host_get_min_size
+         74   49 00005BD0 ui_host_get_rect
+         75   4A 00005C20 ui_host_get_run_mode
+         76   4B 00028E10 ui_host_get_shell
+         77   4C 00005C40 ui_host_get_sidebar_state
+         78   4D 00005C80 ui_host_handle_message
+         79   4E 0001C9D0 ui_host_hide_tooltip
+         80   4F 00005CB0 ui_host_invoke
+         81   50 0001CA10 ui_host_menu_capture_rgba
+         82   51 0001CA80 ui_host_menu_dispatch_input
+         83   52 0001D190 ui_host_menu_flush
+         84   53 0001D1D0 ui_host_menu_get_capabilities
+         85   54 0001D1F0 ui_host_menu_get_item_presentation
+         86   55 0001D2F0 ui_host_menu_get_presentation
+         87   56 00005E40 ui_host_register_command
+         88   57 0001D330 ui_host_register_menu_group
+         89   58 00005FB0 ui_host_register_menu_item
+         90   59 000061F0 ui_host_register_panel
+         91   5A 000063A0 ui_host_register_toolbar
+         92   5B 000064F0 ui_host_register_toolbar_item
+         93   5C 000066D0 ui_host_reply
+         94   5D 000067C0 ui_host_resize
+         95   5E 00006840 ui_host_set_command_state
+         96   5F 000068F0 ui_host_set_dpi
+         97   60 00006A10 ui_host_set_item_image
+         98   61 00006B60 ui_host_set_item_state
+         99   62 00006C90 ui_host_set_layout
+        100   63 00006DF0 ui_host_set_narrow_policy_callback
+        101   64 0001D4E0 ui_host_show_menu
+        102   65 0001D720 ui_host_show_toolbar_menu
+        103   66 0001D900 ui_host_show_tooltip
+        104   67 00018930 ui_host_status_text
+        105   68 0001DA90 ui_host_visit_menu
+        106   69 0000CA90 ui_image_create
+        107   6A 0000CCA0 ui_image_create_preview
+        108   6B 0000D190 ui_image_get_info
+        109   6C 0000D280 ui_image_get_stats
+        110   6D 0000D340 ui_image_load_png
+        111   6E 0000D810 ui_image_load_resource
+        112   6F 0000DC30 ui_image_release
+        113   70 0000DD40 ui_image_set_limit
+        114   71 0000DE00 ui_image_update
+        115   72 00041FB0 ui_light_web_backend_capabilities
+        116   73 00041FC0 ui_light_web_backend_create
+        117   74 00042080 ui_light_web_backend_destroy
+        118   75 00028E20 ui_native_shell_create
+        119   76 00028E40 ui_native_shell_create_web
+        120   77 00028E50 ui_native_shell_destroy
+        121   78 00029030 ui_native_shell_handle_message
+        122   79 00029260 ui_native_shell_menu_handle
+        123   7A 00029270 ui_native_shell_panel_handle
+        124   7B 000292A0 ui_native_shell_reflow
+        125   7C 0002A2A0 ui_native_shell_refresh
+        126   7D 0002A350 ui_native_shell_set_active
+        127   7E 0002A450 ui_native_shell_set_panel_floating
+        128   7F 00007350 ui_opengl_offscreen_render
+        129   80 000073C0 ui_opengl_offscreen_surface_create
+        130   81 00007510 ui_opengl_surface_create
+        131   82 00023090 ui_opengl_surface_get_info
+        132   83 00023360 ui_opengl_surface_get_proc_address
+        133   84 00007550 ui_opengl_surface_get_window_dependency
+        134   85 00007590 ui_opengl_windowless_surface_create
+        135   86 0000ABA0 ui_package_destroy
+        136   87 0000AC20 ui_package_entry_count
+        137   88 0000AC30 ui_package_get_entry
+        138   89 0000AC80 ui_package_get_metadata
+        139   8A 0000AC90 ui_package_open
+        140   8B 0000B460 ui_package_pack
+        141   8C 0000C070 ui_package_read
+        142   8D 0000C180 ui_package_release
+        143   8E 0002A5A0 ui_shell_activate_panel
+        144   8F 0002A6A0 ui_shell_begin_panel_drag
+        145   90 0002A7E0 ui_shell_begin_splitter_drag
+        146   91 0002A9E0 ui_shell_dock_panel_tab
+        147   92 0002ABD0 ui_shell_end_panel_drag
+        148   93 0002B140 ui_shell_get_content_slot
+        149   94 0002B1D0 ui_shell_get_panel_layout
+        150   95 0002B390 ui_shell_get_slot_state
+        151   96 0002B4E0 ui_shell_refresh
+        152   97 0002B6A0 ui_shell_reset_layout
+        153   98 0002B810 ui_shell_resize_splitter
+        154   99 0002BBA0 ui_shell_restore_layout
+        155   9A 0002C3F0 ui_shell_save_layout
+        156   9B 0002CDE0 ui_shell_set_bottom_height
+        157   9C 0002CE30 ui_shell_set_panel_layout
+        158   9D 0002D1D0 ui_shell_update_panel_drag
+        159   9E 000076B0 ui_surface_create
+        160   9F 000078B0 ui_surface_destroy
+        161   A0 00007930 ui_surface_dispatch_input
+        162   A1 00007A90 ui_surface_get_pixel_rect
+        163   A2 00007AB0 ui_surface_get_rect
+        164   A3 00007AD0 ui_surface_invalidate
+        165   A4 00007AE0 ui_surface_layout_region
+        166   A5 00007AF0 ui_surface_make_current
+        167   A6 00007B00 ui_surface_native_handle
+        168   A7 00007B10 ui_surface_set_callbacks
+        169   A8 00007B80 ui_surface_set_input_callback
+        170   A9 00007BA0 ui_surface_set_layout_region
+        171   AA 00007C30 ui_surface_set_rect
+        172   AB 00007E10 ui_surface_set_visible
+        173   AC 00007E70 ui_surface_swap_buffers
+        174   AD 00007E80 ui_web_backend_create
+        175   AE 00007FE0 ui_web_backend_destroy
+        176   AF 00008160 ui_web_view_capture_rgba
+        177   B0 00008200 ui_web_view_create
+        178   B1 000082E0 ui_web_view_destroy
+        179   B2 000083C0 ui_web_view_dispatch_input
+        180   B3 00008450 ui_web_view_flush
+        181   B4 000084E0 ui_web_view_get_capabilities
+        182   B5 00008570 ui_web_view_get_element_rect
+        183   B6 00008600 ui_web_view_get_presentation
+        184   B7 00008690 ui_web_view_get_rect
+        185   B8 000086B0 ui_web_view_invalidate
+        186   B9 00008730 ui_web_view_load_html
+        187   BA 000087B0 ui_web_view_native_handle
+        188   BB 00008820 ui_web_view_post_json
+        189   BC 000088C0 ui_web_view_resize
+        190   BD 00008920 ui_web_view_set_layout_region
+        191   BE 000089A0 ui_web_view_set_message_callback
+        192   BF 00008A60 ui_web_view_set_rect
+        193   C0 00032690 ui_webview2_backend_create
+        194   C1 00032970 ui_webview2_backend_destroy
+        195   C2 00032A10 ui_webview2_runtime_status
+        196   C3 00032A70 ui_webview2_view_execute_script
+        197   C4 00032BE0 ui_webview2_view_get_bounds
+        198   C5 00032D60 ui_webview2_view_get_error
+        199   C6 00032DC0 ui_webview2_view_get_state
+        200   C7 0001F870 ui_workspace_activate
+        201   C8 00007B00 ui_workspace_active
+        202   C9 0001F9C0 ui_workspace_cancel
+        203   CA 0001FA60 ui_workspace_close
+        204   CB 0001FC60 ui_workspace_close_all
+        205   CC 0001FE80 ui_workspace_count
+        206   CD 0001FEA0 ui_workspace_create
+        207   CE 00020020 ui_workspace_destroy
+        208   CF 00020170 ui_workspace_flush
+        209   D0 000202C0 ui_workspace_get_instance
+        210   D1 00020380 ui_workspace_get_run_mode
+        211   D2 000203A0 ui_workspace_handle_message
+        212   D3 00020470 ui_workspace_instance_at
+        213   D4 000204A0 ui_workspace_invoke
+        214   D5 00020540 ui_workspace_last_error
+        215   D6 00020560 ui_workspace_open
+        216   D7 00020890 ui_workspace_poll
+        217   D8 000208A0 ui_workspace_post_close_complete
+        218   D9 000208E0 ui_workspace_post_component_batch
+        219   DA 00020A10 ui_workspace_post_component_selection
+        220   DB 00020BC0 ui_workspace_post_event
+        221   DC 00020C00 ui_workspace_post_progress
+        222   DD 00020C50 ui_workspace_post_result
+        223   DE 00020CA0 ui_workspace_post_thumbnail
+        224   DF 00020F30 ui_workspace_set_component_queue_limit
+        225   E0 00020FE0 ui_workspace_set_rect
+
+  Summary
+
+        B000 .data
+        D000 .pdata
+       CA000 .rdata
+        5000 .reloc
+        1000 .rsrc
+      129000 .text

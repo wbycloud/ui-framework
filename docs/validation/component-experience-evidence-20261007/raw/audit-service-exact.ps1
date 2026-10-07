@@ -1,0 +1,5 @@
+Add-Type -TypeDefinition @"
+using System;using System.Runtime.InteropServices;
+public static class ServiceAccessAuditExact { [DllImport("advapi32.dll",CharSet=CharSet.Unicode,SetLastError=true)] public static extern IntPtr OpenSCManager(IntPtr machine,IntPtr database,uint access); [DllImport("advapi32.dll")]public static extern bool CloseServiceHandle(IntPtr h); }
+"@
+$taskSvc=[ServiceAccessAuditExact]::OpenSCManager([IntPtr]::Zero,[IntPtr]::Zero,2);$taskServiceError=[Runtime.InteropServices.Marshal]::GetLastWin32Error();if($taskSvc -ne [IntPtr]::Zero){[ServiceAccessAuditExact]::CloseServiceHandle($taskSvc)|Out-Null};$taskEnv=Get-Content -LiteralPath build/experience-20261007/environment-final.json -Raw | ConvertFrom-Json;$taskEnv.win32_error=$taskServiceError;$taskEnv.scm_create_service_access=($taskSvc -ne [IntPtr]::Zero);$taskEnv.audit_time=Get-Date -Format o;$taskEnv | ConvertTo-Json | Set-Content -LiteralPath build/experience-20261007/environment-final.json -Encoding utf8; Get-Content build/experience-20261007/environment-final.json

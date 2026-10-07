@@ -1,0 +1,36 @@
+[1/40] Building C object CMakeFiles\ui_framework_shared.dir\src\menus.c.obj
+[2/40] Building C object CMakeFiles\ui_framework.dir\src\menus.c.obj
+[3/40] Building C object CMakeFiles\ui_framework_headless.dir\src\menus.c.obj
+[4/40] Building C object CMakeFiles\ui_framework_shared.dir\src\components.c.obj
+[5/40] Building C object CMakeFiles\ui_framework.dir\src\components.c.obj
+[6/40] Building C object CMakeFiles\ui_framework_headless.dir\src\components.c.obj
+[7/40] Linking C static library ui_framework.lib
+[8/40] Linking C static library ui_framework_headless.lib
+[9/40] Linking C shared library ui_framework.dll
+[10/33] Linking C executable uapp_pack.exe
+[11/33] Linking C executable minimal_eda.exe
+[12/33] Linking C executable ui_workspace_layout_test.exe
+[13/33] Linking C executable ui_package_format_test.exe
+[14/33] Generating session0_gl_app.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/experience-20261007/native/session0_gl_app.uapp
+[15/33] Linking C executable ui_native_activation_test.exe
+[16/33] Generating minimal_eda.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/experience-20261007/native/minimal_eda.uapp
+[17/33] Linking C executable ui_images_windows_test.exe
+[18/33] Linking C executable ui_dpi_integration_test.exe
+[19/33] Linking C executable ui_assistant_lifecycle_test.exe
+[20/33] Linking C executable ui_responsive_layout_test.exe
+[21/33] Linking C executable ui_dpi_web_failure_test.exe
+[22/33] Linking C executable ui_components_core_test.exe
+[23/33] Linking C executable ui_headless_example.exe
+[24/33] Linking C executable ui_public_headers_c_test.exe
+[25/33] Linking CXX executable ui_public_headers_cpp_test.exe
+[26/33] Linking C executable ui_opengl_integration_test.exe
+[27/33] Linking C executable ui_monitor_transition_test.exe
+[28/33] Linking C executable ui_surface_input_test.exe
+[29/33] Generating cpp_fixture.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/experience-20261007/native/cpp_fixture.uapp
+[30/33] Linking C executable ui_workspace7_test.exe
+[31/33] Linking C executable ui_native_shell_integration_test.exe
+[32/33] Linking C executable ui_native_responsive_test.exe
+[33/33] Linking C executable ui_assistant_protocol_test.exe

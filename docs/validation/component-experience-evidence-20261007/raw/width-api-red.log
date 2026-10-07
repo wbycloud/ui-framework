@@ -1,0 +1,72 @@
+[1/119] Building C object CMakeFiles\ui_framework.dir\src\menus.c.obj
+[2/119] Building C object CMakeFiles\ui_framework_shared.dir\src\menus.c.obj
+[3/119] Building C object CMakeFiles\ui_framework.dir\src\platform\win32_shell.c.obj
+[4/119] Building C object CMakeFiles\ui_framework_shared.dir\src\platform\win32_shell.c.obj
+[5/119] Building C object CMakeFiles\ui_framework.dir\src\backends\webview2.c.obj
+[6/119] Building C object CMakeFiles\ui_framework_shared.dir\src\backends\webview2.c.obj
+[7/119] Linking C static library light_web\quickjs\qjs.lib
+[8/119] Building C object CMakeFiles\ui_offscreen_msaa_test.dir\tests\offscreen_msaa.c.obj
+[9/119] Building C object CMakeFiles\ui_offscreen_gl_test.dir\tests\offscreen_gl.c.obj
+[10/119] Building C object CMakeFiles\ui_component_widths_test.dir\tests\component_widths.c.obj
+[11/119] Building C object CMakeFiles\ui_menu_offscreen_test.dir\tests\menu_offscreen.c.obj
+D:\应用软件框架\应用层序框架\tests\menu_offscreen.c(40): warning C4113: “void (__cdecl *)(ui_host_t *,uint64_t,const char *,const char *,void *)”和“ui_command_handler_fn”的参数列表不同
+[12/119] Building C object CMakeFiles\ui_framework.dir\src\components.c.obj
+[13/119] Building C object CMakeFiles\ui_framework_shared.dir\src\components.c.obj
+[14/119] Building RC object CMakeFiles\framework_host.dir\generated\host.rc.res
+[15/119] Building C object CMakeFiles\ui_menu_cascade_offscreen_test.dir\tests\menu_cascade_offscreen.c.obj
+[16/119] Linking C static library ui_framework.lib
+[17/119] Building C object CMakeFiles\ui_floating_web_dpi_test.dir\tests\floating_web_dpi.c.obj
+[18/119] Building C object CMakeFiles\ui_web_text_edit_test.dir\tests\web_text_edit.c.obj
+[19/119] Building C object CMakeFiles\ui_light_web_dynamic_test.dir\tests\light_web_dynamic.c.obj
+[20/119] Building C object CMakeFiles\ui_menu_access_test.dir\tests\menu_access.c.obj
+[21/119] Building C object CMakeFiles\ui_web_shell_slots_test.dir\tests\web_shell_slots.c.obj
+[22/119] Building C object CMakeFiles\ui_dpi_integration_test.dir\tests\dpi_integration.c.obj
+[23/119] Building C object CMakeFiles\ui_monitor_transition_test.dir\tests\monitor_transition.c.obj
+[24/119] Building C object CMakeFiles\ui_opengl_integration_test.dir\tests\opengl_integration.c.obj
+[25/119] Building C object CMakeFiles\ui_surface_input_test.dir\tests\surface_input.c.obj
+[26/119] Building C object CMakeFiles\ui_workspace7_test.dir\tests\workspace7.c.obj
+[27/119] Linking C executable uapp_pack.exe
+[28/119] Building C object CMakeFiles\ui_native_activation_test.dir\tests\native_activation.c.obj
+[29/119] Building C object CMakeFiles\ui_assistant_protocol_test.dir\tests\assistant_protocol.c.obj
+[30/119] Building C object CMakeFiles\ui_native_shell_integration_test.dir\tests\native_shell_integration.c.obj
+[31/119] Building C object CMakeFiles\ui_native_responsive_test.dir\tests\native_responsive.c.obj
+[32/119] Linking C executable light_web_probe.exe
+[33/119] Linking C executable ui_images_windows_test.exe
+[34/119] Linking C executable minimal_eda.exe
+[35/119] Linking C executable ui_package_format_test.exe
+[36/119] Linking C executable ui_responsive_layout_test.exe
+[37/119] Linking C executable ui_assistant_lifecycle_test.exe
+[38/119] Linking C executable ui_components_core_test.exe
+[39/119] Linking C executable ui_dpi_web_failure_test.exe
+[40/119] Linking C executable ui_headless_example.exe
+[41/119] Linking C executable ui_public_headers_c_test.exe
+[42/119] Linking CXX executable ui_public_headers_cpp_test.exe
+[43/119] Linking C executable ui_workspace_layout_test.exe
+[44/119] Linking C executable ui_light_scroll_test.exe
+[45/119] Linking C executable ui_offscreen_gl_test.exe
+[46/119] Linking C executable ui_menu_offscreen_test.exe
+[47/119] Linking C executable ui_menu_access_test.exe
+[48/119] Linking C executable ui_menu_cascade_offscreen_test.exe
+[49/119] Linking C executable ui_light_web_dynamic_test.exe
+[50/119] Linking C executable ui_web_text_edit_test.exe
+[51/119] Linking C executable ui_web_shell_slots_test.exe
+[52/119] Linking C executable ui_floating_web_dpi_test.exe
+[53/119] Linking C executable ui_component_widths_test.exe
+FAILED: ui_component_widths_test.exe 
+C:\WINDOWS\system32\cmd.exe /C "cd . && "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1950 --intdir=CMakeFiles\ui_component_widths_test.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\mt.exe --manifests  -- C:\PROGRA~2\MICROS~3\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\link.exe /nologo CMakeFiles\ui_component_widths_test.dir\tests\component_widths.c.obj  /out:ui_component_widths_test.exe /implib:ui_component_widths_test.lib /pdb:ui_component_widths_test.pdb /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:console  ui_framework.lib  user32.lib  gdi32.lib  opengl32.lib  comctl32.lib  imm32.lib  usp10.lib  msimg32.lib  ole32.lib  windowscodecs.lib  uuid.lib  D:\应用软件框架\应用层序框架\cmake\..\.deps\Microsoft.Web.WebView2.1.0.4129.50\build\native\x64\WebView2LoaderStatic.lib  shlwapi.lib  user32.lib  gdi32.lib  opengl32.lib  comctl32.lib  imm32.lib  usp10.lib  msimg32.lib  ole32.lib  windowscodecs.lib  uuid.lib  D:\应用软件框架\应用层序框架\cmake\..\.deps\Microsoft.Web.WebView2.1.0.4129.50\build\native\x64\WebView2LoaderStatic.lib  shlwapi.lib  advapi32.lib  light_web\lexbor\lexbor_static.lib  light_web\quickjs\qjs.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib && cd ."
+LINK: command "C:\PROGRA~2\MICROS~3\18\BUILDT~1\VC\Tools\MSVC\1450~1.357\bin\Hostx64\x64\link.exe /nologo CMakeFiles\ui_component_widths_test.dir\tests\component_widths.c.obj /out:ui_component_widths_test.exe /implib:ui_component_widths_test.lib /pdb:ui_component_widths_test.pdb /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:console ui_framework.lib user32.lib gdi32.lib opengl32.lib comctl32.lib imm32.lib usp10.lib msimg32.lib ole32.lib windowscodecs.lib uuid.lib D:\应用软件框架\应用层序框架\cmake\..\.deps\Microsoft.Web.WebView2.1.0.4129.50\build\native\x64\WebView2LoaderStatic.lib shlwapi.lib user32.lib gdi32.lib opengl32.lib comctl32.lib imm32.lib usp10.lib msimg32.lib ole32.lib windowscodecs.lib uuid.lib D:\应用软件框架\应用层序框架\cmake\..\.deps\Microsoft.Web.WebView2.1.0.4129.50\build\native\x64\WebView2LoaderStatic.lib shlwapi.lib advapi32.lib light_web\lexbor\lexbor_static.lib light_web\quickjs\qjs.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST:EMBED,ID=1" failed (exit code 1120) with the following output:
+component_widths.c.obj : error LNK2019: 无法解析的外部符号 ui_component_get_column_width，函数 main 中引用了该符号
+component_widths.c.obj : error LNK2019: 无法解析的外部符号 ui_component_set_column_width，函数 main 中引用了该符号
+component_widths.c.obj : error LNK2019: 无法解析的外部符号 ui_component_fit_column，函数 main 中引用了该符号
+component_widths.c.obj : error LNK2019: 无法解析的外部符号 ui_component_reset_columns，函数 main 中引用了该符号
+component_widths.c.obj : error LNK2019: 无法解析的外部符号 ui_component_save_columns，函数 main 中引用了该符号
+component_widths.c.obj : error LNK2019: 无法解析的外部符号 ui_component_restore_columns，函数 main 中引用了该符号
+ui_component_widths_test.exe : fatal error LNK1120: 6 个无法解析的外部命令
+[54/119] Linking C executable webview2_probe.exe
+[55/119] Linking C executable ui_webview2_messages_test.exe
+[56/119] Linking C executable ui_component_scroll_test.exe
+[57/119] Linking C executable ui_component_experience_test.exe
+[58/119] Linking C executable ui_native_activation_test.exe
+[59/119] Linking C executable ui_dpi_integration_test.exe
+[60/119] Linking C shared library ui_framework.dll
+ninja: build stopped: subcommand failed.

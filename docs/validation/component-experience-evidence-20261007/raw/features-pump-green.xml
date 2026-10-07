@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="6"
+	failures="1"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="47"
+	timestamp="2026-10-07T21:16:04"
+	>
+	<testcase name="ui_session0_interactive_control" classname="ui_session0_interactive_control" time="32.8906" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_offscreen_msaa" classname="ui_offscreen_msaa" time="0.277377" status="run">
+		<properties/>
+		<system-out>Actual GL Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079 samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+</system-out>
+	</testcase>
+	<testcase name="ui_windowless_gl" classname="ui_windowless_gl" time="0.450556" status="run">
+		<properties/>
+		<system-out>Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+OSMesa reopen 1 handles=210 loaded=1
+OSMesa reopen 2 handles=210 loaded=1
+OSMesa reopen 3 handles=210 loaded=1
+OSMesa reopen 4 handles=210 loaded=1
+OSMesa reopen 5 handles=210 loaded=1
+OSMesa reopen 6 handles=210 loaded=1
+OSMesa reopen 7 handles=210 loaded=1
+OSMesa reopen 8 handles=210 loaded=1
+OSMesa reopen 9 handles=210 loaded=1
+OSMesa reopen 10 handles=210 loaded=1
+OSMesa reopen 11 handles=210 loaded=1
+OSMesa reopen 12 handles=210 loaded=1
+OSMesa reopen 13 handles=210 loaded=1
+OSMesa reopen 14 handles=210 loaded=1
+OSMesa reopen 15 handles=210 loaded=1
+OSMesa reopen 16 handles=210 loaded=1
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=0, process HWNDs=0, HWND dependency=2
+</system-out>
+	</testcase>
+	<testcase name="ui_offscreen_gl" classname="ui_offscreen_gl" time="0.22056" status="run">
+		<properties/>
+		<system-out>Offscreen GPU: Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079; hidden HWND dependency; hardware class unknown
+Hidden WGL/FBO/frame/input/readback: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_workspace_offscreen" classname="ui_workspace_offscreen" time="1.84939" status="run">
+		<properties/>
+		<system-out>Offscreen actual DOM=89 cached rows=12 columns=4
+Workspace/shared DLL/real templates: 0 failures, HWNDs=0
+</system-out>
+	</testcase>
+	<testcase name="ui_framework_features_host" classname="ui_framework_features_host" time="11.7293" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out>FEATURE_TRACE 617538078 line37: ui_framework_initialize()==UI_STATUS_OK
+FEATURE_TRACE 617538093 line38: root!=NULL
+FEATURE_PUMP 516 ms messages5 timers0 paints0
+FEATURE_PUMP 422 ms messages1 timers0 paints0
+FEATURE_TRACE 617539468 line40: first&amp;&amp;second&amp;&amp;first!=second
+FEATURE_TRACE 617539468 line41: get_instance(&amp;host,first,&amp;a)&amp;&amp;get_instance(&amp;host,second,&amp;b)
+FEATURE_PUMP 328 ms messages1 timers0 paints0
+FEATURE_TRACE 617540031 line41: ui_host_visit_menu(b.host,"",group,&amp;host)==UI_STATUS_OK&amp;&amp;group_count==7
+FEATURE_TRACE 617540031 line17: group_count&lt;7
+FEATURE_TRACE 617540031 line18: !strcmp(entry-&gt;path,names[group_count++])
+FEATURE_TRACE 617540031 line19: status==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;!p.text_overflow&amp;&amp;!strcmp(p.text_utf8,entry-&gt;title)
+FEATURE_TRACE 617540031 line17: group_count&lt;7
+FEATURE_TRACE 617540031 line18: !strcmp(entry-&gt;path,names[group_count++])
+FEATURE_TRACE 617540031 line19: status==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;!p.text_overflow&amp;&amp;!strcmp(p.text_utf8,entry-&gt;title)
+FEATURE_TRACE 617540031 line17: group_count&lt;7
+FEATURE_TRACE 617540031 line18: !strcmp(entry-&gt;path,names[group_count++])
+FEATURE_TRACE 617540031 line19: status==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;!p.text_overflow&amp;&amp;!strcmp(p.text_utf8,entry-&gt;title)
+FEATURE_TRACE 617540031 line17: group_count&lt;7
+FEATURE_TRACE 617540031 line18: !strcmp(entry-&gt;path,names[group_count++])
+FEATURE_TRACE 617540031 line19: status==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;!p.text_overflow&amp;&amp;!strcmp(p.text_utf8,entry-&gt;title)
+FEATURE_TRACE 617540031 line17: group_count&lt;7
+FEATURE_TRACE 617540031 line18: !strcmp(entry-&gt;path,names[group_count++])
+FEATURE_TRACE 617540031 line19: status==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;!p.text_overflow&amp;&amp;!strcmp(p.text_utf8,entry-&gt;title)
+FEATURE_TRACE 617540031 line17: group_count&lt;7
+FEATURE_TRACE 617540031 line18: !strcmp(entry-&gt;path,names[group_count++])
+FEATURE_TRACE 617540031 line19: status==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;!p.text_overflow&amp;&amp;!strcmp(p.text_utf8,entry-&gt;title)
+FEATURE_TRACE 617540031 line17: group_count&lt;7
+FEATURE_TRACE 617540031 line18: !strcmp(entry-&gt;path,names[group_count++])
+FEATURE_TRACE 617540031 line19: status==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;!p.text_overflow&amp;&amp;!strcmp(p.text_utf8,entry-&gt;title)
+FEATURE_TRACE 617540031 line42: ui_host_show_menu(b.host,&amp;menu)==UI_STATUS_OK
+FEATURE_TRACE 617540046 line42: menu_click(b.host,"feature.menu.1")
+FEATURE_TRACE 617540062 line42: operations(&amp;b)==1&amp;&amp;operations(&amp;a)==0
+FEATURE_TRACE 617540062 line26: ui_assistant_get_state_snapshot(info-&gt;assistant,&amp;json)==UI_STATUS_OK
+FEATURE_TRACE 617540062 line26: ui_assistant_get_state_snapshot(info-&gt;assistant,&amp;json)==UI_STATUS_OK
+FEATURE_TRACE 617540062 line43: ui_host_show_menu(b.host,&amp;menu)==UI_STATUS_OK
+FEATURE_TRACE 617540078 line43: ui_workspace_activate(host.workspace,first)==UI_STATUS_OK
+FEATURE_PUMP 407 ms messages1 timers0 paints0
+FEATURE_TRACE 617540578 line43: ui_host_menu_get_presentation(b.host,"close",&amp;p)==UI_STATUS_NOT_FOUND
+FEATURE_TRACE 617540578 line45: ui_web_view_dispatch_input(host.view,&amp;e)==UI_STATUS_OK
+FEATURE_PUMP 125 ms messages148 timers0 paints14
+FEATURE_TRACE 617540703 line45: operations(&amp;a)==1
+FEATURE_TRACE 617540703 line26: ui_assistant_get_state_snapshot(info-&gt;assistant,&amp;json)==UI_STATUS_OK
+line 45: operations(&amp;a)==1
+FEATURE_TRACE 617540703 line46: host_menu_key(&amp;host,&amp;key)
+FEATURE_TRACE 617540703 line46: host_menu_key(&amp;host,&amp;key)
+FEATURE_TRACE 617540703 line46: ui_host_menu_get_presentation(a.host,"close",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617540703 line46: host_menu_key(&amp;host,&amp;key)
+FEATURE_TRACE 617540703 line46: host_menu_key(&amp;host,&amp;key)
+FEATURE_PUMP 78 ms messages15 timers0 paints7
+FEATURE_PUMP 31 ms messages9 timers1 paints7
+FEATURE_TRACE 617540859 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_PUMP 0 ms messages0 timers0 paints0
+FEATURE_PUMP 718 ms messages1 timers0 paints0
+FEATURE_TRACE 617541921 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617541921 line49: click(host.view,"tool-more")
+FEATURE_PUMP 109 ms messages124 timers0 paints11
+FEATURE_TRACE 617542046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542062 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542062 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542062 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542062 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542062 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617542062 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 63 ms messages16 timers0 paints7
+FEATURE_PUMP 312 ms messages1 timers0 paints0
+FEATURE_TRACE 617542671 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617542671 line49: click(host.view,"tool-more")
+FEATURE_PUMP 110 ms messages90 timers0 paints11
+FEATURE_TRACE 617542781 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542781 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542781 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542781 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542781 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542781 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542781 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542781 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542781 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542781 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617542796 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617542796 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 31 ms messages13 timers0 paints5
+FEATURE_PUMP 672 ms messages1 timers0 paints0
+FEATURE_TRACE 617543765 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617543765 line49: click(host.view,"tool-more")
+FEATURE_PUMP 94 ms messages87 timers0 paints11
+FEATURE_TRACE 617543875 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617543875 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617543875 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617543875 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617543875 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617543875 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617543875 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617543875 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617543875 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617543875 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617543875 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617543875 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 47 ms messages16 timers0 paints7
+FEATURE_PUMP 219 ms messages1 timers0 paints0
+FEATURE_TRACE 617544375 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617544375 line49: click(host.view,"tool-more")
+FEATURE_PUMP 93 ms messages87 timers0 paints11
+FEATURE_TRACE 617544468 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544468 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544468 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544468 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544468 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544468 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544468 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544468 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544468 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544468 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544468 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617544468 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 31 ms messages14 timers0 paints7
+FEATURE_PUMP 110 ms messages41 timers0 paints0
+FEATURE_TRACE 617544781 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617544781 line49: click(host.view,"tool-more")
+FEATURE_PUMP 47 ms messages14 timers0 paints7
+FEATURE_TRACE 617544843 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544843 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544843 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544843 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544843 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544843 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544843 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544843 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544843 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544843 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617544843 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617544843 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 15 ms messages14 timers0 paints5
+FEATURE_PUMP 390 ms messages1 timers0 paints0
+FEATURE_TRACE 617545468 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617545468 line48: p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617545468 line49: click(host.view,"tool-more")
+FEATURE_PUMP 78 ms messages72 timers0 paints9
+FEATURE_TRACE 617545562 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545562 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545562 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545562 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545562 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545562 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545562 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545562 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545562 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545562 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545562 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617545562 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 31 ms messages15 timers0 paints6
+FEATURE_PUMP 109 ms messages1 timers0 paints0
+FEATURE_TRACE 617545890 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617545890 line48: p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617545890 line49: click(host.view,"tool-more")
+FEATURE_PUMP 62 ms messages71 timers0 paints7
+FEATURE_TRACE 617545968 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545968 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545984 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545984 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545984 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545984 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545984 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545984 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545984 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545984 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617545984 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617545984 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 78 ms messages23 timers0 paints13
+FEATURE_PUMP 94 ms messages33 timers0 paints5
+FEATURE_TRACE 617546250 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617546250 line48: p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617546250 line49: click(host.view,"tool-more")
+FEATURE_PUMP 31 ms messages12 timers0 paints7
+FEATURE_TRACE 617546281 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546281 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546281 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546281 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546296 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546296 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546296 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546296 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546296 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546296 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546296 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617546296 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 16 ms messages9 timers0 paints5
+FEATURE_PUMP 188 ms messages1 timers0 paints0
+FEATURE_TRACE 617546656 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617546656 line48: p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617546656 line49: click(host.view,"tool-more")
+FEATURE_PUMP 62 ms messages44 timers0 paints7
+FEATURE_TRACE 617546718 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546718 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546718 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546718 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546734 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546734 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546734 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546734 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546734 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546734 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617546734 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617546734 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 47 ms messages16 timers0 paints7
+FEATURE_PUMP 94 ms messages37 timers0 paints7
+FEATURE_TRACE 617546984 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617546984 line48: p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617546984 line49: click(host.view,"tool-more")
+FEATURE_PUMP 31 ms messages14 timers0 paints7
+FEATURE_TRACE 617547031 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547031 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547046 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547046 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617547046 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 94 ms messages28 timers0 paints14
+FEATURE_PUMP 78 ms messages26 timers0 paints5
+FEATURE_TRACE 617547296 line48: ui_web_view_get_presentation(host.view,"tool-more",&amp;p)==UI_STATUS_OK
+FEATURE_TRACE 617547296 line48: p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617547296 line49: click(host.view,"tool-more")
+FEATURE_PUMP 47 ms messages13 timers0 paints7
+FEATURE_TRACE 617547343 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547343 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547343 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547343 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547343 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547343 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547343 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547343 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547343 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547343 line50: ui_host_menu_dispatch_input(a.host,&amp;e)==UI_STATUS_OK
+FEATURE_TRACE 617547343 line51: ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&amp;p)==UI_STATUS_OK&amp;&amp;p.visible&amp;&amp;p.enabled
+FEATURE_TRACE 617547343 line51: ui_host_close_menu(a.host)==UI_STATUS_OK
+FEATURE_PUMP 1656 ms messages2 timers0 paints0
+FEATURE_PUMP 94 ms messages127 timers2 paints11
+FEATURE_TRACE 617549390 line30: bitmap!=NULL
+FEATURE_TRACE 617549390 line31: PrintWindow(window,dc,PW_CLIENTONLY)
+FEATURE_TRACE 617549437 line53: forbidden==0
+FEATURE_TRACE 617549437 line53: ui_workspace_close_all(host.workspace)==UI_STATUS_OK
+FEATURE_PUMP 156 ms messages1 timers0 paints0
+FEATURE_TRACE 617549687 line55: ui_workspace_count(host.workspace)==0
+FEATURE_PUMP 0 ms messages3 timers0 paints0
+API4 actual host menus/overflow/instances: 1 failures
+</system-out>
+	</testcase>
+</testsuite>

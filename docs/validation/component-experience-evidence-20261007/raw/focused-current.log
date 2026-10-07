@@ -1,0 +1,24 @@
+Test project D:/应用软件框架/应用层序框架/build/experience-20261007/after
+    Start  8: ui_public_headers_c
+1/6 Test  #8: ui_public_headers_c ................   Passed    0.03 sec
+    Start 13: ui_workspace_layout
+2/6 Test #13: ui_workspace_layout ................   Passed    0.62 sec
+    Start 16: ui_component_experience_webview2
+3/6 Test #16: ui_component_experience_webview2 ...   Passed   14.49 sec
+    Start 17: ui_component_scroll_native
+4/6 Test #17: ui_component_scroll_native .........   Passed   20.35 sec
+    Start 21: ui_component_widths_webview2
+5/6 Test #21: ui_component_widths_webview2 .......***Failed    5.63 sec
+widths line54: ui_host_menu_get_presentation(h,"detail",&p)==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"完整查看")
+Column experience actual Runtime queries40: 1 failures
+
+    Start 24: ui_visual_ui_webview2
+6/6 Test #24: ui_visual_ui_webview2 ..............   Passed   10.53 sec
+
+83% tests passed, 1 tests failed out of 6
+
+Total Test time (real) =  51.81 sec
+
+The following tests FAILED:
+	 21 - ui_component_widths_webview2 (Failed)
+Errors while running CTest

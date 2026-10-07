@@ -1,3 +1,5 @@
 # Preserve byte hashes of the recorded API7 execution snapshots.
 /docs/validation/api7-current-* -text
 /docs/validation/api7-frozen-* -text
+# Preserve exact bytes of current logs, observers and screenshot hash manifests.
+/docs/validation/component-experience-evidence-20261007/** -text

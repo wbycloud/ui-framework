@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="3"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="101"
+	timestamp="2026-10-07T20:47:30"
+	>
+	<testcase name="kc_application_workflows" classname="kc_application_workflows" time="6.28221" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit8986b5de134f212b4db64d549cfc1add53d40a90
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=33720 expected_pid=33720 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: actual exported descriptor agrees with manifest
+PASS: partial-init probe creates real application state with public host
+PASS: real application context above 2^53 is serialized exactly
+PASS: host without a content shell fails after partial GPU initialization
+PASS: partial initialization follows shared native/GPU cleanup path
+PASS: ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_usability_input" classname="kc_usability_input" time="4.76263" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit8986b5de134f212b4db64d549cfc1add53d40a90
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=39056 expected_pid=39056 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: physical workflow owns the foreground canvas
+PARAM_COMMAND: status 0 visible 1 enabled 0 busy 0
+USER_KEY: key 66 ctrl 0 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":0,"cell":"TOP","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_advanced_input" classname="kc_advanced_input" time="90.1503" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit8986b5de134f212b4db64d549cfc1add53d40a90
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=42648 expected_pid=42648 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+TEST_ACTIVATION: foreground_pid=42648 expected_pid=42648 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: own desktop foreground for new business input
+OASIS_CHOOSER: waiting pid 42648 time615800140 cancel0
+OASIS_CHOOSER: owned selector 00000000065F062A time615800437 U...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

@@ -1,0 +1,29 @@
+{
+  "sdk_version": "0.8.0-dev",
+  "framework_api": 8,
+  "standard_revision": 8,
+  "application_abi": 1,
+  "package_format": 1,
+  "sdk_commit": "807828147bdfb6959abb49b4668dfa90c34eda56",
+  "upstream": "https://github.com/wbycloud/ui-framework",
+  "source_directory": "../sdk/source",
+  "read_only": true,
+  "backend": "light-web",
+  "application_crt": "MT",
+  "framework_crt": "MD",
+  "sha256": {
+    "include/ui_framework/application.h": "4c87d5dab2f59eea1a240e1378849604635222452d785b6d928b792b1c6483ab",
+    "include/ui_framework/assistant.h": "f73a8a11b6faf363710e9bb3d9e92f273ff1fe90ba6863cfd06cb79947e658fe",
+    "include/ui_framework/components.h": "2c8bc218bb20a5ac483931724678c6101ae492f8e9f1377f8420b9888ba3a4d9",
+    "include/ui_framework/images.h": "391bb3234a5fbcd89163ca7508be34beb492c7bfe03b81bf4fce0199532d8431",
+    "include/ui_framework/light_web.h": "98df2ed526240575d8ddea17002515dd8be2eacc3ee7e335848f9024b7b43ee2",
+    "include/ui_framework/menus.h": "6eae62503fe50a5fc3da53bc18aeb477d386824d8acf6ca3ef2f72498e6d2474",
+    "include/ui_framework/native.h": "aeda7449989a4d5d516f3e40891b2fcc2bbc927eb2413fc6d669668bde802272",
+    "include/ui_framework/opengl.h": "55281d2ee7f70de2b3bc6e7f107102b88b367925087126e5e09fbb2d9b1e972d",
+    "include/ui_framework/package.h": "4fe07537379e6a7a83e05ffacd77a3207134dffa6aee8dbaf3a6f2f733c25bf9",
+    "include/ui_framework/shell.h": "bb8b607aa35a1936c0f6d9740527082ac6933953cd764df6d1a356283ab4c86c",
+    "include/ui_framework/ui.h": "7d711810816e114cb384c593ba32101eb7fb90e941170953840e71ae4bcb24b4",
+    "include/ui_framework/webview2.h": "4ab2433c7b1be86ba1c39a430b6d10c2f6f5515d8c55a0f91f3784c387a9b11c"
+  },
+  "source_availability": "Local product807828147bdfb6959abb49b4668dfa90c34eda56, test0fe08640c3008874449dce77fd7445ef91f6a578; SDK0.8/API8/standard8. Preserve native scrollbar fixes9df202f/2e87e02. Rebuild matched current headers/import library/shared DLL/host; no original application repository changes. Framework observation is not complete business acceptance."
+}

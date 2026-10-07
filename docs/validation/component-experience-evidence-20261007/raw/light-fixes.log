@@ -1,0 +1,36 @@
+Test project D:/应用软件框架/应用层序框架/build/experience-20261007/after
+    Start 14: ui_component_widths
+1/5 Test #14: ui_component_widths ..............   Passed    1.33 sec
+    Start 32: ui_framework_features_host
+2/5 Test #32: ui_framework_features_host .......***Failed    0.27 sec
+line 36: first&&second&&first!=second
+Application create/mount failed (status -6)
+
+    Start 38: ui_generic_web_host
+3/5 Test #38: ui_generic_web_host ..............***Failed    0.30 sec
+FAIL 36: first!=0
+Load: Application create/mount failed (status -6)
+
+    Start 42: ui_web_shell_slots
+4/5 Test #42: ui_web_shell_slots ...............***Failed    0.15 sec
+Web shell slots: float panel with Web title
+Web shell slots: floating preserves borrowed content HWND
+Web shell slots: floating slot reports local content dimensions
+Web shell slots: background hides owned popup
+Web shell slots: activation and redock preserve application children
+Web shell slots: incremental refresh preserves content
+
+    Start 43: ui_floating_web_dpi
+5/5 Test #43: ui_floating_web_dpi ..............***Failed    0.13 sec
+
+
+20% tests passed, 4 tests failed out of 5
+
+Total Test time (real) =   2.33 sec
+
+The following tests FAILED:
+	 32 - ui_framework_features_host (Failed)
+	 38 - ui_generic_web_host (Failed)
+	 42 - ui_web_shell_slots (Failed)
+	 43 - ui_floating_web_dpi (Failed)
+Errors while running CTest

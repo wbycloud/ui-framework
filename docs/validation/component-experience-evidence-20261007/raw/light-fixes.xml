@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="5"
+	failures="4"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="2"
+	timestamp="2026-10-07T19:39:01"
+	>
+	<testcase name="ui_component_widths" classname="ui_component_widths" time="1.33038" status="run">
+		<properties/>
+		<system-out>Column experience Light queries23: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_framework_features_host" classname="ui_framework_features_host" time="0.273224" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out>line 36: first&amp;&amp;second&amp;&amp;first!=second
+Application create/mount failed (status -6)
+</system-out>
+	</testcase>
+	<testcase name="ui_generic_web_host" classname="ui_generic_web_host" time="0.299234" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out>FAIL 36: first!=0
+Load: Application create/mount failed (status -6)
+</system-out>
+	</testcase>
+	<testcase name="ui_web_shell_slots" classname="ui_web_shell_slots" time="0.148152" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out>Web shell slots: float panel with Web title
+Web shell slots: floating preserves borrowed content HWND
+Web shell slots: floating slot reports local content dimensions
+Web shell slots: background hides owned popup
+Web shell slots: activation and redock preserve application children
+Web shell slots: incremental refresh preserves content
+</system-out>
+	</testcase>
+	<testcase name="ui_floating_web_dpi" classname="ui_floating_web_dpi" time="0.133727" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+</testsuite>

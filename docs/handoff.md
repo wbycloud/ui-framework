@@ -1,25 +1,25 @@
 # 框架开发交接记录
 
-更新日期：2026-10-07。当前完整窗口视觉源码6a0170a、零内距修复95f5d78；[本轮视觉实测](validation/visual-polish-validation.md)与第16节记录当前截图、回归和限制，历史视觉结果另存。当前原生滚动两处修复源码为2e87e02，上一单元9df202f；[本轮记录](validation/native-component-scroll-validation.md)单列原生真实鼠标与当前业务应用结果，不能用此前离屏结果替代。当前接手确认SDK0.7/API7/标准7；本轮共同组件分页清理见[验收](validation/component-scroll-only-validation.md)及第14节。共同数据组件只保留完整范围滚动，底层按需批次不变；菜单、最近应用及标签溢出的分页仍保留。从本轮起执行[当前版本维护政策](version-policy.md)，历史SDK/API/调用方和原包不再保证兼容或列入专项回归。本文第3–5、7–13节保存历史身份与结果，不能当作当前承诺或运行证据。现行基础功能、size/线程/所有权/卸载合同继续维护。当前Session0、严格无登录runner、真实IME/物理与长期人工仍分别待验，本机运行不冒充托管CI或完整业务验收。
+更新日期：2026-10-07。当前SDK0.8/API8/标准8，产品源码8078281（基础7051596）；[本轮组件/工作区体验记录](validation/component-experience-validation.md)及第17节记录实际回归、失败、截图和SDK。接手干净c62753d；保留95f5d78/6a0170a视觉、9df202f/2e87e02原生捕获/异步轨道修复。共同组件无分页按钮，原预算/完整范围滚动/生命周期继续维护。按[当前版本政策](version-policy.md)只维护当前版本；历史阶段记录保留原版本和结果，不替代当前实测。Session0、严格整机无登录、真实IME/物理/长期人工和托管CI分别待验。
 
 ## 1. 恢复顺序与版本
 
 1. 检查 `git status --short`、`git branch --show-current` 和 `git log -3 --oneline`；先保留接手时的用户改动。
-2. 阅读本文、[应用开发标准](application-development-standard.md)、[API7验收](validation/api7-validation.md)、[Runtime稳定性](validation/runtime-stability-validation.md)、[构建与CI](build-and-validation.md)、[API6验收](validation/api6-validation.md)、[API5验收](validation/api5-validation.md)、[API4记录](validation/api4-validation.md)及[API3未验证项](validation/api3-validation.md#41-未验证项目与补验清单)。
-3. 修改代码前核对[公共头文件](../include/ui_framework/ui.h)、[布局](workspace-layout.md)、[菜单/离屏合同](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)、[0.6→0.7迁移](migration-v0.6-to-v0.7.md)及相关测试。无需重做已完成的实现。
+2. 阅读本文、[应用开发标准](application-development-standard.md)、[当前体验验收](validation/component-experience-validation.md)、[Runtime稳定性](validation/runtime-stability-validation.md)、[构建与CI](build-and-validation.md)、[API6验收](validation/api6-validation.md)、[API5验收](validation/api5-validation.md)、[API4记录](validation/api4-validation.md)及[API3未验证项](validation/api3-validation.md#41-未验证项目与补验清单)。
+3. 修改代码前核对[公共头文件](../include/ui_framework/ui.h)、[布局](workspace-layout.md)、[菜单/离屏合同](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)、[0.7→0.8迁移](migration-v0.7-to-v0.8.md)及相关测试。无需重做已完成的实现。
 
 | 项目 | 交接状态 |
 | --- | --- |
 | 仓库 | [wbycloud/ui-framework](https://github.com/wbycloud/ui-framework) |
 | API5功能代码 | [87478fa20d7bb46809c0ef81dd44f972dc193a24](https://github.com/wbycloud/ui-framework/commit/87478fa20d7bb46809c0ef81dd44f972dc193a24)，四项实现及回归；文档另行提交，实际HEAD以Git为准 |
 | 浏览器式宿主 | d7030b3：单行标签标题栏、第二行应用菜单、原Windows/关闭合同及12项最近成功包；完整结果/限制见第12节，文档提交不改执行代码 |
-| API7当前交付 | 产品源码2c0c52b、原生测试cb42660；本次CI/测试修正ae4dc7f、2fde15e、e4a33bf；运行身份和待验见第11节及收敛记录，实际HEAD以Git为准 |
+| API8当前交付 | 产品源码8078281（基础7051596）；本轮身份、依赖、SDK、实测及限制见第17节，实际HEAD以Git为准 |
 | API6实现/最终测试与CI条件 | [1cdc50e](https://github.com/wbycloud/ui-framework/commit/1cdc50e)、[9705565](https://github.com/wbycloud/ui-framework/commit/9705565)，完整提交序列及失败修复见API6验收；文档提交不改运行代码 |
 | 菜单后续本地实现 | `6bf59f8`、`2917b44`、`d907fbd`、`d2e4a61`及测试收敛`b1f4c7b`；最终产品源码d2e4a61，仅内部菜单改动，API6/ABI1不变；最终证据另提交 |
 | API4历史实现/补验 | [e83a008](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c)、[48d6aaf](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，模态原生输入、STYLE回收、redock焦点；[记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
 | API6阶段最后核对的远端分支（历史） | `main`仍为`ea5b108`，`codex/menus-offscreen`为`9705565`；最终API6证据`559b802`已本地提交，未推送；交付状态修订另行提交，实际HEAD以Git为准 |
-| SDK / 框架 API / 标准修订 | `0.7.0` 本地开发版 / `7` / `7` |
-| 维护范围 | 只维护和验收本轮确认的API7；运行库现存API1–7接受行为暂存，不作未来旧包兼容保证；清单与DLL声明必须一致 |
+| SDK / 框架 API / 标准修订 | `0.8.0` 本地开发版 / `8` / `8` |
+| 维护范围 | 只维护和验收本轮确认的API8；运行库现存API1–8接受行为暂存，不作未来旧包兼容保证；清单与DLL声明必须一致 |
 | 应用 ABI / 导出入口 / 包格式 | `1` / `ui_app_query_v1` / `1` |
 | 稳定标签 | 只有 `v0.1.0`；未创建新的稳定标签 |
 
@@ -27,13 +27,13 @@ API6本轮起点为干净ea5b108，与当时origin/main及工作分支一致，�
 
 ## 2. 长期要求与责任边界
 
-第一平台为 Windows x64，框架使用 C11，应用接口为公共 C ABI。独立宿主加载多个 `.uapp`，以标签切换实例；当前API7原生嵌入式接口及应用内容继续维护。UI 外壳及新通用业务组件由框架维护 HTML/CSS/JavaScript，应用提供描述、数据和语义命令。OpenGL 是否使用由应用决定。
+第一平台为 Windows x64，框架使用 C11，应用接口为公共 C ABI。独立宿主加载多个 `.uapp`，以标签切换实例；当前API8原生嵌入式接口及应用内容继续维护。UI 外壳及新通用业务组件由框架维护 HTML/CSS/JavaScript，应用提供描述、数据和语义命令。OpenGL 是否使用由应用决定。
 
 新业务 UI 不使用 TreeView、ListView、Button、Edit、MessageBox 或隐藏 EDIT 代理；系统文件/目录选择器是例外。Win32 可用于窗口、消息、IME、字体和绘制适配。框架不拥有具体应用的文档模型、算法或业务渲染器，不是完整浏览器，也没有连接大模型服务。
 
 优先复用原菜单、工具、面板、内容槽、命令、队列和生命周期。新增接口不暴露第三方私有类型；保持旧字段偏移、枚举值和默认行为，新字段按 size 判断。64位身份在 JSON 中为十进制字符串，图像像素通过 C 接口复制传递。线程、所有权和 DLL 卸载合同不能绕过。
 
-文档面向 C/C++ 应用开发者，不署名；给其他应用的[升级提示词](application-upgrade-prompt.md)只使用 GitHub 入口，不包含个人本地目录。历史任务曾授权推送，API6阶段最终推送曾被自动审批拒绝（第8节）；该拒绝属于历史记录。本轮API7收敛没有新的推送或远程执行授权，先保留本地提交。不要强推或创建新的稳定标签。
+文档面向 C/C++ 应用开发者，不署名；给其他应用的[升级提示词](application-upgrade-prompt.md)只使用 GitHub 入口，不包含个人本地目录。历史任务曾授权推送，API6阶段最终推送曾被自动审批拒绝（第8节）；该拒绝属于历史记录。本轮API8交付没有新的推送或远程执行授权，先保留本地提交。不要强推或创建新的稳定标签。
 
 交接准备及后续补验未启用 graph-engineering，也未修改请求方 KLayout C 应用、冻结应用包或 PERF-001。接手时不要把应用适配或性能重新测量自动扩展进框架任务。后续已完成本机自动补验和三项针对性修复，没有新建会话或移动当前会话。
 
@@ -89,7 +89,7 @@ cmake --build build/native
 ctest --test-dir build/native --output-on-failure
 ```
 
-API4历史验证曾使用`build/fw-next/release`，菜单阶段同目录重建为API6、配置53项/原生21项（第9节）；当前已重建API7，最终配置及身份见第10节；`build/web-shell` 等旧目录可能残留旧版本，使用前重建，不混用运行库。本地保留 `build/fw-next/ctest-final.log`、`build/fw-next/clean-test.log`、`build/fw-next/build.log`、`build/fw-next/build.cmd` 和原生构建脚本。它们被忽略，不属于远程可获取证据；公开证据以验收文档和可构建测试为准。
+API4历史验证曾使用`build/fw-next/release`，菜单阶段同目录重建为API6、配置53项/原生21项（第9节）；此前重建为API7的身份见第10节；当前API8使用独立build/experience-20261007/after，身份见第17节；`build/web-shell` 等旧目录可能残留旧版本，使用前重建，不混用运行库。本地保留 `build/fw-next/ctest-final.log`、`build/fw-next/clean-test.log`、`build/fw-next/build.log`、`build/fw-next/build.cmd` 和原生构建脚本。它们被忽略，不属于远程可获取证据；公开证据以验收文档和可构建测试为准。
 
 本次补验日志另存 `build/acceptance-20261004/`，历史失败日志保留。最终回归日志为 `final-regression.log`、`native-regression.log`、`original-packages.log`；十分钟数据为 `stress-fixed-600s.log`。公开[采样CSV](validation/api4-resilience-20261004.csv)及[曲线](validation/api4-resilience-20261004.png)已保存。十分钟曲线在最终焦点补丁前采集；该补丁随后通过原复现环境和完整回归。
 
@@ -128,7 +128,8 @@ API4未实现的Alt访问键、真正无窗口GL、离屏MSAA、WebView2呈现/�
 可直接给下一会话以下指令：
 
 ```text
-请接手 https://github.com/wbycloud/ui-framework 。先读docs/handoff.md、docs/application-development-standard.md、docs/build-and-validation.md、docs/generic-web-ui.md、docs/workspace-layout.md、docs/framework-menu-offscreen.md及API7、Runtime稳定性、API5/6、菜单、浏览器式宿主、视觉和Session0验收，并读docs/visual-design.md、docs/standalone-host.md、docs/version-policy.md及docs/validation/component-scroll-only-validation.md。核对实际Git状态、HEAD、API7公共头文件和现有四行CI/严格Session0工作流，保留用户改动。API5/6/7及菜单已实现，不重复开发。按docs/version-policy.md只维护接手时确认的当前版本，停止历史SDK/API/调用方/原包兼容专项；当前基础功能及完整size字段/偏移、线程、所有权和卸载合同继续验证，共同数据组件无分页或列箭头按钮但完整范围滚动/按需查询保留。本地运行不冒充托管CI，历史Session0不替代当前源码。先给简短计划，持续补验/修复和文档交付，缺环境或授权最后汇总。业务试点按docs/business-pilot.md先核对指定应用及修改授权；没有授权只准备方案。不得修改冻结SDK、原包、PERF-001或未授权请求方应用，不使用graph-engineering、子代理或新会话；没有明确授权不推送、不触发远程工作流、不强推或创建稳定标签。
+请接手 https://github.com/wbycloud/ui-framework 。先读docs/handoff.md、docs/application-development-standard.md、docs/build-and-validation.md、docs/generic-web-ui.md、docs/workspace-layout.md、docs/framework-menu-offscreen.md及当前component-experience-validation、历史API7、Runtime稳定性、API5/6、菜单、浏览器式宿主、视觉和Session0验收，并读docs/visual-design.md、docs/standalone-host.md、docs/version-policy.md及docs/validation/component-scroll-only-validation.md。核对实际Git状态、HEAD、API8公共头文件和现有四行CI/严格Session0工作流，保留用户改动。API5/6/7及菜单已实现，不重复开发。按docs/version-policy.md只维护接手时确认的当前版本，停止历史SDK/API/调用方/原包兼容专项；当前基础功能及完整size字段/偏移、线程、所有权和卸载合同继续验证，共同数据组件无分页或列箭头按钮但完整范围滚动/按需查询保留。本地运行不冒充托管CI，历史Session0不替代当前源码。先给简短计划，持续补验/修复和文档交付，缺环境或授权最后汇总。业务试点按docs/business-pilot.md先核对指定应用及修改授权；没有授权只准备方案。不得修改冻结SDK、原包、PERF-001或未授权请求方应用，不使用graph-engineering、子代理或新会话；没有明确授权不推送、不触发远程工作流、不强推或创建稳定标签。
+ 当前API8新增列宽交互/UCW1应用存储和完整help字段，见docs/migration-v0.7-to-v0.8.md；当前用例ui_api7_integration与api7_fixture文件名保留，编译声明为8，不能当作旧版本专项。
 ```
 
 ## 7. API5本轮交付与接续
@@ -253,3 +254,11 @@ Runtime首轮关闭排空15秒断言失败，后续12取消pending0、句柄291�
 公共视觉值仍集中src/visual.css；空标题和只读无效操作栏回收空间；属性同行/堆叠、单位/色值/勾选密度、表头/内容列宽约束、C图片比例；分组标签置于工具前并有界分配宽度。AI初始收起、高级折叠，不新增命令系统。当前版本政策、不恢复数据分页/历史兼容门槛、不改预算/应用/冻结SDK/原包/PERF。
 
 当前源码Session0服务、严格整机无登录runner、真实IME、物理不同DPI/屏幕边缘合成、实际Snap、长期人工均另列待验。本机不是托管CI，业务只读观察/副本回归不是完整业务试点授权。
+
+## 17. API8 共同组件、工作区与辅助体验
+
+接手干净c62753d，产品提交7051596及最终输入修复8078281。公开列宽六接口及可选help字段集中升级SDK0.8/API8/标准8，ABI1/包1及原字段偏移/枚举不变；当前维护政策不变。初始列宽由应用决定，显式适配只使用表头和预算内缓存；UCW1应用负责存储，异常原子拒绝、稳定ID恢复。两后端共同模板增加窄列/完整文本/长枚举/帮助、响应式RGBA、长面板/停靠标签查看及溢出焦点；浮动/对话框最小逻辑尺寸和空心预览，保留AI默认收起、GL、布局与关闭合同。
+
+首轮失败及修复、冻结产物完整矩阵、只读业务副本、真实前后截图、当前SDK和环境限制见[本轮验收](validation/component-experience-validation.md)。原业务abc8的固定坐标折叠断言与历史29/30失败记录不改；本轮匹配SDK副本仅变更依赖锁/清单元数据，业务列宽或测试改动不属于框架修复。没有推送、远程运行、标签、发布、原业务/冻结SDK/历史包修改。
+
+最终产品8078281、测试收敛0fe0864：完整框架55通过/1物理跳过，原生20通过/1物理跳过；只读abc8业务副本29通过/1原固定坐标失败，框架自有真实业务观察102检查通过（末列STYLE实际像素），Runtime两次独立32周期通过。持续重绘来源未定位，测试消息泵修正不代表根治；原失败均保留。交付匹配SDK include/lib/bin/source及固定依赖、105张实际过程截图（8张失败图不作基线）；源码Session0服务权限错误5、无登录runner、远程CI与物理/人工分别待验。SDK归档位于本地build/experience-20261007，解包逐项sha256验证；最终文档提交不改变已冻结运行产物。

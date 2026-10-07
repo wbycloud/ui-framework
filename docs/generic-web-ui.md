@@ -1,6 +1,6 @@
-# 通用 Web UI：当前 API7 接入约定
+# 通用 Web UI：当前 API8 接入约定
 
-本文描述 **SDK 0.7.0 开发版 / API7 / 标准修订7** 当前组件合同，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API7验收](validation/api7-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
+本文描述 **SDK 0.8.0 开发版 / API8 / 标准修订8** 当前组件合同，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API8验收](validation/component-experience-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
 
 ## 1. 架构、复用与边界
 
@@ -121,7 +121,7 @@ NULL pixels 同步查询捕获物理宽高/stride。提供像素缓冲后，等�
 
 销毁先撤销事件及应用回调，SDK 未完成操作只持有失效的内部 view；在 SDK 回调返回后的 UI 消息中停止导航、关闭controller并释放环境。controller成功创建后、任何Close之前订阅 BrowserProcessExited，环境保留到对应浏览器退出事件后释放。创建过程中取消时，API6仅接受所启动内部空白导航ID的NavigationCompleted，忽略初始about:blank完成，只释放一次事件所有权，并等待该完成文档的renderer脚本确认后再清理；不装载应用文档或调用已失效的应用回调。此前只执行初始文档脚本或接受任意完成事件，在实际CI仍出现关闭句柄增长，失败和修复见API6验收。应用 DLL 可按既有卸载合同释放；UI线程保持STA和正常消息循环，共享框架 DLL 应继续处理 Runtime 的关闭消息。同一用户数据目录的其他 view 仍活动时，浏览器退出和内部环境清理会延后；不要以 destroy 返回或 flush 空闲推断所有浏览器进程已退出。不会清除调用方的用户数据目录。
 
-API5 DLL/Runtime、双实例、图片更新释放、编辑、树数据、模态、异步失效及关闭的历史证据见 [API5验收](validation/api5-validation.md)。API6历史布局、共同组件及综合回归状态见[API6验收](validation/api6-validation.md)，当前见[API7验收](validation/api7-validation.md)，不继承历史记录中未覆盖的新功能结论。
+API5 DLL/Runtime、双实例、图片更新释放、编辑、树数据、模态、异步失效及关闭的历史证据见 [API5验收](validation/api5-validation.md)。API6历史布局、共同组件及综合回归状态见[API6验收](validation/api6-validation.md)，当前见[API8验收](validation/component-experience-validation.md)，不继承历史记录中未覆盖的新功能结论。
 
 ## API6 组件交互、完整排序与选择
 
@@ -155,9 +155,9 @@ Runtime模态在controller尚未创建时可能先获得容器焦点。文档就
 
 ## 框架自有视觉与状态
 
-共同模板默认浅色；独立宿主同步全部实例的浅深主题，应用自有HTML/原生/GL不自动注入。紧凑32行高、12像素完整范围滚动条、表单/颜色/枚举、错误/加载/图片失败与焦点状态见[视觉规范](visual-design.md)。本轮只改内部模板与轻量绘制，公共API7、BigInt总量、缓存/节点/图片预算、排序/选择/草稿及输入合同保持；[两后端真实运行与截图](validation/visual-ui-validation.md)不替代物理IME或业务验收。
+共同模板默认浅色；独立宿主同步全部实例的浅深主题，应用自有HTML/原生/GL不自动注入。紧凑32行高、12像素完整范围滚动条、表单/颜色/枚举、错误/加载/图片失败与焦点状态见[视觉规范](visual-design.md)。此前0.7视觉轮只改内部模板与轻量绘制，当时公共API7、BigInt总量、缓存/节点/图片预算、排序/选择/草稿及输入合同保持；[两后端真实运行与截图](validation/visual-ui-validation.md)不替代物理IME或业务验收。
 
-当前维护范围见[版本政策](version-policy.md)，本轮真实两后端回归及截图见[分页清理验收](validation/component-scroll-only-validation.md)。已有API7应用继续返回真实total_count与first/count，无需修改数据源。菜单、最近应用及标签溢出的分页不在共同数据组件清理范围。
+当前维护范围见[版本政策](version-policy.md)，此前分页清理轮真实两后端回归及截图见[分页清理验收](validation/component-scroll-only-validation.md)。应用继续返回真实total_count与first/count，数据源语义不变；本轮SDK8需要匹配重建，旧包不纳入维护。菜单、最近应用及标签溢出的分页不在共同数据组件清理范围。
 
 
 原生共同组件滚动修复（2026-10-07）：避免同一HWND重复SetCapture触发同步取消；TREE加载/空状态改为行视口内覆盖层，异步批次不再改变轨道尺寸。公共API7/ABI1、输入坐标、按需查询和资源预算保持。[真实鼠标与业务复验](validation/native-component-scroll-validation.md)。
@@ -167,3 +167,11 @@ Runtime模态在controller尚未创建时可能先获得容器焦点。文档就
 空title不占行；非空标题仍保留。字段至少220逻辑像素宽、短标签且非多行/图片/组时采用80像素标签与值同行，窄窗及选择器展开时堆叠；单位16像素。数据单元格/树行32、表头28、缩略图24、勾选24。Runtime表头与数据单元格都约束至声明列宽，轻量使用同一规则；滚动仍按真实total/完整列宽、BigInt与按需批次。
 
 IMAGE字段按C资源尺寸与可用区域保持比例；STYLE预览有界。尺寸元数据是框架私有模板内容，不新增公共结构或转移图片所有权。纯只读且无业务提交/取消命令的表单隐藏无效操作栏，显式命令/可编辑字段及模态对话框保留原提交取消。现有ID、草稿、焦点和选择更新合同不变，无分页按钮。[实际两后端完整窗口与原生输入复验](validation/visual-polish-validation.md)。
+
+## API8 体验合同
+
+公开列宽及UCW1、完整help字段见[迁移](migration-v0.7-to-v0.8.md)。窄勾选/色块/图片列使用紧凑内距，表头与内容同宽；F1/悬停查看完整内容。事件中的可见锚点和组件代次避免Runtime异步几何查询丢失提示。长枚举在128项预算内滚动并支持首末项键盘访问，RGBA取消恢复草稿，业务提交仍一次。现有空/加载/错误/图片状态、BigInt滚动和原预算继续维护；不恢复分页条。
+
+属性名称是展示标签，可单击查看完整名称，不增加Tab停靠点；原输入Ctrl+F1查看名称、F1查看值，选择器按钮F1查看属性名，选项F1查看完整选项。悬停提示不获得窗口焦点，关闭时不恢复历史焦点；菜单和模态仍按各自焦点合同恢复。
+
+完整文本查看保留原表单Tab顺序：名称单击或文本右键打开；原输入F1查看值，Ctrl+F1查看完整名称，枚举/颜色按钮F1查看名称，选项F1查看完整选项。组件内只读文本可滚动/复制，Esc关闭并恢复控件焦点；Enter不提交底层表单。悬停提示为不可交互窗口，不参与键盘菜单路由；其关闭不抢夺后续点击焦点。

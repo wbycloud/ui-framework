@@ -1,0 +1,197 @@
+Test project D:/应用软件框架/应用层序框架/build/experience-20261007/after
+      Start  1: ui_package_format
+ 1/56 Test  #1: ui_package_format ..................   Passed    0.67 sec
+      Start  2: ui_images_windows
+ 2/56 Test  #2: ui_images_windows ..................   Passed    0.05 sec
+      Start  3: ui_responsive_layout
+ 3/56 Test  #3: ui_responsive_layout ...............   Passed    0.02 sec
+      Start  4: ui_assistant_lifecycle
+ 4/56 Test  #4: ui_assistant_lifecycle .............   Passed    0.04 sec
+      Start  5: ui_dpi_web_failure
+ 5/56 Test  #5: ui_dpi_web_failure .................   Passed    0.03 sec
+      Start  6: ui_components_core
+ 6/56 Test  #6: ui_components_core .................   Passed    0.04 sec
+      Start  7: ui_headless_example
+ 7/56 Test  #7: ui_headless_example ................   Passed    0.03 sec
+      Start  8: ui_public_headers_c
+ 8/56 Test  #8: ui_public_headers_c ................   Passed    0.10 sec
+      Start  9: ui_public_headers_cpp
+ 9/56 Test  #9: ui_public_headers_cpp ..............   Passed    0.03 sec
+      Start 10: ui_webview2_parity
+10/56 Test #10: ui_webview2_parity .................   Passed    2.62 sec
+      Start 11: ui_webview2_messages
+11/56 Test #11: ui_webview2_messages ...............   Passed    4.66 sec
+      Start 12: ui_webview2_render
+12/56 Test #12: ui_webview2_render .................***Timeout  29.76 sec
+Runtime render: initialize
+line 17: r&&n
+Runtime render: ready
+line 33: query(v,"box",&p)==UI_STATUS_OK&&p.visible&&p.rect.width==80&&p.text_overflow&&strstr(p.text_utf8,"REAL Runtime")
+Runtime render: capture/images complete
+Runtime render: close
+
+      Start 13: ui_workspace_layout
+13/56 Test #13: ui_workspace_layout ................   Passed    0.84 sec
+      Start 14: ui_component_widths
+14/56 Test #14: ui_component_widths ................***Failed    1.29 sec
+widths line54: ui_host_menu_get_presentation(h,"detail",&p)==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"完整查看")
+Column experience Light queries23: 1 failures
+
+      Start 15: ui_component_experience
+15/56 Test #15: ui_component_experience ............   Passed    0.65 sec
+      Start 16: ui_component_experience_webview2
+16/56 Test #16: ui_component_experience_webview2 ...   Passed   12.84 sec
+      Start 17: ui_component_scroll_native
+17/56 Test #17: ui_component_scroll_native .........   Passed   20.38 sec
+      Start 18: ui_light_glyph_padding
+18/56 Test #18: ui_light_glyph_padding .............   Passed    0.13 sec
+      Start 19: ui_light_scroll
+19/56 Test #19: ui_light_scroll ....................   Passed    0.16 sec
+      Start 20: ui_component_scroll
+20/56 Test #20: ui_component_scroll ................   Passed    0.54 sec
+      Start 21: ui_component_widths_webview2
+21/56 Test #21: ui_component_widths_webview2 .......   Passed    5.25 sec
+      Start 22: ui_component_scroll_webview2
+22/56 Test #22: ui_component_scroll_webview2 .......   Passed    9.97 sec
+      Start 23: ui_visual_ui_light
+23/56 Test #23: ui_visual_ui_light .................   Passed    5.88 sec
+      Start 24: ui_visual_ui_webview2
+24/56 Test #24: ui_visual_ui_webview2 ..............   Passed    6.42 sec
+      Start 25: ui_api7_integration
+25/56 Test #25: ui_api7_integration ................   Passed    9.00 sec
+      Start 26: ui_api7_integration_webview2
+26/56 Test #26: ui_api7_integration_webview2 .......***Failed   27.67 sec
+API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+integration line72: ui_shell_set_panel_layout(ui_host_get_shell(h),"form",&layout)==UI_STATUS_OK
+integration line74: ui_shell_resize_splitter(ui_host_get_shell(h),UI_LAYOUT_REGION_LEFT_SIDEBAR,NULL,300)==UI_STATUS_OK
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+integration line36: status==UI_STATUS_OK
+Actual GL C-image component capture white pixels=0
+integration line78: white>20
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-runtime-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 1
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 2
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 3
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 4
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 5
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 6
+ Framework pending cleanup=0 process handles=394
+API7 integration: reopen 7
+ Framework pending cleanup=0 process handles=394
+API7 reopen8 handles 394->394 GDI 9->9 USER 17->17 pending Runtime cleanup=0
+API7 independent WebView2 DLL integration: 4 failures
+Runtime test: normal CRT exit callback reached
+
+      Start 27: ui_session0_interactive_control
+27/56 Test #27: ui_session0_interactive_control ....   Passed   33.42 sec
+      Start 28: ui_offscreen_msaa
+28/56 Test #28: ui_offscreen_msaa ..................   Passed    0.35 sec
+      Start 29: ui_windowless_gl
+29/56 Test #29: ui_windowless_gl ...................   Passed    0.46 sec
+      Start 30: ui_offscreen_gl
+30/56 Test #30: ui_offscreen_gl ....................   Passed    0.22 sec
+      Start 31: ui_workspace_offscreen
+31/56 Test #31: ui_workspace_offscreen .............   Passed    1.86 sec
+      Start 32: ui_framework_features_host
+32/56 Test #32: ui_framework_features_host .........***Failed    0.27 sec
+line 36: first&&second&&first!=second
+Application create/mount failed (status -6)
+
+      Start 33: ui_menu_desktop
+33/56 Test #33: ui_menu_desktop ....................***Failed    0.27 sec
+line 21: first&&get_instance(&h,first,&a)
+Input desktop cursor available: 1
+
+      Start 34: ui_menu_offscreen
+34/56 Test #34: ui_menu_offscreen ..................   Passed    0.18 sec
+      Start 35: ui_menu_cascade_offscreen
+35/56 Test #35: ui_menu_cascade_offscreen ..........   Passed    0.29 sec
+      Start 36: ui_menu_access
+36/56 Test #36: ui_menu_access .....................   Passed    0.13 sec
+      Start 37: ui_web_text_edit
+37/56 Test #37: ui_web_text_edit ...................   Passed    0.17 sec
+      Start 38: ui_generic_web_host
+38/56 Test #38: ui_generic_web_host ................***Failed    0.31 sec
+FAIL 36: first!=0
+Load: Application create/mount failed (status -6)
+
+      Start 39: ui_component_resilience
+39/56 Test #39: ui_component_resilience ............***Failed    0.95 sec
+automatic style preview lifetime: 0 failures
+resource,0,0,0,17707008,6918144,176,60,5,0,0,0,0,0,0,0
+line 192: first&&second&&first!=second
+line 192: get_instance(&window,first,&a)&&get_instance(&window,second,&b)
+
+      Start 40: ui_application_contract
+40/56 Test #40: ui_application_contract ............   Passed    0.35 sec
+      Start 41: ui_light_web_dynamic
+41/56 Test #41: ui_light_web_dynamic ...............   Passed    0.24 sec
+      Start 42: ui_web_shell_slots
+42/56 Test #42: ui_web_shell_slots .................***Failed    0.17 sec
+Web shell slots: float panel with Web title
+Web shell slots: floating preserves borrowed content HWND
+Web shell slots: floating slot reports local content dimensions
+Web shell slots: background hides owned popup
+Web shell slots: activation and redock preserve application children
+Web shell slots: incremental refresh preserves content
+
+      Start 43: ui_floating_web_dpi
+43/56 Test #43: ui_floating_web_dpi ................***Failed    0.12 sec
+
+      Start 44: ui_light_web_parity
+44/56 Test #44: ui_light_web_parity ................   Passed    0.21 sec
+      Start 45: ui_workspace_integration
+45/56 Test #45: ui_workspace_integration ...........   Passed    1.58 sec
+      Start 46: ui_browser_host
+46/56 Test #46: ui_browser_host ....................   Passed    5.22 sec
+      Start 47: ui_web_host_frontend
+47/56 Test #47: ui_web_host_frontend ...............   Passed    1.54 sec
+      Start 48: ui_native_activation
+48/56 Test #48: ui_native_activation ...............   Passed    0.66 sec
+      Start 49: ui_dpi_integration
+49/56 Test #49: ui_dpi_integration .................   Passed    0.09 sec
+      Start 50: ui_opengl_integration
+50/56 Test #50: ui_opengl_integration ..............   Passed    0.31 sec
+      Start 51: ui_surface_input
+51/56 Test #51: ui_surface_input ...................   Passed    0.16 sec
+      Start 52: ui_monitor_transition
+52/56 Test #52: ui_monitor_transition ..............***Skipped   0.10 sec
+      Start 53: ui_workspace7
+53/56 Test #53: ui_workspace7 ......................   Passed    0.16 sec
+      Start 54: ui_native_shell_integration
+54/56 Test #54: ui_native_shell_integration ........   Passed    0.12 sec
+      Start 55: ui_native_responsive
+55/56 Test #55: ui_native_responsive ...............   Passed    0.21 sec
+      Start 56: ui_assistant_protocol
+56/56 Test #56: ui_assistant_protocol ..............   Passed    0.09 sec
+
+84% tests passed, 9 tests failed out of 56
+
+Total Test time (real) = 192.42 sec
+
+The following tests did not run:
+	 52 - ui_monitor_transition (Skipped)
+
+The following tests FAILED:
+	 12 - ui_webview2_render (Timeout)
+	 14 - ui_component_widths (Failed)
+	 26 - ui_api7_integration_webview2 (Failed)
+	 32 - ui_framework_features_host (Failed)
+	 33 - ui_menu_desktop (Failed)
+	 38 - ui_generic_web_host (Failed)
+	 39 - ui_component_resilience (Failed)
+	 42 - ui_web_shell_slots (Failed)
+	 43 - ui_floating_web_dpi (Failed)
+Errors while running CTest

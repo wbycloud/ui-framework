@@ -1,0 +1,3 @@
+experience line105: click(long_form,"field-long-mode")
+experience line105: ui_host_menu_get_presentation(h,"detail",&p)==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"很长属性名称")
+component experience light: 2 failures
