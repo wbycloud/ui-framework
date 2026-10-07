@@ -421,3 +421,15 @@ $env:UI_NATIVE_SCROLL_EVIDENCE = (Resolve-Path build/native-scroll-images).Path
 ```
 
 该用例与原离屏完整范围测试独立，均列入当前轻量CI必要检查；本轮实测身份、业务只读重建、失败记录及完整SDK见[验收](validation/native-component-scroll-validation.md)。本机结果不算托管CI、Session0或物理/人工验收。
+
+本轮视觉复验增加ui_light_glyph_padding（实际零内距图标像素）、空标题/字段对齐/GL图片比例/只读操作栏和表头宽度断言；现有CI对非native配置要求新像素用例。原生鼠标同HWND捕获及TREE加载覆盖层保持。串行执行当前矩阵，避免独立输入程序抢共享桌面焦点。
+
+真实GL桌面截图需输入桌面和像素读取权限；PrintWindow可能省略原生GL，不能以白色画布证明实际渲染。Sandbox中Runtime可能保持ready0/nav0/HRESULT0而无创建回调，保留原失败后使用同二进制正常桌面对照；不强杀、删目录、延时或提高阈值。必要回归命令：
+
+~~~powershell
+ctest --test-dir build/visual -j 1 --output-on-failure --output-junit current.xml
+ctest --test-dir build/visual -R "^(ui_light_glyph_padding|ui_component_scroll_native|ui_visual_ui_light|ui_visual_ui_webview2)$" --output-on-failure
+./tools/test-windows-ci.ps1
+~~~
+
+[完整窗口实测](validation/visual-polish-validation.md)列出准确源哈希、本地commit、初始菜单失败/修复、两后端真实截图和业务只读观察。当前Session1控制不替代当前源码Session0服务或整机无登录，缺权限时保持服务脚本门控待验。

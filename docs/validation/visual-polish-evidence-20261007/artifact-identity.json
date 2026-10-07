@@ -1,0 +1,150 @@
+{
+  "baseline": "43587c3e8e0cb4549da314e6c7e15a4654a10100",
+  "product_commit": "6a0170a4f263bc08a004134eb958bf299219d318",
+  "light_fix_commit": "95f5d7813f61195bd52f7946091ac6384f3fba59",
+  "business_source_commit": "abc8d870efc6401dc4fa55e50170a5449c11e36b",
+  "sdk": "0.7.0-dev",
+  "api": 7,
+  "abi": 1,
+  "headers": {
+    "application.h": "4c87d5dab2f59eea1a240e1378849604635222452d785b6d928b792b1c6483ab",
+    "assistant.h": "f73a8a11b6faf363710e9bb3d9e92f273ff1fe90ba6863cfd06cb79947e658fe",
+    "components.h": "dc91ebbb2f6cd802ef74eff51c00c93417b7b83b49badbcdf9836adc775b1a6c",
+    "images.h": "391bb3234a5fbcd89163ca7508be34beb492c7bfe03b81bf4fce0199532d8431",
+    "light_web.h": "98df2ed526240575d8ddea17002515dd8be2eacc3ee7e335848f9024b7b43ee2",
+    "menus.h": "6eae62503fe50a5fc3da53bc18aeb477d386824d8acf6ca3ef2f72498e6d2474",
+    "native.h": "aeda7449989a4d5d516f3e40891b2fcc2bbc927eb2413fc6d669668bde802272",
+    "opengl.h": "55281d2ee7f70de2b3bc6e7f107102b88b367925087126e5e09fbb2d9b1e972d",
+    "package.h": "4fe07537379e6a7a83e05ffacd77a3207134dffa6aee8dbaf3a6f2f733c25bf9",
+    "shell.h": "bb8b607aa35a1936c0f6d9740527082ac6933953cd764df6d1a356283ab4c86c",
+    "ui.h": "db201ef3792a1920018bbcc58d0deefb2d0ff9e870c1a2e44af2b32bee67828c",
+    "webview2.h": "4ab2433c7b1be86ba1c39a430b6d10c2f6f5515d8c55a0f91f3784c387a9b11c"
+  },
+  "files": {
+    "baseline/ui_framework.dll": {
+      "bytes": 2134528,
+      "sha256": "00c2ef1119af7823ec0bd52dfda0ba5d257056ffc62d6478de766cd6be138a10"
+    },
+    "baseline/ui_framework_runtime.lib": {
+      "bytes": 55818,
+      "sha256": "f18fadad11bc7b1e8db8700eaa9e85a8952ee3d3f9c5ff4808221c43a9799064"
+    },
+    "baseline/framework_host.exe": {
+      "bytes": 250368,
+      "sha256": "fa0b0ce1fec4a92235a56db6225f1252ff2955c5418ce90e6abc123f693f044c"
+    },
+    "baseline/api7_fixture.uapp": {
+      "bytes": 21893,
+      "sha256": "63dde866b1c3204edfd1cc4a291458f9c0a577a6b2ffce10db9d69facd10e922"
+    },
+    "baseline/framework_features.uapp": {
+      "bytes": 27113,
+      "sha256": "fcdd5e7ceea3bad2eafccecf2ae360f8360911c88c94ee181c411d8b313ea228"
+    },
+    "after/ui_framework.dll": {
+      "bytes": 2137600,
+      "sha256": "43c80d5de399f7d3753730942bc95295e6213fbd38ff39ddeed53fcfba3a0948"
+    },
+    "after/ui_framework_runtime.lib": {
+      "bytes": 55818,
+      "sha256": "f18fadad11bc7b1e8db8700eaa9e85a8952ee3d3f9c5ff4808221c43a9799064"
+    },
+    "after/framework_host.exe": {
+      "bytes": 251392,
+      "sha256": "2a91c77872a0ab341529650107e344c4b6ca32ac74b5f715b275f4b47368debe"
+    },
+    "after/api7_fixture.uapp": {
+      "bytes": 21893,
+      "sha256": "772ae70bf642b1d1671fb4512ff8509760cb13b816198688d470a88620d68b55"
+    },
+    "after/framework_features.uapp": {
+      "bytes": 27113,
+      "sha256": "9c32929fbc6ed7b537eaaf05a7278a4afb19992dbdfc22ff34a106cc052e4eb0"
+    },
+    "after/ui_visual_ui_test.exe": {
+      "bytes": 121856,
+      "sha256": "3ba487a8c2c5b3300b668e6dc40507e7f905a8c171e18ee66a907bb7c84e0a5c"
+    },
+    "after/ui_component_scroll_native_test.exe": {
+      "bytes": 26112,
+      "sha256": "185e46474fbe6df4a49f918fc4b5c68aaae64df599beb3e3f9f5dc3eab969ddc"
+    },
+    "business-before/klayoutc.uapp": {
+      "bytes": 878925,
+      "sha256": "576e3d9865fd58a736ae17ae818d285332fb45fec8e37ce23078271193d96b49"
+    },
+    "business-before/framework/ui_framework.dll": {
+      "bytes": 2072064,
+      "sha256": "076ad83ab63df0b6ef10f76294de557d5cf8e6e95db74c8e7d264c992de0df64"
+    },
+    "business-after/klayoutc.uapp": {
+      "bytes": 878925,
+      "sha256": "8757c1cafb4058e15f64b89e526b8c055b8b54a2c51005f4e4b1249dd28df3fd"
+    },
+    "business-after/framework/ui_framework.dll": {
+      "bytes": 2075136,
+      "sha256": "ecbea886628fbb590abd01fcb7494a899641671e9ffd5ee0dc576d3e39808830"
+    },
+    "business-after/framework/ui_framework_runtime.lib": {
+      "bytes": 53960,
+      "sha256": "17d36323761432895183fd4735f43b052002ef6872e51255a7d0ef33ea56cd64"
+    },
+    "business-after/framework/framework_host.exe": {
+      "bytes": 251392,
+      "sha256": "c6bba18d56cc179ef2e2adb26fd20f30229be4fb5a2057e2857b76b44ca4315e"
+    },
+    "business-after/business-scroll-observation.exe": {
+      "bytes": 605696,
+      "sha256": "8f05fb0e0257aa001ba36b068d251880aa3c6a9ac989c07b8632d9e8b560c57f"
+    },
+    "after/business-observe.exe": {
+      "bytes": 129024,
+      "sha256": "5ffe971bedc94a72a9dfdc12224bbee499d1cde9eb3abefbbb676350249df460"
+    },
+    "business-source/tests/reference/precision/precision-official.gds": {
+      "bytes": 522,
+      "sha256": "24e136cab20d1a8c4ce201b5fb77375f72c805a5ce3ffad0fe66a78b33a3128b"
+    },
+    "runtime-version.exe": {
+      "bytes": 135168,
+      "sha256": "31097d7f3fd8a12e704834b3efd3920700a07603e1a365f07af36e1a67ba105d"
+    },
+    ".deps/mesa-24.3.4/x64/osmesa.dll": {
+      "bytes": 52327936,
+      "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+    },
+    ".deps/Microsoft.Web.WebView2.1.0.4129.50/build/native/x64/WebView2Loader.dll": {
+      "bytes": 164704,
+      "sha256": "a9a09232c25805323d4cfb3fc8f545a190a9c8a99c93262ea99d0b88df99ec90"
+    },
+    "after/ui_api7_integration_test.exe": {
+      "bytes": 39424,
+      "sha256": "07a6929c8091543b0dbd24735eeba7aa72bb134af7505cc434c08c4fd818af7b"
+    },
+    "after/ui_light_glyph_padding_test.exe": {
+      "bytes": 12800,
+      "sha256": "55dbdb257cc1e8f771145679a5199c1065bf386c964a4762341f73190df14364"
+    },
+    "business-after/klayoutc_app.dll": {
+      "bytes": 833024,
+      "sha256": "ab52510bfb7f683b344748d5a4c0d08c28156b4d1155ac7a5da2292a0f78b0d0"
+    },
+    "business-after/kc_host_smoke.exe": {
+      "bytes": 267264,
+      "sha256": "ac98772496a18ba72d79849a24f846b986be9ee3d37a28437d0aaaf51c78f786"
+    },
+    "business-observe.c": {
+      "bytes": 4853,
+      "sha256": "9f3d96fc1d552b56aa9d7f22c4896aae843a32ea67cb0b6dea3677d532afba23"
+    },
+    "business-scroll-observation.c": {
+      "bytes": 30995,
+      "sha256": "55d8c95e3a07d91b52b7f8de56a55862e67ccc32c35a2c4025bb2016b84d28a5"
+    },
+    "business-scroll-observation.inc": {
+      "bytes": 27150,
+      "sha256": "914356b439491eaaa3c009331d83bb4ff9a1a8b939e04fbfc2b99e7b41d4daf1"
+    }
+  },
+  "business_lock_note": "Original copied application lock/header prints 43587c3; actual framework source CMake override is current6a0170a; untouched business full-suite metadata does not attest binary provenance. This manifest hashes the actual rebuilt outputs. Framework-owned observer prints the verified source override."
+}

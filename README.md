@@ -1,6 +1,6 @@
 # Windows C/Web UI Framework
 
-面向 Windows x64 的轻量 C 应用框架。独立宿主 `framework_host.exe` 加载 `.uapp` 应用包，以浏览器风格的 Web 外壳提供多应用标签、菜单、工具入口、侧栏外框和全局助手。外壳使用 Lexbor、QuickJS-NG 与 GDI 实现受控 HTML/CSS/JS 子集，支持浅色/深色切换；第一行为融合标题区的实例标签栏，第二行为活动应用菜单。[宿主操作与最近记录](docs/standalone-host.md)。框架自有界面采用紧凑中性浅深主题，共同组件同步宿主主题，AI每次启动默认收起。[视觉规范](docs/visual-design.md)与[真实截图/回归](docs/validation/visual-ui-validation.md)。
+面向 Windows x64 的轻量 C 应用框架。独立宿主 `framework_host.exe` 加载 `.uapp` 应用包，以浏览器风格的 Web 外壳提供多应用标签、菜单、工具入口、侧栏外框和全局助手。外壳使用 Lexbor、QuickJS-NG 与 GDI 实现受控 HTML/CSS/JS 子集，支持浅色/深色切换；第一行为融合标题区的实例标签栏，第二行为活动应用菜单。[宿主操作与最近记录](docs/standalone-host.md)。框架自有界面采用紧凑中性浅深主题，共同组件同步宿主主题，AI每次启动默认收起。[视觉规范](docs/visual-design.md)与[本轮完整窗口真实截图/回归](docs/validation/visual-polish-validation.md)。
 
 新应用通过公共 C ABI 注册框架 Web 组件、提供数据并绑定语义命令；绘图内容按需要使用 OpenGL 内容槽，文档和业务逻辑由应用维护。当前API7应用可挂载自有原生内容。框架同时保留静态库及应用自行创建窗口的原生嵌入式模式。WebView2 是可选的应用内容后端。
 

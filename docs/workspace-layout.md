@@ -1,6 +1,6 @@
 # 工作区布局：API7
 
-SDK0.7.0开发版、API7、标准修订7；Windows x64/C11/C ABI。接口见[shell.h](../include/ui_framework/shell.h)，实现见[Win32 shell](../src/platform/win32_shell.c)与[布局实现](../src/platform/shell_layout.inc)。应用ABI和包格式仍为1，旧API1–6描述及默认布局继续兼容。
+SDK0.7.0开发版、API7、标准修订7；Windows x64/C11/C ABI。接口见[shell.h](../include/ui_framework/shell.h)，实现见[Win32 shell](../src/platform/win32_shell.c)与[布局实现](../src/platform/shell_layout.inc)。应用ABI和包格式仍为1，当前API7完整size与布局格式合同继续维护；历史调用方兼容不再承诺。
 
 设计顺序是保存/恢复、分隔条、拖拽停靠。当前模型支持左右侧栏的有序面板栈、面板高度、单面板折叠/关闭、浮动窗口与侧栏宽度，复用既有内容槽、组件和surface生命周期。API7新增底部和同区标签组；不支持任意嵌套分割树。
 
@@ -70,3 +70,5 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 ## 自有外框视觉
 
 独立宿主及Web浮动标题使用[统一视觉规范](visual-design.md)：28逻辑像素紧凑标题、20像素标题工具、平面标签及中性分隔条，悬停/拖动有强调状态。主题切换只更新外框/共同模板，不重建内容槽、GL context或组件；格式2读取1、面板ID、恢复/草稿/选择/焦点及布局手势合同不变。原生嵌入标题、屏幕停靠预览仍按实际Win32实现呈现；物理跨屏/桌面合成另验。[本轮回归](validation/visual-ui-validation.md)。
+
+本轮同组标题不再重复显示活动面板名称，标签列位于浮动/折叠工具前，有限成员页按剩余宽度分配并保留前后入口；浮动按钮20像素与标题28匹配。布局模型/格式、内容槽和GL context不改。[当前视觉和布局回归](validation/visual-polish-validation.md)。

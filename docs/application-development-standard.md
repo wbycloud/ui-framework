@@ -473,3 +473,7 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 
 
 标准7原生共同组件输入补验：公共presentation为view-local logical pixels；原生输入定位先按组件DPI缩放到视图客户区物理坐标，再转screen，公共dispatch仍使用逻辑客户区坐标。真实捕获、完整Dispatch后的状态及稳定ID/文字/非空clip分别核验；仅取出消息或离屏通过不算原生鼠标验收。框架内部捕获/异步占位修复不改变API7/ABI1或应用数据源责任，见[证据](validation/native-component-scroll-validation.md)。
+
+### 当前API7框架视觉几何（2026-10-07）
+
+框架负责空标题空间回收、字段同行/窄窗堆叠、表头/内容声明列宽一致、C图片按比例预览和只读无效操作栏隐藏。应用仍提供真实总量/稳定ID/字段状态/图片所有权及语义命令，不复制内部模板。行32、轨道12、最小滑块24和原预算保持，尺寸变更应实际复验查询范围与命中；原生SendInput/Runtime呈现与物理IME/DPI不能混为验收。当前API7合同不变，历史SDK/包不重新纳入维护。[本轮完整窗口证据](validation/visual-polish-validation.md)。

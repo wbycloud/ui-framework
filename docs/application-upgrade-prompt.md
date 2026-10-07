@@ -52,3 +52,5 @@
 
 
 当前API7原生滚动修复后，核验完整SDK的源码commit、头文件、ui_framework_runtime.lib、ui_framework.dll、framework_host.exe及产物SHA256，再重建当前应用。应用继续按真实total_count及first/count提供稳定非零ID的复制批次；无需增加缓存或业务滚动条。验收须包括真实鼠标首末项/末列、可见文字或样式像素、resize、焦点和关闭；离屏输入通过不替代原生鼠标。[本轮框架记录](validation/native-component-scroll-validation.md)。
+
+当前框架内部视觉调整无需应用复制模板：空标题、属性自动同行/堆叠、图片按比例显示和列宽对齐由框架处理。请部署同commit的宿主/共享DLL/导入库/头文件；保留真实total、稳定ID、按需查询及原预算。实测参考docs/validation/visual-polish-validation.md，当前API7与维护政策不变，原生真实鼠标首末行/末列不得用离屏结果替代。

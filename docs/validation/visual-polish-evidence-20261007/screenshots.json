@@ -1,0 +1,578 @@
+{
+  "screenshots/before-light-host-light.png": {
+    "source": "before/light-host-light.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "dd63a188d9bf6a4f63168597330f687604b631b0ce5ccc4c5db764acc9ed79a2",
+    "png_sha256": "7b7894402d2c347a7596ebf23bc68430adc495ca8797e19209867a35398ce98b",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-light-host-dark.png": {
+    "source": "before/light-host-dark.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "1156adf783c166867de27310bde91b466adce4530c91e397e0bc9e3d023b2d60",
+    "png_sha256": "58b1ca508df2e9379da2611b3ba40c641b736f0b1d11f1113ee45f60af17e454",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-light-host-dpi-96.png": {
+    "source": "before/light-host-dpi-96.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "1156adf783c166867de27310bde91b466adce4530c91e397e0bc9e3d023b2d60",
+    "png_sha256": "58b1ca508df2e9379da2611b3ba40c641b736f0b1d11f1113ee45f60af17e454",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-light-host-dpi-144.png": {
+    "source": "before/light-host-dpi-144.bmp",
+    "dimensions": [
+      1800,
+      1200
+    ],
+    "bmp_sha256": "585ce665a688e8b85107ec319b67eea6605e359b6d50e75fe84073cba43d0c8a",
+    "png_sha256": "8c88b8bd7f2f7da588366db7e0abbc54b64013a5f66c7c72a62697d9520bb166",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-light-host-dpi-192.png": {
+    "source": "before/light-host-dpi-192.bmp",
+    "dimensions": [
+      2400,
+      1460
+    ],
+    "bmp_sha256": "73aa2c85ff4d97f2c823da323ceb8c2b5fdee31c21b5787cb20fcbc29f611ec8",
+    "png_sha256": "79465938dc146ccd5925f914ca1592c73e30da8748ed0397dcbcfbbda55da9b1",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-light-narrow.png": {
+    "source": "before/light-narrow.bmp",
+    "dimensions": [
+      320,
+      600
+    ],
+    "bmp_sha256": "f2b613a15945611e4f9607b780aefd140b40b5fffbec59c60144f29cb446c2a3",
+    "png_sha256": "4c08e01c4eb38288b8d7c1cf64032361880cf1cae3a066ef0582f62335067579",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-light-assistant.png": {
+    "source": "before/light-assistant.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "23ddf6c4d64e21b34a66152269a2a1afcc3466fcb796c9e4aeb23d7cd45bb15b",
+    "png_sha256": "981dd34e4462542eacb608e4e6107a86998c616516fe676d27aa5bc500e53924",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-light-color-picker.png": {
+    "source": "before/light-color-picker.bmp",
+    "dimensions": [
+      480,
+      640
+    ],
+    "bmp_sha256": "2de3a3f0bbc4009363087b708d5f3cf256fc1a4d5bfea74bd6886e67348b2de7",
+    "png_sha256": "7dde5c69a704faa6efdf6fb9fd84a2f891d1d9676db517e012122512cb57f432",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-light-enum.png": {
+    "source": "before/light-enum.bmp",
+    "dimensions": [
+      480,
+      480
+    ],
+    "bmp_sha256": "f9688e0bab7da7e91ae068ca6d4f34ceece42164757717511ae2ed6238cec8f9",
+    "png_sha256": "c0b394c0aa9d7720e1c8e8224af0f8dae1032b31acddaf0d0c12ff436cba07f6",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-runtime-host-light.png": {
+    "source": "before/runtime-host-light.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "d182535b4b6ed83d60be68a5a592321044f5ebd8a53c48122cb139b65100ee59",
+    "png_sha256": "5905dc7985553d5ea404dec7cea5a94cf25a9de92b5d0124629869a876eb9232",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-runtime-host-dark.png": {
+    "source": "before/runtime-host-dark.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "0ab96e42772119fcc3f51ff6671f1300fe5deae68cd4f14c3e9f0f02dabe5935",
+    "png_sha256": "e9c36f52dd73c34502c0357cd556fe92aae4d763c00320de13469b9198c017d7",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-runtime-host-dpi-96.png": {
+    "source": "before/runtime-host-dpi-96.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "8717e78da8fb3a41977a175fbc1c4e7093e84f5d1779da3d22cd486a46151656",
+    "png_sha256": "21001b0e1de49b606013d85f5c7ccef2216df9eef043f3a7dfdb070fd257c9f1",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-runtime-host-dpi-144.png": {
+    "source": "before/runtime-host-dpi-144.bmp",
+    "dimensions": [
+      1800,
+      1200
+    ],
+    "bmp_sha256": "5ea271b0524d917b5325e642f9b638bc241713bef414249cf19120e1adcadead",
+    "png_sha256": "78e180f2382b12061a24bc2a228c5ab942e9e397ef290a0f63c006ff51d8b2db",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-runtime-host-dpi-192.png": {
+    "source": "before/runtime-host-dpi-192.bmp",
+    "dimensions": [
+      2400,
+      1460
+    ],
+    "bmp_sha256": "c6f686716c31e767a9ccccb58154ea13645a3dc58cc7e05a76d8c31ad49f76ee",
+    "png_sha256": "199940355eadeb8510b20ef3d11a696a0894ddb49f44f4ec4c53a443db030b8f",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-runtime-narrow.png": {
+    "source": "before/runtime-narrow.bmp",
+    "dimensions": [
+      320,
+      600
+    ],
+    "bmp_sha256": "8c3e342bf3eb78ad793785dad4403e2bc4aea289b38b2c6b7c795c77453b7a45",
+    "png_sha256": "7afc47a34f2f2e734af5ff7436dd88f9751377e9ca4e839e74f4568e56f8c2fe",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-runtime-assistant.png": {
+    "source": "before/runtime-assistant.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "1d6fb3f3d6964f38aed3a3631ec4e005f8bfe0caba255fe6d27f07b58b7a73e8",
+    "png_sha256": "b14e1367fbf8382b494c2282fd0be5365d08dc732a9ae173093df15646fbc2d9",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-runtime-color-picker.png": {
+    "source": "before/runtime-color-picker.bmp",
+    "dimensions": [
+      480,
+      640
+    ],
+    "bmp_sha256": "a9df270bd66a81a3d9be029e71d4ee97e3458f6244ea9f98139821c3ae746276",
+    "png_sha256": "c28b0f589a95570eb2fdb90c412b46788a7b0d9fd4ef3b57878f1dbe0f652896",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-runtime-enum.png": {
+    "source": "before/runtime-enum.bmp",
+    "dimensions": [
+      480,
+      480
+    ],
+    "bmp_sha256": "fc277fcf36bf02c6c195fd5a1d58cda0c8518a228cf9de6b72fd34ecf05c6c25",
+    "png_sha256": "e720ef7d1707073cab0a848d3c3f9714610893ef6e7af16c0ac669cf66a14ef7",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "43587c3"
+  },
+  "screenshots/before-business-light.png": {
+    "source": "before/desktop-app-business-light.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "62fa33d17830fab6ff79c1ab3fed04bd1ea4812d6c155e812c9cd4c14f235584",
+    "png_sha256": "4dc67ecb0c69b5abafaa8e36322e03e6711b31390a215fed2b5645c6f85626e4",
+    "pixels_lossless": true,
+    "app": "klayoutc abc8d870",
+    "product": "43587c3"
+  },
+  "screenshots/before-business-dark.png": {
+    "source": "before/desktop-app-business-dark.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "b2c55d9353d8fbc18f643d19517166326c2740748d5e8800ca838b06589decc3",
+    "png_sha256": "d8a079a858d80338e475fc97f4a2c63d915173b08f871b6b675fd851a8ab6a05",
+    "pixels_lossless": true,
+    "app": "klayoutc abc8d870",
+    "product": "43587c3"
+  },
+  "screenshots/before-business-ai.png": {
+    "source": "before/desktop-app-business-ai.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "940114caac7fc7a3afd2e8c46efae57ea7dbd732adb47fda29e9512e801e5814",
+    "png_sha256": "2fe7c0d423f19455ece78e0a544d912f411ecd9ce3b8bb8b20d72eeddf0c3b96",
+    "pixels_lossless": true,
+    "app": "klayoutc abc8d870",
+    "product": "43587c3"
+  },
+  "screenshots/before-features-wgl-light.png": {
+    "source": "before/features-business-light.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "c27e94279734eaf01d1cd9ebd369282507a51dea2ffbca8ba160cd178a250bdb",
+    "png_sha256": "1b9a3b3daa230211d800c28fd5e1f4b248558877c4678a1ae7e45f14ca0a7d05",
+    "pixels_lossless": true,
+    "app": "framework_features actual WGL",
+    "product": "43587c3"
+  },
+  "screenshots/before-features-wgl-dark.png": {
+    "source": "before/features-business-dark.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "cfc87b5e6e74fd7e0aa36743ffc323f40fdb0df150247efe345cb8f1e691ba81",
+    "png_sha256": "237fdc06cf8a5537024ebb0245abecc0455ab93a00df092e213af2933361e956",
+    "pixels_lossless": true,
+    "app": "framework_features actual WGL",
+    "product": "43587c3"
+  },
+  "screenshots/before-features-wgl-ai.png": {
+    "source": "before/features-business-ai.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "cea03b230099b93176f625687e5f83bb1b30eb5ff6bf1445a19e2aeec62a11fd",
+    "png_sha256": "fbc808370fb7ca9019d85c1e840c74746ea1a760d103647cc1f7b4d29c76525a",
+    "pixels_lossless": true,
+    "app": "framework_features actual WGL",
+    "product": "43587c3"
+  },
+  "screenshots/after-light-host-light.png": {
+    "source": "after/light-host-light.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "48a045de84e9d24ca01b671a3c71ec970c876b5a6e27224296a2d5d387a72ffd",
+    "png_sha256": "87a49515bcaf2a808496555b82266a6c2ba31b458caed96ab6b0b9635ab1a686",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-light-host-dark.png": {
+    "source": "after/light-host-dark.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "db061fd663b4b9b860b552081a68a576d7483d9b5454f11f6f5841ab8c20b01c",
+    "png_sha256": "5e071d9783be728ba20335f315971f7edc05f21667acb6a254927fe7abb78d52",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-light-host-dpi-96.png": {
+    "source": "after/light-host-dpi-96.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "db061fd663b4b9b860b552081a68a576d7483d9b5454f11f6f5841ab8c20b01c",
+    "png_sha256": "5e071d9783be728ba20335f315971f7edc05f21667acb6a254927fe7abb78d52",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-light-host-dpi-144.png": {
+    "source": "after/light-host-dpi-144.bmp",
+    "dimensions": [
+      1800,
+      1200
+    ],
+    "bmp_sha256": "b9d6488293e51124938dbaa16b2d62f1aa9bdf1bf4fd452aebe1f30b50921212",
+    "png_sha256": "ef443645cec96057d1e7b0dc8f25fda4292937a9cb9b86f3eafe71abf2f94a36",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-light-host-dpi-192.png": {
+    "source": "after/light-host-dpi-192.bmp",
+    "dimensions": [
+      2400,
+      1460
+    ],
+    "bmp_sha256": "9c82ecba0dbf4377f1a6943c145ceabe7f80489a50824b952bd95abe0fc0522e",
+    "png_sha256": "a8c548c9dbb8191e419bcdc05af4aabe4c4acefc78941dd4f3412739d564e7e9",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-light-narrow.png": {
+    "source": "after/light-narrow.bmp",
+    "dimensions": [
+      320,
+      600
+    ],
+    "bmp_sha256": "d7b4701bf90fad22a95ceed8530cc59a9466966cf397a2399c6ee3652d88305d",
+    "png_sha256": "afb9d108df6659f1a00014b738d3a89dbc37421f005a361db94f68d9eac23d4a",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-light-assistant.png": {
+    "source": "after/light-assistant.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "29dac09da117cf6e5a126f6665d6030c58b12f56d242f0969b5bb4151c5c5ecb",
+    "png_sha256": "ecfbec9647966f0591022407e863302112fe35cb56fd9e815a8c7c2a0c4cf6d3",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-light-color-picker.png": {
+    "source": "after/light-color-picker.bmp",
+    "dimensions": [
+      480,
+      640
+    ],
+    "bmp_sha256": "65811352ef32496f97cf71b1f02f9df8fc73782ea47243bc64f81ec21a73dfa6",
+    "png_sha256": "b463da6f00f419939c4cd7a54a2b61ab73c0930b1e4d6c963b7057f8082f20c3",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-light-enum.png": {
+    "source": "after/light-enum.bmp",
+    "dimensions": [
+      480,
+      480
+    ],
+    "bmp_sha256": "707c657616a4e9408150b5a61a97d670930ef2c90e48bbf6f45da58adb665bbf",
+    "png_sha256": "af796d90de959a298c53d03bdd6e624a835969854fbaa40a7918a3530eef49c2",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-runtime-host-light.png": {
+    "source": "after/runtime-host-light.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "7699f51dabfbfd0f82a595c083daa29d372882118e27cda90a85ac476b211406",
+    "png_sha256": "b56e77f49c68e46996e4e27711bd605a6235a82362bc015cd4e7d58da9ea56fe",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-runtime-host-dark.png": {
+    "source": "after/runtime-host-dark.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "8d984e459e3d7de8da155365f7af307c07bfe00bdc104888e2399d7436cb1e70",
+    "png_sha256": "0fc40e80a48c0aed424d8b5152c5e1cd924326bfd17b68f232f1ea1e8561ee90",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-runtime-host-dpi-96.png": {
+    "source": "after/runtime-host-dpi-96.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "7a585bc79467f312e42b8f55ea2863b8a3895ca62c20950432cfa37d496680d7",
+    "png_sha256": "3927b6e22ec84434782fae7d20c1f91e4f17ec2e024b37bf005bfcb80de8fec8",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-runtime-host-dpi-144.png": {
+    "source": "after/runtime-host-dpi-144.bmp",
+    "dimensions": [
+      1800,
+      1200
+    ],
+    "bmp_sha256": "6f4dee5dc2b5529cdd750ff273d63b3cc95240a985617d9092eebce34cff6751",
+    "png_sha256": "7bc68ee98f3b74aed05f1c6c3d86005b4db9be0f49fe7e769d24e3b44381052c",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-runtime-host-dpi-192.png": {
+    "source": "after/runtime-host-dpi-192.bmp",
+    "dimensions": [
+      2400,
+      1460
+    ],
+    "bmp_sha256": "b5d97f7d58f51290e7138bc574a8a816eaf1dd2c9aa74dcc6152eabc6de474e9",
+    "png_sha256": "dc4a3c2480fc32385b96b332f335ce22f6f1194654481670c4e25e679be93277",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-runtime-narrow.png": {
+    "source": "after/runtime-narrow.bmp",
+    "dimensions": [
+      320,
+      600
+    ],
+    "bmp_sha256": "a9de32071dd72d297e6940e2382b9ef59392dfff17c19c1c6be5c5a1283b2004",
+    "png_sha256": "1dd580cd6280e7bb349fe8ea628021b5610b3c5654568d01324b111bbcdd7b04",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-runtime-assistant.png": {
+    "source": "after/runtime-assistant.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "27cdc392ba9041b60133e7523c0a508c52b0c1572be57454cdd3034885028985",
+    "png_sha256": "6c56cfd551febe442ca93df64f9eec93119e9ddc6147cbd4bea8f20c6e63b8ef",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-runtime-color-picker.png": {
+    "source": "after/runtime-color-picker.bmp",
+    "dimensions": [
+      480,
+      640
+    ],
+    "bmp_sha256": "0c743994435798b0e4521ef443bd27d1d02c4e49dbca510503ee120435d91ad5",
+    "png_sha256": "33b0376c245b1a18fddec9fca7989e7f326b2f3a15c03493196783028bd458f2",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-runtime-enum.png": {
+    "source": "after/runtime-enum.bmp",
+    "dimensions": [
+      480,
+      480
+    ],
+    "bmp_sha256": "46bc5ca6176d1015eae86e2589e7d5c9d48db5be3d6b707fc8c8d4130a5f4033",
+    "png_sha256": "3f5b141febac8e10f563c5458c80fceba7ae09d412e861fb7d471906d98b9822",
+    "pixels_lossless": true,
+    "app": "api7_fixture",
+    "product": "6a0170a"
+  },
+  "screenshots/after-business-light.png": {
+    "source": "after/desktop-app-business-light.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "04274bb5ec797fa93e6cda6f35cc77f9d40cf5e9e9ba1d343db3f4efe0f3c9c9",
+    "png_sha256": "1af19af3cdd695bd260f50aa2af7bbb074f28579528c15e3d8621a4e1ef73041",
+    "pixels_lossless": true,
+    "app": "klayoutc abc8d870",
+    "product": "6a0170a"
+  },
+  "screenshots/after-business-dark.png": {
+    "source": "after/desktop-app-business-dark.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "94897578c4ff81c11348a74211b25c6e4ca2faf7746d5d447ff11892b86d4b49",
+    "png_sha256": "e1acb17b443f7b3e13502de520fb98e8ba876a972f56a964a4edeae3b4cac578",
+    "pixels_lossless": true,
+    "app": "klayoutc abc8d870",
+    "product": "6a0170a"
+  },
+  "screenshots/after-business-ai.png": {
+    "source": "after/desktop-app-business-ai.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "9cc0f0bae0ae78c10d047a994e5f735073325626ce4d8b19eeea3b6a6bae0ea0",
+    "png_sha256": "a57cde4ee1fab052e1f7c5f427e5bd31b0d6af0f53754ae029b34519b5ca1396",
+    "pixels_lossless": true,
+    "app": "klayoutc abc8d870",
+    "product": "6a0170a"
+  },
+  "screenshots/after-features-wgl-light.png": {
+    "source": "after/features-business-light.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "d4218fc7d8de0345739cbb8e6b8531bec40572f24778cc4ea9a0514f1ccaccae",
+    "png_sha256": "ec4a169250b4c5fb31dc3db84e2ca6e180e24da86d8e494e93ed68b2c6427cff",
+    "pixels_lossless": true,
+    "app": "framework_features actual WGL",
+    "product": "6a0170a"
+  },
+  "screenshots/after-features-wgl-dark.png": {
+    "source": "after/features-business-dark.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "b1c7aee3760571c861d1eea3227cb9315da4bfcee85b25ef82b34125b9fc008b",
+    "png_sha256": "0485d23863dad78644e29ee6f59d972d97383b361adf9d91b4857f85b0a2cdaf",
+    "pixels_lossless": true,
+    "app": "framework_features actual WGL",
+    "product": "6a0170a"
+  },
+  "screenshots/after-features-wgl-ai.png": {
+    "source": "after/features-business-ai.bmp",
+    "dimensions": [
+      1200,
+      800
+    ],
+    "bmp_sha256": "336a09e4b89e880fc7f4fbcbd79000b16702614e986364d7a4b23f6b536bbc3e",
+    "png_sha256": "9cfac4521f4681dad4517a70cdb92028bd42dcf33a3a709f743e0753ad32ee0f",
+    "pixels_lossless": true,
+    "app": "framework_features actual WGL",
+    "product": "6a0170a"
+  }
+}

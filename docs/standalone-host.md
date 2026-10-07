@@ -49,3 +49,7 @@ ctest --test-dir build/web-shell --output-on-failure -R '^(ui_browser_host|ui_we
 ui_browser_host使用框架测试包和私有临时历史目录，保留GetCursorPos/SendInput及窗口归属断言；测试不改用户最近记录或请求方应用。真实IME、不同DPI物理屏幕、边缘Snap/DWM及长期人工仍待验。自动截图、程序DPI和独立DLL不替代这些证据。
 
 共同树/列表/表格移除分页和列箭头按钮，完整范围滚动及按需数据查询保留。宿主菜单、最近应用和标签溢出列表是独立入口，其分页仍保留；不将两种列表混同。[本轮真实前后图](validation/component-scroll-only-validation.md)。
+
+## 完整窗口视觉打磨
+
+当前宿主继续单行标签标题栏。零内距MDL2图标与名称截断、20像素面板标题工具、位于工具前的有界停靠标签、助手展开高亮和状态栏内距统一；AI仍只由用户切换。共同属性区自动同行/堆叠，实际C图片按比例显示；空标题和只读无操作表单回收空间。主题只作用于框架界面，不改变应用GL/业务配色、内容槽或生命周期。[本轮实际Light、Runtime与只读业务GL对照](validation/visual-polish-validation.md)。

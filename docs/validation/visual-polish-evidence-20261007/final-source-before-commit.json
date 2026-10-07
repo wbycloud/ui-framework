@@ -1,0 +1,31 @@
+{
+  "baseline": "43587c3e8e0cb4549da314e6c7e15a4654a10100",
+  "dirty": [
+    "src/backends/light_web.c",
+    "src/components.c",
+    "src/components.html",
+    "src/menu.html",
+    "src/visual.css",
+    "src/platform/win32_shell.c",
+    "examples/framework_host/host.html",
+    "tests/visual_ui.c",
+    "tests/light_glyph_padding.c",
+    "CMakeLists.txt",
+    "tools/windows-ci-checks.ps1",
+    "tools/test-windows-ci.ps1"
+  ],
+  "sha256": {
+    "src/backends/light_web.c": "f4a9447fc8cf190634165ee1018d60be589b9a6214d2c6f1109b73e6f96df919",
+    "src/components.c": "e6f79ffa5e6998b6ec2444e078881a9f16477f813ef1e8cedae4c5bcfacdbaad",
+    "src/components.html": "e8fc8a6648db4ce221008198fd8861bcd7b0cbc5ec0c7d2b91f1e9cacad10a1b",
+    "src/menu.html": "ab258fc7044af4386e8f6ae1ea2030a5b4945d5fd043cf57600621d0dca32ed6",
+    "src/visual.css": "e2d5d412c5274bbe008a4a886bf86bdf55a9c19abe90f4ae0fa3de4ccd11ef46",
+    "src/platform/win32_shell.c": "a79703379b676c16a27c0e7020fd8f5bc24ab9cdbae66006bed2db9df88a6874",
+    "examples/framework_host/host.html": "7b0c41aac67373596b2720f22fff8d35c1d17c5c5a8597149441db10d0c51bc1",
+    "tests/visual_ui.c": "8c1961bbd5021a353dd51cd406fcd790d7990e241c547414b6e1be7c70829dba",
+    "tests/light_glyph_padding.c": "574c9539745c2718cefd26fc928390c46129340f5e02aec25ba7cee8b4ba8cfb",
+    "CMakeLists.txt": "f6e128c4b431cb7a03e631b74a71875cda345e3fbab855beea169786f88cf54a",
+    "tools/windows-ci-checks.ps1": "ae6d8edbf6b8764f1db3b025e0f0a75318d7b636dc0878d3dd51e77d014d0f77",
+    "tools/test-windows-ci.ps1": "c6eb65e3b52567af94fc977762c9c5e7335c3e3a0329b9976ba596f22592478b"
+  }
+}
