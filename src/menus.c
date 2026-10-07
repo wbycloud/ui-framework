@@ -265,6 +265,8 @@ static LRESULT CALLBACK popup_proc(HWND window,UINT message,WPARAM wp,LPARAM lp)
 {
     ui_menu_popup_t *p=(ui_menu_popup_t *)GetWindowLongPtrW(window,GWLP_USERDATA);
     if(message==WM_NCCREATE){p=(ui_menu_popup_t *)((CREATESTRUCTW *)lp)->lpCreateParams;SetWindowLongPtrW(window,GWLP_USERDATA,(LONG_PTR)p);return TRUE;}
+    if(p&&p->detail&&message==WM_NCHITTEST)return HTTRANSPARENT;
+    if(p&&p->detail&&message==WM_MOUSEACTIVATE)return MA_NOACTIVATE;
     if(p&&message==WM_TIMER&&wp==1){char id[4096];KillTimer(window,1);snprintf(id,sizeof(id),"%s",p->hover_id);p->hover_id[0]=0;if(*id){ui_json_t j={0};close_branch(p->child);uj_add(&j,"{\"action\":\"hover\",\"id\":");uj_string(&j,id);uj_add(&j,"}");if(!j.failed)popup_message(p->view,j.data,p);free(j.data);}return 0;}
     if(p&&message==WM_ACTIVATE&&LOWORD(wp)==WA_INACTIVE){ui_menu_popup_t *root=p;while(root->parent)root=root->parent;if(in_branch(root,(HWND)lp)||(HWND)lp==GetAncestor((HWND)p->host->native_parent,GA_ROOT))return 0;root->previous_focus=NULL;}
     if(p&&(message==WM_CLOSE||message==WM_DPICHANGED||(message==WM_ACTIVATE&&LOWORD(wp)==WA_INACTIVE))){(void)ui_host_close_menu(p->host);return 0;}
@@ -320,6 +322,7 @@ static ui_status_t show_popup(ui_menu_popup_t *p)
         if(x+width>monitor.rcWork.right)x=p->parent?monitor.rcWork.right-width:point.x+MulDiv(rect.width,(int)dpi,96)-width;
         if(x<monitor.rcWork.left)x=monitor.rcWork.left;if(y<monitor.rcWork.top)y=monitor.rcWork.top;
         p->width=MulDiv(width,96,(int)dpi);p->height=MulDiv(height,96,(int)dpi);if(!p->detail&&height<MulDiv((int)p->page_count*28+8+(total>p->page_count?36:0),(int)dpi,96))p->page_count=p->height>44?(size_t)(p->height-44)/28:1;if(!p->open)p->previous_focus=GetFocus();
+        {LONG_PTR style=GetWindowLongPtrW((HWND)p->window,GWL_EXSTYLE);SetWindowLongPtrW((HWND)p->window,GWL_EXSTYLE,p->detail?style|WS_EX_NOACTIVATE:style&~(LONG_PTR)WS_EX_NOACTIVATE);EnableWindow((HWND)ui_web_view_native_handle(p->view),p->detail?FALSE:TRUE);EnableWindow((HWND)p->window,p->detail?FALSE:TRUE);}
         SetWindowPos((HWND)p->window,HWND_TOP,x,y,width,height,SWP_NOACTIVATE);
     }
 #endif
@@ -414,7 +417,8 @@ ui_status_t ui_host_menu_dispatch_input(ui_host_t *host,const ui_input_event_t *
  host->menu_routing=1;status=ui_web_view_dispatch_input(p->view,event);host->menu_routing=0;return status;
 }
 ui_status_t ui_menus_route_input(ui_host_t *host,const void *view_data,const ui_input_event_t *event,int composing)
-{(void)view_data;if(!host||host->menu_routing||composing||(event->kind!=UI_INPUT_KEY_DOWN&&event->kind!=UI_INPUT_KEY_UP))return UI_STATUS_NOT_FOUND;return ui_host_menu_dispatch_input(host,event);}
+{ui_menu_popup_t *p;(void)view_data;if(!host||host->menu_routing||composing||(event->kind!=UI_INPUT_KEY_DOWN&&event->kind!=UI_INPUT_KEY_UP))return UI_STATUS_NOT_FOUND;
+ p=active_popup(host);if(p&&p->open&&p->detail){if(event->key_code!=18&&!(event->modifiers&UI_INPUT_MODIFIER_ALT))return UI_STATUS_NOT_FOUND;(void)ui_host_close_menu(host);}return ui_host_menu_dispatch_input(host,event);}
 ui_status_t ui_host_menu_get_presentation(ui_host_t *host,const char *id,ui_element_presentation_t *out)
 {ui_menu_popup_t *p=active_popup(host);return !p||!p->open?UI_STATUS_NOT_FOUND:ui_web_view_get_presentation(p->view,id,out);}
 ui_status_t ui_host_menu_capture_rgba(ui_host_t *host,ui_pixel_buffer_t *out)

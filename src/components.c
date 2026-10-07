@@ -635,7 +635,13 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
         if(tip&&*tip){uint64_t x=uj_u64(json,"x"),y=uj_u64(json,"y"),w=uj_u64(json,"width"),h=uj_u64(json,"height");
             if(x>=(uint64_t)c->width||y>=(uint64_t)c->height||!w||!h||w>(uint64_t)c->width-x||h>(uint64_t)c->height-y)return;
             anchor.size=sizeof(anchor);anchor.rect=(ui_rect_t){(int)x,(int)y,(int)w,(int)h};
-            if(row){c->tooltip_anchor=&anchor.rect;c->tooltip_row_id=row->id;}else{anchor.kind=UI_MENU_ANCHOR_CONTENT_SLOT;anchor.slot=c->slot;if(!c->slot)anchor.kind=UI_MENU_ANCHOR_HOST;}
+            if(row){c->tooltip_anchor=&anchor.rect;c->tooltip_row_id=row->id;}else{anchor.kind=UI_MENU_ANCHOR_CONTENT_SLOT;anchor.slot=c->slot;if(!c->slot){anchor.kind=UI_MENU_ANCHOR_HOST;
+#ifdef _WIN32
+                HWND native=(HWND)ui_web_view_native_handle(c->view);if(native&&c->host->native_parent){POINT at={MulDiv(anchor.rect.x,(int)c->dpi,96),MulDiv(anchor.rect.y,(int)c->dpi,96)};
+                    ClientToScreen(native,&at);ScreenToClient((HWND)c->host->native_parent,&at);anchor.rect.x=MulDiv(at.x,96,(int)c->host->dpi);anchor.rect.y=MulDiv(at.y,96,(int)c->host->dpi);
+                    anchor.rect.width=MulDiv(anchor.rect.width,(int)c->dpi,(int)c->host->dpi);anchor.rect.height=MulDiv(anchor.rect.height,(int)c->dpi,(int)c->host->dpi);}
+#endif
+            }}
             (void)ui_host_show_tooltip(c->host,&anchor,tip);c->tooltip_anchor=NULL;}return;}
     if(!strcmp(action,"tip-hide")){ui_menus_hide_tooltip(c->host);return;}
     if(!strcmp(action,"focus")){c->focused=uj_get(json,"focused",field,sizeof(field))&&*field;
@@ -730,7 +736,7 @@ static LRESULT CALLBACK dialog_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
     if(message==WM_CLOSE){ui_dispatch_enter(c->host);invoke_component(c,c->desc.commands.cancel,"{}");(void)ui_component_close_dialog(c);ui_dispatch_leave(c->host);return 0;}
     if(message==WM_GETMINMAXINFO){MINMAXINFO *limits=(MINMAXINFO *)lp;uint32_t dpi=c->dpi?c->dpi:ui_platform_get_dpi(hwnd);
         limits->ptMinTrackSize.x=MulDiv(240,(int)dpi,96);limits->ptMinTrackSize.y=MulDiv(180,(int)dpi,96);return 0;}
-    if(message==WM_SIZE&&c->view){RECT rect;uint32_t dpi=c->dpi?c->dpi:ui_platform_get_dpi(hwnd);GetClientRect(hwnd,&rect);c->width=MulDiv(rect.right,96,(int)dpi);c->height=MulDiv(rect.bottom,96,(int)dpi);
+    if(message==WM_SIZE&&c->view){RECT rect;uint32_t dpi=c->dpi?c->dpi:ui_platform_get_dpi(hwnd);c->dpi=dpi;GetClientRect(hwnd,&rect);c->width=MulDiv(rect.right,96,(int)dpi);c->height=MulDiv(rect.bottom,96,(int)dpi);
         (void)ui_web_view_resize(c->view,c->width,c->height,dpi);render_component(c);return 0;}
     if(message==WM_DPICHANGED){RECT *r=(RECT *)lp;c->dpi=LOWORD(wp);SetWindowPos(hwnd,NULL,r->left,r->top,r->right-r->left,r->bottom-r->top,SWP_NOZORDER|SWP_NOACTIVATE);return 0;}
     return DefWindowProcW(hwnd,message,wp,lp);
@@ -738,6 +744,7 @@ static LRESULT CALLBACK dialog_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
 static ui_status_t create_dialog(ui_component_t *c)
 {
     WNDCLASSW wc={0};ui_status_t status;RECT owner;HWND parent=(HWND)c->host->native_parent;
+    c->dpi=c->host->dpi;
     wc.lpfnWndProc=dialog_proc;wc.hInstance=GetModuleHandleW(L"ui_framework.dll");wc.lpszClassName=L"UIFrameworkWebDialog3";wc.hCursor=LoadCursorW(NULL,MAKEINTRESOURCEW(32512));
     if(!RegisterClassW(&wc)&&GetLastError()!=ERROR_CLASS_ALREADY_EXISTS)return UI_STATUS_PLATFORM_ERROR;
     GetWindowRect(parent,&owner);c->dialog_window=CreateWindowExW(WS_EX_TOOLWINDOW,wc.lpszClassName,L"Application dialog",
