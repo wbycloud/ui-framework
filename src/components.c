@@ -577,14 +577,19 @@ static void render_component(ui_component_t *c)
         uj_fmt(&json,",\"width\":%d,\"kind\":%d,\"buffer\":%s}",c->columns[i].width,c->columns[i].kind,c->buffered&&i<c->first_column?"true":"false");}
     uj_add(&json,"],\"columnWidths\":[");for(i=0;i<c->desc.column_count;++i){if(i)uj_add(&json,",");uj_fmt(&json,"%d",c->columns[i].width);}
     uj_fmt(&json,"],\"firstColumn\":%zu,\"visibleCount\":%zu,\"bufferStart\":%zu,\"buffered\":%s,\"rows\":[",c->first_column,c->visible_count,c->buffered?(size_t)(c->first<2?c->first:2):0,c->buffered?"true":"false");render_rows(c,&json,root,0,&position);uj_add(&json,"],\"fields\":[");
-    for(i=0;i<c->desc.field_count;++i){const ui_field_desc_t *f=&c->fields[i];if(i)uj_add(&json,",");
+    for(i=0;i<c->desc.field_count;++i){const ui_field_desc_t *f=&c->fields[i];ui_image_info_t image={0};image.size=sizeof(image);if(i)uj_add(&json,",");
         uj_add(&json,"{\"id\":");uj_string(&json,f->id);uj_add(&json,",\"title\":");uj_string(&json,f->title);
         uj_add(&json,",\"unit\":");uj_string(&json,f->unit);uj_add(&json,",\"group\":");uj_string(&json,f->group);
         uj_fmt(&json,",\"kind\":%d,\"flags\":%u,\"value\":",f->kind,c->drafts[i].flags);
         if(f->kind==UI_VALUE_STYLE){ui_status_t status=cell_preview(c,&c->drafts[i]);if(status!=UI_STATUS_OK)c->resource_status=status;}
-        json_cell(&json,&c->drafts[i]);uj_add(&json,",\"options\":[");
+        json_cell(&json,&c->drafts[i]);
+        if(c->drafts[i].image_id)(void)ui_image_get_info(c->host,c->drafts[i].image_id,&image);
+        uj_fmt(&json,",\"imageWidth\":%u,\"imageHeight\":%u,\"options\":[",image.width,image.height);
         for(j=0;j<f->option_count;++j){if(j)uj_add(&json,",");uj_string(&json,f->options[j]);}uj_add(&json,"]}");}
-    uj_fmt(&json,"],\"dark\":%s,\"loading\":%s,\"modal\":%s,\"visible\":%s,\"inputAllowed\":%s}",c->host->menu_dark?"true":"false",root&&root->pending?"true":"false",c->modal?"true":"false",c->visible?"true":"false",c->host->app_active&&!c->host->dispatch_blocked&&(!c->host->modal_component||c->host->modal_component==c)?"true":"false");
+    {int actions=c->desc.kind==UI_COMPONENT_DIALOG||c->desc.commands.submit[0]||c->desc.commands.cancel[0];
+     for(i=0;i<c->desc.field_count;++i)if(!(c->drafts[i].flags&(UI_VALUE_READONLY|UI_VALUE_DISABLED))&&c->fields[i].kind!=UI_VALUE_GROUP)actions=1;
+     uj_fmt(&json,"],\"formActions\":%s",actions?"true":"false");}
+    uj_fmt(&json,",\"dark\":%s,\"loading\":%s,\"modal\":%s,\"visible\":%s,\"inputAllowed\":%s}",c->host->menu_dark?"true":"false",root&&root->pending?"true":"false",c->modal?"true":"false",c->visible?"true":"false",c->host->app_active&&!c->host->dispatch_blocked&&(!c->host->modal_component||c->host->modal_component==c)?"true":"false");
     c->presentation_status=json.failed?UI_STATUS_LIMIT_EXCEEDED:ui_web_view_post_json(c->view,json.data);
     free(json.data);release_previews(c,0);
     c->rendering=0;ui_dispatch_leave(c->host);if(c->again){c->again=0;render_component(c);}

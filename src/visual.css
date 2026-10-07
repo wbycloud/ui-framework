@@ -1,12 +1,12 @@
 /* Shared controlled-CSS palette. Included into framework templates at build time. */
 body,div,span,button,input,textarea,img,header,section,main,aside { box-sizing:border-box; }
-body { margin:0; font-family:"Microsoft YaHei UI"; font-size:13px; color:#242424; background:#f7f7f8; }
-button { font-family:"Microsoft YaHei UI"; font-size:13px; height:28px; padding:4px 8px; border:1px solid #d4d4d4; border-radius:4px; background:#ffffff; color:#242424; white-space:nowrap; }
+body { margin:0; font-family:"Segoe UI"; font-size:13px; color:#242424; background:#f7f7f8; }
+button { font-family:"Segoe UI"; font-size:13px; height:28px; padding:4px 8px; border:1px solid #d4d4d4; border-radius:4px; background:#ffffff; color:#242424; white-space:nowrap; }
 button:hover { background:#eeeeef; }
 button:active { background:#dedee0; }
 button:focus { border-color:#0078d4; }
 button:disabled { color:#919191; background:#f1f1f2; border-color:#dddddf; }
-input,textarea { height:28px; padding:4px 8px; border:1px solid #c8c8cb; border-radius:3px; background:#ffffff; color:#242424; font-family:"Microsoft YaHei UI"; font-size:13px; }
+input,textarea { height:28px; padding:4px 8px; border:1px solid #c8c8cb; border-radius:3px; background:#ffffff; color:#242424; font-family:"Segoe UI"; font-size:13px; }
 input:focus,textarea:focus { border-color:#0078d4; }
 input:disabled,textarea:disabled,.readonly { background:#f0f0f2; color:#707074; }
 .invalid { border-color:#c42b1c; }
@@ -15,7 +15,8 @@ input:disabled,textarea:disabled,.readonly { background:#f0f0f2; color:#707074; 
 .primary:active { background:#004a83; }
 .muted,.label,.unit { color:#646468; font-size:12px; }
 .error { color:#b42318; font-size:12px; }
-.glyph { font-family:"Segoe MDL2 Assets"; font-size:12px; }
+.primary:disabled { background:#f1f1f2; color:#919191; border-color:#dddddf; }
+.glyph { padding:0; font-family:"Segoe MDL2 Assets"; font-size:12px; }
 .dark { background:#202020; color:#ededed; }
 .dark button { background:#2b2b2b; color:#ededed; border-color:#484848; }
 .dark button:hover { background:#383838; }
@@ -27,6 +28,7 @@ input:disabled,textarea:disabled,.readonly { background:#f0f0f2; color:#707074; 
 .dark .primary { background:#0067b8; color:#ffffff; border-color:#3189c5; }
 .dark .primary:hover { background:#0078d4; }
 .dark .primary:active { background:#005a9e; }
+.dark .primary:disabled { background:#292929; color:#999999; border-color:#3c3c3c; }
 .dark .muted,.dark .label,.dark .unit { color:#b3b3b7; }
 .dark .error { color:#ff9a8f; }
 

@@ -1119,10 +1119,10 @@ static char *popup_html(const ui_panel_entry_t *entry)
         "<span style='flex:1;font-size:13px;font-weight:600' "
         "onmousedown=\"ui.invoke('framework.panel.drag')\">";
     static const char dock[] =
-        "<button style='width:46px;height:24px;border:0;border-radius:4px' "
+        "<button style='width:46px;height:20px;padding:0;border:0;border-radius:2px' "
         "onclick=\"ui.invoke('framework.panel.dock')\">Dock</button>";
     static const char suffix[] =
-        "<button class='glyph' style='width:26px;height:24px;border:0;border-radius:2px' "
+        "<button class='glyph' style='width:26px;height:20px;padding:0;border:0;border-radius:2px' "
         "onclick=\"ui.invoke('framework.panel.close')\">&#xE8BB;</button></div>"
         "<script>ui.onmessage=function(s){document.body.className=s.dark?'dark':''}</script></body></html>";
     size_t length = strlen(entry->title), i;
