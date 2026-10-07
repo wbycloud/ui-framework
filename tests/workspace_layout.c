@@ -40,6 +40,9 @@ static void run(int offscreen)
     if(!offscreen){
         CHECK(ui_shell_begin_panel_drag(s,"tools")==UI_STATUS_OK);SendMessageW(root,WM_MOUSEMOVE,MK_LBUTTON,MAKELPARAM(995,240));SendMessageW(root,WM_KEYDOWN,VK_ESCAPE,0);
         CHECK(ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.dock_region==UI_LAYOUT_REGION_LEFT_SIDEBAR&&GetCapture()!=root);
+        {MINMAXINFO limits={0};ui_panel_layout_t prior={0};prior.size=sizeof(prior);CHECK(ui_shell_get_panel_layout(s,"tools",&prior)==UI_STATUS_OK);a=prior;a.floating=1;a.tab_group_id=0;a.floating_rect=(ui_rect_t){20,20,10,10};CHECK(ui_shell_set_panel_layout(s,"tools",&a)==UI_STATUS_OK);
+         CHECK(ui_shell_get_panel_layout(s,"tools",&b)==UI_STATUS_OK&&b.floating_rect.width>=160&&b.floating_rect.height>=120);
+         HWND floating=(HWND)ui_content_slot_native_handle(ui_shell_get_content_slot(s,"tools"));HWND frame=GetAncestor(floating,GA_ROOT);SendMessageW(frame,WM_GETMINMAXINFO,0,(LPARAM)&limits);CHECK(limits.ptMinTrackSize.x>=160&&limits.ptMinTrackSize.y>=120);CHECK(ui_shell_set_panel_layout(s,"tools",&prior)==UI_STATUS_OK);}
         CHECK(ui_shell_begin_splitter_drag(s,UI_LAYOUT_REGION_LEFT_SIDEBAR,NULL)==UI_STATUS_OK);SendMessageW(root,WM_MOUSEMOVE,MK_LBUTTON,MAKELPARAM(130,240));CHECK(h->layout.left_sidebar_width==130);
         SendMessageW(root,WM_KEYDOWN,VK_ESCAPE,0);CHECK(h->layout.left_sidebar_width==400);
         CHECK(ui_shell_begin_splitter_drag(s,UI_LAYOUT_REGION_LEFT_SIDEBAR,NULL)==UI_STATUS_OK);SendMessageW(root,WM_MOUSEMOVE,MK_LBUTTON,MAKELPARAM(160,240));SendMessageW(root,WM_LBUTTONUP,0,MAKELPARAM(160,240));CHECK(h->layout.left_sidebar_width==160);

@@ -43,7 +43,7 @@ ui_status_t ui_component_set_sort(ui_component_t *c,const char *column,int direc
     if(direction){for(i=0;i<c->desc.column_count&&strcmp(c->columns[i].id,column);++i){}if(i==c->desc.column_count)return UI_STATUS_NOT_FOUND;}
     state.size=sizeof(state);if(ui_host_get_command_state(c->host,c->desc.sort_command,&state)!=UI_STATUS_OK||!state.enabled||state.busy)return UI_STATUS_CANCELLED;
     if(c->sort_direction==direction&&(!direction||!strcmp(c->sort_column,column)))return UI_STATUS_OK;
-    ui_dispatch_enter(c->host);free_pages(c);free_thumbs(c);release_previews(c,1);c->selection_request=0;c->selection_anchor=0;
+    ui_dispatch_enter(c->host);cancel_column_resize(c,0);free_pages(c);free_thumbs(c);release_previews(c,1);c->selection_request=0;c->selection_anchor=0;
     c->selection_anchor_id=0;c->generation=++c->host->component_generation;c->sort_direction=direction;strcpy(c->sort_column,direction?column:"");c->first=0;
     uj_add(&params,"{\"column\":");uj_string(&params,c->sort_column);uj_fmt(&params,",\"direction\":%d,\"generation\":\"%llu\"}",direction,(unsigned long long)c->generation);
     if(!params.failed)invoke_component(c,c->desc.sort_command,params.data);free(params.data);

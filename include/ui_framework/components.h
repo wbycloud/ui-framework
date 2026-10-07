@@ -32,6 +32,7 @@ typedef struct ui_field_desc {
     uint32_t flags;
     const char *const *options;
     size_t option_count;
+    const char *help; /* API8 optional, copied; read only with the full field. */
 } ui_field_desc_t;
 typedef struct ui_cell {
     uint32_t size;
@@ -153,6 +154,22 @@ UI_API ui_status_t ui_component_submit_selection(ui_component_t *, uint64_t gene
 /* Requeries source and invokes sort_command once with column/direction;
  * never sorts cached pages. Source owns sorting the complete dataset. */
 UI_API ui_status_t ui_component_set_sort(ui_component_t *, const char *, int);
+/* API8. UI-thread, TABLE only. Widths are logical pixels. Registration widths
+ * (zero =>120) remain untouched until an explicit user/programmatic operation.
+ * User widths24..4096. Reset NULL resets all columns; otherwise one stable ID.
+ * Fit measures the title and currently cached cells only; it never fetches data
+ * to measure it. Changes preserve rows/selection/drafts and requery the viewport. */
+UI_API ui_status_t ui_component_get_column_width(const ui_component_t *, const char *, int *);
+UI_API ui_status_t ui_component_set_column_width(ui_component_t *, const char *, int);
+UI_API ui_status_t ui_component_fit_column(ui_component_t *, const char *);
+UI_API ui_status_t ui_component_reset_columns(ui_component_t *, const char *);
+/* Caller-owned bytes/storage, format1, max2640 bytes, stable component/column
+ * IDs. Save NULL reports required size; restore validates atomically. Future
+ * formats UNSUPPORTED; malformed/wrong component INVALID_ARGUMENT. Missing
+ * saved columns ignored, new columns use initial widths. Load after register,
+ * before or after mount. Source/sort changes keep widths, instances isolate. */
+UI_API ui_status_t ui_component_save_columns(const ui_component_t *, void *, size_t, size_t *);
+UI_API ui_status_t ui_component_restore_columns(ui_component_t *, const void *, size_t);
 UI_API ui_status_t ui_component_set_field(ui_component_t *, const char *, const ui_cell_t *);
 /* Borrowed strings until next field update/unregister. Returns the current draft. */
 UI_API ui_status_t ui_component_get_field(const ui_component_t *, const char *, ui_cell_t *);

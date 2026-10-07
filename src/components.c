@@ -37,6 +37,11 @@ struct ui_component {
     ui_host_t *host;
     ui_component_desc_t desc;
     ui_column_desc_t *columns;
+    int initial_widths[64];
+    size_t column_drag_index;
+    int column_drag_active,column_drag_origin;
+    const ui_rect_t *tooltip_anchor; /* Borrowed only during show_tooltip. */
+    uint64_t tooltip_row_id;
     ui_field_desc_t *fields;
     ui_cell_t *values, *drafts;
     uint64_t generation, next_request, first, selected, use_sequence;
@@ -64,6 +69,7 @@ struct ui_component {
 static void render_component(ui_component_t *c);
 static uint64_t tree_total(ui_component_t *c);
 static void invoke_component(ui_component_t *c,const char *command,const char *params);
+static void cancel_column_resize(ui_component_t *c,int requery);
 #if defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2)
 static ui_web_backend_t *component_backend(ui_component_t *c,void *parent)
 {
@@ -149,7 +155,7 @@ static size_t row_bytes(const ui_row_t *r)
     return n;
 }
 static size_t cache_bytes(const ui_component_t *c)
-{component_page_t *p;size_t n=c->selection_count*sizeof(uint64_t);for(p=c->pages;p;p=p->next)if(p->batch)n+=p->bytes;return n;}
+{component_page_t *p;size_t n=c->selection_count*sizeof(uint64_t)+(c->desc.column_count?sizeof(c->initial_widths):0);for(p=c->pages;p;p=p->next)if(p->batch)n+=p->bytes;return n;}
 static void invalidate_item(ui_component_t *c,uint64_t id,int depth)
 {
     component_page_t *p;component_thumb_t **t;
@@ -203,7 +209,7 @@ static void free_description(ui_component_t *c)
     size_t i,j;free((void *)c->desc.id);free((void *)c->desc.title);
     for(i=0;i<c->desc.column_count;++i){free((void *)c->columns[i].id);free((void *)c->columns[i].title);}
     for(i=0;i<c->desc.field_count;++i){ui_field_desc_t *f=&c->fields[i];
-        free((void *)f->id);free((void *)f->title);free((void *)f->unit);free((void *)f->group);
+        free((void *)f->id);free((void *)f->title);free((void *)f->unit);free((void *)f->group);free((void *)f->help);
         for(j=0;j<f->option_count;++j)free((void *)f->options[j]);free((void *)f->options);
         free_cell(&c->values[i]);free_cell(&c->drafts[i]);}
     free(c->columns);free(c->fields);free(c->values);free(c->drafts);
@@ -245,15 +251,17 @@ ui_status_t ui_component_register(ui_host_t *host,const ui_component_desc_t *d,u
         if(!c->columns[i].id||!c->columns[i].title)goto failed;
         for(j=0;j<i;++j)if(!strcmp(c->columns[j].id,f->id)){status=UI_STATUS_ALREADY_EXISTS;goto failed;}
         if(!c->columns[i].width)c->columns[i].width=120;
+        c->initial_widths[i]=c->columns[i].width;
     }
     for(i=0;i<d->field_count;++i){const ui_field_desc_t *f=&d->fields[i];ui_cell_t v;
-        if(f->size<sizeof(*f)||!f->id||!*f->id||strlen(f->id)>32||f->option_count>128||(f->option_count&&!f->options)||f->kind<UI_VALUE_TEXT||f->kind>UI_VALUE_GROUP){
+        if(f->size<offsetof(ui_field_desc_t,help)||!f->id||!*f->id||strlen(f->id)>32||f->option_count>128||(f->option_count&&!f->options)||f->kind<UI_VALUE_TEXT||f->kind>UI_VALUE_GROUP){
             status=UI_STATUS_INVALID_ARGUMENT;goto failed;}
-        c->fields[i]=*f;c->fields[i].id=c->fields[i].title=c->fields[i].unit=c->fields[i].group=NULL;
+        memcpy(&c->fields[i],f,offsetof(ui_field_desc_t,help));c->fields[i].id=c->fields[i].title=c->fields[i].unit=c->fields[i].group=NULL;
         c->fields[i].options=NULL;c->fields[i].option_count=0;c->desc.field_count=i+1;
         c->fields[i].id=copy_string(f->id,&bytes);c->fields[i].title=copy_string(f->title,&bytes);
         c->fields[i].unit=copy_string(f->unit,&bytes);c->fields[i].group=copy_string(f->group,&bytes);
-        if(!c->fields[i].id||!c->fields[i].title||!c->fields[i].unit||!c->fields[i].group)goto failed;
+        c->fields[i].help=copy_string(f->size>=offsetof(ui_field_desc_t,help)+sizeof(f->help)?f->help:NULL,&bytes);
+        if(!c->fields[i].id||!c->fields[i].title||!c->fields[i].unit||!c->fields[i].group||!c->fields[i].help)goto failed;
         for(j=0;j<i;++j)if(!strcmp(c->fields[j].id,f->id)){status=UI_STATUS_ALREADY_EXISTS;goto failed;}
         if(f->option_count){char **options=(char **)calloc(f->option_count,sizeof(*options));if(!options)goto failed;
             c->fields[i].options=(const char *const *)options;
@@ -302,9 +310,11 @@ ui_status_t ui_component_query(ui_component_t *c,uint64_t parent,uint64_t first,
     c->buffered=0;c->first_column=c->render_column=first_column;c->column_count=column_count;
     return request_rows(c,parent,first,count,first_column,column_count);
 }
+static size_t viewport_row_budget(size_t columns)
+{return (900-columns*5)/(columns*2+6);}
 static ui_status_t query_viewport(ui_component_t *c,uint64_t first,size_t column,int viewport_height)
 {
-    size_t columns=0;int used=0,height=viewport_height>0?viewport_height:c->height>64?c->height-64:0;ui_rect_t rows;
+    size_t columns=0;int64_t used=0;int height=viewport_height>0?viewport_height:c->height>64?c->height-64:0;ui_rect_t rows;
     c->buffered=1;c->first=first;c->first_column=column;
     c->render_column=column?column-1:0;
     while(column+columns<c->desc.column_count&&used<c->width){used+=c->columns[column+columns].width;++columns;}
@@ -313,10 +323,11 @@ static ui_status_t query_viewport(ui_component_t *c,uint64_t first,size_t column
     if(viewport_height<=0&&c->view&&ui_web_view_get_element_rect(c->view,"rows",&rows)==UI_STATUS_OK&&rows.height>0)height=rows.height;
     c->visible_count=(size_t)((height+c->desc.row_height-1)/c->desc.row_height)+2+(size_t)(first<2?first:2);
     if(c->visible_count<4)c->visible_count=4;
-    {size_t budget=900/(columns*2+6);if(c->visible_count>budget)c->visible_count=budget;}
+    {size_t budget=viewport_row_budget(columns);if(c->visible_count>budget)c->visible_count=budget;}
     if(c->visible_count>128)c->visible_count=128;
     return request_rows(c,0,c->desc.kind==UI_COMPONENT_TREE?0:(first>2?first-2:0),c->visible_count,c->render_column,columns);
 }
+#include "component_columns.inc"
 ui_status_t ui_component_submit(ui_component_t *c,const ui_component_batch_t *batch)
 {
     component_page_t *p;ui_component_batch_t *copy;size_t bytes,i;
@@ -403,7 +414,7 @@ ui_status_t ui_component_expand(ui_component_t *c,uint64_t id,int expanded)
 }
 ui_status_t ui_component_set_source(ui_component_t *c,ui_component_source_fn source,void *user)
 {
-    if(!c)return UI_STATUS_INVALID_ARGUMENT;if(c->rendering)return UI_STATUS_CANCELLED;ui_menus_component_invalidated(c->host,c,0);free_pages(c);free_thumbs(c);
+    if(!c)return UI_STATUS_INVALID_ARGUMENT;if(c->rendering)return UI_STATUS_CANCELLED;cancel_column_resize(c,0);ui_menus_component_invalidated(c->host,c,0);free_pages(c);free_thumbs(c);
     c->generation=++c->host->component_generation;c->next_request=0;c->first=c->selected=0;c->resource_status=UI_STATUS_OK;c->desc.source=source;c->desc.user_data=user;
     free(c->selection);c->selection=NULL;c->selection_count=0;c->selection_request=0;c->selection_anchor=c->selection_anchor_id=0;c->sort_column[0]=0;c->sort_direction=0;
     render_component(c);return UI_STATUS_OK;
@@ -580,6 +591,7 @@ static void render_component(ui_component_t *c)
     for(i=0;i<c->desc.field_count;++i){const ui_field_desc_t *f=&c->fields[i];ui_image_info_t image={0};image.size=sizeof(image);if(i)uj_add(&json,",");
         uj_add(&json,"{\"id\":");uj_string(&json,f->id);uj_add(&json,",\"title\":");uj_string(&json,f->title);
         uj_add(&json,",\"unit\":");uj_string(&json,f->unit);uj_add(&json,",\"group\":");uj_string(&json,f->group);
+        uj_add(&json,",\"help\":");uj_string(&json,f->help);
         uj_fmt(&json,",\"kind\":%d,\"flags\":%u,\"value\":",f->kind,c->drafts[i].flags);
         if(f->kind==UI_VALUE_STYLE){ui_status_t status=cell_preview(c,&c->drafts[i]);if(status!=UI_STATUS_OK)c->resource_status=status;}
         json_cell(&json,&c->drafts[i]);
@@ -614,8 +626,17 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
     ui_component_t *c=(ui_component_t *)user;char action[64],field[128],text[4096];uint64_t id;size_t i;
     (void)view;if(!uj_get(json,"action",action,sizeof(action)))return;
     if(c->host->modal_component&&c->host->modal_component!=c)return;
-    if(!strcmp(action,"tip")){ui_row_t *row=cached_row(c,uj_u64(json,"id"));ui_menu_anchor_t anchor={0};
-        if(row){anchor.size=sizeof(anchor);anchor.kind=UI_MENU_ANCHOR_COMPONENT_ROW;anchor.component=c;anchor.row_id=row->id;(void)ui_host_show_tooltip(c->host,&anchor,row->title);}return;}
+    if(!strcmp(action,"tip")){ui_row_t *row=cached_row(c,uj_u64(json,"id"));ui_menu_anchor_t anchor={0};const char *tip=NULL;
+        if(uj_u64(json,"generation")!=c->generation)return;
+        if(row){tip=row->title;anchor.kind=UI_MENU_ANCHOR_COMPONENT_ROW;anchor.component=c;anchor.row_id=row->id;
+            if(uj_get(json,"column",field,sizeof(field)))for(i=0;i<row->cell_count;++i)if(!strcmp(row->cells[i].column_id,field)){tip=row->cells[i].text;break;}}
+        else if(uj_get(json,"column",field,sizeof(field))){i=column_index(c,field);if(i<c->desc.column_count)tip=c->columns[i].title;}
+        else if(uj_get(json,"field",field,sizeof(field)))for(i=0;i<c->desc.field_count;++i)if(!strcmp(c->fields[i].id,field)){int value=uj_get(json,"value",text,sizeof(text))?atoi(text):0;tip=value==1?c->drafts[i].text:value==2?c->drafts[i].error:value==3?c->fields[i].help:c->fields[i].title;uint64_t option=uj_u64(json,"option");if(uj_get(json,"option",text,sizeof(text))&&option<c->fields[i].option_count)tip=c->fields[i].options[option];break;}
+        if(tip&&*tip){uint64_t x=uj_u64(json,"x"),y=uj_u64(json,"y"),w=uj_u64(json,"width"),h=uj_u64(json,"height");
+            if(x>=(uint64_t)c->width||y>=(uint64_t)c->height||!w||!h||w>(uint64_t)c->width-x||h>(uint64_t)c->height-y)return;
+            anchor.size=sizeof(anchor);anchor.rect=(ui_rect_t){(int)x,(int)y,(int)w,(int)h};
+            if(row){c->tooltip_anchor=&anchor.rect;c->tooltip_row_id=row->id;}else{anchor.kind=UI_MENU_ANCHOR_CONTENT_SLOT;anchor.slot=c->slot;if(!c->slot)anchor.kind=UI_MENU_ANCHOR_HOST;}
+            (void)ui_host_show_tooltip(c->host,&anchor,tip);c->tooltip_anchor=NULL;}return;}
     if(!strcmp(action,"tip-hide")){ui_menus_hide_tooltip(c->host);return;}
     if(!strcmp(action,"focus")){c->focused=uj_get(json,"focused",field,sizeof(field))&&*field;
         if(c->focused)c->host->focused_component=c;else if(c->host->focused_component==c)c->host->focused_component=NULL;return;}
@@ -626,10 +647,21 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
         if(c->view&&GetFocus()==(HWND)ui_web_view_native_handle(c->view))c->host->focused_component=c;
 #endif
         if(c->buffered&&c->desc.source&&c->desc.kind<=UI_COMPONENT_LIST&&(has_height||ui_web_view_get_element_rect(c->view,"rows",&rows)==UI_STATUS_OK)&&rows.height>0){
-            wanted=(size_t)((rows.height+c->desc.row_height-1)/c->desc.row_height)+2+(size_t)(c->first<2?c->first:2);budget=900/(c->column_count*2+6);
+            wanted=(size_t)((rows.height+c->desc.row_height-1)/c->desc.row_height)+2+(size_t)(c->first<2?c->first:2);budget=viewport_row_budget(c->column_count);
             if(wanted<4)wanted=4;if(wanted>128)wanted=128;if(wanted>budget)wanted=budget;
             if(wanted!=c->visible_count)(void)query_viewport(c,c->first,c->first_column,rows.height);}return;}
     if((!strcmp(action,"scroll")||!strcmp(action,"columns"))&&uj_get(json,"generation",field,sizeof(field))&&uj_u64(json,"generation")!=c->generation)return;
+    if(!strcmp(action,"column-begin")||!strcmp(action,"column-end")||!strcmp(action,"column-cancel")){
+        if(uj_u64(json,"generation")!=c->generation)return;
+        if(!strcmp(action,"column-cancel")){cancel_column_resize(c,1);return;}
+        if(!strcmp(action,"column-end")){c->column_drag_active=0;return;}
+        if(c->desc.kind==UI_COMPONENT_TABLE&&c->host->app_active&&!c->host->dispatch_blocked&&uj_get(json,"column",field,sizeof(field))){size_t column=column_index(c,field);
+            if(column<c->desc.column_count){cancel_column_resize(c,0);c->column_drag_active=1;c->column_drag_index=column;c->column_drag_origin=c->columns[column].width;}}return;}
+    if(!strcmp(action,"column-width")||!strcmp(action,"column-fit")||!strcmp(action,"column-reset")){
+        if(!c->host->app_active||c->host->dispatch_blocked||uj_u64(json,"generation")!=c->generation)return;
+        if(uj_get(json,"column",field,sizeof(field))){if(!strcmp(action,"column-fit"))(void)ui_component_fit_column(c,field);
+            else if(!strcmp(action,"column-reset"))(void)ui_component_reset_columns(c,*field?field:NULL);
+            else{uint64_t width=uj_u64(json,"width");if(width<=4096)(void)ui_component_set_column_width(c,field,(int)width);}}return;}
     if(!strcmp(action,"scroll")){uint64_t first=uj_u64(json,"first");component_page_t *p=page(c,0,0);
         if(c->desc.kind==UI_COMPONENT_TREE){uint64_t total=tree_total(c);first=first<total?first:total?total-1:0;(void)query_viewport(c,first,c->first_column,0);render_component(c);return;}
         if(p&&first>=p->total)first=p->total?p->total-1:0;
@@ -681,12 +713,12 @@ ui_status_t ui_component_mount(ui_component_t *c,ui_content_slot_t *slot)
 #endif
 }
 ui_status_t ui_component_set_visible(ui_component_t *c,int visible)
-{if(!c)return UI_STATUS_INVALID_ARGUMENT;c->visible=visible!=0;render_component(c);return ui_host_emit_event(c->host,"ui.components.changed","{}");}
+{if(!c)return UI_STATUS_INVALID_ARGUMENT;if(!visible)cancel_column_resize(c,1);c->visible=visible!=0;render_component(c);return ui_host_emit_event(c->host,"ui.components.changed","{}");}
 void ui_components_layout(ui_host_t *host)
 {
     ui_component_t *c;for(c=host->components;c;c=c->next)if(c->slot){ui_rect_t rect;
         if(ui_content_slot_get_rect(c->slot,&rect)==UI_STATUS_OK&&(rect.width!=c->width||rect.height!=c->height||c->dpi!=c->view->dpi)){
-            c->width=rect.width;c->height=rect.height;c->dpi=c->view->dpi;
+            cancel_column_resize(c,0);c->width=rect.width;c->height=rect.height;c->dpi=c->view->dpi;
             if(c->desc.source)(void)query_viewport(c,c->first,c->first_column,0);render_component(c);}}
 }
 #if defined(_WIN32) && (defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2))
@@ -696,6 +728,8 @@ static LRESULT CALLBACK dialog_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
     if(message==WM_NCCREATE){c=(ui_component_t *)((CREATESTRUCTW *)lp)->lpCreateParams;SetWindowLongPtrW(hwnd,GWLP_USERDATA,(LONG_PTR)c);return TRUE;}
     if(!c)return DefWindowProcW(hwnd,message,wp,lp);
     if(message==WM_CLOSE){ui_dispatch_enter(c->host);invoke_component(c,c->desc.commands.cancel,"{}");(void)ui_component_close_dialog(c);ui_dispatch_leave(c->host);return 0;}
+    if(message==WM_GETMINMAXINFO){MINMAXINFO *limits=(MINMAXINFO *)lp;uint32_t dpi=c->dpi?c->dpi:ui_platform_get_dpi(hwnd);
+        limits->ptMinTrackSize.x=MulDiv(240,(int)dpi,96);limits->ptMinTrackSize.y=MulDiv(180,(int)dpi,96);return 0;}
     if(message==WM_SIZE&&c->view){RECT rect;uint32_t dpi=c->dpi?c->dpi:ui_platform_get_dpi(hwnd);GetClientRect(hwnd,&rect);c->width=MulDiv(rect.right,96,(int)dpi);c->height=MulDiv(rect.bottom,96,(int)dpi);
         (void)ui_web_view_resize(c->view,c->width,c->height,dpi);render_component(c);return 0;}
     if(message==WM_DPICHANGED){RECT *r=(RECT *)lp;c->dpi=LOWORD(wp);SetWindowPos(hwnd,NULL,r->left,r->top,r->right-r->left,r->bottom-r->top,SWP_NOZORDER|SWP_NOACTIVATE);return 0;}
@@ -741,6 +775,7 @@ ui_status_t ui_component_show_dialog(ui_component_t *c)
     if(c->host->app_active)SetFocus((HWND)ui_web_view_native_handle(c->view));
     }
 #endif
+    {ui_component_t *other;for(other=c->host->components;other;other=other->next)cancel_column_resize(other,1);}
     c->modal=1;c->visible=1;c->host->modal_component=c;{ui_component_t *other;for(other=c->host->components;other;other=other->next){if(other!=c&&other->view){ui_input_event_t cancel={0};cancel.size=sizeof(cancel);cancel.kind=UI_INPUT_CANCEL;(void)ui_web_view_dispatch_input(other->view,&cancel);}render_component(other);}}return UI_STATUS_OK;
 #endif
 }
@@ -756,7 +791,7 @@ ui_status_t ui_component_close_dialog(ui_component_t *c)
     if(c->host->modal_component==c)c->host->modal_component=NULL;
 #ifdef _WIN32
     if(c->dialog_window){ShowWindow((HWND)c->dialog_window,SW_HIDE);EnableWindow((HWND)c->host->native_parent,TRUE);
-        if(c->host->app_active&&IsWindow((HWND)c->previous_focus)){ui_component_t *previous;
+        if(c->host->app_active&&IsWindow((HWND)c->previous_focus)&&IsWindowVisible((HWND)c->previous_focus)&&IsWindowEnabled((HWND)c->previous_focus)){ui_component_t *previous;
             c->host->focused_component=NULL;for(previous=c->host->components;previous;previous=previous->next)
                 if(previous->view&&ui_web_view_native_handle(previous->view)==c->previous_focus)c->host->focused_component=previous;
             SetFocus((HWND)c->previous_focus);}}
@@ -767,7 +802,7 @@ void ui_components_active(ui_host_t *host,int active)
 {
     ui_component_t *c;host->app_active=active!=0;if(!active){host->menu_pressed_key=0;(void)ui_host_close_menu(host);}
     for(c=host->components;c;c=c->next){
-        render_component(c);
+        if(!active)cancel_column_resize(c,1);render_component(c);
 #ifdef _WIN32
         if(c->dialog_window)ShowWindow((HWND)c->dialog_window,active&&c->modal?SW_SHOWNOACTIVATE:SW_HIDE);
         if(active&&c->view&&c->visible&&(host->focused_component==c||host->modal_component==c))SetFocus((HWND)ui_web_view_native_handle(c->view));
@@ -830,7 +865,7 @@ ui_status_t ui_component_get_presentation(ui_component_t *c,const char *id,ui_el
 {return !c?UI_STATUS_INVALID_ARGUMENT:!c->view?UI_STATUS_NOT_FOUND:ui_web_view_get_presentation(c->view,id,out);}
 ui_status_t ui_component_capture_rgba(ui_component_t *c,int width,int height,uint32_t dpi,ui_pixel_buffer_t *out)
 {if(!c||!c->view||width<=0||height<=0||dpi<48||dpi>768||!out||out->size<sizeof(*out))return UI_STATUS_INVALID_ARGUMENT;
- if(c->width!=width||c->height!=height||c->dpi!=dpi){c->width=width;c->height=height;c->dpi=dpi;render_component(c);}return ui_web_view_capture_rgba(c->view,width,height,dpi,out);}
+ if(c->width!=width||c->height!=height||c->dpi!=dpi){cancel_column_resize(c,0);c->width=width;c->height=height;c->dpi=dpi;render_component(c);}return ui_web_view_capture_rgba(c->view,width,height,dpi,out);}
 ui_status_t ui_component_flush(ui_component_t *c,uint32_t budget)
 {return !c?UI_STATUS_INVALID_ARGUMENT:!c->view?UI_STATUS_NOT_FOUND:ui_web_view_flush(c->view,budget);}
 
@@ -840,6 +875,7 @@ ui_status_t ui_component_menu_anchor(ui_component_t *c,ui_host_t *host,uint64_t 
 {
     ui_element_presentation_t state={0};char element[80];ui_status_t status;
     if(!c||c->host!=host||!c->view||!cached_row(c,id))return UI_STATUS_NOT_FOUND;
+    if(c->tooltip_anchor&&c->tooltip_row_id==id){*rect=*c->tooltip_anchor;*native=ui_web_view_native_handle(c->view);*generation=c->generation;return UI_STATUS_OK;}
     snprintf(element,sizeof(element),"row-%llu",(unsigned long long)id);state.size=sizeof(state);
     status=ui_web_view_get_presentation(c->view,element,&state);if(status!=UI_STATUS_OK)return status;
     if(!state.visible)return UI_STATUS_NOT_FOUND;*rect=state.clip;*native=ui_web_view_native_handle(c->view);*generation=c->generation;return UI_STATUS_OK;

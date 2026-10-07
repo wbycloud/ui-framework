@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ui_framework VERSION 0.7.0 LANGUAGES C)
+project(ui_framework VERSION 0.8.0 LANGUAGES C)
 
 option(UI_BUILD_STANDALONE_HOST "Build the Windows Web application host" ${WIN32})
 
@@ -226,7 +226,7 @@ if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
             DEPENDS web_counter_app uapp_pack examples/web_counter/manifest.ini VERBATIM)
         add_custom_target(web_counter_package ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp")
         file(READ "${CMAKE_CURRENT_SOURCE_DIR}/examples/web_counter/manifest.ini" _counter_manifest)
-        string(REPLACE "framework_api_version=7" "framework_api_version=6"
+        string(REPLACE "framework_api_version=8" "framework_api_version=6"
             _counter_mismatch "${_counter_manifest}")
         file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.ini" "${_counter_mismatch}")
         add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.uapp"
@@ -309,6 +309,9 @@ if(UI_BUILD_TESTS)
         add_test(NAME ui_workspace_layout COMMAND ui_workspace_layout_test)
         if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
             add_executable(ui_component_experience_test tests/component_experience.c)
+            add_executable(ui_component_widths_test tests/component_widths.c)
+            target_link_libraries(ui_component_widths_test PRIVATE ui_framework)
+            add_test(NAME ui_component_widths COMMAND ui_component_widths_test)
             target_link_libraries(ui_component_experience_test PRIVATE ui_framework)
             add_test(NAME ui_component_experience COMMAND ui_component_experience_test)
             if(UI_FRAMEWORK_ENABLE_WEBVIEW2)
@@ -330,6 +333,9 @@ if(UI_BUILD_TESTS)
             target_link_libraries(ui_component_scroll_test PRIVATE ui_framework)
             add_test(NAME ui_component_scroll COMMAND ui_component_scroll_test)
             if(UI_FRAMEWORK_ENABLE_WEBVIEW2)
+                target_compile_definitions(ui_component_widths_test PRIVATE UI_EXPERIENCE_WEBVIEW2=1)
+                add_test(NAME ui_component_widths_webview2 COMMAND ui_component_widths_test --webview2)
+                set_tests_properties(ui_component_widths_webview2 PROPERTIES TIMEOUT 90)
                 target_compile_definitions(ui_component_scroll_test PRIVATE UI_SCROLL_WEBVIEW2=1)
                 add_test(NAME ui_component_scroll_webview2 COMMAND ui_component_scroll_test --webview2)
                 set_tests_properties(ui_component_scroll_webview2 PROPERTIES TIMEOUT 120)
@@ -372,7 +378,7 @@ if(UI_BUILD_TESTS)
                 endif()
             endif()
             if(MSVC)
-                foreach(test IN ITEMS ui_api7_fixture ui_api7_integration_test ui_component_experience_test ui_component_scroll_test ui_light_scroll_test)
+                foreach(test IN ITEMS ui_api7_fixture ui_api7_integration_test ui_component_widths_test ui_component_experience_test ui_component_scroll_test ui_light_scroll_test)
                     target_compile_options(${test} PRIVATE /W4 /WX /utf-8)
                     target_compile_definitions(${test} PRIVATE _CRT_SECURE_NO_WARNINGS)
                 endforeach()
@@ -520,7 +526,7 @@ if(UI_BUILD_TESTS)
                 add_dependencies(ui_workspace_integration_test ui_application_cpp)
                 set(workspace_cpp_argument "$<TARGET_FILE:ui_application_cpp>")
                 file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/cpp_fixture.ini"
-                    "[application]\napp_id=org.ui.fixture.cpp\nname=C++ Counter\nversion=1.0.0\narchitecture=x64\nabi_version=1\nframework_api_version=7\nmodule=ui_application_cpp.dll\nmultiple_instances=true\n")
+                    "[application]\napp_id=org.ui.fixture.cpp\nname=C++ Counter\nversion=1.0.0\narchitecture=x64\nabi_version=1\nframework_api_version=8\nmodule=ui_application_cpp.dll\nmultiple_instances=true\n")
                 add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/cpp_fixture.uapp"
                     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/cpp_package"
                     COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ui_application_cpp>"

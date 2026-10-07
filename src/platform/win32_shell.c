@@ -201,6 +201,7 @@ static LRESULT CALLBACK panel_subclass_proc(HWND hwnd, UINT message,
     ui_native_shell_t *shell = (ui_native_shell_t *)reference;
     size_t index;
     (void)subclass_id;
+    if(message==WM_GETMINMAXINFO)for(index=0;index<shell->panel_count;++index)if(shell->panels[index].hwnd==hwnd&&shell->panels[index].floating){MINMAXINFO *limits=(MINMAXINFO *)l_param;limits->ptMinTrackSize.x=logical_to_pixels(160,shell->panels[index].floating_dpi);limits->ptMinTrackSize.y=logical_to_pixels(120,shell->panels[index].floating_dpi);return 0;}
     if(message==WM_LBUTTONDOWN&&shell->layout_enabled&&(short)HIWORD(l_param)<logical_to_pixels(28,shell->host->dpi)){
         for(index=0;index<shell->panel_count;++index)if(shell->panels[index].hwnd==hwnd){(void)ui_shell_begin_panel_drag(&shell->shell,shell->panels[index].id);return 0;}}
     if (message == WM_CLOSE || message == WM_DPICHANGED) {
@@ -1011,6 +1012,7 @@ static LRESULT popup_window_message(HWND window, UINT message,
         const CREATESTRUCTW *create = (const CREATESTRUCTW *)l_param;
         SetWindowLongPtrW(window, GWLP_USERDATA, (LONG_PTR)create->lpCreateParams);
     } else if (panel != NULL) {
+        if(message==WM_GETMINMAXINFO){MINMAXINFO *limits=(MINMAXINFO *)l_param;limits->ptMinTrackSize.x=logical_to_pixels(160,panel->floating_dpi);limits->ptMinTrackSize.y=logical_to_pixels(120,panel->floating_dpi);return 0;}
         if (message == WM_CLOSE) {
             panel->closed = 1;
             panel->slot->visible = 0;
@@ -1101,6 +1103,10 @@ static void popup_command(ui_host_t *host, uint64_t request_id,
                 (void)ui_native_shell_reflow(shell);
                 (void)ui_host_emit_event(app_host, "ui.shell.changed", "{}");
             }
+        } else if (strcmp(command_id, "framework.panel.title") == 0) {
+            ui_panel_entry_t *entry;ui_menu_anchor_t anchor={0};anchor.size=sizeof(anchor);anchor.kind=UI_MENU_ANCHOR_HOST;anchor.rect=(ui_rect_t){0,0,160,24};
+            for(entry=app_host->panels;entry;entry=entry->next)if(!strcmp(entry->id,panel->id))break;
+            if(entry)(void)ui_host_show_tooltip(host,&anchor,entry->title);
         } else {
             (void)ui_shell_begin_panel_drag(&shell->shell,panel->id);
         }
@@ -1116,15 +1122,18 @@ static char *popup_html(const ui_panel_entry_t *entry)
         "<html><head><style>";
     static const char title[] =
         "</style></head><body><div class='panel-title'>"
-        "<span style='flex:1;font-size:13px;font-weight:600' "
-        "onmousedown=\"ui.invoke('framework.panel.drag')\">";
+        "<span id='panel-title' style='flex:1;min-width:0;overflow:hidden;white-space:nowrap;font-size:13px;font-weight:600' "
+        "onmousedown=\"document.getElementById('panel-title').focus();ui.invoke('framework.panel.drag')\">";
     static const char dock[] =
         "<button style='width:46px;height:20px;padding:0;border:0;border-radius:2px' "
         "onclick=\"ui.invoke('framework.panel.dock')\">Dock</button>";
     static const char suffix[] =
         "<button class='glyph' style='width:26px;height:20px;padding:0;border:0;border-radius:2px' "
         "onclick=\"ui.invoke('framework.panel.close')\">&#xE8BB;</button></div>"
-        "<script>ui.onmessage=function(s){document.body.className=s.dark?'dark':''}</script></body></html>";
+        "<script>var title=document.getElementById('panel-title');title.tabIndex=0;"
+        "title.addEventListener('mouseenter',function(){ui.invoke('framework.panel.title')});"
+        "title.addEventListener('keydown',function(e){if(e.keyCode===112){e.preventDefault();ui.invoke('framework.panel.title')}});"
+        "ui.onmessage=function(s){document.body.className=s.dark?'dark':''}</script></body></html>";
     size_t length = strlen(entry->title), i;
     char *html, *cursor;
     if (length > (SIZE_MAX - sizeof(prefix) - sizeof(title) - sizeof(ui_visual_style) - sizeof(dock) - sizeof(suffix) - 8) / 6)
@@ -1173,7 +1182,7 @@ static ui_status_t create_popup(ui_native_shell_t *shell,
     ui_panel_entry_t *entry;
     char *html;
     size_t i;
-    static const char *commands[] = {"framework.panel.close", "framework.panel.dock", "framework.panel.drag"};
+    static const char *commands[] = {"framework.panel.close", "framework.panel.dock", "framework.panel.drag", "framework.panel.title"};
     if (panel->popup != NULL) return UI_STATUS_OK;
     memset(&window_class, 0, sizeof(window_class));
     window_class.lpfnWndProc = popup_window_proc;

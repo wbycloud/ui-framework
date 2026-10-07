@@ -70,7 +70,7 @@ static void test_close_contract(host_window_t *h,const wchar_t *directory,const 
  wchar_t stage[1024],file[1024],manifest[1024],package[1024],module[1024];char *m,*d,*p,error[256];FILE *f;ui_app_instance_info_t info={0};uint64_t id;
  swprintf(stage,1024,L"%s\\stage",directory);CHECK(CreateDirectoryW(stage,NULL));swprintf(module,1024,L"%s\\fixture.dll",stage);CHECK(CopyFileW(dll,module,TRUE));
  swprintf(file,1024,L"%s\\fixture.txt",stage);CHECK(!_wfopen_s(&f,file,L"wb"));if(f){fwrite("fixture resource",1,16,f);fclose(f);}
- swprintf(manifest,1024,L"%s\\manifest.ini",directory);CHECK(!_wfopen_s(&f,manifest,L"wb"));if(f){fputs("[application]\napp_id=org.ui.browser.fixture\nname=Browser lifecycle\nversion=1.0.0\narchitecture=x64\nabi_version=1\nframework_api_version=7\nmodule=fixture.dll\nmultiple_instances=true\n",f);fclose(f);}
+ swprintf(manifest,1024,L"%s\\manifest.ini",directory);CHECK(!_wfopen_s(&f,manifest,L"wb"));if(f){fputs("[application]\napp_id=org.ui.browser.fixture\nname=Browser lifecycle\nversion=1.0.0\narchitecture=x64\nabi_version=1\nframework_api_version=8\nmodule=fixture.dll\nmultiple_instances=true\n",f);fclose(f);}
  swprintf(package,1024,L"%s\\fixture.uapp",directory);m=to_utf8(manifest);d=to_utf8(stage);p=to_utf8(package);CHECK(ui_package_pack(m,d,p,error,sizeof(error))==UI_STATUS_OK);free(m);free(d);free(p);
  {size_t before=h->recent_count;SetEnvironmentVariableW(L"UI_FIXTURE_FAIL_MOUNT",L"1");open_path(h,package);pump();CHECK(!ui_workspace_count(h->workspace)&&h->recent_count==before);close_popup(h);SetEnvironmentVariableW(L"UI_FIXTURE_FAIL_MOUNT",NULL);}
  open_path(h,package);pump();id=ui_workspace_active(h->workspace);CHECK(id&&get_instance(h,id,&info));

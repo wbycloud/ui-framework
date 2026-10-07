@@ -138,4 +138,4 @@ static void UI_APP_CALL destroy(void *data)
 static ui_status_t UI_APP_CALL shutdown_module(void)
 {return live_instances||live_workers||live_surfaces?UI_STATUS_PLATFORM_ERROR:UI_STATUS_OK;}
 UI_APP_EXPORT const ui_app_descriptor_t *UI_APP_CALL ui_app_query_v1(void)
-{static const ui_app_descriptor_t d={sizeof(d),1,7,create,mount,active,close_app,unmount,destroy,shutdown_module};return &d;}
+{static const ui_app_descriptor_t d={sizeof(d),1,UI_FRAMEWORK_API_VERSION,create,mount,active,close_app,unmount,destroy,shutdown_module};return &d;}

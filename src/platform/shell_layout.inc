@@ -57,6 +57,8 @@ static void position_panel(ui_native_shell_t *s,ui_native_panel_t *p,HWND window
     RECT wr;MONITORINFO monitor={0};POINT origin={0,0};uint32_t dpi=p->saved_dpi?p->saved_dpi:s->host->dpi;
     int width=logical_to_pixels(p->saved_float.width?p->saved_float.width:(p->preferred_width>0?p->preferred_width:320),dpi);
     int height=logical_to_pixels(p->saved_float.height?p->saved_float.height:240,dpi);
+    if(width<logical_to_pixels(160,dpi))width=logical_to_pixels(160,dpi);
+    if(height<logical_to_pixels(120,dpi))height=logical_to_pixels(120,dpi);
     if(p->saved_float.width){origin.x=logical_to_pixels(p->saved_float.x,dpi);origin.y=logical_to_pixels(p->saved_float.y,dpi);}
     else{ClientToScreen(s->parent,&origin);origin.x+=40;origin.y+=48;}
     wr=(RECT){origin.x,origin.y,origin.x+width,origin.y+height};monitor.cbSize=sizeof(monitor);
@@ -209,7 +211,7 @@ static void clamp_floating_windows(ui_native_shell_t *s)
     size_t i;if(s->offscreen||!s->layout_enabled)return;
     for(i=0;i<s->panel_count;++i){ui_native_panel_t *p=&s->panels[i];HWND window=p->popup?p->popup:p->hwnd;RECT r;MONITORINFO m={0};int width,height,x,y;
         if(!p->floating||!window||!GetWindowRect(window,&r))continue;m.cbSize=sizeof(m);if(!GetMonitorInfoW(MonitorFromRect(&r,MONITOR_DEFAULTTONEAREST),&m))continue;
-        width=r.right-r.left;height=r.bottom-r.top;if(width>m.rcWork.right-m.rcWork.left)width=m.rcWork.right-m.rcWork.left;if(height>m.rcWork.bottom-m.rcWork.top)height=m.rcWork.bottom-m.rcWork.top;
+        width=r.right-r.left;height=r.bottom-r.top;if(width<logical_to_pixels(160,p->floating_dpi))width=logical_to_pixels(160,p->floating_dpi);if(height<logical_to_pixels(120,p->floating_dpi))height=logical_to_pixels(120,p->floating_dpi);if(width>m.rcWork.right-m.rcWork.left)width=m.rcWork.right-m.rcWork.left;if(height>m.rcWork.bottom-m.rcWork.top)height=m.rcWork.bottom-m.rcWork.top;
         x=r.left;y=r.top;if(x>m.rcWork.right-width)x=m.rcWork.right-width;if(x<m.rcWork.left)x=m.rcWork.left;if(y>m.rcWork.bottom-height)y=m.rcWork.bottom-height;if(y<m.rcWork.top)y=m.rcWork.top;
         if(x!=r.left||y!=r.top||width!=r.right-r.left||height!=r.bottom-r.top)(void)SetWindowPos(window,NULL,x,y,width,height,SWP_NOACTIVATE|SWP_NOZORDER);
     }
@@ -232,7 +234,7 @@ ui_status_t ui_shell_update_panel_drag(ui_shell_t *shell,int x,int y,ui_rect_t *
     {size_t i;for(i=0;i<s->panel_count;++i){ui_native_panel_t *p=&s->panels[i];ui_rect_t f=p->slot->frame_rect;if(!strcmp(p->id,s->drag_id)||p->floating||p->closed||!panel_tab_visible(p)||strlen(p->id)>63)continue;
       if(x>=f.x&&x<f.x+f.width&&y>=f.y&&y<f.y+28){strcpy(s->drag_tab,p->id);s->drag_region=p->dock_region;r=f;break;}}}
     *preview=r;*region=s->drag_region;
-    if(!s->offscreen){RECT px=logical_rect_to_pixels(&r,s->host->dpi);if(!s->drag_preview)s->drag_preview=CreateWindowExW(WS_EX_TRANSPARENT|WS_EX_NOACTIVATE,L"STATIC",L"",WS_CHILD|SS_GRAYRECT,s->drag_x,s->drag_y,1,1,s->parent,NULL,NULL,NULL);
+    if(!s->offscreen){RECT px=logical_rect_to_pixels(&r,s->host->dpi);if(!s->drag_preview)s->drag_preview=CreateWindowExW(WS_EX_TRANSPARENT|WS_EX_NOACTIVATE,L"STATIC",L"",WS_CHILD|SS_ETCHEDFRAME,s->drag_x,s->drag_y,1,1,s->parent,NULL,NULL,NULL);
         if(s->drag_preview)SetWindowPos(s->drag_preview,HWND_TOP,px.left,px.top,px.right-px.left,px.bottom-px.top,SWP_SHOWWINDOW|SWP_NOACTIVATE);}
     return UI_STATUS_OK;
 }

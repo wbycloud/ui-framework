@@ -630,17 +630,20 @@ static void selector_popup(host_window_t *s,int commands)
 }
 static void tooltip_popup(host_window_t *s,const char *id)
 {
-    const char *text=NULL;json_buffer_t json={0};RECT origin;ui_rect_t rect;ui_app_instance_info_t active;if(get_instance(s,ui_workspace_active(s->workspace),&active)&&active.host->menu_open_path)return;if(s->popup_hwnd&&s->popup_kind!=5)return;
+    const char *text=NULL;json_buffer_t json={0};RECT origin;ui_rect_t rect;ui_app_instance_info_t active={0};if(get_instance(s,ui_workspace_active(s->workspace),&active)&&active.host->menu_open_path)return;if(s->popup_hwnd&&s->popup_kind!=5)return;
     if(!strcmp(id?id:"","menu"))text="宿主选项：主题、布局及窗口操作";
     else if(!strcmp(id?id:"","recent"))text="最近成功打开的应用（与当前标签分开）";
     else if(!strcmp(id?id:"","open"))text="打开 .uapp 应用包 · Ctrl+Shift+O";
     else if(!strcmp(id?id:"","theme"))text="切换浅色 / 深色主题";
     else if(!strcmp(id?id:"","assistant-toggle"))text="显示或收起助手工作台";
-    if(!text||!create_popup(s,5,300,100))return;
+    else if(id&&(!strncmp(id,"panel-title-",12)||!strncmp(id,"panel-tab-",10))&&active.host){ui_panel_entry_t *panel;
+        const char *panel_id=id+(!strncmp(id,"panel-title-",12)?12:10);
+        for(panel=active.host->panels;panel;panel=panel->next)if(!strcmp(panel->id,panel_id)){text=panel->title;break;}}
+    if(!text||!create_popup(s,5,300,160))return;
     if(ui_web_view_get_element_rect(s->view,id,&rect)==UI_STATUS_OK){POINT point={0,0};ClientToScreen(s->hwnd,&point);GetWindowRect(s->popup_hwnd,&origin);
         SetWindowPos(s->popup_hwnd,NULL,point.x+MulDiv(rect.x,(int)s->dpi,96),point.y+MulDiv(rect.y+rect.height+6,(int)s->dpi,96),
             origin.right-origin.left,origin.bottom-origin.top,SWP_NOZORDER|SWP_NOACTIVATE);}
-    popup_start(s,&json,text,"",0);popup_finish(s,&json);
+    popup_start(s,&json,"提示",text,0);popup_finish(s,&json);
 }
 static int registered_command(const ui_host_t *host,const char *id)
 {ui_command_entry_t *entry;for(entry=host->commands;entry;entry=entry->next)if(!strcmp(entry->id,id))return entry->state.visible&&entry->state.enabled&&!entry->state.busy;return 0;}

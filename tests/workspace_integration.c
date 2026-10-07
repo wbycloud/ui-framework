@@ -145,7 +145,7 @@ static int pack(staging_t *s, size_t index, const char *app_id, const char *vers
         !utf8(s->packages[index], s->paths[index], sizeof(s->paths[index]))) return 0;
     out = _wfopen(s->manifest[index], L"wb"); if (!out) return 0;
     fprintf(out, "[application]\napp_id=%s\nname=Lifecycle fixture\nversion=%s\n"
-        "architecture=x64\nabi_version=1\nframework_api_version=7\nmodule=fixture.dll\n"
+        "architecture=x64\nabi_version=1\nframework_api_version=8\nmodule=fixture.dll\n"
         "multiple_instances=%s\n", app_id, version, multi ? "true" : "false");
     if (fclose(out)) return 0;
     if (ui_package_pack(manifest, directory, s->paths[index], error, sizeof(error)) != UI_STATUS_OK) {
