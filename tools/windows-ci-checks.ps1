@@ -22,7 +22,7 @@ function Assert-UiCiResults([xml]$Results, [string[]]$Expected, [string]$Configu
         }
     }
     $required = @('ui_workspace7','ui_workspace_layout','ui_public_headers_c')
-    if ($Configuration -ne 'native') { $required += @('ui_light_scroll','ui_component_scroll','ui_component_scroll_native','ui_menu_access','ui_application_contract') }
+    if ($Configuration -ne 'native') { $required += @('ui_light_glyph_padding','ui_light_scroll','ui_component_scroll','ui_component_scroll_native','ui_menu_access','ui_application_contract') }
     if ($Configuration -in @('osmesa','webview2')) { $required += @('ui_visual_ui_light','ui_windowless_gl','ui_session0_interactive_control','ui_api7_integration') }
     if ($Configuration -eq 'webview2') {
         $required += @('ui_visual_ui_webview2','ui_component_scroll_webview2','ui_api7_integration_webview2','ui_component_experience_webview2','ui_webview2_render','ui_webview2_messages','ui_webview2_parity')

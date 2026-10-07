@@ -26,4 +26,9 @@ foreach($name in @('ui_api4_compat','ui_api5_compat','ui_application_versions','
  MustReject {Assert-UiCiResults $old @($old.testsuite.testcase|ForEach-Object name) native} "Historical acceptance gate remains: $name"
 }
 MustReject {Assert-UiCiResults ([xml]'<testsuite><testcase name="ui_webview2_render" status="run"/></testsuite>') @('ui_webview2_render') webview2} 'Absent mandatory current Runtime tests accepted'
+$lightNames=@('ui_workspace7','ui_workspace_layout','ui_public_headers_c','ui_light_glyph_padding','ui_light_scroll','ui_component_scroll','ui_component_scroll_native','ui_menu_access','ui_application_contract')
+$light=[xml]('<testsuite>'+($lightNames|ForEach-Object {"<testcase name='$_' status='run'/>"})+'</testsuite>')
+Assert-UiCiResults $light $lightNames light
+$light.testsuite.RemoveChild($light.testsuite.testcase[3])|Out-Null
+MustReject {Assert-UiCiResults $light @($light.testsuite.testcase|ForEach-Object name) light} 'Missing explicit padding pixel regression accepted'
 Write-Output 'CI checks PASS: current-only acceptance, WGL/provider/Runtime partition, exact inventory, failures and physical-only skip'

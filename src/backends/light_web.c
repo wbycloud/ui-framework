@@ -41,6 +41,7 @@ typedef struct lw_style {
     int display_flex, absolute, left, top, right, bottom;
     int min_width, max_width, min_height, max_height;
     int padding[4], margin[4], gap, align, justify;
+    unsigned padding_set;
     int border, radius, font_size, font_weight, font_family, nowrap, text_align, scroll_x;
     unsigned color, border_color;
 } lw_style_t;
@@ -352,6 +353,7 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
             } else if (!strcmp(key, "padding") || !strcmp(key, "margin")) {
                 status = lw_box(value, !strcmp(key, "padding") ? style->padding : style->margin);
                 if (status != UI_STATUS_OK) return status;
+                if (!strcmp(key,"padding")) style->padding_set = 15;
             } else if (!strncmp(key, "padding-", 8) || !strncmp(key, "margin-", 7)) {
                 int *box = !strncmp(key, "padding-", 8) ? style->padding : style->margin;
                 const char *side = key + (!strncmp(key, "padding-", 8) ? 8 : 7);
@@ -359,6 +361,7 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
                     !strcmp(side,"bottom") ? 2 : !strcmp(side,"left") ? 3 : -1;
                 if (slot < 0 || lw_number(value, &number, &percent) != UI_STATUS_OK || percent) return UI_STATUS_UNSUPPORTED;
                 box[slot] = number;
+                if (!strncmp(key,"padding-",8)) style->padding_set |= 1u << slot;
             } else if (!strcmp(key, "align-items") || !strcmp(key, "justify-content") || !strcmp(key, "text-align")) {
                 int alignment = !strcmp(value,"center") ? 1 : (!strcmp(value,"end") || !strcmp(value,"flex-end") || !strcmp(value,"right")) ? 2 :
                     !strcmp(value,"space-between") ? 3 : !strcmp(value,"stretch") ? 4 :
@@ -734,8 +737,8 @@ static void lw_compute_style(lw_view_t *view, int index)
             SIZE size = {0}; HGDIOBJ previous = SelectObject(dc,node->font);
             if (GetTextExtentPoint32W(dc,text,(int)wcslen(text),&size))
                 node->natural_width = MulDiv(size.cx,96,(int)view->dpi) +
-                    (node->style.padding[1] ? node->style.padding[1] : 8) +
-                    (node->style.padding[3] ? node->style.padding[3] : 8) + 2 * node->style.border;
+                    (node->style.padding_set & 2 ? node->style.padding[1] : 8) +
+                    (node->style.padding_set & 8 ? node->style.padding[3] : 8) + 2 * node->style.border;
             SelectObject(dc,previous);
         }
         if (dc) DeleteDC(dc); free(text);
@@ -1574,9 +1577,9 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
             text = lw_wide(node->text);
             if (text) {
                 int horizontal = node->style.padding[3] + node->style.border;
-                if (!horizontal && node->kind == 2) horizontal = 8;
+                if (!(node->style.padding_set & 8) && node->kind == 2) horizontal = 8;
                 rect.left += lw_pixel(horizontal,view->dpi);
-                rect.right -= lw_pixel(node->style.padding[1] + node->style.border + (!node->style.padding[1] && node->kind == 2 ? 8 : 0),view->dpi);
+                rect.right -= lw_pixel(node->style.padding[1] + node->style.border + (!(node->style.padding_set & 2) && node->kind == 2 ? 8 : 0),view->dpi);
                 rect.top += lw_pixel(node->style.padding[0] + node->style.border,view->dpi);
                 rect.bottom -= lw_pixel(node->style.padding[2] + node->style.border,view->dpi);
                 if (node->kind == 2 || node->style.nowrap) flags |= DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS;
