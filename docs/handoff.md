@@ -1,16 +1,17 @@
 # 框架开发交接记录
 
-更新日期：2026-10-08。当前SDK0.9/API9/标准9；本轮接手干净cf0e83a，新增应用拥有的实例语言及原位文本更新。当前[API9验收](validation/instance-language-validation.md)及第19节记录身份、真实鼠标、Runtime、截图和SDK；第20节补充2026-10-08获授权的GitHub源码同步。第18节的f0b161c/d24cdf3与更早各节均是历史结果，不继承为当前通过。保留95f5d78/6a0170a视觉、9df202f/2e87e02捕获及异步轨道、f0b161c列序与捕获修复。共同组件无分页按钮，原预算与生命周期保持，只维护当前API9；本地交付、托管CI、Session0及物理人工条件分别报告。
+更新日期：2026-10-08。当前SDK0.9.0-dev/API9/标准9，应用ABI1/包格式1。完整源码已普通快进同步至GitHub main及codex/menus-offscreen，已核验远端提交b6a36fee3f4c1a73818cdb01ea7271ad5abd30db。该提交的托管CI有失败；当前Session0实际GL通过，严格整机无登录失败。先读[同步与CI记录](validation/github-sync-validation.md)、第21节及[新会话提示词](ci-recovery-prompt.md)，不要沿用第19节当时“未推送/当前Session0待权限”的状态。第19节[API9本机验收](validation/instance-language-validation.md)、第18节及更早各节保留原提交、环境和失败，不继承为当前CI通过。保留95f5d78/6a0170a视觉、9df202f/2e87e02捕获及异步轨道、f0b161c列序与捕获修复。共同组件无分页按钮，原预算与生命周期保持，只维护当前API9；本地交付、托管CI、Session0及物理人工条件分别报告。
 
 ## 1. 恢复顺序与版本
 
 1. 检查 `git status --short`、`git branch --show-current` 和 `git log -3 --oneline`；先保留接手时的用户改动。
-2. 阅读本文、[应用开发标准](application-development-standard.md)、[当前体验验收](validation/component-experience-validation.md)、[Runtime稳定性](validation/runtime-stability-validation.md)、[构建与CI](build-and-validation.md)、[API6验收](validation/api6-validation.md)、[API5验收](validation/api5-validation.md)、[API4记录](validation/api4-validation.md)及[API3未验证项](validation/api3-validation.md#41-未验证项目与补验清单)。
+2. 阅读本文、[同步与CI记录](validation/github-sync-validation.md)、[API9验收](validation/instance-language-validation.md)、[应用开发标准](application-development-standard.md)、[当前体验验收](validation/component-experience-validation.md)、[Runtime稳定性](validation/runtime-stability-validation.md)及[构建与CI](build-and-validation.md)。API3–8记录用于追踪历史，不重新加入旧版本兼容专项。
 3. 修改代码前核对[公共头文件](../include/ui_framework/ui.h)、[布局](workspace-layout.md)、[菜单/离屏合同](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)、[0.7→0.8迁移](migration-v0.7-to-v0.8.md)及[0.8→0.9迁移](migration-v0.8-to-v0.9.md)、[实例语言](instance-language.md)和相关测试。无需重做已完成的实现。
 
 | 项目 | 交接状态 |
 | --- | --- |
 | 仓库 | [wbycloud/ui-framework](https://github.com/wbycloud/ui-framework) |
+| 当前已核验GitHub交付 | main与codex/menus-offscreen均为b6a36fee3f4c1a73818cdb01ea7271ad5abd30db；源码与README匹配，自动CI失败，详见第21节；后续本地文档提交不自动代表远端已更新 |
 | API5功能代码 | [87478fa20d7bb46809c0ef81dd44f972dc193a24](https://github.com/wbycloud/ui-framework/commit/87478fa20d7bb46809c0ef81dd44f972dc193a24)，四项实现及回归；文档另行提交，实际HEAD以Git为准 |
 | 浏览器式宿主 | d7030b3：单行标签标题栏、第二行应用菜单、原Windows/关闭合同及12项最近成功包；完整结果/限制见第12节，文档提交不改执行代码 |
 | API8历史交付 | 产品f0b161c、示例／测试d24cdf3；本轮身份、SDK、实测及限制见第18节；前轮8078281／0fe0864与第17节不覆盖，实际HEAD以Git为准 |
@@ -291,6 +292,20 @@ Runtime首轮关闭排空15秒断言失败，后续12取消pending0、句柄291�
 
 用户明确授权此次源码同步和自然push工作流。入口README、升级提示词、构建说明与0.8→0.9迁移修正“尚未推送/main不包含”的当前表述；开发源码位于[main](https://github.com/wbycloud/ui-framework/tree/main)，接入记录确切commit。SDK0.9.0-dev/API9/标准9、ABI1/包格式1；v0.1.0仍是历史稳定标签，源码公开不代表稳定SDK或Release发布。已封存本地SDK归档及其哈希不改写；第19节和历史验收保持原版本、失败、环境及当时仅本地交付状态。
 
-实际托管结果查看[Actions](https://github.com/wbycloud/ui-framework/actions)，只认准确head_sha对应的push运行及结论。本次未额外手动dispatch。现有四行Windows矩阵与严格Session0工作流可由这次代码差异自然触发；严格无登录门槛保持，缺runner不能把失败改成通过。API9本机61通过/1物理跳过不冒充托管CI。当前服务Session0、严格无登录环境、其他实际Windows显示语言、真实IME/物理跨屏/桌面合成/长期人工继续按第19节待验；业务应用修改仍未授权。
+实际托管结果只认准确head_sha对应的push运行及结论。本次未额外手动dispatch；四行Windows矩阵及严格Session0工作流已自然运行，最终结果见第21节。API9本机61通过/1物理跳过不冒充托管CI。当前源码服务Session0 GL已通过，严格无登录失败；其他实际Windows显示语言、真实IME/物理跨屏/桌面合成/长期人工继续待验，业务应用修改仍未授权。
 
 没有产品、脚本、冻结SDK、历史包/证据、业务仓库或PERF-001修改；只做本次入口文档修正及链接/diff检查。不提交build/.deps/档案/凭据/未审核临时文件，不强推/reset --hard/删除分支、创建标签或Release。实际远端最终SHA、网页源码核对和自动CI运行记录在本次同步日志及交付报告；发生保护或权限阻塞时以真实结果为准，不绕过。
+
+## 21. 2026-10-08 同步完成后的CI失败交接
+
+接手本节时本地main、origin/main及本地/远端codex/menus-offscreen均为b6a36fee3f4c1a73818cdb01ea7271ad5abd30db，工作区干净。同步以普通快进完成；主页、README、CMake、公共头、当前清单/测试和标准的远端Git blob已核对，SDK0.9.0-dev/API9/标准9一致。v0.1.0仍为历史稳定标签，没有新Release。封存SDK的产品6d88770、文档快照312bce4及SHA256保持第19节原值，不能重写归档补入本次文档。
+
+三次自动push运行都绑定上述提交、attempt1，已完成且结论failure：[main矩阵37753988354](https://github.com/wbycloud/ui-framework/actions/runs/37753988354)、[工作分支矩阵37753988621](https://github.com/wbycloud/ui-framework/actions/runs/37753988621)、[main严格Session0 37753988202](https://github.com/wbycloud/ui-framework/actions/runs/37753988202)。main的通过/失败/物理跳过分别为native 21/0/1、light 42/2/1、osmesa 47/4/1、webview2 56/5/1。真实Runtime专属阶段10/10通过，不覆盖该配置的前置失败。精确环境、分阶段结果与原日志入口见[同步验收记录](validation/github-sync-validation.md)。
+
+下轮优先收敛五个不同失败用例，不能把各配置的重复失败算作独立根因。ui_browser_host及ui_web_host_frontend存在已确认的中文固定断言与英文runner冲突；ui_host_repaint报告1失败但idle paint为0，具体失败断言未定位，源码也含“操作完成”固定中文断言，仅是待核验线索。ui_stateful_components_light在180秒、ui_instance_language_light在240秒超时，需追踪阶段/子进程/关闭，不能以子用例0失败覆盖整项Timeout。此次同步没有改产品、测试、超时或资源门槛，CI缺陷尚未修复。
+
+当前LocalSystem/ServiceMain、SessionId0实际应用DLL与OSMesa已得到GL failures0、commands2000、created_HWNDs0/process_HWNDs0证据。严格无登录因runneradmin的已登录Session2而失败：logged_sessions1、inventory_valid1。用户已确认没有严格无登录服务runner；不注销用户、不改既有服务、不放宽RequireNoLogin，本轮不把这项环境缺失列为产品修复。
+
+本机原始证据位于D:\应用软件框架\应用层序框架\build\github-sync-20261008：report.md、result.json、evidence-sha256.json（437个证据文件）以及main各配置/Session0和工作分支原ZIP、JUnit、manifest、资源与像素。该目录被Git忽略，clone不会带入；同机新会话先保留并核验，其他机器从上述运行下载Artifacts/日志，若已失效则如实标缺失，不重新生成冒充原证据。不要依赖其中临时网络辅助脚本，也不要输出凭据。
+
+本次交接只更新文档、保存提示词并本地提交，不启动修复、构建、测试或远程工作流。本次源码同步授权已执行完，不解释为后续修复无限推送授权；新会话先核对实际状态，完成本地诊断/修复及必要回归，远程验证与推送需新的明确授权。原业务仓库、冻结SDK、历史包/证据、PERF-001保持只读，不使用graph-engineering、子代理或新会话，不扩大到新功能或后端。真实IME、物理不同DPI/桌面合成/长期人工及严格无登录条件仍待验。
