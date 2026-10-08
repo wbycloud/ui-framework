@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="7"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="162"
+	timestamp="2026-10-09T02:17:41"
+	>
+	<testcase name="ui_host_repaint" classname="ui_host_repaint" time="13.3163" status="run">
+		<properties/>
+		<system-out>WINDOW invalidate-control hwnd000000000491058C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE invalidate-control elapsed203 cpu-ms15.625 paint1 queued-paint1 dispatched3 host-refresh0 wake0 layouts0 events0 handles277 GDI414 USER32
+INVALIDATE_CONTROL paints1 invalid0 dispatched3
+MEASURE idle-0 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched21 host-refresh0 wake0 layouts0 events0 handles277 GDI414 USER32
+MEASURE idle-1 elapsed2000 cpu-ms0.000 paint0 queued-paint0 dispatched22 host-refresh0 wake0 layouts0 events0 handles277 GDI414 USER32
+MEASURE idle-2 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched21 host-refresh0 wake0 layouts0 events0 handles277 GDI414 USER32
+WINDOW resize hwnd0000000002AE0840 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd000000000491058C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd000000000A88083C classUiFrameworkApplicationContainerV1 pa...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_stateful_components_light" classname="ui_stateful_components_light" time="36.2266" status="run">
+		<properties/>
+		<system-out>CASE_BEGIN label=write-96 mode=write dpi=96 utc=2026-10-08T18:17:55.8644632Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-d5b8b27a5f814d858f9054cf7bd74193
+TEST_PHASE pid29344 tick722012046 dispatched0 create-host-begin
+TEST_PHASE pid29344 tick722012062 dispatched0 create-host-end
+TEST_PHASE pid29344 tick722012093 dispatched0 open-begin
+TEST_PHASE pid29344 tick722012250 dispatched0 open-return
+TEST_PHASE pid29344 tick722012750 dispatched47 open-settled
+RESTORED modewrite dpi96 name200 treeCollapsed0
+TEST_PHASE pid29344 tick722012750 dispatched47 screenshot-begin
+TEST_PHASE pid29344 tick722012781 dispatched47 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000000B30890 classUIFrameworkLightWeb thread24188 ours24188 GetCapture0000000000B30890 target-thread-capture0000000000B30890
+ACTUAL_HEADER dpi96 width200 -&gt; 280 hit0000000000B30890 pid29344
+TEST_PHASE pid29344 tick722013218 dispatched80 screenshot-begin
+TEST_PHASE...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_instance_language_light" classname="ui_instance_language_light" time="66.6434" status="run">
+		<properties/>
+		<system-out>CASE_BEGIN label=preferences-96 utc=2026-10-08T18:18:32.0967868Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\language-evidence-light-11fc02ba8a264571a801fb8264f1571c
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+TEST_PHASE pid44396 tick722048296 dispatched0 create-host-begin
+TEST_PHASE pid44396 tick722048312 dispatched0 create-host-end
+TEST_PHASE pid44396 tick722048546 dispatched17 screenshot-begin
+TEST_PHASE pid44396 tick722048562 dispatched17 screenshot-end
+TEST_PHASE pid44396 tick722048562 dispatched17 preferences-begin
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE magic: ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_visual_ui_light" classname="ui_visual_ui_light" time="5.69905" status="run">
+		<properties/>
+		<system-out>Header/content: 8,200 versus 8,200
+Header/content: 8,200 versus 8,200
+Panel title tooltip kind5 capture0000000000000000
+Dock tab tooltip kind5 capture0000000000000000
+Visual actual light DLL / OSMesa / dual instance: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_api7_integration" classname="ui_api7_integration" time="9.40856" status="run">
+		<properties/>
+		<system-out>API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=9348
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-light-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+API7 integration: reopen 1
+API7 integration: reopen 2
+API7 integration: reopen 3
+API7 integration: reopen 4
+API7 integration: reopen 5
+API7 integration: reopen 6
+API7 integration: reopen 7
+API7 reopen8 handles 217-&gt;217 GDI 3-&gt;3 USER 3-&gt;3 pending Runtime cleanup=0
+API7 complete offscreen lifecycle created HWNDs=0
+API7 independent light offscreen DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+</system-out>
+	</testcase>
+	<testcase name="ui_session0_interactive_control" classname="ui_session0_interactive_control" time="31.1946" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_windowless_gl" classname="ui_windowless_gl" time="0.432051" status="run">
+		<properties/>
+		<system-out>Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+OSMesa reopen 1 handles=206 loaded=1
+OSMesa reopen 2 handles=206 loaded=1
+OSMesa reopen 3 handles=206 loaded=1
+OSMesa reopen 4 handles=206 loaded=1
+OSMesa reopen 5 handles=206 loaded=1
+OSMesa reopen 6 handles=206 loaded=1
+OSMesa reopen 7 handles=206 loaded=1
+OSMesa reopen 8 handles=206 loaded=1
+OSMesa reopen 9 handles=206 loaded=1
+OSMesa reopen 10 handles=206 loaded=1
+OSMesa reopen 11 handles=206 loaded=1
+OSMesa reopen 12 handles=206 loaded=1
+OSMesa reopen 13 handles=206 loaded=1
+OSMesa reopen 14 handles=206 loaded=1
+OSMesa reopen 15 handles=206 loaded=1
+OSMesa reopen 16 handles=206 loaded=1
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=0, process HWNDs=0, HWND dependency=2
+</system-out>
+	</testcase>
+</testsuite>

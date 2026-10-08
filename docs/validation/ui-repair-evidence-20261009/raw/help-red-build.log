@@ -1,0 +1,6 @@
+light_scroll.c
+help.obj : error LNK2019: 无法解析的外部符号 __imp_CreateWindowExW，函数 run 中引用了该符号
+help.obj : error LNK2019: 无法解析的外部符号 __imp_DestroyWindow，函数 run 中引用了该符号
+help.obj : error LNK2019: 无法解析的外部符号 __imp_GetCapture，函数 run 中引用了该符号
+help.obj : error LNK2019: 无法解析的外部符号 __imp_ReleaseCapture，函数 run 中引用了该符号
+build\ui-repair-20261009\help-red-bin\help.exe : fatal error LNK1120: 4 个无法解析的外部命令

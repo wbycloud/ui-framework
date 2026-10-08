@@ -1,0 +1,99 @@
+{
+  "files": [
+    {
+      "sha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F",
+      "path": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll"
+    },
+    {
+      "sha256": "40F39FD2F55558CB80D981543CD0FA5F7B932FE79A8E8EF7F193939FB8E0D60E",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ui-repair-20261009\\osmesa\\ui_instance_language_test.exe"
+    },
+    {
+      "sha256": "DACC822C206A7A8C24800D133DD343C389B87CD3E146FB387F80FC5357F2A9BD",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ui-repair-20261009\\osmesa\\stateful_components.uapp"
+    },
+    {
+      "sha256": "E2909995EC5DC8189DF544002B10F96FA6742503056983F5C8CD3A15ED7B58C2",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ui-repair-20261009\\osmesa\\ui_framework.dll"
+    }
+  ],
+  "evidence": "D:\\应用软件框架\\应用层序框架\\build\\ui-repair-20261009\\osmesa\\language-evidence-light-0332a574df5946ec991b37a52f6b3c79",
+  "input": "real SendInput",
+  "cases": [
+    {
+      "exitCode": 0,
+      "dpi": 96,
+      "label": "preferences-96",
+      "status": "exited",
+      "mode": "preferences",
+      "completedUtc": "2026-10-08T18:14:31.6925405Z",
+      "elapsedMs": 6150,
+      "startedUtc": "2026-10-08T18:14:25.5360257Z"
+    },
+    {
+      "exitCode": 0,
+      "dpi": 96,
+      "label": "write-96",
+      "status": "exited",
+      "mode": "write",
+      "completedUtc": "2026-10-08T18:14:41.9953390Z",
+      "elapsedMs": 10294,
+      "startedUtc": "2026-10-08T18:14:31.6977605Z"
+    },
+    {
+      "exitCode": 0,
+      "dpi": 96,
+      "label": "restore-96",
+      "status": "exited",
+      "mode": "restore",
+      "completedUtc": "2026-10-08T18:14:51.0789513Z",
+      "elapsedMs": 9076,
+      "startedUtc": "2026-10-08T18:14:41.9974162Z"
+    },
+    {
+      "exitCode": 0,
+      "dpi": 144,
+      "label": "write-144",
+      "status": "exited",
+      "mode": "write",
+      "completedUtc": "2026-10-08T18:15:01.6837322Z",
+      "elapsedMs": 10596,
+      "startedUtc": "2026-10-08T18:14:51.0806038Z"
+    },
+    {
+      "exitCode": 0,
+      "dpi": 144,
+      "label": "restore-144",
+      "status": "exited",
+      "mode": "restore",
+      "completedUtc": "2026-10-08T18:15:11.0567002Z",
+      "elapsedMs": 9366,
+      "startedUtc": "2026-10-08T18:15:01.6849788Z"
+    },
+    {
+      "exitCode": 0,
+      "dpi": 192,
+      "label": "write-192",
+      "status": "exited",
+      "mode": "write",
+      "completedUtc": "2026-10-08T18:15:21.8076790Z",
+      "elapsedMs": 10742,
+      "startedUtc": "2026-10-08T18:15:11.0582982Z"
+    },
+    {
+      "exitCode": 0,
+      "dpi": 192,
+      "label": "restore-192",
+      "status": "exited",
+      "mode": "restore",
+      "completedUtc": "2026-10-08T18:15:31.1929994Z",
+      "elapsedMs": 9371,
+      "startedUtc": "2026-10-08T18:15:21.8091428Z"
+    }
+  ],
+  "provider": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+  "completedUtc": "2026-10-08T18:15:31.1940116Z",
+  "frameworkApi": 9,
+  "backend": "light",
+  "startedUtc": "2026-10-08T18:14:25.4671126Z"
+}

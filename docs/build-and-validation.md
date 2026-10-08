@@ -464,3 +464,7 @@ ctest --test-dir build/current -R '^ui_stateful_components_(light|webview2)$' --
 完整脚本每个独立进程都有CASE_BEGIN/CASE_END和manifest的running/exited、elapsedMs、exitCode；C日志另含PID、tick、实际Dispatch计数及创建/打开/截图/关闭/COM返回阶段。最后一条failures0不等于脚本已取得退出码。`tools/windows-ci.ps1`同时归档state-evidence-*与language-evidence-*，超时必须保留最后running阶段，仍按原TIMEOUT失败，不增等待或放宽资源。
 
 四行配置沿用现有WGL/provider/Runtime分类，依赖已存在时先核验固定提交和目录改动，勿盲目prepare覆盖。独立新build目录、串行真实输入、JUnit精确清单和二进制哈希必须绑定本轮源码；本地结果不改写原托管CI结论。本轮没有新的推送或远程工作流授权。
+
+## 2026-10-09 公共布局与真实可见性验收
+
+新增 `ui_component_layout` / `ui_component_layout_webview2` 纳入现有WGL/provider/Runtime隔离与完整清单检查；原断言、180/240/300秒及资源门槛保持。`dialog_layout_example` 仅链接当前公共共享库，`ui_interaction_probe` / `ui_display_probe` 为不加载业务DLL的公共C复现，真实输入必须在解锁桌面串行执行。SendInput、实际窗口画面与自动状态检查分列；程序192不代表物理高DPI。当前开发SDK增补需匹配头文件、导入库和运行库，冻结API9归档不包含三个新导出。[命令、实际提交、证据及限制](validation/ui-repair-validation.md)。

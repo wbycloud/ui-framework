@@ -1,0 +1,377 @@
+PASS initialize
+PASS COM
+PASS real Runtime
+PASS layout
+PASS resize
+PASS register panel
+PASS shell
+ENV pid=49000 session=1 program-dpi=96 window-dpi=96 screen=2560x1440
+PASS register public component
+PASS set 41 lines
+PASS mount public FORM
+PASS field presentation
+FIELD x=8 y=66 w=668 h=98
+PASS multiline has multiple visible rows
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719228421 name=form-first button=0 capture=0000000000000000 hit=000000000A08003C class=Chrome_WidgetWin_0 pid=49000 xy=100,169 focus=000000000A08003C
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719229890 name=form-wheel-end button=0 capture=0000000000000000 hit=000000000A08003C class=Chrome_WidgetWin_0 pid=49000 xy=100,169 focus=000000000A08003C
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=719230015 name=form-key-end button=0 capture=0000000000000000 hit=000000000A08003C class=Chrome_WidgetWin_0 pid=49000 xy=100,169 focus=000000000A08003C
+PASS update readonly text
+PASS desktop capture
+FRAME tick=719230234 name=form-update button=0 capture=0000000000000000 hit=000000000A08003C class=Chrome_WidgetWin_0 pid=49000 xy=100,169 focus=000000000A08003C
+PASS SendInput mouse
+PASS short tooltip
+PASS desktop capture
+FRAME tick=719230578 name=short-tip button=0 capture=0000000000000000 hit=000000000A08003C class=Chrome_WidgetWin_0 pid=49000 xy=113,121 focus=000000000A08003C
+PASS tooltip presentation
+TIP detail=35,21
+PASS short tooltip content sized
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719230687 name=tip-leave button=0 capture=0000000000000000 hit=000000000A08003C class=Chrome_WidgetWin_0 pid=49000 xy=270,349 focus=000000000A08003C
+PASS tooltip leave hides
+PASS public hide tooltip
+PASS register public component
+PASS set 41 lines
+PASS show public dialog
+DIALOG outer=456,261
+PASS desktop capture
+FRAME tick=719230906 name=dialog-initial button=0 capture=0000000000000000 hit=00000000044110A2 class=Chrome_WidgetWin_0 pid=49000 xy=270,349 focus=0000000007720A64
+PASS SendInput keyboard
+PASS register public component
+PASS set 41 lines
+PASS mount public FORM
+PASS panel layout
+PASS close unused panel
+PASS 41-line CRLF update
+PASS field height control
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=704,431
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719233390 name=height-42-wheel-end button=0 capture=0000000000000000 hit=00000000044210DC class=Chrome_WidgetWin_0 pid=49000 xy=75,105 focus=00000000044210DC
+PASS readonly update remains intact
+PASS field height control
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=334,431
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719235593 name=height-65-wheel-end button=0 capture=0000000000000000 hit=00000000044210DC class=Chrome_WidgetWin_0 pid=49000 xy=75,105 focus=00000000044210DC
+PASS readonly update remains intact
+PASS field height control
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=704,431
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719237843 name=height-160-wheel-end button=0 capture=0000000000000000 hit=00000000044210DC class=Chrome_WidgetWin_0 pid=49000 xy=75,105 focus=00000000044210DC
+PASS readonly update remains intact
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS element presentation
+PASS element presentation
+BAR start=449,169 end=449,297
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719238265 name=bar-grab button=1 capture=0000000000000000 hit=00000000044210DC class=Chrome_WidgetWin_0 pid=49000 xy=449,169 focus=00000000044210DC
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719238359 name=bar-held-end button=1 capture=0000000000000000 hit=00000000044210DC class=Chrome_WidgetWin_0 pid=49000 xy=449,297 focus=00000000044210DC
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719238453 name=bar-released-end button=0 capture=0000000000000000 hit=00000000044210DC class=Chrome_WidgetWin_0 pid=49000 xy=449,297 focus=00000000044210DC
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719238562 name=field-scrollbar-end button=0 capture=0000000000000000 hit=00000000044210DC class=Chrome_WidgetWin_0 pid=49000 xy=75,105 focus=00000000044210DC
+PASS unregister first form
+PASS outer form
+PASS outer multiline
+PASS outer final content
+PASS mount outer form
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=334,291
+PASS outer container
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719240671 name=outer-wheel-last-field button=0 capture=0000000000000000 hit=0000000003880782 class=Chrome_WidgetWin_0 pid=49000 xy=75,105 focus=000000001BCF09F4
+PASS outer last field state reachable
+PASS accept command
+PASS cancel command
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=704,481
+PASS keyboard dialog
+PASS dialog constraints
+PASS show dialog
+PASS desktop capture
+FRAME tick=719241187 name=single-content-height button=0 capture=0000000000000000 hit=000000001BCF09F4 class=UIFrameworkPublicRepairProbe pid=49000 xy=75,105 focus=00000000044410DC
+PASS modal owner disabled
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS real Enter submits once
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=719241625 name=dialog-tab button=0 capture=0000000000000000 hit=00000000044510A2 class=Chrome_WidgetWin_0 pid=49000 xy=224,221 focus=00000000044510A2
+PASS SendInput keyboard
+PASS real Esc closes modal and restores owner
+PASS dialog reopen
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS real cancel button
+PASS keyboard dialog
+PASS dialog constraints
+PASS dialog rows
+PASS dialog multiline
+PASS dialog error
+PASS show dialog
+PASS desktop capture
+FRAME tick=719242375 name=narrow-dialog-initial button=0 capture=0000000000000000 hit=000000000451096E class=Chrome_WidgetWin_0 pid=49000 xy=184,183 focus=000000000451096E
+PASS modal owner disabled
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS real Enter submits once
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=719242750 name=dialog-tab button=0 capture=0000000000000000 hit=000000000451096E class=Chrome_WidgetWin_0 pid=49000 xy=136,244 focus=000000000451096E
+PASS dialog outer
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719244156 name=dialog-outer-end button=0 capture=0000000000000000 hit=000000001BCF09F4 class=UIFrameworkPublicRepairProbe pid=49000 xy=75,105 focus=000000000451096E
+PASS dialog last field reachable
+PASS SendInput keyboard
+PASS real Esc closes modal and restores owner
+PASS dialog reopen
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS real cancel button
+PASS register public component
+PASS set 41 lines
+PASS mount public FORM
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=334,381
+PASS short value
+PASS SendInput mouse
+PASS element presentation
+PASS SendInput mouse
+PASS value field
+PASS short value tooltip sized
+PASS desktop capture
+FRAME tick=719245234 name=short-value-tip button=0 capture=0000000000000000 hit=0000000007770A64 class=Chrome_WidgetWin_0 pid=49000 xy=96,169 focus=000000001BCF09F4
+PASS update closes stale tooltip
+PASS updated tooltip hidden
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=334,381
+PASS SendInput mouse
+PASS edge long tooltip
+TIP_EDGE dpi=96 rect=2246,1109,2542,1349 work=0,0,2560,1392
+PASS tooltip bounded by work area
+PASS tooltip bounded by visible owner
+PASS desktop capture
+FRAME tick=719245750 name=edge-tip-dpi-96 button=0 capture=0000000000000000 hit=0000000007770A64 class=Chrome_WidgetWin_0 pid=49000 xy=2487,1354 focus=000000001BCF09F4
+PASS owner movement closes tooltip
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=192 window=96 client-physical=334,381
+PASS SendInput mouse
+PASS edge long tooltip
+TIP_EDGE dpi=192 rect=2198,935,2532,1315 work=0,0,2560,1392
+PASS tooltip bounded by work area
+PASS tooltip bounded by visible owner
+PASS desktop capture
+FRAME tick=719246390 name=edge-tip-dpi-192 button=0 capture=0000000000000000 hit=0000000007770A64 class=Chrome_WidgetWin_0 pid=49000 xy=2422,1325 focus=000000001BCF09F4
+PASS owner movement closes tooltip
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=704,431
+PASS SendInput mouse
+PASS tooltip before component destruction
+PASS destroy component
+PASS component destruction closes stale tooltip
+PASS independent tooltip host
+PASS independent tooltip
+PASS scoped public hide
+PASS independent tooltip retained
+PASS host destruction closes owned tooltip
+PUBLIC PROBE failures=0

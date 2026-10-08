@@ -1,0 +1,139 @@
+MONITOR reported-effective=96,96 result=0 monitors=1
+MONITOR reported-raw=108,108 result=0 (not physical 192 acceptance)
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=96 host=96 window=96 client=884,431
+PASS editor register
+PASS long editable value
+PASS editor mount
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=96 host=96 window=96 client=884,431
+PASS input rectangle
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+CARET End=867,82 input=96,78,780,28 dpi=96
+PASS End caret actually inside visible field
+PASS long End caret reaches right edge and exposes tail
+PASS desktop capture
+FRAME tick=717786671 name=dpi-96-width-900-End button=0 capture=0000000000000000 hit=00000000049E08C6 class=UIFrameworkLightWeb pid=25212 xy=184,179 focus=00000000049E08C6
+PASS SendInput keyboard
+PASS Home caret inside visible field
+PASS desktop capture
+FRAME tick=717786812 name=dpi-96-width-900-Home button=0 capture=0000000000000000 hit=00000000049E08C6 class=UIFrameworkLightWeb pid=25212 xy=184,179 focus=00000000049E08C6
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=96 host=96 window=96 client=334,431
+PASS input rectangle
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+CARET End=317,82 input=96,78,230,28 dpi=96
+PASS End caret actually inside visible field
+PASS long End caret reaches right edge and exposes tail
+PASS desktop capture
+FRAME tick=717787187 name=dpi-96-width-350-End button=0 capture=0000000000000000 hit=00000000049E08C6 class=UIFrameworkLightWeb pid=25212 xy=184,179 focus=00000000049E08C6
+PASS SendInput keyboard
+PASS Home caret inside visible field
+PASS desktop capture
+FRAME tick=717787328 name=dpi-96-width-350-Home button=0 capture=0000000000000000 hit=00000000049E08C6 class=UIFrameworkLightWeb pid=25212 xy=184,179 focus=00000000049E08C6
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=96 host=96 window=96 client=884,431
+PASS table register
+PASS table rows
+PASS table rows
+PASS table mount
+PASS table rows
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=96 host=96 window=96 client=334,431
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717787796 name=dpi-96-header-resized button=0 capture=0000000000000000 hit=00000000049F08C6 class=UIFrameworkLightWeb pid=25212 xy=75,95 focus=0000000009FF0826
+PASS column rectangle
+PASS resized header capture
+PASS table register
+PASS table rows
+PASS table rows
+PASS table mount
+PASS desktop capture
+FRAME tick=717787953 name=dpi-96-header-fresh button=0 capture=0000000000000000 hit=0000000004A008C6 class=UIFrameworkLightWeb pid=25212 xy=75,95 focus=0000000009FF0826
+PASS column rectangle
+PASS fresh header capture
+PASS resized header pixels equal fresh header pixels
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=192 host=192 window=96 client=884,431
+PASS editor register
+PASS long editable value
+PASS editor mount
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=192 host=192 window=96 client=884,431
+PASS input rectangle
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+CARET End=850,164 input=96,78,338,28 dpi=192
+PASS End caret actually inside visible field
+PASS long End caret reaches right edge and exposes tail
+PASS desktop capture
+FRAME tick=717788609 name=dpi-192-width-900-End button=0 capture=0000000000000000 hit=0000000004A108C6 class=UIFrameworkLightWeb pid=25212 xy=300,267 focus=0000000004A108C6
+PASS SendInput keyboard
+PASS Home caret inside visible field
+PASS desktop capture
+FRAME tick=717788750 name=dpi-192-width-900-Home button=0 capture=0000000000000000 hit=0000000004A108C6 class=UIFrameworkLightWeb pid=25212 xy=300,267 focus=0000000004A108C6
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=192 host=192 window=96 client=334,431
+PASS input rectangle
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+CARET End=300,212 input=8,102,151,28 dpi=192
+PASS End caret actually inside visible field
+PASS long End caret reaches right edge and exposes tail
+PASS desktop capture
+FRAME tick=717789125 name=dpi-192-width-350-End button=0 capture=0000000000000000 hit=0000000004A108C6 class=UIFrameworkLightWeb pid=25212 xy=124,315 focus=0000000004A108C6
+PASS SendInput keyboard
+PASS Home caret inside visible field
+PASS desktop capture
+FRAME tick=717789250 name=dpi-192-width-350-Home button=0 capture=0000000000000000 hit=0000000004A108C6 class=UIFrameworkLightWeb pid=25212 xy=124,315 focus=0000000004A108C6
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=192 host=192 window=96 client=884,431
+PASS table register
+PASS table rows
+PASS table rows
+PASS table mount
+PASS table rows
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=192 host=192 window=96 client=334,431
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717789734 name=dpi-192-header-resized button=0 capture=0000000000000000 hit=0000000004A208C6 class=UIFrameworkLightWeb pid=25212 xy=75,95 focus=0000000009FF0826
+PASS column rectangle
+PASS resized header capture
+PASS table register
+PASS table rows
+PASS table rows
+PASS table mount
+PASS desktop capture
+FRAME tick=717789890 name=dpi-192-header-fresh button=0 capture=0000000000000000 hit=0000000004A308C6 class=UIFrameworkLightWeb pid=25212 xy=75,95 focus=0000000009FF0826
+PASS column rectangle
+PASS fresh header capture
+PASS resized header pixels equal fresh header pixels
+DISPLAY failures=0. Program DPI and monitor DPI are distinct.

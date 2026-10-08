@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="46"
+	failures="0"
+	disabled="0"
+	skipped="1"
+	hostname=""
+	time="81"
+	timestamp="2026-10-09T01:38:31"
+	>
+	<testcase name="ui_language_core" classname="ui_language_core" time="0.995208" status="run">
+		<properties/>
+		<system-out>REAL_WINDOWS_UI first=zh-CN effective=zh-CN provider=1 fallback=0
+Language core 0 failures; synthetic mapping is separate from real system query
+</system-out>
+	</testcase>
+	<testcase name="ui_package_format" classname="ui_package_format" time="0.1302" status="run">
+		<properties/>
+		<system-out>package format and deterministic packing: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_images_windows" classname="ui_images_windows" time="0.0342432" status="run">
+		<properties/>
+		<system-out>PNG/GDI/cache: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_responsive_layout" classname="ui_responsive_layout" time="0.0310436" status="run">
+		<properties/>
+		<system-out>responsive layout matrix: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_assistant_lifecycle" classname="ui_assistant_lifecycle" time="0.0311591" status="run">
+		<properties/>
+		<system-out>assistant lifecycle and model rollback: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_dpi_web_failure" classname="ui_dpi_web_failure" time="0.0254044" status="run">
+		<properties/>
+		<system-out>failed Web DPI sync and retry: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_components_core" classname="ui_components_core" time="0.0450947" status="run">
+		<properties/>
+		<system-out>API3 components core: 0 failures, 3 bounded queries
+</system-out>
+	</testcase>
+	<testcase name="ui_headless_example" classname="ui_headless_example" time="0.0349382" status="run">
+		<properties/>
+		<system-out>eda.add_block: {"blocks":1}
+</system-out>
+	</testcase>
+	<testcase name="ui_public_headers_c" classname="ui_public_headers_c" time="0.0494196" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_public_headers_cpp" classname="ui_public_headers_cpp" time="0.0299688" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_workspace_layout" classname="ui_workspace_layout" time="4.10381" status="run">
+		<properties/>
+		<system-out>workspace layout: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_layout" classname="ui_component_layout" time="1.33699" status="run">
+		<properties/>
+		<system-out>CASE runtime=0 dpi=96 fields=1 client=260,240
+CASE runtime=0 dpi=96 fields=1 client=600,240
+CASE runtime=0 dpi=96 fields=3 client=260,240
+CASE runtime=0 dpi=96 fields=3 client=600,240
+CASE runtime=0 dpi=144 fields=1 client=390,360
+CASE runtime=0 dpi=144 fields=1 client=900,360
+CASE runtime=0 dpi=144 fields=3 client=390,360
+CASE runtime=0 dpi=144 fields=3 client=900,360
+CASE runtime=0 dpi=192 fields=1 client=520,480
+CASE runtime=0 dpi=192 fields=1 client=1200,480
+CASE runtime=0 dpi=192 fields=3 client=520,480
+CASE runtime=0 dpi=192 fields=3 client=1200,480
+Public layout: runtime=0 failures=0. State checks only.
+</system-out>
+	</testcase>
+	<testcase name="ui_component_widths" classname="ui_component_widths" time="1.44107" status="run">
+		<properties/>
+		<system-out>Column experience Light queries25: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_experience" classname="ui_component_experience" time="0.463629" status="run">
+		<properties/>
+		<system-out>component experience light: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_scroll_native" classname="ui_component_scroll_native" time="21.5478" status="run">
+		<properties/>
+		<system-out>PASS: initialize current shared framework
+PASS: native root visible
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi96
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first18 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_light_glyph_padding" classname="ui_light_glyph_padding" time="0.0826019" status="run">
+		<properties/>
+		<system-out>load=0 host=000001E9E8E6E280 view=000001E9E8E7EF00
+capture=0 dimensions=40x40
+presentation=0 visible=1 rect=0,0,20,20 text=
+Explicit zero-padding icon: dark=22 extent=4..15 PASS
+</system-out>
+	</testcase>
+	<testcase name="ui_light_scroll" classname="ui_light_scroll" time="0.115093" status="run">
+		<properties/>
+		<system-out>visible overflow bars windowed/windowless: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_scroll" classname="ui_component_scroll" time="0.472022" status="run">
+		<properties/>
+		<system-out>presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=table y=44 height=396 query=0+15
+end row first=99988 total=100000 rows=14 query=99986+17 nodes=135 status=0
+end column first=0 col=0 rows=15 query=0+15
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551603 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=780,44,12,396
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=780,44,12,396
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_offscreen_msaa" classname="ui_offscreen_msaa" time="0.389245" status="run">
+		<properties/>
+		<system-out>Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+</system-out>
+	</testcase>
+	<testcase name="ui_offscreen_gl" classname="ui_offscreen_gl" time="0.226728" status="run">
+		<properties/>
+		<system-out>Offscreen GPU: Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c); hidden HWND dependency; hardware class unknown
+Hidden WGL/FBO/frame/input/readback: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_workspace_offscreen" classname="ui_workspace_offscreen" time="1.83714" status="run">
+		<properties/>
+		<system-out>Offscreen actual DOM=89 cached rows=12 columns=4
+Workspace/shared DLL/real templates: 0 failures, HWNDs=0
+</system-out>
+	</testcase>
+	<testcase name="ui_framework_features_host" classname="ui_framework_features_host" time="11.8707" status="run">
+		<properties/>
+		<system-out>API4 actual host menus/overflow/instances: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_menu_desktop" classname="ui_menu_desktop" time="7.65778" status="run">
+		<properties/>
+		<system-out>Input desktop cursor available: 1
+Function key presentation: status 0; text Ctrl+F1
+Menu hit 0 at 698,111: expected 0000000007A806AC; actual 0000000007A806AC UIFrameworkRegisteredMenu4; foreground 0000000007A806AC
+Menu hit 1 at 380,110: expected 0000000002590A92; actual 0000000002590A92 UIFrameworkRegisteredMenu4; foreground 0000000007A806AC
+Menu hit 2 at 62,109: expected 000000000F751084; actual 000000000F751084 UIFrameworkRegisteredMenu4; foreground 0000000007A806AC
+40 menu reopen cycles: handles 387 -&gt; 387; GDI 855 -&gt; 855; USER 146 -&gt; 146
+After instance switch: visible menus=0; first path=closed second path=closed
+Desktop menu real host: 0 failures; command calls=1
+</system-out>
+	</testcase>
+	<testcase name="ui_menu_offscreen" classname="ui_menu_offscreen" time="0.162942" status="run">
+		<properties/>
+		<system-out>Real light/template offscreen: 0 failures; thread windows=0; no physical IME/DPI claim
+</system-out>
+	</testcase>
+	<testcase name="ui_menu_cascade_offscreen" classname="ui_menu_cascade_offscreen" time="0.268446" status="run">
+		<properties/>
+		<system-out>128 items, 118 page steps; shared cascade budget boundary at 13; command once; no menu HWND: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_menu_access" classname="ui_menu_access" time="0.156471" status="run">
+		<properties/>
+		<system-out>Menu Alt real template: 0 failures, calls=3
+</system-out>
+	</testcase>
+	<testcase name="ui_web_text_edit" classname="ui_web_text_edit" time="0.173576" status="run">
+		<properties/>
+		<system-out>Reader viewport=0,0,220,160 capture=240,160
+Web editor: 0 failures. Physical Chinese IME remains unverified.
+</system-out>
+	</testcase>
+	<testcase name="ui_generic_web_host" classname="ui_generic_web_host" time="9.6426" status="run">
+		<properties/>
+		<system-out>Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+initial actual DOM=311 rows=19 columns=8
+Initial form dpi=96 status=0 field=96,78,146,28 view=0,0,250,636
+100k tail actual DOM=89 rows=12 columns=4
+100k expanded tree actual DOM=93 cached rows=2100 total=100100
+image bytes=462400 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+</system-out>
+	</testcase>
+	<testcase name="ui_component_resilience" classname="ui_component_resilience" time="6.55255" status="run">
+		<properties/>
+		<system-out>automatic style preview lifetime: 0 failures
+resource,0,0,0,20037632,7589888,175,60,6,0,0,0,0,0,0,0
+Web update: TypeError: cannot set property 'textContent' of null
+edit/layout mode 0: 0 failures
+edit/layout mode 1: 0 failures
+edit/layout mode 2: 0 failures
+edit/layout mode 3: 0 failures
+focus before refloat=0000000004430A14
+focus after refloat=0000000004430A14
+focus after modal close=0000000004430A14
+focus after redock=0000000004430A14
+edit/layout mode 4: 0 failures
+edit/layout mode 5: 0 failures
+record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count
+resource,531,1,1,140529664,148316160,388,1336,165,329,20,21894,93,9948,343144,83
+resource,531,1,2,140529664,148316160,388,1336,165,311,19,18680,93,8254,241672,59
+resource,1625,3,1,143904768,151961600,388,1445,165,343,21,23479,93,11642,436192,105
+resource,1625,3,2,143904768,151961600,388,1445,165,343,21,23459,93,9948,414992,100
+resource,2109,4,1,143990784,152047...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_application_contract" classname="ui_application_contract" time="0.344152" status="run">
+		<properties/>
+		<system-out>current application declarations and Web/native contents: PASS
+</system-out>
+	</testcase>
+	<testcase name="ui_light_web_dynamic" classname="ui_light_web_dynamic" time="0.286103" status="run">
+		<properties/>
+		<system-out>Dynamic Web probe: 0 failure(s), 6 messages, 250 incremental rebuilds
+</system-out>
+	</testcase>
+	<testcase name="ui_web_shell_slots" classname="ui_web_shell_slots" time="0.110555" status="run">
+		<properties/>
+		<system-out>Web shell content slots and legacy facade passed
+</system-out>
+	</testcase>
+	<testcase name="ui_floating_web_dpi" classname="ui_floating_web_dpi" time="0.0971948" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="ui_light_web_parity" classname="ui_light_web_parity" time="0.194214" status="run">
+		<properties/>
+		<system-out>Light Web probe: 0 failure(s), clicks=3, inputs=2, reloads=4
+</system-out>
+	</testcase>
+	<testcase name="ui_workspace_integration" classname="ui_workspace_integration" time="1.66082" status="run">
+		<properties/>
+		<system-out>Workspace/module lifecycle: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_browser_host" classname="ui_browser_host" time="5.02338" status="run">
+		<properties/>
+		<system-out>EMPTY_HOST_SYSTEM languagezh-CN systemzh-CN source2 provider1 fallback0
+Recent row text=[] newest=[C:\Users\wbycl\AppData\Local\Temp\ubhE6E.tmp\app12.uapp]
+Actual drag 40,40 -&gt; 80,70
+Resize actual target 00000000119810AC host 00000000119810AC chrome 0000000004D10E38 capture 0000000000000000
+Resize actual right 1280 -&gt; 1310
+24 actual DLL reopen/close: handles 389 -&gt; 389 GDI 71 -&gt; 71 USER 116 -&gt; 116
+Browser host: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_web_host_frontend" classname="ui_web_host_frontend" time="1.58312" status="run">
+		<properties/>
+		<system-out>PARAMETER_LANGUAGE active=en-US background=zh-CN
+Basic parameter JSON: {"count":12,"name":"Draft 中","enabled":true,"extra":"keep"}
+Parameter recovery hint: status=0 visible=1 text=Configure this parameter in Advanced; existing values are retained.
+PARAMETER_LANGUAGE active=zh-CN background=en-US
+Basic parameter JSON: {"count":12,"name":"Draft 中","enabled":true,"extra":"keep"}
+Parameter recovery hint: status=0 visible=1 text=此参数需要在高级区域配置，原有参数保持。
+Short text tool width: 115
+Web host frontend passed.
+</system-out>
+	</testcase>
+	<testcase name="ui_native_activation" classname="ui_native_activation" time="0.581163" status="run">
+		<properties/>
+		<system-out>Native managed activation: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_dpi_integration" classname="ui_dpi_integration" time="0.0854911" status="run">
+		<properties/>
+		<system-out>DPI integration: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_opengl_integration" classname="ui_opengl_integration" time="0.354328" status="run">
+		<properties/>
+		<system-out>legacy: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c)
+gl.core: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Core Profile) Mesa 24.3.4 (git-1950a8b78c) samples=0 debug=0
+gl.compatibility: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=0 debug=0
+gl.msaa_debug: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Core Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 debug=1
+OpenGL integration: 0 failure(s), 3 modern configurations supported
+</system-out>
+	</testcase>
+	<testcase name="ui_surface_input" classname="ui_surface_input" time="0.123405" status="run">
+		<properties/>
+		<system-out>Surface input integration: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_monitor_transition" classname="ui_monitor_transition" time="0.0845277" status="notrun">
+		<skipped message="SKIP_RETURN_CODE=77"/>
+		<properties/>
+		<system-out>Monitor transition environment: 1 monitor(s)
+SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+</system-out>
+	</testcase>
+	<testcase name="ui_workspace7" classname="ui_workspace7" time="0.191911" status="run">
+		<properties/>
+		<system-out>API7 bottom/tabs: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_native_shell_integration" classname="ui_native_shell_integration" time="0.104294" status="run">
+		<properties/>
+		<system-out>native shell integration checks passed
+</system-out>
+	</testcase>
+	<testcase name="ui_native_responsive" classname="ui_native_responsive" time="0.21107" status="run">
+		<properties/>
+		<system-out>Native responsive integration: 0 failure(s)
+</system-out>
+	</testcase>
+	<testcase name="ui_assistant_protocol" classname="ui_assistant_protocol" time="0.0980482" status="run">
+		<properties/>
+		<system-out>assistant protocol: 0 failure(s)
+</system-out>
+	</testcase>
+</testsuite>

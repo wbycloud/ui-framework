@@ -1,0 +1,17 @@
+{
+  "productCommit": "07a66a82370db93c49a66c90db5e217a8812e60e",
+  "probeCommit": "4fdfcc2d5f679166064355abe08bc8e855f6a5eb",
+  "input": "SendInput; visible Runtime thumb center; physical mouse not executed",
+  "files": [
+    {
+      "path": "build/ui-repair-20261009/runtime-bar-verified-bin/interaction_probe.c",
+      "bytes": 32729,
+      "sha256": "6448d32ad8ee9151b93c666e8b8e9a6fdf9039cb1bdd02489b242fa449fa0066"
+    },
+    {
+      "path": "build/ui-repair-20261009/runtime-bar-verified-bin/ui_interaction_probe.exe",
+      "bytes": 2135552,
+      "sha256": "7354324800ea8b3071739a02d952a7da9f5aa83d92bae2ac813923f1b57bec61"
+    }
+  ]
+}

@@ -1,0 +1,362 @@
+Start testing: Oct 09 01:38 中国标准时间
+----------------------------------------------------------
+1/22 Testing: ui_language_core
+1/22 Test: ui_language_core
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_language_core_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_language_core" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+REAL_WINDOWS_UI first=zh-CN effective=zh-CN provider=1 fallback=0
+Language core 0 failures; synthetic mapping is separate from real system query
+<end of output>
+Test time =   0.94 sec
+----------------------------------------------------------
+Test Passed.
+"ui_language_core" end time: Oct 09 01:38 中国标准时间
+"ui_language_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/22 Testing: ui_package_format
+2/22 Test: ui_package_format
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_package_format_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_package_format" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+package format and deterministic packing: 0 failures
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"ui_package_format" end time: Oct 09 01:38 中国标准时间
+"ui_package_format" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/22 Testing: ui_images_windows
+3/22 Test: ui_images_windows
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_images_windows_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_images_windows" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+PNG/GDI/cache: 0 failures
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_images_windows" end time: Oct 09 01:38 中国标准时间
+"ui_images_windows" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/22 Testing: ui_responsive_layout
+4/22 Test: ui_responsive_layout
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_responsive_layout_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_responsive_layout" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+responsive layout matrix: 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_responsive_layout" end time: Oct 09 01:38 中国标准时间
+"ui_responsive_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/22 Testing: ui_assistant_lifecycle
+5/22 Test: ui_assistant_lifecycle
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_assistant_lifecycle_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_assistant_lifecycle" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+assistant lifecycle and model rollback: 0 failures
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_lifecycle" end time: Oct 09 01:38 中国标准时间
+"ui_assistant_lifecycle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/22 Testing: ui_dpi_web_failure
+6/22 Test: ui_dpi_web_failure
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_dpi_web_failure_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_dpi_web_failure" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+failed Web DPI sync and retry: 0 failures
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_web_failure" end time: Oct 09 01:38 中国标准时间
+"ui_dpi_web_failure" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/22 Testing: ui_components_core
+7/22 Test: ui_components_core
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_components_core_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_components_core" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+API3 components core: 0 failures, 3 bounded queries
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_components_core" end time: Oct 09 01:38 中国标准时间
+"ui_components_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/22 Testing: ui_headless_example
+8/22 Test: ui_headless_example
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_headless_example.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_headless_example" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+eda.add_block: {"blocks":1}
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"ui_headless_example" end time: Oct 09 01:38 中国标准时间
+"ui_headless_example" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/22 Testing: ui_public_headers_c
+9/22 Test: ui_public_headers_c
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_public_headers_c_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_public_headers_c" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_c" end time: Oct 09 01:38 中国标准时间
+"ui_public_headers_c" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/22 Testing: ui_public_headers_cpp
+10/22 Test: ui_public_headers_cpp
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_public_headers_cpp_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_public_headers_cpp" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_cpp" end time: Oct 09 01:38 中国标准时间
+"ui_public_headers_cpp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/22 Testing: ui_workspace_layout
+11/22 Test: ui_workspace_layout
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_workspace_layout_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_workspace_layout" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+workspace layout: 0 failures
+<end of output>
+Test time =   4.08 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_layout" end time: Oct 09 01:38 中国标准时间
+"ui_workspace_layout" time elapsed: 00:00:04
+----------------------------------------------------------
+
+12/22 Testing: ui_offscreen_msaa
+12/22 Test: ui_offscreen_msaa
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_offscreen_msaa_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_offscreen_msaa" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+<end of output>
+Test time =   0.45 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_msaa" end time: Oct 09 01:38 中国标准时间
+"ui_offscreen_msaa" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/22 Testing: ui_workspace_integration
+13/22 Test: ui_workspace_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_workspace_integration_test.exe" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/minimal_eda.uapp" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_lifecycle_fixture.dll" "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_application_cpp.dll"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_workspace_integration" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+Workspace/module lifecycle: 0 failure(s)
+<end of output>
+Test time =   1.65 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_integration" end time: Oct 09 01:38 中国标准时间
+"ui_workspace_integration" time elapsed: 00:00:01
+----------------------------------------------------------
+
+14/22 Testing: ui_native_activation
+14/22 Test: ui_native_activation
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_native_activation_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_native_activation" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+Native managed activation: 0 failure(s)
+<end of output>
+Test time =   0.56 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_activation" end time: Oct 09 01:38 中国标准时间
+"ui_native_activation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/22 Testing: ui_dpi_integration
+15/22 Test: ui_dpi_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_dpi_integration_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_dpi_integration" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+DPI integration: 0 failure(s)
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_integration" end time: Oct 09 01:38 中国标准时间
+"ui_dpi_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/22 Testing: ui_opengl_integration
+16/22 Test: ui_opengl_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_opengl_integration_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_opengl_integration" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+legacy: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c)
+gl.core: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Core Profile) Mesa 24.3.4 (git-1950a8b78c) samples=0 debug=0
+gl.compatibility: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=0 debug=0
+gl.msaa_debug: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Core Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 debug=1
+OpenGL integration: 0 failure(s), 3 modern configurations supported
+<end of output>
+Test time =   0.35 sec
+----------------------------------------------------------
+Test Passed.
+"ui_opengl_integration" end time: Oct 09 01:38 中国标准时间
+"ui_opengl_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/22 Testing: ui_surface_input
+17/22 Test: ui_surface_input
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_surface_input_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_surface_input" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+Surface input integration: 0 failure(s)
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_surface_input" end time: Oct 09 01:38 中国标准时间
+"ui_surface_input" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/22 Testing: ui_monitor_transition
+18/22 Test: ui_monitor_transition
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_monitor_transition_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_monitor_transition" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+Monitor transition environment: 1 monitor(s)
+SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"ui_monitor_transition" end time: Oct 09 01:38 中国标准时间
+"ui_monitor_transition" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/22 Testing: ui_workspace7
+19/22 Test: ui_workspace7
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_workspace7_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_workspace7" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+API7 bottom/tabs: 0 failures
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace7" end time: Oct 09 01:38 中国标准时间
+"ui_workspace7" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/22 Testing: ui_native_shell_integration
+20/22 Test: ui_native_shell_integration
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_native_shell_integration_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_native_shell_integration" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+native shell integration checks passed
+<end of output>
+Test time =   0.11 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_shell_integration" end time: Oct 09 01:38 中国标准时间
+"ui_native_shell_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/22 Testing: ui_native_responsive
+21/22 Test: ui_native_responsive
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_native_responsive_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_native_responsive" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+Native responsive integration: 0 failure(s)
+<end of output>
+Test time =   0.20 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_responsive" end time: Oct 09 01:38 中国标准时间
+"ui_native_responsive" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/22 Testing: ui_assistant_protocol
+22/22 Test: ui_assistant_protocol
+Command: "D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native/ui_assistant_protocol_test.exe"
+Directory: D:/搴旂敤杞欢妗嗘灦/搴旂敤灞傚簭妗嗘灦/build/ui-repair-20261009/native
+"ui_assistant_protocol" start time: Oct 09 01:38 中国标准时间
+Output:
+----------------------------------------------------------
+assistant protocol: 0 failure(s)
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_protocol" end time: Oct 09 01:38 中国标准时间
+"ui_assistant_protocol" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 09 01:38 中国标准时间

@@ -1,0 +1,1521 @@
+{
+  "productCommit": "07a66a82370db93c49a66c90db5e217a8812e60e",
+  "nativeNote": "e0dcf78 executed matrix; final native rebuild had no work because Light source is excluded",
+  "files": [
+    {
+      "path": "build/ui-repair-20261009/native/cpp_fixture.uapp",
+      "bytes": 145195,
+      "sha256": "8ffd0a9b54ecacbe50c7981f7ae9426cfd5162d0ae811ae38143a56947f76e15"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/minimal_eda.exe",
+      "bytes": 126464,
+      "sha256": "fcd42213e0a8e44894c3379612f661eb7c6c0540ede4d4dc35e4d218a9f8566b"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/minimal_eda.uapp",
+      "bytes": 151810,
+      "sha256": "5952ea013a12857ab88127ade015d1b8c343f1a193fb48a0432c7c14b7ddad8e"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/minimal_eda_app.dll",
+      "bytes": 151040,
+      "sha256": "1de2bb83f3b5e79579ac1e86a8eccc8fa94268b867ea3afdab065100c75ffbb4"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/minimal_eda_app.lib",
+      "bytes": 1912,
+      "sha256": "e9b62bae773ce94c4fd468b8768d849331a7a1b61865e81aaa5f54d996588e28"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/session0_gl_app.uapp",
+      "bytes": 19850,
+      "sha256": "fb1070ef46ae50d3033ff951c1dbfa48953c29f2d19455bbb3fa04787d5889a7"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/uapp_pack.exe",
+      "bytes": 39424,
+      "sha256": "13dd153403b40086389459c24945a41a89ea89caf9441354b3a3a8d50861ad2a"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_application_cpp.dll",
+      "bytes": 144896,
+      "sha256": "2aebcd48d67cbd98bc61e483f5ce3cc0c692fc2a314123edd0ecc9e08b0bbc3a"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_application_cpp.lib",
+      "bytes": 1954,
+      "sha256": "9d3980b2d1a718ce68210e3600cf65557d66e3a1563726e96ca315925f18ecae"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_assistant_lifecycle_test.exe",
+      "bytes": 61952,
+      "sha256": "2868dcdc6643db5f2e38dd7da1e439c51d6be75ff27ec337aa4a3673cb4b9b59"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_assistant_protocol_test.exe",
+      "bytes": 62976,
+      "sha256": "a53aea337854096ef6546e1a0add28ac3bbe21fb2234bf443aa83d7fe1fb2014"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_components_core_test.exe",
+      "bytes": 73216,
+      "sha256": "9fa3be2983ad744a0e8e0d4829b4344827b9ec50045acf637bd9531a0bd2b6a2"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_dpi_integration_test.exe",
+      "bytes": 90112,
+      "sha256": "5eaa580894369ff580dc871e8917059df88964d5657a8fad11071bb008b092e8"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_dpi_web_failure_test.exe",
+      "bytes": 58880,
+      "sha256": "b0dcf36279bf658fd6d1955afde228f8289e2daaa9b9b96d28e53f1bca22d09c"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_framework.dll",
+      "bytes": 393728,
+      "sha256": "f694811a978ac7784d768d3c5d5d0320017d94d97e504b937074c1272f1659f0"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_framework.lib",
+      "bytes": 730266,
+      "sha256": "05d1e04a662b126a9aa4d516843256cbb77c55b0af8425d5b7549fef59364933"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_framework_headless.lib",
+      "bytes": 498428,
+      "sha256": "e33358e199ca5f807288b4a028cb95cb4d01a9f9b56443596f8c9ae1d0e39bbe"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_framework_runtime.lib",
+      "bytes": 59000,
+      "sha256": "1d7cfdaa4e277bacafb7706a7159a3964971aee0e5580b81b3821bb4b06987bb"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_headless_example.exe",
+      "bytes": 60928,
+      "sha256": "6307aad694e5aa7ced624bc16507852764f17af7fcb74755d98fcd531380477b"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_images_windows_test.exe",
+      "bytes": 58880,
+      "sha256": "ad9c5c17f30d29798611cf0b1bd81fe378d05288f741ab98e31e598667707242"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_language_core_test.exe",
+      "bytes": 84992,
+      "sha256": "1cafb401814ed709243f228171ed44126e464b97f57e383adcdb9192bd1bd0a9"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_lifecycle_fixture.dll",
+      "bytes": 138240,
+      "sha256": "a7e3372533b09534b5d56dd4a72b3f482f035352409ac12adb5b144aded26ef8"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_lifecycle_fixture.lib",
+      "bytes": 1980,
+      "sha256": "bba5cd72d21e4ac11ef3f1c11876f59541e0de22836f8b19cf296c9882c8cbfb"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_monitor_transition_test.exe",
+      "bytes": 75776,
+      "sha256": "6912a3803191bc2454704a57eaf7d4af8ad353c7331844e1f52c8dc99266bff5"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_native_activation_test.exe",
+      "bytes": 127488,
+      "sha256": "cac47f60c642d2b73e40a8563573747f069406f2107981e1091e237274bf7858"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_native_responsive_test.exe",
+      "bytes": 112640,
+      "sha256": "8fa9498793b67e4aa158a7a00763f5f3bf651cd8e36a348cb63a83d6050026b9"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_native_shell_integration_test.exe",
+      "bytes": 108032,
+      "sha256": "e6d015b7be1cf50eaa4e8ca061cef6f4026971a5ad98b3cdd63143d08c3f2d6e"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_offscreen_msaa_test.exe",
+      "bytes": 19968,
+      "sha256": "de753f8797c033f90157d1efdf492c4dedcd817aa6f8dac05d87141680341dfd"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_opengl_integration_test.exe",
+      "bytes": 96768,
+      "sha256": "0bd7de526316fb4d8bb6a2a25f255a6d8fa25affd142af8685cc2d74d0189ebe"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_package_format_test.exe",
+      "bytes": 55296,
+      "sha256": "6224b0e428c65d92f52404514279e9e7d95b02a22c1dfd77ce650ce5843060f3"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_public_headers_c_test.exe",
+      "bytes": 57344,
+      "sha256": "e797c1616461fef5cdf77f55b08fab5c76ac08d126f7484ed660e84f16fba704"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_public_headers_cpp_test.exe",
+      "bytes": 52736,
+      "sha256": "8d1c6acba219ba00ee3e18e32c704139274925e43e900c30e8743486d8db8019"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_responsive_layout_test.exe",
+      "bytes": 62976,
+      "sha256": "91f77ec3fad6e7b7e15d6fc3fd50183f5127ceb65ba789932ea4793ecedabd03"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_session0_gl_app.dll",
+      "bytes": 19456,
+      "sha256": "c295950c92f1f16beafa022403f98eede330937a69073655069231f2032eb8a7"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_session0_gl_app.lib",
+      "bytes": 1954,
+      "sha256": "eb8df25c75639e8f1216712fa5405e219f8f55d012e18d74c1cf6d1af77a2fc1"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_session0_gl_test.exe",
+      "bytes": 28672,
+      "sha256": "d532bdb07a84113b1b086902f3dbc83126bbc1233b7de750c4d356bdcb4acb74"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_surface_input_test.exe",
+      "bytes": 89600,
+      "sha256": "231a74425a3a44890a594c6df9c30294adff9c4a3008a595b76cf8ccc4ab16b2"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_workspace7_test.exe",
+      "bytes": 111616,
+      "sha256": "6e6f73496a0c894238d92870a1877dfcb96fd6fed1a872211ec63fcd22f21692"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_workspace_integration_test.exe",
+      "bytes": 196608,
+      "sha256": "db82a4a4220c0681651d4331f25bb3a487b5d05926dd7259977dc6e37810b760"
+    },
+    {
+      "path": "build/ui-repair-20261009/native/ui_workspace_layout_test.exe",
+      "bytes": 117248,
+      "sha256": "a95b6b04e6c05b9ddb9415e6b23608a2902dc39e0e96abf0b390434e8cdd82d0"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/api7_fixture.uapp",
+      "bytes": 21893,
+      "sha256": "ed1ade87f15840064c2ea11027b5b3f610f5a71bb2b7e8bdd833435bbcc76a3d"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/counter_mismatch.uapp",
+      "bytes": 134445,
+      "sha256": "24bd35d45ad8202fbf41882572f5cae176e365c9331e4671f8cbbfa04ebcdd4b"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/cpp_fixture.uapp",
+      "bytes": 145195,
+      "sha256": "71e4698bb2af696afe6a5d0f77d23ca60aa7946ac730c833c40267f3dcfd2012"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/dialog_layout_example.exe",
+      "bytes": 12800,
+      "sha256": "c56fd3dcd555c71471c9952b7166eccc47b38e6ac5470777b7aaf3875112a3d5"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/framework_features.uapp",
+      "bytes": 27113,
+      "sha256": "d31de4842d2542ad4f864828d2fef872036edb0dc846fee5c6fad388acb5a51c"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/framework_features_app.dll",
+      "bytes": 26624,
+      "sha256": "ed344b30c508935410511890539aa10def583755a1e694aad09ac91d32be6fdb"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/framework_features_app.lib",
+      "bytes": 2006,
+      "sha256": "867e9c895363720b418260c5746de260865ebb5253987ec4d6800b589636fc1e"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/framework_host.exe",
+      "bytes": 257024,
+      "sha256": "fd7c47741bb4546cba6b3d398ea067e8377bcb5c6fe2ebe7cf3b36f5c423e200"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/generic_components.uapp",
+      "bytes": 25573,
+      "sha256": "99e94607b1b2b40515b95dcb2411698d5ef87a6f3ca3baa5256fcef9a3286bab"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/generic_components_app.dll",
+      "bytes": 25088,
+      "sha256": "9a02325ed9d59f90730b2be196451dd40ed0a3d764942490ea82d008291c3e43"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/generic_components_app.lib",
+      "bytes": 2006,
+      "sha256": "685f0eaf78fac9a15a6e1323e52802b3a1a1b60a812cf0333e92bcf78e9aeae8"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/light_web_probe.exe",
+      "bytes": 2000896,
+      "sha256": "81dfc4bd2e0f6b7420a209321cabe90c9c1e424f150810fd1fe7a8432eba4e97"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/minimal_eda.exe",
+      "bytes": 2025472,
+      "sha256": "84f2a65aa31f6f04d627a39c8135d51cbf4d7a6b1b2e645351d7dd905bea3065"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/minimal_eda.uapp",
+      "bytes": 151810,
+      "sha256": "4e8e60a83d69bcecda3d800cb71ee4ace0b572dc732e8413c7765fb76465d9de"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/minimal_eda_app.dll",
+      "bytes": 151040,
+      "sha256": "146df97c0ab3e8e4d17443210402a2c61082ef3612d663495a12c01e60bec015"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/minimal_eda_app.lib",
+      "bytes": 1912,
+      "sha256": "e9b62bae773ce94c4fd468b8768d849331a7a1b61865e81aaa5f54d996588e28"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/session0_gl_app.uapp",
+      "bytes": 19850,
+      "sha256": "2403dcbc478ca6ff5975992d7ac386c6ddc1fd3090f09a5dc03957cc0b75bb31"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/uapp_pack.exe",
+      "bytes": 1945088,
+      "sha256": "56035b67f7a4a77fe29e4e825608f9ab25c529b31e3f4d8c06ddc215b62d8e9d"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_api7_fixture.dll",
+      "bytes": 21504,
+      "sha256": "de45aa76d041b9257d138c8842010d38809db4b6e80c02445bfabc9a21c29b1f"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_api7_fixture.lib",
+      "bytes": 1912,
+      "sha256": "0b83a765647a3b939fc802dc88bd015f7ed81479c933a127287ccaca02f93887"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_api7_integration_test.exe",
+      "bytes": 39424,
+      "sha256": "2274e4197f70ee314191a5cd5de589e88c45563ee5fe69c91cefd6ea32197c65"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_application_contract_test.exe",
+      "bytes": 140288,
+      "sha256": "43da770ed8f58eaec1e66cbd76538ce63c4d9eb2dfc3721fb70e1d1b5ed974be"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_application_cpp.dll",
+      "bytes": 144896,
+      "sha256": "c0d6ae56f131996868d0eee92650bcf43a71dc849abe9b7a4da0de924610a6a3"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_application_cpp.lib",
+      "bytes": 1954,
+      "sha256": "9d3980b2d1a718ce68210e3600cf65557d66e3a1563726e96ca315925f18ecae"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_assistant_lifecycle_test.exe",
+      "bytes": 61952,
+      "sha256": "2868dcdc6643db5f2e38dd7da1e439c51d6be75ff27ec337aa4a3673cb4b9b59"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_assistant_protocol_test.exe",
+      "bytes": 1961984,
+      "sha256": "6dd59711b0b4baa37c4b53686ebbe11cd8f486d7bb363e26e9faa8d1a998937b"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_browser_host_test.exe",
+      "bytes": 293888,
+      "sha256": "e2e2723f4d0c3227c11e47acf47284cc4ba693c22ffa662d96e86e86ddf89cfc"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_component_experience_test.exe",
+      "bytes": 2053120,
+      "sha256": "6d0fb47c29c895918e9aaa0d1931937cb1c42988a486d83ad57be060315f093f"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_component_layout_test.exe",
+      "bytes": 2018816,
+      "sha256": "cd84e31a0c7dc88374d3aece98b9965f6a7d108fdadb356d939674a32fdac431"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_component_resilience_test.exe",
+      "bytes": 129024,
+      "sha256": "6d4d6ffae9cf5e0e27360483272d79b412320a779976fb02030f47567642a7a6"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_component_scroll_native_test.exe",
+      "bytes": 31232,
+      "sha256": "c2b248344e1560b71fd0667941ea0acefb8992b8fdf85eaa910cf27d833c14b8"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_component_scroll_test.exe",
+      "bytes": 2039808,
+      "sha256": "bebae240c3f56b9b1b1eaf22c2e8ef4cbe957421a5ebbd72c8a45f1d4d6ecf7b"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_component_widths_test.exe",
+      "bytes": 2048512,
+      "sha256": "ad4213af27628671d2eca4b87ef138366d6512e468f475443899481e704ecb0c"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_components_core_test.exe",
+      "bytes": 73216,
+      "sha256": "9fa3be2983ad744a0e8e0d4829b4344827b9ec50045acf637bd9531a0bd2b6a2"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_display_probe.exe",
+      "bytes": 2035200,
+      "sha256": "f1f8a57d6c2af031f87de150fa0eb8e05ea48fb1b17de0f516a112db075552b2"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_dpi_integration_test.exe",
+      "bytes": 2002432,
+      "sha256": "d8610bf3e67c6ac74fb951e8090b8f70bb1b77d31679482ee1f1307560471b40"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_dpi_web_failure_test.exe",
+      "bytes": 58880,
+      "sha256": "b0dcf36279bf658fd6d1955afde228f8289e2daaa9b9b96d28e53f1bca22d09c"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_floating_web_dpi_test.exe",
+      "bytes": 2003456,
+      "sha256": "8572e12b88bb4077dec3ad5f8c13b9536531aad4d6dbd95ae9aac801b6643501"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_framework.dll",
+      "bytes": 2126336,
+      "sha256": "e2909995ec5dc8189df544002b10f96fa6742503056983f5c8cd3a15ed7b58c2"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_framework.lib",
+      "bytes": 1178558,
+      "sha256": "ccd8af53c3ab15321d68f421038d0a2eea2b4054f30dac2871497fdd223d8e23"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_framework_features_host_test.exe",
+      "bytes": 122368,
+      "sha256": "80793211d3e272e81c81252b1663f58acb01c566103befc0cca150c81e133576"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_framework_headless.lib",
+      "bytes": 498424,
+      "sha256": "cdf09bc5ec370d811be56c77e6420b55ace87a24237aa7e55c60b9d15575e5ef"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_framework_runtime.lib",
+      "bytes": 59832,
+      "sha256": "292f381894301da54535b3ae80232978a643a3697158c0be10e67e00d59fcc56"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_generic_web_host_test.exe",
+      "bytes": 124928,
+      "sha256": "5254bf4b122ac82834b89f66dd0e5da5372ebfce699587e1803df84fa4789904"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_headless_example.exe",
+      "bytes": 60928,
+      "sha256": "6307aad694e5aa7ced624bc16507852764f17af7fcb74755d98fcd531380477b"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_images_windows_test.exe",
+      "bytes": 58880,
+      "sha256": "ad9c5c17f30d29798611cf0b1bd81fe378d05288f741ab98e31e598667707242"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_interaction_probe.exe",
+      "bytes": 2070528,
+      "sha256": "44554c87b55646079c31133fb679afdfb236c00dc753c29701d76d9b76b2a55f"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_language_core_test.exe",
+      "bytes": 1985536,
+      "sha256": "f15de926f5f8d8f17624e4572dba74813d22652d2b484f28917a1777181225fc"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_lifecycle_fixture.dll",
+      "bytes": 138240,
+      "sha256": "02d088f448fa9f20630d8ef8457b5e120f152fb22d930588654ee2d01be65d89"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_lifecycle_fixture.lib",
+      "bytes": 1980,
+      "sha256": "bba5cd72d21e4ac11ef3f1c11876f59541e0de22836f8b19cf296c9882c8cbfb"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_light_glyph_padding_test.exe",
+      "bytes": 12800,
+      "sha256": "791da60e79890221dbf3a2c025ce6d9408388370d84b96fbf9113962b895ec40"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_light_scroll_test.exe",
+      "bytes": 1965056,
+      "sha256": "a610a75b7838a92477b41f5f534b104974fe3285d490432b8e8561b4ee6cad98"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_light_web_dynamic_test.exe",
+      "bytes": 1964544,
+      "sha256": "e8a01dfba76ac3853d03d97905a3f748554d8ce19f1028945e133db989f2acb1"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_menu_access_test.exe",
+      "bytes": 2013696,
+      "sha256": "f7cb5dce356d94370a0d2379a3cea0f98ea6a46aeb3e7e67d487be9efb039784"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_menu_cascade_offscreen_test.exe",
+      "bytes": 1991680,
+      "sha256": "cb0b89513e25829df76141e42c341d176bc1f4f0d7b28549dac640c9108f201a"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_menu_desktop_test.exe",
+      "bytes": 130048,
+      "sha256": "458a757bc3de0caf3c276e1be15877ce78c13d39f9ad330c7614b8581768b5f8"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_menu_offscreen_test.exe",
+      "bytes": 2019840,
+      "sha256": "b4d594f89fcf1d201f0f3a378a4f9d0a71edf0173c22618a58da31d650d91591"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_monitor_transition_test.exe",
+      "bytes": 1992192,
+      "sha256": "a87cf69ddc21b6ac725597cf418a2bff5a345b007791642c020070127791e593"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_native_activation_test.exe",
+      "bytes": 2025984,
+      "sha256": "c089f2c15da54a752dd8831db203bcd960eeb35e03a1de487298adea68b3f33b"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_native_responsive_test.exe",
+      "bytes": 2015232,
+      "sha256": "4e96875f8926ac189f7a8c8610f65bd3b196e59843690b8c5c23cabbd039f42e"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_native_shell_integration_test.exe",
+      "bytes": 2010624,
+      "sha256": "cccb76951c9eb1a5d6245e09501e9de9d081bacaf54c73f13ad7141ebeebb8c4"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_offscreen_gl_test.exe",
+      "bytes": 2008576,
+      "sha256": "b15298bf3e31440086bc095badb6b861850c4fcb34414f2748aa4eaac026e839"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_offscreen_msaa_test.exe",
+      "bytes": 19968,
+      "sha256": "73fb874423fea074ce5239b3e7a7aac6b4e39eed2ee83e39888aed7ff1c2e4c8"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_opengl_integration_test.exe",
+      "bytes": 2009088,
+      "sha256": "492adcdf43ce0fc693347b6e7a9939f1942b76e6243635fa6e2452663ac130f6"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_package_format_test.exe",
+      "bytes": 1961472,
+      "sha256": "4dbf14ecdcd9bcfc2015d9b93c878bfa749f4f17290d086849670692076d647e"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_public_headers_c_test.exe",
+      "bytes": 57344,
+      "sha256": "e797c1616461fef5cdf77f55b08fab5c76ac08d126f7484ed660e84f16fba704"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_public_headers_cpp_test.exe",
+      "bytes": 52736,
+      "sha256": "8d1c6acba219ba00ee3e18e32c704139274925e43e900c30e8743486d8db8019"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_responsive_layout_test.exe",
+      "bytes": 62976,
+      "sha256": "77cec395dfc1b1a7467cd3bbbd18a3878dcda83a7652af7605d9f49ba8ec8c1e"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_session0_gl_app.dll",
+      "bytes": 19456,
+      "sha256": "1456e9128e0822fe10cd5d8da1cc85e8a2d8bae27a9fc2e8cd7f482dc4f30dc9"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_session0_gl_app.lib",
+      "bytes": 1954,
+      "sha256": "eb8df25c75639e8f1216712fa5405e219f8f55d012e18d74c1cf6d1af77a2fc1"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_session0_gl_test.exe",
+      "bytes": 28672,
+      "sha256": "a35f484defe6e5c06685811a46116bcad6555aec9e956b0eb6ca263aaa66e039"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_surface_input_test.exe",
+      "bytes": 2001408,
+      "sha256": "424da2e57ea60d73e426737ba2c7b900aa0a65e30724e414f71a44f4e620f6fb"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_web_host_frontend_test.exe",
+      "bytes": 306688,
+      "sha256": "b68b38375e8679969dacaa1fde4f7f283bb8dd260fef936612be45b4c5628e15"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_web_shell_slots_test.exe",
+      "bytes": 2023424,
+      "sha256": "e415f9eff62ec13477cc84c95c781d232541095250e608e15ee9f43b171477e8"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_web_text_edit_test.exe",
+      "bytes": 1964544,
+      "sha256": "b633448bf3a2352323bd4289ef23f1cf3a244aaf4f71f85dff9336e3d5bd4568"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_workspace7_test.exe",
+      "bytes": 2015744,
+      "sha256": "3652af44697e982cd585fb32b6f66dab51ab0f1bd807b94bd9e06ac4330c15a6"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_workspace_integration_test.exe",
+      "bytes": 196608,
+      "sha256": "bec2ac0a3258095de5c2f9a11a3402ecc633fd2f2f6cf1cadd605ce165a1886b"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_workspace_layout_test.exe",
+      "bytes": 2020864,
+      "sha256": "7a245b906f47476d058a463d32697348273cf38c35acde1a512560c68c0ff625"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/ui_workspace_offscreen_test.exe",
+      "bytes": 20480,
+      "sha256": "12ea90780b0026c01921cfb0696b017d6cdee866b97f81f1a2e1563f7283117d"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/web_counter.uapp",
+      "bytes": 134445,
+      "sha256": "22eab8a02f7b79ddfc89dcb1c3fcc5230c00b8b13178368d2f54a2dfefabc965"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/web_counter_app.dll",
+      "bytes": 134144,
+      "sha256": "2d40ec8bf7c87b9cf51850bfdce9fc1310019657fc0120f73fb8f00672487592"
+    },
+    {
+      "path": "build/ui-repair-20261009/light/web_counter_app.lib",
+      "bytes": 1912,
+      "sha256": "fc4c6145adffa7bbd8b795957ee9a0c2563dbe77dc0e482ba1dcb8c6c1eb3988"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/api7_fixture.uapp",
+      "bytes": 21893,
+      "sha256": "43c74b3baca353d35ef6e859b549f8bbe08acecf3cfe444879d8e05d89eb74b5"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/counter_mismatch.uapp",
+      "bytes": 134445,
+      "sha256": "a1eb435caa07f86ee4ebb546f6b201dc6574931b1023afd305a503edce60c1d0"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/cpp_fixture.uapp",
+      "bytes": 145195,
+      "sha256": "b6e004b89d40f52128b845f44844d5b66f177494aca665f43f2219b1f6b1dae3"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/dialog_layout_example.exe",
+      "bytes": 12800,
+      "sha256": "1c9679e5842d18713dd26225d8d46bee65183ebdb27b63b88da866f049649a92"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/framework_features.uapp",
+      "bytes": 27113,
+      "sha256": "d4156922ec8ead923dcc8df1be3a5165a4f35a419f22b1049c229fb85aaa7b32"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/framework_features_app.dll",
+      "bytes": 26624,
+      "sha256": "2c9190e0f96a3bdde4fd2a30edfa3a576ad407b288c46843d8a51ad03d70f7dd"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/framework_features_app.lib",
+      "bytes": 2006,
+      "sha256": "867e9c895363720b418260c5746de260865ebb5253987ec4d6800b589636fc1e"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/framework_host.exe",
+      "bytes": 257024,
+      "sha256": "f476f6b6bf713507eb029e8af58a56ca46d28f079c7f0892fa5e8bfd5bc03934"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/generic_components.uapp",
+      "bytes": 25573,
+      "sha256": "25642b89b0a8eeff8f9092101a72c9e4bf18d5b0a031fe1b36baadd8bcfb2652"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/generic_components_app.dll",
+      "bytes": 25088,
+      "sha256": "1e3fc577d420393cc6176c1b410574324289c9d1d10bac8c30a026ae7033a964"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/generic_components_app.lib",
+      "bytes": 2006,
+      "sha256": "685f0eaf78fac9a15a6e1323e52802b3a1a1b60a812cf0333e92bcf78e9aeae8"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/light_web_probe.exe",
+      "bytes": 2000896,
+      "sha256": "81dfc4bd2e0f6b7420a209321cabe90c9c1e424f150810fd1fe7a8432eba4e97"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/minimal_eda.exe",
+      "bytes": 2025472,
+      "sha256": "84f2a65aa31f6f04d627a39c8135d51cbf4d7a6b1b2e645351d7dd905bea3065"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/minimal_eda.uapp",
+      "bytes": 151810,
+      "sha256": "86ce7dc40c16edd499848ebfe4a8d4f56bda44b8c3c2edcabcce8640446ca9eb"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/minimal_eda_app.dll",
+      "bytes": 151040,
+      "sha256": "6c53e4c7c94671dc523a75b7c9e4ea0954635a077a66644260555ea1ee2df606"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/minimal_eda_app.lib",
+      "bytes": 1912,
+      "sha256": "e9b62bae773ce94c4fd468b8768d849331a7a1b61865e81aaa5f54d996588e28"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/session0_gl_app.uapp",
+      "bytes": 19850,
+      "sha256": "200e9f7833106c9ae5e1392b5d786d8ab7418689827eb242a896ef2d0fa678e8"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/stateful_components.uapp",
+      "bytes": 37775,
+      "sha256": "dacc822c206a7a8c24800d133dd343c389b87cd3e146fb387f80fc5357f2a9bd"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/stateful_components_app.dll",
+      "bytes": 37376,
+      "sha256": "54b882eba57b015b37f01dda9d4170ccf241543f78a828cfe4dada1c100d8b44"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/stateful_components_app.lib",
+      "bytes": 2016,
+      "sha256": "2e462fb64a47dc18d272e2ab8e4a28c4881285883535e9d6541d930482172801"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/uapp_pack.exe",
+      "bytes": 1945088,
+      "sha256": "56035b67f7a4a77fe29e4e825608f9ab25c529b31e3f4d8c06ddc215b62d8e9d"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_api7_fixture.dll",
+      "bytes": 21504,
+      "sha256": "c383a89752b9593124dfeb95662dd6a46adc2f0a1d2796f18b377c06444d037b"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_api7_fixture.lib",
+      "bytes": 1912,
+      "sha256": "0b83a765647a3b939fc802dc88bd015f7ed81479c933a127287ccaca02f93887"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_api7_integration_test.exe",
+      "bytes": 39424,
+      "sha256": "73ab80ede17772e347dac7389f93a5470a4571bcb32f480fc3c58fe318cded55"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_application_contract_test.exe",
+      "bytes": 140288,
+      "sha256": "f22c77ced77eb066c1a4cc4855b04564879ca80ccf6aba4c7d05414b5f491c75"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_application_cpp.dll",
+      "bytes": 144896,
+      "sha256": "0820900da0c55662f06aa4c43d2204501f122e403a6f10d6be540886f112802a"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_application_cpp.lib",
+      "bytes": 1954,
+      "sha256": "9d3980b2d1a718ce68210e3600cf65557d66e3a1563726e96ca315925f18ecae"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_assistant_lifecycle_test.exe",
+      "bytes": 61952,
+      "sha256": "93a7922fea6a243a67908bccd88ea543d6aec8ed2a5fab310372b1b9783ab05a"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_assistant_protocol_test.exe",
+      "bytes": 1961984,
+      "sha256": "fd2b7c50fe35c84f31c0968b279522d9001d3225d81253de4046b5df0345f3bc"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_browser_host_test.exe",
+      "bytes": 293888,
+      "sha256": "3285c79b8f977c968d987f88c347751b6559f2ef2971ce32810717bffa892f10"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_component_experience_test.exe",
+      "bytes": 2053120,
+      "sha256": "15de70e7035dedd0276e706caaa51df2accd93098e50963f1415e64e2afe3c98"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_component_layout_test.exe",
+      "bytes": 2018816,
+      "sha256": "48081cdf565b50317f510be35b14874ba3aa2f78be29bad771ea877ab4d81de9"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_component_resilience_test.exe",
+      "bytes": 129024,
+      "sha256": "e4a2f1cbccfbb224c7fc5199b9ab5b7834137621f163127156e852cc8757545f"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_component_scroll_native_test.exe",
+      "bytes": 31232,
+      "sha256": "79834e5360e8634bf838b81d84b02034df5128dfdc95e4139e450cd989c9829a"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_component_scroll_test.exe",
+      "bytes": 2039808,
+      "sha256": "ada4f77d427b1078c9cc4b689a4d569bd011de8a63c1a048c1e1920e894454d1"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_component_widths_test.exe",
+      "bytes": 2048512,
+      "sha256": "f0e15a95347bcc5fe18c9d1d06ea7139f506f9201f88943c8860078efdd9468e"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_components_core_test.exe",
+      "bytes": 73216,
+      "sha256": "6727d2af33b879916ad036c072660956f3754490b0b8a8cfec8261a47428b3f0"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_display_probe.exe",
+      "bytes": 2035200,
+      "sha256": "4a58b25787f942c1a1253fa65377740808eb563bbf5bcb5f8abdef1f3e72fea6"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_dpi_integration_test.exe",
+      "bytes": 2002432,
+      "sha256": "c6b0c4c2ebb162a4af3e23e29d947761e2d39bd23cef1ee5e981ef7b4f75631c"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_dpi_web_failure_test.exe",
+      "bytes": 58880,
+      "sha256": "48c22aa0875f69fcaf1a83e6548615de45aa1476ef09dd3b4bb431b788d8ed47"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_floating_web_dpi_test.exe",
+      "bytes": 2003456,
+      "sha256": "1a56326a7fbafab11da1773602e20d9b44fe1fb2e6b2775c179f5d6b3748afa4"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_framework.dll",
+      "bytes": 2126336,
+      "sha256": "e2909995ec5dc8189df544002b10f96fa6742503056983f5c8cd3a15ed7b58c2"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_framework.lib",
+      "bytes": 1178566,
+      "sha256": "a679206b433f5d4093b9b0d41e42574192f8f72dada1c4b5ddc17f13455533fc"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_framework_features_host_test.exe",
+      "bytes": 122368,
+      "sha256": "d1154dc395f6013525acbdae324df9403292b46280d01db58f82cb809e35e13e"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_framework_headless.lib",
+      "bytes": 498428,
+      "sha256": "818943c8be1e3e8e49e7fce4df4ca258402f2d18b71bf2a9144b6683c00cb2d1"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_framework_runtime.lib",
+      "bytes": 59832,
+      "sha256": "292f381894301da54535b3ae80232978a643a3697158c0be10e67e00d59fcc56"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_generic_web_host_test.exe",
+      "bytes": 124928,
+      "sha256": "5a6aab980c24eec058f8f793199d376c9aaa42fc5c5539834f337b22d2b441f4"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_headless_example.exe",
+      "bytes": 60928,
+      "sha256": "70fd6979cefeee7223475f86857501ed6e09390f976e91148c25b5df93b14640"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_host_repaint_test.exe",
+      "bytes": 116224,
+      "sha256": "81ec88ddb55b6ba0752a31681f0654ef263f0bf3e70ce6f1632978716cb11ee5"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_images_windows_test.exe",
+      "bytes": 58880,
+      "sha256": "6c8d90c9d6692458ba90e03f810bb5a6851be12ddbc9a3363b19391854f9aefe"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_instance_language_test.exe",
+      "bytes": 135680,
+      "sha256": "40f39fd2f55558cb80d981543cd0fa5f7b932fe79a8e8ef7f193939fb8e0d60e"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_interaction_probe.exe",
+      "bytes": 2070528,
+      "sha256": "c3ea174627969c5f25fbc36283e3e6a4ab26351ba07ba52bd67bdc335f4c7146"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_language_core_test.exe",
+      "bytes": 1985536,
+      "sha256": "f15de926f5f8d8f17624e4572dba74813d22652d2b484f28917a1777181225fc"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_lifecycle_fixture.dll",
+      "bytes": 138240,
+      "sha256": "e202dd720f60215eea9b9fa9e1db436a12cae0af635ace0df3016a48570c7624"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_lifecycle_fixture.lib",
+      "bytes": 1980,
+      "sha256": "bba5cd72d21e4ac11ef3f1c11876f59541e0de22836f8b19cf296c9882c8cbfb"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_light_glyph_padding_test.exe",
+      "bytes": 12800,
+      "sha256": "e32f33d2219463a545d78878ea7cd2b5eed03dd0b4657eea0465cfe797539661"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_light_scroll_test.exe",
+      "bytes": 1965056,
+      "sha256": "a22994ffe04e160cc3a6d68dc89c073d22ebad300e6a3c896f95706e6d6d644c"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_light_web_dynamic_test.exe",
+      "bytes": 1964544,
+      "sha256": "b3b1a55523fc85341e6fb426d828917016cbc7eb6825f7e8410d9644a5cd7447"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_menu_access_test.exe",
+      "bytes": 2013696,
+      "sha256": "92f337fe5ed898b9b00bb9432462c28809b0867a95b5ebaf48ba1e6b3853d05a"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_menu_cascade_offscreen_test.exe",
+      "bytes": 1991680,
+      "sha256": "7b0575e84523d81eff98d445f83a7a5da1538e6223152003d05bd56768f628d3"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_menu_desktop_test.exe",
+      "bytes": 130048,
+      "sha256": "e67c4cce59d00155eadb97f45dc196006b281195ed51fb9c20266ae15d7f3a74"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_menu_offscreen_test.exe",
+      "bytes": 2019840,
+      "sha256": "f1a5d11aa6a799a9fabaa5fa7ca4c076fdb70ed966d63b2ed48a17404977335d"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_monitor_transition_test.exe",
+      "bytes": 1992192,
+      "sha256": "8bfb0608e778f83acd477a222f28afd09c2bc7b96b722a5402278c3620dade5e"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_native_activation_test.exe",
+      "bytes": 2025984,
+      "sha256": "8fb740a52c69f63023a44045fb5544a6fefa9d064c2f2edd0fc3f279328eec27"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_native_responsive_test.exe",
+      "bytes": 2015232,
+      "sha256": "ceec53f476168472e0ae8bc41bc67111b50cebe3394dd90d7df35bb4734df848"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_native_shell_integration_test.exe",
+      "bytes": 2010624,
+      "sha256": "ba754ee69824eb57475958be6f2f9146dd679fdfdd283549df3ce3d2def8336b"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_offscreen_gl_test.exe",
+      "bytes": 2008576,
+      "sha256": "84206eba0b48c06074738ce92345c5547d2aa6987a3718fabff5ee813474dab5"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_offscreen_msaa_test.exe",
+      "bytes": 19968,
+      "sha256": "05c05dabae7acf45e7f54db676ac47a6fb5fdf840c67370b89d29aef8a826042"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_opengl_integration_test.exe",
+      "bytes": 2009088,
+      "sha256": "eb97fa14f18d89f7377118df7a44cfaa33891aee3d0e51e4d84378ef47558c50"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_package_format_test.exe",
+      "bytes": 1961472,
+      "sha256": "4dbf14ecdcd9bcfc2015d9b93c878bfa749f4f17290d086849670692076d647e"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_public_headers_c_test.exe",
+      "bytes": 57344,
+      "sha256": "1c2599c256c5a9e0d650def6b2b27ae46f2892e8ba46b92fe7f3a94fc9247f52"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_public_headers_cpp_test.exe",
+      "bytes": 52736,
+      "sha256": "e794f4aa81f93b8b78fffbf211b1bcf82b14df103ca97f94e4d88b6d726a484c"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_responsive_layout_test.exe",
+      "bytes": 62976,
+      "sha256": "fb24fdca4b96b8af5b79b7db70a26aa0647adeec689673e58c8d086a6c2f799b"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_session0_gl_app.dll",
+      "bytes": 19456,
+      "sha256": "d697a267d49b68f70d058b4924d01d1ab3dee64a47b54e8e506aae9d6b2a74ff"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_session0_gl_app.lib",
+      "bytes": 1954,
+      "sha256": "eb8df25c75639e8f1216712fa5405e219f8f55d012e18d74c1cf6d1af77a2fc1"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_session0_gl_test.exe",
+      "bytes": 28672,
+      "sha256": "67a761ef4b4abb4e751786ea8ee41f0695b9c591ad616546a51b5a7d25a9985a"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_stateful_components_test.exe",
+      "bytes": 126464,
+      "sha256": "6307bd870bb745df1f29ac05b0b5ef62897af697251dd2a7d2e4840bc3007233"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_surface_input_test.exe",
+      "bytes": 2001408,
+      "sha256": "b1704839912e7841e2c57db8e2baf02252885110cb02bfce4fdb2bf044ecdd94"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_visual_ui_test.exe",
+      "bytes": 129536,
+      "sha256": "087983cbe55880664f5b98bb69709ffb0fe0bd157adc548ba2543b8995988605"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_web_host_frontend_test.exe",
+      "bytes": 306688,
+      "sha256": "a21bec14f5345ac5591a52bc2cd1d161505f3d5a65afc8e856f4d15efe6d936e"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_web_shell_slots_test.exe",
+      "bytes": 2023424,
+      "sha256": "fa206a8d8e37158f5666b823e46ccb1d60d8ce7971ece457d645d9f2a733f89d"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_web_text_edit_test.exe",
+      "bytes": 1964544,
+      "sha256": "1949abf4268791fa9e6b3bdb893b71ca2aad31c8cca03d279234bbb9df919b13"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_workspace7_test.exe",
+      "bytes": 2015744,
+      "sha256": "b4e0352650c87f8e347e526d07c8d5895c766f2ac4dd21d53da6ff31b6ec86db"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_workspace_integration_test.exe",
+      "bytes": 196608,
+      "sha256": "79f9faa3389deb882ca719d38bde349ba14e03838dd01a71215e9ab1e10f9669"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_workspace_layout_test.exe",
+      "bytes": 2020864,
+      "sha256": "a6cb7210fe62cc8e74826120759a9cb0064a790489c24981e38d5dbac6c76cc6"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/ui_workspace_offscreen_test.exe",
+      "bytes": 20480,
+      "sha256": "496dc7028b11958e8c59ded5482a84b5098ce279b6f0be471c17bcdde6a719c1"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/web_counter.uapp",
+      "bytes": 134445,
+      "sha256": "7bfec750045a882a107a91b515623c8fac648b3682e89eb578dd2efb5cc30476"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/web_counter_app.dll",
+      "bytes": 134144,
+      "sha256": "0b3d9ecad199ffb19b0c81c0d9a1d5266144166e7d5fae9b1eeac3a81f88ec5f"
+    },
+    {
+      "path": "build/ui-repair-20261009/osmesa/web_counter_app.lib",
+      "bytes": 1912,
+      "sha256": "fc4c6145adffa7bbd8b795957ee9a0c2563dbe77dc0e482ba1dcb8c6c1eb3988"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/api7_fixture.uapp",
+      "bytes": 21893,
+      "sha256": "e7e2d8a6182d81359cfbaf298315124388ca4d1d3a4eb319b30b42e7da641c88"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/counter_mismatch.uapp",
+      "bytes": 134445,
+      "sha256": "9910a32795599546f43b0c0c48fc0d842d1f147838b4cd84bca48f1b0a4de22a"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/cpp_fixture.uapp",
+      "bytes": 145195,
+      "sha256": "4ae15ae7ced4eaee281781d9e3d2e84f5e61b65e77ce4aa53c5f8a15098d4746"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/dialog_layout_example.exe",
+      "bytes": 12800,
+      "sha256": "a9fa7da7fa15d87876f76c7ae298913f7b5daa113914fab76cac5bbf6595b6b6"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/framework_features.uapp",
+      "bytes": 27113,
+      "sha256": "8812f0cc39c534bdabc673ddf7afd9d695a0494a52c93f92755d5b9ac663d95b"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/framework_features_app.dll",
+      "bytes": 26624,
+      "sha256": "691090954173e84f005cc4ab9c075811ccde88f195c2929ed0a00a6a37e52dfb"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/framework_features_app.lib",
+      "bytes": 2006,
+      "sha256": "867e9c895363720b418260c5746de260865ebb5253987ec4d6800b589636fc1e"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/framework_host.exe",
+      "bytes": 257024,
+      "sha256": "81f336f26fbe0ef4d2dce68c8c76ef127aa307ff3de72fe90c1f7c5b911ce121"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/generic_components.uapp",
+      "bytes": 25573,
+      "sha256": "7344aebf344f6d0934dee36ae6f5aacd09277ddbd1be53c7bccd2b136f4824c1"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/generic_components_app.dll",
+      "bytes": 25088,
+      "sha256": "6fa4e869ef8583103ebb62128ffd67d842f1784065240b248ab2a5ffd37b4be5"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/generic_components_app.lib",
+      "bytes": 2006,
+      "sha256": "685f0eaf78fac9a15a6e1323e52802b3a1a1b60a812cf0333e92bcf78e9aeae8"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/light_web_probe.exe",
+      "bytes": 2000896,
+      "sha256": "e070c0ad56f1cdfd2ccf2a9d6e2bdc2999a2f4e18aac5d73d339145eda8d07bf"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/minimal_eda.exe",
+      "bytes": 2025472,
+      "sha256": "106271cc4970a15a192ed44bb4678e37eb2c38617d5d5f3e38c237164c5d40ba"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/minimal_eda.uapp",
+      "bytes": 151810,
+      "sha256": "f343d26429e2d9473e00b4edee477dbd34db681e0f1ab95d72f0f936ec1e6d75"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/minimal_eda_app.dll",
+      "bytes": 151040,
+      "sha256": "9b69212cc64406f54c043390cd101d354f9de6a9d1cd3a3028b5a79e916fa6e7"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/minimal_eda_app.lib",
+      "bytes": 1912,
+      "sha256": "e9b62bae773ce94c4fd468b8768d849331a7a1b61865e81aaa5f54d996588e28"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/session0_gl_app.uapp",
+      "bytes": 19850,
+      "sha256": "9fba47e372980adbddd533be90d966f2d3002ba06922a0aa469285858554aeeb"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/stateful_components.uapp",
+      "bytes": 38799,
+      "sha256": "a027d9935f5e8dc9f13400d89ff17bb952b7e13c2c506c6e092826bce5b338db"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/stateful_components_app.dll",
+      "bytes": 38400,
+      "sha256": "b12f1d112468ed3fe525e2bd58c3374f2a4fd63c82fa4ae519932eefd4c5db0c"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/stateful_components_app.lib",
+      "bytes": 2016,
+      "sha256": "2e462fb64a47dc18d272e2ab8e4a28c4881285883535e9d6541d930482172801"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/uapp_pack.exe",
+      "bytes": 1945088,
+      "sha256": "31081bd747028ae1f33fde15fc2d632ace3a35078c7ee8b7c6a5005d9dbbecb2"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_api7_fixture.dll",
+      "bytes": 21504,
+      "sha256": "6d7303eb09b0a8bf341b7c03d5b74d6e42592fb94e92c6ed53bfd858b68aa0e7"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_api7_fixture.lib",
+      "bytes": 1912,
+      "sha256": "0b83a765647a3b939fc802dc88bd015f7ed81479c933a127287ccaca02f93887"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_api7_integration_test.exe",
+      "bytes": 39424,
+      "sha256": "d719cd39abe51b36c4ab1e91a09cb742ba5781457f40f0c64f7f12302d8102ac"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_application_contract_test.exe",
+      "bytes": 140288,
+      "sha256": "382ca8152eab62839bb1fc029115703259407cecad220c83a4a393d97202f841"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_application_cpp.dll",
+      "bytes": 144896,
+      "sha256": "e3a8b708618f1c8ab60402f23b1cdc8dfdf6add0419c0691549c4aadf6e5beae"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_application_cpp.lib",
+      "bytes": 1954,
+      "sha256": "9d3980b2d1a718ce68210e3600cf65557d66e3a1563726e96ca315925f18ecae"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_assistant_lifecycle_test.exe",
+      "bytes": 61952,
+      "sha256": "8b5540b8df660023dd03e9f361d3eaf4150f0c7ead32cb5bb22d2a7e7c1e52f8"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_assistant_protocol_test.exe",
+      "bytes": 1961984,
+      "sha256": "80ee00089c3aeec5ff66f964bc2428e8765bdabb977a716ac5ffbcb3ed6b3a9d"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_browser_host_test.exe",
+      "bytes": 293888,
+      "sha256": "6044a1933434e20b779390850fd8e9bfc015711f6b56135250372f9e06351fc2"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_component_experience_test.exe",
+      "bytes": 2117120,
+      "sha256": "f4229ec1cfd44e7786049ce5f7f50aa70890c2b91b79659df964f968d779c76a"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_component_layout_test.exe",
+      "bytes": 2083840,
+      "sha256": "46458c10ebe31b01c036612207b9c20bbf836fa86f6ed9c626bd6f64ff56e7fd"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_component_resilience_test.exe",
+      "bytes": 129024,
+      "sha256": "f4699bc9827523de4d3942d411052f991ec817242669d678f0bc3a9efc251cf1"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_component_scroll_native_test.exe",
+      "bytes": 31232,
+      "sha256": "3e868171e4afceafd9892f60fe40a4fca36b7ef41c6d210c11bb04e09b1cc8b4"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_component_scroll_test.exe",
+      "bytes": 2103296,
+      "sha256": "dac5093f91d073c57ac8cf0c7c2efada9168294cde5b831dfb673433c6f0fe43"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_component_widths_test.exe",
+      "bytes": 2112000,
+      "sha256": "48c17b72e20cb36ea06bb7657a0f471c1065063003873b21cb2cffeb4c4b86b7"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_components_core_test.exe",
+      "bytes": 73216,
+      "sha256": "4a12818c698d9d80d208b6e3759a2d9415c76e87dbed247068a1d61307a9f165"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_display_probe.exe",
+      "bytes": 2035200,
+      "sha256": "d6db9029f7a2e1c00a859db097f9e4371c29c3d42533b38f77e3029ea032b541"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_dpi_integration_test.exe",
+      "bytes": 2002432,
+      "sha256": "f8549e176cc2c3c29f9c90b34758f5786bf9ddd17d6e8f0699dbc8aeb2f1ba32"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_dpi_web_failure_test.exe",
+      "bytes": 58880,
+      "sha256": "8e8cefa3f3a9a16f2e2d99a9834bc8fbc46538cc01088f2e454ec78271ad509a"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_floating_web_dpi_test.exe",
+      "bytes": 2003456,
+      "sha256": "331dcf708d86b36145d867cba524bba719b9cba11bfcd02325c1b2c5d96076c0"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_framework.dll",
+      "bytes": 2190848,
+      "sha256": "e41334627cd687ca1b0005fbae1927c6d1c6792c50716235f079afd6ca0da593"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_framework.lib",
+      "bytes": 1379480,
+      "sha256": "ff098f0e55adb90b0465f3ceb654d1d0c341c7c73a179b01aea2f517cc6b7eb2"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_framework_features_host_test.exe",
+      "bytes": 122368,
+      "sha256": "271e6920ba100f5a3c0d211e2dbe26878704cf6c30c036842e610c2e941a71ee"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_framework_headless.lib",
+      "bytes": 498444,
+      "sha256": "c46146bff27d1cb5a1dab7d8b52461318bba1f5b025a86ded71d40177ddf83ad"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_framework_runtime.lib",
+      "bytes": 61690,
+      "sha256": "fa14d15ec556363c2af99b176b24926bb9e1b5e1eedad4d3dba78fa9cd44ab0a"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_generic_web_host_test.exe",
+      "bytes": 124928,
+      "sha256": "a74eaf6f1c10833dfa02e0f9eafefee9dd647452259d0df6f161a8956b341109"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_headless_example.exe",
+      "bytes": 60928,
+      "sha256": "dc3a595f1d495d21b1d146e785ddd246643e8d312d0e36f1bb0ed012452d3b7d"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_host_repaint_test.exe",
+      "bytes": 116224,
+      "sha256": "b3e8b051132fe9be63d7a74423d3909d0ceaec19c9e45dd4af3b198c524a768b"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_images_windows_test.exe",
+      "bytes": 58880,
+      "sha256": "2d0068b95cc3810768d3e080ee3d50d96b81cce6c1bc960dac7432b9149d7abf"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_instance_language_test.exe",
+      "bytes": 135680,
+      "sha256": "b0b33fb4c26a270fb6c205c10513a03b3a2d19f58a8a984e590def56716a9264"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_interaction_probe.exe",
+      "bytes": 2135552,
+      "sha256": "a4985927896daa6715812051d5af19986227b7c6c95e6f74da5d828eba29844f"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_language_core_test.exe",
+      "bytes": 1985536,
+      "sha256": "83350d781ead5aaf6eb803eec368a673d45a097384f7d533abdb9917bc46f0a2"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_lifecycle_fixture.dll",
+      "bytes": 138240,
+      "sha256": "1275f72046c8e277aa702da38d3b6a14482fc3c2f317bf3ae1ea46a904e4669e"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_lifecycle_fixture.lib",
+      "bytes": 1980,
+      "sha256": "bba5cd72d21e4ac11ef3f1c11876f59541e0de22836f8b19cf296c9882c8cbfb"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_light_glyph_padding_test.exe",
+      "bytes": 12800,
+      "sha256": "350089087dc573f7d73a37031e2fb083c051a9db4172fcd5759128801d07a5b9"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_light_scroll_test.exe",
+      "bytes": 1965056,
+      "sha256": "2754cefa641ff7763650d3b46ac2702418d396a535e677065591c34be1242468"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_light_web_dynamic_test.exe",
+      "bytes": 1964544,
+      "sha256": "3bec7ad71e55688e79ada276283322c0ce4bee3ff29dde77822c4562897749f2"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_menu_access_test.exe",
+      "bytes": 2013696,
+      "sha256": "4e0c156efa7cf485e1b31c53287ac94424c16367264b4e9ea6eb562adb71c7d9"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_menu_cascade_offscreen_test.exe",
+      "bytes": 1991680,
+      "sha256": "efe271b4e4c4402dad7c7383201809fd442c5cd1b221c0a5cd15ddcc08be8a05"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_menu_desktop_test.exe",
+      "bytes": 130048,
+      "sha256": "3d5d5d7d560baa12c4280ac1388aff574cd55284c5ae77f8dd990679ab5e2239"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_menu_offscreen_test.exe",
+      "bytes": 2019840,
+      "sha256": "3717057d52d7c39dd99602df06e606786e964f0d11a8c19179d6e655dbcdacb5"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_monitor_transition_test.exe",
+      "bytes": 1992192,
+      "sha256": "88faae7c8c274cbd8b1211968166e018038479fbb1a261168cce18d23d46c7b7"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_native_activation_test.exe",
+      "bytes": 2025984,
+      "sha256": "1447941205666c0c5d4685988a05a62e3bb3a08cfcf6c7ef1e19f54880bdec17"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_native_responsive_test.exe",
+      "bytes": 2015232,
+      "sha256": "6b6e5e8c0464460c4ace4ee66678d1f35a95043c63c41c63834865ab380c15b5"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_native_shell_integration_test.exe",
+      "bytes": 2010624,
+      "sha256": "256ccd8cf755b6d066174c1b8a4916af082be1abf6715f1bcb593fe380524d4c"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_offscreen_gl_test.exe",
+      "bytes": 2008576,
+      "sha256": "68748c0b293f2f9723f80b92f9d0647927bf396064cca87b18ea9b46d5f5942e"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_offscreen_msaa_test.exe",
+      "bytes": 19968,
+      "sha256": "9a237e042200322fac49226d15d35bab70c7c5b93b2c7a4014edab338777fe44"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_opengl_integration_test.exe",
+      "bytes": 2009088,
+      "sha256": "fa724eb3b211606d30ac7aea60f8d9b6716cf9d1ba2a2ff1f0883a0c69ad1022"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_package_format_test.exe",
+      "bytes": 1961472,
+      "sha256": "9742b134ab6afc9fa7a21ea0040e5956f14b749ad41d1b20282d213689d3bfef"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_public_headers_c_test.exe",
+      "bytes": 57344,
+      "sha256": "7820552dab406aab2a8b7707b3acf9e1d4fa7afdf16e1e923ea60f8dfd54b837"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_public_headers_cpp_test.exe",
+      "bytes": 52736,
+      "sha256": "feedae61c2622983d55695832de598d75f54e52fac240601a5e5c14810512eba"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_responsive_layout_test.exe",
+      "bytes": 62976,
+      "sha256": "280360b34b08bee456cd6ec61d36c720924ed4c0e24e2220bc2472b1de36bd28"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_session0_gl_app.dll",
+      "bytes": 19456,
+      "sha256": "30a49ed1b227cd4b638635ab77ec75fae8a05172036d30da33363b4531f68a4f"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_session0_gl_app.lib",
+      "bytes": 1954,
+      "sha256": "eb8df25c75639e8f1216712fa5405e219f8f55d012e18d74c1cf6d1af77a2fc1"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_session0_gl_test.exe",
+      "bytes": 28672,
+      "sha256": "915a13d78dfb772bc9545b0d0e884b4cfba84ba1d174df43eed13d7e0a40f9ab"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_stateful_components_test.exe",
+      "bytes": 126464,
+      "sha256": "3dab179ce23649cb0254f157c6ff42fe0dcc45247e9c50404af951450821b36d"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_surface_input_test.exe",
+      "bytes": 2001408,
+      "sha256": "52004d77919f6d3a95083e781d7ba49382a0427ee7b5ccd8abe009507cf567dd"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_visual_ui_test.exe",
+      "bytes": 129536,
+      "sha256": "80e6125b024a63b84466581cab1e0c4567c4890c46278261160ae954e706e15f"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_web_host_frontend_test.exe",
+      "bytes": 306688,
+      "sha256": "138343b30bc6fd809112e8163ad8c8173b7181a39c8c24b83ef8e0117104d9e4"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_web_shell_slots_test.exe",
+      "bytes": 2023424,
+      "sha256": "dd9085fab4492d22bd6e697387258ab86150d20bb6ad98660042f7388fc2681f"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_web_text_edit_test.exe",
+      "bytes": 1964544,
+      "sha256": "560bd53f67a90b637ac24dc698c8e4ce84343721bdc6250b41680d4ebd716649"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_webview2_messages_test.exe",
+      "bytes": 2021888,
+      "sha256": "60381a97b9d894e17949cbbfbef9ab670fb00c44f268b83f34980ba7798d52c3"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_webview2_render_test.exe",
+      "bytes": 22528,
+      "sha256": "50742b18f95fe69c875071fc196b4b0aa4e3a14ea513dd1ed8cf88c7ba4f6fb0"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_workspace7_test.exe",
+      "bytes": 2015744,
+      "sha256": "0f3b7f34b1f349639fca1db141c22c65e2afe166eda78b2dac22ceef2b3a6358"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_workspace_integration_test.exe",
+      "bytes": 196608,
+      "sha256": "ee5a3d0cfce0ce731eb0f6b770983e3cca3912c7cfd5144bfa8a9adafc114188"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_workspace_layout_test.exe",
+      "bytes": 2020864,
+      "sha256": "a84282740d5b8abf0714b28413050008e598d132381f6a9f258c26eb08850939"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/ui_workspace_offscreen_test.exe",
+      "bytes": 20480,
+      "sha256": "629bdb42e010c9d5c27521155ded52b60a107310b39fa2bb1856dec41b67f462"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/web_counter.uapp",
+      "bytes": 134445,
+      "sha256": "2c6b29b9634031b866c813001c25aa8c81e32bc3c474e729c9f482f41f81ae87"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/web_counter_app.dll",
+      "bytes": 134144,
+      "sha256": "e6a7956f9f1404353eab9bc75b12b721a567312e8c7122e3650277d5782c11ae"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/web_counter_app.lib",
+      "bytes": 1912,
+      "sha256": "fc4c6145adffa7bbd8b795957ee9a0c2563dbe77dc0e482ba1dcb8c6c1eb3988"
+    },
+    {
+      "path": "build/ui-repair-20261009/baseline/webview2_probe.exe",
+      "bytes": 2056704,
+      "sha256": "966ab3a3e587494110e9169df415966eb6319cad61346faced92728bcd4e33c4"
+    }
+  ]
+}

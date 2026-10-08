@@ -1,0 +1,80 @@
+Test project D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline
+      Start  9: ui_public_headers_c
+ 1/13 Test  #9: ui_public_headers_c ..............   Passed    0.02 sec
+      Start 10: ui_public_headers_cpp
+ 2/13 Test #10: ui_public_headers_cpp ............   Passed    0.02 sec
+      Start 15: ui_component_layout
+ 3/13 Test #15: ui_component_layout ..............***Failed    1.32 sec
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+CASE runtime=0 dpi=96 fields=1 client=260,240
+CASE runtime=0 dpi=96 fields=1 client=600,240
+CASE runtime=0 dpi=96 fields=3 client=260,240
+CASE runtime=0 dpi=96 fields=3 client=600,240
+CASE runtime=0 dpi=144 fields=1 client=396,377
+CASE runtime=0 dpi=144 fields=1 client=906,377
+CASE runtime=0 dpi=144 fields=3 client=396,377
+CASE runtime=0 dpi=144 fields=3 client=906,377
+CASE runtime=0 dpi=192 fields=1 client=530,512
+CASE runtime=0 dpi=192 fields=1 client=1210,512
+CASE runtime=0 dpi=192 fields=3 client=530,512
+CASE runtime=0 dpi=192 fields=3 client=1210,512
+Public layout: runtime=0 failures=8. State checks only.
+
+      Start 18: ui_component_layout_webview2
+ 4/13 Test #18: ui_component_layout_webview2 .....***Failed    7.98 sec
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+layout line35: abs(client.right-MulDiv(width,dpi,96))<=1
+CASE runtime=1 dpi=96 fields=1 client=260,240
+CASE runtime=1 dpi=96 fields=1 client=600,240
+CASE runtime=1 dpi=96 fields=3 client=260,240
+CASE runtime=1 dpi=96 fields=3 client=600,240
+CASE runtime=1 dpi=144 fields=1 client=396,377
+CASE runtime=1 dpi=144 fields=1 client=906,377
+CASE runtime=1 dpi=144 fields=3 client=396,377
+CASE runtime=1 dpi=144 fields=3 client=906,377
+CASE runtime=1 dpi=192 fields=1 client=530,512
+CASE runtime=1 dpi=192 fields=1 client=1210,512
+CASE runtime=1 dpi=192 fields=3 client=530,512
+CASE runtime=1 dpi=192 fields=3 client=1210,512
+Public layout: runtime=1 failures=8. State checks only.
+
+      Start 20: ui_component_scroll_native
+ 5/13 Test #20: ui_component_scroll_native .......   Passed   21.48 sec
+      Start 22: ui_light_scroll
+ 6/13 Test #22: ui_light_scroll ..................   Passed    0.14 sec
+      Start 23: ui_component_scroll
+ 7/13 Test #23: ui_component_scroll ..............   Passed    0.43 sec
+      Start 42: ui_menu_offscreen
+ 8/13 Test #42: ui_menu_offscreen ................   Passed    0.18 sec
+      Start 44: ui_menu_access
+ 9/13 Test #44: ui_menu_access ...................   Passed    0.17 sec
+      Start 45: ui_web_text_edit
+10/13 Test #45: ui_web_text_edit .................   Passed    0.16 sec
+      Start 49: ui_light_web_dynamic
+11/13 Test #49: ui_light_web_dynamic .............   Passed    0.28 sec
+      Start 51: ui_floating_web_dpi
+12/13 Test #51: ui_floating_web_dpi ..............   Passed    0.12 sec
+      Start 61: ui_workspace7
+13/13 Test #61: ui_workspace7 ....................   Passed    0.21 sec
+
+85% tests passed, 2 tests failed out of 13
+
+Total Test time (real) =  32.83 sec
+
+The following tests FAILED:
+	 15 - ui_component_layout (Failed)
+	 18 - ui_component_layout_webview2 (Failed)
+Errors while running CTest

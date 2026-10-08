@@ -1,0 +1,145 @@
+{
+  "productCommit": "07a66a82370db93c49a66c90db5e217a8812e60e",
+  "probeCommit": "4fdfcc2d5f679166064355abe08bc8e855f6a5eb",
+  "files": [
+    {
+      "path": "CMakeLists.txt",
+      "commitBlob": "602d4fb57c19adf82032294bf192556ebc4eb119",
+      "bytes": 51544,
+      "sha256": "20585aed4119f0aca47d08c78a157b9a0e6440c06ea3182d7db3cc966279a7f6"
+    },
+    {
+      "path": "examples/dialog_layout/main.c",
+      "commitBlob": "c3b46f7eb580947c25ac57f5320c34372cf5ced1",
+      "bytes": 3577,
+      "sha256": "439aebffe45abb0bb7cc81dee901ce7a69b7c9a5dee50e09d7be4cafb59d883f"
+    },
+    {
+      "path": "include/ui_framework/components.h",
+      "commitBlob": "3fb06a8885792ad8fe2a57dc1587642732228a44",
+      "bytes": 13416,
+      "sha256": "b53e84f337208d80fb8fcb104d70b007c79e00fe38992243ed2ce75d2275e997"
+    },
+    {
+      "path": "include/ui_framework/menus.h",
+      "commitBlob": "c6701d0ab08982f0439c599dcbeaecb1ca820564",
+      "bytes": 3780,
+      "sha256": "cb4e57adb360740445d8abf69213625ab43a31968c4a4b7bcc3217ce6ee074c2"
+    },
+    {
+      "path": "src/backends/light_scroll.inc",
+      "commitBlob": "ae0eb3ad87976b386658324ae9e357caf6456121",
+      "bytes": 5214,
+      "sha256": "acfd19b3cf28cdc969fd39ec70fb3ff95db0d62e299e40d310961338343dd30c"
+    },
+    {
+      "path": "src/backends/light_text.inc",
+      "commitBlob": "1e7ce6f49196f75601b42fa3431c6ab4724f4726",
+      "bytes": 14262,
+      "sha256": "d52a7e6307e9634ce75c8d10be3d920b590047d411acb96f8f3f194bb0e08756"
+    },
+    {
+      "path": "src/backends/light_web.c",
+      "commitBlob": "30124d9e2dfa743e7d11934a5dc95d4e998060b6",
+      "bytes": 114374,
+      "sha256": "db31663c9920388a27917cb6fb3ba89a7970be982396f44127e4bdf89ccd4acb"
+    },
+    {
+      "path": "src/component_language.inc",
+      "commitBlob": "6b3c227a8ea65b38dcd0f7e9d340744c91483ad8",
+      "bytes": 4523,
+      "sha256": "812f1503744a1a1249b14f323d58aa35dec268964f14908ae0210c41efc2ba92"
+    },
+    {
+      "path": "src/components.c",
+      "commitBlob": "f8047c7907c7bd6919699c1c4e6a6223865d0219",
+      "bytes": 74819,
+      "sha256": "fdcb828e43d5af4c08e1e060982ba8274a80bff5ad59a5dd58c874f2f9fdab22"
+    },
+    {
+      "path": "src/components.html",
+      "commitBlob": "42dc3658f25341d34d60f4c4e88af89d6cd330cf",
+      "bytes": 44261,
+      "sha256": "4e14b0be1c2ebdfdb856151e9d592677cc177304bc11fbeb9f913dd8970a37c8"
+    },
+    {
+      "path": "src/menus.c",
+      "commitBlob": "7c655ff3776e46026fa752be93d170dff07b4b3c",
+      "bytes": 41267,
+      "sha256": "0c9f1525a5f56e6c66f80cff785a829db887404f9861d612bc411320614f64af"
+    },
+    {
+      "path": "src/platform/headless_shell.c",
+      "commitBlob": "515eaa3d6edee4cb2e6215f8901a5e113d0d2736",
+      "bytes": 9864,
+      "sha256": "a4e4d01cacbd6fb0d210b3ba0429de3832c6f80798e502521b87070bd86afcfe"
+    },
+    {
+      "path": "src/platform/shell_layout.inc",
+      "commitBlob": "1aaeabfc182ccd67d1f4912a2620a2b58dac7484",
+      "bytes": 31293,
+      "sha256": "7451caf6305f558591a26b5dc8feff6ded568eae9e94c227bedb284644007617"
+    },
+    {
+      "path": "src/platform/win32_shell.c",
+      "commitBlob": "2aa032c00c002fdacf05451271d487de41972bff",
+      "bytes": 88064,
+      "sha256": "3dc994ada3c980a98774f3e009690302fa4e0a0c91260749ad479de03d63c469"
+    },
+    {
+      "path": "src/ui_internal.h",
+      "commitBlob": "55dc53fa2fd616bb3e503f8066eeb987bcb92c4c",
+      "bytes": 9086,
+      "sha256": "4570e219b48e1b1681a38135ae006b1548b766af0a5646c98800f32727cc5444"
+    },
+    {
+      "path": "tests/component_layout.c",
+      "commitBlob": "36f289e40ec58426b3bac4f7c297b42abc042c95",
+      "bytes": 7721,
+      "sha256": "39b18828dfbbe71cfb93314f80898a10c96276cbde5bd8e39219e03d81b10e5b"
+    },
+    {
+      "path": "tests/display_probe.c",
+      "commitBlob": "a322ec69bcdd4c36ae9dfb81f93833470c3df093",
+      "bytes": 10857,
+      "sha256": "7d0b35ac9fb19473103805d87758e183c3028db64d5ca73acfeb19a9c9b1cdf7"
+    },
+    {
+      "path": "tests/interaction_probe.c",
+      "commitBlob": "442d892e60ad89b1cc035fc2d024f0d44737f089",
+      "bytes": 32729,
+      "sha256": "6448d32ad8ee9151b93c666e8b8e9a6fdf9039cb1bdd02489b242fa449fa0066"
+    },
+    {
+      "path": "tests/light_scroll.c",
+      "commitBlob": "a902d4c4d41ba41608a96a260fe218d2c6166a93",
+      "bytes": 6333,
+      "sha256": "6b42ba4cb2d6862fd67376da8277e6877c01379fa6a82d70eaded5c58014087d"
+    },
+    {
+      "path": "tests/public_headers.c",
+      "commitBlob": "f0ac97821b37ca388020d51df79ac50899491444",
+      "bytes": 2064,
+      "sha256": "0cc542651505b182b58f302e80fe95f83046867cc39033d13d1d0e954787bc62"
+    },
+    {
+      "path": "tests/web_text_edit.c",
+      "commitBlob": "3515322c1afb42eeddae60f4edc6ea6a5a8edc83",
+      "bytes": 7093,
+      "sha256": "ef57b4f347431e34b9adb78cad732da6cfdf62fc3c4f5b00db881e55941cab5d"
+    },
+    {
+      "path": "tools/test-windows-ci.ps1",
+      "commitBlob": "1f076b11479a18b50def9bf25b89c1a66283ddab",
+      "bytes": 5899,
+      "sha256": "06fa4ed141bb8449fd0900d2516c9be3524efe95bf19fa574418a4d3c56b66b9"
+    },
+    {
+      "path": "tools/windows-ci-checks.ps1",
+      "commitBlob": "cb4676324f724f30539a38e18fccd238ef19cfbb",
+      "bytes": 3067,
+      "sha256": "ea2d7c21d51724d2325dbcbc04d9640949305fb1009778f0c6b53873efcc6866"
+    }
+  ],
+  "note": "Product/test/tool/example source files only; working bytes normalize to the committed blobs at 4fdfcc2. Uncommitted delivery documents excluded."
+}

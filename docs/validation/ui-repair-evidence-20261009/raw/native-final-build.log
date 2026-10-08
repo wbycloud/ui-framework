@@ -1,0 +1,37 @@
+[1/41] Building C object CMakeFiles\ui_framework.dir\src\menus.c.obj
+[2/41] Building C object CMakeFiles\ui_framework_shared.dir\src\menus.c.obj
+[3/41] Building C object CMakeFiles\ui_framework_headless.dir\src\menus.c.obj
+[4/41] Building C object CMakeFiles\ui_framework_shared.dir\src\components.c.obj
+[5/41] Building C object CMakeFiles\ui_framework.dir\src\components.c.obj
+[6/41] Building C object CMakeFiles\ui_framework_headless.dir\src\components.c.obj
+[7/41] Linking C static library ui_framework.lib
+[8/41] Linking C static library ui_framework_headless.lib
+[9/41] Linking C shared library ui_framework.dll
+[10/34] Linking C executable minimal_eda.exe
+[11/34] Linking C executable ui_package_format_test.exe
+[12/34] Linking C executable uapp_pack.exe
+[13/34] Linking C executable ui_native_activation_test.exe
+[14/34] Linking C executable ui_workspace_layout_test.exe
+[15/34] Linking C executable ui_dpi_integration_test.exe
+[16/34] Linking C executable ui_surface_input_test.exe
+[17/34] Linking C executable ui_workspace7_test.exe
+[18/34] Linking C executable ui_opengl_integration_test.exe
+[19/34] Linking C executable ui_monitor_transition_test.exe
+[20/34] Linking C executable ui_language_core_test.exe
+[21/34] Linking C executable ui_assistant_protocol_test.exe
+[22/34] Linking C executable ui_components_core_test.exe
+[23/34] Linking C executable ui_native_shell_integration_test.exe
+[24/34] Linking C executable ui_native_responsive_test.exe
+[25/34] Linking C executable ui_assistant_lifecycle_test.exe
+[26/34] Linking CXX executable ui_public_headers_cpp_test.exe
+[27/34] Linking C executable ui_images_windows_test.exe
+[28/34] Generating cpp_fixture.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ui-repair-20261009/native/cpp_fixture.uapp
+[29/34] Generating session0_gl_app.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ui-repair-20261009/native/session0_gl_app.uapp
+[30/34] Generating minimal_eda.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ui-repair-20261009/native/minimal_eda.uapp
+[31/34] Linking C executable ui_responsive_layout_test.exe
+[32/34] Linking C executable ui_public_headers_c_test.exe
+[33/34] Linking C executable ui_headless_example.exe
+[34/34] Linking C executable ui_dpi_web_failure_test.exe

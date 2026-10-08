@@ -1,0 +1,179 @@
+SCROLL_HIT x=116 y=88 hit=-1 axis=0 thumb=0,0,0,0 max=0
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=13
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=13
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=13
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=13
+CP_POSITION caret=958 first=0 count=958 HRESULT=80070057 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+SCROLL_HIT x=116 y=88 hit=-1 axis=0 thumb=0,0,0,0 max=0
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=13
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=13
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=13
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=13
+CP_POSITION caret=958 first=0 count=958 HRESULT=80070057 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+SCROLL_HIT x=116 y=88 hit=-1 axis=0 thumb=0,0,0,0 max=0
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=26
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=26
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=26
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=26
+CP_POSITION caret=2 first=0 count=958 HRESULT=0 x=26
+CP_POSITION caret=958 first=0 count=958 HRESULT=80070057 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+CP_POSITION caret=958 first=0 count=958 HRESULT=80070057 x=0
+CP_POSITION caret=0 first=0 count=958 HRESULT=0 x=0
+MONITOR reported-effective=96,96 result=0 monitors=1
+MONITOR reported-raw=108,108 result=0 (not physical 192 acceptance)
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=96 host=96 window=96 client=884,431
+PASS editor register
+PASS long editable value
+PASS editor mount
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=96 host=96 window=96 client=884,431
+PASS input rectangle
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+CARET End=101,82 input=96,78,780,28 dpi=96
+PASS End caret actually inside visible field
+PASS desktop capture
+FRAME tick=717643546 name=dpi-96-width-900-End button=0 capture=0000000000000000 hit=0000000009F70826 class=UIFrameworkLightWeb pid=40468 xy=184,179 focus=0000000009F70826
+PASS SendInput keyboard
+PASS Home caret inside visible field
+PASS desktop capture
+FRAME tick=717643671 name=dpi-96-width-900-Home button=0 capture=0000000000000000 hit=0000000009F70826 class=UIFrameworkLightWeb pid=40468 xy=184,179 focus=0000000009F70826
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=96 host=96 window=96 client=334,431
+PASS input rectangle
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+CARET End=101,82 input=96,78,230,28 dpi=96
+PASS End caret actually inside visible field
+PASS desktop capture
+FRAME tick=717644062 name=dpi-96-width-350-End button=0 capture=0000000000000000 hit=0000000009F70826 class=UIFrameworkLightWeb pid=40468 xy=184,179 focus=0000000009F70826
+PASS SendInput keyboard
+PASS Home caret inside visible field
+PASS desktop capture
+FRAME tick=717644203 name=dpi-96-width-350-Home button=0 capture=0000000000000000 hit=0000000009F70826 class=UIFrameworkLightWeb pid=40468 xy=184,179 focus=0000000009F70826
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=96 host=96 window=96 client=884,431
+PASS table register
+PASS table rows
+PASS table rows
+PASS table mount
+PASS table rows
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=96 host=96 window=96 client=334,431
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717644640 name=dpi-96-header-resized button=0 capture=0000000000000000 hit=0000000009F80826 class=UIFrameworkLightWeb pid=40468 xy=75,95 focus=000000000FC31104
+PASS column rectangle
+PASS resized header capture
+PASS table register
+PASS table rows
+PASS table rows
+PASS table mount
+PASS desktop capture
+FRAME tick=717644812 name=dpi-96-header-fresh button=0 capture=0000000000000000 hit=0000000009F90826 class=UIFrameworkLightWeb pid=40468 xy=75,95 focus=000000000FC31104
+PASS column rectangle
+PASS fresh header capture
+PASS resized header pixels equal fresh header pixels
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=192 host=192 window=96 client=884,431
+PASS editor register
+PASS long editable value
+PASS editor mount
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=192 host=192 window=96 client=884,431
+PASS input rectangle
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+CARET End=202,164 input=96,78,338,28 dpi=192
+PASS End caret actually inside visible field
+PASS desktop capture
+FRAME tick=717645296 name=dpi-192-width-900-End button=0 capture=0000000000000000 hit=0000000009FA0826 class=UIFrameworkLightWeb pid=40468 xy=300,267 focus=0000000009FA0826
+PASS SendInput keyboard
+PASS Home caret inside visible field
+PASS desktop capture
+FRAME tick=717645453 name=dpi-192-width-900-Home button=0 capture=0000000000000000 hit=0000000009FA0826 class=UIFrameworkLightWeb pid=40468 xy=300,267 focus=0000000009FA0826
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=192 host=192 window=96 client=334,431
+PASS input rectangle
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+CARET End=26,212 input=8,102,151,28 dpi=192
+PASS End caret actually inside visible field
+PASS desktop capture
+FRAME tick=717645828 name=dpi-192-width-350-End button=0 capture=0000000000000000 hit=0000000009FA0826 class=UIFrameworkLightWeb pid=40468 xy=124,315 focus=0000000009FA0826
+PASS SendInput keyboard
+PASS Home caret inside visible field
+PASS desktop capture
+FRAME tick=717645968 name=dpi-192-width-350-Home button=0 capture=0000000000000000 hit=0000000009FA0826 class=UIFrameworkLightWeb pid=40468 xy=124,315 focus=0000000009FA0826
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=192 host=192 window=96 client=884,431
+PASS table register
+PASS table rows
+PASS table rows
+PASS table mount
+PASS table rows
+PASS set program DPI
+PASS logical resize
+PASS reflow
+DPI requested=192 host=192 window=96 client=334,431
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717646437 name=dpi-192-header-resized button=0 capture=0000000000000000 hit=0000000009FB0826 class=UIFrameworkLightWeb pid=40468 xy=75,95 focus=000000000FC31104
+PASS column rectangle
+PASS resized header capture
+PASS table register
+PASS table rows
+PASS table rows
+PASS table mount
+PASS desktop capture
+FRAME tick=717646609 name=dpi-192-header-fresh button=0 capture=0000000000000000 hit=0000000009FC0826 class=UIFrameworkLightWeb pid=40468 xy=75,95 focus=000000000FC31104
+PASS column rectangle
+PASS fresh header capture
+PASS resized header pixels equal fresh header pixels
+DISPLAY failures=0. Program DPI and monitor DPI are distinct.

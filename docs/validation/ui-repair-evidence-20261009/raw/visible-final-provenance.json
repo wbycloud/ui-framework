@@ -1,0 +1,60 @@
+{
+  "productCommit": "e0dcf788365c0023b57f7f41734f5e488477a70c",
+  "manualProbeNote": "Additional long-help and native dialog min/max gesture coverage; product sources unchanged after e0dcf78. C source hash is the exact built probe snapshot.",
+  "files": [
+    {
+      "path": "tests/interaction_probe.c",
+      "sha256": "c24c18a48973829cb18a20b04c9518305d7a3ee9ff96bf856f881cd1e82b72d1"
+    },
+    {
+      "path": "tests/display_probe.c",
+      "sha256": "7ae13364252e05879dea74f2bed2440670ad369419a7f836472af74ff7ea9e89"
+    },
+    {
+      "path": "include/ui_framework/components.h",
+      "sha256": "b53e84f337208d80fb8fcb104d70b007c79e00fe38992243ed2ce75d2275e997"
+    },
+    {
+      "path": "include/ui_framework/menus.h",
+      "sha256": "cb4e57adb360740445d8abf69213625ab43a31968c4a4b7bcc3217ce6ee074c2"
+    },
+    {
+      "path": "src/components.c",
+      "sha256": "fdcb828e43d5af4c08e1e060982ba8274a80bff5ad59a5dd58c874f2f9fdab22"
+    },
+    {
+      "path": "src/components.html",
+      "sha256": "4e14b0be1c2ebdfdb856151e9d592677cc177304bc11fbeb9f913dd8970a37c8"
+    },
+    {
+      "path": "src/menus.c",
+      "sha256": "0c9f1525a5f56e6c66f80cff785a829db887404f9861d612bc411320614f64af"
+    },
+    {
+      "path": "src/backends/light_web.c",
+      "sha256": "0a5a7a68fd1e43243636f25d3be63dc0960e07072a89e016e0399dee4c21390c"
+    },
+    {
+      "path": "src/backends/light_text.inc",
+      "sha256": "d52a7e6307e9634ce75c8d10be3d920b590047d411acb96f8f3f194bb0e08756"
+    },
+    {
+      "path": "src/backends/light_scroll.inc",
+      "sha256": "acfd19b3cf28cdc969fd39ec70fb3ff95db0d62e299e40d310961338343dd30c"
+    },
+    {
+      "path": "src/platform/win32_shell.c",
+      "sha256": "3dc994ada3c980a98774f3e009690302fa4e0a0c91260749ad479de03d63c469"
+    },
+    {
+      "path": "build/ui-repair-20261009/visible-final-bin/ui_display_probe.exe",
+      "sha256": "4097af52651f253c4ca01017e8302435f7d463d27bf12e57ff4bf185b529bd00",
+      "bytes": 2033664
+    },
+    {
+      "path": "build/ui-repair-20261009/visible-final-bin/ui_interaction_probe.exe",
+      "sha256": "d65712a64efdf437a81d86ca915d744a84b5f4d87463ab2344cc6ced90e8653b",
+      "bytes": 2133504
+    }
+  ]
+}

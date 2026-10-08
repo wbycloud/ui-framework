@@ -1,0 +1,1058 @@
+Start testing: Oct 09 01:45 �й���׼ʱ��
+----------------------------------------------------------
+26/64 Testing: ui_host_repaint
+26/64 Test: ui_host_repaint
+Command: "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline/ui_host_repaint_test.exe" "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline
+"ui_host_repaint" start time: Oct 09 01:45 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+WINDOW invalidate-control hwnd0000000004CF100A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE invalidate-control elapsed203 cpu-ms0.000 paint1 queued-paint1 dispatched3 host-refresh0 wake0 layouts0 events0 handles283 GDI414 USER32
+INVALIDATE_CONTROL paints1 invalid0 dispatched3
+MEASURE idle-0 elapsed2000 cpu-ms0.000 paint0 queued-paint0 dispatched21 host-refresh0 wake0 layouts0 events0 handles283 GDI414 USER32
+MEASURE idle-1 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched22 host-refresh0 wake0 layouts0 events0 handles283 GDI414 USER32
+MEASURE idle-2 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched21 host-refresh0 wake0 layouts0 events0 handles283 GDI414 USER32
+WINDOW resize hwnd0000000004E60FBC classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000004CF100A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd00000000028B0A88 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000004F70914 classUIFrameworkRegisteredMenu4 paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd0000000004260950 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000003F90A76 classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000045C0802 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd000000001C0009F4 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000048910DC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed516 cpu-ms62.500 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events6 handles283 GDI377 USER31
+WINDOW resize hwnd0000000004E60FBC classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000004CF100A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd00000000028B0A88 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000004260950 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000003F90A76 classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000045C0802 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd000000001C0009F4 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000048910DC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed516 cpu-ms62.500 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles283 GDI402 USER31
+WINDOW resize hwnd0000000004E60FBC classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000004CF100A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd00000000028B0A88 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000004260950 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000003F90A76 classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000045C0802 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd000000001C0009F4 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000048910DC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed515 cpu-ms62.500 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles283 GDI402 USER31
+WINDOW explicit-GL-frame hwnd0000000004CF100A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW explicit-GL-frame hwnd0000000004E60FBC classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000028B0A88 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000045C0802 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd000000001C0009F4 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000048910DC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd0000000004260950 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE explicit-GL-frame elapsed500 cpu-ms15.625 paint7 queued-paint7 dispatched9 host-refresh0 wake0 layouts1 events4 handles283 GDI402 USER31
+GL_RESULT languageen-US instance1 request1 summary=Application #1: Operation completed. See Advanced for details.
+WINDOW explicit-GL-frame hwnd0000000004CF100A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW explicit-GL-frame hwnd0000000004E60FBC classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000028B0A88 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000045C0802 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd000000001C0009F4 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000048910DC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd0000000004260950 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE explicit-GL-frame elapsed516 cpu-ms171.875 paint7 queued-paint7 dispatched9 host-refresh0 wake0 layouts1 events4 handles283 GDI402 USER31
+GL_RESULT languagezh-CN instance1 request2 summary=应用 #1：操作完成。详细结果见高级记录。
+MEASURE idle-after-GL elapsed2000 cpu-ms0.000 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles283 GDI402 USER31
+CLOSE_STATE window0
+Host idle repaint: 0 failures
+<end of output>
+Test time =  13.38 sec
+----------------------------------------------------------
+Test Passed.
+"ui_host_repaint" end time: Oct 09 01:45 �й���׼ʱ��
+"ui_host_repaint" time elapsed: 00:00:13
+----------------------------------------------------------
+
+27/64 Testing: ui_stateful_components_light
+27/64 Test: ui_stateful_components_light
+Command: "C:/Users/wbycl/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe" "-NoProfile" "-File" "D:/应用软件框架/应用层序框架/tests/run-stateful-components.ps1" "-BuildDirectory" "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline" "-Provider" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "-Backend" "light"
+Directory: D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline
+"ui_stateful_components_light" start time: Oct 09 01:45 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+CASE_BEGIN label=write-96 mode=write dpi=96 utc=2026-10-08T17:45:31.3223917Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid19812 tick720067546 dispatched0 create-host-begin
+TEST_PHASE pid19812 tick720067562 dispatched0 create-host-end
+TEST_PHASE pid19812 tick720067593 dispatched0 open-begin
+TEST_PHASE pid19812 tick720067750 dispatched0 open-return
+TEST_PHASE pid19812 tick720068250 dispatched48 open-settled
+RESTORED modewrite dpi96 name200 treeCollapsed0
+TEST_PHASE pid19812 tick720068250 dispatched48 screenshot-begin
+TEST_PHASE pid19812 tick720068281 dispatched48 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000010A70C0C classUIFrameworkLightWeb thread27940 ours27940 GetCapture0000000010A70C0C target-thread-capture0000000010A70C0C
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000010A70C0C pid19812
+TEST_PHASE pid19812 tick720068703 dispatched80 screenshot-begin
+TEST_PHASE pid19812 tick720068734 dispatched80 screenshot-end
+TEST_PHASE pid19812 tick720068734 dispatched80 close-begin
+TEST_PHASE pid19812 tick720068750 dispatched80 close-request-return
+TEST_PHASE pid19812 tick720068796 dispatched83 close-state-checked
+TEST_PHASE pid19812 tick720069109 dispatched83 com-uninitialize-begin
+TEST_PHASE pid19812 tick720069109 dispatched83 process-return
+Stateful actual light / write: 0 failures
+CASE_END label=write-96 elapsedMs=1683 exit=0
+CASE_BEGIN label=restore-96 mode=restore dpi=96 utc=2026-10-08T17:45:33.0199928Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid34616 tick720069203 dispatched0 create-host-begin
+TEST_PHASE pid34616 tick720069218 dispatched0 create-host-end
+TEST_PHASE pid34616 tick720069234 dispatched0 open-begin
+TEST_PHASE pid34616 tick720069437 dispatched0 open-return
+TEST_PHASE pid34616 tick720069937 dispatched38 open-settled
+RESTORED moderestore dpi96 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+TEST_PHASE pid34616 tick720069937 dispatched38 screenshot-begin
+TEST_PHASE pid34616 tick720069968 dispatched38 screenshot-end
+TEST_PHASE pid34616 tick720069968 dispatched38 close-begin
+TEST_PHASE pid34616 tick720069984 dispatched38 close-request-return
+TEST_PHASE pid34616 tick720070031 dispatched41 close-state-checked
+TEST_PHASE pid34616 tick720070343 dispatched41 com-uninitialize-begin
+TEST_PHASE pid34616 tick720070343 dispatched41 process-return
+Stateful actual light / restore: 0 failures
+CASE_END label=restore-96 elapsedMs=1223 exit=0
+CASE_BEGIN label=write-144 mode=write dpi=144 utc=2026-10-08T17:45:34.2489484Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid18064 tick720070437 dispatched0 create-host-begin
+TEST_PHASE pid18064 tick720070453 dispatched0 create-host-end
+TEST_PHASE pid18064 tick720070500 dispatched0 open-begin
+TEST_PHASE pid18064 tick720070671 dispatched0 open-return
+TEST_PHASE pid18064 tick720071171 dispatched42 open-settled
+RESTORED modewrite dpi144 name200 treeCollapsed0
+TEST_PHASE pid18064 tick720071171 dispatched42 screenshot-begin
+TEST_PHASE pid18064 tick720071218 dispatched42 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+CAPTURE hit0000000004FA0914 classUIFrameworkLightWeb thread45072 ours45072 GetCapture0000000004FA0914 target-thread-capture0000000004FA0914
+ACTUAL_HEADER dpi144 width200 -> 280 hit0000000004FA0914 pid18064
+TEST_PHASE pid18064 tick720071625 dispatched64 screenshot-begin
+TEST_PHASE pid18064 tick720071656 dispatched64 screenshot-end
+TEST_PHASE pid18064 tick720071656 dispatched64 close-begin
+TEST_PHASE pid18064 tick720071671 dispatched64 close-request-return
+TEST_PHASE pid18064 tick720071718 dispatched67 close-state-checked
+TEST_PHASE pid18064 tick720072031 dispatched67 com-uninitialize-begin
+TEST_PHASE pid18064 tick720072031 dispatched67 process-return
+Stateful actual light / write: 0 failures
+CASE_END label=write-144 elapsedMs=1668 exit=0
+CASE_BEGIN label=restore-144 mode=restore dpi=144 utc=2026-10-08T17:45:35.9298631Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid21692 tick720072109 dispatched0 create-host-begin
+TEST_PHASE pid21692 tick720072125 dispatched0 create-host-end
+TEST_PHASE pid21692 tick720072171 dispatched0 open-begin
+TEST_PHASE pid21692 tick720072359 dispatched0 open-return
+TEST_PHASE pid21692 tick720072859 dispatched36 open-settled
+RESTORED moderestore dpi144 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+TEST_PHASE pid21692 tick720072859 dispatched36 screenshot-begin
+TEST_PHASE pid21692 tick720072890 dispatched36 screenshot-end
+TEST_PHASE pid21692 tick720072890 dispatched36 close-begin
+TEST_PHASE pid21692 tick720072921 dispatched36 close-request-return
+TEST_PHASE pid21692 tick720072968 dispatched39 close-state-checked
+TEST_PHASE pid21692 tick720073281 dispatched39 com-uninitialize-begin
+TEST_PHASE pid21692 tick720073281 dispatched39 process-return
+Stateful actual light / restore: 0 failures
+CASE_END label=restore-144 elapsedMs=1252 exit=0
+CASE_BEGIN label=write-192 mode=write dpi=192 utc=2026-10-08T17:45:37.1891340Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid31916 tick720073375 dispatched0 create-host-begin
+TEST_PHASE pid31916 tick720073390 dispatched0 create-host-end
+TEST_PHASE pid31916 tick720073437 dispatched0 open-begin
+TEST_PHASE pid31916 tick720073609 dispatched0 open-return
+TEST_PHASE pid31916 tick720074109 dispatched40 open-settled
+RESTORED modewrite dpi192 name200 treeCollapsed0
+TEST_PHASE pid31916 tick720074109 dispatched40 screenshot-begin
+TEST_PHASE pid31916 tick720074156 dispatched40 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+CAPTURE hit0000000003FE0A76 classUIFrameworkLightWeb thread1144 ours1144 GetCapture0000000003FE0A76 target-thread-capture0000000003FE0A76
+ACTUAL_HEADER dpi192 width200 -> 280 hit0000000003FE0A76 pid31916
+TEST_PHASE pid31916 tick720074625 dispatched61 screenshot-begin
+TEST_PHASE pid31916 tick720074671 dispatched61 screenshot-end
+TEST_PHASE pid31916 tick720074671 dispatched61 close-begin
+TEST_PHASE pid31916 tick720074687 dispatched61 close-request-return
+TEST_PHASE pid31916 tick720074734 dispatched64 close-state-checked
+TEST_PHASE pid31916 tick720075046 dispatched64 com-uninitialize-begin
+TEST_PHASE pid31916 tick720075046 dispatched64 process-return
+Stateful actual light / write: 0 failures
+CASE_END label=write-192 elapsedMs=1752 exit=0
+CASE_BEGIN label=restore-192 mode=restore dpi=192 utc=2026-10-08T17:45:38.9481051Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid49628 tick720075125 dispatched0 create-host-begin
+TEST_PHASE pid49628 tick720075140 dispatched0 create-host-end
+TEST_PHASE pid49628 tick720075171 dispatched0 open-begin
+TEST_PHASE pid49628 tick720075375 dispatched0 open-return
+TEST_PHASE pid49628 tick720075875 dispatched35 open-settled
+RESTORED moderestore dpi192 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+TEST_PHASE pid49628 tick720075875 dispatched35 screenshot-begin
+TEST_PHASE pid49628 tick720075921 dispatched35 screenshot-end
+TEST_PHASE pid49628 tick720075921 dispatched35 close-begin
+TEST_PHASE pid49628 tick720075937 dispatched35 close-request-return
+TEST_PHASE pid49628 tick720075984 dispatched38 close-state-checked
+TEST_PHASE pid49628 tick720076296 dispatched38 com-uninitialize-begin
+TEST_PHASE pid49628 tick720076296 dispatched38 process-return
+Stateful actual light / restore: 0 failures
+CASE_END label=restore-192 elapsedMs=1250 exit=0
+CASE_BEGIN label=isolation mode=isolation dpi=96 utc=2026-10-08T17:45:40.2094813Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid26284 tick720076390 dispatched0 create-host-begin
+TEST_PHASE pid26284 tick720076406 dispatched0 create-host-end
+TEST_PHASE pid26284 tick720076437 dispatched0 open-begin
+TEST_PHASE pid26284 tick720076625 dispatched0 open-return
+TEST_PHASE pid26284 tick720077125 dispatched36 open-settled
+RESTORED modeisolation dpi96 name280 treeCollapsed1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000003D80BF6 classUIFrameworkLightWeb thread42188 ours42188 GetCapture0000000003D80BF6 target-thread-capture0000000003D80BF6
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000003D80BF6 pid26284
+HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+CAPTURE hit0000000003D80BF6 classUIFrameworkLightWeb thread42188 ours42188 GetCapture0000000003D80BF6 target-thread-capture0000000003D80BF6
+ACTUAL_HEADER dpi96 width280 -> 360 hit0000000003D80BF6 pid26284
+TEST_PHASE pid26284 tick720078437 dispatched96 close-begin
+TEST_PHASE pid26284 tick720078484 dispatched96 close-request-return
+TEST_PHASE pid26284 tick720078546 dispatched99 close-state-checked
+TEST_PHASE pid26284 tick720078859 dispatched99 com-uninitialize-begin
+TEST_PHASE pid26284 tick720078859 dispatched99 process-return
+Stateful actual light / isolation: 0 failures
+CASE_END label=isolation elapsedMs=2556 exit=0
+CASE_BEGIN label=profile-b mode=profile-b dpi=96 utc=2026-10-08T17:45:42.7714773Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid34428 tick720078968 dispatched0 create-host-begin
+TEST_PHASE pid34428 tick720078984 dispatched0 create-host-end
+TEST_PHASE pid34428 tick720079015 dispatched0 open-begin
+TEST_PHASE pid34428 tick720079203 dispatched0 open-return
+TEST_PHASE pid34428 tick720079703 dispatched38 open-settled
+RESTORED modeprofile-b dpi96 name360 treeCollapsed0
+TEST_PHASE pid34428 tick720079703 dispatched38 close-begin
+TEST_PHASE pid34428 tick720079718 dispatched38 close-request-return
+TEST_PHASE pid34428 tick720079765 dispatched41 close-state-checked
+TEST_PHASE pid34428 tick720080078 dispatched41 com-uninitialize-begin
+TEST_PHASE pid34428 tick720080078 dispatched41 process-return
+Stateful actual light / profile-b: 0 failures
+CASE_END label=profile-b elapsedMs=1197 exit=0
+CASE_BEGIN label=reload mode=reload dpi=96 utc=2026-10-08T17:45:43.9858452Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid25008 tick720080171 dispatched0 create-host-begin
+TEST_PHASE pid25008 tick720080187 dispatched0 create-host-end
+TEST_PHASE pid25008 tick720080218 dispatched0 open-begin
+TEST_PHASE pid25008 tick720080406 dispatched0 open-return
+TEST_PHASE pid25008 tick720080906 dispatched43 open-settled
+RESTORED modereload dpi96 name280 treeCollapsed1
+TEST_PHASE pid25008 tick720081156 dispatched60 close-begin
+TEST_PHASE pid25008 tick720081171 dispatched60 close-request-return
+TEST_PHASE pid25008 tick720081218 dispatched63 close-state-checked
+TEST_PHASE pid25008 tick720081531 dispatched63 com-uninitialize-begin
+TEST_PHASE pid25008 tick720081531 dispatched63 process-return
+Stateful actual light / reload: 0 failures
+CASE_END label=reload elapsedMs=1448 exit=0
+CASE_BEGIN label=locked-profile mode=locked-profile dpi=96 utc=2026-10-08T17:45:45.4428876Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid38400 tick720081625 dispatched0 create-host-begin
+TEST_PHASE pid38400 tick720081640 dispatched0 create-host-end
+TEST_PHASE pid38400 tick720081671 dispatched0 open-begin
+TEST_PHASE pid38400 tick720081875 dispatched0 open-return
+TEST_PHASE pid38400 tick720082375 dispatched43 open-settled
+RESTORED modelocked-profile dpi96 name280 treeCollapsed1
+TEST_PHASE pid38400 tick720082375 dispatched43 close-begin
+TEST_PHASE pid38400 tick720082390 dispatched43 close-request-return
+TEST_PHASE pid38400 tick720082468 dispatched48 close-state-checked
+TEST_PHASE pid38400 tick720082781 dispatched48 com-uninitialize-begin
+TEST_PHASE pid38400 tick720082781 dispatched48 process-return
+Stateful actual light / locked-profile: 0 failures
+CASE_END label=locked-profile elapsedMs=1232 exit=0
+CASE_BEGIN label=reordered-columns mode=restore dpi=96 utc=2026-10-08T17:45:46.6829442Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid24936 tick720082875 dispatched0 create-host-begin
+TEST_PHASE pid24936 tick720082890 dispatched0 create-host-end
+TEST_PHASE pid24936 tick720082906 dispatched0 open-begin
+TEST_PHASE pid24936 tick720083109 dispatched0 open-return
+TEST_PHASE pid24936 tick720083609 dispatched43 open-settled
+RESTORED moderestore dpi96 name280 treeCollapsed1
+STABLE_COLUMN name headerX128 cellX128 texteditable
+TEST_PHASE pid24936 tick720083609 dispatched43 screenshot-begin
+TEST_PHASE pid24936 tick720083625 dispatched43 screenshot-end
+TEST_PHASE pid24936 tick720083625 dispatched43 close-begin
+TEST_PHASE pid24936 tick720083640 dispatched43 close-request-return
+TEST_PHASE pid24936 tick720083687 dispatched46 close-state-checked
+TEST_PHASE pid24936 tick720084000 dispatched46 com-uninitialize-begin
+TEST_PHASE pid24936 tick720084000 dispatched46 process-return
+Stateful actual light / restore: 0 failures
+CASE_END label=reordered-columns elapsedMs=1205 exit=0
+CASE_BEGIN label=missing-new-columns mode=evolve dpi=96 utc=2026-10-08T17:45:47.9004202Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid24020 tick720084078 dispatched0 create-host-begin
+TEST_PHASE pid24020 tick720084093 dispatched0 create-host-end
+TEST_PHASE pid24020 tick720084125 dispatched0 open-begin
+TEST_PHASE pid24020 tick720084312 dispatched0 open-return
+TEST_PHASE pid24020 tick720084812 dispatched44 open-settled
+RESTORED modeevolve dpi96 name280 treeCollapsed1
+TEST_PHASE pid24020 tick720084812 dispatched44 close-begin
+TEST_PHASE pid24020 tick720084843 dispatched44 close-request-return
+TEST_PHASE pid24020 tick720084890 dispatched47 close-state-checked
+TEST_PHASE pid24020 tick720085203 dispatched47 com-uninitialize-begin
+TEST_PHASE pid24020 tick720085203 dispatched47 process-return
+Stateful actual light / evolve: 0 failures
+CASE_END label=missing-new-columns elapsedMs=1207 exit=0
+CASE_BEGIN label=empty mode=invalid dpi=96 utc=2026-10-08T17:45:49.1175581Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid16488 tick720085296 dispatched0 create-host-begin
+TEST_PHASE pid16488 tick720085312 dispatched0 create-host-end
+TEST_PHASE pid16488 tick720085343 dispatched0 open-begin
+TEST_PHASE pid16488 tick720085515 dispatched0 open-return
+TEST_PHASE pid16488 tick720086015 dispatched49 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid16488 tick720086015 dispatched49 close-begin
+TEST_PHASE pid16488 tick720086046 dispatched49 close-request-return
+TEST_PHASE pid16488 tick720086093 dispatched52 close-state-checked
+TEST_PHASE pid16488 tick720086406 dispatched52 com-uninitialize-begin
+TEST_PHASE pid16488 tick720086406 dispatched52 process-return
+Stateful actual light / invalid: 0 failures
+CASE_END label=empty elapsedMs=1193 exit=0
+CASE_BEGIN label=truncated mode=invalid dpi=96 utc=2026-10-08T17:45:50.3183922Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid42280 tick720086500 dispatched0 create-host-begin
+TEST_PHASE pid42280 tick720086515 dispatched0 create-host-end
+TEST_PHASE pid42280 tick720086546 dispatched0 open-begin
+TEST_PHASE pid42280 tick720086718 dispatched0 open-return
+TEST_PHASE pid42280 tick720087218 dispatched48 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid42280 tick720087218 dispatched48 close-begin
+TEST_PHASE pid42280 tick720087234 dispatched48 close-request-return
+TEST_PHASE pid42280 tick720087296 dispatched51 close-state-checked
+TEST_PHASE pid42280 tick720087609 dispatched51 com-uninitialize-begin
+TEST_PHASE pid42280 tick720087609 dispatched51 process-return
+Stateful actual light / invalid: 0 failures
+CASE_END label=truncated elapsedMs=1188 exit=0
+CASE_BEGIN label=oversized mode=invalid dpi=96 utc=2026-10-08T17:45:51.5113932Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid20436 tick720087687 dispatched0 create-host-begin
+TEST_PHASE pid20436 tick720087703 dispatched0 create-host-end
+TEST_PHASE pid20436 tick720087734 dispatched0 open-begin
+TEST_PHASE pid20436 tick720087906 dispatched0 open-return
+TEST_PHASE pid20436 tick720088406 dispatched47 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid20436 tick720088406 dispatched47 close-begin
+TEST_PHASE pid20436 tick720088421 dispatched47 close-request-return
+TEST_PHASE pid20436 tick720088468 dispatched50 close-state-checked
+TEST_PHASE pid20436 tick720088781 dispatched50 com-uninitialize-begin
+TEST_PHASE pid20436 tick720088781 dispatched50 process-return
+Stateful actual light / invalid: 0 failures
+CASE_END label=oversized elapsedMs=1166 exit=0
+CASE_BEGIN label=magic mode=invalid dpi=96 utc=2026-10-08T17:45:52.6984880Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid14420 tick720088875 dispatched0 create-host-begin
+TEST_PHASE pid14420 tick720088890 dispatched0 create-host-end
+TEST_PHASE pid14420 tick720088921 dispatched0 open-begin
+TEST_PHASE pid14420 tick720089093 dispatched0 open-return
+TEST_PHASE pid14420 tick720089593 dispatched49 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid14420 tick720089593 dispatched49 close-begin
+TEST_PHASE pid14420 tick720089625 dispatched49 close-request-return
+TEST_PHASE pid14420 tick720089671 dispatched52 close-state-checked
+TEST_PHASE pid14420 tick720089984 dispatched52 com-uninitialize-begin
+TEST_PHASE pid14420 tick720089984 dispatched52 process-return
+Stateful actual light / invalid: 0 failures
+CASE_END label=magic elapsedMs=1193 exit=0
+CASE_BEGIN label=checksum mode=invalid dpi=96 utc=2026-10-08T17:45:53.8959513Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid33384 tick720090078 dispatched0 create-host-begin
+TEST_PHASE pid33384 tick720090093 dispatched0 create-host-end
+TEST_PHASE pid33384 tick720090125 dispatched0 open-begin
+TEST_PHASE pid33384 tick720090296 dispatched0 open-return
+TEST_PHASE pid33384 tick720090796 dispatched48 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid33384 tick720090796 dispatched48 close-begin
+TEST_PHASE pid33384 tick720090812 dispatched48 close-request-return
+TEST_PHASE pid33384 tick720090859 dispatched51 close-state-checked
+TEST_PHASE pid33384 tick720091171 dispatched51 com-uninitialize-begin
+TEST_PHASE pid33384 tick720091171 dispatched51 process-return
+Stateful actual light / invalid: 0 failures
+CASE_END label=checksum elapsedMs=1174 exit=0
+CASE_BEGIN label=future mode=invalid dpi=96 utc=2026-10-08T17:45:55.0806085Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid47288 tick720091265 dispatched0 create-host-begin
+TEST_PHASE pid47288 tick720091281 dispatched0 create-host-end
+TEST_PHASE pid47288 tick720091312 dispatched0 open-begin
+TEST_PHASE pid47288 tick720091484 dispatched0 open-return
+TEST_PHASE pid47288 tick720091984 dispatched49 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid47288 tick720091984 dispatched49 close-begin
+TEST_PHASE pid47288 tick720092000 dispatched49 close-request-return
+TEST_PHASE pid47288 tick720092046 dispatched52 close-state-checked
+TEST_PHASE pid47288 tick720092359 dispatched52 com-uninitialize-begin
+TEST_PHASE pid47288 tick720092359 dispatched52 process-return
+Stateful actual light / invalid: 0 failures
+CASE_END label=future elapsedMs=1174 exit=0
+CASE_BEGIN label=columns-reserved mode=invalid dpi=96 utc=2026-10-08T17:45:56.2603775Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid23724 tick720092453 dispatched0 create-host-begin
+TEST_PHASE pid23724 tick720092468 dispatched0 create-host-end
+TEST_PHASE pid23724 tick720092484 dispatched0 open-begin
+TEST_PHASE pid23724 tick720092687 dispatched0 open-return
+TEST_PHASE pid23724 tick720093187 dispatched44 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid23724 tick720093187 dispatched44 close-begin
+TEST_PHASE pid23724 tick720093203 dispatched44 close-request-return
+TEST_PHASE pid23724 tick720093250 dispatched47 close-state-checked
+TEST_PHASE pid23724 tick720093562 dispatched47 com-uninitialize-begin
+TEST_PHASE pid23724 tick720093562 dispatched47 process-return
+Stateful actual light / invalid: 0 failures
+CASE_END label=columns-reserved elapsedMs=1191 exit=0
+CASE_BEGIN label=columns-future mode=invalid dpi=96 utc=2026-10-08T17:45:57.4651849Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid22428 tick720093656 dispatched0 create-host-begin
+TEST_PHASE pid22428 tick720093671 dispatched0 create-host-end
+TEST_PHASE pid22428 tick720093703 dispatched0 open-begin
+TEST_PHASE pid22428 tick720093906 dispatched0 open-return
+TEST_PHASE pid22428 tick720094406 dispatched44 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid22428 tick720094406 dispatched44 close-begin
+TEST_PHASE pid22428 tick720094421 dispatched44 close-request-return
+TEST_PHASE pid22428 tick720094468 dispatched47 close-state-checked
+TEST_PHASE pid22428 tick720094781 dispatched47 com-uninitialize-begin
+TEST_PHASE pid22428 tick720094781 dispatched47 process-return
+Stateful actual light / invalid: 0 failures
+CASE_END label=columns-future elapsedMs=1200 exit=0
+CASE_BEGIN label=layout-future mode=invalid dpi=96 utc=2026-10-08T17:45:58.6835210Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid34040 tick720094859 dispatched0 create-host-begin
+TEST_PHASE pid34040 tick720094875 dispatched0 create-host-end
+TEST_PHASE pid34040 tick720094906 dispatched0 open-begin
+TEST_PHASE pid34040 tick720095125 dispatched0 open-return
+TEST_PHASE pid34040 tick720095625 dispatched46 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid34040 tick720095625 dispatched46 close-begin
+TEST_PHASE pid34040 tick720095656 dispatched46 close-request-return
+TEST_PHASE pid34040 tick720095703 dispatched49 close-state-checked
+TEST_PHASE pid34040 tick720096015 dispatched49 com-uninitialize-begin
+TEST_PHASE pid34040 tick720096015 dispatched49 process-return
+Stateful actual light / invalid: 0 failures
+CASE_END label=layout-future elapsedMs=1239 exit=0
+CASE_BEGIN label=layout-invalid mode=invalid dpi=96 utc=2026-10-08T17:45:59.9267879Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid30864 tick720096109 dispatched0 create-host-begin
+TEST_PHASE pid30864 tick720096125 dispatched0 create-host-end
+TEST_PHASE pid30864 tick720096156 dispatched0 open-begin
+TEST_PHASE pid30864 tick720096375 dispatched0 open-return
+TEST_PHASE pid30864 tick720096875 dispatched46 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid30864 tick720096875 dispatched46 close-begin
+TEST_PHASE pid30864 tick720096906 dispatched46 close-request-return
+TEST_PHASE pid30864 tick720096953 dispatched49 close-state-checked
+TEST_PHASE pid30864 tick720097265 dispatched49 com-uninitialize-begin
+TEST_PHASE pid30864 tick720097265 dispatched49 process-return
+Stateful actual light / invalid: 0 failures
+CASE_END label=layout-invalid elapsedMs=1240 exit=0
+CASE_BEGIN label=missing-file mode=defaults dpi=96 utc=2026-10-08T17:46:01.1788532Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid48456 tick720097359 dispatched0 create-host-begin
+TEST_PHASE pid48456 tick720097375 dispatched0 create-host-end
+TEST_PHASE pid48456 tick720097406 dispatched0 open-begin
+TEST_PHASE pid48456 tick720097578 dispatched0 open-return
+TEST_PHASE pid48456 tick720098078 dispatched49 open-settled
+RESTORED modedefaults dpi96 name200 treeCollapsed0
+TEST_PHASE pid48456 tick720098078 dispatched49 close-begin
+TEST_PHASE pid48456 tick720098093 dispatched49 close-request-return
+TEST_PHASE pid48456 tick720098156 dispatched52 close-state-checked
+TEST_PHASE pid48456 tick720098468 dispatched52 com-uninitialize-begin
+TEST_PHASE pid48456 tick720098468 dispatched52 process-return
+Stateful actual light / defaults: 0 failures
+CASE_END label=missing-file elapsedMs=1184 exit=0
+CASE_BEGIN label=failed-create-mount-lock-release mode=init-failures dpi=96 utc=2026-10-08T17:46:02.3811985Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid44976 tick720098562 dispatched0 create-host-begin
+TEST_PHASE pid44976 tick720098578 dispatched0 create-host-end
+TEST_PHASE pid44976 tick720098953 dispatched28 open-begin
+TEST_PHASE pid44976 tick720099109 dispatched28 open-return
+TEST_PHASE pid44976 tick720099609 dispatched70 open-settled
+RESTORED modeinit-failures dpi96 name200 treeCollapsed0
+TEST_PHASE pid44976 tick720099609 dispatched70 close-begin
+TEST_PHASE pid44976 tick720099625 dispatched70 close-request-return
+TEST_PHASE pid44976 tick720099671 dispatched73 close-state-checked
+TEST_PHASE pid44976 tick720099984 dispatched73 com-uninitialize-begin
+TEST_PHASE pid44976 tick720099984 dispatched73 process-return
+Stateful actual light / init-failures: 0 failures
+CASE_END label=failed-create-mount-lock-release elapsedMs=1497 exit=0
+CASE_BEGIN label=reset mode=reset dpi=96 utc=2026-10-08T17:46:03.8849910Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid41092 tick720100062 dispatched0 create-host-begin
+TEST_PHASE pid41092 tick720100078 dispatched0 create-host-end
+TEST_PHASE pid41092 tick720100109 dispatched0 open-begin
+TEST_PHASE pid41092 tick720100296 dispatched0 open-return
+TEST_PHASE pid41092 tick720100796 dispatched44 open-settled
+RESTORED modereset dpi96 name280 treeCollapsed1
+TEST_PHASE pid41092 tick720101234 dispatched75 close-begin
+TEST_PHASE pid41092 tick720101265 dispatched75 close-request-return
+TEST_PHASE pid41092 tick720101312 dispatched78 close-state-checked
+TEST_PHASE pid41092 tick720101625 dispatched78 com-uninitialize-begin
+TEST_PHASE pid41092 tick720101625 dispatched78 process-return
+Stateful actual light / reset: 0 failures
+CASE_END label=reset elapsedMs=1651 exit=0
+CASE_BEGIN label=reset-cross-process mode=defaults dpi=96 utc=2026-10-08T17:46:05.5381594Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+TEST_PHASE pid1016 tick720101718 dispatched0 create-host-begin
+TEST_PHASE pid1016 tick720101734 dispatched0 create-host-end
+TEST_PHASE pid1016 tick720101765 dispatched0 open-begin
+TEST_PHASE pid1016 tick720101968 dispatched0 open-return
+TEST_PHASE pid1016 tick720102468 dispatched47 open-settled
+RESTORED modedefaults dpi96 name200 treeCollapsed0
+TEST_PHASE pid1016 tick720102468 dispatched47 close-begin
+TEST_PHASE pid1016 tick720102484 dispatched47 close-request-return
+TEST_PHASE pid1016 tick720102531 dispatched50 close-state-checked
+TEST_PHASE pid1016 tick720102843 dispatched50 com-uninitialize-begin
+TEST_PHASE pid1016 tick720102843 dispatched50 process-return
+Stateful actual light / defaults: 0 failures
+CASE_END label=reset-cross-process elapsedMs=1199 exit=0
+Stateful application actual light PASS; evidence D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\state-evidence-light-f9c350f569bf41108ebb8872e140a3b0
+<end of output>
+Test time =  36.10 sec
+----------------------------------------------------------
+Test Passed.
+"ui_stateful_components_light" end time: Oct 09 01:46 �й���׼ʱ��
+"ui_stateful_components_light" time elapsed: 00:00:36
+----------------------------------------------------------
+
+28/64 Testing: ui_instance_language_light
+28/64 Test: ui_instance_language_light
+Command: "C:/Users/wbycl/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe" "-NoProfile" "-File" "D:/应用软件框架/应用层序框架/tests/run-instance-language.ps1" "-BuildDirectory" "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline" "-Provider" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "-Backend" "light"
+Directory: D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline
+"ui_instance_language_light" start time: Oct 09 01:46 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+CASE_BEGIN label=preferences-96 utc=2026-10-08T17:46:07.3842277Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\language-evidence-light-2e8010291a1441c3abc5840d191d923b
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+TEST_PHASE pid18452 tick720103593 dispatched0 create-host-begin
+TEST_PHASE pid18452 tick720103609 dispatched0 create-host-end
+TEST_PHASE pid18452 tick720103843 dispatched15 screenshot-begin
+TEST_PHASE pid18452 tick720103875 dispatched15 screenshot-end
+TEST_PHASE pid18452 tick720103875 dispatched15 preferences-begin
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE magic: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+PREFERENCE future: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+TEST_PHASE pid18452 tick720106937 dispatched249 screenshot-begin
+TEST_PHASE pid18452 tick720106968 dispatched249 screenshot-end
+PREFERENCE language: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+PREFERENCE profile: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+PREFERENCE reserved: final=en-US file unchanged
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+TEST_PHASE pid18452 tick720108593 dispatched368 screenshot-begin
+TEST_PHASE pid18452 tick720108640 dispatched368 screenshot-end
+PREFERENCE zh-CN: final=zh-CN file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+PREFERENCE en-US: final=en-US file unchanged
+TEST_PHASE pid18452 tick720109375 dispatched416 preferences-end
+TEST_PHASE pid18452 tick720109687 dispatched419 com-uninitialize-begin
+TEST_PHASE pid18452 tick720109687 dispatched419 process-return
+Complete DLL preferences light failures0
+CASE_END label=preferences-96 elapsedMs=6200 exit=0
+CASE_BEGIN label=write-96 utc=2026-10-08T17:46:13.6014383Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\language-evidence-light-2e8010291a1441c3abc5840d191d923b
+INPUT_EVIDENCE real SendInput; final state checked
+TEST_PHASE pid19268 tick720109781 dispatched0 create-host-begin
+TEST_PHASE pid19268 tick720109796 dispatched0 create-host-end
+TEST_PHASE pid19268 tick720110031 dispatched15 screenshot-begin
+TEST_PHASE pid19268 tick720110046 dispatched15 screenshot-end
+TEST_PHASE pid19268 tick720110046 dispatched15 open-begin
+TEST_PHASE pid19268 tick720110218 dispatched15 open-return
+TEST_PHASE pid19268 tick720110828 dispatched55 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+TEST_PHASE pid19268 tick720110828 dispatched55 screenshot-begin
+TEST_PHASE pid19268 tick720110859 dispatched55 screenshot-end
+REAL_CLICK client90,41 128x26 screen202,94 hit0000000003770844 UIFrameworkLightWeb pid19268
+REAL_CLICK client4,4 312x28 screen299,126 hit0000000010CB0C0C UIFrameworkLightWeb pid19268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+TEST_PHASE pid19268 tick720111296 dispatched114 screenshot-begin
+TEST_PHASE pid19268 tick720111312 dispatched114 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000010AA04C0 classUIFrameworkLightWeb thread29904 ours29904 GetCapture0000000010AA04C0 target-thread-capture0000000010AA04C0
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000010AA04C0 pid19268
+TEST_PHASE pid19268 tick720111828 dispatched144 open-begin
+TEST_PHASE pid19268 tick720111984 dispatched144 open-return
+TEST_PHASE pid19268 tick720112593 dispatched179 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit0000000003770844 UIFrameworkLightWeb pid19268
+REAL_CLICK client4,32 312x28 screen299,154 hit0000000004850A14 UIFrameworkLightWeb pid19268
+TEST_PHASE pid19268 tick720113359 dispatched262 screenshot-begin
+TEST_PHASE pid19268 tick720113390 dispatched262 screenshot-end
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000003770844 UIFrameworkLightWeb pid19268
+TEST_PHASE pid19268 tick720117031 dispatched652 screenshot-begin
+TEST_PHASE pid19268 tick720117078 dispatched652 screenshot-end
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000003770844 UIFrameworkLightWeb pid19268
+TEST_PHASE pid19268 tick720117281 dispatched685 screenshot-begin
+TEST_PHASE pid19268 tick720117328 dispatched685 screenshot-end
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000003770844 UIFrameworkLightWeb pid19268
+REAL_CLICK client8,40 58x28 screen133,233 hit00000000140D109C UIFrameworkLightWeb pid19268
+TEST_PHASE pid19268 tick720118484 dispatched774 screenshot-begin
+TEST_PHASE pid19268 tick720118531 dispatched774 screenshot-end
+TEST_PHASE pid19268 tick720118781 dispatched783 screenshot-begin
+TEST_PHASE pid19268 tick720118812 dispatched783 screenshot-end
+TEST_PHASE pid19268 tick720119125 dispatched797 screenshot-begin
+TEST_PHASE pid19268 tick720119140 dispatched797 screenshot-end
+TEST_PHASE pid19268 tick720119140 dispatched797 instances-close-begin
+TEST_PHASE pid19268 tick720119468 dispatched816 screenshot-begin
+TEST_PHASE pid19268 tick720119468 dispatched816 screenshot-end
+TEST_PHASE pid19268 tick720119468 dispatched816 close-begin
+TEST_PHASE pid19268 tick720119468 dispatched816 close-request-return
+TEST_PHASE pid19268 tick720119781 dispatched819 com-uninitialize-begin
+TEST_PHASE pid19268 tick720119781 dispatched819 process-return
+Instance language actual light write dpi96 failures0
+CASE_END label=write-96 elapsedMs=10081 exit=0
+CASE_BEGIN label=restore-96 utc=2026-10-08T17:46:23.6855631Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\language-evidence-light-2e8010291a1441c3abc5840d191d923b
+INPUT_EVIDENCE real SendInput; final state checked
+TEST_PHASE pid45544 tick720119875 dispatched0 create-host-begin
+TEST_PHASE pid45544 tick720119890 dispatched0 create-host-end
+TEST_PHASE pid45544 tick720120109 dispatched16 screenshot-begin
+TEST_PHASE pid45544 tick720120140 dispatched16 screenshot-end
+TEST_PHASE pid45544 tick720120140 dispatched16 open-begin
+TEST_PHASE pid45544 tick720120359 dispatched16 open-return
+TEST_PHASE pid45544 tick720120968 dispatched44 open-settled
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+TEST_PHASE pid45544 tick720121109 dispatched53 open-begin
+TEST_PHASE pid45544 tick720121265 dispatched53 open-return
+TEST_PHASE pid45544 tick720121875 dispatched81 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+TEST_PHASE pid45544 tick720122187 dispatched99 screenshot-begin
+TEST_PHASE pid45544 tick720122218 dispatched99 screenshot-end
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+TEST_PHASE pid45544 tick720125890 dispatched407 screenshot-begin
+TEST_PHASE pid45544 tick720125937 dispatched407 screenshot-end
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+TEST_PHASE pid45544 tick720126140 dispatched435 screenshot-begin
+TEST_PHASE pid45544 tick720126187 dispatched435 screenshot-end
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000002A80A88 UIFrameworkLightWeb pid45544
+REAL_CLICK client8,40 58x28 screen133,233 hit000000000FA81084 UIFrameworkLightWeb pid45544
+TEST_PHASE pid45544 tick720127296 dispatched522 screenshot-begin
+TEST_PHASE pid45544 tick720127312 dispatched522 screenshot-end
+TEST_PHASE pid45544 tick720127562 dispatched531 screenshot-begin
+TEST_PHASE pid45544 tick720127578 dispatched531 screenshot-end
+TEST_PHASE pid45544 tick720127906 dispatched545 screenshot-begin
+TEST_PHASE pid45544 tick720127921 dispatched545 screenshot-end
+TEST_PHASE pid45544 tick720127921 dispatched545 instances-close-begin
+TEST_PHASE pid45544 tick720128234 dispatched564 screenshot-begin
+TEST_PHASE pid45544 tick720128250 dispatched564 screenshot-end
+TEST_PHASE pid45544 tick720128250 dispatched564 close-begin
+TEST_PHASE pid45544 tick720128250 dispatched564 close-request-return
+TEST_PHASE pid45544 tick720128562 dispatched567 com-uninitialize-begin
+TEST_PHASE pid45544 tick720128562 dispatched567 process-return
+Instance language actual light restore dpi96 failures0
+CASE_END label=restore-96 elapsedMs=8773 exit=0
+CASE_BEGIN label=write-144 utc=2026-10-08T17:46:32.4680293Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\language-evidence-light-2e8010291a1441c3abc5840d191d923b
+INPUT_EVIDENCE real SendInput; final state checked
+TEST_PHASE pid40560 tick720128656 dispatched0 create-host-begin
+TEST_PHASE pid40560 tick720128671 dispatched0 create-host-end
+TEST_PHASE pid40560 tick720128921 dispatched15 screenshot-begin
+TEST_PHASE pid40560 tick720128937 dispatched15 screenshot-end
+TEST_PHASE pid40560 tick720128937 dispatched15 open-begin
+TEST_PHASE pid40560 tick720129109 dispatched15 open-return
+TEST_PHASE pid40560 tick720129718 dispatched50 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+TEST_PHASE pid40560 tick720129718 dispatched50 screenshot-begin
+TEST_PHASE pid40560 tick720129750 dispatched50 screenshot-end
+REAL_CLICK client90,41 128x26 screen279,121 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+REAL_CLICK client4,4 312x28 screen424,168 hit0000000010AC04C0 UIFrameworkLightWeb pid40560
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+TEST_PHASE pid40560 tick720130203 dispatched101 screenshot-begin
+TEST_PHASE pid40560 tick720130234 dispatched101 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+CAPTURE hit0000000004870A14 classUIFrameworkLightWeb thread41464 ours41464 GetCapture0000000004870A14 target-thread-capture0000000004870A14
+ACTUAL_HEADER dpi144 width200 -> 280 hit0000000004870A14 pid40560
+TEST_PHASE pid40560 tick720130765 dispatched131 open-begin
+TEST_PHASE pid40560 tick720130921 dispatched131 open-return
+TEST_PHASE pid40560 tick720131531 dispatched167 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen279,121 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+REAL_CLICK client4,32 312x28 screen424,210 hit0000000003640F5A UIFrameworkLightWeb pid40560
+TEST_PHASE pid40560 tick720132312 dispatched250 screenshot-begin
+TEST_PHASE pid40560 tick720132359 dispatched250 screenshot-end
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+TEST_PHASE pid40560 tick720136031 dispatched624 screenshot-begin
+TEST_PHASE pid40560 tick720136062 dispatched624 screenshot-end
+REAL_CLICK client1011,0 40x40 screen1595,70 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+TEST_PHASE pid40560 tick720136296 dispatched657 screenshot-begin
+TEST_PHASE pid40560 tick720136343 dispatched657 screenshot-end
+REAL_CLICK client1011,0 40x40 screen1595,70 hit00000000046A10A2 UIFrameworkLightWeb pid40560
+REAL_CLICK client8,40 60x28 screen153,294 hit00000000097A0780 UIFrameworkLightWeb pid40560
+TEST_PHASE pid40560 tick720137546 dispatched746 screenshot-begin
+TEST_PHASE pid40560 tick720137609 dispatched746 screenshot-end
+TEST_PHASE pid40560 tick720137859 dispatched755 screenshot-begin
+TEST_PHASE pid40560 tick720137906 dispatched755 screenshot-end
+TEST_PHASE pid40560 tick720138218 dispatched769 screenshot-begin
+TEST_PHASE pid40560 tick720138265 dispatched769 screenshot-end
+TEST_PHASE pid40560 tick720138265 dispatched769 instances-close-begin
+TEST_PHASE pid40560 tick720138609 dispatched788 screenshot-begin
+TEST_PHASE pid40560 tick720138640 dispatched788 screenshot-end
+TEST_PHASE pid40560 tick720138640 dispatched788 close-begin
+TEST_PHASE pid40560 tick720138640 dispatched788 close-request-return
+TEST_PHASE pid40560 tick720138953 dispatched791 com-uninitialize-begin
+TEST_PHASE pid40560 tick720138953 dispatched791 process-return
+Instance language actual light write dpi144 failures0
+CASE_END label=write-144 elapsedMs=10384 exit=0
+CASE_BEGIN label=restore-144 utc=2026-10-08T17:46:42.8634420Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\language-evidence-light-2e8010291a1441c3abc5840d191d923b
+INPUT_EVIDENCE real SendInput; final state checked
+TEST_PHASE pid38448 tick720139046 dispatched0 create-host-begin
+TEST_PHASE pid38448 tick720139078 dispatched0 create-host-end
+TEST_PHASE pid38448 tick720139312 dispatched19 screenshot-begin
+TEST_PHASE pid38448 tick720139359 dispatched19 screenshot-end
+TEST_PHASE pid38448 tick720139359 dispatched19 open-begin
+TEST_PHASE pid38448 tick720139578 dispatched19 open-return
+TEST_PHASE pid38448 tick720140187 dispatched47 open-settled
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+TEST_PHASE pid38448 tick720140312 dispatched56 open-begin
+TEST_PHASE pid38448 tick720140484 dispatched56 open-return
+TEST_PHASE pid38448 tick720141093 dispatched83 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+TEST_PHASE pid38448 tick720141406 dispatched101 screenshot-begin
+TEST_PHASE pid38448 tick720141453 dispatched101 screenshot-end
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000049108B8 UIFrameworkLightWeb pid38448
+TEST_PHASE pid38448 tick720145125 dispatched409 screenshot-begin
+TEST_PHASE pid38448 tick720145171 dispatched409 screenshot-end
+REAL_CLICK client1011,0 40x40 screen1595,70 hit00000000049108B8 UIFrameworkLightWeb pid38448
+TEST_PHASE pid38448 tick720145406 dispatched438 screenshot-begin
+TEST_PHASE pid38448 tick720145453 dispatched438 screenshot-end
+REAL_CLICK client1011,0 40x40 screen1595,70 hit00000000049108B8 UIFrameworkLightWeb pid38448
+REAL_CLICK client8,40 60x28 screen153,294 hit0000000005020914 UIFrameworkLightWeb pid38448
+TEST_PHASE pid38448 tick720146625 dispatched527 screenshot-begin
+TEST_PHASE pid38448 tick720146671 dispatched527 screenshot-end
+TEST_PHASE pid38448 tick720146921 dispatched536 screenshot-begin
+TEST_PHASE pid38448 tick720146968 dispatched536 screenshot-end
+TEST_PHASE pid38448 tick720147296 dispatched550 screenshot-begin
+TEST_PHASE pid38448 tick720147328 dispatched550 screenshot-end
+TEST_PHASE pid38448 tick720147328 dispatched550 instances-close-begin
+TEST_PHASE pid38448 tick720147671 dispatched568 screenshot-begin
+TEST_PHASE pid38448 tick720147703 dispatched568 screenshot-end
+TEST_PHASE pid38448 tick720147703 dispatched568 close-begin
+TEST_PHASE pid38448 tick720147703 dispatched568 close-request-return
+TEST_PHASE pid38448 tick720148015 dispatched571 com-uninitialize-begin
+TEST_PHASE pid38448 tick720148015 dispatched571 process-return
+Instance language actual light restore dpi144 failures0
+CASE_END label=restore-144 elapsedMs=9059 exit=0
+CASE_BEGIN label=write-192 utc=2026-10-08T17:46:51.9295573Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\language-evidence-light-2e8010291a1441c3abc5840d191d923b
+INPUT_EVIDENCE real SendInput; final state checked
+TEST_PHASE pid15268 tick720148125 dispatched0 create-host-begin
+TEST_PHASE pid15268 tick720148140 dispatched0 create-host-end
+TEST_PHASE pid15268 tick720148390 dispatched16 screenshot-begin
+TEST_PHASE pid15268 tick720148437 dispatched16 screenshot-end
+TEST_PHASE pid15268 tick720148437 dispatched16 open-begin
+TEST_PHASE pid15268 tick720148593 dispatched16 open-return
+TEST_PHASE pid15268 tick720149203 dispatched45 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+TEST_PHASE pid15268 tick720149203 dispatched45 screenshot-begin
+TEST_PHASE pid15268 tick720149265 dispatched45 screenshot-end
+REAL_CLICK client90,41 128x26 screen356,148 hit0000000004420ADA UIFrameworkLightWeb pid15268
+REAL_CLICK client4,4 312x28 screen549,211 hit0000000004890A14 UIFrameworkLightWeb pid15268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+TEST_PHASE pid15268 tick720149718 dispatched97 screenshot-begin
+TEST_PHASE pid15268 tick720149765 dispatched97 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+CAPTURE hit0000000003660F5A classUIFrameworkLightWeb thread11628 ours11628 GetCapture0000000003660F5A target-thread-capture0000000003660F5A
+ACTUAL_HEADER dpi192 width200 -> 280 hit0000000003660F5A pid15268
+TEST_PHASE pid15268 tick720150281 dispatched127 open-begin
+TEST_PHASE pid15268 tick720150437 dispatched127 open-return
+TEST_PHASE pid15268 tick720151046 dispatched160 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen356,148 hit0000000004420ADA UIFrameworkLightWeb pid15268
+REAL_CLICK client4,32 312x28 screen549,267 hit00000000081A06AC UIFrameworkLightWeb pid15268
+TEST_PHASE pid15268 tick720151796 dispatched244 screenshot-begin
+TEST_PHASE pid15268 tick720151859 dispatched244 screenshot-end
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000004420ADA UIFrameworkLightWeb pid15268
+TEST_PHASE pid15268 tick720155468 dispatched624 screenshot-begin
+TEST_PHASE pid15268 tick720155515 dispatched624 screenshot-end
+REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000004420ADA UIFrameworkLightWeb pid15268
+TEST_PHASE pid15268 tick720155750 dispatched657 screenshot-begin
+TEST_PHASE pid15268 tick720155796 dispatched657 screenshot-end
+REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000004420ADA UIFrameworkLightWeb pid15268
+REAL_CLICK client8,40 59x28 screen170,355 hit0000000006A4061A UIFrameworkLightWeb pid15268
+TEST_PHASE pid15268 tick720156953 dispatched747 screenshot-begin
+TEST_PHASE pid15268 tick720157015 dispatched747 screenshot-end
+TEST_PHASE pid15268 tick720157250 dispatched756 screenshot-begin
+TEST_PHASE pid15268 tick720157312 dispatched756 screenshot-end
+TEST_PHASE pid15268 tick720157625 dispatched770 screenshot-begin
+TEST_PHASE pid15268 tick720157656 dispatched770 screenshot-end
+TEST_PHASE pid15268 tick720157656 dispatched770 instances-close-begin
+TEST_PHASE pid15268 tick720158000 dispatched789 screenshot-begin
+TEST_PHASE pid15268 tick720158031 dispatched789 screenshot-end
+TEST_PHASE pid15268 tick720158031 dispatched789 close-begin
+TEST_PHASE pid15268 tick720158031 dispatched789 close-request-return
+TEST_PHASE pid15268 tick720158343 dispatched792 com-uninitialize-begin
+TEST_PHASE pid15268 tick720158343 dispatched792 process-return
+Instance language actual light write dpi192 failures0
+CASE_END label=write-192 elapsedMs=10309 exit=0
+CASE_BEGIN label=restore-192 utc=2026-10-08T17:47:02.2472987Z evidence=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\language-evidence-light-2e8010291a1441c3abc5840d191d923b
+INPUT_EVIDENCE real SendInput; final state checked
+TEST_PHASE pid7648 tick720158437 dispatched0 create-host-begin
+TEST_PHASE pid7648 tick720158468 dispatched0 create-host-end
+TEST_PHASE pid7648 tick720158703 dispatched16 screenshot-begin
+TEST_PHASE pid7648 tick720158750 dispatched16 screenshot-end
+TEST_PHASE pid7648 tick720158750 dispatched16 open-begin
+TEST_PHASE pid7648 tick720158953 dispatched16 open-return
+TEST_PHASE pid7648 tick720159562 dispatched42 open-settled
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+TEST_PHASE pid7648 tick720159687 dispatched51 open-begin
+TEST_PHASE pid7648 tick720159843 dispatched51 open-return
+TEST_PHASE pid7648 tick720160453 dispatched76 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+TEST_PHASE pid7648 tick720160781 dispatched94 screenshot-begin
+TEST_PHASE pid7648 tick720160828 dispatched94 screenshot-end
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000120D0744 UIFrameworkLightWeb pid7648
+TEST_PHASE pid7648 tick720164515 dispatched402 screenshot-begin
+TEST_PHASE pid7648 tick720164578 dispatched402 screenshot-end
+REAL_CLICK client1014,0 40x40 screen2116,80 hit00000000120D0744 UIFrameworkLightWeb pid7648
+TEST_PHASE pid7648 tick720164812 dispatched431 screenshot-begin
+TEST_PHASE pid7648 tick720164875 dispatched431 screenshot-end
+REAL_CLICK client1014,0 40x40 screen2116,80 hit00000000120D0744 UIFrameworkLightWeb pid7648
+REAL_CLICK client8,40 59x28 screen170,355 hit0000000003FD0BF6 UIFrameworkLightWeb pid7648
+TEST_PHASE pid7648 tick720166046 dispatched521 screenshot-begin
+TEST_PHASE pid7648 tick720166093 dispatched521 screenshot-end
+TEST_PHASE pid7648 tick720166343 dispatched530 screenshot-begin
+TEST_PHASE pid7648 tick720166421 dispatched530 screenshot-end
+TEST_PHASE pid7648 tick720166734 dispatched544 screenshot-begin
+TEST_PHASE pid7648 tick720166765 dispatched544 screenshot-end
+TEST_PHASE pid7648 tick720166765 dispatched544 instances-close-begin
+TEST_PHASE pid7648 tick720167093 dispatched563 screenshot-begin
+TEST_PHASE pid7648 tick720167125 dispatched563 screenshot-end
+TEST_PHASE pid7648 tick720167125 dispatched563 close-begin
+TEST_PHASE pid7648 tick720167125 dispatched563 close-request-return
+TEST_PHASE pid7648 tick720167437 dispatched566 com-uninitialize-begin
+TEST_PHASE pid7648 tick720167437 dispatched566 process-return
+Instance language actual light restore dpi192 failures0
+CASE_END label=restore-192 elapsedMs=9092 exit=0
+LANGUAGE_EVIDENCE=D:\应用软件框架\应用层序框架\build\ui-repair-20261009\baseline\language-evidence-light-2e8010291a1441c3abc5840d191d923b
+<end of output>
+Test time =  64.60 sec
+----------------------------------------------------------
+Test Passed.
+"ui_instance_language_light" end time: Oct 09 01:47 �й���׼ʱ��
+"ui_instance_language_light" time elapsed: 00:01:04
+----------------------------------------------------------
+
+31/64 Testing: ui_visual_ui_light
+31/64 Test: ui_visual_ui_light
+Command: "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline/ui_visual_ui_test.exe" "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+Directory: D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline
+"ui_visual_ui_light" start time: Oct 09 01:47 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Header/content: 8,200 versus 8,200
+Header/content: 8,200 versus 8,200
+Panel title tooltip kind5 capture0000000000000000
+Dock tab tooltip kind5 capture0000000000000000
+Visual actual light DLL / OSMesa / dual instance: 0 failures
+<end of output>
+Test time =   5.61 sec
+----------------------------------------------------------
+Test Passed.
+"ui_visual_ui_light" end time: Oct 09 01:47 �й���׼ʱ��
+"ui_visual_ui_light" time elapsed: 00:00:05
+----------------------------------------------------------
+
+33/64 Testing: ui_api7_integration
+33/64 Test: ui_api7_integration
+Command: "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline/ui_api7_integration_test.exe" "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+Directory: D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline
+"ui_api7_integration" start time: Oct 09 01:47 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=9348
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-light-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+API7 integration: reopen 1
+API7 integration: reopen 2
+API7 integration: reopen 3
+API7 integration: reopen 4
+API7 integration: reopen 5
+API7 integration: reopen 6
+API7 integration: reopen 7
+API7 reopen8 handles 223->223 GDI 3->3 USER 3->3 pending Runtime cleanup=0
+API7 complete offscreen lifecycle created HWNDs=0
+API7 independent light offscreen DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =   9.09 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api7_integration" end time: Oct 09 01:47 �й���׼ʱ��
+"ui_api7_integration" time elapsed: 00:00:09
+----------------------------------------------------------
+
+35/64 Testing: ui_session0_interactive_control
+35/64 Test: ui_session0_interactive_control
+Command: "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline/ui_session0_gl_test.exe" "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline/session0_gl_app.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline/session0-control" "--allow-interactive"
+Directory: D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline
+"ui_session0_interactive_control" start time: Oct 09 01:47 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =  31.76 sec
+----------------------------------------------------------
+Test Passed.
+"ui_session0_interactive_control" end time: Oct 09 01:47 �й���׼ʱ��
+"ui_session0_interactive_control" time elapsed: 00:00:31
+----------------------------------------------------------
+
+37/64 Testing: ui_windowless_gl
+37/64 Test: ui_windowless_gl
+Command: "D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline/ui_offscreen_msaa_test.exe" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline
+"ui_windowless_gl" start time: Oct 09 01:47 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+OSMesa reopen 1 handles=206 loaded=1
+OSMesa reopen 2 handles=206 loaded=1
+OSMesa reopen 3 handles=206 loaded=1
+OSMesa reopen 4 handles=206 loaded=1
+OSMesa reopen 5 handles=206 loaded=1
+OSMesa reopen 6 handles=206 loaded=1
+OSMesa reopen 7 handles=206 loaded=1
+OSMesa reopen 8 handles=206 loaded=1
+OSMesa reopen 9 handles=206 loaded=1
+OSMesa reopen 10 handles=206 loaded=1
+OSMesa reopen 11 handles=206 loaded=1
+OSMesa reopen 12 handles=206 loaded=1
+OSMesa reopen 13 handles=206 loaded=1
+OSMesa reopen 14 handles=206 loaded=1
+OSMesa reopen 15 handles=206 loaded=1
+OSMesa reopen 16 handles=206 loaded=1
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=0, process HWNDs=0, HWND dependency=2
+<end of output>
+Test time =   0.43 sec
+----------------------------------------------------------
+Test Passed.
+"ui_windowless_gl" end time: Oct 09 01:47 �й���׼ʱ��
+"ui_windowless_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 09 01:47 �й���׼ʱ��

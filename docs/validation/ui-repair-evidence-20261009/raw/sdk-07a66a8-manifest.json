@@ -1,0 +1,112 @@
+{
+  "sourceCommit": "07a66a82370db93c49a66c90db5e217a8812e60e",
+  "sdk": "0.9.0-dev",
+  "api": 9,
+  "standard": 9,
+  "applicationAbi": 1,
+  "packageFormat": 1,
+  "architecture": "windows-x64",
+  "runtimeNote": "Match this development snapshot headers/import library/DLL. WebView2 Runtime and explicit OSMesa provider remain external dependencies. Frozen SDK untouched.",
+  "files": [
+    {
+      "path": "include/ui_framework/application.h",
+      "sha256": "4c87d5dab2f59eea1a240e1378849604635222452d785b6d928b792b1c6483ab",
+      "bytes": 8306
+    },
+    {
+      "path": "include/ui_framework/assistant.h",
+      "sha256": "f73a8a11b6faf363710e9bb3d9e92f273ff1fe90ba6863cfd06cb79947e658fe",
+      "bytes": 4771
+    },
+    {
+      "path": "include/ui_framework/components.h",
+      "sha256": "b53e84f337208d80fb8fcb104d70b007c79e00fe38992243ed2ce75d2275e997",
+      "bytes": 13416
+    },
+    {
+      "path": "include/ui_framework/images.h",
+      "sha256": "391bb3234a5fbcd89163ca7508be34beb492c7bfe03b81bf4fce0199532d8431",
+      "bytes": 2294
+    },
+    {
+      "path": "include/ui_framework/language.h",
+      "sha256": "4898dfc284f0c6023d4c020e64855169d576b2144187e0cb10adf1374bd9b9fc",
+      "bytes": 2647
+    },
+    {
+      "path": "include/ui_framework/light_web.h",
+      "sha256": "98df2ed526240575d8ddea17002515dd8be2eacc3ee7e335848f9024b7b43ee2",
+      "bytes": 1116
+    },
+    {
+      "path": "include/ui_framework/menus.h",
+      "sha256": "cb4e57adb360740445d8abf69213625ab43a31968c4a4b7bcc3217ce6ee074c2",
+      "bytes": 3780
+    },
+    {
+      "path": "include/ui_framework/native.h",
+      "sha256": "aeda7449989a4d5d516f3e40891b2fcc2bbc927eb2413fc6d669668bde802272",
+      "bytes": 2895
+    },
+    {
+      "path": "include/ui_framework/opengl.h",
+      "sha256": "84b413b7fed2280acde808810eed1fcf852ed580c277d923232cf29f7d2ca3f6",
+      "bytes": 4066
+    },
+    {
+      "path": "include/ui_framework/package.h",
+      "sha256": "4fe07537379e6a7a83e05ffacd77a3207134dffa6aee8dbaf3a6f2f733c25bf9",
+      "bytes": 2503
+    },
+    {
+      "path": "include/ui_framework/shell.h",
+      "sha256": "bb8b607aa35a1936c0f6d9740527082ac6933953cd764df6d1a356283ab4c86c",
+      "bytes": 5268
+    },
+    {
+      "path": "include/ui_framework/ui.h",
+      "sha256": "5af970d4ee902224c1a9d262bedc3371a2b9ec93b9a762863e67eb336e76803c",
+      "bytes": 22806
+    },
+    {
+      "path": "include/ui_framework/webview2.h",
+      "sha256": "57b3f4e5af2a5f2c53f096e725563752c8e159cbbe054bf42bd741fe7d77c8ca",
+      "bytes": 3370
+    },
+    {
+      "path": "bin/ui_framework.dll",
+      "sha256": "e41334627cd687ca1b0005fbae1927c6d1c6792c50716235f079afd6ca0da593",
+      "bytes": 2190848
+    },
+    {
+      "path": "lib/ui_framework_runtime.lib",
+      "sha256": "fa14d15ec556363c2af99b176b24926bb9e1b5e1eedad4d3dba78fa9cd44ab0a",
+      "bytes": 61690
+    },
+    {
+      "path": "bin/dialog_layout_example.exe",
+      "sha256": "a9fa7da7fa15d87876f76c7ae298913f7b5daa113914fab76cac5bbf6595b6b6",
+      "bytes": 12800
+    },
+    {
+      "path": "docs/dialog-layout.md",
+      "sha256": "85bc8e7b6b741046949e216c647a92bc3c3121f4a793b38118c79a78f7b9f7e5",
+      "bytes": 3638
+    },
+    {
+      "path": "docs/version-policy.md",
+      "sha256": "bbd5a883845ba2308cb8339728cc987c0c55cd7c0290bb800ef92bfc9a33b76b",
+      "bytes": 3812
+    },
+    {
+      "path": "docs/application-development-standard.md",
+      "sha256": "398caf9fb10e98d0151d43c920f1814528572ba272057e0fc7bb4783803e35cc",
+      "bytes": 70149
+    },
+    {
+      "path": "examples/dialog_layout/main.c",
+      "sha256": "439aebffe45abb0bb7cc81dee901ce7a69b7c9a5dee50e09d7be4cafb59d883f",
+      "bytes": 3577
+    }
+  ]
+}

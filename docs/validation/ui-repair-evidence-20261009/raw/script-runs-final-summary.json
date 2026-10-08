@@ -1,0 +1,92 @@
+[
+  {
+    "directory": "build/ui-repair-20261009/baseline/language-evidence-light-11fc02ba8a264571a801fb8264f1571c",
+    "backend": "light",
+    "kind": "language",
+    "cases": 7,
+    "wallSeconds": 66.054559,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "runtimeDllSha256": "e41334627cd687ca1b0005fbae1927c6d1c6792c50716235f079afd6ca0da593",
+    "sourceOfWrapperExit": "matrix-final JUnit and phase exit; manifest has per-case exit only"
+  },
+  {
+    "directory": "build/ui-repair-20261009/baseline/language-evidence-webview2-46d05cad90944be9b57f9c365b33cdf4",
+    "backend": "webview2",
+    "kind": "language",
+    "cases": 7,
+    "wallSeconds": 64.744189,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "runtimeDllSha256": "e41334627cd687ca1b0005fbae1927c6d1c6792c50716235f079afd6ca0da593",
+    "sourceOfWrapperExit": "matrix-final JUnit and phase exit; manifest has per-case exit only"
+  },
+  {
+    "directory": "build/ui-repair-20261009/baseline/state-evidence-light-d5b8b27a5f814d858f9054cf7bd74193",
+    "backend": "light",
+    "kind": "state",
+    "cases": 26,
+    "wallSeconds": 35.587536,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "runtimeDllSha256": "e41334627cd687ca1b0005fbae1927c6d1c6792c50716235f079afd6ca0da593",
+    "sourceOfWrapperExit": "matrix-final JUnit and phase exit; manifest has per-case exit only"
+  },
+  {
+    "directory": "build/ui-repair-20261009/baseline/state-evidence-webview2-9978293ae4ce40489c55375912d48c39",
+    "backend": "webview2",
+    "kind": "state",
+    "cases": 26,
+    "wallSeconds": 33.6483,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "runtimeDllSha256": "e41334627cd687ca1b0005fbae1927c6d1c6792c50716235f079afd6ca0da593",
+    "sourceOfWrapperExit": "matrix-final JUnit and phase exit; manifest has per-case exit only"
+  },
+  {
+    "directory": "build/ui-repair-20261009/osmesa/language-evidence-light-0332a574df5946ec991b37a52f6b3c79",
+    "backend": "light",
+    "kind": "language",
+    "cases": 7,
+    "wallSeconds": 65.726899,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "runtimeDllSha256": "e2909995ec5dc8189df544002b10f96fa6742503056983f5c8cd3a15ed7b58c2",
+    "sourceOfWrapperExit": "matrix-final JUnit and phase exit; manifest has per-case exit only"
+  },
+  {
+    "directory": "build/ui-repair-20261009/osmesa/state-evidence-light-7b608018919e48d1a229b1767ff37702",
+    "backend": "light",
+    "kind": "state",
+    "cases": 26,
+    "wallSeconds": 35.436741,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "runtimeDllSha256": "e2909995ec5dc8189df544002b10f96fa6742503056983f5c8cd3a15ed7b58c2",
+    "sourceOfWrapperExit": "matrix-final JUnit and phase exit; manifest has per-case exit only"
+  }
+]

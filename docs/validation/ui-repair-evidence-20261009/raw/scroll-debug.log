@@ -1,0 +1,476 @@
+SCROLL_HIT x=32 y=78 hit=-1 axis=0 thumb=0,0,0,0 max=0
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=3 first=0 count=39 HRESULT=0 x=19
+CP_POSITION caret=1723 first=1680 count=43 HRESULT=80070057 x=0
+CP_POSITION caret=63 first=29 count=34 HRESULT=80070057 x=0
+CP_POSITION caret=63 first=29 count=34 HRESULT=80070057 x=0
+CP_POSITION caret=63 first=29 count=34 HRESULT=80070057 x=0
+CP_POSITION caret=63 first=29 count=34 HRESULT=80070057 x=0
+CP_POSITION caret=63 first=29 count=34 HRESULT=80070057 x=0
+CP_POSITION caret=63 first=29 count=34 HRESULT=80070057 x=0
+CP_POSITION caret=63 first=29 count=34 HRESULT=80070057 x=0
+CP_POSITION caret=0 first=0 count=39 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=39 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=39 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=39 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=39 HRESULT=0 x=0
+SCROLL_HIT x=28 y=78 hit=20 axis=1 thumb=17,77,128,12 max=637
+SCROLL_HIT x=28 y=78 hit=-1 axis=0 thumb=0,0,0,0 max=0
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+PASS initialize
+PASS layout
+PASS resize
+PASS register panel
+PASS shell
+ENV pid=41168 session=1 program-dpi=96 window-dpi=96 screen=2560x1440
+PASS register public component
+PASS set 41 lines
+PASS mount public FORM
+PASS field presentation
+FIELD x=8 y=66 w=668 h=84
+PASS multiline has multiple visible rows
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717647375 name=form-first button=0 capture=0000000000000000 hit=0000000002870254 class=UIFrameworkLightWeb pid=41168 xy=100,169 focus=0000000002870254
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717648890 name=form-wheel-end button=0 capture=0000000000000000 hit=0000000002870254 class=UIFrameworkLightWeb pid=41168 xy=100,169 focus=0000000002870254
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=717649031 name=form-key-end button=0 capture=0000000000000000 hit=0000000002870254 class=UIFrameworkLightWeb pid=41168 xy=100,169 focus=0000000002870254
+PASS update readonly text
+PASS desktop capture
+FRAME tick=717649218 name=form-update button=0 capture=0000000000000000 hit=0000000002870254 class=UIFrameworkLightWeb pid=41168 xy=100,169 focus=0000000002870254
+PASS SendInput mouse
+PASS short tooltip
+PASS desktop capture
+FRAME tick=717649453 name=short-tip button=0 capture=0000000000000000 hit=0000000002870254 class=UIFrameworkLightWeb pid=41168 xy=113,121 focus=0000000002870254
+PASS tooltip presentation
+TIP detail=35,21
+PASS short tooltip content sized
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717649562 name=tip-leave button=0 capture=0000000000000000 hit=0000000002870254 class=UIFrameworkLightWeb pid=41168 xy=270,349 focus=0000000002870254
+PASS tooltip leave hides
+PASS public hide tooltip
+PASS register public component
+PASS set 41 lines
+PASS show public dialog
+DIALOG outer=456,247
+PASS desktop capture
+FRAME tick=717649796 name=dialog-initial button=0 capture=0000000000000000 hit=000000000487100A class=UIFrameworkPublicRepairProbe pid=41168 xy=270,349 focus=0000000003A90802
+PASS SendInput keyboard
+PASS register public component
+PASS set 41 lines
+PASS mount public FORM
+PASS panel layout
+PASS close unused panel
+PASS 41-line CRLF update
+PASS field height control
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=704,431
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717652093 name=height-28-wheel-end button=0 capture=0000000000000000 hit=0000000002890254 class=UIFrameworkLightWeb pid=41168 xy=75,105 focus=0000000002890254
+PASS readonly update remains intact
+PASS field height control
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=334,431
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+CP_POSITION caret=1131 first=1130 count=25 HRESULT=0 x=9
+SCROLL_HIT x=28 y=78 hit=-1 axis=0 thumb=0,0,0,0 max=0
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+SCROLL_HIT x=28 y=78 hit=-1 axis=0 thumb=0,0,0,0 max=0
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+SCROLL_HIT x=381 y=78 hit=20 axis=0 thumb=375,185,12,24 max=641
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+CP_POSITION caret=1001 first=1000 count=25 HRESULT=0 x=9
+SCROLL_HIT x=116 y=90 hit=-1 axis=0 thumb=0,0,0,0 max=0
+SCROLL_HIT x=82 y=52 hit=-1 axis=0 thumb=0,0,0,0 max=0
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717654265 name=height-65-wheel-end button=0 capture=0000000000000000 hit=0000000002890254 class=UIFrameworkLightWeb pid=41168 xy=75,105 focus=0000000002890254
+PASS readonly update remains intact
+PASS field height control
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=704,431
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717656437 name=height-160-wheel-end button=0 capture=0000000000000000 hit=0000000002890254 class=UIFrameworkLightWeb pid=41168 xy=75,105 focus=0000000002890254
+PASS readonly update remains intact
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS element presentation
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717656937 name=field-scrollbar-end button=0 capture=0000000000000000 hit=0000000002890254 class=UIFrameworkLightWeb pid=41168 xy=75,105 focus=0000000002890254
+PASS unregister first form
+PASS outer form
+PASS outer multiline
+PASS outer final content
+PASS mount outer form
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=334,291
+PASS outer container
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717659031 name=outer-wheel-last-field button=0 capture=0000000000000000 hit=00000000028A0254 class=UIFrameworkLightWeb pid=41168 xy=75,105 focus=000000000487100A
+PASS outer last field state reachable
+PASS accept command
+PASS cancel command
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=704,481
+PASS keyboard dialog
+PASS dialog constraints
+PASS show dialog
+PASS desktop capture
+FRAME tick=717659562 name=single-content-height button=0 capture=0000000000000000 hit=000000000487100A class=UIFrameworkPublicRepairProbe pid=41168 xy=75,105 focus=0000000003AA0802
+PASS modal owner disabled
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS real Enter submits once
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=717659937 name=dialog-tab button=0 capture=0000000000000000 hit=0000000003AA0802 class=UIFrameworkLightWeb pid=41168 xy=224,221 focus=0000000003AA0802
+PASS SendInput keyboard
+PASS real Esc closes modal and restores owner
+PASS dialog reopen
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS real cancel button
+PASS keyboard dialog
+PASS dialog constraints
+SCROLL_HIT x=28 y=114 hit=-1 axis=0 thumb=0,0,0,0 max=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+CP_POSITION caret=0 first=0 count=11 HRESULT=0 x=0
+SCROLL_HIT x=82 y=52 hit=-1 axis=0 thumb=0,0,0,0 max=0
+PASS dialog rows
+PASS dialog multiline
+PASS dialog error
+PASS show dialog
+PASS desktop capture
+FRAME tick=717660671 name=narrow-dialog-initial button=0 capture=0000000000000000 hit=0000000003AB0802 class=UIFrameworkLightWeb pid=41168 xy=190,183 focus=0000000003AB0802
+PASS modal owner disabled
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS real Enter submits once
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=717661046 name=dialog-tab button=0 capture=0000000000000000 hit=0000000003AB0802 class=UIFrameworkLightWeb pid=41168 xy=136,245 focus=0000000003AB0802
+PASS dialog outer
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=717662390 name=dialog-outer-end button=0 capture=0000000000000000 hit=000000000487100A class=UIFrameworkPublicRepairProbe pid=41168 xy=75,105 focus=0000000003AB0802
+PASS dialog last field reachable
+PASS SendInput keyboard
+PASS real Esc closes modal and restores owner
+PASS dialog reopen
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS real cancel button
+PUBLIC PROBE failures=0

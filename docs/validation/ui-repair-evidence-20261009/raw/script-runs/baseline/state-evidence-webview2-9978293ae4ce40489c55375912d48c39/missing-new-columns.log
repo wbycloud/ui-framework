@@ -1,0 +1,12 @@
+TEST_PHASE pid40876 tick722220046 dispatched0 create-host-begin
+TEST_PHASE pid40876 tick722220062 dispatched0 create-host-end
+TEST_PHASE pid40876 tick722220093 dispatched0 open-begin
+TEST_PHASE pid40876 tick722220187 dispatched0 open-return
+TEST_PHASE pid40876 tick722220687 dispatched190 open-settled
+RESTORED modeevolve dpi96 name280 treeCollapsed1
+TEST_PHASE pid40876 tick722220687 dispatched190 close-begin
+TEST_PHASE pid40876 tick722220703 dispatched190 close-request-return
+TEST_PHASE pid40876 tick722220734 dispatched198 close-state-checked
+TEST_PHASE pid40876 tick722221046 dispatched200 com-uninitialize-begin
+TEST_PHASE pid40876 tick722221046 dispatched200 process-return
+Stateful actual webview2 / evolve: 0 failures

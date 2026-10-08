@@ -1,0 +1,66 @@
+PASS initialize
+PASS layout
+PASS resize
+PASS register panel
+PASS shell
+ENV pid=22996 session=1 program-dpi=96 window-dpi=96 screen=2560x1440
+PASS register public component
+PASS set 41 lines
+FAIL mount public FORM
+FAIL field presentation
+FIELD x=0 y=0 w=0 h=0
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715392984 name=form-first button=0 capture=0000000000000000 hit=000000000211106E class=Chrome_RenderWidgetHostHWND pid=33708 xy=24,12 focus=0000000000000000
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715394484 name=form-wheel-end button=0 capture=0000000000000000 hit=000000000211106E class=Chrome_RenderWidgetHostHWND pid=33708 xy=24,12 focus=0000000000000000
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=715394640 name=form-key-end button=0 capture=0000000000000000 hit=000000000211106E class=Chrome_RenderWidgetHostHWND pid=33708 xy=24,12 focus=0000000000000000
+PASS update readonly text
+PASS desktop capture
+FRAME tick=715394875 name=form-update button=0 capture=0000000000000000 hit=000000000211106E class=Chrome_RenderWidgetHostHWND pid=33708 xy=24,12 focus=0000000000000000
+PASS SendInput mouse
+PASS short tooltip
+PASS desktop capture
+FRAME tick=715395109 name=short-tip button=0 capture=0000000000000000 hit=000000000211106E class=Chrome_RenderWidgetHostHWND pid=33708 xy=113,121 focus=0000000000000000
+PASS tooltip presentation
+TIP detail=35,21
+PASS short tooltip content sized
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715395234 name=tip-leave button=0 capture=0000000000000000 hit=000000000211106E class=Chrome_RenderWidgetHostHWND pid=33708 xy=194,192 focus=0000000000000000
+PASS tooltip leave hides
+PASS public hide tooltip
+PASS register public component
+PASS set 41 lines
+FAIL show public dialog
+DIALOG outer=-1286765792,-32287
+PASS desktop capture
+FRAME tick=715395468 name=dialog-initial button=0 capture=0000000000000000 hit=000000000211106E class=Chrome_RenderWidgetHostHWND pid=33708 xy=194,192 focus=0000000000000000
+PASS SendInput keyboard
+PUBLIC PROBE failures=3

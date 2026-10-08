@@ -1,0 +1,190 @@
+PASS initialize
+PASS layout
+PASS resize
+PASS register panel
+PASS shell
+ENV pid=23952 session=1 program-dpi=96 window-dpi=96 screen=2560x1440
+PASS create actual WGL surface
+PASS attach GL
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS panel GL surface
+PASS attach panel GL
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS initial float layout
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719247453 name=floating-title-tip button=0 capture=0000000000000000 hit=0000000003770BF6 class=UIFrameworkLightWeb pid=23952 xy=798,159 focus=0000000007650AF0
+PASS internal title tip visible
+PASS public hide internal title tip
+PASS internal title tip closed by owning host
+PASS SendInput mouse
+PASS drag hides tips
+PASS desktop capture
+FRAME tick=719247593 name=grab button=1 capture=0000000009680780 hit=0000000003770BF6 class=UIFrameworkLightWeb pid=23952 xy=798,159 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719247703 name=held-gl button=1 capture=0000000009680780 hit=0000000007650AF0 class=UiFrameworkSurface pid=23952 xy=782,180 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719247812 name=held-gl button=1 capture=0000000009680780 hit=0000000007650AF0 class=UiFrameworkSurface pid=23952 xy=766,202 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719247921 name=held-gl button=1 capture=0000000009680780 hit=0000000007650AF0 class=UiFrameworkSurface pid=23952 xy=750,223 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719248031 name=held-gl button=1 capture=0000000009680780 hit=0000000007650AF0 class=UiFrameworkSurface pid=23952 xy=734,245 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719248140 name=held-gl button=1 capture=0000000009680780 hit=0000000001CC0A88 class=UiFrameworkWebPanelPopupV2 pid=23952 xy=718,267 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719248250 name=held-gl button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=702,288 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719248359 name=held-gl button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=686,310 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719248468 name=held-gl button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=670,331 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719248578 name=held-gl button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=654,353 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719248687 name=held-gl button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=638,375 focus=0000000009680780
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719248796 name=released button=0 capture=0000000000000000 hit=0000000003770BF6 class=UIFrameworkLightWeb pid=23952 xy=638,371 focus=0000000007650AF0
+PASS released layout
+FLOAT before=712,139,390,240 dpi=96 after=552,351,390,240 dpi=96
+PASS release preserves size
+PASS release preserves grab offset
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719248937 name=corner-hit button=0 capture=0000000000000000 hit=0000000001CC0A88 class=UiFrameworkWebPanelPopupV2 pid=23952 xy=939,588 focus=0000000007650AF0
+corner-parent=0000000001CC0A88 actual-hit=0000000001CC0A88
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719249109 name=cancel-held button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=568,331 focus=0000000009680780
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719249312 name=cancelled button=0 capture=0000000000000000 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=568,331 focus=0000000007650AF0
+PASS Esc restores position and size
+PASS Esc removes preview
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719249500 name=capture-loss-held button=1 capture=0000000009680780 hit=0000000007650AF0 class=UiFrameworkSurface pid=23952 xy=588,406 focus=0000000009680780
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719249781 name=capture-loss button=0 capture=0000000000000000 hit=0000000007650AF0 class=UiFrameworkSurface pid=23952 xy=588,406 focus=0000000007650AF0
+PASS capture loss restores position and size
+PASS capture loss removes preview
+PASS SendInput mouse
+PASS expanded corner received by popup HWND
+PASS corner cursor NWSE
+RESIZE old=390,240 new=440,290
+PASS real corner drag resizes
+PASS desktop capture
+FRAME tick=719250687 name=resized button=0 capture=0000000000000000 hit=0000000001CC0A88 class=UiFrameworkWebPanelPopupV2 pid=23952 xy=985,634 focus=0000000007650AF0
+PASS SendInput mouse
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719250875 name=target-left button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=113,351 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719250968 name=target-right button=1 capture=0000000009680780 hit=0000000009680780 class=UIFrameworkPublicRepairProbe pid=23952 xy=1008,371 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719251078 name=target-bottom button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=548,721 focus=0000000009680780
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719251171 name=docked button=0 capture=0000000000000000 hit=0000000007650AF0 class=UiFrameworkSurface pid=23952 xy=548,721 focus=0000000007650AF0
+PASS real drop docks bottom
+PASS docked frame
+PASS SendInput mouse
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719251343 name=undock-held button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=240,509 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719251453 name=undock-held button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=327,470 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719251546 name=undock-held button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=414,430 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719251671 name=undock-held button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=501,391 focus=0000000009680780
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=719251765 name=undock-held button=1 capture=0000000009680780 hit=0000000011AC0744 class=UiFrameworkSurface pid=23952 xy=588,351 focus=0000000009680780
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=719251875 name=refloated button=0 capture=0000000000000000 hit=0000000003770BF6 class=UIFrameworkLightWeb pid=23952 xy=588,351 focus=0000000007650AF0
+PASS real undock returns floating
+PASS content HWND identity retained
+PASS content focus restored after gestures
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS GL context retained after float dock resize cancel
+PUBLIC PROBE failures=0

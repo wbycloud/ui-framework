@@ -1,0 +1,86 @@
+[
+  {
+    "directory": "build/ui-repair-20261009/baseline/state-evidence-light-f9c350f569bf41108ebb8872e140a3b0",
+    "backend": "light",
+    "kind": "state",
+    "cases": 26,
+    "wallSeconds": 35.438683,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "sourceOfWrapperExit": "matrix CTest JUnit and phase exit; manifest has per-case exit only"
+  },
+  {
+    "directory": "build/ui-repair-20261009/baseline/state-evidence-webview2-832fbd31ac374eb7a885441d43e89b7e",
+    "backend": "webview2",
+    "kind": "state",
+    "cases": 26,
+    "wallSeconds": 35.050615,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "sourceOfWrapperExit": "matrix CTest JUnit and phase exit; manifest has per-case exit only"
+  },
+  {
+    "directory": "build/ui-repair-20261009/osmesa/state-evidence-light-17a2755867ba4d47b72deba38d336e2d",
+    "backend": "light",
+    "kind": "state",
+    "cases": 26,
+    "wallSeconds": 35.378053,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "sourceOfWrapperExit": "matrix CTest JUnit and phase exit; manifest has per-case exit only"
+  },
+  {
+    "directory": "build/ui-repair-20261009/baseline/language-evidence-light-2e8010291a1441c3abc5840d191d923b",
+    "backend": "light",
+    "kind": "language",
+    "cases": 7,
+    "wallSeconds": 64.051931,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "sourceOfWrapperExit": "matrix CTest JUnit and phase exit; manifest has per-case exit only"
+  },
+  {
+    "directory": "build/ui-repair-20261009/baseline/language-evidence-webview2-a7762f7e8f5d45d19305af0dd0c6cdf4",
+    "backend": "webview2",
+    "kind": "language",
+    "cases": 7,
+    "wallSeconds": 68.726455,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "sourceOfWrapperExit": "matrix CTest JUnit and phase exit; manifest has per-case exit only"
+  },
+  {
+    "directory": "build/ui-repair-20261009/osmesa/language-evidence-light-70640d12195c47558be99d2d4a197065",
+    "backend": "light",
+    "kind": "language",
+    "cases": 7,
+    "wallSeconds": 63.706281,
+    "caseExitCodes": [
+      0
+    ],
+    "statuses": [
+      "exited"
+    ],
+    "sourceOfWrapperExit": "matrix CTest JUnit and phase exit; manifest has per-case exit only"
+  }
+]

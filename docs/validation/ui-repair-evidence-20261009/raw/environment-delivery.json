@@ -1,0 +1,40 @@
+{
+  "platform": "Windows-10-10.0.26300-SP0",
+  "uiSession": 1,
+  "monitor": {
+    "effectiveDpi": [
+      96,
+      96
+    ],
+    "rawDpi": [
+      108,
+      108
+    ],
+    "monitorCount": 1,
+    "windowDpi": 96,
+    "programDpi": [
+      96,
+      144,
+      192
+    ]
+  },
+  "compiler": "MSVC 19.50.35727 / C11 / Release / Ninja",
+  "webview2SDK": "1.0.4129.50",
+  "webview2Runtime": "154.0.4258.62",
+  "mesa": "24.3.4",
+  "osmesaSha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+  "dependencies": [
+    {
+      "name": "lexbor",
+      "head": "7fb22cf5664a331d7c24b113489e566767c9c25a",
+      "status": ""
+    },
+    {
+      "name": "quickjs",
+      "head": "2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278",
+      "status": ""
+    }
+  ],
+  "localRemoteTrackingRefs": "refs/remotes/origin/codex/menus-offscreen b6a36fee3f4c1a73818cdb01ea7271ad5abd30db\nrefs/remotes/origin/main b6a36fee3f4c1a73818cdb01ea7271ad5abd30db",
+  "remoteAccess": "None this round; tracking refs are local read-only metadata"
+}

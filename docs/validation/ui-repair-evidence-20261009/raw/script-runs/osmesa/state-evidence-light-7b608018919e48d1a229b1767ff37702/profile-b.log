@@ -1,0 +1,12 @@
+TEST_PHASE pid4204 tick721777093 dispatched0 create-host-begin
+TEST_PHASE pid4204 tick721777109 dispatched0 create-host-end
+TEST_PHASE pid4204 tick721777125 dispatched0 open-begin
+TEST_PHASE pid4204 tick721777328 dispatched0 open-return
+TEST_PHASE pid4204 tick721777828 dispatched39 open-settled
+RESTORED modeprofile-b dpi96 name360 treeCollapsed0
+TEST_PHASE pid4204 tick721777828 dispatched39 close-begin
+TEST_PHASE pid4204 tick721777843 dispatched39 close-request-return
+TEST_PHASE pid4204 tick721777890 dispatched42 close-state-checked
+TEST_PHASE pid4204 tick721778203 dispatched42 com-uninitialize-begin
+TEST_PHASE pid4204 tick721778203 dispatched42 process-return
+Stateful actual light / profile-b: 0 failures

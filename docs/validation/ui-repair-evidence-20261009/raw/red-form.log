@@ -1,0 +1,64 @@
+PASS initialize
+PASS layout
+PASS resize
+PASS register panel
+PASS shell
+ENV pid=49052 session=1 program-dpi=96 window-dpi=96 screen=2560x1440
+PASS register public component
+PASS set 41 lines
+PASS mount public FORM
+PASS field presentation
+FIELD x=8 y=102 w=668 h=28
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715010937 name=form-first button=0 capture=0000000000000000 hit=00000000044D0FBC class=UIFrameworkLightWeb pid=49052 xy=100,205 focus=00000000044D0FBC
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715012437 name=form-wheel-end button=0 capture=0000000000000000 hit=00000000044D0FBC class=UIFrameworkLightWeb pid=49052 xy=100,205 focus=00000000044D0FBC
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=715012578 name=form-key-end button=0 capture=0000000000000000 hit=00000000044D0FBC class=UIFrameworkLightWeb pid=49052 xy=100,205 focus=00000000044D0FBC
+PASS update readonly text
+PASS desktop capture
+FRAME tick=715012765 name=form-update button=0 capture=0000000000000000 hit=00000000044D0FBC class=UIFrameworkLightWeb pid=49052 xy=100,205 focus=00000000044D0FBC
+PASS short tooltip
+PASS desktop capture
+FRAME tick=715012937 name=short-tip button=0 capture=0000000000000000 hit=00000000044D0FBC class=UIFrameworkLightWeb pid=49052 xy=100,205 focus=00000000044D0FBC
+PASS tooltip presentation
+TIP detail=312,172
+FAIL short tooltip content sized
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715013046 name=tip-leave button=0 capture=0000000000000000 hit=00000000044D0FBC class=UIFrameworkLightWeb pid=49052 xy=270,385 focus=00000000044D0FBC
+PASS public hide tooltip
+PASS register public component
+PASS set 41 lines
+PASS show public dialog
+DIALOG outer=440,380
+PASS desktop capture
+FRAME tick=715013250 name=dialog-initial button=0 capture=0000000000000000 hit=000000000B940C5A class=UIFrameworkLightWeb pid=49052 xy=270,385 focus=000000000B940C5A
+PASS SendInput keyboard
+PUBLIC PROBE failures=1

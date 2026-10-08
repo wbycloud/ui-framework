@@ -1,0 +1,34 @@
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+TEST_PHASE pid43216 tick721801703 dispatched0 create-host-begin
+TEST_PHASE pid43216 tick721801718 dispatched0 create-host-end
+TEST_PHASE pid43216 tick721801953 dispatched14 screenshot-begin
+TEST_PHASE pid43216 tick721801984 dispatched14 screenshot-end
+TEST_PHASE pid43216 tick721801984 dispatched14 preferences-begin
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE magic: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+PREFERENCE future: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+TEST_PHASE pid43216 tick721805078 dispatched248 screenshot-begin
+TEST_PHASE pid43216 tick721805093 dispatched248 screenshot-end
+PREFERENCE language: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+PREFERENCE profile: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+PREFERENCE reserved: final=en-US file unchanged
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+TEST_PHASE pid43216 tick721806718 dispatched364 screenshot-begin
+TEST_PHASE pid43216 tick721806734 dispatched364 screenshot-end
+PREFERENCE zh-CN: final=zh-CN file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+PREFERENCE en-US: final=en-US file unchanged
+TEST_PHASE pid43216 tick721807453 dispatched411 preferences-end
+TEST_PHASE pid43216 tick721807765 dispatched414 com-uninitialize-begin
+TEST_PHASE pid43216 tick721807765 dispatched414 process-return
+Complete DLL preferences light failures0

@@ -1,0 +1,61 @@
+{
+  "productCommit": "07a66a82370db93c49a66c90db5e217a8812e60e",
+  "sources": [
+    {
+      "path": "tests/interaction_probe.c",
+      "sha256": "c24c18a48973829cb18a20b04c9518305d7a3ee9ff96bf856f881cd1e82b72d1"
+    },
+    {
+      "path": "tests/display_probe.c",
+      "sha256": "7d0b35ac9fb19473103805d87758e183c3028db64d5ca73acfeb19a9c9b1cdf7"
+    },
+    {
+      "path": "include/ui_framework/components.h",
+      "sha256": "b53e84f337208d80fb8fcb104d70b007c79e00fe38992243ed2ce75d2275e997"
+    },
+    {
+      "path": "include/ui_framework/menus.h",
+      "sha256": "cb4e57adb360740445d8abf69213625ab43a31968c4a4b7bcc3217ce6ee074c2"
+    },
+    {
+      "path": "src/components.c",
+      "sha256": "fdcb828e43d5af4c08e1e060982ba8274a80bff5ad59a5dd58c874f2f9fdab22"
+    },
+    {
+      "path": "src/components.html",
+      "sha256": "4e14b0be1c2ebdfdb856151e9d592677cc177304bc11fbeb9f913dd8970a37c8"
+    },
+    {
+      "path": "src/menus.c",
+      "sha256": "0c9f1525a5f56e6c66f80cff785a829db887404f9861d612bc411320614f64af"
+    },
+    {
+      "path": "src/backends/light_web.c",
+      "sha256": "db31663c9920388a27917cb6fb3ba89a7970be982396f44127e4bdf89ccd4acb"
+    },
+    {
+      "path": "src/backends/light_text.inc",
+      "sha256": "d52a7e6307e9634ce75c8d10be3d920b590047d411acb96f8f3f194bb0e08756"
+    },
+    {
+      "path": "src/backends/light_scroll.inc",
+      "sha256": "acfd19b3cf28cdc969fd39ec70fb3ff95db0d62e299e40d310961338343dd30c"
+    },
+    {
+      "path": "src/platform/win32_shell.c",
+      "sha256": "3dc994ada3c980a98774f3e009690302fa4e0a0c91260749ad479de03d63c469"
+    },
+    {
+      "sha256": "d6db9029f7a2e1c00a859db097f9e4371c29c3d42533b38f77e3029ea032b541",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ui-repair-20261009\\accepted-07-bin\\ui_display_probe.exe",
+      "bytes": 2035200
+    },
+    {
+      "sha256": "a4985927896daa6715812051d5af19986227b7c6c95e6f74da5d828eba29844f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ui-repair-20261009\\accepted-07-bin\\ui_interaction_probe.exe",
+      "bytes": 2135552
+    }
+  ],
+  "captureLoss": "controlled SetCapture/ReleaseCapture after native mouse down",
+  "input": "Windows SendInput OS input path; not hardware/manual acceptance"
+}

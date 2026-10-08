@@ -1,0 +1,99 @@
+{
+  "evidence": "D:\\应用软件框架\\应用层序框架\\build\\ui-repair-20261009\\baseline\\language-evidence-light-11fc02ba8a264571a801fb8264f1571c",
+  "cases": [
+    {
+      "startedUtc": "2026-10-08T18:18:32.0967868Z",
+      "dpi": 96,
+      "status": "exited",
+      "label": "preferences-96",
+      "exitCode": 0,
+      "mode": "preferences",
+      "completedUtc": "2026-10-08T18:18:38.3223806Z",
+      "elapsedMs": 6217
+    },
+    {
+      "startedUtc": "2026-10-08T18:18:38.3278886Z",
+      "dpi": 96,
+      "status": "exited",
+      "label": "write-96",
+      "exitCode": 0,
+      "mode": "write",
+      "completedUtc": "2026-10-08T18:18:48.8056779Z",
+      "elapsedMs": 10469
+    },
+    {
+      "startedUtc": "2026-10-08T18:18:48.8078356Z",
+      "dpi": 96,
+      "status": "exited",
+      "label": "restore-96",
+      "exitCode": 0,
+      "mode": "restore",
+      "completedUtc": "2026-10-08T18:18:57.9358907Z",
+      "elapsedMs": 9121
+    },
+    {
+      "startedUtc": "2026-10-08T18:18:57.9376858Z",
+      "dpi": 144,
+      "status": "exited",
+      "label": "write-144",
+      "exitCode": 0,
+      "mode": "write",
+      "completedUtc": "2026-10-08T18:19:08.5829961Z",
+      "elapsedMs": 10637
+    },
+    {
+      "startedUtc": "2026-10-08T18:19:08.5842497Z",
+      "dpi": 144,
+      "status": "exited",
+      "label": "restore-144",
+      "exitCode": 0,
+      "mode": "restore",
+      "completedUtc": "2026-10-08T18:19:17.8538313Z",
+      "elapsedMs": 9264
+    },
+    {
+      "startedUtc": "2026-10-08T18:19:17.8554917Z",
+      "dpi": 192,
+      "status": "exited",
+      "label": "write-192",
+      "exitCode": 0,
+      "mode": "write",
+      "completedUtc": "2026-10-08T18:19:28.6016497Z",
+      "elapsedMs": 10736
+    },
+    {
+      "startedUtc": "2026-10-08T18:19:28.6028276Z",
+      "dpi": 192,
+      "status": "exited",
+      "label": "restore-192",
+      "exitCode": 0,
+      "mode": "restore",
+      "completedUtc": "2026-10-08T18:19:38.0794871Z",
+      "elapsedMs": 9475
+    }
+  ],
+  "startedUtc": "2026-10-08T18:18:32.0258820Z",
+  "completedUtc": "2026-10-08T18:19:38.0804411Z",
+  "frameworkApi": 9,
+  "backend": "light",
+  "files": [
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+      "sha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ui-repair-20261009\\baseline\\ui_instance_language_test.exe",
+      "sha256": "B0B33FB4C26A270FB6C205C10513A03B3A2D19F58A8A984E590DEF56716A9264"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ui-repair-20261009\\baseline\\stateful_components.uapp",
+      "sha256": "A027D9935F5E8DC9F13400D89FF17BB952B7E13C2C506C6E092826BCE5B338DB"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ui-repair-20261009\\baseline\\ui_framework.dll",
+      "sha256": "E41334627CD687CA1B0005FBAE1927C6D1C6792C50716235F079AFD6CA0DA593"
+    }
+  ],
+  "provider": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+  "input": "real SendInput"
+}

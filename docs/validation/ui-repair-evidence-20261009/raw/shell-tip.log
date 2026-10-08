@@ -1,0 +1,29 @@
+Test project D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline
+      Start 14: ui_workspace_layout
+ 1/12 Test #14: ui_workspace_layout ..............   Passed    4.32 sec
+      Start 40: ui_framework_features_host
+ 2/12 Test #40: ui_framework_features_host .......   Passed   12.01 sec
+      Start 41: ui_menu_desktop
+ 3/12 Test #41: ui_menu_desktop ..................   Passed    7.69 sec
+      Start 42: ui_menu_offscreen
+ 4/12 Test #42: ui_menu_offscreen ................   Passed    0.21 sec
+      Start 43: ui_menu_cascade_offscreen
+ 5/12 Test #43: ui_menu_cascade_offscreen ........   Passed    0.31 sec
+      Start 44: ui_menu_access
+ 6/12 Test #44: ui_menu_access ...................   Passed    0.19 sec
+      Start 50: ui_web_shell_slots
+ 7/12 Test #50: ui_web_shell_slots ...............   Passed    0.13 sec
+      Start 51: ui_floating_web_dpi
+ 8/12 Test #51: ui_floating_web_dpi ..............   Passed    0.16 sec
+      Start 56: ui_native_activation
+ 9/12 Test #56: ui_native_activation .............   Passed    0.65 sec
+      Start 61: ui_workspace7
+10/12 Test #61: ui_workspace7 ....................   Passed    0.25 sec
+      Start 62: ui_native_shell_integration
+11/12 Test #62: ui_native_shell_integration ......   Passed    0.12 sec
+      Start 63: ui_native_responsive
+12/12 Test #63: ui_native_responsive .............   Passed    0.21 sec
+
+100% tests passed, 0 tests failed out of 12
+
+Total Test time (real) =  26.58 sec

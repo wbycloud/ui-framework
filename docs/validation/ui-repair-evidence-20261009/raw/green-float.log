@@ -1,0 +1,102 @@
+PASS initialize
+PASS layout
+PASS resize
+PASS register panel
+PASS shell
+ENV pid=38908 session=1 program-dpi=96 window-dpi=96 screen=2560x1440
+PASS create actual WGL surface
+PASS attach GL
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS initial float layout
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715396031 name=grab button=1 capture=0000000003B20950 hit=00000000041510DC class=UIFrameworkLightWeb pid=38908 xy=798,159 focus=0000000003B20950
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=715396156 name=held-gl button=1 capture=0000000003B20950 hit=000000000F2A1084 class=UiFrameworkWebPanelPopupV2 pid=38908 xy=782,180 focus=0000000003B20950
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=715396250 name=held-gl button=1 capture=0000000003B20950 hit=000000000F2A1084 class=UiFrameworkWebPanelPopupV2 pid=38908 xy=766,202 focus=0000000003B20950
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=715396359 name=held-gl button=1 capture=0000000003B20950 hit=000000000F2A1084 class=UiFrameworkWebPanelPopupV2 pid=38908 xy=750,223 focus=0000000003B20950
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=715396453 name=held-gl button=1 capture=0000000003B20950 hit=000000000F2A1084 class=UiFrameworkWebPanelPopupV2 pid=38908 xy=734,245 focus=0000000003B20950
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=715396562 name=held-gl button=1 capture=0000000003B20950 hit=000000000F2A1084 class=UiFrameworkWebPanelPopupV2 pid=38908 xy=718,267 focus=0000000003B20950
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=715396671 name=held-gl button=1 capture=0000000003B20950 hit=00000000048108C6 class=UiFrameworkSurface pid=38908 xy=702,288 focus=0000000003B20950
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=715396781 name=held-gl button=1 capture=0000000003B20950 hit=00000000048108C6 class=UiFrameworkSurface pid=38908 xy=686,310 focus=0000000003B20950
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=715396890 name=held-gl button=1 capture=0000000003B20950 hit=00000000048108C6 class=UiFrameworkSurface pid=38908 xy=670,331 focus=0000000003B20950
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=715396984 name=held-gl button=1 capture=0000000003B20950 hit=00000000048108C6 class=UiFrameworkSurface pid=38908 xy=654,353 focus=0000000003B20950
+PASS SendInput mouse
+PASS GL pixel rect
+PASS GL context
+PASS GL swap
+PASS desktop capture
+FRAME tick=715397093 name=held-gl button=1 capture=0000000003B20950 hit=00000000048108C6 class=UiFrameworkSurface pid=38908 xy=638,375 focus=0000000003B20950
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715397187 name=released button=0 capture=0000000000000000 hit=00000000041510DC class=UIFrameworkLightWeb pid=38908 xy=638,371 focus=00000000041510DC
+PASS released layout
+FLOAT before=712,139,390,240 dpi=96 after=552,351,390,240 dpi=96
+PASS release preserves size
+PASS release preserves grab offset
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715397296 name=corner-hit button=0 capture=0000000000000000 hit=000000000F2A1084 class=UiFrameworkWebPanelPopupV2 pid=38908 xy=939,588 focus=00000000041510DC
+corner-parent=000000000F2A1084 actual-hit=000000000F2A1084
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715397468 name=cancel-held button=1 capture=0000000003B20950 hit=00000000048108C6 class=UiFrameworkSurface pid=38908 xy=568,331 focus=0000000003B20950
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715397656 name=cancelled button=0 capture=0000000000000000 hit=00000000048108C6 class=UiFrameworkSurface pid=38908 xy=568,331 focus=00000000041510DC
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715397828 name=capture-loss-held button=1 capture=0000000003B20950 hit=000000000F2A1084 class=UiFrameworkWebPanelPopupV2 pid=38908 xy=588,406 focus=0000000003B20950
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=715398046 name=capture-loss button=0 capture=0000000000000000 hit=000000000F2A1084 class=UiFrameworkWebPanelPopupV2 pid=38908 xy=588,406 focus=00000000041510DC
+PUBLIC PROBE failures=0

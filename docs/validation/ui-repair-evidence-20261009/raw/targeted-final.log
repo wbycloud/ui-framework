@@ -1,0 +1,31 @@
+Test project D:/应用软件框架/应用层序框架/build/ui-repair-20261009/baseline
+      Start  9: ui_public_headers_c
+ 1/13 Test  #9: ui_public_headers_c ..............   Passed    0.03 sec
+      Start 10: ui_public_headers_cpp
+ 2/13 Test #10: ui_public_headers_cpp ............   Passed    0.04 sec
+      Start 15: ui_component_layout
+ 3/13 Test #15: ui_component_layout ..............   Passed    1.45 sec
+      Start 18: ui_component_layout_webview2
+ 4/13 Test #18: ui_component_layout_webview2 .....   Passed    5.37 sec
+      Start 20: ui_component_scroll_native
+ 5/13 Test #20: ui_component_scroll_native .......   Passed   21.66 sec
+      Start 22: ui_light_scroll
+ 6/13 Test #22: ui_light_scroll ..................   Passed    0.16 sec
+      Start 23: ui_component_scroll
+ 7/13 Test #23: ui_component_scroll ..............   Passed    0.46 sec
+      Start 42: ui_menu_offscreen
+ 8/13 Test #42: ui_menu_offscreen ................   Passed    0.18 sec
+      Start 44: ui_menu_access
+ 9/13 Test #44: ui_menu_access ...................   Passed    0.19 sec
+      Start 45: ui_web_text_edit
+10/13 Test #45: ui_web_text_edit .................   Passed    0.20 sec
+      Start 49: ui_light_web_dynamic
+11/13 Test #49: ui_light_web_dynamic .............   Passed    0.29 sec
+      Start 51: ui_floating_web_dpi
+12/13 Test #51: ui_floating_web_dpi ..............   Passed    0.15 sec
+      Start 61: ui_workspace7
+13/13 Test #61: ui_workspace7 ....................   Passed    0.23 sec
+
+100% tests passed, 0 tests failed out of 13
+
+Total Test time (real) =  30.70 sec

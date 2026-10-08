@@ -1,0 +1,9 @@
+light/all exit=0 tests=46 failures=0 skipped=1
+light exact-inventory gate=PASS
+osmesa/wgl exit=0 tests=46 failures=0 skipped=1
+osmesa/provider exit=0 tests=7 failures=0 skipped=0
+osmesa exact-inventory gate=PASS
+webview2/wgl exit=0 tests=46 failures=0 skipped=1
+webview2/provider exit=0 tests=7 failures=0 skipped=0
+webview2/runtime exit=0 tests=11 failures=0 skipped=0
+webview2 exact-inventory gate=PASS

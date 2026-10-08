@@ -1,0 +1,16 @@
+{
+  "native": {},
+  "light": {},
+  "osmesa": {
+    "ui_host_repaint": 45.0,
+    "ui_stateful_components_light": 180.0,
+    "ui_instance_language_light": 240.0
+  },
+  "baseline": {
+    "ui_host_repaint": 45.0,
+    "ui_stateful_components_light": 180.0,
+    "ui_instance_language_light": 240.0,
+    "ui_stateful_components_webview2": 240.0,
+    "ui_instance_language_webview2": 300.0
+  }
+}

@@ -1,0 +1,68 @@
+﻿[
+    {
+        "configuration":  "light",
+        "gate":  "PASS",
+        "tests":  46,
+        "failures":  0,
+        "phases":  [
+                       {
+                           "phase":  "all",
+                           "started":  "2026-10-08T18:10:51.3400933Z",
+                           "finished":  "2026-10-08T18:12:12.8467106Z",
+                           "exit":  0
+                       }
+                   ],
+        "skipped":  1,
+        "seconds":  81.5480092
+    },
+    {
+        "configuration":  "osmesa",
+        "gate":  "PASS",
+        "tests":  53,
+        "failures":  0,
+        "phases":  [
+                       {
+                           "phase":  "wgl",
+                           "started":  "2026-10-08T18:12:13.4972125Z",
+                           "finished":  "2026-10-08T18:13:35.3854719Z",
+                           "exit":  0
+                       },
+                       {
+                           "phase":  "provider",
+                           "started":  "2026-10-08T18:13:35.3924813Z",
+                           "finished":  "2026-10-08T18:16:17.8483225Z",
+                           "exit":  0
+                       }
+                   ],
+        "skipped":  1,
+        "seconds":  244.3532766
+    },
+    {
+        "configuration":  "webview2",
+        "gate":  "PASS",
+        "tests":  64,
+        "failures":  0,
+        "phases":  [
+                       {
+                           "phase":  "wgl",
+                           "started":  "2026-10-08T18:16:18.4174523Z",
+                           "finished":  "2026-10-08T18:17:41.7670901Z",
+                           "exit":  0
+                       },
+                       {
+                           "phase":  "provider",
+                           "started":  "2026-10-08T18:17:41.7720905Z",
+                           "finished":  "2026-10-08T18:20:24.8550401Z",
+                           "exit":  0
+                       },
+                       {
+                           "phase":  "runtime",
+                           "started":  "2026-10-08T18:20:24.8560397Z",
+                           "finished":  "2026-10-08T18:23:09.0667447Z",
+                           "exit":  0
+                       }
+                   ],
+        "skipped":  1,
+        "seconds":  410.6513531
+    }
+]

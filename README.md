@@ -22,6 +22,8 @@ API8 后续收敛提供[完整应用存储示例](examples/stateful_components/R
 
 此前API7[交付收敛与CI审计](docs/validation/api7-delivery-validation.md)区分本机运行、托管CI和待验条件；真实应用准备见[业务试点](docs/business-pilot.md)。当前main提供SDK0.9.0开发源码，不代表已发布稳定SDK或GitHub Release。新clone须记录`git rev-parse HEAD`，核对`UI_FRAMEWORK_API_VERSION=9`和CMake版本0.9.0；v0.1.0仍为历史稳定标签，不能替代当前API9。
 
+2026-10-09本地界面修复及公共布局增补见[逐项验收](docs/validation/ui-repair-validation.md)、[FORM/DIALOG布局合同与C示例](docs/dialog-layout.md)。[后续候选方案](docs/workspace-feature-candidates.md)仅交付范围和验收设计；托管超时、历史持续重绘及未定位显示问题没有被新功能替代。
+
 建议按以下顺序阅读：
 
 1. [CHANGELOG](CHANGELOG.md)：版本变化和兼容性分类。

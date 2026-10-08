@@ -1,0 +1,400 @@
+CARET_SCROLL before=0 after=0 caret=3 focus=20
+CARET_SCROLL before=0 after=0 caret=3 focus=20
+CARET_SCROLL before=0 after=0 caret=3 focus=20
+CARET_SCROLL before=0 after=0 caret=3 focus=20
+CARET_SCROLL before=0 after=0 caret=3 focus=20
+CARET_SCROLL before=0 after=0 caret=3 focus=20
+CARET_SCROLL before=703 after=703 caret=1723 focus=20
+CARET_SCROLL before=703 after=38 caret=63 focus=20
+CARET_SCROLL before=0 after=0 caret=63 focus=20
+CARET_SCROLL before=0 after=0 caret=63 focus=20
+CARET_SCROLL before=0 after=0 caret=63 focus=20
+CARET_SCROLL before=0 after=0 caret=63 focus=20
+CARET_SCROLL before=0 after=0 caret=63 focus=20
+CARET_SCROLL before=0 after=0 caret=63 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=759 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+PASS initialize
+PASS layout
+PASS resize
+PASS register panel
+PASS shell
+ENV pid=31512 session=1 program-dpi=96 window-dpi=96 screen=2560x1440
+PASS register public component
+PASS set 41 lines
+PASS mount public FORM
+PASS field presentation
+FIELD x=8 y=66 w=668 h=98
+PASS multiline has multiple visible rows
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718757093 name=form-first button=0 capture=0000000000000000 hit=0000000004110A14 class=UIFrameworkLightWeb pid=31512 xy=100,169 focus=0000000004110A14
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718758578 name=form-wheel-end button=0 capture=0000000000000000 hit=0000000004110A14 class=UIFrameworkLightWeb pid=31512 xy=100,169 focus=0000000004110A14
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=718758781 name=form-key-end button=0 capture=0000000000000000 hit=0000000004110A14 class=UIFrameworkLightWeb pid=31512 xy=100,169 focus=0000000004110A14
+PASS update readonly text
+PASS desktop capture
+FRAME tick=718758968 name=form-update button=0 capture=0000000000000000 hit=0000000004110A14 class=UIFrameworkLightWeb pid=31512 xy=100,169 focus=0000000004110A14
+PASS SendInput mouse
+PASS short tooltip
+PASS desktop capture
+FRAME tick=718759171 name=short-tip button=0 capture=0000000000000000 hit=0000000004110A14 class=UIFrameworkLightWeb pid=31512 xy=113,121 focus=0000000004110A14
+PASS tooltip presentation
+TIP detail=35,21
+PASS short tooltip content sized
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718759265 name=tip-leave button=0 capture=0000000000000000 hit=0000000004110A14 class=UIFrameworkLightWeb pid=31512 xy=270,349 focus=0000000004110A14
+PASS tooltip leave hides
+PASS public hide tooltip
+PASS register public component
+PASS set 41 lines
+PASS show public dialog
+DIALOG outer=456,261
+PASS desktop capture
+FRAME tick=718759531 name=dialog-initial button=0 capture=0000000000000000 hit=000000000F591084 class=UIFrameworkLightWeb pid=31512 xy=270,349 focus=000000000F591084
+PASS SendInput keyboard
+PASS register public component
+PASS set 41 lines
+PASS mount public FORM
+PASS panel layout
+PASS close unused panel
+PASS 41-line CRLF update
+PASS field height control
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=704,431
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718761812 name=height-42-wheel-end button=0 capture=0000000000000000 hit=0000000004130A14 class=UIFrameworkLightWeb pid=31512 xy=75,105 focus=0000000004130A14
+PASS readonly update remains intact
+PASS field height control
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=334,431
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+CARET_SCROLL before=736 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=641 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=1 focus=20
+CARET_SCROLL before=0 after=0 caret=0 focus=20
+CARET_SCROLL before=641 after=0 caret=0 focus=20
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718763984 name=height-65-wheel-end button=0 capture=0000000000000000 hit=0000000004130A14 class=UIFrameworkLightWeb pid=31512 xy=75,105 focus=0000000004130A14
+PASS readonly update remains intact
+PASS field height control
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=704,431
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718766187 name=height-160-wheel-end button=0 capture=0000000000000000 hit=0000000004130A14 class=UIFrameworkLightWeb pid=31512 xy=75,105 focus=0000000004130A14
+PASS readonly update remains intact
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS element presentation
+PASS element presentation
+BAR start=449,169 end=449,297
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718766531 name=bar-grab button=1 capture=0000000004130A14 hit=0000000004130A14 class=UIFrameworkLightWeb pid=31512 xy=449,169 focus=0000000004130A14
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718766656 name=bar-held-end button=1 capture=0000000004130A14 hit=0000000004130A14 class=UIFrameworkLightWeb pid=31512 xy=449,297 focus=0000000004130A14
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718766750 name=bar-released-end button=0 capture=0000000000000000 hit=0000000004130A14 class=UIFrameworkLightWeb pid=31512 xy=449,297 focus=0000000004130A14
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718766843 name=field-scrollbar-end button=0 capture=0000000000000000 hit=0000000004130A14 class=UIFrameworkLightWeb pid=31512 xy=75,105 focus=0000000004130A14
+PASS unregister first form
+PASS outer form
+PASS outer multiline
+PASS outer final content
+PASS mount outer form
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=334,291
+PASS outer container
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718768906 name=outer-wheel-last-field button=0 capture=0000000000000000 hit=0000000004140A14 class=UIFrameworkLightWeb pid=31512 xy=75,105 focus=0000000005790C4C
+PASS outer last field state reachable
+PASS accept command
+PASS cancel command
+PASS program DPI
+PASS physical to logical host size
+PASS reflow after program resize
+DPI program=96 window=96 client-physical=704,481
+PASS keyboard dialog
+PASS dialog constraints
+PASS show dialog
+PASS desktop capture
+FRAME tick=718769375 name=single-content-height button=0 capture=0000000000000000 hit=0000000005790C4C class=UIFrameworkPublicRepairProbe pid=31512 xy=75,105 focus=0000000010570C0C
+CARET_SCROLL before=0 after=0 caret=0 focus=28
+CARET_SCROLL before=0 after=0 caret=0 focus=28
+CARET_SCROLL before=0 after=0 caret=0 focus=28
+CARET_SCROLL before=0 after=0 caret=0 focus=28
+PASS modal owner disabled
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS real Enter submits once
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=718769734 name=dialog-tab button=0 capture=0000000000000000 hit=0000000010570C0C class=UIFrameworkLightWeb pid=31512 xy=224,221 focus=0000000010570C0C
+PASS SendInput keyboard
+PASS real Esc closes modal and restores owner
+PASS dialog reopen
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS real cancel button
+PASS keyboard dialog
+PASS dialog constraints
+PASS dialog rows
+PASS dialog multiline
+PASS dialog error
+PASS show dialog
+PASS desktop capture
+FRAME tick=718770437 name=narrow-dialog-initial button=0 capture=0000000000000000 hit=0000000010580C0C class=UIFrameworkLightWeb pid=31512 xy=190,183 focus=0000000010580C0C
+PASS modal owner disabled
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput keyboard
+PASS real Enter submits once
+PASS SendInput keyboard
+PASS desktop capture
+FRAME tick=718770796 name=dialog-tab button=0 capture=0000000000000000 hit=0000000010580C0C class=UIFrameworkLightWeb pid=31512 xy=136,245 focus=0000000010580C0C
+PASS dialog outer
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS SendInput mouse
+PASS desktop capture
+FRAME tick=718772156 name=dialog-outer-end button=0 capture=0000000000000000 hit=0000000005790C4C class=UIFrameworkPublicRepairProbe pid=31512 xy=75,105 focus=0000000010580C0C
+PASS dialog last field reachable
+PASS SendInput keyboard
+PASS real Esc closes modal and restores owner
+PASS dialog reopen
+PASS element presentation
+PASS SendInput mouse
+PASS SendInput mouse
+PASS real cancel button
+PUBLIC PROBE failures=0

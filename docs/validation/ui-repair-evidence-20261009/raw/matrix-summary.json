@@ -1,0 +1,84 @@
+﻿[
+    {
+        "configuration":  "native",
+        "gate":  "PASS",
+        "tests":  22,
+        "failures":  0,
+        "phases":  [
+                       {
+                           "phase":  "all",
+                           "started":  "2026-10-08T17:38:21.6138341Z",
+                           "finished":  "2026-10-08T17:38:31.0400975Z",
+                           "exit":  0
+                       }
+                   ],
+        "skipped":  1,
+        "seconds":  9.4713768
+    },
+    {
+        "configuration":  "light",
+        "gate":  "PASS",
+        "tests":  46,
+        "failures":  0,
+        "phases":  [
+                       {
+                           "phase":  "all",
+                           "started":  "2026-10-08T17:38:31.1292691Z",
+                           "finished":  "2026-10-08T17:39:52.2439973Z",
+                           "exit":  0
+                       }
+                   ],
+        "skipped":  1,
+        "seconds":  81.136075699999992
+    },
+    {
+        "configuration":  "osmesa",
+        "gate":  "PASS",
+        "tests":  53,
+        "failures":  0,
+        "phases":  [
+                       {
+                           "phase":  "wgl",
+                           "started":  "2026-10-08T17:39:52.2952308Z",
+                           "finished":  "2026-10-08T17:41:13.4428535Z",
+                           "exit":  0
+                       },
+                       {
+                           "phase":  "provider",
+                           "started":  "2026-10-08T17:41:13.4523478Z",
+                           "finished":  "2026-10-08T17:43:54.5630355Z",
+                           "exit":  0
+                       }
+                   ],
+        "skipped":  1,
+        "seconds":  242.2743387
+    },
+    {
+        "configuration":  "webview2",
+        "gate":  "PASS",
+        "tests":  64,
+        "failures":  0,
+        "phases":  [
+                       {
+                           "phase":  "wgl",
+                           "started":  "2026-10-08T17:43:54.6388945Z",
+                           "finished":  "2026-10-08T17:45:17.1774391Z",
+                           "exit":  0
+                       },
+                       {
+                           "phase":  "provider",
+                           "started":  "2026-10-08T17:45:17.1824419Z",
+                           "finished":  "2026-10-08T17:47:58.2762636Z",
+                           "exit":  0
+                       },
+                       {
+                           "phase":  "runtime",
+                           "started":  "2026-10-08T17:47:58.2772634Z",
+                           "finished":  "2026-10-08T17:50:57.2426660Z",
+                           "exit":  0
+                       }
+                   ],
+        "skipped":  1,
+        "seconds":  422.6049711
+    }
+]

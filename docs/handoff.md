@@ -323,3 +323,15 @@ Runtime首轮关闭排空15秒断言失败，后续12取消pending0、句柄291�
 已完成的真实本机WebView2配置62项61通过/0失败/1物理跳过，分阶段WGL45项、OSMesa/provider7项、Runtime10项；独立无Web原生22项21通过/0失败/1物理跳过，独立OSMesa配置52项51通过/0失败/1物理跳过。每后端完整存储26个子进程、语言7个子进程均核验实际退出码；核心系统查询/实例中英文、双实例、布局/列宽、草稿/选择/焦点、模态、实际GL、AI回收、REFUSE/WAIT/卸载及原生鼠标首末/未缓存末列等原门槛保持。
 
 当前本机为Windows10.0.26300/Session1/MSVC19.50/Runtime154.0.4258.62；真实系统仅zh-CN，实例en-US及受控映射另计，实际英文Windows空宿主仍待环境。产品源码/公共头/工作流/CMake/示例无差异，不升级API或重写SDK；封存6d88770 SDK哈希再次匹配原值。原b6a36fee Session0实际GL通过与严格无登录logged_sessions1失败保持独立，本轮仅Session1对照，无新服务复验。原托管超时、历史瞬态/持续重绘、真实IME/物理跨屏/合成/长期人工及严格无登录环境继续待验。本轮本地提交授权不包含下一次推送或远程复验。
+
+## 23. 2026-10-09 界面修复与公共对话框布局本地交付
+
+接手干净main/359085b58d5c69792533e3b781fd002cd481314b，已有f00bbeb宿主精确中英文断言及2fa6f84完整脚本诊断，不重复修复。437份原托管证据和冻结SDK大小/哈希保持；新原始证据在build/ui-repair-20261009，随Git关键证据及完整逐项结论见[本轮验收](validation/ui-repair-validation.md)。本轮仅框架本地工作/提交，没有推送、远程工作流、业务修改、冻结SDK/历史证据/PERF-001改写、graph-engineering、子代理或新会话。
+
+af36e02f5483dd174d91d32da1868dcbb162dc82修复GL上拖动轮廓、抓取偏移/尺寸、实际边角命中和提示生命周期/所属范围；e0dcf788365c0023b57f7f41734f5e488477a70c修复只读多行、Light滚动保持和End尾部，补公共对话框首选/最小/最大客户区及字段行数/高度；07a66a82370db93c49a66c90db5e217a8812e60e修复Light长说明自身换行范围/绘制，保留窗口/离屏像素红例；4fdfcc2d5f679166064355abe08bc8e855f6a5eb只校准Runtime滚动条实际输入点。所有原失败及“探针0失败但画面不合格”保留，不以状态代替可读性。
+
+最终受影响Light/OSMesa/真实Runtime矩阵重跑，加未受最后Light变更影响的native先前执行，共181通过/0失败/4次物理monitor_transition跳过，原预算及精确清单门槛保持。原生SendInput两组浮动各29张桌面过程图，经过GL、目标切换、Esc、受控捕获丢失、实际角点调整、草稿/焦点/HWND/HGLRC保持通过；Light/Runtime真实滚轮及内层滚动条看到完整41行末行，外层最后字段、窄对话框错误/长说明末行及按钮/Enter/Tab/Esc通过。SendInput不是硬件鼠标人工验收，受控capture loss不是外部软件抢占。
+
+SDK0.9.0-dev/API9/标准9、ABI1/包1保持，新增独立完整size描述及三C导出，现有结构偏移/枚举不动；[合同](dialog-layout.md)、公共C示例、版本/标准要求同步。冻结API9无新导出，必须匹配开发commit的headers/import library/DLL。新独立快照ui-framework-sdk0.9.0-dev-api9-07a66a8-windows-x64.zip，SHA256 b5296fba8d39447603222705ab85edcf446fa5c98088d86c76a153a4fd9c60f0；解包C /W4 /WX编译及实际共享DLL调用通过，不覆盖旧包或称稳定发布。
+
+原托管180/240秒超时和历史持续重绘仍未定位；六份本机完整脚本均实际退出不能证明托管已修复。泛化192叠层及窄表头残影未独立复现，保持尚未定位。程序192/窗口96/monitor effective96、raw108分开记录，不冒充物理高DPI。原b6a严格Session0 GL通过和整机无登录logged_sessions1失败分别保留，本轮无当前源码服务复验。真实英文Windows空宿主、硬件鼠标/外部捕获、IME、物理跨屏/边缘合成/长期人工及严格无登录环境另列待验；未来远程运行需新的明确授权。命令搜索、嵌套分割、冻结列/可变行高只交付[后续范围和验收方案](workspace-feature-candidates.md)，不替代遗留缺陷。

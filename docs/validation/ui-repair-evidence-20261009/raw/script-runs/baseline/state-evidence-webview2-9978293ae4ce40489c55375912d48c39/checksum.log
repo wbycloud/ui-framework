@@ -1,0 +1,12 @@
+TEST_PHASE pid21032 tick722225500 dispatched0 create-host-begin
+TEST_PHASE pid21032 tick722225515 dispatched0 create-host-end
+TEST_PHASE pid21032 tick722225546 dispatched0 open-begin
+TEST_PHASE pid21032 tick722225640 dispatched0 open-return
+TEST_PHASE pid21032 tick722226140 dispatched393 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid21032 tick722226140 dispatched393 close-begin
+TEST_PHASE pid21032 tick722226156 dispatched393 close-request-return
+TEST_PHASE pid21032 tick722226187 dispatched401 close-state-checked
+TEST_PHASE pid21032 tick722226500 dispatched403 com-uninitialize-begin
+TEST_PHASE pid21032 tick722226500 dispatched403 process-return
+Stateful actual webview2 / invalid: 0 failures

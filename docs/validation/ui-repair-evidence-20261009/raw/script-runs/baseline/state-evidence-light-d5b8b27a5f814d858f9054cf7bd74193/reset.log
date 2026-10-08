@@ -1,0 +1,12 @@
+TEST_PHASE pid46016 tick722044718 dispatched0 create-host-begin
+TEST_PHASE pid46016 tick722044734 dispatched0 create-host-end
+TEST_PHASE pid46016 tick722044750 dispatched0 open-begin
+TEST_PHASE pid46016 tick722044953 dispatched0 open-return
+TEST_PHASE pid46016 tick722045453 dispatched43 open-settled
+RESTORED modereset dpi96 name280 treeCollapsed1
+TEST_PHASE pid46016 tick722045921 dispatched74 close-begin
+TEST_PHASE pid46016 tick722045953 dispatched74 close-request-return
+TEST_PHASE pid46016 tick722046000 dispatched77 close-state-checked
+TEST_PHASE pid46016 tick722046312 dispatched77 com-uninitialize-begin
+TEST_PHASE pid46016 tick722046312 dispatched77 process-return
+Stateful actual light / reset: 0 failures
