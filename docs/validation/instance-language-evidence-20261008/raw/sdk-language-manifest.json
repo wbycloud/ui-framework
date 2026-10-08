@@ -1,0 +1,138 @@
+﻿{
+    "product_commit":  "6d887703ca1e5bde0cc1e19ea2129d9eb0645a27",
+    "source_snapshot":  "312bce41a6c90e5086a3b60245e13395c989f944",
+    "sdk":  "7c1dbffce1211b2c0654b41d2942b05adbd4c54d111e983d836c27550d8802e1",
+    "files":  [
+                  {
+                      "sha256":  "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F",
+                      "path":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-verify-0a151f15c196\\sdk\\bin\\osmesa.dll"
+                  },
+                  {
+                      "sha256":  "DDB2F079F4B1C8D20613AAAD309B6EDBF51336B16716423B36EDDA82085CE6B4",
+                      "path":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-verify-0a151f15c196\\sdk\\bin\\ui_instance_language_test.exe"
+                  },
+                  {
+                      "sha256":  "8A88323FBD26A195F149332B7D3015FBCE6A282773EAF93BF558A33D22EFB942",
+                      "path":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-verify-0a151f15c196\\sdk\\bin\\stateful_components.uapp"
+                  },
+                  {
+                      "sha256":  "301B79B6417BEA21EC789DCB98A7ECC9AE2EEFF45676624165D05CD9D814E53A",
+                      "path":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-verify-0a151f15c196\\sdk\\bin\\ui_framework.dll"
+                  }
+              ],
+    "runs":  [
+                 {
+                     "backend":  "light",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-preferences",
+                     "dpi":  96,
+                     "mode":  "preferences",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-preferences-96.log"
+                 },
+                 {
+                     "backend":  "light",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-dpi-96",
+                     "dpi":  96,
+                     "mode":  "write",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-write-96.log"
+                 },
+                 {
+                     "backend":  "light",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-dpi-144",
+                     "dpi":  144,
+                     "mode":  "write",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-write-144.log"
+                 },
+                 {
+                     "backend":  "light",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-dpi-192",
+                     "dpi":  192,
+                     "mode":  "write",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-write-192.log"
+                 },
+                 {
+                     "backend":  "light",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-dpi-96",
+                     "dpi":  96,
+                     "mode":  "restore",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-restore-96.log"
+                 },
+                 {
+                     "backend":  "light",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-dpi-144",
+                     "dpi":  144,
+                     "mode":  "restore",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-restore-144.log"
+                 },
+                 {
+                     "backend":  "light",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-dpi-192",
+                     "dpi":  192,
+                     "mode":  "restore",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\light-restore-192.log"
+                 },
+                 {
+                     "backend":  "webview2",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-preferences",
+                     "dpi":  96,
+                     "mode":  "preferences",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-preferences-96.log"
+                 },
+                 {
+                     "backend":  "webview2",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-dpi-96",
+                     "dpi":  96,
+                     "mode":  "write",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-write-96.log"
+                 },
+                 {
+                     "backend":  "webview2",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-dpi-144",
+                     "dpi":  144,
+                     "mode":  "write",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-write-144.log"
+                 },
+                 {
+                     "backend":  "webview2",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-dpi-192",
+                     "dpi":  192,
+                     "mode":  "write",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-write-192.log"
+                 },
+                 {
+                     "backend":  "webview2",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-dpi-96",
+                     "dpi":  96,
+                     "mode":  "restore",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-restore-96.log"
+                 },
+                 {
+                     "backend":  "webview2",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-dpi-144",
+                     "dpi":  144,
+                     "mode":  "restore",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-restore-144.log"
+                 },
+                 {
+                     "backend":  "webview2",
+                     "exit_code":  0,
+                     "profile":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-dpi-192",
+                     "dpi":  192,
+                     "mode":  "restore",
+                     "log":  "D:\\应用软件框架\\应用层序框架\\build\\language-20261008\\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5\\webview2-restore-192.log"
+                 }
+             ],
+    "input":  "real SendInput, exact extracted binaries"
+}

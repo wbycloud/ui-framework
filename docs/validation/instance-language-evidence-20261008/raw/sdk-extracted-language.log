@@ -1,0 +1,465 @@
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE magic: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+PREFERENCE future: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+PREFERENCE language: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+PREFERENCE profile: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+PREFERENCE reserved: final=en-US file unchanged
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+PREFERENCE zh-CN: final=zh-CN file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+PREFERENCE en-US: final=en-US file unchanged
+Complete DLL preferences light failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client4,4 312x28 screen299,126 hit0000000003480822 UIFrameworkLightWeb pid23064
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit00000000117A0B36 classUIFrameworkLightWeb thread46004 ours46004 GetCapture00000000117A0B36 target-thread-capture00000000117A0B36
+ACTUAL_HEADER dpi96 width200 -> 280 hit00000000117A0B36 pid23064
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client4,32 312x28 screen299,154 hit0000000000FC0E1A UIFrameworkLightWeb pid23064
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client1006,0 40x40 screen1074,60 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client1006,0 40x40 screen1074,60 hit00000000012A0010 UIFrameworkLightWeb pid23064
+REAL_CLICK client8,40 58x28 screen133,233 hit000000000616075C UIFrameworkLightWeb pid23064
+Instance language actual light write dpi96 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen279,121 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client4,4 312x28 screen424,168 hit0000000009500B38 UIFrameworkLightWeb pid43856
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+CAPTURE hit00000000092A10C0 classUIFrameworkLightWeb thread23272 ours23272 GetCapture00000000092A10C0 target-thread-capture00000000092A10C0
+ACTUAL_HEADER dpi144 width200 -> 280 hit00000000092A10C0 pid43856
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen279,121 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client4,32 312x28 screen424,210 hit00000000035309F0 UIFrameworkLightWeb pid43856
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000003F80F82 UIFrameworkLightWeb pid43856
+REAL_CLICK client8,40 60x28 screen153,294 hit0000000002FF005A UIFrameworkLightWeb pid43856
+Instance language actual light write dpi144 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen356,148 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client4,4 312x28 screen549,211 hit00000000055010F4 UIFrameworkLightWeb pid43812
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+CAPTURE hit000000000ADF0982 classUIFrameworkLightWeb thread18856 ours18856 GetCapture000000000ADF0982 target-thread-capture000000000ADF0982
+ACTUAL_HEADER dpi192 width200 -> 280 hit000000000ADF0982 pid43812
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen356,148 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client4,32 312x28 screen549,267 hit00000000010F08B8 UIFrameworkLightWeb pid43812
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client1014,0 40x40 screen2116,80 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client1014,0 40x40 screen2116,80 hit00000000057F0E98 UIFrameworkLightWeb pid43812
+REAL_CLICK client8,40 59x28 screen170,355 hit0000000007180752 UIFrameworkLightWeb pid43812
+Instance language actual light write dpi192 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000000C807A4 UIFrameworkLightWeb pid27040
+REAL_CLICK client8,40 58x28 screen133,233 hit000000000A590EAC UIFrameworkLightWeb pid27040
+Instance language actual light restore dpi96 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen215,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+REAL_CLICK client34,4 154x36 screen215,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+REAL_CLICK client34,4 154x36 screen215,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+REAL_CLICK client34,4 154x36 screen215,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+REAL_CLICK client34,4 154x36 screen215,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+REAL_CLICK client34,4 154x36 screen215,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+REAL_CLICK client34,4 154x36 screen215,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+REAL_CLICK client34,4 154x36 screen215,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000001B79078C UIFrameworkLightWeb pid34000
+REAL_CLICK client1011,0 40x40 screen1595,70 hit000000001B79078C UIFrameworkLightWeb pid34000
+REAL_CLICK client1011,0 40x40 screen1595,70 hit000000001B79078C UIFrameworkLightWeb pid34000
+REAL_CLICK client8,40 60x28 screen153,294 hit0000000003D80810 UIFrameworkLightWeb pid34000
+Instance language actual light restore dpi144 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000003E30AF2 UIFrameworkLightWeb pid21304
+REAL_CLICK client8,40 59x28 screen170,355 hit0000000001680956 UIFrameworkLightWeb pid21304
+Instance language actual light restore dpi192 failures0
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE magic: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+PREFERENCE future: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+PREFERENCE language: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+PREFERENCE profile: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+PREFERENCE reserved: final=en-US file unchanged
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+PREFERENCE zh-CN: final=zh-CN file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+PREFERENCE en-US: final=en-US file unchanged
+Complete DLL preferences webview2 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client4,4 312x28 screen299,126 hit0000000004180B74 UIFrameworkLightWeb pid10084
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000008F90A28 classChrome_WidgetWin_0 thread25112 ours25112 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000008F90A28 pid10084
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client4,32 312x28 screen299,154 hit000000001AEE07B4 UIFrameworkLightWeb pid10084
+REAL_CLICK client34,4 154x36 screen159,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client34,4 154x36 screen159,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client34,4 154x36 screen159,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client34,4 154x36 screen159,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client34,4 154x36 screen159,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client34,4 154x36 screen159,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client34,4 154x36 screen159,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client34,4 154x36 screen159,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client1006,0 40x40 screen1074,60 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client1006,0 40x40 screen1074,60 hit000000000A5D0EAC UIFrameworkLightWeb pid10084
+REAL_CLICK client8,40 58x28 screen133,233 hit0000000000E10E2E Chrome_WidgetWin_0 pid10084
+Instance language actual webview2 write dpi96 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen279,121 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client4,4 312x28 screen424,168 hit000000000AF210E2 UIFrameworkLightWeb pid47836
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+CAPTURE hit00000000010D0E1A classChrome_WidgetWin_0 thread44268 ours44268 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi144 width200 -> 280 hit00000000010D0E1A pid47836
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen279,121 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client4,32 312x28 screen424,210 hit0000000006E309B4 UIFrameworkLightWeb pid47836
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client1011,0 40x40 screen1595,70 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client1011,0 40x40 screen1595,70 hit000000000D980C0C UIFrameworkLightWeb pid47836
+REAL_CLICK client8,40 58x28 screen152,294 hit0000000002D110B0 Chrome_WidgetWin_0 pid47836
+Instance language actual webview2 write dpi144 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen356,148 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client4,4 312x28 screen549,211 hit000000001AF007B4 UIFrameworkLightWeb pid8748
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+CAPTURE hit000000000310005A classChrome_WidgetWin_0 thread34468 ours34468 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi192 width200 -> 280 hit000000000310005A pid8748
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen356,148 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client4,32 312x28 screen549,267 hit0000000001710E1C UIFrameworkLightWeb pid8748
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000002290F2A UIFrameworkLightWeb pid8748
+REAL_CLICK client8,40 58x28 screen170,355 hit0000000003660B20 Chrome_WidgetWin_0 pid8748
+Instance language actual webview2 write dpi192 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000001EB0FD2 UIFrameworkLightWeb pid12032
+REAL_CLICK client8,40 58x28 screen133,233 hit0000000001640962 Chrome_WidgetWin_0 pid12032
+Instance language actual webview2 restore dpi96 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+REAL_CLICK client1011,0 40x40 screen1595,70 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+REAL_CLICK client1011,0 40x40 screen1595,70 hit00000000056C0A9C UIFrameworkLightWeb pid44228
+REAL_CLICK client8,40 58x28 screen152,294 hit0000000000690AB4 Chrome_WidgetWin_0 pid44228
+Instance language actual webview2 restore dpi144 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000079F0968 UIFrameworkLightWeb pid49508
+REAL_CLICK client1014,0 40x40 screen2116,80 hit00000000079F0968 UIFrameworkLightWeb pid49508
+REAL_CLICK client1014,0 40x40 screen2116,80 hit00000000079F0968 UIFrameworkLightWeb pid49508
+REAL_CLICK client8,40 58x28 screen170,355 hit0000000006C30C16 Chrome_WidgetWin_0 pid49508
+Instance language actual webview2 restore dpi192 failures0
+SDK_EXTRACTED_FULL_HOST_LANGUAGE=D:\应用软件框架\应用层序框架\build\language-20261008\sdk-language-5eeb1ffa602f4b51b8fae1f88742c2c5

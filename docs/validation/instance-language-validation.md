@@ -62,7 +62,13 @@ Windows x64已登录交互桌面、MSVC19.50.35727.0、C11 Release/Ninja。固�
 
 ## SDK与复验命令
 
-匹配SDK包含include、静态/导入库、共享DLL、宿主、完整.uapp、源代码、固定依赖、许可证、文件哈希和说明。归档身份及解包后的C调用/实际DLL宿主语言验证另附外部证明，不将归档自身哈希写进包内产生自引用。
+匹配SDK已完成：`ui-framework-sdk0.9.0-dev-api9-6d88770-windows-x64.zip`，2648文件、96,297,031字节，SHA256 `7c1dbffce1211b2c0654b41d2942b05adbd4c54d111e983d836c27550d8802e1`。产品6d88770、源码/文档快照312bce4；归档后外部证明另行提交，包内不自包含归档哈希。见[完整身份](instance-language-evidence-20261008/raw/sdk-archive.json)。本地归档位于build/language-20261008，不假定GitHub已提供此未发布文件。
+
+含匹配include、静态/导入库、共享DLL、宿主、完整.uapp、完整源代码、固定Lexbor/QuickJS/WebView2 SDK、OSMesa DLL及Mesa源归档、许可证和逐文件清单。CRC、全部2648文件身份和解包后的实际C11共享调用通过；调用验证设置/查询/通知/文本、拒绝不支持语言、宽度保持。
+
+实际执行解包的ui_instance_language_test.exe、ui_framework.dll、stateful_components.uapp及OSMesa DLL；两后端各10种偏好输入和96/144/192写入/恢复（12个独立进程）真实鼠标通过。[运行身份](instance-language-evidence-20261008/raw/sdk-language-manifest.json)含准确路径/哈希/退出码；不是仓库重编译程序替代交付产物。[SDK Light英文](instance-language-evidence-20261008/sdk-light-english-dark.png)/[中文](instance-language-evidence-20261008/sdk-light-chinese-dark.png)和[Runtime英文](instance-language-evidence-20261008/sdk-webview2-english-dark.png)/[中文](instance-language-evidence-20261008/sdk-webview2-chinese-dark.png)来自解包后的完整窗口，原图/PNG身份另记sdk-screenshots.json。
+
+独立新构建目录只用解包source/.deps，构建实际宿主、完整包、语言测试及GL；语言核心/C++公共头/实际OSMesa GL 3/3通过（0.72秒），[日志](instance-language-evidence-20261008/raw/sdk-offline-tests.log)。MSVC19.50.35727.0、Windows SDK10.0.26100.0；没有网络下载。全部交付文件在实际运行后重新校验仍一致，没有修改SDK内容。
 
 ```powershell
 # x64开发终端；提供方是绝对路径
