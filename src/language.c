@@ -60,7 +60,7 @@ void ui_language_initialize(ui_host_t *host)
 ui_status_t ui_host_get_language(const ui_host_t *host,ui_language_info_t *out)
 {if(!ui_language_thread_ok(host)||!out||out->size<sizeof(*out))return UI_STATUS_INVALID_ARGUMENT;*out=host->language;return UI_STATUS_OK;}
 ui_status_t ui_host_set_language_callback(ui_host_t *host,ui_language_callback_fn callback,void *data)
-{if(!ui_language_thread_ok(host))return UI_STATUS_INVALID_ARGUMENT;if(host->dispatch_blocked)return UI_STATUS_CANCELLED;host->language_callback=callback;host->language_data=data;return UI_STATUS_OK;}
+{if(!ui_language_thread_ok(host))return UI_STATUS_INVALID_ARGUMENT;if(host->dispatch_blocked&&callback)return UI_STATUS_CANCELLED;host->language_callback=callback;host->language_data=callback?data:NULL;return UI_STATUS_OK;}
 static ui_status_t apply_language(ui_host_t *host,const ui_language_info_t *value)
 {
  char json[160];if(host->language_changing||host->dispatch_blocked)return UI_STATUS_CANCELLED;

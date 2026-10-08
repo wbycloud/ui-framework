@@ -26,7 +26,8 @@ typedef void (*ui_language_callback_fn)(ui_host_t *,const ui_language_info_t *,v
  * Notification is synchronous once per effective/source change, guarded by the
  * normal dispatch scope. Query/text updates are allowed in the callback;
  * recursive language setting/reset returns CANCELLED. Info is callback-borrowed.
- * One app-owned callback per host, NULL removes it. Host destruction discards it.
+ * One app-owned callback per host, NULL removes it, including closing/unmount.
+ * Registering during blocked dispatch fails CANCELLED. Destruction discards it.
  * Also emits ui.host.language_changed to the existing workspace observer. */
 UI_API ui_status_t ui_host_set_language(ui_host_t *,const char *);
 UI_API ui_status_t ui_host_reset_language(ui_host_t *);
