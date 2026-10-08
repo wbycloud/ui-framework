@@ -1,0 +1,18 @@
+TEST_PHASE pid23644 tick712874859 dispatched0 create-host-begin
+TEST_PHASE pid23644 tick712874875 dispatched0 create-host-end
+TEST_PHASE pid23644 tick712874906 dispatched0 open-begin
+TEST_PHASE pid23644 tick712875015 dispatched0 open-return
+TEST_PHASE pid23644 tick712875515 dispatched189 open-settled
+RESTORED modeisolation dpi96 name280 treeCollapsed1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000003D6061A classChrome_WidgetWin_0 thread43756 ours43756 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000003D6061A pid23644
+HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+CAPTURE hit0000000003D6061A classChrome_WidgetWin_0 thread43756 ours43756 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width280 -> 360 hit0000000003D6061A pid23644
+TEST_PHASE pid23644 tick712876781 dispatched610 close-begin
+TEST_PHASE pid23644 tick712876796 dispatched610 close-request-return
+TEST_PHASE pid23644 tick712876843 dispatched622 close-state-checked
+TEST_PHASE pid23644 tick712877156 dispatched627 com-uninitialize-begin
+TEST_PHASE pid23644 tick712877156 dispatched627 process-return
+Stateful actual webview2 / isolation: 0 failures

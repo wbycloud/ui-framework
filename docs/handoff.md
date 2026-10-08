@@ -2,6 +2,8 @@
 
 更新日期：2026-10-08。当前SDK0.9.0-dev/API9/标准9，应用ABI1/包格式1。完整源码已普通快进同步至GitHub main及codex/menus-offscreen，已核验远端提交b6a36fee3f4c1a73818cdb01ea7271ad5abd30db。该提交的托管CI有失败；当前Session0实际GL通过，严格整机无登录失败。先读[同步与CI记录](validation/github-sync-validation.md)、第21节及[新会话提示词](ci-recovery-prompt.md)，不要沿用第19节当时“未推送/当前Session0待权限”的状态。第19节[API9本机验收](validation/instance-language-validation.md)、第18节及更早各节保留原提交、环境和失败，不继承为当前CI通过。保留95f5d78/6a0170a视觉、9df202f/2e87e02捕获及异步轨道、f0b161c列序与捕获修复。共同组件无分页按钮，原预算与生命周期保持，只维护当前API9；本地交付、托管CI、Session0及物理人工条件分别报告。
 
+本地CI收敛的最新接续见第22节及[本轮验收](validation/ci-recovery-validation.md)：宿主语言断言已有本地修正，原托管存储/语言超时仍待定位。远端原结果、Session0 GL及严格无登录分别保留，不能把本机通过当作远程复验。
+
 ## 1. 恢复顺序与版本
 
 1. 检查 `git status --short`、`git branch --show-current` 和 `git log -3 --oneline`；先保留接手时的用户改动。
@@ -309,3 +311,15 @@ Runtime首轮关闭排空15秒断言失败，后续12取消pending0、句柄291�
 本机原始证据位于D:\应用软件框架\应用层序框架\build\github-sync-20261008：report.md、result.json、evidence-sha256.json（437个证据文件）以及main各配置/Session0和工作分支原ZIP、JUnit、manifest、资源与像素。该目录被Git忽略，clone不会带入；同机新会话先保留并核验，其他机器从上述运行下载Artifacts/日志，若已失效则如实标缺失，不重新生成冒充原证据。不要依赖其中临时网络辅助脚本，也不要输出凭据。
 
 本次交接只更新文档、保存提示词并本地提交，不启动修复、构建、测试或远程工作流。本次源码同步授权已执行完，不解释为后续修复无限推送授权；新会话先核对实际状态，完成本地诊断/修复及必要回归，远程验证与推送需新的明确授权。原业务仓库、冻结SDK、历史包/证据、PERF-001保持只读，不使用graph-engineering、子代理或新会话，不扩大到新功能或后端。真实IME、物理不同DPI/桌面合成/长期人工及严格无登录条件仍待验。
+
+## 22. 2026-10-08 API9托管失败的本地收敛
+
+接手干净main/1756b067，live远端main与codex/menus-offscreen均b6a36fee。437份原CI证据长度/SHA256全部匹配，原目录保持只读；新复现、构建和回归在build/ci-recovery-20261008，关键原始日志及产物身份另存[本轮证据](validation/ci-recovery-validation.md)。没有执行prepare覆盖固定依赖，没有推送或远程工作流。
+
+本地f00bbeb790c64ad40c10b3ec1622a65331d3495e修正三项宿主测试的固定中文断言。空宿主依据公共Windows显示语言和来源核验完整空提示；前端两实例提交中英文并交换，保持原参数/草稿/大整数/预算/一次执行语义；repaint逐断言诊断的英文红例准确失败在“操作完成”匹配，失效区清空、Dispatch1、空闲paint0和关闭window0。修正后中英文完整GL结果、request/instance及实际图片呈现通过，未声称历史持续重绘已根治。
+
+本地2fa6f84cb1ca202d54ff822971ca908c2e6dc36f仅补完整存储/语言脚本的阶段、PID/tick/Dispatch、elapsedMs/实际exitCode和running/exited manifest；CI新增language-evidence-*归档。原调用/消息泵/真实SendInput/关闭/DLL卸载及全部存储/语言输入保持，180/240/300秒和资源门槛未改。原托管Timeout本机未复现、根因仍未定位，诊断补充不能写成超时修复。
+
+已完成的真实本机WebView2配置62项61通过/0失败/1物理跳过，分阶段WGL45项、OSMesa/provider7项、Runtime10项；独立无Web原生22项21通过/0失败/1物理跳过，独立OSMesa配置52项51通过/0失败/1物理跳过。每后端完整存储26个子进程、语言7个子进程均核验实际退出码；核心系统查询/实例中英文、双实例、布局/列宽、草稿/选择/焦点、模态、实际GL、AI回收、REFUSE/WAIT/卸载及原生鼠标首末/未缓存末列等原门槛保持。
+
+当前本机为Windows10.0.26300/Session1/MSVC19.50/Runtime154.0.4258.62；真实系统仅zh-CN，实例en-US及受控映射另计，实际英文Windows空宿主仍待环境。产品源码/公共头/工作流/CMake/示例无差异，不升级API或重写SDK；封存6d88770 SDK哈希再次匹配原值。原b6a36fee Session0实际GL通过与严格无登录logged_sessions1失败保持独立，本轮仅Session1对照，无新服务复验。原托管超时、历史瞬态/持续重绘、真实IME/物理跨屏/合成/长期人工及严格无登录环境继续待验。本轮本地提交授权不包含下一次推送或远程复验。

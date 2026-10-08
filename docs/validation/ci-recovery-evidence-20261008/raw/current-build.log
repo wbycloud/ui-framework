@@ -1,0 +1,84 @@
+[1/93] Building RC object CMakeFiles\framework_host.dir\generated\host.rc.res
+[2/93] Building C object CMakeFiles\ui_framework_shared.dir\src\menus.c.obj
+[3/93] Building C object CMakeFiles\ui_framework.dir\src\menus.c.obj
+[4/93] Building C object CMakeFiles\ui_framework_shared.dir\src\platform\win32_shell.c.obj
+[5/93] Building C object CMakeFiles\ui_framework.dir\src\platform\win32_shell.c.obj
+[6/93] Building C object CMakeFiles\ui_framework.dir\src\backends\webview2.c.obj
+[7/93] Building C object CMakeFiles\ui_framework_shared.dir\src\backends\webview2.c.obj
+[8/93] Building C object CMakeFiles\ui_framework_shared.dir\src\components.c.obj
+[9/93] Building C object CMakeFiles\ui_framework.dir\src\components.c.obj
+[10/93] Linking C static library ui_framework.lib
+[11/93] Linking C shared library ui_framework.dll
+[12/75] Linking C executable uapp_pack.exe
+[13/75] Linking C executable ui_language_core_test.exe
+[14/75] Linking C executable light_web_probe.exe
+[15/75] Generating web_counter.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/web_counter.uapp
+[16/75] Generating minimal_eda.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/minimal_eda.uapp
+[17/75] Generating generic_components.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/generic_components.uapp
+[18/75] Generating counter_mismatch.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/counter_mismatch.uapp
+[19/75] Generating framework_features.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/framework_features.uapp
+[20/75] Generating api7_fixture.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/api7_fixture.uapp
+[21/75] Generating stateful_components.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/stateful_components.uapp
+[22/75] Generating session0_gl_app.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/session0_gl_app.uapp
+[23/75] Generating cpp_fixture.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/cpp_fixture.uapp
+[24/75] Building RC object CMakeFiles\ui_browser_host_test.dir\generated\host.rc.res
+[25/75] Building RC object CMakeFiles\ui_generic_web_host_test.dir\generated\host.rc.res
+[26/75] Linking C executable minimal_eda.exe
+[27/75] Linking C executable webview2_probe.exe
+[28/75] Building RC object CMakeFiles\ui_framework_features_host_test.dir\generated\host.rc.res
+[29/75] Building RC object CMakeFiles\ui_menu_desktop_test.dir\generated\host.rc.res
+[30/75] Linking C executable ui_offscreen_gl_test.exe
+[31/75] Linking C executable ui_workspace_layout_test.exe
+[32/75] Linking C executable ui_menu_access_test.exe
+[33/75] Linking C executable ui_package_format_test.exe
+[34/75] Linking C executable ui_light_scroll_test.exe
+[35/75] Linking C executable ui_opengl_integration_test.exe
+[36/75] Linking C executable ui_floating_web_dpi_test.exe
+[37/75] Linking C executable ui_light_web_dynamic_test.exe
+[38/75] Linking C executable ui_webview2_messages_test.exe
+[39/75] Linking C executable ui_menu_offscreen_test.exe
+[40/75] Linking C executable ui_web_shell_slots_test.exe
+[41/75] Linking C executable ui_dpi_integration_test.exe
+[42/75] Linking C executable ui_component_experience_test.exe
+[43/75] Linking C executable ui_native_activation_test.exe
+[44/75] Linking C executable ui_component_widths_test.exe
+[45/75] Linking C executable ui_web_text_edit_test.exe
+[46/75] Linking C executable ui_menu_cascade_offscreen_test.exe
+[47/75] Linking C executable ui_surface_input_test.exe
+[48/75] Building RC object CMakeFiles\ui_stateful_components_test.dir\generated\host.rc.res
+[49/75] Linking C executable framework_host.exe
+[50/75] Building RC object CMakeFiles\ui_instance_language_test.dir\generated\host.rc.res
+[51/75] Linking C executable ui_monitor_transition_test.exe
+[52/75] Linking C executable ui_component_scroll_test.exe
+[53/75] Building C object CMakeFiles\ui_browser_host_test.dir\tests\browser_host.c.obj
+[54/75] Building RC object CMakeFiles\ui_visual_ui_test.dir\generated\host.rc.res
+[55/75] Building RC object CMakeFiles\ui_component_resilience_test.dir\generated\host.rc.res
+[56/75] Building RC object CMakeFiles\ui_host_repaint_test.dir\generated\host.rc.res
+[57/75] Building RC object CMakeFiles\ui_web_host_frontend_test.dir\generated\host.rc.res
+[58/75] Linking C executable ui_framework_features_host_test.exe
+[59/75] Linking C executable ui_menu_desktop_test.exe
+[60/75] Linking C executable ui_generic_web_host_test.exe
+[61/75] Linking C executable ui_component_resilience_test.exe
+[62/75] Linking C executable ui_visual_ui_test.exe
+[63/75] Linking C executable ui_assistant_protocol_test.exe
+[64/75] Linking C executable ui_browser_host_test.exe
+[65/75] Linking C executable ui_native_shell_integration_test.exe
+[66/75] Linking C executable ui_workspace7_test.exe
+[67/75] Linking C executable ui_native_responsive_test.exe
+[68/75] Building C object CMakeFiles\ui_host_repaint_test.dir\tests\host_repaint.c.obj
+[69/75] Building C object CMakeFiles\ui_stateful_components_test.dir\tests\stateful_components.c.obj
+[70/75] Building C object CMakeFiles\ui_web_host_frontend_test.dir\tests\web_host_frontend.c.obj
+[71/75] Building C object CMakeFiles\ui_instance_language_test.dir\tests\instance_language.c.obj
+[72/75] Linking C executable ui_host_repaint_test.exe
+[73/75] Linking C executable ui_stateful_components_test.exe
+[74/75] Linking C executable ui_instance_language_test.exe
+[75/75] Linking C executable ui_web_host_frontend_test.exe

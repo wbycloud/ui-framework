@@ -1,0 +1,99 @@
+{
+  "evidence": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\language-evidence-webview2-ab010ecb6d424bd7b26e1cfbe40450c5",
+  "completedUtc": "2026-10-08T15:47:15.9940232Z",
+  "cases": [
+    {
+      "exitCode": 0,
+      "mode": "preferences",
+      "status": "exited",
+      "elapsedMs": 14629,
+      "label": "preferences-96",
+      "startedUtc": "2026-10-08T15:46:04.5762957Z",
+      "completedUtc": "2026-10-08T15:46:19.2129511Z",
+      "dpi": 96
+    },
+    {
+      "exitCode": 0,
+      "mode": "write",
+      "status": "exited",
+      "elapsedMs": 9996,
+      "label": "write-96",
+      "startedUtc": "2026-10-08T15:46:19.2192053Z",
+      "completedUtc": "2026-10-08T15:46:29.2177214Z",
+      "dpi": 96
+    },
+    {
+      "exitCode": 0,
+      "mode": "restore",
+      "status": "exited",
+      "elapsedMs": 8598,
+      "label": "restore-96",
+      "startedUtc": "2026-10-08T15:46:29.2198236Z",
+      "completedUtc": "2026-10-08T15:46:37.8285310Z",
+      "dpi": 96
+    },
+    {
+      "exitCode": 0,
+      "mode": "write",
+      "status": "exited",
+      "elapsedMs": 10402,
+      "label": "write-144",
+      "startedUtc": "2026-10-08T15:46:37.8303921Z",
+      "completedUtc": "2026-10-08T15:46:48.2392660Z",
+      "dpi": 144
+    },
+    {
+      "exitCode": 0,
+      "mode": "restore",
+      "status": "exited",
+      "elapsedMs": 8750,
+      "label": "restore-144",
+      "startedUtc": "2026-10-08T15:46:48.2405198Z",
+      "completedUtc": "2026-10-08T15:46:56.9952437Z",
+      "dpi": 144
+    },
+    {
+      "exitCode": 0,
+      "mode": "write",
+      "status": "exited",
+      "elapsedMs": 10223,
+      "label": "write-192",
+      "startedUtc": "2026-10-08T15:46:56.9968937Z",
+      "completedUtc": "2026-10-08T15:47:07.2301823Z",
+      "dpi": 192
+    },
+    {
+      "exitCode": 0,
+      "mode": "restore",
+      "status": "exited",
+      "elapsedMs": 8749,
+      "label": "restore-192",
+      "startedUtc": "2026-10-08T15:47:07.2313447Z",
+      "completedUtc": "2026-10-08T15:47:15.9931247Z",
+      "dpi": 192
+    }
+  ],
+  "frameworkApi": 9,
+  "startedUtc": "2026-10-08T15:46:04.5051626Z",
+  "files": [
+    {
+      "sha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F",
+      "path": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll"
+    },
+    {
+      "sha256": "8BA87B74A18B0D9AC8D733676D89AF21B34C746CE216368C8240A28127502D4D",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_instance_language_test.exe"
+    },
+    {
+      "sha256": "849E40F1BBAC3E71883E49D2854F30B676C30EB3A0CE5DD1730419A60D2D2A3A",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\stateful_components.uapp"
+    },
+    {
+      "sha256": "0FFF7943A2B6DD767614634C5C7B6C0D06FC8F0F0E8F7048E045127119F222CC",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_framework.dll"
+    }
+  ],
+  "input": "real SendInput",
+  "backend": "webview2",
+  "provider": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll"
+}

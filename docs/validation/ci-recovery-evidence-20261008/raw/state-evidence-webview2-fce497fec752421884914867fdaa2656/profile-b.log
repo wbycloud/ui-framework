@@ -1,0 +1,12 @@
+TEST_PHASE pid10084 tick712877250 dispatched0 create-host-begin
+TEST_PHASE pid10084 tick712877265 dispatched0 create-host-end
+TEST_PHASE pid10084 tick712877296 dispatched0 open-begin
+TEST_PHASE pid10084 tick712877406 dispatched0 open-return
+TEST_PHASE pid10084 tick712877906 dispatched384 open-settled
+RESTORED modeprofile-b dpi96 name360 treeCollapsed0
+TEST_PHASE pid10084 tick712877906 dispatched384 close-begin
+TEST_PHASE pid10084 tick712877921 dispatched384 close-request-return
+TEST_PHASE pid10084 tick712877968 dispatched392 close-state-checked
+TEST_PHASE pid10084 tick712878281 dispatched393 com-uninitialize-begin
+TEST_PHASE pid10084 tick712878281 dispatched393 process-return
+Stateful actual webview2 / profile-b: 0 failures

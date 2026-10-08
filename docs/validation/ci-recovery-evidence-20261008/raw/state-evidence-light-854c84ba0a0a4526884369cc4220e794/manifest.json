@@ -1,0 +1,274 @@
+{
+  "frameworkApi": 9,
+  "startedUtc": "2026-10-08T15:42:02.9837164Z",
+  "cases": [
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:04.6937796Z",
+      "mode": "write",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:02.9987090Z",
+      "elapsedMs": 1685,
+      "label": "write-96",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:05.9518060Z",
+      "mode": "restore",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:04.6983926Z",
+      "elapsedMs": 1247,
+      "label": "restore-96",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:07.6632155Z",
+      "mode": "write",
+      "dpi": 144,
+      "startedUtc": "2026-10-08T15:42:05.9545789Z",
+      "elapsedMs": 1702,
+      "label": "write-144",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:08.9382773Z",
+      "mode": "restore",
+      "dpi": 144,
+      "startedUtc": "2026-10-08T15:42:07.6644588Z",
+      "elapsedMs": 1262,
+      "label": "restore-144",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:10.8098768Z",
+      "mode": "write",
+      "dpi": 192,
+      "startedUtc": "2026-10-08T15:42:08.9398764Z",
+      "elapsedMs": 1869,
+      "label": "write-192",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:12.0962499Z",
+      "mode": "restore",
+      "dpi": 192,
+      "startedUtc": "2026-10-08T15:42:10.8112002Z",
+      "elapsedMs": 1284,
+      "label": "restore-192",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:14.6980375Z",
+      "mode": "isolation",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:12.1074655Z",
+      "elapsedMs": 2587,
+      "label": "isolation",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:15.9296134Z",
+      "mode": "profile-b",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:14.6994866Z",
+      "elapsedMs": 1220,
+      "label": "profile-b",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:17.4182528Z",
+      "mode": "reload",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:15.9325347Z",
+      "elapsedMs": 1478,
+      "label": "reload",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:18.6692789Z",
+      "mode": "locked-profile",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:17.4191683Z",
+      "elapsedMs": 1243,
+      "label": "locked-profile",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:19.9028686Z",
+      "mode": "restore",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:18.6704404Z",
+      "elapsedMs": 1231,
+      "label": "reordered-columns",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:21.1252016Z",
+      "mode": "evolve",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:19.9040259Z",
+      "elapsedMs": 1216,
+      "label": "missing-new-columns",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:22.3277021Z",
+      "mode": "invalid",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:21.1301785Z",
+      "elapsedMs": 1192,
+      "label": "empty",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:23.5281350Z",
+      "mode": "invalid",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:22.3317129Z",
+      "elapsedMs": 1194,
+      "label": "truncated",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:24.7314073Z",
+      "mode": "invalid",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:23.5308237Z",
+      "elapsedMs": 1196,
+      "label": "oversized",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:25.9332490Z",
+      "mode": "invalid",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:24.7479589Z",
+      "elapsedMs": 1184,
+      "label": "magic",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:27.1529573Z",
+      "mode": "invalid",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:25.9375364Z",
+      "elapsedMs": 1202,
+      "label": "checksum",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:28.3553632Z",
+      "mode": "invalid",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:27.1548264Z",
+      "elapsedMs": 1194,
+      "label": "future",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:29.6111054Z",
+      "mode": "invalid",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:28.3570192Z",
+      "elapsedMs": 1239,
+      "label": "columns-reserved",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:30.8570579Z",
+      "mode": "invalid",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:29.6126740Z",
+      "elapsedMs": 1238,
+      "label": "columns-future",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:32.1041878Z",
+      "mode": "invalid",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:30.8625592Z",
+      "elapsedMs": 1233,
+      "label": "layout-future",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:33.3593382Z",
+      "mode": "invalid",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:32.1058745Z",
+      "elapsedMs": 1246,
+      "label": "layout-invalid",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:34.5411041Z",
+      "mode": "defaults",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:33.3606227Z",
+      "elapsedMs": 1175,
+      "label": "missing-file",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:36.1000689Z",
+      "mode": "init-failures",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:34.5487815Z",
+      "elapsedMs": 1545,
+      "label": "failed-create-mount-lock-release",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:37.7531173Z",
+      "mode": "reset",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:36.1009780Z",
+      "elapsedMs": 1646,
+      "label": "reset",
+      "exitCode": 0
+    },
+    {
+      "status": "exited",
+      "completedUtc": "2026-10-08T15:42:38.9992685Z",
+      "mode": "defaults",
+      "dpi": 96,
+      "startedUtc": "2026-10-08T15:42:37.7544213Z",
+      "elapsedMs": 1238,
+      "label": "reset-cross-process",
+      "exitCode": 0
+    }
+  ],
+  "packageSha256": "849E40F1BBAC3E71883E49D2854F30B676C30EB3A0CE5DD1730419A60D2D2A3A",
+  "providerSha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F",
+  "provider": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+  "backend": "light",
+  "executableSha256": "3FD14018863FCA3F479B682503087912D4FA79AB927F41F7F4D4A6A548D9F939",
+  "evidence": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\state-evidence-light-854c84ba0a0a4526884369cc4220e794",
+  "runtimeDllSha256": "0FFF7943A2B6DD767614634C5C7B6C0D06FC8F0F0E8F7048E045127119F222CC",
+  "completedUtc": "2026-10-08T15:42:39.0000793Z"
+}

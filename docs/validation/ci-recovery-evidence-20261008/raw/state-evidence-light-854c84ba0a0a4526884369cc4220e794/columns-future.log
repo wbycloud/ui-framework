@@ -1,0 +1,12 @@
+TEST_PHASE pid16860 tick712685906 dispatched0 create-host-begin
+TEST_PHASE pid16860 tick712685921 dispatched0 create-host-end
+TEST_PHASE pid16860 tick712685953 dispatched0 open-begin
+TEST_PHASE pid16860 tick712686171 dispatched0 open-return
+TEST_PHASE pid16860 tick712686671 dispatched41 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid16860 tick712686671 dispatched41 close-begin
+TEST_PHASE pid16860 tick712686703 dispatched41 close-request-return
+TEST_PHASE pid16860 tick712686750 dispatched44 close-state-checked
+TEST_PHASE pid16860 tick712687062 dispatched44 com-uninitialize-begin
+TEST_PHASE pid16860 tick712687062 dispatched44 process-return
+Stateful actual light / invalid: 0 failures

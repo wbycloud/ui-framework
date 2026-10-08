@@ -1,0 +1,1136 @@
+{
+  "baseline": "1756b06725c44078960b6f9c9b1a354adfcaee51",
+  "hostTests": "f00bbeb790c64ad40c10b3ec1622a65331d3495e",
+  "diagnostics": "2fa6f84cb1ca202d54ff822971ca908c2e6dc36f",
+  "builtBeforeLocalCommit": true,
+  "productSourceUnchanged": true,
+  "publicHeadersUnchanged": true,
+  "files": [
+    {
+      "sha256": "2c36c887d3bdb97119e5b357f0d6b5bdb704e59b463061a5a3fb1aa82df67137",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\api7_fixture.uapp",
+      "configuration": "current",
+      "bytes": 21893
+    },
+    {
+      "sha256": "dc89c0456e6846ecb4bbf7418d6b94598af76208cff3d43f918a89d05390327f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\counter_mismatch.uapp",
+      "configuration": "current",
+      "bytes": 134445
+    },
+    {
+      "sha256": "851c6cabe6eed6bb9c8038477feea0cbca9d5a9246493757de2fd451b43e614b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\cpp_fixture.uapp",
+      "configuration": "current",
+      "bytes": 145195
+    },
+    {
+      "sha256": "880e5f75bb06f7c4e532c4a7cfdefd58ddd5230d3c54ec6d66cd1c106b92a785",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\framework_features_app.dll",
+      "configuration": "current",
+      "bytes": 26624
+    },
+    {
+      "sha256": "1874baa53e1ead040a65ee154fe6699a86a588b33b7dbb4e0bd19f9cd16b0820",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\framework_features.uapp",
+      "configuration": "current",
+      "bytes": 27113
+    },
+    {
+      "sha256": "c72783fe528dff4f68df1fea1f7497657a90253cee02434cea0ea1fb3117a8ca",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\framework_host.exe",
+      "configuration": "current",
+      "bytes": 257024
+    },
+    {
+      "sha256": "9ba3170bd0c0f9bec42c2ad47220aacd8e2c8f603dd677951ad38379baf39b0e",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\generic_components_app.dll",
+      "configuration": "current",
+      "bytes": 25088
+    },
+    {
+      "sha256": "a8b4d351093b460f2a6f45eaa8d1f09e0598e2f13051c38fef8e7cb886e851af",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\generic_components.uapp",
+      "configuration": "current",
+      "bytes": 25573
+    },
+    {
+      "sha256": "d26f3d2d09a898acb7d0c6df27922fef009d7700ce549e7294a03fc7e34e5bd3",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\light_web_probe.exe",
+      "configuration": "current",
+      "bytes": 1991168
+    },
+    {
+      "sha256": "0acb087a34e9fafb857846c35a6e17dc708257069e891070eb79a99ed2d6c6fa",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\minimal_eda_app.dll",
+      "configuration": "current",
+      "bytes": 151040
+    },
+    {
+      "sha256": "fb727e756b2610930dc3f46ab6c25f091dd171b8813f0c42ec771c7377b8999d",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\minimal_eda.exe",
+      "configuration": "current",
+      "bytes": 2020352
+    },
+    {
+      "sha256": "6407284f5b1d133c11930d05e347f0b17ee04e7f79c2c0720c92f33e45d230bc",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\minimal_eda.uapp",
+      "configuration": "current",
+      "bytes": 151810
+    },
+    {
+      "sha256": "554d6703e0d94eea0c46d0534397ea8a4057c8c57733403089a78d8e443d5b7d",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\session0_gl_app.uapp",
+      "configuration": "current",
+      "bytes": 19850
+    },
+    {
+      "sha256": "bb880c1c4fbee0efa82d84531dd26af3ac9e70bdf519ce42bf6892bba88bf7d8",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\stateful_components_app.dll",
+      "configuration": "current",
+      "bytes": 38400
+    },
+    {
+      "sha256": "849e40f1bbac3e71883e49d2854f30b676c30eb3a0ce5dd1730419a60d2d2a3a",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\stateful_components.uapp",
+      "configuration": "current",
+      "bytes": 38799
+    },
+    {
+      "sha256": "27ef3c79ea6a1c4d6f3cb96ce8463e6d58c4a821a3ba2d14c5963ae7f9a7976a",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\uapp_pack.exe",
+      "configuration": "current",
+      "bytes": 1942016
+    },
+    {
+      "sha256": "184796367c89ca5dcca3527e1df63894b48bf717dc0c74aea2ca32c413e17ec6",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_api7_fixture.dll",
+      "configuration": "current",
+      "bytes": 21504
+    },
+    {
+      "sha256": "62349aaa268bb142f02f3c3380ba6532704a882c43b010dac6e71ef5e5c24a8f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_api7_integration_test.exe",
+      "configuration": "current",
+      "bytes": 39424
+    },
+    {
+      "sha256": "029aad234e25f6ee74202639ac08df97fda8144b49c28bc608811e7e4b116cb6",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_application_contract_test.exe",
+      "configuration": "current",
+      "bytes": 140288
+    },
+    {
+      "sha256": "9022f904654dfcb68b6a39c19bd6bc70a329f9f8aac4130b01655d9c780ea23c",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_application_cpp.dll",
+      "configuration": "current",
+      "bytes": 144896
+    },
+    {
+      "sha256": "4a198fda676c869c621ef9d55feceea08060d14de562747593829f52b832174e",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_assistant_lifecycle_test.exe",
+      "configuration": "current",
+      "bytes": 61440
+    },
+    {
+      "sha256": "a5f0b099bee4177b9f7ce8178ca643f55231634447b2087ab0ca0cc3e490da47",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_assistant_protocol_test.exe",
+      "configuration": "current",
+      "bytes": 1958912
+    },
+    {
+      "sha256": "b5b45782c662e25ad6521e692f3a20034c4cf6d1e8d13f18b73a0b1832e152f3",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_browser_host_test.exe",
+      "configuration": "current",
+      "bytes": 293888
+    },
+    {
+      "sha256": "6346cc28488f4f42ddf1a4aee7db8a5c92ec6393aae75a9a79cb203215acdc22",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_component_experience_test.exe",
+      "configuration": "current",
+      "bytes": 2112000
+    },
+    {
+      "sha256": "99accfa16d46313566fc0811daf930311e41a0a53156808980ad79b4ceccbeff",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_component_resilience_test.exe",
+      "configuration": "current",
+      "bytes": 129024
+    },
+    {
+      "sha256": "66c2e5ffd3252e5b3d8e10a26b303c1fddb0c0b13fcdfcb27ddd8aa16f7bf1cb",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_component_scroll_native_test.exe",
+      "configuration": "current",
+      "bytes": 31232
+    },
+    {
+      "sha256": "25e1ccf03e93ae7fe9cdc0dde83fb5c052c776b831cde486c31cc7c6dd27bbc0",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_component_scroll_test.exe",
+      "configuration": "current",
+      "bytes": 2098176
+    },
+    {
+      "sha256": "b833bb30bd41a19cf5bcc7d19811075a715bf3976584c1b924382c52aacf47b6",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_component_widths_test.exe",
+      "configuration": "current",
+      "bytes": 2104832
+    },
+    {
+      "sha256": "ba085f318db822eb9d9c1a0aacf45be7461bd93adab5134bc067e3b270d69dd7",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_components_core_test.exe",
+      "configuration": "current",
+      "bytes": 73216
+    },
+    {
+      "sha256": "3d6ea3d0ca163b6049b9802b7edd84da26ce56a8e959cac3456b124f0b0e8c64",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_dpi_integration_test.exe",
+      "configuration": "current",
+      "bytes": 1992192
+    },
+    {
+      "sha256": "f0ec225521de489e6c4b5f29a38e874777cc2ef0c4d32e677b48f36b4afffa93",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_dpi_web_failure_test.exe",
+      "configuration": "current",
+      "bytes": 58880
+    },
+    {
+      "sha256": "5e58fe2da01045d2da87fa85102bd55ce71af6fc974f9036a84ff8cf8bf86063",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_floating_web_dpi_test.exe",
+      "configuration": "current",
+      "bytes": 1997824
+    },
+    {
+      "sha256": "5fb4056b016e6459057f12439fa97d40c370eace21aeadad9ea17c255b6c48a4",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_framework_features_host_test.exe",
+      "configuration": "current",
+      "bytes": 122368
+    },
+    {
+      "sha256": "0fff7943a2b6dd767614634c5c7b6c0d06fc8f0f0e8f7048e045127119f222cc",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_framework.dll",
+      "configuration": "current",
+      "bytes": 2182656
+    },
+    {
+      "sha256": "0f33a783904f8e32f8196b82316fbd91655cd2b026d99a06b5bc89297699e282",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_generic_web_host_test.exe",
+      "configuration": "current",
+      "bytes": 124928
+    },
+    {
+      "sha256": "3f5da196717649034fdd64edf4a94a451b2fd4660d1bda5b17f71f7e0cee25a6",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_headless_example.exe",
+      "configuration": "current",
+      "bytes": 60416
+    },
+    {
+      "sha256": "e6630a61cb5dada904e2bfc4110497c8349d15adf2afd34da9bc0a45a6817253",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_host_repaint_test.exe",
+      "configuration": "current",
+      "bytes": 116224
+    },
+    {
+      "sha256": "5b80d71bc74f1ead1d9f0784902f1692dec76cbeb0bd19e79845b051be931cb7",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_images_windows_test.exe",
+      "configuration": "current",
+      "bytes": 58880
+    },
+    {
+      "sha256": "8ba87b74a18b0d9ac8d733676d89af21b34c746ce216368c8240a28127502d4d",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_instance_language_test.exe",
+      "configuration": "current",
+      "bytes": 135680
+    },
+    {
+      "sha256": "1d263453aa32a77ed44f01407c08c4f6b878c57a13c47b6b110ef4a4c091c11f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_language_core_test.exe",
+      "configuration": "current",
+      "bytes": 1981952
+    },
+    {
+      "sha256": "39ecdc70f3b443f9409cd205a5c1e76c8afff6c055894c4239b6653f747f3708",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_lifecycle_fixture.dll",
+      "configuration": "current",
+      "bytes": 138240
+    },
+    {
+      "sha256": "5064127f5754541e042f7b77db9db57bd524efc70f50156b21221b3e1f9a2d31",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_light_glyph_padding_test.exe",
+      "configuration": "current",
+      "bytes": 12800
+    },
+    {
+      "sha256": "02584262079645695220e13b4ca44e18e80f4f7b9cbfd61accea96f0cb526313",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_light_scroll_test.exe",
+      "configuration": "current",
+      "bytes": 1959936
+    },
+    {
+      "sha256": "2372b484bab5063a30de79e8543f61d8c496460d95e84143592a8949f0fb0eb6",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_light_web_dynamic_test.exe",
+      "configuration": "current",
+      "bytes": 1960960
+    },
+    {
+      "sha256": "b3e6127246265bf40cd7887438ac6dda491fbc3c0884fa34d6f7b42a7611a836",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_menu_access_test.exe",
+      "configuration": "current",
+      "bytes": 2003456
+    },
+    {
+      "sha256": "589a1512a76b5fe91cef6c88838b76cdd019325ec594738ab8d139babb099c8f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_menu_cascade_offscreen_test.exe",
+      "configuration": "current",
+      "bytes": 1981440
+    },
+    {
+      "sha256": "69d8a595f22e9dba2e95646edf7965b6ed03511adbcb7194cb96caa2db97f943",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_menu_desktop_test.exe",
+      "configuration": "current",
+      "bytes": 130048
+    },
+    {
+      "sha256": "2e490811fa17a2877df678426362f4b78792c698c990d45b69784336cb34e60b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_menu_offscreen_test.exe",
+      "configuration": "current",
+      "bytes": 2010624
+    },
+    {
+      "sha256": "14124c2587a173f21ad9e2d81350866e964c5c77932f7f15218cfffce1383e1c",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_monitor_transition_test.exe",
+      "configuration": "current",
+      "bytes": 1982464
+    },
+    {
+      "sha256": "212c69b3c169cf5ec68a798d8b0ffacacbaf92018837596730748c18a4d8ba28",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_native_activation_test.exe",
+      "configuration": "current",
+      "bytes": 2020352
+    },
+    {
+      "sha256": "fc0ad996628b1200e8e8237b9a21632aedcb91c90dc0a4b252ba2320f954fe20",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_native_responsive_test.exe",
+      "configuration": "current",
+      "bytes": 2009600
+    },
+    {
+      "sha256": "2c272fbcf03bb6728819ec4a4062d0b0e4a95338472e32c34e723ebeaec4bcb5",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_native_shell_integration_test.exe",
+      "configuration": "current",
+      "bytes": 2004992
+    },
+    {
+      "sha256": "25f9203b2c1d4d4cd146185d51e87349726a783f2154538a8f484bf847f30392",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_offscreen_gl_test.exe",
+      "configuration": "current",
+      "bytes": 1998336
+    },
+    {
+      "sha256": "7bb862dea2d1b1cedc314428e5b61f073d59a9960e3e2c4ef85b4d12af8b02e1",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_offscreen_msaa_test.exe",
+      "configuration": "current",
+      "bytes": 19968
+    },
+    {
+      "sha256": "8dbd2b03fb357dc62b6dc91c506442096c0eb667079d29305d9fbef171383167",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_opengl_integration_test.exe",
+      "configuration": "current",
+      "bytes": 1999360
+    },
+    {
+      "sha256": "e198b2bfb769fe49f17ee842b7ed215c990b8469681c2257604b93caa0740e22",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_package_format_test.exe",
+      "configuration": "current",
+      "bytes": 1958400
+    },
+    {
+      "sha256": "a5a5662b56af922a4b44df78aba533e7c1688b6573e20f7e33a46a1bcc8365cd",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_public_headers_c_test.exe",
+      "configuration": "current",
+      "bytes": 57344
+    },
+    {
+      "sha256": "ca4bbaa6584e5a664bb1a9a0e0709ee9e21338ddda9bf63acc877d4ecfae9687",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_public_headers_cpp_test.exe",
+      "configuration": "current",
+      "bytes": 52224
+    },
+    {
+      "sha256": "e52e1e122310d6385eaf287a54734aef57f18069b6d98cecf90844422d1d802c",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_responsive_layout_test.exe",
+      "configuration": "current",
+      "bytes": 62976
+    },
+    {
+      "sha256": "882785403968f7ce324d88b59730f8bc99719cfcbc9966b90533e2d7a41b0710",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_session0_gl_app.dll",
+      "configuration": "current",
+      "bytes": 19456
+    },
+    {
+      "sha256": "7466db6602193ece4caafb780685685d7eae8e8fcb6612061115e20fe131715f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_session0_gl_test.exe",
+      "configuration": "current",
+      "bytes": 28672
+    },
+    {
+      "sha256": "3fd14018863fca3f479b682503087912d4fa79ab927f41f7f4d4a6a548d9f939",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_stateful_components_test.exe",
+      "configuration": "current",
+      "bytes": 126464
+    },
+    {
+      "sha256": "cf2f13c29c07c972d86e7fff5d559140ccd60bd21cba0f6322296b2c5f36ef34",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_surface_input_test.exe",
+      "configuration": "current",
+      "bytes": 1991680
+    },
+    {
+      "sha256": "b9d36200f3f64759f2fc9637de42da90cbf51a2005204db43662af465963d0eb",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_visual_ui_test.exe",
+      "configuration": "current",
+      "bytes": 129536
+    },
+    {
+      "sha256": "2c9ffeb65db939aea0b2fa13f47f916f4f648a2b30f5c885fcbb4e92e5a102bd",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_web_host_frontend_test.exe",
+      "configuration": "current",
+      "bytes": 306688
+    },
+    {
+      "sha256": "a1c762784658d83f9ea91f2659d03dc9ecdf8d4e5f1c3be054049e908f837e2f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_web_shell_slots_test.exe",
+      "configuration": "current",
+      "bytes": 2018304
+    },
+    {
+      "sha256": "b61cbed4731204992de0d51d2dc69e9469fffa6f43b31af58a9e162d7b4b640b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_web_text_edit_test.exe",
+      "configuration": "current",
+      "bytes": 1957376
+    },
+    {
+      "sha256": "28f9c394c3716e7e8c24ba201b773c389a4053a31b7c3887d2493ee036a76329",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_webview2_messages_test.exe",
+      "configuration": "current",
+      "bytes": 2017792
+    },
+    {
+      "sha256": "1ac5c5b38fa214e32fc026592279d92ce886fc10de38c670d9780c992eed568c",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_webview2_render_test.exe",
+      "configuration": "current",
+      "bytes": 22528
+    },
+    {
+      "sha256": "6dbc21d4f87a4ae23f0fcab16b3ba08a5c5d5c4089ebef6c518537db318a0179",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_workspace_integration_test.exe",
+      "configuration": "current",
+      "bytes": 196608
+    },
+    {
+      "sha256": "bf5279089d47fbdf626394d54db8ab15963147fa76e6513615f0aa117c9d8ff8",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_workspace_layout_test.exe",
+      "configuration": "current",
+      "bytes": 2014720
+    },
+    {
+      "sha256": "1d82f2a9176b8bee09d2a9a362b32b8b8368b9dbbb7cf26774bb3d400e288d4d",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_workspace_offscreen_test.exe",
+      "configuration": "current",
+      "bytes": 20480
+    },
+    {
+      "sha256": "0fd191db6296f88b598e4e4d8f42fdb8ea6885e7576517861e3a01e11458c80b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\ui_workspace7_test.exe",
+      "configuration": "current",
+      "bytes": 2010112
+    },
+    {
+      "sha256": "b49d50b4f83194f9177e6c9a6c748962d9d45ea99e9f2a03611b7a09693df4cd",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\web_counter_app.dll",
+      "configuration": "current",
+      "bytes": 134144
+    },
+    {
+      "sha256": "10375b83450dc95608c4c6f2d75451ea2f74aa650a33ad5fd1ae0ae91029401b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\web_counter.uapp",
+      "configuration": "current",
+      "bytes": 134445
+    },
+    {
+      "sha256": "22145b7bca0b324ff8acb8d1dea714751c70a16061a85f9bad5b0a455d87e82d",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\current\\webview2_probe.exe",
+      "configuration": "current",
+      "bytes": 2046976
+    },
+    {
+      "sha256": "b72bf83c627615ee209b81691f7560011a9c6b43b90bd42b9ef2e1c2d9945f24",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\cpp_fixture.uapp",
+      "configuration": "native",
+      "bytes": 145195
+    },
+    {
+      "sha256": "d8917f809ee2cb00bfa8d42fa80f67f8b2657564832868ff833549360dff3edc",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\minimal_eda_app.dll",
+      "configuration": "native",
+      "bytes": 151040
+    },
+    {
+      "sha256": "286296c4cd80fcd4c608a7f4e855434b1e5fc7fb4faf8ccde8de22e850783edc",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\minimal_eda.exe",
+      "configuration": "native",
+      "bytes": 123904
+    },
+    {
+      "sha256": "29b27efd9dce2c46d58acb9569b5f862270d99039d950584ce5cb7cb7a81545d",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\minimal_eda.uapp",
+      "configuration": "native",
+      "bytes": 151810
+    },
+    {
+      "sha256": "cb68d3e339ea50c7f6f11078582fd39dad2a347a449c7986691c5fdf14306ec4",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\session0_gl_app.uapp",
+      "configuration": "native",
+      "bytes": 19850
+    },
+    {
+      "sha256": "03a20bf78db33c4fc50008369bbd1daf6aafcd8994f686ae2044100b5717964c",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\uapp_pack.exe",
+      "configuration": "native",
+      "bytes": 39424
+    },
+    {
+      "sha256": "9f2ed4878d482405ecb291a3b0cea3a8e7d78490db4d86f5914501c958607adf",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_application_cpp.dll",
+      "configuration": "native",
+      "bytes": 144896
+    },
+    {
+      "sha256": "b3559448af5c4c9dff17e6d99f3ec57802962167ffad35f695eb2926f79e518c",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_assistant_lifecycle_test.exe",
+      "configuration": "native",
+      "bytes": 61440
+    },
+    {
+      "sha256": "198ca4a6b5a04486c314a1752d598486a5429557ec0e114732264c3182c869ac",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_assistant_protocol_test.exe",
+      "configuration": "native",
+      "bytes": 62464
+    },
+    {
+      "sha256": "207ffd17e9ef0b1e31c00d55d6732aab9f5550308445fa614614e11c1170e960",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_components_core_test.exe",
+      "configuration": "native",
+      "bytes": 73216
+    },
+    {
+      "sha256": "8eb10edb08ca9f17607ac8a1e95b567a2564983b824d9aeefea5bf758492e427",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_dpi_integration_test.exe",
+      "configuration": "native",
+      "bytes": 89600
+    },
+    {
+      "sha256": "1b4e4ca22331f1bc6a77e63abec45804ef5b9d60e9594eb6dd16d60f5a8d9923",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_dpi_web_failure_test.exe",
+      "configuration": "native",
+      "bytes": 58880
+    },
+    {
+      "sha256": "080a02a02fefa2416c936f8674c397067312d04142844ca69a814871b185c5bf",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_framework.dll",
+      "configuration": "native",
+      "bytes": 389632
+    },
+    {
+      "sha256": "65c23c3b9a230f68a6db45174473de37698e1cceb544deb6eca1fceaa88e65bb",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_headless_example.exe",
+      "configuration": "native",
+      "bytes": 60416
+    },
+    {
+      "sha256": "bb9d37d34a62ab009856f286f289f913bd4295be5aa27d618dc750868f3fd51c",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_images_windows_test.exe",
+      "configuration": "native",
+      "bytes": 58880
+    },
+    {
+      "sha256": "430e7da3a2f0c74ade3fc0adacf96835b960d39d012a245b582d5d7806e6d79a",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_language_core_test.exe",
+      "configuration": "native",
+      "bytes": 83968
+    },
+    {
+      "sha256": "75aec3bffaf362a65fd3529e4f34bd9635a27c6f3d47a33e87691f269c42b5f8",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_lifecycle_fixture.dll",
+      "configuration": "native",
+      "bytes": 138240
+    },
+    {
+      "sha256": "3e8105bf08591f2dba5b8b92bb9057034fcfffbe851ffeda497c277840984c87",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_monitor_transition_test.exe",
+      "configuration": "native",
+      "bytes": 75264
+    },
+    {
+      "sha256": "db8a480163a7736b43b8ebc44bc8e5aaff7f6f79b7e2a61ab39d038e7def0f3b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_native_activation_test.exe",
+      "configuration": "native",
+      "bytes": 125440
+    },
+    {
+      "sha256": "db6b54ea70ffa72b4688503220014088b6cba64fabc1922d84d14a025179035d",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_native_responsive_test.exe",
+      "configuration": "native",
+      "bytes": 110080
+    },
+    {
+      "sha256": "0b637a2d7361fded76b2b88afa238c57fef80fdd355f03c15b348f1d7c42eaa2",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_native_shell_integration_test.exe",
+      "configuration": "native",
+      "bytes": 104960
+    },
+    {
+      "sha256": "a87de1e96c78566aaf048571c68062397f7acfd3d10591be88026c282e9e17ed",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_offscreen_msaa_test.exe",
+      "configuration": "native",
+      "bytes": 19968
+    },
+    {
+      "sha256": "1d4a694c92901399e7a7d0aec1cf1d11602b13cb3d7bf4f1fe01ae3c056046a2",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_opengl_integration_test.exe",
+      "configuration": "native",
+      "bytes": 96256
+    },
+    {
+      "sha256": "9103140a90f4ead87bbedbbceb679a83892d94a6fc0a00bbf0cfefd678c3ca91",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_package_format_test.exe",
+      "configuration": "native",
+      "bytes": 55296
+    },
+    {
+      "sha256": "9244b1e861451cfdac272bbc7bd93f2823cf434dc028d770e3ba186dd58e8d5a",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_public_headers_c_test.exe",
+      "configuration": "native",
+      "bytes": 57344
+    },
+    {
+      "sha256": "b9edcc93998c673fcb0f8095c2a151b6c3a6c3af49414fe79fc3db8895ebe55c",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_public_headers_cpp_test.exe",
+      "configuration": "native",
+      "bytes": 52224
+    },
+    {
+      "sha256": "fc58fd092c88524ac7b4df1be335982f0d4fd6e0624dbee5993ee37303b86de2",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_responsive_layout_test.exe",
+      "configuration": "native",
+      "bytes": 62976
+    },
+    {
+      "sha256": "4e44e4494a66ceed90f91f6aef711f6082e984b27941a8ee6a52f75bbb485226",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_session0_gl_app.dll",
+      "configuration": "native",
+      "bytes": 19456
+    },
+    {
+      "sha256": "768a50e058ef05e32f0ef3ae7da41ab61558ac72246d892ebe822c3402bd06ef",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_session0_gl_test.exe",
+      "configuration": "native",
+      "bytes": 28672
+    },
+    {
+      "sha256": "a2f2db0aa8045996835dc2143925fd32660cf575bf5983f88e8e45f8a0897bbc",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_surface_input_test.exe",
+      "configuration": "native",
+      "bytes": 88576
+    },
+    {
+      "sha256": "4084790388fe4053dc94a12c624cc0e6cb3b2ca445cfd54c9919bc6c84d417b6",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_workspace_integration_test.exe",
+      "configuration": "native",
+      "bytes": 196608
+    },
+    {
+      "sha256": "43aebfca5ec7b94a2d465209647a63d88ce0f1c4c4bb32e6f902f16161bd7258",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_workspace_layout_test.exe",
+      "configuration": "native",
+      "bytes": 114176
+    },
+    {
+      "sha256": "a23c6499cbd16337933a4137081efbeee60b534de66c79e94732431560bca830",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\native\\ui_workspace7_test.exe",
+      "configuration": "native",
+      "bytes": 110080
+    },
+    {
+      "sha256": "61af544fa66b86c2683ac9003a156a1bdb7b4d8acd571b2c0fffc877ab3fd9b5",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\api7_fixture.uapp",
+      "configuration": "osmesa",
+      "bytes": 21893
+    },
+    {
+      "sha256": "57fdd2a781ebb11e41847a5ddbec98db758fa3c2afc614742dc96aeeacf964db",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\counter_mismatch.uapp",
+      "configuration": "osmesa",
+      "bytes": 134445
+    },
+    {
+      "sha256": "9a5162143dd8a7c463ce61db6e7233ee07ce07f6b05c4b744b325e3b51ace78b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\cpp_fixture.uapp",
+      "configuration": "osmesa",
+      "bytes": 145195
+    },
+    {
+      "sha256": "7532b22d33df96c56e162a1481b1c98f6bb9bada208369cd3b6430c5de2b9979",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\framework_features_app.dll",
+      "configuration": "osmesa",
+      "bytes": 26624
+    },
+    {
+      "sha256": "67d060470d2577915ad592043d5ad6d72573ad1df298844ab5cfc7a5198b275f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\framework_features.uapp",
+      "configuration": "osmesa",
+      "bytes": 27113
+    },
+    {
+      "sha256": "8eae5ad9ecab2d6f2bf62cfa538d83c191b06303b0179dbbed97c8d9ebdd4ea1",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\framework_host.exe",
+      "configuration": "osmesa",
+      "bytes": 257024
+    },
+    {
+      "sha256": "70d838a56ed76812007a15ee04a8ca55d56696110a96f96b9520686a61fee3f3",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\generic_components_app.dll",
+      "configuration": "osmesa",
+      "bytes": 25088
+    },
+    {
+      "sha256": "f7b1c2439dbb9d132e9e42e21389d56e26da33fe2ddb442ab4e300b4cdb4babb",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\generic_components.uapp",
+      "configuration": "osmesa",
+      "bytes": 25573
+    },
+    {
+      "sha256": "1e387fc709a543a150381d6b8b477f151c3641734cf73607a91205bbcc27dd8a",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\light_web_probe.exe",
+      "configuration": "osmesa",
+      "bytes": 1991168
+    },
+    {
+      "sha256": "c2e9d75bbf2418bb62ff90cf32142775055cbbc2344ae535ad65c105f81cbc0e",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\minimal_eda_app.dll",
+      "configuration": "osmesa",
+      "bytes": 151040
+    },
+    {
+      "sha256": "3306d6be42dab87b14d763548d1aca224fffae8b59c05e98b047d6dd7e2c9287",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\minimal_eda.exe",
+      "configuration": "osmesa",
+      "bytes": 2020352
+    },
+    {
+      "sha256": "996b644f3107d4e75b8a43f270d124cd29b209b715f09f2706740c9d538762cf",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\minimal_eda.uapp",
+      "configuration": "osmesa",
+      "bytes": 151810
+    },
+    {
+      "sha256": "417428fdcf5f510380d51ff9e553285ee7349dd476f16afa77d830e2528a8ca6",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\session0_gl_app.uapp",
+      "configuration": "osmesa",
+      "bytes": 19850
+    },
+    {
+      "sha256": "35745f6c2f72a908ea39e552b43be91e0619555f0b1f90f2aca74273474cc897",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\stateful_components_app.dll",
+      "configuration": "osmesa",
+      "bytes": 37376
+    },
+    {
+      "sha256": "313cdfa9e337bd46615f6e45dfb42a58bc018f5f3250eba639f44ca58a8ec85f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\stateful_components.uapp",
+      "configuration": "osmesa",
+      "bytes": 37775
+    },
+    {
+      "sha256": "147f1fd38cc497dc8dd9f2c7afaee4e6d473d306f89efeeb520a854c2b4d3ee2",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\uapp_pack.exe",
+      "configuration": "osmesa",
+      "bytes": 1942016
+    },
+    {
+      "sha256": "e821cb9913c5e0d990ec9849c74157df7390df57b8b284b77d41eb4f8edc255a",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_api7_fixture.dll",
+      "configuration": "osmesa",
+      "bytes": 21504
+    },
+    {
+      "sha256": "d8b740a76855cf7e795e2749e59d83593e5cf1657e3e0e77c4b279f534cc897b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_api7_integration_test.exe",
+      "configuration": "osmesa",
+      "bytes": 39424
+    },
+    {
+      "sha256": "45d2543b0066b4665970ce9f1404c1c1a308b6b52027e64bd968761cb4b9fd20",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_application_contract_test.exe",
+      "configuration": "osmesa",
+      "bytes": 140288
+    },
+    {
+      "sha256": "aef20c3d6c20be36565b6e33d48d133269b07c878575c740fc81c26f1cc81606",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_application_cpp.dll",
+      "configuration": "osmesa",
+      "bytes": 144896
+    },
+    {
+      "sha256": "ed7439d8e7d82524e5357bbe6fa696bdf48b9204d1f8243cdffae588d2a3c661",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_assistant_lifecycle_test.exe",
+      "configuration": "osmesa",
+      "bytes": 61440
+    },
+    {
+      "sha256": "2538ec71869fe75b8f3517cc4b3b7b2eead7ca9ca0dc376ec886a4acb06228e3",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_assistant_protocol_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1958912
+    },
+    {
+      "sha256": "096fd53f61920923cab1047c152c14bf6df4d8d619b4bea0cb25e3968ba7d68b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_browser_host_test.exe",
+      "configuration": "osmesa",
+      "bytes": 293888
+    },
+    {
+      "sha256": "d3d42d8ec03ded1546b8ab532ee63db9ddcf81ed6592fa850fbb0b56a575193d",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_component_experience_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2047488
+    },
+    {
+      "sha256": "30b2ae6fd8f92cad6e34a4e743a54c1d4146c3ebdfd344d24f8ad3453e52c11a",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_component_resilience_test.exe",
+      "configuration": "osmesa",
+      "bytes": 129024
+    },
+    {
+      "sha256": "47f94c86284e9fe64278bf5b0b3a23be06a641ffa87c91407bff8afbdd139a9e",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_component_scroll_native_test.exe",
+      "configuration": "osmesa",
+      "bytes": 31232
+    },
+    {
+      "sha256": "84750be4f10ac256b31746abc9b149e79a5a82774784c5d04b6e1e317c6cd433",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_component_scroll_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2034176
+    },
+    {
+      "sha256": "9b651a6dab9d76340ccea38e90f7bdaf597e940cf9d1e645066c29e3f3112566",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_component_widths_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2040832
+    },
+    {
+      "sha256": "6cfac2b1610c3e2fe6bca28d079ef3de6555920e7e5282eb4a73645dd143751b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_components_core_test.exe",
+      "configuration": "osmesa",
+      "bytes": 73216
+    },
+    {
+      "sha256": "8e872823ed7678e1cb8d3dc469b5e7dd931641bd9c9609ed87f6d835214636eb",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_dpi_integration_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1992192
+    },
+    {
+      "sha256": "b05aeb08271f0be301918f1f4f43ece3e6c46b427305b266d07647e1f6787ec4",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_dpi_web_failure_test.exe",
+      "configuration": "osmesa",
+      "bytes": 58880
+    },
+    {
+      "sha256": "24e46ed641dc3a4f67309c87fdefb276f3341ec93bc67b6e82535a633b5da589",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_floating_web_dpi_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1997824
+    },
+    {
+      "sha256": "35a393f7303be501ffbddfcc098eb400355c4fe98f275ff802d666d5dad6773f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_framework_features_host_test.exe",
+      "configuration": "osmesa",
+      "bytes": 122368
+    },
+    {
+      "sha256": "28f0c8d65d55961f008a30cdb3776c39da38c8e552a6c420618cd522b2f343b3",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_framework.dll",
+      "configuration": "osmesa",
+      "bytes": 2118144
+    },
+    {
+      "sha256": "3a6a07c81bddfb6235a1010e744da5e4fd3bba99dbf1631e6ec8f60c73adf715",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_generic_web_host_test.exe",
+      "configuration": "osmesa",
+      "bytes": 124928
+    },
+    {
+      "sha256": "348d4db7194bf58077f6473f7eebafacf5860c4b36b6e354b0126a4fa2339c89",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_headless_example.exe",
+      "configuration": "osmesa",
+      "bytes": 60416
+    },
+    {
+      "sha256": "39527e2592103804c8e04d4c39f264c3dc6ff0bfb02085e20f2fad17ec3eee44",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_host_repaint_test.exe",
+      "configuration": "osmesa",
+      "bytes": 116224
+    },
+    {
+      "sha256": "026e341ef1e6b64e14cb128bd706d1a985c2038fd4451bd23a4d94c9e4bd5a5b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_images_windows_test.exe",
+      "configuration": "osmesa",
+      "bytes": 58880
+    },
+    {
+      "sha256": "f76b72e0828f5756c0b4b22410033bc1a581c78611ca255b34591ccbeab82cad",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_instance_language_test.exe",
+      "configuration": "osmesa",
+      "bytes": 135680
+    },
+    {
+      "sha256": "7268e6a4fcd743d61e3e1c2327cced502e1c24284ba20bc834469273c3fbcd71",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_language_core_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1981952
+    },
+    {
+      "sha256": "59169c5917f49020be1a74e4b1af04bf901480db78dfc62e3cd08a8b6645adcd",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_lifecycle_fixture.dll",
+      "configuration": "osmesa",
+      "bytes": 138240
+    },
+    {
+      "sha256": "b9da41670962cec0dd5534b309242f5820cb7647db9c12a6dba03232261ca3a9",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_light_glyph_padding_test.exe",
+      "configuration": "osmesa",
+      "bytes": 12800
+    },
+    {
+      "sha256": "76ff78e1949e027a0ddf6794ef83d9a67a358e10f0eb7b33d11cbc2dedeec34b",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_light_scroll_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1959936
+    },
+    {
+      "sha256": "1ee642124095476beb8e4135c09c1936072d0a0080d3a23a5eeca819d81a6ef5",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_light_web_dynamic_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1960960
+    },
+    {
+      "sha256": "37330501faf04dd8b351f778b7d99844a0b3c9404d06ce43aeb7c74d03c916c6",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_menu_access_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2003456
+    },
+    {
+      "sha256": "b395d10f39d7b7a35cf36c6656d0245d18f14504b92dfb421d1147f335d48c1e",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_menu_cascade_offscreen_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1981440
+    },
+    {
+      "sha256": "f4e167acaeeb24d0c7c8af308c2ae06d1c62818abffe6c24e4628e1c44378624",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_menu_desktop_test.exe",
+      "configuration": "osmesa",
+      "bytes": 130048
+    },
+    {
+      "sha256": "2e132b665d2b9a8c0756ac21cc6df5b0700f8bf0bb42fe54cdd6b794bf328bd7",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_menu_offscreen_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2010624
+    },
+    {
+      "sha256": "7a7fabdb2bc8084a9f3df0df1ad443876466f40b5d71170a6ecae5be156b9184",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_monitor_transition_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1982464
+    },
+    {
+      "sha256": "45a12bb64cb5b42f3654ddd5d3b8d0e21eeb0f645aebb585a7fb6eaf2f467353",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_native_activation_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2020352
+    },
+    {
+      "sha256": "bc8ea999075a2a7cbd982c6c2d1be8dd6ac8c525d003f90eb469364b17e94707",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_native_responsive_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2009600
+    },
+    {
+      "sha256": "ab506e773203bf67e936d46c837172414cfe61ab2f5fcc337e514ee408568c20",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_native_shell_integration_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2004992
+    },
+    {
+      "sha256": "d6f3f6e0ec05aec07642041c4aa78444586248f60a6df83b5c11ca96d63d1b4f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_offscreen_gl_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1998336
+    },
+    {
+      "sha256": "7fd354132a87b47cfc7eac8b02812d64c70a5ba053fceb4abeef6defb8bde2ab",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_offscreen_msaa_test.exe",
+      "configuration": "osmesa",
+      "bytes": 19968
+    },
+    {
+      "sha256": "c554dfe5ef45e42831cedc8e665139a768c7c90f76da6bb721849e761a3b6689",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_opengl_integration_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1999360
+    },
+    {
+      "sha256": "6a5600a97698a343de45535963f4b3132bcec37e8c237de4790d70d4e52a61d3",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_package_format_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1958400
+    },
+    {
+      "sha256": "f19585e4f77068be76c08b3ad6c43580f337aa22177339055139b978944588a3",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_public_headers_c_test.exe",
+      "configuration": "osmesa",
+      "bytes": 57344
+    },
+    {
+      "sha256": "62a44007d9ab76a3e11e1fae283d5af3510477d1283aa2ced88bf2bdbfd9fca0",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_public_headers_cpp_test.exe",
+      "configuration": "osmesa",
+      "bytes": 52224
+    },
+    {
+      "sha256": "9daab1140b06fdc6b64f19eaa11d3e4b0352c2562670a099f29ed0ef092fbaa3",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_responsive_layout_test.exe",
+      "configuration": "osmesa",
+      "bytes": 62976
+    },
+    {
+      "sha256": "8e87f52ddbad8b9083f2bae9cbd810758e906d6cc2858eacc52ad9e1f05bd79f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_session0_gl_app.dll",
+      "configuration": "osmesa",
+      "bytes": 19456
+    },
+    {
+      "sha256": "b895f15c0700cd59709f025ec8a19445909ac96e2f182e6226a4c1b4c70c47dc",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_session0_gl_test.exe",
+      "configuration": "osmesa",
+      "bytes": 28672
+    },
+    {
+      "sha256": "884101d675fe757366f87d289fba0e939b4864c9aeccee1d87e7d233ad52a7d5",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_stateful_components_test.exe",
+      "configuration": "osmesa",
+      "bytes": 126464
+    },
+    {
+      "sha256": "2d39edaca3b91cbc8675b2afd15fb5c9bccf8fa2443e66e660e065bd76913b9a",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_surface_input_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1991680
+    },
+    {
+      "sha256": "3e79ac53ad2fca27b8952715b7b90567329712bc68e17900bf3eaefa2c103a1e",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_visual_ui_test.exe",
+      "configuration": "osmesa",
+      "bytes": 129536
+    },
+    {
+      "sha256": "9ed35c31a6b38c34227a0bc8001825c1808462744694b565dcebb87784fe65bc",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_web_host_frontend_test.exe",
+      "configuration": "osmesa",
+      "bytes": 306688
+    },
+    {
+      "sha256": "3805c3011e3406791e8550e0c8598a156353cbbc400267dc46e12edde795c120",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_web_shell_slots_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2018304
+    },
+    {
+      "sha256": "a5572d1cd01d92057c77667c3e8c6d9d2947b6c5885a1d07e008247f77324a86",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_web_text_edit_test.exe",
+      "configuration": "osmesa",
+      "bytes": 1957376
+    },
+    {
+      "sha256": "ba4d97fc49313dfe48dfe2232e370b5e06d90dbbb488fe431e2beb728c3a8793",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_workspace_integration_test.exe",
+      "configuration": "osmesa",
+      "bytes": 196608
+    },
+    {
+      "sha256": "de949588a3e1d9ae5791c0ece603a86aa3ee833ea48a2e9d04f4fd21cca2276c",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_workspace_layout_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2014720
+    },
+    {
+      "sha256": "4fbf3f26609886be138982bad944de74dfa6274e578a05d6f626c5c00304d79f",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_workspace_offscreen_test.exe",
+      "configuration": "osmesa",
+      "bytes": 20480
+    },
+    {
+      "sha256": "f80be007f3b23c40117a5976c9a8b6a7b787899f33d0e280d8a908e682e41788",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\ui_workspace7_test.exe",
+      "configuration": "osmesa",
+      "bytes": 2010112
+    },
+    {
+      "sha256": "47ed0addb974239e954d2f78d518afe51550e90155434de114552a09812a22be",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\web_counter_app.dll",
+      "configuration": "osmesa",
+      "bytes": 134144
+    },
+    {
+      "sha256": "a605816f16c2b9a6b99323ce201118e8fd19753bd85f9f9c7a0190ff637fef0a",
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ci-recovery-20261008\\osmesa\\web_counter.uapp",
+      "configuration": "osmesa",
+      "bytes": 134445
+    }
+  ],
+  "sourceBlobs": [
+    {
+      "path": "tests/browser_host.c",
+      "gitBlob": "983c4c0cd10d6b0677cebe1db42c1861414b54d2"
+    },
+    {
+      "path": "tests/web_host_frontend.c",
+      "gitBlob": "2f15f572628bf2454124bea597f826837123886f"
+    },
+    {
+      "path": "tests/host_repaint.c",
+      "gitBlob": "2f9ac85f93d81546d35f090dd8d03cf2f01bbb0c"
+    },
+    {
+      "path": "tests/stateful_components.c",
+      "gitBlob": "c263cbe90741c0f2e0240d94907162802b41aa56"
+    },
+    {
+      "path": "tests/instance_language.c",
+      "gitBlob": "549201c374c39c8c8e08e443a6eae8dbf2b9beb6"
+    },
+    {
+      "path": "tests/run-stateful-components.ps1",
+      "gitBlob": "608345f926f75710e3e005726739b66b4df909c7"
+    },
+    {
+      "path": "tests/run-instance-language.ps1",
+      "gitBlob": "e6fd471e7193d3b41ca2725496021fd143e5445b"
+    },
+    {
+      "path": "tools/windows-ci.ps1",
+      "gitBlob": "54be2ca5bb786d1cd7b6045a0b0c0bfa865c59eb"
+    }
+  ]
+}

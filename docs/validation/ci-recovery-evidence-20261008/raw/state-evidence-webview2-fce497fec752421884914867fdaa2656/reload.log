@@ -1,0 +1,12 @@
+TEST_PHASE pid45216 tick712878375 dispatched0 create-host-begin
+TEST_PHASE pid45216 tick712878390 dispatched0 create-host-end
+TEST_PHASE pid45216 tick712878421 dispatched0 open-begin
+TEST_PHASE pid45216 tick712878546 dispatched0 open-return
+TEST_PHASE pid45216 tick712879046 dispatched138 open-settled
+RESTORED modereload dpi96 name280 treeCollapsed1
+TEST_PHASE pid45216 tick712879281 dispatched212 close-begin
+TEST_PHASE pid45216 tick712879281 dispatched212 close-request-return
+TEST_PHASE pid45216 tick712879328 dispatched220 close-state-checked
+TEST_PHASE pid45216 tick712879640 dispatched221 com-uninitialize-begin
+TEST_PHASE pid45216 tick712879640 dispatched221 process-return
+Stateful actual webview2 / reload: 0 failures

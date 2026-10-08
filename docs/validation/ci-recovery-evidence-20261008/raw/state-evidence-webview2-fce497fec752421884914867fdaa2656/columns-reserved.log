@@ -1,0 +1,12 @@
+TEST_PHASE pid4756 tick712890093 dispatched0 create-host-begin
+TEST_PHASE pid4756 tick712890109 dispatched0 create-host-end
+TEST_PHASE pid4756 tick712890140 dispatched0 open-begin
+TEST_PHASE pid4756 tick712890265 dispatched0 open-return
+TEST_PHASE pid4756 tick712890765 dispatched152 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid4756 tick712890765 dispatched152 close-begin
+TEST_PHASE pid4756 tick712890765 dispatched152 close-request-return
+TEST_PHASE pid4756 tick712890828 dispatched162 close-state-checked
+TEST_PHASE pid4756 tick712891140 dispatched164 com-uninitialize-begin
+TEST_PHASE pid4756 tick712891140 dispatched164 process-return
+Stateful actual webview2 / invalid: 0 failures

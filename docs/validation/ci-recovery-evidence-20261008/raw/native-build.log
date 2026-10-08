@@ -1,0 +1,94 @@
+[1/91] Building C object CMakeFiles\ui_framework_shared.dir\src\assistant.c.obj
+[2/91] Building C object CMakeFiles\ui_framework_shared.dir\src\ui.c.obj
+[3/91] Building C object CMakeFiles\ui_framework.dir\src\assistant.c.obj
+[4/91] Building C object CMakeFiles\ui_framework.dir\src\ui.c.obj
+[5/91] Building C object CMakeFiles\ui_framework_headless.dir\src\ui.c.obj
+[6/91] Building C object CMakeFiles\uapp_pack.dir\tools\uapp_pack.c.obj
+[7/91] Building C object CMakeFiles\ui_session0_gl_app.dir\tests\session0_gl_app.c.obj
+[8/91] Building C object CMakeFiles\ui_framework_shared.dir\src\platform\win32_surface.c.obj
+[9/91] Building C object CMakeFiles\ui_framework_shared.dir\src\package.c.obj
+[10/91] Building C object CMakeFiles\ui_framework_headless.dir\src\assistant.c.obj
+[11/91] Building C object CMakeFiles\ui_framework_headless.dir\src\platform\headless_surface.c.obj
+[12/91] Building C object CMakeFiles\ui_framework.dir\src\package.c.obj
+[13/91] Building C object CMakeFiles\ui_framework_shared.dir\src\workspace.c.obj
+[14/91] Building C object CMakeFiles\minimal_eda_app.dir\examples\minimal_eda\app.c.obj
+[15/91] Building C object CMakeFiles\ui_framework.dir\src\platform\win32_surface.c.obj
+[16/91] Building C object CMakeFiles\ui_framework_shared.dir\src\language.c.obj
+[17/91] Building C object CMakeFiles\ui_framework_headless.dir\src\platform\headless_shell.c.obj
+[18/91] Building C object CMakeFiles\ui_responsive_layout_test.dir\tests\responsive_layout.c.obj
+[19/91] Building C object CMakeFiles\ui_framework.dir\src\language.c.obj
+[20/91] Building C object CMakeFiles\ui_assistant_lifecycle_test.dir\tests\assistant_lifecycle.c.obj
+[21/91] Building C object CMakeFiles\ui_framework.dir\src\images.c.obj
+[22/91] Building C object CMakeFiles\ui_components_core_test.dir\tests\components_core.c.obj
+[23/91] Building CXX object CMakeFiles\ui_application_cpp.dir\tests\application_cpp.cpp.obj
+[24/91] Building C object CMakeFiles\ui_framework_shared.dir\src\menus.c.obj
+[25/91] Building C object CMakeFiles\ui_framework_shared.dir\src\platform\win32_shell.c.obj
+[26/91] Building C object CMakeFiles\ui_framework_headless.dir\src\language.c.obj
+[27/91] Building C object CMakeFiles\ui_framework.dir\src\menus.c.obj
+[28/91] Building C object CMakeFiles\ui_framework.dir\src\platform\win32_shell.c.obj
+[29/91] Building C object CMakeFiles\ui_framework_shared.dir\src\images.c.obj
+[30/91] Building C object CMakeFiles\ui_dpi_web_failure_test.dir\tests\dpi_web_failure.c.obj
+[31/91] Building C object CMakeFiles\ui_lifecycle_fixture.dir\tests\app_lifecycle_fixture.c.obj
+[32/91] Building C object CMakeFiles\ui_headless_example.dir\examples\minimal_eda\headless.c.obj
+[33/91] Building C object CMakeFiles\ui_package_format_test.dir\tests\package_format.c.obj
+[34/91] Building C object CMakeFiles\ui_framework_shared.dir\src\components.c.obj
+[35/91] Building C object CMakeFiles\ui_framework.dir\src\components.c.obj
+[36/91] Building C object CMakeFiles\minimal_eda.dir\examples\minimal_eda\main.c.obj
+[37/91] Building CXX object CMakeFiles\ui_public_headers_cpp_test.dir\tests\public_headers.cpp.obj
+[38/91] Building C object CMakeFiles\ui_public_headers_c_test.dir\tests\public_headers.c.obj
+[39/91] Building C object CMakeFiles\ui_framework_headless.dir\src\images.c.obj
+[40/91] Building C object CMakeFiles\ui_framework_headless.dir\src\menus.c.obj
+[41/91] Building C object CMakeFiles\ui_assistant_protocol_test.dir\tests\assistant_protocol.c.obj
+[42/91] Building C object CMakeFiles\ui_surface_input_test.dir\tests\surface_input.c.obj
+[43/91] Building C object CMakeFiles\ui_monitor_transition_test.dir\tests\monitor_transition.c.obj
+[44/91] Building C object CMakeFiles\ui_opengl_integration_test.dir\tests\opengl_integration.c.obj
+[45/91] Building C object CMakeFiles\ui_dpi_integration_test.dir\tests\dpi_integration.c.obj
+[46/91] Linking C static library ui_framework.lib
+[47/91] Building C object CMakeFiles\ui_images_windows_test.dir\tests\images_windows.c.obj
+[48/91] Building C object CMakeFiles\ui_language_core_test.dir\tests\language_core.c.obj
+[49/91] Building C object CMakeFiles\ui_offscreen_msaa_test.dir\tests\offscreen_msaa.c.obj
+[50/91] Building C object CMakeFiles\ui_workspace_layout_test.dir\tests\workspace_layout.c.obj
+[51/91] Building C object CMakeFiles\ui_workspace7_test.dir\tests\workspace7.c.obj
+[52/91] Building C object CMakeFiles\ui_framework_headless.dir\src\components.c.obj
+[53/91] Building C object CMakeFiles\ui_native_activation_test.dir\tests\native_activation.c.obj
+[54/91] Linking C shared library ui_framework.dll
+[55/91] Building C object CMakeFiles\ui_native_shell_integration_test.dir\tests\native_shell_integration.c.obj
+[56/91] Linking C executable minimal_eda.exe
+[57/91] Linking C executable ui_package_format_test.exe
+[58/91] Linking C executable uapp_pack.exe
+[59/91] Linking C static library ui_framework_headless.lib
+[60/91] Linking C executable ui_surface_input_test.exe
+[61/91] Linking C executable ui_opengl_integration_test.exe
+[62/91] Linking C executable ui_monitor_transition_test.exe
+[63/91] Linking C executable ui_dpi_integration_test.exe
+[64/91] Linking C executable ui_assistant_protocol_test.exe
+[65/91] Linking C executable ui_language_core_test.exe
+[66/91] Linking C executable ui_workspace_layout_test.exe
+[67/91] Linking C executable ui_workspace7_test.exe
+[68/91] Building C object CMakeFiles\ui_native_responsive_test.dir\tests\native_responsive.c.obj
+[69/91] Linking C executable ui_native_activation_test.exe
+[70/91] Linking C executable ui_dpi_web_failure_test.exe
+[71/91] Linking C executable ui_offscreen_msaa_test.exe
+[72/91] Linking C executable ui_images_windows_test.exe
+[73/91] Linking C executable ui_native_shell_integration_test.exe
+[74/91] Linking C executable ui_headless_example.exe
+[75/91] Linking C executable ui_public_headers_c_test.exe
+[76/91] Linking C executable ui_assistant_lifecycle_test.exe
+[77/91] Linking C executable ui_native_responsive_test.exe
+[78/91] Linking C executable ui_responsive_layout_test.exe
+[79/91] Linking C executable ui_components_core_test.exe
+[80/91] Linking CXX executable ui_public_headers_cpp_test.exe
+[81/91] Linking C shared module ui_session0_gl_app.dll
+[82/91] Linking C shared module minimal_eda_app.dll
+[83/91] Linking CXX shared module ui_application_cpp.dll
+[84/91] Linking C shared module ui_lifecycle_fixture.dll
+[85/91] Generating session0_gl_app.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/native/session0_gl_app.uapp
+[86/91] Generating minimal_eda.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/native/minimal_eda.uapp
+[87/91] Generating cpp_fixture.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/native/cpp_fixture.uapp
+[88/91] Building C object CMakeFiles\ui_session0_gl_test.dir\tests\session0_gl.c.obj
+[89/91] Building C object CMakeFiles\ui_workspace_integration_test.dir\tests\workspace_integration.c.obj
+[90/91] Linking C executable ui_session0_gl_test.exe
+[91/91] Linking C executable ui_workspace_integration_test.exe

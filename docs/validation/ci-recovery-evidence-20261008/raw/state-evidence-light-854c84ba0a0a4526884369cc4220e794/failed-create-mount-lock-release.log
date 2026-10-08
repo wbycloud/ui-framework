@@ -1,0 +1,12 @@
+TEST_PHASE pid40172 tick712690843 dispatched0 create-host-begin
+TEST_PHASE pid40172 tick712690859 dispatched0 create-host-end
+TEST_PHASE pid40172 tick712691250 dispatched30 open-begin
+TEST_PHASE pid40172 tick712691421 dispatched30 open-return
+TEST_PHASE pid40172 tick712691921 dispatched68 open-settled
+RESTORED modeinit-failures dpi96 name200 treeCollapsed0
+TEST_PHASE pid40172 tick712691921 dispatched68 close-begin
+TEST_PHASE pid40172 tick712691937 dispatched68 close-request-return
+TEST_PHASE pid40172 tick712691984 dispatched71 close-state-checked
+TEST_PHASE pid40172 tick712692296 dispatched71 com-uninitialize-begin
+TEST_PHASE pid40172 tick712692296 dispatched71 process-return
+Stateful actual light / init-failures: 0 failures

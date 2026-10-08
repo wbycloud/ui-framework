@@ -1,0 +1,95 @@
+{
+  "source": "2fa6f84cb1ca202d54ff822971ca908c2e6dc36f",
+  "native": {
+    "tests": 22,
+    "passed": 21,
+    "failed": 0,
+    "physicalSkipped": 1,
+    "seconds": 6.18
+  },
+  "webview2": {
+    "tests": 62,
+    "passed": 61,
+    "failed": 0,
+    "physicalSkipped": 1,
+    "phases": {
+      "wgl": {
+        "tests": 45,
+        "failed": 0,
+        "skipped": 1,
+        "seconds": 78.25
+      },
+      "provider": {
+        "tests": 7,
+        "failed": 0,
+        "skipped": 0,
+        "seconds": 162.53
+      },
+      "runtime": {
+        "tests": 10,
+        "failed": 0,
+        "skipped": 0,
+        "seconds": 187.84
+      }
+    }
+  },
+  "completeScripts": [
+    {
+      "manifest": "language-evidence-light-8fe4cecd4d7d4136ab98afa078fc21e6/manifest.json",
+      "cases": 7,
+      "backend": "light",
+      "maxChildMs": 10916
+    },
+    {
+      "manifest": "language-evidence-light-ac7a165d26e3465f934dafb41d52d2da/manifest.json",
+      "cases": 7,
+      "backend": "light",
+      "maxChildMs": 10309
+    },
+    {
+      "manifest": "language-evidence-webview2-ab010ecb6d424bd7b26e1cfbe40450c5/manifest.json",
+      "cases": 7,
+      "backend": "webview2",
+      "maxChildMs": 14629
+    },
+    {
+      "manifest": "state-evidence-light-854c84ba0a0a4526884369cc4220e794/manifest.json",
+      "cases": 26,
+      "backend": "light",
+      "maxChildMs": 2587
+    },
+    {
+      "manifest": "state-evidence-light-d5c21125b930416b8c5e59cd51d1381b/manifest.json",
+      "cases": 26,
+      "backend": "light",
+      "maxChildMs": 2587
+    },
+    {
+      "manifest": "state-evidence-webview2-fce497fec752421884914867fdaa2656/manifest.json",
+      "cases": 26,
+      "backend": "webview2",
+      "maxChildMs": 4350
+    }
+  ],
+  "unresolved": [
+    "original hosted stateful_components_light 180s timeout",
+    "original hosted instance_language_light 240s timeout",
+    "real English Windows empty-host rerun",
+    "historical continuous repaint",
+    "strict machine no-login environment"
+  ],
+  "osmesa": {
+    "tests": 52,
+    "passed": 51,
+    "failed": 0,
+    "physicalSkipped": 1,
+    "phases": {
+      "wgl": {
+        "seconds": 79.4
+      },
+      "provider": {
+        "seconds": 163.28
+      }
+    }
+  }
+}

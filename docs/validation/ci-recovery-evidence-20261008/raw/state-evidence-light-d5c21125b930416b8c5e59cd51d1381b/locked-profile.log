@@ -1,0 +1,12 @@
+TEST_PHASE pid45220 tick713193250 dispatched0 create-host-begin
+TEST_PHASE pid45220 tick713193265 dispatched0 create-host-end
+TEST_PHASE pid45220 tick713193296 dispatched0 open-begin
+TEST_PHASE pid45220 tick713193515 dispatched0 open-return
+TEST_PHASE pid45220 tick713194015 dispatched38 open-settled
+RESTORED modelocked-profile dpi96 name280 treeCollapsed1
+TEST_PHASE pid45220 tick713194015 dispatched38 close-begin
+TEST_PHASE pid45220 tick713194031 dispatched38 close-request-return
+TEST_PHASE pid45220 tick713194109 dispatched43 close-state-checked
+TEST_PHASE pid45220 tick713194421 dispatched43 com-uninitialize-begin
+TEST_PHASE pid45220 tick713194421 dispatched43 process-return
+Stateful actual light / locked-profile: 0 failures

@@ -1,0 +1,12 @@
+TEST_PHASE pid40708 tick712882109 dispatched0 create-host-begin
+TEST_PHASE pid40708 tick712882125 dispatched0 create-host-end
+TEST_PHASE pid40708 tick712882140 dispatched0 open-begin
+TEST_PHASE pid40708 tick712882265 dispatched0 open-return
+TEST_PHASE pid40708 tick712882765 dispatched155 open-settled
+RESTORED modeevolve dpi96 name280 treeCollapsed1
+TEST_PHASE pid40708 tick712882765 dispatched155 close-begin
+TEST_PHASE pid40708 tick712882781 dispatched155 close-request-return
+TEST_PHASE pid40708 tick712882828 dispatched166 close-state-checked
+TEST_PHASE pid40708 tick712883140 dispatched167 com-uninitialize-begin
+TEST_PHASE pid40708 tick712883140 dispatched167 process-return
+Stateful actual webview2 / evolve: 0 failures

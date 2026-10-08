@@ -1,0 +1,12 @@
+TEST_PHASE pid38336 tick712672234 dispatched0 create-host-begin
+TEST_PHASE pid38336 tick712672250 dispatched0 create-host-end
+TEST_PHASE pid38336 tick712672265 dispatched0 open-begin
+TEST_PHASE pid38336 tick712672484 dispatched0 open-return
+TEST_PHASE pid38336 tick712672984 dispatched39 open-settled
+RESTORED modereload dpi96 name280 treeCollapsed1
+TEST_PHASE pid38336 tick712673250 dispatched55 close-begin
+TEST_PHASE pid38336 tick712673265 dispatched55 close-request-return
+TEST_PHASE pid38336 tick712673312 dispatched58 close-state-checked
+TEST_PHASE pid38336 tick712673625 dispatched58 com-uninitialize-begin
+TEST_PHASE pid38336 tick712673625 dispatched58 process-return
+Stateful actual light / reload: 0 failures

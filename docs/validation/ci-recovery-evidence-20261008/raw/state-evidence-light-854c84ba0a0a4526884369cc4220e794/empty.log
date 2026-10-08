@@ -1,0 +1,12 @@
+TEST_PHASE pid40500 tick712677421 dispatched0 create-host-begin
+TEST_PHASE pid40500 tick712677437 dispatched0 create-host-end
+TEST_PHASE pid40500 tick712677468 dispatched0 open-begin
+TEST_PHASE pid40500 tick712677640 dispatched0 open-return
+TEST_PHASE pid40500 tick712678140 dispatched45 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid40500 tick712678140 dispatched45 close-begin
+TEST_PHASE pid40500 tick712678156 dispatched45 close-request-return
+TEST_PHASE pid40500 tick712678218 dispatched48 close-state-checked
+TEST_PHASE pid40500 tick712678531 dispatched48 com-uninitialize-begin
+TEST_PHASE pid40500 tick712678531 dispatched48 process-return
+Stateful actual light / invalid: 0 failures

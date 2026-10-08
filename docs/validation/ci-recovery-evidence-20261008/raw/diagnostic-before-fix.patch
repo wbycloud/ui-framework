@@ -1,0 +1,85 @@
+diff --git a/tests/host_repaint.c b/tests/host_repaint.c
+index f6079db..eb4e8c0 100644
+--- a/tests/host_repaint.c
++++ b/tests/host_repaint.c
+@@ -6,6 +6,8 @@ static paint_count_t windows[64];
+ static unsigned window_count,refreshes,wakes,layouts,events,queued_paints,dispatched;
+ static HHOOK enter_hook,return_hook;
+ static ui_event_callback_fn original_event;
++static int failures;
++#define CHECK(x) do{if(!(x)){fprintf(stderr,"repaint line%d: %s\n",__LINE__,#x);++failures;}}while(0)
+ static paint_count_t *count_for(HWND window)
+ {
+     unsigned i;for(i=0;i<window_count;++i)if(windows[i].window==window)return &windows[i];
+@@ -54,17 +56,22 @@ static unsigned measure(const char *phase,DWORD duration,host_window_t *host,int
+ }
+ int wmain(int argc,wchar_t **argv)
+ {
+-    host_window_t host={0};ui_app_instance_info_t info={0};HWND root;wchar_t provider[4096];int failed=0;
++    host_window_t host={0};ui_app_instance_info_t info={0};HWND root;wchar_t provider[4096];unsigned paints;BOOL invalid;
+     if(argc<3)return 2;setvbuf(stdout,NULL,_IONBF,0);if(FAILED(CoInitializeEx(NULL,COINIT_APARTMENTTHREADED))||ui_framework_initialize()!=UI_STATUS_OK)return 2;
+     GetFullPathNameW(argv[2],4096,provider,NULL);SetEnvironmentVariableW(L"UI_API7_OSMESA_DLL",provider);
+     enter_hook=SetWindowsHookExW(WH_CALLWNDPROC,entering,NULL,GetCurrentThreadId());return_hook=SetWindowsHookExW(WH_CALLWNDPROCRET,returning,NULL,GetCurrentThreadId());if(!enter_hook||!return_hook)return 2;
+     root=create_host(&host,GetModuleHandleW(NULL));if(!root)return 2;ShowWindow(root,SW_SHOW);MoveWindow(root,40,40,1200,800,TRUE);open_path(&host,argv[1]);pump_until(GetTickCount64()+1000);
+     if(!get_instance(&host,ui_workspace_active(host.workspace),&info))return 2;original_event=info.host->event_callback;info.host->event_callback=observed_event;
+-    if(!measure("invalidate-control",200,&host,-1)||GetUpdateRect(host.web_hwnd,NULL,FALSE))failed=1;
+-    for(int i=0;i<3;++i){char phase[32];snprintf(phase,sizeof(phase),"idle-%d",i);if(measure(phase,2000,&host,0)>100)failed=1;}
++    paints=measure("invalidate-control",200,&host,-1);invalid=GetUpdateRect(host.web_hwnd,NULL,FALSE);printf("INVALIDATE_CONTROL paints%u invalid%d dispatched%u\n",paints,invalid,dispatched);CHECK(paints>0);CHECK(!invalid);
++    for(int i=0;i<3;++i){char phase[32];snprintf(phase,sizeof(phase),"idle-%d",i);paints=measure(phase,2000,&host,0);CHECK(paints<=100);}
+     for(int i=0;i<3;++i)measure("resize",500,&host,1000+i*100);
+-    measure("explicit-GL-frame",500,&host,-2);if(!strstr(host.result_summary,"操作完成"))failed=1;
+-    if(measure("idle-after-GL",2000,&host,0)>100)failed=1;
+-    SendMessageW(root,WM_CLOSE,0,0);pump_until(GetTickCount64()+1000);failed|=IsWindow(root)!=0;
+-    UnhookWindowsHookEx(enter_hook);UnhookWindowsHookEx(return_hook);CoUninitialize();printf("Host idle repaint: %d failures\n",failed);return failed;
++    for(int language=0;language<2;++language){
++        const char *code=language?"zh-CN":"en-US";ui_language_info_t queried={0};queried.size=sizeof(queried);
++        CHECK(ui_host_set_language(info.host,code)==UI_STATUS_OK);pump_until(GetTickCount64()+100);
++        CHECK(ui_host_get_language(host.chrome_host,&queried)==UI_STATUS_OK&&!strcmp(queried.language,code));
++        measure("explicit-GL-frame",500,&host,-2);printf("GL_RESULT language%s instance%llu request%llu summary=%s\n",queried.language,(unsigned long long)host.completed_id,(unsigned long long)host.completed_request,host.result_summary);CHECK(strstr(host.result_summary,"操作完成")!=NULL);
++    }
++    paints=measure("idle-after-GL",2000,&host,0);CHECK(paints<=100);
++    SendMessageW(root,WM_CLOSE,0,0);pump_until(GetTickCount64()+1000);printf("CLOSE_STATE window%d\n",IsWindow(root)!=0);CHECK(!IsWindow(root));
++    UnhookWindowsHookEx(enter_hook);UnhookWindowsHookEx(return_hook);CoUninitialize();printf("Host idle repaint: %d failures\n",failures);return failures?1:0;
+ }
+diff --git a/tests/web_host_frontend.c b/tests/web_host_frontend.c
+index 8132ca0..c37b396 100644
+--- a/tests/web_host_frontend.c
++++ b/tests/web_host_frontend.c
+@@ -63,16 +63,17 @@ static void param_text(host_window_t *host,const char *id,const char *text)
+     e.kind=UI_INPUT_TEXT;e.modifiers=0;e.text_utf8=text;
+     check(ui_web_view_dispatch_input(host->view,&e)==UI_STATUS_OK,"actual parameter text input");pump();
+ }
+-static void test_params(host_window_t *host,uint64_t instance)
++static void test_params(host_window_t *host,uint64_t instance,int registering)
+ {
+     static const char schema[]="{\"type\":\"object\",\"properties\":{\"count\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"enabled\":{\"type\":\"boolean\"}}}";
+     ui_app_instance_info_t info={0};ui_command_desc_t cmd={0};ui_assistant_command_desc_t allowed={0};
+     host_action_t action={0};ui_element_presentation_t p={0};char *saved;const char *raw;
+     check(get_instance(host,instance,&info),"parameter fixture actual instance");
+     cmd.size=sizeof(cmd);cmd.id="fixture.visual.params";cmd.title="参数测试";cmd.params_schema_json=schema;cmd.handler=param_command;
+-    check(ui_host_register_command(info.host,&cmd)==UI_STATUS_OK,"parameter semantic command");
++    if(registering)check(ui_host_register_command(info.host,&cmd)==UI_STATUS_OK,"parameter semantic command");
+     allowed.size=sizeof(allowed);allowed.id=cmd.id;allowed.params_schema_json=schema;allowed.permission=UI_ASSISTANT_PERMISSION_READ;
+-    check(ui_assistant_register_command(info.assistant,&allowed)==UI_STATUS_OK,"original assistant allowlist");
++    if(registering)check(ui_assistant_register_command(info.assistant,&allowed)==UI_STATUS_OK,"original assistant allowlist");
++    param_calls=0;
+     send_selection(host,"select-target",instance,NULL);send_selection(host,"select-command",instance,cmd.id);
+     action.action="params";action.params="{\"count\":2,\"name\":\"old\",\"enabled\":false,\"extra\":\"keep\"}";process_action(host,&action);schedule_refresh(host);pump();
+     param_text(host,"param-0","12");param_text(host,"param-1","Draft 中");check(click(host->view,"param-2"),"boolean parameter");pump();
+@@ -145,7 +146,15 @@ int wmain(int argc,wchar_t **argv)
+     send_selection(&host,"select-target",first,NULL);send_selection(&host,"select-command",first,"eda.add_block");
+     click(host.view,"invoke");pump();check(snapshot_value(&host,first,"blocks")==1&&snapshot_value(&host,second,"blocks")==0,"assistant targets background instance");
+     check(host.target==first&&strstr(host.log?host.log:"","eda.add_block"),"fixed target and routed semantic result");
+-    test_params(&host,first);
++    for(int language=0;language<2;++language){
++        ui_app_instance_info_t background={0},active={0};ui_language_info_t queried={0};
++        const char *code=language?"zh-CN":"en-US",*other=language?"en-US":"zh-CN";
++        check(get_instance(&host,first,&background)&&get_instance(&host,second,&active),"language pair exists");
++        check(ui_host_set_language(background.host,other)==UI_STATUS_OK&&ui_host_set_language(active.host,code)==UI_STATUS_OK,"applications submit independent languages");pump();
++        queried.size=sizeof(queried);check(ui_host_get_language(host.chrome_host,&queried)==UI_STATUS_OK&&queried.source==UI_LANGUAGE_APPLICATION&&!strcmp(queried.language,code),"frontend follows active instance language");
++        printf("PARAMETER_LANGUAGE active=%s background=%s\n",code,other);
++        test_params(&host,first,language==0);
++    }
+     click(host.view,"tool-eda.add_block");pump();check(snapshot_value(&host,second,"blocks")==1,"Web toolbar calls active application command");
+     check(ui_web_view_get_element_rect(host.view,"tool-eda.add_block",&control)==UI_STATUS_OK&&control.width<=240,"toolbar respects declared bounded item width");
+     printf("Short text tool width: %d\n",control.width);check(control.width<=160,"short text tools remain compact");

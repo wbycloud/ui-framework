@@ -1,0 +1,99 @@
+UpdateCTestConfiguration  from :D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/DartConfiguration.tcl
+Test project D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 24
+    Start 24: ui_host_repaint
+
+24: Test command: D:\应用软件框架\应用层序框架\build\ci-recovery-20261008\current\ui_host_repaint_test.exe "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+24: Working Directory: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current
+24: Test timeout computed to be: 45
+24: WINDOW invalidate-control hwnd0000000002BB0AD0 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE invalidate-control elapsed219 cpu-ms0.000 paint1 queued-paint1 dispatched1 host-refresh0 wake0 layouts0 events0 handles281 GDI405 USER29
+24: INVALIDATE_CONTROL paints1 invalid0 dispatched1
+24: MEASURE idle-0 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles281 GDI405 USER29
+24: MEASURE idle-1 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles281 GDI405 USER29
+24: MEASURE idle-2 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles281 GDI405 USER29
+24: WINDOW resize hwnd000000000FD30C0C classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000002BB0AD0 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+24: WINDOW resize hwnd0000000006131086 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd000000000C420EBC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd00000000029D0B16 classStatic paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000002FE0BF6 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd000000000DC8008A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd00000000071D1064 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE resize elapsed500 cpu-ms46.875 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles281 GDI368 USER29
+24: WINDOW resize hwnd000000000FD30C0C classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000002BB0AD0 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+24: WINDOW resize hwnd0000000006131086 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd000000000C420EBC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd00000000029D0B16 classStatic paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000002FE0BF6 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd000000000DC8008A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd00000000071D1064 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE resize elapsed515 cpu-ms46.875 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles281 GDI393 USER29
+24: WINDOW resize hwnd000000000FD30C0C classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000002BB0AD0 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+24: WINDOW resize hwnd0000000006131086 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd000000000C420EBC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd00000000029D0B16 classStatic paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000002FE0BF6 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd000000000DC8008A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd00000000071D1064 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE resize elapsed500 cpu-ms62.500 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles281 GDI393 USER29
+24: WINDOW explicit-GL-frame hwnd0000000002BB0AD0 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW explicit-GL-frame hwnd000000000FD30C0C classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd0000000006131086 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd0000000002FE0BF6 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd000000000DC8008A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd00000000071D1064 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd000000000C420EBC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE explicit-GL-frame elapsed500 cpu-ms15.625 paint7 queued-paint7 dispatched9 host-refresh0 wake0 layouts1 events4 handles281 GDI393 USER29
+24: GL_RESULT languageen-US instance1 request1 summary=Application #1: Operation completed. See Advanced for details.
+24: repaint line72: strstr(host.result_summary,"操作完成")!=NULL
+24: WINDOW explicit-GL-frame hwnd0000000002BB0AD0 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW explicit-GL-frame hwnd000000000FD30C0C classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd0000000006131086 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd0000000002FE0BF6 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd000000000DC8008A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd00000000071D1064 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd000000000C420EBC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE explicit-GL-frame elapsed500 cpu-ms31.250 paint7 queued-paint7 dispatched9 host-refresh0 wake0 layouts1 events4 handles281 GDI393 USER29
+24: GL_RESULT languagezh-CN instance1 request2 summary=应用 #1：操作完成。详细结果见高级记录。
+24: MEASURE idle-after-GL elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles281 GDI393 USER29
+24: CLOSE_STATE window0
+24: Host idle repaint: 1 failures
+1/2 Test #24: ui_host_repaint ..................***Failed   13.43 sec
+test 53
+    Start 53: ui_web_host_frontend
+
+53: Test command: D:\应用软件框架\应用层序框架\build\ci-recovery-20261008\current\ui_web_host_frontend_test.exe "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/cpp_fixture.uapp"
+53: Working Directory: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current
+53: Test timeout computed to be: 60
+53: Web host: boolean feedback updates immediately (Windows error 5)
+53: Web host: non-roundtrip number uses lossless advanced JSON (Windows error 6)
+53: Web host: invalid raw JSON exposes advanced recovery (Windows error 6)
+53: Web frontend failures: 3
+53: PARAMETER_LANGUAGE active=en-US background=zh-CN
+53: Basic parameter JSON: {"count":12,"name":"Draft 中","enabled":true,"extra":"keep"}
+53: Parameter recovery hint: status=0 visible=1 text=Configure this parameter in Advanced; existing values are retained.
+53: PARAMETER_LANGUAGE active=zh-CN background=en-US
+53: Basic parameter JSON: {"count":12,"name":"Draft 中","enabled":true,"extra":"keep"}
+53: Parameter recovery hint: status=0 visible=1 text=此参数需要在高级区域配置，原有参数保持。
+53: Short text tool width: 115
+2/2 Test #53: ui_web_host_frontend .............***Failed    1.76 sec
+
+0% tests passed, 2 tests failed out of 2
+
+Total Test time (real) =  15.28 sec
+
+The following tests FAILED:
+	 24 - ui_host_repaint (Failed)
+	 53 - ui_web_host_frontend (Failed)
+Errors while running CTest
+Output from these tests are in: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/current/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.

@@ -1,0 +1,411 @@
+UpdateCTestConfiguration  from :D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline/DartConfiguration.tcl
+Test project D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 24
+    Start 24: ui_host_repaint
+
+24: Test command: D:\应用软件框架\应用层序框架\build\ci-recovery-20261008\baseline\ui_host_repaint_test.exe "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+24: Working Directory: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline
+24: Test timeout computed to be: 45
+24: WINDOW invalidate-control hwnd0000000009D00A46 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE invalidate-control elapsed203 cpu-ms0.000 paint1 queued-paint1 dispatched1 host-refresh0 wake0 layouts0 events0 handles281 GDI405 USER29
+24: MEASURE idle-0 elapsed2000 cpu-ms0.000 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles281 GDI405 USER29
+24: MEASURE idle-1 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles281 GDI405 USER29
+24: MEASURE idle-2 elapsed2000 cpu-ms0.000 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles281 GDI405 USER29
+24: WINDOW resize hwnd0000000008A90780 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000009D00A46 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+24: WINDOW resize hwnd00000000037E08B8 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd000000000B9309EC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000002D20BF6 classStatic paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000006031086 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd0000000001DE10EA classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd00000000109010AC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE resize elapsed516 cpu-ms62.500 paint8 queued-paint8 dispatched8 host-refresh0 wake0 layouts3 events5 handles281 GDI368 USER29
+24: WINDOW resize hwnd0000000008A90780 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000009D00A46 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+24: WINDOW resize hwnd00000000037E08B8 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd000000000B9309EC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000002D20BF6 classStatic paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000006031086 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd0000000001DE10EA classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd00000000109010AC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE resize elapsed500 cpu-ms62.500 paint8 queued-paint8 dispatched8 host-refresh0 wake0 layouts3 events5 handles281 GDI393 USER29
+24: WINDOW resize hwnd0000000008A90780 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000009D00A46 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+24: WINDOW resize hwnd00000000037E08B8 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd000000000B9309EC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000002D20BF6 classStatic paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW resize hwnd0000000006031086 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd0000000001DE10EA classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW resize hwnd00000000109010AC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE resize elapsed515 cpu-ms46.875 paint8 queued-paint8 dispatched8 host-refresh0 wake0 layouts3 events5 handles281 GDI393 USER29
+24: WINDOW explicit-GL-frame hwnd0000000009D00A46 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+24: WINDOW explicit-GL-frame hwnd0000000008A90780 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd00000000037E08B8 classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd0000000006031086 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd0000000001DE10EA classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd00000000109010AC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: WINDOW explicit-GL-frame hwnd000000000B9309EC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+24: MEASURE explicit-GL-frame elapsed516 cpu-ms203.125 paint7 queued-paint7 dispatched8 host-refresh0 wake0 layouts1 events4 handles281 GDI393 USER29
+24: MEASURE idle-after-GL elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles281 GDI393 USER29
+24: Host idle repaint: 0 failures
+1/5 Test #24: ui_host_repaint ..................   Passed   12.69 sec
+test 25
+    Start 25: ui_stateful_components_light
+
+25: Test command: C:\Users\wbycl\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.exe "-NoProfile" "-File" "D:/应用软件框架/应用层序框架/tests/run-stateful-components.ps1" "-BuildDirectory" "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline" "-Provider" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "-Backend" "light"
+25: Working Directory: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline
+25: Test timeout computed to be: 180
+25: RESTORED modewrite dpi96 name200 treeCollapsed0
+25: HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+25: CAPTURE hit0000000005420F54 classUIFrameworkLightWeb thread33960 ours33960 GetCapture0000000005420F54 target-thread-capture0000000005420F54
+25: ACTUAL_HEADER dpi96 width200 -> 280 hit0000000005420F54 pid39648
+25: Stateful actual light / write: 0 failures
+25: RESTORED moderestore dpi96 name280 treeCollapsed1
+25: STABLE_COLUMN name headerX8 cellX8 texteditable
+25: Stateful actual light / restore: 0 failures
+25: RESTORED modewrite dpi144 name200 treeCollapsed0
+25: HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+25: CAPTURE hit0000000006061086 classUIFrameworkLightWeb thread40024 ours40024 GetCapture0000000006061086 target-thread-capture0000000006061086
+25: ACTUAL_HEADER dpi144 width200 -> 280 hit0000000006061086 pid44220
+25: Stateful actual light / write: 0 failures
+25: RESTORED moderestore dpi144 name280 treeCollapsed1
+25: STABLE_COLUMN name headerX8 cellX8 texteditable
+25: Stateful actual light / restore: 0 failures
+25: RESTORED modewrite dpi192 name200 treeCollapsed0
+25: HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+25: CAPTURE hit0000000006F61064 classUIFrameworkLightWeb thread36768 ours36768 GetCapture0000000006F61064 target-thread-capture0000000006F61064
+25: ACTUAL_HEADER dpi192 width200 -> 280 hit0000000006F61064 pid41756
+25: Stateful actual light / write: 0 failures
+25: RESTORED moderestore dpi192 name280 treeCollapsed1
+25: STABLE_COLUMN name headerX8 cellX8 texteditable
+25: Stateful actual light / restore: 0 failures
+25: RESTORED modeisolation dpi96 name280 treeCollapsed1
+25: HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+25: CAPTURE hit000000000AF908FE classUIFrameworkLightWeb thread48316 ours48316 GetCapture000000000AF908FE target-thread-capture000000000AF908FE
+25: ACTUAL_HEADER dpi96 width200 -> 280 hit000000000AF908FE pid26416
+25: HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+25: CAPTURE hit000000000AF908FE classUIFrameworkLightWeb thread48316 ours48316 GetCapture000000000AF908FE target-thread-capture000000000AF908FE
+25: ACTUAL_HEADER dpi96 width280 -> 360 hit000000000AF908FE pid26416
+25: Stateful actual light / isolation: 0 failures
+25: RESTORED modeprofile-b dpi96 name360 treeCollapsed0
+25: Stateful actual light / profile-b: 0 failures
+25: RESTORED modereload dpi96 name280 treeCollapsed1
+25: Stateful actual light / reload: 0 failures
+25: RESTORED modelocked-profile dpi96 name280 treeCollapsed1
+25: Stateful actual light / locked-profile: 0 failures
+25: RESTORED moderestore dpi96 name280 treeCollapsed1
+25: STABLE_COLUMN name headerX128 cellX128 texteditable
+25: Stateful actual light / restore: 0 failures
+25: RESTORED modeevolve dpi96 name280 treeCollapsed1
+25: Stateful actual light / evolve: 0 failures
+25: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+25: Stateful actual light / invalid: 0 failures
+25: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+25: Stateful actual light / invalid: 0 failures
+25: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+25: Stateful actual light / invalid: 0 failures
+25: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+25: Stateful actual light / invalid: 0 failures
+25: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+25: Stateful actual light / invalid: 0 failures
+25: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+25: Stateful actual light / invalid: 0 failures
+25: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+25: Stateful actual light / invalid: 0 failures
+25: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+25: Stateful actual light / invalid: 0 failures
+25: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+25: Stateful actual light / invalid: 0 failures
+25: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+25: Stateful actual light / invalid: 0 failures
+25: RESTORED modedefaults dpi96 name200 treeCollapsed0
+25: Stateful actual light / defaults: 0 failures
+25: RESTORED modeinit-failures dpi96 name200 treeCollapsed0
+25: Stateful actual light / init-failures: 0 failures
+25: RESTORED modereset dpi96 name280 treeCollapsed1
+25: Stateful actual light / reset: 0 failures
+25: RESTORED modedefaults dpi96 name200 treeCollapsed0
+25: Stateful actual light / defaults: 0 failures
+25: Stateful application actual light PASS; evidence D:\应用软件框架\应用层序框架\build\ci-recovery-20261008\baseline\state-evidence-light-a09f414e060743a9875c9dd7468153a1
+2/5 Test #25: ui_stateful_components_light .....   Passed   36.64 sec
+test 26
+    Start 26: ui_instance_language_light
+
+26: Test command: C:\Users\wbycl\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell\pwsh.exe "-NoProfile" "-File" "D:/应用软件框架/应用层序框架/tests/run-instance-language.ps1" "-BuildDirectory" "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline" "-Provider" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "-Backend" "light"
+26: Working Directory: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline
+26: Test timeout computed to be: 240
+26: INPUT_EVIDENCE complete DLL preference startup; no injected input
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+26: PREFERENCE missing: final=en-US file unchanged
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+26: PREFERENCE empty: final=en-US file unchanged
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+26: PREFERENCE truncated: final=en-US file unchanged
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+26: PREFERENCE magic: final=en-US file unchanged
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+26: PREFERENCE future: final=en-US file unchanged
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+26: PREFERENCE language: final=en-US file unchanged
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+26: PREFERENCE profile: final=en-US file unchanged
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+26: PREFERENCE reserved: final=en-US file unchanged
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+26: PREFERENCE zh-CN: final=zh-CN file unchanged
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+26: PREFERENCE en-US: final=en-US file unchanged
+26: Complete DLL preferences light failures0
+26: INPUT_EVIDENCE real SendInput; final state checked
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+26: REAL_CLICK client90,41 128x26 screen202,94 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client4,4 312x28 screen299,126 hit000000000563090C UIFrameworkLightWeb pid11704
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+26: HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+26: CAPTURE hit000000000C3A0EBC classUIFrameworkLightWeb thread41968 ours41968 GetCapture000000000C3A0EBC target-thread-capture000000000C3A0EBC
+26: ACTUAL_HEADER dpi96 width200 -> 280 hit000000000C3A0EBC pid11704
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+26: REAL_CLICK client90,41 128x26 screen202,94 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client4,32 312x28 screen299,154 hit000000000D1A0B22 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client1006,0 40x40 screen1074,60 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client1006,0 40x40 screen1074,60 hit00000000039A08B8 UIFrameworkLightWeb pid11704
+26: REAL_CLICK client8,40 58x28 screen133,233 hit0000000001FE0C52 UIFrameworkLightWeb pid11704
+26: Instance language actual light write dpi96 failures0
+26: INPUT_EVIDENCE real SendInput; final state checked
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: REAL_CLICK client34,4 154x36 screen159,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+26: REAL_CLICK client214,4 154x36 screen339,62 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: REAL_CLICK client1006,0 40x40 screen1074,60 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: REAL_CLICK client1006,0 40x40 screen1074,60 hit00000000171A091A UIFrameworkLightWeb pid10848
+26: REAL_CLICK client8,40 58x28 screen133,233 hit0000000001E710EA UIFrameworkLightWeb pid10848
+26: Instance language actual light restore dpi96 failures0
+26: INPUT_EVIDENCE real SendInput; final state checked
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+26: REAL_CLICK client90,41 128x26 screen279,121 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client4,4 312x28 screen424,168 hit000000000C3C0EBC UIFrameworkLightWeb pid28120
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+26: HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+26: CAPTURE hit000000000D1C0B22 classUIFrameworkLightWeb thread38908 ours38908 GetCapture000000000D1C0B22 target-thread-capture000000000D1C0B22
+26: ACTUAL_HEADER dpi144 width200 -> 280 hit000000000D1C0B22 pid28120
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+26: REAL_CLICK client90,41 128x26 screen279,121 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client4,32 312x28 screen424,210 hit0000000002970B16 UIFrameworkLightWeb pid28120
+26: REAL_CLICK client34,4 154x36 screen215,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client34,4 154x36 screen215,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client34,4 154x36 screen215,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client34,4 154x36 screen215,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client34,4 154x36 screen215,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client34,4 154x36 screen215,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client34,4 154x36 screen215,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client34,4 154x36 screen215,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client1011,0 40x40 screen1595,70 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client1011,0 40x40 screen1595,70 hit000000000BB109EC UIFrameworkLightWeb pid28120
+26: REAL_CLICK client8,40 60x28 screen153,294 hit000000000D4D10E2 UIFrameworkLightWeb pid28120
+26: Instance language actual light write dpi144 failures0
+26: INPUT_EVIDENCE real SendInput; final state checked
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+26: REAL_CLICK client34,4 154x36 screen215,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: REAL_CLICK client34,4 154x36 screen215,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: REAL_CLICK client34,4 154x36 screen215,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: REAL_CLICK client34,4 154x36 screen215,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: REAL_CLICK client34,4 154x36 screen215,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: REAL_CLICK client34,4 154x36 screen215,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: REAL_CLICK client34,4 154x36 screen215,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: REAL_CLICK client34,4 154x36 screen215,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+26: REAL_CLICK client214,4 154x36 screen485,73 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000002C20756 UIFrameworkLightWeb pid47100
+26: REAL_CLICK client8,40 60x28 screen153,294 hit00000000060E1086 UIFrameworkLightWeb pid47100
+26: Instance language actual light restore dpi144 failures0
+26: INPUT_EVIDENCE real SendInput; final state checked
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+26: REAL_CLICK client90,41 128x26 screen356,148 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client4,4 312x28 screen549,211 hit000000000D1E0B22 UIFrameworkLightWeb pid40252
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+26: HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+26: CAPTURE hit0000000002990B16 classUIFrameworkLightWeb thread44408 ours44408 GetCapture0000000002990B16 target-thread-capture0000000002990B16
+26: ACTUAL_HEADER dpi192 width200 -> 280 hit0000000002990B16 pid40252
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+26: REAL_CLICK client90,41 128x26 screen356,148 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client4,32 312x28 screen549,267 hit000000000DC0008A UIFrameworkLightWeb pid40252
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000002B50AD0 UIFrameworkLightWeb pid40252
+26: REAL_CLICK client8,40 59x28 screen170,355 hit0000000002DC0BF6 UIFrameworkLightWeb pid40252
+26: Instance language actual light write dpi192 failures0
+26: INPUT_EVIDENCE real SendInput; final state checked
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+26: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: REAL_CLICK client34,4 154x36 screen270,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+26: REAL_CLICK client214,4 154x36 screen630,84 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000002B60EA6 UIFrameworkLightWeb pid40220
+26: REAL_CLICK client8,40 59x28 screen170,355 hit000000000B1E08FE UIFrameworkLightWeb pid40220
+26: Instance language actual light restore dpi192 failures0
+26: LANGUAGE_EVIDENCE=D:\应用软件框架\应用层序框架\build\ci-recovery-20261008\baseline\language-evidence-light-b6a7c2b23cc344bebc69a944aebc462a
+3/5 Test #26: ui_instance_language_light .......   Passed   64.68 sec
+test 52
+    Start 52: ui_browser_host
+
+52: Test command: D:\应用软件框架\应用层序框架\build\ci-recovery-20261008\baseline\ui_browser_host_test.exe "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline/web_counter.uapp" "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline/ui_lifecycle_fixture.dll"
+52: Working Directory: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline
+52: Test timeout computed to be: 60
+52: Recent row text=[] newest=[C:\Users\wbycl\AppData\Local\Temp\ubh4E74.tmp\app12.uapp]
+52: Actual drag 40,40 -> 80,70
+52: Resize actual target 000000000FCF0C0C host 000000000FCF0C0C chrome 000000000BB509EC capture 0000000000000000
+52: Resize actual right 1280 -> 1310
+52: 24 actual DLL reopen/close: handles 296 -> 296 GDI 72 -> 72 USER 23 -> 23
+52: Browser host: 0 failures
+4/5 Test #52: ui_browser_host ..................   Passed    5.53 sec
+test 53
+    Start 53: ui_web_host_frontend
+
+53: Test command: D:\应用软件框架\应用层序框架\build\ci-recovery-20261008\baseline\ui_web_host_frontend_test.exe "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline/cpp_fixture.uapp"
+53: Working Directory: D:/应用软件框架/应用层序框架/build/ci-recovery-20261008/baseline
+53: Test timeout computed to be: 60
+53: Basic parameter JSON: {"count":12,"name":"Draft 中","enabled":true,"extra":"keep"}
+53: Parameter recovery hint: status=0 visible=1 text=此参数需要在高级区域配置，原有参数保持。
+53: Short text tool width: 115
+53: Web host frontend passed.
+5/5 Test #53: ui_web_host_frontend .............   Passed    1.61 sec
+
+The following tests passed:
+	ui_host_repaint
+	ui_stateful_components_light
+	ui_instance_language_light
+	ui_browser_host
+	ui_web_host_frontend
+
+100% tests passed, 0 tests failed out of 5
+
+Total Test time (real) = 121.17 sec

@@ -456,3 +456,11 @@ ctest --test-dir build/current -R '^ui_stateful_components_(light|webview2)$' --
 ## API9 语言回归与SDK
 
 当前构建产出API9头文件、导入库、共享DLL、宿主及清单匹配的应用包。ui_language_core覆盖来源、通知、线程、完整size和旧语言异步失效；ui_instance_language_light/webview2使用实际完整DLL、十万行/64列、GL和真实鼠标，覆盖96/144/192及跨进程档案。run-instance-language.ps1先验证10种偏好文件，再write/restore；Runtime必须实际可用。CI沿用四行矩阵并强制这些当前用例，未触发远程工作流。锁屏/共享输入、真实IME、物理跨屏、Session0及严格无登录与本机结果分开报告。[实际命令、失败和SDK校验](validation/instance-language-validation.md)。
+
+### 托管失败的本地复验与阶段诊断
+
+接手后的语言断言修正及原180/240秒超时定位边界见[CI收敛记录](validation/ci-recovery-validation.md)。空宿主使用公共Windows显示语言查询，不修改机器设置；应用实例测试明确提交zh-CN/en-US，继续精确检查文本及原语义。重绘测试逐断言打印表达式与实际绘制/结果/关闭值，不能把paint0单独作为整项通过。
+
+完整脚本每个独立进程都有CASE_BEGIN/CASE_END和manifest的running/exited、elapsedMs、exitCode；C日志另含PID、tick、实际Dispatch计数及创建/打开/截图/关闭/COM返回阶段。最后一条failures0不等于脚本已取得退出码。`tools/windows-ci.ps1`同时归档state-evidence-*与language-evidence-*，超时必须保留最后running阶段，仍按原TIMEOUT失败，不增等待或放宽资源。
+
+四行配置沿用现有WGL/provider/Runtime分类，依赖已存在时先核验固定提交和目录改动，勿盲目prepare覆盖。独立新build目录、串行真实输入、JUnit精确清单和二进制哈希必须绑定本轮源码；本地结果不改写原托管CI结论。本轮没有新的推送或远程工作流授权。

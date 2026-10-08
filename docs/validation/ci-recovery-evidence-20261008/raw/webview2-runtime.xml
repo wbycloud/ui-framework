@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="10"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="187"
+	timestamp="2026-10-08T23:44:31"
+	>
+	<testcase name="ui_webview2_parity" classname="ui_webview2_parity" time="1.02149" status="run">
+		<properties/>
+		<system-out>javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+composition_verified=set_rect,resize_preserves_origin,sidebar_binding,host_reflow
+javascript_verified=true
+state=0 ready=1 html_navigated=1 viewport_cases=4 composition=1 clicks=1 inputs=1 results=2 hresult=0x00000000 elapsed_ms=921
+</system-out>
+	</testcase>
+	<testcase name="ui_webview2_messages" classname="ui_webview2_messages" time="2.23423" status="run">
+		<properties/>
+		<system-out>WebView2 JSON: ready=1 navigated=1 posted=1 echoed=1 status=0
+</system-out>
+	</testcase>
+	<testcase name="ui_webview2_render" classname="ui_webview2_render" time="17.4236" status="run">
+		<properties/>
+		<system-out>Runtime render: initialize
+Runtime ready call 1: 8859 ms
+Runtime render: ready
+Runtime render: capture/images complete
+Runtime ready call 2: 94 ms
+Runtime render: close
+Runtime close before creation x12 handles 315-&gt;315 USER 17-&gt;17 pending cleanup=0
+Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+Runtime test: normal CRT exit callback reached
+</system-out>
+	</testcase>
+	<testcase name="ui_component_experience_webview2" classname="ui_component_experience_webview2" time="13.9788" status="run">
+		<properties/>
+		<system-out>component experience actual WebView2: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_widths_webview2" classname="ui_component_widths_webview2" time="6.53622" status="run">
+		<properties/>
+		<system-out>Column experience actual Runtime queries44: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_scroll_webview2" classname="ui_component_scroll_webview2" time="9.8021" status="run">
+		<properties/>
+		<system-out>presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=table y=44 height=396 query=0+15
+end row first=99988 total=100000 rows=14 query=99986+17 nodes=139 status=0
+end column first=0 col=0 rows=15 query=0+15
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551603 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+complete range scroll actual Runt...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_stateful_components_webview2" classname="ui_stateful_components_webview2" time="41.2817" status="run">
+		<properties/>
+		<system-out>CASE_BEGIN label=write-96 mode=write dpi=96 utc=2026-10-08T15:45:23.3462050Z evidence=D:\应用软件框架\应用层序框架\build\ci-recovery-20261008\current\state-evidence-webview2-fce497fec752421884914867fdaa2656
+TEST_PHASE pid25584 tick712859656 dispatched0 create-host-begin
+TEST_PHASE pid25584 tick712859671 dispatched0 create-host-end
+TEST_PHASE pid25584 tick712859703 dispatched0 open-begin
+TEST_PHASE pid25584 tick712859828 dispatched0 open-return
+TEST_PHASE pid25584 tick712860328 dispatched52 open-settled
+RESTORED modewrite dpi96 name200 treeCollapsed0
+TEST_PHASE pid25584 tick712860328 dispatched52 screenshot-begin
+TEST_PHASE pid25584 tick712860359 dispatched52 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit00000000068E101E classChrome_WidgetWin_0 thread42236 ours42236 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -&gt; 280 hit00000000068E101E pid25584
+TEST_PHASE pid25584 tick712862875 dispatched193 screenshot-begin
+TEST_P...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_instance_language_webview2" classname="ui_instance_language_webview2" time="72.0608" status="run">
+		<properties/>
+		<system-out>CASE_BEGIN label=preferences-96 utc=2026-10-08T15:46:04.5762957Z evidence=D:\应用软件框架\应用层序框架\build\ci-recovery-20261008\current\language-evidence-webview2-ab010ecb6d424bd7b26e1cfbe40450c5
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+TEST_PHASE pid31040 tick712900875 dispatched0 create-host-begin
+TEST_PHASE pid31040 tick712900890 dispatched0 create-host-end
+TEST_PHASE pid31040 tick712901125 dispatched15 screenshot-begin
+TEST_PHASE pid31040 tick712901156 dispatched15 screenshot-end
+TEST_PHASE pid31040 tick712901156 dispatched15 preferences-begin
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE mag...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_visual_ui_webview2" classname="ui_visual_ui_webview2" time="6.881" status="run">
+		<properties/>
+		<system-out>Header/content: 8,200 versus 8,200
+Header/content: 8,200 versus 8,200
+Panel title tooltip kind5 capture0000000000000000
+Dock tab tooltip kind5 capture0000000000000000
+Visual actual webview2 DLL / OSMesa / dual instance: 0 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_api7_integration_webview2" classname="ui_api7_integration_webview2" time="16.5077" status="run">
+		<properties/>
+		<system-out>API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=8589
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-runtime-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+ Framework pending cleanup=0 process handles=396
+API7 integration: reopen 1
+ Framework pending cleanup=0 process handles=396
+API7 integration: reopen 2
+ Framework pending cleanup=0 process handles=396
+API7 integration: reopen 3
+ Framework pending cleanup=0 process handles=396
+API7 integration: reopen 4
+ Framework pending cleanup=0 process handles=396
+API7 integration: reopen 5
+ Framework pending cleanup=0 process handles=396
+API7 integration: reopen 6
+ Framework pending cl...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>
