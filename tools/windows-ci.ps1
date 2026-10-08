@@ -159,6 +159,7 @@ $combined.Save("$((Resolve-Path $evidenceDirectory).Path)/ctest.xml")
 Get-Content "$evidenceDirectory/regression.log"
 Get-ChildItem $buildDirectory -Filter 'api*-*-frame.ppm' | Copy-Item -Destination $evidenceDirectory
 Get-ChildItem -LiteralPath $buildDirectory -Directory -Filter 'state-evidence-*' | Copy-Item -Destination $evidenceDirectory -Recurse
+Get-ChildItem -LiteralPath $buildDirectory -Directory -Filter 'language-evidence-*' | Copy-Item -Destination $evidenceDirectory -Recurse
 if ('ui_session0_interactive_control' -in $expected -and (Test-Path "$buildDirectory/session0-control")) { Copy-Item "$buildDirectory/session0-control" "$evidenceDirectory/session0-interactive-control" -Recurse }
 [xml]$results = Get-Content "$evidenceDirectory/ctest.xml" -Raw
 

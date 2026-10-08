@@ -10,11 +10,19 @@ $runPath=Join-Path $buildPath ('state-evidence-'+$Backend+'-'+[Guid]::NewGuid().
 New-Item -ItemType Directory -Path $runPath | Out-Null
 $executable=Join-Path $buildPath 'ui_stateful_components_test.exe'
 $package=Join-Path $buildPath 'stateful_components.uapp'
-$manifest=@{backend=$Backend;frameworkApi=9;provider=$providerPath;providerSha256=(Get-FileHash -LiteralPath $providerPath).Hash;executableSha256=(Get-FileHash -LiteralPath $executable).Hash;packageSha256=(Get-FileHash -LiteralPath $package).Hash;runtimeDllSha256=(Get-FileHash -LiteralPath (Join-Path $buildPath 'ui_framework.dll')).Hash;evidence=$runPath;startedUtc=[DateTime]::UtcNow.ToString('o')}
-$manifest | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runPath 'manifest.json') -Encoding utf8
+$manifest=@{backend=$Backend;frameworkApi=9;provider=$providerPath;providerSha256=(Get-FileHash -LiteralPath $providerPath).Hash;executableSha256=(Get-FileHash -LiteralPath $executable).Hash;packageSha256=(Get-FileHash -LiteralPath $package).Hash;runtimeDllSha256=(Get-FileHash -LiteralPath (Join-Path $buildPath 'ui_framework.dll')).Hash;evidence=$runPath;startedUtc=[DateTime]::UtcNow.ToString('o');cases=@()}
+$manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $runPath 'manifest.json') -Encoding utf8
 function Run-Case([string]$profilePath,[string]$mode,[int]$dpi=96,[string]$label=$mode) {
+    $case=@{label=$label;mode=$mode;dpi=$dpi;startedUtc=[DateTime]::UtcNow.ToString('o');status='running'}
+    $manifest.cases+=$case
+    $manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $runPath 'manifest.json') -Encoding utf8
+    Write-Output "CASE_BEGIN label=$label mode=$mode dpi=$dpi utc=$($case.startedUtc) evidence=$runPath"
+    $watch=[Diagnostics.Stopwatch]::StartNew()
     & $executable $package $providerPath $Backend $profilePath $mode $dpi $label 2>&1 | Tee-Object -FilePath (Join-Path $runPath ($label+'.log'))
-    if($LASTEXITCODE -ne 0){throw "Actual state case failed: $label exit $LASTEXITCODE"}
+    $case.exitCode=$LASTEXITCODE;$case.elapsedMs=$watch.ElapsedMilliseconds;$case.status='exited';$case.completedUtc=[DateTime]::UtcNow.ToString('o')
+    $manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $runPath 'manifest.json') -Encoding utf8
+    Write-Output "CASE_END label=$label elapsedMs=$($case.elapsedMs) exit=$($case.exitCode)"
+    if($case.exitCode -ne 0){throw "Actual state case failed: $label exit $($case.exitCode)"}
 }
 function Set-Checksum([byte[]]$bytes) {
     [uint32]$hash=2166136261
@@ -67,5 +75,5 @@ Run-Case $initialization init-failures 96 'failed-create-mount-lock-release'
 Run-Case $main reset 96
 Run-Case $main defaults 96 'reset-cross-process'
 $manifest.completedUtc=[DateTime]::UtcNow.ToString('o')
-$manifest | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runPath 'manifest.json') -Encoding utf8
+$manifest | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $runPath 'manifest.json') -Encoding utf8
 Write-Output "Stateful application actual $Backend PASS; evidence $runPath"
