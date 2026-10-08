@@ -1,6 +1,6 @@
 {
-  "observedUtc": "2026-10-08T01:01:58.7550443Z",
-  "frameworkHead": "ace533acde16171568dfa38f699387a6e79f8587",
+  "observedUtc": "2026-10-08T00:23:28.2271740Z",
+  "frameworkHead": "d24cdf386889337fc68d3aabb5184c39a5591a54",
   "branch": "codex/menus-offscreen",
   "os": "Windows 10 Home China",
   "osVersion": "10.0.26300.0",
@@ -19,24 +19,24 @@
   "longManualAcceptance": false,
   "formalBusinessModificationAuthorization": false,
   "desktop": {
-    "detectedMonitors": 1,
-    "width": 2560,
-    "dwmHresult": 0,
-    "dwmEnabled": true,
+    "height": 1440,
     "physicalMixedDpiAndEdgeSnapAcceptance": false,
+    "dwmEnabled": true,
+    "dwmHresult": 0,
+    "width": 2560,
     "systemDpi": 96,
-    "height": 1440
+    "detectedMonitors": 1
   },
   "originalBusiness": {
-    "trackedUserDiffUnchanged": true,
-    "head": "ff44a0fff0ba198f6bfc45d7fcdabb347f6fdeda",
-    "newCopy": "abc8d870efc6401dc4fa55e50170a5449c11e36b",
-    "access": "read_only",
     "modifiedCopyFiles": [
       "app/manifest.ini",
       "framework-sdk.lock.json"
     ],
-    "trackedChanges": 23
+    "newCopy": "abc8d870efc6401dc4fa55e50170a5449c11e36b",
+    "trackedUserDiffUnchanged": true,
+    "trackedChanges": 23,
+    "access": "read_only",
+    "head": "ff44a0fff0ba198f6bfc45d7fcdabb347f6fdeda"
   },
   "hardwareWindowlessGlExpanded": false
 }

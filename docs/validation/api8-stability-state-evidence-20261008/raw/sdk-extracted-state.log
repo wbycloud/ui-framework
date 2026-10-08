@@ -1,0 +1,37 @@
+RESTORED modewrite dpi96 name200 treeCollapsed0
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit00000000095F0FE4 classUIFrameworkLightWeb thread29120 ours29120 GetCapture00000000095F0FE4 target-thread-capture00000000095F0FE4
+ACTUAL_HEADER dpi96 width200 -> 280 hit00000000095F0FE4 pid49584
+Stateful actual light / write: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+Stateful actual light / restore: 0 failures
+RESTORED modeisolation dpi96 name280 treeCollapsed1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000005AF0722 classUIFrameworkLightWeb thread45024 ours45024 GetCapture0000000005AF0722 target-thread-capture0000000005AF0722
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000005AF0722 pid41092
+HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+CAPTURE hit0000000005AF0722 classUIFrameworkLightWeb thread45024 ours45024 GetCapture0000000005AF0722 target-thread-capture0000000005AF0722
+ACTUAL_HEADER dpi96 width280 -> 360 hit0000000005AF0722 pid41092
+Stateful actual light / isolation: 0 failures
+RESTORED modeprofile-b dpi96 name360 treeCollapsed0
+Stateful actual light / profile-b: 0 failures
+RESTORED modewrite dpi96 name200 treeCollapsed0
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000000E90926 classChrome_WidgetWin_0 thread46052 ours46052 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000000E90926 pid36044
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+Stateful actual webview2 / restore: 0 failures
+RESTORED modeisolation dpi96 name280 treeCollapsed1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit000000000AE60662 classChrome_WidgetWin_0 thread13136 ours13136 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit000000000AE60662 pid15340
+HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+CAPTURE hit000000000AE60662 classChrome_WidgetWin_0 thread13136 ours13136 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width280 -> 360 hit000000000AE60662 pid15340
+Stateful actual webview2 / isolation: 0 failures
+RESTORED modeprofile-b dpi96 name360 treeCollapsed0
+Stateful actual webview2 / profile-b: 0 failures
+Extracted SDK actual state: 8/8 PASS; D:\应用软件框架\应用层序框架\build\stability-state-20261008\sdk-extracted-state-79cd6dcac3d5426cb541ce771ba6e243

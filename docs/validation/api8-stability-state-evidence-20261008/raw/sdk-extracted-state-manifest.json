@@ -1,0 +1,61 @@
+{
+  "startedUtc": "2026-10-08T00:58:45.5187959Z",
+  "runtimeDllSha256": "8ECEAC951A6492B4CFCF22B47E6FA161D533677C02587A3641FF5C98E92148EC",
+  "executableSha256": "D3358A8C5132110381E1D0710DD733B6DA38A61F69812182C4D8E6A9721E6BC5",
+  "archiveSha256": "8e962a14f1fb9e77f5aaa8d4b4067688bef757f674bb34a1686c0969fa067dc2",
+  "cases": [
+    {
+      "independentProcess": true,
+      "backend": "light",
+      "mode": "write",
+      "result": "PASS"
+    },
+    {
+      "independentProcess": true,
+      "backend": "light",
+      "mode": "restore",
+      "result": "PASS"
+    },
+    {
+      "independentProcess": true,
+      "backend": "light",
+      "mode": "isolation",
+      "result": "PASS"
+    },
+    {
+      "independentProcess": true,
+      "backend": "light",
+      "mode": "profile-b",
+      "result": "PASS"
+    },
+    {
+      "independentProcess": true,
+      "backend": "webview2",
+      "mode": "write",
+      "result": "PASS"
+    },
+    {
+      "independentProcess": true,
+      "backend": "webview2",
+      "mode": "restore",
+      "result": "PASS"
+    },
+    {
+      "independentProcess": true,
+      "backend": "webview2",
+      "mode": "isolation",
+      "result": "PASS"
+    },
+    {
+      "independentProcess": true,
+      "backend": "webview2",
+      "mode": "profile-b",
+      "result": "PASS"
+    }
+  ],
+  "packageSha256": "746F703A416AE5C8E0D9C006D6451089A41CED8DB45E8E0039F97BB39F7DC9AE",
+  "extractedSdk": "D:\\应用软件框架\\应用层序框架\\build\\stability-state-20261008\\sdk-verify-a2d8d6441942\\sdk",
+  "providerSha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F",
+  "sourceSnapshot": "ace533acde16171568dfa38f699387a6e79f8587",
+  "completedUtc": "2026-10-08T00:59:00.9489069Z"
+}

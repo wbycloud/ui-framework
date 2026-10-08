@@ -298,5 +298,77 @@
     "sha256": "4da4278caaea3c91ce8a9fceb39a57a915bb1e0a472cf6cd8f6e6323f122b824",
     "phase": "current_example_or_business_observation",
     "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/sdk-extracted-light-96-before.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "cbe994e0b991dc331aeee84c7acd58c93009b5e38403b6ac828686378c9c8ace",
+    "phase": "extracted_sdk_actual_before",
+    "origin": "actual running host/application; lossless BMP RGB conversion",
+    "archive_sha256": "8e962a14f1fb9e77f5aaa8d4b4067688bef757f674bb34a1686c0969fa067dc2",
+    "original_bmp_sha256": "2aaeeccb836c177f570ec51a829ac3d693ca208b2c8bc7e30213e101f49fdcad"
+  },
+  {
+    "path": "images/sdk-extracted-light-96-saved.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "cab108bac192d7703e461bc506348f72ed66bb413fbbaf26d6d9ea0e00f0ea5b",
+    "phase": "extracted_sdk_actual_saved",
+    "origin": "actual running host/application; lossless BMP RGB conversion",
+    "archive_sha256": "8e962a14f1fb9e77f5aaa8d4b4067688bef757f674bb34a1686c0969fa067dc2",
+    "original_bmp_sha256": "47a45def943d001e05d068bcd679eca97580bdd881eb61566144427e24615e63"
+  },
+  {
+    "path": "images/sdk-extracted-light-96-restored.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "1901c80cc65e1763343dc22c146525636a39495810054d9440e3996c34acab57",
+    "phase": "extracted_sdk_actual_restored",
+    "origin": "actual running host/application; lossless BMP RGB conversion",
+    "archive_sha256": "8e962a14f1fb9e77f5aaa8d4b4067688bef757f674bb34a1686c0969fa067dc2",
+    "original_bmp_sha256": "c1a9063130b7d58873ab908953e5ac3b5a0006dd3e0ab72655a5f36ba7432ddc"
+  },
+  {
+    "path": "images/sdk-extracted-webview2-96-before.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "9400e55f357980ac26b2533bd9780eeb1391a9cf53011cad5fa196ce561c8acb",
+    "phase": "extracted_sdk_actual_before",
+    "origin": "actual running host/application; lossless BMP RGB conversion",
+    "archive_sha256": "8e962a14f1fb9e77f5aaa8d4b4067688bef757f674bb34a1686c0969fa067dc2",
+    "original_bmp_sha256": "297ca529999b6fcbae86389e97fb082f1da3d105a95938b30807d0a5f2e21dc5"
+  },
+  {
+    "path": "images/sdk-extracted-webview2-96-saved.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "7b4a11bbfa5e35ab93f4a6580d7b39266da7a4559e2bc371352daeccaee6eb48",
+    "phase": "extracted_sdk_actual_saved",
+    "origin": "actual running host/application; lossless BMP RGB conversion",
+    "archive_sha256": "8e962a14f1fb9e77f5aaa8d4b4067688bef757f674bb34a1686c0969fa067dc2",
+    "original_bmp_sha256": "5475511718649d62a3b6a4bf2948b81fbd6b5e53540353436ac463680cf5042b"
+  },
+  {
+    "path": "images/sdk-extracted-webview2-96-restored.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "1eba34b0d0d6fc7f37f49cfbd46334fce29fd0b89b89c0c1103a5656e99f9665",
+    "phase": "extracted_sdk_actual_restored",
+    "origin": "actual running host/application; lossless BMP RGB conversion",
+    "archive_sha256": "8e962a14f1fb9e77f5aaa8d4b4067688bef757f674bb34a1686c0969fa067dc2",
+    "original_bmp_sha256": "3bb5776293683a8d82335499b69dd20d6ce67f099f6f32467f6b7421554cc096"
   }
 ]

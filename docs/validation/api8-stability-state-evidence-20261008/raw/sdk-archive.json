@@ -1,0 +1,22 @@
+{
+  "created_utc": "2026-10-08T00:58:06.422346+00:00",
+  "archive": "D:\\应用软件框架\\应用层序框架\\build\\stability-state-20261008\\ui-framework-sdk0.8.0-dev-api8-f0b161c-windows-x64.zip",
+  "bytes": 62724776,
+  "sha256": "8e962a14f1fb9e77f5aaa8d4b4067688bef757f674bb34a1686c0969fa067dc2",
+  "source_document_snapshot": "ace533acde16171568dfa38f699387a6e79f8587",
+  "product_commit": "f0b161cae20b405ab5217368f17b466e757d0655",
+  "example_test_commit": "d24cdf386889337fc68d3aabb5184c39a5591a54",
+  "files_including_manifest": 2457,
+  "sha256_manifest": "6a9804b5409a512cdbf1681e0168a6667efe2bce8bea8753396df8ffbe04f8e5",
+  "crc": "PASS",
+  "extracted_directory": "D:\\应用软件框架\\应用层序框架\\build\\stability-state-20261008\\sdk-verify-a2d8d6441942\\sdk",
+  "per_file_verification": "PASS",
+  "extracted_public_c_consumer": "PASS",
+  "business_framework_bin_matches_delivery": {
+    "ui_framework.dll": "8eceac951a6492b4cfcf22b47e6fa161d533677c02587a3641ff5c98e92148ec",
+    "framework_host.exe": "6fb9b799f7ac93847ee44fc553e485d8070c53765f96492a237bce0a55150375"
+  },
+  "extracted_real_host_state": "PASS: 8 independent processes; Light and real Runtime write/restore/isolation/profile-B",
+  "extracted_real_host_evidence": "D:\\应用软件框架\\应用层序框架\\build\\stability-state-20261008\\sdk-extracted-state-79cd6dcac3d5426cb541ce771ba6e243",
+  "post_desktop_per_file_verification": "PASS: all 2457 delivered files remain unchanged"
+}

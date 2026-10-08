@@ -1,0 +1,34 @@
+{
+  "sdk": "0.8.0-dev",
+  "api": 8,
+  "standard": 8,
+  "application_abi": 1,
+  "package_format": 1,
+  "product_commit": "f0b161cae20b405ab5217368f17b466e757d0655",
+  "example_test_commit": "d24cdf386889337fc68d3aabb5184c39a5591a54",
+  "source_document_snapshot": "ace533acde16171568dfa38f699387a6e79f8587",
+  "local_unpublished": true,
+  "dependencies": {
+    "framework_commit": "d24cdf386889337fc68d3aabb5184c39a5591a54",
+    "lexbor": "7fb22cf5664a331d7c24b113489e566767c9c25a",
+    "quickjs": "2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278",
+    "webview2_sdk": "1.0.4129.50",
+    "runtime_query_hresult": 0,
+    "runtime_version": "154.0.4258.62",
+    "loader": {
+      "path": "D:\\应用软件框架\\应用层序框架\\.deps\\Microsoft.Web.WebView2.1.0.4129.50\\build\\native\\x64\\WebView2Loader.dll",
+      "sha256": "a9a09232c25805323d4cfb3fc8f545a190a9c8a99c93262ea99d0b88df99ec90"
+    },
+    "osmesa": [
+      {
+        "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+        "file": "osmesa.dll"
+      },
+      {
+        "sha256": "38c0c712138e313f72b9fa113e8bc00019915cedff5f0659471fdb63e9b3b392",
+        "file": "libglapi.dll"
+      }
+    ]
+  },
+  "external_archive_proof": "Generated after this source snapshot; no self-referential archive hash."
+}

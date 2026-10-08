@@ -271,6 +271,6 @@ Runtime首轮关闭排空15秒断言失败，后续12取消pending0、句柄291�
 
 原业务只读HEAD ff44a0f及23项用户tracked diff保留；已登记abc8d87另建副本，仅改SDK锁／清单元数据。最终源码构建29/30（292.60秒）、实际交付SDK导入库重新链接／同DLL及宿主的完整套件也29/30（292.88秒），唯一原kc_host固定坐标折叠失败不改。框架自有观察器在交付SDK上102/102，另12次真实公共presentation折叠／恢复，同HWND、隐藏／显示、焦点及实际WGL context保留。框架提供定位迁移，原应用正式接入／原测试修改仍无授权；无公开chrome view getter，不臆造接口或改断言。
 
-当前依赖、运行条件、失败、命令、哈希、真实完整窗口图和SDK见[本轮验收](validation/api8-stability-state-validation.md)。新增旧布局输入遗漏、诊断hook漏队列paint、Runtime HWND捕获误判、临时Mesa默认D3D12异常均单独保留，不能归为持续重绘根因。原生三项实际拖动及未缓存末列、实际GL／MSAA／非MSAA、布局／输入／关闭回归保持。SDK离线当前3项和实际C消费通过，归档身份／解包结果另附，不混用此前冻结包。
+当前依赖、运行条件、失败、命令、哈希、真实完整窗口图和SDK见[本轮验收](validation/api8-stability-state-validation.md)。新增旧布局输入遗漏、诊断hook漏队列paint、Runtime HWND捕获误判、临时Mesa默认D3D12异常均单独保留，不能归为持续重绘根因。原生三项实际拖动及未缓存末列、实际GL／MSAA／非MSAA、布局／输入／关闭回归保持。SDK源码文档快照ace533a，产品f0b161c／示例测试d24cdf3；2457文件／62724776字节ZIP，CRC／逐文件哈希／解包后C调用通过。解包实际宿主在Light和Runtime共8个独立进程保存／恢复／隔离通过，SDK固定依赖离线3/3；[外部交付身份](validation/api8-stability-state-evidence-20261008/raw/sdk-archive.json)另附，不混用此前冻结包。归档后证明另行提交，包内源码快照不自包含自身归档哈希。
 
 本轮服务创建访问准确错误5，未创建／修改服务；当前源码Session0、严格无登录runner、托管CI授权、IME／不同DPI物理屏幕／桌面边缘合成／长期人工分别待验。检测到DWM启用与一屏不替代物理验收。没有硬件无窗口GL扩围、原仓库／冻结SDK／原包／PERF改动、子代理、新会话或远程操作。下一步先读本节与本轮验收，再核对实际Git；第17节及更早记录保持原结果。

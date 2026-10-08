@@ -92,9 +92,11 @@ ctest --test-dir build/current -R '^ui_host_repaint$' --output-on-failure
 
 ## SDK与待验
 
-匹配SDK包含include／导入及静态lib／共享DLL／宿主／完整stateful包／源码／固定依赖／许可／逐文件SHA256，单独记录源码文档快照与最终外部归档哈希，避免哈希自引用。解包后校验CRC、逐文件哈希、真实C消费及离线构建，最终元数据随本地交付补齐。
+匹配SDK包含include／导入及静态lib／共享DLL／宿主／完整stateful包／源码／固定依赖／许可／逐文件SHA256。归档`ui-framework-sdk0.8.0-dev-api8-f0b161c-windows-x64.zip`位于本轮本地build目录，62724776字节、2457文件；SHA256为`8e962a14f1fb9e77f5aaa8d4b4067688bef757f674bb34a1686c0969fa067dc2`。[归档身份与验证](api8-stability-state-evidence-20261008/raw/sdk-archive.json)、[逐文件清单](api8-stability-state-evidence-20261008/raw/sdk-sha256.json)、[SDK使用说明](api8-stability-state-evidence-20261008/raw/sdk-README.md)绑定产品f0b161c／示例测试d24cdf3及源码文档快照**ace533acde16171568dfa38f699387a6e79f8587**。本段及外部归档证明在该快照之后提交，仅增加交付证据，不重写归档以制造哈希自引用。
 
-SDK随包固定依赖离线重建通过：[构建](api8-stability-state-evidence-20261008/raw/sdk-offline-build.log)，当前C头文件／列宽[2项](api8-stability-state-evidence-20261008/raw/sdk-offline-tests.log)及属性／选择体验[1项](api8-stability-state-evidence-20261008/raw/sdk-offline-experience.log)共3/3。第三项初始筛选名ui_properties不在清单中，没有算成3项，追加实际存在的ui_component_experience；清单绑定[当前测试计划](api8-stability-state-evidence-20261008/raw/sdk-offline-plan.json)。匹配头文件／导入库／DLL的C消费已实际得到160列宽、120字节UCW1，[日志](api8-stability-state-evidence-20261008/raw/sdk-consumer.log)；归档后仍须解包再调用，不以这次调用替代。
+SDK随包固定依赖离线重建通过：[构建](api8-stability-state-evidence-20261008/raw/sdk-offline-build.log)，当前C头文件／列宽[2项](api8-stability-state-evidence-20261008/raw/sdk-offline-tests.log)及属性／选择体验[1项](api8-stability-state-evidence-20261008/raw/sdk-offline-experience.log)共3/3。第三项初始筛选名ui_properties不在清单中，没有算成3项，追加实际存在的ui_component_experience；清单绑定[当前测试计划](api8-stability-state-evidence-20261008/raw/sdk-offline-plan.json)。匹配头文件／导入库／DLL的C消费实际得到160列宽、120字节UCW1，[打包前调用](api8-stability-state-evidence-20261008/raw/sdk-consumer.log)和[解包后独立调用](api8-stability-state-evidence-20261008/raw/sdk-extracted-consumer.log)均通过。
+
+归档CRC与解包逐文件SHA256全部通过。解包目录内的实际宿主／stateful DLL在Light及真实Runtime分别执行write、restore、isolation、profile-b，共**8个独立进程全部通过**：[完整日志](api8-stability-state-evidence-20261008/raw/sdk-extracted-state.log)、[产物／独立进程清单](api8-stability-state-evidence-20261008/raw/sdk-extracted-state-manifest.json)。真实鼠标200→280后持久化，另一进程恢复280及折叠；B连续拖动到360另存／重启恢复，A保持280。运行后2457个交付文件哈希再次一致。业务副本使用的共享DLL和宿主与该SDK逐字节相同，实际导入库重链及29/30结果如上。归档与解包实际命令保存在[打包脚本](api8-stability-state-evidence-20261008/raw/package-current-sdk.py)及[桌面复验脚本](api8-stability-state-evidence-20261008/raw/verify-extracted-state.ps1)，包中不含软件opengl32.dll，不修改Runtime用户目录。
 
 历史持续重绘来源、当前源码服务Session0、严格整机无登录runner、托管CI授权、真实中文IME、不同DPI物理屏幕／屏幕边缘桌面合成及长期人工均分别核对。原业务正式接入与原测试修改无授权，原套件结果不得被观察器覆盖。没有实测OSMesa性能瓶颈或明确硬件需求，不扩大到新硬件无窗口后端。当前独立功能完成不等于全部验收通过。
 

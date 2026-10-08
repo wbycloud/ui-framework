@@ -30,3 +30,14 @@
 当前只读业务完整GL观察：[浅色](images/business-observation-final-business-light.png)、[深色](images/business-observation-final-business-dark.png)、[AI展开](images/business-observation-final-business-ai.png)。
 
 交付SDK重新链接后的同一只读业务副本：[浅色](images/business-observation-sdk-business-light.png)、[深色](images/business-observation-sdk-business-dark.png)、[AI展开](images/business-observation-sdk-business-ai.png)，与源码配置观察分开保存。
+
+## 新SDK解包后的实际调用
+
+[归档／逐文件验证](raw/sdk-archive.json)和[8个独立进程桌面结果](raw/sdk-extracted-state-manifest.json)绑定源码文档快照ace533a、产品f0b161c、示例测试d24cdf3。以下补图来自该归档的新解包目录，96程序DPI／1200×800／浅主题／同100k数据；真实鼠标调宽与保存、独立重启恢复均来自实际完整DLL，不重复借用打包前截图。
+
+| 解包后端 | 注册默认 | 实际调宽／折叠并保存 | 新进程恢复 |
+| --- | --- | --- | --- |
+| Light | [初始](images/sdk-extracted-light-96-before.png) | [保存](images/sdk-extracted-light-96-saved.png) | [恢复](images/sdk-extracted-light-96-restored.png) |
+| Runtime | [初始](images/sdk-extracted-webview2-96-before.png) | [保存](images/sdk-extracted-webview2-96-saved.png) | [恢复](images/sdk-extracted-webview2-96-restored.png) |
+
+本目录现有36张实际过程图，失败错位图仍单列；图片身份在[screenshots.json](screenshots.json)。外部归档证明不放回SDK源码快照，以免哈希自引用。
