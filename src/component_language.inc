@@ -12,7 +12,7 @@ static ui_status_t replace_caption(ui_component_t *c,const char **field,const ch
  if(c->host->dispatch_blocked)return UI_STATUS_CANCELLED;old_bytes=strlen(*field)+1;new_bytes=strlen(text)+1;
  if(c->description_bytes-old_bytes+new_bytes>COMPONENT_MAX_BYTES)return UI_STATUS_LIMIT_EXCEEDED;
  copy=ui_strdup(text);if(!copy)return UI_STATUS_OUT_OF_MEMORY;free((void *)*field);*field=copy;c->description_bytes=c->description_bytes-old_bytes+new_bytes;
- if(field==&c->desc.title)update_dialog_caption(c);render_component(c);return ui_host_emit_event(c->host,"ui.components.changed","{}");
+ if(field==&c->desc.title)update_dialog_caption(c);(void)ui_host_hide_tooltip(c->host);render_component(c);return ui_host_emit_event(c->host,"ui.components.changed","{}");
 }
 ui_status_t ui_component_set_title(ui_component_t *c,const char *text)
 {return c?replace_caption(c,&c->desc.title,text):UI_STATUS_INVALID_ARGUMENT;}
@@ -33,7 +33,7 @@ ui_status_t ui_component_set_field_text(ui_component_t *c,const ui_field_text_t 
  if(text->option_labels&&text->option_count){labels=calloc(text->option_count,sizeof(*labels));if(!labels)goto failed;for(size_t i=0;i<text->option_count;++i)if(!(labels[i]=ui_strdup(text->option_labels[i])))goto failed;}
  for(size_t i=0;i<4;++i)if(values[i]){free((void *)*fields[i]);*fields[i]=copies[i];}
  if(text->option_labels){if(c->option_labels[index]){for(size_t i=0;i<f->option_count;++i)free(c->option_labels[index][i]);free(c->option_labels[index]);}c->option_labels[index]=labels;}
- c->description_bytes=c->description_bytes-removed+added;render_component(c);return UI_STATUS_OK;
+ c->description_bytes=c->description_bytes-removed+added;(void)ui_host_hide_tooltip(c->host);render_component(c);return UI_STATUS_OK;
 failed:for(size_t i=0;i<4;++i)free(copies[i]);if(labels){for(size_t i=0;i<text->option_count;++i)free(labels[i]);free(labels);}return UI_STATUS_OUT_OF_MEMORY;
 }
 static void component_language_json(ui_component_t *c,ui_json_t *json)
@@ -41,4 +41,4 @@ static void component_language_json(ui_component_t *c,ui_json_t *json)
 static void validation_error(ui_component_t *c,size_t index,const char *key)
 {(void)ui_component_set_error(c,c->fields[index].id,ui_language_text(c->host,key));c->validation_errors[index]=key;}
 void ui_components_language_changed(ui_host_t *host)
-{for(ui_component_t *c=host->components;c;c=c->next){update_dialog_caption(c);for(size_t i=0;i<c->desc.field_count;++i)if(c->validation_errors[i])validation_error(c,i,c->validation_errors[i]);render_component(c);}}
+{for(ui_component_t *c=host->components;c;c=c->next){update_dialog_caption(c);for(size_t i=0;i<c->desc.field_count;++i)if(c->validation_errors[i])validation_error(c,i,c->validation_errors[i]);(void)ui_host_hide_tooltip(c->host);render_component(c);}}

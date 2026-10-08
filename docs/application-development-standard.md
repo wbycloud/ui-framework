@@ -486,3 +486,9 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 ## API9 应用语言与文本
 
 标准9要求应用拥有语言选择及存储，在create、首次呈现前向本host提交。不得用setlocale、全局环境变量或浏览器语言代替实例状态。宿主活动跟随、空宿主Windows UI默认、通知重入、完整size/复制所有权和原位更新见[语言合同](instance-language.md)。命令、菜单path、列和面板ID稳定；枚举标签与提交值分开，翻译不自动适配用户列宽。应用unmount移除回调，保持原异步关闭和卸载。新增公开能力集中升级API9，ABI1/包1不变；API8列宽/help继续维护。
+
+## 标准9开发分支：FORM/DIALOG布局与提示生命周期
+
+公共多行字段默认四行容量，调用 `ui_component_set_field_layout` 设置首选行数或逻辑高度。只读字段仍可选择、复制和滚动；内部文字与外层字段容器分别滚动，验收必须实际读到末行，不能以滚动条或接口成功代替。公共DIALOG通过 `ui_component_set_dialog_layout` / `ui_component_get_dialog_layout` 管理首选、最小、最大客户区尺寸，首次按内容计算高度，按钮与模态/键盘语义保留；详见[布局合同及C示例](dialog-layout.md)。
+
+`ui_host_hide_tooltip` 在UI线程隐藏本宿主及其shell内部浮动标题提示，保留普通菜单和独立应用宿主的提示。离开锚点、位置变化、拖动、停靠、关闭及拥有者销毁关闭旧提示；内容更新关闭旧值提示。尺寸按内容计算，并受可见拥有者及监视器工作区约束。程序设置DPI、窗口报告DPI和物理显示器DPI分别记录。新能力使用匹配的当前开发提交产物；不改写冻结SDK及历史标准。实际可见性与自动回归见[本轮验收](validation/ui-repair-validation.md)。

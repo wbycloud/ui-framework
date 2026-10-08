@@ -15,6 +15,8 @@ _Static_assert(sizeof(ui_field_text_t)==64 && offsetof(ui_field_text_t,option_la
 _Static_assert(offsetof(ui_field_desc_t, help) == 64, "appended complete help field");
 _Static_assert(sizeof(ui_field_desc_t) == 72, "Windows x64 field description");
 _Static_assert(offsetof(ui_column_desc_t, width) == 28, "column width offset unchanged");
+_Static_assert(sizeof(ui_dialog_layout_t)==28 && offsetof(ui_dialog_layout_t,max_height)==24,"independent dialog layout ABI");
+_Static_assert(sizeof(ui_field_layout_t)==24 && offsetof(ui_field_layout_t,visible_rows)==16,"independent field layout ABI");
 int main(void)
 {
     ui_host_config_t config = {0};

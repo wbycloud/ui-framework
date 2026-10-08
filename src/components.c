@@ -64,6 +64,8 @@ struct ui_component {
     int backend_owned;
     ui_web_view_t *view;
     int visible, dirty, rendering, again, width, height, modal, focused;
+    ui_dialog_layout_t dialog_layout;
+    int *field_heights;
     ui_status_t presentation_status;
     ui_status_t resource_status;
     uint32_t dpi;
@@ -217,7 +219,7 @@ static void free_description(ui_component_t *c)
         for(j=0;j<f->option_count;++j)free((void *)f->options[j]);free((void *)f->options);
         if(c->option_labels[i]){for(j=0;j<f->option_count;++j)free(c->option_labels[i][j]);free(c->option_labels[i]);}
         free_cell(&c->values[i]);free_cell(&c->drafts[i]);}
-    free(c->columns);free(c->fields);free(c->values);free(c->drafts);
+    free(c->columns);free(c->fields);free(c->values);free(c->drafts);free(c->field_heights);
     free((void *)c->desc.commands.select);free((void *)c->desc.commands.edit);
     free((void *)c->desc.commands.rename);free((void *)c->desc.commands.context_menu);
     free((void *)c->desc.commands.submit);free((void *)c->desc.commands.cancel);
@@ -248,7 +250,8 @@ ui_status_t ui_component_register(ui_host_t *host,const ui_component_desc_t *d,u
     c->fields=(ui_field_desc_t *)calloc(d->field_count?d->field_count:1,sizeof(*c->fields));
     c->values=(ui_cell_t *)calloc(d->field_count?d->field_count:1,sizeof(*c->values));
     c->drafts=(ui_cell_t *)calloc(d->field_count?d->field_count:1,sizeof(*c->drafts));
-    if(!c->columns||!c->fields||!c->values||!c->drafts)goto failed;
+    c->field_heights=(int *)calloc(d->field_count?d->field_count:1,sizeof(int));
+    if(!c->columns||!c->fields||!c->values||!c->drafts||!c->field_heights)goto failed;
     for(i=0;i<d->column_count;++i){const ui_column_desc_t *f=&d->columns[i];
         if(f->size<sizeof(*f)||!f->id||!*f->id||strlen(f->id)>32||f->width<0||f->kind<UI_VALUE_TEXT||f->kind>UI_VALUE_GROUP){status=UI_STATUS_INVALID_ARGUMENT;goto failed;}
         c->columns[i]=*f;c->columns[i].id=c->columns[i].title=NULL;c->desc.column_count=i+1;
@@ -437,7 +440,7 @@ ui_status_t ui_component_set_field(ui_component_t *c,const char *id,const ui_cel
         free_cell(&c->values[i]);c->values[i]=copy;
         if(!(c->drafts[i].flags&UI_VALUE_MODIFIED)){free_cell(&c->drafts[i]);c->drafts[i]=draft;c->validation_errors[i]=NULL;}
         else{c->drafts[i].flags=(copy.flags&~UI_VALUE_MODIFIED)|UI_VALUE_MODIFIED;free_cell(&draft);}
-        render_component(c);return UI_STATUS_OK;}
+        (void)ui_host_hide_tooltip(c->host);render_component(c);return UI_STATUS_OK;}
     return UI_STATUS_NOT_FOUND;
 }
 ui_status_t ui_component_set_error(ui_component_t *c,const char *id,const char *error)
@@ -597,7 +600,7 @@ static void render_component(ui_component_t *c)
         uj_add(&json,"{\"id\":");uj_string(&json,f->id);uj_add(&json,",\"title\":");uj_string(&json,f->title);
         uj_add(&json,",\"unit\":");uj_string(&json,f->unit);uj_add(&json,",\"group\":");uj_string(&json,f->group);
         uj_add(&json,",\"help\":");uj_string(&json,f->help);
-        uj_fmt(&json,",\"kind\":%d,\"flags\":%u,\"value\":",f->kind,c->drafts[i].flags);
+        uj_fmt(&json,",\"height\":%d,\"kind\":%d,\"flags\":%u,\"value\":",c->field_heights[i]?c->field_heights[i]:98,f->kind,c->drafts[i].flags);
         if(f->kind==UI_VALUE_STYLE){ui_status_t status=cell_preview(c,&c->drafts[i]);if(status!=UI_STATUS_OK)c->resource_status=status;}
         json_cell(&json,&c->drafts[i]);
         if(c->drafts[i].image_id)(void)ui_image_get_info(c->host,c->drafts[i].image_id,&image);
@@ -725,13 +728,58 @@ ui_status_t ui_component_mount(ui_component_t *c,ui_content_slot_t *slot)
 #endif
 }
 ui_status_t ui_component_set_visible(ui_component_t *c,int visible)
-{if(!c)return UI_STATUS_INVALID_ARGUMENT;if(!visible)cancel_column_resize(c,1);c->visible=visible!=0;render_component(c);return ui_host_emit_event(c->host,"ui.components.changed","{}");}
+{if(!c)return UI_STATUS_INVALID_ARGUMENT;if(!visible)cancel_column_resize(c,1);if(!visible)(void)ui_host_hide_tooltip(c->host);c->visible=visible!=0;render_component(c);return ui_host_emit_event(c->host,"ui.components.changed","{}");}
 void ui_components_layout(ui_host_t *host)
 {
     ui_component_t *c;for(c=host->components;c;c=c->next)if(c->slot){ui_rect_t rect;
         if(ui_content_slot_get_rect(c->slot,&rect)==UI_STATUS_OK&&(rect.width!=c->width||rect.height!=c->height||c->dpi!=c->view->dpi)){
             cancel_column_resize(c,0);c->width=rect.width;c->height=rect.height;c->dpi=c->view->dpi;
             if(c->desc.source)(void)query_viewport(c,c->first,c->first_column,0);render_component(c);}}
+}
+static int dialog_initial_height(const ui_component_t *c)
+{
+    size_t i;int height=24+28+16+24;
+    for(i=0;i<c->desc.field_count;++i){const ui_field_desc_t *f=&c->fields[i];int h=(f->flags&UI_VALUE_MULTILINE)?(c->field_heights[i]?c->field_heights[i]:98):28;
+        height+=24+h+8;if(*f->help)height+=36;if(*f->unit)height+=20;if(c->drafts[i].error&&*c->drafts[i].error)height+=24;}
+    return height>32767?32767:height;
+}
+ui_status_t ui_component_get_dialog_layout(const ui_component_t *c,ui_dialog_layout_t *out)
+{
+    if(!c||c->desc.kind!=UI_COMPONENT_DIALOG||!out||out->size<sizeof(*out))return UI_STATUS_INVALID_ARGUMENT;
+    *out=c->dialog_layout;out->size=sizeof(*out);if(!out->preferred_width)out->preferred_width=440;
+    if(!out->preferred_height)out->preferred_height=dialog_initial_height(c);if(!out->min_width)out->min_width=240;if(!out->min_height)out->min_height=180;
+    if(out->preferred_width<out->min_width)out->preferred_width=out->min_width;if(out->preferred_height<out->min_height)out->preferred_height=out->min_height;
+    if(out->max_width&&out->preferred_width>out->max_width)out->preferred_width=out->max_width;if(out->max_height&&out->preferred_height>out->max_height)out->preferred_height=out->max_height;return UI_STATUS_OK;
+}
+#if defined(_WIN32) && (defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2))
+static RECT dialog_outer(ui_component_t *c,int width,int height)
+{RECT rect={0,0,MulDiv(width,(int)c->dpi,96),MulDiv(height,(int)c->dpi,96)};AdjustWindowRectExForDpi(&rect,WS_POPUP|WS_CAPTION|WS_THICKFRAME,FALSE,WS_EX_TOOLWINDOW,ui_platform_get_dpi(c->dialog_window?c->dialog_window:c->host->native_parent));return rect;}
+static void dialog_position(ui_component_t *c,HWND window)
+{
+    ui_dialog_layout_t layout={0};MONITORINFO monitor={0};RECT owner,outer;int x,y,w,h;layout.size=sizeof(layout);(void)ui_component_get_dialog_layout(c,&layout);outer=dialog_outer(c,layout.preferred_width,layout.preferred_height);GetWindowRect((HWND)c->host->native_parent,&owner);x=owner.left+40;y=owner.top+40;w=outer.right-outer.left;h=outer.bottom-outer.top;monitor.cbSize=sizeof(monitor);
+    if(GetMonitorInfoW(MonitorFromWindow((HWND)c->host->native_parent,MONITOR_DEFAULTTONEAREST),&monitor)){if(w>monitor.rcWork.right-monitor.rcWork.left)w=monitor.rcWork.right-monitor.rcWork.left;if(h>monitor.rcWork.bottom-monitor.rcWork.top)h=monitor.rcWork.bottom-monitor.rcWork.top;if(x+w>monitor.rcWork.right)x=monitor.rcWork.right-w;if(y+h>monitor.rcWork.bottom)y=monitor.rcWork.bottom-h;if(x<monitor.rcWork.left)x=monitor.rcWork.left;if(y<monitor.rcWork.top)y=monitor.rcWork.top;}
+    SetWindowPos(window,NULL,x,y,w,h,SWP_NOZORDER|SWP_NOACTIVATE);
+}
+#endif
+ui_status_t ui_component_set_dialog_layout(ui_component_t *c,const ui_dialog_layout_t *layout)
+{
+    size_t i;int minw,minh;if(!c||c->desc.kind!=UI_COMPONENT_DIALOG||!layout||layout->size<sizeof(*layout))return UI_STATUS_INVALID_ARGUMENT;
+    {int values[]={layout->preferred_width,layout->preferred_height,layout->min_width,layout->min_height,layout->max_width,layout->max_height};for(i=0;i<6;++i)if(values[i]<0||values[i]>32767)return UI_STATUS_INVALID_ARGUMENT;}minw=layout->min_width?layout->min_width:240;minh=layout->min_height?layout->min_height:180;
+    if(minw<160||minh<120)return UI_STATUS_INVALID_ARGUMENT;
+    if((layout->max_width&&layout->max_width<minw)||(layout->max_height&&layout->max_height<minh))return UI_STATUS_INVALID_ARGUMENT;c->dialog_layout=*layout;
+#if defined(_WIN32) && (defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2))
+    if(c->dialog_window)dialog_position(c,(HWND)c->dialog_window);
+#endif
+    if(c->view&&!c->dialog_window){ui_dialog_layout_t resolved={0};ui_status_t status;resolved.size=sizeof(resolved);(void)ui_component_get_dialog_layout(c,&resolved);
+        status=ui_web_view_resize(c->view,resolved.preferred_width,resolved.preferred_height,c->dpi);if(status!=UI_STATUS_OK)return status;c->width=resolved.preferred_width;c->height=resolved.preferred_height;render_component(c);}
+    return UI_STATUS_OK;
+}
+ui_status_t ui_component_set_field_layout(ui_component_t *c,const ui_field_layout_t *layout)
+{
+    size_t i;if(!c||!layout||layout->size<sizeof(*layout)||!layout->id||layout->visible_rows<0||layout->visible_rows>100||layout->height<0||layout->height>32767||(layout->height&&layout->height<42)||(c->desc.kind!=UI_COMPONENT_FORM&&c->desc.kind!=UI_COMPONENT_DIALOG))return UI_STATUS_INVALID_ARGUMENT;
+    for(i=0;i<c->desc.field_count;++i)if(!strcmp(c->fields[i].id,layout->id)){if(c->fields[i].kind!=UI_VALUE_TEXT||!(c->fields[i].flags&UI_VALUE_MULTILINE))return UI_STATUS_INVALID_ARGUMENT;
+        c->field_heights[i]=layout->height?layout->height:layout->visible_rows?(layout->visible_rows==1?42:layout->visible_rows*19+22):0;(void)ui_host_hide_tooltip(c->host);render_component(c);return UI_STATUS_OK;}
+    return UI_STATUS_NOT_FOUND;
 }
 #if defined(_WIN32) && (defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2))
 static LRESULT CALLBACK dialog_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
@@ -740,8 +788,10 @@ static LRESULT CALLBACK dialog_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
     if(message==WM_NCCREATE){c=(ui_component_t *)((CREATESTRUCTW *)lp)->lpCreateParams;SetWindowLongPtrW(hwnd,GWLP_USERDATA,(LONG_PTR)c);return TRUE;}
     if(!c)return DefWindowProcW(hwnd,message,wp,lp);
     if(message==WM_CLOSE){ui_dispatch_enter(c->host);invoke_component(c,c->desc.commands.cancel,"{}");(void)ui_component_close_dialog(c);ui_dispatch_leave(c->host);return 0;}
-    if(message==WM_GETMINMAXINFO){MINMAXINFO *limits=(MINMAXINFO *)lp;uint32_t dpi=c->dpi?c->dpi:ui_platform_get_dpi(hwnd);
-        limits->ptMinTrackSize.x=MulDiv(240,(int)dpi,96);limits->ptMinTrackSize.y=MulDiv(180,(int)dpi,96);return 0;}
+    if(message==WM_GETMINMAXINFO){MINMAXINFO *limits=(MINMAXINFO *)lp;
+        ui_dialog_layout_t layout={0};RECT min,max;MONITORINFO monitor={0};layout.size=sizeof(layout);(void)ui_component_get_dialog_layout(c,&layout);min=dialog_outer(c,layout.min_width,layout.min_height);max=dialog_outer(c,layout.max_width?layout.max_width:32767,layout.max_height?layout.max_height:32767);monitor.cbSize=sizeof(monitor);
+        if(GetMonitorInfoW(MonitorFromWindow(hwnd,MONITOR_DEFAULTTONEAREST),&monitor)){if(max.right-max.left>monitor.rcWork.right-monitor.rcWork.left)max.right=max.left+monitor.rcWork.right-monitor.rcWork.left;if(max.bottom-max.top>monitor.rcWork.bottom-monitor.rcWork.top)max.bottom=max.top+monitor.rcWork.bottom-monitor.rcWork.top;}
+        limits->ptMaxTrackSize.x=max.right-max.left;limits->ptMaxTrackSize.y=max.bottom-max.top;limits->ptMinTrackSize.x=min.right-min.left<limits->ptMaxTrackSize.x?min.right-min.left:limits->ptMaxTrackSize.x;limits->ptMinTrackSize.y=min.bottom-min.top<limits->ptMaxTrackSize.y?min.bottom-min.top:limits->ptMaxTrackSize.y;return 0;}
     if(message==WM_SIZE&&c->view){RECT rect;uint32_t dpi=c->dpi?c->dpi:ui_platform_get_dpi(hwnd);c->dpi=dpi;GetClientRect(hwnd,&rect);c->width=MulDiv(rect.right,96,(int)dpi);c->height=MulDiv(rect.bottom,96,(int)dpi);
         (void)ui_web_view_resize(c->view,c->width,c->height,dpi);render_component(c);return 0;}
     if(message==WM_DPICHANGED){RECT *r=(RECT *)lp;c->dpi=LOWORD(wp);SetWindowPos(hwnd,NULL,r->left,r->top,r->right-r->left,r->bottom-r->top,SWP_NOZORDER|SWP_NOACTIVATE);return 0;}
@@ -756,6 +806,7 @@ static ui_status_t create_dialog(ui_component_t *c)
     GetWindowRect(parent,&owner);c->dialog_window=CreateWindowExW(WS_EX_TOOLWINDOW,wc.lpszClassName,L"Application dialog",
         WS_POPUP|WS_CAPTION|WS_THICKFRAME,owner.left+40,owner.top+40,MulDiv(440,(int)c->host->dpi,96),MulDiv(380,(int)c->host->dpi,96),GetAncestor(parent,GA_ROOT),NULL,wc.hInstance,c);
     if(!c->dialog_window)return UI_STATUS_PLATFORM_ERROR;
+    dialog_position(c,(HWND)c->dialog_window);
     update_dialog_caption(c);
     c->backend=component_backend(c,c->dialog_window);
     c->view=c->backend?ui_web_view_create(c->host,c->backend):NULL;
@@ -775,13 +826,13 @@ ui_status_t ui_component_show_dialog(ui_component_t *c)
 {
     if(!c||c->desc.kind!=UI_COMPONENT_DIALOG)return UI_STATUS_INVALID_ARGUMENT;
     if(c->host->modal_component&&c->host->modal_component!=c)return UI_STATUS_ALREADY_EXISTS;
-    (void)ui_host_close_menu(c->host);c->host->menu_pressed_key=0;
+    (void)ui_host_hide_tooltip(c->host);(void)ui_host_close_menu(c->host);c->host->menu_pressed_key=0;
 #if defined(_WIN32) && !defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) && !defined(UI_FRAMEWORK_HAS_WEBVIEW2)
     return UI_STATUS_UNSUPPORTED;
 #else
 #if defined(_WIN32) && (defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2))
     if(c->host->run_mode==UI_RUN_OFFSCREEN||(!c->host->native_parent&&c->view)){
-        if(!c->view){ui_status_t status=ui_component_mount_offscreen(c,440,380,c->host->dpi);if(status!=UI_STATUS_OK)return status;}
+        if(!c->view){ui_dialog_layout_t layout={0};ui_status_t status;layout.size=sizeof(layout);(void)ui_component_get_dialog_layout(c,&layout);status=ui_component_mount_offscreen(c,layout.preferred_width,layout.preferred_height,c->host->dpi);if(status!=UI_STATUS_OK)return status;}
     }else{
     if(!c->dialog_window){ui_status_t status=create_dialog(c);if(status!=UI_STATUS_OK)return status;}
     c->previous_focus=GetFocus();EnableWindow((HWND)c->host->native_parent,FALSE);
@@ -801,7 +852,7 @@ ui_status_t ui_component_get_field(const ui_component_t *c,const char *id,ui_cel
 }
 ui_status_t ui_component_close_dialog(ui_component_t *c)
 {
-    if(!c)return UI_STATUS_INVALID_ARGUMENT;c->modal=0;c->visible=0;
+    if(!c)return UI_STATUS_INVALID_ARGUMENT;(void)ui_host_hide_tooltip(c->host);c->modal=0;c->visible=0;
     if(c->host->modal_component==c)c->host->modal_component=NULL;
 #ifdef _WIN32
     if(c->dialog_window){ShowWindow((HWND)c->dialog_window,SW_HIDE);EnableWindow((HWND)c->host->native_parent,TRUE);
@@ -825,6 +876,7 @@ void ui_components_active(ui_host_t *host,int active)
 }
 static void destroy_component(ui_component_t *c)
 {
+    (void)ui_host_hide_tooltip(c->host);
     ui_menus_component_invalidated(c->host,c,0);
     if(c->host->modal_component==c)(void)ui_component_close_dialog(c);
     if(c->host->focused_component==c)c->host->focused_component=NULL;

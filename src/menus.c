@@ -326,11 +326,12 @@ static ui_status_t show_popup(ui_menu_popup_t *p)
     else if(p->anchor.kind!=UI_MENU_ANCHOR_HOST)return UI_STATUS_INVALID_ARGUMENT;
     {menu_rows_t *rows=(menu_rows_t *)malloc(sizeof(*rows));if(!rows)return UI_STATUS_OUT_OF_MEMORY;if(!p->detail){status=popup_rows(p,rows);total=rows->count;if(!p->open){p->keyboard_focus[0]=0;for(size_t i=0;i<total;i++)if(rows->rows[i].entry.state.enabled&&!rows->rows[i].entry.state.busy){snprintf(p->keyboard_focus,sizeof(p->keyboard_focus),"%s",rows->rows[i].entry.id);break;}}if(status!=UI_STATUS_OK){free(rows);return status;}}free(rows);p->page_count=total<10?total:10;if(!p->page_count)p->page_count=1;p->width=320;p->height=p->detail?24:(int)p->page_count*28+8+(total>p->page_count?36:0);}
 #ifdef _WIN32
-    if(p->detail){HDC dc=GetDC(NULL);HFONT font=CreateFontW(-MulDiv(13,(int)dpi,96),0,0,0,FW_NORMAL,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,0,0,L"Segoe UI");HGDIOBJ old=SelectObject(dc,font);RECT measured={0,0,MulDiv(372,(int)dpi,96),0};int n=MultiByteToWideChar(CP_UTF8,0,p->detail,-1,NULL,0);wchar_t *wide=(wchar_t *)malloc((size_t)n*sizeof(wchar_t));
+    if(p->detail){HDC dc=GetDC(NULL);HFONT font=CreateFontW(-MulDiv(13,(int)dpi,96),0,0,0,FW_NORMAL,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,0,0,L"Segoe UI");HGDIOBJ old=SelectObject(dc,font);RECT owner={0},measured={0,0,MulDiv(372,(int)dpi,96),0};int max_height=240,max_width=384;int n=MultiByteToWideChar(CP_UTF8,0,p->detail,-1,NULL,0);wchar_t *wide=(wchar_t *)malloc((size_t)n*sizeof(wchar_t));
+        if(native&&GetClientRect((HWND)native,&owner)){int available=owner.right-MulDiv(12,(int)dpi,96);if(available>0&&available<measured.right)measured.right=available;if(owner.right>0&&owner.right*96/(int)dpi<max_width)max_width=owner.right*96/(int)dpi;if(owner.bottom>0&&owner.bottom*96/(int)dpi<max_height)max_height=owner.bottom*96/(int)dpi;}
         if(!wide){SelectObject(dc,old);DeleteObject(font);ReleaseDC(NULL,dc);return UI_STATUS_OUT_OF_MEMORY;}
         MultiByteToWideChar(CP_UTF8,0,p->detail,-1,wide,n);DrawTextW(dc,wide,-1,&measured,DT_CALCRECT|DT_WORDBREAK|DT_NOPREFIX);free(wide);SelectObject(dc,old);DeleteObject(font);ReleaseDC(NULL,dc);
-        p->width=MulDiv(measured.right-measured.left,96,(int)dpi)+12;if(p->width<32)p->width=32;if(p->width>384)p->width=384;
-        p->height=MulDiv(measured.bottom-measured.top,96,(int)dpi)+12;if(p->height<24)p->height=24;if(p->height>240)p->height=240;}
+        p->width=MulDiv(measured.right-measured.left,96,(int)dpi)+12;if(p->width<32)p->width=32;if(p->width>max_width)p->width=max_width;
+        p->height=MulDiv(measured.bottom-measured.top,96,(int)dpi)+12;if(p->height<24)p->height=24;if(p->height>max_height)p->height=max_height;}
 #endif
 #ifdef _WIN32
     if(p->window){POINT point={MulDiv(rect.x,(int)dpi,96),MulDiv(rect.y+rect.height,(int)dpi,96)};MONITORINFO monitor={sizeof(monitor)};

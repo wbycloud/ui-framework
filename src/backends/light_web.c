@@ -110,7 +110,7 @@ typedef struct lw_view {
     int wheel_delta;
     int hovered, dispatch_depth, dirty;
     int default_prevented;
-    int layout_depth;
+    int layout_depth, text_scrolling;
     int pointer_x,pointer_y;
     unsigned captured;
     unsigned scroll_uid;
@@ -787,6 +787,10 @@ static void lw_layout_node(lw_view_t *view, int index, ui_rect_t rect, ui_rect_t
     if (count > 1) fixed += gap * (count - 1);
     node->content_height=node->style.row?node->natural_height-node->style.padding[0]-node->style.padding[2]-2*node->style.border:fixed;
     node->content_width=node->style.row?fixed:node->natural_width-node->style.padding[1]-node->style.padding[3]-2*node->style.border;
+    if(node->kind==4){const char *at=node->value;int lines=1;while(*at)if(*at++=='\n')++lines;
+        node->content_height=lines*(node->style.font_size+6);
+        {wchar_t *wide=lw_wide(node->value);HDC dc=GetDC(view->hwnd);HGDIOBJ old=node->font?SelectObject(dc,node->font):NULL;int start=0,end=0;SIZE extent={0};node->content_width=0;
+         if(wide){do{end=start;while(wide[end]&&wide[end]!=L'\n')++end;GetTextExtentPoint32W(dc,wide+start,end-start,&extent);if(MulDiv(extent.cx,96,(int)view->dpi)>node->content_width)node->content_width=MulDiv(extent.cx,96,(int)view->dpi);if(!wide[end])break;start=end+1;}while(1);free(wide);}if(old)SelectObject(dc,old);ReleaseDC(view->hwnd,dc);}}
     node->bar_x=node->bar_y=0;
     for(int pass=0;pass<2;++pass){
         if(!node->bar_y&&node->style.scroll&&node->content_height>inner.height){node->bar_y=1;inner.width=inner.width>12?inner.width-12:0;}
@@ -803,6 +807,7 @@ static void lw_layout_node(lw_view_t *view, int index, ui_rect_t rect, ui_rect_t
     if (node->scroll_y < 0) node->scroll_y = 0;
     if (node->scroll_x > node->content_width - inner.width) node->scroll_x = node->content_width - inner.width;
     if (node->scroll_x < 0) node->scroll_x = 0;
+    if(node->kind==4){node->text_scroll_x=lw_pixel(node->scroll_x,view->dpi);node->text_scroll_y=lw_pixel(node->scroll_y,view->dpi);}
     cursor = node->style.row ? inner.x - node->scroll_x : inner.y - node->scroll_y;
     if (!weights && node->style.justify == 1) cursor += remaining / 2;
     if (!weights && node->style.justify == 2) cursor += remaining;
@@ -1188,6 +1193,7 @@ static JSValue lw_dom_method(JSContext *ctx, JSValueConst object, int argc,
     if(method==11){if(view->captured==node->uid){view->captured=0;if(view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();}return JS_UNDEFINED;}
     if(method==12)return JS_NewBool(ctx,view->captured==node->uid);
     if (method == 7) {
+        view->scroll_focus=-1;view->text_scrolling=0;
         if(view->focused!=index)lw_cancel_composition(view);
         view->focused = index; if (view->hwnd&&IsWindowVisible(view->hwnd)&&IsWindowEnabled(view->hwnd)) SetFocus(view->hwnd); lw_caret(view); view->dirty = 1; return lw_event(view,index,3,0) == UI_STATUS_OK ? JS_UNDEFINED : JS_EXCEPTION;
     }
@@ -1886,7 +1892,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
             *offset = scroll < 0 ? 0 : scroll > LW_MAX_DIMENSION * LW_MAX_NODES
                 ? LW_MAX_DIMENSION * LW_MAX_NODES : (int)scroll;
         }
-        lw_layout(view); return UI_STATUS_OK;
+        view->text_scrolling=1;lw_layout(view); return UI_STATUS_OK;
     }
     if (event->kind == UI_INPUT_TEXT) return lw_text_insert(view,event->text_utf8);
     if (event->kind == UI_INPUT_KEY_DOWN) {
@@ -1899,7 +1905,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
                 start = (start + direction + view->node_count) % view->node_count;
                 if (view->nodes[start].used && view->nodes[start].visible && !view->nodes[start].disabled && (view->nodes[start].kind == 2 || lw_input(&view->nodes[start]))) {
                     lw_cancel_composition(view);(void)lw_event(view,view->focused,4,0); view->focused = start;
-                    if (view->hwnd) SetFocus(view->hwnd); lw_caret(view);
+                    view->text_scrolling=0;if (view->hwnd) SetFocus(view->hwnd); lw_caret(view);
                     (void)lw_event(view,start,3,0); lw_layout(view); return UI_STATUS_OK;
                 }
             }

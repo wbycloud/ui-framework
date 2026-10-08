@@ -196,6 +196,31 @@ UI_API ui_status_t ui_component_set_field_text(ui_component_t *,const ui_field_t
 UI_API const char *ui_host_status_text(const ui_host_t *);
 UI_API ui_status_t ui_component_thumbnail(ui_component_t *, const ui_thumbnail_result_t *);
 UI_API ui_status_t ui_component_set_visible(ui_component_t *, int);
+/* API9 development append: independent full-size descriptors; existing public
+ * structures/ABI are unchanged. Requires headers/library from the same commit.
+ * All dimensions are logical client pixels at 96 DPI. Zero selects defaults:
+ * preferred width 440, preferred height measured from fields; min 240x180;
+ * maximum is the monitor work area. Positive minima >=160x120; positive
+ * maxima intersect that work area.
+ * Set before first show; later explicit sets resize the retained dialog. Content
+ * updates/reopen retain user size, drafts and focus. UI-thread, DIALOG only. */
+typedef struct ui_dialog_layout {
+    uint32_t size;
+    int preferred_width, preferred_height;
+    int min_width, min_height, max_width, max_height;
+} ui_dialog_layout_t;
+UI_API ui_status_t ui_component_set_dialog_layout(ui_component_t *, const ui_dialog_layout_t *);
+UI_API ui_status_t ui_component_get_dialog_layout(const ui_component_t *, ui_dialog_layout_t *);
+/* FORM/DIALOG multiline text only. id is read during the call; height overrides visible_rows.
+ * Zero/zero restores four visible rows. Range rows 0..100, height 0..32767;
+ * positive height >=42. Container scrolling and field scrolling are separate.
+ * Layout changes retain value, readonly state and the content view. UI-thread. */
+typedef struct ui_field_layout {
+    uint32_t size;
+    const char *id;
+    int visible_rows, height;
+} ui_field_layout_t;
+UI_API ui_status_t ui_component_set_field_layout(ui_component_t *, const ui_field_layout_t *);
 UI_API ui_status_t ui_component_show_dialog(ui_component_t *);
 UI_API ui_status_t ui_component_close_dialog(ui_component_t *);
 /* Uses existing menu registrations matching menu_path, with item identity. */
