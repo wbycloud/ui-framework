@@ -1,0 +1,235 @@
+FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit807828147bdfb6959abb49b4668dfa90c34eda56
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=38320 expected_pid=38320 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+TEST_ACTIVATION: foreground_pid=38320 expected_pid=38320 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: current owns foreground before real input
+PASS: prepare real geometry without replacing renderer
+HIERARCHY_MENU: path Edit item klayoutc.selection_all status 0 located 0 rect 4,190,312,28 clicked 1 results 2 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+USER_KEY: key 65 ctrl 1 focus UIFrameworkLightWeb sent 1 results 0 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual menu and native keyboard create stable property draft
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_bottom status 0 located 0 rect 4,88,312,28 clicked 1 results 3 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"8","rendered_generation":"8","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: one public menu click docks Properties at bottom once
+PASS: bottom operation changes only target instance
+PASS: bottom retains mounted component and unsubmitted draft
+PASS: bottom retains actual application GL context DC and canvas
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_tabs status 0 located 0 rect 4,116,312,28 clicked 1 results 4 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"8","rendered_generation":"8","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: one menu click groups Cell and Layer tabs
+PASS: tab group preserves both components with one active member
+PASS: capture actual app bottom tabs and live drawing
+OASIS_CHOOSER: waiting pid 38320 time656963593 cancel0
+OASIS_CHOOSER: owned selector 0000000001020858 time656964171 UIthread40988
+OASIS_CHOOSER: exact filename confirmed and selector closed
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_save status 0 located 0 rect 4,4,312,28 clicked 1 results 5 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"8","rendered_generation":"8","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: system chooser saves opaque current workspace
+PASS: actual application save uses framework format2
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_reset status 0 located 0 rect 4,60,312,28 clicked 1 results 6 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"9","rendered_generation":"9","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+OASIS_CHOOSER: waiting pid 38320 time656967843 cancel0
+OASIS_CHOOSER: owned selector 000000000A2A0F96 time656968281 UIthread40988
+OASIS_CHOOSER: exact filename confirmed and selector closed
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_restore status 0 located 0 rect 4,32,312,28 clicked 1 results 7 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"10","rendered_generation":"10","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real menu resets and restores format2 after mount
+PASS: opaque file restores stable bottom and tab identities
+OASIS_CHOOSER: waiting pid 38320 time656971500 cancel0
+OASIS_CHOOSER: owned selector 000000000BD5071E time656971937 UIthread40988
+OASIS_CHOOSER: exact filename confirmed and selector closed
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_restore status 0 located 0 rect 4,32,312,28 clicked 1 results 8 last {"status":8,"message":"Workspace layout restore failed (framework status -5); document unchanged","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"10","rendered_generation":"10","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: future layout rejected by actual file/menu route
+PASS: future layout rejection leaves all mounted state intact
+PASS: close original panel for stable reopen fixture
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_activate status 0 located 0 rect 4,144,312,28 clicked 1 results 9 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"12","rendered_generation":"12","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: real Activate menu reopens stable Properties once
+PASS: reopen retains same bottom component and unapplied draft
+PASS: explicit malformed panel target cannot fall back to a different panel
+OASIS_CHOOSER: waiting pid 38320 time656975500 cancel0
+OASIS_CHOOSER: owned selector 0000000004350906 time656975906 UIthread40988
+CHOOSER_FOREGROUND: pid 38320 owned 1
+OASIS_CHOOSER_FAILURE: stage 6 dialog 0000000004350906 filename 0000000003770A58 foreground 000000000F0B0C62 UI thread 40988
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_restore status 0 located 0 rect 4,32,312,28 clicked 1 results 11 last {"status":7,"message":"Cancelled","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"12","rendered_generation":"12","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+FAIL: real application restores unchanged old current format1 layout
+FAIL: old format1 restores legacy stacks without remount or fabricated tabs
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_bottom status 0 located 0 rect 4,88,312,28 clicked 1 results 12 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"12","rendered_generation":"12","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_tabs status 0 located 0 rect 4,116,312,28 clicked 1 results 13 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"12","rendered_generation":"12","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: return to current layout through real semantic menus
+PASS: program DPI reflows actual GL and docked components
+PASS: actual drawing content slot scales at 96/144/192 program DPI
+PASS: save real application program DPI evidence
+PASS: program DPI reflows actual GL and docked components
+PASS: actual drawing content slot scales at 96/144/192 program DPI
+PASS: save real application program DPI evidence
+PASS: program DPI reflows actual GL and docked components
+PASS: actual drawing content slot scales at 96/144/192 program DPI
+PASS: save real application program DPI evidence
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_reset status 0 located 0 rect 4,60,312,28 clicked 1 results 14 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"18","rendered_generation":"18","center_x":10,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: reset returns registered stack without remount
+PASS: reset retains stable draft after DPI and tabs
+PASS: cancel pending business draft through original validation path
+PASS: semantic Cancel restores canonical field and clears draft without geometry submission
+HIERARCHY_MENU: path Tools item klayoutc.tool_box status 0 located 0 rect 4,162,312,28 clicked 1 results 16 last {"status":0,"message":"ok","selected":"72057594037927936","selected_id":"72057594037927936"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":1,"cell":"TOP","cell_id":0,"selected":"72057594037927936","selected_id":"72057594037927936","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"","dbu":0.001,"generation":"18","rendered_generation":"18","center_x":10,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"6","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61548,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: actual canvas begins rectangle preview before capture loss
+PASS: native capture loss cancels preview without committing geometry
+PASS: package PNG resources use default 32 MiB image budget
+PASS: public straight RGBA create copies caller data
+PASS: image update publishes a new content version
+PASS: explicit image release stays with allocating module
+PASS: oversized image is rejected without raising default budget
+PASS: current UI saves official reread fixture
+PASS: create real 4201-Cell / 300-layer paging fixture
+PASS: replace document with large public component data source
+PASS: visible pages report complete model totals without full DOM
+TEST_ACTIVATION: foreground_pid=38320 expected_pid=38320 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: page scrolling targets the actual owned TREE content
+PASS: query a distant layer page through public API
+PAGE_BEFORE: generation 32 first 60 rows 12 nodes 61 bytes 1048 layers-first 240
+PASS: scrolled pages use bounded cache and presentation nodes
+PASS: select an actual cached occurrence identity from the distant page
+PASS: ordinary editing changes only requested pages
+PASS: bind a draft before incremental refresh
+PASS: rename performs an incremental refresh
+PAGE_AFTER: generation 32 first 60 selected 4294967356 expected 4294967356 draft 7 flags 8
+PASS: same source preserves generation, scroll, occurrence selection and draft
+PASS: public sidebar floating keeps the mounted component slot
+PASS: redocking preserves component identity
+PASS: finish pinned paging draft before close
+PASS: capture actual business before drag
+WORKSPACE_SCROLL_READY: data_busy0 generation32
+WORKSPACE_SCROLL: klayoutc.cells end1 view225,323 thumb205,43,12,24 rail205,40,12,243 queryfirst60 col0
+WORKSPACE_NATIVE_MESSAGE: 512 xy211,55 buttons0 time656992859
+WORKSPACE_NATIVE_MESSAGE: 513 xy211,55 buttons1 time656992859
+WORKSPACE_NATIVE_NOTIFICATION: 7 first60 column0 generation32 status0 focus000000000830113C capture0000000000000000 time656992859
+WORKSPACE_SCROLL_FOCUS: thumb1 rect205,43,12,24
+WORKSPACE_SCROLL_CAPTURE: 000000000830113C expected000000000830113C
+WORKSPACE_NATIVE_MESSAGE: 512 xy211,95 buttons1 time656992921
+WORKSPACE_SCROLL_INTERMEDIATE: first823 col0
+WORKSPACE_NATIVE_MESSAGE: 512 xy211,383 buttons1 time656993125
+WORKSPACE_SCROLL_MOVING: first4194 col0 thumb205,259 rect205,43,12,24 railrect205,40,12,243
+WORKSPACE_NATIVE_MESSAGE: 514 xy211,383 buttons0 time656993484
+WORKSPACE_NATIVE_NOTIFICATION: 533 first4194 column0 generation32 status0 focus000000000830113C capture0000000000000000 time656993500
+WORKSPACE_SCROLL_END: moved1 captured1 released1 first4194 col0
+PASS: native full-range TREE thumb drags to last data window
+WORKSPACE_ENDPOINT_VISIBLE: id8589938792 first4194 cached9 clip8,232,197,32 textPAGE_4200
+PASS: capture actual business last Cell before keyboard control
+PASS: last actual Cell is reachable without full DOM or enlarged cache
+WORKSPACE_SCROLL_READY: data_busy0 generation32
+WORKSPACE_SCROLL: klayoutc.cells end0 view225,323 thumb205,259,12,24 rail205,40,12,243 queryfirst4194 col0
+WORKSPACE_NATIVE_MESSAGE: 512 xy211,271 buttons0 time656993671
+WORKSPACE_NATIVE_MESSAGE: 513 xy211,271 buttons1 time656993687
+WORKSPACE_SCROLL_FOCUS: thumb1 rect205,259,12,24
+WORKSPACE_SCROLL_CAPTURE: 000000000830113C expected000000000830113C
+WORKSPACE_NATIVE_MESSAGE: 512 xy211,231 buttons1 time656993734
+WORKSPACE_SCROLL_INTERMEDIATE: first3427 col0
+WORKSPACE_NATIVE_MESSAGE: 512 xy211,-60 buttons1 time656993937
+WORKSPACE_SCROLL_MOVING: first0 col0 thumb205,40 rect205,259,12,24 railrect205,40,12,243
+WORKSPACE_NATIVE_MESSAGE: 514 xy211,-60 buttons0 time656994296
+WORKSPACE_NATIVE_NOTIFICATION: 533 first0 column0 generation32 status0 focus000000000830113C capture0000000000000000 time656994296
+WORKSPACE_SCROLL_END: moved1 captured1 released1 first0 col0
+PASS: native TREE thumb returns to complete-source first window
+WORKSPACE_ENDPOINT_VISIBLE: id8589934592 first0 cached10 clip8,40,197,32 textPAGE_0000
+PASS: full-range scrollbar reaches first Cell
+PASS: capture actual business first Cell before keyboard control
+PASS: real wheel seed begins at visible first0
+PASS: wheel target hits current business view
+PASS: real business wheel injection
+BUSINESS_REAL_WHEEL: first3
+PASS: independent real wheel starts return at first3
+WORKSPACE_SCROLL_READY: data_busy0 generation32
+WORKSPACE_SCROLL: klayoutc.cells end0 view225,323 thumb205,40,12,24 rail205,40,12,243 queryfirst3 col0
+WORKSPACE_NATIVE_MESSAGE: 512 xy211,52 buttons0 time656994656
+WORKSPACE_NATIVE_MESSAGE: 513 xy211,52 buttons1 time656994671
+WORKSPACE_SCROLL_FOCUS: thumb1 rect205,40,12,24
+WORKSPACE_SCROLL_CAPTURE: 000000000830113C expected000000000830113C
+WORKSPACE_NATIVE_MESSAGE: 512 xy211,12 buttons1 time656994718
+WORKSPACE_SCROLL_INTERMEDIATE: first0 col0
+WORKSPACE_NATIVE_MESSAGE: 512 xy211,-60 buttons1 time656994921
+WORKSPACE_SCROLL_MOVING: first0 col0 thumb205,40 rect205,40,12,24 railrect205,40,12,243
+WORKSPACE_NATIVE_MESSAGE: 514 xy211,-60 buttons0 time656995281
+WORKSPACE_NATIVE_NOTIFICATION: 533 first0 column0 generation32 status0 focus000000000830113C capture0000000000000000 time656995281
+WORKSPACE_SCROLL_END: moved1 captured1 released1 first0 col0
+WORKSPACE_ENDPOINT_VISIBLE: id8589934592 first0 cached10 clip8,40,197,32 textPAGE_0000
+PASS: real wheel first3 then actual thumb returns stable first Cell
+WORKSPACE_SCROLL_READY: data_busy0 generation33
+WORKSPACE_SCROLL: klayoutc.layers end1 view225,323 thumb8,271,163,12 rail8,271,193,12 queryfirst240 col0
+WORKSPACE_NATIVE_MESSAGE: 512 xy89,277 buttons0 time656995421
+WORKSPACE_NATIVE_MESSAGE: 513 xy89,277 buttons1 time656995421
+WORKSPACE_NATIVE_NOTIFICATION: 7 first240 column0 generation33 status0 focus0000000005AF0FDE capture0000000000000000 time656995421
+WORKSPACE_SCROLL_FOCUS: thumb1 rect8,271,163,12
+WORKSPACE_SCROLL_CAPTURE: 0000000005AF0FDE expected0000000005AF0FDE
+WORKSPACE_NATIVE_MESSAGE: 512 xy109,277 buttons1 time656995484
+WORKSPACE_SCROLL_INTERMEDIATE: first240 col2
+WORKSPACE_NATIVE_MESSAGE: 512 xy301,277 buttons1 time656995687
+WORKSPACE_SCROLL_MOVING: first240 col3 thumb38,271 rect8,271,163,12 railrect8,271,193,12
+WORKSPACE_NATIVE_MESSAGE: 514 xy301,277 buttons0 time656996046
+WORKSPACE_NATIVE_NOTIFICATION: 533 first240 column3 generation33 status0 focus0000000005AF0FDE capture0000000000000000 time656996062
+WORKSPACE_SCROLL_END: moved1 captured1 released1 first240 col3
+PASS: actual wide layer table horizontal thumb reaches final columns
+PASS: wide table scroll preserves complete row source and reaches uncached columns
+PASS: business last stable column header text and nonempty clip visible after real drag
+BUSINESS_LAST_COLUMN: rowID241 columnstyle clip8,76,36,32 text
+PASS: business last column has visible actual row content
+PASS: actual business style component capture size
+BUSINESS_STYLE_PIXELS: row cellclip8,76,36,32 captured225,323 interior_nonuniform620
+PASS: actual non-text style image draws nonempty interior pixels
+PASS: capture actual business last column before keyboard control
+USER_KEY: key 35 ctrl 0 focus UIFrameworkLightWeb sent 1 results 0 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":4201,"layers":300,"shapes":301,"cell":"PAGE_CHANGED","cell_id":4000,"selected":"72057594039156736","selected_id":"72057594039156736","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"workflow-pages.gds","dbu":0.001,"generation":"22","rendered_generation":"22","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"21","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61507,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":0,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":1,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":2,"datatype":0,"rgba":"0xF47893FF"},{"index":3,"layer":3,"datatype":0,"rgba":"0x83DC89FF"},{"index":4,"layer":4,"datatype":0,"rgba":"0xC69BFFFF"},{"index":5,"layer":5,"datatype":0,"rgba":"0x64D8C8FF"},{"index":6,"layer":6,"datatype":0,"rgba":"0xE9E178FF"},{"index":7,"layer":7,"datatype":0,"rgba":"0xF3A373FF"},{"index":8,"layer":8,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":9,"layer":9,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":10,"layer":10,"datatype":0,"rgba":"0xB7D988FF"},{"index":11,"layer":11,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":12,"layer":12,"datatype":0,"rgba":"0xF3B33FFF"},{"index":13,"layer":13,"datatype":0,"rgba":"0x72D4FFFF"},{"index":14,"layer":14,"datatype":0,"rgba":"0xF47893FF"},{"index":15,"layer":15,"datatype":0,"rgba":"0x83DC89FF"},{"index":16,"layer":16,"datatype":0,"rgba":"0xC69BFFFF"},{"index":17,"layer":17,"datatype":0,"rgba":"0x64D8C8FF"},{"index":18,"layer":18,"datatype":0,"rgba":"0xE9E178FF"},{"index":19,"layer":19,"datatype":0,"rgba":"0xF3A373FF"},{"index":20,"layer":20,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":21,"layer":21,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":22,"layer":22,"datatype":0,"rgba":"0xB7D988FF"},{"index":23,"layer":23,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":24,"layer":24,"datatype":0,"rgba":"0xF3B33FFF"},{"index":25,"layer":25,"datatype":0,"rgba":"0x72D4FFFF"},{"index":26,"layer":26,"datatype":0,"rgba":"0xF47893FF"},{"index":27,"layer":27,"datatype":0,"rgba":"0x83DC89FF"},{"index":28,"layer":28,"datatype":0,"rgba":"0xC69BFFFF"},{"index":29,"layer":29,"datatype":0,"rgba":"0x64D8C8FF"},{"index":30,"layer":30,"datatype":0,"rgba":"0xE9E178FF"},{"index":31,"layer":31,"datatype":0,"rgba":"0xF3A373FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: native End uses same complete-source tree range
+WORKSPACE_ENDPOINT_VISIBLE: id8589938792 first4194 cached9 clip8,232,197,32 textPAGE_4200
+PASS: native End reaches last actual Cell independently of thumb dragging
+USER_KEY: key 36 ctrl 0 focus UIFrameworkLightWeb sent 1 results 0 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":4201,"layers":300,"shapes":301,"cell":"PAGE_CHANGED","cell_id":4000,"selected":"72057594039156736","selected_id":"72057594039156736","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"workflow-pages.gds","dbu":0.001,"generation":"22","rendered_generation":"22","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"21","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61507,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":0,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":1,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":2,"datatype":0,"rgba":"0xF47893FF"},{"index":3,"layer":3,"datatype":0,"rgba":"0x83DC89FF"},{"index":4,"layer":4,"datatype":0,"rgba":"0xC69BFFFF"},{"index":5,"layer":5,"datatype":0,"rgba":"0x64D8C8FF"},{"index":6,"layer":6,"datatype":0,"rgba":"0xE9E178FF"},{"index":7,"layer":7,"datatype":0,"rgba":"0xF3A373FF"},{"index":8,"layer":8,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":9,"layer":9,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":10,"layer":10,"datatype":0,"rgba":"0xB7D988FF"},{"index":11,"layer":11,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":12,"layer":12,"datatype":0,"rgba":"0xF3B33FFF"},{"index":13,"layer":13,"datatype":0,"rgba":"0x72D4FFFF"},{"index":14,"layer":14,"datatype":0,"rgba":"0xF47893FF"},{"index":15,"layer":15,"datatype":0,"rgba":"0x83DC89FF"},{"index":16,"layer":16,"datatype":0,"rgba":"0xC69BFFFF"},{"index":17,"layer":17,"datatype":0,"rgba":"0x64D8C8FF"},{"index":18,"layer":18,"datatype":0,"rgba":"0xE9E178FF"},{"index":19,"layer":19,"datatype":0,"rgba":"0xF3A373FF"},{"index":20,"layer":20,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":21,"layer":21,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":22,"layer":22,"datatype":0,"rgba":"0xB7D988FF"},{"index":23,"layer":23,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":24,"layer":24,"datatype":0,"rgba":"0xF3B33FFF"},{"index":25,"layer":25,"datatype":0,"rgba":"0x72D4FFFF"},{"index":26,"layer":26,"datatype":0,"rgba":"0xF47893FF"},{"index":27,"layer":27,"datatype":0,"rgba":"0x83DC89FF"},{"index":28,"layer":28,"datatype":0,"rgba":"0xC69BFFFF"},{"index":29,"layer":29,"datatype":0,"rgba":"0x64D8C8FF"},{"index":30,"layer":30,"datatype":0,"rgba":"0xE9E178FF"},{"index":31,"layer":31,"datatype":0,"rgba":"0xF3A373FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: native Home uses same complete-source tree range
+WORKSPACE_ENDPOINT_VISIBLE: id8589934592 first0 cached10 clip8,40,197,32 textPAGE_0000
+PASS: native Home reaches first actual Cell independently of thumb dragging
+PASS: capture actual full-range tree and wide business table
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_bottom status 0 located 0 rect 4,88,312,28 clicked 1 results 23 last {"status":0,"message":"ok","selected":"72057594039156736","selected_id":"72057594039156736"} snapshot {"instance_id":"1","cells":4201,"layers":300,"shapes":301,"cell":"PAGE_CHANGED","cell_id":4000,"selected":"72057594039156736","selected_id":"72057594039156736","modified":true,"busy":false,"can_undo":true,"can_redo":false,"path":"workflow-pages.gds","dbu":0.001,"generation":"23","rendered_generation":"23","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"21","progressive_tiles":0,"tiles_published":96,"tiles_dropped":32,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":61507,"selection_count":1,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":0,"datatype":0,"rgba":"0xF3B33FFF"},{"index":1,"layer":1,"datatype":0,"rgba":"0x72D4FFFF"},{"index":2,"layer":2,"datatype":0,"rgba":"0xF47893FF"},{"index":3,"layer":3,"datatype":0,"rgba":"0x83DC89FF"},{"index":4,"layer":4,"datatype":0,"rgba":"0xC69BFFFF"},{"index":5,"layer":5,"datatype":0,"rgba":"0x64D8C8FF"},{"index":6,"layer":6,"datatype":0,"rgba":"0xE9E178FF"},{"index":7,"layer":7,"datatype":0,"rgba":"0xF3A373FF"},{"index":8,"layer":8,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":9,"layer":9,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":10,"layer":10,"datatype":0,"rgba":"0xB7D988FF"},{"index":11,"layer":11,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":12,"layer":12,"datatype":0,"rgba":"0xF3B33FFF"},{"index":13,"layer":13,"datatype":0,"rgba":"0x72D4FFFF"},{"index":14,"layer":14,"datatype":0,"rgba":"0xF47893FF"},{"index":15,"layer":15,"datatype":0,"rgba":"0x83DC89FF"},{"index":16,"layer":16,"datatype":0,"rgba":"0xC69BFFFF"},{"index":17,"layer":17,"datatype":0,"rgba":"0x64D8C8FF"},{"index":18,"layer":18,"datatype":0,"rgba":"0xE9E178FF"},{"index":19,"layer":19,"datatype":0,"rgba":"0xF3A373FF"},{"index":20,"layer":20,"datatype":0,"rgba":"0xAAC2FFFF"},{"index":21,"layer":21,"datatype":0,"rgba":"0xDF9EDAFF"},{"index":22,"layer":22,"datatype":0,"rgba":"0xB7D988FF"},{"index":23,"layer":23,"datatype":0,"rgba":"0xC5C5C5FF"},{"index":24,"layer":24,"datatype":0,"rgba":"0xF3B33FFF"},{"index":25,"layer":25,"datatype":0,"rgba":"0x72D4FFFF"},{"index":26,"layer":26,"datatype":0,"rgba":"0xF47893FF"},{"index":27,"layer":27,"datatype":0,"rgba":"0x83DC89FF"},{"index":28,"layer":28,"datatype":0,"rgba":"0xC69BFFFF"},{"index":29,"layer":29,"datatype":0,"rgba":"0x64D8C8FF"},{"index":30,"layer":30,"datatype":0,"rgba":"0xE9E178FF"},{"index":31,"layer":31,"datatype":0,"rgba":"0xF3A373FF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: leave bottom profile for independent host restart
+WORKSPACE_INPUT_RESULT: 92 checks 2 failures
+PASS: unsaved close REFUSE exposes instance modal
+PASS: close confirmation dispatches through command
+PASS: all callbacks workers and modules permit workspace destruction
+PASS: launch real independent process for app-owned layout restart
+FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit807828147bdfb6959abb49b4668dfa90c34eda56
+PASS: independent process reads persisted opaque profile
+PASS: profile process initializes matched runtime
+PASS: new process creates independent workspace
+PASS: new process mounts first instance after registered slots
+PASS: normal process restart restores bottom without remount
+PASS: profile restart joins worker and unloads DLL
+PASS: automatic close atomically writes format2 profile
+WORKSPACE_RESTART_RESULT: 7 checks 0 failures
+PASS: new process restores valid persisted layout
+PASS: prepare future version only in isolated test profile
+PASS: launch real independent process for app-owned layout restart
+FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit807828147bdfb6959abb49b4668dfa90c34eda56
+PASS: independent process reads persisted opaque profile
+PASS: profile process initializes matched runtime
+PASS: new process creates independent workspace
+PASS: new process mounts first instance after registered slots
+PASS: future profile keeps registered defaults
+PASS: rejected profile warning survives render status updates
+PASS: profile restart joins worker and unloads DLL
+PASS: automatic close preserves rejected profile bytes
+WORKSPACE_RESTART_RESULT: 8 checks 0 failures
+PASS: new process rejects future profile and retains its bytes
+PASS: launch real independent process for app-owned layout restart
+FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit807828147bdfb6959abb49b4668dfa90c34eda56
+PASS: independent process reads persisted opaque profile
+PASS: profile process initializes matched runtime
+PASS: new process creates independent workspace
+PASS: new process mounts first instance after registered slots
+PASS: future profile keeps registered defaults
+PASS: rejected profile warning survives render status updates
+TEST_ACTIVATION: foreground_pid=36044 expected_pid=36044 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+HIERARCHY_MENU: path View/Workspace item klayoutc.layout_reset status 0 located 0 rect 4,60,312,28 clicked 1 results 1 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":1,"layers":1,"shapes":0,"cell":"TOP","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can_undo":false,"can_redo":false,"path":"","dbu":0.001,"generation":"7","rendered_generation":"7","center_x":0,"center_y":0,"scale":10,"scale_y":10,"progressive_generation":"0","progressive_tiles":0,"tiles_published":132,"tiles_dropped":68,"tile_queue_high_water":64,"render_cache_hits":0,"render_cache_peak_bytes":0,"selection_count":0,"selected_instance_id":"0","edit_depth":0,"edit_context":false,"grid":0.001,"operation_kind":0,"pending_command":"","dialog_kind":-1,"data_busy":false,"property_mode":0,"property_pending":false,"layer_styles":[{"index":0,"layer":1,"datatype":0,"rgba":"0xF3B33FFF"}],"hier_min":0,"hier_max":-1,"background":"#181C24","display_undo":0,"display_redo":0,"file_format":"GDS","geometry_target":"0","geometry_vertices":0,"geometry_last_vertex_id":"0","geometry_dirty":false,"part_id":"0","part_index":0,"rulers":0,"ruler_length":0,"ruler_dx":0,"ruler_dy":0,"ruler_angle":0}
+PASS: native Reset menu explicitly permits replacing rejected profile
+PASS: profile restart joins worker and unloads DLL
+PASS: automatic close atomically writes format2 profile
+WORKSPACE_RESTART_RESULT: 9 checks 0 failures
+PASS: new process resets rejected profile through actual menu
+WORKSPACE_PROFILE_RESULT: 102 checks 2 failures
+REGRESSION_RESULT: 102 checks 2 failures

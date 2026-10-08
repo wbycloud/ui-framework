@@ -1,0 +1,43 @@
+WINDOW invalidate-control hwnd000000000436103A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE invalidate-control elapsed219 cpu-ms15.625 paint1 queued-paint1 dispatched1 host-refresh0 wake0 layouts0 events0 handles276 GDI414 USER31
+MEASURE idle-0 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles276 GDI414 USER31
+MEASURE idle-1 elapsed2015 cpu-ms0.000 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles276 GDI414 USER31
+MEASURE idle-2 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles276 GDI414 USER31
+WINDOW resize hwnd000000000A8308F2 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd000000000436103A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd0000000003FE112C classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000065E04A6 classUIFrameworkRegisteredMenu4 paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd0000000005B80B86 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000104F05FA classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000005810E2C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd0000000010CF0F42 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd000000000819113C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed500 cpu-ms31.250 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events6 handles276 GDI377 USER31
+WINDOW resize hwnd000000000A8308F2 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd000000000436103A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd0000000003FE112C classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000005B80B86 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000104F05FA classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000005810E2C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd0000000010CF0F42 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd000000000819113C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed500 cpu-ms62.500 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles276 GDI402 USER31
+WINDOW resize hwnd000000000A8308F2 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd000000000436103A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd0000000003FE112C classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000005B80B86 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000104F05FA classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000005810E2C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd0000000010CF0F42 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd000000000819113C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed516 cpu-ms46.875 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles276 GDI402 USER31
+WINDOW explicit-GL-frame hwnd000000000436103A classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW explicit-GL-frame hwnd000000000A8308F2 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd0000000003FE112C classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd0000000005810E2C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd0000000010CF0F42 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd000000000819113C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd0000000005B80B86 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE explicit-GL-frame elapsed500 cpu-ms31.250 paint7 queued-paint7 dispatched9 host-refresh0 wake0 layouts1 events4 handles276 GDI402 USER31
+MEASURE idle-after-GL elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles276 GDI402 USER31
+Host idle repaint: 0 failures

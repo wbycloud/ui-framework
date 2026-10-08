@@ -57,3 +57,9 @@ ui_browser_host使用框架测试包和私有临时历史目录，保留GetCurso
 ## 当前体验与长名称
 
 面板标题、停靠标签悬停或F1显示完整名称，Esc关闭；溢出标签按面板宽度分页，所有面板仍可激活。窗口最小尺寸/标题工具/空心停靠预览见[布局](workspace-layout.md)。AI仍每次默认收起；展开状态只随用户操作改变，resize或实例切换不会自动打开，原生及GL内容使用重排后的槽尺寸。SDK8的新列宽能力不更改宿主或应用生命周期合同。
+
+## 完整状态示例与测试定位
+
+打开框架提供的stateful_components.uapp，可在State菜单保存／恢复列宽和布局，关闭后重新启动验证；AI仍默认收起。状态归示例应用档案管理，不与宿主最近应用记录或业务文档混用。详见[示例](../examples/stateful_components/README.md)。
+
+宿主按钮 geometry 可能随宽度、DPI和界面调整变化。框架维护的宿主测试持有自己的Web view，使用公共presentation可见clip中心、view-local→physical→screen换算和实际鼠标状态检查。应用没有公共“取得宿主chrome view”接口，不能照抄私有h.view或假造API；正式业务测试需由框架宿主观察器提供定位支持。旧固定坐标失败及原“隐藏而不销毁HWND”断言保留，迁移只替换定位方法，见[本轮验收](validation/api8-stability-state-validation.md)。

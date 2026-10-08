@@ -1,0 +1,41 @@
+Test project D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+    Start 23: ui_host_repaint
+1/2 Test #23: ui_host_repaint ..................***Failed   10.08 sec
+MEASURE invalidate-control elapsed203 cpu-ms0.000 paint0 queued-paint1 dispatched1 host-refresh0 wake0 layouts0 events0 handles287 GDI414 USER31
+MEASURE idle-0 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles287 GDI414 USER31
+MEASURE idle-1 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles287 GDI414 USER31
+MEASURE idle-2 elapsed2000 cpu-ms0.000 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles287 GDI414 USER31
+WINDOW resize hwnd0000000004210A74 classUiFrameworkStandaloneHostV2 paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd000000000837074A classUIFrameworkLightWeb paint0 invalid-before0 invalid-after0 positions3
+WINDOW resize hwnd00000000056608C2 classUiFrameworkApplicationContainerV1 paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd0000000004D407EC classUIFrameworkRegisteredMenu4 paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd000000000FC310F8 classUIFrameworkLightWeb paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd000000000928081E classStatic paint0 invalid-before0 invalid-after0 positions1
+MEASURE resize elapsed500 cpu-ms31.250 paint0 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events6 handles287 GDI377 USER31
+WINDOW resize hwnd0000000004210A74 classUiFrameworkStandaloneHostV2 paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd000000000837074A classUIFrameworkLightWeb paint0 invalid-before0 invalid-after0 positions3
+WINDOW resize hwnd00000000056608C2 classUiFrameworkApplicationContainerV1 paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd000000000FC310F8 classUIFrameworkLightWeb paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd000000000928081E classStatic paint0 invalid-before0 invalid-after0 positions1
+MEASURE resize elapsed500 cpu-ms46.875 paint0 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles287 GDI402 USER31
+WINDOW resize hwnd0000000004210A74 classUiFrameworkStandaloneHostV2 paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd000000000837074A classUIFrameworkLightWeb paint0 invalid-before0 invalid-after0 positions3
+WINDOW resize hwnd00000000056608C2 classUiFrameworkApplicationContainerV1 paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd000000000FC310F8 classUIFrameworkLightWeb paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd000000000928081E classStatic paint0 invalid-before0 invalid-after0 positions1
+MEASURE resize elapsed516 cpu-ms46.875 paint0 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles287 GDI402 USER31
+Host idle repaint: 1 failures
+
+    Start 24: ui_stateful_components_light
+2/2 Test #24: ui_stateful_components_light .....***Failed    0.52 sec
+run-stateful-components.ps1: Cannot overwrite variable HOME because it is read-only or constant.
+
+
+0% tests passed, 2 tests failed out of 2
+
+Total Test time (real) =  10.63 sec
+
+The following tests FAILED:
+	 23 - ui_host_repaint (Failed)
+	 24 - ui_stateful_components_light (Failed)
+Errors while running CTest

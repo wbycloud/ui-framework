@@ -1,0 +1,42 @@
+{
+  "observedUtc": "2026-10-08T00:22:57.8808269Z",
+  "frameworkHead": "d24cdf386889337fc68d3aabb5184c39a5591a54",
+  "branch": "codex/menus-offscreen",
+  "os": "Windows 10 Home China",
+  "osVersion": "10.0.26300.0",
+  "build": "26300",
+  "processSession": 1,
+  "isAdministrator": false,
+  "scManagerCreateAccess": false,
+  "scManagerError": 123,
+  "serviceCreatedOrChanged": false,
+  "currentSourceSession0": "not_run",
+  "strictNoLoginRunner": "unavailable_user_confirmed",
+  "hostedCiAuthorization": false,
+  "hostedCiRun": false,
+  "physicalMonitorAcceptance": false,
+  "realChineseImeAcceptance": false,
+  "longManualAcceptance": false,
+  "formalBusinessModificationAuthorization": false,
+  "desktop": {
+    "height": 1440,
+    "dwmHresult": 0,
+    "systemDpi": 96,
+    "width": 2560,
+    "dwmEnabled": true,
+    "physicalMixedDpiAndEdgeSnapAcceptance": false,
+    "detectedMonitors": 1
+  },
+  "originalBusiness": {
+    "trackedChanges": 23,
+    "access": "read_only",
+    "trackedUserDiffUnchanged": true,
+    "newCopy": "abc8d870efc6401dc4fa55e50170a5449c11e36b",
+    "modifiedCopyFiles": [
+      "app/manifest.ini",
+      "framework-sdk.lock.json"
+    ],
+    "head": "ff44a0fff0ba198f6bfc45d7fcdabb347f6fdeda"
+  },
+  "hardwareWindowlessGlExpanded": false
+}

@@ -2,6 +2,8 @@
 
 当前SDK0.8/API8/标准8、ABI1；本轮列宽与help公开能力按版本规则升级，既有内部视觉和生命周期复用。当前证据见[体验验收](validation/component-experience-validation.md)，此前API7内部视觉证据见[历史记录](validation/visual-ui-validation.md)。
 
+共同表格的表头和内容按稳定列ID对齐，不依赖数据源cell数组的返回顺序。调宽改变可见列范围时，顺序已正确的DOM节点保持挂载，避免真实Runtime指针捕获被重排打断。列宽与布局存储由[完整应用示例](../examples/stateful_components/README.md)演示，内部模板修正保持API8；[本轮真实错位、捕获失败与复验](validation/api8-stability-state-validation.md)保留原证据。
+
 ## 1. 覆盖清单与设计目标
 
 | 界面 | 当前实现与责任 |

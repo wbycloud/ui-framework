@@ -1,0 +1,96 @@
+Test project D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+      Start  1: ui_package_format
+ 1/44 Test  #1: ui_package_format ................   Passed    0.31 sec
+      Start  2: ui_images_windows
+ 2/44 Test  #2: ui_images_windows ................   Passed    0.09 sec
+      Start  3: ui_responsive_layout
+ 3/44 Test  #3: ui_responsive_layout .............   Passed    0.05 sec
+      Start  4: ui_assistant_lifecycle
+ 4/44 Test  #4: ui_assistant_lifecycle ...........   Passed    0.05 sec
+      Start  5: ui_dpi_web_failure
+ 5/44 Test  #5: ui_dpi_web_failure ...............   Passed    0.05 sec
+      Start  6: ui_components_core
+ 6/44 Test  #6: ui_components_core ...............   Passed    0.05 sec
+      Start  7: ui_headless_example
+ 7/44 Test  #7: ui_headless_example ..............   Passed    0.04 sec
+      Start  8: ui_public_headers_c
+ 8/44 Test  #8: ui_public_headers_c ..............   Passed    0.04 sec
+      Start  9: ui_public_headers_cpp
+ 9/44 Test  #9: ui_public_headers_cpp ............   Passed    0.05 sec
+      Start 10: ui_workspace_layout
+10/44 Test #10: ui_workspace_layout ..............   Passed    1.60 sec
+      Start 11: ui_component_widths
+11/44 Test #11: ui_component_widths ..............   Passed    1.43 sec
+      Start 12: ui_component_experience
+12/44 Test #12: ui_component_experience ..........   Passed    0.46 sec
+      Start 13: ui_component_scroll_native
+13/44 Test #13: ui_component_scroll_native .......   Passed   21.49 sec
+      Start 14: ui_light_glyph_padding
+14/44 Test #14: ui_light_glyph_padding ...........   Passed    0.11 sec
+      Start 15: ui_light_scroll
+15/44 Test #15: ui_light_scroll ..................   Passed    0.14 sec
+      Start 16: ui_component_scroll
+16/44 Test #16: ui_component_scroll ..............   Passed    0.44 sec
+      Start 17: ui_offscreen_msaa
+17/44 Test #17: ui_offscreen_msaa ................   Passed    0.39 sec
+      Start 18: ui_offscreen_gl
+18/44 Test #18: ui_offscreen_gl ..................   Passed    0.33 sec
+      Start 19: ui_workspace_offscreen
+19/44 Test #19: ui_workspace_offscreen ...........   Passed    1.96 sec
+      Start 20: ui_framework_features_host
+20/44 Test #20: ui_framework_features_host .......   Passed   11.99 sec
+      Start 21: ui_menu_desktop
+21/44 Test #21: ui_menu_desktop ..................   Passed    7.63 sec
+      Start 22: ui_menu_offscreen
+22/44 Test #22: ui_menu_offscreen ................   Passed    0.19 sec
+      Start 23: ui_menu_cascade_offscreen
+23/44 Test #23: ui_menu_cascade_offscreen ........   Passed    0.30 sec
+      Start 24: ui_menu_access
+24/44 Test #24: ui_menu_access ...................   Passed    0.16 sec
+      Start 25: ui_web_text_edit
+25/44 Test #25: ui_web_text_edit .................   Passed    0.17 sec
+      Start 26: ui_generic_web_host
+26/44 Test #26: ui_generic_web_host ..............   Passed    9.73 sec
+      Start 27: ui_component_resilience
+27/44 Test #27: ui_component_resilience ..........   Passed    6.57 sec
+      Start 28: ui_application_contract
+28/44 Test #28: ui_application_contract ..........   Passed    0.29 sec
+      Start 29: ui_light_web_dynamic
+29/44 Test #29: ui_light_web_dynamic .............   Passed    0.25 sec
+      Start 30: ui_web_shell_slots
+30/44 Test #30: ui_web_shell_slots ...............   Passed    0.11 sec
+      Start 31: ui_floating_web_dpi
+31/44 Test #31: ui_floating_web_dpi ..............   Passed    0.11 sec
+      Start 32: ui_light_web_parity
+32/44 Test #32: ui_light_web_parity ..............   Passed    0.21 sec
+      Start 33: ui_workspace_integration
+33/44 Test #33: ui_workspace_integration .........   Passed    1.70 sec
+      Start 34: ui_browser_host
+34/44 Test #34: ui_browser_host ..................   Passed    4.97 sec
+      Start 35: ui_web_host_frontend
+35/44 Test #35: ui_web_host_frontend .............   Passed    1.40 sec
+      Start 36: ui_native_activation
+36/44 Test #36: ui_native_activation .............   Passed    0.55 sec
+      Start 37: ui_dpi_integration
+37/44 Test #37: ui_dpi_integration ...............   Passed    0.11 sec
+      Start 38: ui_opengl_integration
+38/44 Test #38: ui_opengl_integration ............   Passed    0.40 sec
+      Start 39: ui_surface_input
+39/44 Test #39: ui_surface_input .................   Passed    0.14 sec
+      Start 40: ui_monitor_transition
+40/44 Test #40: ui_monitor_transition ............***Skipped   0.08 sec
+      Start 41: ui_workspace7
+41/44 Test #41: ui_workspace7 ....................   Passed    0.17 sec
+      Start 42: ui_native_shell_integration
+42/44 Test #42: ui_native_shell_integration ......   Passed    0.10 sec
+      Start 43: ui_native_responsive
+43/44 Test #43: ui_native_responsive .............   Passed    0.20 sec
+      Start 44: ui_assistant_protocol
+44/44 Test #44: ui_assistant_protocol ............   Passed    0.08 sec
+
+100% tests passed, 0 tests failed out of 44
+
+Total Test time (real) =  77.66 sec
+
+The following tests did not run:
+	 40 - ui_monitor_transition (Skipped)

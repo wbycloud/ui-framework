@@ -1,0 +1,7 @@
+RESTORED modewrite dpi96 name200 treeCollapsed0
+state line18: GetCapture()==hit
+state line20: ui_component_get_column_width(table,"name",&after)==UI_STATUS_OK&&after==before+80
+ACTUAL_HEADER dpi96 width200 -> 200 hit00000000020B05AA pid49308
+state line26: ui_host_invoke(host,command,"{}","state-test")!=0
+state line36: !strcmp(ui_host_status_text(info.host),"State saved: profile A")
+Stateful actual light / write: 4 failures

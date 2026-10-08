@@ -1,0 +1,10 @@
+RESTORED modewrite dpi96 name200 treeCollapsed0
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+COMPONENT table active1 gen1 {"action":"column-begin","column":"name","width":"0","generation":"1"}
+COMPONENT table active1 gen1 {"action":"debug-pointer","event":"down","target":"resize-name","x":205,"y":54}
+CAPTURE hit000000000AC108EC classChrome_WidgetWin_0 thread17572 ours17572 GetCapture0000000000000000 target-thread-capture0000000000000000
+COMPONENT table active1 gen1 {"action":"column-width","column":"name","width":"280","generation":"1"}
+COMPONENT table active1 gen1 {"action":"debug-pointer","event":"move","target":"resize-name","x":285,"y":54}
+COMPONENT table active1 gen1 {"action":"column-end","column":"name","width":"0","generation":"1"}
+ACTUAL_HEADER dpi96 width200 -> 280 hit000000000AC108EC pid35156
+Stateful actual webview2 / write: 0 failures

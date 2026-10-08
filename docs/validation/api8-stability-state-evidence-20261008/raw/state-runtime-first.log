@@ -1,0 +1,21 @@
+Test project D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+    Start 25: ui_stateful_components_webview2
+1/1 Test #25: ui_stateful_components_webview2 ...***Failed    2.63 sec
+RESTORED modewrite dpi96 name200 treeCollapsed0
+state line21: GetCapture()==hit
+ACTUAL_HEADER dpi96 width200 -> 280 hit000000000324060E pid42280
+Stateful actual webview2 / write: 1 failures
+Exception: D:\应用软件框架\应用层序框架\tests\run-stateful-components.ps1:15
+Line |
+  15 |  … CODE -ne 0){throw "Actual state case failed: $label exit $LASTEXITCOD …
+     |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Actual state case failed: write-96 exit 1
+
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) =   2.66 sec
+
+The following tests FAILED:
+	 25 - ui_stateful_components_webview2 (Failed)
+Errors while running CTest

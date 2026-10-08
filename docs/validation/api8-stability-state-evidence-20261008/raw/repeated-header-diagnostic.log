@@ -1,0 +1,11 @@
+RESTORED modeisolation dpi96 name280 treeCollapsed1
+state line55: ui_component_get_column_width(second,"name",&width)==UI_STATUS_OK&&width==200
+HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+CAPTURE hit000000000D500C02 classChrome_WidgetWin_0 thread39608 ours39608 GetCapture0000000000000000 target-thread-capture0000000000000000
+state line29: ui_component_get_column_width(table,"name",&after)==UI_STATUS_OK&&after==before+80
+ACTUAL_HEADER dpi96 width280 -> 280 hit000000000D500C02 pid33720
+HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+CAPTURE hit000000000D500C02 classChrome_WidgetWin_0 thread39608 ours39608 GetCapture0000000000000000 target-thread-capture0000000000000000
+state line29: ui_component_get_column_width(table,"name",&after)==UI_STATUS_OK&&after==before+80
+ACTUAL_HEADER dpi96 width280 -> 280 hit000000000D500C02 pid33720
+Stateful actual webview2 / isolation: 3 failures

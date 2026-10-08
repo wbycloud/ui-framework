@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="2"
+	failures="1"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="46"
+	timestamp="2026-10-08T07:54:13"
+	>
+	<testcase name="ui_stateful_components_light" classname="ui_stateful_components_light" time="35.8856" status="run">
+		<properties/>
+		<system-out>RESTORED modewrite dpi96 name200 treeCollapsed0
+CAPTURE hit0000000008A210B2 classUIFrameworkLightWeb thread33344 ours33344 GetCapture0000000008A210B2 target-thread-capture0000000008A210B2
+ACTUAL_HEADER dpi96 width200 -&gt; 280 hit0000000008A210B2 pid48624
+Stateful actual light / write: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+Stateful actual light / restore: 0 failures
+RESTORED modewrite dpi144 name200 treeCollapsed0
+CAPTURE hit0000000007A10F6E classUIFrameworkLightWeb thread29620 ours29620 GetCapture0000000007A10F6E target-thread-capture0000000007A10F6E
+ACTUAL_HEADER dpi144 width200 -&gt; 280 hit0000000007A10F6E pid44912
+Stateful actual light / write: 0 failures
+RESTORED moderestore dpi144 name280 treeCollapsed1
+Stateful actual light / restore: 0 failures
+RESTORED modewrite dpi192 name200 treeCollapsed0
+CAPTURE hit000000000EF90626 classUIFrameworkLightWeb thread35880 ours35880 GetCapture000000000EF90626 target-thread-capture000000000EF90626
+ACTUAL_HEADER dpi192 width200 -&gt; 280 hit000000000EF906...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_stateful_components_webview2" classname="ui_stateful_components_webview2" time="10.8826" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out>RESTORED modewrite dpi96 name200 treeCollapsed0
+CAPTURE hit0000000000EB0858 classChrome_WidgetWin_0 thread37768 ours37768 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -&gt; 280 hit0000000000EB0858 pid8108
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+Stateful actual webview2 / restore: 0 failures
+RESTORED modewrite dpi144 name200 treeCollapsed0
+CAPTURE hit0000000008D50BEC classChrome_WidgetWin_0 thread22944 ours22944 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi144 width200 -&gt; 280 hit0000000008D50BEC pid32832
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi144 name280 treeCollapsed1
+Stateful actual webview2 / restore: 0 failures
+RESTORED modewrite dpi192 name200 treeCollapsed0
+CAPTURE hit000000000E0D05AC classChrome_WidgetWin_0 thread49728 ours49728 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi192 width200 -&gt; 280 hit000000000E0D05AC pid28264
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi192 name280 treeCollapsed1
+Stateful actual webview2 / restore: 0 failures
+RESTORED modeisolation dpi96 name280 treeCollapsed1
+CAPTURE hit0000000007B5113C classChrome_WidgetWin_0 thread47108 ours47108 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -&gt; 280 hit0000000007B5113C pid31460
+CAPTURE hit0000000007B5113C classChrome_WidgetWin_0 thread47108 ours47108 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width280 -&gt; 280 hit0000000007B5113C pid31460
+state line29: ui_component_get_column_width(table,"name",&amp;after)==UI_STATUS_OK&amp;&amp;after==before+80
+Stateful actual webview2 / isolation: 1 failures
+Exception: D:\应用软件框架\应用层序框架\tests\run-stateful-components.ps1:15
+Line |
+  15 |  … CODE -ne 0){throw "Actual state case failed: $label exit $LASTEXITCOD …
+     |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Actual state case failed: isolation exit 1
+</system-out>
+	</testcase>
+</testsuite>

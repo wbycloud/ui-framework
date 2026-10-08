@@ -1,0 +1,1694 @@
+Start testing: Oct 08 08:06 �й���׼ʱ��
+----------------------------------------------------------
+1/44 Testing: ui_package_format
+1/44 Test: ui_package_format
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_package_format_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_package_format" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+package format and deterministic packing: 0 failures
+<end of output>
+Test time =   0.31 sec
+----------------------------------------------------------
+Test Passed.
+"ui_package_format" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_package_format" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/44 Testing: ui_images_windows
+2/44 Test: ui_images_windows
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_images_windows_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_images_windows" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+PNG/GDI/cache: 0 failures
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"ui_images_windows" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_images_windows" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/44 Testing: ui_responsive_layout
+3/44 Test: ui_responsive_layout
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_responsive_layout_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_responsive_layout" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+responsive layout matrix: 0 failures
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_responsive_layout" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_responsive_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/44 Testing: ui_assistant_lifecycle
+4/44 Test: ui_assistant_lifecycle
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_assistant_lifecycle_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_assistant_lifecycle" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+assistant lifecycle and model rollback: 0 failures
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_lifecycle" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_assistant_lifecycle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/44 Testing: ui_dpi_web_failure
+5/44 Test: ui_dpi_web_failure
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_dpi_web_failure_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_dpi_web_failure" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+failed Web DPI sync and retry: 0 failures
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_web_failure" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_dpi_web_failure" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/44 Testing: ui_components_core
+6/44 Test: ui_components_core
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_components_core_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_components_core" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API3 components core: 0 failures, 3 bounded queries
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_components_core" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_components_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/44 Testing: ui_headless_example
+7/44 Test: ui_headless_example
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_headless_example.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_headless_example" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+eda.add_block: {"blocks":1}
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_headless_example" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_headless_example" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/44 Testing: ui_public_headers_c
+8/44 Test: ui_public_headers_c
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_public_headers_c_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_public_headers_c" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_c" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_public_headers_c" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/44 Testing: ui_public_headers_cpp
+9/44 Test: ui_public_headers_cpp
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_public_headers_cpp_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_public_headers_cpp" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_cpp" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_public_headers_cpp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/44 Testing: ui_workspace_layout
+10/44 Test: ui_workspace_layout
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_workspace_layout_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_workspace_layout" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+workspace layout: 0 failures
+<end of output>
+Test time =   1.60 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_layout" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_workspace_layout" time elapsed: 00:00:01
+----------------------------------------------------------
+
+11/44 Testing: ui_component_widths
+11/44 Test: ui_component_widths
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_component_widths_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_component_widths" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Column experience Light queries25: 0 failures
+<end of output>
+Test time =   1.43 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_widths" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_component_widths" time elapsed: 00:00:01
+----------------------------------------------------------
+
+12/44 Testing: ui_component_experience
+12/44 Test: ui_component_experience
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_component_experience_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_component_experience" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+component experience light: 0 failures
+<end of output>
+Test time =   0.46 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_experience" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_component_experience" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/44 Testing: ui_component_scroll_native
+13/44 Test: ui_component_scroll_native
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_component_scroll_native_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_component_scroll_native" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+PASS: initialize current shared framework
+PASS: native root visible
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi96
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first18 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first4985 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,499 client786,448 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,103 client726,52 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+REPRO_QUERY: first4987 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,459 client726,408 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: pending test scrollbar visible
+PASS: actual pending-test down
+PASS: actual pending-test drag
+PASS: refresh unchanged visible pending component
+PASS: async source actually displays loading placeholder
+PASS: loading does not shrink complete-source track
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: async delivery does not move track under pointer
+PASS: actual pending-test up
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,300 client786,249 thumb780,237 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+PASS: actual Esc cancels drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+6 dpi96
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: last column initially uncached
+PASS: native header resize grip visible
+PASS: native resize target belongs to test
+PASS: actual header resize down
+PASS: same HWND header capture
+PASS: actual header resize move
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: actual header resize up
+PASS: actual mouse sets logical width at program DPI
+PASS: header resize capture released
+PASS: adjacent declared width preserved
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: explicit single-column reset
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start61,505 client33,454 thumb8,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col62+2 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes63 bytes4372 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: last column queried on demand
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start778,505 client750,454 thumb725,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes135 bytes10552 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count13 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start57,465 client29,414 thumb8,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col62+2 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes60 bytes4063 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start722,465 client694,414 thumb673,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes128 bytes9799 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count14 col31+7 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+PASS: actual Esc cancels drag
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count14 col31+7 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+0 dpi96
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4985 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,499 client786,448 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,103 client726,52 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4987 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,459 client726,408 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+PASS: actual Esc cancels drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+PASS: native modal editor open
+PASS: native modal field presentation
+PASS: logical modal field maps to native view at program DPI
+PASS: actual hover opens nonactivating field hint
+PASS: hover hint leaves pointer target and focus in modal editor
+PASS: actual field click through hover hint
+PASS: actual modal text input
+PASS: hover hint does not consume modal typing
+PASS: actual F1 full text
+PASS: owned readonly viewer displays full field value
+PASS: actual Esc closes readonly viewer
+PASS: viewer Esc does not cancel business modal
+PASS: viewer close restores field focus
+PASS: modal cleanup
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi144
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi144
+REPRO_QUERY: first18 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count18 col0+0 dpi144
+REPRO_QUERY: first4985 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,723 client1179,672 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,129 client1089,78 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+REPRO_QUERY: first4987 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,663 client1089,612 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+6 dpi144
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: last column initially uncached
+PASS: native header resize grip visible
+PASS: native resize target belongs to test
+PASS: actual header resize down
+PASS: same HWND header capture
+PASS: actual header resize move
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: actual header resize up
+PASS: actual mouse sets logical width at program DPI
+PASS: header resize capture released
+PASS: adjacent declared width preserved
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: explicit single-column reset
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start78,732 client50,681 thumb8,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col62+2 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes63 bytes4372 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: last column queried on demand
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1153,732 client1125,681 thumb725,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes135 bytes10552 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count13 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start72,672 client44,621 thumb8,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col62+2 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes60 bytes4063 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1069,672 client1041,621 thumb673,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes128 bytes9799 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+0 dpi144
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first1 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4985 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,723 client1179,672 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,129 client1089,78 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4987 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,663 client1089,612 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+PASS: native modal editor open
+PASS: native modal field presentation
+PASS: logical modal field maps to native view at program DPI
+PASS: actual hover opens nonactivating field hint
+PASS: hover hint leaves pointer target and focus in modal editor
+PASS: actual field click through hover hint
+PASS: actual modal text input
+PASS: hover hint does not consume modal typing
+PASS: actual F1 full text
+PASS: owned readonly viewer displays full field value
+PASS: actual Esc closes readonly viewer
+PASS: viewer Esc does not cancel business modal
+PASS: viewer close restores field focus
+PASS: modal cleanup
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi192
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi192
+REPRO_QUERY: first18 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count18 col0+0 dpi192
+REPRO_QUERY: first4985 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,947 client1572,896 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,155 client1452,104 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+REPRO_QUERY: first4987 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,867 client1452,816 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+6 dpi192
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: last column initially uncached
+PASS: native header resize grip visible
+PASS: native resize target belongs to test
+PASS: actual header resize down
+PASS: same HWND header capture
+PASS: actual header resize move
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: actual header resize up
+PASS: actual mouse sets logical width at program DPI
+PASS: header resize capture released
+PASS: adjacent declared width preserved
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: explicit single-column reset
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start94,959 client66,908 thumb8,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col62+2 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes63 bytes4372 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: last column queried on demand
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1528,959 client1500,908 thumb725,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes135 bytes10552 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count13 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start86,879 client58,828 thumb8,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col62+2 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes60 bytes4063 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1416,879 client1388,828 thumb673,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes128 bytes9799 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+0 dpi192
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first1 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4985 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,947 client1572,896 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,155 client1452,104 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4987 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,867 client1452,816 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+PASS: native modal editor open
+PASS: native modal field presentation
+PASS: logical modal field maps to native view at program DPI
+PASS: actual hover opens nonactivating field hint
+PASS: hover hint leaves pointer target and focus in modal editor
+PASS: actual field click through hover hint
+PASS: actual modal text input
+PASS: hover hint does not consume modal typing
+PASS: actual F1 full text
+PASS: owned readonly viewer displays full field value
+PASS: actual Esc closes readonly viewer
+PASS: viewer Esc does not cancel business modal
+PASS: viewer close restores field focus
+PASS: modal cleanup
+NATIVE_SCROLL_RESULT: 0 failures
+<end of output>
+Test time =  21.49 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_scroll_native" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_component_scroll_native" time elapsed: 00:00:21
+----------------------------------------------------------
+
+14/44 Testing: ui_light_glyph_padding
+14/44 Test: ui_light_glyph_padding
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_light_glyph_padding_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_light_glyph_padding" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+load=0 host=0000026074A9F1C0 view=0000026074AD8D80
+capture=0 dimensions=40x40
+presentation=0 visible=1 rect=0,0,20,20 text=
+Explicit zero-padding icon: dark=22 extent=4..15 PASS
+<end of output>
+Test time =   0.11 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_glyph_padding" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_light_glyph_padding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/44 Testing: ui_light_scroll
+15/44 Test: ui_light_scroll
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_light_scroll_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_light_scroll" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+visible overflow bars windowed/windowless: 0 failures
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_scroll" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_light_scroll" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/44 Testing: ui_component_scroll
+16/44 Test: ui_component_scroll
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_component_scroll_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_component_scroll" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=table y=44 height=396 query=0+15
+end row first=99988 total=100000 rows=14 query=99986+17 nodes=135 status=0
+end column first=0 col=0 rows=15 query=0+15
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551603 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=780,44,12,396
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=780,44,12,396
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+complete range scroll light offscreen: 0 failures
+<end of output>
+Test time =   0.44 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_scroll" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_component_scroll" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/44 Testing: ui_offscreen_msaa
+17/44 Test: ui_offscreen_msaa
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_offscreen_msaa_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_offscreen_msaa" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+<end of output>
+Test time =   0.39 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_msaa" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_offscreen_msaa" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/44 Testing: ui_offscreen_gl
+18/44 Test: ui_offscreen_gl
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_offscreen_gl_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_offscreen_gl" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Offscreen GPU: Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c); hidden HWND dependency; hardware class unknown
+Hidden WGL/FBO/frame/input/readback: 0 failures
+<end of output>
+Test time =   0.33 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_gl" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_offscreen_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/44 Testing: ui_workspace_offscreen
+19/44 Test: ui_workspace_offscreen
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_workspace_offscreen_test.exe" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/framework_features.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_workspace_offscreen" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Offscreen actual DOM=89 cached rows=12 columns=4
+Workspace/shared DLL/real templates: 0 failures, HWNDs=0
+<end of output>
+Test time =   1.96 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_offscreen" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_workspace_offscreen" time elapsed: 00:00:01
+----------------------------------------------------------
+
+20/44 Testing: ui_framework_features_host
+20/44 Test: ui_framework_features_host
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_framework_features_host_test.exe" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/framework_features.uapp" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/features-host.bmp"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_framework_features_host" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API4 actual host menus/overflow/instances: 0 failures
+<end of output>
+Test time =  11.99 sec
+----------------------------------------------------------
+Test Passed.
+"ui_framework_features_host" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_framework_features_host" time elapsed: 00:00:11
+----------------------------------------------------------
+
+21/44 Testing: ui_menu_desktop
+21/44 Test: ui_menu_desktop
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_menu_desktop_test.exe" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/framework_features.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_menu_desktop" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Input desktop cursor available: 1
+Function key presentation: status 0; text Ctrl+F1
+Menu hit 0 at 698,111: expected 000000000B58071E; actual 000000000B58071E UIFrameworkRegisteredMenu4; foreground 000000000B58071E
+Menu hit 1 at 380,110: expected 000000002AB60A1A; actual 000000002AB60A1A UIFrameworkRegisteredMenu4; foreground 000000000B58071E
+Menu hit 2 at 62,109: expected 00000000080A0826; actual 00000000080A0826 UIFrameworkRegisteredMenu4; foreground 000000000B58071E
+40 menu reopen cycles: handles 386 -> 386; GDI 855 -> 855; USER 146 -> 146
+After instance switch: visible menus=0; first path=closed second path=closed
+Desktop menu real host: 0 failures; command calls=1
+<end of output>
+Test time =   7.63 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_desktop" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_menu_desktop" time elapsed: 00:00:07
+----------------------------------------------------------
+
+22/44 Testing: ui_menu_offscreen
+22/44 Test: ui_menu_offscreen
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_menu_offscreen_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_menu_offscreen" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Real light/template offscreen: 0 failures; thread windows=0; no physical IME/DPI claim
+<end of output>
+Test time =   0.19 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_offscreen" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_menu_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/44 Testing: ui_menu_cascade_offscreen
+23/44 Test: ui_menu_cascade_offscreen
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_menu_cascade_offscreen_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_menu_cascade_offscreen" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+128 items, 118 page steps; shared cascade budget boundary at 13; command once; no menu HWND: 0 failures
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_cascade_offscreen" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_menu_cascade_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/44 Testing: ui_menu_access
+24/44 Test: ui_menu_access
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_menu_access_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_menu_access" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Menu Alt real template: 0 failures, calls=3
+<end of output>
+Test time =   0.16 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_access" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_menu_access" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/44 Testing: ui_web_text_edit
+25/44 Test: ui_web_text_edit
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_web_text_edit_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_web_text_edit" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web editor: 0 failures. Physical Chinese IME remains unverified.
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_text_edit" end time: Oct 08 08:06 �й���׼ʱ��
+"ui_web_text_edit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/44 Testing: ui_generic_web_host
+26/44 Test: ui_generic_web_host
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_generic_web_host_test.exe" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/generic_components.uapp" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/web_counter.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_generic_web_host" start time: Oct 08 08:06 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+initial actual DOM=311 rows=19 columns=8
+Initial form dpi=96 status=0 field=96,78,146,28 view=0,0,250,636
+100k tail actual DOM=89 rows=12 columns=4
+100k expanded tree actual DOM=93 cached rows=2100 total=100100
+image bytes=462400 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+<end of output>
+Test time =   9.73 sec
+----------------------------------------------------------
+Test Passed.
+"ui_generic_web_host" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_generic_web_host" time elapsed: 00:00:09
+----------------------------------------------------------
+
+27/44 Testing: ui_component_resilience
+27/44 Test: ui_component_resilience
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_component_resilience_test.exe" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/framework_features.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_component_resilience" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+automatic style preview lifetime: 0 failures
+resource,0,0,0,19976192,7401472,174,60,6,0,0,0,0,0,0,0
+edit/layout mode 0: 0 failures
+edit/layout mode 1: 0 failures
+edit/layout mode 2: 0 failures
+edit/layout mode 3: 0 failures
+focus before refloat=00000000100105FA
+focus after refloat=00000000100105FA
+focus after modal close=00000000100105FA
+focus after redock=00000000100105FA
+edit/layout mode 4: 0 failures
+edit/layout mode 5: 0 failures
+record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count
+resource,532,1,1,141811712,150351872,387,1336,165,329,20,21894,93,9948,343144,83
+resource,532,1,2,141811712,150351872,387,1336,165,311,19,18680,93,8254,241672,59
+resource,1641,3,1,145076224,153137152,387,1445,165,343,21,23479,93,11642,436192,105
+resource,1641,3,2,145076224,153137152,387,1445,165,343,21,23459,93,9948,414992,100
+resource,2110,4,1,145166336,153223168,387,1445,165,343,21,23479,93,11642,436192,105
+resource,2110,4,2,145166336,153223168,387,1445,165,322,21,23458,93,11642,504032,121
+resource,2344,4,0,52899840,19603456,377,72,115,0,0,0,0,0,0,0
+resilience: 0 failures; 4 iterations; physical/manual checks remain open
+<end of output>
+Test time =   6.57 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_resilience" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_component_resilience" time elapsed: 00:00:06
+----------------------------------------------------------
+
+28/44 Testing: ui_application_contract
+28/44 Test: ui_application_contract
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_application_contract_test.exe" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/web_counter.uapp" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/counter_mismatch.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_application_contract" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+current application declarations and Web/native contents: PASS
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"ui_application_contract" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_application_contract" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/44 Testing: ui_light_web_dynamic
+29/44 Test: ui_light_web_dynamic
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_light_web_dynamic_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_light_web_dynamic" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Dynamic Web probe: 0 failure(s), 6 messages, 250 incremental rebuilds
+<end of output>
+Test time =   0.25 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_web_dynamic" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_light_web_dynamic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/44 Testing: ui_web_shell_slots
+30/44 Test: ui_web_shell_slots
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_web_shell_slots_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_web_shell_slots" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web shell content slots and legacy facade passed
+<end of output>
+Test time =   0.11 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_shell_slots" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_web_shell_slots" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/44 Testing: ui_floating_web_dpi
+31/44 Test: ui_floating_web_dpi
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_floating_web_dpi_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_floating_web_dpi" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.11 sec
+----------------------------------------------------------
+Test Passed.
+"ui_floating_web_dpi" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_floating_web_dpi" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/44 Testing: ui_light_web_parity
+32/44 Test: ui_light_web_parity
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/light_web_probe.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_light_web_parity" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Light Web probe: 0 failure(s), clicks=3, inputs=2, reloads=4
+<end of output>
+Test time =   0.21 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_web_parity" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_light_web_parity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/44 Testing: ui_workspace_integration
+33/44 Test: ui_workspace_integration
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_workspace_integration_test.exe" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_lifecycle_fixture.dll" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_application_cpp.dll"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_workspace_integration" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Workspace/module lifecycle: 0 failure(s)
+<end of output>
+Test time =   1.70 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_integration" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_workspace_integration" time elapsed: 00:00:01
+----------------------------------------------------------
+
+34/44 Testing: ui_browser_host
+34/44 Test: ui_browser_host
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_browser_host_test.exe" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/web_counter.uapp" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_lifecycle_fixture.dll"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_browser_host" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Recent row text=[] newest=[C:\Users\wbycl\AppData\Local\Temp\ubh814E.tmp\app12.uapp]
+Actual drag 40,40 -> 80,70
+Resize actual target 0000000007230F92 host 0000000007230F92 chrome 0000000005FB04A6 capture 0000000000000000
+Resize actual right 1280 -> 1310
+24 actual DLL reopen/close: handles 388 -> 388 GDI 71 -> 71 USER 116 -> 116
+Browser host: 0 failures
+<end of output>
+Test time =   4.97 sec
+----------------------------------------------------------
+Test Passed.
+"ui_browser_host" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_browser_host" time elapsed: 00:00:04
+----------------------------------------------------------
+
+35/44 Testing: ui_web_host_frontend
+35/44 Test: ui_web_host_frontend
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_web_host_frontend_test.exe" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/cpp_fixture.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_web_host_frontend" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Basic parameter JSON: {"count":12,"name":"Draft 中","enabled":true,"extra":"keep"}
+Parameter recovery hint: status=0 visible=1 text=此参数需要在高级区域配置，原有参数保持。
+Short text tool width: 115
+Web host frontend passed.
+<end of output>
+Test time =   1.40 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_host_frontend" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_web_host_frontend" time elapsed: 00:00:01
+----------------------------------------------------------
+
+36/44 Testing: ui_native_activation
+36/44 Test: ui_native_activation
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_native_activation_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_native_activation" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native managed activation: 0 failure(s)
+<end of output>
+Test time =   0.55 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_activation" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_native_activation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/44 Testing: ui_dpi_integration
+37/44 Test: ui_dpi_integration
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_dpi_integration_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_dpi_integration" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+DPI integration: 0 failure(s)
+<end of output>
+Test time =   0.11 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_integration" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_dpi_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+38/44 Testing: ui_opengl_integration
+38/44 Test: ui_opengl_integration
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_opengl_integration_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_opengl_integration" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+legacy: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c)
+gl.core: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Core Profile) Mesa 24.3.4 (git-1950a8b78c) samples=0 debug=0
+gl.compatibility: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=0 debug=0
+gl.msaa_debug: Mesa | llvmpipe (LLVM 19.1.7, 256 bits) | 4.5 (Core Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 debug=1
+OpenGL integration: 0 failure(s), 3 modern configurations supported
+<end of output>
+Test time =   0.40 sec
+----------------------------------------------------------
+Test Passed.
+"ui_opengl_integration" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_opengl_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+39/44 Testing: ui_surface_input
+39/44 Test: ui_surface_input
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_surface_input_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_surface_input" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Surface input integration: 0 failure(s)
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_surface_input" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_surface_input" time elapsed: 00:00:00
+----------------------------------------------------------
+
+40/44 Testing: ui_monitor_transition
+40/44 Test: ui_monitor_transition
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_monitor_transition_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_monitor_transition" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Monitor transition environment: 1 monitor(s)
+SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"ui_monitor_transition" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_monitor_transition" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/44 Testing: ui_workspace7
+41/44 Test: ui_workspace7
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_workspace7_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_workspace7" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API7 bottom/tabs: 0 failures
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace7" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_workspace7" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/44 Testing: ui_native_shell_integration
+42/44 Test: ui_native_shell_integration
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_native_shell_integration_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_native_shell_integration" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+native shell integration checks passed
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_shell_integration" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_native_shell_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/44 Testing: ui_native_responsive
+43/44 Test: ui_native_responsive
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_native_responsive_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_native_responsive" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native responsive integration: 0 failure(s)
+<end of output>
+Test time =   0.20 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_responsive" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_native_responsive" time elapsed: 00:00:00
+----------------------------------------------------------
+
+44/44 Testing: ui_assistant_protocol
+44/44 Test: ui_assistant_protocol
+Command: "D:/应用软件框架/应用层序框架/build/stability-state-20261008/after/ui_assistant_protocol_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+"ui_assistant_protocol" start time: Oct 08 08:07 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+assistant protocol: 0 failure(s)
+<end of output>
+Test time =   0.08 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_protocol" end time: Oct 08 08:07 �й���׼ʱ��
+"ui_assistant_protocol" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 08 08:07 �й���׼ʱ��

@@ -1,0 +1,232 @@
+Test project D:/应用软件框架/应用层序框架/build/stability-state-20261008/business-current
+      Start  1: kc_precision
+ 1/30 Test  #1: kc_precision .....................   Passed    0.11 sec
+      Start  2: kc_core
+ 2/30 Test  #2: kc_core ..........................   Passed    0.18 sec
+      Start  3: kc_hierarchy
+ 3/30 Test  #3: kc_hierarchy .....................   Passed    0.15 sec
+      Start  4: kc_clipboard
+ 4/30 Test  #4: kc_clipboard .....................   Passed    0.14 sec
+      Start  5: kc_edit
+ 5/30 Test  #5: kc_edit ..........................   Passed    0.09 sec
+      Start  6: kc_gds
+ 6/30 Test  #6: kc_gds ...........................   Passed    0.15 sec
+      Start  7: kc_oasis
+ 7/30 Test  #7: kc_oasis .........................   Passed    0.02 sec
+      Start  8: kc_properties
+ 8/30 Test  #8: kc_properties ....................   Passed    0.03 sec
+      Start  9: kc_property_completion
+ 9/30 Test  #9: kc_property_completion ...........   Passed    0.14 sec
+      Start 10: kc_region
+10/30 Test #10: kc_region ........................   Passed    0.05 sec
+      Start 11: kc_render
+11/30 Test #11: kc_render ........................   Passed    0.10 sec
+      Start 12: kc_render_tiles
+12/30 Test #12: kc_render_tiles ..................   Passed    0.09 sec
+      Start 13: kc_render_errors
+13/30 Test #13: kc_render_errors .................   Passed    0.08 sec
+      Start 14: kc_edit_fault
+14/30 Test #14: kc_edit_fault ....................   Passed    0.05 sec
+      Start 15: kc_gds_open
+15/30 Test #15: kc_gds_open ......................   Passed    0.09 sec
+      Start 16: kc_gds_read_open
+16/30 Test #16: kc_gds_read_open .................   Passed    0.10 sec
+      Start 17: kc_layer_properties
+17/30 Test #17: kc_layer_properties ..............   Passed    0.42 sec
+      Start 18: kc_host
+18/30 Test #18: kc_host ..........................***Failed   22.26 sec
+FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commit660734fa66a868478416f226696e4feb990e0b49
+HOST_CELL_COMMAND: stable klayoutc.cell_new registry index82 total95 rows-after12
+PASS: read-only public registry identifies current Cell command and cleans up
+PASS: launch matching distribution standalone host
+PASS: standalone host mounts independent current content surfaces without native business panes
+PASS: standalone process actually loads application DLL
+PASS: actual matched standalone Web chrome screenshot
+HOST_AI_BEFORE: visible0000000008880FE4 count1 width714 client1184
+PASS: current assistant starts collapsed with canvas space
+HOST_MOUSE_HELD: xy1016,22 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655329953
+PASS: real AI button expands existing assistant
+HOST_AI_AFTER: visible0000000008880FE4 count1 width400
+PASS: AI expansion retains GL HWND and gives assistant space
+PASS: capture actual readable assistant and basic parameters
+HOST_MOUSE_HELD: xy1004,286 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655330437
+PASS: native command picker opens application command list
+HOST_MOUSE_HELD: xy440,115 hit0000000005191072 capture0000000005191072 focus0000000005191072 foreground00000000077A111C time655330718
+PASS: real full-range command list scrollbar reaches last entries
+PASS: capture actual application last command entry
+HOST_MOUSE_HELD: xy80,450 hit0000000005191072 capture0000000005191072 focus0000000005191072 foreground00000000077A111C time655331031
+PASS: real picker selects last command
+HOST_MOUSE_HELD: xy1004,286 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655331312
+HOST_MOUSE_HELD: xy440,115 hit00000000051B1072 capture00000000051B1072 focus00000000051B1072 foreground00000000077C111C time655331546
+PASS: capture semantic Cell command after actual wheel navigation
+HOST_MOUSE_HELD: xy80,450 hit00000000051B1072 capture00000000051B1072 focus00000000051B1072 foreground00000000077C111C time655331953
+PASS: actual picker chooses stable Cell command independently of last entry
+PASS: capture actual application selected schema basic input
+HOST_MOUSE_HELD: xy430,435 hit0000000008880FE4 capture0000000008880FE4 focus0000000008880FE4 foreground000000000F1F082E time655332265
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+HOST_TAB_ACTIVATED: before 0000000008880FE4 after 00000000059D08C2 focus 000000000A0708F2 visible=0
+HOST_MOUSE_HELD: xy430,435 hit00000000059D08C2 capture00000000059D08C2 focus00000000059D08C2 foreground000000000F1F082E time655332390
+HOST_TAB_SWITCH: before 0000000008880FE4 after 00000000059D08C2 focus 00000000059D08C2 visible=1
+PASS: actual canvas focus and Ctrl Tab change active instance before pinned-target execution
+PASS: capture active other instance and readable pinned assistant target
+HOST_MOUSE_HELD: xy1004,362 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655332468
+PASS: actual assistant basic Cell name field receives focus
+PASS: native Unicode keys create assistant basic parameter draft
+HOST_MOUSE_HELD: xy954,405 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655332734
+PASS: one actual Execute click invokes existing semantic Cell command
+PASS: capture actual permission result and pinned-instance execution
+HOST_MOUSE_HELD: xy1004,528 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655333140
+PASS: actual advanced drawer remains accessible
+PASS: capture original JSON transaction and result access
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: real Save of active other instance proves AI did not change its model
+HOST_MOUSE_HELD: xy430,435 hit00000000059D08C2 capture00000000059D08C2 focus00000000059D08C2 foreground000000000F1F082E time655334343
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+HOST_TAB_ACTIVATED: before 00000000059D08C2 after 0000000008880FE4 focus 0000000002F6082C visible=0
+HOST_MOUSE_HELD: xy430,435 hit0000000008880FE4 capture0000000000000000 focus0000000002F6082C foreground000000000F1F082E time655334468
+HOST_TAB_SWITCH: before 00000000059D08C2 after 0000000008880FE4 focus 0000000008880FE4 visible=1
+PASS: actual canvas focus and Ctrl Tab return to pinned target before Save
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: real target Save independently contains exactly one AI-created Cell
+PASS: capture actual target drawing and one semantic command result
+PASS: manual AI expansion survives resize
+HOST_MOUSE_HELD: xy1096,22 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655335562
+PASS: real AI button collapses assistant
+PASS: collapse and resize retain canvas and manual preference
+PASS: current standalone physical Alt E opens light menu
+PASS: capture actual application menu in light host
+PASS: real pointer hovers application Region submenu
+TABLE_LAYOUT_HOVER: menu rect 38,98-358,422 target 280,300 count 2
+PASS: parent and side-expanded application submenu remain visible
+HOST_MOUSE_HELD: xy450,650 hit0000000008880FE4 capture0000000008880FE4 focus0000000008880FE4 foreground000000000F1F082E time655336609
+PASS: real canvas outside click closes menu chain
+PASS: outside click leaves no visible menu popup
+HOST_MOUSE_HELD: xy112,59 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655336812
+PASS: real top-level menu entry click
+PASS: actual repeated-entry fixture starts open
+HOST_MOUSE_HELD: xy112,59 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655337015
+PASS: real repeated top-level click
+PASS: repeated entry closes application menu
+HOST_MOUSE_HELD: xy112,59 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655337218
+PASS: physical hover switches top-level application menu
+PASS: hovered View menu routes Workspace mnemonic
+PASS: hover switch opens registered View Workspace child rather than Edit
+HOST_MOUSE_HELD: xy1159,54 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655337968
+HOST_MOUSE_HELD: xy1174,202 hit0000000004B805E4 capture0000000004B805E4 focus0000000004B805E4 foreground00000000067C0BBE time655338250
+PASS: real host theme button changes to dark
+PASS: actual light and dark chrome pixels differ
+PASS: actual dark application menu remains usable
+TABLE_LAYOUT_PANEL_BEFORE: 000000000EC610AC UIFrameworkLightWeb rect 38,160-263,490
+HOST_MOUSE_HELD: xy88,114 hit000000000B230B2C capture000000000A0708F2 focus000000000A0708F2 foreground000000000F1F082E time655339984
+PASS: physical header control collapses mounted Cell panel
+FAIL: collapse hides content without destroying its HWND
+HOST_MOUSE_HELD: xy88,114 hit000000000B230B2C capture000000000A0708F2 focus000000000A0708F2 foreground000000000F1F082E time655340250
+PASS: physical header expands same panel
+PASS: expand restores original content HWND
+HOST_MOUSE_HELD: xy20,120 hit000000000B230B2C capture000000000A0708F2 focus000000000A0708F2 foreground000000000F1F082E time655340500
+PASS: physical title starts panel drag
+PASS: physical move and Escape cancel dock gesture
+PASS: cancel retains original content HWND and rectangle
+HOST_MOUSE_HELD: xy20,120 hit000000000B230B2C capture000000000A0708F2 focus000000000A0708F2 foreground000000000F1F082E time655341140
+PASS: physical title starts committed dock gesture
+PASS: physical move and release commit panel to right stack
+TABLE_LAYOUT_PANEL_AFTER: 000000000EC610AC rect 769,278-1087,489
+PASS: committed drag reparents same application content HWND
+PASS: physical View Workspace Reset uses application semantic command
+PASS: actual layout reset restores original docked content rectangle
+HOST_MOUSE_HELD: xy229,472 hit000000000B230B2C capture000000000A0708F2 focus000000000A0708F2 foreground000000000F1F082E time655342343
+PASS: physical sidebar separator starts width drag
+PASS: physical splitter move and release commit width
+PASS: physical splitter changes actual content width
+PASS: capture actual standalone layout reset and retained GL content
+HOST_MOUSE_HELD: xy1159,54 hit000000000B230B2C capture000000000B230B2C focus000000000B230B2C foreground000000000F1F082E time655343500
+HOST_MOUSE_HELD: xy1174,202 hit00000000091F0E7E capture00000000091F0E7E focus00000000091F0E7E foreground0000000004BE05E4 time655343781
+PASS: actual toolbar pointer belongs to owned host
+PASS: normal queued mouse activates Open toolbar
+PASS: actual toolbar opens owned system file dialog
+PASS: capture actual system file dialog opened from toolbar
+PASS: normal Escape cancels owned file dialog
+PASS: cancel closes modal and restores host input
+REGRESSION_HOST_FOCUS: UiFrameworkSurface C=0 S=0 A=0 dpi=96
+PASS: standalone physical Alt+F enters application menu
+PASS: actual current host displays application-owned registered menu
+PASS: actual host routes menu arrows and Escape
+PASS: standalone Escape closes registered popup
+PASS: original application canvas receives its legacy O shortcut
+PASS: standalone Ctrl+O opens application system GDS chooser
+PASS: standalone application chooser exposes actual GDS and OASIS formats
+PASS: standalone Ctrl+Shift+O targets package opening
+REGRESSION_CHOOSERS: app=PASS: host package chooser is distinct from application GDS chooser
+PASS: cancelling both choosers restores host input
+PASS: actual standalone Alt+V enters View menu
+PASS: actual standalone mnemonic opens View settings
+PASS: standalone mounts and captures public View settings modal
+PASS: actual native Escape cancels View settings
+VIEW_CANCEL_FOCUS: class=UiFrameworkSurface modal_visible=0 owner_enabled=1
+PASS: standalone modal cancellation restores canvas keyboard focus
+PASS: actual standalone Alt+L enters Layer menu
+PASS: actual standalone Import mnemonic opens system .lyp selector
+PASS: standalone Import has actual .lyp file filter
+PASS: cancel .lyp selector restores matching host input
+PASS: four actual host sizes retain visible GL content
+PASS: four actual host sizes retain visible GL content
+PASS: four actual host sizes retain visible GL content
+PASS: four actual host sizes retain visible GL content
+PASS: actual host minimize and restore retain content
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: standalone tab switch changes actual visible application surface
+PASS: capture switched tab with pinned assistant target
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: closing one instance preserves second instance and loaded module
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: last instance closes and actual module unloads after workers exit
+PASS: extracted application module is removed after unload
+PASS: owned standalone host exits normally
+PASS: launch matching distribution standalone host
+PASS: standalone host mounts independent current content surfaces without native business panes
+PASS: standalone process actually loads application DLL
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: last instance closes and actual module unloads after workers exit
+PASS: extracted application module is removed after unload
+PASS: owned standalone host exits normally
+
+      Start 19: kc_precision_input
+19/30 Test #19: kc_precision_input ...............   Passed   52.86 sec
+      Start 20: kc_application_workflows
+20/30 Test #20: kc_application_workflows .........   Passed    6.66 sec
+      Start 21: kc_usability_input
+21/30 Test #21: kc_usability_input ...............   Passed    4.77 sec
+      Start 22: kc_gl_offscreen
+22/30 Test #22: kc_gl_offscreen ..................   Passed    3.07 sec
+      Start 23: kc_hierarchy_input
+23/30 Test #23: kc_hierarchy_input ...............   Passed    4.50 sec
+      Start 24: kc_menu_input
+24/30 Test #24: kc_menu_input ....................   Passed   12.25 sec
+      Start 25: kc_view_settings
+25/30 Test #25: kc_view_settings .................   Passed    9.56 sec
+      Start 26: kc_workspace_input
+26/30 Test #26: kc_workspace_input ...............   Passed   28.52 sec
+      Start 27: kc_table_layout_input
+27/30 Test #27: kc_table_layout_input ............   Passed   28.33 sec
+      Start 28: kc_advanced_input
+28/30 Test #28: kc_advanced_input ................   Passed   91.76 sec
+      Start 29: kc_oasis_input_fixture
+29/30 Test #29: kc_oasis_input_fixture ...........   Passed    0.07 sec
+      Start 30: kc_oasis_region_input
+30/30 Test #30: kc_oasis_region_input ............   Passed   28.09 sec
+
+97% tests passed, 1 tests failed out of 30
+
+Total Test time (real) = 295.60 sec
+
+The following tests FAILED:
+	 18 - kc_host (Failed)
+Errors while running CTest

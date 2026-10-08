@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="30"
+	failures="1"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="292"
+	timestamp="2026-10-08T08:28:15"
+	>
+	<testcase name="kc_precision" classname="kc_precision" time="0.0109745" status="run">
+		<properties/>
+		<system-out>PRECISION_CORE_RESULT: passed
+</system-out>
+	</testcase>
+	<testcase name="kc_core" classname="kc_core" time="0.071953" status="run">
+		<properties/>
+		<system-out>core tests passed
+</system-out>
+	</testcase>
+	<testcase name="kc_hierarchy" classname="kc_hierarchy" time="0.0121787" status="run">
+		<properties/>
+		<system-out>PASS stable IDs, shared references, cycles, copy trees, cancellation, undo and GDS holes
+</system-out>
+	</testcase>
+	<testcase name="kc_clipboard" classname="kc_clipboard" time="0.0121957" status="run">
+		<properties/>
+		<system-out>PASS independent clipboard, malformed data, DBU/name/shared graph mapping, billion array, cancellation and history
+</system-out>
+	</testcase>
+	<testcase name="kc_edit" classname="kc_edit" time="0.0361506" status="run">
+		<properties/>
+		<system-out>PASS mixed transforms, ID remapping, overflow rollback, attributes and 100000 compact instance records/indexes
+</system-out>
+	</testcase>
+	<testcase name="kc_gds" classname="kc_gds" time="0.0798933" status="run">
+		<properties/>
+		<system-out>GDS roundtrip, reference samples, malformed input, cancellation and atomic replacement passed
+</system-out>
+	</testcase>
+	<testcase name="kc_oasis" classname="kc_oasis" time="0.0166067" status="run">
+		<properties/>
+		<system-out>OASIS: 28/28 checks passed
+</system-out>
+	</testcase>
+	<testcase name="kc_properties" classname="kc_properties" time="0.0170069" status="run">
+		<properties/>
+		<system-out>Properties: 43/43 checks passed
+</system-out>
+	</testcase>
+	<testcase name="kc_property_completion" classname="kc_property_completion" time="0.0176945" status="run">
+		<properties/>
+		<system-out>Property completion: 97/97 checks passed
+</system-out>
+	</testcase>
+	<testcase name="kc_region" classname="kc_region" time="0.0112635" status="run">
+		<properties/>
+		<system-out>Region: 38/38 checks passed
+</system-out>
+	</testcase>
+	<testcase name="kc_render" classname="kc_render" time="0.0336404" status="run">
+		<properties/>
+		<system-out>lazy BVH: full-fit builds=0 nodes=0 order=0; partial builds=2 nodes=24528 order=8192
+render: reference pixels/fonts/camera, bounded exact Cell cache and 2000-level hierarchy passed
+</system-out>
+	</testcase>
+	<testcase name="kc_render_tiles" classname="kc_render_tiles" time="0.0273975" status="run">
+		<properties/>
+		<system-out>PASS 96 dirty-row reconstruction cases per visible-layer progress: empty/hidden first, all hidden, width 1/7/8/9/63/64/65/610, tail pixels, multiline clipped font, overlap color, cached/uncached and actual emitted-tile cancellation
+</system-out>
+	</testcase>
+	<testcase name="kc_render_errors" classname="kc_render_errors" time="0.0150474" status="run">
+		<properties/>
+		<system-out>PASS public renderer status/error agreement: invalid configurations, allocation failures and simultaneous cancellation preserve first error, real callback cancellation, optional error object and successful reuse
+</system-out>
+	</testcase>
+	<testcase name="kc_edit_fault" classname="kc_edit_fault" time="0.0117692" status="run">
+		<properties/>
+		<system-out>PASS typed metadata allocation faults: 4 rollback points, copied bytes and atomic undo
+PASS allocation failures: 10 rollback points, explicit commit failure and independent snapshot root name collision
+</system-out>
+	</testcase>
+	<testcase name="kc_gds_open" classname="kc_gds_open" time="0.0323485" status="run">
+		<properties/>
+		<system-out>GDS Windows temporary-open ownership, collision, Unicode, cancellation and save errors passed
+</system-out>
+	</testcase>
+	<testcase name="kc_gds_read_open" classname="kc_gds_read_open" time="0.0189198" status="run">
+		<properties/>
+		<system-out>GDS Windows read-open Unicode/readonly/sharing/ownership/error/cancellation contracts passed
+</system-out>
+	</testcase>
+	<testcase name="kc_layer_properties" classname="kc_layer_properties" time="0.296495" status="run">
+		<properties/>
+		<system-out>PASS: XML entity/Unicode/source/color/visible decode
+PASS: atomic compatible .lyp writer
+PASS: semantic .lyp roundtrip
+PASS: failed atomic replacement preserves locked destination
+PASS: failed export retains complete old XML
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: unsupported or malformed XML leaves result empty
+PASS: signed hexadecimal text is not an RGB color
+PASS: persist three-level independent fixture
+PASS: export solid three-layer .lyp for official oracle
+PASS: root-only hierarchy has exact red box pixels
+PASS: child-only hierarchy has exact green box pixels
+PASS: lower-bound hierarchy has exact blue box ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_host" classname="kc_host" time="21.0566" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+HOST_CELL_COMMAND: stable klayoutc.cell_new registry index82 total95 rows-after12
+PASS: read-only public registry identifies current Cell command and cleans up
+PASS: launch matching distribution standalone host
+PASS: standalone host mounts independent current content surfaces without native business panes
+PASS: standalone process actually loads application DLL
+PASS: actual matched standalone Web chrome screenshot
+HOST_AI_BEFORE: visible00000000098208A8 count1 width714 client1184
+PASS: current assistant starts collapsed with canvas space
+HOST_MOUSE_HELD: xy1016,22 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657835265
+PASS: real AI button expands existing assistant
+HOST_AI_AFTER: visible00000000098208A8 count1 width400
+PASS: AI expansion retains GL HWND and gives assistant space
+PASS: capture actual readable assistant and basic parameters
+HOST_MOUSE_HELD: xy1004,286 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657835750
+PASS: native command picker opens application command list
+HOST_MOUSE_HELD: xy440,115 hit00000000022B09F0 capture00000000022B09F0 focus00000000022B09F0 foreground0000000004800FCC time657836031
+PASS: real full-range command list scrollbar reaches last entries
+PASS: capture actual application last command entry
+HOST_MOUSE_HELD: xy80,450 hit00000000022B09F0 capture00000000022B09F0 focus00000000022B09F0 foreground0000000004800FCC time657836328
+PASS: real picker selects last command
+HOST_MOUSE_HELD: xy1004,286 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657836609
+HOST_MOUSE_HELD: xy440,115 hit00000000022D09F0 capture00000000022D09F0 focus00000000022D09F0 foreground0000000004820FCC time657836859
+PASS: capture semantic Cell command after actual wheel navigation
+HOST_MOUSE_HELD: xy80,450 hit00000000022D09F0 capture00000000022D09F0 focus00000000022D09F0 foreground0000000004820FCC time657837265
+PASS: actual picker chooses stable Cell command independently of last entry
+PASS: capture actual application selected schema basic input
+HOST_MOUSE_HELD: xy430,435 hit00000000098208A8 capture00000000098208A8 focus00000000098208A8 foreground000000000C09107A time657837578
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+HOST_TAB_ACTIVATED: before 00000000098208A8 after 0000000010AB0B98 focus 0000000002D70884 visible=0
+HOST_MOUSE_HELD: xy430,435 hit0000000010AB0B98 capture0000000010AB0B98 focus0000000010AB0B98 foreground000000000C09107A time657837703
+HOST_TAB_SWITCH: before 00000000098208A8 after 0000000010AB0B98 focus 0000000010AB0B98 visible=1
+PASS: actual canvas focus and Ctrl Tab change active instance before pinned-target execution
+PASS: capture active other instance and readable pinned assistant target
+HOST_MOUSE_HELD: xy1004,362 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657837796
+PASS: actual assistant basic Cell name field receives focus
+PASS: native Unicode keys create assistant basic parameter draft
+HOST_MOUSE_HELD: xy954,405 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657838078
+PASS: one actual Execute click invokes existing semantic Cell command
+PASS: capture actual permission result and pinned-instance execution
+HOST_MOUSE_HELD: xy1004,528 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657838484
+PASS: actual advanced drawer remains accessible
+PASS: capture original JSON transaction and result access
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: real Save of active other instance proves AI did not change its model
+HOST_MOUSE_HELD: xy430,435 hit0000000010AB0B98 capture0000000010AB0B98 focus0000000010AB0B98 foreground000000000C09107A time657839625
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+HOST_TAB_ACTIVATED: before 0000000010AB0B98 after 00000000098208A8 focus 0000000011760A16 visible=0
+HOST_MOUSE_HELD: xy430,435 hit00000000098208A8 capture00000000098208A8 focus00000000098208A8 foreground000000000C09107A time657839765
+HOST_TAB_SWITCH: before 0000000010AB0B98 after 00000000098208A8 focus 00000000098208A8 visible=1
+PASS: actual canvas focus and Ctrl Tab return to pinned target before Save
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: real target Save independently contains exactly one AI-created Cell
+PASS: capture actual target drawing and one semantic command result
+PASS: manual AI expansion survives resize
+HOST_MOUSE_HELD: xy1096,22 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657840890
+PASS: real AI button collapses assistant
+PASS: collapse and resize retain canvas and manual preference
+PASS: current standalone physical Alt E opens light menu
+PASS: capture actual application menu in light host
+PASS: real pointer hovers application Region submenu
+TABLE_LAYOUT_HOVER: menu rect 38,98-358,422 target 280,300 count 2
+PASS: parent and side-expanded application submenu remain visible
+HOST_MOUSE_HELD: xy450,650 hit00000000098208A8 capture00000000098208A8 focus00000000098208A8 foreground000000000C09107A time657841937
+PASS: real canvas outside click closes menu chain
+PASS: outside click leaves no visible menu popup
+HOST_MOUSE_HELD: xy112,59 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657842140
+PASS: real top-level menu entry click
+PASS: actual repeated-entry fixture starts open
+HOST_MOUSE_HELD: xy112,59 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657842343
+PASS: real repeated top-level click
+PASS: repeated entry closes application menu
+HOST_MOUSE_HELD: xy112,59 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657842546
+PASS: physical hover switches top-level application menu
+PASS: hovered View menu routes Workspace mnemonic
+PASS: hover switch opens registered View Workspace child rather than Edit
+HOST_MOUSE_HELD: xy1159,54 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657843296
+HOST_MOUSE_HELD: xy1174,202 hit0000000008AA1130 capture0000000008AA1130 focus0000000008AA1130 foreground00000000077009E0 time657843578
+PASS: real host theme button changes to dark
+PASS: actual light and dark chrome pixels differ
+PASS: actual dark application menu remains usable
+TABLE_LAYOUT_PANEL_BEFORE: 000000000606086E UIFrameworkLightWeb rect 38,160-263,490
+HOST_MOUSE_HELD: xy88,114 hit000000000DBB0C02 capture0000000002D70884 focus0000000002D70884 foreground000000000C09107A time657845343
+PASS: physical header control collapses mounted Cell panel
+FAIL: collapse hides content without destroying its HWND
+HOST_MOUSE_HELD: xy88,114 hit000000000DBB0C02 capture0000000002D70884 focus0000000002D70884 foreground000000000C09107A time657845593
+PASS: physical header expands same panel
+PASS: expand restores original content HWND
+HOST_MOUSE_HELD: xy20,120 hit000000000DBB0C02 capture0000000002D70884 focus0000000002D70884 foreground000000000C09107A time657845843
+PASS: physical title starts panel drag
+PASS: physical move and Escape cancel dock gesture
+PASS: cancel retains original content HWND and rectangle
+HOST_MOUSE_HELD: xy20,120 hit000000000DBB0C02 capture0000000002D70884 focus0000000002D70884 foreground000000000C09107A time657846484
+PASS: physical title starts committed dock gesture
+PASS: physical move and release commit panel to right stack
+TABLE_LAYOUT_PANEL_AFTER: 000000000606086E rect 769,278-1087,489
+PASS: committed drag reparents same application content HWND
+PASS: physical View Workspace Reset uses application semantic command
+PASS: actual layout reset restores original docked content rectangle
+HOST_MOUSE_HELD: xy229,472 hit000000000DBB0C02 capture0000000002D70884 focus0000000002D70884 foreground000000000C09107A time657847671
+PASS: physical sidebar separator starts width drag
+PASS: physical splitter move and release commit width
+PASS: physical splitter changes actual content width
+PASS: capture actual standalone layout reset and retained GL content
+HOST_MOUSE_HELD: xy1159,54 hit000000000DBB0C02 capture000000000DBB0C02 focus000000000DBB0C02 foreground000000000C09107A time657848812
+HOST_MOUSE_HELD: xy1174,202 hit0000000007660EF4 capture0000000007660EF4 focus0000000007660EF4 foreground0000000008B01130 time657849093
+PASS: actual toolbar pointer belongs to owned host
+PASS: normal queued mouse activates Open toolbar
+PASS: actual toolbar opens owned system file dialog
+PASS: capture actual system file dialog opened from toolbar
+PASS: normal Escape cancels owned file dialog
+PASS: cancel closes modal and restores host input
+REGRESSION_HOST_FOCUS: UiFrameworkSurface C=0 S=0 A=0 dpi=96
+PASS: standalone physical Alt+F enters application menu
+PASS: actual current host displays application-owned registered menu
+PASS: actual host routes menu arrows and Escape
+PASS: standalone Escape closes registered popup
+PASS: original application canvas receives its legacy O shortcut
+PASS: standalone Ctrl+O opens application system GDS chooser
+PASS: standalone application chooser exposes actual GDS and OASIS formats
+PASS: standalone Ctrl+Shift+O targets package opening
+REGRESSION_CHOOSERS: app=PASS: host package chooser is distinct from application GDS chooser
+PASS: cancelling both choosers restores host input
+PASS: actual standalone Alt+V enters View menu
+PASS: actual standalone mnemonic opens View settings
+PASS: standalone mounts and captures public View settings modal
+PASS: actual native Escape cancels View settings
+VIEW_CANCEL_FOCUS: class=UiFrameworkSurface modal_visible=0 owner_enabled=1
+PASS: standalone modal cancellation restores canvas keyboard focus
+PASS: actual standalone Alt+L enters Layer menu
+PASS: actual standalone Import mnemonic opens system .lyp selector
+PASS: standalone Import has actual .lyp file filter
+PASS: cancel .lyp selector restores matching host input
+PASS: four actual host sizes retain visible GL content
+PASS: four actual host sizes retain visible GL content
+PASS: four actual host sizes retain visible GL content
+PASS: four actual host sizes retain visible GL content
+PASS: actual host minimize and restore retain content
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: standalone tab switch changes actual visible application surface
+PASS: capture switched tab with pinned assistant target
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: closing one instance preserves second instance and loaded module
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: last instance closes and actual module unloads after workers exit
+PASS: extracted application module is removed after unload
+PASS: owned standalone host exits normally
+PASS: launch matching distribution standalone host
+PASS: standalone host mounts independent current content surfaces without native business panes
+PASS: standalone process actually loads application DLL
+PASS: host shortcut targets owned foreground window
+PASS: actual public host shortcut input
+PASS: last instance closes and actual module unloads after workers exit
+PASS: extracted application module is removed after unload
+PASS: owned standalone host exits normally
+</system-out>
+	</testcase>
+	<testcase name="kc_precision_input" classname="kc_precision_input" time="54.0123" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=32128 expected_pid=32128 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: preserve previous real-input output before repeat
+PASS: preserve previous real-input output before repeat
+PASS: preserve previous real-input output before repeat
+PASS: preserve previous real-input output before repeat
+PASS: preserve previous real-input output before repeat
+TEST_ACTIVATION: foreground_pid=32128 expected_pid=32128 ca...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_application_workflows" classname="kc_application_workflows" time="6.61777" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=42652 expected_pid=42652 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: actual exported descriptor agrees with manifest
+PASS: partial-init probe creates real application state with public host
+PASS: real application context above 2^53 is serialized exactly
+PASS: host without a content shell fails after partial GPU initialization
+PASS: partial initialization follows shared native/GPU cleanup path
+PASS: ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_usability_input" classname="kc_usability_input" time="4.7293" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=17420 expected_pid=17420 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: physical workflow owns the foreground canvas
+PARAM_COMMAND: status 0 visible 1 enabled 0 busy 0
+USER_KEY: key 66 ctrl 0 focus UiFrameworkSurface sent 1 results 1 modifiers C:0 S:0 A:0 state {"instance_id":"1","cells":1,"layers":1,"shapes":0,"cell":"TOP","cell_id":0,"selected":"0","selected_id":"0","modified":false,"busy":false,"can...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_gl_offscreen" classname="kc_gl_offscreen" time="2.98325" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: explicit OFFSCREEN workspace has no parent HWND
+PASS: offscreen logical and pixel slots
+PASS: load actual current package offscreen
+PASS: two independent offscreen instances
+PASS: original renderer completes first full frame
+PASS: host reports explicit run mode and no container
+PASS: GL explicitly reports hidden HWND dependency
+PASS: actual requested single-sample compatibility GL driver, no fallback
+GL: Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=0 hardware_class=unknown
+PASS: seven explicitly ordered menu groups
+PASS: nested hierarchy and workspace groups uses public menu path
+PASS: application reserves actual framework menu bar
+PASS: real menu template activates Box ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_hierarchy_input" classname="kc_hierarchy_input" time="4.61533" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=29324 expected_pid=29324 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: hierarchy input owns the foreground canvas
+PASS: explicit zero Cell-row identity still rejects without menu metadata
+HIERARCHY_MENU: path Cell item klayoutc.cell_new status 0 located 0 rect 4,32,312,28 clicked 1 results 1 last {"status":9,"message":"Not found","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":1,...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_menu_input" classname="kc_menu_input" time="12.296" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=25120 expected_pid=25120 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: real create failure leaves cleanup state after partial UI registration
+PASS: failed create cleanup leaves existing application instances live
+PASS: matched runtime reports actual current access keys
+PASS: root group has explicit order and mnemonic
+PASS: root group has explicit order and mnemonic
+PASS: root group has explicit order ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_view_settings" classname="kc_view_settings" time="9.33511" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=22204 expected_pid=22204 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: load three-level GDS fixture using ordinary open command
+PASS: import concrete solid .lyp using canonical file command
+HIERARCHY_MENU: path View item klayoutc.view_settings status 0 located 0 rect 4,116,312,28 clicked 1 results 2 last {"status":0,"message":"ok","selected":"0","selected_id":"0"} snapshot {"instance_id":"1","cells":3...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_workspace_input" classname="kc_workspace_input" time="28.445" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=36536 expected_pid=36536 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+TEST_ACTIVATION: foreground_pid=36536 expected_pid=36536 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: current owns foreground before real input
+PASS: prepare real geometry without replacing renderer
+HIERARCHY_MENU: path Edit item klayoutc.selection_all status 0 loc...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_table_layout_input" classname="kc_table_layout_input" time="28.3074" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=47380 expected_pid=47380 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+TEST_ACTIVATION: foreground_pid=47380 expected_pid=47380 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: own native foreground for current real application input
+PASS: business input uses locked current framework headers
+PASS: prepare business geometry for retained GL...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_advanced_input" classname="kc_advanced_input" time="91.5881" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=43676 expected_pid=43676 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+TEST_ACTIVATION: foreground_pid=43676 expected_pid=43676 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+PASS: own desktop foreground for new business input
+OASIS_CHOOSER: waiting pid 43676 time658006781 cancel0
+OASIS_CHOOSER: owned selector 00000000056107EC time658007062 U...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="kc_oasis_input_fixture" classname="kc_oasis_input_fixture" time="0.0644321" status="run">
+		<properties/>
+		<system-out></system-out>
+	</testcase>
+	<testcase name="kc_oasis_region_input" classname="kc_oasis_region_input" time="28.0928" status="run">
+		<properties/>
+		<system-out>FRAMEWORK_IDENTITY: SDK0.8.0-dev API8 commitd24cdf386889337fc68d3aabb5184c39a5591a54
+PASS: strict package parser validates actual UAPP
+PASS: manifest ABI1 and unchanged declared API match expected application
+PASS: UAPP carries icons and excludes replacement framework runtime
+PASS: initialize published SDK
+PASS: register application-owned test window
+PASS: create matching public WEB workspace
+PASS: load real current DLL/package
+PASS: load second isolated instance
+PASS: activate first and complete OpenGL frame
+TEST_ACTIVATION: foreground_pid=16092 expected_pid=16092 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+TEST_ACTIVATION: foreground_pid=16092 expected_pid=16092 caption_pid=0 positioned=1 activated=1 sent=0 visible=1 enabled=1 iconic=0 capture=0000000000000000 rect=0,0,0,0
+INPUT_SEND: time658098437 key79 modifier17 focus000000000C8E04C0 foreground0000000005BD0C16 capture0000000000000000 C0 S0 A0
+OASIS_CHOOSER: waiting pid 16092 time6580984...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

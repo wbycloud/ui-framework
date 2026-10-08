@@ -1,6 +1,6 @@
 # 框架开发交接记录
 
-更新日期：2026-10-07。当前SDK0.8/API8/标准8，产品源码8078281（基础7051596）；[本轮组件/工作区体验记录](validation/component-experience-validation.md)及第17节记录实际回归、失败、截图和SDK。接手干净c62753d；保留95f5d78/6a0170a视觉、9df202f/2e87e02原生捕获/异步轨道修复。共同组件无分页按钮，原预算/完整范围滚动/生命周期继续维护。按[当前版本政策](version-policy.md)只维护当前版本；历史阶段记录保留原版本和结果，不替代当前实测。Session0、严格整机无登录、真实IME/物理/长期人工和托管CI分别待验。
+更新日期：2026-10-08。当前SDK0.8/API8/标准8；产品f0b161c、完整存储示例／测试d24cdf3，[本轮收敛记录](validation/api8-stability-state-validation.md)与第18节记录实际回归、失败、截图及SDK。接手干净660734f；前轮8078281／0fe0864与第17节结果保留为历史，持续重绘来源仍未定位。保留95f5d78/6a0170a视觉、9df202f/2e87e02原生捕获／异步轨道修复。共同组件无分页按钮、原预算与生命周期保持，只维护当前API8；本地交付与托管CI／Session0／严格无登录／物理人工验收分别报告。
 
 ## 1. 恢复顺序与版本
 
@@ -13,7 +13,7 @@
 | 仓库 | [wbycloud/ui-framework](https://github.com/wbycloud/ui-framework) |
 | API5功能代码 | [87478fa20d7bb46809c0ef81dd44f972dc193a24](https://github.com/wbycloud/ui-framework/commit/87478fa20d7bb46809c0ef81dd44f972dc193a24)，四项实现及回归；文档另行提交，实际HEAD以Git为准 |
 | 浏览器式宿主 | d7030b3：单行标签标题栏、第二行应用菜单、原Windows/关闭合同及12项最近成功包；完整结果/限制见第12节，文档提交不改执行代码 |
-| API8当前交付 | 产品源码8078281（基础7051596）；本轮身份、依赖、SDK、实测及限制见第17节，实际HEAD以Git为准 |
+| API8当前交付 | 产品f0b161c、示例／测试d24cdf3；本轮身份、SDK、实测及限制见第18节；前轮8078281／0fe0864与第17节不覆盖，实际HEAD以Git为准 |
 | API6实现/最终测试与CI条件 | [1cdc50e](https://github.com/wbycloud/ui-framework/commit/1cdc50e)、[9705565](https://github.com/wbycloud/ui-framework/commit/9705565)，完整提交序列及失败修复见API6验收；文档提交不改运行代码 |
 | 菜单后续本地实现 | `6bf59f8`、`2917b44`、`d907fbd`、`d2e4a61`及测试收敛`b1f4c7b`；最终产品源码d2e4a61，仅内部菜单改动，API6/ABI1不变；最终证据另提交 |
 | API4历史实现/补验 | [e83a008](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c)、[48d6aaf](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，模态原生输入、STYLE回收、redock焦点；[记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
@@ -262,3 +262,15 @@ Runtime首轮关闭排空15秒断言失败，后续12取消pending0、句柄291�
 首轮失败及修复、冻结产物完整矩阵、只读业务副本、真实前后截图、当前SDK和环境限制见[本轮验收](validation/component-experience-validation.md)。原业务abc8的固定坐标折叠断言与历史29/30失败记录不改；本轮匹配SDK副本仅变更依赖锁/清单元数据，业务列宽或测试改动不属于框架修复。没有推送、远程运行、标签、发布、原业务/冻结SDK/历史包修改。
 
 最终产品8078281、测试收敛0fe0864：完整框架55通过/1物理跳过，原生20通过/1物理跳过；只读abc8业务副本29通过/1原固定坐标失败，框架自有真实业务观察102检查通过（末列STYLE实际像素），Runtime两次独立32周期通过。持续重绘来源未定位，测试消息泵修正不代表根治；原失败均保留。交付匹配SDK include/lib/bin/source及固定依赖、105张实际过程截图（8张失败图不作基线）；源码Session0服务权限错误5、无登录runner、远程CI与物理/人工分别待验。SDK归档位于本地build/experience-20261007，解包逐项sha256验证；最终文档提交不改变已冻结运行产物。
+
+## 18. 2026-10-08 API8 稳定性与完整存储收敛
+
+接手干净660734f。产品f0b161c只修共同模板：稳定列ID对齐，以及可见列数改变时保留顺序正确的捕获表头；没有更改公共头、原生捕获／轨道产品源码、ABI或预算。示例／测试d24cdf3提供stateful_components完整DLL／包，应用拥有UST1容器（UCW1＋ULYT）、跨进程A/B身份／锁、显式保存／加载／重置和异常最终状态回滚；真实表头拖动200→280／360、三个程序DPI、重排列／新旧列、两实例、初始化失败／WAIT／卸载均实际验证。
+
+本轮完整框架58通过／1物理跳过（59项）、原生20通过／1物理跳过（21项）；两个独立真实Runtime各32呈现就绪重开周期，句柄389→391、GDI12／USER17平稳、pending0。WM_PAINT按实际Dispatch观测并验证主动失效正对照；完整场景及两个独立进程闲置均0paint，resize／显式GL触发有界刷新。历史持续重绘未复现／未定位，不能把这两项DOM修复或测试消息泵修正写成根治。
+
+原业务只读HEAD ff44a0f及23项用户tracked diff保留；已登记abc8d87另建副本，仅改SDK锁／清单元数据。最终源码构建29/30（292.60秒）、实际交付SDK导入库重新链接／同DLL及宿主的完整套件也29/30（292.88秒），唯一原kc_host固定坐标折叠失败不改。框架自有观察器在交付SDK上102/102，另12次真实公共presentation折叠／恢复，同HWND、隐藏／显示、焦点及实际WGL context保留。框架提供定位迁移，原应用正式接入／原测试修改仍无授权；无公开chrome view getter，不臆造接口或改断言。
+
+当前依赖、运行条件、失败、命令、哈希、真实完整窗口图和SDK见[本轮验收](validation/api8-stability-state-validation.md)。新增旧布局输入遗漏、诊断hook漏队列paint、Runtime HWND捕获误判、临时Mesa默认D3D12异常均单独保留，不能归为持续重绘根因。原生三项实际拖动及未缓存末列、实际GL／MSAA／非MSAA、布局／输入／关闭回归保持。SDK离线当前3项和实际C消费通过，归档身份／解包结果另附，不混用此前冻结包。
+
+本轮服务创建访问准确错误5，未创建／修改服务；当前源码Session0、严格无登录runner、托管CI授权、IME／不同DPI物理屏幕／桌面边缘合成／长期人工分别待验。检测到DWM启用与一屏不替代物理验收。没有硬件无窗口GL扩围、原仓库／冻结SDK／原包／PERF改动、子代理、新会话或远程操作。下一步先读本节与本轮验收，再核对实际Git；第17节及更早记录保持原结果。

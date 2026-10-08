@@ -1,0 +1,5 @@
+RESTORED modewrite dpi96 name200 treeCollapsed0
+ACTUAL_HEADER dpi96 width200 -> 280 hit000000000018088C pid44836
+state line29: ui_host_invoke(host,command,"{}","state-test")!=0
+state line39: !strcmp(ui_host_status_text(info.host),"State saved: profile A")
+Stateful actual light / write: 2 failures

@@ -1,0 +1,5 @@
+@echo off
+call "C:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\Common7\Tools\VsDevCmd.bat" -no_logo -arch=x64 -host_arch=x64
+cl /nologo /MT /utf-8 /std:c11 /DUNICODE /D_UNICODE /D_CRT_SECURE_NO_WARNINGS /DUI_FRAMEWORK_BUILD_SHARED /Iinclude /I"build/stability-state-20261008/business-source/include" /I"build/stability-state-20261008/business-source/tests" /I"build/stability-state-20261008/business-current" "build/stability-state-20261008/business-scroll-observation.c" "build/stability-state-20261008/business-current/klayoutc_core.lib" "build/stability-state-20261008/business-current/klayoutc_layer_properties.lib" "build/stability-state-20261008/business-current/kc_miniz.lib" "build/stability-state-20261008/business-current/kc_tess.lib" "build/stability-state-20261008/after/ui_framework_runtime.lib" user32.lib gdi32.lib imm32.lib psapi.lib opengl32.lib xmllite.lib shlwapi.lib ole32.lib /Fe:"build/stability-state-20261008/business-current/business-scroll-observation.exe" /Fo:"build/stability-state-20261008/business-current/business-scroll-observation.obj" > "build/stability-state-20261008/business-observation-build.log" 2>&1
+exit /b %errorlevel%
+

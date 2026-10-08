@@ -29,6 +29,8 @@
 
     API8：共同树/表格/列表纵条映射完整total_count，宽表横条按全部列宽，uint64索引/ID传十进制字符串；共同数据组件无上一页/下一页或列箭头按钮，以完整范围滚动访问；保留按需批次和预算，不以缓存长度冒充总量。应用继续提供真实total_count，并按first/count返回数据；已经符合API8合同无需改动，不自行添加重复分页栏。CANCEL/Esc/捕获失效按框架合同，换源/排序/resize/模态/双实例/迟到结果保持代次及有效草稿选择。底部区域9、旧COUNT8保持；同区tab_group_id属于shell，活动成员切换不重建内容。应用保存不透明格式2，恢复读取格式1，异常/未来版本检查并提供reset；不扩大任意分割树。连续RGBA四通道与透明度预览只改草稿，保留颜色不提交业务，提交一次、取消恢复，核对只读/禁用/非法文本。
 
+    列宽／布局完整文件接入参考examples/stateful_components/README.md及docs/validation/api8-stability-state-validation.md。沿现有save_columns/restore_columns和shell布局接口，稳定组件、列、面板及档案ID跨进程保存；明确存储位置、独占／隔离、加载与显式保存时机、缺失/损坏/未来格式及重置，不用进程内instance_id作为档案身份。业务旧固定坐标受框架几何变化影响时，保留功能断言并迁移定位：有合法所属view时用公共presentation的clip和view-local逻辑坐标转换；独立外部宿主测试没有公开的chrome view获取接口，需经授权采用框架维护的观察器／测试适配，不能臆造getter、直接抄内部句柄或以SendInput返回成功代替最终隐藏/显示状态。
+
     枚举options使用真实下拉，颜色选取/文本回填校验RGBA。TABLE设置sort_command或selection_flags启用键盘/编辑，Enter提交一次、Esc取消。排序由source对完整数据集按query.sort_column/sort_direction提供窗口，不能只排缓存。多选用非零稳定64位ID，最多512且计入原缓存预算；UI_QUERY_SELECTION返回精确范围ID，post_component_selection复制投递。异步范围完成前旧集合仍有效，select命令表示手势意图，不代表范围结果已完成。排序/换源/更新/双实例/关闭按代次合同处理，不提高预算。
 
 7. RGBA/包内PNG通过C接口发布；像素不经JSON/Base64。遵守顶向下RGBA8、非预乘输入、正stride、缓冲长度、复制和资源预算；缩略图由应用自己的渲染器生成，框架负责显示。借用图片、字符串和回调参数按公共所有权合同使用，跨模块内存由分配方释放。

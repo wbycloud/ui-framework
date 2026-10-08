@@ -1,0 +1,21 @@
+RESTORED modeisolation dpi96 name280 treeCollapsed1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+COMPONENT table active1 gen1 {"action":"column-begin","column":"name","width":"0","generation":"1"}
+COMPONENT table active1 gen1 {"action":"debug-pointer","event":"down","target":"resize-name","x":205,"y":54}
+CAPTURE hit00000000085F0F7A classChrome_WidgetWin_0 thread30924 ours30924 GetCapture0000000000000000 target-thread-capture0000000000000000
+COMPONENT table active1 gen1 {"action":"column-width","column":"name","width":"280","generation":"1"}
+COMPONENT table active1 gen1 {"action":"debug-pointer","event":"move","target":"resize-name","x":285,"y":54}
+COMPONENT table active1 gen1 {"action":"column-end","column":"name","width":"0","generation":"1"}
+ACTUAL_HEADER dpi96 width200 -> 280 hit00000000085F0F7A pid46360
+HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+COMPONENT table active1 gen1 {"action":"column-begin","column":"name","width":"0","generation":"1"}
+COMPONENT table active1 gen1 {"action":"debug-pointer","event":"down","target":"resize-name","x":285,"y":54}
+CAPTURE hit00000000085F0F7A classChrome_WidgetWin_0 thread30924 ours30924 GetCapture0000000000000000 target-thread-capture0000000000000000
+COMPONENT table active1 gen1 {"action":"column-width","column":"name","width":"360","generation":"1"}
+COMPONENT table active1 gen1 {"action":"debug-pointer","event":"move","target":"resize-name","x":365,"y":54}
+COMPONENT table active1 gen1 {"action":"column-cancel","column":"name","width":"0","generation":"1"}
+COMPONENT table active1 gen1 {"action":"tip","column":"value","generation":"1","x":288,"y":40,"width":120,"height":28}
+COMPONENT table active1 gen1 {"action":"debug-pointer","event":"move","target":"sort-value","x":365,"y":54}
+state line29: ui_component_get_column_width(table,"name",&after)==UI_STATUS_OK&&after==before+80
+ACTUAL_HEADER dpi96 width280 -> 280 hit00000000085F0F7A pid46360
+Stateful actual webview2 / isolation: 1 failures

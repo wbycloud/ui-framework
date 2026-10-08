@@ -1,0 +1,302 @@
+[
+  {
+    "path": "images/business-observation-business-ai.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "a5d04780125d174715ca0d7036fc8bf9ddf4781a969a99dbd5c301229229b7cf",
+    "phase": "initial_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/business-observation-business-dark.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "14a0b22c7080d4cffcc156e8c96cbe25ebbd6e64a3f881049ad83c61b64707fc",
+    "phase": "initial_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/business-observation-business-light.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "09363096d5bb134e9fe13a62dbfc8ccd7dd0103403c4b7a1ae6f863a568ae04a",
+    "phase": "initial_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/business-observation-final-business-ai.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "cf2947e72f379b8b208c7b4dab21d2bc179eab9b35b7d68ccabc49da14479cc6",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/business-observation-final-business-dark.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "20dde22e0c861210f014de0ac7b25c010127e3e215efebf0f5178d996f135142",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/business-observation-final-business-light.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "fe9d9fd06e87f605397190eacd76c2095e4e5b34fc187e8cac1f5eda469117f1",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/business-observation-sdk-business-ai.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "cf2947e72f379b8b208c7b4dab21d2bc179eab9b35b7d68ccabc49da14479cc6",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/business-observation-sdk-business-dark.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "20dde22e0c861210f014de0ac7b25c010127e3e215efebf0f5178d996f135142",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/business-observation-sdk-business-light.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "fe9d9fd06e87f605397190eacd76c2095e4e5b34fc187e8cac1f5eda469117f1",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/reordered-light-96-before-fix.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "bcf318aba765c79624d8ee0b4e23a9242630956a5d58d250108b21b53ed55ac6",
+    "phase": "reorder_failure",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-light-144-before.png",
+    "size": [
+      1800,
+      1200
+    ],
+    "sha256": "4d1688651548bc4ec48bd1714d9e880e701d5f9e9b9cd527783f1190a3a755af",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-light-144-restored.png",
+    "size": [
+      1800,
+      1200
+    ],
+    "sha256": "1e2d311062728e8d26e01a986579b20e21314fc3815b5cb3d0cb852aa142142a",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-light-144-saved.png",
+    "size": [
+      1800,
+      1200
+    ],
+    "sha256": "c384ab37d8b9a8e3340490cd60a2626c95ff4132042e21a9ad50326573921f36",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-light-192-before.png",
+    "size": [
+      2400,
+      1460
+    ],
+    "sha256": "1069326919303a4ae03a77b19a7029c10bee996cd38a2aa426a91439043f469f",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-light-192-restored.png",
+    "size": [
+      2400,
+      1460
+    ],
+    "sha256": "e9effc213a900ebb59b782da2c06df617c428ecf66706bc349282c97e2bf7c61",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-light-192-saved.png",
+    "size": [
+      2400,
+      1460
+    ],
+    "sha256": "9ba1613acbcabd748f1b9fbdc3d7e14ec8a64d19c2d8e574cf7c191efde6ba40",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-light-96-before.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "eca68d19404f5f4e6ee4394b4b7553382b925eb828c689f60dc57e3abf67ab7e",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-light-96-reordered-fixed.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "e6bc604e86da34fe52b50bbc9cda271b8eb1855df55e6b14a7ed6c53ee58c109",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-light-96-restored.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "1901c80cc65e1763343dc22c146525636a39495810054d9440e3996c34acab57",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-light-96-saved.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "cab108bac192d7703e461bc506348f72ed66bb413fbbaf26d6d9ea0e00f0ea5b",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-webview2-144-before.png",
+    "size": [
+      1800,
+      1200
+    ],
+    "sha256": "348b426bd88242239b0b279c2290d0066f5990defeb0949b920e7dae49b261f0",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-webview2-144-restored.png",
+    "size": [
+      1800,
+      1200
+    ],
+    "sha256": "e1e132e5713f0724fecbfc08fc519dbc7c0dd9dfe57a9000470c9c52ec15b1be",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-webview2-144-saved.png",
+    "size": [
+      1800,
+      1200
+    ],
+    "sha256": "5a3212c33c22970c6b05129733cb8ee646d747459c35af27f8d094f56e7bf31d",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-webview2-192-before.png",
+    "size": [
+      2400,
+      1460
+    ],
+    "sha256": "ceac0fadc4884fb05b65c8f10d531fedea10bf98e2b29b7e3c41647a5775c915",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-webview2-192-restored.png",
+    "size": [
+      2400,
+      1460
+    ],
+    "sha256": "4009a44b84e49587a1fc76f5286a590f3cef5c5a8453853db337d93fdd65ed4a",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-webview2-192-saved.png",
+    "size": [
+      2400,
+      1460
+    ],
+    "sha256": "d264764421f4c9779ce33bad87a215567a65dcf111b02027643b8bfc67e3ce66",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-webview2-96-before.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "12a62cb17466a602cedd363870ae065b8b9fedc583e6847224c37effc3a8ef92",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-webview2-96-reordered-fixed.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "abd9916a40ce025a777395773e4cf6794265c87e6285cfe300095362ca7de947",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-webview2-96-restored.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "1eba34b0d0d6fc7f37f49cfbd46334fce29fd0b89b89c0c1103a5656e99f9665",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  },
+  {
+    "path": "images/state-webview2-96-saved.png",
+    "size": [
+      1200,
+      800
+    ],
+    "sha256": "4da4278caaea3c91ce8a9fceb39a57a915bb1e0a472cf6cd8f6e6323f122b824",
+    "phase": "current_example_or_business_observation",
+    "origin": "actual running host/application; lossless BMP RGB conversion"
+  }
+]

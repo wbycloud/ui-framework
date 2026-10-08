@@ -1,0 +1,44 @@
+Test project D:/应用软件框架/应用层序框架/build/stability-state-20261008/after
+    Start 24: ui_stateful_components_light
+1/2 Test #24: ui_stateful_components_light ......   Passed   35.89 sec
+    Start 25: ui_stateful_components_webview2
+2/2 Test #25: ui_stateful_components_webview2 ...***Failed   10.88 sec
+RESTORED modewrite dpi96 name200 treeCollapsed0
+CAPTURE hit0000000000EB0858 classChrome_WidgetWin_0 thread37768 ours37768 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000000EB0858 pid8108
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+Stateful actual webview2 / restore: 0 failures
+RESTORED modewrite dpi144 name200 treeCollapsed0
+CAPTURE hit0000000008D50BEC classChrome_WidgetWin_0 thread22944 ours22944 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi144 width200 -> 280 hit0000000008D50BEC pid32832
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi144 name280 treeCollapsed1
+Stateful actual webview2 / restore: 0 failures
+RESTORED modewrite dpi192 name200 treeCollapsed0
+CAPTURE hit000000000E0D05AC classChrome_WidgetWin_0 thread49728 ours49728 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi192 width200 -> 280 hit000000000E0D05AC pid28264
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi192 name280 treeCollapsed1
+Stateful actual webview2 / restore: 0 failures
+RESTORED modeisolation dpi96 name280 treeCollapsed1
+CAPTURE hit0000000007B5113C classChrome_WidgetWin_0 thread47108 ours47108 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000007B5113C pid31460
+CAPTURE hit0000000007B5113C classChrome_WidgetWin_0 thread47108 ours47108 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width280 -> 280 hit0000000007B5113C pid31460
+state line29: ui_component_get_column_width(table,"name",&after)==UI_STATUS_OK&&after==before+80
+Stateful actual webview2 / isolation: 1 failures
+Exception: D:\应用软件框架\应用层序框架\tests\run-stateful-components.ps1:15
+Line |
+  15 |  … CODE -ne 0){throw "Actual state case failed: $label exit $LASTEXITCOD …
+     |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Actual state case failed: isolation exit 1
+
+
+50% tests passed, 1 tests failed out of 2
+
+Total Test time (real) =  46.78 sec
+
+The following tests FAILED:
+	 25 - ui_stateful_components_webview2 (Failed)
+Errors while running CTest

@@ -18,6 +18,8 @@
 
 本轮开发保留本地提交，未推送；GitHub main不代表这些本地变更。取得源码后记录实际 commit，再读[API8验收](docs/validation/component-experience-validation.md)、[0.7 → 0.8迁移](docs/migration-v0.7-to-v0.8.md)和[应用升级提示词](docs/application-upgrade-prompt.md)。API3/4/5历史记录保留原结果，当前菜单及离屏合同见[接口说明](docs/framework-menu-offscreen.md)。
 
+API8 后续收敛提供[完整应用存储示例](examples/stateful_components/README.md)：应用自己保存 UCW1 列宽与工作区布局，稳定 A/B 档案跨进程恢复、锁隔离、显式保存／重置和异常拒绝。共同表格按稳定列 ID 对齐，调宽改变可见列数时保留指针捕获。[当前收敛证据](docs/validation/api8-stability-state-validation.md)分别记录重绘诊断、实际 Runtime、业务原固定坐标失败及 SDK；历史持续重绘尚不能宣称根治。
+
 此前API7[交付收敛与CI审计](docs/validation/api7-delivery-validation.md)区分本机运行、托管CI和待验条件；真实应用准备见[业务试点](docs/business-pilot.md)。当前本地API8提交尚未发布，新clone必须先核对`UI_FRAMEWORK_API_VERSION=8`和CMake版本0.8.0；不符合时取得维护方明确提供的API8 commit后再接入，不能把main或稳定标签当作该提交。
 
 建议按以下顺序阅读：

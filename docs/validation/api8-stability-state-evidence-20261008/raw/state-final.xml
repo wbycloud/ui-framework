@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="2"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="68"
+	timestamp="2026-10-08T07:52:05"
+	>
+	<testcase name="ui_stateful_components_light" classname="ui_stateful_components_light" time="35.6534" status="run">
+		<properties/>
+		<system-out>RESTORED modewrite dpi96 name200 treeCollapsed0
+CAPTURE hit00000000029605AA classUIFrameworkLightWeb thread46092 ours46092 GetCapture00000000029605AA target-thread-capture00000000029605AA
+ACTUAL_HEADER dpi96 width200 -&gt; 280 hit00000000029605AA pid32852
+Stateful actual light / write: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+Stateful actual light / restore: 0 failures
+RESTORED modewrite dpi144 name200 treeCollapsed0
+CAPTURE hit00000000077E0F6E classUIFrameworkLightWeb thread26588 ours26588 GetCapture00000000077E0F6E target-thread-capture00000000077E0F6E
+ACTUAL_HEADER dpi144 width200 -&gt; 280 hit00000000077E0F6E pid18096
+Stateful actual light / write: 0 failures
+RESTORED moderestore dpi144 name280 treeCollapsed1
+Stateful actual light / restore: 0 failures
+RESTORED modewrite dpi192 name200 treeCollapsed0
+CAPTURE hit000000000E430BA8 classUIFrameworkLightWeb thread42720 ours42720 GetCapture000000000E430BA8 target-thread-capture000000000E430BA8
+ACTUAL_HEADER dpi192 width200 -&gt; 280 hit000000000E430B...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_stateful_components_webview2" classname="ui_stateful_components_webview2" time="32.4022" status="run">
+		<properties/>
+		<system-out>RESTORED modewrite dpi96 name200 treeCollapsed0
+CAPTURE hit00000000003304AE classChrome_WidgetWin_0 thread37084 ours37084 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -&gt; 280 hit00000000003304AE pid47380
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+Stateful actual webview2 / restore: 0 failures
+RESTORED modewrite dpi144 name200 treeCollapsed0
+CAPTURE hit00000000044305DC classChrome_WidgetWin_0 thread8704 ours8704 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi144 width200 -&gt; 280 hit00000000044305DC pid18832
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi144 name280 treeCollapsed1
+Stateful actual webview2 / restore: 0 failures
+RESTORED modewrite dpi192 name200 treeCollapsed0
+CAPTURE hit0000000003AE112C classChrome_WidgetWin_0 thread2976 ours2976 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi192 width200 -&gt; 280 hit000000000...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

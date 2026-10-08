@@ -56,7 +56,7 @@ Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标
 
 ### 2.1 打包自己的应用
 
-应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 7；使用新接口的应用将清单与 DLL descriptor 一致声明为7，历史SDK/API和原包不再属于维护及专项回归范围。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
+应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 8；使用当前接口的应用将清单与 DLL descriptor 一致声明为8，历史SDK/API和原包不再属于维护及专项回归范围。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
 
 ```text
 minimal_eda_app.dll
@@ -356,9 +356,9 @@ API8/ABI1/包格式1，见[迁移](migration-v0.7-to-v0.8.md)及[验收](validat
 
 Session0用原[服务脚本](../tools/run-session0-validation.ps1)和[严格工作流](../.github/workflows/session0-osmesa.yml)，仅创建自身GUID临时服务，要求管理员/服务管理权限。不注销用户或改既有服务，RequireNoLogin检查整机登录会话；Session0成功不替代该门槛。当前证据必须有当前二进制hash。
 
-## API7 CI 可复验性与当前版本门槛
+## 当前 API8 CI 可复验性与版本门槛
 
-沿用四行工作流，不重复搭建。执行脚本需在x64开发终端使用PowerShell 7、Ninja和CMake/CTest至少3.26（JUnit始于3.21，`--no-tests=error`始于3.26，见[CTest官方手册](https://cmake.org/cmake/help/latest/manual/ctest.1.html)）；普通产品CMake最低3.20不因此改变。先核对取得的确切API7 commit，再在新目录运行：
+沿用四行工作流，不重复搭建。执行脚本需在x64开发终端使用PowerShell 7、Ninja和CMake/CTest至少3.26（JUnit始于3.21，`--no-tests=error`始于3.26，见[CTest官方手册](https://cmake.org/cmake/help/latest/manual/ctest.1.html)）；普通产品CMake最低3.20不因此改变。先核对取得的确切API8 commit，再在新目录运行：
 
 ```powershell
 ./tools/test-windows-ci.ps1
@@ -387,7 +387,7 @@ foreach ($row in @("native","light","webview2","osmesa")) {
 
 ## 框架视觉复验
 
-公共API仍7，统一CSS在CMake配置时嵌入生成的宿主资源、组件/菜单字符串及Web浮动标题。修改src/visual.css或模板后执行cmake --build会触发重配置/RC与DLL构建；仅打开源host.html不能代替运行真实宿主。
+公共API为8；内部视觉修正不再次升级接口。统一CSS在CMake配置时嵌入生成的宿主资源、组件/菜单字符串及Web浮动标题。修改src/visual.css或模板后执行cmake --build会触发重配置/RC与DLL构建；仅打开源host.html不能代替运行真实宿主。
 
 使用第3节固定依赖、真实Runtime及显式OSMesa配置，在Windows x64开发终端执行：
 
@@ -439,3 +439,15 @@ ctest --test-dir build/visual -R "^(ui_light_glyph_padding|ui_component_scroll_n
 现有四行CI复用，不新建工作流。light/osmesa/webview2必须包含ui_component_widths，Runtime行另含ui_component_widths_webview2；tools/test-windows-ci.ps1验证分类与缺失测试拒绝。测试名ui_api7_integration与api7_fixture表示既有基础用例，当前编译宏、清单及DLL声明已为8，不能把文件名视为旧SDK兼容专项。
 
 本轮本地构建build/experience-20261007/after；证据见[当前验收](validation/component-experience-validation.md)。真实Runtime测试需要允许浏览器进程的Windows桌面，沙箱内失败需单独保留；使用构建缓存记录的CTest绝对路径并检查真实退出码。当前服务Session0与整机无登录门槛独立，普通桌面OSMesa通过不算服务或无登录成功。
+
+### API8 稳定性与完整存储示例
+
+指定 UI_OSMESA_LIBRARY 且 UI_BUILD_TESTS=ON 时构建 stateful_components.uapp（完整数据／属性／实际 GL／worker 场景）及其测试；普通无提供方配置不冒充通过。参见[接入示例](../examples/stateful_components/README.md)。当前 provider 阶段必含 ui_host_repaint、ui_stateful_components_light；真实 Runtime 阶段必含 ui_stateful_components_webview2，仍复用四行工作流，不增加旧版本专项。
+
+```powershell
+ctest --test-dir build/current -R '^ui_host_repaint$' --output-on-failure
+ctest --test-dir build/current -R '^ui_stateful_components_(light|webview2)$' --output-on-failure
+./tools/test-windows-ci.ps1
+```
+
+新状态脚本串行创建独立进程和证据目录，实际鼠标调宽后关闭、重启恢复；损坏、未来文件、两档案锁与初始化失败均非零失败退出。输出日志、真实窗口 BMP 和 EXE／包／运行库哈希，保留原预算和关闭合同。只在本机实际运行不算托管 CI；当前结果、未定位重绘及环境边界见[本轮验收](validation/api8-stability-state-validation.md)。
