@@ -63,29 +63,32 @@ static void param_text(host_window_t *host,const char *id,const char *text)
     e.kind=UI_INPUT_TEXT;e.modifiers=0;e.text_utf8=text;
     check(ui_web_view_dispatch_input(host->view,&e)==UI_STATUS_OK,"actual parameter text input");pump();
 }
-static void test_params(host_window_t *host,uint64_t instance)
+static void test_params(host_window_t *host,uint64_t instance,int registering)
 {
     static const char schema[]="{\"type\":\"object\",\"properties\":{\"count\":{\"type\":\"integer\"},\"name\":{\"type\":\"string\"},\"enabled\":{\"type\":\"boolean\"}}}";
     ui_app_instance_info_t info={0};ui_command_desc_t cmd={0};ui_assistant_command_desc_t allowed={0};
-    host_action_t action={0};ui_element_presentation_t p={0};char *saved;const char *raw;
+    host_action_t action={0};ui_element_presentation_t p={0};char *saved;const char *raw;ui_language_info_t language={0};const char *yes,*hint;
+    language.size=sizeof(language);check(ui_host_get_language(host->chrome_host,&language)==UI_STATUS_OK,"parameter frontend language query");check(!strcmp(language.language,"zh-CN")||!strcmp(language.language,"en-US"),"supported parameter frontend language");
+    yes=!strcmp(language.language,"zh-CN")?"是":"Yes";hint=!strcmp(language.language,"zh-CN")?"此参数需要在高级区域配置，原有参数保持。":"Configure this parameter in Advanced; existing values are retained.";
     check(get_instance(host,instance,&info),"parameter fixture actual instance");
     cmd.size=sizeof(cmd);cmd.id="fixture.visual.params";cmd.title="参数测试";cmd.params_schema_json=schema;cmd.handler=param_command;
-    check(ui_host_register_command(info.host,&cmd)==UI_STATUS_OK,"parameter semantic command");
+    if(registering)check(ui_host_register_command(info.host,&cmd)==UI_STATUS_OK,"parameter semantic command");
     allowed.size=sizeof(allowed);allowed.id=cmd.id;allowed.params_schema_json=schema;allowed.permission=UI_ASSISTANT_PERMISSION_READ;
-    check(ui_assistant_register_command(info.assistant,&allowed)==UI_STATUS_OK,"original assistant allowlist");
+    if(registering)check(ui_assistant_register_command(info.assistant,&allowed)==UI_STATUS_OK,"original assistant allowlist");
+    param_calls=0;
     send_selection(host,"select-target",instance,NULL);send_selection(host,"select-command",instance,cmd.id);
     action.action="params";action.params="{\"count\":2,\"name\":\"old\",\"enabled\":false,\"extra\":\"keep\"}";process_action(host,&action);schedule_refresh(host);pump();
     param_text(host,"param-0","12");param_text(host,"param-1","Draft 中");check(click(host->view,"param-2"),"boolean parameter");pump();
-    p.size=sizeof(p);check(ui_web_view_get_presentation(host->view,"param-2",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"是"),"boolean feedback updates immediately");
+    p.size=sizeof(p);check(ui_web_view_get_presentation(host->view,"param-2",&p)==UI_STATUS_OK&&p.visible&&!strcmp(p.text_utf8,yes),"boolean feedback updates immediately");
     raw=host->params;printf("Basic parameter JSON: %s\n",raw?raw:"<null>");check(raw&&strstr(raw,"\"count\":12")&&strstr(raw,"Draft 中")&&strstr(raw,"\"enabled\":true")&&strstr(raw,"\"extra\":\"keep\""),"basic edits preserve original JSON and unknown values");
     saved=copy_text(raw);param_text(host,"param-0","bad");raw=host->params;check(raw&&saved&&!strcmp(raw,saved),"invalid number does not mutate command JSON");free(saved);
     param_text(host,"param-1","Next");p.size=sizeof(p);check(ui_web_view_get_presentation(host->view,"param-0",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"bad"),"invalid draft survives another field edit");
     check(ui_web_view_get_presentation(host->view,"invoke",&p)==UI_STATUS_OK&&!p.enabled,"invalid basic parameter blocks stale invocation");click(host->view,"invoke");pump();check(param_calls==0,"invalid draft cannot execute previous valid JSON");
     param_text(host,"param-0","13");check(click(host->view,"invoke"),"original invocation control");pump();check(param_calls==1,"parameter command executes once");
     {char extra[1101],large[3101],params[1280];memset(extra,'x',1100);extra[1100]=0;memset(large,'y',3100);large[3100]=0;snprintf(params,sizeof(params),"{\"count\":13,\"name\":\"Next\",\"enabled\":true,\"extra\":\"%s\"}",extra);action.params=params;process_action(host,&action);schedule_refresh(host);pump();param_text(host,"param-1",large);check(ui_web_view_get_presentation(host->view,"invoke",&p)==UI_STATUS_OK&&!p.enabled,"combined parameters retain original UTF8 budget");click(host->view,"invoke");pump();check(param_calls==1,"over-budget draft cannot execute old JSON");param_text(host,"param-1","Next");}
-    action.params="{\"count\":13,\"name\":\"Next\",\"enabled\":true,\"extra\":9007199254741001}";process_action(host,&action);schedule_refresh(host);pump();check(ui_web_view_get_presentation(host->view,"param-hint",&p)==UI_STATUS_OK&&strstr(p.text_utf8,"高级"),"non-roundtrip number uses lossless advanced JSON");check(strstr(host->params,"9007199254741001")!=NULL,"large unknown integer bytes preserved");
+    action.params="{\"count\":13,\"name\":\"Next\",\"enabled\":true,\"extra\":9007199254741001}";process_action(host,&action);schedule_refresh(host);pump();check(ui_web_view_get_presentation(host->view,"param-hint",&p)==UI_STATUS_OK&&p.visible&&!strcmp(p.text_utf8,hint),"non-roundtrip number uses lossless advanced JSON");check(strstr(host->params,"9007199254741001")!=NULL,"large unknown integer bytes preserved");
     action.params="not-json";process_action(host,&action);schedule_refresh(host);pump();p.size=sizeof(p);
-    {ui_status_t status=ui_web_view_get_presentation(host->view,"param-hint",&p);printf("Parameter recovery hint: status=%d visible=%d text=%s\n",status,p.visible,p.text_utf8);check(status==UI_STATUS_OK&&p.visible&&strstr(p.text_utf8,"高级"),"invalid raw JSON exposes advanced recovery");}
+    {ui_status_t status=ui_web_view_get_presentation(host->view,"param-hint",&p);printf("Parameter recovery hint: status=%d visible=%d text=%s\n",status,p.visible,p.text_utf8);check(status==UI_STATUS_OK&&p.visible&&!strcmp(p.text_utf8,hint),"invalid raw JSON exposes advanced recovery");}
     action.params="{}";process_action(host,&action);send_selection(host,"select-command",instance,"eda.add_block");pump();
 }
 
@@ -145,7 +148,15 @@ int wmain(int argc,wchar_t **argv)
     send_selection(&host,"select-target",first,NULL);send_selection(&host,"select-command",first,"eda.add_block");
     click(host.view,"invoke");pump();check(snapshot_value(&host,first,"blocks")==1&&snapshot_value(&host,second,"blocks")==0,"assistant targets background instance");
     check(host.target==first&&strstr(host.log?host.log:"","eda.add_block"),"fixed target and routed semantic result");
-    test_params(&host,first);
+    for(int language=0;language<2;++language){
+        ui_app_instance_info_t background={0},active={0};ui_language_info_t queried={0};
+        const char *code=language?"zh-CN":"en-US",*other=language?"en-US":"zh-CN";
+        check(get_instance(&host,first,&background)&&get_instance(&host,second,&active),"language pair exists");
+        check(ui_host_set_language(background.host,other)==UI_STATUS_OK&&ui_host_set_language(active.host,code)==UI_STATUS_OK,"applications submit independent languages");pump();
+        queried.size=sizeof(queried);check(ui_host_get_language(host.chrome_host,&queried)==UI_STATUS_OK&&queried.source==UI_LANGUAGE_APPLICATION&&!strcmp(queried.language,code),"frontend follows active instance language");
+        printf("PARAMETER_LANGUAGE active=%s background=%s\n",code,other);
+        test_params(&host,first,language==0);
+    }
     click(host.view,"tool-eda.add_block");pump();check(snapshot_value(&host,second,"blocks")==1,"Web toolbar calls active application command");
     check(ui_web_view_get_element_rect(host.view,"tool-eda.add_block",&control)==UI_STATUS_OK&&control.width<=240,"toolbar respects declared bounded item width");
     printf("Short text tool width: %d\n",control.width);check(control.width<=160,"short text tools remain compact");

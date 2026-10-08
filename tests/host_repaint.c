@@ -6,6 +6,9 @@ static paint_count_t windows[64];
 static unsigned window_count,refreshes,wakes,layouts,events,queued_paints,dispatched;
 static HHOOK enter_hook,return_hook;
 static ui_event_callback_fn original_event;
+static uint64_t gl_request;
+static int failures;
+#define CHECK(x) do{if(!(x)){fprintf(stderr,"repaint line%d: %s\n",__LINE__,#x);++failures;}}while(0)
 static paint_count_t *count_for(HWND window)
 {
     unsigned i;for(i=0;i<window_count;++i)if(windows[i].window==window)return &windows[i];
@@ -46,7 +49,7 @@ static unsigned measure(const char *phase,DWORD duration,host_window_t *host,int
     memset(windows,0,sizeof(windows));window_count=refreshes=wakes=layouts=events=queued_paints=dispatched=0;
     if(width>0){MoveWindow(host->hwnd,40,40,width,800,TRUE);layout(host);}
     else if(width==-1)InvalidateRect(host->web_hwnd,NULL,FALSE);
-    else if(width==-2){ui_app_instance_info_t info={0};if(get_instance(host,ui_workspace_active(host->workspace),&info))(void)ui_host_invoke(info.host,"test.render","{}","repaint-observer");}
+    else if(width==-2){ui_app_instance_info_t info={0};if(get_instance(host,ui_workspace_active(host->workspace),&info))gl_request=ui_host_invoke(info.host,"test.render","{}","repaint-observer");}
     pump_until(start+duration);
     GetProcessHandleCount(GetCurrentProcess(),&handles);
     for(unsigned i=0;i<window_count;++i){paint_count_t *c=&windows[i];paints+=c->paints;printf("WINDOW %s hwnd%p class%ls paint%u invalid-before%u invalid-after%u positions%u\n",phase,(void *)c->window,c->name,c->paints,c->before,c->after,c->positions);}
@@ -54,17 +57,24 @@ static unsigned measure(const char *phase,DWORD duration,host_window_t *host,int
 }
 int wmain(int argc,wchar_t **argv)
 {
-    host_window_t host={0};ui_app_instance_info_t info={0};HWND root;wchar_t provider[4096];int failed=0;
+    host_window_t host={0};ui_app_instance_info_t info={0};HWND root;wchar_t provider[4096];unsigned paints;BOOL invalid;
     if(argc<3)return 2;setvbuf(stdout,NULL,_IONBF,0);if(FAILED(CoInitializeEx(NULL,COINIT_APARTMENTTHREADED))||ui_framework_initialize()!=UI_STATUS_OK)return 2;
     GetFullPathNameW(argv[2],4096,provider,NULL);SetEnvironmentVariableW(L"UI_API7_OSMESA_DLL",provider);
     enter_hook=SetWindowsHookExW(WH_CALLWNDPROC,entering,NULL,GetCurrentThreadId());return_hook=SetWindowsHookExW(WH_CALLWNDPROCRET,returning,NULL,GetCurrentThreadId());if(!enter_hook||!return_hook)return 2;
     root=create_host(&host,GetModuleHandleW(NULL));if(!root)return 2;ShowWindow(root,SW_SHOW);MoveWindow(root,40,40,1200,800,TRUE);open_path(&host,argv[1]);pump_until(GetTickCount64()+1000);
     if(!get_instance(&host,ui_workspace_active(host.workspace),&info))return 2;original_event=info.host->event_callback;info.host->event_callback=observed_event;
-    if(!measure("invalidate-control",200,&host,-1)||GetUpdateRect(host.web_hwnd,NULL,FALSE))failed=1;
-    for(int i=0;i<3;++i){char phase[32];snprintf(phase,sizeof(phase),"idle-%d",i);if(measure(phase,2000,&host,0)>100)failed=1;}
+    paints=measure("invalidate-control",200,&host,-1);invalid=GetUpdateRect(host.web_hwnd,NULL,FALSE);printf("INVALIDATE_CONTROL paints%u invalid%d dispatched%u\n",paints,invalid,dispatched);CHECK(paints>0);CHECK(!invalid);
+    for(int i=0;i<3;++i){char phase[32];snprintf(phase,sizeof(phase),"idle-%d",i);paints=measure(phase,2000,&host,0);CHECK(paints<=100);}
     for(int i=0;i<3;++i)measure("resize",500,&host,1000+i*100);
-    measure("explicit-GL-frame",500,&host,-2);if(!strstr(host.result_summary,"操作完成"))failed=1;
-    if(measure("idle-after-GL",2000,&host,0)>100)failed=1;
-    SendMessageW(root,WM_CLOSE,0,0);pump_until(GetTickCount64()+1000);failed|=IsWindow(root)!=0;
-    UnhookWindowsHookEx(enter_hook);UnhookWindowsHookEx(return_hook);CoUninitialize();printf("Host idle repaint: %d failures\n",failed);return failed;
+    for(int language=0;language<2;++language){
+        const char *code=language?"zh-CN":"en-US";ui_language_info_t queried={0};ui_element_presentation_t pixels={0};char expected[192];queried.size=sizeof(queried);pixels.size=sizeof(pixels);
+        CHECK(ui_host_set_language(info.host,code)==UI_STATUS_OK);pump_until(GetTickCount64()+100);
+        CHECK(ui_host_get_language(host.chrome_host,&queried)==UI_STATUS_OK&&!strcmp(queried.language,code));
+        measure("explicit-GL-frame",500,&host,-2);printf("GL_RESULT language%s instance%llu request%llu summary=%s\n",queried.language,(unsigned long long)host.completed_id,(unsigned long long)host.completed_request,host.result_summary);
+        snprintf(expected,sizeof(expected),language?"应用 #%llu：操作完成。详细结果见高级记录。":"Application #%llu: Operation completed. See Advanced for details.",(unsigned long long)info.instance_id);CHECK(!strcmp(host.result_summary,expected));CHECK(gl_request&&host.completed_request==gl_request&&host.completed_id==info.instance_id);
+        CHECK(ui_component_get_presentation(ui_component_find(info.host,"viewport"),"preview-pixels",&pixels)==UI_STATUS_OK&&pixels.visible&&pixels.clip.width>0&&pixels.clip.height>0);
+    }
+    paints=measure("idle-after-GL",2000,&host,0);CHECK(paints<=100);
+    SendMessageW(root,WM_CLOSE,0,0);pump_until(GetTickCount64()+1000);printf("CLOSE_STATE window%d\n",IsWindow(root)!=0);CHECK(!IsWindow(root));
+    UnhookWindowsHookEx(enter_hook);UnhookWindowsHookEx(return_hook);CoUninitialize();printf("Host idle repaint: %d failures\n",failures);return failures?1:0;
 }

@@ -83,11 +83,13 @@ static void test_close_contract(host_window_t *h,const wchar_t *directory,const 
 }
 
 int wmain(int argc,wchar_t **argv){
- host_window_t h={0};HWND root;uint64_t first,second;ui_app_instance_info_t a={0},b={0};ui_rect_t rect={0};POINT origin={0,0};RECT frame;
+ host_window_t h={0};HWND root;uint64_t first,second;ui_app_instance_info_t a={0},b={0};ui_rect_t rect={0};POINT origin={0,0};RECT frame;ui_language_info_t system={0},chrome={0};
  wchar_t temporary[MAX_PATH],history[MAX_PATH];if(argc<4)return 2;CHECK(GetTempPathW(MAX_PATH,temporary)!=0);CHECK(GetTempFileNameW(temporary,L"ubh",0,history)!=0);DeleteFileW(history);CHECK(CreateDirectoryW(history,NULL));swprintf(h.recent_file,4096,L"%s\\recent.bin",history);CHECK(ui_framework_initialize()==UI_STATUS_OK);root=create_host(&h,GetModuleHandleW(NULL));CHECK(root!=NULL);if(!root)return 1;
  key_host=&h;ShowWindow(root,SW_SHOWNOACTIVATE);MoveWindow(root,30,30,1200,800,TRUE);settle(150);
  CHECK(ui_workspace_count(h.workspace)==0);CHECK(GetMenu(root)==NULL);CHECK(!assistant_visible(&h));
- CHECK(click(h.view,"recent"));pump();CHECK(h.popup_hwnd!=NULL);{ui_element_presentation_t p={0};p.size=sizeof(p);CHECK(ui_web_view_get_presentation(h.popup_view,"popup-label-0",&p)==UI_STATUS_OK&&!strcmp(p.text_utf8,"尚无成功打开的应用"));CHECK(ui_web_view_get_presentation(h.popup_view,"popup-item-0",&p)==UI_STATUS_OK&&!p.enabled);}close_popup(&h);
+ system.size=chrome.size=sizeof(system);CHECK(ui_host_get_system_language(&system)==UI_STATUS_OK);CHECK(ui_host_get_language(h.chrome_host,&chrome)==UI_STATUS_OK&&chrome.source==system.source&&chrome.system_provider==system.system_provider&&chrome.fallback==system.fallback&&!strcmp(chrome.system_language,system.system_language)&&!strcmp(chrome.language,system.language));
+ CHECK(!strcmp(system.language,"zh-CN")||!strcmp(system.language,"en-US"));printf("EMPTY_HOST_SYSTEM language%s system%s source%d provider%d fallback%u\n",chrome.language,chrome.system_language,chrome.source,chrome.system_provider,chrome.fallback);
+ CHECK(click(h.view,"recent"));pump();CHECK(h.popup_hwnd!=NULL);{ui_element_presentation_t p={0};p.size=sizeof(p);CHECK(ui_web_view_get_presentation(h.popup_view,"popup-label-0",&p)==UI_STATUS_OK&&p.visible&&!strcmp(p.text_utf8,!strcmp(system.language,"zh-CN")?"尚无成功打开的应用":"No successfully opened applications"));CHECK(ui_web_view_get_presentation(h.popup_view,"popup-item-0",&p)==UI_STATUS_OK&&!p.enabled);}close_popup(&h);
  open_path(&h,argv[1]);pump();first=ui_workspace_active(h.workspace);
  open_path(&h,argv[1]);pump();second=ui_workspace_active(h.workspace);
  CHECK(first&&second&&first!=second);CHECK(get_instance(&h,first,&a)&&get_instance(&h,second,&b));
@@ -105,6 +107,7 @@ int wmain(int argc,wchar_t **argv){
  if(argc>4){settle(150);screenshot(root,argv[4],L"gl");}
  while(ui_workspace_count(h.workspace)>1)action(&h,"close",ui_workspace_instance_at(h.workspace,ui_workspace_count(h.workspace)-1));
  {uint64_t last=ui_workspace_active(h.workspace);char id[80];snprintf(id,80,"close-%llu",(unsigned long long)last);CHECK(click(h.view,id));pump();CHECK(IsWindow(root)&&!ui_workspace_count(h.workspace));}
+ CHECK(ui_host_get_language(h.chrome_host,&chrome)==UI_STATUS_OK&&chrome.source==system.source&&!strcmp(chrome.language,system.language));
  {DWORD before=0,after=0,gdi=GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS),user=GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS);CHECK(GetProcessHandleCount(GetCurrentProcess(),&before));for(int cycle=0;cycle<24;++cycle){open_path(&h,argv[1]);pump();action(&h,"close",ui_workspace_active(h.workspace));CHECK(!ui_workspace_count(h.workspace));}CHECK(GetProcessHandleCount(GetCurrentProcess(),&after));CHECK(after<=before+12);CHECK(GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS)<=gdi+4);CHECK(GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS)<=user+4);printf("24 actual DLL reopen/close: handles %lu -> %lu GDI %lu -> %lu USER %lu -> %lu\n",before,after,gdi,GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS),user,GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS));}
  test_close_contract(&h,history,argv[3]);
  CHECK(!IsWindow(root));
