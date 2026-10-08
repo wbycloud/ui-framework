@@ -1,25 +1,25 @@
 # 框架开发交接记录
 
-更新日期：2026-10-08。当前SDK0.8/API8/标准8；产品f0b161c、完整存储示例／测试d24cdf3，[本轮收敛记录](validation/api8-stability-state-validation.md)与第18节记录实际回归、失败、截图及SDK。接手干净660734f；前轮8078281／0fe0864与第17节结果保留为历史，持续重绘来源仍未定位。保留95f5d78/6a0170a视觉、9df202f/2e87e02原生捕获／异步轨道修复。共同组件无分页按钮、原预算与生命周期保持，只维护当前API8；本地交付与托管CI／Session0／严格无登录／物理人工验收分别报告。
+更新日期：2026-10-08。当前SDK0.9/API9/标准9；本轮接手干净cf0e83a，新增应用拥有的实例语言及原位文本更新。当前[API9验收](validation/instance-language-validation.md)及第19节记录身份、真实鼠标、Runtime、截图和SDK。第18节的f0b161c/d24cdf3与更早各节均是历史结果，不继承为当前通过。保留95f5d78/6a0170a视觉、9df202f/2e87e02捕获及异步轨道、f0b161c列序与捕获修复。共同组件无分页按钮，原预算与生命周期保持，只维护当前API9；本地交付、托管CI、Session0及物理人工条件分别报告。
 
 ## 1. 恢复顺序与版本
 
 1. 检查 `git status --short`、`git branch --show-current` 和 `git log -3 --oneline`；先保留接手时的用户改动。
 2. 阅读本文、[应用开发标准](application-development-standard.md)、[当前体验验收](validation/component-experience-validation.md)、[Runtime稳定性](validation/runtime-stability-validation.md)、[构建与CI](build-and-validation.md)、[API6验收](validation/api6-validation.md)、[API5验收](validation/api5-validation.md)、[API4记录](validation/api4-validation.md)及[API3未验证项](validation/api3-validation.md#41-未验证项目与补验清单)。
-3. 修改代码前核对[公共头文件](../include/ui_framework/ui.h)、[布局](workspace-layout.md)、[菜单/离屏合同](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)、[0.7→0.8迁移](migration-v0.7-to-v0.8.md)及相关测试。无需重做已完成的实现。
+3. 修改代码前核对[公共头文件](../include/ui_framework/ui.h)、[布局](workspace-layout.md)、[菜单/离屏合同](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)、[0.7→0.8迁移](migration-v0.7-to-v0.8.md)及[0.8→0.9迁移](migration-v0.8-to-v0.9.md)、[实例语言](instance-language.md)和相关测试。无需重做已完成的实现。
 
 | 项目 | 交接状态 |
 | --- | --- |
 | 仓库 | [wbycloud/ui-framework](https://github.com/wbycloud/ui-framework) |
 | API5功能代码 | [87478fa20d7bb46809c0ef81dd44f972dc193a24](https://github.com/wbycloud/ui-framework/commit/87478fa20d7bb46809c0ef81dd44f972dc193a24)，四项实现及回归；文档另行提交，实际HEAD以Git为准 |
 | 浏览器式宿主 | d7030b3：单行标签标题栏、第二行应用菜单、原Windows/关闭合同及12项最近成功包；完整结果/限制见第12节，文档提交不改执行代码 |
-| API8当前交付 | 产品f0b161c、示例／测试d24cdf3；本轮身份、SDK、实测及限制见第18节；前轮8078281／0fe0864与第17节不覆盖，实际HEAD以Git为准 |
+| API8历史交付 | 产品f0b161c、示例／测试d24cdf3；本轮身份、SDK、实测及限制见第18节；前轮8078281／0fe0864与第17节不覆盖，实际HEAD以Git为准 |
 | API6实现/最终测试与CI条件 | [1cdc50e](https://github.com/wbycloud/ui-framework/commit/1cdc50e)、[9705565](https://github.com/wbycloud/ui-framework/commit/9705565)，完整提交序列及失败修复见API6验收；文档提交不改运行代码 |
 | 菜单后续本地实现 | `6bf59f8`、`2917b44`、`d907fbd`、`d2e4a61`及测试收敛`b1f4c7b`；最终产品源码d2e4a61，仅内部菜单改动，API6/ABI1不变；最终证据另提交 |
 | API4历史实现/补验 | [e83a008](https://github.com/wbycloud/ui-framework/commit/e83a0087f0ef1017c9cd99db3e2f6754b503311c)、[48d6aaf](https://github.com/wbycloud/ui-framework/commit/48d6aafa451802b2a057fa68ce1f687fb2f2a004)，模态原生输入、STYLE回收、redock焦点；[记录](validation/api4-validation.md#5-2026-10-04-接手补验与修复) |
 | API6阶段最后核对的远端分支（历史） | `main`仍为`ea5b108`，`codex/menus-offscreen`为`9705565`；最终API6证据`559b802`已本地提交，未推送；交付状态修订另行提交，实际HEAD以Git为准 |
-| SDK / 框架 API / 标准修订 | `0.8.0` 本地开发版 / `8` / `8` |
-| 维护范围 | 只维护和验收本轮确认的API8；运行库现存API1–8接受行为暂存，不作未来旧包兼容保证；清单与DLL声明必须一致 |
+| SDK / 框架 API / 标准修订 | `0.9.0` 本地开发版 / `9` / `9` |
+| 维护范围 | 只维护和验收本轮确认的API9；运行库现存API1–9接受行为暂存，不作未来旧包兼容保证；清单与DLL声明必须一致 |
 | 应用 ABI / 导出入口 / 包格式 | `1` / `ui_app_query_v1` / `1` |
 | 稳定标签 | 只有 `v0.1.0`；未创建新的稳定标签 |
 
@@ -27,13 +27,13 @@ API6本轮起点为干净ea5b108，与当时origin/main及工作分支一致，�
 
 ## 2. 长期要求与责任边界
 
-第一平台为 Windows x64，框架使用 C11，应用接口为公共 C ABI。独立宿主加载多个 `.uapp`，以标签切换实例；当前API8原生嵌入式接口及应用内容继续维护。UI 外壳及新通用业务组件由框架维护 HTML/CSS/JavaScript，应用提供描述、数据和语义命令。OpenGL 是否使用由应用决定。
+第一平台为 Windows x64，框架使用 C11，应用接口为公共 C ABI。独立宿主加载多个 `.uapp`，以标签切换实例；当前API9原生嵌入式接口及应用内容继续维护。UI 外壳及新通用业务组件由框架维护 HTML/CSS/JavaScript，应用提供描述、数据和语义命令。OpenGL 是否使用由应用决定。
 
 新业务 UI 不使用 TreeView、ListView、Button、Edit、MessageBox 或隐藏 EDIT 代理；系统文件/目录选择器是例外。Win32 可用于窗口、消息、IME、字体和绘制适配。框架不拥有具体应用的文档模型、算法或业务渲染器，不是完整浏览器，也没有连接大模型服务。
 
 优先复用原菜单、工具、面板、内容槽、命令、队列和生命周期。新增接口不暴露第三方私有类型；保持旧字段偏移、枚举值和默认行为，新字段按 size 判断。64位身份在 JSON 中为十进制字符串，图像像素通过 C 接口复制传递。线程、所有权和 DLL 卸载合同不能绕过。
 
-文档面向 C/C++ 应用开发者，不署名；给其他应用的[升级提示词](application-upgrade-prompt.md)只使用 GitHub 入口，不包含个人本地目录。历史任务曾授权推送，API6阶段最终推送曾被自动审批拒绝（第8节）；该拒绝属于历史记录。本轮API8交付没有新的推送或远程执行授权，先保留本地提交。不要强推或创建新的稳定标签。
+文档面向 C/C++ 应用开发者，不署名；给其他应用的[升级提示词](application-upgrade-prompt.md)只使用 GitHub 入口，不包含个人本地目录。历史任务曾授权推送，API6阶段最终推送曾被自动审批拒绝（第8节）；该拒绝属于历史记录。本轮API9交付没有新的推送或远程执行授权，先保留本地提交。不要强推或创建新的稳定标签。
 
 交接准备及后续补验未启用 graph-engineering，也未修改请求方 KLayout C 应用、冻结应用包或 PERF-001。接手时不要把应用适配或性能重新测量自动扩展进框架任务。后续已完成本机自动补验和三项针对性修复，没有新建会话或移动当前会话。
 
@@ -274,3 +274,13 @@ Runtime首轮关闭排空15秒断言失败，后续12取消pending0、句柄291�
 当前依赖、运行条件、失败、命令、哈希、真实完整窗口图和SDK见[本轮验收](validation/api8-stability-state-validation.md)。新增旧布局输入遗漏、诊断hook漏队列paint、Runtime HWND捕获误判、临时Mesa默认D3D12异常均单独保留，不能归为持续重绘根因。原生三项实际拖动及未缓存末列、实际GL／MSAA／非MSAA、布局／输入／关闭回归保持。SDK源码文档快照ace533a，产品f0b161c／示例测试d24cdf3；2457文件／62724776字节ZIP，CRC／逐文件哈希／解包后C调用通过。解包实际宿主在Light和Runtime共8个独立进程保存／恢复／隔离通过，SDK固定依赖离线3/3；[外部交付身份](validation/api8-stability-state-evidence-20261008/raw/sdk-archive.json)另附，不混用此前冻结包。归档后证明另行提交，包内源码快照不自包含自身归档哈希。
 
 本轮服务创建访问准确错误5，未创建／修改服务；当前源码Session0、严格无登录runner、托管CI授权、IME／不同DPI物理屏幕／桌面边缘合成／长期人工分别待验。检测到DWM启用与一屏不替代物理验收。没有硬件无窗口GL扩围、原仓库／冻结SDK／原包／PERF改动、子代理、新会话或远程操作。下一步先读本节与本轮验收，再核对实际Git；第17节及更早记录保持原结果。
+
+## 19. 2026-10-08 API9 应用拥有的实例语言
+
+接手干净cf0e83a。产品ee6a2a8新增每host简中/英文、系统显示语言来源、同步通知和稳定ID原位文本更新；8db942f补充真实校验叶节点验证；6d88770允许关闭/unmount期间清除回调，继续拒绝新增回调。SDK0.9.0-dev/API9/标准9，ABI1/包格式1不变；新增公共能力不再称API8未变化。应用拥有偏好与存储，宿主跟随活动实例，后台隔离，空宿主查询Windows显示语言。没有全局语言开关或进程locale替代。完整stateful_components应用以A/B稳定档案保存UIL1，不更改UST1/UCW1/ULYT；首次呈现前提交，非法文件保持，错误回退由示例应用明确决定。
+
+最终产品6d88770完整矩阵61通过/0失败/1物理跳过（62项，398.63秒）；重新构建的无Web原生21通过/0失败/1物理跳过（22项，6.52秒）。两个独立实际Runtime各32就绪重开，句柄390→391及391→392，GDI12、USER17、末端pending0。Light与实际Runtime的完整DLL语言套件含10种偏好文件及96/144/192跨进程写入/恢复；真实鼠标、草稿/选择、稳定宽度、HWND/GL、双实例/后台、模态、AI空间回收和关闭卸载通过。保留原生三项真实滚动、完整数据范围/按需查询、旧捕获与轨道修复、原预算和断言。
+
+真实系统首选zh-CN；其他语言映射只是可控输入，未修改机器显示语言。锁屏输入失败、Runtime早期导航/异步清理超时、剪贴板失败、语言初版Light解析/翻译函数遮蔽及关闭回调拒绝均有独立原始日志；后续通过不抹去历史失败或宣称Runtime/持续重绘根治。详见[API9验收](validation/instance-language-validation.md)、[合同](instance-language.md)、[迁移](migration-v0.8-to-v0.9.md)及完整示例；真实前后/双实例/浅深/窄窗/DPI图有运行身份和哈希。当前只维护API9，不重启旧SDK专项。
+
+本轮仅框架与框架自有示例，未访问业务仓库。服务创建访问错误5，当前Session0待权限；严格无登录服务runner仍无，托管CI未授权，真实IME/不同DPI物理屏幕/桌面边缘合成/长期人工待条件。本机与历史不能替代；无远程操作、发布、稳定标签、新会话、子代理或新硬件GL范围。匹配SDK及解包实际调用的外部身份将在归档后补充，避免归档哈希自引用；先保留本地可审查提交。

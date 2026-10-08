@@ -1,6 +1,6 @@
-# 通用 Web UI：当前 API8 接入约定
+# 通用 Web UI：当前 API9 接入约定
 
-本文描述 **SDK 0.8.0 开发版 / API8 / 标准修订8** 当前组件合同，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API8验收](validation/component-experience-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
+本文描述 **SDK 0.9.0 开发版 / API9 / 标准修订9** 当前组件合同，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API9验收](validation/instance-language-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
 
 ## 1. 架构、复用与边界
 
@@ -121,7 +121,7 @@ NULL pixels 同步查询捕获物理宽高/stride。提供像素缓冲后，等�
 
 销毁先撤销事件及应用回调，SDK 未完成操作只持有失效的内部 view；在 SDK 回调返回后的 UI 消息中停止导航、关闭controller并释放环境。controller成功创建后、任何Close之前订阅 BrowserProcessExited，环境保留到对应浏览器退出事件后释放。创建过程中取消时，API6仅接受所启动内部空白导航ID的NavigationCompleted，忽略初始about:blank完成，只释放一次事件所有权，并等待该完成文档的renderer脚本确认后再清理；不装载应用文档或调用已失效的应用回调。此前只执行初始文档脚本或接受任意完成事件，在实际CI仍出现关闭句柄增长，失败和修复见API6验收。应用 DLL 可按既有卸载合同释放；UI线程保持STA和正常消息循环，共享框架 DLL 应继续处理 Runtime 的关闭消息。同一用户数据目录的其他 view 仍活动时，浏览器退出和内部环境清理会延后；不要以 destroy 返回或 flush 空闲推断所有浏览器进程已退出。不会清除调用方的用户数据目录。
 
-API5 DLL/Runtime、双实例、图片更新释放、编辑、树数据、模态、异步失效及关闭的历史证据见 [API5验收](validation/api5-validation.md)。API6历史布局、共同组件及综合回归状态见[API6验收](validation/api6-validation.md)，当前见[API8验收](validation/component-experience-validation.md)，不继承历史记录中未覆盖的新功能结论。
+API5 DLL/Runtime、双实例、图片更新释放、编辑、树数据、模态、异步失效及关闭的历史证据见 [API5验收](validation/api5-validation.md)。API6历史布局、共同组件及综合回归状态见[API6验收](validation/api6-validation.md)，此前API8见[验收](validation/component-experience-validation.md)，当前见[API9验收](validation/instance-language-validation.md)，不继承历史记录中未覆盖的新功能结论。
 
 ## API6 组件交互、完整排序与选择
 
@@ -181,3 +181,8 @@ IMAGE字段按C资源尺寸与可用区域保持比例；STYLE预览有界。尺
 [完整状态示例](../examples/stateful_components/README.md)把现有 UCW1 与工作区布局接到应用自己的稳定档案文件，真实表头调宽后跨进程恢复。缺失／无效文件保持注册宽度，重置不自动保存；两实例以稳定 A／B 档案和文件锁隔离。UST1只是示例应用容器，不新增公共接口，不保存业务文档，不扫描全量数据。两后端沿用同一公共列宽、输入和卸载合同。
 
 TABLE表头与单元格按注册的稳定列ID对齐，source的cell数组顺序不作为列身份；重排列和用户列宽恢复不要求业务重排返回数组。可见列数改变时保留顺序正确的表头节点，真实Runtime拖动不因框架自身挂载而丢失捕获，外部捕获丢失仍按取消合同处理。实际红例和回归见[收敛记录](validation/api8-stability-state-validation.md)。
+
+
+## API9 原位文本与语言
+
+共同模板接收所属host的复制文本字典及精确字符串languageGeneration；两后端共同语义。新接口只更新标题/标签/帮助/选项显示标签，不改草稿、业务值、组件数据generation、缓存、完整范围滚动或列宽。异步tooltip检查语言版本，有效数据批次不因语言切换被抛弃；不重复查询来翻译。选择器暂态关闭并返回入口焦点，应用模态原位更新。详见[语言合同](instance-language.md)和[完整示例](../examples/stateful_components/README.md)。

@@ -1,0 +1,358 @@
+{
+  "product_commit": "8db942f00f7fb4c8f083c90b1efbff307871a543",
+  "captured_utc": "2026-10-08T03:43:38.912880+00:00",
+  "artifacts": [
+    {
+      "path": "build/language-20261008/after/api7_fixture.uapp",
+      "sha256": "97355916ab2e0edcd28ebb6b47b1df32492a9c9a1c341ae5bb4d21147e8d142f"
+    },
+    {
+      "path": "build/language-20261008/after/counter_mismatch.uapp",
+      "sha256": "83dde7c8ea3b84256c34314db3519ee91d4c2208af6098276963478837cf0173"
+    },
+    {
+      "path": "build/language-20261008/after/cpp_fixture.uapp",
+      "sha256": "ae82478b054d8daa921d55ea8ef22f27e7820efd97d349b2be22e15959a71483"
+    },
+    {
+      "path": "build/language-20261008/after/framework_features.uapp",
+      "sha256": "527ceddccaaf051ae4f6ed9428af325949df18ece4cfa30efc31527a5390d522"
+    },
+    {
+      "path": "build/language-20261008/after/framework_features_app.dll",
+      "sha256": "15d854b41b50679650a627647788ec53860fedf213942d8ac1dcf2f7c9de9b72"
+    },
+    {
+      "path": "build/language-20261008/after/framework_features_app.lib",
+      "sha256": "867e9c895363720b418260c5746de260865ebb5253987ec4d6800b589636fc1e"
+    },
+    {
+      "path": "build/language-20261008/after/framework_host.exe",
+      "sha256": "98e378ef4081eb049dc665fc38cadbd5a1433d0f55a5ae867e4f0de45bdd301e"
+    },
+    {
+      "path": "build/language-20261008/after/generic_components.uapp",
+      "sha256": "9edf8a6f07ad73a6a279a230640af3d790b0779b504091dd12f91398f95e7898"
+    },
+    {
+      "path": "build/language-20261008/after/generic_components_app.dll",
+      "sha256": "81a719d8df12cc933c0ac4017f362386fdc09ce7d5f08bce1468f47728269716"
+    },
+    {
+      "path": "build/language-20261008/after/generic_components_app.lib",
+      "sha256": "685f0eaf78fac9a15a6e1323e52802b3a1a1b60a812cf0333e92bcf78e9aeae8"
+    },
+    {
+      "path": "build/language-20261008/after/light_web_probe.exe",
+      "sha256": "08beb22443b9b1ec00586a76afb3d91cdc606e5e0dbbd5c13b68ba6ebd129118"
+    },
+    {
+      "path": "build/language-20261008/after/minimal_eda.exe",
+      "sha256": "dc4fe58cfd95cecfd97889620cf378f3bf14d8a3c63b890e4b8373a2fed3bf16"
+    },
+    {
+      "path": "build/language-20261008/after/minimal_eda.uapp",
+      "sha256": "785e38ec3d40ba354e8133d27f9a5899e777e0412d1c9c900a193760a9406d45"
+    },
+    {
+      "path": "build/language-20261008/after/minimal_eda_app.dll",
+      "sha256": "c3efac0cb5ff7111589f845a9c69163489bc975f39ef7b7d11d7c3929d8b1fd5"
+    },
+    {
+      "path": "build/language-20261008/after/minimal_eda_app.lib",
+      "sha256": "e9b62bae773ce94c4fd468b8768d849331a7a1b61865e81aaa5f54d996588e28"
+    },
+    {
+      "path": "build/language-20261008/after/session0_gl_app.uapp",
+      "sha256": "47f9eb41b21fe759ae4c53652e3a0e2bd181f23829a6f577c4eee2a0a1ac2a92"
+    },
+    {
+      "path": "build/language-20261008/after/stateful_components.uapp",
+      "sha256": "197789a7d81d70698e0503248e9514f4457caac159878c76e7510e66fd90bc72"
+    },
+    {
+      "path": "build/language-20261008/after/stateful_components_app.dll",
+      "sha256": "ba8fe8d7d5f665d35053d7b44f2e77ce0d7a03d5e70a1e7b02360c6e5b0f8f50"
+    },
+    {
+      "path": "build/language-20261008/after/stateful_components_app.lib",
+      "sha256": "2e462fb64a47dc18d272e2ab8e4a28c4881285883535e9d6541d930482172801"
+    },
+    {
+      "path": "build/language-20261008/after/uapp_pack.exe",
+      "sha256": "1155286e002abef3ba37fcd0b16a3355047764bb7687dc727d0b65e907d9877d"
+    },
+    {
+      "path": "build/language-20261008/after/ui_api7_fixture.dll",
+      "sha256": "d4838f4a7986c7fcb4e3d28727152ffe9b76ad4b3a6a7ec5679f82f611670e78"
+    },
+    {
+      "path": "build/language-20261008/after/ui_api7_fixture.lib",
+      "sha256": "0b83a765647a3b939fc802dc88bd015f7ed81479c933a127287ccaca02f93887"
+    },
+    {
+      "path": "build/language-20261008/after/ui_api7_integration_test.exe",
+      "sha256": "e47827a972794c23d368bbe4061b19d120d7e6524e61f32265c1454c26bc0fa7"
+    },
+    {
+      "path": "build/language-20261008/after/ui_application_contract_test.exe",
+      "sha256": "ac24b25c2c60aa6111166ece0c22ef22ffaa35ff58d58a0f666b422ca553dd07"
+    },
+    {
+      "path": "build/language-20261008/after/ui_application_cpp.dll",
+      "sha256": "f2089a52f0f11de914701ed485bd82925a15a3bf3d78702785af9088000be119"
+    },
+    {
+      "path": "build/language-20261008/after/ui_application_cpp.lib",
+      "sha256": "9d3980b2d1a718ce68210e3600cf65557d66e3a1563726e96ca315925f18ecae"
+    },
+    {
+      "path": "build/language-20261008/after/ui_assistant_lifecycle_test.exe",
+      "sha256": "e888dfb9896ad7079567c155b43ca41e09a2748be4595daa298cdfc12c5f405e"
+    },
+    {
+      "path": "build/language-20261008/after/ui_assistant_protocol_test.exe",
+      "sha256": "33ee79319fae60a9f5eaae8f3450b4e6b18276e691c5132b5c4ce09ccc0547b5"
+    },
+    {
+      "path": "build/language-20261008/after/ui_browser_host_test.exe",
+      "sha256": "3071130351f5df3e17524dc7b951474404b233ce6313049b286bc2511f869110"
+    },
+    {
+      "path": "build/language-20261008/after/ui_component_experience_test.exe",
+      "sha256": "f33286a5631405299311a2dd66ba53526d008e542c1be8db66c020329c0f1b4e"
+    },
+    {
+      "path": "build/language-20261008/after/ui_component_resilience_test.exe",
+      "sha256": "0039e393ab2c7ecc4d8c1423e1ea0d4e13505ef69a204966f887fa81365c4074"
+    },
+    {
+      "path": "build/language-20261008/after/ui_component_scroll_native_test.exe",
+      "sha256": "15ea324f59dd0a09e9d25f7905314d65a84f88d40d2ca2b16225aa5412413e6f"
+    },
+    {
+      "path": "build/language-20261008/after/ui_component_scroll_test.exe",
+      "sha256": "f4566dc60e10e52b4402c538966820909cba43b6cd50cab2b19094e27d72c91b"
+    },
+    {
+      "path": "build/language-20261008/after/ui_component_widths_test.exe",
+      "sha256": "dc86c71321901ba89af051c3a86bba6781063a6dbab6e978ce62e101acb4e77d"
+    },
+    {
+      "path": "build/language-20261008/after/ui_components_core_test.exe",
+      "sha256": "4b0c28f17f93b2a0b7027ee68b3b86ebe6b6cc18b75c03c149f2b21cd2f23d34"
+    },
+    {
+      "path": "build/language-20261008/after/ui_dpi_integration_test.exe",
+      "sha256": "3a2c40551eb25e4377cd8cf405e3f95b78fc51caa6cc3bf318d7f0ff77c6c4ae"
+    },
+    {
+      "path": "build/language-20261008/after/ui_dpi_web_failure_test.exe",
+      "sha256": "3037154521dd3c3869c5fbb6ffe42af989cb2fe2fdd6b936b2bfb75903ce4afc"
+    },
+    {
+      "path": "build/language-20261008/after/ui_floating_web_dpi_test.exe",
+      "sha256": "e6a59d9676a30f67c64336a394530e9bdefc536c9cfc67f51110d438ccff029d"
+    },
+    {
+      "path": "build/language-20261008/after/ui_framework.dll",
+      "sha256": "ba6d6f823c0100cdcf11efa8eec3d90b034a0b2c3bfe4c4c676408005c512f95"
+    },
+    {
+      "path": "build/language-20261008/after/ui_framework.lib",
+      "sha256": "7243dc5ffde5c92c9993eae67833c4c8e61d2c32c3f3f9a1dc2e44bbfc1583a5"
+    },
+    {
+      "path": "build/language-20261008/after/ui_framework_features_host_test.exe",
+      "sha256": "a0ea17de57dea251d815376830a019f410b4b90108a3918f930560619e3bcf8b"
+    },
+    {
+      "path": "build/language-20261008/after/ui_framework_headless.lib",
+      "sha256": "78269e14184e3f536d6811c0029cb04bc346c0a052cf58595e817f753ef999eb"
+    },
+    {
+      "path": "build/language-20261008/after/ui_framework_runtime.lib",
+      "sha256": "3e189d43a85deaa74fcf7bfa2d503d78cef77d20e4f7d836650d137029f996d6"
+    },
+    {
+      "path": "build/language-20261008/after/ui_generic_web_host_test.exe",
+      "sha256": "568118e61953529fb01e8e5a26cbae93c0e05bc676f5b99b385e5725bb20d518"
+    },
+    {
+      "path": "build/language-20261008/after/ui_headless_example.exe",
+      "sha256": "0f86e297376e7c8024c9218eb83a85dd57d1d1bbf7e32050a879fa6761d78bc7"
+    },
+    {
+      "path": "build/language-20261008/after/ui_host_repaint_test.exe",
+      "sha256": "db4877bce001c22c4b3addcf7f37eef2e429a9b865ea0ccb6655bec53352975d"
+    },
+    {
+      "path": "build/language-20261008/after/ui_images_windows_test.exe",
+      "sha256": "35556785026863bfc61be49d7cfbe19903d5db7ac0da646108c8a9f9a4ac2a41"
+    },
+    {
+      "path": "build/language-20261008/after/ui_instance_language_test.exe",
+      "sha256": "307510c8bf9db7b2df40d2663abe88ff948e076424b4d8a4956753481c8cd982"
+    },
+    {
+      "path": "build/language-20261008/after/ui_language_core_test.exe",
+      "sha256": "c89712387b4f5f25bf4cc2f1172702cbe7fadeba14c5731022daf98d06a30355"
+    },
+    {
+      "path": "build/language-20261008/after/ui_lifecycle_fixture.dll",
+      "sha256": "b3859352f56e56e0d1c2ad374032e3b5b71771cfe3dae1330360045a06bde471"
+    },
+    {
+      "path": "build/language-20261008/after/ui_lifecycle_fixture.lib",
+      "sha256": "bba5cd72d21e4ac11ef3f1c11876f59541e0de22836f8b19cf296c9882c8cbfb"
+    },
+    {
+      "path": "build/language-20261008/after/ui_light_glyph_padding_test.exe",
+      "sha256": "f11d25827bca1c162cdfa6f7af366461f3e1e2ebe7fa0b7f94fe7de7540cd766"
+    },
+    {
+      "path": "build/language-20261008/after/ui_light_scroll_test.exe",
+      "sha256": "5874bf2c8da76ff43f142eb65427dd1a3f95bf8d7f0a0957a9f2ee126b646e1d"
+    },
+    {
+      "path": "build/language-20261008/after/ui_light_web_dynamic_test.exe",
+      "sha256": "856c6d4acdaf8bb8abc058e9ae94f692345edc7b852bf7717b9121bd9cca7676"
+    },
+    {
+      "path": "build/language-20261008/after/ui_menu_access_test.exe",
+      "sha256": "1f837047ae6b60bd0dccc690674586eaac70cbb5f8894534931a8542b449b9cf"
+    },
+    {
+      "path": "build/language-20261008/after/ui_menu_cascade_offscreen_test.exe",
+      "sha256": "d9de89b0912496c8be08b386b6271dd94a0541d563cba6a587e64d05e35210b2"
+    },
+    {
+      "path": "build/language-20261008/after/ui_menu_desktop_test.exe",
+      "sha256": "1881820ffaa3137a5e2ca0c606ea3a3fccc4b6b2fa9cf27d3c4d8b0d6677bce7"
+    },
+    {
+      "path": "build/language-20261008/after/ui_menu_offscreen_test.exe",
+      "sha256": "31e5f56526388135212fde647121a865f9aaf960332b88e44617150b9b16ba8a"
+    },
+    {
+      "path": "build/language-20261008/after/ui_monitor_transition_test.exe",
+      "sha256": "6ed081528e3fea8716fe7151ff49b603f3e672439296a6a27a913870c152052a"
+    },
+    {
+      "path": "build/language-20261008/after/ui_native_activation_test.exe",
+      "sha256": "ec5cc8b3f78a60dc4e219899fe591528954ba7ee0391d790f4c6dd68aae951e3"
+    },
+    {
+      "path": "build/language-20261008/after/ui_native_responsive_test.exe",
+      "sha256": "6e344cc2287ed37286f644723a5fb2a80a4d6c6016959b22657a968c99b66a38"
+    },
+    {
+      "path": "build/language-20261008/after/ui_native_shell_integration_test.exe",
+      "sha256": "201931e99d8495ea1677bccfa0e5b6a442aa474fa579d82cac6c887d3c78fdf2"
+    },
+    {
+      "path": "build/language-20261008/after/ui_offscreen_gl_test.exe",
+      "sha256": "aa64ca0c1ae0f2d915b621d20bad5c4500cc9569a801902cd27f9ca4bfd3f21a"
+    },
+    {
+      "path": "build/language-20261008/after/ui_offscreen_msaa_test.exe",
+      "sha256": "2c418958f97cf55e4af9e6a65e8a12e386fccef38b321199ca214bab66e70cc8"
+    },
+    {
+      "path": "build/language-20261008/after/ui_opengl_integration_test.exe",
+      "sha256": "27aa970c53620a1d4ac0154b91d0321728013ea238a96451e5e76b62baa6b6f4"
+    },
+    {
+      "path": "build/language-20261008/after/ui_package_format_test.exe",
+      "sha256": "de6c896c4bfa7c6ef0027077529f10840259c98255f6971e22a961878fcf5cc9"
+    },
+    {
+      "path": "build/language-20261008/after/ui_public_headers_c_test.exe",
+      "sha256": "2e8a95c05c94da309068895838bdd5973826868dabacde901ade76e0a131b218"
+    },
+    {
+      "path": "build/language-20261008/after/ui_public_headers_cpp_test.exe",
+      "sha256": "27bea8e05f20e04fcac1b517ff4389693e0bf8941521ff256fb79397acb9d8a8"
+    },
+    {
+      "path": "build/language-20261008/after/ui_responsive_layout_test.exe",
+      "sha256": "6d77537b3ea5298e1bd7856abc9ae7c74f8691cf3abbeef6b9846417cb6f8aff"
+    },
+    {
+      "path": "build/language-20261008/after/ui_session0_gl_app.dll",
+      "sha256": "87bf881b70e3604f1e544c55fbb5d57ad27c933c1ba061d290623ee348ab5b1a"
+    },
+    {
+      "path": "build/language-20261008/after/ui_session0_gl_app.lib",
+      "sha256": "eb8df25c75639e8f1216712fa5405e219f8f55d012e18d74c1cf6d1af77a2fc1"
+    },
+    {
+      "path": "build/language-20261008/after/ui_session0_gl_test.exe",
+      "sha256": "1b6405a0f5c115c84fb50329564aae8f0e6bef42cb1957814ab2c3a4541156e0"
+    },
+    {
+      "path": "build/language-20261008/after/ui_stateful_components_test.exe",
+      "sha256": "95ef8e92a5a4444f4c0b613229d29fdfe4967620aadbe8bc08bf3339ad27eb3c"
+    },
+    {
+      "path": "build/language-20261008/after/ui_surface_input_test.exe",
+      "sha256": "de666f00ef7542fe0a208575a4db765da5629fd9c52f42d6a1c7a0c10a61e200"
+    },
+    {
+      "path": "build/language-20261008/after/ui_visual_ui_test.exe",
+      "sha256": "6f9eb7c27f3fa88d2680015ee5b897ab28bce394eb601d1ca41effb5f8d0f5fc"
+    },
+    {
+      "path": "build/language-20261008/after/ui_web_host_frontend_test.exe",
+      "sha256": "0be2a157bac83efa3b6cb3e8ee42f938d020cdeac74e946747496fa1365c3834"
+    },
+    {
+      "path": "build/language-20261008/after/ui_web_shell_slots_test.exe",
+      "sha256": "92aef432d5e84249eba1947028c6b8d009e9fabd7cd90f93ec4cf380696c4959"
+    },
+    {
+      "path": "build/language-20261008/after/ui_web_text_edit_test.exe",
+      "sha256": "0efb99f6677e8a7353658f7bffeecb013344b030e84d72aeeecfc4e39526fcc8"
+    },
+    {
+      "path": "build/language-20261008/after/ui_webview2_messages_test.exe",
+      "sha256": "44398d1eebf49029232584c6df10eaaa025062086465e0aba8626e0dcdfe94fd"
+    },
+    {
+      "path": "build/language-20261008/after/ui_webview2_render_test.exe",
+      "sha256": "67c6b7b5b4673d46ba4d2bd3d8803971f586e77d3b816560285fbb7b3b436506"
+    },
+    {
+      "path": "build/language-20261008/after/ui_workspace7_test.exe",
+      "sha256": "d83fa0aa13859001c54d2dfb095e2f3414f1ed74c205c0aec9eed4fd16a9e29c"
+    },
+    {
+      "path": "build/language-20261008/after/ui_workspace_integration_test.exe",
+      "sha256": "37c4b12097b5e3344d2da5caaf860baab69890a127d1f9dd3288f98465dbdcb8"
+    },
+    {
+      "path": "build/language-20261008/after/ui_workspace_layout_test.exe",
+      "sha256": "dac639fe7a39eafd809477f181f1f38e6e44333dc5ac1d700107155443a9b13b"
+    },
+    {
+      "path": "build/language-20261008/after/ui_workspace_offscreen_test.exe",
+      "sha256": "bbfe71970e10fae0d7158e7e36bc34694e433d55f838808d5b1ac37e694c18ab"
+    },
+    {
+      "path": "build/language-20261008/after/web_counter.uapp",
+      "sha256": "c8194d57b9263e18ac50afc6f008063417987c3f4711abd90825b7f58165ccaa"
+    },
+    {
+      "path": "build/language-20261008/after/web_counter_app.dll",
+      "sha256": "d92ac53b817188a97c275bcf1efec3d2aa0c105a56e87c6bb7f9b1b72a7d1fd5"
+    },
+    {
+      "path": "build/language-20261008/after/web_counter_app.lib",
+      "sha256": "fc4c6145adffa7bbd8b795957ee9a0c2563dbe77dc0e482ba1dcb8c6c1eb3988"
+    },
+    {
+      "path": "build/language-20261008/after/webview2_probe.exe",
+      "sha256": "81e6ad00e844dfc27fc68cd8eeb96340dc52e07d1bdbc976745f4e71c3972bf2"
+    }
+  ]
+}

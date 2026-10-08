@@ -1,0 +1,2814 @@
+Start testing: Oct 08 11:43 �й���׼ʱ��
+----------------------------------------------------------
+1/62 Testing: ui_language_core
+1/62 Test: ui_language_core
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_language_core_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_language_core" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+REAL_WINDOWS_UI first=zh-CN effective=zh-CN provider=1 fallback=0
+Language core 0 failures; synthetic mapping is separate from real system query
+<end of output>
+Test time =   0.11 sec
+----------------------------------------------------------
+Test Passed.
+"ui_language_core" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_language_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/62 Testing: ui_package_format
+2/62 Test: ui_package_format
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_package_format_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_package_format" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+package format and deterministic packing: 0 failures
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"ui_package_format" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_package_format" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/62 Testing: ui_images_windows
+3/62 Test: ui_images_windows
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_images_windows_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_images_windows" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+PNG/GDI/cache: 0 failures
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"ui_images_windows" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_images_windows" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/62 Testing: ui_responsive_layout
+4/62 Test: ui_responsive_layout
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_responsive_layout_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_responsive_layout" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+responsive layout matrix: 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_responsive_layout" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_responsive_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/62 Testing: ui_assistant_lifecycle
+5/62 Test: ui_assistant_lifecycle
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_assistant_lifecycle_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_assistant_lifecycle" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+assistant lifecycle and model rollback: 0 failures
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_lifecycle" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_assistant_lifecycle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/62 Testing: ui_dpi_web_failure
+6/62 Test: ui_dpi_web_failure
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_dpi_web_failure_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_dpi_web_failure" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+failed Web DPI sync and retry: 0 failures
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_web_failure" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_dpi_web_failure" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/62 Testing: ui_components_core
+7/62 Test: ui_components_core
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_components_core_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_components_core" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API3 components core: 0 failures, 3 bounded queries
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_components_core" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_components_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/62 Testing: ui_headless_example
+8/62 Test: ui_headless_example
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_headless_example.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_headless_example" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+eda.add_block: {"blocks":1}
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_headless_example" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_headless_example" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/62 Testing: ui_public_headers_c
+9/62 Test: ui_public_headers_c
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_public_headers_c_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_public_headers_c" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_c" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_public_headers_c" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/62 Testing: ui_public_headers_cpp
+10/62 Test: ui_public_headers_cpp
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_public_headers_cpp_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_public_headers_cpp" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_cpp" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_public_headers_cpp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/62 Testing: ui_webview2_parity
+11/62 Test: ui_webview2_parity
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/webview2_probe.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_webview2_parity" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+composition_verified=set_rect,resize_preserves_origin,sidebar_binding,host_reflow
+javascript_verified=true
+state=0 ready=1 html_navigated=1 viewport_cases=4 composition=1 clicks=1 inputs=1 results=2 hresult=0x00000000 elapsed_ms=437
+<end of output>
+Test time =   0.56 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_parity" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_webview2_parity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/62 Testing: ui_webview2_messages
+12/62 Test: ui_webview2_messages
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_webview2_messages_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_webview2_messages" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+WebView2 JSON: ready=1 navigated=1 posted=1 echoed=1 status=0
+<end of output>
+Test time =   0.48 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_messages" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_webview2_messages" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/62 Testing: ui_webview2_render
+13/62 Test: ui_webview2_render
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_webview2_render_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_webview2_render" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Runtime render: initialize
+Runtime ready call 1: 531 ms
+Runtime render: ready
+Runtime render: capture/images complete
+Runtime ready call 2: 94 ms
+Runtime render: close
+Runtime close before creation x12 handles 314->314 USER 17->17 pending cleanup=0
+Real WebView2 presentation/capture/images/input/stale/close: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =   9.46 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_render" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_webview2_render" time elapsed: 00:00:09
+----------------------------------------------------------
+
+14/62 Testing: ui_workspace_layout
+14/62 Test: ui_workspace_layout
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_workspace_layout_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_workspace_layout" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+workspace layout: 0 failures
+<end of output>
+Test time =   0.73 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_layout" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_workspace_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/62 Testing: ui_component_widths
+15/62 Test: ui_component_widths
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_widths_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_widths" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Column experience Light queries25: 0 failures
+<end of output>
+Test time =   1.47 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_widths" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_component_widths" time elapsed: 00:00:01
+----------------------------------------------------------
+
+16/62 Testing: ui_component_experience
+16/62 Test: ui_component_experience
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_experience_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_experience" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+component experience light: 0 failures
+<end of output>
+Test time =   0.48 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_experience" end time: Oct 08 11:43 �й���׼ʱ��
+"ui_component_experience" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/62 Testing: ui_component_experience_webview2
+17/62 Test: ui_component_experience_webview2
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_experience_test.exe" "--webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_experience_webview2" start time: Oct 08 11:43 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+component experience actual WebView2: 0 failures
+<end of output>
+Test time =  13.26 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_experience_webview2" end time: Oct 08 11:44 �й���׼ʱ��
+"ui_component_experience_webview2" time elapsed: 00:00:13
+----------------------------------------------------------
+
+18/62 Testing: ui_component_scroll_native
+18/62 Test: ui_component_scroll_native
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_scroll_native_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_scroll_native" start time: Oct 08 11:44 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+PASS: initialize current shared framework
+PASS: native root visible
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi96
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first18 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first4985 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,499 client786,448 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,103 client726,52 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+REPRO_QUERY: first4987 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,459 client726,408 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: pending test scrollbar visible
+PASS: actual pending-test down
+PASS: actual pending-test drag
+PASS: refresh unchanged visible pending component
+PASS: async source actually displays loading placeholder
+PASS: loading does not shrink complete-source track
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: async delivery does not move track under pointer
+PASS: actual pending-test up
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,300 client786,249 thumb780,237 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+PASS: actual Esc cancels drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+6 dpi96
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: last column initially uncached
+PASS: native header resize grip visible
+PASS: native resize target belongs to test
+PASS: actual header resize down
+PASS: same HWND header capture
+PASS: actual header resize move
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: actual header resize up
+PASS: actual mouse sets logical width at program DPI
+PASS: header resize capture released
+PASS: adjacent declared width preserved
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: explicit single-column reset
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start61,505 client33,454 thumb8,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col62+2 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes63 bytes4372 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: last column queried on demand
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start778,505 client750,454 thumb725,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes135 bytes10552 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count13 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start57,465 client29,414 thumb8,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col62+2 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes60 bytes4063 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start722,465 client694,414 thumb673,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes128 bytes9799 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count14 col31+7 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+PASS: actual Esc cancels drag
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first0 count14 col31+7 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+REPRO_QUERY: first0 count14 col0+6 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+0 dpi96
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4985 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,499 client786,448 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,103 client726,52 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4987 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start754,459 client726,408 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+PASS: actual Esc cancels drag
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: cancel test has visible thumb
+PASS: real cancel-test down
+PASS: real cancel-test move
+REPRO_QUERY: first2491 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: cancel test actually moved
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: release cancelled drag
+PASS: Esc or actual capture loss restores origin
+PASS: cancel releases native capture
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+PASS: native modal editor open
+PASS: native modal field presentation
+PASS: logical modal field maps to native view at program DPI
+PASS: actual hover opens nonactivating field hint
+PASS: hover hint leaves pointer target and focus in modal editor
+PASS: actual field click through hover hint
+PASS: actual modal text input
+PASS: hover hint does not consume modal typing
+PASS: actual F1 full text
+PASS: owned readonly viewer displays full field value
+PASS: actual Esc closes readonly viewer
+PASS: viewer Esc does not cancel business modal
+PASS: viewer close restores field focus
+PASS: modal cleanup
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi144
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi144
+REPRO_QUERY: first18 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count18 col0+0 dpi144
+REPRO_QUERY: first4985 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,723 client1179,672 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,129 client1089,78 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+REPRO_QUERY: first4987 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,663 client1089,612 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+6 dpi144
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: last column initially uncached
+PASS: native header resize grip visible
+PASS: native resize target belongs to test
+PASS: actual header resize down
+PASS: same HWND header capture
+PASS: actual header resize move
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: actual header resize up
+PASS: actual mouse sets logical width at program DPI
+PASS: header resize capture released
+PASS: adjacent declared width preserved
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: explicit single-column reset
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start78,732 client50,681 thumb8,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col62+2 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes63 bytes4372 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: last column queried on demand
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1153,732 client1125,681 thumb725,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes135 bytes10552 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count13 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start72,672 client44,621 thumb8,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col62+2 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes60 bytes4063 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1069,672 client1041,621 thumb673,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes128 bytes9799 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count14 col0+6 dpi144
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+0 dpi144
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first1 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,129 client1179,78 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4985 count18 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1207,723 client1179,672 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,129 client1089,78 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4987 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1117,663 client1089,612 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi144
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+PASS: native modal editor open
+PASS: native modal field presentation
+PASS: logical modal field maps to native view at program DPI
+PASS: actual hover opens nonactivating field hint
+PASS: hover hint leaves pointer target and focus in modal editor
+PASS: actual field click through hover hint
+PASS: actual modal text input
+PASS: hover hint does not consume modal typing
+PASS: actual F1 full text
+PASS: owned readonly viewer displays full field value
+PASS: actual Esc closes readonly viewer
+PASS: viewer Esc does not cancel business modal
+PASS: viewer close restores field focus
+PASS: modal cleanup
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi192
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi192
+REPRO_QUERY: first18 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count18 col0+0 dpi192
+REPRO_QUERY: first4985 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,947 client1572,896 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,155 client1452,104 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+REPRO_QUERY: first4987 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,867 client1452,816 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+6 dpi192
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: last column initially uncached
+PASS: native header resize grip visible
+PASS: native resize target belongs to test
+PASS: actual header resize down
+PASS: same HWND header capture
+PASS: actual header resize move
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: actual header resize up
+PASS: actual mouse sets logical width at program DPI
+PASS: header resize capture released
+PASS: adjacent declared width preserved
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: explicit single-column reset
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start94,959 client66,908 thumb8,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col62+2 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes63 bytes4372 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: last column queried on demand
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1528,959 client1500,908 thumb725,448 track8,448
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes135 bytes10552 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count13 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start86,879 client58,828 thumb8,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col62+2 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end1 first0 col63 total5000 nodes60 bytes4063 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c63 visible1 clip8,76,180,32 textVALUE_1_C63
+PASS: uncached last column visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1416,879 client1388,828 thumb673,408 track8,408
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count13 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-h-thumb end0 first0 col0 total5000 nodes128 bytes9799 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idcell-1-c0 visible1 clip8,76,180,32 textVALUE_1_C0
+PASS: uncached last column visibly reached
+REPRO_QUERY: first0 count14 col0+6 dpi192
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+REPRO_QUERY: first0 count8 col0+0 dpi192
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first1 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,155 client1572,104 thumb780,40 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4985 count18 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4987 col0 total5000 nodes73 bytes1279 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,424,748,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1600,947 client1572,896 thumb780,436 track780,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes77 bytes1360 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,748,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: resize without component remount
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,155 client1452,104 thumb720,40 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first4987 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end1 first4989 col0 total5000 nodes65 bytes1117 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-5000 visible1 clip8,360,688,32 textROW_4999 · 加载中
+PASS: last row visibly reached
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start1480,867 client1452,816 thumb720,396 track720,40
+PASS: actual mouse down
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: first0 count14 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: actual mouse release
+REPRO_NATIVE: axisscroll-v-thumb end0 first0 col0 total5000 nodes69 bytes1198 status0
+PASS: complete source and unchanged budgets
+REPRO_VISIBLE: idtree-label-1 visible1 clip8,40,688,32 textROW_0000 · 加载中
+PASS: first row visibly restored
+REPRO_QUERY: first0 count16 col0+0 dpi192
+PASS: synchronous copied data batch
+PASS: restore viewport
+PASS: destroy callbacks and native component
+PASS: native capture released after close
+PASS: native modal editor open
+PASS: native modal field presentation
+PASS: logical modal field maps to native view at program DPI
+PASS: actual hover opens nonactivating field hint
+PASS: hover hint leaves pointer target and focus in modal editor
+PASS: actual field click through hover hint
+PASS: actual modal text input
+PASS: hover hint does not consume modal typing
+PASS: actual F1 full text
+PASS: owned readonly viewer displays full field value
+PASS: actual Esc closes readonly viewer
+PASS: viewer Esc does not cancel business modal
+PASS: viewer close restores field focus
+PASS: modal cleanup
+NATIVE_SCROLL_RESULT: 0 failures
+<end of output>
+Test time =  21.58 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_scroll_native" end time: Oct 08 11:44 �й���׼ʱ��
+"ui_component_scroll_native" time elapsed: 00:00:21
+----------------------------------------------------------
+
+19/62 Testing: ui_light_glyph_padding
+19/62 Test: ui_light_glyph_padding
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_light_glyph_padding_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_light_glyph_padding" start time: Oct 08 11:44 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+load=0 host=000002B52FB7D0E0 view=000002B52FB8F530
+capture=0 dimensions=40x40
+presentation=0 visible=1 rect=0,0,20,20 text=
+Explicit zero-padding icon: dark=22 extent=4..15 PASS
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_glyph_padding" end time: Oct 08 11:44 �й���׼ʱ��
+"ui_light_glyph_padding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/62 Testing: ui_light_scroll
+20/62 Test: ui_light_scroll
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_light_scroll_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_light_scroll" start time: Oct 08 11:44 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+visible overflow bars windowed/windowless: 0 failures
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_scroll" end time: Oct 08 11:44 �й���׼ʱ��
+"ui_light_scroll" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/62 Testing: ui_component_scroll
+21/62 Test: ui_component_scroll
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_scroll_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_scroll" start time: Oct 08 11:44 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=table y=44 height=396 query=0+15
+end row first=99988 total=100000 rows=14 query=99986+17 nodes=135 status=0
+end column first=0 col=0 rows=15 query=0+15
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551603 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=780,44,12,396
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=780,44,12,396
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+complete range scroll light offscreen: 0 failures
+<end of output>
+Test time =   0.47 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_scroll" end time: Oct 08 11:44 �й���׼ʱ��
+"ui_component_scroll" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/62 Testing: ui_component_widths_webview2
+22/62 Test: ui_component_widths_webview2
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_widths_test.exe" "--webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_widths_webview2" start time: Oct 08 11:44 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Column experience actual Runtime queries44: 0 failures
+<end of output>
+Test time =   5.68 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_widths_webview2" end time: Oct 08 11:44 �й���׼ʱ��
+"ui_component_widths_webview2" time elapsed: 00:00:05
+----------------------------------------------------------
+
+23/62 Testing: ui_component_scroll_webview2
+23/62 Test: ui_component_scroll_webview2
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_scroll_test.exe" "--webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_scroll_webview2" start time: Oct 08 11:44 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=table y=44 height=396 query=0+15
+end row first=99988 total=100000 rows=14 query=99986+17 nodes=139 status=0
+end column first=0 col=0 rows=15 query=0+15
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551603 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+complete range scroll actual Runtime: 0 failures
+<end of output>
+Test time =   8.22 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_scroll_webview2" end time: Oct 08 11:44 �й���׼ʱ��
+"ui_component_scroll_webview2" time elapsed: 00:00:08
+----------------------------------------------------------
+
+24/62 Testing: ui_host_repaint
+24/62 Test: ui_host_repaint
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_host_repaint_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_host_repaint" start time: Oct 08 11:44 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+WINDOW invalidate-control hwnd00000000004A0010 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE invalidate-control elapsed218 cpu-ms0.000 paint1 queued-paint1 dispatched1 host-refresh0 wake0 layouts0 events0 handles280 GDI414 USER31
+MEASURE idle-0 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles280 GDI414 USER31
+MEASURE idle-1 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles280 GDI414 USER31
+MEASURE idle-2 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles280 GDI414 USER31
+WINDOW resize hwnd0000000006CB0968 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000004A0010 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd0000000000F30E1C classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000002280914 classUIFrameworkRegisteredMenu4 paint0 invalid-before0 invalid-after0 positions1
+WINDOW resize hwnd0000000003810F82 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000005FD07EC classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000009A0822 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd000000000DE60744 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000023B10A2 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed500 cpu-ms46.875 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events6 handles280 GDI377 USER31
+WINDOW resize hwnd0000000006CB0968 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000004A0010 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd0000000000F30E1C classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000003810F82 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000005FD07EC classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000009A0822 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd000000000DE60744 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000023B10A2 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed500 cpu-ms31.250 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles280 GDI402 USER31
+WINDOW resize hwnd0000000006CB0968 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000004A0010 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd0000000000F30E1C classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000003810F82 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000005FD07EC classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd00000000009A0822 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd000000000DE60744 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000023B10A2 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed500 cpu-ms62.500 paint8 queued-paint8 dispatched10 host-refresh0 wake0 layouts3 events5 handles280 GDI402 USER31
+WINDOW explicit-GL-frame hwnd00000000004A0010 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW explicit-GL-frame hwnd0000000006CB0968 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd0000000000F30E1C classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000009A0822 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd000000000DE60744 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000023B10A2 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd0000000003810F82 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE explicit-GL-frame elapsed516 cpu-ms31.250 paint7 queued-paint7 dispatched9 host-refresh0 wake0 layouts1 events4 handles280 GDI402 USER31
+MEASURE idle-after-GL elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles280 GDI402 USER31
+Host idle repaint: 0 failures
+<end of output>
+Test time =  12.62 sec
+----------------------------------------------------------
+Test Passed.
+"ui_host_repaint" end time: Oct 08 11:44 �й���׼ʱ��
+"ui_host_repaint" time elapsed: 00:00:12
+----------------------------------------------------------
+
+25/62 Testing: ui_stateful_components_light
+25/62 Test: ui_stateful_components_light
+Command: "C:/Users/wbycl/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe" "-NoProfile" "-File" "D:/应用软件框架/应用层序框架/tests/run-stateful-components.ps1" "-BuildDirectory" "D:/应用软件框架/应用层序框架/build/language-20261008/after" "-Provider" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "-Backend" "light"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_stateful_components_light" start time: Oct 08 11:44 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+RESTORED modewrite dpi96 name200 treeCollapsed0
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000002EF0F54 classUIFrameworkLightWeb thread18648 ours18648 GetCapture0000000002EF0F54 target-thread-capture0000000002EF0F54
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000002EF0F54 pid1096
+Stateful actual light / write: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+Stateful actual light / restore: 0 failures
+RESTORED modewrite dpi144 name200 treeCollapsed0
+HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+CAPTURE hit00000000022B0914 classUIFrameworkLightWeb thread18300 ours18300 GetCapture00000000022B0914 target-thread-capture00000000022B0914
+ACTUAL_HEADER dpi144 width200 -> 280 hit00000000022B0914 pid11420
+Stateful actual light / write: 0 failures
+RESTORED moderestore dpi144 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+Stateful actual light / restore: 0 failures
+RESTORED modewrite dpi192 name200 treeCollapsed0
+HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+CAPTURE hit00000000060207EC classUIFrameworkLightWeb thread29020 ours29020 GetCapture00000000060207EC target-thread-capture00000000060207EC
+ACTUAL_HEADER dpi192 width200 -> 280 hit00000000060207EC pid13512
+Stateful actual light / write: 0 failures
+RESTORED moderestore dpi192 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+Stateful actual light / restore: 0 failures
+RESTORED modeisolation dpi96 name280 treeCollapsed1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit000000000CE0112E classUIFrameworkLightWeb thread37808 ours37808 GetCapture000000000CE0112E target-thread-capture000000000CE0112E
+ACTUAL_HEADER dpi96 width200 -> 280 hit000000000CE0112E pid36200
+HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+CAPTURE hit000000000CE0112E classUIFrameworkLightWeb thread37808 ours37808 GetCapture000000000CE0112E target-thread-capture000000000CE0112E
+ACTUAL_HEADER dpi96 width280 -> 360 hit000000000CE0112E pid36200
+Stateful actual light / isolation: 0 failures
+RESTORED modeprofile-b dpi96 name360 treeCollapsed0
+Stateful actual light / profile-b: 0 failures
+RESTORED modereload dpi96 name280 treeCollapsed1
+Stateful actual light / reload: 0 failures
+RESTORED modelocked-profile dpi96 name280 treeCollapsed1
+Stateful actual light / locked-profile: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+STABLE_COLUMN name headerX128 cellX128 texteditable
+Stateful actual light / restore: 0 failures
+RESTORED modeevolve dpi96 name280 treeCollapsed1
+Stateful actual light / evolve: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual light / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual light / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual light / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual light / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual light / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual light / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual light / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual light / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual light / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual light / invalid: 0 failures
+RESTORED modedefaults dpi96 name200 treeCollapsed0
+Stateful actual light / defaults: 0 failures
+RESTORED modeinit-failures dpi96 name200 treeCollapsed0
+Stateful actual light / init-failures: 0 failures
+RESTORED modereset dpi96 name280 treeCollapsed1
+Stateful actual light / reset: 0 failures
+RESTORED modedefaults dpi96 name200 treeCollapsed0
+Stateful actual light / defaults: 0 failures
+Stateful application actual light PASS; evidence D:\应用软件框架\应用层序框架\build\language-20261008\after\state-evidence-light-50b4637a3e8643af8b3b0f17d073cefb
+<end of output>
+Test time =  36.29 sec
+----------------------------------------------------------
+Test Passed.
+"ui_stateful_components_light" end time: Oct 08 11:45 �й���׼ʱ��
+"ui_stateful_components_light" time elapsed: 00:00:36
+----------------------------------------------------------
+
+26/62 Testing: ui_instance_language_light
+26/62 Test: ui_instance_language_light
+Command: "C:/Users/wbycl/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe" "-NoProfile" "-File" "D:/应用软件框架/应用层序框架/tests/run-instance-language.ps1" "-BuildDirectory" "D:/应用软件框架/应用层序框架/build/language-20261008/after" "-Provider" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "-Backend" "light"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_instance_language_light" start time: Oct 08 11:45 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE magic: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+PREFERENCE future: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+PREFERENCE language: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+PREFERENCE profile: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+PREFERENCE reserved: final=en-US file unchanged
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+PREFERENCE zh-CN: final=zh-CN file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+PREFERENCE en-US: final=en-US file unchanged
+Complete DLL preferences light failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client4,4 312x28 screen299,126 hit0000000000D6085C UIFrameworkLightWeb pid46416
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit000000000A3D0982 classUIFrameworkLightWeb thread10884 ours10884 GetCapture000000000A3D0982 target-thread-capture000000000A3D0982
+ACTUAL_HEADER dpi96 width200 -> 280 hit000000000A3D0982 pid46416
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client4,32 312x28 screen299,154 hit00000000074C0B28 UIFrameworkLightWeb pid46416
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000006E90968 UIFrameworkLightWeb pid46416
+REAL_CLICK client8,40 58x28 screen133,233 hit0000000000950082 UIFrameworkLightWeb pid46416
+Instance language actual light write dpi96 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000001100E1C UIFrameworkLightWeb pid46304
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000001100E1C UIFrameworkLightWeb pid46304
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000001100E1C UIFrameworkLightWeb pid46304
+REAL_CLICK client8,40 58x28 screen133,233 hit000000000B6508F2 UIFrameworkLightWeb pid46304
+Instance language actual light restore dpi96 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen279,121 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client4,4 312x28 screen424,168 hit000000000A3F0982 UIFrameworkLightWeb pid49380
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+CAPTURE hit00000000074E0B28 classUIFrameworkLightWeb thread44416 ours44416 GetCapture00000000074E0B28 target-thread-capture00000000074E0B28
+ACTUAL_HEADER dpi144 width200 -> 280 hit00000000074E0B28 pid49380
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen279,121 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client4,32 312x28 screen424,210 hit00000000012E0D9A UIFrameworkLightWeb pid49380
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000002040F04 UIFrameworkLightWeb pid49380
+REAL_CLICK client8,40 60x28 screen153,294 hit0000000003410AF2 UIFrameworkLightWeb pid49380
+Instance language actual light write dpi144 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000008DC0EC2 UIFrameworkLightWeb pid29960
+REAL_CLICK client8,40 60x28 screen153,294 hit0000000002330914 UIFrameworkLightWeb pid29960
+Instance language actual light restore dpi144 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen356,148 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client4,4 312x28 screen549,211 hit0000000007500B28 UIFrameworkLightWeb pid35320
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+CAPTURE hit0000000001300D9A classUIFrameworkLightWeb thread9284 ours9284 GetCapture0000000001300D9A target-thread-capture0000000001300D9A
+ACTUAL_HEADER dpi192 width200 -> 280 hit0000000001300D9A pid35320
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen356,148 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client4,32 312x28 screen549,267 hit00000000011307B0 UIFrameworkLightWeb pid35320
+REAL_CLICK client34,4 154x36 screen270,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client34,4 154x36 screen270,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client34,4 154x36 screen270,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client34,4 154x36 screen270,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client34,4 154x36 screen270,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client34,4 154x36 screen270,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client34,4 154x36 screen270,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client34,4 154x36 screen270,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client1014,0 40x40 screen2116,80 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client1014,0 40x40 screen2116,80 hit000000000B65108A UIFrameworkLightWeb pid35320
+REAL_CLICK client8,40 59x28 screen170,355 hit000000000690095A UIFrameworkLightWeb pid35320
+Instance language actual light write dpi192 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+REAL_CLICK client34,4 154x36 screen270,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit00000000018F0932 UIFrameworkLightWeb pid32860
+REAL_CLICK client1014,0 40x40 screen2116,80 hit00000000018F0932 UIFrameworkLightWeb pid32860
+REAL_CLICK client1014,0 40x40 screen2116,80 hit00000000018F0932 UIFrameworkLightWeb pid32860
+REAL_CLICK client8,40 59x28 screen170,355 hit000000000D05112E UIFrameworkLightWeb pid32860
+Instance language actual light restore dpi192 failures0
+LANGUAGE_EVIDENCE=D:\应用软件框架\应用层序框架\build\language-20261008\after\language-evidence-light-5f97cabe285c44c78c9fde313ec14ef7
+<end of output>
+Test time =  64.50 sec
+----------------------------------------------------------
+Test Passed.
+"ui_instance_language_light" end time: Oct 08 11:46 �й���׼ʱ��
+"ui_instance_language_light" time elapsed: 00:01:04
+----------------------------------------------------------
+
+27/62 Testing: ui_stateful_components_webview2
+27/62 Test: ui_stateful_components_webview2
+Command: "C:/Users/wbycl/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe" "-NoProfile" "-File" "D:/应用软件框架/应用层序框架/tests/run-stateful-components.ps1" "-BuildDirectory" "D:/应用软件框架/应用层序框架/build/language-20261008/after" "-Provider" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "-Backend" "webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_stateful_components_webview2" start time: Oct 08 11:46 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+RESTORED modewrite dpi96 name200 treeCollapsed0
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit00000000066109B4 classChrome_WidgetWin_0 thread30000 ours30000 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit00000000066109B4 pid39796
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+Stateful actual webview2 / restore: 0 failures
+RESTORED modewrite dpi144 name200 treeCollapsed0
+HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+CAPTURE hit000000000E110744 classChrome_WidgetWin_0 thread48008 ours48008 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi144 width200 -> 280 hit000000000E110744 pid37640
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi144 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+Stateful actual webview2 / restore: 0 failures
+RESTORED modewrite dpi192 name200 treeCollapsed0
+HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+CAPTURE hit0000000009CE0EAC classChrome_WidgetWin_0 thread21288 ours21288 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi192 width200 -> 280 hit0000000009CE0EAC pid19808
+Stateful actual webview2 / write: 0 failures
+RESTORED moderestore dpi192 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+Stateful actual webview2 / restore: 0 failures
+RESTORED modeisolation dpi96 name280 treeCollapsed1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000001660FBC classChrome_WidgetWin_0 thread39208 ours39208 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000001660FBC pid47412
+HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+CAPTURE hit0000000001660FBC classChrome_WidgetWin_0 thread39208 ours39208 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width280 -> 360 hit0000000001660FBC pid47412
+Stateful actual webview2 / isolation: 0 failures
+RESTORED modeprofile-b dpi96 name360 treeCollapsed0
+Stateful actual webview2 / profile-b: 0 failures
+RESTORED modereload dpi96 name280 treeCollapsed1
+Stateful actual webview2 / reload: 0 failures
+RESTORED modelocked-profile dpi96 name280 treeCollapsed1
+Stateful actual webview2 / locked-profile: 0 failures
+RESTORED moderestore dpi96 name280 treeCollapsed1
+STABLE_COLUMN name headerX128 cellX128 texteditable
+Stateful actual webview2 / restore: 0 failures
+RESTORED modeevolve dpi96 name280 treeCollapsed1
+Stateful actual webview2 / evolve: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual webview2 / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual webview2 / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual webview2 / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual webview2 / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual webview2 / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual webview2 / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual webview2 / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual webview2 / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual webview2 / invalid: 0 failures
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+Stateful actual webview2 / invalid: 0 failures
+RESTORED modedefaults dpi96 name200 treeCollapsed0
+Stateful actual webview2 / defaults: 0 failures
+RESTORED modeinit-failures dpi96 name200 treeCollapsed0
+Stateful actual webview2 / init-failures: 0 failures
+RESTORED modereset dpi96 name280 treeCollapsed1
+Stateful actual webview2 / reset: 0 failures
+RESTORED modedefaults dpi96 name200 treeCollapsed0
+Stateful actual webview2 / defaults: 0 failures
+Stateful application actual webview2 PASS; evidence D:\应用软件框架\应用层序框架\build\language-20261008\after\state-evidence-webview2-b21a8de6ed1a49d6a413ff14828ae749
+<end of output>
+Test time =  33.84 sec
+----------------------------------------------------------
+Test Passed.
+"ui_stateful_components_webview2" end time: Oct 08 11:47 �й���׼ʱ��
+"ui_stateful_components_webview2" time elapsed: 00:00:33
+----------------------------------------------------------
+
+28/62 Testing: ui_instance_language_webview2
+28/62 Test: ui_instance_language_webview2
+Command: "C:/Users/wbycl/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe" "-NoProfile" "-File" "D:/应用软件框架/应用层序框架/tests/run-instance-language.ps1" "-BuildDirectory" "D:/应用软件框架/应用层序框架/build/language-20261008/after" "-Provider" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "-Backend" "webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_instance_language_webview2" start time: Oct 08 11:47 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE magic: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+PREFERENCE future: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+PREFERENCE language: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+PREFERENCE profile: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+PREFERENCE reserved: final=en-US file unchanged
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+PREFERENCE zh-CN: final=zh-CN file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+PREFERENCE en-US: final=en-US file unchanged
+Complete DLL preferences webview2 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client4,4 312x28 screen299,126 hit000000000102085C UIFrameworkLightWeb pid49828
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000008AF0B90 classChrome_WidgetWin_0 thread33704 ours33704 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000008AF0B90 pid49828
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client4,32 312x28 screen299,154 hit0000000002DF0A3C UIFrameworkLightWeb pid49828
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client34,4 154x36 screen159,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client1006,0 40x40 screen1074,60 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client1006,0 40x40 screen1074,60 hit00000000089A0C5A UIFrameworkLightWeb pid49828
+REAL_CLICK client8,40 58x28 screen133,233 hit0000000019250A02 Chrome_WidgetWin_0 pid49828
+Instance language actual webview2 write dpi96 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000000970292 UIFrameworkLightWeb pid38420
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000000970292 UIFrameworkLightWeb pid38420
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000000970292 UIFrameworkLightWeb pid38420
+REAL_CLICK client8,40 58x28 screen133,233 hit000000000AA810E2 Chrome_WidgetWin_0 pid38420
+Instance language actual webview2 restore dpi96 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen279,121 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client4,4 312x28 screen424,168 hit000000000B7408F2 UIFrameworkLightWeb pid28124
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+CAPTURE hit0000000009EF0EAC classChrome_WidgetWin_0 thread31572 ours31572 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi144 width200 -> 280 hit0000000009EF0EAC pid28124
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen279,121 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client4,32 312x28 screen424,210 hit000000000088107C UIFrameworkLightWeb pid28124
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client34,4 154x36 screen215,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000009990F20 UIFrameworkLightWeb pid28124
+REAL_CLICK client8,40 58x28 screen152,294 hit0000000008FA0EBC Chrome_WidgetWin_0 pid28124
+Instance language actual webview2 write dpi144 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+REAL_CLICK client1011,0 40x40 screen1595,70 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+REAL_CLICK client1011,0 40x40 screen1595,70 hit000000000CA60C0C UIFrameworkLightWeb pid26508
+REAL_CLICK client8,40 58x28 screen152,294 hit0000000001710B18 Chrome_WidgetWin_0 pid26508
+Instance language actual webview2 restore dpi144 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+REAL_CLICK client90,41 128x26 screen356,148 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client4,4 312x28 screen549,211 hit00000000008A107C UIFrameworkLightWeb pid45760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+CAPTURE hit00000000013D07B0 classChrome_WidgetWin_0 thread48444 ours48444 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi192 width200 -> 280 hit00000000013D07B0 pid45760
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen356,148 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client4,32 312x28 screen549,267 hit0000000003A10FF6 UIFrameworkLightWeb pid45760
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000009070EC2 UIFrameworkLightWeb pid45760
+REAL_CLICK client8,40 58x28 screen170,355 hit00000000036D0AE6 Chrome_WidgetWin_0 pid45760
+Instance language actual webview2 write dpi192 failures0
+INPUT_EVIDENCE real SendInput; final state checked
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+REAL_CLICK client34,4 154x36 screen270,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen630,84 hit0000000001210E1C UIFrameworkLightWeb pid21484
+REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000001210E1C UIFrameworkLightWeb pid21484
+REAL_CLICK client1014,0 40x40 screen2116,80 hit0000000001210E1C UIFrameworkLightWeb pid21484
+REAL_CLICK client8,40 58x28 screen170,355 hit0000000005C6075C Chrome_WidgetWin_0 pid21484
+Instance language actual webview2 restore dpi192 failures0
+LANGUAGE_EVIDENCE=D:\应用软件框架\应用层序框架\build\language-20261008\after\language-evidence-webview2-1ba44cace01c4ba2b0c6a098d6746a75
+<end of output>
+Test time =  66.84 sec
+----------------------------------------------------------
+Test Passed.
+"ui_instance_language_webview2" end time: Oct 08 11:48 �й���׼ʱ��
+"ui_instance_language_webview2" time elapsed: 00:01:06
+----------------------------------------------------------
+
+29/62 Testing: ui_visual_ui_light
+29/62 Test: ui_visual_ui_light
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_visual_ui_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_visual_ui_light" start time: Oct 08 11:48 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Header/content: 8,200 versus 8,200
+Header/content: 8,200 versus 8,200
+Panel title tooltip kind5 capture0000000000000000
+Dock tab tooltip kind5 capture0000000000000000
+Visual actual light DLL / OSMesa / dual instance: 0 failures
+<end of output>
+Test time =   5.71 sec
+----------------------------------------------------------
+Test Passed.
+"ui_visual_ui_light" end time: Oct 08 11:48 �й���׼ʱ��
+"ui_visual_ui_light" time elapsed: 00:00:05
+----------------------------------------------------------
+
+30/62 Testing: ui_visual_ui_webview2
+30/62 Test: ui_visual_ui_webview2
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_visual_ui_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_visual_ui_webview2" start time: Oct 08 11:48 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Header/content: 8,200 versus 8,200
+Header/content: 8,200 versus 8,200
+Panel title tooltip kind5 capture0000000000000000
+Dock tab tooltip kind5 capture0000000000000000
+Visual actual webview2 DLL / OSMesa / dual instance: 0 failures
+<end of output>
+Test time =   6.40 sec
+----------------------------------------------------------
+Test Passed.
+"ui_visual_ui_webview2" end time: Oct 08 11:48 �й���׼ʱ��
+"ui_visual_ui_webview2" time elapsed: 00:00:06
+----------------------------------------------------------
+
+31/62 Testing: ui_api7_integration
+31/62 Test: ui_api7_integration
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_api7_integration_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_api7_integration" start time: Oct 08 11:48 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=9348
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-light-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+API7 integration: reopen 1
+API7 integration: reopen 2
+API7 integration: reopen 3
+API7 integration: reopen 4
+API7 integration: reopen 5
+API7 integration: reopen 6
+API7 integration: reopen 7
+API7 integration: reopen 8
+API7 integration: reopen 9
+API7 integration: reopen 10
+API7 integration: reopen 11
+API7 integration: reopen 12
+API7 integration: reopen 13
+API7 integration: reopen 14
+API7 integration: reopen 15
+API7 integration: reopen 16
+API7 integration: reopen 17
+API7 integration: reopen 18
+API7 integration: reopen 19
+API7 integration: reopen 20
+API7 integration: reopen 21
+API7 integration: reopen 22
+API7 integration: reopen 23
+API7 integration: reopen 24
+API7 integration: reopen 25
+API7 integration: reopen 26
+API7 integration: reopen 27
+API7 integration: reopen 28
+API7 integration: reopen 29
+API7 integration: reopen 30
+API7 integration: reopen 31
+API7 reopen8 handles 220->220 GDI 3->3 USER 3->3 pending Runtime cleanup=0
+API7 complete offscreen lifecycle created HWNDs=0
+API7 independent light offscreen DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =  14.85 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api7_integration" end time: Oct 08 11:48 �й���׼ʱ��
+"ui_api7_integration" time elapsed: 00:00:14
+----------------------------------------------------------
+
+32/62 Testing: ui_api7_integration_webview2
+32/62 Test: ui_api7_integration_webview2
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_api7_integration_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_api7_integration_webview2" start time: Oct 08 11:48 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=8589
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-runtime-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+ Framework pending cleanup=1 process handles=423
+API7 integration: reopen 1
+ Framework pending cleanup=2 process handles=425
+API7 integration: reopen 2
+ Framework pending cleanup=3 process handles=427
+API7 integration: reopen 3
+ Framework pending cleanup=4 process handles=429
+API7 integration: reopen 4
+ Framework pending cleanup=5 process handles=431
+API7 integration: reopen 5
+ Framework pending cleanup=6 process handles=433
+API7 integration: reopen 6
+ Framework pending cleanup=7 process handles=436
+API7 integration: reopen 7
+ Framework pending cleanup=8 process handles=438
+API7 integration: reopen 8
+ Framework pending cleanup=9 process handles=440
+API7 integration: reopen 9
+ Framework pending cleanup=10 process handles=442
+API7 integration: reopen 10
+ Framework pending cleanup=11 process handles=444
+API7 integration: reopen 11
+ Framework pending cleanup=12 process handles=446
+API7 integration: reopen 12
+ Framework pending cleanup=13 process handles=448
+API7 integration: reopen 13
+ Framework pending cleanup=14 process handles=450
+API7 integration: reopen 14
+ Framework pending cleanup=15 process handles=452
+API7 integration: reopen 15
+ Framework pending cleanup=16 process handles=454
+API7 integration: reopen 16
+ Framework pending cleanup=17 process handles=456
+API7 integration: reopen 17
+ Framework pending cleanup=18 process handles=458
+API7 integration: reopen 18
+ Framework pending cleanup=19 process handles=460
+API7 integration: reopen 19
+ Framework pending cleanup=20 process handles=462
+API7 integration: reopen 20
+ Framework pending cleanup=21 process handles=464
+API7 integration: reopen 21
+ Framework pending cleanup=22 process handles=466
+API7 integration: reopen 22
+ Framework pending cleanup=23 process handles=468
+API7 integration: reopen 23
+ Framework pending cleanup=24 process handles=470
+API7 integration: reopen 24
+ Framework pending cleanup=25 process handles=472
+API7 integration: reopen 25
+ Framework pending cleanup=26 process handles=474
+API7 integration: reopen 26
+ Framework pending cleanup=27 process handles=476
+API7 integration: reopen 27
+ Framework pending cleanup=28 process handles=478
+API7 integration: reopen 28
+ Framework pending cleanup=29 process handles=480
+API7 integration: reopen 29
+ Framework pending cleanup=30 process handles=482
+API7 integration: reopen 30
+ Framework pending cleanup=31 process handles=484
+API7 integration: reopen 31
+ Framework pending cleanup=32 process handles=486
+API7 reopen8 handles 394->396 GDI 12->12 USER 17->17 pending Runtime cleanup=0
+API7 independent WebView2 DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =  50.18 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api7_integration_webview2" end time: Oct 08 11:49 �й���׼ʱ��
+"ui_api7_integration_webview2" time elapsed: 00:00:50
+----------------------------------------------------------
+
+33/62 Testing: ui_session0_interactive_control
+33/62 Test: ui_session0_interactive_control
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_session0_gl_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/session0_gl_app.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "D:/应用软件框架/应用层序框架/build/language-20261008/after/session0-control" "--allow-interactive"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_session0_interactive_control" start time: Oct 08 11:49 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =  31.12 sec
+----------------------------------------------------------
+Test Passed.
+"ui_session0_interactive_control" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_session0_interactive_control" time elapsed: 00:00:31
+----------------------------------------------------------
+
+34/62 Testing: ui_offscreen_msaa
+34/62 Test: ui_offscreen_msaa
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_offscreen_msaa_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_offscreen_msaa" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Actual GL Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079 samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_msaa" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_offscreen_msaa" time elapsed: 00:00:00
+----------------------------------------------------------
+
+35/62 Testing: ui_windowless_gl
+35/62 Test: ui_windowless_gl
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_offscreen_msaa_test.exe" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_windowless_gl" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+OSMesa reopen 1 handles=209 loaded=1
+OSMesa reopen 2 handles=209 loaded=1
+OSMesa reopen 3 handles=209 loaded=1
+OSMesa reopen 4 handles=209 loaded=1
+OSMesa reopen 5 handles=209 loaded=1
+OSMesa reopen 6 handles=209 loaded=1
+OSMesa reopen 7 handles=209 loaded=1
+OSMesa reopen 8 handles=209 loaded=1
+OSMesa reopen 9 handles=209 loaded=1
+OSMesa reopen 10 handles=209 loaded=1
+OSMesa reopen 11 handles=209 loaded=1
+OSMesa reopen 12 handles=209 loaded=1
+OSMesa reopen 13 handles=209 loaded=1
+OSMesa reopen 14 handles=209 loaded=1
+OSMesa reopen 15 handles=209 loaded=1
+OSMesa reopen 16 handles=209 loaded=1
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=0, process HWNDs=0, HWND dependency=2
+<end of output>
+Test time =   0.43 sec
+----------------------------------------------------------
+Test Passed.
+"ui_windowless_gl" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_windowless_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/62 Testing: ui_offscreen_gl
+36/62 Test: ui_offscreen_gl
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_offscreen_gl_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_offscreen_gl" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Offscreen GPU: Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079; hidden HWND dependency; hardware class unknown
+Hidden WGL/FBO/frame/input/readback: 0 failures
+<end of output>
+Test time =   0.24 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_gl" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_offscreen_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/62 Testing: ui_workspace_offscreen
+37/62 Test: ui_workspace_offscreen
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_workspace_offscreen_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/framework_features.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_workspace_offscreen" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Offscreen actual DOM=89 cached rows=12 columns=4
+Workspace/shared DLL/real templates: 0 failures, HWNDs=0
+<end of output>
+Test time =   1.87 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_offscreen" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_workspace_offscreen" time elapsed: 00:00:01
+----------------------------------------------------------
+
+38/62 Testing: ui_framework_features_host
+38/62 Test: ui_framework_features_host
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_framework_features_host_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/framework_features.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/features-host.bmp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_framework_features_host" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API4 actual host menus/overflow/instances: 0 failures
+<end of output>
+Test time =  12.27 sec
+----------------------------------------------------------
+Test Passed.
+"ui_framework_features_host" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_framework_features_host" time elapsed: 00:00:12
+----------------------------------------------------------
+
+39/62 Testing: ui_menu_desktop
+39/62 Test: ui_menu_desktop
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_menu_desktop_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/framework_features.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_menu_desktop" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Input desktop cursor available: 1
+Function key presentation: status 0; text Ctrl+F1
+Menu hit 0 at 698,111: expected 00000000012F0FD2; actual 00000000012F0FD2 UIFrameworkRegisteredMenu4; foreground 00000000012F0FD2
+Menu hit 1 at 380,110: expected 00000000035C0AF2; actual 00000000035C0AF2 UIFrameworkRegisteredMenu4; foreground 00000000012F0FD2
+Menu hit 2 at 62,109: expected 00000000012C0A76; actual 00000000012C0A76 UIFrameworkRegisteredMenu4; foreground 00000000012F0FD2
+40 menu reopen cycles: handles 320 -> 320; GDI 857 -> 857; USER 50 -> 50
+After instance switch: visible menus=0; first path=closed second path=closed
+Desktop menu real host: 0 failures; command calls=1
+<end of output>
+Test time =   8.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_desktop" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_menu_desktop" time elapsed: 00:00:08
+----------------------------------------------------------
+
+40/62 Testing: ui_menu_offscreen
+40/62 Test: ui_menu_offscreen
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_menu_offscreen_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_menu_offscreen" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Real light/template offscreen: 0 failures; thread windows=0; no physical IME/DPI claim
+<end of output>
+Test time =   0.21 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_offscreen" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_menu_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/62 Testing: ui_menu_cascade_offscreen
+41/62 Test: ui_menu_cascade_offscreen
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_menu_cascade_offscreen_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_menu_cascade_offscreen" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+128 items, 118 page steps; shared cascade budget boundary at 13; command once; no menu HWND: 0 failures
+<end of output>
+Test time =   0.34 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_cascade_offscreen" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_menu_cascade_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/62 Testing: ui_menu_access
+42/62 Test: ui_menu_access
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_menu_access_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_menu_access" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Menu Alt real template: 0 failures, calls=3
+<end of output>
+Test time =   0.22 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_access" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_menu_access" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/62 Testing: ui_web_text_edit
+43/62 Test: ui_web_text_edit
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_web_text_edit_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_web_text_edit" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web editor: 0 failures. Physical Chinese IME remains unverified.
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_text_edit" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_web_text_edit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+44/62 Testing: ui_generic_web_host
+44/62 Test: ui_generic_web_host
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_generic_web_host_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/generic_components.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/web_counter.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_generic_web_host" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+initial actual DOM=311 rows=19 columns=8
+Initial form dpi=96 status=0 field=96,78,146,28 view=0,0,250,636
+100k tail actual DOM=89 rows=12 columns=4
+100k expanded tree actual DOM=93 cached rows=2100 total=100100
+image bytes=462400 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+<end of output>
+Test time =   9.78 sec
+----------------------------------------------------------
+Test Passed.
+"ui_generic_web_host" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_generic_web_host" time elapsed: 00:00:09
+----------------------------------------------------------
+
+45/62 Testing: ui_component_resilience
+45/62 Test: ui_component_resilience
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_resilience_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/framework_features.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_resilience" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+automatic style preview lifetime: 0 failures
+resource,0,0,0,17145856,6389760,175,60,5,0,0,0,0,0,0,0
+Web update: TypeError: cannot set property 'textContent' of null
+edit/layout mode 0: 0 failures
+edit/layout mode 1: 0 failures
+edit/layout mode 2: 0 failures
+edit/layout mode 3: 0 failures
+focus before refloat=000000000A8C0982
+focus after refloat=000000000A8C0982
+focus after modal close=000000000A8C0982
+focus after redock=000000000A8C0982
+edit/layout mode 4: 0 failures
+edit/layout mode 5: 0 failures
+record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count
+resource,547,1,1,150183936,114188288,345,1338,73,329,20,21894,93,9948,343144,83
+resource,547,1,2,150183936,114188288,345,1338,73,311,19,18680,93,8254,241672,59
+resource,1672,3,1,152961024,116944896,345,1448,73,343,21,23479,93,11642,436192,105
+resource,1672,3,2,152961024,116944896,345,1448,73,343,21,23459,93,9948,414992,100
+resource,2156,4,1,153051136,117030912,345,1448,73,343,21,23479,93,11642,436192,105
+resource,2156,4,2,153051136,117030912,345,1448,73,322,21,23458,93,11642,504032,121
+resource,2406,4,0,61378560,40521728,288,73,23,0,0,0,0,0,0,0
+resilience: 0 failures; 4 iterations; physical/manual checks remain open
+<end of output>
+Test time =   6.83 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_resilience" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_component_resilience" time elapsed: 00:00:06
+----------------------------------------------------------
+
+46/62 Testing: ui_application_contract
+46/62 Test: ui_application_contract
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_application_contract_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/web_counter.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/counter_mismatch.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_application_contract" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+current application declarations and Web/native contents: PASS
+<end of output>
+Test time =   0.31 sec
+----------------------------------------------------------
+Test Passed.
+"ui_application_contract" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_application_contract" time elapsed: 00:00:00
+----------------------------------------------------------
+
+47/62 Testing: ui_light_web_dynamic
+47/62 Test: ui_light_web_dynamic
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_light_web_dynamic_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_light_web_dynamic" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Dynamic Web probe: 0 failure(s), 6 messages, 250 incremental rebuilds
+<end of output>
+Test time =   0.32 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_web_dynamic" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_light_web_dynamic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+48/62 Testing: ui_web_shell_slots
+48/62 Test: ui_web_shell_slots
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_web_shell_slots_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_web_shell_slots" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web shell content slots and legacy facade passed
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_shell_slots" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_web_shell_slots" time elapsed: 00:00:00
+----------------------------------------------------------
+
+49/62 Testing: ui_floating_web_dpi
+49/62 Test: ui_floating_web_dpi
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_floating_web_dpi_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_floating_web_dpi" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_floating_web_dpi" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_floating_web_dpi" time elapsed: 00:00:00
+----------------------------------------------------------
+
+50/62 Testing: ui_light_web_parity
+50/62 Test: ui_light_web_parity
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/light_web_probe.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_light_web_parity" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Light Web probe: 0 failure(s), clicks=3, inputs=2, reloads=4
+<end of output>
+Test time =   0.26 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_web_parity" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_light_web_parity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+51/62 Testing: ui_workspace_integration
+51/62 Test: ui_workspace_integration
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_workspace_integration_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_lifecycle_fixture.dll" "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_application_cpp.dll"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_workspace_integration" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Workspace/module lifecycle: 0 failure(s)
+<end of output>
+Test time =   1.62 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_integration" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_workspace_integration" time elapsed: 00:00:01
+----------------------------------------------------------
+
+52/62 Testing: ui_browser_host
+52/62 Test: ui_browser_host
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_browser_host_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/web_counter.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_lifecycle_fixture.dll"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_browser_host" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Recent row text=[] newest=[C:\Users\wbycl\AppData\Local\Temp\ubh28E8.tmp\app12.uapp]
+Actual drag 40,40 -> 80,70
+Resize actual target 0000000000FF0B20 host 0000000000FF0B20 chrome 000000000B9C08F2 capture 0000000000000000
+Resize actual right 1280 -> 1310
+24 actual DLL reopen/close: handles 295 -> 295 GDI 72 -> 72 USER 23 -> 23
+Browser host: 0 failures
+<end of output>
+Test time =   5.28 sec
+----------------------------------------------------------
+Test Passed.
+"ui_browser_host" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_browser_host" time elapsed: 00:00:05
+----------------------------------------------------------
+
+53/62 Testing: ui_web_host_frontend
+53/62 Test: ui_web_host_frontend
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_web_host_frontend_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/cpp_fixture.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_web_host_frontend" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Basic parameter JSON: {"count":12,"name":"Draft 中","enabled":true,"extra":"keep"}
+Parameter recovery hint: status=0 visible=1 text=此参数需要在高级区域配置，原有参数保持。
+Short text tool width: 115
+Web host frontend passed.
+<end of output>
+Test time =   1.55 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_host_frontend" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_web_host_frontend" time elapsed: 00:00:01
+----------------------------------------------------------
+
+54/62 Testing: ui_native_activation
+54/62 Test: ui_native_activation
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_native_activation_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_native_activation" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native managed activation: 0 failure(s)
+<end of output>
+Test time =   0.81 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_activation" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_native_activation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+55/62 Testing: ui_dpi_integration
+55/62 Test: ui_dpi_integration
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_dpi_integration_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_dpi_integration" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+DPI integration: 0 failure(s)
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_integration" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_dpi_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+56/62 Testing: ui_opengl_integration
+56/62 Test: ui_opengl_integration
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_opengl_integration_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_opengl_integration" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+legacy: Intel | Intel(R) UHD Graphics 770 | 4.6.0 - Build 32.0.101.7079
+gl.core: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.compatibility: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.msaa_debug: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=4 debug=1
+OpenGL integration: 0 failure(s), 3 modern configurations supported
+<end of output>
+Test time =   0.33 sec
+----------------------------------------------------------
+Test Passed.
+"ui_opengl_integration" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_opengl_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+57/62 Testing: ui_surface_input
+57/62 Test: ui_surface_input
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_surface_input_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_surface_input" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Surface input integration: 0 failure(s)
+<end of output>
+Test time =   0.20 sec
+----------------------------------------------------------
+Test Passed.
+"ui_surface_input" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_surface_input" time elapsed: 00:00:00
+----------------------------------------------------------
+
+58/62 Testing: ui_monitor_transition
+58/62 Test: ui_monitor_transition
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_monitor_transition_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_monitor_transition" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Monitor transition environment: 1 monitor(s)
+SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_monitor_transition" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_monitor_transition" time elapsed: 00:00:00
+----------------------------------------------------------
+
+59/62 Testing: ui_workspace7
+59/62 Test: ui_workspace7
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_workspace7_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_workspace7" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API7 bottom/tabs: 0 failures
+<end of output>
+Test time =   0.22 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace7" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_workspace7" time elapsed: 00:00:00
+----------------------------------------------------------
+
+60/62 Testing: ui_native_shell_integration
+60/62 Test: ui_native_shell_integration
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_native_shell_integration_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_native_shell_integration" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+native shell integration checks passed
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_shell_integration" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_native_shell_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+61/62 Testing: ui_native_responsive
+61/62 Test: ui_native_responsive
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_native_responsive_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_native_responsive" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native responsive integration: 0 failure(s)
+<end of output>
+Test time =   0.31 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_responsive" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_native_responsive" time elapsed: 00:00:00
+----------------------------------------------------------
+
+62/62 Testing: ui_assistant_protocol
+62/62 Test: ui_assistant_protocol
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_assistant_protocol_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_assistant_protocol" start time: Oct 08 11:50 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+assistant protocol: 0 failure(s)
+<end of output>
+Test time =   0.22 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_protocol" end time: Oct 08 11:50 �й���׼ʱ��
+"ui_assistant_protocol" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 08 11:50 �й���׼ʱ��

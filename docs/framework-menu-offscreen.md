@@ -1,6 +1,6 @@
 # 分组菜单与离屏测试接口
 
-SDK0.8.0开发版、框架API8、开发标准修订8。API5四项已有实现继续保留，当前源码以实际commit为准。只维护接手确认的当前API8；[版本政策](version-policy.md)取代旧版兼容承诺，现存加载分支暂不清理。应用ABI、`ui_app_query_v1`和包格式保持1；不创建稳定标签。
+SDK0.9.0开发版、框架API9、开发标准修订9。API5四项已有实现继续保留，当前源码以实际commit为准。只维护接手确认的当前API9；[版本政策](version-policy.md)取代旧版兼容承诺，现存加载分支暂不清理。应用ABI、`ui_app_query_v1`和包格式保持1；不创建稳定标签。
 
 本轮只修改框架和通用验收样例，没有修改请求方应用、文档模型、业务渲染器或PERF-001。当前能力及证据见[API8验收](validation/component-experience-validation.md)，历史结果见[API6验收](validation/api6-validation.md)与[API5历史验收](validation/api5-validation.md)；[API4记录](validation/api4-validation.md)保留历史结果。
 
@@ -82,7 +82,7 @@ API4第一阶段不提供完全无窗口GL和MSAA；API5增补见第6节，仍�
 
 每 surface 预算32 MiB。旧隐藏WGL单采样继续按8×像素计颜色/深度，临时读回另计、最多16 MiB，保留API4的2048×2048边界。真正无窗口单采样按12×像素计颜色/深度/临时读回；多采样按(8+8×samples)×像素计多采样附件、resolve和临时读回。OSMesa路径再计4字节 provider drawable，调用方缓冲另计。resize 先验预算，失败保持旧尺寸。UI/创建线程操作，销毁需先停止调用；多上下文保留当前提供方 context，恢复 framebuffer、viewport、texture/renderbuffer、pack/unpack PBO、pack 参数及 multisample/scissor。应用自行改变其他 GL 状态仍由应用负责。
 
-实际 Windows 已登录会话、Session0、整机无登录CI分别验收。真实软件 GL frame 输出可以证明无窗口渲染；返回 UNSUPPORTED、替代图片和模拟执行都不能证明成功。历史78c24cb实际测试DLL/OSMesa在CI LocalSystem Session0已通过，当前API8源码仍需单独服务复验，整机无登录因登录会话1失败，缺专用runner；[专门证据](validation/session0-osmesa-validation.md)保留两个独立结论。其他结果及未验收条件见[API5验收](validation/api5-validation.md)。
+实际 Windows 已登录会话、Session0、整机无登录CI分别验收。真实软件 GL frame 输出可以证明无窗口渲染；返回 UNSUPPORTED、替代图片和模拟执行都不能证明成功。历史78c24cb实际测试DLL/OSMesa在CI LocalSystem Session0已通过，当前API9源码仍需单独服务复验，整机无登录因登录会话1失败，缺专用runner；[专门证据](validation/session0-osmesa-validation.md)保留两个独立结论。其他结果及未验收条件见[API5验收](validation/api5-validation.md)。
 
 ## API6 无窗口布局与既有能力回归
 
@@ -95,3 +95,8 @@ API5 Alt/嵌套/溢出/模态/焦点、OSMesa实际上下文、离屏MSAA与状�
 UI_INPUT_CANCEL=8追加，事件尺寸不变，有窗口捕获丢失和无窗口调用方取消共用；滚动语义见[通用Web](generic-web-ui.md)。底部及同区标签沿用内容生命周期，布局2读取布局1，见[布局](workspace-layout.md)。菜单/Alt/焦点/单次命令及GL/MSAA/普通附件合同不改；没有硬件无窗口扩展。当前GL/Session0与整机无登录分开记于[API8验收](validation/component-experience-validation.md)。
 
 本轮仅移除共同TREE/TABLE/LIST分页与列箭头按钮；菜单单层128项、页窗口和末项访问合同不变。真实回归见[分页清理验收](validation/component-scroll-only-validation.md)。
+
+
+## API9 菜单文本更新
+
+菜单组通过稳定path更新显示title；菜单项、命令和工具通过稳定ID更新。翻译不重建另一套命令系统或改助记键。语言切换关闭旧菜单，后续打开读取所属实例最新语言；原Alt、方向键、Esc、禁用项和一次命令合同保持。新公开语言/文本接口使当前版本升级API9，GL/MSAA及无窗口合同不变，见[语言合同](instance-language.md)。

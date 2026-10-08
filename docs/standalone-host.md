@@ -1,6 +1,6 @@
 # 独立宿主使用说明
 
-当前为SDK0.8/API8。浏览器式外壳属于宿主内部实现，没有新增公共接口；当前API8应用按现行菜单、内容槽、助手和生命周期合同运行；历史兼容维护已按[版本政策](version-policy.md)撤销。[浏览器式宿主验收](validation/browser-host-validation.md)与[本轮视觉验收](validation/visual-ui-validation.md)。统一数值及后端边界见[视觉规范](visual-design.md)。
+当前为SDK0.9/API9。浏览器式外壳属于宿主内部实现，没有新增公共接口；当前API9应用按现行菜单、内容槽、助手和生命周期合同运行；历史兼容维护已按[版本政策](version-policy.md)撤销。[浏览器式宿主验收](validation/browser-host-validation.md)与[本轮视觉验收](validation/visual-ui-validation.md)。统一数值及后端边界见[视觉规范](visual-design.md)。
 
 ## 1. 打开、标签和菜单
 
@@ -63,3 +63,8 @@ ui_browser_host使用框架测试包和私有临时历史目录，保留GetCurso
 打开框架提供的stateful_components.uapp，可在State菜单保存／恢复列宽和布局，关闭后重新启动验证；AI仍默认收起。状态归示例应用档案管理，不与宿主最近应用记录或业务文档混用。详见[示例](../examples/stateful_components/README.md)。
 
 宿主按钮 geometry 可能随宽度、DPI和界面调整变化。框架维护的宿主测试持有自己的Web view，使用公共presentation可见clip中心、view-local→physical→screen换算和实际鼠标状态检查。应用没有公共“取得宿主chrome view”接口，不能照抄私有h.view或假造API；正式业务测试需由框架宿主观察器提供定位支持。旧固定坐标失败及原“隐藏而不销毁HWND”断言保留，迁移只替换定位方法，见[本轮验收](validation/api8-stability-state-validation.md)。
+
+
+## 应用语言跟随（API9）
+
+语言入口在应用，不在宿主全局设置。有应用时读取活动host，后台变更隔离；切换/关闭活动标签更新文案，最后一个关闭后恢复Windows显示语言。最近、空状态、工具提示、固定错误和助手使用框架统一资源。用户路径、参数和已有结果不翻译；助手确认按目标实例打开时快照。Windows文件选择器系统按钮依旧使用系统语言，其应用包过滤标签属于框架。实际识别时机和模态策略见[语言合同](instance-language.md)，[本轮证据](validation/instance-language-validation.md)不继承历史通过。

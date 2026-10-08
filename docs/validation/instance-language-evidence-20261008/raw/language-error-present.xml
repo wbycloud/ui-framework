@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="2"
+	failures="1"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="13"
+	timestamp="2026-10-08T11:40:01"
+	>
+	<testcase name="ui_component_experience" classname="ui_component_experience" time="0.479088" status="fail">
+		<failure message="Failed"/>
+		<properties/>
+		<system-out>experience line86: presentation(form,"fields",&amp;error_text)==UI_STATUS_OK&amp;&amp;error_text.visible&amp;&amp;strstr(error_text.text_utf8,"Color format is #RRGGBB or #RRGGBBAA")
+experience line87: presentation(form,"fields",&amp;error_text)==UI_STATUS_OK&amp;&amp;strstr(error_text.text_utf8,"颜色格式为 #RRGGBB 或 #RRGGBBAA")
+component experience light: 2 failures
+</system-out>
+	</testcase>
+	<testcase name="ui_component_experience_webview2" classname="ui_component_experience_webview2" time="13.4161" status="run">
+		<properties/>
+		<system-out>component experience actual WebView2: 0 failures
+</system-out>
+	</testcase>
+</testsuite>

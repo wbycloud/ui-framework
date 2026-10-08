@@ -1,6 +1,6 @@
 # 框架自有界面视觉规范
 
-当前SDK0.8/API8/标准8、ABI1；本轮列宽与help公开能力按版本规则升级，既有内部视觉和生命周期复用。当前证据见[体验验收](validation/component-experience-validation.md)，此前API7内部视觉证据见[历史记录](validation/visual-ui-validation.md)。
+当前SDK0.9/API9/标准9、ABI1；本轮实例语言与文本更新按版本规则升级；列宽与help是此前API8能力，既有内部视觉和生命周期复用。当前证据见[体验验收](validation/component-experience-validation.md)，此前API7内部视觉证据见[历史记录](validation/visual-ui-validation.md)。
 
 共同表格的表头和内容按稳定列ID对齐，不依赖数据源cell数组的返回顺序。调宽改变可见列范围时，顺序已正确的DOM节点保持挂载，避免真实Runtime指针捕获被重排打断。列宽与布局存储由[完整应用示例](../examples/stateful_components/README.md)演示，内部模板修正保持API8；[本轮真实错位、捕获失败与复验](validation/api8-stability-state-validation.md)保留原证据。
 
@@ -82,3 +82,8 @@
 表头调宽区域6逻辑像素，交互宽24–4096；不自动改变应用列宽。勾选/色块/图片/样式列内距3，文本8，编辑边框与选择分开。长文本悬停/F1查看，128项枚举滚动/键盘选择，帮助与错误有独立层级。RGBA轨道根据实际字段宽度调整。浮动160×120、对话框240×180最小逻辑尺寸；停靠标签每页1–4项按可用宽度计算，长名称查看及重绘焦点恢复。公共能力与保存格式见[迁移](migration-v0.7-to-v0.8.md)，真实结果见[验收](validation/component-experience-validation.md)。
 
 属性名称保留展示标签，不增加默认Tab停靠点。名称单击、文本右键或原控件F1打开组件内只读完整文本；输入框Ctrl+F1查看完整名称，选择器F1查看名称，选项F1查看完整选项。查看层可选择/复制并滚动，Esc或关闭按钮恢复原控件焦点；换源、失活或模态切换关闭失效快照。悬停提示不接收鼠标或键盘、不获得窗口焦点，关闭时不恢复历史焦点；模态提示从组件本地坐标按已初始化DPI换算，菜单和模态仍按各自焦点合同恢复。
+
+
+## API9 中英文呈现
+
+本轮新增实例语言及原位文本公开接口，列宽/help是此前API8能力。框架统一字典配合应用资源；文本改变不覆盖用户宽度或自动适配，长文使用既有截断/完整内容路径。浅深主题、角色样式、紧凑几何和预算保持；实际同尺寸完整应用截图见[API9验收](validation/instance-language-validation.md)。

@@ -1,14 +1,14 @@
 # Windows C/Web UI 框架应用开发标准
 
-开发标准修订：**8**。对应 **SDK 0.8.0 开发版、框架 API 8**；本轮起按[当前版本政策](version-policy.md)只维护API8，历史声明的现存接受行为不作未来保证；应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
+开发标准修订：**9**。对应 **SDK 0.9.0 开发版、框架 API 9**；本轮起按[当前版本政策](version-policy.md)只维护API9，历史声明的现存接受行为不作未来保证；应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
 
-面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的开发者。新应用通过公共 C 接口注册组件、提供数据、绑定已有语义命令，通用 HTML/CSS/JavaScript、草稿、焦点和交互由框架维护。菜单、工具、面板内组件、状态、参数及确认界面使用 Web；Win32 仅承载窗口、消息、输入法及绘制。当前API8应用自有原生内容和原生嵌入式保留，系统文件/目录选择器是例外。
+面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的开发者。新应用通过公共 C 接口注册组件、提供数据、绑定已有语义命令，通用 HTML/CSS/JavaScript、草稿、焦点和交互由框架维护。菜单、工具、面板内组件、状态、参数及确认界面使用 Web；Win32 仅承载窗口、消息、输入法及绘制。当前API9应用自有原生内容和原生嵌入式保留，系统文件/目录选择器是例外。
 
 ## 0. 阅读入口与版本约定
 
-当前升级先读[0.7→0.8迁移](migration-v0.7-to-v0.8.md)与[构建及CI](build-and-validation.md)，业务接入准备见[试点清单](business-pilot.md)。再读[通用 Web UI 接入约定](generic-web-ui.md)，再参考[通用纯 C 示例](../examples/generic_components/README.md)。新接口见 [components.h](../include/ui_framework/components.h)、[images.h](../include/ui_framework/images.h)；命令、面板、内容槽、助手和应用生命周期仍以原公共头文件为准。
+当前升级先读[0.8→0.9迁移](migration-v0.8-to-v0.9.md)与[构建及CI](build-and-validation.md)，业务接入准备见[试点清单](business-pilot.md)。再读[通用 Web UI 接入约定](generic-web-ui.md)，再参考[通用纯 C 示例](../examples/generic_components/README.md)。新语言接口见 [language.h](../include/ui_framework/language.h)，组件接口见 [components.h](../include/ui_framework/components.h)、[images.h](../include/ui_framework/images.h)；命令、面板、内容槽、助手和应用生命周期仍以原公共头文件为准。
 
-[0.3 → 0.4 迁移指南](migration-v0.3-to-v0.4.md)说明API4历史菜单及离屏接口；[0.4→0.5](migration-v0.4-to-v0.5.md)说明API5历史增补，[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)保留通用组件和废弃输入开关的迁移要求；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[API5历史验收](validation/api5-validation.md)及[当前API8验收](validation/component-experience-validation.md)记录构建、自动化与真实宿主证据。API4 包不能加载到只支持 API1/2/3 的运行库，清单与 DLL 声明必须相同。
+[0.3 → 0.4 迁移指南](migration-v0.3-to-v0.4.md)说明API4历史菜单及离屏接口；[0.4→0.5](migration-v0.4-to-v0.5.md)说明API5历史增补，[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)保留通用组件和废弃输入开关的迁移要求；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[API5历史验收](validation/api5-validation.md)及[当前API9验收](validation/instance-language-validation.md)记录构建、自动化与真实宿主证据。API4 包不能加载到只支持 API1/2/3 的运行库，清单与 DLL 声明必须相同。
 
 受控轻量后端实现本版框架组件；WebView2 可选提供实际 Runtime 呈现查询、捕获、C 图片 ID 和共同框架组件，异步合同见本页 API5 增补。OpenGL 仍由应用自行选择、通过内容槽挂载，框架没有应用文档模型或业务渲染器。具体子集、预算及未实现能力以接入约定的能力清单为准，不把 HTML 支持视为完整浏览器。
 
@@ -53,14 +53,14 @@ name=Minimal EDA
 version=1.0.0
 architecture=x64
 abi_version=1
-framework_api_version=8
+framework_api_version=9
 module=minimal_eda_app.dll
 multiple_instances=true
 ```
 
 `app_id` 是稳定身份，`version` 标识版本；同一 ID 的不同版本不能同时加载。`multiple_instances=false` 时，重复打开包激活已有标签；为 true 时创建新的私有状态和标签。不要通过进程全局变量保存实例数据。
 
-清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前维护 `architecture=x64`、应用ABI1和框架API8。清单API必须与DLL descriptor一致；当前头文件构建的应用声明8。运行库中API1–7接受分支暂存，不保证旧包今后兼容。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
+清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前维护 `architecture=x64`、应用ABI1和框架API9。清单API必须与DLL descriptor一致；当前头文件构建的应用声明9。运行库中API1–8接受分支暂存，不保证旧包今后兼容。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
 
 ### 2.2 UAPP v1 容器格式
 
@@ -154,7 +154,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 ### 3.3 size 和兼容性
 
-使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 8。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前实现接受 1–8，拒绝 0 和未支持的更高版本。低版本接受分支是现存行为，不是持续维护承诺；只维护当前 API8。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
+使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 8。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前实现接受 1–8，拒绝 0 和未支持的更高版本。低版本接受分支是现存行为，不是持续维护承诺；只维护当前 API9。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
 
 布局接口接受原始六字段布局描述，省略的新字段按零值处理；Web ops 支持旧尺寸，缺少追加的定位、消息或能力回调时对应操作返回 UNSUPPORTED。`ui_workspace_config_t` 在保留完整 v1 布局后追加 `shell_mode`；清零时选择 `UI_WORKSPACE_SHELL_NATIVE`，自建 Web workspace 可显式选择 `UI_WORKSPACE_SHELL_WEB`。独立宿主固定使用 WEB。并非所有结构都允许截断，不能人为缩小 `size` 来假装某个版本。C++ 应用通过 `extern "C"` 调用同一接口；[`tests/public_headers.cpp`](../tests/public_headers.cpp) 覆盖公共头文件调用路径。
 
@@ -368,7 +368,7 @@ view 优先嵌入 `host.native_parent`，config 的 parent_window 是后备值�
 
 ## 10. 最小 EDA 和其他应用的接入方法
 
-[`examples/minimal_eda/app.c`](../examples/minimal_eda/app.c) 是独立宿主应用模块，构建为 `minimal_eda_app.dll` 并打包为 `minimal_eda.uapp`。CMake使用当前 `include/` 头文件将它编译为API8功能样例，清单与DLL声明一致；不再作为冻结SDK兼容调用方。它在 create 注册 UI 和配置状态快照，在 mount 注册助手允许列表、创建 OpenGL 主区和属性内容；每实例分配自己的 blocks、zoom、context 和笔记窗口。清单声明允许多实例。
+[`examples/minimal_eda/app.c`](../examples/minimal_eda/app.c) 是独立宿主应用模块，构建为 `minimal_eda_app.dll` 并打包为 `minimal_eda.uapp`。CMake使用当前 `include/` 头文件将它编译为API9功能样例，清单与DLL声明一致；不再作为冻结SDK兼容调用方。它在 create 注册 UI 和配置状态快照，在 mount 注册助手允许列表、创建 OpenGL 主区和属性内容；每实例分配自己的 blocks、zoom、context 和笔记窗口。清单声明允许多实例。
 
 点击画布后，`A` 添加矩形、`Z` 放大、`C` 清空；菜单/工具栏复用同一命令。全局助手使用 `{}` 参数调用，validator 拒绝非空对象和无效 JSON；clear 是 DESTRUCTIVE，需要宿主确认。属性区显示 instance ID、矩形数量、zoom，EDIT 初始文本通过包内 `readme.txt` 资源读取。用户可修改笔记，再切换标签、浮动/停靠面板，检查实际子窗口和内容继续保留。
 
@@ -376,7 +376,7 @@ view 优先嵌入 `host.native_parent`，config 的 parent_window 是后备值�
 
 [`examples/minimal_eda/main.c`](../examples/minimal_eda/main.c) 仍是完整嵌入式 Win32/OpenGL 样例，由应用创建窗口并预留属性/助手容器。它独立启动，不展示多标签，显式 `--legacy` 可验证旧式 WGL；该开关不适用于 `framework_host.exe` 的 EDA 模块。
 
-[`examples/web_counter/app.c`](../examples/web_counter/app.c) 使用当前公共头文件构建API8/ABI1 DLL，[清单](../examples/web_counter/manifest.ini)声明API8。它在 mount 获取主内容槽，创建轻量 backend/view 并设置消息回调，页面发送 increment 数据，C 侧调用业务命令并用 JSON 回推 count。业务数据、助手快照和多实例状态仍由 C 应用维护，unmount 先销毁 view 再销毁 backend。该样例不创建 OpenGL context，可用于验证无 OpenGL 的 Web 内容路径。
+[`examples/web_counter/app.c`](../examples/web_counter/app.c) 使用当前公共头文件构建API9/ABI1 DLL，[清单](../examples/web_counter/manifest.ini)声明API9。它在 mount 获取主内容槽，创建轻量 backend/view 并设置消息回调，页面发送 increment 数据，C 侧调用业务命令并用 JSON 回推 count。业务数据、助手快照和多实例状态仍由 C 应用维护，unmount 先销毁 view 再销毁 backend。该样例不创建 OpenGL context，可用于验证无 OpenGL 的 Web 内容路径。
 
 Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径；轻量后端当前不支持完整 Markdown HTML 排版。画板将画布作为 OpenGL 文档视口，工具栏命令改变应用工具状态。自研 PPT/Excel 将幻灯片/工作表数据、编辑、布局和撤销留在应用，框架只提供外壳、视口和命令通路。
 
@@ -424,24 +424,24 @@ Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径
 11. 两个实例注册同名命令后分别修改，切换保持画布、GLcontext和属性内容，关闭后台实例不改变前台菜单。
 12. 助手跨实例调用，切换或关闭标签后结果/进度仍按原ID交付或丢弃，危险确认显示正确目标；等待关闭时拒绝新命令。
 13. 应用自有 WndProc/subclass/COM UI callback 的 scope 成对覆盖所有分支和默认窗口过程；嵌套模态消息中关闭后，DLL 仍保留到完整回调退出。确认后台线程不使用 scope，也没有从 query/DllMain/静态构造启动任务。
-14. 用当前SDK/API8应用验证通用组件、原生及GL基础能力；检查清单/DLL API不一致及不支持版本被拒绝。历史SDK/调用方/原包不再属于专项回归或交付门槛。
+14. 用当前SDK/API9应用验证通用组件、原生及GL基础能力；检查清单/DLL API不一致及不支持版本被拒绝。历史SDK/调用方/原包不再属于专项回归或交付门槛。
 15. 检查 Web JSON 的 UTF-8/转义/非法数据、能力差异、内容槽借用与关闭顺序；浅色/深色、窄窗和浮动面板的内容保持可用。
 
 将该清单与应用自身的数据和文件操作测试一起执行，再把应用交给用户使用。
 
 ## API5 接入与验收要求
 
-本节能力最早在API5引入，当前用SDK0.8/API8维护和验收。清单与DLL一致声明8，ABI1、导出和包格式1不变；结构读取按完整字段末端判断，不能读取未包含的字段或padding。现存低版本分支不作持续兼容承诺，不为历史版本增加适配层。历史增补见[0.4→0.5迁移](migration-v0.4-to-v0.5.md)，当前升级见[0.7→0.8](migration-v0.7-to-v0.8.md)。
+本节能力最早在API5引入，当前用SDK0.9/API9维护和验收。清单与DLL一致声明8，ABI1、导出和包格式1不变；结构读取按完整字段末端判断，不能读取未包含的字段或padding。现存低版本分支不作持续兼容承诺，不为历史版本增加适配层。历史增补见[0.4→0.5迁移](migration-v0.4-to-v0.5.md)，当前升级见[0.7→0.8](migration-v0.7-to-v0.8.md)。
 
 Alt 助记键、真正 OSMesa 无窗口 GL、精确离屏 MSAA 和 WebView2 异步呈现/捕获/图片/组件合同分别见 [菜单和离屏](framework-menu-offscreen.md#6-api5-菜单无窗口-gl-与-msaa-合同)与[通用 Web API5](generic-web-ui.md#api5-webview2-与共同组件)。WebView2 后端借用到 host 销毁以后，禁止 DLL 卸载后留应用异步回调；PENDING 需要外层消息循环及重试，不能当 OK。
 
-当前版本专项覆盖现行功能，停止原包与冻结SDK1–6兼容专项。历史材料原样保留，不改写过去结果。物理 IME/跨屏、人工长时压力、Session0及目标CI条件缺失时记录未验收；不以编译、UNSUPPORTED 或轻量后端通过替代真实 Runtime/实际 GL。当前状态见[API8验收](validation/component-experience-validation.md)，[API7验收](validation/api7-validation.md)保留历史身份，API5/6原结果继续保留。
+当前版本专项覆盖现行功能，停止原包与冻结SDK1–6兼容专项。历史材料原样保留，不改写过去结果。物理 IME/跨屏、人工长时压力、Session0及目标CI条件缺失时记录未验收；不以编译、UNSUPPORTED 或轻量后端通过替代真实 Runtime/实际 GL。此前API8状态见[验收](validation/component-experience-validation.md)，[API7验收](validation/api7-validation.md)保留历史身份，API5/6原结果继续保留。
 
 历史框架测试DLL的OSMesa路径已在实际Windows CI LocalSystem Session0运行；这不等于当前源码复验、应用自身业务已适配，或整机无用户登录。无登录必须另核验WTS会话数为0，历史托管runner有登录会话1且严格门槛失败；环境、窗口、frame和资源证据见[Session0记录](validation/session0-osmesa-validation.md)。服务测试无需继承stdin/stdout/stderr或创建控制台；路径、调度、UI线程和生命周期仍由应用适配。
 
 ## API6 保留的工作区与共同组件规范
 
-这些接口在API6/SDK0.6/标准6引入，当前版本为API8/SDK0.8/标准8，ABI1和包格式1保持；这些当前基础功能继续验收，历史SDK与原二进制专项退出CI及交付门槛。新字段按完整字段末端读取，不能读旧尾padding；部分字段不读、不写。[0.5→0.6迁移](migration-v0.5-to-v0.6.md)列出实际x64字段偏移。
+这些接口在API6/SDK0.6/标准6引入，当前版本为API9/SDK0.9/标准9，ABI1和包格式1保持；这些当前基础功能继续验收，历史SDK与原二进制专项退出CI及交付门槛。新字段按完整字段末端读取，不能读旧尾padding；部分字段不读、不写。[0.5→0.6迁移](migration-v0.5-to-v0.6.md)列出实际x64字段偏移。
 
 布局的存储责任属于应用；在注册和mount之后恢复框架版本化字节，稳定面板ID与标题分离。异常数据先完整验证，缺失ID忽略，新增面板保留默认状态，可reset。支持左右栈、尺寸、折叠、关闭与浮动；分隔条和拖拽保留原内容，DPI/work area夹紧不等于物理跨屏通过。[布局接口](workspace-layout.md)是格式、手势、窄窗与有/无窗口边界的合同。
 
@@ -463,13 +463,13 @@ API7/SDK0.7/标准7，ABI/包格式1不变。ui_panel_layout在原48字节之后
 
 连续RGBA通道0..255，暗/白底合成透明度预览，回填#RRGGBBAA；拖动/键盘只写草稿，保留颜色关闭选择器，表单提交才调用业务一次。撤销颜色/选择器Esc恢复打开前文本，捕获取消恢复本次拖动前值。只读/禁用不启动选择，非法文本受既有提交校验。两后端共同模板，无富文本或可变行高。
 
-当前独立DLL证据见[API8验收](validation/component-experience-validation.md)。历史Session0不得替代当前源码复验；严格整机无登录、真实IME/物理跨屏/桌面合成/长期人工及真实业务试点分别记录。
+此前独立DLL证据见[API8验收](validation/component-experience-validation.md)。历史Session0不得替代当前源码复验；严格整机无登录、真实IME/物理跨屏/桌面合成/长期人工及真实业务试点分别记录。
 
 API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认；初始有/无窗口布局为其分配底部空间，reset回到注册默认底部。直接声明与事后移动同样保留内容生命周期，见[注册复现和修复](validation/api7-validation.md)。
 
 ## 框架视觉与宿主呈现
 
-框架自有界面遵循[视觉规范](visual-design.md)：中性浅深主题、紧凑固定行高、角色独立样式及明确hover/pressed/focus/selected/disabled/error/loading状态。轻量与WebView2使用同一共同模板；独立宿主同步其主题，应用自有内容仍由应用管理。AI启动默认收起，基本参数复用原JSON/validator，高级区保留事务/schema/原参数/日志路径。此前内部外观和分页清理保持API7；本轮列宽/help公开能力升级API8，使用匹配SDK重建；应用不依赖宿主DOM，Windows系统控件不能承诺逐像素统一。[实际回归和条件边界](validation/visual-ui-validation.md)。
+框架自有界面遵循[视觉规范](visual-design.md)：中性浅深主题、紧凑固定行高、角色独立样式及明确hover/pressed/focus/selected/disabled/error/loading状态。轻量与WebView2使用同一共同模板；独立宿主同步其主题，应用自有内容仍由应用管理。AI启动默认收起，基本参数复用原JSON/validator，高级区保留事务/schema/原参数/日志路径。此前内部外观和分页清理保持API7；此前列宽/help公开能力升级API8；本轮实例语言与文本更新升级API9，使用匹配SDK重建；应用不依赖宿主DOM，Windows系统控件不能承诺逐像素统一。[实际回归和条件边界](validation/visual-ui-validation.md)。
 
 
 标准7原生共同组件输入补验：公共presentation为view-local logical pixels；原生输入定位先按组件DPI缩放到视图客户区物理坐标，再转screen，公共dispatch仍使用逻辑客户区坐标。真实捕获、完整Dispatch后的状态及稳定ID/文字/非空clip分别核验；仅取出消息或离屏通过不算原生鼠标验收。框架内部捕获/异步占位修复不改变API7/ABI1或应用数据源责任，见[证据](validation/native-component-scroll-validation.md)。
@@ -481,3 +481,8 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 ## API8 列宽与帮助
 
 列宽初值、显式适配/重置、UCW1应用存储和完整help字段读取见[迁移合同](migration-v0.7-to-v0.8.md)。应用负责真实总量、初始列定义及存储；框架负责手势、呈现、按需重算及取消。历史API7及以下的验收节保留原身份，不作为SDK8结果。
+
+
+## API9 应用语言与文本
+
+标准9要求应用拥有语言选择及存储，在create、首次呈现前向本host提交。不得用setlocale、全局环境变量或浏览器语言代替实例状态。宿主活动跟随、空宿主Windows UI默认、通知重入、完整size/复制所有权和原位更新见[语言合同](instance-language.md)。命令、菜单path、列和面板ID稳定；枚举标签与提交值分开，翻译不自动适配用户列宽。应用unmount移除回调，保持原异步关闭和卸载。新增公开能力集中升级API9，ABI1/包1不变；API8列宽/help继续维护。

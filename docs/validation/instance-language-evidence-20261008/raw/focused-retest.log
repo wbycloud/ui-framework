@@ -1,0 +1,27 @@
+Test project D:/应用软件框架/应用层序框架/build/language-20261008/after
+    Start  1: ui_language_core
+1/5 Test  #1: ui_language_core .................   Passed    0.13 sec
+    Start  2: ui_package_format
+2/5 Test  #2: ui_package_format ................   Passed    0.39 sec
+    Start 13: ui_webview2_render
+3/5 Test #13: ui_webview2_render ...............***Timeout  30.02 sec
+Runtime render: initialize
+Runtime ready call 1: 469 ms
+Runtime render: ready
+Runtime render: capture/images complete
+Runtime ready call 2: 78 ms
+Runtime render: close
+line 45: !runtime_cleanup_pending()
+
+    Start 43: ui_web_text_edit
+4/5 Test #43: ui_web_text_edit .................   Passed    0.20 sec
+    Start 51: ui_workspace_integration
+5/5 Test #51: ui_workspace_integration .........   Passed    1.80 sec
+
+80% tests passed, 1 tests failed out of 5
+
+Total Test time (real) =  32.67 sec
+
+The following tests FAILED:
+	 13 - ui_webview2_render (Timeout)
+Errors while running CTest

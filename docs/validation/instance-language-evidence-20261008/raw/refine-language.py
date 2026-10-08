@@ -1,0 +1,7 @@
+from pathlib import Path
+p=Path('tests/instance_language.c');s=p.read_text(encoding='utf-8').replace('!h.assistant_expanded&&h.target==target','!assistant_visible(&h)&&h.assistant_expanded<=0&&h.target==target').replace('CHECK(!h.assistant_expanded);','CHECK(!assistant_visible(&h)&&h.assistant_expanded<=0);');p.write_text(s,encoding='utf-8')
+p=Path('examples/framework_host/host.html');s=p.read_text(encoding='utf-8').replace("var languageTexts={},staticLanguage=[];","var languageTexts={},staticLanguage=[],languageRevision='';")
+s=s.replace("ui.onmessage=function(state) {if(state.texts)applyLanguage(state);", "ui.onmessage=function(state) {if(state.texts){if(languageRevision&&BigInt(state.languageRevision)<BigInt(languageRevision))return;if(languageRevision!==state.languageRevision){languageRevision=state.languageRevision;applyLanguage(state);element('advanced-toggle').textContent=frameworkText(advanced?'高级：参数、事务与详细记录 ▾':'高级：参数、事务与详细记录 ▸')}}")
+s=s.replace("menu.more.className='app-menu'", "menu.more.textContent=frameworkText('更多 ▾');menu.more.className='app-menu'").replace("tools.more.style.width='70px';", "tools.more.textContent=frameworkText('更多 ▾');tools.more.style.width='70px';")
+p.write_text(s,encoding='utf-8')
+p=Path('src/menus.c');s=p.read_text(encoding='utf-8').replace('p->toolbar?"工具":p->path?p->path:"菜单"','p->toolbar?ui_language_text(p->host,"工具"):p->path?ui_menus_group_title(p->host,p->path):ui_language_text(p->host,"菜单")');p.write_text(s,encoding='utf-8')

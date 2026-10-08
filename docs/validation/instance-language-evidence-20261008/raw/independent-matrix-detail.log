@@ -1,0 +1,1091 @@
+Start testing: Oct 08 10:57 �й���׼ʱ��
+----------------------------------------------------------
+1/55 Testing: ui_language_core
+1/55 Test: ui_language_core
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_language_core_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_language_core" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+REAL_WINDOWS_UI first=zh-CN effective=zh-CN provider=1 fallback=0
+Language core 0 failures; synthetic mapping is separate from real system query
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"ui_language_core" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_language_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/55 Testing: ui_package_format
+2/55 Test: ui_package_format
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_package_format_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_package_format" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+unexpected package status 0, expected -5: 
+FAIL line 117: status == expected
+FAIL line 120: package == NULL
+FAIL line 120: error[0] != 0
+package format and deterministic packing: 3 failures
+<end of output>
+Test time =   0.36 sec
+----------------------------------------------------------
+Test Failed.
+"ui_package_format" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_package_format" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/55 Testing: ui_images_windows
+3/55 Test: ui_images_windows
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_images_windows_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_images_windows" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+PNG/GDI/cache: 0 failures
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_images_windows" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_images_windows" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/55 Testing: ui_responsive_layout
+4/55 Test: ui_responsive_layout
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_responsive_layout_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_responsive_layout" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+responsive layout matrix: 0 failures
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_responsive_layout" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_responsive_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/55 Testing: ui_assistant_lifecycle
+5/55 Test: ui_assistant_lifecycle
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_assistant_lifecycle_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_assistant_lifecycle" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+assistant lifecycle and model rollback: 0 failures
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_lifecycle" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_assistant_lifecycle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/55 Testing: ui_dpi_web_failure
+6/55 Test: ui_dpi_web_failure
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_dpi_web_failure_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_dpi_web_failure" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+failed Web DPI sync and retry: 0 failures
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_web_failure" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_dpi_web_failure" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/55 Testing: ui_components_core
+7/55 Test: ui_components_core
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_components_core_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_components_core" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API3 components core: 0 failures, 3 bounded queries
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_components_core" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_components_core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/55 Testing: ui_headless_example
+8/55 Test: ui_headless_example
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_headless_example.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_headless_example" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+eda.add_block: {"blocks":1}
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"ui_headless_example" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_headless_example" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/55 Testing: ui_public_headers_c
+9/55 Test: ui_public_headers_c
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_public_headers_c_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_public_headers_c" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_c" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_public_headers_c" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/55 Testing: ui_public_headers_cpp
+10/55 Test: ui_public_headers_cpp
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_public_headers_cpp_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_public_headers_cpp" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"ui_public_headers_cpp" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_public_headers_cpp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/55 Testing: ui_webview2_parity
+11/55 Test: ui_webview2_parity
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/webview2_probe.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_webview2_parity" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+javascript_verified=[800,240,false]
+javascript_verified=[500,0,true]
+composition_verified=set_rect,resize_preserves_origin,sidebar_binding,host_reflow
+javascript_verified=true
+state=0 ready=1 html_navigated=1 viewport_cases=4 composition=1 clicks=1 inputs=1 results=2 hresult=0x00000000 elapsed_ms=1672
+<end of output>
+Test time =   1.79 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_parity" end time: Oct 08 10:57 �й���׼ʱ��
+"ui_webview2_parity" time elapsed: 00:00:01
+----------------------------------------------------------
+
+12/55 Testing: ui_webview2_messages
+12/55 Test: ui_webview2_messages
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_webview2_messages_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_webview2_messages" start time: Oct 08 10:57 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+WebView2 JSON: ready=1 navigated=1 posted=1 echoed=1 status=0
+<end of output>
+Test time =   4.36 sec
+----------------------------------------------------------
+Test Passed.
+"ui_webview2_messages" end time: Oct 08 10:58 �й���׼ʱ��
+"ui_webview2_messages" time elapsed: 00:00:04
+----------------------------------------------------------
+
+13/55 Testing: ui_webview2_render
+13/55 Test: ui_webview2_render
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_webview2_render_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_webview2_render" start time: Oct 08 10:58 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Runtime render: initialize
+line 17: r&&n
+Runtime render: ready
+Runtime render: capture/images complete
+Runtime render: close
+Runtime close before creation x12 handles 291->291 USER 15->15 pending cleanup=0
+Real WebView2 presentation/capture/images/input/stale/close: 1 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =  25.78 sec
+----------------------------------------------------------
+Test Failed.
+"ui_webview2_render" end time: Oct 08 10:58 �й���׼ʱ��
+"ui_webview2_render" time elapsed: 00:00:25
+----------------------------------------------------------
+
+14/55 Testing: ui_workspace_layout
+14/55 Test: ui_workspace_layout
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_workspace_layout_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_workspace_layout" start time: Oct 08 10:58 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+workspace layout: 0 failures
+<end of output>
+Test time =   0.58 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_layout" end time: Oct 08 10:58 �й���׼ʱ��
+"ui_workspace_layout" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/55 Testing: ui_component_widths
+15/55 Test: ui_component_widths
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_widths_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_widths" start time: Oct 08 10:58 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Column experience Light queries25: 0 failures
+<end of output>
+Test time =   1.42 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_widths" end time: Oct 08 10:58 �й���׼ʱ��
+"ui_component_widths" time elapsed: 00:00:01
+----------------------------------------------------------
+
+16/55 Testing: ui_component_experience
+16/55 Test: ui_component_experience
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_experience_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_experience" start time: Oct 08 10:58 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+component experience light: 0 failures
+<end of output>
+Test time =   0.45 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_experience" end time: Oct 08 10:58 �й���׼ʱ��
+"ui_component_experience" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/55 Testing: ui_component_experience_webview2
+17/55 Test: ui_component_experience_webview2
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_experience_test.exe" "--webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_experience_webview2" start time: Oct 08 10:58 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+component experience actual WebView2: 0 failures
+<end of output>
+Test time =  13.67 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_experience_webview2" end time: Oct 08 10:58 �й���׼ʱ��
+"ui_component_experience_webview2" time elapsed: 00:00:13
+----------------------------------------------------------
+
+18/55 Testing: ui_light_glyph_padding
+18/55 Test: ui_light_glyph_padding
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_light_glyph_padding_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_light_glyph_padding" start time: Oct 08 10:58 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+load=0 host=00000192F7A9CE10 view=00000192F7AAE140
+capture=0 dimensions=40x40
+presentation=0 visible=1 rect=0,0,20,20 text=
+Explicit zero-padding icon: dark=22 extent=4..15 PASS
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_glyph_padding" end time: Oct 08 10:58 �й���׼ʱ��
+"ui_light_glyph_padding" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/55 Testing: ui_light_scroll
+19/55 Test: ui_light_scroll
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_light_scroll_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_light_scroll" start time: Oct 08 10:58 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+visible overflow bars windowed/windowless: 0 failures
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_scroll" end time: Oct 08 10:58 �й���׼ʱ��
+"ui_light_scroll" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/55 Testing: ui_component_scroll
+20/55 Test: ui_component_scroll
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_scroll_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_scroll" start time: Oct 08 10:58 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=table y=44 height=396 query=0+15
+end row first=99988 total=100000 rows=14 query=99986+17 nodes=135 status=0
+end column first=0 col=0 rows=15 query=0+15
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551603 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=780,44,12,396
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=780,44,12,396
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=8,40,784,28
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=8,40,784,28
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+complete range scroll light offscreen: 0 failures
+<end of output>
+Test time =   0.43 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_scroll" end time: Oct 08 10:58 �й���׼ʱ��
+"ui_component_scroll" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/55 Testing: ui_component_widths_webview2
+21/55 Test: ui_component_widths_webview2
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_widths_test.exe" "--webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_widths_webview2" start time: Oct 08 10:58 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Column experience actual Runtime queries44: 0 failures
+<end of output>
+Test time =   7.11 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_widths_webview2" end time: Oct 08 10:58 �й���׼ʱ��
+"ui_component_widths_webview2" time elapsed: 00:00:07
+----------------------------------------------------------
+
+22/55 Testing: ui_component_scroll_webview2
+22/55 Test: ui_component_scroll_webview2
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_scroll_test.exe" "--webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_scroll_webview2" start time: Oct 08 10:58 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=table y=44 height=396 query=0+15
+end row first=99988 total=100000 rows=14 query=99986+17 nodes=139 status=0
+end column first=0 col=0 rows=15 query=0+15
+max initial total=18446744073709551615 status=0 col=0 query=0+16
+uint64 endpoint first=18446744073709551603 total=18446744073709551615
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation scroll-v-track status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+presentation controls status=0 visible=0 rect=0,0,0,0 clip=0,0,0,0
+presentation next-page status=-4 visible=0 rect=0,0,0,0 clip=0,0,0,0
+Scroll-only viewport kind=tree/list y=8 height=452 query=0+17
+complete range scroll actual Runtime: 0 failures
+<end of output>
+Test time =  11.13 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_scroll_webview2" end time: Oct 08 10:59 �й���׼ʱ��
+"ui_component_scroll_webview2" time elapsed: 00:00:11
+----------------------------------------------------------
+
+23/55 Testing: ui_host_repaint
+23/55 Test: ui_host_repaint
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_host_repaint_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_host_repaint" start time: Oct 08 10:59 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+WINDOW invalidate-control hwnd0000000001E90AAA classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE invalidate-control elapsed203 cpu-ms0.000 paint1 queued-paint1 dispatched1 host-refresh0 wake0 layouts0 events0 handles257 GDI405 USER27
+MEASURE idle-0 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles257 GDI405 USER27
+MEASURE idle-1 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles257 GDI405 USER27
+MEASURE idle-2 elapsed2000 cpu-ms15.625 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles257 GDI405 USER27
+WINDOW resize hwnd0000000000570A76 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000001E90AAA classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd00000000024509EA classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd000000000724003C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd000000000094080E classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000000330800 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000003F0840 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000059207EC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed516 cpu-ms62.500 paint8 queued-paint8 dispatched8 host-refresh0 wake0 layouts3 events5 handles257 GDI368 USER27
+WINDOW resize hwnd0000000000570A76 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000001E90AAA classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd00000000024509EA classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd000000000724003C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd000000000094080E classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000000330800 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000003F0840 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000059207EC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed515 cpu-ms62.500 paint8 queued-paint8 dispatched8 host-refresh0 wake0 layouts3 events5 handles257 GDI393 USER27
+WINDOW resize hwnd0000000000570A76 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000001E90AAA classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions3
+WINDOW resize hwnd00000000024509EA classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd000000000724003C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd000000000094080E classStatic paint1 invalid-before1 invalid-after0 positions1
+WINDOW resize hwnd0000000000330800 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000003F0840 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW resize hwnd00000000059207EC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE resize elapsed500 cpu-ms62.500 paint8 queued-paint8 dispatched8 host-refresh0 wake0 layouts3 events5 handles257 GDI393 USER27
+WINDOW explicit-GL-frame hwnd0000000001E90AAA classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions1
+WINDOW explicit-GL-frame hwnd0000000000570A76 classUiFrameworkStandaloneHostV2 paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000024509EA classUiFrameworkApplicationContainerV1 paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd0000000000330800 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000003F0840 classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd00000000059207EC classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+WINDOW explicit-GL-frame hwnd000000000724003C classUIFrameworkLightWeb paint1 invalid-before1 invalid-after0 positions0
+MEASURE explicit-GL-frame elapsed516 cpu-ms15.625 paint7 queued-paint7 dispatched8 host-refresh0 wake0 layouts1 events4 handles257 GDI393 USER27
+MEASURE idle-after-GL elapsed2000 cpu-ms31.250 paint0 queued-paint0 dispatched0 host-refresh0 wake0 layouts0 events0 handles257 GDI393 USER27
+Host idle repaint: 0 failures
+<end of output>
+Test time =  12.91 sec
+----------------------------------------------------------
+Test Passed.
+"ui_host_repaint" end time: Oct 08 10:59 �й���׼ʱ��
+"ui_host_repaint" time elapsed: 00:00:12
+----------------------------------------------------------
+
+24/55 Testing: ui_visual_ui_light
+24/55 Test: ui_visual_ui_light
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_visual_ui_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_visual_ui_light" start time: Oct 08 10:59 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Header/content: 8,200 versus 8,200
+Header/content: 8,200 versus 8,200
+Panel title tooltip kind5 capture0000000000000000
+Dock tab tooltip kind5 capture0000000000000000
+Visual actual light DLL / OSMesa / dual instance: 0 failures
+<end of output>
+Test time =   5.74 sec
+----------------------------------------------------------
+Test Passed.
+"ui_visual_ui_light" end time: Oct 08 10:59 �й���׼ʱ��
+"ui_visual_ui_light" time elapsed: 00:00:05
+----------------------------------------------------------
+
+25/55 Testing: ui_visual_ui_webview2
+25/55 Test: ui_visual_ui_webview2
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_visual_ui_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_visual_ui_webview2" start time: Oct 08 10:59 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Header/content: 8,200 versus 8,200
+Header/content: 8,200 versus 8,200
+Panel title tooltip kind5 capture0000000000000000
+Dock tab tooltip kind5 capture0000000000000000
+Visual actual webview2 DLL / OSMesa / dual instance: 0 failures
+<end of output>
+Test time =   6.77 sec
+----------------------------------------------------------
+Test Passed.
+"ui_visual_ui_webview2" end time: Oct 08 10:59 �й���׼ʱ��
+"ui_visual_ui_webview2" time elapsed: 00:00:06
+----------------------------------------------------------
+
+26/55 Testing: ui_api7_integration
+26/55 Test: ui_api7_integration
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_api7_integration_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "light"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_api7_integration" start time: Oct 08 10:59 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=9348
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-light-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+API7 integration: reopen 1
+API7 integration: reopen 2
+API7 integration: reopen 3
+API7 integration: reopen 4
+API7 integration: reopen 5
+API7 integration: reopen 6
+API7 integration: reopen 7
+API7 reopen8 handles 222->222 GDI 3->3 USER 3->3 pending Runtime cleanup=0
+API7 complete offscreen lifecycle created HWNDs=0
+API7 independent light offscreen DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =   9.03 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api7_integration" end time: Oct 08 10:59 �й���׼ʱ��
+"ui_api7_integration" time elapsed: 00:00:09
+----------------------------------------------------------
+
+27/55 Testing: ui_api7_integration_webview2
+27/55 Test: ui_api7_integration_webview2
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_api7_integration_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/api7_fixture.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "webview2"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_api7_integration_webview2" start time: Oct 08 10:59 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API7 integration: initialize
+API7 integration: init-failure cleanup complete
+API7 integration: component editing complete
+API7 integration: layout complete
+API7 layout retains the application's actual GL display-list resource
+Actual GL C-image component capture white pixels=8589
+Actual API7 DLL llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4 edge_pixels=123 frame=api7-runtime-frame.ppm
+API7 integration: modal complete
+API7 integration: instances/resize complete
+API7 integration: reopen 0
+ Framework pending cleanup=0 process handles=373
+API7 integration: reopen 1
+ Framework pending cleanup=0 process handles=373
+API7 integration: reopen 2
+ Framework pending cleanup=0 process handles=373
+API7 integration: reopen 3
+ Framework pending cleanup=0 process handles=373
+API7 integration: reopen 4
+ Framework pending cleanup=0 process handles=373
+API7 integration: reopen 5
+ Framework pending cleanup=0 process handles=373
+API7 integration: reopen 6
+ Framework pending cleanup=0 process handles=373
+API7 integration: reopen 7
+ Framework pending cleanup=0 process handles=373
+API7 reopen8 handles 373->373 GDI 12->12 USER 15->15 pending Runtime cleanup=0
+API7 independent WebView2 DLL integration: 0 failures
+Runtime test: normal CRT exit callback reached
+<end of output>
+Test time =  16.19 sec
+----------------------------------------------------------
+Test Passed.
+"ui_api7_integration_webview2" end time: Oct 08 10:59 �й���׼ʱ��
+"ui_api7_integration_webview2" time elapsed: 00:00:16
+----------------------------------------------------------
+
+28/55 Testing: ui_session0_interactive_control
+28/55 Test: ui_session0_interactive_control
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_session0_gl_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/session0_gl_app.uapp" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll" "D:/应用软件框架/应用层序框架/build/language-20261008/after/session0-control" "--allow-interactive"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_session0_interactive_control" start time: Oct 08 10:59 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =  31.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_session0_interactive_control" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_session0_interactive_control" time elapsed: 00:00:31
+----------------------------------------------------------
+
+29/55 Testing: ui_offscreen_msaa
+29/55 Test: ui_offscreen_msaa
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_offscreen_msaa_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_offscreen_msaa" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Actual GL Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079 samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=9, process HWNDs=0, HWND dependency=1
+<end of output>
+Test time =   0.32 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_msaa" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_offscreen_msaa" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/55 Testing: ui_windowless_gl
+30/55 Test: ui_windowless_gl
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_offscreen_msaa_test.exe" "D:/应用软件框架/应用层序框架/.deps/mesa-24.3.4/x64/osmesa.dll"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_windowless_gl" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Actual GL Mesa / llvmpipe (LLVM 19.1.7, 256 bits) / 4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c) samples=4
+Actual triangle antialias partial pixels=119
+Non-MSAA actual samples=0 partial=0
+OSMesa reopen 1 handles=211 loaded=1
+OSMesa reopen 2 handles=211 loaded=1
+OSMesa reopen 3 handles=211 loaded=1
+OSMesa reopen 4 handles=211 loaded=1
+OSMesa reopen 5 handles=211 loaded=1
+OSMesa reopen 6 handles=211 loaded=1
+OSMesa reopen 7 handles=211 loaded=1
+OSMesa reopen 8 handles=211 loaded=1
+OSMesa reopen 9 handles=211 loaded=1
+OSMesa reopen 10 handles=211 loaded=1
+OSMesa reopen 11 handles=211 loaded=1
+OSMesa reopen 12 handles=211 loaded=1
+OSMesa reopen 13 handles=211 loaded=1
+OSMesa reopen 14 handles=211 loaded=1
+OSMesa reopen 15 handles=211 loaded=1
+OSMesa reopen 16 handles=211 loaded=1
+GL provider/MSAA: 0 failures, frame=5, windows=0, created HWNDs=0, process HWNDs=0, HWND dependency=2
+<end of output>
+Test time =   0.44 sec
+----------------------------------------------------------
+Test Passed.
+"ui_windowless_gl" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_windowless_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/55 Testing: ui_offscreen_gl
+31/55 Test: ui_offscreen_gl
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_offscreen_gl_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_offscreen_gl" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Offscreen GPU: Intel / Intel(R) UHD Graphics 770 / 3.3.0 - Build 32.0.101.7079; hidden HWND dependency; hardware class unknown
+Hidden WGL/FBO/frame/input/readback: 0 failures
+<end of output>
+Test time =   0.24 sec
+----------------------------------------------------------
+Test Passed.
+"ui_offscreen_gl" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_offscreen_gl" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/55 Testing: ui_workspace_offscreen
+32/55 Test: ui_workspace_offscreen
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_workspace_offscreen_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/framework_features.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_workspace_offscreen" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Offscreen actual DOM=89 cached rows=12 columns=4
+Workspace/shared DLL/real templates: 0 failures, HWNDs=0
+<end of output>
+Test time =   1.88 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace_offscreen" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_workspace_offscreen" time elapsed: 00:00:01
+----------------------------------------------------------
+
+33/55 Testing: ui_framework_features_host
+33/55 Test: ui_framework_features_host
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_framework_features_host_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/framework_features.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/features-host.bmp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_framework_features_host" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API4 actual host menus/overflow/instances: 0 failures
+<end of output>
+Test time =  12.63 sec
+----------------------------------------------------------
+Test Passed.
+"ui_framework_features_host" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_framework_features_host" time elapsed: 00:00:12
+----------------------------------------------------------
+
+34/55 Testing: ui_menu_offscreen
+34/55 Test: ui_menu_offscreen
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_menu_offscreen_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_menu_offscreen" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Real light/template offscreen: 0 failures; thread windows=0; no physical IME/DPI claim
+<end of output>
+Test time =   0.19 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_offscreen" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_menu_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+35/55 Testing: ui_menu_cascade_offscreen
+35/55 Test: ui_menu_cascade_offscreen
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_menu_cascade_offscreen_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_menu_cascade_offscreen" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+128 items, 118 page steps; shared cascade budget boundary at 13; command once; no menu HWND: 0 failures
+<end of output>
+Test time =   0.31 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_cascade_offscreen" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_menu_cascade_offscreen" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/55 Testing: ui_menu_access
+36/55 Test: ui_menu_access
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_menu_access_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_menu_access" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Menu Alt real template: 0 failures, calls=3
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"ui_menu_access" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_menu_access" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/55 Testing: ui_web_text_edit
+37/55 Test: ui_web_text_edit
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_web_text_edit_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_web_text_edit" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+FAIL 24: strstr(message,"A😀中文A😀中文")!=NULL
+Web editor: 1 failures. Physical Chinese IME remains unverified.
+<end of output>
+Test time =   0.33 sec
+----------------------------------------------------------
+Test Failed.
+"ui_web_text_edit" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_web_text_edit" time elapsed: 00:00:00
+----------------------------------------------------------
+
+38/55 Testing: ui_generic_web_host
+38/55 Test: ui_generic_web_host
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_generic_web_host_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/generic_components.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/web_counter.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_generic_web_host" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+Web update: TypeError: unsupported or oversized CSS declaration
+initial actual DOM=311 rows=19 columns=8
+Initial form dpi=96 status=0 field=96,78,146,28 view=0,0,250,636
+100k tail actual DOM=89 rows=12 columns=4
+100k expanded tree actual DOM=93 cached rows=2100 total=100100
+image bytes=462400 limit=33554432 evictions=0
+generic Web real host: 0 failures; physical IME/multiple monitors not tested
+<end of output>
+Test time =  15.36 sec
+----------------------------------------------------------
+Test Passed.
+"ui_generic_web_host" end time: Oct 08 11:00 �й���׼ʱ��
+"ui_generic_web_host" time elapsed: 00:00:15
+----------------------------------------------------------
+
+39/55 Testing: ui_component_resilience
+39/55 Test: ui_component_resilience
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_component_resilience_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/framework_features.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_component_resilience" start time: Oct 08 11:00 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+automatic style preview lifetime: 0 failures
+resource,0,0,0,18051072,7262208,177,60,5,0,0,0,0,0,0,0
+Web update: TypeError: cannot set property 'textContent' of null
+edit/layout mode 0: 0 failures
+edit/layout mode 1: 0 failures
+edit/layout mode 2: 0 failures
+edit/layout mode 3: 0 failures
+focus before refloat=00000000002406AC
+focus after refloat=00000000002406AC
+focus after modal close=00000000002406AC
+focus after redock=00000000002406AC
+edit/layout mode 4: 0 failures
+edit/layout mode 5: 0 failures
+record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count
+resource,563,1,1,145240064,111403008,323,1322,67,329,20,21894,93,9948,351512,85
+resource,563,1,2,145240064,111403008,323,1322,67,311,19,18680,93,8254,241672,59
+resource,1704,3,1,148017152,114188288,323,1432,67,343,21,23479,93,11642,444560,107
+resource,1704,3,2,148017152,114188288,323,1432,67,343,21,23459,93,9948,414992,100
+resource,2188,4,1,148103168,114274304,323,1432,67,343,21,23479,93,11642,444560,107
+resource,2188,4,2,148103168,114274304,323,1432,67,322,21,23458,93,11642,504032,121
+resource,2469,4,0,59088896,43954176,266,73,21,0,0,0,0,0,0,0
+resilience: 0 failures; 4 iterations; physical/manual checks remain open
+<end of output>
+Test time =   6.77 sec
+----------------------------------------------------------
+Test Passed.
+"ui_component_resilience" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_component_resilience" time elapsed: 00:00:06
+----------------------------------------------------------
+
+40/55 Testing: ui_application_contract
+40/55 Test: ui_application_contract
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_application_contract_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/web_counter.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/counter_mismatch.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_application_contract" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+current application declarations and Web/native contents: PASS
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"ui_application_contract" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_application_contract" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/55 Testing: ui_light_web_dynamic
+41/55 Test: ui_light_web_dynamic
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_light_web_dynamic_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_light_web_dynamic" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Dynamic Web probe: 0 failure(s), 6 messages, 250 incremental rebuilds
+<end of output>
+Test time =   0.26 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_web_dynamic" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_light_web_dynamic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/55 Testing: ui_web_shell_slots
+42/55 Test: ui_web_shell_slots
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_web_shell_slots_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_web_shell_slots" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Web shell content slots and legacy facade passed
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_shell_slots" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_web_shell_slots" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/55 Testing: ui_floating_web_dpi
+43/55 Test: ui_floating_web_dpi
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_floating_web_dpi_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_floating_web_dpi" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"ui_floating_web_dpi" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_floating_web_dpi" time elapsed: 00:00:00
+----------------------------------------------------------
+
+44/55 Testing: ui_light_web_parity
+44/55 Test: ui_light_web_parity
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/light_web_probe.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_light_web_parity" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Light Web probe: 0 failure(s), clicks=3, inputs=2, reloads=4
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"ui_light_web_parity" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_light_web_parity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+45/55 Testing: ui_workspace_integration
+45/55 Test: ui_workspace_integration
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_workspace_integration_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_lifecycle_fixture.dll" "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_application_cpp.dll"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_workspace_integration" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+open app: status -5 (Application DLL ABI does not match the manifest/runtime)
+FAIL: load lifecycle fixtures
+Workspace/module lifecycle: 1 failure(s)
+<end of output>
+Test time =   0.72 sec
+----------------------------------------------------------
+Test Failed.
+"ui_workspace_integration" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_workspace_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+46/55 Testing: ui_web_host_frontend
+46/55 Test: ui_web_host_frontend
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_web_host_frontend_test.exe" "D:/应用软件框架/应用层序框架/build/language-20261008/after/minimal_eda.uapp" "D:/应用软件框架/应用层序框架/build/language-20261008/after/cpp_fixture.uapp"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_web_host_frontend" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Basic parameter JSON: {"count":12,"name":"Draft 中","enabled":true,"extra":"keep"}
+Parameter recovery hint: status=0 visible=1 text=此参数需要在高级区域配置，原有参数保持。
+Short text tool width: 115
+Web host frontend passed.
+<end of output>
+Test time =   1.37 sec
+----------------------------------------------------------
+Test Passed.
+"ui_web_host_frontend" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_web_host_frontend" time elapsed: 00:00:01
+----------------------------------------------------------
+
+47/55 Testing: ui_native_activation
+47/55 Test: ui_native_activation
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_native_activation_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_native_activation" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native managed activation: 0 failure(s)
+<end of output>
+Test time =   0.63 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_activation" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_native_activation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+48/55 Testing: ui_dpi_integration
+48/55 Test: ui_dpi_integration
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_dpi_integration_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_dpi_integration" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+DPI integration: 0 failure(s)
+<end of output>
+Test time =   0.11 sec
+----------------------------------------------------------
+Test Passed.
+"ui_dpi_integration" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_dpi_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+49/55 Testing: ui_opengl_integration
+49/55 Test: ui_opengl_integration
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_opengl_integration_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_opengl_integration" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+legacy: Intel | Intel(R) UHD Graphics 770 | 4.6.0 - Build 32.0.101.7079
+gl.core: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.compatibility: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=0 debug=0
+gl.msaa_debug: Intel | Intel(R) UHD Graphics 770 | 3.3.0 - Build 32.0.101.7079 samples=4 debug=1
+OpenGL integration: 0 failure(s), 3 modern configurations supported
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"ui_opengl_integration" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_opengl_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+50/55 Testing: ui_surface_input
+50/55 Test: ui_surface_input
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_surface_input_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_surface_input" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Surface input integration: 0 failure(s)
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"ui_surface_input" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_surface_input" time elapsed: 00:00:00
+----------------------------------------------------------
+
+51/55 Testing: ui_monitor_transition
+51/55 Test: ui_monitor_transition
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_monitor_transition_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_monitor_transition" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Monitor transition environment: 1 monitor(s)
+SKIP: one monitor; a real cross-monitor DPI transition is unavailable
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"ui_monitor_transition" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_monitor_transition" time elapsed: 00:00:00
+----------------------------------------------------------
+
+52/55 Testing: ui_workspace7
+52/55 Test: ui_workspace7
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_workspace7_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_workspace7" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+API7 bottom/tabs: 0 failures
+<end of output>
+Test time =   0.19 sec
+----------------------------------------------------------
+Test Passed.
+"ui_workspace7" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_workspace7" time elapsed: 00:00:00
+----------------------------------------------------------
+
+53/55 Testing: ui_native_shell_integration
+53/55 Test: ui_native_shell_integration
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_native_shell_integration_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_native_shell_integration" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+native shell integration checks passed
+<end of output>
+Test time =   0.15 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_shell_integration" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_native_shell_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+54/55 Testing: ui_native_responsive
+54/55 Test: ui_native_responsive
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_native_responsive_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_native_responsive" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+Native responsive integration: 0 failure(s)
+<end of output>
+Test time =   0.22 sec
+----------------------------------------------------------
+Test Passed.
+"ui_native_responsive" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_native_responsive" time elapsed: 00:00:00
+----------------------------------------------------------
+
+55/55 Testing: ui_assistant_protocol
+55/55 Test: ui_assistant_protocol
+Command: "D:/应用软件框架/应用层序框架/build/language-20261008/after/ui_assistant_protocol_test.exe"
+Directory: D:/应用软件框架/应用层序框架/build/language-20261008/after
+"ui_assistant_protocol" start time: Oct 08 11:01 �й���׼ʱ��
+Output:
+----------------------------------------------------------
+assistant protocol: 0 failure(s)
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"ui_assistant_protocol" end time: Oct 08 11:01 �й���׼ʱ��
+"ui_assistant_protocol" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 08 11:01 �й���׼ʱ��

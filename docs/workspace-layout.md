@@ -1,6 +1,6 @@
-# 工作区布局：API8
+# 工作区布局：API9
 
-SDK0.8.0开发版、API8、标准修订8；Windows x64/C11/C ABI。接口见[shell.h](../include/ui_framework/shell.h)，实现见[Win32 shell](../src/platform/win32_shell.c)与[布局实现](../src/platform/shell_layout.inc)。应用ABI和包格式仍为1，当前API8完整size与布局格式合同继续维护；历史调用方兼容不再承诺。
+SDK0.9.0开发版、API9、标准修订9；Windows x64/C11/C ABI。接口见[shell.h](../include/ui_framework/shell.h)，实现见[Win32 shell](../src/platform/win32_shell.c)与[布局实现](../src/platform/shell_layout.inc)。应用ABI和包格式仍为1，当前API9完整size与布局格式合同继续维护；历史调用方兼容不再承诺。
 
 设计顺序是保存/恢复、分隔条、拖拽停靠。当前模型支持左右侧栏的有序面板栈、面板高度、单面板折叠/关闭、浮动窗口与侧栏宽度，复用既有内容槽、组件和surface生命周期。API7新增底部和同区标签组；不支持任意嵌套分割树。
 
@@ -63,7 +63,7 @@ dock_panel_tab(moving,anchor)把已有面板移入anchor同区组并激活，浮
 
 API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认；初始有/无窗口布局为其分配底部空间，reset回到注册默认底部。直接声明与事后移动同样保留内容生命周期，见[注册复现和修复](validation/api7-validation.md)。
 
-当前维护范围按[版本政策](version-policy.md)只覆盖接手确认的API8；本文格式1读取及完整size字段行为是当前合同，历史SDK/API调用方兼容专项不再列入CI门槛。
+当前维护范围按[版本政策](version-policy.md)只覆盖接手确认的API9；本文格式1读取及完整size字段行为是当前合同，历史SDK/API调用方兼容专项不再列入CI门槛。
 
 当前交付来源、CI与环境限制见[体验验收](validation/component-experience-validation.md)；此前API7收敛记录保持原版本和结果。真实业务布局存储/恢复试点步骤见[准备清单](business-pilot.md)，框架测试DLL不替代业务文档恢复验收。
 
@@ -79,4 +79,9 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 
 ## 应用文件接入示例
 
-[API8完整示例](../examples/stateful_components/README.md)在全部注册、mount及GL初始化后加载，用户明确保存时将 ULYT 与 UCW1 一起写入稳定档案文件。异常两部分恢复立即回滚，缺失文件保留初始布局；原对象、内容槽和GL保持。档案身份跨重启稳定，不以本次instance_id作文件名；原格式、存储责任和公共接口未变。[本轮实际证据](validation/api8-stability-state-validation.md)与历史布局用例分别报告。
+[当前完整示例](../examples/stateful_components/README.md)在全部注册、mount及GL初始化后加载，用户明确保存时将 ULYT 与 UCW1 一起写入稳定档案文件。异常两部分恢复立即回滚，缺失文件保留初始布局；原对象、内容槽和GL保持。档案身份跨重启稳定，不以本次instance_id作文件名；原格式、存储责任和公共接口未变。[本轮实际证据](validation/api8-stability-state-validation.md)与历史布局用例分别报告。
+
+
+## API9 面板文本更新
+
+ui_host_set_title按稳定panel ID更新标题；停靠标签、浮动标题和宿主摘要原位刷新。标题不是持久化身份，语言变化不改变布局格式、分隔条状态、原HWND或GL context。实例自己的弹窗沿用本host语言，浮动工具复用框架字典。语言设置仍由应用存储，见[语言合同](instance-language.md)。

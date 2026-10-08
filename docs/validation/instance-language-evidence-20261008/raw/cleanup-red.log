@@ -1,0 +1,4 @@
+language line44: ui_host_set_language_callback(first,NULL,NULL)==UI_STATUS_OK
+language line44: first->language_callback==NULL
+REAL_WINDOWS_UI first=zh-CN effective=zh-CN provider=1 fallback=0
+Language core 2 failures; synthetic mapping is separate from real system query

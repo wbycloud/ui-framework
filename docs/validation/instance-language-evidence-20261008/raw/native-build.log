@@ -1,0 +1,61 @@
+[1/65] Building C object CMakeFiles\ui_framework.dir\src\assistant.c.obj
+[2/65] Building C object CMakeFiles\ui_framework.dir\src\platform\win32_surface.c.obj
+[3/65] Building C object CMakeFiles\ui_framework.dir\src\language.c.obj
+[4/65] Building C object CMakeFiles\ui_framework.dir\src\images.c.obj
+[5/65] Building C object CMakeFiles\ui_framework.dir\src\menus.c.obj
+[6/65] Building C object CMakeFiles\ui_framework.dir\src\ui.c.obj
+[7/65] Building C object CMakeFiles\ui_framework_shared.dir\src\assistant.c.obj
+[8/65] Building C object CMakeFiles\ui_framework_shared.dir\src\ui.c.obj
+[9/65] Building C object CMakeFiles\ui_framework.dir\src\platform\win32_shell.c.obj
+[10/65] Building C object CMakeFiles\ui_framework.dir\src\components.c.obj
+[11/65] Building C object CMakeFiles\ui_framework_shared.dir\src\language.c.obj
+[12/65] Linking C static library ui_framework.lib
+[13/65] Building C object CMakeFiles\ui_framework_shared.dir\src\platform\win32_surface.c.obj
+[14/65] Building C object CMakeFiles\ui_framework_shared.dir\src\workspace.c.obj
+[15/65] Building C object CMakeFiles\ui_framework_shared.dir\src\images.c.obj
+[16/65] Building C object CMakeFiles\ui_framework_shared.dir\src\menus.c.obj
+[17/65] Building C object CMakeFiles\ui_framework_headless.dir\src\assistant.c.obj
+[18/65] Building C object CMakeFiles\ui_framework_headless.dir\src\ui.c.obj
+[19/65] Building C object CMakeFiles\ui_framework_shared.dir\src\platform\win32_shell.c.obj
+[20/65] Building C object CMakeFiles\ui_framework_headless.dir\src\platform\headless_surface.c.obj
+[21/65] Building C object CMakeFiles\ui_framework_shared.dir\src\components.c.obj
+[22/65] Building C object CMakeFiles\ui_framework_headless.dir\src\platform\headless_shell.c.obj
+[23/65] Linking C executable uapp_pack.exe
+[24/65] Building C object CMakeFiles\ui_framework_headless.dir\src\language.c.obj
+[25/65] Building C object CMakeFiles\ui_public_headers_c_test.dir\tests\public_headers.c.obj
+[26/65] Building C object CMakeFiles\ui_framework_headless.dir\src\images.c.obj
+[27/65] Building C object CMakeFiles\ui_framework_headless.dir\src\menus.c.obj
+[28/65] Building C object CMakeFiles\ui_language_core_test.dir\tests\language_core.c.obj
+[29/65] Building C object CMakeFiles\ui_workspace_layout_test.dir\tests\workspace_layout.c.obj
+[30/65] Building C object CMakeFiles\ui_framework_headless.dir\src\components.c.obj
+[31/65] Building C object CMakeFiles\ui_images_windows_test.dir\tests\images_windows.c.obj
+[32/65] Building C object CMakeFiles\ui_workspace7_test.dir\tests\workspace7.c.obj
+[33/65] Linking C executable minimal_eda.exe
+[34/65] Linking C executable ui_package_format_test.exe
+[35/65] Linking C shared library ui_framework.dll
+[36/58] Linking C static library ui_framework_headless.lib
+[37/58] Linking C executable ui_workspace_layout_test.exe
+[38/58] Linking C executable ui_language_core_test.exe
+[39/58] Linking C executable ui_native_activation_test.exe
+[40/58] Linking C executable ui_dpi_integration_test.exe
+[41/58] Linking C executable ui_opengl_integration_test.exe
+[42/58] Linking C executable ui_surface_input_test.exe
+[43/58] Linking C executable ui_images_windows_test.exe
+[44/58] Generating session0_gl_app.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/language-20261008/native/session0_gl_app.uapp
+[45/58] Generating minimal_eda.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/language-20261008/native/minimal_eda.uapp
+[46/58] Linking C executable ui_responsive_layout_test.exe
+[47/58] Linking C executable ui_dpi_web_failure_test.exe
+[48/58] Linking C executable ui_components_core_test.exe
+[49/58] Linking C executable ui_assistant_lifecycle_test.exe
+[50/58] Linking C executable ui_public_headers_c_test.exe
+[51/58] Linking C executable ui_headless_example.exe
+[52/58] Linking CXX executable ui_public_headers_cpp_test.exe
+[53/58] Linking C executable ui_monitor_transition_test.exe
+[54/58] Linking C executable ui_workspace7_test.exe
+[55/58] Generating cpp_fixture.uapp
+Created application package: D:/应用软件框架/应用层序框架/build/language-20261008/native/cpp_fixture.uapp
+[56/58] Linking C executable ui_native_shell_integration_test.exe
+[57/58] Linking C executable ui_native_responsive_test.exe
+[58/58] Linking C executable ui_assistant_protocol_test.exe

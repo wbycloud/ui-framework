@@ -1,0 +1,154 @@
+Test project D:/应用软件框架/应用层序框架/build/language-20261008/after
+      Start  1: ui_language_core
+ 1/62 Test  #1: ui_language_core ...................   Passed    0.14 sec
+      Start  2: ui_package_format
+ 2/62 Test  #2: ui_package_format ..................   Passed    0.15 sec
+      Start  3: ui_images_windows
+ 3/62 Test  #3: ui_images_windows ..................   Passed    0.05 sec
+      Start  4: ui_responsive_layout
+ 4/62 Test  #4: ui_responsive_layout ...............   Passed    0.05 sec
+      Start  5: ui_assistant_lifecycle
+ 5/62 Test  #5: ui_assistant_lifecycle .............   Passed    0.04 sec
+      Start  6: ui_dpi_web_failure
+ 6/62 Test  #6: ui_dpi_web_failure .................   Passed    0.04 sec
+      Start  7: ui_components_core
+ 7/62 Test  #7: ui_components_core .................   Passed    0.06 sec
+      Start  8: ui_headless_example
+ 8/62 Test  #8: ui_headless_example ................   Passed    0.05 sec
+      Start  9: ui_public_headers_c
+ 9/62 Test  #9: ui_public_headers_c ................   Passed    0.04 sec
+      Start 10: ui_public_headers_cpp
+10/62 Test #10: ui_public_headers_cpp ..............   Passed    0.04 sec
+      Start 11: ui_webview2_parity
+11/62 Test #11: ui_webview2_parity .................   Passed    0.59 sec
+      Start 12: ui_webview2_messages
+12/62 Test #12: ui_webview2_messages ...............   Passed    0.60 sec
+      Start 13: ui_webview2_render
+13/62 Test #13: ui_webview2_render .................   Passed    9.35 sec
+      Start 14: ui_workspace_layout
+14/62 Test #14: ui_workspace_layout ................   Passed    0.62 sec
+      Start 15: ui_component_widths
+15/62 Test #15: ui_component_widths ................   Passed    1.55 sec
+      Start 16: ui_component_experience
+16/62 Test #16: ui_component_experience ............   Passed    0.50 sec
+      Start 17: ui_component_experience_webview2
+17/62 Test #17: ui_component_experience_webview2 ...   Passed   13.18 sec
+      Start 18: ui_component_scroll_native
+18/62 Test #18: ui_component_scroll_native .........   Passed   21.50 sec
+      Start 19: ui_light_glyph_padding
+19/62 Test #19: ui_light_glyph_padding .............   Passed    0.09 sec
+      Start 20: ui_light_scroll
+20/62 Test #20: ui_light_scroll ....................   Passed    0.15 sec
+      Start 21: ui_component_scroll
+21/62 Test #21: ui_component_scroll ................   Passed    0.44 sec
+      Start 22: ui_component_widths_webview2
+22/62 Test #22: ui_component_widths_webview2 .......   Passed    5.64 sec
+      Start 23: ui_component_scroll_webview2
+23/62 Test #23: ui_component_scroll_webview2 .......   Passed    8.17 sec
+      Start 24: ui_host_repaint
+24/62 Test #24: ui_host_repaint ....................   Passed   12.66 sec
+      Start 25: ui_stateful_components_light
+25/62 Test #25: ui_stateful_components_light .......   Passed   36.25 sec
+      Start 26: ui_instance_language_light
+26/62 Test #26: ui_instance_language_light .........   Passed   64.61 sec
+      Start 27: ui_stateful_components_webview2
+27/62 Test #27: ui_stateful_components_webview2 ....   Passed   36.35 sec
+      Start 28: ui_instance_language_webview2
+28/62 Test #28: ui_instance_language_webview2 ......   Passed   67.08 sec
+      Start 29: ui_visual_ui_light
+29/62 Test #29: ui_visual_ui_light .................   Passed    5.76 sec
+      Start 30: ui_visual_ui_webview2
+30/62 Test #30: ui_visual_ui_webview2 ..............   Passed    6.41 sec
+      Start 31: ui_api7_integration
+31/62 Test #31: ui_api7_integration ................   Passed    9.16 sec
+      Start 32: ui_api7_integration_webview2
+32/62 Test #32: ui_api7_integration_webview2 .......   Passed   14.61 sec
+      Start 33: ui_session0_interactive_control
+33/62 Test #33: ui_session0_interactive_control ....   Passed   31.88 sec
+      Start 34: ui_offscreen_msaa
+34/62 Test #34: ui_offscreen_msaa ..................   Passed    0.27 sec
+      Start 35: ui_windowless_gl
+35/62 Test #35: ui_windowless_gl ...................   Passed    0.45 sec
+      Start 36: ui_offscreen_gl
+36/62 Test #36: ui_offscreen_gl ....................   Passed    0.38 sec
+      Start 37: ui_workspace_offscreen
+37/62 Test #37: ui_workspace_offscreen .............   Passed    1.86 sec
+      Start 38: ui_framework_features_host
+38/62 Test #38: ui_framework_features_host .........   Passed   14.45 sec
+      Start 39: ui_menu_desktop
+39/62 Test #39: ui_menu_desktop ....................   Passed    7.89 sec
+      Start 40: ui_menu_offscreen
+40/62 Test #40: ui_menu_offscreen ..................   Passed    0.23 sec
+      Start 41: ui_menu_cascade_offscreen
+41/62 Test #41: ui_menu_cascade_offscreen ..........   Passed    0.32 sec
+      Start 42: ui_menu_access
+42/62 Test #42: ui_menu_access .....................   Passed    0.19 sec
+      Start 43: ui_web_text_edit
+43/62 Test #43: ui_web_text_edit ...................   Passed    0.17 sec
+      Start 44: ui_generic_web_host
+44/62 Test #44: ui_generic_web_host ................   Passed    9.77 sec
+      Start 45: ui_component_resilience
+45/62 Test #45: ui_component_resilience ............   Passed    6.65 sec
+      Start 46: ui_application_contract
+46/62 Test #46: ui_application_contract ............   Passed    0.34 sec
+      Start 47: ui_light_web_dynamic
+47/62 Test #47: ui_light_web_dynamic ...............   Passed    0.27 sec
+      Start 48: ui_web_shell_slots
+48/62 Test #48: ui_web_shell_slots .................   Passed    0.17 sec
+      Start 49: ui_floating_web_dpi
+49/62 Test #49: ui_floating_web_dpi ................   Passed    0.16 sec
+      Start 50: ui_light_web_parity
+50/62 Test #50: ui_light_web_parity ................   Passed    0.24 sec
+      Start 51: ui_workspace_integration
+51/62 Test #51: ui_workspace_integration ...........   Passed    1.57 sec
+      Start 52: ui_browser_host
+52/62 Test #52: ui_browser_host ....................***Failed    5.08 sec
+line 76: id&&get_instance(h,id,&info)
+line 77: ui_host_invoke(info.host,"fixture.close_refuse","{}","web.user")!=0
+line 77: IsWindow(h->hwnd)&&!h->exiting&&ui_workspace_count(h->workspace)==1
+line 78: ui_host_invoke(info.host,"fixture.close_wait","{}","web.user")!=0
+line 78: IsWindow(h->hwnd)&&get_instance(h,id,&info)&&info.closing
+line 79: ui_web_view_get_presentation(h->view,tab,&state)==UI_STATUS_OK&&!state.enabled
+line 80: ui_workspace_post_close_complete(h->workspace,id,UI_APP_CLOSE_REFUSE)==UI_STATUS_OK
+line 80: get_instance(h,id,&info)&&!info.closing
+line 81: click(h->view,"window-close")
+line 81: IsWindow(h->hwnd)&&h->exiting&&get_instance(h,id,&info)&&info.closing
+line 81: ui_workspace_post_close_complete(h->workspace,id,UI_APP_CLOSE_ALLOW)==UI_STATUS_OK
+Recent row text=[] newest=[C:\Users\wbycl\AppData\Local\Temp\ubhD266.tmp\app12.uapp]
+Actual drag 40,40 -> 80,70
+Resize actual target 000000000CA0112E host 000000000CA0112E chrome 0000000001400B18 capture 0000000000000000
+Resize actual right 1280 -> 1310
+24 actual DLL reopen/close: handles 297 -> 297 GDI 72 -> 72 USER 23 -> 23
+Browser host: 11 failures
+
+      Start 53: ui_web_host_frontend
+53/62 Test #53: ui_web_host_frontend ...............   Passed    1.33 sec
+      Start 54: ui_native_activation
+54/62 Test #54: ui_native_activation ...............   Passed    0.73 sec
+      Start 55: ui_dpi_integration
+55/62 Test #55: ui_dpi_integration .................   Passed    0.10 sec
+      Start 56: ui_opengl_integration
+56/62 Test #56: ui_opengl_integration ..............   Passed    0.32 sec
+      Start 57: ui_surface_input
+57/62 Test #57: ui_surface_input ...................   Passed    0.18 sec
+      Start 58: ui_monitor_transition
+58/62 Test #58: ui_monitor_transition ..............***Skipped   0.12 sec
+      Start 59: ui_workspace7
+59/62 Test #59: ui_workspace7 ......................   Passed    0.18 sec
+      Start 60: ui_native_shell_integration
+60/62 Test #60: ui_native_shell_integration ........   Passed    0.18 sec
+      Start 61: ui_native_responsive
+61/62 Test #61: ui_native_responsive ...............   Passed    0.22 sec
+      Start 62: ui_assistant_protocol
+62/62 Test #62: ui_assistant_protocol ..............   Passed    0.15 sec
+
+98% tests passed, 1 tests failed out of 62
+
+Total Test time (real) = 402.87 sec
+
+The following tests did not run:
+	 58 - ui_monitor_transition (Skipped)
+
+The following tests FAILED:
+	 52 - ui_browser_host (Failed)
+Errors while running CTest

@@ -1,0 +1,6 @@
+from pathlib import Path
+p=Path('tests/instance_language.c');s=p.read_text(encoding='utf-8').replace('key.key_code=!strcmp(id,"language.zh")?36:40;CHECK(ui_host_menu_dispatch_input(host,&key)==UI_STATUS_OK);key.key_code=13;', 'if(strcmp(id,"language.zh")){key.key_code=40;CHECK(ui_host_menu_dispatch_input(host,&key)==UI_STATUS_OK);}key.key_code=13;')
+s=s.replace('if(language_dialog)click_rect(language_dialog,&submit.clip,dpi);','if(language_dialog){if(semantic_input){ui_input_event_t e={0};e.size=sizeof(e);e.x=submit.clip.x+submit.clip.width/2;e.y=submit.clip.y+submit.clip.height/2;e.pointer_button=1;e.kind=UI_INPUT_POINTER_DOWN;CHECK(ui_component_dispatch_input(dialog,&e)==UI_STATUS_OK);e.kind=UI_INPUT_POINTER_UP;CHECK(ui_component_dispatch_input(dialog,&e)==UI_STATUS_OK);pump(100);}else click_rect(language_dialog,&submit.clip,dpi);}')
+p.write_text(s,encoding='utf-8')
+p=Path('examples/stateful_components/app.ini');s=p.read_text(encoding='utf-8').replace('name=API8 durable state example','name=Stateful Components');p.write_text(s,encoding='utf-8')
+p=Path('tests/run-stateful-components.ps1');s=p.read_text(encoding='utf-8').replace('frameworkApi=8;','frameworkApi=9;');p.write_text(s,encoding='utf-8')
