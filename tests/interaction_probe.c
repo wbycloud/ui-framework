@@ -67,7 +67,8 @@ static HWND content_view(HWND parent)
 static void extent(int width,int height,int dpi)
 {RECT r;program_dpi=dpi;SetWindowPos(root,NULL,60,60,width,height,SWP_NOZORDER);check(ui_host_set_dpi(host,(uint32_t)dpi)==UI_STATUS_OK,"program DPI");GetClientRect(root,&r);check(ui_host_resize(host,MulDiv(r.right,96,dpi),MulDiv(r.bottom,96,dpi))==UI_STATUS_OK,"physical to logical host size");check(ui_native_shell_reflow(native)==UI_STATUS_OK,"reflow after program resize");pump(150);printf("DPI program=%d window=%u client-physical=%ld,%ld\n",dpi,GetDpiForWindow(root),r.right,r.bottom);}
 static POINT element_point(ui_component_t *c,const char *id,HWND view,int right,int bottom)
-{ui_element_presentation_t p={0};POINT at={0};p.size=sizeof(p);check(present(c,id,&p)==UI_STATUS_OK,"element presentation");at.x=MulDiv(p.rect.x+(right?p.rect.width-(runtime_backend?5:15):20),program_dpi,96);at.y=MulDiv(p.rect.y+(bottom?p.rect.height-20:12),program_dpi,96);ClientToScreen(view,&at);return at;}
+/* Runtime's visible thumb is inside the textarea border, not its outer edge. */
+{ui_element_presentation_t p={0};POINT at={0};p.size=sizeof(p);check(present(c,id,&p)==UI_STATUS_OK,"element presentation");at.x=MulDiv(p.rect.x+(right?p.rect.width-(runtime_backend?12:15):20),program_dpi,96);at.y=MulDiv(p.rect.y+(bottom?p.rect.height-20:12),program_dpi,96);ClientToScreen(view,&at);return at;}
 static void accept(ui_host_t *h,uint64_t request,const char *id,const char *params,const char *source,void *user)
 {(void)params;(void)source;(void)user;if(!strcmp(id,"accept"))++submits;else ++cancels;ui_host_reply(h,request,1,"{}");}
 static ui_component_t *form(ui_content_slot_t *slot,int dialog)
