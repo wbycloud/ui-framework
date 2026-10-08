@@ -793,6 +793,9 @@ static void lw_layout_node(lw_view_t *view, int index, ui_rect_t rect, ui_rect_t
          if(wide){do{end=start;while(wide[end]&&wide[end]!=L'\n')++end;GetTextExtentPoint32W(dc,wide+start,end-start,&extent);if(MulDiv(extent.cx,96,(int)view->dpi)>node->content_width)node->content_width=MulDiv(extent.cx,96,(int)view->dpi);if(!wide[end])break;start=end+1;}while(1);free(wide);}if(old)SelectObject(dc,old);ReleaseDC(view->hwnd,dc);}}
     node->bar_x=node->bar_y=0;
     for(int pass=0;pass<2;++pass){
+        if(node->kind<2&&node->first_child<0&&*node->text&&(node->style.scroll||node->style.scroll_x)){
+            wchar_t *wide=lw_wide(node->text);HDC dc=GetDC(view->hwnd);HGDIOBJ old=node->font?SelectObject(dc,node->font):NULL;RECT measured={0,0,lw_pixel(inner.width,view->dpi),0};
+            if(wide){DrawTextW(dc,wide,-1,&measured,DT_CALCRECT|DT_NOPREFIX|(node->style.nowrap?DT_SINGLELINE:DT_WORDBREAK));node->content_height=MulDiv(measured.bottom,96,(int)view->dpi);node->content_width=MulDiv(measured.right,96,(int)view->dpi);free(wide);}if(old)SelectObject(dc,old);ReleaseDC(view->hwnd,dc);}
         if(!node->bar_y&&node->style.scroll&&node->content_height>inner.height){node->bar_y=1;inner.width=inner.width>12?inner.width-12:0;}
         if(!node->bar_x&&node->style.scroll_x&&node->content_width>inner.width){node->bar_x=1;inner.height=inner.height>12?inner.height-12:0;}
     }
@@ -1589,7 +1592,9 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
                 rect.bottom -= lw_pixel(node->style.padding[2] + node->style.border,view->dpi);
                 if (node->kind == 2 || node->style.nowrap) flags |= DT_VCENTER | DT_SINGLELINE | DT_END_ELLIPSIS;
                 else flags |= DT_WORDBREAK;
-                DrawTextW(dc,text,-1,&rect,flags); free(text);
+                {int text_saved=0;if(node->kind<2&&node->first_child<0&&(node->style.scroll||node->style.scroll_x)){RECT viewport=lw_pixel_rect(view,node->viewport);text_saved=SaveDC(dc);IntersectClipRect(dc,viewport.left,viewport.top,viewport.right,viewport.bottom);
+                    rect.left=viewport.left-lw_pixel(node->scroll_x,view->dpi);rect.top=viewport.top-lw_pixel(node->scroll_y,view->dpi);rect.right=rect.left+lw_pixel(node->content_width,view->dpi);rect.bottom=rect.top+lw_pixel(node->content_height,view->dpi);}
+                    DrawTextW(dc,text,-1,&rect,flags);if(text_saved)RestoreDC(dc,text_saved);}free(text);
             }
         }
         if (view->focused == i && !lw_input(node)) {
