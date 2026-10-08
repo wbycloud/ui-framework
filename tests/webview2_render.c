@@ -14,7 +14,7 @@ static void shortcut(ui_host_t *h,uint64_t request,const char *id,const char *pa
 {(void)id;(void)params;(void)origin;(void)data;++shortcuts;(void)ui_host_reply(h,request,1,"{}");}
 #define CHECK(x) do{if(!(x)){fprintf(stderr,"line %d: %s\n",__LINE__,#x);++failures;}}while(0)
 static void pump(void){MSG m;while(PeekMessageW(&m,NULL,0,0,PM_REMOVE)){TranslateMessage(&m);DispatchMessageW(&m);}Sleep(1);}
-static void ready(ui_web_view_t *v){ULONGLONG start=GetTickCount64();int r=0,n=0;while(GetTickCount64()-start<15000){pump();CHECK(ui_webview2_view_get_state(v,&r,&n)==UI_STATUS_OK);if(r&&n)return;}CHECK(r&&n);}
+static void ready(ui_web_view_t *v){static unsigned call;ULONGLONG start=GetTickCount64();int r=0,n=0;++call;while(GetTickCount64()-start<15000){pump();CHECK(ui_webview2_view_get_state(v,&r,&n)==UI_STATUS_OK);if(r&&n){printf("Runtime ready call %u: %llu ms\n",call,(unsigned long long)(GetTickCount64()-start));return;}}fprintf(stderr,"Runtime ready timeout call %u: controller=%d navigation=%d elapsed=%llu ms\n",call,r,n,(unsigned long long)(GetTickCount64()-start));CHECK(r&&n);}
 static ui_status_t query(ui_web_view_t *v,const char *id,ui_element_presentation_t *p)
 {ULONGLONG start=GetTickCount64();ui_status_t s;do{s=ui_web_view_get_presentation(v,id,p);if(s!=UI_STATUS_PENDING)return s;pump();}while(GetTickCount64()-start<5000);return s;}
 static ui_status_t capture(ui_web_view_t *v,ui_pixel_buffer_t *p)

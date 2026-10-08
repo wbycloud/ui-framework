@@ -1,5 +1,6 @@
 #include "ui_internal.h"
 #include "json_ui.h"
+#include "language_json.h"
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -43,6 +44,9 @@ struct ui_component {
     const ui_rect_t *tooltip_anchor; /* Borrowed only during show_tooltip. */
     uint64_t tooltip_row_id;
     ui_field_desc_t *fields;
+    char **option_labels[64];
+    const char *validation_errors[64];
+    size_t description_bytes;
     ui_cell_t *values, *drafts;
     uint64_t generation, next_request, first, selected, use_sequence;
     uint64_t *selection, selection_request, selection_anchor, selection_anchor_id;
@@ -200,9 +204,9 @@ static ui_status_t cell_preview(ui_component_t *c,ui_cell_t *cell)
 }
 const char *ui_host_status_text(const ui_host_t *host)
 {const ui_component_t *c;for(c=host->components;c;c=c->next)if(c->desc.kind==UI_COMPONENT_STATUS&&c->visible)return c->desc.title;return "";}
+#include "component_language.inc"
 ui_status_t ui_component_set_text(ui_component_t *c,const char *text)
-{size_t bytes=0;char *copy;if(!c)return UI_STATUS_INVALID_ARGUMENT;copy=copy_string(text,&bytes);if(!copy)return UI_STATUS_INVALID_ARGUMENT;
- free((void *)c->desc.title);c->desc.title=copy;render_component(c);return ui_host_emit_event(c->host,"ui.components.changed","{}");}
+{return ui_component_set_title(c,text?text:"");}
 static void free_description(ui_component_t *c)
 {
     free((void *)c->desc.sort_command);free(c->selection);
@@ -211,6 +215,7 @@ static void free_description(ui_component_t *c)
     for(i=0;i<c->desc.field_count;++i){ui_field_desc_t *f=&c->fields[i];
         free((void *)f->id);free((void *)f->title);free((void *)f->unit);free((void *)f->group);free((void *)f->help);
         for(j=0;j<f->option_count;++j)free((void *)f->options[j]);free((void *)f->options);
+        if(c->option_labels[i]){for(j=0;j<f->option_count;++j)free(c->option_labels[i][j]);free(c->option_labels[i]);}
         free_cell(&c->values[i]);free_cell(&c->drafts[i]);}
     free(c->columns);free(c->fields);free(c->values);free(c->drafts);
     free((void *)c->desc.commands.select);free((void *)c->desc.commands.edit);
@@ -271,7 +276,7 @@ ui_status_t ui_component_register(ui_host_t *host,const ui_component_desc_t *d,u
     }
     c->desc.columns=c->columns;c->desc.fields=c->fields;c->generation=++host->component_generation;
     c->visible=1;c->visible_count=20;c->column_count=d->column_count;c->desc.row_height=d->row_height?d->row_height:32;
-    c->next=host->components;host->components=c;*out=c;return UI_STATUS_OK;
+    c->description_bytes=bytes;c->next=host->components;host->components=c;*out=c;return UI_STATUS_OK;
 failed:free_description(c);free(c);return status;
 }
 ui_status_t ui_component_get_state(const ui_component_t *c,ui_component_state_t *s)
@@ -430,7 +435,7 @@ ui_status_t ui_component_set_field(ui_component_t *c,const char *id,const ui_cel
         if(!copy_cell(&draft,value,&bytes)){free_cell(&copy);return UI_STATUS_OUT_OF_MEMORY;}
         copy.flags|=c->fields[i].flags&(UI_VALUE_REQUIRED|UI_VALUE_MULTILINE);draft.flags=copy.flags;
         free_cell(&c->values[i]);c->values[i]=copy;
-        if(!(c->drafts[i].flags&UI_VALUE_MODIFIED)){free_cell(&c->drafts[i]);c->drafts[i]=draft;}
+        if(!(c->drafts[i].flags&UI_VALUE_MODIFIED)){free_cell(&c->drafts[i]);c->drafts[i]=draft;c->validation_errors[i]=NULL;}
         else{c->drafts[i].flags=(copy.flags&~UI_VALUE_MODIFIED)|UI_VALUE_MODIFIED;free_cell(&draft);}
         render_component(c);return UI_STATUS_OK;}
     return UI_STATUS_NOT_FOUND;
@@ -440,7 +445,7 @@ ui_status_t ui_component_set_error(ui_component_t *c,const char *id,const char *
     size_t i,bytes=0;char *copy;if(!c||!id)return UI_STATUS_INVALID_ARGUMENT;
     for(i=0;i<c->desc.field_count;++i)if(!strcmp(c->fields[i].id,id)){
         copy=copy_string(error,&bytes);if(!copy)return UI_STATUS_INVALID_ARGUMENT;
-        free((void *)c->drafts[i].error);c->drafts[i].error=copy;render_component(c);return UI_STATUS_OK;}
+        free((void *)c->drafts[i].error);c->drafts[i].error=copy;c->validation_errors[i]=NULL;render_component(c);return UI_STATUS_OK;}
     return UI_STATUS_NOT_FOUND;
 }
 ui_status_t ui_component_accept_fields(ui_component_t *c)
@@ -581,7 +586,7 @@ static void render_component(ui_component_t *c)
         if(c->first>=total){(void)query_viewport(c,total?total-1:0,c->first_column,0);root=page(c,0,0);}}
     uj_fmt(&json,"{\"kind\":%d,\"rowHeight\":%d,\"width\":%d,\"height\":%d,\"first\":\"%llu\",\"total\":\"%llu\",\"selected\":\"%llu\",\"title\":",
         c->desc.kind,c->desc.row_height,c->width,c->height,(unsigned long long)c->first,(unsigned long long)(c->desc.kind==UI_COMPONENT_TREE?tree_total(c):(root?root->total:0)),(unsigned long long)c->selected);
-    uj_string(&json,c->desc.title);uj_add(&json,",\"selection\":[");for(i=0;i<c->selection_count;++i){if(i)uj_add(&json,",");uj_fmt(&json,"\"%llu\"",(unsigned long long)c->selection[i]);}
+    uj_string(&json,c->desc.title);component_language_json(c,&json);uj_add(&json,",\"selection\":[");for(i=0;i<c->selection_count;++i){if(i)uj_add(&json,",");uj_fmt(&json,"\"%llu\"",(unsigned long long)c->selection[i]);}
     uj_add(&json,"],\"sortColumn\":");uj_string(&json,c->sort_column);uj_fmt(&json,",\"sortDirection\":%d,\"sortable\":%s,\"experience\":%s,\"totalColumns\":%zu,\"generation\":\"%llu\",\"columns\":[",c->sort_direction,c->desc.sort_command&&*c->desc.sort_command?"true":"false",c->desc.selection_flags||c->desc.sort_command&&*c->desc.sort_command?"true":"false",c->desc.column_count,(unsigned long long)c->generation);
     for(i=c->render_column;i<c->desc.column_count&&i<c->render_column+c->column_count;++i){if(i>c->render_column)uj_add(&json,",");
         uj_add(&json,"{\"id\":");uj_string(&json,c->columns[i].id);uj_add(&json,",\"title\":");uj_string(&json,c->columns[i].title);
@@ -597,7 +602,8 @@ static void render_component(ui_component_t *c)
         json_cell(&json,&c->drafts[i]);
         if(c->drafts[i].image_id)(void)ui_image_get_info(c->host,c->drafts[i].image_id,&image);
         uj_fmt(&json,",\"imageWidth\":%u,\"imageHeight\":%u,\"options\":[",image.width,image.height);
-        for(j=0;j<f->option_count;++j){if(j)uj_add(&json,",");uj_string(&json,f->options[j]);}uj_add(&json,"]}");}
+        for(j=0;j<f->option_count;++j){if(j)uj_add(&json,",");uj_string(&json,f->options[j]);}uj_add(&json,"],\"optionLabels\":[");
+        for(j=0;j<f->option_count;++j){if(j)uj_add(&json,",");uj_string(&json,c->option_labels[i]?c->option_labels[i][j]:f->options[j]);}uj_add(&json,"]}");}
     {int actions=c->desc.kind==UI_COMPONENT_DIALOG||c->desc.commands.submit[0]||c->desc.commands.cancel[0];
      for(i=0;i<c->desc.field_count;++i)if(!(c->drafts[i].flags&(UI_VALUE_READONLY|UI_VALUE_DISABLED))&&c->fields[i].kind!=UI_VALUE_GROUP)actions=1;
      uj_fmt(&json,"],\"formActions\":%s",actions?"true":"false");}
@@ -627,11 +633,11 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
     (void)view;if(!uj_get(json,"action",action,sizeof(action)))return;
     if(c->host->modal_component&&c->host->modal_component!=c)return;
     if(!strcmp(action,"tip")){ui_row_t *row=cached_row(c,uj_u64(json,"id"));ui_menu_anchor_t anchor={0};const char *tip=NULL;
-        if(uj_u64(json,"generation")!=c->generation)return;
+        if(uj_u64(json,"generation")!=c->generation||uj_u64(json,"languageGeneration")!=c->host->language.generation)return;
         if(row){tip=row->title;anchor.kind=UI_MENU_ANCHOR_COMPONENT_ROW;anchor.component=c;anchor.row_id=row->id;
             if(uj_get(json,"column",field,sizeof(field)))for(i=0;i<row->cell_count;++i)if(!strcmp(row->cells[i].column_id,field)){tip=row->cells[i].text;break;}}
         else if(uj_get(json,"column",field,sizeof(field))){i=column_index(c,field);if(i<c->desc.column_count)tip=c->columns[i].title;}
-        else if(uj_get(json,"field",field,sizeof(field)))for(i=0;i<c->desc.field_count;++i)if(!strcmp(c->fields[i].id,field)){int value=uj_get(json,"value",text,sizeof(text))?atoi(text):0;tip=value==1?c->drafts[i].text:value==2?c->drafts[i].error:value==3?c->fields[i].help:c->fields[i].title;uint64_t option=uj_u64(json,"option");if(uj_get(json,"option",text,sizeof(text))&&option<c->fields[i].option_count)tip=c->fields[i].options[option];break;}
+        else if(uj_get(json,"field",field,sizeof(field)))for(i=0;i<c->desc.field_count;++i)if(!strcmp(c->fields[i].id,field)){int value=uj_get(json,"value",text,sizeof(text))?atoi(text):0;tip=value==1?c->drafts[i].text:value==2?c->drafts[i].error:value==3?c->fields[i].help:c->fields[i].title;uint64_t option=uj_u64(json,"option");if(uj_get(json,"option",text,sizeof(text))&&option<c->fields[i].option_count)tip=c->option_labels[i]?c->option_labels[i][option]:c->fields[i].options[option];break;}
         if(tip&&*tip){uint64_t x=uj_u64(json,"x"),y=uj_u64(json,"y"),w=uj_u64(json,"width"),h=uj_u64(json,"height");
             if(x>=(uint64_t)c->width||y>=(uint64_t)c->height||!w||!h||w>(uint64_t)c->width-x||h>(uint64_t)c->height-y)return;
             anchor.size=sizeof(anchor);anchor.rect=(ui_rect_t){(int)x,(int)y,(int)w,(int)h};
@@ -690,10 +696,10 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
     if(!strcmp(action,"submit")){ui_json_t params={0};int valid=1;uj_add(&params,"{\"fields\":{");
         for(i=0;i<c->desc.field_count;++i){const char *value=c->drafts[i].text;char *end;
             (void)ui_component_set_error(c,c->fields[i].id,"");
-            if((c->drafts[i].flags&UI_VALUE_REQUIRED)&&!*value){(void)ui_component_set_error(c,c->fields[i].id,"必填字段");valid=0;}
-            if(c->fields[i].kind==UI_VALUE_NUMBER&&*value){double number=strtod(value,&end);if(end==value||*end||!isfinite(number)){(void)ui_component_set_error(c,c->fields[i].id,"请输入有效数字");valid=0;}}
-            if(c->fields[i].kind==UI_VALUE_ENUM&&*value){size_t option;for(option=0;option<c->fields[i].option_count&&strcmp(c->fields[i].options[option],value);++option){}if(option==c->fields[i].option_count){(void)ui_component_set_error(c,c->fields[i].id,"请选择有效选项");valid=0;}}
-            if(c->fields[i].kind==UI_VALUE_COLOR&&*value){uint32_t rgba;if(!parse_color(value,&rgba)){(void)ui_component_set_error(c,c->fields[i].id,"颜色格式为 #RRGGBB 或 #RRGGBBAA");valid=0;}}
+            if((c->drafts[i].flags&UI_VALUE_REQUIRED)&&!*value){validation_error(c,i,"必填字段");valid=0;}
+            if(c->fields[i].kind==UI_VALUE_NUMBER&&*value){double number=strtod(value,&end);if(end==value||*end||!isfinite(number)){validation_error(c,i,"请输入有效数字");valid=0;}}
+            if(c->fields[i].kind==UI_VALUE_ENUM&&*value){size_t option;for(option=0;option<c->fields[i].option_count&&strcmp(c->fields[i].options[option],value);++option){}if(option==c->fields[i].option_count){validation_error(c,i,"请选择有效选项");valid=0;}}
+            if(c->fields[i].kind==UI_VALUE_COLOR&&*value){uint32_t rgba;if(!parse_color(value,&rgba)){validation_error(c,i,"颜色格式为 #RRGGBB 或 #RRGGBBAA");valid=0;}}
             if(i)uj_add(&params,",");uj_string(&params,c->fields[i].id);uj_add(&params,":");uj_string(&params,value);}
         uj_add(&params,"}}");if(valid&&!params.failed)invoke_component(c,c->desc.commands.submit,params.data);free(params.data);render_component(c);}
 }
@@ -750,6 +756,7 @@ static ui_status_t create_dialog(ui_component_t *c)
     GetWindowRect(parent,&owner);c->dialog_window=CreateWindowExW(WS_EX_TOOLWINDOW,wc.lpszClassName,L"Application dialog",
         WS_POPUP|WS_CAPTION|WS_THICKFRAME,owner.left+40,owner.top+40,MulDiv(440,(int)c->host->dpi,96),MulDiv(380,(int)c->host->dpi,96),GetAncestor(parent,GA_ROOT),NULL,wc.hInstance,c);
     if(!c->dialog_window)return UI_STATUS_PLATFORM_ERROR;
+    update_dialog_caption(c);
     c->backend=component_backend(c,c->dialog_window);
     c->view=c->backend?ui_web_view_create(c->host,c->backend):NULL;
     if(!c->view){status=UI_STATUS_OUT_OF_MEMORY;goto fail;}

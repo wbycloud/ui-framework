@@ -2,6 +2,7 @@
  * worker/GL lifecycle; only storage and its semantic commands are added here. */
 #define UI_FIXTURE_EMBEDDED 1
 #include "../../tests/api7_fixture.c"
+#include "ui_framework/language.h"
 #define STATE_LIMIT 70000u
 #define STATE_HEADER 32u
 typedef struct state_app {
@@ -9,6 +10,8 @@ typedef struct state_app {
     HANDLE profile_lock;
     wchar_t path[4096];
     unsigned char profile;
+    wchar_t language_path[4096];
+    ui_status_t language_load;
 } state_app_t;
 static uint32_t read32(const unsigned char *p)
 {return p[0]|((uint32_t)p[1]<<8)|((uint32_t)p[2]<<16)|((uint32_t)p[3]<<24);}
@@ -16,6 +19,7 @@ static void write32(unsigned char *p,uint32_t v)
 {for(unsigned i=0;i<4;++i)p[i]=(unsigned char)(v>>(i*8));}
 static uint32_t checksum(const unsigned char *p,size_t bytes)
 {uint32_t v=2166136261u;for(size_t i=0;i<bytes;++i)if(i<20||i>=24){v^=p[i];v*=16777619u;}return v;}
+#include "language.inc"
 static ui_status_t snapshot(state_app_t *s,unsigned char **out,size_t *bytes)
 {
     size_t columns=0,layout_bytes=0;ui_status_t status;ui_shell_t *shell=ui_host_get_shell(s->scene->context.host);unsigned char *p;
@@ -67,9 +71,9 @@ static ui_status_t save_state(state_app_t *s)
     free(p);CloseHandle(file);if(status==UI_STATUS_OK&&!MoveFileExW(temporary,s->path,MOVEFILE_REPLACE_EXISTING|MOVEFILE_WRITE_THROUGH))status=UI_STATUS_PLATFORM_ERROR;return status;
 }
 static void report(state_app_t *s,const char *operation,ui_status_t status)
-{char text[160];if(status==UI_STATUS_OK)snprintf(text,sizeof(text),"State %s: profile %c",operation,s->profile);
- else if(status==UI_STATUS_NOT_FOUND)snprintf(text,sizeof(text),"No user state: profile %c; current state retained",s->profile);
- else snprintf(text,sizeof(text),"State rejected: profile %c, status %d",s->profile,status);
+{char text[160];if(status==UI_STATUS_OK)snprintf(text,sizeof(text),app_text(s,"State %s: profile %c","状态%s：档案 %c"),app_text(s,operation,!strcmp(operation,"saved")?"已保存":!strcmp(operation,"loaded")?"已恢复":"已重置"),s->profile);
+ else if(status==UI_STATUS_NOT_FOUND)snprintf(text,sizeof(text),app_text(s,"No user state: profile %c; current state retained","没有用户状态：档案 %c；保留当前状态"),s->profile);
+ else snprintf(text,sizeof(text),app_text(s,"State rejected: profile %c, status %d","状态被拒绝：档案 %c，状态码 %d"),s->profile,status);
  (void)ui_component_set_text(s->scene->status,text);}
 static void state_command(ui_host_t *host,uint64_t request,const char *id,const char *params,const char *origin,void *data)
 {
@@ -111,17 +115,20 @@ static ui_status_t UI_APP_CALL state_create(const ui_app_context_t *context,void
 {
     state_app_t *s=calloc(1,sizeof(*s));ui_status_t status;void *scene=NULL;const char *ids[]={"state.save","state.load","state.reset-column","state.reset"},*titles[]={"Save interface state","Reload interface state","Reset Name width","Reset widths and layout"};
     if(!s)return UI_STATUS_OUT_OF_MEMORY;*out=s;status=acquire_profile(s);if(status!=UI_STATUS_OK)return status;
+    status=prepare_language(s,context->host);if(status!=UI_STATUS_OK)return status;
     status=create(context,&scene,assistant);s->scene=scene;if(status!=UI_STATUS_OK)return status;status=schema_variant(s->scene);if(status!=UI_STATUS_OK)return status;
     for(size_t i=0;i<4;++i){ui_command_desc_t cmd={0};ui_menu_item_desc_t item={0};cmd.size=sizeof(cmd);cmd.id=ids[i];cmd.title=titles[i];cmd.handler=state_command;cmd.user_data=s;
         status=ui_host_register_command(context->host,&cmd);if(status!=UI_STATUS_OK)return status;
         item.size=sizeof(item);item.id=ids[i];item.menu_path="State";item.title=titles[i];item.command_id=ids[i];item.order=(int)i;status=ui_host_register_menu_item(context->host,&item);if(status!=UI_STATUS_OK)return status;
-    }return UI_STATUS_OK;
+    }
+    status=register_language(s);if(status!=UI_STATUS_OK)return status;
+    return ui_host_set_language_callback(context->host,language_changed,s);
 }
 static ui_status_t UI_APP_CALL state_mount(void *data,const ui_app_context_t *context)
-{state_app_t *s=data;ui_status_t status=mount(s->scene,context);if(status!=UI_STATUS_OK)return status;status=load_state(s);report(s,"loaded",status);return UI_STATUS_OK;}
+{state_app_t *s=data;ui_status_t status=mount(s->scene,context);if(status!=UI_STATUS_OK)return status;status=load_state(s);report(s,"loaded",status);if(s->language_load!=UI_STATUS_OK&&s->language_load!=UI_STATUS_NOT_FOUND)report(s,"language rejected",s->language_load);return UI_STATUS_OK;}
 static void UI_APP_CALL state_active(void *data,int enabled){state_app_t *s=data;active(s->scene,enabled);}
 static ui_app_close_decision_t UI_APP_CALL state_close(void *data,ui_app_close_reason_t reason){state_app_t *s=data;return close_app(s->scene,reason);}
-static void UI_APP_CALL state_unmount(void *data){state_app_t *s=data;unmount(s->scene);}
+static void UI_APP_CALL state_unmount(void *data){state_app_t *s=data;(void)ui_host_set_language_callback(s->scene->context.host,NULL,NULL);unmount(s->scene);}
 static void UI_APP_CALL state_destroy(void *data)
 {state_app_t *s=data;if(s->scene)destroy(s->scene);if(s->profile_lock&&s->profile_lock!=INVALID_HANDLE_VALUE)CloseHandle(s->profile_lock);free(s);}
 UI_APP_EXPORT const ui_app_descriptor_t *UI_APP_CALL ui_app_query_v1(void)

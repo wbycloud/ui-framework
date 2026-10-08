@@ -380,6 +380,7 @@ ui_host_t *ui_host_create(const ui_host_config_t *config)
         host->dpi = 96u;
     }
     host->layout.size = (uint32_t)sizeof(host->layout);
+    ui_language_initialize(host);
     return host;
 }
 

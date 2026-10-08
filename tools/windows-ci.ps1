@@ -131,7 +131,7 @@ CheckExit 'CTest inventory'
 $plan = Get-Content "$evidenceDirectory/test-plan.json" -Raw | ConvertFrom-Json
 $expected = @($plan.tests | ForEach-Object name)
 if (!$expected.Count) { throw 'Empty configured CTest plan' }
-[ordered]@{maintained_api=8; policy='current_only'; historical_sdk_api_callers_and_packages='not_maintained_or_gated'; existing_loader_behavior='not_a_future_compatibility_promise'} | ConvertTo-Json | Set-Content "$evidenceDirectory/compatibility-policy.json"
+[ordered]@{maintained_api=9; policy='current_only'; historical_sdk_api_callers_and_packages='not_maintained_or_gated'; existing_loader_behavior='not_a_future_compatibility_promise'} | ConvertTo-Json | Set-Content "$evidenceDirectory/compatibility-policy.json"
 $env:GALLIUM_DRIVER = 'llvmpipe'
 $runtimeTests = $UiCiRuntimeTests
 $phases = if ($Configuration -eq 'webview2') { @('wgl','provider','runtime') } elseif ($Configuration -eq 'osmesa') { @('wgl','provider') } else { @('all') }

@@ -6,6 +6,7 @@
 #include "ui_framework/shell.h"
 #include "ui_framework/components.h"
 #include "ui_framework/menus.h"
+#include "ui_framework/language.h"
 
 typedef struct ui_command_entry ui_command_entry_t;
 typedef struct ui_menu_entry ui_menu_entry_t;
@@ -56,6 +57,11 @@ struct ui_web_view {
 };
 
 struct ui_host {
+    ui_language_info_t language;
+    ui_language_callback_fn language_callback;
+    void *language_data;
+    uint32_t language_thread;
+    int language_changing;
     int dispatch_blocked; /* Workspace close gate; legacy hosts default to zero. */
     unsigned dispatch_depth;
     void (*dispatch_idle)(void *data);
@@ -162,6 +168,17 @@ struct ui_pending_request {
 };
 
 char *ui_strdup(const char *value);
+void ui_language_initialize(ui_host_t *);
+int ui_language_thread_ok(const ui_host_t *);
+const char *ui_language_map_windows(const char *);
+void ui_components_language_changed(ui_host_t *);
+ui_status_t ui_menus_set_title(ui_host_t *,const char *,const char *);
+UI_API const char *ui_language_text(const ui_host_t *,const char *);
+UI_API size_t ui_language_catalog_count(void);
+UI_API void ui_language_catalog_entry(const ui_host_t *,size_t,const char **,const char **);
+UI_API const char *ui_language_lookup(const char *language,const char *key);
+UI_API void ui_language_catalog_language(const char *language,size_t,const char **,const char **);
+const char *ui_menus_group_title(ui_host_t *,const char *);
 ui_native_shell_t *ui_native_shell_create_offscreen(const ui_native_shell_config_t *);
 int ui_content_slot_belongs_to(const ui_content_slot_t *,const ui_host_t *);
 void ui_dispatch_enter(ui_host_t *host);
@@ -175,6 +192,7 @@ void ui_menus_component_invalidated(ui_host_t *,ui_component_t *,uint64_t);
 int ui_component_menu_target_valid(ui_component_t *,uint64_t,uint64_t);
 ui_status_t ui_component_menu_anchor(ui_component_t *,ui_host_t *,uint64_t,ui_rect_t *,void **,uint64_t *);
 void ui_shell_sync_visual(ui_host_t *host);
+void ui_shell_refresh_titles(ui_host_t *host);
 UI_API void ui_components_set_theme(ui_host_t *host, int dark);
 void ui_components_layout(ui_host_t *host);
 void ui_components_active(ui_host_t *host, int active);

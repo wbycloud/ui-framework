@@ -177,6 +177,21 @@ UI_API ui_status_t ui_component_set_error(ui_component_t *, const char *, const 
 /* Accept successful submission: current drafts become committed values. */
 UI_API ui_status_t ui_component_accept_fields(ui_component_t *);
 UI_API ui_status_t ui_component_set_text(ui_component_t *, const char *);
+/* API9. Copied display metadata only: no source query, generation change,
+ * column auto-fit, registration, draft/selection reset or object recreation. */
+UI_API ui_status_t ui_component_set_title(ui_component_t *,const char *);
+UI_API ui_status_t ui_component_set_column_title(ui_component_t *,const char *,const char *);
+typedef struct ui_field_text {
+    uint32_t size;
+    const char *id,*title,*unit,*group,*help;
+    /* Display labels parallel registered options, which remain semantic values.
+     * NULL preserves labels; otherwise count must exactly match registration. */
+    const char *const *option_labels;
+    size_t option_count;
+} ui_field_text_t;
+/* NULL strings preserve metadata, empty strings clear it. Whole update validates
+ * and allocates before changing anything. Complete size required. UI-thread. */
+UI_API ui_status_t ui_component_set_field_text(ui_component_t *,const ui_field_text_t *);
 /* Borrowed until the status component changes or the host is destroyed. */
 UI_API const char *ui_host_status_text(const ui_host_t *);
 UI_API ui_status_t ui_component_thumbnail(ui_component_t *, const ui_thumbnail_result_t *);

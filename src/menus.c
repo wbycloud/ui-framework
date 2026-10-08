@@ -1,6 +1,7 @@
 #include "ui_internal.h"
 #include "ui_framework/menus.h"
 #include "json_ui.h"
+#include "language_json.h"
 #include <stdio.h>
 #ifdef _WIN32
 #include <windows.h>
@@ -84,6 +85,10 @@ static int row_compare(const void *a,const void *b)
 }
 static menu_group_t *find_group(ui_host_t *host,const char *path)
 {menu_group_t *g;for(g=(menu_group_t *)host->menu_groups;g;g=g->next)if(!strcmp(g->path,path))return g;return NULL;}
+const char *ui_menus_group_title(ui_host_t *host,const char *path)
+{menu_group_t *g=find_group(host,path);const char *tail=strrchr(path,'/');return g?g->title:tail?tail+1:path;}
+ui_status_t ui_menus_set_title(ui_host_t *host,const char *path,const char *title)
+{menu_group_t *g=find_group(host,path);char *copy;if(!g)return UI_STATUS_NOT_FOUND;copy=ui_strdup(title);if(!copy)return UI_STATUS_OUT_OF_MEMORY;free(g->title);g->title=copy;if(!host->language_changing)ui_shell_refresh_titles(host);return ui_host_emit_event(host,"ui.commands.changed","{}");}
 ui_status_t ui_host_register_menu_group(ui_host_t *host,const ui_menu_group_desc_t *desc)
 {
     menu_group_t *g;
@@ -200,14 +205,14 @@ static ui_status_t paint_popup(ui_menu_popup_t *p)
     if(!rows)return UI_STATUS_OUT_OF_MEMORY;
     status=p->detail?UI_STATUS_OK:popup_rows(p,rows);if(status!=UI_STATUS_OK){free(rows);return status;}
     if(page_count<1)page_count=1;if(start>=rows->count&&rows->count){p->first=0;start=p->toolbar_first;}end=start+page_count;if(end>rows->count)end=rows->count;
-    uj_add(&json,"{\"title\":");uj_string(&json,p->toolbar?"工具":p->path?p->path:"菜单");uj_add(&json,",\"detail\":");uj_string(&json,p->detail?p->detail:"");
+    uj_add(&json,"{\"title\":");uj_string(&json,p->toolbar?ui_language_text(p->host,"工具"):p->path?ui_menus_group_title(p->host,p->path):ui_language_text(p->host,"菜单"));uj_add(&json,",\"detail\":");uj_string(&json,p->detail?p->detail:"");
     uj_add(&json,",\"focus\":");uj_string(&json,p->keyboard_focus);p->keyboard_focus[0]=0;
     uj_fmt(&json,",\"dark\":%s,\"first\":%zu,\"total\":%zu,\"back\":%s,\"expanded\":",p->host->menu_dark?"true":"false",start,rows->count,p->parent?"true":"false");uj_string(&json,p->child&&p->child->open?p->child->path:"");uj_add(&json,",\"items\":[");
     for(size_t i=start;i<end;++i){ui_menu_model_entry_t *e=&rows->rows[i].entry;if(i>start)uj_add(&json,",");uj_add(&json,"{\"id\":");uj_string(&json,e->id);{char dom[80];menu_dom_id(e->id,dom);uj_add(&json,",\"dom\":");uj_string(&json,dom);}
         uj_add(&json,",\"title\":");if(p->toolbar){ui_toolbar_entry_t *bar;for(bar=p->host->toolbars;bar&&strcmp(bar->id,e->path);bar=bar->next){}uj_string(&json,bar?bar->title:"");uj_add(&json,",\"section\":");}uj_string(&json,e->title);
         {char shortcut[80];ui_command_entry_t *c;for(c=p->host->commands;c&&strcmp(c->id,e->command_id);c=c->next){}shortcut_text(c,shortcut);uj_add(&json,",\"shortcut\":");uj_string(&json,shortcut);}
         uj_fmt(&json,",\"access\":%u,\"group\":%s,\"image\":\"%llu\",\"enabled\":%s,\"checked\":%s,\"busy\":%s}",e->access_key,e->group?"true":"false",(unsigned long long)e->image_id,e->state.enabled?"true":"false",e->state.checked?"true":"false",e->state.busy?"true":"false");}
-    uj_add(&json,"]}");free(rows);status=json.failed?UI_STATUS_LIMIT_EXCEEDED:ui_web_view_post_json(p->view,json.data);free(json.data);return status;
+    uj_add(&json,"]");ui_language_json(p->host,&json);uj_add(&json,"}");free(rows);status=json.failed?UI_STATUS_LIMIT_EXCEEDED:ui_web_view_post_json(p->view,json.data);free(json.data);return status;
 }
 static ui_status_t create_popup(ui_host_t *,ui_menu_popup_t *,ui_menu_popup_t **);
 static ui_status_t show_popup(ui_menu_popup_t *);

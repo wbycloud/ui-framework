@@ -1373,8 +1373,7 @@ static ui_status_t lw_eval(lw_view_t *view, const char *script)
     view->script_deadline = GetTickCount64() + LW_SCRIPT_MILLISECONDS;
     result = JS_Eval(view->context, script, strlen(script), "application-inline", JS_EVAL_TYPE_GLOBAL);
     if (JS_IsException(result)) {
-        JSValue exception = JS_GetException(view->context);
-        JS_FreeValue(view->context, exception);
+        lw_report_exception(view);
         status = UI_STATUS_VALIDATION_FAILED;
     }
     JS_FreeValue(view->context, result);

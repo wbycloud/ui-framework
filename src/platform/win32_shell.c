@@ -17,6 +17,7 @@
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
 #include "ui_framework/light_web.h"
 #include "visual_style.h"
+#include "../language_json.h"
 #endif
 
 #pragma comment(lib, "comctl32.lib")
@@ -501,7 +502,7 @@ static HMENU find_submenu(HMENU menu, const wchar_t *title)
     return NULL;
 }
 
-static HMENU get_or_create_menu_path(HMENU root, const char *path)
+static HMENU get_or_create_menu_path(ui_host_t *host, HMENU root, const char *path)
 {
     char *copy;
     char *cursor;
@@ -524,7 +525,7 @@ static HMENU get_or_create_menu_path(HMENU root, const char *path)
             free(copy);
             return NULL;
         }
-        title = utf8_to_wide(cursor);
+        title = utf8_to_wide(ui_menus_group_title(host,copy));
         if (title == NULL) {
             free(copy);
             return NULL;
@@ -547,13 +548,13 @@ static HMENU get_or_create_menu_path(HMENU root, const char *path)
         if (separator == NULL) {
             break;
         }
-        cursor = separator + 1;
+        *separator='/';cursor = separator + 1;
     }
     free(copy);
     return current;
 }
 
-static ui_status_t refresh_menu(ui_native_shell_t *shell)
+static ui_status_t refresh_menu(ui_native_shell_t *shell,int bind)
 {
     HMENU menu;
     ui_menu_entry_t **entries = NULL;
@@ -579,16 +580,16 @@ static ui_status_t refresh_menu(ui_native_shell_t *shell)
             free(entries);
             return UI_STATUS_OUT_OF_MEMORY;
         }
-        target = get_or_create_menu_path(menu, entries[index]->menu_path);
+        target = get_or_create_menu_path(shell->host,menu, entries[index]->menu_path);
         if (shell->binding_count >= 0xF000u - UI_NATIVE_FIRST_COMMAND) {
             free(title);
             DestroyMenu(menu);
             free(entries);
             return UI_STATUS_OUT_OF_MEMORY;
         }
-        native_id = UI_NATIVE_FIRST_COMMAND + (UINT)shell->binding_count;
+        native_id = UI_NATIVE_FIRST_COMMAND + (UINT)(bind?shell->binding_count:index);
         if (target == NULL || native_id >= 0xF000u ||
-            !add_binding(shell, native_id, entries[index]->command_id) ||
+            (bind&&!add_binding(shell, native_id, entries[index]->command_id)) ||
             !AppendMenuW(target, MF_STRING, native_id, title)) {
             free(title);
             DestroyMenu(menu);
@@ -1125,7 +1126,7 @@ static char *popup_html(const ui_panel_entry_t *entry)
         "<span id='panel-title' style='flex:1;min-width:0;overflow:hidden;white-space:nowrap;font-size:13px;font-weight:600' "
         "onmousedown=\"document.getElementById('panel-title').focus();ui.invoke('framework.panel.drag')\">";
     static const char dock[] =
-        "<button style='width:46px;height:20px;padding:0;border:0;border-radius:2px' "
+        "<button id='panel-dock' style='width:60px;height:20px;padding:0;border:0;border-radius:2px' "
         "onclick=\"ui.invoke('framework.panel.dock')\">Dock</button>";
     static const char suffix[] =
         "<button class='glyph' style='width:26px;height:20px;padding:0;border:0;border-radius:2px' "
@@ -1133,7 +1134,7 @@ static char *popup_html(const ui_panel_entry_t *entry)
         "<script>var title=document.getElementById('panel-title');title.tabIndex=0;"
         "title.addEventListener('mouseenter',function(){ui.invoke('framework.panel.title')});"
         "title.addEventListener('keydown',function(e){if(e.keyCode===112){e.preventDefault();ui.invoke('framework.panel.title')}});"
-        "ui.onmessage=function(s){document.body.className=s.dark?'dark':''}</script></body></html>";
+        "ui.onmessage=function(s){document.body.className=s.dark?'dark':'';if(s.title!==undefined)title.textContent=s.title;if(s.texts)document.getElementById('panel-dock').textContent=s.texts.Dock}</script></body></html>";
     size_t length = strlen(entry->title), i;
     char *html, *cursor;
     if (length > (SIZE_MAX - sizeof(prefix) - sizeof(title) - sizeof(ui_visual_style) - sizeof(dock) - sizeof(suffix) - 8) / 6)
@@ -1231,7 +1232,7 @@ static ui_status_t create_popup(ui_native_shell_t *shell,
         free(html); close_popup(panel); return UI_STATUS_PLATFORM_ERROR;
     }
     free(html);
-    (void)ui_web_view_post_json(panel->popup_view,shell->host->menu_dark?"{\"dark\":true}":"{\"dark\":false}");
+    ui_shell_sync_visual(shell->host);
     (void)set_panel_dpi(panel, shell->host->dpi);
     return UI_STATUS_OK;
 #else
@@ -1240,15 +1241,41 @@ static ui_status_t create_popup(ui_native_shell_t *shell,
 #endif
 }
 
+static ui_panel_entry_t *language_panel(ui_host_t *host,const char *id)
+{for(ui_panel_entry_t *p=host->panels;p;p=p->next)if(!strcmp(p->id,id))return p;return NULL;}
 void ui_shell_sync_visual(ui_host_t *host)
 {
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
     ui_native_shell_t *shell=host->shell?host->shell->native:NULL;size_t i;if(!shell)return;
-    for(i=0;i<shell->panel_count;++i)if(shell->panels[i].popup_view)
-        (void)ui_web_view_post_json(shell->panels[i].popup_view,host->menu_dark?"{\"dark\":true}":"{\"dark\":false}");
+    for(i=0;i<shell->panel_count;++i)if(shell->panels[i].popup_view){
+        ui_json_t json={0};ui_panel_entry_t *entry=language_panel(host,shell->panels[i].id);shell->panels[i].popup_host->language=host->language;
+        uj_add(&json,host->menu_dark?"{\"dark\":true,\"title\":" : "{\"dark\":false,\"title\":");uj_string(&json,entry?entry->title:"");ui_language_json(host,&json);uj_add(&json,"}");
+        if(!json.failed)(void)ui_web_view_post_json(shell->panels[i].popup_view,json.data);free(json.data);
+    }
 #else
     (void)host;
 #endif
+}
+
+void ui_shell_refresh_titles(ui_host_t *host)
+{
+    ui_native_shell_t *shell=host->shell?host->shell->native:NULL;if(!shell)return;
+    if(!shell->offscreen&&!shell->web_chrome)(void)refresh_menu(shell,0);
+    for(size_t i=0;i<shell->panel_count;++i){ui_native_panel_t *p=&shell->panels[i];ui_panel_entry_t *entry=language_panel(host,p->id);if(!entry)continue;
+        wchar_t *title=utf8_to_wide(entry->title);if(!title)continue;
+        if(p->hwnd&&!shell->web_chrome)SetWindowTextW(p->hwnd,title);if(p->tag)SetWindowTextW(p->tag,title);if(p->popup)SetWindowTextW(p->popup,title);free(title);
+    }
+    if(shell->toolbar){ui_toolbar_entry_t **bars=NULL;size_t count=0,capacity=0;int button_index=0;
+        for(ui_toolbar_entry_t *bar=host->toolbars;bar;bar=bar->next)if(bar->visible){if(!ensure_capacity((void **)&bars,&capacity,count,sizeof(*bars))){free(bars);return;}bars[count++]=bar;}
+        qsort(bars,count,sizeof(*bars),toolbar_compare);
+        for(size_t i=0;i<count;++i){ui_toolbar_item_entry_t **items=NULL;size_t n=0;if(!collect_toolbar_items(shell,bars[i]->id,&items,&n))continue;
+            if(i)++button_index;
+            for(size_t j=0;j<n;++j){TBBUTTON button;TBBUTTONINFOW info={0};wchar_t *title=utf8_to_wide(items[j]->title);
+                if(title&&SendMessageW(shell->toolbar,TB_GETBUTTON,button_index,(LPARAM)&button)){info.cbSize=sizeof(info);info.dwMask=TBIF_TEXT;info.pszText=title;(void)SendMessageW(shell->toolbar,TB_SETBUTTONINFOW,button.idCommand,(LPARAM)&info);}free(title);++button_index;}
+            free(items);
+        }free(bars);
+    }
+    ui_shell_sync_visual(host);
 }
 
 static ui_status_t web_set_floating(ui_native_shell_t *shell,
@@ -1723,7 +1750,7 @@ ui_status_t ui_native_shell_refresh(ui_native_shell_t *shell)
     }
 
     free_bindings(shell);
-    status = refresh_menu(shell);
+    status = refresh_menu(shell,1);
     if (status != UI_STATUS_OK) {
         return status;
     }
@@ -1946,7 +1973,7 @@ ui_status_t ui_shell_refresh(ui_shell_t *shell)
     if(native->offscreen){for(entry=native->host->panels;entry;entry=entry->next)if(!find_panel(native,entry->id)&&append_panel(native,entry)!=UI_STATUS_OK)return UI_STATUS_OUT_OF_MEMORY;
         return offscreen_reflow(native);}
     free_bindings(native);
-    status = refresh_menu(native);
+    status = refresh_menu(native,1);
     if (status != UI_STATUS_OK) return status;
     status = refresh_toolbar(native);
     if (status != UI_STATUS_OK) return status;

@@ -10,7 +10,7 @@ $runPath=Join-Path $buildPath ('state-evidence-'+$Backend+'-'+[Guid]::NewGuid().
 New-Item -ItemType Directory -Path $runPath | Out-Null
 $executable=Join-Path $buildPath 'ui_stateful_components_test.exe'
 $package=Join-Path $buildPath 'stateful_components.uapp'
-$manifest=@{backend=$Backend;frameworkApi=8;provider=$providerPath;providerSha256=(Get-FileHash -LiteralPath $providerPath).Hash;executableSha256=(Get-FileHash -LiteralPath $executable).Hash;packageSha256=(Get-FileHash -LiteralPath $package).Hash;runtimeDllSha256=(Get-FileHash -LiteralPath (Join-Path $buildPath 'ui_framework.dll')).Hash;evidence=$runPath;startedUtc=[DateTime]::UtcNow.ToString('o')}
+$manifest=@{backend=$Backend;frameworkApi=9;provider=$providerPath;providerSha256=(Get-FileHash -LiteralPath $providerPath).Hash;executableSha256=(Get-FileHash -LiteralPath $executable).Hash;packageSha256=(Get-FileHash -LiteralPath $package).Hash;runtimeDllSha256=(Get-FileHash -LiteralPath (Join-Path $buildPath 'ui_framework.dll')).Hash;evidence=$runPath;startedUtc=[DateTime]::UtcNow.ToString('o')}
 $manifest | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $runPath 'manifest.json') -Encoding utf8
 function Run-Case([string]$profilePath,[string]$mode,[int]$dpi=96,[string]$label=$mode) {
     & $executable $package $providerPath $Backend $profilePath $mode $dpi $label 2>&1 | Tee-Object -FilePath (Join-Path $runPath ($label+'.log'))

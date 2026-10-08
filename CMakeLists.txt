@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(ui_framework VERSION 0.8.0 LANGUAGES C)
+project(ui_framework VERSION 0.9.0 LANGUAGES C)
 
 option(UI_BUILD_STANDALONE_HOST "Build the Windows Web application host" ${WIN32})
 
@@ -67,6 +67,7 @@ file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/generated/webview2_bridge.h" "static con
 
 add_library(ui_framework STATIC
     src/ui.c
+    src/language.c
     src/assistant.c
     src/package.c
     src/images.c
@@ -95,7 +96,7 @@ else()
 endif()
 
 if(WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
-    add_library(ui_framework_shared SHARED src/ui.c src/assistant.c src/package.c
+    add_library(ui_framework_shared SHARED src/ui.c src/language.c src/assistant.c src/package.c
         src/images.c src/components.c src/menus.c
         src/workspace.c src/platform/win32_surface.c src/platform/win32_shell.c)
     set_target_properties(ui_framework_shared PROPERTIES
@@ -226,7 +227,7 @@ if(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
             DEPENDS web_counter_app uapp_pack examples/web_counter/manifest.ini VERBATIM)
         add_custom_target(web_counter_package ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp")
         file(READ "${CMAKE_CURRENT_SOURCE_DIR}/examples/web_counter/manifest.ini" _counter_manifest)
-        string(REPLACE "framework_api_version=8" "framework_api_version=6"
+        string(REPLACE "framework_api_version=9" "framework_api_version=6"
             _counter_mismatch "${_counter_manifest}")
         file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.ini" "${_counter_mismatch}")
         add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/counter_mismatch.uapp"
@@ -256,10 +257,16 @@ endif()
 
 if(UI_BUILD_TESTS)
     enable_testing()
+    add_executable(ui_language_core_test tests/language_core.c)
+    target_link_libraries(ui_language_core_test PRIVATE ui_framework)
+    if(MSVC)
+        target_compile_options(ui_language_core_test PRIVATE /W4 /WX /utf-8)
+    endif()
+    add_test(NAME ui_language_core COMMAND ui_language_core_test)
     add_executable(ui_package_format_test tests/package_format.c)
     target_link_libraries(ui_package_format_test PRIVATE ui_framework)
     add_test(NAME ui_package_format COMMAND ui_package_format_test)
-    add_library(ui_framework_headless STATIC src/ui.c src/assistant.c src/images.c src/components.c src/menus.c
+    add_library(ui_framework_headless STATIC src/ui.c src/language.c src/assistant.c src/images.c src/components.c src/menus.c
         src/platform/headless_surface.c src/platform/headless_shell.c)
     target_include_directories(ui_framework_headless PUBLIC include PRIVATE src ${CMAKE_CURRENT_BINARY_DIR}/generated)
     if(WIN32)
@@ -369,7 +376,7 @@ if(UI_BUILD_TESTS)
                     COMMAND $<TARGET_FILE:uapp_pack> "${CMAKE_CURRENT_SOURCE_DIR}/examples/stateful_components/app.ini" "${CMAKE_CURRENT_BINARY_DIR}/stateful_components_package" "${CMAKE_CURRENT_BINARY_DIR}/stateful_components.uapp"
                     DEPENDS stateful_components_app uapp_pack examples/stateful_components/app.ini tests/api7-resources/marker.txt VERBATIM)
                 add_custom_target(stateful_components_package ALL DEPENDS "${CMAKE_CURRENT_BINARY_DIR}/stateful_components.uapp")
-                foreach(state_test IN ITEMS host_repaint stateful_components)
+                foreach(state_test IN ITEMS host_repaint stateful_components instance_language)
                     add_executable(ui_${state_test}_test tests/${state_test}.c "${CMAKE_CURRENT_BINARY_DIR}/generated/host.rc")
                     target_include_directories(ui_${state_test}_test PRIVATE src examples/framework_host "${CMAKE_CURRENT_BINARY_DIR}/generated")
                     target_link_libraries(ui_${state_test}_test PRIVATE ui_framework_shared comdlg32 shell32 dwmapi ole32)
@@ -388,9 +395,13 @@ if(UI_BUILD_TESTS)
                 find_program(UI_STATE_POWERSHELL NAMES pwsh powershell REQUIRED)
                 add_test(NAME ui_stateful_components_light COMMAND "${UI_STATE_POWERSHELL}" -NoProfile -File "${CMAKE_CURRENT_SOURCE_DIR}/tests/run-stateful-components.ps1" -BuildDirectory "${CMAKE_CURRENT_BINARY_DIR}" -Provider "${UI_OSMESA_LIBRARY}" -Backend light)
                 set_tests_properties(ui_stateful_components_light PROPERTIES TIMEOUT 180 RUN_SERIAL TRUE)
+                add_test(NAME ui_instance_language_light COMMAND "${UI_STATE_POWERSHELL}" -NoProfile -File "${CMAKE_CURRENT_SOURCE_DIR}/tests/run-instance-language.ps1" -BuildDirectory "${CMAKE_CURRENT_BINARY_DIR}" -Provider "${UI_OSMESA_LIBRARY}" -Backend light)
+                set_tests_properties(ui_instance_language_light PROPERTIES TIMEOUT 240 RUN_SERIAL TRUE)
                 if(UI_FRAMEWORK_ENABLE_WEBVIEW2)
                     add_test(NAME ui_stateful_components_webview2 COMMAND "${UI_STATE_POWERSHELL}" -NoProfile -File "${CMAKE_CURRENT_SOURCE_DIR}/tests/run-stateful-components.ps1" -BuildDirectory "${CMAKE_CURRENT_BINARY_DIR}" -Provider "${UI_OSMESA_LIBRARY}" -Backend webview2)
                     set_tests_properties(ui_stateful_components_webview2 PROPERTIES TIMEOUT 240 RUN_SERIAL TRUE)
+                    add_test(NAME ui_instance_language_webview2 COMMAND "${UI_STATE_POWERSHELL}" -NoProfile -File "${CMAKE_CURRENT_SOURCE_DIR}/tests/run-instance-language.ps1" -BuildDirectory "${CMAKE_CURRENT_BINARY_DIR}" -Provider "${UI_OSMESA_LIBRARY}" -Backend webview2)
+                    set_tests_properties(ui_instance_language_webview2 PROPERTIES TIMEOUT 300 RUN_SERIAL TRUE)
                 endif()
                 add_executable(ui_visual_ui_test tests/visual_ui.c "${CMAKE_CURRENT_BINARY_DIR}/generated/host.rc")
                 target_include_directories(ui_visual_ui_test PRIVATE src examples/framework_host "${CMAKE_CURRENT_BINARY_DIR}/generated")
@@ -562,7 +573,7 @@ if(UI_BUILD_TESTS)
                 add_dependencies(ui_workspace_integration_test ui_application_cpp)
                 set(workspace_cpp_argument "$<TARGET_FILE:ui_application_cpp>")
                 file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/cpp_fixture.ini"
-                    "[application]\napp_id=org.ui.fixture.cpp\nname=C++ Counter\nversion=1.0.0\narchitecture=x64\nabi_version=1\nframework_api_version=8\nmodule=ui_application_cpp.dll\nmultiple_instances=true\n")
+                    "[application]\napp_id=org.ui.fixture.cpp\nname=C++ Counter\nversion=1.0.0\narchitecture=x64\nabi_version=1\nframework_api_version=9\nmodule=ui_application_cpp.dll\nmultiple_instances=true\n")
                 add_custom_command(OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/cpp_fixture.uapp"
                     COMMAND ${CMAKE_COMMAND} -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/cpp_package"
                     COMMAND ${CMAKE_COMMAND} -E copy "$<TARGET_FILE:ui_application_cpp>"
