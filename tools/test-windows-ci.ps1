@@ -7,8 +7,8 @@ Assert-UiCiCTestVersion 'ctest version 3.26.0'
 Assert-UiCiCTestVersion 'ctest version 4.1.2'
 MustReject {Assert-UiCiCTestVersion 'ctest version 3.25.0'} 'Old CTest accepted'
 MustReject {Assert-UiCiCTestVersion 'unknown version'} 'Unknown CTest accepted'
-foreach($name in @('ui_component_widths_webview2','ui_webview2_render','ui_component_scroll_webview2','ui_component_experience_webview2','ui_api7_integration_webview2','ui_visual_ui_webview2')){Assert ($name -match $UiCiRuntimeTests) "Runtime test misclassified: $name"}
-foreach($name in @('ui_windowless_gl','ui_session0_interactive_control','ui_api7_integration','ui_visual_ui_light')){Assert ($name -match $UiCiProviderTests -and $name -notmatch $UiCiRuntimeTests) "Provider test misclassified: $name"}
+foreach($name in @('ui_component_widths_webview2','ui_webview2_render','ui_component_scroll_webview2','ui_component_experience_webview2','ui_api7_integration_webview2','ui_visual_ui_webview2','ui_stateful_components_webview2')){Assert ($name -match $UiCiRuntimeTests) "Runtime test misclassified: $name"}
+foreach($name in @('ui_windowless_gl','ui_session0_interactive_control','ui_api7_integration','ui_visual_ui_light','ui_host_repaint','ui_stateful_components_light')){Assert ($name -match $UiCiProviderTests -and $name -notmatch $UiCiRuntimeTests) "Provider test misclassified: $name"}
 Assert ('ui_api7_integration_webview2' -notmatch $UiCiProviderTests) 'Runtime in provider phase'
 Assert ('ui_offscreen_msaa' -notmatch $UiCiProviderTests) 'WGL in provider phase'
 foreach($name in @('ui_api5_integration','ui_api5_native_host','ui_api6_integration','ui_api6_integration_webview2','ui_original_api5_package','ui_legacy_api6_light','ui_legacy_api6_webview2')){Assert ($name -notmatch $UiCiRuntimeTests -and $name -notmatch $UiCiProviderTests) "Historical test still selected: $name"}
