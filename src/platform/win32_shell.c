@@ -98,6 +98,7 @@ struct ui_native_shell {
     char drag_id[64];
     ui_layout_region_t drag_region;
     HWND drag_preview;
+    ui_rect_t drag_float;
     int split_active;
     ui_layout_region_t split_region;
     char split_id[64];
@@ -964,29 +965,30 @@ static ui_native_panel_t *find_popup(ui_native_shell_t *shell, HWND window)
 static void update_popup(ui_native_shell_t *shell, ui_native_panel_t *panel)
 {
     RECT client;
-    int title_height;
+    int title_height,border;
     uint32_t dpi = panel->floating_dpi != 0 ? panel->floating_dpi : shell->host->dpi;
     if (panel->popup == NULL || !GetClientRect(panel->popup, &client)) return;
-    title_height = logical_to_pixels(UI_WEB_PANEL_TITLE_HEIGHT, dpi);
+    border=logical_to_pixels(8,dpi);
+    title_height = logical_to_pixels(UI_WEB_PANEL_TITLE_HEIGHT, dpi)+border;
     if (title_height > client.bottom) title_height = client.bottom;
-    (void)MoveWindow(panel->hwnd, 1, title_height,
-                     client.right > 2 ? client.right - 2 : 0,
-                     client.bottom > title_height + 1 ? client.bottom - title_height - 1 : 0,
+    (void)MoveWindow(panel->hwnd, border, title_height,
+                     client.right > 2*border ? client.right - 2*border : 0,
+                     client.bottom > title_height + border ? client.bottom - title_height - border : 0,
                      TRUE);
     if (panel->popup_view != NULL) {
-        ui_rect_t title = {0, 0, MulDiv(client.right, 96, (int)dpi),
+        ui_rect_t title = {8, 8, MulDiv(client.right-2*border, 96, (int)dpi),
                            UI_WEB_PANEL_TITLE_HEIGHT};
         (void)ui_web_view_set_rect(panel->popup_view, &title, dpi);
     }
     panel->slot->frame_rect = (ui_rect_t){0, 0,
         MulDiv(client.right, 96, (int)dpi), MulDiv(client.bottom, 96, (int)dpi)};
     panel->slot->rect = (ui_rect_t){0, 0,
-        MulDiv(client.right > 2 ? client.right - 2 : 0, 96, (int)dpi),
-        MulDiv(client.bottom > title_height + 1 ? client.bottom - title_height - 1 : 0,
+        MulDiv(client.right > 2*border ? client.right - 2*border : 0, 96, (int)dpi),
+        MulDiv(client.bottom > title_height + border ? client.bottom - title_height - border : 0,
                96, (int)dpi)};
     panel->slot->pixel_rect = (ui_rect_t){0, 0,
-        client.right > 2 ? client.right - 2 : 0,
-        client.bottom > title_height + 1 ? client.bottom - title_height - 1 : 0};
+        client.right > 2*border ? client.right - 2*border : 0,
+        client.bottom > title_height + border ? client.bottom - title_height - border : 0};
 }
 
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
@@ -996,10 +998,11 @@ static LRESULT CALLBACK popup_view_subclass_proc(HWND window, UINT message,
 {
     ui_native_shell_t *shell = (ui_native_shell_t *)data;
     ui_host_t *host = shell->host;
-    LRESULT result;
+    LRESULT result;HWND previous=message==WM_LBUTTONDOWN?GetFocus():NULL;int dragging=shell->drag_active;
     (void)id;
     ui_dispatch_enter(host);
     result = DefSubclassProc(window, message, w_param, l_param);
+    if(!dragging&&shell->drag_active&&message==WM_LBUTTONDOWN)shell->gesture_focus=previous;
     ui_dispatch_leave(host);
     return result;
 }
@@ -1015,6 +1018,7 @@ static LRESULT popup_window_message(HWND window, UINT message,
     } else if (panel != NULL) {
         if(message==WM_GETMINMAXINFO){MINMAXINFO *limits=(MINMAXINFO *)l_param;limits->ptMinTrackSize.x=logical_to_pixels(160,panel->floating_dpi);limits->ptMinTrackSize.y=logical_to_pixels(120,panel->floating_dpi);return 0;}
         if (message == WM_CLOSE) {
+            (void)ui_host_hide_tooltip(shell->host);
             panel->closed = 1;
             panel->slot->visible = 0;
             ShowWindow(window, SW_HIDE);
@@ -1041,7 +1045,7 @@ static LRESULT popup_window_message(HWND window, UINT message,
         if (message == WM_NCHITTEST) {
             RECT rect;
             int x = (short)LOWORD(l_param), y = (short)HIWORD(l_param);
-            int border = logical_to_pixels(5, panel->floating_dpi);
+            int border = logical_to_pixels(8, panel->floating_dpi);
             GetWindowRect(window, &rect);
             if (y < rect.top + border)
                 return x < rect.left + border ? HTTOPLEFT :
@@ -1093,6 +1097,7 @@ static void popup_command(ui_host_t *host, uint64_t request_id,
         ui_native_panel_t *panel = &shell->panels[index];
         if (panel->popup_host != host) continue;
         if (strcmp(command_id, "framework.panel.close") == 0) {
+            (void)ui_host_hide_tooltip(app_host);
             panel->closed = 1;
             panel->slot->visible = 0;
             ShowWindow(panel->popup, SW_HIDE);
@@ -1107,7 +1112,7 @@ static void popup_command(ui_host_t *host, uint64_t request_id,
         } else if (strcmp(command_id, "framework.panel.title") == 0) {
             ui_panel_entry_t *entry;ui_menu_anchor_t anchor={0};anchor.size=sizeof(anchor);anchor.kind=UI_MENU_ANCHOR_HOST;anchor.rect=(ui_rect_t){0,0,160,24};
             for(entry=app_host->panels;entry;entry=entry->next)if(!strcmp(entry->id,panel->id))break;
-            if(entry)(void)ui_host_show_tooltip(host,&anchor,entry->title);
+            if(entry){ui_rect_t title;if(ui_web_view_get_element_rect(panel->popup_view,"panel-title",&title)==UI_STATUS_OK){title.x+=8;title.y+=8;anchor.rect=title;}(void)ui_host_show_tooltip(host,&anchor,entry->title);}
         } else {
             (void)ui_shell_begin_panel_drag(&shell->shell,panel->id);
         }
@@ -2050,3 +2055,6 @@ int ui_content_slot_belongs_to(const ui_content_slot_t *slot,const ui_host_t *ho
 {return slot&&slot->shell&&slot->shell->native->host==host;}
 
 #include "shell_layout.inc"
+
+void ui_shell_hide_tooltips(ui_host_t *host)
+{size_t i;if(host&&host->shell&&host->shell->native){ui_native_shell_t *s=host->shell->native;for(i=0;i<s->panel_count;++i)if(s->panels[i].popup_host)ui_menus_hide_tooltip(s->panels[i].popup_host);}}

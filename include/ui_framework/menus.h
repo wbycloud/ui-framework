@@ -50,6 +50,9 @@ UI_API ui_status_t ui_host_show_menu(ui_host_t *, const ui_menu_popup_desc_t *);
 UI_API ui_status_t ui_host_show_toolbar_menu(ui_host_t *, const ui_menu_anchor_t *, size_t first);
 UI_API ui_status_t ui_host_show_tooltip(ui_host_t *, const ui_menu_anchor_t *, const char *text_utf8);
 UI_API ui_status_t ui_host_close_menu(ui_host_t *);
+/* UI-thread. Hides this host's tip and its shell-owned internal floating-title
+ * tips, without closing menus. Does not affect independent application hosts.
+ * Tips also close on anchor leave/move, drag, docking, close and destruction. */
 UI_API ui_status_t ui_host_hide_tooltip(ui_host_t *);
 UI_API ui_status_t ui_host_menu_get_capabilities(ui_host_t *, uint64_t *);
 #define UI_MENU_CAP_MODEL UINT64_C(1)

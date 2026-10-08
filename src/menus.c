@@ -29,6 +29,11 @@ typedef struct ui_menu_popup {
     ui_web_backend_t *backend;
     ui_web_view_t *view;
     void *window, *previous_focus;
+#ifdef _WIN32
+    HWND tip_anchor_window;
+    RECT tip_anchor_screen, tip_owner_rect;
+    int tip_pointer_inside;
+#endif
     char *path, *detail;
     struct ui_menu_popup *parent, *child, *next_root;
     ui_rect_t parent_row;
@@ -46,7 +51,7 @@ static ui_menu_popup_t *active_popup(ui_host_t *host)
 static void close_branch(ui_menu_popup_t *p)
 {if(!p)return;close_branch(p->child);p->open=0;p->hover_id[0]=0;
 #ifdef _WIN32
- if(p->window){KillTimer((HWND)p->window,1);ShowWindow((HWND)p->window,SW_HIDE);}
+ if(p->window){KillTimer((HWND)p->window,1);KillTimer((HWND)p->window,2);ShowWindow((HWND)p->window,SW_HIDE);}
 #endif
 }
 #if defined(_WIN32) && defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB)
@@ -236,7 +241,7 @@ static void popup_message(ui_web_view_t *view,const char *json,void *data)
     if(!uj_get(json,"action",action,sizeof(action)))return;
     if(!strcmp(action,"leave")){p->hover_id[0]=0;
 #ifdef _WIN32
-      if(p->window)KillTimer((HWND)p->window,1);
+      if(p->window)KillTimer((HWND)p->window,1);KillTimer((HWND)p->window,2);
 #endif
       return;}
     if(!strcmp(action,"close")){(void)ui_host_close_menu(p->host);return;}
@@ -270,6 +275,9 @@ static LRESULT CALLBACK popup_proc(HWND window,UINT message,WPARAM wp,LPARAM lp)
 {
     ui_menu_popup_t *p=(ui_menu_popup_t *)GetWindowLongPtrW(window,GWLP_USERDATA);
     if(message==WM_NCCREATE){p=(ui_menu_popup_t *)((CREATESTRUCTW *)lp)->lpCreateParams;SetWindowLongPtrW(window,GWLP_USERDATA,(LONG_PTR)p);return TRUE;}
+    if(p&&p->detail&&message==WM_TIMER&&wp==2){POINT at;RECT owner;GetCursorPos(&at);
+        if(PtInRect(&p->tip_anchor_screen,at))p->tip_pointer_inside=1;
+        if(!IsWindowVisible(p->tip_anchor_window)||!GetWindowRect(p->tip_anchor_window,&owner)||!EqualRect(&owner,&p->tip_owner_rect)||(p->tip_pointer_inside&&!PtInRect(&p->tip_anchor_screen,at))){KillTimer(window,2);(void)ui_host_close_menu(p->host);}return 0;}
     if(p&&p->detail&&message==WM_NCHITTEST)return HTTRANSPARENT;
     if(p&&p->detail&&message==WM_MOUSEACTIVATE)return MA_NOACTIVATE;
     if(p&&message==WM_TIMER&&wp==1){char id[4096];KillTimer(window,1);snprintf(id,sizeof(id),"%s",p->hover_id);p->hover_id[0]=0;if(*id){ui_json_t j={0};close_branch(p->child);uj_add(&j,"{\"action\":\"hover\",\"id\":");uj_string(&j,id);uj_add(&j,"}");if(!j.failed)popup_message(p->view,j.data,p);free(j.data);}return 0;}
@@ -316,10 +324,18 @@ static ui_status_t show_popup(ui_menu_popup_t *p)
     }else if(p->anchor.kind==UI_MENU_ANCHOR_COMPONENT_ROW){
         status=ui_component_menu_anchor(p->anchor.component,p->host,p->anchor.row_id,&rect,&native,&p->generation);if(status!=UI_STATUS_OK)return status;}
     else if(p->anchor.kind!=UI_MENU_ANCHOR_HOST)return UI_STATUS_INVALID_ARGUMENT;
-    {menu_rows_t *rows=(menu_rows_t *)malloc(sizeof(*rows));if(!rows)return UI_STATUS_OUT_OF_MEMORY;if(!p->detail){status=popup_rows(p,rows);total=rows->count;if(!p->open){p->keyboard_focus[0]=0;for(size_t i=0;i<total;i++)if(rows->rows[i].entry.state.enabled&&!rows->rows[i].entry.state.busy){snprintf(p->keyboard_focus,sizeof(p->keyboard_focus),"%s",rows->rows[i].entry.id);break;}}if(status!=UI_STATUS_OK){free(rows);return status;}}free(rows);p->page_count=total<10?total:10;if(!p->page_count)p->page_count=1;p->width=320;p->height=p->detail?180:(int)p->page_count*28+8+(total>p->page_count?36:0);}
+    {menu_rows_t *rows=(menu_rows_t *)malloc(sizeof(*rows));if(!rows)return UI_STATUS_OUT_OF_MEMORY;if(!p->detail){status=popup_rows(p,rows);total=rows->count;if(!p->open){p->keyboard_focus[0]=0;for(size_t i=0;i<total;i++)if(rows->rows[i].entry.state.enabled&&!rows->rows[i].entry.state.busy){snprintf(p->keyboard_focus,sizeof(p->keyboard_focus),"%s",rows->rows[i].entry.id);break;}}if(status!=UI_STATUS_OK){free(rows);return status;}}free(rows);p->page_count=total<10?total:10;if(!p->page_count)p->page_count=1;p->width=320;p->height=p->detail?24:(int)p->page_count*28+8+(total>p->page_count?36:0);}
+#ifdef _WIN32
+    if(p->detail){HDC dc=GetDC(NULL);HFONT font=CreateFontW(-MulDiv(13,(int)dpi,96),0,0,0,FW_NORMAL,FALSE,FALSE,FALSE,DEFAULT_CHARSET,0,0,0,0,L"Segoe UI");HGDIOBJ old=SelectObject(dc,font);RECT measured={0,0,MulDiv(372,(int)dpi,96),0};int n=MultiByteToWideChar(CP_UTF8,0,p->detail,-1,NULL,0);wchar_t *wide=(wchar_t *)malloc((size_t)n*sizeof(wchar_t));
+        if(!wide){SelectObject(dc,old);DeleteObject(font);ReleaseDC(NULL,dc);return UI_STATUS_OUT_OF_MEMORY;}
+        MultiByteToWideChar(CP_UTF8,0,p->detail,-1,wide,n);DrawTextW(dc,wide,-1,&measured,DT_CALCRECT|DT_WORDBREAK|DT_NOPREFIX);free(wide);SelectObject(dc,old);DeleteObject(font);ReleaseDC(NULL,dc);
+        p->width=MulDiv(measured.right-measured.left,96,(int)dpi)+12;if(p->width<32)p->width=32;if(p->width>384)p->width=384;
+        p->height=MulDiv(measured.bottom-measured.top,96,(int)dpi)+12;if(p->height<24)p->height=24;if(p->height>240)p->height=240;}
+#endif
 #ifdef _WIN32
     if(p->window){POINT point={MulDiv(rect.x,(int)dpi,96),MulDiv(rect.y+rect.height,(int)dpi,96)};MONITORINFO monitor={sizeof(monitor)};
         int width,height,x,y;ClientToScreen((HWND)native,&point);GetMonitorInfoW(MonitorFromPoint(point,MONITOR_DEFAULTTONEAREST),&monitor);
+        if(p->detail){p->tip_anchor_window=(HWND)native;p->tip_anchor_screen=(RECT){MulDiv(rect.x,(int)dpi,96),MulDiv(rect.y,(int)dpi,96),MulDiv(rect.x+rect.width,(int)dpi,96),MulDiv(rect.y+rect.height,(int)dpi,96)};MapWindowPoints((HWND)native,NULL,(POINT *)&p->tip_anchor_screen,2);GetWindowRect((HWND)native,&p->tip_owner_rect);{POINT at;GetCursorPos(&at);p->tip_pointer_inside=PtInRect(&p->tip_anchor_screen,at);}SetTimer((HWND)p->window,2,80,NULL);}
         width=MulDiv(p->width,(int)dpi,96);height=MulDiv(p->height,(int)dpi,96);if(height>monitor.rcWork.bottom-monitor.rcWork.top)height=monitor.rcWork.bottom-monitor.rcWork.top;
         if(width>monitor.rcWork.right-monitor.rcWork.left)width=monitor.rcWork.right-monitor.rcWork.left;
         x=point.x;y=point.y;if(p->parent&&p->parent->window){POINT at={MulDiv(p->parent_row.x,(int)dpi,96),MulDiv(p->parent_row.y,(int)dpi,96)};RECT parent_rect;ClientToScreen((HWND)p->parent->window,&at);GetWindowRect((HWND)p->parent->window,&parent_rect);x=parent_rect.right-2;y=at.y-4;if(x+width>monitor.rcWork.right)x=parent_rect.left-width+2;}
@@ -460,7 +476,7 @@ void ui_menus_hide_tooltip(ui_host_t *host)
 {ui_menu_popup_t *p=host?(ui_menu_popup_t *)host->menu_popup:NULL;if(p&&p->detail)(void)ui_host_close_menu(host);}
 
 ui_status_t ui_host_hide_tooltip(ui_host_t *host)
-{if(!host)return UI_STATUS_INVALID_ARGUMENT;ui_menus_hide_tooltip(host);return UI_STATUS_OK;}
+{if(!host)return UI_STATUS_INVALID_ARGUMENT;ui_menus_hide_tooltip(host);ui_shell_hide_tooltips(host);return UI_STATUS_OK;}
 ui_status_t ui_host_menu_get_capabilities(ui_host_t *host,uint64_t *out)
 {if(!host||!out)return UI_STATUS_INVALID_ARGUMENT;*out=UI_MENU_CAP_MODEL;
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB

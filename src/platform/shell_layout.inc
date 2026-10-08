@@ -30,7 +30,7 @@ static int layout_allowed(ui_native_shell_t *s)
 {return s&&!s->host->dispatch_blocked&&!s->host->modal_component;}
 static ui_status_t layout_changed(ui_native_shell_t *s)
 {
-    HWND focus=s->offscreen?NULL:GetFocus();ui_status_t status=ui_native_shell_reflow(s);
+    HWND focus=s->offscreen?NULL:GetFocus();ui_status_t status;(void)ui_host_hide_tooltip(s->host);status=ui_native_shell_reflow(s);
     if(focus&&s->active&&!s->host->modal_component&&IsWindowVisible(focus)&&IsWindowEnabled(focus))SetFocus(focus);
     if(status==UI_STATUS_OK)(void)ui_host_emit_event(s->host,"ui.shell.changed","{}");return status;
 }
@@ -216,17 +216,28 @@ static void clamp_floating_windows(ui_native_shell_t *s)
         if(x!=r.left||y!=r.top||width!=r.right-r.left||height!=r.bottom-r.top)(void)SetWindowPos(window,NULL,x,y,width,height,SWP_NOACTIVATE|SWP_NOZORDER);
     }
 }
+static LRESULT CALLBACK drag_preview_proc(HWND window,UINT message,WPARAM wp,LPARAM lp)
+{
+    if(message==WM_NCHITTEST)return HTTRANSPARENT;
+    if(message==WM_PAINT){PAINTSTRUCT paint;HDC dc=BeginPaint(window,&paint);RECT rect;HBRUSH brush=CreateSolidBrush(GetWindowLongPtrW(window,GWLP_USERDATA)?RGB(0,160,96):RGB(0,120,215));GetClientRect(window,&rect);FillRect(dc,&rect,brush);DeleteObject(brush);EndPaint(window,&paint);return 0;}
+    return DefWindowProcW(window,message,wp,lp);
+}
 ui_status_t ui_shell_begin_panel_drag(ui_shell_t *shell,const char *id)
 {
     ui_native_shell_t *s;if(!shell||!shell->native||!id||strlen(id)>63)return UI_STATUS_INVALID_ARGUMENT;s=shell->native;
     if(!layout_allowed(s)||!s->active)return UI_STATUS_CANCELLED;if(s->drag_active||s->split_active)return UI_STATUS_ALREADY_EXISTS;if(!find_panel(s,id))return UI_STATUS_NOT_FOUND;if(s->panel_count>512)return UI_STATUS_LIMIT_EXCEEDED;
-    s->drag_active=1;s->drag_region=UI_LAYOUT_REGION_NONE;strcpy(s->drag_id,id);if(!s->offscreen){s->gesture_focus=GetFocus();SetFocus(s->parent);SetCapture(s->parent);}return UI_STATUS_OK;
+    s->drag_float=(ui_rect_t){20,14,320,240};
+    {ui_native_panel_t *panel=find_panel(s,id);if(panel->saved_float.width){s->drag_float.width=panel->saved_float.width;s->drag_float.height=panel->saved_float.height;}
+     if(!s->offscreen){RECT frame;POINT at;HWND window=panel->floating&&panel->popup?panel->popup:panel->hwnd;
+       if(GetWindowRect(window,&frame)&&GetCursorPos(&at)){if(panel->floating){s->drag_float=(ui_rect_t){MulDiv(at.x-frame.left,96,(int)s->host->dpi),MulDiv(at.y-frame.top,96,(int)s->host->dpi),MulDiv(frame.right-frame.left,96,(int)s->host->dpi),MulDiv(frame.bottom-frame.top,96,(int)s->host->dpi)};}
+        else{ScreenToClient(s->parent,&at);s->drag_float.x=MulDiv(at.x,96,(int)s->host->dpi)-panel->slot->frame_rect.x;s->drag_float.y=MulDiv(at.y,96,(int)s->host->dpi)-panel->slot->frame_rect.y;if(!panel->saved_float.width){s->drag_float.width=panel->slot->frame_rect.width;s->drag_float.height=panel->slot->frame_rect.height;}}}}}
+    (void)ui_host_hide_tooltip(s->host);s->drag_active=1;s->drag_region=UI_LAYOUT_REGION_NONE;strcpy(s->drag_id,id);if(!s->offscreen){s->gesture_focus=GetFocus();SetFocus(s->parent);SetCapture(s->parent);{POINT at;ui_rect_t preview;ui_layout_region_t region;GetCursorPos(&at);ScreenToClient(s->parent,&at);(void)ui_shell_update_panel_drag(shell,MulDiv(at.x,96,(int)s->host->dpi),MulDiv(at.y,96,(int)s->host->dpi),&preview,&region);}}return UI_STATUS_OK;
 }
 ui_status_t ui_shell_update_panel_drag(ui_shell_t *shell,int x,int y,ui_rect_t *preview,ui_layout_region_t *region)
 {
     ui_native_shell_t *s;ui_rect_t r;int width;if(!shell||!shell->native||!preview||!region)return UI_STATUS_INVALID_ARGUMENT;s=shell->native;
     if(!s->drag_active)return UI_STATUS_NOT_FOUND;if(!layout_allowed(s)||!s->active){(void)ui_shell_end_panel_drag(shell,0);return UI_STATUS_CANCELLED;}
-    s->drag_x=x;s->drag_y=y;s->drag_region=UI_LAYOUT_REGION_NONE;s->drag_tab[0]=0;r=(ui_rect_t){x-20,y-14,320,240};width=s->host->host_rect.width;
+    s->drag_x=x;s->drag_y=y;s->drag_region=UI_LAYOUT_REGION_NONE;s->drag_tab[0]=0;r=(ui_rect_t){x-s->drag_float.x,y-s->drag_float.y,s->drag_float.width,s->drag_float.height};width=s->host->host_rect.width;
     if(y>=0&&y<s->host->host_rect.height&&x>=0&&x<width){
         if(x<width/4){s->drag_region=UI_LAYOUT_REGION_LEFT_SIDEBAR;r=(ui_rect_t){0,0,width/4,s->host->host_rect.height};}
         else if(x>=width*3/4){s->drag_region=UI_LAYOUT_REGION_RIGHT_SIDEBAR;r=(ui_rect_t){width*3/4,0,width-width*3/4,s->host->host_rect.height};}}
@@ -234,8 +245,11 @@ ui_status_t ui_shell_update_panel_drag(ui_shell_t *shell,int x,int y,ui_rect_t *
     {size_t i;for(i=0;i<s->panel_count;++i){ui_native_panel_t *p=&s->panels[i];ui_rect_t f=p->slot->frame_rect;if(!strcmp(p->id,s->drag_id)||p->floating||p->closed||!panel_tab_visible(p)||strlen(p->id)>63)continue;
       if(x>=f.x&&x<f.x+f.width&&y>=f.y&&y<f.y+28){strcpy(s->drag_tab,p->id);s->drag_region=p->dock_region;r=f;break;}}}
     *preview=r;*region=s->drag_region;
-    if(!s->offscreen){RECT px=logical_rect_to_pixels(&r,s->host->dpi);if(!s->drag_preview)s->drag_preview=CreateWindowExW(WS_EX_TRANSPARENT|WS_EX_NOACTIVATE,L"STATIC",L"",WS_CHILD|SS_ETCHEDFRAME,s->drag_x,s->drag_y,1,1,s->parent,NULL,NULL,NULL);
-        if(s->drag_preview)SetWindowPos(s->drag_preview,HWND_TOP,px.left,px.top,px.right-px.left,px.bottom-px.top,SWP_SHOWWINDOW|SWP_NOACTIVATE);}
+    if(!s->offscreen){RECT px=logical_rect_to_pixels(&r,s->host->dpi);POINT at={px.left,px.top};int w=px.right-px.left,h=px.bottom-px.top,border=logical_to_pixels(3,s->host->dpi);HRGN outer,inner;
+        ClientToScreen(s->parent,&at);
+        if(!s->drag_preview){WNDCLASSW wc={0};wc.lpfnWndProc=drag_preview_proc;wc.hInstance=GetModuleHandleW(L"ui_framework.dll");wc.lpszClassName=L"UIFrameworkPanelDragPreview";if(RegisterClassW(&wc)||GetLastError()==ERROR_CLASS_ALREADY_EXISTS)s->drag_preview=CreateWindowExW(WS_EX_TRANSPARENT|WS_EX_NOACTIVATE|WS_EX_TOOLWINDOW|WS_EX_TOPMOST,wc.lpszClassName,L"",WS_POPUP,at.x,at.y,w,h,GetAncestor(s->parent,GA_ROOT),NULL,wc.hInstance,NULL);}
+        if(s->drag_preview){outer=CreateRectRgn(0,0,w,h);inner=CreateRectRgn(border,border,w-border,h-border);CombineRgn(outer,outer,inner,RGN_DIFF);DeleteObject(inner);SetWindowLongPtrW(s->drag_preview,GWLP_USERDATA,(LONG_PTR)(s->drag_region!=UI_LAYOUT_REGION_NONE));SetWindowRgn(s->drag_preview,outer,TRUE);
+            SetWindowPos(s->drag_preview,HWND_TOPMOST,at.x,at.y,w,h,SWP_SHOWWINDOW|SWP_NOACTIVATE);}}
     return UI_STATUS_OK;
 }
 ui_status_t ui_shell_end_panel_drag(ui_shell_t *shell,int commit)
@@ -252,7 +266,7 @@ ui_status_t ui_shell_end_panel_drag(ui_shell_t *shell,int commit)
             for(i=0;i<count;++i){ui_native_panel_t *p=&s->panels[indices[i]];if(!p->floating&&!p->closed&&s->drag_y>=p->slot->frame_rect.y+p->slot->frame_rect.height/2)insert=i+1;}
             for(i=0;i<count;++i)s->panels[indices[i]].order=(int)(i+(i>=insert));v.order=(int)insert;
         }
-        else{POINT p={logical_to_pixels(s->drag_x,s->host->dpi),logical_to_pixels(s->drag_y,s->host->dpi)};if(!s->offscreen)ClientToScreen(s->parent,&p);v.dpi=s->host->dpi;v.floating_rect=(ui_rect_t){MulDiv(p.x,96,(int)v.dpi),MulDiv(p.y,96,(int)v.dpi),320,240};}
+        else{POINT p={logical_to_pixels(s->drag_x-s->drag_float.x,s->host->dpi),logical_to_pixels(s->drag_y-s->drag_float.y,s->host->dpi)};if(!s->offscreen)ClientToScreen(s->parent,&p);v.dpi=s->host->dpi;v.floating_rect=(ui_rect_t){MulDiv(p.x,96,(int)v.dpi),MulDiv(p.y,96,(int)v.dpi),s->drag_float.width,s->drag_float.height};}
         status=ui_shell_set_panel_layout(shell,id,&v);
     }finished_drag: if(s->gesture_focus&&s->active&&layout_allowed(s)&&IsWindowVisible(s->gesture_focus)&&IsWindowEnabled(s->gesture_focus))SetFocus(s->gesture_focus);s->gesture_focus=NULL;return status;
 }

@@ -274,3 +274,5 @@ int ui_content_slot_belongs_to(const ui_content_slot_t *slot,const ui_host_t *ho
 #include "headless_layout.inc"
 
 void ui_shell_refresh_titles(ui_host_t *host){(void)host;}
+
+void ui_shell_hide_tooltips(ui_host_t *host){(void)host;}
