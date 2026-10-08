@@ -16,11 +16,11 @@
 
 当前工作源码为 0.9.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；v0.1.0仅是历史稳定标签。[当前版本政策](docs/version-policy.md)撤销持续旧版兼容承诺。清单与 DLL 的 API 声明必须一致，应用不能加载到不支持其声明 API 的旧运行库。
 
-本轮开发保留本地提交，未推送；GitHub main不代表这些本地变更。取得源码后记录实际 commit，再读[API9验收](docs/validation/instance-language-validation.md)、[0.8 → 0.9迁移](docs/migration-v0.8-to-v0.9.md)和[应用升级提示词](docs/application-upgrade-prompt.md)。API3/4/5历史记录保留原结果，当前菜单及离屏合同见[接口说明](docs/framework-menu-offscreen.md)。
+当前API9开发源码入口为[GitHub main](https://github.com/wbycloud/ui-framework/tree/main)。取得源码后记录实际 commit，再读[API9验收](docs/validation/instance-language-validation.md)、[0.8 → 0.9迁移](docs/migration-v0.8-to-v0.9.md)和[应用升级提示词](docs/application-upgrade-prompt.md)。API3/4/5历史记录保留原结果，当前菜单及离屏合同见[接口说明](docs/framework-menu-offscreen.md)。
 
 API8 后续收敛提供[完整应用存储示例](examples/stateful_components/README.md)：应用自己保存 UCW1 列宽与工作区布局，稳定 A/B 档案跨进程恢复、锁隔离、显式保存／重置和异常拒绝。共同表格按稳定列 ID 对齐，调宽改变可见列数时保留指针捕获。[此前API8收敛证据](docs/validation/api8-stability-state-validation.md)分别记录重绘诊断、实际 Runtime、业务原固定坐标失败及 SDK；历史持续重绘尚不能宣称根治。
 
-此前API7[交付收敛与CI审计](docs/validation/api7-delivery-validation.md)区分本机运行、托管CI和待验条件；真实应用准备见[业务试点](docs/business-pilot.md)。当前本地API9提交尚未发布，新clone必须先核对`UI_FRAMEWORK_API_VERSION=9`和CMake版本0.9.0；不符合时取得维护方明确提供的API9 commit后再接入，不能把main或稳定标签当作该提交。
+此前API7[交付收敛与CI审计](docs/validation/api7-delivery-validation.md)区分本机运行、托管CI和待验条件；真实应用准备见[业务试点](docs/business-pilot.md)。当前main提供SDK0.9.0开发源码，不代表已发布稳定SDK或GitHub Release。新clone须记录`git rev-parse HEAD`，核对`UI_FRAMEWORK_API_VERSION=9`和CMake版本0.9.0；v0.1.0仍为历史稳定标签，不能替代当前API9。
 
 建议按以下顺序阅读：
 
@@ -130,7 +130,7 @@ API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离
 
 ## 维护与接手
 
-开发者先读[框架开发交接记录](docs/handoff.md)，核对实际 commit、构建目录、证据和 UV-01..07 待补验项。本轮提交保留本地，未推送；测试通过与全部人工验收完成分别记录。
+开发者先读[框架开发交接记录](docs/handoff.md)，核对实际 commit、构建目录、证据和 UV-01..07 待补验项。源码同步与验收通过分别记录：托管CI以[Actions](https://github.com/wbycloud/ui-framework/actions)中对应commit的实际结果为准，本机通过不能替代托管CI或全部人工验收。
 
 ## 许可证
 

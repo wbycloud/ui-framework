@@ -1,6 +1,6 @@
 # 应用项目升级到当前 API9 的提示词
 
-目标SDK0.9.0开发版、API9、标准修订9，ABI和包格式仍为1。本轮API9尚为本地提交，须先核对是否已发布；源码入口为[GitHub main](https://github.com/wbycloud/ui-framework/tree/main)。采用开发版必须记录取得的确切commit；不要用稳定标签v0.1.0替代本轮接口，也不要把离屏测试通过写成真实输入法/跨屏通过。
+目标SDK0.9.0开发版、API9、标准修订9，ABI和包格式仍为1。当前API9开发源码入口为[GitHub main](https://github.com/wbycloud/ui-framework/tree/main)。采用开发版必须记录取得的确切commit；不要用稳定标签v0.1.0替代本轮接口，也不要把离屏测试通过写成真实输入法/跨屏通过。
 
 复制以下内容给负责应用项目的开发者或代码助手。所有入口均来自GitHub；提示词不包含个人本地目录。
 
@@ -8,7 +8,7 @@
 仅在请求方明确指定本应用并授权接入修改后执行以下适配。未授权时按docs/business-pilot.md准备检查项，不修改应用。授权后实际完成适配，不只修改版本号。
 
 仓库：https://github.com/wbycloud/ui-framework
-发布后从维护方明确指定的分支和commit接入（不要假定当前main已含本轮本地交付）。目标SDK0.9.0开发版、框架API9、开发标准修订9。
+从main取得当前开发源码并锁定确切commit；开发源码同步不等同稳定SDK发布。目标SDK0.9.0开发版、框架API9、开发标准修订9。
 应用ABI、导出入口ui_app_query_v1、包格式均保持1。
 
 1. 先核对维护方提供的目标commit是否可获取，再从上述GitHub仓库获取该commit，记录实际commit，核对CMake版本0.9.0、UI_FRAMEWORK_API_VERSION=9和标准修订9。读取README.md、CHANGELOG.md、docs/version-policy.md、docs/application-development-standard.md、docs/generic-web-ui.md、docs/framework-menu-offscreen.md、docs/workspace-layout.md、docs/migration-v0.8-to-v0.9.md、docs/validation/instance-language-validation.md、docs/validation/api7-delivery-validation.md、docs/business-pilot.md、include/ui_framework公共头文件及tests/api7_fixture.c。历史应用可参考对应迁移指南，但旧SDK/API/调用方及原包已退出持续兼容保证与CI门槛；本任务应适配并验证当前API9，不能仅改清单。若取得源码不符合目标，报告差异，不猜测接口。

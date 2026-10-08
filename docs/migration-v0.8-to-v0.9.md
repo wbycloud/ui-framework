@@ -10,4 +10,4 @@
 
 既有结构字段偏移、枚举和API8列宽/帮助能力保持；新结构必须设置完整size。没有新增系统依赖、进程setlocale或框架公共存储。完整合同、系统变体映射、菜单/模态策略与示例见 [实例语言](instance-language.md)。
 
-宿主跟随活动应用，后台变更隔离，空宿主恢复Windows显示语言。Windows系统对话框仍遵循系统语言。回归、实际失败与待验见 [本轮验收](validation/instance-language-validation.md)，历史 [API8记录](validation/api8-stability-state-validation.md)不作为本轮通过证据。本地源码尚未推送或发布，main和v0.1.0不能代替本轮指定commit。
+宿主跟随活动应用，后台变更隔离，空宿主恢复Windows显示语言。Windows系统对话框仍遵循系统语言。回归、实际失败与待验见 [本轮验收](validation/instance-language-validation.md)，历史 [API8记录](validation/api8-stability-state-validation.md)不作为本轮通过证据。当前API9开发源码入口为[main](https://github.com/wbycloud/ui-framework/tree/main)，接入仍须锁定确切commit；源码同步不等于稳定SDK发布，历史v0.1.0不能代替当前接口。

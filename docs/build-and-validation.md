@@ -2,7 +2,7 @@
 
 本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.9.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、以当前SDK/API9构建的EDA、Web Counter、generic_components和framework_features功能应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，当前升级见[0.8→0.9迁移](migration-v0.8-to-v0.9.md)；更早版本按对应历史指南迁移。
 
-API5已有能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[历史验收](validation/api5-validation.md)。当前API9接口迁移见[0.8→0.9](migration-v0.8-to-v0.9.md)、[布局](workspace-layout.md)及[验收](validation/component-experience-validation.md)。历史验收节和冻结源码保留原结果，不作为当前测试状态或未来兼容承诺。当前维护范围见[版本政策](version-policy.md)，本轮结果见[实例语言验收](validation/instance-language-validation.md)。
+API5已有能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[历史验收](validation/api5-validation.md)。当前API9接口迁移见[0.8→0.9](migration-v0.8-to-v0.9.md)、[布局](workspace-layout.md)及[当前API9验收](validation/instance-language-validation.md)。历史验收节和冻结源码保留原结果，不作为当前测试状态或未来兼容承诺。当前维护范围见[版本政策](version-policy.md)，本轮结果见[实例语言验收](validation/instance-language-validation.md)。
 
 ## 1. 构建环境
 
@@ -346,9 +346,9 @@ UI_BUILD_TESTS下生成api7_fixture.uapp，public-C应用包含十万行/64列�
 
 只读观察现有应用时，可向`ui_menu_desktop_test.exe`传入原.uapp、证据输出前缀和`--observe`。该分支只打开/关闭菜单和切换宿主主题，不调用应用命令；输出真实PrintWindow客户区BMP，证据PNG只作无损转换。包及原应用目录保持只读，不覆盖它的运行库。菜单截图、窗口命中和程序DPI不能替代真实IME、物理跨屏、桌面合成人工及长期操作验收。详见[菜单验收](validation/menu-desktop-validation.md)。
 
-## 当前 API9 本地交付和必要矩阵
+## 当前 API9 源码交付和必要矩阵
 
-API9/ABI1/包格式1，见[迁移](migration-v0.8-to-v0.9.md)及[验收](validation/instance-language-validation.md)。本轮本地交付，工作流配置不等于当前commit已在托管CI运行。固定Lexbor/QuickJS与WebView2 SDK1.0.4129.50、显式x64 Mesa24.3.4 OSMesa路径保持。
+API9/ABI1/包格式1，见[迁移](migration-v0.8-to-v0.9.md)及[验收](validation/instance-language-validation.md)。当前API9开发源码同步main；本地结果、源码同步、稳定发布及托管CI运行分别报告。工作流配置不等于对应commit已在托管CI通过。固定Lexbor/QuickJS与WebView2 SDK1.0.4129.50、显式x64 Mesa24.3.4 OSMesa路径保持。
 
 原生/轻量/Runtime/OSMesa四配置沿用[windows-ci.ps1](../tools/windows-ci.ps1)。Runtime阶段显式纳入ui_component_scroll_webview2、ui_api7_integration_webview2并要求实际执行，仍与显式软件WGL隔离。API7独立DLL/.uapp组合100k/64列、底部/标签、RGBA、GL/缩略图/双实例/卸载；当前功能调用方使用当前头文件与API9声明，停止冻结SDK和旧包专项。
 
