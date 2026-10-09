@@ -1,0 +1,3 @@
+# Equivalent reproduction command for the retained actual CTest results; no additional run is claimed.
+& 'C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/ctest.exe' --test-dir 'build/language-current-20261009/sdk-offline' -R '^(ui_language_core|ui_public_headers_cpp|ui_windowless_gl)$' --output-on-failure --output-junit 'D:/应用软件框架/应用层序框架/build/language-current-20261009/sdk-offline-tests.xml' *> 'build/language-current-20261009/sdk-offline-tests.log'
+if ($LASTEXITCODE) { throw 'Final SDK offline tests failed; retain original logs' }

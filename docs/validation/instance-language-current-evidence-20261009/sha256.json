@@ -221,9 +221,104 @@
       "sha256": "87cbe2d46f75cb6fb502a7510e85776a3a6f6eca46def097d5594de34701ac9a"
     },
     {
+      "path": "raw/document-check-scope-failure.log",
+      "bytes": 837,
+      "sha256": "7cc01fe8fe40c0fef233674262e822272494aa1fc01ccc34d03ea26988a3d330"
+    },
+    {
       "path": "raw/environment-final.json",
       "bytes": 404,
       "sha256": "93781e3cf63f5e0e1f3331d178191067aa1056eca8b86aed4ec25f58afb55925"
+    },
+    {
+      "path": "raw/final-document-checks.json",
+      "bytes": 196,
+      "sha256": "684db162a402230cb02829d3d1db7f5f991c1d8d80ea87d310b11121da8c33dd"
+    },
+    {
+      "path": "raw/final-sdk-language-light/manifest.json",
+      "bytes": 3449,
+      "sha256": "248885c8a755663c1b57a71df6479e4c4d6382441332fe7b56ea4c4279f31c13"
+    },
+    {
+      "path": "raw/final-sdk-language-light/preferences-96.log",
+      "bytes": 2058,
+      "sha256": "180216b3dd38fb65a8645bd346fb1bc72da16bb4c10d864fe2ded58c17edd8f5"
+    },
+    {
+      "path": "raw/final-sdk-language-light/restore-144.log",
+      "bytes": 4425,
+      "sha256": "8d9257f3ce54d427aa4b805847389a820e5e66eec8acd9b740de00d0ac0594cf"
+    },
+    {
+      "path": "raw/final-sdk-language-light/restore-192.log",
+      "bytes": 4425,
+      "sha256": "82fddcb635e67743f69157185c7368559185de6d87b4ae6953879614f5cd5545"
+    },
+    {
+      "path": "raw/final-sdk-language-light/restore-96.log",
+      "bytes": 4424,
+      "sha256": "f094ba882abf758e0e974442ca567010f32275c431a49a64e749d16a43e10ea2"
+    },
+    {
+      "path": "raw/final-sdk-language-light/write-144.log",
+      "bytes": 5393,
+      "sha256": "049240db4366fc7ba0f5507fb83fca149d30f36890b9ddbfc76803549b9901ba"
+    },
+    {
+      "path": "raw/final-sdk-language-light/write-192.log",
+      "bytes": 5393,
+      "sha256": "83bdee9a007c61734446154a5c6902566d0f410667d5075879b343812068b49f"
+    },
+    {
+      "path": "raw/final-sdk-language-light/write-96.log",
+      "bytes": 5389,
+      "sha256": "9063b56bbb1faf42daaf8edfde3cc1a7fa88ef5234decf277635456c66a48e79"
+    },
+    {
+      "path": "raw/final-sdk-language-webview2/manifest.json",
+      "bytes": 3455,
+      "sha256": "950c344610dec9476f3d9888a1e01dec58d930042df6e6b108c36ba995b68104"
+    },
+    {
+      "path": "raw/final-sdk-language-webview2/preferences-96.log",
+      "bytes": 2080,
+      "sha256": "9e9a8988054e4bc6681ac12cb6e45bccee972da7f75d588114108aa0040e3067"
+    },
+    {
+      "path": "raw/final-sdk-language-webview2/restore-144.log",
+      "bytes": 4452,
+      "sha256": "779372d745bf94ecbf6fc88542dabaa955f558059eda597c9536604080bddf44"
+    },
+    {
+      "path": "raw/final-sdk-language-webview2/restore-192.log",
+      "bytes": 4450,
+      "sha256": "af87c70ae4f5bcf7e8f47b548ec2e2490182ae63150d0adddab6c02946ef35d9"
+    },
+    {
+      "path": "raw/final-sdk-language-webview2/restore-96.log",
+      "bytes": 4451,
+      "sha256": "72065e03c7c3f5afa4b46df8b3e13823aa1afaca05f0a8763ecd99efd5dc8b8b"
+    },
+    {
+      "path": "raw/final-sdk-language-webview2/write-144.log",
+      "bytes": 5419,
+      "sha256": "ae19d7cca019f8fd613d8c8b448f150b0e52358c0921320a945658a8feff136b"
+    },
+    {
+      "path": "raw/final-sdk-language-webview2/write-192.log",
+      "bytes": 5418,
+      "sha256": "20b854462f1b76af0dce9609f119c2530ccbe44172650be6d177367d87e9ee6c"
+    },
+    {
+      "path": "raw/final-sdk-language-webview2/write-96.log",
+      "bytes": 5415,
+      "sha256": "9a8a5997fd6db3e46af017dcb9b0947b32ecc1855daac62e97227b8fd8f423d2"
+    },
+    {
+      "path": "raw/finalize-sdk-evidence.py",
+      "bytes": 5645,
+      "sha256": "520b858ed98244b0f6876805920c7dffa401821c4c671d050039e9ed1ac993fe"
     },
     {
       "path": "raw/matrix-native/ctest-all.xml",
@@ -326,6 +421,11 @@
       "sha256": "a483cdc1d38bf0c29b84a01f2013bebc939772b6795f1de406dc4e06221b9a26"
     },
     {
+      "path": "raw/package-sdk-delivery.py",
+      "bytes": 2724,
+      "sha256": "c87836e7c4618846aa223f9d2de171289924a5a53089c12a248e92567de0b312"
+    },
+    {
       "path": "raw/preserved-archives.json",
       "bytes": 382,
       "sha256": "2869c7c3934feb88f84dda3930a68a6c42b6582d65f12d806d1d25bb122caf55"
@@ -366,9 +466,84 @@
       "sha256": "63affdc2d9e8aa4d055d5149bb7e05cddb5a288805c8847bdae46b95eef2d171"
     },
     {
+      "path": "raw/sdk-delivery-consumer-build.cmd",
+      "bytes": 795,
+      "sha256": "3888f1593ec70e28cd827e8d2095985bd35962d5664883882e0cd99626ef0a32"
+    },
+    {
+      "path": "raw/sdk-delivery-consumer-build.log",
+      "bytes": 16,
+      "sha256": "3cea3363385292c3c97ec4bd0c3235c11875139b8e57b5d12d6edfb72a6b0ddd"
+    },
+    {
+      "path": "raw/sdk-delivery-consumer-staging.log",
+      "bytes": 92,
+      "sha256": "63affdc2d9e8aa4d055d5149bb7e05cddb5a288805c8847bdae46b95eef2d171"
+    },
+    {
+      "path": "raw/sdk-delivery-package.log",
+      "bytes": 104,
+      "sha256": "d5d2ed1508c947e660ae59c2731a9173058ad1bd44415c9241bba278fc0b30de"
+    },
+    {
+      "path": "raw/sdk-delivery-stage.log",
+      "bytes": 178,
+      "sha256": "6f2a5a7d8e27222b19dfc6f23137dff5f4f2e743ec8fdd8457555319a34f08cd"
+    },
+    {
       "path": "raw/sdk-extracted-consumer.log",
       "bytes": 92,
       "sha256": "63affdc2d9e8aa4d055d5149bb7e05cddb5a288805c8847bdae46b95eef2d171"
+    },
+    {
+      "path": "raw/sdk-final-actual-results.json",
+      "bytes": 632,
+      "sha256": "e4818187c690dd095f3ae7aa81e1cc65975486b205ff63fc13ef19a47e3dc1c0"
+    },
+    {
+      "path": "raw/sdk-final-archive.json",
+      "bytes": 1726,
+      "sha256": "e93061e5d7ca40df4826211c228e24de46363a151d9ec1b5e8242f69937fd247"
+    },
+    {
+      "path": "raw/sdk-final-consumer.c",
+      "bytes": 2104,
+      "sha256": "fd471a4c6203d467fee9379224d0769384138cb275f14ef40a526e444ff66b98"
+    },
+    {
+      "path": "raw/sdk-final-extracted-consumer.log",
+      "bytes": 92,
+      "sha256": "63affdc2d9e8aa4d055d5149bb7e05cddb5a288805c8847bdae46b95eef2d171"
+    },
+    {
+      "path": "raw/sdk-final-identity.json",
+      "bytes": 651,
+      "sha256": "033fc693924fa2e8ef54e019d32b28dfe217db987c7435b1e7dd5a38a63dc363"
+    },
+    {
+      "path": "raw/sdk-final-language-light.log",
+      "bytes": 33661,
+      "sha256": "c0a9036603641c3e7806bfb381e7456a1fc1fb851078921d435cf35dbafa0910"
+    },
+    {
+      "path": "raw/sdk-final-language-webview2.log",
+      "bytes": 33863,
+      "sha256": "c74d866742c9ac969d73727cc643e1e76d8c1a06cd1c5f00b48456ab9d15863f"
+    },
+    {
+      "path": "raw/sdk-final-preservation.json",
+      "bytes": 1162,
+      "sha256": "d078b66418708126824fe98da678e520d35f63ec271ca958de5961dc3939748f"
+    },
+    {
+      "path": "raw/sdk-final-readme.md",
+      "bytes": 3023,
+      "sha256": "8044a96f5bf59af6c7344402c72db9f26bc1331871f89a1e690a276229de85f9"
+    },
+    {
+      "path": "raw/sdk-final-tool-incident.md",
+      "bytes": 827,
+      "sha256": "a47933dad83aa592983c8d8165de4bae2e329cb4fd88d29075a31603f463ba78"
     },
     {
       "path": "raw/sdk-language-light.log",
@@ -386,6 +561,46 @@
       "sha256": "8de2ca9042338b85125912afb872d4aa16895527538fdf5edae5ae52572b0b1d"
     },
     {
+      "path": "raw/sdk-offline-build.cmd",
+      "bytes": 847,
+      "sha256": "21c264634dcc1b2b491a2b4164c737510ab51d1b27ce17cfda44fe84b1098ac5"
+    },
+    {
+      "path": "raw/sdk-offline-build.log",
+      "bytes": 37105,
+      "sha256": "d06d66e624ef244411347af8cebee3a3dfbd80d2521b2812c6c773db0667d5ed"
+    },
+    {
+      "path": "raw/sdk-offline-configure.log",
+      "bytes": 1485,
+      "sha256": "e5961383ef570ea5b065a402c31f112a21b5c5070201f019687e65045387811b"
+    },
+    {
+      "path": "raw/sdk-offline-target-failure.log",
+      "bytes": 54,
+      "sha256": "85e3e80fd672bdc106d8be354e58819505b58ba4e041b1406aad4b9f06ef0dd1"
+    },
+    {
+      "path": "raw/sdk-offline-tests-command.ps1",
+      "bytes": 630,
+      "sha256": "f1c007c85852e06f14194c6dfc2de1ffbb63044f32ddfa32bf9f67628454deb5"
+    },
+    {
+      "path": "raw/sdk-offline-tests.log",
+      "bytes": 498,
+      "sha256": "d3103f30f8b6b550d109b184e06b3d99bd5ea941dd2b196108a844da69a5ce9b"
+    },
+    {
+      "path": "raw/sdk-offline-tests.xml",
+      "bytes": 1744,
+      "sha256": "81ee2ab8117187b2b087999899c51d0b09508d82d435140f07c3f7b6a0382fd5"
+    },
+    {
+      "path": "raw/stage-sdk-delivery.py",
+      "bytes": 7194,
+      "sha256": "f1d1871df49b8de31759450a7e4071f0878dc5a9fa56eb1446bed237992961ab"
+    },
+    {
       "path": "raw/tool-incidents.md",
       "bytes": 1065,
       "sha256": "6e478581207d81ecdb1d32bb167072c45f69040acec97c2e00fdd98789241236"
@@ -396,14 +611,19 @@
       "sha256": "b80894e2a5f39d45370156ccf9290afbccfe8f5473cd92e1d40a76c04979570d"
     },
     {
+      "path": "raw/verify-sdk-final.ps1",
+      "bytes": 1045,
+      "sha256": "e8e32353d3a7614fb351f63e88675483e1e0c676aded4afecab61e661eb0e276"
+    },
+    {
       "path": "raw/verify-sdk.ps1",
       "bytes": 1682,
       "sha256": "355413dab2f96626e8fb567e897725dbf61deaa295e0c42041e265d55aa545d6"
     },
     {
       "path": "README.md",
-      "bytes": 842,
-      "sha256": "ccfb2ba9da2f2a5ad63b5eeef83da6c6d2b98fcd78047178298edf7a789c9653"
+      "bytes": 1360,
+      "sha256": "61c2db270aff6a86fcb22f7704b5e910edd9ec638a37c0006e67e302d539367d"
     },
     {
       "path": "screenshots/light-chinese-assistant.png",

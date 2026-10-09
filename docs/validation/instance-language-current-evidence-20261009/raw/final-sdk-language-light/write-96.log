@@ -1,0 +1,72 @@
+INPUT_EVIDENCE real SendInput; final state checked
+TEST_PHASE pid14760 tick745236921 dispatched0 create-host-begin
+TEST_PHASE pid14760 tick745236937 dispatched0 create-host-end
+TEST_PHASE pid14760 tick745237171 dispatched16 screenshot-begin
+TEST_PHASE pid14760 tick745237187 dispatched16 screenshot-end
+TEST_PHASE pid14760 tick745237187 dispatched16 open-begin
+TEST_PHASE pid14760 tick745237343 dispatched16 open-return
+TEST_PHASE pid14760 tick745237953 dispatched48 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+TEST_PHASE pid14760 tick745237953 dispatched48 screenshot-begin
+TEST_PHASE pid14760 tick745237984 dispatched48 screenshot-end
+REAL_CLICK client90,41 128x26 screen202,94 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+REAL_CLICK client4,4 312x28 screen299,126 hit0000000014FC109C UIFrameworkLightWeb pid14760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+TEST_PHASE pid14760 tick745238718 dispatched99 screenshot-begin
+TEST_PHASE pid14760 tick745238750 dispatched99 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000006BF1086 classUIFrameworkLightWeb thread46892 ours46892 GetCapture0000000006BF1086 target-thread-capture0000000006BF1086
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000006BF1086 pid14760
+TEST_PHASE pid14760 tick745239343 dispatched130 open-begin
+TEST_PHASE pid14760 tick745239515 dispatched130 open-return
+TEST_PHASE pid14760 tick745240125 dispatched166 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+REAL_CLICK client4,32 312x28 screen299,154 hit0000000002F90840 UIFrameworkLightWeb pid14760
+TEST_PHASE pid14760 tick745240859 dispatched249 screenshot-begin
+TEST_PHASE pid14760 tick745240875 dispatched249 screenshot-end
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+TEST_PHASE pid14760 tick745244500 dispatched638 screenshot-begin
+TEST_PHASE pid14760 tick745244531 dispatched638 screenshot-end
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+TEST_PHASE pid14760 tick745244750 dispatched671 screenshot-begin
+TEST_PHASE pid14760 tick745244781 dispatched671 screenshot-end
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000012F50B2E UIFrameworkLightWeb pid14760
+REAL_CLICK client8,40 58x28 screen133,233 hit000000000B070B90 UIFrameworkLightWeb pid14760
+TEST_PHASE pid14760 tick745246062 dispatched760 screenshot-begin
+TEST_PHASE pid14760 tick745246093 dispatched760 screenshot-end
+TEST_PHASE pid14760 tick745246390 dispatched769 screenshot-begin
+TEST_PHASE pid14760 tick745246421 dispatched769 screenshot-end
+TEST_PHASE pid14760 tick745246796 dispatched783 screenshot-begin
+TEST_PHASE pid14760 tick745246812 dispatched783 screenshot-end
+TEST_PHASE pid14760 tick745246812 dispatched783 instances-close-begin
+TEST_PHASE pid14760 tick745247156 dispatched802 screenshot-begin
+TEST_PHASE pid14760 tick745247187 dispatched802 screenshot-end
+TEST_PHASE pid14760 tick745247187 dispatched802 close-begin
+TEST_PHASE pid14760 tick745247187 dispatched802 close-request-return
+TEST_PHASE pid14760 tick745247500 dispatched805 com-uninitialize-begin
+TEST_PHASE pid14760 tick745247500 dispatched805 process-return
+Instance language actual light write dpi96 failures0

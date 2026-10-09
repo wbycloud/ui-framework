@@ -1,0 +1,99 @@
+{
+  "evidence": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\language-evidence-light-ea020d1a1ae74cdba3463ffb8f0756d3",
+  "startedUtc": "2026-10-09T00:44:54.7384002Z",
+  "files": [
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\osmesa.dll",
+      "sha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\ui_instance_language_test.exe",
+      "sha256": "0077F6ED2981705EB2265B072B7DAA39AD31F13FB6EF4A6CC6B343A65ABD3CE9"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\stateful_components.uapp",
+      "sha256": "6EBC3BCABD97BA41E1C96FFE6EA7669006D81F1BEA0B7F34C88B55A6C37B7BD7"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\ui_framework.dll",
+      "sha256": "6CD2AE2A4A79A159E5E5C113B6DBCAF252C64C3CC9F40A85475AEA62953B29D9"
+    }
+  ],
+  "frameworkApi": 9,
+  "backend": "light",
+  "provider": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\osmesa.dll",
+  "completedUtc": "2026-10-09T00:46:00.8321429Z",
+  "cases": [
+    {
+      "mode": "preferences",
+      "label": "preferences-96",
+      "exitCode": 0,
+      "dpi": 96,
+      "startedUtc": "2026-10-09T00:44:54.8141082Z",
+      "elapsedMs": 6247,
+      "completedUtc": "2026-10-09T00:45:01.0693585Z",
+      "status": "exited"
+    },
+    {
+      "mode": "write",
+      "label": "write-96",
+      "exitCode": 0,
+      "dpi": 96,
+      "startedUtc": "2026-10-09T00:45:01.0749527Z",
+      "elapsedMs": 10669,
+      "completedUtc": "2026-10-09T00:45:11.7474030Z",
+      "status": "exited"
+    },
+    {
+      "mode": "restore",
+      "label": "restore-96",
+      "exitCode": 0,
+      "dpi": 96,
+      "startedUtc": "2026-10-09T00:45:11.7493920Z",
+      "elapsedMs": 9152,
+      "completedUtc": "2026-10-09T00:45:20.9105732Z",
+      "status": "exited"
+    },
+    {
+      "mode": "write",
+      "label": "write-144",
+      "exitCode": 0,
+      "dpi": 144,
+      "startedUtc": "2026-10-09T00:45:20.9123998Z",
+      "elapsedMs": 10499,
+      "completedUtc": "2026-10-09T00:45:31.4281273Z",
+      "status": "exited"
+    },
+    {
+      "mode": "restore",
+      "label": "restore-144",
+      "exitCode": 0,
+      "dpi": 144,
+      "startedUtc": "2026-10-09T00:45:31.4294505Z",
+      "elapsedMs": 9275,
+      "completedUtc": "2026-10-09T00:45:40.7099266Z",
+      "status": "exited"
+    },
+    {
+      "mode": "write",
+      "label": "write-192",
+      "exitCode": 0,
+      "dpi": 192,
+      "startedUtc": "2026-10-09T00:45:40.7117685Z",
+      "elapsedMs": 10771,
+      "completedUtc": "2026-10-09T00:45:51.4917969Z",
+      "status": "exited"
+    },
+    {
+      "mode": "restore",
+      "label": "restore-192",
+      "exitCode": 0,
+      "dpi": 192,
+      "startedUtc": "2026-10-09T00:45:51.4929983Z",
+      "elapsedMs": 9333,
+      "completedUtc": "2026-10-09T00:46:00.8311281Z",
+      "status": "exited"
+    }
+  ],
+  "input": "real SendInput"
+}

@@ -1,0 +1,99 @@
+{
+  "input": "real SendInput",
+  "cases": [
+    {
+      "status": "exited",
+      "startedUtc": "2026-10-09T00:46:01.5037342Z",
+      "dpi": 96,
+      "exitCode": 0,
+      "label": "preferences-96",
+      "completedUtc": "2026-10-09T00:46:14.4770229Z",
+      "elapsedMs": 12961,
+      "mode": "preferences"
+    },
+    {
+      "status": "exited",
+      "startedUtc": "2026-10-09T00:46:14.4827881Z",
+      "dpi": 96,
+      "exitCode": 0,
+      "label": "write-96",
+      "completedUtc": "2026-10-09T00:46:24.3076637Z",
+      "elapsedMs": 9823,
+      "mode": "write"
+    },
+    {
+      "status": "exited",
+      "startedUtc": "2026-10-09T00:46:24.3100083Z",
+      "dpi": 96,
+      "exitCode": 0,
+      "label": "restore-96",
+      "completedUtc": "2026-10-09T00:46:32.9360527Z",
+      "elapsedMs": 8617,
+      "mode": "restore"
+    },
+    {
+      "status": "exited",
+      "startedUtc": "2026-10-09T00:46:32.9378428Z",
+      "dpi": 144,
+      "exitCode": 0,
+      "label": "write-144",
+      "completedUtc": "2026-10-09T00:46:43.3360288Z",
+      "elapsedMs": 10389,
+      "mode": "write"
+    },
+    {
+      "status": "exited",
+      "startedUtc": "2026-10-09T00:46:43.3372691Z",
+      "dpi": 144,
+      "exitCode": 0,
+      "label": "restore-144",
+      "completedUtc": "2026-10-09T00:46:51.8954450Z",
+      "elapsedMs": 8551,
+      "mode": "restore"
+    },
+    {
+      "status": "exited",
+      "startedUtc": "2026-10-09T00:46:51.8971955Z",
+      "dpi": 192,
+      "exitCode": 0,
+      "label": "write-192",
+      "completedUtc": "2026-10-09T00:47:02.0641455Z",
+      "elapsedMs": 10159,
+      "mode": "write"
+    },
+    {
+      "status": "exited",
+      "startedUtc": "2026-10-09T00:47:02.0653802Z",
+      "dpi": 192,
+      "exitCode": 0,
+      "label": "restore-192",
+      "completedUtc": "2026-10-09T00:47:10.8165201Z",
+      "elapsedMs": 8746,
+      "mode": "restore"
+    }
+  ],
+  "completedUtc": "2026-10-09T00:47:10.8175133Z",
+  "frameworkApi": 9,
+  "provider": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\osmesa.dll",
+  "startedUtc": "2026-10-09T00:46:01.4261395Z",
+  "backend": "webview2",
+  "evidence": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\language-evidence-webview2-c5ca757a124f483ab389cbe378e940e3",
+  "files": [
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\osmesa.dll",
+      "sha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\ui_instance_language_test.exe",
+      "sha256": "0077F6ED2981705EB2265B072B7DAA39AD31F13FB6EF4A6CC6B343A65ABD3CE9"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\stateful_components.uapp",
+      "sha256": "6EBC3BCABD97BA41E1C96FFE6EA7669006D81F1BEA0B7F34C88B55A6C37B7BD7"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\ui_framework.dll",
+      "sha256": "6CD2AE2A4A79A159E5E5C113B6DBCAF252C64C3CC9F40A85475AEA62953B29D9"
+    }
+  ]
+}

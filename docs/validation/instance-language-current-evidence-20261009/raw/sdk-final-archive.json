@@ -1,0 +1,38 @@
+{
+  "archive": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\ui-framework-sdk0.9.0-dev-api9-44c039f-windows-x64.zip",
+  "bytes": 117891276,
+  "sha256": "28ca0b8409b321477f1aa3adce2680fda8cf2cd8a9a35dd4308a5f08ef1f79a2",
+  "source_document_snapshot": "44c039fce36c191dba03631a7bcc1c5756e2dd90",
+  "files_including_manifest": 3602,
+  "crc": "PASS",
+  "per_file_verification": "PASS",
+  "extracted_public_c_consumer": "PASS",
+  "extracted_directory": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk",
+  "actual_extracted_complete_language_application": "PASS",
+  "offline_source_build": "PASS included fixed dependencies; no network fetch",
+  "extracted_suite_summary": [
+    {
+      "backend": "light",
+      "processes": 7,
+      "all_actual_exits": 0,
+      "manifest": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\language-evidence-light-ea020d1a1ae74cdba3463ffb8f0756d3\\manifest.json"
+    },
+    {
+      "backend": "webview2",
+      "processes": 7,
+      "all_actual_exits": 0,
+      "manifest": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\sdk-delivery-extracted\\sdk\\bin\\language-evidence-webview2-c5ca757a124f483ab389cbe378e940e3\\manifest.json"
+    }
+  ],
+  "offline_tests": {
+    "passed": 3,
+    "failed": 0,
+    "names": [
+      "ui_language_core",
+      "ui_public_headers_cpp",
+      "ui_windowless_gl"
+    ]
+  },
+  "delivered_files_after_tests_and_build": "PASS all 3602 unchanged including manifest",
+  "source_product_delta_from_tested_8765882": "NONE; docs and evidence only"
+}

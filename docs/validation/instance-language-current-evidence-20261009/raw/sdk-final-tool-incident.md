@@ -1,0 +1,5 @@
+# 最终SDK离线构建目标选择失败
+
+首次构建命令将CTest用例ui_windowless_gl误写成不存在的可执行目标ui_windowless_gl_test，Ninja直接失败；sdk-offline-target-failure.log保留原始输出。改为仓库既有ui_offscreen_msaa_test目标后重新构建成功，实际CTest仍运行ui_windowless_gl并验证OSMesa。没有修改产品、超时、预算或原断言；后续通过不覆盖原目标选择失败。
+
+最终文档检查器首次把examples/README说明变化也计入产品代码差异，断言失败；保留复现输出document-check-scope-failure.log。核对唯一差异为已授权的stateful_components/README.md后，将代码无差异检查明确限定这一说明例外，其余src/include/CMake/tests/examples文件仍须没有改动。产品和原回归断言未改。

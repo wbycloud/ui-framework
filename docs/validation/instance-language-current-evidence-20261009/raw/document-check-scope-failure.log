@@ -1,0 +1,8 @@
+warning: in the working copy of 'CHANGELOG.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/build-and-validation.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/handoff.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/validation/instance-language-current-validation.md', LF will be replaced by CRLF the next time Git touches it
+Traceback (most recent call last):
+  File "D:\应用软件框架\应用层序框架\build\language-current-20261009\check-final-docs.py", line 37, in <module>
+    assert not subprocess.check_output(['git', 'diff', '876588246a72d261c88b9e1906372d1b5b91d1ca', '--', 'src', 'include', 'CMakeLists.txt', 'tests', 'examples'], cwd=root)
+AssertionError

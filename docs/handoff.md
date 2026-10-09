@@ -348,6 +348,8 @@ SDK0.9.0-dev/API9/标准9、ABI1/包1保持，新增独立完整size描述及三
 
 当前真实系统UI仅zh-CN/provider1/fallback0；实例en-US和其他映射不是实际英文Windows空宿主验收。新截图为完整当前应用/DLL，1200×800/DPI96深色中英文同状态，另含双实例、AI、空宿主和中英文确认；原BMP及PNG哈希保留。开发标准当前声明8残留改为9，菜单/API9验收指向修正，现有README/合同/迁移/构建/宿主/组件/布局/示例/升级提示词同步；历史记录不改写。
 
-本轮归档按精确开发commit提供匹配headers/import/static libraries/shared DLL/host/full packages/source/fixed dependencies/licenses，与旧6d88770和07a66a8归档分开。文档修正前的8765882基准SDK3501文件/117108072字节，SHA141a09ac741f92c7d02b43ea69cef58916b4a09e99f1e23c8d39d61e99d226f8，CRC/逐文件/解包C调用及两后端完整实际解包语言套件通过。最终包含最新入口说明的SDK快照及归档后证明另行保存，不能仅用基准包结果代替新归档复验；最新本地提交与最终SDK身份按本轮验收追加记录核对。
+本轮归档按精确开发commit提供匹配headers/import/static libraries/shared DLL/host/full packages/source/fixed dependencies/licenses，与旧6d88770和07a66a8归档分开。文档修正前的8765882基准SDK3501文件/117108072字节，SHA141a09ac741f92c7d02b43ea69cef58916b4a09e99f1e23c8d39d61e99d226f8，CRC/逐文件/解包C调用及两后端完整实际解包语言套件通过，保持原归档。
+
+当前最终SDK为ui-framework-sdk0.9.0-dev-api9-44c039f-windows-x64.zip，源码/说明快照44c039fce36c191dba03631a7bcc1c5756e2dd90（首轮文档提交）；3602文件/117891276字节，SHA256 28ca0b8409b321477f1aa3adce2680fda8cf2cd8a9a35dd4308a5f08ef1f79a2。原产品/头文件/测试没有新差异；CRC/逐文件/实际解包C调用通过，最终解包完整应用两后端14个子进程均实际exited0。包内固定依赖离线构建成功，语言core/C++公共头/实际OSMesa三项通过；选错Ninja目标的原失败保持。之后全部交付文件和旧SDK哈希仍匹配。[最终外部证明](validation/instance-language-current-evidence-20261009/raw/sdk-final-archive.json)另作本地提交，不回写已封存归档；最新HEAD见git log，不能把文档提交混作产品测试身份。
 
 全部原证据在build/language-current-20261009，关键原日志、运行器、确认观察器、manifest和18张真实PNG保存到docs/validation/instance-language-current-evidence-20261009，Git属性保留原字节。本机Windows10.0.26300/Session1/MSVC19.50/Runtime154.0.4258.62，固定依赖未改。当前会话非管理员，本轮没有服务Session0复验；原b6a36fee Session0 GL通过和严格无登录logged_sessions1失败分别保留。没有严格无登录runner和新的托管CI授权；真实其他系统UI/IME/物理不同DPI/桌面合成/长期人工待验，原托管超时/历史重绘不宣称根治。仅本地提交，不推送/发布/标签/新会话/子代理/graph-engineering，不改冻结SDK/历史包/证据/PERF-001，不扩大硬件GL。

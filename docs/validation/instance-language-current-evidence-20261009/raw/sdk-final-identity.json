@@ -1,0 +1,19 @@
+{
+  "sdk": "0.9.0-dev",
+  "api": 9,
+  "standard": 9,
+  "application_abi": 1,
+  "package_format": 1,
+  "source_document_snapshot": "44c039fce36c191dba03631a7bcc1c5756e2dd90",
+  "last_product_commit": "07a66a82370db93c49a66c90db5e217a8812e60e",
+  "source_dirty": false,
+  "build": "fresh current-source Release MSVC x64 C11",
+  "dependencies": {
+    "lexbor": "7fb22cf5664a331d7c24b113489e566767c9c25a",
+    "quickjs": "2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278"
+  },
+  "webview2_sdk": "1.0.4129.50",
+  "osmesa": "24.3.4",
+  "published": false,
+  "proof": "Archive and actual extracted validation recorded externally after packaging."
+}

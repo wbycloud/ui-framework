@@ -50,7 +50,15 @@ Light与真实Runtime各2个快照场景均0失败：[Light](instance-language-c
 
 本轮使用新的完整开发快照交付匹配公共头、静态/导入库、共享DLL、宿主、完整应用包/测试、源码、固定依赖和许可证，不重写已封存6d88770/07a66a8归档。[原包哈希核对](instance-language-current-evidence-20261009/raw/preserved-archives.json)。归档精确源码/说明快照、SHA256和最终解包证明在归档后另行保存，避免源码快照自引用归档哈希。
 
-文档修正前的8765882基准SDK已核验3501文件、117108072字节、CRC及逐文件身份，解包C语言/查询/通知/文本调用通过；实际解包DLL/.uapp的两后端完整语言脚本均通过（10种偏好文件/后端及12个独立write/restore进程）。[基准归档证明](instance-language-current-evidence-20261009/raw/sdk-baseline-archive.json)、[实际解包套件](instance-language-current-evidence-20261009/raw/sdk-actual-results.json)。最终SDK会纳入最新入口文档，另外记录归档和实际解包调用，不能仅以基准包的成功冒充新归档已验证。
+文档修正前的8765882基准SDK已核验3501文件、117108072字节、CRC及逐文件身份，解包C语言/查询/通知/文本调用通过；实际解包DLL/.uapp的两后端完整语言脚本均通过（10种偏好文件/后端及12个独立write/restore进程）。[基准归档证明](instance-language-current-evidence-20261009/raw/sdk-baseline-archive.json)、[实际解包套件](instance-language-current-evidence-20261009/raw/sdk-actual-results.json)。这份基准归档保留，不用其结果替代最终包验证。
+
+最终交付`ui-framework-sdk0.9.0-dev-api9-44c039f-windows-x64.zip`，源码/说明快照为本轮首提交44c039fce36c191dba03631a7bcc1c5756e2dd90；产品、头文件、测试与8765882没有差异。3602文件、117891276字节，SHA256 `28ca0b8409b321477f1aa3adce2680fda8cf2cd8a9a35dd4308a5f08ef1f79a2`。CRC、逐文件校验、解包共享C调用通过；解包目录实际Light/Runtime完整语言脚本各7个子进程全部exited/exitCode0，含每后端10种偏好文件及96/144/192的12个独立write/restore进程。[最终归档证明](instance-language-current-evidence-20261009/raw/sdk-final-archive.json)、[实际调用结果](instance-language-current-evidence-20261009/raw/sdk-final-actual-results.json)、[Light清单](instance-language-current-evidence-20261009/raw/final-sdk-language-light/manifest.json)、[Runtime清单](instance-language-current-evidence-20261009/raw/final-sdk-language-webview2/manifest.json)。
+
+仅使用最终解包源码中的固定Lexbor/QuickJS/WebView2依赖离线构建宿主、完整应用及相关调用方，实际ui_language_core/ui_public_headers_cpp/ui_windowless_gl三项通过（0.69秒）。[构建命令](instance-language-current-evidence-20261009/raw/sdk-offline-build.cmd)、[复验命令](instance-language-current-evidence-20261009/raw/sdk-offline-tests-command.ps1)、[JUnit](instance-language-current-evidence-20261009/raw/sdk-offline-tests.xml)。第一次选错Ninja目标的失败独立保留；改为既有ui_offscreen_msaa_test目标，没有改产品或用例。[目标选择失败](instance-language-current-evidence-20261009/raw/sdk-final-tool-incident.md)。离线构建不等于无外部构建工具或无需安装Runtime。
+
+最终完整套件和离线构建之后，3602个交付文件（包括清单自身）及原6d88770/07a66a8/本轮基准归档大小与哈希保持。[保存核对](instance-language-current-evidence-20261009/raw/sdk-final-preservation.json)。最终归档封存后不再补写源码/证据；本文与外部证明在后续本地文档提交保存，避免归档自引用。实际产物、归档及运行身份分别报告，不将文档提交当作新产品测试身份。
+
+最终文档检查核对455个相对链接、保留此前98个raw/PNG原字节及产品/头/测试/示例代码无差异；示例README属于授权说明更新。检查器首次将这份README算入代码差异的工具失败原输出独立保留，明确范围后通过。[检查结果](instance-language-current-evidence-20261009/raw/final-document-checks.json)、[原范围错误](instance-language-current-evidence-20261009/raw/document-check-scope-failure.log)。
 
 完整本地日志/源BMP/SDK在`build/language-current-20261009`；关键日志、身份、失败与真实PNG纳入本记录的证据目录。SDK包本身只本地交付，不推送、发布或创建稳定标签；用户业务仓库、冻结SDK、历史验收/原始CI证据及PERF-001没有改动。文档及证据另作本地提交，实际SHA见git log，不把文档提交当成新产品测试身份。
 

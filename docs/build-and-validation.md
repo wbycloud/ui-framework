@@ -467,6 +467,8 @@ ctest --test-dir build/current -R '^ui_stateful_components_(light|webview2)$' --
 
 四行配置沿用现有WGL/provider/Runtime分类，依赖已存在时先核验固定提交和目录改动，勿盲目prepare覆盖。独立新build目录、串行真实输入、JUnit精确清单和二进制哈希必须绑定本轮源码；本地结果不改写原托管CI结论。本轮没有新的推送或远程工作流授权。
 
+2026-10-09当前API9完整SDK的源码/说明快照为44c039f；实际解包两后端完整语言套件、包内固定依赖离线构建、三项公共调用/OSMesa及运行后逐文件身份均另有[最终证明和复验命令](validation/instance-language-current-validation.md#sdk与证据保存)。这是本地开发交付，封存归档不补写后续证明，原托管超时和当前服务/物理条件继续分别待验。
+
 ## 2026-10-09 公共布局与真实可见性验收
 
 新增 `ui_component_layout` / `ui_component_layout_webview2` 纳入现有WGL/provider/Runtime隔离与完整清单检查；原断言、180/240/300秒及资源门槛保持。`dialog_layout_example` 仅链接当前公共共享库，`ui_interaction_probe` / `ui_display_probe` 为不加载业务DLL的公共C复现，真实输入必须在解锁桌面串行执行。SendInput、实际窗口画面与自动状态检查分列；程序192不代表物理高DPI。当前开发SDK增补需匹配头文件、导入库和运行库，冻结API9归档不包含三个新导出。[命令、实际提交、证据及限制](validation/ui-repair-validation.md)。
