@@ -2,7 +2,7 @@
 
 SDK0.9.0开发版、框架API9、开发标准修订9。API5四项已有实现继续保留，当前源码以实际commit为准。只维护接手确认的当前API9；[版本政策](version-policy.md)取代旧版兼容承诺，现存加载分支暂不清理。应用ABI、`ui_app_query_v1`和包格式保持1；不创建稳定标签。
 
-本轮只修改框架和通用验收样例，没有修改请求方应用、文档模型、业务渲染器或PERF-001。当前能力及证据见[API8验收](validation/component-experience-validation.md)，历史结果见[API6验收](validation/api6-validation.md)与[API5历史验收](validation/api5-validation.md)；[API4记录](validation/api4-validation.md)保留历史结果。
+当前接口维护范围为框架和框架自有验收样例，不修改请求方应用、文档模型、业务渲染器或PERF-001。API9能力见[语言合同](instance-language.md)及[当前源码复核](validation/instance-language-current-validation.md)；[API8验收](validation/component-experience-validation.md)、[API6验收](validation/api6-validation.md)、[API5验收](validation/api5-validation.md)和[API4记录](validation/api4-validation.md)保留历史结果，不作为当前通过。
 
 ## 1. 菜单与工具栏
 
@@ -92,7 +92,7 @@ API5 Alt/嵌套/溢出/模态/焦点、OSMesa实际上下文、离屏MSAA与状�
 
 ## API7 捕获取消与布局
 
-UI_INPUT_CANCEL=8追加，事件尺寸不变，有窗口捕获丢失和无窗口调用方取消共用；滚动语义见[通用Web](generic-web-ui.md)。底部及同区标签沿用内容生命周期，布局2读取布局1，见[布局](workspace-layout.md)。菜单/Alt/焦点/单次命令及GL/MSAA/普通附件合同不改；没有硬件无窗口扩展。当前GL/Session0与整机无登录分开记于[API8验收](validation/component-experience-validation.md)。
+UI_INPUT_CANCEL=8追加，事件尺寸不变，有窗口捕获丢失和无窗口调用方取消共用；滚动语义见[通用Web](generic-web-ui.md)。底部及同区标签沿用内容生命周期，布局2读取布局1，见[布局](workspace-layout.md)。菜单/Alt/焦点/单次命令及GL/MSAA/普通附件合同不改；没有硬件无窗口扩展。API9 GL/Session0与整机无登录按准确提交分别记录于[同步CI结果](validation/github-sync-validation.md)及[当前源码复核](validation/instance-language-current-validation.md)，不沿用[API8历史验收](validation/component-experience-validation.md)。
 
 本轮仅移除共同TREE/TABLE/LIST分页与列箭头按钮；菜单单层128项、页窗口和末项访问合同不变。真实回归见[分页清理验收](validation/component-scroll-only-validation.md)。
 

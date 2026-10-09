@@ -164,4 +164,4 @@ API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离
 
 ## API9 应用实例语言
 
-应用决定并持久化语言，每个host独立支持zh-CN/en-US。宿主跟随活动实例，无应用时跟随Windows显示语言。新增设置、来源查询、通知及原位文本更新能力，使用匹配SDK0.9/API9；不重建DLL、工作区或GL。完整示例通过A/B档案演示语言与原列宽/布局状态的独立持久化。[语言合同](docs/instance-language.md)、[当前验收](docs/validation/instance-language-validation.md)、[完整示例](examples/stateful_components/README.md)。
+应用决定并持久化语言，每个host独立支持zh-CN/en-US。宿主跟随活动实例，无应用时跟随Windows显示语言。设置、来源查询、通知及原位文本更新使用匹配SDK0.9/API9，不重建DLL、工作区或GL。完整示例通过A/B档案演示语言与原列宽/布局状态的独立持久化。[语言合同](docs/instance-language.md)、[当前源码复核、真实截图与SDK交付](docs/validation/instance-language-current-validation.md)、[API9首次验收](docs/validation/instance-language-validation.md)、[完整示例](examples/stateful_components/README.md)。

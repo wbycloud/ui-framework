@@ -1,0 +1,72 @@
+INPUT_EVIDENCE real SendInput; final state checked
+TEST_PHASE pid3992 tick744217156 dispatched0 create-host-begin
+TEST_PHASE pid3992 tick744217171 dispatched0 create-host-end
+TEST_PHASE pid3992 tick744217390 dispatched15 screenshot-begin
+TEST_PHASE pid3992 tick744217421 dispatched15 screenshot-end
+TEST_PHASE pid3992 tick744217421 dispatched15 open-begin
+TEST_PHASE pid3992 tick744217531 dispatched15 open-return
+TEST_PHASE pid3992 tick744218140 dispatched387 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+TEST_PHASE pid3992 tick744218171 dispatched392 screenshot-begin
+TEST_PHASE pid3992 tick744218187 dispatched392 screenshot-end
+REAL_CLICK client90,41 128x26 screen202,94 hit0000000009360A0A UIFrameworkLightWeb pid3992
+REAL_CLICK client4,4 312x28 screen299,126 hit00000000115304C0 UIFrameworkLightWeb pid3992
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+TEST_PHASE pid3992 tick744218656 dispatched642 screenshot-begin
+TEST_PHASE pid3992 tick744218671 dispatched642 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit000000000507058C classChrome_WidgetWin_0 thread28416 ours28416 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit000000000507058C pid3992
+TEST_PHASE pid3992 tick744219203 dispatched695 open-begin
+TEST_PHASE pid3992 tick744219281 dispatched695 open-return
+TEST_PHASE pid3992 tick744219890 dispatched1136 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+REAL_CLICK client90,41 128x26 screen202,94 hit0000000009360A0A UIFrameworkLightWeb pid3992
+REAL_CLICK client4,32 312x28 screen299,154 hit0000000004820950 UIFrameworkLightWeb pid3992
+TEST_PHASE pid3992 tick744220578 dispatched1466 screenshot-begin
+TEST_PHASE pid3992 tick744220593 dispatched1466 screenshot-end
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+REAL_CLICK client34,4 154x36 screen159,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+REAL_CLICK client214,4 154x36 screen339,62 hit0000000009360A0A UIFrameworkLightWeb pid3992
+TEST_PHASE pid3992 tick744224500 dispatched5168 screenshot-begin
+TEST_PHASE pid3992 tick744224531 dispatched5168 screenshot-end
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000009360A0A UIFrameworkLightWeb pid3992
+TEST_PHASE pid3992 tick744224734 dispatched5191 screenshot-begin
+TEST_PHASE pid3992 tick744224765 dispatched5191 screenshot-end
+REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000009360A0A UIFrameworkLightWeb pid3992
+REAL_CLICK client8,40 58x28 screen133,233 hit0000000001440452 Chrome_WidgetWin_0 pid3992
+TEST_PHASE pid3992 tick744225781 dispatched6013 screenshot-begin
+TEST_PHASE pid3992 tick744225812 dispatched6013 screenshot-end
+TEST_PHASE pid3992 tick744226031 dispatched6216 screenshot-begin
+TEST_PHASE pid3992 tick744226062 dispatched6216 screenshot-end
+TEST_PHASE pid3992 tick744226296 dispatched6718 screenshot-begin
+TEST_PHASE pid3992 tick744226312 dispatched6718 screenshot-end
+TEST_PHASE pid3992 tick744226312 dispatched6718 instances-close-begin
+TEST_PHASE pid3992 tick744226671 dispatched6757 screenshot-begin
+TEST_PHASE pid3992 tick744226671 dispatched6757 screenshot-end
+TEST_PHASE pid3992 tick744226671 dispatched6757 close-begin
+TEST_PHASE pid3992 tick744226671 dispatched6757 close-request-return
+TEST_PHASE pid3992 tick744226984 dispatched6764 com-uninitialize-begin
+TEST_PHASE pid3992 tick744226984 dispatched6764 process-return
+Instance language actual webview2 write dpi96 failures0

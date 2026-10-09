@@ -68,3 +68,5 @@ ui_browser_host使用框架测试包和私有临时历史目录，保留GetCurso
 ## 应用语言跟随（API9）
 
 语言入口在应用，不在宿主全局设置。有应用时读取活动host，后台变更隔离；切换/关闭活动标签更新文案，最后一个关闭后恢复Windows显示语言。最近、空状态、工具提示、固定错误和助手使用框架统一资源。用户路径、参数和已有结果不翻译；助手确认按目标实例打开时快照。Windows文件选择器系统按钮依旧使用系统语言，其应用包过滤标签属于框架。实际识别时机和模态策略见[语言合同](instance-language.md)，[本轮证据](validation/instance-language-validation.md)不继承历史通过。
+
+[2026-10-09当前源码复核](validation/instance-language-current-validation.md)补充完整示例双实例、实际Runtime及同状态中英文截图。权限确认已打开时保持目标实例的语言快照，后来活动标签或后台实例改语言不会改写该确认；无实例时按实际Windows UI查询，不以输入法/地区格式代替。

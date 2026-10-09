@@ -1,0 +1,46 @@
+{
+  "artifacts": [
+    {
+      "bytes": 2190848,
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\current\\ui_framework.dll",
+      "sha256": "6cd2ae2a4a79a159e5e5c113b6dbcaf252c64c3cc9f40a85475aea62953b29d9"
+    },
+    {
+      "bytes": 61690,
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\current\\ui_framework_runtime.lib",
+      "sha256": "fa14d15ec556363c2af99b176b24926bb9e1b5e1eedad4d3dba78fa9cd44ab0a"
+    },
+    {
+      "bytes": 257024,
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\current\\framework_host.exe",
+      "sha256": "c0462f8ac09096195cd96bf41ffd7e88f5c441685aa4556007a127a11b9397b2"
+    },
+    {
+      "bytes": 38799,
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\current\\stateful_components.uapp",
+      "sha256": "6ebc3bcabd97ba41e1c96ffe6ea7669006d81f1bea0b7f34c88b55a6c37b7bd7"
+    },
+    {
+      "bytes": 135680,
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\current\\ui_instance_language_test.exe",
+      "sha256": "0077f6ed2981705eb2265b072b7daa39ad31f13fb6ef4a6cc6b343a65abd3ce9"
+    },
+    {
+      "bytes": 126464,
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\current\\ui_stateful_components_test.exe",
+      "sha256": "1c94b0e7761612339078739df5593478d6bbdfb955e5cc7602896d9d08af262a"
+    },
+    {
+      "bytes": 1985536,
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\language-current-20261009\\current\\ui_language_core_test.exe",
+      "sha256": "24083c11713c6d34481795189377aca08626cd4259a6bbf38ed2d7481e245afc"
+    }
+  ],
+  "quickjs": "2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278",
+  "framework": "SDK0.9.0-dev/API9/std9/ABI1/package1",
+  "sourceDirty": false,
+  "commit": "876588246a72d261c88b9e1906372d1b5b91d1ca",
+  "session": 1,
+  "os": "Microsoft Windows NT 10.0.26300.0",
+  "lexbor": "7fb22cf5664a331d7c24b113489e566767c9c25a"
+}

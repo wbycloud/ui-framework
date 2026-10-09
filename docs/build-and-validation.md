@@ -4,6 +4,8 @@
 
 API5已有能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[历史验收](validation/api5-validation.md)。当前API9接口迁移见[0.8→0.9](migration-v0.8-to-v0.9.md)、[布局](workspace-layout.md)及[当前API9验收](validation/instance-language-validation.md)。历史验收节和冻结源码保留原结果，不作为当前测试状态或未来兼容承诺。当前维护范围见[版本政策](version-policy.md)，本轮结果见[实例语言验收](validation/instance-language-validation.md)。
 
+最新实例语言源码复核和本地SDK交付见[2026-10-09记录](validation/instance-language-current-validation.md)，API9首次实现验收保持原版本/失败/环境。使用同一开发快照的头文件、导入库、DLL、宿主和.uapp；先核对归档及逐文件哈希，再执行解包产物。本机结果不能覆盖b6a36fee的托管失败或替代当前源码Session0/严格无登录/物理条件。
+
 ## 1. 构建环境
 
 使用安装了 MSVC C/C++ 工具、Windows SDK、CMake 和 Ninja 的 Visual Studio Developer PowerShell，选择 x64 工具链，并进入仓库根目录。WebView2 loader 根据目标架构选择；本轮实际 UI、GPU 和 Runtime 验证覆盖 Windows x64，历史panel兼容编译结果仅属于历史记录，本轮不列为交付门槛。

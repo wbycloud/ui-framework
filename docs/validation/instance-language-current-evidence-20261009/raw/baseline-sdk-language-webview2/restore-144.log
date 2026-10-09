@@ -1,0 +1,60 @@
+INPUT_EVIDENCE real SendInput; final state checked
+TEST_PHASE pid41788 tick744535921 dispatched0 create-host-begin
+TEST_PHASE pid41788 tick744535937 dispatched0 create-host-end
+TEST_PHASE pid41788 tick744536171 dispatched15 screenshot-begin
+TEST_PHASE pid41788 tick744536203 dispatched15 screenshot-end
+TEST_PHASE pid41788 tick744536203 dispatched15 open-begin
+TEST_PHASE pid41788 tick744536296 dispatched15 open-return
+TEST_PHASE pid41788 tick744536906 dispatched371 open-settled
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+TEST_PHASE pid41788 tick744537062 dispatched402 open-begin
+TEST_PHASE pid41788 tick744537156 dispatched402 open-return
+TEST_PHASE pid41788 tick744537765 dispatched843 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+TEST_PHASE pid41788 tick744538046 dispatched1135 screenshot-begin
+TEST_PHASE pid41788 tick744538078 dispatched1135 screenshot-end
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+REAL_CLICK client34,4 154x36 screen215,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+TEST_PHASE pid41788 tick744542093 dispatched4818 screenshot-begin
+TEST_PHASE pid41788 tick744542140 dispatched4818 screenshot-end
+REAL_CLICK client1011,0 40x40 screen1595,70 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+TEST_PHASE pid41788 tick744542359 dispatched4845 screenshot-begin
+TEST_PHASE pid41788 tick744542406 dispatched4845 screenshot-end
+REAL_CLICK client1011,0 40x40 screen1595,70 hit00000000088D0A64 UIFrameworkLightWeb pid41788
+REAL_CLICK client8,40 58x28 screen152,294 hit0000000003740414 Chrome_WidgetWin_0 pid41788
+TEST_PHASE pid41788 tick744543437 dispatched5670 screenshot-begin
+TEST_PHASE pid41788 tick744543468 dispatched5670 screenshot-end
+TEST_PHASE pid41788 tick744543687 dispatched5875 screenshot-begin
+TEST_PHASE pid41788 tick744543718 dispatched5875 screenshot-end
+TEST_PHASE pid41788 tick744543953 dispatched6358 screenshot-begin
+TEST_PHASE pid41788 tick744543968 dispatched6358 screenshot-end
+TEST_PHASE pid41788 tick744543968 dispatched6358 instances-close-begin
+TEST_PHASE pid41788 tick744544343 dispatched6396 screenshot-begin
+TEST_PHASE pid41788 tick744544359 dispatched6396 screenshot-end
+TEST_PHASE pid41788 tick744544359 dispatched6396 close-begin
+TEST_PHASE pid41788 tick744544359 dispatched6396 close-request-return
+TEST_PHASE pid41788 tick744544671 dispatched6403 com-uninitialize-begin
+TEST_PHASE pid41788 tick744544671 dispatched6403 process-return
+Instance language actual webview2 restore dpi144 failures0

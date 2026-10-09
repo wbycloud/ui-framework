@@ -1,0 +1,52 @@
+Test project D:/应用软件框架/应用层序框架/build/language-current-20261009/native
+      Start  1: ui_language_core
+ 1/22 Test  #1: ui_language_core .................   Passed    1.43 sec
+      Start  2: ui_package_format
+ 2/22 Test  #2: ui_package_format ................   Passed    0.22 sec
+      Start  3: ui_images_windows
+ 3/22 Test  #3: ui_images_windows ................   Passed    0.05 sec
+      Start  4: ui_responsive_layout
+ 4/22 Test  #4: ui_responsive_layout .............   Passed    0.03 sec
+      Start  5: ui_assistant_lifecycle
+ 5/22 Test  #5: ui_assistant_lifecycle ...........   Passed    0.02 sec
+      Start  6: ui_dpi_web_failure
+ 6/22 Test  #6: ui_dpi_web_failure ...............   Passed    0.03 sec
+      Start  7: ui_components_core
+ 7/22 Test  #7: ui_components_core ...............   Passed    0.04 sec
+      Start  8: ui_headless_example
+ 8/22 Test  #8: ui_headless_example ..............   Passed    0.03 sec
+      Start  9: ui_public_headers_c
+ 9/22 Test  #9: ui_public_headers_c ..............   Passed    0.05 sec
+      Start 10: ui_public_headers_cpp
+10/22 Test #10: ui_public_headers_cpp ............   Passed    0.04 sec
+      Start 11: ui_workspace_layout
+11/22 Test #11: ui_workspace_layout ..............   Passed    4.22 sec
+      Start 12: ui_offscreen_msaa
+12/22 Test #12: ui_offscreen_msaa ................   Passed    0.44 sec
+      Start 13: ui_workspace_integration
+13/22 Test #13: ui_workspace_integration .........   Passed    1.59 sec
+      Start 14: ui_native_activation
+14/22 Test #14: ui_native_activation .............   Passed    0.56 sec
+      Start 15: ui_dpi_integration
+15/22 Test #15: ui_dpi_integration ...............   Passed    0.08 sec
+      Start 16: ui_opengl_integration
+16/22 Test #16: ui_opengl_integration ............   Passed    0.38 sec
+      Start 17: ui_surface_input
+17/22 Test #17: ui_surface_input .................   Passed    0.12 sec
+      Start 18: ui_monitor_transition
+18/22 Test #18: ui_monitor_transition ............***Skipped   0.07 sec
+      Start 19: ui_workspace7
+19/22 Test #19: ui_workspace7 ....................   Passed    0.15 sec
+      Start 20: ui_native_shell_integration
+20/22 Test #20: ui_native_shell_integration ......   Passed    0.10 sec
+      Start 21: ui_native_responsive
+21/22 Test #21: ui_native_responsive .............   Passed    0.22 sec
+      Start 22: ui_assistant_protocol
+22/22 Test #22: ui_assistant_protocol ............   Passed    0.07 sec
+
+100% tests passed, 0 tests failed out of 22
+
+Total Test time (real) =   9.96 sec
+
+The following tests did not run:
+	 18 - ui_monitor_transition (Skipped)

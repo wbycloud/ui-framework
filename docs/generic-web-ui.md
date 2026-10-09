@@ -186,3 +186,5 @@ TABLE表头与单元格按注册的稳定列ID对齐，source的cell数组顺序
 ## API9 原位文本与语言
 
 共同模板接收所属host的复制文本字典及精确字符串languageGeneration；两后端共同语义。新接口只更新标题/标签/帮助/选项显示标签，不改草稿、业务值、组件数据generation、缓存、完整范围滚动或列宽。异步tooltip检查语言版本，有效数据批次不因语言切换被抛弃；不重复查询来翻译。选择器暂态关闭并返回入口焦点，应用模态原位更新。详见[语言合同](instance-language.md)和[完整示例](../examples/stateful_components/README.md)。
+
+[当前源码完整应用复验](validation/instance-language-current-validation.md)按实际构建/运行身份记录Light与真实Runtime、原生完整范围输入、程序DPI和SDK；API9首次实现记录保留，不能把历史通过或纯UTF-8显示当作本轮语言切换验收。

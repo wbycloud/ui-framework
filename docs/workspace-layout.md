@@ -85,3 +85,5 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 ## API9 面板文本更新
 
 ui_host_set_title按稳定panel ID更新标题；停靠标签、浮动标题和宿主摘要原位刷新。标题不是持久化身份，语言变化不改变布局格式、分隔条状态、原HWND或GL context。实例自己的弹窗沿用本host语言，浮动工具复用框架字典。语言设置仍由应用存储，见[语言合同](instance-language.md)。
+
+当前语言/列宽/布局交互与跨进程保存恢复证据见[2026-10-09复核](validation/instance-language-current-validation.md)。UILayout/UCW1/UIL1存储继续归应用，不因译文变长改变用户列宽或重建GL；各次程序DPI与物理环境验收分开报告。

@@ -1,0 +1,568 @@
+{
+  "backtraceGraph" : 
+  {
+    "commands" : 
+    [
+      "add_test"
+    ],
+    "files" : 
+    [
+      "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/CMakeLists.txt"
+    ],
+    "nodes" : 
+    [
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 267,
+        "parent" : 0
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 270,
+        "parent" : 2
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 278,
+        "parent" : 4
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 283,
+        "parent" : 6
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 283,
+        "parent" : 8
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 283,
+        "parent" : 10
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 283,
+        "parent" : 12
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 287,
+        "parent" : 14
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 290,
+        "parent" : 16
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 298,
+        "parent" : 18
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 318,
+        "parent" : 20
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 464,
+        "parent" : 22
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 606,
+        "parent" : 24
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 653,
+        "parent" : 26
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 659,
+        "parent" : 28
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 664,
+        "parent" : 30
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 668,
+        "parent" : 32
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 672,
+        "parent" : 34
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 677,
+        "parent" : 36
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 686,
+        "parent" : 38
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 691,
+        "parent" : 40
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 698,
+        "parent" : 42
+      }
+    ]
+  },
+  "kind" : "ctestInfo",
+  "tests" : 
+  [
+    {
+      "backtrace" : 1,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_language_core_test.exe"
+      ],
+      "name" : "ui_language_core",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 3,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_package_format_test.exe"
+      ],
+      "name" : "ui_package_format",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 5,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_images_windows_test.exe"
+      ],
+      "name" : "ui_images_windows",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 7,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_responsive_layout_test.exe"
+      ],
+      "name" : "ui_responsive_layout",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 9,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_assistant_lifecycle_test.exe"
+      ],
+      "name" : "ui_assistant_lifecycle",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 11,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_dpi_web_failure_test.exe"
+      ],
+      "name" : "ui_dpi_web_failure",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 13,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_components_core_test.exe"
+      ],
+      "name" : "ui_components_core",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 15,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_headless_example.exe"
+      ],
+      "name" : "ui_headless_example",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 17,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_public_headers_c_test.exe"
+      ],
+      "name" : "ui_public_headers_c",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 19,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_public_headers_cpp_test.exe"
+      ],
+      "name" : "ui_public_headers_cpp",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 21,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_workspace_layout_test.exe"
+      ],
+      "name" : "ui_workspace_layout",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 23,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_offscreen_msaa_test.exe"
+      ],
+      "name" : "ui_offscreen_msaa",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 25,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_workspace_integration_test.exe",
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/minimal_eda.uapp",
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_lifecycle_fixture.dll",
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_application_cpp.dll"
+      ],
+      "name" : "ui_workspace_integration",
+      "properties" : 
+      [
+        {
+          "name" : "TIMEOUT",
+          "value" : 45.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 27,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_native_activation_test.exe"
+      ],
+      "name" : "ui_native_activation",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 29,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_dpi_integration_test.exe"
+      ],
+      "name" : "ui_dpi_integration",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 31,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_opengl_integration_test.exe"
+      ],
+      "name" : "ui_opengl_integration",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 33,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_surface_input_test.exe"
+      ],
+      "name" : "ui_surface_input",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 35,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_monitor_transition_test.exe"
+      ],
+      "name" : "ui_monitor_transition",
+      "properties" : 
+      [
+        {
+          "name" : "SKIP_RETURN_CODE",
+          "value" : 77
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 20.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 37,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_workspace7_test.exe"
+      ],
+      "name" : "ui_workspace7",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 39,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_native_shell_integration_test.exe"
+      ],
+      "name" : "ui_native_shell_integration",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 41,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_native_responsive_test.exe"
+      ],
+      "name" : "ui_native_responsive",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    },
+    {
+      "backtrace" : 43,
+      "command" : 
+      [
+        "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native/ui_assistant_protocol_test.exe"
+      ],
+      "name" : "ui_assistant_protocol",
+      "properties" : 
+      [
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6/\u5e94\u7528\u5c42\u5e8f\u6846\u67b6/build/language-current-20261009/native"
+        }
+      ]
+    }
+  ],
+  "version" : 
+  {
+    "major" : 1,
+    "minor" : 0
+  }
+}

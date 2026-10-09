@@ -431,7 +431,7 @@ Markdown 阅读器可以把解析结果交给自己选择的绘制或 Web 路径
 
 ## API5 接入与验收要求
 
-本节能力最早在API5引入，当前用SDK0.9/API9维护和验收。清单与DLL一致声明8，ABI1、导出和包格式1不变；结构读取按完整字段末端判断，不能读取未包含的字段或padding。现存低版本分支不作持续兼容承诺，不为历史版本增加适配层。历史增补见[0.4→0.5迁移](migration-v0.4-to-v0.5.md)，当前升级见[0.7→0.8](migration-v0.7-to-v0.8.md)。
+本节能力最早在API5引入，当前用SDK0.9/API9维护和验收。清单与DLL一致声明9，ABI1、导出和包格式1不变；结构读取按完整字段末端判断，不能读取未包含的字段或padding。现存低版本分支不作持续兼容承诺，不为历史版本增加适配层。历史增补见[0.4→0.5迁移](migration-v0.4-to-v0.5.md)，当前升级见[0.8→0.9](migration-v0.8-to-v0.9.md)。
 
 Alt 助记键、真正 OSMesa 无窗口 GL、精确离屏 MSAA 和 WebView2 异步呈现/捕获/图片/组件合同分别见 [菜单和离屏](framework-menu-offscreen.md#6-api5-菜单无窗口-gl-与-msaa-合同)与[通用 Web API5](generic-web-ui.md#api5-webview2-与共同组件)。WebView2 后端借用到 host 销毁以后，禁止 DLL 卸载后留应用异步回调；PENDING 需要外层消息循环及重试，不能当 OK。
 
@@ -486,6 +486,8 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 ## API9 应用语言与文本
 
 标准9要求应用拥有语言选择及存储，在create、首次呈现前向本host提交。不得用setlocale、全局环境变量或浏览器语言代替实例状态。宿主活动跟随、空宿主Windows UI默认、通知重入、完整size/复制所有权和原位更新见[语言合同](instance-language.md)。命令、菜单path、列和面板ID稳定；枚举标签与提交值分开，翻译不自动适配用户列宽。应用unmount移除回调，保持原异步关闭和卸载。新增公开能力集中升级API9，ABI1/包1不变；API8列宽/help继续维护。
+
+2026-10-09按当前源码复核已有API9接口，不重复新增或重新升级版本。[当前完整示例/真实Runtime/SDK记录](validation/instance-language-current-validation.md)与首次实现验收分别保存，使用确切开发快照匹配头文件、导入库和DLL；原托管失败、系统语言环境和物理待验不由本机通过覆盖。
 
 ## 标准9开发分支：FORM/DIALOG布局与提示生命周期
 

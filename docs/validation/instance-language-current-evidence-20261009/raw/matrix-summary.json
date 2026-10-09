@@ -1,0 +1,48 @@
+[
+  {
+    "failures": 0,
+    "phases": [
+      {
+        "exit": 0,
+        "finished": "2026-10-09T00:22:03.3711446Z",
+        "phase": "all",
+        "started": "2026-10-09T00:21:53.3683419Z"
+      }
+    ],
+    "seconds": 10.0896332,
+    "skipped": 1,
+    "sourceCommit": "876588246a72d261c88b9e1906372d1b5b91d1ca",
+    "configuration": "native",
+    "tests": 22,
+    "gate": "PASS"
+  },
+  {
+    "failures": 0,
+    "phases": [
+      {
+        "exit": 0,
+        "finished": "2026-10-09T00:23:27.5080272Z",
+        "phase": "wgl",
+        "started": "2026-10-09T00:22:04.6817200Z"
+      },
+      {
+        "exit": 0,
+        "finished": "2026-10-09T00:26:12.5148331Z",
+        "phase": "provider",
+        "started": "2026-10-09T00:23:27.5204037Z"
+      },
+      {
+        "exit": 0,
+        "finished": "2026-10-09T00:29:21.2356725Z",
+        "phase": "runtime",
+        "started": "2026-10-09T00:26:12.5157343Z"
+      }
+    ],
+    "seconds": 436.5979412,
+    "skipped": 1,
+    "sourceCommit": "876588246a72d261c88b9e1906372d1b5b91d1ca",
+    "configuration": "webview2",
+    "tests": 64,
+    "gate": "PASS"
+  }
+]

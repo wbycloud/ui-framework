@@ -1,6 +1,6 @@
 # 应用拥有的实例语言（API9）
 
-SDK0.9.0-dev / API9 / 开发标准9，Windows x64/C11；应用ABI1、包格式1。语言不是进程或浏览器设置。框架仅保存每个 `ui_host_t` 的运行时状态；偏好、用户身份、档案和持久化由应用负责。实现与实际验收分别见 [language.h](../include/ui_framework/language.h) 和 [本轮记录](validation/instance-language-validation.md)。
+SDK0.9.0-dev / API9 / 开发标准9，Windows x64/C11；应用ABI1、包格式1。语言不是进程或浏览器设置。框架仅保存每个 `ui_host_t` 的运行时状态；偏好、用户身份、档案和持久化由应用负责。实现见[language.h](../include/ui_framework/language.h)，[当前源码复核](validation/instance-language-current-validation.md)和[首次实现验收](validation/instance-language-validation.md)按各自提交、产物及环境分别报告。
 
 ## 初始化、来源和通知
 

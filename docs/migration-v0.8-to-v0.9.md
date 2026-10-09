@@ -2,6 +2,8 @@
 
 当前为SDK0.9.0-dev / API9 / 开发标准9，应用ABI1、`ui_app_query_v1`及包格式1。新增公开语言与文本更新能力，因此升级API；不是把UTF-8显示支持当作语言切换。只维护当前版本，历史SDK/旧包没有兼容专项。
 
+本指南描述语言能力首次从API8升级的步骤。当前源码已实现API9；重复接手同一需求时先按[当前源码复核](validation/instance-language-current-validation.md)核对并复验，不重复增加接口或无故升级API。
+
 1. 锁定维护方提供的确切commit，使用同一SDK的include、导入库、共享DLL和宿主。清单 `framework_api_version=9`，DLL描述使用 `UI_FRAMEWORK_API_VERSION`；不要仅改清单而继续使用旧DLL。
 2. include `language.h`，在create及首次可见呈现前读取应用自己的偏好，提交 `zh-CN` 或 `en-US`。未提交host使用Windows UI默认；应用可以明确选择自己的缺省语言，不由框架替应用保存。
 3. 注册每host回调，以稳定ID调用 `ui_host_set_title` 和组件标题/列标题/字段文本更新接口。不重注册，不改变菜单路径、命令、列或面板身份。初始注册同样使用应用资源；回调注册不自动重放一次。

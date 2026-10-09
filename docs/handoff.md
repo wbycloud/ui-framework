@@ -1,8 +1,10 @@
 # 框架开发交接记录
 
-更新日期：2026-10-08。当前SDK0.9.0-dev/API9/标准9，应用ABI1/包格式1。完整源码已普通快进同步至GitHub main及codex/menus-offscreen，已核验远端提交b6a36fee3f4c1a73818cdb01ea7271ad5abd30db。该提交的托管CI有失败；当前Session0实际GL通过，严格整机无登录失败。先读[同步与CI记录](validation/github-sync-validation.md)、第21节及[新会话提示词](ci-recovery-prompt.md)，不要沿用第19节当时“未推送/当前Session0待权限”的状态。第19节[API9本机验收](validation/instance-language-validation.md)、第18节及更早各节保留原提交、环境和失败，不继承为当前CI通过。保留95f5d78/6a0170a视觉、9df202f/2e87e02捕获及异步轨道、f0b161c列序与捕获修复。共同组件无分页按钮，原预算与生命周期保持，只维护当前API9；本地交付、托管CI、Session0及物理人工条件分别报告。
+更新日期：2026-10-09。当前SDK0.9.0-dev/API9/标准9，应用ABI1/包格式1。最新实例语言复核接手干净876588246a72d261c88b9e1906372d1b5b91d1ca，已有实现保留，没有重复新增接口；先读第24节与[本轮复核](validation/instance-language-current-validation.md)。此前已核验远端main/codex/menus-offscreen b6a36fee完整源码同步，原托管CI失败及Session0实际GL通过/严格无登录失败见第21节与[同步记录](validation/github-sync-validation.md)，不是当前8765882服务复验。第19节[API9初验](validation/instance-language-validation.md)、第18节及更早各节保留原提交、环境和失败，不继承为当前CI通过。保留95f5d78/6a0170a视觉、9df202f/2e87e02捕获及异步轨道、f0b161c列序与捕获和第23节界面修复。共同组件无分页按钮，原预算与生命周期保持，只维护当前API9；本地交付、托管CI、Session0及物理人工条件分别报告。
 
 本地CI收敛的最新接续见第22节及[本轮验收](validation/ci-recovery-validation.md)：宿主语言断言已有本地修正，原托管存储/语言超时仍待定位。远端原结果、Session0 GL及严格无登录分别保留，不能把本机通过当作远程复验。
+
+本轮只框架及框架维护完整示例，不访问业务仓库。当前完整配置63通过/1物理跳过、独立无Web原生21通过/1物理跳过；SDK归档、实际解包应用、源码快照及最终本地提交见第24节与本轮复核，未经新授权不推送或远程复验。
 
 ## 1. 恢复顺序与版本
 
@@ -335,3 +337,17 @@ af36e02f5483dd174d91d32da1868dcbb162dc82修复GL上拖动轮廓、抓取偏移/�
 SDK0.9.0-dev/API9/标准9、ABI1/包1保持，新增独立完整size描述及三C导出，现有结构偏移/枚举不动；[合同](dialog-layout.md)、公共C示例、版本/标准要求同步。冻结API9无新导出，必须匹配开发commit的headers/import library/DLL。新独立快照ui-framework-sdk0.9.0-dev-api9-07a66a8-windows-x64.zip，SHA256 b5296fba8d39447603222705ab85edcf446fa5c98088d86c76a153a4fd9c60f0；解包C /W4 /WX编译及实际共享DLL调用通过，不覆盖旧包或称稳定发布。
 
 原托管180/240秒超时和历史持续重绘仍未定位；六份本机完整脚本均实际退出不能证明托管已修复。泛化192叠层及窄表头残影未独立复现，保持尚未定位。程序192/窗口96/monitor effective96、raw108分开记录，不冒充物理高DPI。原b6a严格Session0 GL通过和整机无登录logged_sessions1失败分别保留，本轮无当前源码服务复验。真实英文Windows空宿主、硬件鼠标/外部捕获、IME、物理跨屏/边缘合成/长期人工及严格无登录环境另列待验；未来远程运行需新的明确授权。命令搜索、嵌套分割、冻结列/可变行高只交付[后续范围和验收方案](workspace-feature-candidates.md)，不替代遗留缺陷。
+
+## 24. 2026-10-09 当前源码实例语言复核与完整SDK
+
+接手干净main/876588246a72d261c88b9e1906372d1b5b91d1ca，SDK0.9.0-dev/API9/标准9、ABI1/包1；用户参考API8/cf0e83a已过时。核对已有应用自有UIL1、每host语言/来源/通知/原位文本、活动宿主跟随与空宿主系统UI查询，不重复新增接口或产品实现。保留视觉/原生捕获/异步轨道/列序、f00bbeb精确语言断言、2fa6f84阶段诊断和第23节界面修复。本轮未访问业务仓库，无远程操作或服务修改。
+
+本轮新构建与[独立复核记录](validation/instance-language-current-validation.md)绑定8765882：完整64项63通过/0失败/1物理跳过（436.60秒，46前置/7provider/11实际Runtime），无Web原生22项21通过/0失败/1跳过（10.09秒）。Light及真实Runtime的完整示例均验证10种偏好输入、96/144/192跨进程write/restore、双实例/后台、草稿/选择/宽度/HWND/实际GL、模态、AI、关闭和卸载。原生三项真实鼠标滚动、按需查询/uint64、预算/生命周期断言保持；没有恢复分页按钮。
+
+另用框架自有完整DLL观察器补验两后端各两个中英文权限确认快照：目标A非活动，打开后改变A/B语言，确认完整标题/按钮保持打开时目标语言；真实取消、AI目标/活动实例/HWND与主窗口启用恢复、卸载保持。只测宿主确认适配器，不执行业务命令；正常权限/一次执行另由矩阵覆盖。辅助脚本HOME保留变量、手动观察器缺失/错误资源链接及构建调用错误均保留，修正夹具后原断言通过，不宣称产品缺陷修复。
+
+当前真实系统UI仅zh-CN/provider1/fallback0；实例en-US和其他映射不是实际英文Windows空宿主验收。新截图为完整当前应用/DLL，1200×800/DPI96深色中英文同状态，另含双实例、AI、空宿主和中英文确认；原BMP及PNG哈希保留。开发标准当前声明8残留改为9，菜单/API9验收指向修正，现有README/合同/迁移/构建/宿主/组件/布局/示例/升级提示词同步；历史记录不改写。
+
+本轮归档按精确开发commit提供匹配headers/import/static libraries/shared DLL/host/full packages/source/fixed dependencies/licenses，与旧6d88770和07a66a8归档分开。文档修正前的8765882基准SDK3501文件/117108072字节，SHA141a09ac741f92c7d02b43ea69cef58916b4a09e99f1e23c8d39d61e99d226f8，CRC/逐文件/解包C调用及两后端完整实际解包语言套件通过。最终包含最新入口说明的SDK快照及归档后证明另行保存，不能仅用基准包结果代替新归档复验；最新本地提交与最终SDK身份按本轮验收追加记录核对。
+
+全部原证据在build/language-current-20261009，关键原日志、运行器、确认观察器、manifest和18张真实PNG保存到docs/validation/instance-language-current-evidence-20261009，Git属性保留原字节。本机Windows10.0.26300/Session1/MSVC19.50/Runtime154.0.4258.62，固定依赖未改。当前会话非管理员，本轮没有服务Session0复验；原b6a36fee Session0 GL通过和严格无登录logged_sessions1失败分别保留。没有严格无登录runner和新的托管CI授权；真实其他系统UI/IME/物理不同DPI/桌面合成/长期人工待验，原托管超时/历史重绘不宣称根治。仅本地提交，不推送/发布/标签/新会话/子代理/graph-engineering，不改冻结SDK/历史包/证据/PERF-001，不扩大硬件GL。

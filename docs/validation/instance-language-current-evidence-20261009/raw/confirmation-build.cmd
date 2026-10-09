@@ -1,0 +1,4 @@
+@echo off
+call "C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/Common7/Tools/VsDevCmd.bat" -arch=x64 -host_arch=x64 >nul
+cl /nologo /std:c11 /W4 /WX /utf-8 /MD /DUI_FRAMEWORK_BUILD_SHARED /Iinclude build/language-current-20261009/confirmation-observer.c /Febuild/language-current-20261009/current/confirmation-observer.exe /Fobuild/language-current-20261009/confirmation-observer.obj /link build/language-current-20261009/current/ui_framework_runtime.lib build/language-current-20261009/current/CMakeFiles/ui_instance_language_test.dir/generated/host.rc.res user32.lib gdi32.lib ole32.lib shell32.lib comdlg32.lib imm32.lib shcore.lib dwmapi.lib >build/language-current-20261009/confirmation-build.log 2>&1
+exit /b %errorlevel%

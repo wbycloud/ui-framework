@@ -86,3 +86,5 @@ powershell -NoProfile -File tests/run-instance-language.ps1 -BuildDirectory buil
 ```
 
 该脚本验证完整DLL的10种偏好文件、真实菜单鼠标、A中文/B英文、反复标签切换、后台隔离、96/144/192、草稿/选择/GL、模态、AI尺寸回收、关闭和跨进程恢复。public input diagnostic模式只供定位，不替代真实鼠标。合同见[实例语言](../../docs/instance-language.md)，原失败及本轮证据见[验收](../../docs/validation/instance-language-validation.md)。
+
+[2026-10-09当前源码复核](../../docs/validation/instance-language-current-validation.md)使用新构建的完整DLL以及解包后的匹配SDK，保存同状态中英文实际截图、退出记录和语言快照补验。原API8存储与API9首次语言验收保持原身份；示例已有能力不重复开发，始终使用确切commit的清单、头文件、导入库、运行库和宿主。

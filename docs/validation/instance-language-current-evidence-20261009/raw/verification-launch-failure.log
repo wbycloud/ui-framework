@@ -1,0 +1,4 @@
+Original tool error, before any executable/test was invoked:
+WriteError: D:\应用软件框架\应用层序框架\build\language-current-20261009\verify-sdk.ps1:8
+Cannot overwrite variable HOME because it is read-only or constant.
+Correction: taskProfileDirectory, existing newly created empty task directory reused.
