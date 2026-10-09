@@ -69,10 +69,10 @@ while True:
             if pid not in known and parent in known:
                 known.add(pid);handle=k.OpenProcess(0x100000|0x1000,False,pid)
                 if handle:handles[pid]=handle
-                emit('child_observed',pid=pid,parent=parent,exe=name,handle_open=bool(handle))
+                emit('child_observed',pid=pid,parent=parent,exe=name,handle_open=bool(handle),open_error=0 if handle else c.get_last_error())
     for pid,handle in handles.items():
         if pid not in exited and k.WaitForSingleObject(handle,0)==0:
-            code=w.DWORD();ok=k.GetExitCodeProcess(handle,c.byref(code));exited.add(pid);emit('child_exit',pid=pid,code=code.value,read_ok=bool(ok))
+            code=w.DWORD();ok=k.GetExitCodeProcess(handle,c.byref(code));error=0 if ok else c.get_last_error();exited.add(pid);emit('child_exit',pid=pid,code=code.value,read_ok=bool(ok),read_error=error)
     if stall_seconds>0 and capture_thread is None and time.monotonic()-last_output>=stall_seconds:
         ids=([p.pid] if parent_code is None else [])+[pid for pid in handles if pid not in exited]
         capture_thread=threading.Thread(target=capture,args=(ids,));capture_thread.start()

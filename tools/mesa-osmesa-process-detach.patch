@@ -1,0 +1,59 @@
+diff --git a/src/gallium/frontends/osmesa/osmesa.c b/src/gallium/frontends/osmesa/osmesa.c
+--- a/src/gallium/frontends/osmesa/osmesa.c
++++ b/src/gallium/frontends/osmesa/osmesa.c
+@@ -142,9 +142,27 @@
+ 
+ static struct pipe_frontend_screen *global_fscreen = NULL;
+ 
++#ifdef _WIN32
++static bool process_terminating;
++
++void
++osmesa_notify_process_termination(void)
++{
++   process_terminating = true;
++}
++#endif
++
+ static void
+ destroy_st_manager(void)
+ {
++#ifdef _WIN32
++   /* ExitProcess has terminated the worker threads. They cannot finish
++    * screen teardown or signal its semaphores; the OS reclaims resources.
++    * Normal context destruction and FreeLibrary retain full cleanup.
++    */
++   if (process_terminating)
++      return;
++#endif
+    if (global_fscreen) {
+       if (global_fscreen->screen)
+          global_fscreen->screen->destroy(global_fscreen->screen);
+diff --git a/src/gallium/targets/osmesa/osmesa_target.c b/src/gallium/targets/osmesa/osmesa_target.c
+--- a/src/gallium/targets/osmesa/osmesa_target.c
++++ b/src/gallium/targets/osmesa/osmesa_target.c
+@@ -25,6 +25,24 @@
+ #include "target-helpers/inline_debug_helper.h"
+ 
+ #include "sw/null/null_sw_winsys.h"
++
++#ifdef _WIN32
++#include <windows.h>
++
++void osmesa_notify_process_termination(void);
++
++BOOL WINAPI
++DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved)
++{
++   (void) instance;
++   /* MSVC invokes user DllMain before the CRT's detach/onexit teardown.
++    * Do not allocate, synchronize, or call worker cleanup under loader lock.
++    */
++   if (reason == DLL_PROCESS_DETACH && reserved != NULL)
++      osmesa_notify_process_termination();
++   return TRUE;
++}
++#endif
+ 
+ 
+ struct pipe_screen *
