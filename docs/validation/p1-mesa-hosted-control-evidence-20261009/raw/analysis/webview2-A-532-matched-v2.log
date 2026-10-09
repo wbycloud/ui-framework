@@ -1,0 +1,811 @@
+
+Microsoft (R) Windows Debugger Version 10.0.22621.755 X86
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\webview2\lifecycle-control\runs\probe-A-gate1\first-full-duUser Mini Dump File with Full Memory: Only application data is available
+
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             D:\应用软件框架\应用层序框架\.deps\mes
+OK                                             D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\webview2\lifecycle-control\s
+OK                                             D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\webview2\lifecycle-co
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             D:\应用软件框架\应用层序框架\build\p1-hosted-diagnostic-20261009\me
+OK                                             D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\webview2\lifecycle-co
+Symbol search path is: D:\应用软件框架\应用层序框架\build\p1-hosted-diagnostic-20261009\mesa-debug\x64;D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\webview2\lExecutable search path is: D:\应用软件框架\应用层序框架\.deps\mesa-24.3.4\x64;D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\webview2\lifecycle-control\system-images;D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifactWindows 10 Version 20348 MP (4 procs) Free x64
+Product: Server, suite: TerminalServer DataCenter SingleUserTS
+Edition build lab: 20348.1.amd64fre.fe_release.210507-1500
+Machine Name:
+Debug session time: Fri Oct  9 18:31:06.000 2026 (UTC + 8:00)
+System Uptime: 0 days 0:08:05.293
+Process Uptime: 0 days 0:00:01.000
+......................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+For analysis of this file, run !analyze -v
+ntdll!ZwReadFile+0x14:
+00007ffe`1f8ffae4 c3              ret
+0:000> cdb: Reading initial command 'vertarget; .reload /f osmesa.dll; lmv m osmesa; lmv m ntdll; lmv m kernelbase; lmv m osmesa_thread_probe; ~* kb; kn; dt osmesa!lp_rasterizer 0x1ed5e3c06f0; dt osmesa!lp_rasterizer_task 0x1ed5e3c0708; !handle 0x18c f; dt osmesa!util_semaphore 0x1ed5e3c0818; dt osmesa!lp_rasterizer_task 0x1ed5e3c0850; !handle 0x190 f; dt osmesa!util_semaphore 0x1ed5e3c0960; dt osmesa!lp_rasterizer_task 0x1ed5e3c0998; !handle 0x194 f; dt osmesa!util_semaphore 0x1ed5e3c0aa8; dt osmesa!lp_rasterizer_task 0x1ed5e3c0ae0; !handle 0x198 f; dt osmesa!util_semaphore 0x1ed5e3c0bf0; uf osmesa!lp_rast_destroy; uf osmesa!dllmain_dispatch; uf osmesa!DllMain; uf osmesa!destroy_st_manager; dq poi(osmesa!_tls_used+0x18) L1; q'
+Windows 10 Version 20348 MP (4 procs) Free x64
+Product: Server, suite: TerminalServer DataCenter SingleUserTS
+Edition build lab: 20348.1.amd64fre.fe_release.210507-1500
+Machine Name:
+Debug session time: Fri Oct  9 18:31:06.000 2026 (UTC + 8:00)
+System Uptime: 0 days 0:08:05.293
+Process Uptime: 0 days 0:00:01.000
+  Kernel time: 0 days 0:00:00.000
+  User time: 0 days 0:00:01.000
+start             end                 module name
+00007ffd`d6fe0000 00007ffd`da260000   osmesa     (private pdb symbols)  d:\应用软件框架\应用层序框架\build\p1-hosted-diagnostic-20261009\mesa-debug\x64\osmesa.pdb
+    Loaded symbol image file: osmesa.dll
+    Image path: D:\a\ui-framework\ui-framework\.deps\mesa-24.3.4\x64\osmesa.dll
+    Image name: osmesa.dll
+    Timestamp:        Sat Jan 25 09:05:05 2025 (679438C1)
+    CheckSum:         031E771C
+    ImageSize:        03280000
+    File version:     24.3.4.0
+    Product version:  24.3.4.0
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        0.0 Unknown
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Mesa/X.org
+        ProductName:      Mesa3D
+        InternalName:     osmesa.dll
+        OriginalFilename: osmesa.dll
+        ProductVersion:   24.3.4.0
+        FileVersion:           FileDescription:  Mesa3D off-screen rendering gallium driver (x64)
+        LegalCopyright:   Copyright (C) 2024
+start             end                 module name
+00007ffe`1f860000 00007ffe`1fa62000   ntdll      (export symbols)       ntdll.dll
+    Loaded symbol image file: ntdll.dll
+    Image path: C:\Windows\System32\ntdll.dll
+    Image name: ntdll.dll
+    Image was built with /Brepro flag.
+    Timestamp:        C2EADA64 (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         0020A55B
+    ImageSize:        00202000
+    File version:     10.0.20348.5622
+    Product version:  10.0.20348.5622
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        2.0 Dll
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft? Windows? Operating System
+        InternalName:     ntdll.dll
+        OriginalFilename: ntdll.dll
+        ProductVersion:   10.0.20348.5622
+        FileVersion:      10.0.20348.5622 (WinBuild.160101.0800)
+        FileDescription:  NT Layer DLL
+        LegalCopyright:   ? Microsoft Corporation. All rights reserved.
+start             end                 module name
+00007ffe`1ce90000 00007ffe`1d201000   KERNELBASE   (export symbols)       KERNELBASE.dll
+    Loaded symbol image file: KERNELBASE.dll
+    Image path: C:\Windows\System32\KERNELBASE.dll
+    Image name: KERNELBASE.dll
+    Image was built with /Brepro flag.
+    Timestamp:        D935AA2C (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         00385516
+    ImageSize:        00371000
+    File version:     10.0.20348.5622
+    Product version:  10.0.20348.5622
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        2.0 Dll
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft? Windows? Operating System
+        InternalName:     Kernelbase.dll
+        OriginalFilename: Kernelbase.dll
+        ProductVersion:   10.0.20348.5622
+        FileVersion:      10.0.20348.5622 (WinBuild.160101.0800)
+        FileDescription:  Windows NT BASE API Client DLL
+        LegalCopyright:   ? Microsoft Corporation. All rights reserved.
+start             end                 module name
+00007ff7`77500000 00007ff7`775b1000   osmesa_thread_probe   (deferred)             
+    Image path: D:\a\ui-framework\ui-framework\build\ci-evidence-webview2\lifecycle-control\caller\osmesa_thread_probe.exe
+    Image name: osmesa_thread_probe.exe
+    Timestamp:        Fri Oct  9 18:31:04 2026 (6AC8C268)
+    CheckSum:         00000000
+    ImageSize:        000B1000
+    Translations:     0000.04b0 0000.04e4 0409.04b0 0409.04e4
+    Information from resource tables:
+
+.  0  Id: 214.1cec Suspend: 0 Teb: 00000028`ec770000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1ced427b     : 000001ed`5e2b0cc0 00000000`00000000 00000000`00000002 00000000`0000000e : ntdll!ZwReadFile+0x14
+*** WARNING: Unable to verify checksum for osmesa_thread_probe.exe
+00007ff7`77571493     : 00000000`00000000 00000000`00000000 00000000`00000000 00000028`ec59f6d8 : KERNELBASE!ReadFile+0x7b
+00007ff7`77571142     : 00007ff7`775a1000 000001ed`6216a8e0 00000000`ffffffff 00000028`00000000 : osmesa_thread_probe!_read_nolock+0x2f7
+00007ff7`7755e9f7     : 00007ff7`00000000 00000000`00001000 00007ff7`775a10b0 00007ffe`1cfd2aa0 : osmesa_thread_probe!_read+0x10e
+(Inline Function)     : --------`-------- --------`-------- --------`-------- --------`-------- : osmesa_thread_probe!common_refill_and_read_nolock+0x8b
+00007ff7`7751f61a     : 00007ff7`775a10b0 00000000`000001e4 00000000`00000001 00000028`ec59f780 : osmesa_thread_probe!__acrt_stdio_refill_and_read_narrow_nolock+0xa3
+00007ff7`7750782f     : 00007ff7`775a10b0 00007ff7`775a10b0 00000000`000001e8 00000028`ec59f778 : osmesa_thread_probe!fgetc+0x102
+00007ff7`7750829d     : 00007ff7`7758a470 00000000`00000000 38b57cea`08bb9bf9 00000000`00000000 : osmesa_thread_probe!boundary+0x32f
+00007ff7`77508ce8     : 000001ed`5e37a3d0 00007ff7`77508e71 00000000`00000000 00000000`00000000 : osmesa_thread_probe!wmain+0x81d
+(Inline Function)     : --------`-------- --------`-------- --------`-------- --------`-------- : osmesa_thread_probe!invoke_main+0x22
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa_thread_probe!__scrt_common_main_seh+0x10c
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+   1  Id: 214.958 Suspend: 0 Teb: 00000028`ec772000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f86b77f     : 00000000`00000000 00000000`00000000 000001ed`5e36c280 000001ed`5e371af0 : ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlInitializeResource+0x96f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+   2  Id: 214.1a10 Suspend: 0 Teb: 00000028`ec774000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f86b77f     : 00000000`00000000 00000000`00000000 000001ed`5e36c280 000001ed`5e371f80 : ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlInitializeResource+0x96f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+   3  Id: 214.868 Suspend: 0 Teb: 00000028`ec776000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f86b77f     : 00000000`00000000 00000000`00000000 000001ed`5e36c280 000001ed`5e3723b0 : ntdll!ZwWaitForWorkViaWorkerFactory+0x14
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlInitializeResource+0x96f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+   4  Id: 214.1b0 Suspend: 0 Teb: 00000028`ec778000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f8cda4a     : 00000000`00000000 00007ffe`1ced453d 00000000`00000000 00000028`ecbff8c0 : ntdll!NtWaitForAlertByThreadId+0x14
+00007ffe`1cf0ea69     : 000001ed`5e3c07a8 000001ed`5e3c0700 000001ed`5feafb78 00000000`00000000 : ntdll!RtlSleepConditionVariableCS+0x10a
+00007ffd`d745bd20     : 00000000`00000000 000001ed`5e3c06f0 000001ed`5e3c07a8 000001ed`5e3c0700 : KERNELBASE!SleepConditionVariableCS+0x29
+00007ffd`d769998c     : 000001ed`5e3c07a8 000001ed`5e3c0708 000001ed`5e3c0700 000001ed`5e3c0700 : osmesa!u_cnd_monotonic_wait+0x10
+(Inline Function)     : --------`-------- --------`-------- --------`-------- --------`-------- : osmesa!util_semaphore_wait+0x1c
+00007ffd`d906c397     : 00000000`00000000 000001ed`5e3ab820 00000000`00000000 00000000`00000000 : osmesa!thread_function+0x8c
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!thread_start<unsigned int (__cdecl*)(void *),1>+0x4f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+   5  Id: 214.1f94 Suspend: 0 Teb: 00000028`ec77a000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f8cda4a     : 000001ed`5e3c0850 00000000`00000000 00000000`00000000 00000028`eccff5f0 : ntdll!NtWaitForAlertByThreadId+0x14
+00007ffe`1cf0ea69     : 000001ed`5e3c08f0 000001ed`5e3c0700 00000000`00000000 00000000`00000000 : ntdll!RtlSleepConditionVariableCS+0x10a
+00007ffd`d745bd20     : 00000000`00000000 000001ed`5e3c06f0 000001ed`5e3c08f0 000001ed`5e3c0700 : KERNELBASE!SleepConditionVariableCS+0x29
+00007ffd`d769998c     : 000001ed`5e3c08f0 000001ed`5e3c0850 000001ed`5e3c0700 000001ed`5e3c0700 : osmesa!u_cnd_monotonic_wait+0x10
+(Inline Function)     : --------`-------- --------`-------- --------`-------- --------`-------- : osmesa!util_semaphore_wait+0x1c
+00007ffd`d906c397     : 00000000`00000000 000001ed`5e3ab940 00000000`00000000 00000000`00000000 : osmesa!thread_function+0x8c
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!thread_start<unsigned int (__cdecl*)(void *),1>+0x4f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+   6  Id: 214.a28 Suspend: 0 Teb: 00000028`ec77c000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f8cda4a     : 00000000`00000000 00007ffe`1ced453d 00000000`00000000 00000028`ecdffab0 : ntdll!NtWaitForAlertByThreadId+0x14
+00007ffe`1cf0ea69     : 000001ed`5e3c0a38 000001ed`5e3c0700 00000000`00000000 00000000`00000000 : ntdll!RtlSleepConditionVariableCS+0x10a
+00007ffd`d745bd20     : 00000000`00000000 000001ed`5e3c06f0 000001ed`5e3c0a38 000001ed`5e3c0700 : KERNELBASE!SleepConditionVariableCS+0x29
+00007ffd`d769998c     : 000001ed`5e3c0a38 000001ed`5e3c0998 000001ed`5e3c0700 000001ed`5e3c0700 : osmesa!u_cnd_monotonic_wait+0x10
+(Inline Function)     : --------`-------- --------`-------- --------`-------- --------`-------- : osmesa!util_semaphore_wait+0x1c
+00007ffd`d906c397     : 00000000`00000000 000001ed`5e3ab3d0 00000000`00000000 00000000`00000000 : osmesa!thread_function+0x8c
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!thread_start<unsigned int (__cdecl*)(void *),1>+0x4f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+   7  Id: 214.1edc Suspend: 0 Teb: 00000028`ec77e000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f8cda4a     : 00000000`00000000 00007ffe`1ced453d 00000000`00000000 00000028`eceffa20 : ntdll!NtWaitForAlertByThreadId+0x14
+00007ffe`1cf0ea69     : 000001ed`5e3c0b80 000001ed`5e3c0700 00000000`00000000 00000000`00000000 : ntdll!RtlSleepConditionVariableCS+0x10a
+00007ffd`d745bd20     : 00000000`00000000 000001ed`5e3c06f0 000001ed`5e3c0b80 000001ed`5e3c0700 : KERNELBASE!SleepConditionVariableCS+0x29
+00007ffd`d769998c     : 000001ed`5e3c0b80 000001ed`5e3c0ae0 000001ed`5e3c0700 000001ed`5e3c0700 : osmesa!u_cnd_monotonic_wait+0x10
+(Inline Function)     : --------`-------- --------`-------- --------`-------- --------`-------- : osmesa!util_semaphore_wait+0x1c
+00007ffd`d906c397     : 00000000`00000000 000001ed`5e3ab970 00000000`00000000 00000000`00000000 : osmesa!thread_function+0x8c
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!thread_start<unsigned int (__cdecl*)(void *),1>+0x4f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+   8  Id: 214.10dc Suspend: 0 Teb: 00000028`ec780000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f8cda4a     : 00000000`00000000 00000000`00000000 00000000`00000000 00000028`ecfffcc0 : ntdll!NtWaitForAlertByThreadId+0x14
+00007ffe`1cf0ea69     : 000001ed`5e3844a0 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlSleepConditionVariableCS+0x10a
+00007ffd`d745bd20     : 00000000`00000000 00007ffd`d907ccf6 000001ed`5e3ab5e0 00007ffd`d74731f8 : KERNELBASE!SleepConditionVariableCS+0x29
+00007ffd`d7699dc9     : ffffffff`fffffffe 00000000`00000000 00007ffd`d7699d50 000001ed`5e3844a0 : osmesa!u_cnd_monotonic_wait+0x10
+00007ffd`d906c397     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!lp_cs_tpool_worker+0x79
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!thread_start<unsigned int (__cdecl*)(void *),1>+0x4f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+   9  Id: 214.1bcc Suspend: 0 Teb: 00000028`ec782000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f8cda4a     : 00000000`00000000 00000000`00000000 00000028`ecfffcc0 00000028`ed0ff9d8 : ntdll!NtWaitForAlertByThreadId+0x14
+00007ffe`1cf0ea69     : 000001ed`5e3844a0 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlSleepConditionVariableCS+0x10a
+00007ffd`d745bd20     : 00000000`00000000 00007ffd`d907ccf6 000001ed`5e3ab790 00007ffd`d74731f8 : KERNELBASE!SleepConditionVariableCS+0x29
+00007ffd`d7699dc9     : ffffffff`fffffffe 00000000`00000000 00007ffd`d7699d50 000001ed`5e3844a0 : osmesa!u_cnd_monotonic_wait+0x10
+00007ffd`d906c397     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!lp_cs_tpool_worker+0x79
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!thread_start<unsigned int (__cdecl*)(void *),1>+0x4f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+  10  Id: 214.230 Suspend: 0 Teb: 00000028`ec784000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f8cda4a     : 00000000`00000000 00000000`00000000 00000028`ed2ffbd0 00000028`ed1ffa78 : ntdll!NtWaitForAlertByThreadId+0x14
+00007ffe`1cf0ea69     : 000001ed`5e3844a0 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlSleepConditionVariableCS+0x10a
+00007ffd`d745bd20     : 00000000`00000000 00007ffd`d907ccf6 000001ed`5e3ab400 00007ffd`d74731f8 : KERNELBASE!SleepConditionVariableCS+0x29
+00007ffd`d7699dc9     : ffffffff`fffffffe 00000000`00000000 00007ffd`d7699d50 000001ed`5e3844a0 : osmesa!u_cnd_monotonic_wait+0x10
+00007ffd`d906c397     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!lp_cs_tpool_worker+0x79
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!thread_start<unsigned int (__cdecl*)(void *),1>+0x4f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+
+  11  Id: 214.8c4 Suspend: 0 Teb: 00000028`ec786000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffe`1f8cda4a     : 00000000`00000000 00000000`00000000 00000028`ed0ff9d0 00000028`ed2ffbd8 : ntdll!NtWaitForAlertByThreadId+0x14
+00007ffe`1cf0ea69     : 000001ed`5e3844a0 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlSleepConditionVariableCS+0x10a
+00007ffd`d745bd20     : 00000000`00000000 00007ffd`d907ccf6 000001ed`5e3ab610 00007ffd`d74731f8 : KERNELBASE!SleepConditionVariableCS+0x29
+00007ffd`d7699dc9     : ffffffff`fffffffe 00000000`00000000 00007ffd`d7699d50 000001ed`5e3844a0 : osmesa!u_cnd_monotonic_wait+0x10
+00007ffd`d906c397     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!lp_cs_tpool_worker+0x79
+00007ffe`1e4b4cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : osmesa!thread_start<unsigned int (__cdecl*)(void *),1>+0x4f
+00007ffe`1f8dedbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+ # Child-SP          RetAddr               Call Site
+00 00000028`ec59f5a8 00007ffe`1ced427b     ntdll!ZwReadFile+0x14
+01 00000028`ec59f5b0 00007ff7`77571493     KERNELBASE!ReadFile+0x7b
+02 00000028`ec59f620 00007ff7`77571142     osmesa_thread_probe!_read_nolock+0x2f7
+03 00000028`ec59f6c0 00007ff7`7755e9f7     osmesa_thread_probe!_read+0x10e
+04 (Inline Function) --------`--------     osmesa_thread_probe!common_refill_and_read_nolock+0x8b
+05 00000028`ec59f700 00007ff7`7751f61a     osmesa_thread_probe!__acrt_stdio_refill_and_read_narrow_nolock+0xa3
+06 00000028`ec59f730 00007ff7`7750782f     osmesa_thread_probe!fgetc+0x102
+07 00000028`ec59f770 00007ff7`7750829d     osmesa_thread_probe!boundary+0x32f
+08 00000028`ec59f8e0 00007ff7`77508ce8     osmesa_thread_probe!wmain+0x81d
+09 (Inline Function) --------`--------     osmesa_thread_probe!invoke_main+0x22
+0a 00000028`ec59fae0 00007ffe`1e4b4cc0     osmesa_thread_probe!__scrt_common_main_seh+0x10c
+0b 00000028`ec59fb20 00007ffe`1f8dedbb     kernel32!BaseThreadInitThunk+0x10
+0c 00000028`ec59fb50 00000000`00000000     ntdll!RtlUserThreadStart+0x2b
+   +0x000 exit_flag        : 0
+   +0x001 no_rast          : 0
+   +0x008 full_scenes      : 0x000001ed`5e388be0 lp_scene_queue
+   +0x010 curr_scene       : (null) 
+   +0x018 tasks            : [32] lp_rasterizer_task
+   +0x2918 num_threads      : 4
+   +0x2920 threads          : [32] thrd_t
+   +0x2a20 barrier          : util_barrier
+   +0x2a60 last_fence       : 0x000001ed`5ffde6b0 lp_fence
+   +0x000 bin              : (null) 
+   +0x008 state            : 0x000001ed`6233d940 lp_rast_state
+   +0x010 scene            : (null) 
+   +0x018 x                : 0x1c0
+   +0x01c y                : 0x1c0
+   +0x020 width            : 0x40
+   +0x024 height           : 0x40
+   +0x028 color_tiles      : [8] (null) 
+   +0x068 depth_tile       : (null) 
+   +0x070 rast             : 0x000001ed`5e3c06f0 lp_rasterizer
+   +0x078 thread_index     : 0
+   +0x080 thread_data      : lp_jit_thread_data
+   +0x0a0 work_ready       : util_semaphore
+   +0x0d8 work_done        : util_semaphore
+   +0x110 exited           : util_semaphore
+Handle 000000000000018c
+  Type         	Thread
+  Attributes   	0
+  GrantedAccess	0x1fffff:
+         Delete,ReadControl,WriteDac,WriteOwner,Synch
+         Terminate,Suspend,Alert,GetContext,SetContext,SetInfo,QueryInfo,SetToken,Impersonate,DirectImpersonate
+  HandleCount  	3
+  PointerCount 	130723
+  Name         	<none>
+  Object specific information
+    Thread Id   214.1b0
+    Priority    8
+    Base Priority 0
+   +0x000 mutex            : mtx_t
+   +0x028 cond             : cnd_t
+   +0x030 counter          : 0n0
+   +0x000 bin              : (null) 
+   +0x008 state            : 0x000001ed`6233d940 lp_rast_state
+   +0x010 scene            : (null) 
+   +0x018 x                : 0x180
+   +0x01c y                : 0x1c0
+   +0x020 width            : 0x40
+   +0x024 height           : 0x40
+   +0x028 color_tiles      : [8] (null) 
+   +0x068 depth_tile       : (null) 
+   +0x070 rast             : 0x000001ed`5e3c06f0 lp_rasterizer
+   +0x078 thread_index     : 1
+   +0x080 thread_data      : lp_jit_thread_data
+   +0x0a0 work_ready       : util_semaphore
+   +0x0d8 work_done        : util_semaphore
+   +0x110 exited           : util_semaphore
+Handle 0000000000000190
+  Type         	Thread
+  Attributes   	0
+  GrantedAccess	0x1fffff:
+         Delete,ReadControl,WriteDac,WriteOwner,Synch
+         Terminate,Suspend,Alert,GetContext,SetContext,SetInfo,QueryInfo,SetToken,Impersonate,DirectImpersonate
+  HandleCount  	3
+  PointerCount 	130736
+  Name         	<none>
+  Object specific information
+    Thread Id   214.1f94
+    Priority    8
+    Base Priority 0
+   +0x000 mutex            : mtx_t
+   +0x028 cond             : cnd_t
+   +0x030 counter          : 0n0
+   +0x000 bin              : (null) 
+   +0x008 state            : 0x000001ed`6233d940 lp_rast_state
+   +0x010 scene            : (null) 
+   +0x018 x                : 0x180
+   +0x01c y                : 0x180
+   +0x020 width            : 0x40
+   +0x024 height           : 0x40
+   +0x028 color_tiles      : [8] (null) 
+   +0x068 depth_tile       : (null) 
+   +0x070 rast             : 0x000001ed`5e3c06f0 lp_rasterizer
+   +0x078 thread_index     : 2
+   +0x080 thread_data      : lp_jit_thread_data
+   +0x0a0 work_ready       : util_semaphore
+   +0x0d8 work_done        : util_semaphore
+   +0x110 exited           : util_semaphore
+Handle 0000000000000194
+  Type         	Thread
+  Attributes   	0
+  GrantedAccess	0x1fffff:
+         Delete,ReadControl,WriteDac,WriteOwner,Synch
+         Terminate,Suspend,Alert,GetContext,SetContext,SetInfo,QueryInfo,SetToken,Impersonate,DirectImpersonate
+  HandleCount  	3
+  PointerCount 	130751
+  Name         	<none>
+  Object specific information
+    Thread Id   214.a28
+    Priority    8
+    Base Priority 0
+   +0x000 mutex            : mtx_t
+   +0x028 cond             : cnd_t
+   +0x030 counter          : 0n0
+   +0x000 bin              : (null) 
+   +0x008 state            : 0x000001ed`6233d940 lp_rast_state
+   +0x010 scene            : (null) 
+   +0x018 x                : 0x140
+   +0x01c y                : 0x1c0
+   +0x020 width            : 0x40
+   +0x024 height           : 0x40
+   +0x028 color_tiles      : [8] (null) 
+   +0x068 depth_tile       : (null) 
+   +0x070 rast             : 0x000001ed`5e3c06f0 lp_rasterizer
+   +0x078 thread_index     : 3
+   +0x080 thread_data      : lp_jit_thread_data
+   +0x0a0 work_ready       : util_semaphore
+   +0x0d8 work_done        : util_semaphore
+   +0x110 exited           : util_semaphore
+Handle 0000000000000198
+  Type         	Thread
+  Attributes   	0
+  GrantedAccess	0x1fffff:
+         Delete,ReadControl,WriteDac,WriteOwner,Synch
+         Terminate,Suspend,Alert,GetContext,SetContext,SetInfo,QueryInfo,SetToken,Impersonate,DirectImpersonate
+  HandleCount  	3
+  PointerCount 	130848
+  Name         	<none>
+  Object specific information
+    Thread Id   214.1edc
+    Priority    8
+    Base Priority 0
+   +0x000 mutex            : mtx_t
+   +0x028 cond             : cnd_t
+   +0x030 counter          : 0n0
+osmesa!lp_rast_destroy:
+00007ffd`d7698bd0 48895c2410      mov     qword ptr [rsp+10h],rbx
+00007ffd`d7698bd5 48896c2418      mov     qword ptr [rsp+18h],rbp
+00007ffd`d7698bda 4889742420      mov     qword ptr [rsp+20h],rsi
+00007ffd`d7698bdf 57              push    rdi
+00007ffd`d7698be0 4883ec20        sub     rsp,20h
+00007ffd`d7698be4 8b8118290000    mov     eax,dword ptr [rcx+2918h]
+00007ffd`d7698bea 33ff            xor     edi,edi
+00007ffd`d7698bec c60101          mov     byte ptr [rcx],1
+00007ffd`d7698bef 488bf1          mov     rsi,rcx
+00007ffd`d7698bf2 85c0            test    eax,eax
+00007ffd`d7698bf4 744c            je      osmesa!lp_rast_destroy+0x72 (00007ffd`d7698c42)
+
+osmesa!lp_rast_destroy+0x26:
+00007ffd`d7698bf6 66660f1f840000000000 nop word ptr [rax+rax]
+
+osmesa!lp_rast_destroy+0x30:
+00007ffd`d7698c00 8bc7            mov     eax,edi
+00007ffd`d7698c02 4869d848010000  imul    rbx,rax,148h
+00007ffd`d7698c09 4803de          add     rbx,rsi
+00007ffd`d7698c0c 488d8bb8000000  lea     rcx,[rbx+0B8h]
+00007ffd`d7698c13 e848a6ddff      call    osmesa!mtx_lock (00007ffd`d7473260)
+00007ffd`d7698c18 ff83e8000000    inc     dword ptr [rbx+0E8h]
+00007ffd`d7698c1e 488d8be0000000  lea     rcx,[rbx+0E0h]
+00007ffd`d7698c25 e876a4ddff      call    osmesa!cnd_signal (00007ffd`d74730a0)
+00007ffd`d7698c2a 488d8bb8000000  lea     rcx,[rbx+0B8h]
+00007ffd`d7698c31 e84aa6ddff      call    osmesa!mtx_unlock (00007ffd`d7473280)
+00007ffd`d7698c36 8b8618290000    mov     eax,dword ptr [rsi+2918h]
+00007ffd`d7698c3c ffc7            inc     edi
+00007ffd`d7698c3e 3bf8            cmp     edi,eax
+00007ffd`d7698c40 72be            jb      osmesa!lp_rast_destroy+0x30 (00007ffd`d7698c00)
+
+osmesa!lp_rast_destroy+0x72:
+00007ffd`d7698c42 33ed            xor     ebp,ebp
+00007ffd`d7698c44 85c0            test    eax,eax
+00007ffd`d7698c46 0f8480000000    je      osmesa!lp_rast_destroy+0xfc (00007ffd`d7698ccc)
+
+osmesa!lp_rast_destroy+0x7c:
+00007ffd`d7698c4c 0f1f4000        nop     dword ptr [rax]
+
+osmesa!lp_rast_destroy+0x80:
+00007ffd`d7698c50 488b8cee20290000 mov     rcx,qword ptr [rsi+rbp*8+2920h]
+00007ffd`d7698c58 488d542430      lea     rdx,[rsp+30h]
+00007ffd`d7698c5d c744243003010000 mov     dword ptr [rsp+30h],103h
+00007ffd`d7698c65 8bdd            mov     ebx,ebp
+00007ffd`d7698c67 ff151b95a401    call    qword ptr [osmesa!_imp_GetExitCodeThread (00007ffd`d90e2188)]
+00007ffd`d7698c6d 85c0            test    eax,eax
+00007ffd`d7698c6f 744f            je      osmesa!lp_rast_destroy+0xf0 (00007ffd`d7698cc0)
+
+osmesa!lp_rast_destroy+0xa1:
+00007ffd`d7698c71 817c243003010000 cmp     dword ptr [rsp+30h],103h
+00007ffd`d7698c79 7545            jne     osmesa!lp_rast_destroy+0xf0 (00007ffd`d7698cc0)
+
+osmesa!lp_rast_destroy+0xab:
+00007ffd`d7698c7b 4869db48010000  imul    rbx,rbx,148h
+00007ffd`d7698c82 4881c328010000  add     rbx,128h
+00007ffd`d7698c89 4803de          add     rbx,rsi
+00007ffd`d7698c8c 488bcb          mov     rcx,rbx
+00007ffd`d7698c8f e8cca5ddff      call    osmesa!mtx_lock (00007ffd`d7473260)
+00007ffd`d7698c94 8b4330          mov     eax,dword ptr [rbx+30h]
+00007ffd`d7698c97 85c0            test    eax,eax
+00007ffd`d7698c99 7f18            jg      osmesa!lp_rast_destroy+0xe3 (00007ffd`d7698cb3)
+
+osmesa!lp_rast_destroy+0xcb:
+00007ffd`d7698c9b 0f1f440000      nop     dword ptr [rax+rax]
+
+osmesa!lp_rast_destroy+0xd0:
+00007ffd`d7698ca0 488bd3          mov     rdx,rbx
+00007ffd`d7698ca3 488d4b28        lea     rcx,[rbx+28h]
+00007ffd`d7698ca7 e86430dcff      call    osmesa!u_cnd_monotonic_wait (00007ffd`d745bd10)
+00007ffd`d7698cac 8b4330          mov     eax,dword ptr [rbx+30h]
+00007ffd`d7698caf 85c0            test    eax,eax
+00007ffd`d7698cb1 7eed            jle     osmesa!lp_rast_destroy+0xd0 (00007ffd`d7698ca0)
+
+osmesa!lp_rast_destroy+0xe3:
+00007ffd`d7698cb3 ffc8            dec     eax
+00007ffd`d7698cb5 488bcb          mov     rcx,rbx
+00007ffd`d7698cb8 894330          mov     dword ptr [rbx+30h],eax
+00007ffd`d7698cbb e8c0a5ddff      call    osmesa!mtx_unlock (00007ffd`d7473280)
+
+osmesa!lp_rast_destroy+0xf0:
+00007ffd`d7698cc0 8b8618290000    mov     eax,dword ptr [rsi+2918h]
+00007ffd`d7698cc6 ffc5            inc     ebp
+00007ffd`d7698cc8 3be8            cmp     ebp,eax
+00007ffd`d7698cca 7284            jb      osmesa!lp_rast_destroy+0x80 (00007ffd`d7698c50)
+
+osmesa!lp_rast_destroy+0xfc:
+00007ffd`d7698ccc 33ed            xor     ebp,ebp
+00007ffd`d7698cce 85c0            test    eax,eax
+00007ffd`d7698cd0 745e            je      osmesa!lp_rast_destroy+0x160 (00007ffd`d7698d30)
+
+osmesa!lp_rast_destroy+0x102:
+00007ffd`d7698cd2 8bc5            mov     eax,ebp
+00007ffd`d7698cd4 4869f848010000  imul    rdi,rax,148h
+00007ffd`d7698cdb 4803fe          add     rdi,rsi
+00007ffd`d7698cde 488d8fb8000000  lea     rcx,[rdi+0B8h]
+00007ffd`d7698ce5 e836a5ddff      call    osmesa!mtx_destroy (00007ffd`d7473220)
+00007ffd`d7698cea 488d8fe0000000  lea     rcx,[rdi+0E0h]
+00007ffd`d7698cf1 e85ab59eff      call    osmesa!nop_glFlush (00007ffd`d7084250)
+00007ffd`d7698cf6 488d8ff0000000  lea     rcx,[rdi+0F0h]
+00007ffd`d7698cfd e81ea5ddff      call    osmesa!mtx_destroy (00007ffd`d7473220)
+00007ffd`d7698d02 488d8f18010000  lea     rcx,[rdi+118h]
+00007ffd`d7698d09 e842b59eff      call    osmesa!nop_glFlush (00007ffd`d7084250)
+00007ffd`d7698d0e 488d8f28010000  lea     rcx,[rdi+128h]
+00007ffd`d7698d15 e806a5ddff      call    osmesa!mtx_destroy (00007ffd`d7473220)
+00007ffd`d7698d1a 488d8f50010000  lea     rcx,[rdi+150h]
+00007ffd`d7698d21 e82ab59eff      call    osmesa!nop_glFlush (00007ffd`d7084250)
+00007ffd`d7698d26 ffc5            inc     ebp
+00007ffd`d7698d28 3bae18290000    cmp     ebp,dword ptr [rsi+2918h]
+00007ffd`d7698d2e 72a2            jb      osmesa!lp_rast_destroy+0x102 (00007ffd`d7698cd2)
+
+osmesa!lp_rast_destroy+0x160:
+00007ffd`d7698d30 33db            xor     ebx,ebx
+00007ffd`d7698d32 bf01000000      mov     edi,1
+00007ffd`d7698d37 660f1f840000000000 nop   word ptr [rax+rax]
+
+osmesa!lp_rast_destroy+0x170:
+00007ffd`d7698d40 8b8618290000    mov     eax,dword ptr [rsi+2918h]
+00007ffd`d7698d46 3bc7            cmp     eax,edi
+00007ffd`d7698d48 0f42c7          cmovb   eax,edi
+00007ffd`d7698d4b 3bd8            cmp     ebx,eax
+00007ffd`d7698d4d 731a            jae     osmesa!lp_rast_destroy+0x199 (00007ffd`d7698d69)
+
+osmesa!lp_rast_destroy+0x17f:
+00007ffd`d7698d4f 8bc3            mov     eax,ebx
+00007ffd`d7698d51 4869c848010000  imul    rcx,rax,148h
+00007ffd`d7698d58 488b8c3198000000 mov     rcx,qword ptr [rcx+rsi+98h]
+00007ffd`d7698d60 e82b169c01      call    osmesa!_aligned_free (00007ffd`d905a390)
+00007ffd`d7698d65 ffc3            inc     ebx
+00007ffd`d7698d67 ebd7            jmp     osmesa!lp_rast_destroy+0x170 (00007ffd`d7698d40)
+
+osmesa!lp_rast_destroy+0x199:
+00007ffd`d7698d69 488b8e602a0000  mov     rcx,qword ptr [rsi+2A60h]
+00007ffd`d7698d70 4885c9          test    rcx,rcx
+00007ffd`d7698d73 7412            je      osmesa!lp_rast_destroy+0x1b7 (00007ffd`d7698d87)
+
+osmesa!lp_rast_destroy+0x1a5:
+00007ffd`d7698d75 b8ffffffff      mov     eax,0FFFFFFFFh
+00007ffd`d7698d7a f00fc101        lock xadd dword ptr [rcx],eax
+00007ffd`d7698d7e 3bc7            cmp     eax,edi
+00007ffd`d7698d80 7505            jne     osmesa!lp_rast_destroy+0x1b7 (00007ffd`d7698d87)
+
+osmesa!lp_rast_destroy+0x1b2:
+00007ffd`d7698d82 e8d9d6ffff      call    osmesa!lp_fence_destroy (00007ffd`d7696460)
+
+osmesa!lp_rast_destroy+0x1b7:
+00007ffd`d7698d87 48c786602a000000000000 mov qword ptr [rsi+2A60h],0
+00007ffd`d7698d92 83be1829000000  cmp     dword ptr [rsi+2918h],0
+00007ffd`d7698d99 760c            jbe     osmesa!lp_rast_destroy+0x1d7 (00007ffd`d7698da7)
+
+osmesa!lp_rast_destroy+0x1cb:
+00007ffd`d7698d9b 488d8e202a0000  lea     rcx,[rsi+2A20h]
+00007ffd`d7698da2 e8b948daff      call    osmesa!util_barrier_destroy (00007ffd`d743d660)
+
+osmesa!lp_rast_destroy+0x1d7:
+00007ffd`d7698da7 488b4e08        mov     rcx,qword ptr [rsi+8]
+00007ffd`d7698dab e8c0eb0200      call    osmesa!lp_scene_queue_destroy (00007ffd`d76c7970)
+00007ffd`d7698db0 488bce          mov     rcx,rsi
+00007ffd`d7698db3 488b5c2438      mov     rbx,qword ptr [rsp+38h]
+00007ffd`d7698db8 488b6c2440      mov     rbp,qword ptr [rsp+40h]
+00007ffd`d7698dbd 488b742448      mov     rsi,qword ptr [rsp+48h]
+00007ffd`d7698dc2 4883c420        add     rsp,20h
+00007ffd`d7698dc6 5f              pop     rdi
+00007ffd`d7698dc7 e9a4159c01      jmp     osmesa!free (00007ffd`d905a370)
+
+osmesa!free:
+00007ffd`d905a370 e96bfa0100      jmp     osmesa!_free_base (00007ffd`d9079de0)
+
+osmesa!_free_base:
+00007ffd`d9079de0 4885c9          test    rcx,rcx
+00007ffd`d9079de3 7436            je      osmesa!_free_base+0x3b (00007ffd`d9079e1b)
+
+osmesa!_free_base+0x5:
+00007ffd`d9079de5 53              push    rbx
+00007ffd`d9079de6 4883ec20        sub     rsp,20h
+00007ffd`d9079dea 4c8bc1          mov     r8,rcx
+00007ffd`d9079ded 33d2            xor     edx,edx
+00007ffd`d9079def 488b0dc26e0601  mov     rcx,qword ptr [osmesa!__acrt_heap (00007ffd`da0e0cb8)]
+00007ffd`d9079df6 ff1534870600    call    qword ptr [osmesa!_imp_HeapFree (00007ffd`d90e2530)]
+00007ffd`d9079dfc 85c0            test    eax,eax
+00007ffd`d9079dfe 7516            jne     osmesa!_free_base+0x36 (00007ffd`d9079e16)
+
+osmesa!_free_base+0x20:
+00007ffd`d9079e00 ff15fa820600    call    qword ptr [osmesa!_imp_GetLastError (00007ffd`d90e2100)]
+00007ffd`d9079e06 8bc8            mov     ecx,eax
+00007ffd`d9079e08 e89fa9feff      call    osmesa!__acrt_errno_from_os_error (00007ffd`d90647ac)
+00007ffd`d9079e0d 8bd8            mov     ebx,eax
+00007ffd`d9079e0f e8d8aafeff      call    osmesa!_errno (00007ffd`d90648ec)
+00007ffd`d9079e14 8918            mov     dword ptr [rax],ebx
+
+osmesa!_free_base+0x36:
+00007ffd`d9079e16 4883c420        add     rsp,20h
+00007ffd`d9079e1a 5b              pop     rbx
+
+osmesa!_free_base+0x3b:
+00007ffd`d9079e1b c3              ret
+osmesa!dllmain_dispatch:
+00007ffd`d904c068 488bc4          mov     rax,rsp
+00007ffd`d904c06b 48895820        mov     qword ptr [rax+20h],rbx
+00007ffd`d904c06f 4c894018        mov     qword ptr [rax+18h],r8
+00007ffd`d904c073 895010          mov     dword ptr [rax+10h],edx
+00007ffd`d904c076 48894808        mov     qword ptr [rax+8],rcx
+00007ffd`d904c07a 56              push    rsi
+00007ffd`d904c07b 57              push    rdi
+00007ffd`d904c07c 4156            push    r14
+00007ffd`d904c07e 4883ec40        sub     rsp,40h
+00007ffd`d904c082 498bf0          mov     rsi,r8
+00007ffd`d904c085 8bfa            mov     edi,edx
+00007ffd`d904c087 4c8bf1          mov     r14,rcx
+00007ffd`d904c08a 85d2            test    edx,edx
+00007ffd`d904c08c 750f            jne     osmesa!dllmain_dispatch+0x35 (00007ffd`d904c09d)
+
+osmesa!dllmain_dispatch+0x26:
+00007ffd`d904c08e 39155c320901    cmp     dword ptr [osmesa!__proc_attached (00007ffd`da0df2f0)],edx
+00007ffd`d904c094 7f07            jg      osmesa!dllmain_dispatch+0x35 (00007ffd`d904c09d)
+
+osmesa!dllmain_dispatch+0x2e:
+00007ffd`d904c096 33c0            xor     eax,eax
+00007ffd`d904c098 e9e5000000      jmp     osmesa!dllmain_dispatch+0x11a (00007ffd`d904c182)
+
+osmesa!dllmain_dispatch+0x35:
+00007ffd`d904c09d 8d42ff          lea     eax,[rdx-1]
+00007ffd`d904c0a0 83f801          cmp     eax,1
+00007ffd`d904c0a3 7740            ja      osmesa!dllmain_dispatch+0x7d (00007ffd`d904c0e5)
+
+osmesa!dllmain_dispatch+0x3d:
+00007ffd`d904c0a5 488b053411d600  mov     rax,qword ptr [osmesa!_pDefaultRawDllMain (00007ffd`d9dad1e0)]
+00007ffd`d904c0ac 4885c0          test    rax,rax
+00007ffd`d904c0af 7505            jne     osmesa!dllmain_dispatch+0x4e (00007ffd`d904c0b6)
+
+osmesa!dllmain_dispatch+0x49:
+00007ffd`d904c0b1 8d5801          lea     ebx,[rax+1]
+00007ffd`d904c0b4 eb08            jmp     osmesa!dllmain_dispatch+0x56 (00007ffd`d904c0be)
+
+osmesa!dllmain_dispatch+0x4e:
+00007ffd`d904c0b6 ff157c650900    call    qword ptr [osmesa!__guard_dispatch_icall_fptr (00007ffd`d90e2638)]
+00007ffd`d904c0bc 8bd8            mov     ebx,eax
+
+osmesa!dllmain_dispatch+0x56:
+00007ffd`d904c0be 895c2430        mov     dword ptr [rsp+30h],ebx
+00007ffd`d904c0c2 85db            test    ebx,ebx
+00007ffd`d904c0c4 0f84ae000000    je      osmesa!dllmain_dispatch+0x110 (00007ffd`d904c178)
+
+osmesa!dllmain_dispatch+0x62:
+00007ffd`d904c0ca 4c8bc6          mov     r8,rsi
+00007ffd`d904c0cd 8bd7            mov     edx,edi
+00007ffd`d904c0cf 498bce          mov     rcx,r14
+00007ffd`d904c0d2 e8a9fdffff      call    osmesa!dllmain_crt_dispatch (00007ffd`d904be80)
+00007ffd`d904c0d7 8bd8            mov     ebx,eax
+00007ffd`d904c0d9 89442430        mov     dword ptr [rsp+30h],eax
+00007ffd`d904c0dd 85c0            test    eax,eax
+00007ffd`d904c0df 0f8493000000    je      osmesa!dllmain_dispatch+0x110 (00007ffd`d904c178)
+
+osmesa!dllmain_dispatch+0x7d:
+00007ffd`d904c0e5 4c8bc6          mov     r8,rsi
+00007ffd`d904c0e8 8bd7            mov     edx,edi
+00007ffd`d904c0ea 498bce          mov     rcx,r14
+00007ffd`d904c0ed e85e6d38fe      call    osmesa!`anonymous namespace'::ir_if_simplification_visitor::visit_enter (00007ffd`d73d2e50)
+00007ffd`d904c0f2 8bd8            mov     ebx,eax
+00007ffd`d904c0f4 89442430        mov     dword ptr [rsp+30h],eax
+00007ffd`d904c0f8 83ff01          cmp     edi,1
+00007ffd`d904c0fb 7536            jne     osmesa!dllmain_dispatch+0xcb (00007ffd`d904c133)
+
+osmesa!dllmain_dispatch+0x95:
+00007ffd`d904c0fd 85c0            test    eax,eax
+00007ffd`d904c0ff 7532            jne     osmesa!dllmain_dispatch+0xcb (00007ffd`d904c133)
+
+osmesa!dllmain_dispatch+0x99:
+00007ffd`d904c101 4c8bc6          mov     r8,rsi
+00007ffd`d904c104 33d2            xor     edx,edx
+00007ffd`d904c106 498bce          mov     rcx,r14
+00007ffd`d904c109 e8426d38fe      call    osmesa!`anonymous namespace'::ir_if_simplification_visitor::visit_enter (00007ffd`d73d2e50)
+00007ffd`d904c10e 4885f6          test    rsi,rsi
+00007ffd`d904c111 0f95c1          setne   cl
+00007ffd`d904c114 e8cffeffff      call    osmesa!dllmain_crt_process_detach (00007ffd`d904bfe8)
+00007ffd`d904c119 488b05c010d600  mov     rax,qword ptr [osmesa!_pDefaultRawDllMain (00007ffd`d9dad1e0)]
+00007ffd`d904c120 4885c0          test    rax,rax
+00007ffd`d904c123 740e            je      osmesa!dllmain_dispatch+0xcb (00007ffd`d904c133)
+
+osmesa!dllmain_dispatch+0xbd:
+00007ffd`d904c125 4c8bc6          mov     r8,rsi
+00007ffd`d904c128 33d2            xor     edx,edx
+00007ffd`d904c12a 498bce          mov     rcx,r14
+00007ffd`d904c12d ff1505650900    call    qword ptr [osmesa!__guard_dispatch_icall_fptr (00007ffd`d90e2638)]
+
+osmesa!dllmain_dispatch+0xcb:
+00007ffd`d904c133 85ff            test    edi,edi
+00007ffd`d904c135 7405            je      osmesa!dllmain_dispatch+0xd4 (00007ffd`d904c13c)
+
+osmesa!dllmain_dispatch+0xcf:
+00007ffd`d904c137 83ff03          cmp     edi,3
+00007ffd`d904c13a 753c            jne     osmesa!dllmain_dispatch+0x110 (00007ffd`d904c178)
+
+osmesa!dllmain_dispatch+0xd4:
+00007ffd`d904c13c 4c8bc6          mov     r8,rsi
+00007ffd`d904c13f 8bd7            mov     edx,edi
+00007ffd`d904c141 498bce          mov     rcx,r14
+00007ffd`d904c144 e837fdffff      call    osmesa!dllmain_crt_dispatch (00007ffd`d904be80)
+00007ffd`d904c149 8bd8            mov     ebx,eax
+00007ffd`d904c14b 89442430        mov     dword ptr [rsp+30h],eax
+00007ffd`d904c14f 85c0            test    eax,eax
+00007ffd`d904c151 7425            je      osmesa!dllmain_dispatch+0x110 (00007ffd`d904c178)
+
+osmesa!dllmain_dispatch+0xeb:
+00007ffd`d904c153 488b058610d600  mov     rax,qword ptr [osmesa!_pDefaultRawDllMain (00007ffd`d9dad1e0)]
+00007ffd`d904c15a 4885c0          test    rax,rax
+00007ffd`d904c15d 7505            jne     osmesa!dllmain_dispatch+0xfc (00007ffd`d904c164)
+
+osmesa!dllmain_dispatch+0xf7:
+00007ffd`d904c15f 8d5801          lea     ebx,[rax+1]
+00007ffd`d904c162 eb10            jmp     osmesa!dllmain_dispatch+0x10c (00007ffd`d904c174)
+
+osmesa!dllmain_dispatch+0xfc:
+00007ffd`d904c164 4c8bc6          mov     r8,rsi
+00007ffd`d904c167 8bd7            mov     edx,edi
+00007ffd`d904c169 498bce          mov     rcx,r14
+00007ffd`d904c16c ff15c6640900    call    qword ptr [osmesa!__guard_dispatch_icall_fptr (00007ffd`d90e2638)]
+00007ffd`d904c172 8bd8            mov     ebx,eax
+
+osmesa!dllmain_dispatch+0x10c:
+00007ffd`d904c174 895c2430        mov     dword ptr [rsp+30h],ebx
+
+osmesa!dllmain_dispatch+0x110:
+00007ffd`d904c178 eb06            jmp     osmesa!dllmain_dispatch+0x118 (00007ffd`d904c180)
+
+osmesa!dllmain_dispatch+0x118:
+00007ffd`d904c180 8bc3            mov     eax,ebx
+
+osmesa!dllmain_dispatch+0x11a:
+00007ffd`d904c182 488b5c2478      mov     rbx,qword ptr [rsp+78h]
+00007ffd`d904c187 4883c440        add     rsp,40h
+00007ffd`d904c18b 415e            pop     r14
+00007ffd`d904c18d 5f              pop     rdi
+00007ffd`d904c18e 5e              pop     rsi
+00007ffd`d904c18f c3              ret
+osmesa!`anonymous namespace'::ir_if_simplification_visitor::visit_enter:
+00007ffd`d73d2e50 b801000000      mov     eax,1
+00007ffd`d73d2e55 c3              ret
+osmesa!destroy_st_manager:
+00007ffd`d7075f30 4883ec28        sub     rsp,28h
+00007ffd`d7075f34 488b0d85a3fd02  mov     rcx,qword ptr [osmesa!global_fscreen (00007ffd`da0502c0)]
+00007ffd`d7075f3b 4885c9          test    rcx,rcx
+00007ffd`d7075f3e 741e            je      osmesa!destroy_st_manager+0x2e (00007ffd`d7075f5e)
+
+osmesa!destroy_st_manager+0x10:
+00007ffd`d7075f40 488b01          mov     rax,qword ptr [rcx]
+00007ffd`d7075f43 4885c0          test    rax,rax
+00007ffd`d7075f46 740d            je      osmesa!destroy_st_manager+0x25 (00007ffd`d7075f55)
+
+osmesa!destroy_st_manager+0x18:
+00007ffd`d7075f48 488bc8          mov     rcx,rax
+00007ffd`d7075f4b ff5028          call    qword ptr [rax+28h]
+00007ffd`d7075f4e 488b0d6ba3fd02  mov     rcx,qword ptr [osmesa!global_fscreen (00007ffd`da0502c0)]
+
+osmesa!destroy_st_manager+0x25:
+00007ffd`d7075f55 4883c428        add     rsp,28h
+00007ffd`d7075f59 e91244fe01      jmp     osmesa!free (00007ffd`d905a370)
+
+osmesa!destroy_st_manager+0x2e:
+00007ffd`d7075f5e 4883c428        add     rsp,28h
+00007ffd`d7075f62 c3              ret
+
+osmesa!free:
+00007ffd`d905a370 e96bfa0100      jmp     osmesa!_free_base (00007ffd`d9079de0)
+
+osmesa!_free_base:
+00007ffd`d9079de0 4885c9          test    rcx,rcx
+00007ffd`d9079de3 7436            je      osmesa!_free_base+0x3b (00007ffd`d9079e1b)
+
+osmesa!_free_base+0x5:
+00007ffd`d9079de5 53              push    rbx
+00007ffd`d9079de6 4883ec20        sub     rsp,20h
+00007ffd`d9079dea 4c8bc1          mov     r8,rcx
+00007ffd`d9079ded 33d2            xor     edx,edx
+00007ffd`d9079def 488b0dc26e0601  mov     rcx,qword ptr [osmesa!__acrt_heap (00007ffd`da0e0cb8)]
+00007ffd`d9079df6 ff1534870600    call    qword ptr [osmesa!_imp_HeapFree (00007ffd`d90e2530)]
+00007ffd`d9079dfc 85c0            test    eax,eax
+00007ffd`d9079dfe 7516            jne     osmesa!_free_base+0x36 (00007ffd`d9079e16)
+
+osmesa!_free_base+0x20:
+00007ffd`d9079e00 ff15fa820600    call    qword ptr [osmesa!_imp_GetLastError (00007ffd`d90e2100)]
+00007ffd`d9079e06 8bc8            mov     ecx,eax
+00007ffd`d9079e08 e89fa9feff      call    osmesa!__acrt_errno_from_os_error (00007ffd`d90647ac)
+00007ffd`d9079e0d 8bd8            mov     ebx,eax
+00007ffd`d9079e0f e8d8aafeff      call    osmesa!_errno (00007ffd`d90648ec)
+00007ffd`d9079e14 8918            mov     dword ptr [rax],ebx
+
+osmesa!_free_base+0x36:
+00007ffd`d9079e16 4883c420        add     rsp,20h
+00007ffd`d9079e1a 5b              pop     rbx
+
+osmesa!_free_base+0x3b:
+00007ffd`d9079e1b c3              ret
+00007ffd`d90e5bb8  00000000`00000000
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\winrt.natvis'

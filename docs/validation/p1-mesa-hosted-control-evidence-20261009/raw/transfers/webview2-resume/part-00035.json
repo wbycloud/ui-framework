@@ -1,0 +1,12 @@
+{
+  "start": 31457280,
+  "end": 31981567,
+  "attempt": 4,
+  "bytes": 179076,
+  "valid_prefix": true,
+  "content_range": [
+    "bytes 31457280-31981567/637913104"
+  ],
+  "curl_exit": 28,
+  "error": "curl: (28) Operation timed out after 45014 milliseconds with 179076 out of 524288 bytes received\r\n"
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "path": ".gitattributes",
+    "sha256": "e954287a46e7eaba277ecf4039a2d3c7af85e99f842555e0aec8d7844b320166"
+  },
+  {
+    "path": ".github/workflows/windows-regression.yml",
+    "sha256": "5971d31cae314362269e70d13c2b11dedc883f9cafe118cb30f2f7be4fee1aad"
+  },
+  {
+    "path": "tests/observe_processes.py",
+    "sha256": "8b3afcc26253a05734dd4dae56c69f31f24f5a6014ce95a6d6581c2a68e566fe"
+  },
+  {
+    "path": "tests/process_stall_capture.py",
+    "sha256": "8c449e1b1125c7a57fdf68b2269dcb2e5d9148e7fa1b7d05b7b8032a548fd3a8"
+  },
+  {
+    "path": "tests/osmesa_thread_probe.c",
+    "sha256": "5ce8d040f9beda0e79dd184194def1eeab8304c7200a6719d55e5a1a9b321f88"
+  },
+  {
+    "path": "tests/osmesa_stall_objects.py",
+    "sha256": "82b5a9913c847366e2d5b14dd01219cc325971ef5cd9c53f556a002fa8da27ff"
+  },
+  {
+    "path": "tests/run_osmesa_lifecycle_control.py",
+    "sha256": "66336186c5e910f7664723870ce3434c15464e3fd2d92df178eb527f0a945d03"
+  },
+  {
+    "path": "tools/mesa-osmesa-process-detach.patch",
+    "sha256": "5a7fed431c5444c7de9100523026dc91642db9c9603a450289ee141a5ac8bba9"
+  }
+]

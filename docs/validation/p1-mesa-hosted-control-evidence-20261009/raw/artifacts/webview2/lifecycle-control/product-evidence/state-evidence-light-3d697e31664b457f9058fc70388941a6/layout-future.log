@@ -1,0 +1,12 @@
+TEST_PHASE pid5264 tick937546 dispatched0 create-host-begin
+TEST_PHASE pid5264 tick937562 dispatched0 create-host-end
+TEST_PHASE pid5264 tick937578 dispatched0 open-begin
+TEST_PHASE pid5264 tick937875 dispatched0 open-return
+TEST_PHASE pid5264 tick938375 dispatched36 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid5264 tick938375 dispatched36 close-begin
+TEST_PHASE pid5264 tick938390 dispatched36 close-request-return
+TEST_PHASE pid5264 tick938453 dispatched37 close-state-checked
+TEST_PHASE pid5264 tick938765 dispatched37 com-uninitialize-begin
+TEST_PHASE pid5264 tick938765 dispatched37 process-return
+Stateful actual light / invalid: 0 failures

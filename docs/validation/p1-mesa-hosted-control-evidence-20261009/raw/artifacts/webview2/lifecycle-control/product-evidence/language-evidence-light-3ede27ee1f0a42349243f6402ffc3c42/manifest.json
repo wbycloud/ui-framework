@@ -1,0 +1,99 @@
+{
+  "cases": [
+    {
+      "label": "preferences-96",
+      "completedUtc": "2026-10-09T10:38:54.4042121Z",
+      "startedUtc": "2026-10-09T10:38:47.6047789Z",
+      "status": "exited",
+      "dpi": 96,
+      "exitCode": 0,
+      "elapsedMs": 6776,
+      "mode": "preferences"
+    },
+    {
+      "label": "write-96",
+      "completedUtc": "2026-10-09T10:39:05.2022057Z",
+      "startedUtc": "2026-10-09T10:38:54.4107360Z",
+      "status": "exited",
+      "dpi": 96,
+      "exitCode": 0,
+      "elapsedMs": 10790,
+      "mode": "write"
+    },
+    {
+      "label": "restore-96",
+      "completedUtc": "2026-10-09T10:39:14.8151203Z",
+      "startedUtc": "2026-10-09T10:39:05.2051400Z",
+      "status": "exited",
+      "dpi": 96,
+      "exitCode": 0,
+      "elapsedMs": 9608,
+      "mode": "restore"
+    },
+    {
+      "label": "write-144",
+      "completedUtc": "2026-10-09T10:39:25.7292571Z",
+      "startedUtc": "2026-10-09T10:39:14.8169722Z",
+      "status": "exited",
+      "dpi": 144,
+      "exitCode": 0,
+      "elapsedMs": 10911,
+      "mode": "write"
+    },
+    {
+      "label": "restore-144",
+      "completedUtc": "2026-10-09T10:39:35.1392563Z",
+      "startedUtc": "2026-10-09T10:39:25.7306920Z",
+      "status": "exited",
+      "dpi": 144,
+      "exitCode": 0,
+      "elapsedMs": 9407,
+      "mode": "restore"
+    },
+    {
+      "label": "write-192",
+      "completedUtc": "2026-10-09T10:39:45.9425277Z",
+      "startedUtc": "2026-10-09T10:39:35.1411343Z",
+      "status": "exited",
+      "dpi": 192,
+      "exitCode": 0,
+      "elapsedMs": 10800,
+      "mode": "write"
+    },
+    {
+      "label": "restore-192",
+      "completedUtc": "2026-10-09T10:39:55.2709425Z",
+      "startedUtc": "2026-10-09T10:39:45.9439242Z",
+      "status": "exited",
+      "dpi": 192,
+      "exitCode": 0,
+      "elapsedMs": 9326,
+      "mode": "restore"
+    }
+  ],
+  "startedUtc": "2026-10-09T10:38:47.5194505Z",
+  "completedUtc": "2026-10-09T10:39:55.2720648Z",
+  "backend": "light",
+  "files": [
+    {
+      "sha256": "99D8142434C3ABFACCE969AA3731220314D99C53EE0AFC546896C0AFAD92F5F5",
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-candidate\\unpacked\\osmesa.dll"
+    },
+    {
+      "sha256": "49B369F6CCCBA07C90C817AAD9513871BF9A4169EC0A251F7A41440F62594CED",
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-webview2\\ui_instance_language_test.exe"
+    },
+    {
+      "sha256": "57AD5D712E627AF264AB549AC87D736E6A4CD1E6F0B7738CDB9508B3BB2A5DD4",
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-webview2\\stateful_components.uapp"
+    },
+    {
+      "sha256": "9560717767B36EF8AF59C3F12D9D4C1372E4281F955AEB1D5788D0D11C33B2B3",
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-webview2\\ui_framework.dll"
+    }
+  ],
+  "frameworkApi": 9,
+  "evidence": "D:\\a\\ui-framework\\ui-framework\\build\\ci-webview2\\language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42",
+  "input": "real SendInput",
+  "provider": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-candidate\\unpacked\\osmesa.dll"
+}

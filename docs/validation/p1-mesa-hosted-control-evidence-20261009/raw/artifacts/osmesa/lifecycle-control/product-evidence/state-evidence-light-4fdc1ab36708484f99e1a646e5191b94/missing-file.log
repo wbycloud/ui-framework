@@ -1,0 +1,12 @@
+TEST_PHASE pid3684 tick450031 dispatched0 create-host-begin
+TEST_PHASE pid3684 tick450046 dispatched0 create-host-end
+TEST_PHASE pid3684 tick450078 dispatched0 open-begin
+TEST_PHASE pid3684 tick450359 dispatched0 open-return
+TEST_PHASE pid3684 tick450859 dispatched36 open-settled
+RESTORED modedefaults dpi96 name200 treeCollapsed0
+TEST_PHASE pid3684 tick450859 dispatched36 close-begin
+TEST_PHASE pid3684 tick450890 dispatched36 close-request-return
+TEST_PHASE pid3684 tick450953 dispatched37 close-state-checked
+TEST_PHASE pid3684 tick451265 dispatched37 com-uninitialize-begin
+TEST_PHASE pid3684 tick451265 dispatched37 process-return
+Stateful actual light / defaults: 0 failures

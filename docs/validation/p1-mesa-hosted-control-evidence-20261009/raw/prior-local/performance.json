@@ -1,0 +1,443 @@
+{
+  "orders": [
+    [
+      "A",
+      "B",
+      "C"
+    ],
+    [
+      "C",
+      "A",
+      "B"
+    ],
+    [
+      "B",
+      "C",
+      "A"
+    ],
+    [
+      "A",
+      "C",
+      "B"
+    ],
+    [
+      "B",
+      "A",
+      "C"
+    ]
+  ],
+  "runs": [
+    {
+      "label": "A",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 200,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 26004,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 566,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=209.900 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-A-exit-default-200\\stdout.log"
+    },
+    {
+      "label": "B",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 200,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\B\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 18764,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 524,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "3bd1280a2d72052c3ef673428dde75c8d3a07ab0ca905c048ea0c054d6169159",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=204.474 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-B-exit-default-200\\stdout.log"
+    },
+    {
+      "label": "C",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 200,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\C\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 29620,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 534,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=204.297 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-C-exit-default-200\\stdout.log"
+    },
+    {
+      "label": "C",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 201,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\C\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 9868,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 523,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=205.137 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-C-exit-default-201\\stdout.log"
+    },
+    {
+      "label": "A",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 201,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 44752,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 535,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=210.058 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-A-exit-default-201\\stdout.log"
+    },
+    {
+      "label": "B",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 201,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\B\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 36288,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 539,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "3bd1280a2d72052c3ef673428dde75c8d3a07ab0ca905c048ea0c054d6169159",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=210.324 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-B-exit-default-201\\stdout.log"
+    },
+    {
+      "label": "B",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 202,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\B\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 33432,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 540,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "3bd1280a2d72052c3ef673428dde75c8d3a07ab0ca905c048ea0c054d6169159",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=205.672 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-B-exit-default-202\\stdout.log"
+    },
+    {
+      "label": "C",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 202,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\C\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 5712,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 521,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=209.252 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-C-exit-default-202\\stdout.log"
+    },
+    {
+      "label": "A",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 202,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 41732,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 573,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=212.852 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-A-exit-default-202\\stdout.log"
+    },
+    {
+      "label": "A",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 203,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 42224,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 522,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=212.159 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-A-exit-default-203\\stdout.log"
+    },
+    {
+      "label": "C",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 203,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\C\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 29260,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 519,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=204.547 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-C-exit-default-203\\stdout.log"
+    },
+    {
+      "label": "B",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 203,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\B\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 22144,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 525,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "3bd1280a2d72052c3ef673428dde75c8d3a07ab0ca905c048ea0c054d6169159",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=209.239 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-B-exit-default-203\\stdout.log"
+    },
+    {
+      "label": "B",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 204,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\B\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 40380,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 541,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "3bd1280a2d72052c3ef673428dde75c8d3a07ab0ca905c048ea0c054d6169159",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=215.145 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-B-exit-default-204\\stdout.log"
+    },
+    {
+      "label": "A",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 204,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 6312,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 532,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=219.108 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-A-exit-default-204\\stdout.log"
+    },
+    {
+      "label": "C",
+      "mode": "exit",
+      "configuration": "default",
+      "index": 204,
+      "command": [
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+        "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\C\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 14220,
+      "os_exit": 0,
+      "natural_exit": true,
+      "stdout_eof": true,
+      "timed_out": false,
+      "elapsed_ms": 539,
+      "gate": false,
+      "capture": null,
+      "executable_sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b",
+      "provider_sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=211.058 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "log": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\runs\\provider-C-exit-default-204\\stdout.log"
+    }
+  ],
+  "summary": {
+    "A": {
+      "draw_milliseconds": [
+        209.9,
+        210.058,
+        212.852,
+        212.159,
+        219.108
+      ],
+      "median_ms": 212.159,
+      "natural_os0": true
+    },
+    "B": {
+      "draw_milliseconds": [
+        204.474,
+        210.324,
+        205.672,
+        209.239,
+        215.145
+      ],
+      "median_ms": 209.239,
+      "natural_os0": true
+    },
+    "C": {
+      "draw_milliseconds": [
+        204.297,
+        205.137,
+        209.252,
+        204.547,
+        211.058
+      ],
+      "median_ms": 205.137,
+      "natural_os0": true
+    },
+    "C_vs_B": 0.9803956241427267,
+    "C_vs_A": 0.9669021818541754
+  }
+}

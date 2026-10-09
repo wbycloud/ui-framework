@@ -1,0 +1,53 @@
+Start testing: Oct 09 10:34 Coordinated Universal Time
+----------------------------------------------------------
+2/2 Testing: ui_instance_language_light
+2/2 Test: ui_instance_language_light
+Command: "C:/Program Files/PowerShell/7/pwsh.exe" "-NoProfile" "-File" "D:/a/ui-framework/ui-framework/tests/run-instance-language.ps1" "-BuildDirectory" "D:/a/ui-framework/ui-framework/build/ci-webview2" "-Provider" "D:\a\ui-framework\ui-framework\.deps\mesa-24.3.4\x64\osmesa.dll" "-Backend" "light"
+Directory: D:/a/ui-framework/ui-framework/build/ci-evidence-webview2/lifecycle-control/runs/original-A
+"ui_instance_language_light" start time: Oct 09 10:34 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+CASE_BEGIN label=preferences-96 utc=2026-10-09T10:34:08.5829324Z evidence=D:\a\ui-framework\ui-framework\build\ci-webview2\language-evidence-light-b1aeac2b870d4755906136eeb5f27824
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+TEST_PHASE pid2676 tick667562 dispatched0 create-host-begin
+TEST_PHASE pid2676 tick667578 dispatched0 create-host-end
+TEST_PHASE pid2676 tick667812 dispatched13 screenshot-begin
+TEST_PHASE pid2676 tick667859 dispatched13 screenshot-end
+TEST_PHASE pid2676 tick667859 dispatched13 preferences-begin
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE magic: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+PREFERENCE future: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+TEST_PHASE pid2676 tick671531 dispatched222 screenshot-begin
+TEST_PHASE pid2676 tick671546 dispatched222 screenshot-end
+PREFERENCE language: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+PREFERENCE profile: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+PREFERENCE reserved: final=en-US file unchanged
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+TEST_PHASE pid2676 tick673562 dispatched330 screenshot-begin
+TEST_PHASE pid2676 tick673609 dispatched330 screenshot-end
+PREFERENCE zh-CN: final=zh-CN file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+PREFERENCE en-US: final=en-US file unchanged
+TEST_PHASE pid2676 tick674453 dispatched373 preferences-end
+TEST_PHASE pid2676 tick674765 dispatched375 com-uninitialize-begin
+TEST_PHASE pid2676 tick674765 dispatched375 process-return
+Complete DLL preferences light failures0
+<end of output>
+Test time = 240.02 sec
+----------------------------------------------------------
+Test Failed.
+"ui_instance_language_light" end time: Oct 09 10:38 Coordinated Universal Time
+"ui_instance_language_light" time elapsed: 00:04:00
+----------------------------------------------------------
+
+End testing: Oct 09 10:38 Coordinated Universal Time

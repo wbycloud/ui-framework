@@ -1,0 +1,454 @@
+[1/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\bst.c.obj
+[2/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\array.c.obj
+[3/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\array_obj.c.obj
+[4/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\bst_map.c.obj
+[5/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\conv.c.obj
+[6/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\avl.c.obj
+[7/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\hash.c.obj
+[8/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\in.c.obj
+[9/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\dobject.c.obj
+[10/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\diyfp.c.obj
+[11/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\mem.c.obj
+[12/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\plog.c.obj
+[13/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\dtoa.c.obj
+[14/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\serialize.c.obj
+[15/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\print.c.obj
+[16/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\mraw.c.obj
+[17/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\shs.c.obj
+[18/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\str.c.obj
+[19/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\ports\windows_nt\lexbor\core\memory.c.obj
+[20/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\utils.c.obj
+[21/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\core\strtod.c.obj
+[22/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\at_rule.c.obj
+[23/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\css.c.obj
+[24/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\declaration.c.obj
+[25/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\at_rule\state.c.obj
+[26/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\log.c.obj
+[27/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\parser.c.obj
+[28/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\property.c.obj
+[29/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\property\state.c.obj
+[30/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\selectors\pseudo.c.obj
+[31/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\selectors\pseudo_state.c.obj
+[32/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\rule.c.obj
+[33/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\state.c.obj
+[34/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\selectors\selectors.c.obj
+[35/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\selectors\selector.c.obj
+[36/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\selectors\state.c.obj
+[37/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\syntax\anb.c.obj
+[38/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\stylesheet.c.obj
+[39/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\syntax\parser.c.obj
+[40/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\syntax\state.c.obj
+[41/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\syntax\syntax.c.obj
+[42/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\ports\windows_nt\lexbor\core\perf.c.obj
+[43/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\syntax\tokenizer.c.obj
+[44/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\syntax\token.c.obj
+[45/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\syntax\tokenizer\error.c.obj
+[46/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\ports\windows_nt\lexbor\core\fs.c.obj
+[47/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\unit.c.obj
+[48/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\collection.c.obj
+[49/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\exception.c.obj
+[50/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interface.c.obj
+[51/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\attr.c.obj
+[52/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\css\value.c.obj
+[53/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\cdata_section.c.obj
+[54/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\comment.c.obj
+[55/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\character_data.c.obj
+[56/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\document.c.obj
+[57/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\document_type.c.obj
+[58/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\document_fragment.c.obj
+[59/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\event_target.c.obj
+[60/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\element.c.obj
+[61/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\text.c.obj
+[62/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\processing_instruction.c.obj
+[63/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\node.c.obj
+[64/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\dom\interfaces\shadow_root.c.obj
+[65/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\encoding\encode.c.obj
+[66/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\encoding\res.c.obj
+[67/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\encoding\range.c.obj
+[68/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\encoding\multi.c.obj
+[69/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\encoding\encoding.c.obj
+[70/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\encoding\decode.c.obj
+[71/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\encoding\single.c.obj
+[72/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\anchor_element.c.obj
+[73/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\encoding.c.obj
+[74/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\engine\engine.c.obj
+[75/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interface.c.obj
+[76/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\area_element.c.obj
+[77/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\audio_element.c.obj
+[78/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\body_element.c.obj
+[79/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\base_element.c.obj
+[80/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\br_element.c.obj
+[81/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\canvas_element.c.obj
+[82/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\button_element.c.obj
+[83/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\d_list_element.c.obj
+[84/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\data_list_element.c.obj
+[85/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\data_element.c.obj
+[86/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\details_element.c.obj
+[87/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\dialog_element.c.obj
+[88/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\div_element.c.obj
+[89/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\directory_element.c.obj
+[90/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\element.c.obj
+[91/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\document.c.obj
+[92/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\embed_element.c.obj
+[93/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\field_set_element.c.obj
+[94/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\font_element.c.obj
+[95/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\form_element.c.obj
+[96/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\frame_element.c.obj
+[97/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\frame_set_element.c.obj
+[98/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\head_element.c.obj
+[99/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\heading_element.c.obj
+[100/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\hr_element.c.obj
+[101/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\iframe_element.c.obj
+[102/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\html_element.c.obj
+[103/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\image_element.c.obj
+[104/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\input_element.c.obj
+[105/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\label_element.c.obj
+[106/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\legend_element.c.obj
+[107/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\link_element.c.obj
+[108/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\li_element.c.obj
+[109/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\map_element.c.obj
+[110/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\marquee_element.c.obj
+[111/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\media_element.c.obj
+[112/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\menu_element.c.obj
+[113/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\meter_element.c.obj
+[114/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\meta_element.c.obj
+[115/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\mod_element.c.obj
+[116/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\object_element.c.obj
+[117/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\o_list_element.c.obj
+[118/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\opt_group_element.c.obj
+[119/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\output_element.c.obj
+[120/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\option_element.c.obj
+[121/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\param_element.c.obj
+[122/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\paragraph_element.c.obj
+[123/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\picture_element.c.obj
+[124/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\pre_element.c.obj
+[125/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\progress_element.c.obj
+[126/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\quote_element.c.obj
+[127/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\select_element.c.obj
+[128/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\script_element.c.obj
+[129/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\slot_element.c.obj
+[130/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\source_element.c.obj
+[131/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\style_element.c.obj
+[132/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\span_element.c.obj
+[133/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\table_cell_element.c.obj
+[134/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\table_caption_element.c.obj
+[135/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\table_col_element.c.obj
+[136/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\table_element.c.obj
+[137/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\table_section_element.c.obj
+[138/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\table_row_element.c.obj
+[139/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\text_area_element.c.obj
+[140/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\template_element.c.obj
+[141/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\time_element.c.obj
+[142/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\title_element.c.obj
+[143/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\track_element.c.obj
+[144/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\u_list_element.c.obj
+[145/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\unknown_element.c.obj
+[146/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\video_element.c.obj
+[147/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\interfaces\window.c.obj
+[148/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\node.c.obj
+[149/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\parser.c.obj
+[150/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\token.c.obj
+[151/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\token_attr.c.obj
+[152/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\serialize.c.obj
+[153/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tokenizer.c.obj
+[154/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tokenizer\error.c.obj
+[155/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tokenizer\state_comment.c.obj
+[156/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tokenizer\state_rawtext.c.obj
+[157/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tokenizer\state_rcdata.c.obj
+[158/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tokenizer\state_doctype.c.obj
+[159/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tokenizer\state_script.c.obj
+[160/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\error.c.obj
+[161/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tokenizer\state.c.obj
+[162/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\active_formatting.c.obj
+[163/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\after_after_frameset.c.obj
+[164/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree.c.obj
+[165/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\after_after_body.c.obj
+[166/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\before_head.c.obj
+[167/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\after_frameset.c.obj
+[168/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\before_html.c.obj
+[169/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\after_body.c.obj
+[170/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\after_head.c.obj
+[171/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\foreign_content.c.obj
+[172/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_column_group.c.obj
+[173/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_cell.c.obj
+[174/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_caption.c.obj
+[175/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_frameset.c.obj
+[176/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_head.c.obj
+[177/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_head_noscript.c.obj
+[178/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_row.c.obj
+[179/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_select.c.obj
+[180/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_body.c.obj
+[181/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_table_body.c.obj
+[182/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_select_in_table.c.obj
+[183/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_table_text.c.obj
+[184/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_table.c.obj
+[185/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\in_template.c.obj
+[186/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\initial.c.obj
+[187/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\open_elements.c.obj
+[188/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\insertion_mode\text.c.obj
+[189/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\html\tree\template_insertion.c.obj
+[190/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\ns\ns.c.obj
+[191/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\punycode\punycode.c.obj
+[192/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\style\dom\interfaces\document.c.obj
+[193/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\style\dom\interfaces\element.c.obj
+[194/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\style\event.c.obj
+[195/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\selectors\selectors.c.obj
+[196/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\style\html\interfaces\document.c.obj
+[197/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\style\style.c.obj
+[198/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\tag\tag.c.obj
+[199/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\style\html\interfaces\style_element.c.obj
+[200/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\unicode\idna.c.obj
+[201/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\utils\http.c.obj
+[202/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\utils\warc.c.obj
+[203/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\unicode\unicode.c.obj
+[204/396] Building C object light_web\quickjs\CMakeFiles\qjs.dir\dtoa.c.obj
+D:\a\ui-framework\ui-framework\.deps\quickjs\cutils.h(216): warning C4127: conditional expression is constant
+D:\a\ui-framework\ui-framework\.deps\quickjs\cutils.h(256): warning C4127: conditional expression is constant
+D:\a\ui-framework\ui-framework\.deps\quickjs\dtoa.c(109): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\dtoa.c(610): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\dtoa.c(652): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\dtoa.c(696): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+[205/396] Building C object CMakeFiles\ui_framework.dir\src\ui.c.obj
+[206/396] Building C object light_web\lexbor\CMakeFiles\lexbor_static.dir\source\lexbor\url\url.c.obj
+[207/396] Building C object CMakeFiles\ui_framework.dir\src\language.c.obj
+[208/396] Building C object light_web\quickjs\CMakeFiles\qjs.dir\libregexp.c.obj
+D:\a\ui-framework\ui-framework\.deps\quickjs\cutils.h(216): warning C4127: conditional expression is constant
+D:\a\ui-framework\ui-framework\.deps\quickjs\cutils.h(256): warning C4127: conditional expression is constant
+[209/396] Building C object light_web\quickjs\CMakeFiles\qjs.dir\libunicode.c.obj
+D:\a\ui-framework\ui-framework\.deps\quickjs\cutils.h(216): warning C4127: conditional expression is constant
+D:\a\ui-framework\ui-framework\.deps\quickjs\cutils.h(256): warning C4127: conditional expression is constant
+[210/396] Building C object CMakeFiles\ui_framework.dir\src\assistant.c.obj
+[211/396] Building C object CMakeFiles\ui_framework.dir\src\package.c.obj
+[212/396] Building C object CMakeFiles\ui_framework.dir\src\images.c.obj
+[213/396] Building C object CMakeFiles\ui_framework.dir\src\components.c.obj
+[214/396] Building C object CMakeFiles\ui_framework.dir\src\menus.c.obj
+[215/396] Building C object CMakeFiles\ui_framework.dir\src\platform\win32_surface.c.obj
+[216/396] Building C object CMakeFiles\ui_framework_shared.dir\src\ui.c.obj
+[217/396] Building C object CMakeFiles\ui_framework_shared.dir\src\language.c.obj
+[218/396] Building C object CMakeFiles\ui_framework_shared.dir\src\assistant.c.obj
+[219/396] Building C object CMakeFiles\ui_framework.dir\src\platform\win32_shell.c.obj
+[220/396] Building C object CMakeFiles\ui_framework.dir\src\backends\light_web.c.obj
+[221/396] Building C object CMakeFiles\ui_framework_shared.dir\src\package.c.obj
+[222/396] Building C object CMakeFiles\ui_framework_shared.dir\src\images.c.obj
+[223/396] Building C object CMakeFiles\ui_framework_shared.dir\src\menus.c.obj
+[224/396] Building C object CMakeFiles\ui_framework_shared.dir\src\workspace.c.obj
+[225/396] Building C object CMakeFiles\ui_framework_shared.dir\src\components.c.obj
+[226/396] Building C object CMakeFiles\ui_framework_shared.dir\src\platform\win32_surface.c.obj
+[227/396] Building C object CMakeFiles\ui_framework_shared.dir\src\platform\win32_shell.c.obj
+[228/396] Building C object CMakeFiles\uapp_pack.dir\tools\uapp_pack.c.obj
+[229/396] Building C object CMakeFiles\web_counter_app.dir\examples\web_counter\app.c.obj
+[230/396] Linking C static library light_web\lexbor\lexbor_static.lib
+[231/396] Building C object CMakeFiles\ui_framework_shared.dir\src\backends\light_web.c.obj
+[232/396] Building C object CMakeFiles\minimal_eda_app.dir\examples\minimal_eda\app.c.obj
+[233/396] Building C object CMakeFiles\generic_components_app.dir\examples\generic_components\app.c.obj
+[234/396] Building C object CMakeFiles\framework_features_app.dir\examples\generic_components\app.c.obj
+[235/396] Building C object CMakeFiles\ui_api7_fixture.dir\tests\api7_fixture.c.obj
+[236/396] Building C object CMakeFiles\stateful_components_app.dir\examples\stateful_components\app.c.obj
+[237/396] Building C object CMakeFiles\ui_session0_gl_app.dir\tests\session0_gl_app.c.obj
+[238/396] Building C object CMakeFiles\ui_framework_headless.dir\src\ui.c.obj
+[239/396] Building CXX object CMakeFiles\ui_application_cpp.dir\tests\application_cpp.cpp.obj
+[240/396] Building C object CMakeFiles\ui_framework_headless.dir\src\assistant.c.obj
+[241/396] Building C object CMakeFiles\ui_framework_headless.dir\src\language.c.obj
+[242/396] Building C object CMakeFiles\ui_framework_headless.dir\src\platform\headless_surface.c.obj
+[243/396] Building C object CMakeFiles\ui_framework_headless.dir\src\images.c.obj
+[244/396] Building C object CMakeFiles\ui_framework_headless.dir\src\platform\headless_shell.c.obj
+[245/396] Building C object CMakeFiles\ui_framework_headless.dir\src\menus.c.obj
+[246/396] Building C object CMakeFiles\ui_lifecycle_fixture.dir\tests\app_lifecycle_fixture.c.obj
+[247/396] Building C object CMakeFiles\ui_framework_headless.dir\src\components.c.obj
+[248/396] Building C object CMakeFiles\dialog_layout_example.dir\examples\dialog_layout\main.c.obj
+[249/396] Building RC object CMakeFiles\framework_host.dir\generated\host.rc.res
+[250/396] Building C object CMakeFiles\minimal_eda.dir\examples\minimal_eda\main.c.obj
+[251/396] Building C object CMakeFiles\light_web_probe.dir\examples\light_web_probe\probe.c.obj
+[252/396] Building C object CMakeFiles\ui_language_core_test.dir\tests\language_core.c.obj
+[253/396] Linking C static library ui_framework_headless.lib
+[254/396] Building C object CMakeFiles\ui_package_format_test.dir\tests\package_format.c.obj
+[255/396] Building C object CMakeFiles\ui_responsive_layout_test.dir\tests\responsive_layout.c.obj
+[256/396] Building C object CMakeFiles\ui_assistant_lifecycle_test.dir\tests\assistant_lifecycle.c.obj
+[257/396] Building C object CMakeFiles\framework_host.dir\examples\framework_host\main.c.obj
+[258/396] Building C object CMakeFiles\ui_images_windows_test.dir\tests\images_windows.c.obj
+[259/396] Building C object CMakeFiles\ui_headless_example.dir\examples\minimal_eda\headless.c.obj
+[260/396] Building C object CMakeFiles\ui_dpi_web_failure_test.dir\tests\dpi_web_failure.c.obj
+[261/396] Building C object CMakeFiles\ui_components_core_test.dir\tests\components_core.c.obj
+[262/396] Building C object CMakeFiles\ui_public_headers_c_test.dir\tests\public_headers.c.obj
+[263/396] Building CXX object CMakeFiles\ui_public_headers_cpp_test.dir\tests\public_headers.cpp.obj
+[264/396] Building C object CMakeFiles\ui_workspace_layout_test.dir\tests\workspace_layout.c.obj
+[265/396] Building C object CMakeFiles\ui_component_widths_test.dir\tests\component_widths.c.obj
+[266/396] Building C object CMakeFiles\ui_component_experience_test.dir\tests\component_experience.c.obj
+[267/396] Building C object CMakeFiles\ui_component_layout_test.dir\tests\component_layout.c.obj
+[268/396] Building C object CMakeFiles\ui_component_scroll_test.dir\tests\component_scroll.c.obj
+[269/396] Building C object CMakeFiles\ui_component_scroll_native_test.dir\tests\component_scroll_native.c.obj
+[270/396] Building C object CMakeFiles\ui_light_glyph_padding_test.dir\tests\light_glyph_padding.c.obj
+[271/396] Building C object CMakeFiles\ui_offscreen_gl_test.dir\tests\offscreen_gl.c.obj
+[272/396] Building C object CMakeFiles\ui_light_scroll_test.dir\tests\light_scroll.c.obj
+[273/396] Building C object CMakeFiles\ui_offscreen_msaa_test.dir\tests\offscreen_msaa.c.obj
+[274/396] Building C object CMakeFiles\ui_menu_offscreen_test.dir\tests\menu_offscreen.c.obj
+D:\a\ui-framework\ui-framework\tests\menu_offscreen.c(40): warning C4113: 'void (__cdecl *)(ui_host_t *,uint64_t,const char *,const char *,void *)' differs in parameter lists from 'ui_command_handler_fn'
+[275/396] Building C object CMakeFiles\ui_menu_access_test.dir\tests\menu_access.c.obj
+[276/396] Building C object CMakeFiles\ui_menu_cascade_offscreen_test.dir\tests\menu_cascade_offscreen.c.obj
+[277/396] Building C object CMakeFiles\ui_light_web_dynamic_test.dir\tests\light_web_dynamic.c.obj
+[278/396] Building C object CMakeFiles\ui_web_text_edit_test.dir\tests\web_text_edit.c.obj
+[279/396] Building C object CMakeFiles\ui_interaction_probe.dir\tests\interaction_probe.c.obj
+[280/396] Building C object CMakeFiles\ui_display_probe.dir\tests\display_probe.c.obj
+[281/396] Building C object CMakeFiles\ui_web_shell_slots_test.dir\tests\web_shell_slots.c.obj
+[282/396] Building C object CMakeFiles\ui_floating_web_dpi_test.dir\tests\floating_web_dpi.c.obj
+[283/396] Building C object CMakeFiles\ui_native_activation_test.dir\tests\native_activation.c.obj
+[284/396] Building C object CMakeFiles\ui_dpi_integration_test.dir\tests\dpi_integration.c.obj
+[285/396] Building C object CMakeFiles\ui_opengl_integration_test.dir\tests\opengl_integration.c.obj
+[286/396] Building C object CMakeFiles\ui_surface_input_test.dir\tests\surface_input.c.obj
+[287/396] Building C object CMakeFiles\ui_monitor_transition_test.dir\tests\monitor_transition.c.obj
+[288/396] Building C object CMakeFiles\ui_workspace7_test.dir\tests\workspace7.c.obj
+[289/396] Building C object CMakeFiles\ui_assistant_protocol_test.dir\tests\assistant_protocol.c.obj
+[290/396] Building C object CMakeFiles\ui_native_shell_integration_test.dir\tests\native_shell_integration.c.obj
+[291/396] Building C object CMakeFiles\ui_native_responsive_test.dir\tests\native_responsive.c.obj
+[292/396] Linking C executable ui_components_core_test.exe
+[293/396] Linking C executable ui_images_windows_test.exe
+[294/396] Linking C executable ui_assistant_lifecycle_test.exe
+[295/396] Linking C executable ui_dpi_web_failure_test.exe
+[296/396] Linking C executable ui_responsive_layout_test.exe
+[297/396] Linking C executable ui_headless_example.exe
+[298/396] Linking CXX executable ui_public_headers_cpp_test.exe
+[299/396] Linking C executable ui_public_headers_c_test.exe
+[300/396] Building C object light_web\quickjs\CMakeFiles\qjs.dir\quickjs.c.obj
+D:\a\ui-framework\ui-framework\.deps\quickjs\cutils.h(216): warning C4127: conditional expression is constant
+D:\a\ui-framework\ui-framework\.deps\quickjs\cutils.h(256): warning C4127: conditional expression is constant
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(75): warning C4668: '__STDC_NO_ATOMICS__' is not defined as a preprocessor macro, replacing with '0' for '#if/#elif'
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(202): warning C4132: 'typed_array_size_log2': const object should be initialized
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(1567): warning C4132: 'js_arguments_exotic_methods': const object should be initialized
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(1568): warning C4132: 'js_string_exotic_methods': const object should be initialized
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(1569): warning C4132: 'js_proxy_exotic_methods': const object should be initialized
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(1570): warning C4132: 'js_module_ns_exotic_methods': const object should be initialized
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(5009): warning C4098: 'JS_FreeCString': 'void' function returning a value
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(5014): warning C4098: 'JS_FreeCStringRT': 'void' function returning a value
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(5019): warning C4098: 'JS_FreeCStringUTF16': 'void' function returning a value
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(5024): warning C4098: 'JS_FreeCStringRT_UTF16': 'void' function returning a value
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(5630): warning C4127: conditional expression is constant
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(8041): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(8074): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(12483): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(12492): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(13165): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(13356): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(58622): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(58653): warning C4146: unary minus operator applied to unsigned type, result still unsigned
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(59981): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(61501): warning C4334: '<<': result of 32-bit shift implicitly converted to 64 bits (was 64-bit shift intended?)
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(741) : warning C4702: unreachable code
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(53495) : warning C4702: unreachable code
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(24240) : warning C4702: unreachable code
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(3429) : warning C4702: unreachable code
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(11499) : warning C4702: unreachable code
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(13929) : warning C4701: potentially uninitialized local variable 'buf' used
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(13929) : warning C4703: potentially uninitialized local pointer variable 'buf' used
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(60166) : warning C4702: unreachable code
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(62225) : warning C4702: unreachable code
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(8358) : warning C4701: potentially uninitialized local variable 'prepare' used
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(56549) : warning C4701: potentially uninitialized local variable 'link' used
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(56063) : warning C4701: potentially uninitialized local variable 'link' used
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(44438) : warning C4701: potentially uninitialized local variable 'del_count' used
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(9069) : warning C4702: unreachable code
+D:\a\ui-framework\ui-framework\.deps\quickjs\quickjs.c(28117) : warning C4702: unreachable code
+[301/396] Linking C static library light_web\quickjs\qjs.lib
+[302/396] Linking C static library ui_framework.lib
+[303/396] Linking C executable light_web_probe.exe
+[304/396] Linking C shared library ui_framework.dll
+[305/396] Linking C executable ui_language_core_test.exe
+[306/396] Linking C executable uapp_pack.exe
+[307/396] Linking C executable ui_package_format_test.exe
+[308/396] Linking C executable minimal_eda.exe
+[309/396] Linking C shared module generic_components_app.dll
+[310/396] Linking C executable ui_workspace_layout_test.exe
+[311/396] Linking C shared module web_counter_app.dll
+[312/396] Linking C shared module ui_api7_fixture.dll
+[313/396] Linking C shared module framework_features_app.dll
+[314/396] Linking C shared module minimal_eda_app.dll
+[315/396] Linking C shared module stateful_components_app.dll
+[316/396] Generating web_counter.uapp
+Created application package: D:/a/ui-framework/ui-framework/build/ci-osmesa/web_counter.uapp
+[317/396] Linking C shared module ui_session0_gl_app.dll
+[318/396] Generating generic_components.uapp
+Created application package: D:/a/ui-framework/ui-framework/build/ci-osmesa/generic_components.uapp
+[319/396] Generating counter_mismatch.uapp
+Created application package: D:/a/ui-framework/ui-framework/build/ci-osmesa/counter_mismatch.uapp
+[320/396] Generating minimal_eda.uapp
+Created application package: D:/a/ui-framework/ui-framework/build/ci-osmesa/minimal_eda.uapp
+[321/396] Generating framework_features.uapp
+Created application package: D:/a/ui-framework/ui-framework/build/ci-osmesa/framework_features.uapp
+[322/396] Generating stateful_components.uapp
+Created application package: D:/a/ui-framework/ui-framework/build/ci-osmesa/stateful_components.uapp
+[323/396] Generating session0_gl_app.uapp
+Created application package: D:/a/ui-framework/ui-framework/build/ci-osmesa/session0_gl_app.uapp
+[324/396] Generating api7_fixture.uapp
+Created application package: D:/a/ui-framework/ui-framework/build/ci-osmesa/api7_fixture.uapp
+[325/396] Linking CXX shared module ui_application_cpp.dll
+[326/396] Building RC object CMakeFiles\ui_browser_host_test.dir\generated\host.rc.res
+[327/396] Generating cpp_fixture.uapp
+Created application package: D:/a/ui-framework/ui-framework/build/ci-osmesa/cpp_fixture.uapp
+[328/396] Linking C shared module ui_lifecycle_fixture.dll
+[329/396] Building RC object CMakeFiles\ui_generic_web_host_test.dir\generated\host.rc.res
+[330/396] Building C object CMakeFiles\ui_workspace_integration_test.dir\tests\workspace_integration.c.obj
+[331/396] Building C object CMakeFiles\ui_workspace_offscreen_test.dir\tests\workspace_offscreen.c.obj
+[332/396] Building C object CMakeFiles\ui_generic_web_host_test.dir\tests\generic_web_host.c.obj
+[333/396] Building C object CMakeFiles\ui_browser_host_test.dir\tests\browser_host.c.obj
+[334/396] Building RC object CMakeFiles\ui_framework_features_host_test.dir\generated\host.rc.res
+[335/396] Building RC object CMakeFiles\ui_menu_desktop_test.dir\generated\host.rc.res
+[336/396] Building RC object CMakeFiles\ui_component_resilience_test.dir\generated\host.rc.res
+[337/396] Building C object CMakeFiles\ui_framework_features_host_test.dir\tests\framework_features_host.c.obj
+[338/396] Building C object CMakeFiles\ui_application_contract_test.dir\tests\application_versions.c.obj
+[339/396] Building C object CMakeFiles\ui_api7_integration_test.dir\tests\api7_integration.c.obj
+[340/396] Building C object CMakeFiles\ui_component_resilience_test.dir\tests\component_resilience.c.obj
+[341/396] Building C object CMakeFiles\ui_menu_desktop_test.dir\tests\menu_desktop.c.obj
+[342/396] Building C object CMakeFiles\ui_visual_ui_test.dir\tests\visual_ui.c.obj
+[343/396] Building RC object CMakeFiles\ui_visual_ui_test.dir\generated\host.rc.res
+[344/396] Building RC object CMakeFiles\ui_host_repaint_test.dir\generated\host.rc.res
+[345/396] Building RC object CMakeFiles\ui_instance_language_test.dir\generated\host.rc.res
+[346/396] Building C object CMakeFiles\ui_host_repaint_test.dir\tests\host_repaint.c.obj
+[347/396] Building RC object CMakeFiles\ui_stateful_components_test.dir\generated\host.rc.res
+[348/396] Building C object CMakeFiles\ui_session0_gl_test.dir\tests\session0_gl.c.obj
+[349/396] Building C object CMakeFiles\ui_stateful_components_test.dir\tests\stateful_components.c.obj
+[350/396] Building RC object CMakeFiles\ui_web_host_frontend_test.dir\generated\host.rc.res
+[351/396] Building C object CMakeFiles\ui_instance_language_test.dir\tests\instance_language.c.obj
+[352/396] Linking C executable framework_host.exe
+[353/396] Linking C executable dialog_layout_example.exe
+[354/396] Linking C executable ui_component_experience_test.exe
+[355/396] Linking C executable ui_component_widths_test.exe
+[356/396] Building C object CMakeFiles\ui_web_host_frontend_test.dir\tests\web_host_frontend.c.obj
+[357/396] Linking C executable ui_component_layout_test.exe
+[358/396] Linking C executable ui_component_scroll_test.exe
+[359/396] Linking C executable ui_component_scroll_native_test.exe
+[360/396] Linking C executable ui_light_glyph_padding_test.exe
+[361/396] Linking C executable ui_host_repaint_test.exe
+[362/396] Linking C executable ui_api7_integration_test.exe
+[363/396] Linking C executable ui_stateful_components_test.exe
+[364/396] Linking C executable ui_instance_language_test.exe
+[365/396] Linking C executable ui_light_scroll_test.exe
+[366/396] Linking C executable ui_visual_ui_test.exe
+[367/396] Linking C executable ui_offscreen_msaa_test.exe
+[368/396] Linking C executable ui_workspace_offscreen_test.exe
+[369/396] Linking C executable ui_session0_gl_test.exe
+[370/396] Linking C executable ui_framework_features_host_test.exe
+[371/396] Linking C executable ui_offscreen_gl_test.exe
+[372/396] Linking C executable ui_menu_desktop_test.exe
+[373/396] Linking C executable ui_menu_cascade_offscreen_test.exe
+[374/396] Linking C executable ui_menu_offscreen_test.exe
+[375/396] Linking C executable ui_generic_web_host_test.exe
+[376/396] Linking C executable ui_menu_access_test.exe
+[377/396] Linking C executable ui_component_resilience_test.exe
+[378/396] Linking C executable ui_web_text_edit_test.exe
+[379/396] Linking C executable ui_application_contract_test.exe
+[380/396] Linking C executable ui_light_web_dynamic_test.exe
+[381/396] Linking C executable ui_interaction_probe.exe
+[382/396] Linking C executable ui_display_probe.exe
+[383/396] Linking C executable ui_web_shell_slots_test.exe
+[384/396] Linking C executable ui_floating_web_dpi_test.exe
+[385/396] Linking C executable ui_browser_host_test.exe
+[386/396] Linking C executable ui_workspace_integration_test.exe
+[387/396] Linking C executable ui_native_activation_test.exe
+[388/396] Linking C executable ui_dpi_integration_test.exe
+[389/396] Linking C executable ui_opengl_integration_test.exe
+[390/396] Linking C executable ui_surface_input_test.exe
+[391/396] Linking C executable ui_monitor_transition_test.exe
+[392/396] Linking C executable ui_workspace7_test.exe
+[393/396] Linking C executable ui_native_shell_integration_test.exe
+[394/396] Linking C executable ui_web_host_frontend_test.exe
+[395/396] Linking C executable ui_native_responsive_test.exe
+[396/396] Linking C executable ui_assistant_protocol_test.exe

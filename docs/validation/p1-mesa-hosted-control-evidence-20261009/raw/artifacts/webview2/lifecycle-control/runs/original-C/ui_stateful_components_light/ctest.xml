@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="1"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="36"
+	timestamp="2026-10-09T10:38:10"
+	>
+	<testcase name="ui_stateful_components_light" classname="ui_stateful_components_light" time="36.6729" status="run">
+		<properties/>
+		<system-out>CASE_BEGIN label=write-96 mode=write dpi=96 utc=2026-10-09T10:38:10.5126194Z evidence=D:\a\ui-framework\ui-framework\build\ci-webview2\state-evidence-light-3d697e31664b457f9058fc70388941a6
+TEST_PHASE pid5292 tick909468 dispatched0 create-host-begin
+TEST_PHASE pid5292 tick909484 dispatched0 create-host-end
+TEST_PHASE pid5292 tick909500 dispatched0 open-begin
+TEST_PHASE pid5292 tick909718 dispatched0 open-return
+TEST_PHASE pid5292 tick910218 dispatched41 open-settled
+RESTORED modewrite dpi96 name200 treeCollapsed0
+TEST_PHASE pid5292 tick910218 dispatched41 screenshot-begin
+TEST_PHASE pid5292 tick910250 dispatched41 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit00000000000E025E classUIFrameworkLightWeb thread3364 ours3364 GetCapture00000000000E025E target-thread-capture00000000000E025E
+ACTUAL_HEADER dpi96 width200 -&gt; 280 hit00000000000E025E pid5292
+TEST_PHASE pid5292 tick910656 dispatched71 screenshot-begin
+TEST_PHASE pid5292 tick910687 dispatched71 screenshot-end
+TEST_PHASE pi...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

@@ -1,0 +1,12 @@
+{
+  "index": 47,
+  "start": 44040192,
+  "end": 46137343,
+  "attempt": 1,
+  "curl_exit": 28,
+  "error": "curl: (28) Operation timed out after 45016 milliseconds with 1211269 out of 2097152 bytes received\r\n",
+  "content_range": [
+    "bytes 44040192-46137343/469580301"
+  ],
+  "bytes": 1211269
+}

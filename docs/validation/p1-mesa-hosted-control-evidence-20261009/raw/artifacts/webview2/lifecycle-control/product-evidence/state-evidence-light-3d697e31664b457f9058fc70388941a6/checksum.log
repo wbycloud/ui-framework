@@ -1,0 +1,12 @@
+TEST_PHASE pid5236 tick932656 dispatched0 create-host-begin
+TEST_PHASE pid5236 tick932671 dispatched0 create-host-end
+TEST_PHASE pid5236 tick932687 dispatched0 open-begin
+TEST_PHASE pid5236 tick932890 dispatched0 open-return
+TEST_PHASE pid5236 tick933390 dispatched36 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid5236 tick933390 dispatched36 close-begin
+TEST_PHASE pid5236 tick933406 dispatched36 close-request-return
+TEST_PHASE pid5236 tick933468 dispatched37 close-state-checked
+TEST_PHASE pid5236 tick933781 dispatched37 com-uninitialize-begin
+TEST_PHASE pid5236 tick933781 dispatched37 process-return
+Stateful actual light / invalid: 0 failures

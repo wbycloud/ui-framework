@@ -1,0 +1,35 @@
+{
+  "backend": "light",
+  "cases": [
+    {
+      "mode": "preferences",
+      "label": "preferences-96",
+      "startedUtc": "2026-10-09T10:34:08.5829324Z",
+      "status": "running",
+      "dpi": 96
+    }
+  ],
+  "provider": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+  "startedUtc": "2026-10-09T10:34:08.4934716Z",
+  "frameworkApi": 9,
+  "evidence": "D:\\a\\ui-framework\\ui-framework\\build\\ci-webview2\\language-evidence-light-b1aeac2b870d4755906136eeb5f27824",
+  "files": [
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+      "sha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F"
+    },
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-webview2\\ui_instance_language_test.exe",
+      "sha256": "49B369F6CCCBA07C90C817AAD9513871BF9A4169EC0A251F7A41440F62594CED"
+    },
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-webview2\\stateful_components.uapp",
+      "sha256": "57AD5D712E627AF264AB549AC87D736E6A4CD1E6F0B7738CDB9508B3BB2A5DD4"
+    },
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-webview2\\ui_framework.dll",
+      "sha256": "9560717767B36EF8AF59C3F12D9D4C1372E4281F955AEB1D5788D0D11C33B2B3"
+    }
+  ],
+  "input": "real SendInput"
+}

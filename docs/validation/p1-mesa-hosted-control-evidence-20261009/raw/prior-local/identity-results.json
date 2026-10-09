@@ -1,0 +1,312 @@
+{
+  "head": "65f678c98dad601833035761f009479018d23079",
+  "providers": {
+    "A": {
+      "path": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+      "size": 52327936,
+      "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+    },
+    "B": {
+      "path": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\B\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+      "size": 51686912,
+      "sha256": "3bd1280a2d72052c3ef673428dde75c8d3a07ab0ca905c048ea0c054d6169159",
+      "pdb": {
+        "path": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\B\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.pdb",
+        "size": 68710400,
+        "sha256": "41abb9787bf910960f06978b208d065949b4021b055033389747f84e3c646517"
+      }
+    },
+    "C": {
+      "path": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\C\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+      "size": 51686912,
+      "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+      "pdb": {
+        "path": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\C\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.pdb",
+        "size": 68718592,
+        "sha256": "c5c15c5cc6673b795d21fa721d87a6abb382005417129685903937e744f73bbd"
+      }
+    }
+  },
+  "source_files_compared": 10640,
+  "B_C_source_differences": [
+    {
+      "path": "src\\gallium\\frontends\\osmesa\\osmesa.c",
+      "B": "de1ea1fa9468c4d9e0da8b47f33be35820249a5f5723875ffd40f9043503fc96",
+      "C": "d5b585e871a35f48653e0364a37e2478d723499b3825e5ef61880efc9545ec9c"
+    },
+    {
+      "path": "src\\gallium\\targets\\osmesa\\osmesa_target.c",
+      "B": "eb6ee8a66912fdacf2de264594ea901fb02ec5cb94b617af624851efa3e04a04",
+      "C": "401573ea59c802e12ca47b8f289c84d94e7454938fd763c765b3e718d2cdc57d"
+    }
+  ],
+  "lifecycle_summary": {
+    "A": {
+      "1": {
+        "runs": 3,
+        "natural_exit0": 2,
+        "forced": 1
+      },
+      "default": {
+        "runs": 8,
+        "natural_exit0": 8,
+        "forced": 0
+      },
+      "actual_gated_workers": {
+        "rasterizer": 24,
+        "compute": 24
+      },
+      "cycle_hashes": [
+        "38b57cea08bb9bf9",
+        "6774615e07c3e8cd",
+        "e33a1e4deb21c5a1",
+        "b6144a703241c675",
+        "a9a2ec3ee0876949",
+        "1ca07b10df40ae1d",
+        "5c4631a8975800f1",
+        "2033251fe5e491c5"
+      ],
+      "warm_resources": [
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ]
+      ],
+      "owned_reference_release_module_retained": true
+    },
+    "B": {
+      "1": {
+        "runs": 3,
+        "natural_exit0": 2,
+        "forced": 1
+      },
+      "default": {
+        "runs": 8,
+        "natural_exit0": 8,
+        "forced": 0
+      },
+      "actual_gated_workers": {
+        "rasterizer": 24,
+        "compute": 24
+      },
+      "cycle_hashes": [
+        "38b57cea08bb9bf9",
+        "6774615e07c3e8cd",
+        "e33a1e4deb21c5a1",
+        "b6144a703241c675",
+        "a9a2ec3ee0876949",
+        "1ca07b10df40ae1d",
+        "5c4631a8975800f1",
+        "2033251fe5e491c5"
+      ],
+      "warm_resources": [
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ]
+      ],
+      "owned_reference_release_module_retained": true
+    },
+    "C": {
+      "1": {
+        "runs": 12,
+        "natural_exit0": 12,
+        "forced": 0
+      },
+      "default": {
+        "runs": 8,
+        "natural_exit0": 8,
+        "forced": 0
+      },
+      "actual_gated_workers": {
+        "rasterizer": 24,
+        "compute": 24
+      },
+      "cycle_hashes": [
+        "38b57cea08bb9bf9",
+        "6774615e07c3e8cd",
+        "e33a1e4deb21c5a1",
+        "b6144a703241c675",
+        "a9a2ec3ee0876949",
+        "1ca07b10df40ae1d",
+        "5c4631a8975800f1",
+        "2033251fe5e491c5"
+      ],
+      "warm_resources": [
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ],
+        [
+          "166",
+          "0",
+          "1"
+        ]
+      ],
+      "owned_reference_release_module_retained": true
+    }
+  },
+  "files": [
+    {
+      "path": "tests\\osmesa_thread_probe.c",
+      "size": 9834,
+      "sha256": "5ce8d040f9beda0e79dd184194def1eeab8304c7200a6719d55e5a1a9b321f88"
+    },
+    {
+      "path": "tests\\observe_processes.py",
+      "size": 6484,
+      "sha256": "8b3afcc26253a05734dd4dae56c69f31f24f5a6014ce95a6d6581c2a68e566fe"
+    },
+    {
+      "path": "tests\\process_stall_capture.py",
+      "size": 1740,
+      "sha256": "988de11d66faf8eb2716d0132abe141e5534fde3e3810459a3339359dd798cdb"
+    },
+    {
+      "path": "tools\\mesa-osmesa-process-detach.patch",
+      "size": 1685,
+      "sha256": "5a7fed431c5444c7de9100523026dc91642db9c9603a450289ee141a5ac8bba9"
+    },
+    {
+      "path": "build\\p1-mesa-lifecycle-20261009\\osmesa_lifecycle_probe.exe",
+      "size": 686592,
+      "sha256": "0892a7bacb44c736efa91a637e7192627ac79a4063e9ba1ffc7d51d10f9da55b"
+    },
+    {
+      "path": "build\\p1-mesa-lifecycle-20261009\\product\\uapp_pack.exe",
+      "size": 1945600,
+      "sha256": "2b28cd70e46b87bddabd7bf466c265efbaae3dca849498c628e5689751442f0d"
+    },
+    {
+      "path": "build\\p1-mesa-lifecycle-20261009\\product\\ui_instance_language_test.exe",
+      "size": 135680,
+      "sha256": "3ea346d7b65fb54d0ed462c6d2e6f023c52cf6ac16625388f3568656412c1735"
+    },
+    {
+      "path": "build\\p1-mesa-lifecycle-20261009\\product\\ui_stateful_components_test.exe",
+      "size": 126464,
+      "sha256": "813cd8aacd0344604c11c50b6a807f0251747227969190f05846d03cfedbd6a8"
+    },
+    {
+      "path": "build\\p1-mesa-lifecycle-20261009\\product\\stateful_components_app.dll",
+      "size": 38400,
+      "sha256": "daee2542f79642de300b62c0098ac15f840ee22ec3c9a363fd024541d78ba7d0"
+    },
+    {
+      "path": "build\\p1-mesa-lifecycle-20261009\\product\\ui_framework.dll",
+      "size": 2190848,
+      "sha256": "9a918da44bae1f4127b9cd02bcac25cb8584cb97cb6d25aaf44086a334ab15c0"
+    },
+    {
+      "path": "build\\p1-mesa-lifecycle-20261009\\product\\stateful_components.uapp",
+      "size": 38799,
+      "sha256": "f5bb7367259f06c074640cb31b82e868788fe64b5717140cb11281f7a92ad715"
+    }
+  ],
+  "build_recipe": "tools/build-providers.cmd",
+  "vendor_recipe_commit": "d82e34ed4ffbe6f07998ea1f27dd9315f7b098a7",
+  "llvm_commit": "cd708029e0b2869e80abe31ddb175f7c35361f90"
+}

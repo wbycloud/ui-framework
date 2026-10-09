@@ -1,0 +1,551 @@
+diff --git a/.gitattributes b/.gitattributes
+index a342a51..34ee4b9 100644
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -15,3 +15,9 @@
+ /docs/validation/local-investigation-presentation-evidence-20261009/raw/** -whitespace
+ /docs/validation/root-cause-investigation-evidence-20261009/** -text whitespace=cr-at-eol
+ /docs/validation/root-cause-investigation-evidence-20261009/raw/** -whitespace
++/docs/validation/p1-mesa-lifecycle-evidence-20261009/** -text whitespace=cr-at-eol
++/docs/validation/p1-mesa-lifecycle-evidence-20261009/raw/** -whitespace
++/docs/validation/p1-mesa-lifecycle-validation-20261009.md -text
++/docs/validation/p1-mesa-hosted-control-evidence-20261009/** -text whitespace=cr-at-eol
++/docs/validation/p1-mesa-hosted-control-evidence-20261009/raw/** -whitespace
++/tools/mesa-osmesa-process-detach.patch -text -whitespace
+diff --git a/.github/workflows/windows-regression.yml b/.github/workflows/windows-regression.yml
+index c83e60d..d35de6d 100644
+--- a/.github/workflows/windows-regression.yml
++++ b/.github/workflows/windows-regression.yml
+@@ -9,6 +9,10 @@ on:
+         description: "Diagnostic only: original two Light cases, process boundaries and stall dumps"
+         type: boolean
+         default: false
++      p1_candidate_url:
++        description: "Explicitly authorized candidate archive URL; pinned SHA verified below"
++        type: string
++        required: false
+ permissions:
+   contents: read
+ jobs:
+@@ -30,11 +34,30 @@ jobs:
+         shell: pwsh
+         run: ./tools/windows-ci.ps1 -Configuration ${{ matrix.configuration }} -Stage build
+       - name: Necessary regressions
++        env:
++          UI_P1_CANDIDATE_URL: ${{ inputs.p1_candidate_url }}
+         shell: pwsh
+         run: |
+           ./tools/test-windows-ci.ps1
+           if ('${{ inputs.p1_process_diagnostic }}' -eq 'true') {
+-            ./tools/windows-ci.ps1 -Configuration ${{ matrix.configuration }} -Stage test -P1ProcessDiagnostic
++            if (!$env:UI_P1_CANDIDATE_URL) { throw 'Candidate URL required for the authorized P1 run' }
++            Add-Type -TypeDefinition 'using System.Runtime.InteropServices; public static class UiP1Desktop { [DllImport("user32.dll")] public static extern int GetSystemMetrics(int i); [DllImport("user32.dll")] public static extern uint GetDpiForSystem(); }'
++            $desktopBefore = @([UiP1Desktop]::GetSystemMetrics(0),[UiP1Desktop]::GetSystemMetrics(1))
++            if ($env:GITHUB_ACTIONS -eq 'true') { Set-DisplayResolution -Width 1920 -Height 1080 -Force }
++            @{before=$desktopBefore;after=@([UiP1Desktop]::GetSystemMetrics(0),[UiP1Desktop]::GetSystemMetrics(1));dpi=[UiP1Desktop]::GetDpiForSystem()} | ConvertTo-Json | Set-Content 'build/ci-evidence-${{ matrix.configuration }}/lifecycle-desktop.json'
++            $candidateRoot = 'build/ci-evidence-${{ matrix.configuration }}/lifecycle-candidate'
++            New-Item -ItemType Directory -Path $candidateRoot | Out-Null
++            Invoke-WebRequest $env:UI_P1_CANDIDATE_URL -OutFile "$candidateRoot/candidate.zip"
++            if ((Get-FileHash "$candidateRoot/candidate.zip").Hash.ToLowerInvariant() -ne 'afb11d7bf599e991f8e2b7df6971813f8bb6bca66f91f85c8f20b7b5cf59c8ae') { throw 'Candidate archive hash mismatch' }
++            Expand-Archive -LiteralPath "$candidateRoot/candidate.zip" -DestinationPath "$candidateRoot/unpacked"
++            Invoke-WebRequest 'https://github.com/pal1000/mesa-dist-win/releases/download/24.3.4/mesa3d-24.3.4-debug-info-msvc.7z' -OutFile "$candidateRoot/original-debug.7z"
++            if ((Get-FileHash "$candidateRoot/original-debug.7z").Hash.ToLowerInvariant() -ne '60b2ccf9d81646aab53ce50bb1117c292e314049799b58f620d6838d134b48b1') { throw 'Original debug archive hash mismatch' }
++            & 7z x "$candidateRoot/original-debug.7z" "-o$candidateRoot/original-symbols" 'x64/osmesa.pdb' -y | Out-File "$candidateRoot/original-symbols-extraction.log"
++            if ($LASTEXITCODE) { throw 'Original symbol extraction failed' }
++            if ((Get-FileHash "$candidateRoot/original-symbols/x64/osmesa.pdb").Hash.ToLowerInvariant() -ne '42659470e93b8305d514a956e830d1455318b326b2d2829e61426ca265967ee7') { throw 'Original PDB hash mismatch' }
++            if ((Get-FileHash "$candidateRoot/unpacked/osmesa.pdb").Hash.ToLowerInvariant() -ne 'c5c15c5cc6673b795d21fa721d87a6abb382005417129685903937e744f73bbd') { throw 'Candidate PDB hash mismatch' }
++            python tests/run_osmesa_lifecycle_control.py --build build/ci-${{ matrix.configuration }} --original .deps/mesa-24.3.4/x64/osmesa.dll --candidate "$candidateRoot/unpacked/osmesa.dll" --evidence build/ci-evidence-${{ matrix.configuration }}/lifecycle-control
++            if ($LASTEXITCODE) { throw 'Original/candidate diagnostic includes failures; inspect both retained results' }
+           } else {
+             ./tools/windows-ci.ps1 -Configuration ${{ matrix.configuration }} -Stage test
+           }
+diff --git a/tests/observe_processes.py b/tests/observe_processes.py
+index 01414c8..0fe9eef 100644
+--- a/tests/observe_processes.py
++++ b/tests/observe_processes.py
+@@ -69,10 +69,10 @@ while True:
+             if pid not in known and parent in known:
+                 known.add(pid);handle=k.OpenProcess(0x100000|0x1000,False,pid)
+                 if handle:handles[pid]=handle
+-                emit('child_observed',pid=pid,parent=parent,exe=name,handle_open=bool(handle))
++                emit('child_observed',pid=pid,parent=parent,exe=name,handle_open=bool(handle),open_error=0 if handle else c.get_last_error())
+     for pid,handle in handles.items():
+         if pid not in exited and k.WaitForSingleObject(handle,0)==0:
+-            code=w.DWORD();ok=k.GetExitCodeProcess(handle,c.byref(code));exited.add(pid);emit('child_exit',pid=pid,code=code.value,read_ok=bool(ok))
++            code=w.DWORD();ok=k.GetExitCodeProcess(handle,c.byref(code));error=0 if ok else c.get_last_error();exited.add(pid);emit('child_exit',pid=pid,code=code.value,read_ok=bool(ok),read_error=error)
+     if stall_seconds>0 and capture_thread is None and time.monotonic()-last_output>=stall_seconds:
+         ids=([p.pid] if parent_code is None else [])+[pid for pid in handles if pid not in exited]
+         capture_thread=threading.Thread(target=capture,args=(ids,));capture_thread.start()
+diff --git a/tests/osmesa_stall_objects.py b/tests/osmesa_stall_objects.py
+new file mode 100644
+index 0000000..9876cc3
+--- /dev/null
++++ b/tests/osmesa_stall_objects.py
+@@ -0,0 +1,83 @@
++"""Opt-in, read-only live Mesa objects after full dump (or a labeled gate).
++
++Private layouts are from matching A/C PDBs, not a public provider interface.
++Only exact DLL SHA matches are read. Duplicate the saved HANDLE, never OpenThread.
++Observations occur after the dump and can affect timing; query history is unknown.
++"""
++import ctypes as c
++from ctypes import wintypes as w
++import hashlib,pathlib,struct,time
++
++LAYOUTS={
++ 'c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f':
++    {'label':'A','global_rva':0x30702c0,'pdb_guid':'a53e732b-2253-4fee-8fee-53f47771d8ea'},
++ '99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5':
++    {'label':'C','global_rva':0x2fdd840,'pdb_guid':'2f352030-3f29-4fe7-a7c1-b1ed70c195f3'}}
++
++def observe(pid,directory):
++    k=c.WinDLL('kernel32',use_last_error=True);p=c.WinDLL('psapi',use_last_error=True)
++    k.OpenProcess.argtypes=[w.DWORD,w.BOOL,w.DWORD];k.OpenProcess.restype=w.HANDLE
++    k.ReadProcessMemory.argtypes=[w.HANDLE,c.c_void_p,c.c_void_p,c.c_size_t,c.POINTER(c.c_size_t)]
++    k.DuplicateHandle.argtypes=[w.HANDLE,w.HANDLE,w.HANDLE,c.POINTER(w.HANDLE),w.DWORD,w.BOOL,w.DWORD]
++    k.GetCurrentProcess.restype=w.HANDLE;k.GetThreadId.argtypes=[w.HANDLE];k.GetThreadId.restype=w.DWORD
++    k.GetExitCodeThread.argtypes=[w.HANDLE,c.POINTER(w.DWORD)]
++    k.WaitForSingleObject.argtypes=[w.HANDLE,w.DWORD];k.WaitForSingleObject.restype=w.DWORD
++    k.CloseHandle.argtypes=[w.HANDLE]
++    p.EnumProcessModulesEx.argtypes=[w.HANDLE,c.POINTER(w.HMODULE),w.DWORD,c.POINTER(w.DWORD),w.DWORD]
++    p.GetModuleFileNameExW.argtypes=[w.HANDLE,w.HMODULE,w.LPWSTR,w.DWORD]
++    row={'pid':pid,'observed_ns':time.time_ns(),'timing_changed':True,'reads':[]}
++    process=k.OpenProcess(0x450,False,pid)
++    row['open_ok']=bool(process);row['open_error']=0 if process else c.get_last_error()
++    if not process:return row
++    try:
++        modules=(w.HMODULE*256)();needed=w.DWORD()
++        ok=bool(p.EnumProcessModulesEx(process,modules,c.sizeof(modules),c.byref(needed),2))
++        row['modules_ok']=ok;row['modules_error']=0 if ok else c.get_last_error()
++        if not ok or needed.value>c.sizeof(modules):return row
++        module=None
++        for address in modules[:needed.value//c.sizeof(w.HMODULE)]:
++            name=c.create_unicode_buffer(32768)
++            if p.GetModuleFileNameExW(process,address,name,len(name)) and pathlib.Path(name.value).name.lower()=='osmesa.dll':
++                module=(address,pathlib.Path(name.value));break
++        if module is None:row['mesa_present']=False;return row
++        address,path=module;sha=hashlib.sha256(path.read_bytes()).hexdigest();layout=LAYOUTS.get(sha)
++        row.update(mesa_present=True,module_base=hex(address),path=str(path),sha256=sha,matched_layout=layout)
++        if layout is None:return row
++        def read(address,size):
++            data=c.create_string_buffer(size);count=c.c_size_t()
++            ok=bool(k.ReadProcessMemory(process,address,data,size,c.byref(count)))
++            row['reads'].append({'address':hex(address),'bytes':count.value,'ok':ok,'error':0 if ok else c.get_last_error()})
++            if not ok or count.value!=size:raise RuntimeError('ReadProcessMemory failed or partial')
++            return data.raw
++        def pointer(address):return struct.unpack('<Q',read(address,8))[0]
++        frontend=pointer(address+layout['global_rva']);row['global_fscreen']=hex(frontend)
++        if not frontend:return row
++        screen=pointer(frontend);row['screen']=hex(screen)
++        if not screen:return row
++        rast=pointer(screen+0x290);row['rast_address']=hex(rast)
++        row['cs_tpool_pointer']=hex(pointer(screen+0x2c0)) # may already be freed during screen destruction
++        if not rast:return row
++        data=read(rast,0x2a68);(pathlib.Path(directory)/f'{pid}-rast-live.bin').write_bytes(data)
++        number=struct.unpack_from('<I',data,0x2918)[0]
++        row.update(num_threads=number,exit_flag=data[0],tasks=[])
++        if number>32:raise RuntimeError('Invalid num_threads for matched layout')
++        for index in range(number):
++            task_offset=0x18+index*0x148;task=rast+task_offset
++            handle=struct.unpack_from('<Q',data,0x2920+index*8)[0]
++            entry={'index':index,'task':hex(task),'saved_handle':hex(handle),'task_index':struct.unpack_from('<I',data,task_offset+0x78)[0],
++                'semaphores':{name:{'address':hex(task+offset),'counter':struct.unpack_from('<i',data,task_offset+offset+0x30)[0]}
++                    for name,offset in [('work_ready',0xa0),('work_done',0xd8),('exited',0x110)]}}
++            duplicate=w.HANDLE();copied=bool(k.DuplicateHandle(process,handle,k.GetCurrentProcess(),c.byref(duplicate),0,False,2))
++            entry.update(duplicate_ok=copied,duplicate_error=0 if copied else c.get_last_error())
++            if copied:
++                try:
++                    tid=k.GetThreadId(duplicate);entry.update(thread_id=tid,thread_id_error=0 if tid else c.get_last_error())
++                    code=w.DWORD();queried=bool(k.GetExitCodeThread(duplicate,c.byref(code)))
++                    entry.update(query_ok=queried,exit_code=code.value,query_error=0 if queried else c.get_last_error())
++                    wait=k.WaitForSingleObject(duplicate,0);entry.update(zero_wait=wait,wait_error=c.get_last_error() if wait==0xffffffff else 0)
++                finally:
++                    entry['observer_close_ok']=bool(k.CloseHandle(duplicate))
++            row['tasks'].append(entry)
++    except (OSError,RuntimeError) as error:row['observation_error']=str(error)
++    finally:k.CloseHandle(process)
++    return row
+diff --git a/tests/osmesa_thread_probe.c b/tests/osmesa_thread_probe.c
+new file mode 100644
+index 0000000..9c5226e
+--- /dev/null
++++ b/tests/osmesa_thread_probe.c
+@@ -0,0 +1,157 @@
++/* Standalone OSMesa24.3.4 lifecycle/worker diagnostic. No framework or app DLL. */
++#define WIN32_LEAN_AND_MEAN
++#include <windows.h>
++#include <tlhelp32.h>
++#include <GL/gl.h>
++#include <stdio.h>
++#include <stdint.h>
++#include <stdlib.h>
++#include <string.h>
++
++typedef LONG (WINAPI *query_thread_t)(HANDLE,ULONG,PVOID,ULONG,PULONG);
++typedef HRESULT (WINAPI *thread_description_t)(HANDLE,PWSTR *);
++typedef void * (WINAPI *create_context_t)(const int *,void *);
++typedef void (WINAPI *destroy_context_t)(void *);
++typedef int (WINAPI *make_current_t)(void *,void *,unsigned int,int,int);
++typedef PROC (WINAPI *get_proc_t)(const char *);
++static int failures, gate;
++static const wchar_t *provider_path;
++static int owned_loads;
++
++static void check(int ok,const char *name)
++{ if(!ok){++failures;printf("CHECK_FAIL %s error=%lu\n",name,GetLastError());} }
++
++static void boundary(const char *phase)
++{
++    DWORD count=0;HANDLE snapshot;THREADENTRY32 entry;unsigned total=0,raster=0;
++    query_thread_t query;thread_description_t description;
++    PROC proc=GetProcAddress(GetModuleHandleW(L"ntdll.dll"),"NtQueryInformationThread");
++    memcpy(&query,&proc,sizeof(query));
++    proc=GetProcAddress(GetModuleHandleW(L"kernel32.dll"),"GetThreadDescription");
++    memcpy(&description,&proc,sizeof(description));
++    GetProcessHandleCount(GetCurrentProcess(),&count);
++    printf("BOUNDARY phase=%s pid=%lu tick=%llu module=%p owned_loads=%d handles=%lu gdi=%lu user=%lu\n",
++        phase,GetCurrentProcessId(),(unsigned long long)GetTickCount64(),GetModuleHandleW(provider_path),owned_loads,count,
++        GetGuiResources(GetCurrentProcess(),GR_GDIOBJECTS),GetGuiResources(GetCurrentProcess(),GR_USEROBJECTS));
++    snapshot=CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD,0);
++    memset(&entry,0,sizeof(entry));entry.dwSize=sizeof(entry);
++    if(snapshot!=INVALID_HANDLE_VALUE&&Thread32First(snapshot,&entry))do{
++        if(entry.th32OwnerProcessID==GetCurrentProcessId()){
++            HANDLE thread=OpenThread(THREAD_QUERY_INFORMATION,FALSE,entry.th32ThreadID);
++            PWSTR wide=NULL;char name[160]="";PVOID start=NULL;LONG status=-1;
++            if(thread){
++                if(description&&SUCCEEDED(description(thread,&wide))&&wide){
++                    WideCharToMultiByte(CP_UTF8,0,wide,-1,name,sizeof(name),NULL,NULL);LocalFree(wide);
++                }
++                if(query)status=query(thread,9,&start,sizeof(start),NULL);
++                CloseHandle(thread);
++            }
++            ++total;if(strstr(name,"llvmpipe"))++raster;
++            printf("THREAD phase=%s tid=%lu name=%s start=%p query=%ld\n",phase,entry.th32ThreadID,name,start,status);
++        }
++    }while(Thread32Next(snapshot,&entry));
++    if(snapshot!=INVALID_HANDLE_VALUE)CloseHandle(snapshot);
++    printf("THREAD_TOTAL phase=%s total=%u named_raster=%u\n",phase,total,raster);
++    fflush(stdout);
++    if(gate&&!strcmp(phase,"rendered")){printf("GATE rendered\n");fflush(stdout);check(getchar()=='\n',"parent gate");}
++}
++
++#define LOAD(variable,type,name) type variable; do{PROC p=GetProcAddress(library,name);memcpy(&variable,&p,sizeof(p));if(!variable){fprintf(stderr,"Missing %s\n",name);return 3;}}while(0)
++#define LOAD_GL_PROC(variable,type,name) type variable; do{PROC p=get_proc(name);memcpy(&variable,&p,sizeof(p));if(!variable){fprintf(stderr,"Missing %s\n",name);return 3;}}while(0)
++typedef void (APIENTRY *color4_t)(float,float,float,float);
++typedef void (APIENTRY *clear_t)(unsigned int);
++typedef void (APIENTRY *void_t)(void);
++typedef void (APIENTRY *enum_t)(unsigned int);
++typedef void (APIENTRY *color3_t)(float,float,float);
++typedef void (APIENTRY *vertex_t)(float,float);
++typedef void (APIENTRY *viewport_t)(int,int,int,int);
++typedef const unsigned char *(APIENTRY *string_t)(unsigned int);
++typedef unsigned int (APIENTRY *error_t)(void);
++
++int wmain(int argc,wchar_t **argv)
++{
++    const int width=512,height=512,frames=120;
++    int attributes[]={0x22,GL_RGBA,0x30,24,0x33,0x35,0x36,3,0x37,3,0};
++    unsigned char *pixels;void *context;HMODULE library,extra;
++    LARGE_INTEGER frequency,start,end;char threads[80];DWORD env_size;
++    uint64_t hash=UINT64_C(14695981039346656037);int unload,cycle,cleanup;
++    if(argc!=3&&argc!=5){fprintf(stderr,"Usage: probe absolute-osmesa.dll exit|unload|cycle|cleanup [manager-RVA global-RVA]\n");return 2;}
++    provider_path=argv[1];unload=!wcscmp(argv[2],L"unload");cycle=!wcscmp(argv[2],L"cycle");
++    cleanup=!wcscmp(argv[2],L"cleanup");
++    if(cleanup!=(argc==5))return 2;
++    gate=GetEnvironmentVariableA("UI_MESA_PROBE_GATE",threads,sizeof(threads))!=0;
++    env_size=GetEnvironmentVariableA("LP_NUM_THREADS",threads,sizeof(threads));
++    printf("START pid=%lu lp_num_threads=%s mode=%ls\n",GetCurrentProcessId(),env_size?threads:"<unset>",argv[2]);
++    boundary("before-load");
++    library=LoadLibraryExW(provider_path,NULL,LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR|LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
++    check(library!=NULL,"LoadLibraryEx");if(!library)return 3;++owned_loads;
++    extra=LoadLibraryExW(provider_path,NULL,LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR|LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
++    check(extra==library,"second owned reference");if(extra)++owned_loads;
++    check(FreeLibrary(extra)!=0,"release extra reference");--owned_loads;
++    boundary("loaded");
++    LOAD(create_context,create_context_t,"OSMesaCreateContextAttribs");
++    LOAD(destroy_context,destroy_context_t,"OSMesaDestroyContext");
++    LOAD(make_current,make_current_t,"OSMesaMakeCurrent");
++    LOAD(get_proc,get_proc_t,"OSMesaGetProcAddress");
++    pixels=(unsigned char *)calloc((size_t)width*height,4);if(!pixels)return 3;
++    for(int pass=0;pass<(cycle?8:1);++pass){
++        printf("CONTEXT_CREATE_BEGIN pass=%d\n",pass);fflush(stdout);
++        context=create_context(attributes,NULL);check(context!=NULL,"context create");if(!context)return 3;
++        check(make_current(context,pixels,GL_UNSIGNED_BYTE,width,height)!=0,"make current");
++        boundary("context-current");
++        LOAD_GL_PROC(clear_color,color4_t,"glClearColor");LOAD_GL_PROC(clear,clear_t,"glClear");
++        LOAD_GL_PROC(finish,void_t,"glFinish");LOAD_GL_PROC(begin,enum_t,"glBegin");LOAD_GL_PROC(end_gl,void_t,"glEnd");
++        LOAD_GL_PROC(color,color3_t,"glColor3f");LOAD_GL_PROC(vertex,vertex_t,"glVertex2f");LOAD_GL_PROC(viewport,viewport_t,"glViewport");
++        LOAD_GL_PROC(get_string,string_t,"glGetString");LOAD_GL_PROC(get_error,error_t,"glGetError");
++        printf("GL renderer=%s version=%s\n",get_string(GL_RENDERER),get_string(GL_VERSION));
++        viewport(0,0,width,height);QueryPerformanceFrequency(&frequency);QueryPerformanceCounter(&start);
++        for(int frame=0;frame<frames;++frame){
++            clear_color(0.0f,0.0f,0.0f,1.0f);clear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
++            begin(GL_TRIANGLES);
++            for(int triangle=0;triangle<64;++triangle){
++                color(1.0f,0.0f,0.0f);vertex(-0.8f,-0.8f);vertex(0.8f,-0.8f);vertex(0.0f,0.8f);
++            }
++            end_gl();finish();
++        }
++        QueryPerformanceCounter(&end);
++        for(size_t i=0;i<(size_t)width*height*4;++i){hash^=pixels[i];hash*=UINT64_C(1099511628211);}
++        check(get_error()==GL_NO_ERROR,"GL error");
++        {size_t center=((size_t)height/2*width+width/2)*4;
++         check(pixels[center]==255&&pixels[center+1]==0&&pixels[center+2]==0&&pixels[center+3]==255,"triangle center readable");}
++        check(pixels[0]==0&&pixels[1]==0&&pixels[2]==0&&pixels[3]==255,"background readable");
++        printf("RENDER pass=%d frames=%d triangles=64 width=%d height=%d elapsed_ms=%.3f hash=%016llx center=%u,%u,%u,%u\n",
++            pass,frames,width,height,1000.0*(double)(end.QuadPart-start.QuadPart)/(double)frequency.QuadPart,
++            (unsigned long long)hash,pixels[((size_t)height/2*width+width/2)*4],
++            pixels[((size_t)height/2*width+width/2)*4+1],pixels[((size_t)height/2*width+width/2)*4+2],
++            pixels[((size_t)height/2*width+width/2)*4+3]);
++        boundary("rendered");
++        printf("CONTEXT_DESTROY_BEGIN pass=%d\n",pass);fflush(stdout);
++        make_current(NULL,NULL,GL_UNSIGNED_BYTE,0,0);destroy_context(context);
++        printf("CONTEXT_DESTROY_END pass=%d\n",pass);boundary("context-destroyed");
++    }
++    free(pixels);
++    if(cleanup){
++        /* Private, PDB-matched diagnostic only: no framework/provider API.
++         * Call outside loader lock, then clear the singleton so registered
++         * atexit cleanup cannot destroy the same allocation a second time. */
++        uintptr_t manager_rva=(uintptr_t)wcstoull(argv[3],NULL,16);
++        uintptr_t global_rva=(uintptr_t)wcstoull(argv[4],NULL,16);
++        void (*destroy_manager)(void);void **global;
++        PROC proc=(PROC)((uintptr_t)library+manager_rva);
++        memcpy(&destroy_manager,&proc,sizeof(destroy_manager));
++        global=(void **)((uintptr_t)library+global_rva);
++        printf("PRIVATE_MANAGER_DESTROY_BEGIN manager_rva=%llx global_rva=%llx global=%p\n",
++            (unsigned long long)manager_rva,(unsigned long long)global_rva,*global);fflush(stdout);
++        destroy_manager();*global=NULL;
++        printf("PRIVATE_MANAGER_DESTROY_END\n");boundary("manager-destroyed-outside-loader");
++    }
++    if(unload||cycle||cleanup){
++        printf("FREE_LIBRARY_BEGIN owned_loads=%d\n",owned_loads);fflush(stdout);
++        check(FreeLibrary(library)!=0,"release final owned reference");--owned_loads;
++        printf("FREE_LIBRARY_END\n");boundary("after-free-library");
++        if(cleanup)check(GetModuleHandleW(provider_path)==NULL,"true module unload after private manager cleanup");
++    }
++    boundary("before-main-return");
++    printf("MAIN_RETURN failures=%d\n",failures);fflush(stdout);
++    return failures?1:0;
++}
+diff --git a/tests/process_stall_capture.py b/tests/process_stall_capture.py
+index daee16d..3b6e371 100644
+--- a/tests/process_stall_capture.py
++++ b/tests/process_stall_capture.py
+@@ -1,11 +1,12 @@
+ """External, sequential DbgHelp capture for an opted-in P1 observer stall.
+ 
+-No full-memory dump, termination, target-code injection or gate change.
++Full memory is opt-in through UI_PROCESS_FULL_DUMP=1. No termination,
++target-code injection or gate change.
+ Dumping may affect timing; this is diagnostic evidence, never normal acceptance.
+ """
+ import ctypes as c
+ from ctypes import wintypes as w
+-import json, pathlib, sys
++import json, os, pathlib, sys
+ k=c.WinDLL('kernel32',use_last_error=True)
+ k.OpenProcess.argtypes=[w.DWORD,w.BOOL,w.DWORD];k.OpenProcess.restype=w.HANDLE
+ k.CreateFileW.argtypes=[w.LPCWSTR,w.DWORD,w.DWORD,c.c_void_p,w.DWORD,w.DWORD,w.HANDLE];k.CreateFileW.restype=w.HANDLE
+@@ -14,6 +15,7 @@ d=c.WinDLL('dbghelp',use_last_error=True)
+ d.MiniDumpWriteDump.argtypes=[w.HANDLE,w.DWORD,w.HANDLE,w.DWORD,c.c_void_p,c.c_void_p,c.c_void_p]
+ directory=pathlib.Path(sys.argv[1]);directory.mkdir(exist_ok=False)
+ records=[]
++flags=0x1826 if os.environ.get('UI_PROCESS_FULL_DUMP')=='1' else 0x1004
+ for argument in sys.argv[2:]:
+     pid=int(argument);p=k.OpenProcess(0x450,False,pid);f=None
+     row={'pid':pid,'open_process':bool(p),'error':c.get_last_error() if not p else 0}
+@@ -21,10 +23,14 @@ for argument in sys.argv[2:]:
+         target=directory/(str(pid)+'.dmp')
+         f=k.CreateFileW(str(target.resolve()),0x40000000,0,None,1,0x80,None)
+         if f and f!=c.c_void_p(-1).value:
+-            row['dump_ok']=bool(d.MiniDumpWriteDump(p,pid,f,0x1004,None,None,None))
++            row['flags']=hex(flags)
++            row['dump_ok']=bool(d.MiniDumpWriteDump(p,pid,f,flags,None,None,None))
+             row['error']=0 if row['dump_ok'] else c.get_last_error()
+             k.CloseHandle(f);row['bytes']=target.stat().st_size
+         else:row['file_error']=c.get_last_error()
++        if os.environ.get('UI_MESA_OBJECTS')=='1':
++            from osmesa_stall_objects import observe
++            row['mesa_objects']=observe(pid,directory)
+         k.CloseHandle(p)
+     records.append(row)
+ (directory/'capture.json').write_text(json.dumps(records,indent=2),encoding='utf-8')
+diff --git a/tests/run_osmesa_lifecycle_control.py b/tests/run_osmesa_lifecycle_control.py
+new file mode 100644
+index 0000000..0e1a8ff
+--- /dev/null
++++ b/tests/run_osmesa_lifecycle_control.py
+@@ -0,0 +1,107 @@
++"""Authorized P1 target diagnostic: default-thread original/candidate provider only."""
++import argparse,ctypes as c,hashlib,json,os,pathlib,re,shutil,subprocess,sys,threading,time,xml.etree.ElementTree as ET
++from ctypes import wintypes as w
++
++def digest(path):
++    value=hashlib.sha256()
++    with path.open('rb') as stream:
++        for part in iter(lambda:stream.read(8*1024*1024),b''):value.update(part)
++    return value.hexdigest()
++
++def main():
++    parser=argparse.ArgumentParser()
++    for name in ['build','original','candidate','evidence']:parser.add_argument('--'+name,required=True,type=pathlib.Path)
++    args=parser.parse_args();root=pathlib.Path.cwd().resolve();build=args.build.resolve();out=args.evidence.resolve()
++    providers={'A':args.original.resolve(),'C':args.candidate.resolve()}
++    assert out.is_relative_to(root/'build') and build.is_relative_to(root/'build')
++    assert digest(providers['A'])=='c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f'
++    assert digest(providers['C'])=='99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5'
++    out.mkdir(exist_ok=False);(out/'runs').mkdir();(out/'raw').mkdir()
++    parent_lp=os.environ.get('LP_NUM_THREADS');user=c.WinDLL('user32',use_last_error=True)
++    user.OpenInputDesktop.argtypes=[w.DWORD,w.BOOL,w.DWORD];user.OpenInputDesktop.restype=w.HANDLE
++    user.GetUserObjectInformationW.argtypes=[w.HANDLE,c.c_int,c.c_void_p,w.DWORD,c.POINTER(w.DWORD)];user.CloseDesktop.argtypes=[w.HANDLE]
++    desktop=user.OpenInputDesktop(0,False,0x100);name=c.create_unicode_buffer(256);needed=w.DWORD()
++    unlocked=bool(desktop and user.GetUserObjectInformationW(desktop,2,name,c.sizeof(name),c.byref(needed)))
++    if desktop:user.CloseDesktop(desktop)
++    assert unlocked and name.value=='Default' and user.GetSystemMetrics(0)>=1920 and user.GetSystemMetrics(1)>=1080
++    # Preserve and isolate only the current ephemeral CI build's WGL copies.
++    saved=out/'isolated-wgl';saved.mkdir()
++    for file in ['opengl32.dll','libgallium_wgl.dll','libglapi.dll','pipe_swrast.dll']:
++        path=build/file
++        if path.exists():shutil.move(str(path),str(saved/file))
++    binaries={str(p.relative_to(root)):digest(p) for p in build.iterdir() if p.is_file() and p.suffix in ['.exe','.dll','.uapp','.lib']}
++    images=out/'system-images';images.mkdir()
++    for file in ['ntdll.dll','kernel32.dll','KERNELBASE.dll','ucrtbase.dll']:shutil.copyfile(pathlib.Path(os.environ['SystemRoot'])/'System32'/file,images/file)
++    plan=subprocess.check_output(['ctest','--test-dir',str(build),'-R','^(ui_stateful_components_light|ui_instance_language_light)$','--show-only=json-v1'])
++    (out/'raw/original-test-plan.json').write_bytes(plan);tests=json.loads(plan)['tests']
++    assert len(tests)==2 and {test['name'] for test in tests}=={'ui_stateful_components_light','ui_instance_language_light'}
++    for test in tests:
++        properties={p['name']:p['value'] for p in test['properties']}
++        assert properties['TIMEOUT']==(180 if 'stateful' in test['name'] else 240)
++    caller=out/'caller';caller.mkdir()
++    vswhere=pathlib.Path(os.environ['ProgramFiles(x86)'])/'Microsoft Visual Studio/Installer/vswhere.exe'
++    vs=subprocess.check_output([str(vswhere),'-latest','-products','*','-property','installationPath'],text=True).strip()
++    dev=pathlib.Path(vs)/'Common7/Tools/VsDevCmd.bat';source=root/'tests/osmesa_thread_probe.c'
++    script=caller/'build.cmd';script.write_text(f'@echo off\ncall "{dev}" -arch=x64 -host_arch=x64 >nul\nif errorlevel 1 exit /b 1\ncl /nologo /W4 /WX /utf-8 /std:c11 /O2 /Z7 /MT "{source}" /link user32.lib /DEBUG /OUT:osmesa_thread_probe.exe /PDB:osmesa_thread_probe.pdb\nexit /b %errorlevel%\n',encoding='utf-8')
++    with (out/'raw/caller-build.log').open('xb') as stream:subprocess.run(['cmd','/d','/c',str(script)],cwd=caller,stdout=stream,stderr=subprocess.STDOUT,check=True)
++    executable=caller/'osmesa_thread_probe.exe';results=[]
++    def environment():
++        env=os.environ.copy();env.pop('LP_NUM_THREADS',None);env.pop('UI_MESA_PROBE_GATE',None)
++        env['GALLIUM_DRIVER']='llvmpipe';env['UI_PROCESS_STALL_SECONDS']='60';env['UI_PROCESS_FULL_DUMP']='1';env['UI_MESA_OBJECTS']='1';return env
++    for label,provider in providers.items():
++        # One ungated process and one separately labeled live-worker gate.
++        for gated in [False,True]:
++            directory=out/'runs'/f'probe-{label}-gate{int(gated)}';directory.mkdir();env=environment()
++            if gated:env['UI_MESA_PROBE_GATE']='1'
++            command=[str(executable),str(provider),'exit'];started=time.monotonic()
++            child=subprocess.Popen(command,env=env,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
++            activity=[time.monotonic()];gate=threading.Event()
++            with (directory/'stdout.log').open('xb') as log:
++                def read():
++                    for line in iter(child.stdout.readline,b''):
++                        log.write(line);log.flush();activity[0]=time.monotonic()
++                        if line.startswith(b'GATE rendered'):gate.set()
++                reader=threading.Thread(target=read);reader.start();captured=False;released=False;forced=False
++                while child.poll() is None:
++                    if not captured and (gate.is_set() or time.monotonic()-activity[0]>=10):
++                        target=directory/'first-full-dump'
++                        capture=subprocess.run([sys.executable,'tests/process_stall_capture.py',str(target),str(child.pid)],env=env,capture_output=True)
++                        (directory/'capture.log').write_bytes(capture.stdout+capture.stderr);captured=True
++                        if gated and gate.is_set():child.stdin.write(b'\n');child.stdin.flush();released=True
++                    if time.monotonic()-started>=45:
++                        child.kill();forced=True;break # standalone diagnostic deadline only
++                    time.sleep(0.025) # external observer sampling; no delay added to test pump
++                child.wait();reader.join()
++            results.append({'label':label,'kind':'standalone','command':command,'pid':child.pid,'os_exit':child.returncode,
++                'forced':forced,'gated':gated,'gate_released':released,'eof':not reader.is_alive(),'provider_sha256':digest(provider)})
++        directory=out/'runs'/f'original-{label}';directory.mkdir();lines=[]
++        for test in tests:
++            cmd=list(test['command']);cmd[cmd.index('-Provider')+1]=str(provider)
++            lines.append('add_test('+test['name']+' '+ ' '.join('[=['+part+']=]' for part in cmd)+')')
++            lines.append('set_tests_properties('+test['name']+' PROPERTIES TIMEOUT '+str(180 if 'stateful' in test['name'] else 240)+' RUN_SERIAL TRUE)')
++        (directory/'CTestTestfile.cmake').write_text('\n'.join(lines)+'\n',encoding='utf-8')
++        for test in tests:
++            case=directory/test['name'];case.mkdir()
++            command=[sys.executable,'tests/observe_processes.py',str(case/'processes.jsonl'),'--','ctest','--test-dir',str(directory),'-R','^'+test['name']+'$','--no-tests=error','-V','--output-junit',str(case/'ctest.xml')]
++            with (case/'observer.log').open('xb') as log:result=subprocess.run(command,env=environment(),stdout=log,stderr=subprocess.STDOUT)
++            events=[json.loads(line) for line in (case/'processes.jsonl').read_text(encoding='utf-8').splitlines()]
++            native={e['pid'] for e in events if e['kind']=='child_observed' and e['exe'].endswith('_test.exe')}
++            exits=[e for e in events if e['kind']=='child_exit' and e['pid'] in native]
++            text=(case/'processes.log').read_text(encoding='utf-8');ends=re.findall(r'CASE_END[^\r\n]+',text)
++            expected=26 if 'stateful' in test['name'] else 7;cases=ET.parse(case/'ctest.xml').getroot().findall('testcase')
++            passed=(result.returncode==0 and len(cases)==1 and cases[0].get('name')==test['name'] and cases[0].find('failure') is None and
++                len(native)==len(exits)==len(ends)==expected and all(e['read_ok'] and e['code']==0 for e in exits) and
++                any(e['kind']=='stdout_eof' for e in events) and any(e['kind']=='parent_exit' and e['code']==0 for e in events) and
++                'dispatched' in text and all('exit=0' in end for end in ends))
++            results.append({'label':label,'kind':'original','test':test['name'],'command':command,'observer_exit':result.returncode,
++                'native_exits':exits,'case_ends':ends,'complete_boundaries_pass':passed})
++    for path in build.glob('*evidence-*'):
++        if path.is_dir():shutil.copytree(path,out/'product-evidence'/path.name)
++    assert binaries=={str(p.relative_to(root)):digest(p) for p in build.iterdir() if p.is_file() and p.suffix in ['.exe','.dll','.uapp','.lib']}
++    assert os.environ.get('LP_NUM_THREADS')==parent_lp
++    (out/'raw/results.json').write_text(json.dumps({'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
++        'providers':{k:{'path':str(p),'sha256':digest(p)} for k,p in providers.items()},'caller_sha256':digest(executable),
++        'source_sha256':digest(source),'binaries':binaries,'parent_lp_before':parent_lp,'parent_lp_after':os.environ.get('LP_NUM_THREADS'),'runs':results},indent=2),encoding='utf-8')
++    return int(any((r['forced'] or r['os_exit']!=0) if r['kind']=='standalone' else not r['complete_boundaries_pass'] for r in results))
++
++if __name__=='__main__':sys.exit(main())
+diff --git a/tools/mesa-osmesa-process-detach.patch b/tools/mesa-osmesa-process-detach.patch
+new file mode 100644
+index 0000000..36d77a2
+--- /dev/null
++++ b/tools/mesa-osmesa-process-detach.patch
+@@ -0,0 +1,59 @@
++diff --git a/src/gallium/frontends/osmesa/osmesa.c b/src/gallium/frontends/osmesa/osmesa.c
++--- a/src/gallium/frontends/osmesa/osmesa.c
+++++ b/src/gallium/frontends/osmesa/osmesa.c
++@@ -142,9 +142,27 @@
++ 
++ static struct pipe_frontend_screen *global_fscreen = NULL;
++ 
+++#ifdef _WIN32
+++static bool process_terminating;
+++
+++void
+++osmesa_notify_process_termination(void)
+++{
+++   process_terminating = true;
+++}
+++#endif
+++
++ static void
++ destroy_st_manager(void)
++ {
+++#ifdef _WIN32
+++   /* ExitProcess has terminated the worker threads. They cannot finish
+++    * screen teardown or signal its semaphores; the OS reclaims resources.
+++    * Normal context destruction and FreeLibrary retain full cleanup.
+++    */
+++   if (process_terminating)
+++      return;
+++#endif
++    if (global_fscreen) {
++       if (global_fscreen->screen)
++          global_fscreen->screen->destroy(global_fscreen->screen);
++diff --git a/src/gallium/targets/osmesa/osmesa_target.c b/src/gallium/targets/osmesa/osmesa_target.c
++--- a/src/gallium/targets/osmesa/osmesa_target.c
+++++ b/src/gallium/targets/osmesa/osmesa_target.c
++@@ -25,6 +25,24 @@
++ #include "target-helpers/inline_debug_helper.h"
++ 
++ #include "sw/null/null_sw_winsys.h"
+++
+++#ifdef _WIN32
+++#include <windows.h>
+++
+++void osmesa_notify_process_termination(void);
+++
+++BOOL WINAPI
+++DllMain(HINSTANCE instance, DWORD reason, LPVOID reserved)
+++{
+++   (void) instance;
+++   /* MSVC invokes user DllMain before the CRT's detach/onexit teardown.
+++    * Do not allocate, synchronize, or call worker cleanup under loader lock.
+++    */
+++   if (reason == DLL_PROCESS_DETACH && reserved != NULL)
+++      osmesa_notify_process_termination();
+++   return TRUE;
+++}
+++#endif
++ 
++ 
++ struct pipe_screen *

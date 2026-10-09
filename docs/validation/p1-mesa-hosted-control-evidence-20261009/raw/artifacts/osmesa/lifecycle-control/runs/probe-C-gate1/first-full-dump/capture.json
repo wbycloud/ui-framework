@@ -1,0 +1,188 @@
+[
+  {
+    "pid": 6428,
+    "open_process": true,
+    "error": 0,
+    "flags": "0x1826",
+    "dump_ok": true,
+    "bytes": 126803590,
+    "mesa_objects": {
+      "pid": 6428,
+      "observed_ns": 1791542106487274900,
+      "timing_changed": true,
+      "reads": [
+        {
+          "address": "0x7ff9dae9d840",
+          "bytes": 8,
+          "ok": true,
+          "error": 0
+        },
+        {
+          "address": "0x2cf42fd9db0",
+          "bytes": 8,
+          "ok": true,
+          "error": 0
+        },
+        {
+          "address": "0x2cf42fd1f70",
+          "bytes": 8,
+          "ok": true,
+          "error": 0
+        },
+        {
+          "address": "0x2cf42fd1fa0",
+          "bytes": 8,
+          "ok": true,
+          "error": 0
+        },
+        {
+          "address": "0x2cf42fd20d0",
+          "bytes": 10856,
+          "ok": true,
+          "error": 0
+        }
+      ],
+      "open_ok": true,
+      "open_error": 0,
+      "modules_ok": true,
+      "modules_error": 0,
+      "mesa_present": true,
+      "module_base": "0x7ff9d7ec0000",
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-candidate\\unpacked\\osmesa.dll",
+      "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+      "matched_layout": {
+        "label": "C",
+        "global_rva": 50190400,
+        "pdb_guid": "2f352030-3f29-4fe7-a7c1-b1ed70c195f3"
+      },
+      "global_fscreen": "0x2cf42fd9db0",
+      "screen": "0x2cf42fd1ce0",
+      "rast_address": "0x2cf42fd20d0",
+      "cs_tpool_pointer": "0x2cf42f93d60",
+      "num_threads": 4,
+      "exit_flag": 0,
+      "tasks": [
+        {
+          "index": 0,
+          "task": "0x2cf42fd20e8",
+          "saved_handle": "0x190",
+          "task_index": 0,
+          "semaphores": {
+            "work_ready": {
+              "address": "0x2cf42fd2188",
+              "counter": 0
+            },
+            "work_done": {
+              "address": "0x2cf42fd21c0",
+              "counter": 120
+            },
+            "exited": {
+              "address": "0x2cf42fd21f8",
+              "counter": 0
+            }
+          },
+          "duplicate_ok": true,
+          "duplicate_error": 0,
+          "thread_id": 7888,
+          "thread_id_error": 0,
+          "query_ok": true,
+          "exit_code": 259,
+          "query_error": 0,
+          "zero_wait": 258,
+          "wait_error": 0,
+          "observer_close_ok": true
+        },
+        {
+          "index": 1,
+          "task": "0x2cf42fd2230",
+          "saved_handle": "0x194",
+          "task_index": 1,
+          "semaphores": {
+            "work_ready": {
+              "address": "0x2cf42fd22d0",
+              "counter": 0
+            },
+            "work_done": {
+              "address": "0x2cf42fd2308",
+              "counter": 120
+            },
+            "exited": {
+              "address": "0x2cf42fd2340",
+              "counter": 0
+            }
+          },
+          "duplicate_ok": true,
+          "duplicate_error": 0,
+          "thread_id": 3680,
+          "thread_id_error": 0,
+          "query_ok": true,
+          "exit_code": 259,
+          "query_error": 0,
+          "zero_wait": 258,
+          "wait_error": 0,
+          "observer_close_ok": true
+        },
+        {
+          "index": 2,
+          "task": "0x2cf42fd2378",
+          "saved_handle": "0x198",
+          "task_index": 2,
+          "semaphores": {
+            "work_ready": {
+              "address": "0x2cf42fd2418",
+              "counter": 0
+            },
+            "work_done": {
+              "address": "0x2cf42fd2450",
+              "counter": 120
+            },
+            "exited": {
+              "address": "0x2cf42fd2488",
+              "counter": 0
+            }
+          },
+          "duplicate_ok": true,
+          "duplicate_error": 0,
+          "thread_id": 2632,
+          "thread_id_error": 0,
+          "query_ok": true,
+          "exit_code": 259,
+          "query_error": 0,
+          "zero_wait": 258,
+          "wait_error": 0,
+          "observer_close_ok": true
+        },
+        {
+          "index": 3,
+          "task": "0x2cf42fd24c0",
+          "saved_handle": "0x19c",
+          "task_index": 3,
+          "semaphores": {
+            "work_ready": {
+              "address": "0x2cf42fd2560",
+              "counter": 0
+            },
+            "work_done": {
+              "address": "0x2cf42fd2598",
+              "counter": 120
+            },
+            "exited": {
+              "address": "0x2cf42fd25d0",
+              "counter": 0
+            }
+          },
+          "duplicate_ok": true,
+          "duplicate_error": 0,
+          "thread_id": 3656,
+          "thread_id_error": 0,
+          "query_ok": true,
+          "exit_code": 259,
+          "query_error": 0,
+          "zero_wait": 258,
+          "wait_error": 0,
+          "observer_close_ok": true
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,60 @@
+INPUT_EVIDENCE real SendInput; final state checked
+TEST_PHASE pid1228 tick780390 dispatched0 create-host-begin
+TEST_PHASE pid1228 tick780437 dispatched0 create-host-end
+TEST_PHASE pid1228 tick780671 dispatched8 screenshot-begin
+TEST_PHASE pid1228 tick780703 dispatched8 screenshot-end
+TEST_PHASE pid1228 tick780703 dispatched8 open-begin
+TEST_PHASE pid1228 tick781093 dispatched8 open-return
+TEST_PHASE pid1228 tick781703 dispatched35 open-settled
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+TEST_PHASE pid1228 tick781859 dispatched44 open-begin
+TEST_PHASE pid1228 tick782156 dispatched44 open-return
+TEST_PHASE pid1228 tick782765 dispatched70 open-settled
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+TEST_PHASE pid1228 tick783140 dispatched88 screenshot-begin
+TEST_PHASE pid1228 tick783187 dispatched88 screenshot-end
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000032017A UIFrameworkLightWeb pid1228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000032017A UIFrameworkLightWeb pid1228
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000032017A UIFrameworkLightWeb pid1228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000032017A UIFrameworkLightWeb pid1228
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000032017A UIFrameworkLightWeb pid1228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000032017A UIFrameworkLightWeb pid1228
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000032017A UIFrameworkLightWeb pid1228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000032017A UIFrameworkLightWeb pid1228
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000032017A UIFrameworkLightWeb pid1228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000032017A UIFrameworkLightWeb pid1228
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000032017A UIFrameworkLightWeb pid1228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000032017A UIFrameworkLightWeb pid1228
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000032017A UIFrameworkLightWeb pid1228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000032017A UIFrameworkLightWeb pid1228
+REAL_CLICK client34,4 154x36 screen215,73 hit000000000032017A UIFrameworkLightWeb pid1228
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+REAL_CLICK client214,4 154x36 screen485,73 hit000000000032017A UIFrameworkLightWeb pid1228
+TEST_PHASE pid1228 tick786828 dispatched397 screenshot-begin
+TEST_PHASE pid1228 tick786875 dispatched397 screenshot-end
+REAL_CLICK client1011,0 40x40 screen1595,70 hit000000000032017A UIFrameworkLightWeb pid1228
+TEST_PHASE pid1228 tick787156 dispatched424 screenshot-begin
+TEST_PHASE pid1228 tick787218 dispatched424 screenshot-end
+REAL_CLICK client1011,0 40x40 screen1595,70 hit000000000032017A UIFrameworkLightWeb pid1228
+REAL_CLICK client8,40 60x28 screen153,294 hit0000000000280178 UIFrameworkLightWeb pid1228
+TEST_PHASE pid1228 tick788671 dispatched508 screenshot-begin
+TEST_PHASE pid1228 tick788718 dispatched508 screenshot-end
+TEST_PHASE pid1228 tick789062 dispatched517 screenshot-begin
+TEST_PHASE pid1228 tick789109 dispatched517 screenshot-end
+TEST_PHASE pid1228 tick789640 dispatched532 screenshot-begin
+TEST_PHASE pid1228 tick789687 dispatched532 screenshot-end
+TEST_PHASE pid1228 tick789687 dispatched532 instances-close-begin
+TEST_PHASE pid1228 tick790109 dispatched551 screenshot-begin
+TEST_PHASE pid1228 tick790140 dispatched551 screenshot-end
+TEST_PHASE pid1228 tick790140 dispatched551 close-begin
+TEST_PHASE pid1228 tick790140 dispatched551 close-request-return
+TEST_PHASE pid1228 tick790453 dispatched553 com-uninitialize-begin
+TEST_PHASE pid1228 tick790453 dispatched553 process-return
+Instance language actual light restore dpi144 failures0

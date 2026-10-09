@@ -1,0 +1,26 @@
+{
+  "artifact": {
+    "id": 11610653776,
+    "node_id": "MDg6QXJ0aWZhY3QxMTYxMDY1Mzc3Ng==",
+    "name": "windows-webview2-5715a0539b94158e3f18afc32bffbc9a5d6a0168-1",
+    "size_in_bytes": 637913104,
+    "url": "https://api.github.com/repos/wbycloud/ui-framework/actions/artifacts/11610653776",
+    "archive_download_url": "https://api.github.com/repos/wbycloud/ui-framework/actions/artifacts/11610653776/zip",
+    "expired": false,
+    "digest": "sha256:1b8e54b2c6f4040e2ee2b3378ee112cbe7aacd20a3f277178b42ebeaf7f8b323",
+    "created_at": "2026-10-09T10:40:34Z",
+    "updated_at": "2026-10-09T10:40:34Z",
+    "expires_at": "2026-11-08T10:39:56Z",
+    "workflow_run": {
+      "id": 37917825238,
+      "repository_id": 1401087419,
+      "head_repository_id": 1401087419,
+      "head_branch": "codex/p1-process-boundaries",
+      "head_sha": "5715a0539b94158e3f18afc32bffbc9a5d6a0168"
+    }
+  },
+  "archive_sha256": "1b8e54b2c6f4040e2ee2b3378ee112cbe7aacd20a3f277178b42ebeaf7f8b323",
+  "size": 637913104,
+  "reused_segments": 302,
+  "new_requests": 1079
+}

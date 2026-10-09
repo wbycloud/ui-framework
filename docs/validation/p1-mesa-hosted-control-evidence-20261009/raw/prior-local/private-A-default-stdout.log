@@ -1,0 +1,203 @@
+START pid=18116 lp_num_threads=<unset> mode=cleanup
+BOUNDARY phase=before-load pid=18116 tick=774968765 module=0000000000000000 owned_loads=0 handles=60 gdi=0 user=1
+THREAD phase=before-load tid=43920 name= start=00007FF668D5357B query=0
+THREAD phase=before-load tid=48604 name= start=00007FFDC349A2E0 query=0
+THREAD phase=before-load tid=3840 name= start=00007FFDC349A2E0 query=0
+THREAD phase=before-load tid=47880 name= start=00007FFDC349A2E0 query=0
+THREAD_TOTAL phase=before-load total=4 named_raster=0
+BOUNDARY phase=loaded pid=18116 tick=774968796 module=00007FFCD92F0000 owned_loads=1 handles=105 gdi=0 user=1
+THREAD phase=loaded tid=43920 name= start=00007FF668D5357B query=0
+THREAD phase=loaded tid=48604 name= start=00007FFDC349A2E0 query=0
+THREAD phase=loaded tid=3840 name= start=00007FFDC349A2E0 query=0
+THREAD phase=loaded tid=47880 name= start=00007FFDC349A2E0 query=0
+THREAD_TOTAL phase=loaded total=4 named_raster=0
+CONTEXT_CREATE_BEGIN pass=0
+BOUNDARY phase=context-current pid=18116 tick=774968859 module=00007FFCD92F0000 owned_loads=1 handles=166 gdi=0 user=1
+THREAD phase=context-current tid=43920 name= start=00007FF668D5357B query=0
+THREAD phase=context-current tid=48604 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-current tid=3840 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-current tid=47880 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-current tid=8164 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=31144 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=26396 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=43944 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=28500 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=31524 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=33880 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=27204 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=34640 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=21376 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=46156 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=21460 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=16860 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=38188 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=40640 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=40968 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=40272 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=24040 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=45896 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=37292 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=14900 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=48452 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=49028 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=33996 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=30968 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=16296 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=40128 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=32176 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=21300 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=32872 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=47604 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=47908 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=10020 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=41068 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=10472 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=46748 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=49524 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=3624 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=7728 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=29232 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=8736 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=25072 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=17988 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=9320 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=23764 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=32656 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=34564 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-current tid=10872 name= start=00007FFCDB37C348 query=0
+THREAD_TOTAL phase=context-current total=52 named_raster=0
+GL renderer=llvmpipe (LLVM 19.1.7, 256 bits) version=4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c)
+RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=183.007 hash=38b57cea08bb9bf9 center=255,0,0,255
+BOUNDARY phase=rendered pid=18116 tick=774969078 module=00007FFCD92F0000 owned_loads=1 handles=166 gdi=0 user=1
+THREAD phase=rendered tid=43920 name= start=00007FF668D5357B query=0
+THREAD phase=rendered tid=48604 name= start=00007FFDC349A2E0 query=0
+THREAD phase=rendered tid=3840 name= start=00007FFDC349A2E0 query=0
+THREAD phase=rendered tid=47880 name= start=00007FFDC349A2E0 query=0
+THREAD phase=rendered tid=8164 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=31144 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=26396 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=43944 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=28500 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=31524 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=33880 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=27204 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=34640 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=21376 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=46156 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=21460 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=16860 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=38188 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=40640 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=40968 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=40272 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=24040 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=45896 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=37292 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=14900 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=48452 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=49028 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=33996 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=30968 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=16296 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=40128 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=32176 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=21300 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=32872 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=47604 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=47908 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=10020 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=41068 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=10472 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=46748 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=49524 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=3624 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=7728 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=29232 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=8736 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=25072 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=17988 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=9320 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=23764 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=32656 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=34564 name= start=00007FFCDB37C348 query=0
+THREAD phase=rendered tid=10872 name= start=00007FFCDB37C348 query=0
+THREAD_TOTAL phase=rendered total=52 named_raster=0
+CONTEXT_DESTROY_BEGIN pass=0
+CONTEXT_DESTROY_END pass=0
+BOUNDARY phase=context-destroyed pid=18116 tick=774969140 module=00007FFCD92F0000 owned_loads=1 handles=166 gdi=0 user=1
+THREAD phase=context-destroyed tid=43920 name= start=00007FF668D5357B query=0
+THREAD phase=context-destroyed tid=48604 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-destroyed tid=3840 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-destroyed tid=47880 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-destroyed tid=8164 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=31144 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=26396 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=43944 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=28500 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=31524 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=33880 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=27204 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=34640 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=21376 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=46156 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=21460 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=16860 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=38188 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=40640 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=40968 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=40272 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=24040 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=45896 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=37292 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=14900 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=48452 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=49028 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=33996 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=30968 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=16296 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=40128 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=32176 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=21300 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=32872 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=47604 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=47908 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=10020 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=41068 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=10472 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=46748 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=49524 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=3624 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=7728 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=29232 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=8736 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=25072 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=17988 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=9320 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=23764 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=32656 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=34564 name= start=00007FFCDB37C348 query=0
+THREAD phase=context-destroyed tid=10872 name= start=00007FFCDB37C348 query=0
+THREAD_TOTAL phase=context-destroyed total=52 named_raster=0
+PRIVATE_MANAGER_DESTROY_BEGIN manager_rva=95f30 global_rva=30702c0 global=0000023983FD3EB0
+PRIVATE_MANAGER_DESTROY_END
+BOUNDARY phase=manager-destroyed-outside-loader pid=18116 tick=774969187 module=00007FFCD92F0000 owned_loads=1 handles=142 gdi=0 user=1
+THREAD phase=manager-destroyed-outside-loader tid=43920 name= start=00007FF668D5357B query=0
+THREAD phase=manager-destroyed-outside-loader tid=48604 name= start=00007FFDC349A2E0 query=0
+THREAD phase=manager-destroyed-outside-loader tid=3840 name= start=00007FFDC349A2E0 query=0
+THREAD phase=manager-destroyed-outside-loader tid=47880 name= start=00007FFDC349A2E0 query=0
+THREAD_TOTAL phase=manager-destroyed-outside-loader total=4 named_raster=0
+FREE_LIBRARY_BEGIN owned_loads=1
+FREE_LIBRARY_END
+BOUNDARY phase=after-free-library pid=18116 tick=774969218 module=0000000000000000 owned_loads=0 handles=99 gdi=0 user=1
+THREAD phase=after-free-library tid=43920 name= start=00007FF668D5357B query=0
+THREAD phase=after-free-library tid=48604 name= start=00007FFDC349A2E0 query=0
+THREAD phase=after-free-library tid=3840 name= start=00007FFDC349A2E0 query=0
+THREAD phase=after-free-library tid=47880 name= start=00007FFDC349A2E0 query=0
+THREAD_TOTAL phase=after-free-library total=4 named_raster=0
+BOUNDARY phase=before-main-return pid=18116 tick=774969265 module=0000000000000000 owned_loads=0 handles=99 gdi=0 user=1
+THREAD phase=before-main-return tid=43920 name= start=00007FF668D5357B query=0
+THREAD phase=before-main-return tid=48604 name= start=00007FFDC349A2E0 query=0
+THREAD phase=before-main-return tid=3840 name= start=00007FFDC349A2E0 query=0
+THREAD phase=before-main-return tid=47880 name= start=00007FFDC349A2E0 query=0
+THREAD_TOTAL phase=before-main-return total=4 named_raster=0
+MAIN_RETURN failures=0

@@ -1,0 +1,20 @@
+{
+  "kind": "local diagnostic candidate; not SDK or stable release",
+  "framework_head": "65f678c98dad601833035761f009479018d23079",
+  "mesa_source_archive_sha256": "e641ae27191d387599219694560d221b7feaa91c900bcec46bf444218ed66025",
+  "patch_sha256": "5a7fed431c5444c7de9100523026dc91642db9c9603a450289ee141a5ac8bba9",
+  "provider": {
+    "path": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\C\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.dll",
+    "size": 51686912,
+    "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+    "pdb": {
+      "path": "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\p1-mesa-lifecycle-20261009\\providers\\C\\build-ascii-llvm\\src\\gallium\\targets\\osmesa\\osmesa.pdb",
+      "size": 68718592,
+      "sha256": "c5c15c5cc6673b795d21fa721d87a6abb382005417129685903937e744f73bbd"
+    }
+  },
+  "llvm_commit": "cd708029e0b2869e80abe31ddb175f7c35361f90",
+  "msvc": "19.50.35727 / MT / x64",
+  "scope": "Windows OSMesa DLL process termination only; default worker policy retained",
+  "source_tree_comparison_files": 10640
+}

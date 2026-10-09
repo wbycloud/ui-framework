@@ -1,0 +1,12 @@
+TEST_PHASE pid1524 tick926312 dispatched0 create-host-begin
+TEST_PHASE pid1524 tick926328 dispatched0 create-host-end
+TEST_PHASE pid1524 tick926343 dispatched0 open-begin
+TEST_PHASE pid1524 tick926609 dispatched0 open-return
+TEST_PHASE pid1524 tick927109 dispatched34 open-settled
+RESTORED modeevolve dpi96 name280 treeCollapsed1
+TEST_PHASE pid1524 tick927109 dispatched34 close-begin
+TEST_PHASE pid1524 tick927125 dispatched34 close-request-return
+TEST_PHASE pid1524 tick927171 dispatched35 close-state-checked
+TEST_PHASE pid1524 tick927484 dispatched35 com-uninitialize-begin
+TEST_PHASE pid1524 tick927484 dispatched35 process-return
+Stateful actual light / evolve: 0 failures

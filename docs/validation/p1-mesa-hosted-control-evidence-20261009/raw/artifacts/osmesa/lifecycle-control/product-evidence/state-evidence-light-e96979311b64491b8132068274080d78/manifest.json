@@ -1,0 +1,274 @@
+{
+  "frameworkApi": 9,
+  "packageSha256": "CC8DBCCA2853D08FB525AFD3DF1860B9691817C9C0428CE1D368B43FA0307D88",
+  "completedUtc": "2026-10-09T10:35:46.7665498Z",
+  "evidence": "D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78",
+  "cases": [
+    {
+      "label": "write-96",
+      "completedUtc": "2026-10-09T10:35:09.4264403Z",
+      "exitCode": 0,
+      "mode": "write",
+      "startedUtc": "2026-10-09T10:35:07.5658815Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1848
+    },
+    {
+      "label": "restore-96",
+      "completedUtc": "2026-10-09T10:35:10.8364288Z",
+      "exitCode": 0,
+      "mode": "restore",
+      "startedUtc": "2026-10-09T10:35:09.4342362Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1401
+    },
+    {
+      "label": "write-144",
+      "completedUtc": "2026-10-09T10:35:12.7091110Z",
+      "exitCode": 0,
+      "mode": "write",
+      "startedUtc": "2026-10-09T10:35:10.8398166Z",
+      "status": "exited",
+      "dpi": 144,
+      "elapsedMs": 1868
+    },
+    {
+      "label": "restore-144",
+      "completedUtc": "2026-10-09T10:35:14.1530020Z",
+      "exitCode": 0,
+      "mode": "restore",
+      "startedUtc": "2026-10-09T10:35:12.7110852Z",
+      "status": "exited",
+      "dpi": 144,
+      "elapsedMs": 1441
+    },
+    {
+      "label": "write-192",
+      "completedUtc": "2026-10-09T10:35:15.9003950Z",
+      "exitCode": 0,
+      "mode": "write",
+      "startedUtc": "2026-10-09T10:35:14.1549184Z",
+      "status": "exited",
+      "dpi": 192,
+      "elapsedMs": 1744
+    },
+    {
+      "label": "restore-192",
+      "completedUtc": "2026-10-09T10:35:17.2506825Z",
+      "exitCode": 0,
+      "mode": "restore",
+      "startedUtc": "2026-10-09T10:35:15.9021419Z",
+      "status": "exited",
+      "dpi": 192,
+      "elapsedMs": 1347
+    },
+    {
+      "label": "isolation",
+      "completedUtc": "2026-10-09T10:35:20.0449625Z",
+      "exitCode": 0,
+      "mode": "isolation",
+      "startedUtc": "2026-10-09T10:35:17.2551749Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 2788
+    },
+    {
+      "label": "profile-b",
+      "completedUtc": "2026-10-09T10:35:21.3802668Z",
+      "exitCode": 0,
+      "mode": "profile-b",
+      "startedUtc": "2026-10-09T10:35:20.0474492Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1332
+    },
+    {
+      "label": "reload",
+      "completedUtc": "2026-10-09T10:35:23.0322249Z",
+      "exitCode": 0,
+      "mode": "reload",
+      "startedUtc": "2026-10-09T10:35:21.3834641Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1648
+    },
+    {
+      "label": "locked-profile",
+      "completedUtc": "2026-10-09T10:35:24.4117803Z",
+      "exitCode": 0,
+      "mode": "locked-profile",
+      "startedUtc": "2026-10-09T10:35:23.0334741Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1377
+    },
+    {
+      "label": "reordered-columns",
+      "completedUtc": "2026-10-09T10:35:25.7960485Z",
+      "exitCode": 0,
+      "mode": "restore",
+      "startedUtc": "2026-10-09T10:35:24.4132964Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1381
+    },
+    {
+      "label": "missing-new-columns",
+      "completedUtc": "2026-10-09T10:35:27.1454835Z",
+      "exitCode": 0,
+      "mode": "evolve",
+      "startedUtc": "2026-10-09T10:35:25.7978600Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1346
+    },
+    {
+      "label": "empty",
+      "completedUtc": "2026-10-09T10:35:28.4636167Z",
+      "exitCode": 0,
+      "mode": "invalid",
+      "startedUtc": "2026-10-09T10:35:27.1525650Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1310
+    },
+    {
+      "label": "truncated",
+      "completedUtc": "2026-10-09T10:35:29.7839031Z",
+      "exitCode": 0,
+      "mode": "invalid",
+      "startedUtc": "2026-10-09T10:35:28.4689099Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1314
+    },
+    {
+      "label": "oversized",
+      "completedUtc": "2026-10-09T10:35:31.1175791Z",
+      "exitCode": 0,
+      "mode": "invalid",
+      "startedUtc": "2026-10-09T10:35:29.7877312Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1328
+    },
+    {
+      "label": "magic",
+      "completedUtc": "2026-10-09T10:35:32.5001582Z",
+      "exitCode": 0,
+      "mode": "invalid",
+      "startedUtc": "2026-10-09T10:35:31.1470726Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1351
+    },
+    {
+      "label": "checksum",
+      "completedUtc": "2026-10-09T10:35:33.8114899Z",
+      "exitCode": 0,
+      "mode": "invalid",
+      "startedUtc": "2026-10-09T10:35:32.5056170Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1304
+    },
+    {
+      "label": "future",
+      "completedUtc": "2026-10-09T10:35:35.1377386Z",
+      "exitCode": 0,
+      "mode": "invalid",
+      "startedUtc": "2026-10-09T10:35:33.8140397Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1322
+    },
+    {
+      "label": "columns-reserved",
+      "completedUtc": "2026-10-09T10:35:36.4921645Z",
+      "exitCode": 0,
+      "mode": "invalid",
+      "startedUtc": "2026-10-09T10:35:35.1399729Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1351
+    },
+    {
+      "label": "columns-future",
+      "completedUtc": "2026-10-09T10:35:37.8404607Z",
+      "exitCode": 0,
+      "mode": "invalid",
+      "startedUtc": "2026-10-09T10:35:36.4940490Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1345
+    },
+    {
+      "label": "layout-future",
+      "completedUtc": "2026-10-09T10:35:39.2468535Z",
+      "exitCode": 0,
+      "mode": "invalid",
+      "startedUtc": "2026-10-09T10:35:37.8466631Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1399
+    },
+    {
+      "label": "layout-invalid",
+      "completedUtc": "2026-10-09T10:35:40.6541765Z",
+      "exitCode": 0,
+      "mode": "invalid",
+      "startedUtc": "2026-10-09T10:35:39.2487188Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1404
+    },
+    {
+      "label": "missing-file",
+      "completedUtc": "2026-10-09T10:35:41.9573762Z",
+      "exitCode": 0,
+      "mode": "defaults",
+      "startedUtc": "2026-10-09T10:35:40.6556699Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1300
+    },
+    {
+      "label": "failed-create-mount-lock-release",
+      "completedUtc": "2026-10-09T10:35:43.6254394Z",
+      "exitCode": 0,
+      "mode": "init-failures",
+      "startedUtc": "2026-10-09T10:35:41.9587555Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1665
+    },
+    {
+      "label": "reset",
+      "completedUtc": "2026-10-09T10:35:45.4203341Z",
+      "exitCode": 0,
+      "mode": "reset",
+      "startedUtc": "2026-10-09T10:35:43.6265975Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1792
+    },
+    {
+      "label": "reset-cross-process",
+      "completedUtc": "2026-10-09T10:35:46.7656216Z",
+      "exitCode": 0,
+      "mode": "defaults",
+      "startedUtc": "2026-10-09T10:35:45.4214824Z",
+      "status": "exited",
+      "dpi": 96,
+      "elapsedMs": 1343
+    }
+  ],
+  "providerSha256": "99D8142434C3ABFACCE969AA3731220314D99C53EE0AFC546896C0AFAD92F5F5",
+  "backend": "light",
+  "runtimeDllSha256": "805B014899AF4690B8A47E0F765D3365EB012EBCC4FB0010F483957C3E1AB096",
+  "provider": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-candidate\\unpacked\\osmesa.dll",
+  "startedUtc": "2026-10-09T10:35:07.5299368Z",
+  "executableSha256": "A61F107171C738F4650CCD4AB1C4279FBC42C5240D5DC4EA8D7C8CD7445C4AED"
+}

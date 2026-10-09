@@ -1,0 +1,12 @@
+TEST_PHASE pid5912 tick734015 dispatched0 create-host-begin
+TEST_PHASE pid5912 tick734031 dispatched0 create-host-end
+TEST_PHASE pid5912 tick734453 dispatched22 open-begin
+TEST_PHASE pid5912 tick734703 dispatched22 open-return
+TEST_PHASE pid5912 tick735203 dispatched58 open-settled
+RESTORED modeinit-failures dpi96 name200 treeCollapsed0
+TEST_PHASE pid5912 tick735203 dispatched58 close-begin
+TEST_PHASE pid5912 tick735234 dispatched58 close-request-return
+TEST_PHASE pid5912 tick735296 dispatched59 close-state-checked
+TEST_PHASE pid5912 tick735609 dispatched59 com-uninitialize-begin
+TEST_PHASE pid5912 tick735609 dispatched59 process-return
+Stateful actual light / init-failures: 0 failures

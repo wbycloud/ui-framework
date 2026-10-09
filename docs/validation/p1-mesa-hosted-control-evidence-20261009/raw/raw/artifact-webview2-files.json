@@ -1,0 +1,1705 @@
+{
+  "artifact": {
+    "id": 11610653776,
+    "node_id": "MDg6QXJ0aWZhY3QxMTYxMDY1Mzc3Ng==",
+    "name": "windows-webview2-5715a0539b94158e3f18afc32bffbc9a5d6a0168-1",
+    "size_in_bytes": 637913104,
+    "url": "https://api.github.com/repos/wbycloud/ui-framework/actions/artifacts/11610653776",
+    "archive_download_url": "https://api.github.com/repos/wbycloud/ui-framework/actions/artifacts/11610653776/zip",
+    "expired": false,
+    "digest": "sha256:1b8e54b2c6f4040e2ee2b3378ee112cbe7aacd20a3f277178b42ebeaf7f8b323",
+    "created_at": "2026-10-09T10:40:34Z",
+    "updated_at": "2026-10-09T10:40:34Z",
+    "expires_at": "2026-11-08T10:39:56Z",
+    "workflow_run": {
+      "id": 37917825238,
+      "repository_id": 1401087419,
+      "head_repository_id": 1401087419,
+      "head_branch": "codex/p1-process-boundaries",
+      "head_sha": "5715a0539b94158e3f18afc32bffbc9a5d6a0168"
+    }
+  },
+  "archive_sha256": "1b8e54b2c6f4040e2ee2b3378ee112cbe7aacd20a3f277178b42ebeaf7f8b323",
+  "files": [
+    {
+      "path": "build.cmd",
+      "bytes": 520,
+      "sha256": "cd54149bfff88283981b1a07bc6dc38e5dc5e47f29ad28cf1040f97986c703ef"
+    },
+    {
+      "path": "build.log",
+      "bytes": 47663,
+      "sha256": "afe2830acc1e8ae5393c974981b2a1089d52e66f06bc609c0c54765c7a0e48a6"
+    },
+    {
+      "path": "compiler.log",
+      "bytes": 131,
+      "sha256": "8e29834a4f5a5cbf82a6436414d68d51c3bdeb68d2dff0023409cdedc21e862c"
+    },
+    {
+      "path": "configure.log",
+      "bytes": 6673,
+      "sha256": "bdbf72510c39abc5410afc7aeab72a425a5796f98fc7a4f33058d64db0c83675"
+    },
+    {
+      "path": "dependencies.log",
+      "bytes": 836,
+      "sha256": "ce29587ce2e20310acd7f63c4b65533c336b8b4437453064df4a141d43fd7e8d"
+    },
+    {
+      "path": "extraction.log",
+      "bytes": 401,
+      "sha256": "4277d7cf71cd6d1a114eacb0b653aefd6a396b871ad91cfd76d66d3fc3c2da20"
+    },
+    {
+      "path": "lifecycle-candidate/candidate.zip",
+      "bytes": 38073334,
+      "sha256": "afb11d7bf599e991f8e2b7df6971813f8bb6bca66f91f85c8f20b7b5cf59c8ae"
+    },
+    {
+      "path": "lifecycle-candidate/original-debug.7z",
+      "bytes": 84354035,
+      "sha256": "60b2ccf9d81646aab53ce50bb1117c292e314049799b58f620d6838d134b48b1"
+    },
+    {
+      "path": "lifecycle-candidate/original-symbols/x64/osmesa.pdb",
+      "bytes": 67080192,
+      "sha256": "42659470e93b8305d514a956e830d1455318b326b2d2829e61426ca265967ee7"
+    },
+    {
+      "path": "lifecycle-candidate/original-symbols-extraction.log",
+      "bytes": 482,
+      "sha256": "2d5ba0c83a523ba281d8666c1d2fa08527cbd53e9d18a9dde9ec0bc752d5cb14"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/licenses/LLVM-LICENSE.TXT",
+      "bytes": 15420,
+      "sha256": "a9ed3eae930adbc631b83300b78ab5d228c9b1e4560d64ec4b4ea2bcf69f4569"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/licenses/Mesa/Apache-2.0",
+      "bytes": 10045,
+      "sha256": "7e4d3fba250d15e9e0afa380d4b611828fa2560cc8fdebe95bcf2f01a487de12"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/licenses/Mesa/BSL-1.0",
+      "bytes": 1649,
+      "sha256": "9b9fea7520a816107fcac2598b7c0155222f16bc430e989706b22f4367f1df7d"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/licenses/Mesa/GPL-1.0-or-later",
+      "bytes": 13047,
+      "sha256": "8ff76f1528e6e4e9400c0f6b1f2d19d4979aaac3bcc44bb707a55389132825c4"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/licenses/Mesa/GPL-2.0-only",
+      "bytes": 18424,
+      "sha256": "6667ad4063569cd53b13500550d93fcd3dc11bcf82c5514296af013a0b720ba5"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/licenses/Mesa/MIT",
+      "bytes": 1372,
+      "sha256": "323c587d0ccf10e376f8bf9a7f31fb4ca6078105194b42e0b1e0ee2bc9bde71f"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/licenses/Mesa/SGI-B-2.0",
+      "bytes": 1822,
+      "sha256": "686bf035a1fd22076416fd3b90370ac67771e884bf57f55693d51f8ce7c710a7"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/licenses/Mesa-license.rst",
+      "bytes": 1816,
+      "sha256": "0d1a0472ecc81830e75c20d59b0ea02841e3db21255e0ebad97ab682c54d6615"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/manifest.json",
+      "bytes": 1208,
+      "sha256": "508370726d1e72af22451229d666bc1c3871035281bd40d8dce61d2416b34e51"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/mesa-osmesa-process-detach.patch",
+      "bytes": 1685,
+      "sha256": "5a7fed431c5444c7de9100523026dc91642db9c9603a450289ee141a5ac8bba9"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/osmesa.dll",
+      "bytes": 51686912,
+      "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/osmesa.pdb",
+      "bytes": 68718592,
+      "sha256": "c5c15c5cc6673b795d21fa721d87a6abb382005417129685903937e744f73bbd"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/recipe/build-llvm.cmd",
+      "bytes": 1220,
+      "sha256": "8cd23244147c2e94a9d62dc0a54f4e382ce7f4a6ad18560965efa6425a87eb2d"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/recipe/build-providers.cmd",
+      "bytes": 1731,
+      "sha256": "51e783afc1ca5aa3d92b27a5f1f24f585b944d5465a1b1c59b358e62a6611439"
+    },
+    {
+      "path": "lifecycle-candidate/unpacked/recipe/meson-native.ini",
+      "bytes": 126,
+      "sha256": "843d209819fa018c8a3851f355045aa86a7458eb72261c0a9b678182c471124c"
+    },
+    {
+      "path": "lifecycle-control/caller/build.cmd",
+      "bytes": 373,
+      "sha256": "91fff7960fdc111768568c9082fd76f4356c9f22ad55508e952a292d63b71162"
+    },
+    {
+      "path": "lifecycle-control/caller/osmesa_thread_probe.exe",
+      "bytes": 690688,
+      "sha256": "9ddde29046b3c131c60e8f40330c407c0e6e8f1ab5f446b08e28e07ac3e4bc82"
+    },
+    {
+      "path": "lifecycle-control/caller/osmesa_thread_probe.ilk",
+      "bytes": 3745151,
+      "sha256": "999cbf6f9d2f6fa481a5ae7ca4418929ce43908a3d35508f49252b165f9a39c1"
+    },
+    {
+      "path": "lifecycle-control/caller/osmesa_thread_probe.obj",
+      "bytes": 62061,
+      "sha256": "a0164c7c427845ed3d420b4924b1430b26f0a878e45151047114334a291ceba4"
+    },
+    {
+      "path": "lifecycle-control/caller/osmesa_thread_probe.pdb",
+      "bytes": 7213056,
+      "sha256": "24c34f5e74821a3c4ffb9dd2d12b9842096d291b3ba3897fdb06807b606c90c5"
+    },
+    {
+      "path": "lifecycle-control/isolated-wgl/libgallium_wgl.dll",
+      "bytes": 54089216,
+      "sha256": "6ba1d46ae560f051a32b576c34e794a256df23572fdc82c602585d65cca69569"
+    },
+    {
+      "path": "lifecycle-control/isolated-wgl/libglapi.dll",
+      "bytes": 340480,
+      "sha256": "38c0c712138e313f72b9fa113e8bc00019915cedff5f0659471fdb63e9b3b392"
+    },
+    {
+      "path": "lifecycle-control/isolated-wgl/opengl32.dll",
+      "bytes": 137216,
+      "sha256": "419ab7c45f86300acef8eee53414c639a26893fbd7adb24ba9b8f7700855604c"
+    },
+    {
+      "path": "lifecycle-control/isolated-wgl/pipe_swrast.dll",
+      "bytes": 46453248,
+      "sha256": "6adb34661b5ebb14caa7f2582e22d8f515ec36e7d2c7c80d07d5f1a199beb137"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-assistant.bmp",
+      "bytes": 7200054,
+      "sha256": "2ff04692b6c2e482f1a70d251938978edbf2f999c71c5578f321026dbb437cf1"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-dark.bmp",
+      "bytes": 7200054,
+      "sha256": "42dec12c05736df894267cfd3ddcefcb8167c2b8938f99b12d3dfb210f3cf4e1"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-dual.bmp",
+      "bytes": 7200054,
+      "sha256": "fb6e47d28c6f8cc32fe830b833b8990c9684ad01aa72d94fd434c60d1fff3dc2"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-full.bmp",
+      "bytes": 7200054,
+      "sha256": "4aaf24b278abc6a2c751a760105faea498721dcecc315978fb4709a3ac754c01"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/empty-after-close.bmp",
+      "bytes": 3013254,
+      "sha256": "232fa69f9f2f449f12bab08972dc749c0e3271963fbf2a701a614536b81f4850"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-narrow.bmp",
+      "bytes": 3013254,
+      "sha256": "f657dbd54b3755194ada989f1a74ab8749198dcc437114dd27665e9ae8a07ec9"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/empty-system.bmp",
+      "bytes": 7200054,
+      "sha256": "059f5e52e1cf6adc83b0260903601b6f865100364507cbba98b7af4645461bd7"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/english-dark.bmp",
+      "bytes": 7200054,
+      "sha256": "bc683f84ef82eae21f7b9ff7ea4fc7002fe6eba19f8db94b040dbcc11edc9021"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/english-dual.bmp",
+      "bytes": 7200054,
+      "sha256": "7d132e505260f2625c4c2234085e64d7ec19de2b956e9c827f16b083ec24b02a"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/english-full.bmp",
+      "bytes": 7200054,
+      "sha256": "c77ee7392b8be7bd98e9c0a74414e59b55f42344d992013053cd4535b4142645"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/profile-A.ust",
+      "bytes": 584,
+      "sha256": "3ff04acb8290d4dcac9a1206234d3ff8533d25d9788df0082305cb950ceff22e"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/profile-A.ust.language",
+      "bytes": 16,
+      "sha256": "60aca3b68561b2236f8b16c30567373eb420b1126ae4742972fe1e67af9c0c65"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/profile-B.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/profile-B.ust.language",
+      "bytes": 16,
+      "sha256": "9db4fb8490a4850445aa650bd10ffcf6ba41003c26d1c4798ca65069afc16cb5"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-assistant.bmp",
+      "bytes": 7360054,
+      "sha256": "cdcccc56e53d8ca230947819cfa2769a865f798165730cad55c40972934bd08b"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-dark.bmp",
+      "bytes": 7360054,
+      "sha256": "20f8d4e22f868280e4e5ec89d93ff81103aa81fd05eda91142bb8ae869135bb9"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-dual.bmp",
+      "bytes": 7360054,
+      "sha256": "45be5f2f96e271ce8036bbcc0dfc64b29e9e2bf27ecd23be2b6631c59b38297c"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-full.bmp",
+      "bytes": 7360054,
+      "sha256": "685839f4e0ec1eed8ed4934c9112618f94d316b4f06392e74138d4f15a4b8347"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-narrow.bmp",
+      "bytes": 5356854,
+      "sha256": "89ae2544093e9d8a29606066a9b26a5fd3556dc6d2b461f22d907c96f2cf0195"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/empty-after-close.bmp",
+      "bytes": 5356854,
+      "sha256": "f57645689d631ab4d71a147be1b8e163ced57c62386ef2920d20c25b90222f15"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/english-dark.bmp",
+      "bytes": 7360054,
+      "sha256": "015022478c8af7c8d0ec3c27bf3cc20ac136913b979d25ccb74693acb83500be"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/english-dual.bmp",
+      "bytes": 7360054,
+      "sha256": "497bb743dd384c70ce2b4f01fd44804a83a20e9cd54a1c05b91872e07625c3c8"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/empty-system.bmp",
+      "bytes": 7360054,
+      "sha256": "c0d3db4bf6b53787283a009fc22f070b6a5b840a4b95db5d04707c912ff3be0a"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/english-full.bmp",
+      "bytes": 7360054,
+      "sha256": "9d4742e90ad559e4fbb8dbdbdf6d0c2216f83a75bc15f9e8060ebf25628c4715"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/profile-A.ust",
+      "bytes": 584,
+      "sha256": "387e67d82996e02c16da575e0cf0bc4c969ecddf482f7637fa38088585dc1cfe"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/profile-A.ust.language",
+      "bytes": 16,
+      "sha256": "60aca3b68561b2236f8b16c30567373eb420b1126ae4742972fe1e67af9c0c65"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/profile-B.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/profile-B.ust.language",
+      "bytes": 16,
+      "sha256": "9db4fb8490a4850445aa650bd10ffcf6ba41003c26d1c4798ca65069afc16cb5"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-dark.bmp",
+      "bytes": 3840054,
+      "sha256": "f4e950c7d4b6024f2b63dc0199a3ca8230c09632cc64b9b0f9e2a19789643b23"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-assistant.bmp",
+      "bytes": 3840054,
+      "sha256": "d1dca1c46dfce421b122ff3a0bac51fb49a2e4a282f89048f5c7060a792c0af6"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-dual.bmp",
+      "bytes": 3840054,
+      "sha256": "756d3c17dc5a64018da38422b1ffa7be46bd19d50a4ff57e229fca83266ffa31"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-full.bmp",
+      "bytes": 3840054,
+      "sha256": "9bc0f1207e464673da690a9a83dc41895bcf150eea2c5c6500a72a07d02236f1"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-narrow.bmp",
+      "bytes": 1339254,
+      "sha256": "757c5731d718a033caa35a5a5435e200dc6a5fc9901bae696dc14e0208655320"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/empty-after-close.bmp",
+      "bytes": 1339254,
+      "sha256": "fb5c2605d4f0b268762aa7401916d14b9802e1557bb3255183bb09c713bd9ca7"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/empty-system.bmp",
+      "bytes": 3840054,
+      "sha256": "de487b03e2e7a41116d2fff6d890699d40a38456b6036d568a6c2ae2266a5d11"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/english-dual.bmp",
+      "bytes": 3840054,
+      "sha256": "076024c64cf062a358c0bac485a182351b3b4da5f3c275c4c584e0b34cd6b010"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/english-dark.bmp",
+      "bytes": 3840054,
+      "sha256": "30df83a3d8bd42ef61f992788f23a5c8dc740b0f3793386731b1d1188fb3d789"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/english-full.bmp",
+      "bytes": 3840054,
+      "sha256": "98fb4f548c90d76f3d0d7823fe9d892cb4461419bfe34b885b2bf607e84c5e54"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/profile-A.ust.language",
+      "bytes": 16,
+      "sha256": "60aca3b68561b2236f8b16c30567373eb420b1126ae4742972fe1e67af9c0c65"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/profile-B.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/profile-A.ust",
+      "bytes": 584,
+      "sha256": "831fdc434025999f859380497bde0f3561749c2a2f22d77d4b5f79b3ebc8d8f0"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/profile-B.ust.language",
+      "bytes": 16,
+      "sha256": "9db4fb8490a4850445aa650bd10ffcf6ba41003c26d1c4798ca65069afc16cb5"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/manifest.json",
+      "bytes": 3187,
+      "sha256": "8add47f164ddc25ba9b1e8c814ae48ad17da2444f31bfe20bf0f44e6914ef9d6"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/empty-system.bmp",
+      "bytes": 3840054,
+      "sha256": "a0afcf27d91aac92b8b01e04d1555c9d83f8a7d28afd9fe7f52dd30673101155"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/profile-A.ust.language",
+      "bytes": 16,
+      "sha256": "234c064b83a83f3553bed511bd295ceecbb89e0b6099f6b147b670efec22af61"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/rejected-preference.bmp",
+      "bytes": 3840054,
+      "sha256": "e062e6708abe721e9ccb034c71ebe8a9287aaf22e4f03d9b9366db589b1b4f5d"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/restored-chinese.bmp",
+      "bytes": 3840054,
+      "sha256": "4f98b5381ce3edfafacaff8ee34c4a8518e85a1986c7a836bc636bb6ef7aff14"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences-96.log",
+      "bytes": 2022,
+      "sha256": "a2528db1916a1353a46e714f547006eb3714b3c1a843346e87867975efa19962"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/restore-144.log",
+      "bytes": 4286,
+      "sha256": "c2b1c8b46b5627cea1904fcc12e014d05bec4ecabfcd8e55fa36cb04617b61b6"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/restore-192.log",
+      "bytes": 4313,
+      "sha256": "e4a4800e280759ad74cc21256703d8254d159343ce1ecbb1d646663ae35ef127"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/restore-96.log",
+      "bytes": 4285,
+      "sha256": "01965b8ee7ec065e7325148b3be0a696b6b7fe0ba6a30d05de9c9f3b66b0c977"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/write-192.log",
+      "bytes": 5246,
+      "sha256": "ac566a3ebbec0644292ee073f1d2e13d8384040355c1511a24ce25a73feaee2d"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/write-144.log",
+      "bytes": 5229,
+      "sha256": "dada4355ef3db7c2214fb0b77a9efd318e1321ccd02d5e93ef1881609c38044c"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/write-96.log",
+      "bytes": 5231,
+      "sha256": "983c1983ec8b81c585bc217bc1042cabf37d4370fe573d4d3f103a35d35ff222"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/manifest.json",
+      "bytes": 1339,
+      "sha256": "72426654ed25ab077f1fb9e73df66e3654e789e97b342a32e4fdac1ef2d7e6ae"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/empty-system.bmp",
+      "bytes": 3840054,
+      "sha256": "a0afcf27d91aac92b8b01e04d1555c9d83f8a7d28afd9fe7f52dd30673101155"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/profile-A.ust.language",
+      "bytes": 16,
+      "sha256": "234c064b83a83f3553bed511bd295ceecbb89e0b6099f6b147b670efec22af61"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/rejected-preference.bmp",
+      "bytes": 3840054,
+      "sha256": "4c6693a97a0c797450ed35bbee547e2fc9349454258a4f745b5d8d9164b9626d"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/restored-chinese.bmp",
+      "bytes": 3840054,
+      "sha256": "7225a8d5e787731f9682e16c1003ab78a4aeb7fdce8bc4b0b2d16f075517a050"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences-96.log",
+      "bytes": 2022,
+      "sha256": "bb03e15e930490545c6533c376a4cdbb55a6a0eef500a2f9741ede7b5539e233"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/before.bmp",
+      "bytes": 3840054,
+      "sha256": "0a923a797f375e185ae793035f51aedef8334206db30e1ab854fe7f636f4bcf8"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/profile-A.ust",
+      "bytes": 624,
+      "sha256": "ccedb90bf9ca0e66b6fa50390bb7bf294daae039708a55f202e79080c41aafe1"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/restore-96.bmp",
+      "bytes": 3840054,
+      "sha256": "0cf24e7e6b12aec2dec5e1c9aacbbd68e246f2bbfaca09ed9cf9f9395e1340cf"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/saved.bmp",
+      "bytes": 3840054,
+      "sha256": "4ef5680eeba2ab0c7b83564058838de25e361bb5bb72086fafb52cf70c71ff01"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/restore-96.log",
+      "bytes": 862,
+      "sha256": "d317535522ba6a04d4c8e0e99357a3f6c42f34635a016bd92327f23690314ac5"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/manifest.json",
+      "bytes": 1129,
+      "sha256": "285ff3f9107e8e5fe9a4e24518645d19b60b9f8d0dafced3d3557bd3a0cfd0a8"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/checksum.log",
+      "bytes": 693,
+      "sha256": "359924c6e3095eae0b598ae40467fd64980596bd1e20c051534a907de24fe4d8"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/write-96.log",
+      "bytes": 1189,
+      "sha256": "481bc4d72df43747cfe3f1d793b84a93a6e032483b77ed8efdb1c3fe640f8c8f"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/columns-future.log",
+      "bytes": 693,
+      "sha256": "3362d30c86d053e422e27753b88a06fd4f259844566585450f484a5c0a645966"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/columns-reserved.log",
+      "bytes": 693,
+      "sha256": "7893573f958703971b0987490fb773acf15c6694fcac7658ce3afad0e70e54c3"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/before.bmp",
+      "bytes": 7920054,
+      "sha256": "4ac6a112c99ec5f5ec6730f642c2428ce7e9f9748b608b4b2034ee76901d3617"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/profile-A.ust",
+      "bytes": 624,
+      "sha256": "6a4bd9f02aa1e7bec2f1d42339e2cea7d1c683ca424c8c587a8ef6b6e5f43542"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/restore-144.bmp",
+      "bytes": 7920054,
+      "sha256": "381536a90dc050e14438fec270e85646af65f444df5cc015edc95592cc42981d"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/saved.bmp",
+      "bytes": 7920054,
+      "sha256": "188e52e31ef48cd018e4f83608ede241359c2b803ad0d235e67f510200e21c82"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/before.bmp",
+      "bytes": 8536054,
+      "sha256": "e9041b421ba15188cb0827d2164d166b52507c6393b551b971f9307b26b370fe"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/profile-A.ust",
+      "bytes": 624,
+      "sha256": "78fc06a7453ef60186f066ce65e75e0ba0c0eea9e3363b2831cb2acb2f6e8e14"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/restore-192.bmp",
+      "bytes": 8536054,
+      "sha256": "9a237f3b7b1f73cad443dba47d8530daab18db43bc3a36e27aa6fa2d8a591d8e"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/saved.bmp",
+      "bytes": 8536054,
+      "sha256": "9dfe7b3a9e842734fbdd75b38e3ee966f0bd5d55f71707f5e3f281034dae96f6"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/before.bmp",
+      "bytes": 3840054,
+      "sha256": "03432617b915229df8ff7855c71a118747149605deeab0a58517f17a8e84ba2b"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/profile-B.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/profile-A.ust",
+      "bytes": 544,
+      "sha256": "1a5bc0e7b7513d677608e99ead3a98f6bbca72e2a833bbcbc7eee934d80e4732"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/profile-B.ust",
+      "bytes": 584,
+      "sha256": "1f95c5ae56d04c02c69e4d326c72142aa576fcd45e49c309b67ca43915f17cec"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/reordered-columns.bmp",
+      "bytes": 3840054,
+      "sha256": "9010c01f12283d4f8b8c4076962f0c6fa42521b97b9d1b367d0d08ab6766e57f"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/restore-96.bmp",
+      "bytes": 3840054,
+      "sha256": "0cf24e7e6b12aec2dec5e1c9aacbbd68e246f2bbfaca09ed9cf9f9395e1340cf"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/saved.bmp",
+      "bytes": 3840054,
+      "sha256": "4ef5680eeba2ab0c7b83564058838de25e361bb5bb72086fafb52cf70c71ff01"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/empty.log",
+      "bytes": 693,
+      "sha256": "611a2a83627e61486e4ffed3469501f335ffadcf0bdb0fff75f1f5747f0b39c2"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/failed-create-mount-lock-release.log",
+      "bytes": 707,
+      "sha256": "73807393586546f73597592196f3048888cf6e01a5c79e43bb11f6af97be364f"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/future.log",
+      "bytes": 693,
+      "sha256": "963ab56c72b2eca4449336a7d50c64c630d4447cbf74a949f92c45c4e93d85e1"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/initialization/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-checksum/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-checksum/profile-A.ust",
+      "bytes": 624,
+      "sha256": "9376500dd8c94ba9871bf65b674a02b8a4b82349c81c6ecca5a5211055a29973"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-columns-future/profile-A.ust",
+      "bytes": 624,
+      "sha256": "aa7cfa6e17ce1d9faf8122c6512ef50bda50437cb2740989943a1e79e07a53e6"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-columns-future/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-columns-reserved/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-columns-reserved/profile-A.ust",
+      "bytes": 624,
+      "sha256": "1d75d4366d593f0d20171da97c4b7adde7921bca7abc97ab75e8290fd02cb62e"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-empty/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-empty/profile-A.ust",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-future/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-future/profile-A.ust",
+      "bytes": 624,
+      "sha256": "5b015f3d4bc7956329d736f563be0407e0745964d4233c56ed478b42a50dfc31"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-layout-future/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-layout-future/profile-A.ust",
+      "bytes": 624,
+      "sha256": "2c3e8f2002ab81d42b5d2fa6cb3e90a831a7fe8452f55f46907aeef30b39d6d3"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-layout-invalid/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-layout-invalid/profile-A.ust",
+      "bytes": 624,
+      "sha256": "b4006f1c9dc3637fdc8e785c1490de68d9ee9f0a415706faa2823d0b1c9f8e70"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-magic/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-magic/profile-A.ust",
+      "bytes": 624,
+      "sha256": "797ee7b613548af83ba782064b4154fd5d95f281925814423f326aa639bc90a4"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-oversized/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-oversized/profile-A.ust",
+      "bytes": 70001,
+      "sha256": "b3ae04a0713026c8cbf88b6cbff173f68a27cd376414c46645dd1a2293486c99"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-truncated/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-truncated/profile-A.ust",
+      "bytes": 41,
+      "sha256": "b276431edddd6b312d1572062d514063fcb4d4d39afdd589e089cd7561d50242"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/isolation.log",
+      "bytes": 1217,
+      "sha256": "d493033dd1a3067bd7a540ec17c2ba3b2b8f775f3a871371a321d6fc97418d48"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/layout-future.log",
+      "bytes": 693,
+      "sha256": "1fc8c992f89c6784f6def73eb9d61dac912c702d71aa0d380ac8db4e80784cd5"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/locked-profile.log",
+      "bytes": 707,
+      "sha256": "3941878c0fec525d5dd6de45fe9cea6b49760da0179013dc9d201044a675d4db"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/layout-invalid.log",
+      "bytes": 693,
+      "sha256": "6ce4f7dd2b8619453a7c9441b846b557ddc5b282652d709972faac5c00550d86"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/magic.log",
+      "bytes": 693,
+      "sha256": "2bba2988148c414def8edaed6a2212638e012ac5693c2b0696f4142f97933eee"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/manifest.json",
+      "bytes": 7877,
+      "sha256": "bb25fc84e47b50c1187951a59c06a173d13b033a8b1ce42d984dcfa09ac016fb"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/missing/profile-A.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/missing-file.log",
+      "bytes": 695,
+      "sha256": "9de828e66fa15291df205649564b105b393bdb364d985aa55583ba7eeae80417"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/missing-new-columns.log",
+      "bytes": 691,
+      "sha256": "ed584349ffb1150a547dbf723e8d973e5f0636a0f7ebd296bd72e72550db3fb0"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/oversized.log",
+      "bytes": 693,
+      "sha256": "feee99b620468f0f08898ac19d668b13ae060ca2400adccee658c7c683a7d9e8"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/profile-b.log",
+      "bytes": 697,
+      "sha256": "60b124d83bc40c09a2220a0fe4118571239f53d750451f9ef299c752a4059114"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/reordered-columns.log",
+      "bytes": 866,
+      "sha256": "07b620e841a502619085300ae62a05750fd472388bd696f45c08e5e09ecd5998"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/reload.log",
+      "bytes": 691,
+      "sha256": "f445f6a6cf956b613cc53e6293a4fb2e04fd1a259744ad8c90f8f770e23ac275"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/reset.log",
+      "bytes": 689,
+      "sha256": "42708fb29975fb9e76911af0154bc1ef637b1f024bb02cfb4b5ac365c4f7ab68"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/reset-cross-process.log",
+      "bytes": 695,
+      "sha256": "acf4c9c69918e93128ea819bd4340e3520cfded8fdfbe6ab1a421ea81a559c05"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/restore-192.log",
+      "bytes": 863,
+      "sha256": "170d6a5aeda931c7ef0c64687041838addfd62874c3d6a6653204cfa12e7caed"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/restore-144.log",
+      "bytes": 863,
+      "sha256": "f584993c4ef705fcb890ea8443201983db6b287459646762a7dc94b407d9769f"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/restore-96.log",
+      "bytes": 862,
+      "sha256": "79b2360ea26cdc34a82ac27498d38e0e8e8270c51757325955b898ebc82850a7"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/truncated.log",
+      "bytes": 683,
+      "sha256": "4f9c726daf09ad8525a2a80e1b1722a74b93f2bc5adb643fd44239f6a11eb29c"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/write-144.log",
+      "bytes": 1191,
+      "sha256": "555b9931533add7e7d9ded3339eecfaa6f5b01a9083e5fe534cd49db0b4850ff"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/write-192.log",
+      "bytes": 1176,
+      "sha256": "7e017edfb34dd53de30c6290feda5de87c83dd0d8f06d4ca6c1c26c3b2bbfe77"
+    },
+    {
+      "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/write-96.log",
+      "bytes": 1189,
+      "sha256": "eecb56fd859bdd5617a92bbd4a7e8f7afeef1d292cb94958eb6b0cbb3e22c2a2"
+    },
+    {
+      "path": "lifecycle-control/raw/caller-build.log",
+      "bytes": 23,
+      "sha256": "0545dc7566f8f8dc0b800641c418bde4e7e26c46819bcc0f25f032fe6bcfdb01"
+    },
+    {
+      "path": "lifecycle-control/raw/original-test-plan.json",
+      "bytes": 2221,
+      "sha256": "a06e78097301c00e8f9a01b0af3cc4f7043fd0c8f25d88f3b59710f1414604de"
+    },
+    {
+      "path": "lifecycle-control/raw/results.json",
+      "bytes": 27576,
+      "sha256": "eb4eb03abdbc774f2c0579c288af19bfa94032bf02df78105ec6f84b9c3cfce7"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/CTestTestfile.cmake",
+      "bytes": 926,
+      "sha256": "1cebbbff7cebb3ea1442ab0feef1c76ef0c65deab5dc0add096ad20383391287"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/Testing/Temporary/CTestCostData.txt",
+      "bytes": 99,
+      "sha256": "82d066316627239107f2a005c4dec1a284896295b9117b57c2310005afe9600b"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/Testing/Temporary/LastTest.log",
+      "bytes": 3320,
+      "sha256": "674934863ca72520e4d14cd6bd19103f47e60ef821b482f248bff9131c415d55"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/ctest.xml",
+      "bytes": 2612,
+      "sha256": "66933d4a58dfeb35fe06d77711cb1af4da00ce5f23eeeed589a9f5cc122bc680"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/observer.log",
+      "bytes": 203,
+      "sha256": "0375adb62ee0acf9f4af38d83dd9535e2c565aceb14ef7a2fe198de0e1a3a2b4"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/Testing/Temporary/LastTestsFailed.log",
+      "bytes": 30,
+      "sha256": "42f7ee4c141d72f9b92fcf0c4a5f8f05c60bac45a1567e7bf4155e0201eaa2d6"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/CMakeLists.txt",
+      "bytes": 52412,
+      "sha256": "b51306b07c1c7e887d65cae97a7528140897769de5c9eab2e6e834fbe8d38c98"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/application.h",
+      "bytes": 8306,
+      "sha256": "4c87d5dab2f59eea1a240e1378849604635222452d785b6d928b792b1c6483ab"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/assistant.h",
+      "bytes": 4915,
+      "sha256": "785ddb31f95bcde0669dbfc8993c7a2408e560953725690911aa1c84e78f59b6"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/components.h",
+      "bytes": 13416,
+      "sha256": "b53e84f337208d80fb8fcb104d70b007c79e00fe38992243ed2ce75d2275e997"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/images.h",
+      "bytes": 2294,
+      "sha256": "391bb3234a5fbcd89163ca7508be34beb492c7bfe03b81bf4fce0199532d8431"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/language.h",
+      "bytes": 2647,
+      "sha256": "4898dfc284f0c6023d4c020e64855169d576b2144187e0cb10adf1374bd9b9fc"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/menus.h",
+      "bytes": 3785,
+      "sha256": "9faba850144360ebb536c17e345bab2e6bf4081c9a352e715827e9c0b7a9a317"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/light_web.h",
+      "bytes": 1116,
+      "sha256": "98df2ed526240575d8ddea17002515dd8be2eacc3ee7e335848f9024b7b43ee2"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/native.h",
+      "bytes": 2972,
+      "sha256": "7b27baab4c88246edb7ac1714e0774bcf5b1dfb65d9f5cdabfc9c868a570382c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/opengl.h",
+      "bytes": 4066,
+      "sha256": "84b413b7fed2280acde808810eed1fcf852ed580c277d923232cf29f7d2ca3f6"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/package.h",
+      "bytes": 2569,
+      "sha256": "b1fd6667566687f1430002030b5f3a23a373e34796939627d1cb3849e36a2e91"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/shell.h",
+      "bytes": 5268,
+      "sha256": "bb8b607aa35a1936c0f6d9740527082ac6933953cd764df6d1a356283ab4c86c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/ui.h",
+      "bytes": 22806,
+      "sha256": "5af970d4ee902224c1a9d262bedc3371a2b9ec93b9a762863e67eb336e76803c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/webview2.h",
+      "bytes": 3370,
+      "sha256": "57b3f4e5af2a5f2c53f096e725563752c8e159cbbe054bf42bd741fe7d77c8ca"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/src/components.html",
+      "bytes": 44259,
+      "sha256": "b4a4b8828240c37d8fdc8482236b47d4420352c7caf4778733b5b5879b27de71"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/src/menus.c",
+      "bytes": 41957,
+      "sha256": "a95598ee84debaeab43453629fffd7111d7e8e52bd8fecb41fa64e011154a313"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/display_probe.c",
+      "bytes": 11879,
+      "sha256": "9b8ab40ef047634b980b568a8205e8e1d6ea5c6cbb64b6fcf906025866a4079e"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/framework_features_host.c",
+      "bytes": 11615,
+      "sha256": "29ccd9fa784d76e1f43998eca61e614946e83fe11bd61aca0545434a7ff2c6f9"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/interaction_probe.c",
+      "bytes": 42381,
+      "sha256": "130c9b7944f0f5e16014c3e5e286c4cc55934943b5e384a6019d7e7a9acb24ca"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/observe_processes.py",
+      "bytes": 6568,
+      "sha256": "a69b28fdab4e508c06c75d59cafd3a276f336a177d04c8e816bb644931990ece"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+      "bytes": 9858,
+      "sha256": "bf5ecbb18ba8902e511d3b55261d6ff0b9f096598b3abb008a321b527c15a8e3"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+      "bytes": 20326,
+      "sha256": "5ee752c5dac0323158f9981fcbcc44805aaa7fe9a96483bef8300c8871f7d4cf"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/process_stall_capture.py",
+      "bytes": 1936,
+      "sha256": "a377a3af53fb168db826ec14910d57d6a92f936d4d2039f02647ddabbbd62e2b"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+      "bytes": 16945,
+      "sha256": "a154b2f3c85767b1dbf3f4f30a5dc5dd58b7b723e0aa1cf59c2635b5a838dc4a"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+      "bytes": 5664,
+      "sha256": "8593b88fb4d673ee7e4d788692653829d2a3953aaa2dec404ffc62effb34ba12"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.identities.json",
+      "bytes": 4624,
+      "sha256": "b0aa5c0640fd5deae31d7dd098af6ae64f86571655c76675013d703cc354b740"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.jsonl",
+      "bytes": 7406,
+      "sha256": "f8a4a568bbf2ffc819f40cada78be9f3486717c22769495bd0670c45780d738a"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.log",
+      "bytes": 4061,
+      "sha256": "660054da066495a2769454aee31517affca336236c91fa20b411c95f480a3362"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/2676-rast-live.bin",
+      "bytes": 10856,
+      "sha256": "77019f30c9c1fd936b0332213adcaff7bb8d9aa7d389998a6cb5da34871d5ab5"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/2676.dmp",
+      "bytes": 141870805,
+      "sha256": "6270259b002d9dad0e04d6001898cd2a1db640daa15fb0aceca6de4db715179c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/2720.dmp",
+      "bytes": 266045160,
+      "sha256": "c55fb0523b095ba1a661077e4b48fcc7b4e14a7cc27dd7a7c30aea8e0a9f6740"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/6984.dmp",
+      "bytes": 55174042,
+      "sha256": "528700496774eb6e0caff7ccfb0e0e2a780499b22274344445b25a585d917763"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/capture.json",
+      "bytes": 5866,
+      "sha256": "88383faf45de2c2853b19b433f9ce2731a6e39b0934e6cd3d8e6b2de3ec8a718"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/ctest.xml",
+      "bytes": 2898,
+      "sha256": "96a88344002c20afb0a4d403eaec4e380759d541e02230ecdbb38c0fcca49c84"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/observer.log",
+      "bytes": 205,
+      "sha256": "d0825dd2acc1daac00cff9e50434ee1c5c8bceb2cd21586b2153c45bd6f96df1"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/CMakeLists.txt",
+      "bytes": 52412,
+      "sha256": "b51306b07c1c7e887d65cae97a7528140897769de5c9eab2e6e834fbe8d38c98"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/application.h",
+      "bytes": 8306,
+      "sha256": "4c87d5dab2f59eea1a240e1378849604635222452d785b6d928b792b1c6483ab"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/assistant.h",
+      "bytes": 4915,
+      "sha256": "785ddb31f95bcde0669dbfc8993c7a2408e560953725690911aa1c84e78f59b6"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/components.h",
+      "bytes": 13416,
+      "sha256": "b53e84f337208d80fb8fcb104d70b007c79e00fe38992243ed2ce75d2275e997"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/images.h",
+      "bytes": 2294,
+      "sha256": "391bb3234a5fbcd89163ca7508be34beb492c7bfe03b81bf4fce0199532d8431"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/language.h",
+      "bytes": 2647,
+      "sha256": "4898dfc284f0c6023d4c020e64855169d576b2144187e0cb10adf1374bd9b9fc"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/light_web.h",
+      "bytes": 1116,
+      "sha256": "98df2ed526240575d8ddea17002515dd8be2eacc3ee7e335848f9024b7b43ee2"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/menus.h",
+      "bytes": 3785,
+      "sha256": "9faba850144360ebb536c17e345bab2e6bf4081c9a352e715827e9c0b7a9a317"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/native.h",
+      "bytes": 2972,
+      "sha256": "7b27baab4c88246edb7ac1714e0774bcf5b1dfb65d9f5cdabfc9c868a570382c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/opengl.h",
+      "bytes": 4066,
+      "sha256": "84b413b7fed2280acde808810eed1fcf852ed580c277d923232cf29f7d2ca3f6"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/package.h",
+      "bytes": 2569,
+      "sha256": "b1fd6667566687f1430002030b5f3a23a373e34796939627d1cb3849e36a2e91"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/shell.h",
+      "bytes": 5268,
+      "sha256": "bb8b607aa35a1936c0f6d9740527082ac6933953cd764df6d1a356283ab4c86c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/ui.h",
+      "bytes": 22806,
+      "sha256": "5af970d4ee902224c1a9d262bedc3371a2b9ec93b9a762863e67eb336e76803c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/webview2.h",
+      "bytes": 3370,
+      "sha256": "57b3f4e5af2a5f2c53f096e725563752c8e159cbbe054bf42bd741fe7d77c8ca"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/src/components.html",
+      "bytes": 44259,
+      "sha256": "b4a4b8828240c37d8fdc8482236b47d4420352c7caf4778733b5b5879b27de71"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/src/menus.c",
+      "bytes": 41957,
+      "sha256": "a95598ee84debaeab43453629fffd7111d7e8e52bd8fecb41fa64e011154a313"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/display_probe.c",
+      "bytes": 11879,
+      "sha256": "9b8ab40ef047634b980b568a8205e8e1d6ea5c6cbb64b6fcf906025866a4079e"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/framework_features_host.c",
+      "bytes": 11615,
+      "sha256": "29ccd9fa784d76e1f43998eca61e614946e83fe11bd61aca0545434a7ff2c6f9"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/interaction_probe.c",
+      "bytes": 42381,
+      "sha256": "130c9b7944f0f5e16014c3e5e286c4cc55934943b5e384a6019d7e7a9acb24ca"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/observe_processes.py",
+      "bytes": 6568,
+      "sha256": "a69b28fdab4e508c06c75d59cafd3a276f336a177d04c8e816bb644931990ece"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+      "bytes": 9858,
+      "sha256": "bf5ecbb18ba8902e511d3b55261d6ff0b9f096598b3abb008a321b527c15a8e3"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+      "bytes": 20326,
+      "sha256": "5ee752c5dac0323158f9981fcbcc44805aaa7fe9a96483bef8300c8871f7d4cf"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/process_stall_capture.py",
+      "bytes": 1936,
+      "sha256": "a377a3af53fb168db826ec14910d57d6a92f936d4d2039f02647ddabbbd62e2b"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+      "bytes": 16945,
+      "sha256": "a154b2f3c85767b1dbf3f4f30a5dc5dd58b7b723e0aa1cf59c2635b5a838dc4a"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+      "bytes": 5664,
+      "sha256": "8593b88fb4d673ee7e4d788692653829d2a3953aaa2dec404ffc62effb34ba12"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.identities.json",
+      "bytes": 4624,
+      "sha256": "b0aa5c0640fd5deae31d7dd098af6ae64f86571655c76675013d703cc354b740"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.jsonl",
+      "bytes": 9819,
+      "sha256": "28159c229cdc95c1840cf4a9b36c435613469ef45182e1bd45b021453db1efe4"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.log",
+      "bytes": 4352,
+      "sha256": "09e6dfbcac2060710abe864852d132b84116fbf065f6bf639e96e573e9cc32d0"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/4312-rast-live.bin",
+      "bytes": 10856,
+      "sha256": "9c7f9c19702b89a4f8ba928205da6223857407963eebdc88b74f54416b04ee50"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/4312.dmp",
+      "bytes": 134341700,
+      "sha256": "01364fe968afb863d9c84d7115408f127c95fcc90dc04a50fc365e9ddedd0743"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/6032.dmp",
+      "bytes": 263926528,
+      "sha256": "0ab69b5b4c3cc184563368b6a58d88a867984e81a8e698332554ab9da20241c5"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/7408.dmp",
+      "bytes": 55185609,
+      "sha256": "683c780051919a6660354c76e4fe1e598702879338e9100fc6ee1e8e7319ed66"
+    },
+    {
+      "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/capture.json",
+      "bytes": 5862,
+      "sha256": "c2d3f37a6a587a457b22b9b090cc5dd1aedfd38c30c4cbb36c5290da9cb0249e"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/CTestTestfile.cmake",
+      "bytes": 994,
+      "sha256": "f6926794758b0bdd10393d762b0bc8c904b1c30cd5e7a341945b331399aaf877"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/Testing/Temporary/CTestCostData.txt",
+      "bytes": 83,
+      "sha256": "67f636cc0d0bbc679649aba4f7a52c8c4648913b79fe43c3b49a37050fce2fbd"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/Testing/Temporary/LastTest.log",
+      "bytes": 33477,
+      "sha256": "3b892cbd54928324ef71aee662e3b3a45ddc141dd9a522f268d73e99836d3cdb"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/ctest.xml",
+      "bytes": 1509,
+      "sha256": "b8bbfb19a3512bbb9bfb69b922941d4a4abbb193c2b64a3d368a378b1080de9f"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/observer.log",
+      "bytes": 201,
+      "sha256": "bc59d22e99e920947c228520eac5bf57d1c63e4c3a2e075d67873b17e575d5d2"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/CMakeLists.txt",
+      "bytes": 52412,
+      "sha256": "b51306b07c1c7e887d65cae97a7528140897769de5c9eab2e6e834fbe8d38c98"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/application.h",
+      "bytes": 8306,
+      "sha256": "4c87d5dab2f59eea1a240e1378849604635222452d785b6d928b792b1c6483ab"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/assistant.h",
+      "bytes": 4915,
+      "sha256": "785ddb31f95bcde0669dbfc8993c7a2408e560953725690911aa1c84e78f59b6"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/components.h",
+      "bytes": 13416,
+      "sha256": "b53e84f337208d80fb8fcb104d70b007c79e00fe38992243ed2ce75d2275e997"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/images.h",
+      "bytes": 2294,
+      "sha256": "391bb3234a5fbcd89163ca7508be34beb492c7bfe03b81bf4fce0199532d8431"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/language.h",
+      "bytes": 2647,
+      "sha256": "4898dfc284f0c6023d4c020e64855169d576b2144187e0cb10adf1374bd9b9fc"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/light_web.h",
+      "bytes": 1116,
+      "sha256": "98df2ed526240575d8ddea17002515dd8be2eacc3ee7e335848f9024b7b43ee2"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/menus.h",
+      "bytes": 3785,
+      "sha256": "9faba850144360ebb536c17e345bab2e6bf4081c9a352e715827e9c0b7a9a317"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/native.h",
+      "bytes": 2972,
+      "sha256": "7b27baab4c88246edb7ac1714e0774bcf5b1dfb65d9f5cdabfc9c868a570382c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/opengl.h",
+      "bytes": 4066,
+      "sha256": "84b413b7fed2280acde808810eed1fcf852ed580c277d923232cf29f7d2ca3f6"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/package.h",
+      "bytes": 2569,
+      "sha256": "b1fd6667566687f1430002030b5f3a23a373e34796939627d1cb3849e36a2e91"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/shell.h",
+      "bytes": 5268,
+      "sha256": "bb8b607aa35a1936c0f6d9740527082ac6933953cd764df6d1a356283ab4c86c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/ui.h",
+      "bytes": 22806,
+      "sha256": "5af970d4ee902224c1a9d262bedc3371a2b9ec93b9a762863e67eb336e76803c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/webview2.h",
+      "bytes": 3370,
+      "sha256": "57b3f4e5af2a5f2c53f096e725563752c8e159cbbe054bf42bd741fe7d77c8ca"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/src/components.html",
+      "bytes": 44259,
+      "sha256": "b4a4b8828240c37d8fdc8482236b47d4420352c7caf4778733b5b5879b27de71"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/src/menus.c",
+      "bytes": 41957,
+      "sha256": "a95598ee84debaeab43453629fffd7111d7e8e52bd8fecb41fa64e011154a313"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/display_probe.c",
+      "bytes": 11879,
+      "sha256": "9b8ab40ef047634b980b568a8205e8e1d6ea5c6cbb64b6fcf906025866a4079e"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/framework_features_host.c",
+      "bytes": 11615,
+      "sha256": "29ccd9fa784d76e1f43998eca61e614946e83fe11bd61aca0545434a7ff2c6f9"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/interaction_probe.c",
+      "bytes": 42381,
+      "sha256": "130c9b7944f0f5e16014c3e5e286c4cc55934943b5e384a6019d7e7a9acb24ca"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/observe_processes.py",
+      "bytes": 6568,
+      "sha256": "a69b28fdab4e508c06c75d59cafd3a276f336a177d04c8e816bb644931990ece"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+      "bytes": 20326,
+      "sha256": "5ee752c5dac0323158f9981fcbcc44805aaa7fe9a96483bef8300c8871f7d4cf"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/process_stall_capture.py",
+      "bytes": 1936,
+      "sha256": "a377a3af53fb168db826ec14910d57d6a92f936d4d2039f02647ddabbbd62e2b"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+      "bytes": 16945,
+      "sha256": "a154b2f3c85767b1dbf3f4f30a5dc5dd58b7b723e0aa1cf59c2635b5a838dc4a"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+      "bytes": 9858,
+      "sha256": "bf5ecbb18ba8902e511d3b55261d6ff0b9f096598b3abb008a321b527c15a8e3"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+      "bytes": 5664,
+      "sha256": "8593b88fb4d673ee7e4d788692653829d2a3953aaa2dec404ffc62effb34ba12"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.identities.json",
+      "bytes": 4624,
+      "sha256": "b0aa5c0640fd5deae31d7dd098af6ae64f86571655c76675013d703cc354b740"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.jsonl",
+      "bytes": 30252,
+      "sha256": "b3f20907cebe6b19fbda6cd094d33c7d391d055b4de71137e3018fc8010c77c3"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.log",
+      "bytes": 35170,
+      "sha256": "b407c6339166cfbcbd9fd6c6e79a064324f6ecbd3229e2cb11f9998a60017551"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/ctest.xml",
+      "bytes": 1515,
+      "sha256": "938c5489a54c4e3d9fd6978d0bef02c3727e65a4adaf6ecdabaff6f315f428d7"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/observer.log",
+      "bytes": 204,
+      "sha256": "4058106767130b5f21b0b23de0ff63f91bfd5ba56ccf4f5d67244c69c201af7e"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/CMakeLists.txt",
+      "bytes": 52412,
+      "sha256": "b51306b07c1c7e887d65cae97a7528140897769de5c9eab2e6e834fbe8d38c98"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/application.h",
+      "bytes": 8306,
+      "sha256": "4c87d5dab2f59eea1a240e1378849604635222452d785b6d928b792b1c6483ab"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/assistant.h",
+      "bytes": 4915,
+      "sha256": "785ddb31f95bcde0669dbfc8993c7a2408e560953725690911aa1c84e78f59b6"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/components.h",
+      "bytes": 13416,
+      "sha256": "b53e84f337208d80fb8fcb104d70b007c79e00fe38992243ed2ce75d2275e997"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/images.h",
+      "bytes": 2294,
+      "sha256": "391bb3234a5fbcd89163ca7508be34beb492c7bfe03b81bf4fce0199532d8431"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/language.h",
+      "bytes": 2647,
+      "sha256": "4898dfc284f0c6023d4c020e64855169d576b2144187e0cb10adf1374bd9b9fc"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/light_web.h",
+      "bytes": 1116,
+      "sha256": "98df2ed526240575d8ddea17002515dd8be2eacc3ee7e335848f9024b7b43ee2"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/menus.h",
+      "bytes": 3785,
+      "sha256": "9faba850144360ebb536c17e345bab2e6bf4081c9a352e715827e9c0b7a9a317"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/opengl.h",
+      "bytes": 4066,
+      "sha256": "84b413b7fed2280acde808810eed1fcf852ed580c277d923232cf29f7d2ca3f6"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/native.h",
+      "bytes": 2972,
+      "sha256": "7b27baab4c88246edb7ac1714e0774bcf5b1dfb65d9f5cdabfc9c868a570382c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/package.h",
+      "bytes": 2569,
+      "sha256": "b1fd6667566687f1430002030b5f3a23a373e34796939627d1cb3849e36a2e91"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/shell.h",
+      "bytes": 5268,
+      "sha256": "bb8b607aa35a1936c0f6d9740527082ac6933953cd764df6d1a356283ab4c86c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/ui.h",
+      "bytes": 22806,
+      "sha256": "5af970d4ee902224c1a9d262bedc3371a2b9ec93b9a762863e67eb336e76803c"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/webview2.h",
+      "bytes": 3370,
+      "sha256": "57b3f4e5af2a5f2c53f096e725563752c8e159cbbe054bf42bd741fe7d77c8ca"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/src/components.html",
+      "bytes": 44259,
+      "sha256": "b4a4b8828240c37d8fdc8482236b47d4420352c7caf4778733b5b5879b27de71"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/src/menus.c",
+      "bytes": 41957,
+      "sha256": "a95598ee84debaeab43453629fffd7111d7e8e52bd8fecb41fa64e011154a313"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/display_probe.c",
+      "bytes": 11879,
+      "sha256": "9b8ab40ef047634b980b568a8205e8e1d6ea5c6cbb64b6fcf906025866a4079e"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/framework_features_host.c",
+      "bytes": 11615,
+      "sha256": "29ccd9fa784d76e1f43998eca61e614946e83fe11bd61aca0545434a7ff2c6f9"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/interaction_probe.c",
+      "bytes": 42381,
+      "sha256": "130c9b7944f0f5e16014c3e5e286c4cc55934943b5e384a6019d7e7a9acb24ca"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/observe_processes.py",
+      "bytes": 6568,
+      "sha256": "a69b28fdab4e508c06c75d59cafd3a276f336a177d04c8e816bb644931990ece"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+      "bytes": 9858,
+      "sha256": "bf5ecbb18ba8902e511d3b55261d6ff0b9f096598b3abb008a321b527c15a8e3"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+      "bytes": 20326,
+      "sha256": "5ee752c5dac0323158f9981fcbcc44805aaa7fe9a96483bef8300c8871f7d4cf"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/process_stall_capture.py",
+      "bytes": 1936,
+      "sha256": "a377a3af53fb168db826ec14910d57d6a92f936d4d2039f02647ddabbbd62e2b"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+      "bytes": 16945,
+      "sha256": "a154b2f3c85767b1dbf3f4f30a5dc5dd58b7b723e0aa1cf59c2635b5a838dc4a"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+      "bytes": 5664,
+      "sha256": "8593b88fb4d673ee7e4d788692653829d2a3953aaa2dec404ffc62effb34ba12"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.identities.json",
+      "bytes": 4624,
+      "sha256": "b0aa5c0640fd5deae31d7dd098af6ae64f86571655c76675013d703cc354b740"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.jsonl",
+      "bytes": 54285,
+      "sha256": "1deb02a246c1d46cc84fb37aec4e6649eb7609f5150515a3943efeb1d0bc10ae"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.log",
+      "bytes": 30008,
+      "sha256": "4632c95d01a1d25e0681f0fb23c0d1023987ffba0d91026867e5acb30da0b655"
+    },
+    {
+      "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.patch",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-A-gate0/stdout.log",
+      "bytes": 5594,
+      "sha256": "dc4e72233f8f1232c4db082bc8bf93e9e7679e6febd9a54529be597586e8fa9a"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-A-gate1/capture.log",
+      "bytes": 2993,
+      "sha256": "e48f7ce8ebe2caf54b0a02223233523e81a7430ea3de75ce71acc8521b18db0f"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-A-gate1/first-full-dump/532-rast-live.bin",
+      "bytes": 10856,
+      "sha256": "020bc286b9c746f719dc975f94c13de0d6c88b7bcc89cd81020c54ea8b106b3a"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-A-gate1/first-full-dump/532.dmp",
+      "bytes": 127998956,
+      "sha256": "23459ce0ab43aacd8b01557f9a30a6080ad0247d94b555248ede99d83994ddb9"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-A-gate1/first-full-dump/capture.json",
+      "bytes": 5046,
+      "sha256": "bce2d0945f906f9f28c89d4630debe6f3aeaea1196320c7fb4604cb3b4de478e"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-A-gate1/stdout.log",
+      "bytes": 5593,
+      "sha256": "3fe0721b392182ba2392aa6b39e964e46f44c2f052088fc6a1b7575207e26a3b"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-C-gate0/stdout.log",
+      "bytes": 5572,
+      "sha256": "22e6ba0d8dee4a015a3fc146c375c1c1e5def3b567efa1f515f6440b4d69cd77"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-C-gate1/capture.log",
+      "bytes": 3030,
+      "sha256": "00091c092f3bd7ab8ba56b2f6c01cf009b83d83629dd2f0dea053333a1535f6b"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-C-gate1/first-full-dump/7132.dmp",
+      "bytes": 126921104,
+      "sha256": "f4283b117f74838bda3b26d9d7e556188bb4cc086c08b33a1b682f1fb850e4af"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-C-gate1/first-full-dump/capture.json",
+      "bytes": 5083,
+      "sha256": "e0ba527593761104c59b0f13fe1d01742354a95120714344d93c28d4a89237f7"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-C-gate1/first-full-dump/7132-rast-live.bin",
+      "bytes": 10856,
+      "sha256": "645637d0fea01f5941d3f11c1f2e3112aa1462e13e53fd962bfc7b1b12af28c3"
+    },
+    {
+      "path": "lifecycle-control/runs/probe-C-gate1/stdout.log",
+      "bytes": 5581,
+      "sha256": "3875d57594e272daeabc388e3b74cdb531e13a4b27ec2698d9119ce1400483f2"
+    },
+    {
+      "path": "lifecycle-control/system-images/KERNELBASE.dll",
+      "bytes": 3637776,
+      "sha256": "9817ec58129ec44dc8b063a7790565d41fd5e1d8673d57e43a79b669b63e0255"
+    },
+    {
+      "path": "lifecycle-control/system-images/kernel32.dll",
+      "bytes": 790784,
+      "sha256": "da41de8a936170f771f6f3b1543b93fdf6768d3b5b40ff8637820ca01ade9d82"
+    },
+    {
+      "path": "lifecycle-control/system-images/ucrtbase.dll",
+      "bytes": 1129648,
+      "sha256": "5e5ae0f8e4325ceb3ee767065dda6e03e980d401f00a2bdb8ca81ed90813920f"
+    },
+    {
+      "path": "lifecycle-control/system-images/ntdll.dll",
+      "bytes": 2104800,
+      "sha256": "cf49573b6caa724c13310f2f774e81d527831e84bb8db822e12932ce6a47ea9e"
+    },
+    {
+      "path": "lifecycle-desktop.json",
+      "bytes": 101,
+      "sha256": "3d253e0d6c4c86c97fad133abd941488ee4fb4735b4a12872b45ca8c7434202a"
+    },
+    {
+      "path": "runtime.log",
+      "bytes": 71,
+      "sha256": "0709d32f3b8a408b203d095dfa4a0bc506661ac42a0af0d70d1279423d4e3a2a"
+    }
+  ]
+}

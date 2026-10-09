@@ -1,0 +1,417 @@
+{"kind": "observer_start", "elapsed_ms": 0.0, "command": ["ctest", "--test-dir", "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-C", "-R", "^ui_stateful_components_light$", "--no-tests=error", "-V", "--output-junit", "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-C\\ui_stateful_components_light\\ctest.xml"], "cwd": "D:\\a\\ui-framework\\ui-framework", "time_ns": 1791542107097730200, "diagnostic_environment": {"UI_RUNTIME_CYCLES": null, "UI_RUNTIME_READY_REOPENS": null, "UI_RUNTIME_RESOURCES": null, "UI_FEATURE_TRACE": null, "UI_FEATURE_PAINT_TRACE": null, "UI_PROCESS_STALL_SECONDS": "60"}}
+{"kind": "parent_started", "elapsed_ms": 0.0, "pid": 792}
+{"kind": "child_observed", "elapsed_ms": 31.0, "pid": 5744, "parent": 792, "exe": "pwsh.exe", "handle_open": true, "open_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 469.0, "line": "1: CASE_BEGIN label=write-96 mode=write dpi=96 utc=2026-10-09T10:35:07.5658815Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "child_observed", "elapsed_ms": 484.0, "pid": 3804, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 484.0, "line": "1: TEST_PHASE pid3804 tick699640 dispatched0 create-host-begin"}
+{"kind": "stdout_line", "elapsed_ms": 531.0, "line": "1: TEST_PHASE pid3804 tick699671 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 547.0, "line": "1: TEST_PHASE pid3804 tick699703 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 844.0, "line": "1: TEST_PHASE pid3804 tick700000 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 1344.0, "line": "1: TEST_PHASE pid3804 tick700500 dispatched34 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 1344.0, "line": "1: TEST_PHASE pid3804 tick700500 dispatched34 screenshot-begin"}
+{"kind": "stdout_line", "elapsed_ms": 1375.0, "line": "1: TEST_PHASE pid3804 tick700531 dispatched34 screenshot-end"}
+{"kind": "stdout_line", "elapsed_ms": 1781.0, "line": "1: TEST_PHASE pid3804 tick700937 dispatched56 screenshot-begin"}
+{"kind": "stdout_line", "elapsed_ms": 1828.0, "line": "1: TEST_PHASE pid3804 tick700984 dispatched56 screenshot-end"}
+{"kind": "stdout_line", "elapsed_ms": 1828.0, "line": "1: TEST_PHASE pid3804 tick700984 dispatched56 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 1859.0, "line": "1: TEST_PHASE pid3804 tick701015 dispatched56 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 1937.0, "line": "1: TEST_PHASE pid3804 tick701093 dispatched58 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 2250.0, "line": "1: TEST_PHASE pid3804 tick701406 dispatched58 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 2250.0, "line": "1: TEST_PHASE pid3804 tick701406 dispatched58 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 2250.0, "line": "1: Stateful actual light / write: 0 failures"}
+{"kind": "child_exit", "elapsed_ms": 2328.0, "pid": 3804, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 2328.0, "line": "1: CASE_END label=write-96 elapsedMs=1848 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 2328.0, "line": "1: CASE_BEGIN label=restore-96 mode=restore dpi=96 utc=2026-10-09T10:35:09.4342362Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 2328.0, "line": "1: TEST_PHASE pid5420 tick701484 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 2344.0, "pid": 5420, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 2359.0, "line": "1: TEST_PHASE pid5420 tick701515 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 2375.0, "line": "1: TEST_PHASE pid5420 tick701531 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 2719.0, "line": "1: TEST_PHASE pid5420 tick701875 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 3219.0, "line": "1: TEST_PHASE pid5420 tick702375 dispatched28 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 3219.0, "line": "1: TEST_PHASE pid5420 tick702375 dispatched28 screenshot-begin"}
+{"kind": "stdout_line", "elapsed_ms": 3234.0, "line": "1: TEST_PHASE pid5420 tick702390 dispatched28 screenshot-end"}
+{"kind": "stdout_line", "elapsed_ms": 3234.0, "line": "1: TEST_PHASE pid5420 tick702390 dispatched28 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 3265.0, "line": "1: TEST_PHASE pid5420 tick702421 dispatched28 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 3344.0, "line": "1: TEST_PHASE pid5420 tick702500 dispatched29 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 3656.0, "line": "1: TEST_PHASE pid5420 tick702812 dispatched29 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 3656.0, "line": "1: TEST_PHASE pid5420 tick702812 dispatched29 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 3656.0, "line": "1: Stateful actual light / restore: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 3719.0, "line": "1: CASE_END label=restore-96 elapsedMs=1401 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 3719.0, "line": "1: CASE_BEGIN label=write-144 mode=write dpi=144 utc=2026-10-09T10:35:10.8398166Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 3734.0, "line": "1: TEST_PHASE pid1408 tick702890 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 3750.0, "pid": 1408, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 3750.0, "pid": 5420, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 3750.0, "line": "1: TEST_PHASE pid1408 tick702906 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 3797.0, "line": "1: TEST_PHASE pid1408 tick702953 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 4125.0, "line": "1: TEST_PHASE pid1408 tick703281 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 4625.0, "line": "1: TEST_PHASE pid1408 tick703781 dispatched29 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 4625.0, "line": "1: TEST_PHASE pid1408 tick703781 dispatched29 screenshot-begin"}
+{"kind": "stdout_line", "elapsed_ms": 4687.0, "line": "1: TEST_PHASE pid1408 tick703843 dispatched29 screenshot-end"}
+{"kind": "stdout_line", "elapsed_ms": 5078.0, "line": "1: TEST_PHASE pid1408 tick704234 dispatched57 screenshot-begin"}
+{"kind": "stdout_line", "elapsed_ms": 5109.0, "line": "1: TEST_PHASE pid1408 tick704265 dispatched57 screenshot-end"}
+{"kind": "stdout_line", "elapsed_ms": 5109.0, "line": "1: TEST_PHASE pid1408 tick704265 dispatched57 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 5140.0, "line": "1: TEST_PHASE pid1408 tick704296 dispatched57 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 5219.0, "line": "1: TEST_PHASE pid1408 tick704375 dispatched59 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 5531.0, "line": "1: TEST_PHASE pid1408 tick704687 dispatched59 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 5531.0, "line": "1: TEST_PHASE pid1408 tick704687 dispatched59 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 5531.0, "line": "1: Stateful actual light / write: 0 failures"}
+{"kind": "child_exit", "elapsed_ms": 5609.0, "pid": 1408, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 5609.0, "line": "1: CASE_END label=write-144 elapsedMs=1868 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 5609.0, "line": "1: CASE_BEGIN label=restore-144 mode=restore dpi=144 utc=2026-10-09T10:35:12.7110852Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 5609.0, "line": "1: TEST_PHASE pid8180 tick704765 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 5625.0, "pid": 8180, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 5625.0, "line": "1: TEST_PHASE pid8180 tick704781 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 5656.0, "line": "1: TEST_PHASE pid8180 tick704812 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 6015.0, "line": "1: TEST_PHASE pid8180 tick705171 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 6515.0, "line": "1: TEST_PHASE pid8180 tick705671 dispatched27 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 6515.0, "line": "1: TEST_PHASE pid8180 tick705671 dispatched27 screenshot-begin"}
+{"kind": "stdout_line", "elapsed_ms": 6562.0, "line": "1: TEST_PHASE pid8180 tick705718 dispatched27 screenshot-end"}
+{"kind": "stdout_line", "elapsed_ms": 6562.0, "line": "1: TEST_PHASE pid8180 tick705718 dispatched27 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 6594.0, "line": "1: TEST_PHASE pid8180 tick705750 dispatched27 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 6672.0, "line": "1: TEST_PHASE pid8180 tick705828 dispatched28 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 6984.0, "line": "1: TEST_PHASE pid8180 tick706140 dispatched28 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 6984.0, "line": "1: TEST_PHASE pid8180 tick706140 dispatched28 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 6984.0, "line": "1: Stateful actual light / restore: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 7047.0, "line": "1: CASE_END label=restore-144 elapsedMs=1441 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 7047.0, "line": "1: CASE_BEGIN label=write-192 mode=write dpi=192 utc=2026-10-09T10:35:14.1549184Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "child_observed", "elapsed_ms": 7062.0, "pid": 5008, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 7062.0, "pid": 8180, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 7062.0, "line": "1: TEST_PHASE pid5008 tick706218 dispatched0 create-host-begin"}
+{"kind": "stdout_line", "elapsed_ms": 7078.0, "line": "1: TEST_PHASE pid5008 tick706234 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 7109.0, "line": "1: TEST_PHASE pid5008 tick706265 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 7375.0, "line": "1: TEST_PHASE pid5008 tick706531 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 7875.0, "line": "1: TEST_PHASE pid5008 tick707031 dispatched26 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 7875.0, "line": "1: TEST_PHASE pid5008 tick707031 dispatched26 screenshot-begin"}
+{"kind": "stdout_line", "elapsed_ms": 7922.0, "line": "1: TEST_PHASE pid5008 tick707078 dispatched26 screenshot-end"}
+{"kind": "stdout_line", "elapsed_ms": 8312.0, "line": "1: TEST_PHASE pid5008 tick707468 dispatched54 screenshot-begin"}
+{"kind": "stdout_line", "elapsed_ms": 8344.0, "line": "1: TEST_PHASE pid5008 tick707500 dispatched54 screenshot-end"}
+{"kind": "stdout_line", "elapsed_ms": 8344.0, "line": "1: TEST_PHASE pid5008 tick707500 dispatched54 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 8375.0, "line": "1: TEST_PHASE pid5008 tick707531 dispatched54 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 8437.0, "line": "1: TEST_PHASE pid5008 tick707578 dispatched56 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 8734.0, "line": "1: TEST_PHASE pid5008 tick707890 dispatched56 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 8734.0, "line": "1: TEST_PHASE pid5008 tick707890 dispatched56 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 8734.0, "line": "1: Stateful actual light / write: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 8797.0, "line": "1: CASE_END label=write-192 elapsedMs=1744 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 8797.0, "line": "1: CASE_BEGIN label=restore-192 mode=restore dpi=192 utc=2026-10-09T10:35:15.9021419Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 8812.0, "line": "1: TEST_PHASE pid7076 tick707968 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 8812.0, "pid": 7076, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 8812.0, "pid": 5008, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 8828.0, "line": "1: TEST_PHASE pid7076 tick707984 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 8859.0, "line": "1: TEST_PHASE pid7076 tick708015 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 9140.0, "line": "1: TEST_PHASE pid7076 tick708296 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 9640.0, "line": "1: TEST_PHASE pid7076 tick708796 dispatched24 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 9640.0, "line": "1: TEST_PHASE pid7076 tick708796 dispatched24 screenshot-begin"}
+{"kind": "stdout_line", "elapsed_ms": 9687.0, "line": "1: TEST_PHASE pid7076 tick708843 dispatched24 screenshot-end"}
+{"kind": "stdout_line", "elapsed_ms": 9687.0, "line": "1: TEST_PHASE pid7076 tick708843 dispatched24 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 9719.0, "line": "1: TEST_PHASE pid7076 tick708875 dispatched24 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 9765.0, "line": "1: TEST_PHASE pid7076 tick708921 dispatched25 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 10078.0, "line": "1: TEST_PHASE pid7076 tick709234 dispatched25 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 10078.0, "line": "1: TEST_PHASE pid7076 tick709234 dispatched25 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 10078.0, "line": "1: Stateful actual light / restore: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 10140.0, "line": "1: CASE_END label=restore-192 elapsedMs=1347 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 10140.0, "line": "1: CASE_BEGIN label=isolation mode=isolation dpi=96 utc=2026-10-09T10:35:17.2551749Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "child_observed", "elapsed_ms": 10156.0, "pid": 1124, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 10156.0, "pid": 7076, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 10156.0, "line": "1: TEST_PHASE pid1124 tick709312 dispatched0 create-host-begin"}
+{"kind": "stdout_line", "elapsed_ms": 10172.0, "line": "1: TEST_PHASE pid1124 tick709328 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 10187.0, "line": "1: TEST_PHASE pid1124 tick709343 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 10515.0, "line": "1: TEST_PHASE pid1124 tick709671 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 11015.0, "line": "1: TEST_PHASE pid1124 tick710171 dispatched28 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 12406.0, "line": "1: TEST_PHASE pid1124 tick711562 dispatched88 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 12453.0, "line": "1: TEST_PHASE pid1124 tick711609 dispatched88 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 12562.0, "line": "1: TEST_PHASE pid1124 tick711718 dispatched89 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 12875.0, "line": "1: TEST_PHASE pid1124 tick712031 dispatched90 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 12875.0, "line": "1: TEST_PHASE pid1124 tick712031 dispatched90 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 12875.0, "line": "1: Stateful actual light / isolation: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 12937.0, "line": "1: CASE_END label=isolation elapsedMs=2788 exit=0"}
+{"kind": "child_exit", "elapsed_ms": 12937.0, "pid": 1124, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 12937.0, "line": "1: CASE_BEGIN label=profile-b mode=profile-b dpi=96 utc=2026-10-09T10:35:20.0474492Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 12953.0, "line": "1: TEST_PHASE pid1220 tick712109 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 12969.0, "pid": 1220, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 12969.0, "line": "1: TEST_PHASE pid1220 tick712125 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 12984.0, "line": "1: TEST_PHASE pid1220 tick712140 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 13297.0, "line": "1: TEST_PHASE pid1220 tick712453 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 13797.0, "line": "1: TEST_PHASE pid1220 tick712953 dispatched30 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 13797.0, "line": "1: TEST_PHASE pid1220 tick712953 dispatched30 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 13828.0, "line": "1: TEST_PHASE pid1220 tick712968 dispatched30 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 13890.0, "line": "1: TEST_PHASE pid1220 tick713046 dispatched31 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 14203.0, "line": "1: TEST_PHASE pid1220 tick713359 dispatched31 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 14203.0, "line": "1: TEST_PHASE pid1220 tick713359 dispatched31 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 14203.0, "line": "1: Stateful actual light / profile-b: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 14265.0, "line": "1: CASE_END label=profile-b elapsedMs=1332 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 14265.0, "line": "1: CASE_BEGIN label=reload mode=reload dpi=96 utc=2026-10-09T10:35:21.3834641Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 14281.0, "line": "1: TEST_PHASE pid2700 tick713437 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 14297.0, "pid": 2700, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 14297.0, "pid": 1220, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 14297.0, "line": "1: TEST_PHASE pid2700 tick713453 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 14328.0, "line": "1: TEST_PHASE pid2700 tick713484 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 14672.0, "line": "1: TEST_PHASE pid2700 tick713828 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 15172.0, "line": "1: TEST_PHASE pid2700 tick714328 dispatched34 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 15469.0, "line": "1: TEST_PHASE pid2700 tick714625 dispatched52 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 15484.0, "line": "1: TEST_PHASE pid2700 tick714640 dispatched52 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 15547.0, "line": "1: TEST_PHASE pid2700 tick714703 dispatched53 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 15859.0, "line": "1: TEST_PHASE pid2700 tick715015 dispatched53 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 15859.0, "line": "1: TEST_PHASE pid2700 tick715015 dispatched53 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 15859.0, "line": "1: Stateful actual light / reload: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 15922.0, "line": "1: CASE_END label=reload elapsedMs=1648 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 15922.0, "line": "1: CASE_BEGIN label=locked-profile mode=locked-profile dpi=96 utc=2026-10-09T10:35:23.0334741Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 15937.0, "line": "1: TEST_PHASE pid7648 tick715093 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 15937.0, "pid": 7648, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 15937.0, "pid": 2700, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 15953.0, "line": "1: TEST_PHASE pid7648 tick715109 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 15969.0, "line": "1: TEST_PHASE pid7648 tick715125 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 16297.0, "line": "1: TEST_PHASE pid7648 tick715453 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 16797.0, "line": "1: TEST_PHASE pid7648 tick715953 dispatched34 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 16797.0, "line": "1: TEST_PHASE pid7648 tick715953 dispatched34 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 16828.0, "line": "1: TEST_PHASE pid7648 tick715984 dispatched34 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 16922.0, "line": "1: TEST_PHASE pid7648 tick716078 dispatched36 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 17234.0, "line": "1: TEST_PHASE pid7648 tick716390 dispatched36 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 17234.0, "line": "1: TEST_PHASE pid7648 tick716390 dispatched36 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 17234.0, "line": "1: Stateful actual light / locked-profile: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 17312.0, "line": "1: CASE_END label=locked-profile elapsedMs=1377 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 17312.0, "line": "1: CASE_BEGIN label=reordered-columns mode=restore dpi=96 utc=2026-10-09T10:35:24.4132964Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 17328.0, "line": "1: TEST_PHASE pid1780 tick716484 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 17328.0, "pid": 1780, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 17328.0, "pid": 7648, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 17344.0, "line": "1: TEST_PHASE pid1780 tick716500 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 17359.0, "line": "1: TEST_PHASE pid1780 tick716515 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 17687.0, "line": "1: TEST_PHASE pid1780 tick716843 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 18187.0, "line": "1: TEST_PHASE pid1780 tick717343 dispatched34 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 18187.0, "line": "1: TEST_PHASE pid1780 tick717343 dispatched34 screenshot-begin"}
+{"kind": "stdout_line", "elapsed_ms": 18203.0, "line": "1: TEST_PHASE pid1780 tick717359 dispatched34 screenshot-end"}
+{"kind": "stdout_line", "elapsed_ms": 18203.0, "line": "1: TEST_PHASE pid1780 tick717359 dispatched34 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 18250.0, "line": "1: TEST_PHASE pid1780 tick717406 dispatched34 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 18312.0, "line": "1: TEST_PHASE pid1780 tick717468 dispatched35 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 18625.0, "line": "1: TEST_PHASE pid1780 tick717781 dispatched35 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 18625.0, "line": "1: TEST_PHASE pid1780 tick717781 dispatched35 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 18625.0, "line": "1: Stateful actual light / restore: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 18687.0, "line": "1: CASE_END label=reordered-columns elapsedMs=1381 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 18687.0, "line": "1: CASE_BEGIN label=missing-new-columns mode=evolve dpi=96 utc=2026-10-09T10:35:25.7978600Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "child_exit", "elapsed_ms": 18687.0, "pid": 1780, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 18703.0, "line": "1: TEST_PHASE pid1316 tick717859 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 18719.0, "pid": 1316, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 18719.0, "line": "1: TEST_PHASE pid1316 tick717875 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 18734.0, "line": "1: TEST_PHASE pid1316 tick717890 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 19062.0, "line": "1: TEST_PHASE pid1316 tick718218 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 19562.0, "line": "1: TEST_PHASE pid1316 tick718718 dispatched34 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 19562.0, "line": "1: TEST_PHASE pid1316 tick718718 dispatched34 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 19578.0, "line": "1: TEST_PHASE pid1316 tick718734 dispatched34 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 19656.0, "line": "1: TEST_PHASE pid1316 tick718812 dispatched35 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 19969.0, "line": "1: TEST_PHASE pid1316 tick719125 dispatched35 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 19969.0, "line": "1: TEST_PHASE pid1316 tick719125 dispatched35 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 19969.0, "line": "1: Stateful actual light / evolve: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 20031.0, "line": "1: CASE_END label=missing-new-columns elapsedMs=1346 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 20031.0, "line": "1: CASE_BEGIN label=empty mode=invalid dpi=96 utc=2026-10-09T10:35:27.1525650Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "child_observed", "elapsed_ms": 20047.0, "pid": 3568, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 20047.0, "pid": 1316, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 20047.0, "line": "1: TEST_PHASE pid3568 tick719203 dispatched0 create-host-begin"}
+{"kind": "stdout_line", "elapsed_ms": 20078.0, "line": "1: TEST_PHASE pid3568 tick719234 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 20094.0, "line": "1: TEST_PHASE pid3568 tick719250 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 20390.0, "line": "1: TEST_PHASE pid3568 tick719546 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 20890.0, "line": "1: TEST_PHASE pid3568 tick720046 dispatched36 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 20890.0, "line": "1: TEST_PHASE pid3568 tick720046 dispatched36 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 20922.0, "line": "1: TEST_PHASE pid3568 tick720078 dispatched36 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 20984.0, "line": "1: TEST_PHASE pid3568 tick720140 dispatched37 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 21297.0, "line": "1: TEST_PHASE pid3568 tick720453 dispatched37 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 21297.0, "line": "1: TEST_PHASE pid3568 tick720453 dispatched37 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 21297.0, "line": "1: Stateful actual light / invalid: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 21359.0, "line": "1: CASE_END label=empty elapsedMs=1310 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 21359.0, "line": "1: CASE_BEGIN label=truncated mode=invalid dpi=96 utc=2026-10-09T10:35:28.4689099Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "child_observed", "elapsed_ms": 21359.0, "pid": 4324, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 21359.0, "pid": 3568, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 21375.0, "line": "1: TEST_PHASE pid4324 tick720531 dispatched0 create-host-begin"}
+{"kind": "stdout_line", "elapsed_ms": 21390.0, "line": "1: TEST_PHASE pid4324 tick720546 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 21406.0, "line": "1: TEST_PHASE pid4324 tick720562 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 21703.0, "line": "1: TEST_PHASE pid4324 tick720859 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 22203.0, "line": "1: TEST_PHASE pid4324 tick721359 dispatched36 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 22203.0, "line": "1: TEST_PHASE pid4324 tick721359 dispatched36 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 22234.0, "line": "1: TEST_PHASE pid4324 tick721390 dispatched36 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 22297.0, "line": "1: TEST_PHASE pid4324 tick721453 dispatched37 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 22609.0, "line": "1: TEST_PHASE pid4324 tick721765 dispatched37 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 22609.0, "line": "1: TEST_PHASE pid4324 tick721765 dispatched37 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 22609.0, "line": "1: Stateful actual light / invalid: 0 failures"}
+{"kind": "child_exit", "elapsed_ms": 22672.0, "pid": 4324, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 22672.0, "line": "1: CASE_END label=truncated elapsedMs=1314 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 22672.0, "line": "1: CASE_BEGIN label=oversized mode=invalid dpi=96 utc=2026-10-09T10:35:29.7877312Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 22687.0, "line": "1: TEST_PHASE pid7112 tick721843 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 22703.0, "pid": 7112, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 22703.0, "line": "1: TEST_PHASE pid7112 tick721859 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 22734.0, "line": "1: TEST_PHASE pid7112 tick721890 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 23015.0, "line": "1: TEST_PHASE pid7112 tick722171 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 23515.0, "line": "1: TEST_PHASE pid7112 tick722671 dispatched37 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 23515.0, "line": "1: TEST_PHASE pid7112 tick722671 dispatched37 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 23547.0, "line": "1: TEST_PHASE pid7112 tick722703 dispatched37 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 23625.0, "line": "1: TEST_PHASE pid7112 tick722781 dispatched38 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 23937.0, "line": "1: TEST_PHASE pid7112 tick723093 dispatched38 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 23937.0, "line": "1: TEST_PHASE pid7112 tick723093 dispatched38 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 23937.0, "line": "1: Stateful actual light / invalid: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 24000.0, "line": "1: CASE_END label=oversized elapsedMs=1328 exit=0"}
+{"kind": "child_exit", "elapsed_ms": 24015.0, "pid": 7112, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 24047.0, "line": "1: CASE_BEGIN label=magic mode=invalid dpi=96 utc=2026-10-09T10:35:31.1470726Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "child_observed", "elapsed_ms": 24047.0, "pid": 1628, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 24062.0, "line": "1: TEST_PHASE pid1628 tick723203 dispatched0 create-host-begin"}
+{"kind": "stdout_line", "elapsed_ms": 24078.0, "line": "1: TEST_PHASE pid1628 tick723234 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 24094.0, "line": "1: TEST_PHASE pid1628 tick723250 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 24406.0, "line": "1: TEST_PHASE pid1628 tick723562 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 24906.0, "line": "1: TEST_PHASE pid1628 tick724062 dispatched37 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 24906.0, "line": "1: TEST_PHASE pid1628 tick724062 dispatched37 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 24937.0, "line": "1: TEST_PHASE pid1628 tick724093 dispatched37 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 25015.0, "line": "1: TEST_PHASE pid1628 tick724171 dispatched38 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 25328.0, "line": "1: TEST_PHASE pid1628 tick724484 dispatched38 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 25328.0, "line": "1: TEST_PHASE pid1628 tick724484 dispatched38 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 25328.0, "line": "1: Stateful actual light / invalid: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 25390.0, "line": "1: CASE_END label=magic elapsedMs=1351 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 25390.0, "line": "1: CASE_BEGIN label=checksum mode=invalid dpi=96 utc=2026-10-09T10:35:32.5056170Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 25406.0, "line": "1: TEST_PHASE pid3200 tick724562 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 25422.0, "pid": 3200, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 25422.0, "pid": 1628, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 25422.0, "line": "1: TEST_PHASE pid3200 tick724578 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 25453.0, "line": "1: TEST_PHASE pid3200 tick724609 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 25734.0, "line": "1: TEST_PHASE pid3200 tick724890 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 26234.0, "line": "1: TEST_PHASE pid3200 tick725390 dispatched37 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 26234.0, "line": "1: TEST_PHASE pid3200 tick725390 dispatched37 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 26250.0, "line": "1: TEST_PHASE pid3200 tick725406 dispatched37 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 26328.0, "line": "1: TEST_PHASE pid3200 tick725484 dispatched38 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 26640.0, "line": "1: TEST_PHASE pid3200 tick725796 dispatched38 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 26640.0, "line": "1: TEST_PHASE pid3200 tick725796 dispatched38 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 26640.0, "line": "1: Stateful actual light / invalid: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 26703.0, "line": "1: CASE_END label=checksum elapsedMs=1304 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 26703.0, "line": "1: CASE_BEGIN label=future mode=invalid dpi=96 utc=2026-10-09T10:35:33.8140397Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 26703.0, "line": "1: TEST_PHASE pid6132 tick725859 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 26734.0, "pid": 6132, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 26734.0, "pid": 3200, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 26734.0, "line": "1: TEST_PHASE pid6132 tick725890 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 26750.0, "line": "1: TEST_PHASE pid6132 tick725906 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 27047.0, "line": "1: TEST_PHASE pid6132 tick726203 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 27547.0, "line": "1: TEST_PHASE pid6132 tick726703 dispatched36 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 27547.0, "line": "1: TEST_PHASE pid6132 tick726703 dispatched36 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 27578.0, "line": "1: TEST_PHASE pid6132 tick726734 dispatched36 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 27656.0, "line": "1: TEST_PHASE pid6132 tick726812 dispatched37 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 27969.0, "line": "1: TEST_PHASE pid6132 tick727125 dispatched37 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 27969.0, "line": "1: TEST_PHASE pid6132 tick727125 dispatched37 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 27969.0, "line": "1: Stateful actual light / invalid: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 28031.0, "line": "1: CASE_END label=future elapsedMs=1322 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 28031.0, "line": "1: CASE_BEGIN label=columns-reserved mode=invalid dpi=96 utc=2026-10-09T10:35:35.1399729Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "child_observed", "elapsed_ms": 28047.0, "pid": 2860, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 28047.0, "pid": 6132, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 28047.0, "line": "1: TEST_PHASE pid2860 tick727203 dispatched0 create-host-begin"}
+{"kind": "stdout_line", "elapsed_ms": 28078.0, "line": "1: TEST_PHASE pid2860 tick727234 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 28094.0, "line": "1: TEST_PHASE pid2860 tick727250 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 28422.0, "line": "1: TEST_PHASE pid2860 tick727578 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 28922.0, "line": "1: TEST_PHASE pid2860 tick728078 dispatched36 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 28922.0, "line": "1: TEST_PHASE pid2860 tick728078 dispatched36 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 28953.0, "line": "1: TEST_PHASE pid2860 tick728109 dispatched36 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 29015.0, "line": "1: TEST_PHASE pid2860 tick728171 dispatched37 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 29328.0, "line": "1: TEST_PHASE pid2860 tick728484 dispatched37 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 29328.0, "line": "1: TEST_PHASE pid2860 tick728484 dispatched37 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 29328.0, "line": "1: Stateful actual light / invalid: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 29390.0, "line": "1: CASE_END label=columns-reserved elapsedMs=1351 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 29390.0, "line": "1: CASE_BEGIN label=columns-future mode=invalid dpi=96 utc=2026-10-09T10:35:36.4940490Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 29406.0, "line": "1: TEST_PHASE pid3508 tick728562 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 29406.0, "pid": 3508, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 29406.0, "pid": 2860, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 29422.0, "line": "1: TEST_PHASE pid3508 tick728578 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 29437.0, "line": "1: TEST_PHASE pid3508 tick728593 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 29765.0, "line": "1: TEST_PHASE pid3508 tick728921 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 30265.0, "line": "1: TEST_PHASE pid3508 tick729421 dispatched36 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 30265.0, "line": "1: TEST_PHASE pid3508 tick729421 dispatched36 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 30297.0, "line": "1: TEST_PHASE pid3508 tick729453 dispatched36 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 30359.0, "line": "1: TEST_PHASE pid3508 tick729515 dispatched37 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 30672.0, "line": "1: TEST_PHASE pid3508 tick729828 dispatched37 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 30672.0, "line": "1: TEST_PHASE pid3508 tick729828 dispatched37 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 30672.0, "line": "1: Stateful actual light / invalid: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 30734.0, "line": "1: CASE_END label=columns-future elapsedMs=1345 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 30750.0, "line": "1: CASE_BEGIN label=layout-future mode=invalid dpi=96 utc=2026-10-09T10:35:37.8466631Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "child_observed", "elapsed_ms": 30750.0, "pid": 7008, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 30750.0, "pid": 3508, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 30750.0, "line": "1: TEST_PHASE pid7008 tick729906 dispatched0 create-host-begin"}
+{"kind": "stdout_line", "elapsed_ms": 30765.0, "line": "1: TEST_PHASE pid7008 tick729921 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 30797.0, "line": "1: TEST_PHASE pid7008 tick729953 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 31172.0, "line": "1: TEST_PHASE pid7008 tick730328 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 31672.0, "line": "1: TEST_PHASE pid7008 tick730828 dispatched36 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 31672.0, "line": "1: TEST_PHASE pid7008 tick730828 dispatched36 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 31703.0, "line": "1: TEST_PHASE pid7008 tick730859 dispatched36 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 31765.0, "line": "1: TEST_PHASE pid7008 tick730921 dispatched37 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 32078.0, "line": "1: TEST_PHASE pid7008 tick731234 dispatched37 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 32078.0, "line": "1: TEST_PHASE pid7008 tick731234 dispatched37 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 32078.0, "line": "1: Stateful actual light / invalid: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 32140.0, "line": "1: CASE_END label=layout-future elapsedMs=1399 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 32140.0, "line": "1: CASE_BEGIN label=layout-invalid mode=invalid dpi=96 utc=2026-10-09T10:35:39.2487188Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 32140.0, "line": "1: TEST_PHASE pid7292 tick731296 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 32172.0, "pid": 7292, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 32172.0, "pid": 7008, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 32172.0, "line": "1: TEST_PHASE pid7292 tick731328 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 32187.0, "line": "1: TEST_PHASE pid7292 tick731343 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 32562.0, "line": "1: TEST_PHASE pid7292 tick731718 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 33094.0, "line": "1: TEST_PHASE pid7292 tick732250 dispatched36 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 33094.0, "line": "1: TEST_PHASE pid7292 tick732250 dispatched36 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 33109.0, "line": "1: TEST_PHASE pid7292 tick732265 dispatched36 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 33172.0, "line": "1: TEST_PHASE pid7292 tick732328 dispatched37 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 33484.0, "line": "1: TEST_PHASE pid7292 tick732640 dispatched37 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 33484.0, "line": "1: TEST_PHASE pid7292 tick732640 dispatched37 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 33484.0, "line": "1: Stateful actual light / invalid: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 33547.0, "line": "1: CASE_END label=layout-invalid elapsedMs=1404 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 33547.0, "line": "1: CASE_BEGIN label=missing-file mode=defaults dpi=96 utc=2026-10-09T10:35:40.6556699Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 33562.0, "line": "1: TEST_PHASE pid6156 tick732718 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 33562.0, "pid": 6156, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 33562.0, "pid": 7292, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 33578.0, "line": "1: TEST_PHASE pid6156 tick732734 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 33594.0, "line": "1: TEST_PHASE pid6156 tick732750 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 33875.0, "line": "1: TEST_PHASE pid6156 tick733031 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 34375.0, "line": "1: TEST_PHASE pid6156 tick733531 dispatched36 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 34375.0, "line": "1: TEST_PHASE pid6156 tick733531 dispatched36 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 34406.0, "line": "1: TEST_PHASE pid6156 tick733562 dispatched36 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 34469.0, "line": "1: TEST_PHASE pid6156 tick733625 dispatched37 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 34781.0, "line": "1: TEST_PHASE pid6156 tick733937 dispatched37 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 34781.0, "line": "1: TEST_PHASE pid6156 tick733937 dispatched37 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 34781.0, "line": "1: Stateful actual light / defaults: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 34844.0, "line": "1: CASE_END label=missing-file elapsedMs=1300 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 34844.0, "line": "1: CASE_BEGIN label=failed-create-mount-lock-release mode=init-failures dpi=96 utc=2026-10-09T10:35:41.9587555Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 34859.0, "line": "1: TEST_PHASE pid5912 tick734015 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 34875.0, "pid": 5912, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 34875.0, "pid": 6156, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 34875.0, "line": "1: TEST_PHASE pid5912 tick734031 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 35297.0, "line": "1: TEST_PHASE pid5912 tick734453 dispatched22 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 35547.0, "line": "1: TEST_PHASE pid5912 tick734703 dispatched22 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 36047.0, "line": "1: TEST_PHASE pid5912 tick735203 dispatched58 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 36047.0, "line": "1: RESTORED modeinit-failures dpi96 name200 treeCollapsed0"}
+{"kind": "stdout_line", "elapsed_ms": 36047.0, "line": "1: TEST_PHASE pid5912 tick735203 dispatched58 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 36078.0, "line": "1: TEST_PHASE pid5912 tick735234 dispatched58 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 36140.0, "line": "1: TEST_PHASE pid5912 tick735296 dispatched59 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 36453.0, "line": "1: TEST_PHASE pid5912 tick735609 dispatched59 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 36453.0, "line": "1: TEST_PHASE pid5912 tick735609 dispatched59 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 36453.0, "line": "1: Stateful actual light / init-failures: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 36515.0, "line": "1: CASE_END label=failed-create-mount-lock-release elapsedMs=1665 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 36515.0, "line": "1: CASE_BEGIN label=reset mode=reset dpi=96 utc=2026-10-09T10:35:43.6265975Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "stdout_line", "elapsed_ms": 36531.0, "line": "1: TEST_PHASE pid7128 tick735687 dispatched0 create-host-begin"}
+{"kind": "child_observed", "elapsed_ms": 36531.0, "pid": 7128, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 36531.0, "pid": 5912, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 36547.0, "line": "1: TEST_PHASE pid7128 tick735703 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 36578.0, "line": "1: TEST_PHASE pid7128 tick735734 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 36906.0, "line": "1: TEST_PHASE pid7128 tick736062 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 37406.0, "line": "1: TEST_PHASE pid7128 tick736562 dispatched34 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 37844.0, "line": "1: TEST_PHASE pid7128 tick737000 dispatched66 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 37875.0, "line": "1: TEST_PHASE pid7128 tick737031 dispatched66 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 37937.0, "line": "1: TEST_PHASE pid7128 tick737093 dispatched67 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 38250.0, "line": "1: TEST_PHASE pid7128 tick737406 dispatched67 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 38250.0, "line": "1: TEST_PHASE pid7128 tick737406 dispatched67 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 38250.0, "line": "1: Stateful actual light / reset: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 38312.0, "line": "1: CASE_END label=reset elapsedMs=1792 exit=0"}
+{"kind": "stdout_line", "elapsed_ms": 38312.0, "line": "1: CASE_BEGIN label=reset-cross-process mode=defaults dpi=96 utc=2026-10-09T10:35:45.4214824Z evidence=D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\state-evidence-light-e96979311b64491b8132068274080d78"}
+{"kind": "child_observed", "elapsed_ms": 38312.0, "pid": 7276, "parent": 5744, "exe": "ui_stateful_components_test.exe", "handle_open": true, "open_error": 0}
+{"kind": "child_exit", "elapsed_ms": 38312.0, "pid": 7128, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_line", "elapsed_ms": 38328.0, "line": "1: TEST_PHASE pid7276 tick737484 dispatched0 create-host-begin"}
+{"kind": "stdout_line", "elapsed_ms": 38344.0, "line": "1: TEST_PHASE pid7276 tick737500 dispatched0 create-host-end"}
+{"kind": "stdout_line", "elapsed_ms": 38359.0, "line": "1: TEST_PHASE pid7276 tick737515 dispatched0 open-begin"}
+{"kind": "stdout_line", "elapsed_ms": 38687.0, "line": "1: TEST_PHASE pid7276 tick737843 dispatched0 open-return"}
+{"kind": "stdout_line", "elapsed_ms": 39187.0, "line": "1: TEST_PHASE pid7276 tick738343 dispatched35 open-settled"}
+{"kind": "stdout_line", "elapsed_ms": 39187.0, "line": "1: TEST_PHASE pid7276 tick738343 dispatched35 close-begin"}
+{"kind": "stdout_line", "elapsed_ms": 39219.0, "line": "1: TEST_PHASE pid7276 tick738375 dispatched35 close-request-return"}
+{"kind": "stdout_line", "elapsed_ms": 39281.0, "line": "1: TEST_PHASE pid7276 tick738437 dispatched36 close-state-checked"}
+{"kind": "stdout_line", "elapsed_ms": 39594.0, "line": "1: TEST_PHASE pid7276 tick738750 dispatched36 com-uninitialize-begin"}
+{"kind": "stdout_line", "elapsed_ms": 39594.0, "line": "1: TEST_PHASE pid7276 tick738750 dispatched36 process-return"}
+{"kind": "stdout_line", "elapsed_ms": 39594.0, "line": "1: Stateful actual light / defaults: 0 failures"}
+{"kind": "stdout_line", "elapsed_ms": 39656.0, "line": "1: CASE_END label=reset-cross-process elapsedMs=1343 exit=0"}
+{"kind": "child_exit", "elapsed_ms": 39687.0, "pid": 5744, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "child_exit", "elapsed_ms": 39687.0, "pid": 7276, "code": 0, "read_ok": true, "read_error": 0}
+{"kind": "stdout_eof", "elapsed_ms": 39687.0}
+{"kind": "parent_exit", "elapsed_ms": 39703.0, "pid": 792, "code": 0}

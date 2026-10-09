@@ -1,0 +1,12 @@
+TEST_PHASE pid3200 tick724562 dispatched0 create-host-begin
+TEST_PHASE pid3200 tick724578 dispatched0 create-host-end
+TEST_PHASE pid3200 tick724609 dispatched0 open-begin
+TEST_PHASE pid3200 tick724890 dispatched0 open-return
+TEST_PHASE pid3200 tick725390 dispatched37 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid3200 tick725390 dispatched37 close-begin
+TEST_PHASE pid3200 tick725406 dispatched37 close-request-return
+TEST_PHASE pid3200 tick725484 dispatched38 close-state-checked
+TEST_PHASE pid3200 tick725796 dispatched38 com-uninitialize-begin
+TEST_PHASE pid3200 tick725796 dispatched38 process-return
+Stateful actual light / invalid: 0 failures

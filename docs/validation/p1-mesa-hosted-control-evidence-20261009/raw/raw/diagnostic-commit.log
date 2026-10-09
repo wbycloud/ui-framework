@@ -1,0 +1,6 @@
+[codex/p1-process-boundaries 5715a05] Add Mesa lifecycle patch and hosted A/C diagnostics
+ 8 files changed, 447 insertions(+), 6 deletions(-)
+ create mode 100644 tests/osmesa_stall_objects.py
+ create mode 100644 tests/osmesa_thread_probe.c
+ create mode 100644 tests/run_osmesa_lifecycle_control.py
+ create mode 100644 tools/mesa-osmesa-process-detach.patch

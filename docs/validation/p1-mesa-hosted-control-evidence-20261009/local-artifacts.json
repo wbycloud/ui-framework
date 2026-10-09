@@ -1,0 +1,925 @@
+{
+  "count": 184,
+  "files": [
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-candidate/candidate.zip",
+      "bytes": 38073334,
+      "sha256": "afb11d7bf599e991f8e2b7df6971813f8bb6bca66f91f85c8f20b7b5cf59c8ae"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-candidate/original-debug.7z",
+      "bytes": 84354035,
+      "sha256": "60b2ccf9d81646aab53ce50bb1117c292e314049799b58f620d6838d134b48b1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-candidate/original-symbols/x64/osmesa.pdb",
+      "bytes": 67080192,
+      "sha256": "42659470e93b8305d514a956e830d1455318b326b2d2829e61426ca265967ee7"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-candidate/unpacked/osmesa.dll",
+      "bytes": 51686912,
+      "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-candidate/unpacked/osmesa.pdb",
+      "bytes": 68718592,
+      "sha256": "c5c15c5cc6673b795d21fa721d87a6abb382005417129685903937e744f73bbd"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/caller/osmesa_thread_probe.exe",
+      "bytes": 690688,
+      "sha256": "8f1bea06efa99d2e89e92dfb4b199e281ac850af1f3bfcaaddf9c96e71c5cbb2"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/caller/osmesa_thread_probe.obj",
+      "bytes": 62057,
+      "sha256": "c72261e95c29503e9903479c38f9d1939b2e25df51072efc726f6d879be191dc"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/caller/osmesa_thread_probe.pdb",
+      "bytes": 7213056,
+      "sha256": "53325c4621d944ee8fce35ed0b62d6da450826c2cc4442dd87099084f596fb1b"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/isolated-wgl/libgallium_wgl.dll",
+      "bytes": 54089216,
+      "sha256": "6ba1d46ae560f051a32b576c34e794a256df23572fdc82c602585d65cca69569"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/isolated-wgl/libglapi.dll",
+      "bytes": 340480,
+      "sha256": "38c0c712138e313f72b9fa113e8bc00019915cedff5f0659471fdb63e9b3b392"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/isolated-wgl/opengl32.dll",
+      "bytes": 137216,
+      "sha256": "419ab7c45f86300acef8eee53414c639a26893fbd7adb24ba9b8f7700855604c"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/isolated-wgl/pipe_swrast.dll",
+      "bytes": 46453248,
+      "sha256": "6adb34661b5ebb14caa7f2582e22d8f515ec36e7d2c7c80d07d5f1a199beb137"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/chinese-assistant.bmp",
+      "bytes": 7200054,
+      "sha256": "2ff04692b6c2e482f1a70d251938978edbf2f999c71c5578f321026dbb437cf1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/chinese-dark.bmp",
+      "bytes": 7200054,
+      "sha256": "42dec12c05736df894267cfd3ddcefcb8167c2b8938f99b12d3dfb210f3cf4e1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/chinese-dual.bmp",
+      "bytes": 7200054,
+      "sha256": "fb6e47d28c6f8cc32fe830b833b8990c9684ad01aa72d94fd434c60d1fff3dc2"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/chinese-full.bmp",
+      "bytes": 7200054,
+      "sha256": "4aaf24b278abc6a2c751a760105faea498721dcecc315978fb4709a3ac754c01"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/chinese-narrow.bmp",
+      "bytes": 3013254,
+      "sha256": "f657dbd54b3755194ada989f1a74ab8749198dcc437114dd27665e9ae8a07ec9"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/empty-after-close.bmp",
+      "bytes": 3013254,
+      "sha256": "232fa69f9f2f449f12bab08972dc749c0e3271963fbf2a701a614536b81f4850"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/empty-system.bmp",
+      "bytes": 7200054,
+      "sha256": "059f5e52e1cf6adc83b0260903601b6f865100364507cbba98b7af4645461bd7"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/english-dark.bmp",
+      "bytes": 7200054,
+      "sha256": "bc683f84ef82eae21f7b9ff7ea4fc7002fe6eba19f8db94b040dbcc11edc9021"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/english-dual.bmp",
+      "bytes": 7200054,
+      "sha256": "7d132e505260f2625c4c2234085e64d7ec19de2b956e9c827f16b083ec24b02a"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/english-full.bmp",
+      "bytes": 7200054,
+      "sha256": "c77ee7392b8be7bd98e9c0a74414e59b55f42344d992013053cd4535b4142645"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/chinese-assistant.bmp",
+      "bytes": 7360054,
+      "sha256": "cdcccc56e53d8ca230947819cfa2769a865f798165730cad55c40972934bd08b"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/chinese-dark.bmp",
+      "bytes": 7360054,
+      "sha256": "20f8d4e22f868280e4e5ec89d93ff81103aa81fd05eda91142bb8ae869135bb9"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/chinese-dual.bmp",
+      "bytes": 7360054,
+      "sha256": "45be5f2f96e271ce8036bbcc0dfc64b29e9e2bf27ecd23be2b6631c59b38297c"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/chinese-full.bmp",
+      "bytes": 7360054,
+      "sha256": "685839f4e0ec1eed8ed4934c9112618f94d316b4f06392e74138d4f15a4b8347"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/chinese-narrow.bmp",
+      "bytes": 5356854,
+      "sha256": "89ae2544093e9d8a29606066a9b26a5fd3556dc6d2b461f22d907c96f2cf0195"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/empty-after-close.bmp",
+      "bytes": 5356854,
+      "sha256": "f57645689d631ab4d71a147be1b8e163ced57c62386ef2920d20c25b90222f15"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/empty-system.bmp",
+      "bytes": 7360054,
+      "sha256": "c0d3db4bf6b53787283a009fc22f070b6a5b840a4b95db5d04707c912ff3be0a"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/english-dark.bmp",
+      "bytes": 7360054,
+      "sha256": "015022478c8af7c8d0ec3c27bf3cc20ac136913b979d25ccb74693acb83500be"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/english-dual.bmp",
+      "bytes": 7360054,
+      "sha256": "497bb743dd384c70ce2b4f01fd44804a83a20e9cd54a1c05b91872e07625c3c8"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/english-full.bmp",
+      "bytes": 7360054,
+      "sha256": "9d4742e90ad559e4fbb8dbdbdf6d0c2216f83a75bc15f9e8060ebf25628c4715"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/chinese-assistant.bmp",
+      "bytes": 3840054,
+      "sha256": "d1dca1c46dfce421b122ff3a0bac51fb49a2e4a282f89048f5c7060a792c0af6"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/chinese-dark.bmp",
+      "bytes": 3840054,
+      "sha256": "f4e950c7d4b6024f2b63dc0199a3ca8230c09632cc64b9b0f9e2a19789643b23"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/chinese-dual.bmp",
+      "bytes": 3840054,
+      "sha256": "756d3c17dc5a64018da38422b1ffa7be46bd19d50a4ff57e229fca83266ffa31"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/chinese-full.bmp",
+      "bytes": 3840054,
+      "sha256": "9bc0f1207e464673da690a9a83dc41895bcf150eea2c5c6500a72a07d02236f1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/chinese-narrow.bmp",
+      "bytes": 1339254,
+      "sha256": "757c5731d718a033caa35a5a5435e200dc6a5fc9901bae696dc14e0208655320"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/empty-after-close.bmp",
+      "bytes": 1339254,
+      "sha256": "fb5c2605d4f0b268762aa7401916d14b9802e1557bb3255183bb09c713bd9ca7"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/empty-system.bmp",
+      "bytes": 3840054,
+      "sha256": "de487b03e2e7a41116d2fff6d890699d40a38456b6036d568a6c2ae2266a5d11"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/english-dark.bmp",
+      "bytes": 3840054,
+      "sha256": "30df83a3d8bd42ef61f992788f23a5c8dc740b0f3793386731b1d1188fb3d789"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/english-dual.bmp",
+      "bytes": 3840054,
+      "sha256": "076024c64cf062a358c0bac485a182351b3b4da5f3c275c4c584e0b34cd6b010"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/english-full.bmp",
+      "bytes": 3840054,
+      "sha256": "98fb4f548c90d76f3d0d7823fe9d892cb4461419bfe34b885b2bf607e84c5e54"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/preferences/empty-system.bmp",
+      "bytes": 3840054,
+      "sha256": "a0afcf27d91aac92b8b01e04d1555c9d83f8a7d28afd9fe7f52dd30673101155"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/preferences/rejected-preference.bmp",
+      "bytes": 3840054,
+      "sha256": "e062e6708abe721e9ccb034c71ebe8a9287aaf22e4f03d9b9366db589b1b4f5d"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/preferences/restored-chinese.bmp",
+      "bytes": 3840054,
+      "sha256": "4f98b5381ce3edfafacaff8ee34c4a8518e85a1986c7a836bc636bb6ef7aff14"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/chinese-assistant.bmp",
+      "bytes": 7200054,
+      "sha256": "2ff04692b6c2e482f1a70d251938978edbf2f999c71c5578f321026dbb437cf1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/chinese-dark.bmp",
+      "bytes": 7200054,
+      "sha256": "42dec12c05736df894267cfd3ddcefcb8167c2b8938f99b12d3dfb210f3cf4e1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/chinese-dual.bmp",
+      "bytes": 7200054,
+      "sha256": "fb6e47d28c6f8cc32fe830b833b8990c9684ad01aa72d94fd434c60d1fff3dc2"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/chinese-full.bmp",
+      "bytes": 7200054,
+      "sha256": "4aaf24b278abc6a2c751a760105faea498721dcecc315978fb4709a3ac754c01"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/chinese-narrow.bmp",
+      "bytes": 3013254,
+      "sha256": "f657dbd54b3755194ada989f1a74ab8749198dcc437114dd27665e9ae8a07ec9"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/empty-after-close.bmp",
+      "bytes": 3013254,
+      "sha256": "232fa69f9f2f449f12bab08972dc749c0e3271963fbf2a701a614536b81f4850"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/empty-system.bmp",
+      "bytes": 7200054,
+      "sha256": "059f5e52e1cf6adc83b0260903601b6f865100364507cbba98b7af4645461bd7"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/english-dark.bmp",
+      "bytes": 7200054,
+      "sha256": "bc683f84ef82eae21f7b9ff7ea4fc7002fe6eba19f8db94b040dbcc11edc9021"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/english-dual.bmp",
+      "bytes": 7200054,
+      "sha256": "7d132e505260f2625c4c2234085e64d7ec19de2b956e9c827f16b083ec24b02a"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/english-full.bmp",
+      "bytes": 7200054,
+      "sha256": "c77ee7392b8be7bd98e9c0a74414e59b55f42344d992013053cd4535b4142645"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/chinese-assistant.bmp",
+      "bytes": 7360054,
+      "sha256": "cdcccc56e53d8ca230947819cfa2769a865f798165730cad55c40972934bd08b"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/chinese-dark.bmp",
+      "bytes": 7360054,
+      "sha256": "20f8d4e22f868280e4e5ec89d93ff81103aa81fd05eda91142bb8ae869135bb9"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/chinese-dual.bmp",
+      "bytes": 7360054,
+      "sha256": "45be5f2f96e271ce8036bbcc0dfc64b29e9e2bf27ecd23be2b6631c59b38297c"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/chinese-full.bmp",
+      "bytes": 7360054,
+      "sha256": "685839f4e0ec1eed8ed4934c9112618f94d316b4f06392e74138d4f15a4b8347"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/chinese-narrow.bmp",
+      "bytes": 5356854,
+      "sha256": "89ae2544093e9d8a29606066a9b26a5fd3556dc6d2b461f22d907c96f2cf0195"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/empty-after-close.bmp",
+      "bytes": 5356854,
+      "sha256": "f57645689d631ab4d71a147be1b8e163ced57c62386ef2920d20c25b90222f15"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/empty-system.bmp",
+      "bytes": 7360054,
+      "sha256": "c0d3db4bf6b53787283a009fc22f070b6a5b840a4b95db5d04707c912ff3be0a"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/english-dark.bmp",
+      "bytes": 7360054,
+      "sha256": "015022478c8af7c8d0ec3c27bf3cc20ac136913b979d25ccb74693acb83500be"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/english-dual.bmp",
+      "bytes": 7360054,
+      "sha256": "497bb743dd384c70ce2b4f01fd44804a83a20e9cd54a1c05b91872e07625c3c8"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/english-full.bmp",
+      "bytes": 7360054,
+      "sha256": "9d4742e90ad559e4fbb8dbdbdf6d0c2216f83a75bc15f9e8060ebf25628c4715"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/chinese-assistant.bmp",
+      "bytes": 3840054,
+      "sha256": "d1dca1c46dfce421b122ff3a0bac51fb49a2e4a282f89048f5c7060a792c0af6"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/chinese-dark.bmp",
+      "bytes": 3840054,
+      "sha256": "f4e950c7d4b6024f2b63dc0199a3ca8230c09632cc64b9b0f9e2a19789643b23"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/chinese-dual.bmp",
+      "bytes": 3840054,
+      "sha256": "756d3c17dc5a64018da38422b1ffa7be46bd19d50a4ff57e229fca83266ffa31"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/chinese-full.bmp",
+      "bytes": 3840054,
+      "sha256": "9bc0f1207e464673da690a9a83dc41895bcf150eea2c5c6500a72a07d02236f1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/chinese-narrow.bmp",
+      "bytes": 1339254,
+      "sha256": "757c5731d718a033caa35a5a5435e200dc6a5fc9901bae696dc14e0208655320"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/empty-after-close.bmp",
+      "bytes": 1339254,
+      "sha256": "fb5c2605d4f0b268762aa7401916d14b9802e1557bb3255183bb09c713bd9ca7"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/empty-system.bmp",
+      "bytes": 3840054,
+      "sha256": "de487b03e2e7a41116d2fff6d890699d40a38456b6036d568a6c2ae2266a5d11"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/english-dark.bmp",
+      "bytes": 3840054,
+      "sha256": "30df83a3d8bd42ef61f992788f23a5c8dc740b0f3793386731b1d1188fb3d789"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/english-dual.bmp",
+      "bytes": 3840054,
+      "sha256": "076024c64cf062a358c0bac485a182351b3b4da5f3c275c4c584e0b34cd6b010"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/english-full.bmp",
+      "bytes": 3840054,
+      "sha256": "98fb4f548c90d76f3d0d7823fe9d892cb4461419bfe34b885b2bf607e84c5e54"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/preferences/empty-system.bmp",
+      "bytes": 3840054,
+      "sha256": "a0afcf27d91aac92b8b01e04d1555c9d83f8a7d28afd9fe7f52dd30673101155"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/preferences/rejected-preference.bmp",
+      "bytes": 3840054,
+      "sha256": "e062e6708abe721e9ccb034c71ebe8a9287aaf22e4f03d9b9366db589b1b4f5d"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/preferences/restored-chinese.bmp",
+      "bytes": 3840054,
+      "sha256": "4f98b5381ce3edfafacaff8ee34c4a8518e85a1986c7a836bc636bb6ef7aff14"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-144/before.bmp",
+      "bytes": 7920054,
+      "sha256": "4ac6a112c99ec5f5ec6730f642c2428ce7e9f9748b608b4b2034ee76901d3617"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-144/restore-144.bmp",
+      "bytes": 7920054,
+      "sha256": "381536a90dc050e14438fec270e85646af65f444df5cc015edc95592cc42981d"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-144/saved.bmp",
+      "bytes": 7920054,
+      "sha256": "188e52e31ef48cd018e4f83608ede241359c2b803ad0d235e67f510200e21c82"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-192/before.bmp",
+      "bytes": 8536054,
+      "sha256": "e9041b421ba15188cb0827d2164d166b52507c6393b551b971f9307b26b370fe"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-192/restore-192.bmp",
+      "bytes": 8536054,
+      "sha256": "9a237f3b7b1f73cad443dba47d8530daab18db43bc3a36e27aa6fa2d8a591d8e"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-192/saved.bmp",
+      "bytes": 8536054,
+      "sha256": "9dfe7b3a9e842734fbdd75b38e3ee966f0bd5d55f71707f5e3f281034dae96f6"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/before.bmp",
+      "bytes": 3840054,
+      "sha256": "0a923a797f375e185ae793035f51aedef8334206db30e1ab854fe7f636f4bcf8"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/reordered-columns.bmp",
+      "bytes": 3840054,
+      "sha256": "9010c01f12283d4f8b8c4076962f0c6fa42521b97b9d1b367d0d08ab6766e57f"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/restore-96.bmp",
+      "bytes": 3840054,
+      "sha256": "0cf24e7e6b12aec2dec5e1c9aacbbd68e246f2bbfaca09ed9cf9f9395e1340cf"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/saved.bmp",
+      "bytes": 3840054,
+      "sha256": "4ef5680eeba2ab0c7b83564058838de25e361bb5bb72086fafb52cf70c71ff01"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-144/before.bmp",
+      "bytes": 7920054,
+      "sha256": "4ac6a112c99ec5f5ec6730f642c2428ce7e9f9748b608b4b2034ee76901d3617"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-144/restore-144.bmp",
+      "bytes": 7920054,
+      "sha256": "381536a90dc050e14438fec270e85646af65f444df5cc015edc95592cc42981d"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-144/saved.bmp",
+      "bytes": 7920054,
+      "sha256": "188e52e31ef48cd018e4f83608ede241359c2b803ad0d235e67f510200e21c82"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-192/before.bmp",
+      "bytes": 8536054,
+      "sha256": "e9041b421ba15188cb0827d2164d166b52507c6393b551b971f9307b26b370fe"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-192/restore-192.bmp",
+      "bytes": 8536054,
+      "sha256": "9a237f3b7b1f73cad443dba47d8530daab18db43bc3a36e27aa6fa2d8a591d8e"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-192/saved.bmp",
+      "bytes": 8536054,
+      "sha256": "9dfe7b3a9e842734fbdd75b38e3ee966f0bd5d55f71707f5e3f281034dae96f6"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/before.bmp",
+      "bytes": 3840054,
+      "sha256": "0a923a797f375e185ae793035f51aedef8334206db30e1ab854fe7f636f4bcf8"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/reordered-columns.bmp",
+      "bytes": 3840054,
+      "sha256": "9010c01f12283d4f8b8c4076962f0c6fa42521b97b9d1b367d0d08ab6766e57f"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/restore-96.bmp",
+      "bytes": 3840054,
+      "sha256": "0cf24e7e6b12aec2dec5e1c9aacbbd68e246f2bbfaca09ed9cf9f9395e1340cf"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/saved.bmp",
+      "bytes": 3840054,
+      "sha256": "4ef5680eeba2ab0c7b83564058838de25e361bb5bb72086fafb52cf70c71ff01"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/5372.dmp",
+      "bytes": 265806378,
+      "sha256": "71ed65ca58dd1da2bd699746eb13c4f2068bcd9badee9b4663203fda75e45c57"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/5480.dmp",
+      "bytes": 137303796,
+      "sha256": "e7bb0f17fbf30db6a0ecb11c65f96a970dee60be515bdfd1ad7942e92679b6fa"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/7456.dmp",
+      "bytes": 55258089,
+      "sha256": "99cc895134e708aa66c6f92fa44ae72f9d37fca5df8d5c206164882de11b2324"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/runs/probe-A-gate1/first-full-dump/6596.dmp",
+      "bytes": 127922252,
+      "sha256": "cb2d1c9138a7d92ad0816f915cc734b80345f14278f05438c7d7e455ff00bdfd"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/runs/probe-C-gate1/first-full-dump/6428.dmp",
+      "bytes": 126803590,
+      "sha256": "b72c184a33521a37b5cdc5ac6023de10aa5c9a87c40b3463e3a6a6cbd58d8a51"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/system-images/kernel32.dll",
+      "bytes": 790784,
+      "sha256": "da41de8a936170f771f6f3b1543b93fdf6768d3b5b40ff8637820ca01ade9d82"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/system-images/KERNELBASE.dll",
+      "bytes": 3637776,
+      "sha256": "9817ec58129ec44dc8b063a7790565d41fd5e1d8673d57e43a79b669b63e0255"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/system-images/ntdll.dll",
+      "bytes": 2104800,
+      "sha256": "cf49573b6caa724c13310f2f774e81d527831e84bb8db822e12932ce6a47ea9e"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/osmesa/lifecycle-control/system-images/ucrtbase.dll",
+      "bytes": 1129648,
+      "sha256": "5e5ae0f8e4325ceb3ee767065dda6e03e980d401f00a2bdb8ca81ed90813920f"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-candidate/candidate.zip",
+      "bytes": 38073334,
+      "sha256": "afb11d7bf599e991f8e2b7df6971813f8bb6bca66f91f85c8f20b7b5cf59c8ae"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-candidate/original-debug.7z",
+      "bytes": 84354035,
+      "sha256": "60b2ccf9d81646aab53ce50bb1117c292e314049799b58f620d6838d134b48b1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-candidate/original-symbols/x64/osmesa.pdb",
+      "bytes": 67080192,
+      "sha256": "42659470e93b8305d514a956e830d1455318b326b2d2829e61426ca265967ee7"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-candidate/unpacked/osmesa.dll",
+      "bytes": 51686912,
+      "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-candidate/unpacked/osmesa.pdb",
+      "bytes": 68718592,
+      "sha256": "c5c15c5cc6673b795d21fa721d87a6abb382005417129685903937e744f73bbd"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/caller/osmesa_thread_probe.exe",
+      "bytes": 690688,
+      "sha256": "9ddde29046b3c131c60e8f40330c407c0e6e8f1ab5f446b08e28e07ac3e4bc82"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/caller/osmesa_thread_probe.obj",
+      "bytes": 62061,
+      "sha256": "a0164c7c427845ed3d420b4924b1430b26f0a878e45151047114334a291ceba4"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/caller/osmesa_thread_probe.pdb",
+      "bytes": 7213056,
+      "sha256": "24c34f5e74821a3c4ffb9dd2d12b9842096d291b3ba3897fdb06807b606c90c5"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/isolated-wgl/libgallium_wgl.dll",
+      "bytes": 54089216,
+      "sha256": "6ba1d46ae560f051a32b576c34e794a256df23572fdc82c602585d65cca69569"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/isolated-wgl/libglapi.dll",
+      "bytes": 340480,
+      "sha256": "38c0c712138e313f72b9fa113e8bc00019915cedff5f0659471fdb63e9b3b392"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/isolated-wgl/opengl32.dll",
+      "bytes": 137216,
+      "sha256": "419ab7c45f86300acef8eee53414c639a26893fbd7adb24ba9b8f7700855604c"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/isolated-wgl/pipe_swrast.dll",
+      "bytes": 46453248,
+      "sha256": "6adb34661b5ebb14caa7f2582e22d8f515ec36e7d2c7c80d07d5f1a199beb137"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-assistant.bmp",
+      "bytes": 7200054,
+      "sha256": "2ff04692b6c2e482f1a70d251938978edbf2f999c71c5578f321026dbb437cf1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-dark.bmp",
+      "bytes": 7200054,
+      "sha256": "42dec12c05736df894267cfd3ddcefcb8167c2b8938f99b12d3dfb210f3cf4e1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-dual.bmp",
+      "bytes": 7200054,
+      "sha256": "fb6e47d28c6f8cc32fe830b833b8990c9684ad01aa72d94fd434c60d1fff3dc2"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-full.bmp",
+      "bytes": 7200054,
+      "sha256": "4aaf24b278abc6a2c751a760105faea498721dcecc315978fb4709a3ac754c01"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-narrow.bmp",
+      "bytes": 3013254,
+      "sha256": "f657dbd54b3755194ada989f1a74ab8749198dcc437114dd27665e9ae8a07ec9"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/empty-after-close.bmp",
+      "bytes": 3013254,
+      "sha256": "232fa69f9f2f449f12bab08972dc749c0e3271963fbf2a701a614536b81f4850"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/empty-system.bmp",
+      "bytes": 7200054,
+      "sha256": "059f5e52e1cf6adc83b0260903601b6f865100364507cbba98b7af4645461bd7"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/english-dark.bmp",
+      "bytes": 7200054,
+      "sha256": "bc683f84ef82eae21f7b9ff7ea4fc7002fe6eba19f8db94b040dbcc11edc9021"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/english-dual.bmp",
+      "bytes": 7200054,
+      "sha256": "7d132e505260f2625c4c2234085e64d7ec19de2b956e9c827f16b083ec24b02a"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/english-full.bmp",
+      "bytes": 7200054,
+      "sha256": "c77ee7392b8be7bd98e9c0a74414e59b55f42344d992013053cd4535b4142645"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-assistant.bmp",
+      "bytes": 7360054,
+      "sha256": "cdcccc56e53d8ca230947819cfa2769a865f798165730cad55c40972934bd08b"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-dark.bmp",
+      "bytes": 7360054,
+      "sha256": "20f8d4e22f868280e4e5ec89d93ff81103aa81fd05eda91142bb8ae869135bb9"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-dual.bmp",
+      "bytes": 7360054,
+      "sha256": "45be5f2f96e271ce8036bbcc0dfc64b29e9e2bf27ecd23be2b6631c59b38297c"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-full.bmp",
+      "bytes": 7360054,
+      "sha256": "685839f4e0ec1eed8ed4934c9112618f94d316b4f06392e74138d4f15a4b8347"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-narrow.bmp",
+      "bytes": 5356854,
+      "sha256": "89ae2544093e9d8a29606066a9b26a5fd3556dc6d2b461f22d907c96f2cf0195"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/empty-after-close.bmp",
+      "bytes": 5356854,
+      "sha256": "f57645689d631ab4d71a147be1b8e163ced57c62386ef2920d20c25b90222f15"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/empty-system.bmp",
+      "bytes": 7360054,
+      "sha256": "c0d3db4bf6b53787283a009fc22f070b6a5b840a4b95db5d04707c912ff3be0a"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/english-dark.bmp",
+      "bytes": 7360054,
+      "sha256": "015022478c8af7c8d0ec3c27bf3cc20ac136913b979d25ccb74693acb83500be"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/english-dual.bmp",
+      "bytes": 7360054,
+      "sha256": "497bb743dd384c70ce2b4f01fd44804a83a20e9cd54a1c05b91872e07625c3c8"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/english-full.bmp",
+      "bytes": 7360054,
+      "sha256": "9d4742e90ad559e4fbb8dbdbdf6d0c2216f83a75bc15f9e8060ebf25628c4715"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-assistant.bmp",
+      "bytes": 3840054,
+      "sha256": "d1dca1c46dfce421b122ff3a0bac51fb49a2e4a282f89048f5c7060a792c0af6"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-dark.bmp",
+      "bytes": 3840054,
+      "sha256": "f4e950c7d4b6024f2b63dc0199a3ca8230c09632cc64b9b0f9e2a19789643b23"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-dual.bmp",
+      "bytes": 3840054,
+      "sha256": "756d3c17dc5a64018da38422b1ffa7be46bd19d50a4ff57e229fca83266ffa31"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-full.bmp",
+      "bytes": 3840054,
+      "sha256": "9bc0f1207e464673da690a9a83dc41895bcf150eea2c5c6500a72a07d02236f1"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-narrow.bmp",
+      "bytes": 1339254,
+      "sha256": "757c5731d718a033caa35a5a5435e200dc6a5fc9901bae696dc14e0208655320"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/empty-after-close.bmp",
+      "bytes": 1339254,
+      "sha256": "fb5c2605d4f0b268762aa7401916d14b9802e1557bb3255183bb09c713bd9ca7"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/empty-system.bmp",
+      "bytes": 3840054,
+      "sha256": "de487b03e2e7a41116d2fff6d890699d40a38456b6036d568a6c2ae2266a5d11"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/english-dark.bmp",
+      "bytes": 3840054,
+      "sha256": "30df83a3d8bd42ef61f992788f23a5c8dc740b0f3793386731b1d1188fb3d789"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/english-dual.bmp",
+      "bytes": 3840054,
+      "sha256": "076024c64cf062a358c0bac485a182351b3b4da5f3c275c4c584e0b34cd6b010"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/english-full.bmp",
+      "bytes": 3840054,
+      "sha256": "98fb4f548c90d76f3d0d7823fe9d892cb4461419bfe34b885b2bf607e84c5e54"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/empty-system.bmp",
+      "bytes": 3840054,
+      "sha256": "a0afcf27d91aac92b8b01e04d1555c9d83f8a7d28afd9fe7f52dd30673101155"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/rejected-preference.bmp",
+      "bytes": 3840054,
+      "sha256": "e062e6708abe721e9ccb034c71ebe8a9287aaf22e4f03d9b9366db589b1b4f5d"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/restored-chinese.bmp",
+      "bytes": 3840054,
+      "sha256": "4f98b5381ce3edfafacaff8ee34c4a8518e85a1986c7a836bc636bb6ef7aff14"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/empty-system.bmp",
+      "bytes": 3840054,
+      "sha256": "a0afcf27d91aac92b8b01e04d1555c9d83f8a7d28afd9fe7f52dd30673101155"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/rejected-preference.bmp",
+      "bytes": 3840054,
+      "sha256": "4c6693a97a0c797450ed35bbee547e2fc9349454258a4f745b5d8d9164b9626d"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/restored-chinese.bmp",
+      "bytes": 3840054,
+      "sha256": "7225a8d5e787731f9682e16c1003ab78a4aeb7fdce8bc4b0b2d16f075517a050"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/before.bmp",
+      "bytes": 3840054,
+      "sha256": "0a923a797f375e185ae793035f51aedef8334206db30e1ab854fe7f636f4bcf8"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/restore-96.bmp",
+      "bytes": 3840054,
+      "sha256": "0cf24e7e6b12aec2dec5e1c9aacbbd68e246f2bbfaca09ed9cf9f9395e1340cf"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/saved.bmp",
+      "bytes": 3840054,
+      "sha256": "4ef5680eeba2ab0c7b83564058838de25e361bb5bb72086fafb52cf70c71ff01"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/before.bmp",
+      "bytes": 7920054,
+      "sha256": "4ac6a112c99ec5f5ec6730f642c2428ce7e9f9748b608b4b2034ee76901d3617"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/restore-144.bmp",
+      "bytes": 7920054,
+      "sha256": "381536a90dc050e14438fec270e85646af65f444df5cc015edc95592cc42981d"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/saved.bmp",
+      "bytes": 7920054,
+      "sha256": "188e52e31ef48cd018e4f83608ede241359c2b803ad0d235e67f510200e21c82"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/before.bmp",
+      "bytes": 8536054,
+      "sha256": "e9041b421ba15188cb0827d2164d166b52507c6393b551b971f9307b26b370fe"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/restore-192.bmp",
+      "bytes": 8536054,
+      "sha256": "9a237f3b7b1f73cad443dba47d8530daab18db43bc3a36e27aa6fa2d8a591d8e"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/saved.bmp",
+      "bytes": 8536054,
+      "sha256": "9dfe7b3a9e842734fbdd75b38e3ee966f0bd5d55f71707f5e3f281034dae96f6"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/before.bmp",
+      "bytes": 3840054,
+      "sha256": "03432617b915229df8ff7855c71a118747149605deeab0a58517f17a8e84ba2b"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/reordered-columns.bmp",
+      "bytes": 3840054,
+      "sha256": "9010c01f12283d4f8b8c4076962f0c6fa42521b97b9d1b367d0d08ab6766e57f"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/restore-96.bmp",
+      "bytes": 3840054,
+      "sha256": "0cf24e7e6b12aec2dec5e1c9aacbbd68e246f2bbfaca09ed9cf9f9395e1340cf"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/saved.bmp",
+      "bytes": 3840054,
+      "sha256": "4ef5680eeba2ab0c7b83564058838de25e361bb5bb72086fafb52cf70c71ff01"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/2676.dmp",
+      "bytes": 141870805,
+      "sha256": "6270259b002d9dad0e04d6001898cd2a1db640daa15fb0aceca6de4db715179c"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/2720.dmp",
+      "bytes": 266045160,
+      "sha256": "c55fb0523b095ba1a661077e4b48fcc7b4e14a7cc27dd7a7c30aea8e0a9f6740"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/6984.dmp",
+      "bytes": 55174042,
+      "sha256": "528700496774eb6e0caff7ccfb0e0e2a780499b22274344445b25a585d917763"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/4312.dmp",
+      "bytes": 134341700,
+      "sha256": "01364fe968afb863d9c84d7115408f127c95fcc90dc04a50fc365e9ddedd0743"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/6032.dmp",
+      "bytes": 263926528,
+      "sha256": "0ab69b5b4c3cc184563368b6a58d88a867984e81a8e698332554ab9da20241c5"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/7408.dmp",
+      "bytes": 55185609,
+      "sha256": "683c780051919a6660354c76e4fe1e598702879338e9100fc6ee1e8e7319ed66"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/runs/probe-A-gate1/first-full-dump/532.dmp",
+      "bytes": 127998956,
+      "sha256": "23459ce0ab43aacd8b01557f9a30a6080ad0247d94b555248ede99d83994ddb9"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/runs/probe-C-gate1/first-full-dump/7132.dmp",
+      "bytes": 126921104,
+      "sha256": "f4283b117f74838bda3b26d9d7e556188bb4cc086c08b33a1b682f1fb850e4af"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/system-images/kernel32.dll",
+      "bytes": 790784,
+      "sha256": "da41de8a936170f771f6f3b1543b93fdf6768d3b5b40ff8637820ca01ade9d82"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/system-images/KERNELBASE.dll",
+      "bytes": 3637776,
+      "sha256": "9817ec58129ec44dc8b063a7790565d41fd5e1d8673d57e43a79b669b63e0255"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/system-images/ntdll.dll",
+      "bytes": 2104800,
+      "sha256": "cf49573b6caa724c13310f2f774e81d527831e84bb8db822e12932ce6a47ea9e"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/artifacts/webview2/lifecycle-control/system-images/ucrtbase.dll",
+      "bytes": 1129648,
+      "sha256": "5e5ae0f8e4325ceb3ee767065dda6e03e980d401f00a2bdb8ca81ed90813920f"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/local-object-A/full/47000.dmp",
+      "bytes": 135636917,
+      "sha256": "cfd301401f04dc9a3fe422a81dc45d0b19b78bc5f975b89c5bd22a6ed012acb9"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/local-object-C/full/33064.dmp",
+      "bytes": 134497847,
+      "sha256": "b13182db0aad6ded2dbdfe5161012ba1bd5f1ab4071ab5b824b84023352b64a9"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/raw/windows-osmesa-verified.zip",
+      "bytes": 469580301,
+      "sha256": "6327c1ef443e2ad62b0ed693ad819bbb1d82b58026c0bf08059a6a2999a2c6bb"
+    },
+    {
+      "path": "build/p1-mesa-hosted-control-20261009/raw/windows-webview2-verified.zip",
+      "bytes": 637913104,
+      "sha256": "1b8e54b2c6f4040e2ee2b3378ee112cbe7aacd20a3f277178b42ebeaf7f8b323"
+    }
+  ]
+}

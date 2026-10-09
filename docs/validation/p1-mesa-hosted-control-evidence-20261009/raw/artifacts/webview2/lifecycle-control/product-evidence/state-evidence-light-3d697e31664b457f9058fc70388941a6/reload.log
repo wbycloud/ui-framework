@@ -1,0 +1,12 @@
+TEST_PHASE pid3012 tick922218 dispatched0 create-host-begin
+TEST_PHASE pid3012 tick922234 dispatched0 create-host-end
+TEST_PHASE pid3012 tick922234 dispatched0 open-begin
+TEST_PHASE pid3012 tick922500 dispatched0 open-return
+TEST_PHASE pid3012 tick923000 dispatched34 open-settled
+RESTORED modereload dpi96 name280 treeCollapsed1
+TEST_PHASE pid3012 tick923265 dispatched51 close-begin
+TEST_PHASE pid3012 tick923281 dispatched51 close-request-return
+TEST_PHASE pid3012 tick923328 dispatched52 close-state-checked
+TEST_PHASE pid3012 tick923640 dispatched52 com-uninitialize-begin
+TEST_PHASE pid3012 tick923640 dispatched52 process-return
+Stateful actual light / reload: 0 failures

@@ -1,0 +1,12 @@
+TEST_PHASE pid7008 tick729906 dispatched0 create-host-begin
+TEST_PHASE pid7008 tick729921 dispatched0 create-host-end
+TEST_PHASE pid7008 tick729953 dispatched0 open-begin
+TEST_PHASE pid7008 tick730328 dispatched0 open-return
+TEST_PHASE pid7008 tick730828 dispatched36 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid7008 tick730828 dispatched36 close-begin
+TEST_PHASE pid7008 tick730859 dispatched36 close-request-return
+TEST_PHASE pid7008 tick730921 dispatched37 close-state-checked
+TEST_PHASE pid7008 tick731234 dispatched37 com-uninitialize-begin
+TEST_PHASE pid7008 tick731234 dispatched37 process-return
+Stateful actual light / invalid: 0 failures

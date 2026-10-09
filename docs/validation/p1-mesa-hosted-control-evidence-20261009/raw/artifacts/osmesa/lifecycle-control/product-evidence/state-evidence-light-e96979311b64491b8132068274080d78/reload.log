@@ -1,0 +1,12 @@
+TEST_PHASE pid2700 tick713437 dispatched0 create-host-begin
+TEST_PHASE pid2700 tick713453 dispatched0 create-host-end
+TEST_PHASE pid2700 tick713484 dispatched0 open-begin
+TEST_PHASE pid2700 tick713828 dispatched0 open-return
+TEST_PHASE pid2700 tick714328 dispatched34 open-settled
+RESTORED modereload dpi96 name280 treeCollapsed1
+TEST_PHASE pid2700 tick714625 dispatched52 close-begin
+TEST_PHASE pid2700 tick714640 dispatched52 close-request-return
+TEST_PHASE pid2700 tick714703 dispatched53 close-state-checked
+TEST_PHASE pid2700 tick715015 dispatched53 com-uninitialize-begin
+TEST_PHASE pid2700 tick715015 dispatched53 process-return
+Stateful actual light / reload: 0 failures

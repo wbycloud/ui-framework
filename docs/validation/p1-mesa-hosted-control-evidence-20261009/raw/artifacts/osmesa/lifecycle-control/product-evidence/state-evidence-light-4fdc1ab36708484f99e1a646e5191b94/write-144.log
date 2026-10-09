@@ -1,0 +1,19 @@
+TEST_PHASE pid5308 tick419890 dispatched0 create-host-begin
+TEST_PHASE pid5308 tick419906 dispatched0 create-host-end
+TEST_PHASE pid5308 tick419984 dispatched0 open-begin
+TEST_PHASE pid5308 tick420328 dispatched0 open-return
+TEST_PHASE pid5308 tick420828 dispatched29 open-settled
+RESTORED modewrite dpi144 name200 treeCollapsed0
+TEST_PHASE pid5308 tick420828 dispatched29 screenshot-begin
+TEST_PHASE pid5308 tick420875 dispatched29 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+CAPTURE hit00000000000901CE classUIFrameworkLightWeb thread2176 ours2176 GetCapture00000000000901CE target-thread-capture00000000000901CE
+ACTUAL_HEADER dpi144 width200 -> 280 hit00000000000901CE pid5308
+TEST_PHASE pid5308 tick421265 dispatched57 screenshot-begin
+TEST_PHASE pid5308 tick421328 dispatched57 screenshot-end
+TEST_PHASE pid5308 tick421328 dispatched57 close-begin
+TEST_PHASE pid5308 tick421359 dispatched57 close-request-return
+TEST_PHASE pid5308 tick421421 dispatched59 close-state-checked
+TEST_PHASE pid5308 tick421734 dispatched59 com-uninitialize-begin
+TEST_PHASE pid5308 tick421734 dispatched59 process-return
+Stateful actual light / write: 0 failures

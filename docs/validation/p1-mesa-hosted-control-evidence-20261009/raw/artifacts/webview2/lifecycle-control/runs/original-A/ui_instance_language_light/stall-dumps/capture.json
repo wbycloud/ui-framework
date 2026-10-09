@@ -1,0 +1,226 @@
+[
+  {
+    "pid": 6984,
+    "open_process": true,
+    "error": 0,
+    "flags": "0x1826",
+    "dump_ok": true,
+    "bytes": 55174042,
+    "mesa_objects": {
+      "pid": 6984,
+      "observed_ns": 1791542115908942400,
+      "timing_changed": true,
+      "reads": [],
+      "open_ok": true,
+      "open_error": 0,
+      "modules_ok": true,
+      "modules_error": 0,
+      "mesa_present": false
+    }
+  },
+  {
+    "pid": 2720,
+    "open_process": true,
+    "error": 0,
+    "flags": "0x1826",
+    "dump_ok": true,
+    "bytes": 266045160,
+    "mesa_objects": {
+      "pid": 2720,
+      "observed_ns": 1791542116137691000,
+      "timing_changed": true,
+      "reads": [],
+      "open_ok": true,
+      "open_error": 0,
+      "modules_ok": true,
+      "modules_error": 0,
+      "mesa_present": false
+    }
+  },
+  {
+    "pid": 2676,
+    "open_process": true,
+    "error": 0,
+    "flags": "0x1826",
+    "dump_ok": true,
+    "bytes": 141870805,
+    "mesa_objects": {
+      "pid": 2676,
+      "observed_ns": 1791542116470564700,
+      "timing_changed": true,
+      "reads": [
+        {
+          "address": "0x7ffdda0502c0",
+          "bytes": 8,
+          "ok": true,
+          "error": 0
+        },
+        {
+          "address": "0x2081fa713f0",
+          "bytes": 8,
+          "ok": true,
+          "error": 0
+        },
+        {
+          "address": "0x2081fc6e480",
+          "bytes": 8,
+          "ok": true,
+          "error": 0
+        },
+        {
+          "address": "0x2081fc6e4b0",
+          "bytes": 8,
+          "ok": true,
+          "error": 0
+        },
+        {
+          "address": "0x2081fa79270",
+          "bytes": 10856,
+          "ok": true,
+          "error": 0
+        }
+      ],
+      "open_ok": true,
+      "open_error": 0,
+      "modules_ok": true,
+      "modules_error": 0,
+      "mesa_present": true,
+      "module_base": "0x7ffdd6fe0000",
+      "path": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+      "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+      "matched_layout": {
+        "label": "A",
+        "global_rva": 50791104,
+        "pdb_guid": "a53e732b-2253-4fee-8fee-53f47771d8ea"
+      },
+      "global_fscreen": "0x2081fa713f0",
+      "screen": "0x2081fc6e1f0",
+      "rast_address": "0x2081fa79270",
+      "cs_tpool_pointer": "0x2081c233e40",
+      "num_threads": 4,
+      "exit_flag": 1,
+      "tasks": [
+        {
+          "index": 0,
+          "task": "0x2081fa79288",
+          "saved_handle": "0x308",
+          "task_index": 0,
+          "semaphores": {
+            "work_ready": {
+              "address": "0x2081fa79328",
+              "counter": 1
+            },
+            "work_done": {
+              "address": "0x2081fa79360",
+              "counter": 20
+            },
+            "exited": {
+              "address": "0x2081fa79398",
+              "counter": 0
+            }
+          },
+          "duplicate_ok": true,
+          "duplicate_error": 0,
+          "thread_id": 5156,
+          "thread_id_error": 0,
+          "query_ok": true,
+          "exit_code": 0,
+          "query_error": 0,
+          "zero_wait": 0,
+          "wait_error": 0,
+          "observer_close_ok": true
+        },
+        {
+          "index": 1,
+          "task": "0x2081fa793d0",
+          "saved_handle": "0x30c",
+          "task_index": 1,
+          "semaphores": {
+            "work_ready": {
+              "address": "0x2081fa79470",
+              "counter": 1
+            },
+            "work_done": {
+              "address": "0x2081fa794a8",
+              "counter": 20
+            },
+            "exited": {
+              "address": "0x2081fa794e0",
+              "counter": 0
+            }
+          },
+          "duplicate_ok": true,
+          "duplicate_error": 0,
+          "thread_id": 7736,
+          "thread_id_error": 0,
+          "query_ok": true,
+          "exit_code": 0,
+          "query_error": 0,
+          "zero_wait": 0,
+          "wait_error": 0,
+          "observer_close_ok": true
+        },
+        {
+          "index": 2,
+          "task": "0x2081fa79518",
+          "saved_handle": "0x310",
+          "task_index": 2,
+          "semaphores": {
+            "work_ready": {
+              "address": "0x2081fa795b8",
+              "counter": 1
+            },
+            "work_done": {
+              "address": "0x2081fa795f0",
+              "counter": 20
+            },
+            "exited": {
+              "address": "0x2081fa79628",
+              "counter": 0
+            }
+          },
+          "duplicate_ok": true,
+          "duplicate_error": 0,
+          "thread_id": 7628,
+          "thread_id_error": 0,
+          "query_ok": true,
+          "exit_code": 0,
+          "query_error": 0,
+          "zero_wait": 0,
+          "wait_error": 0,
+          "observer_close_ok": true
+        },
+        {
+          "index": 3,
+          "task": "0x2081fa79660",
+          "saved_handle": "0x314",
+          "task_index": 3,
+          "semaphores": {
+            "work_ready": {
+              "address": "0x2081fa79700",
+              "counter": 1
+            },
+            "work_done": {
+              "address": "0x2081fa79738",
+              "counter": 20
+            },
+            "exited": {
+              "address": "0x2081fa79770",
+              "counter": 0
+            }
+          },
+          "duplicate_ok": true,
+          "duplicate_error": 0,
+          "thread_id": 3572,
+          "thread_id_error": 0,
+          "query_ok": true,
+          "exit_code": 0,
+          "query_error": 0,
+          "zero_wait": 0,
+          "wait_error": 0,
+          "observer_close_ok": true
+        }
+      ]
+    }
+  }
+]

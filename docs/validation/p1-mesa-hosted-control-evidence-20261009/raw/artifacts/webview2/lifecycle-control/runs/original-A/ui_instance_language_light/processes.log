@@ -1,0 +1,62 @@
+Internal ctest changing into directory: D:/a/ui-framework/ui-framework/build/ci-evidence-webview2/lifecycle-control/runs/original-A
+UpdateCTestConfiguration  from :D:/a/ui-framework/ui-framework/build/ci-evidence-webview2/lifecycle-control/runs/original-A/DartConfiguration.tcl
+UpdateCTestConfiguration  from :D:/a/ui-framework/ui-framework/build/ci-evidence-webview2/lifecycle-control/runs/original-A/DartConfiguration.tcl
+Test project D:/a/ui-framework/ui-framework/build/ci-evidence-webview2/lifecycle-control/runs/original-A
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 2
+    Start 2: ui_instance_language_light
+
+2: Test command: "C:\Program Files\PowerShell\7\pwsh.exe" "-NoProfile" "-File" "D:/a/ui-framework/ui-framework/tests/run-instance-language.ps1" "-BuildDirectory" "D:/a/ui-framework/ui-framework/build/ci-webview2" "-Provider" "D:\a\ui-framework\ui-framework\.deps\mesa-24.3.4\x64\osmesa.dll" "-Backend" "light"
+2: Working Directory: D:/a/ui-framework/ui-framework/build/ci-evidence-webview2/lifecycle-control/runs/original-A
+2: Test timeout computed to be: 240
+2: CASE_BEGIN label=preferences-96 utc=2026-10-09T10:34:08.5829324Z evidence=D:\a\ui-framework\ui-framework\build\ci-webview2\language-evidence-light-b1aeac2b870d4755906136eeb5f27824
+2: INPUT_EVIDENCE complete DLL preference startup; no injected input
+2: TEST_PHASE pid2676 tick667562 dispatched0 create-host-begin
+2: TEST_PHASE pid2676 tick667578 dispatched0 create-host-end
+2: TEST_PHASE pid2676 tick667812 dispatched13 screenshot-begin
+2: TEST_PHASE pid2676 tick667859 dispatched13 screenshot-end
+2: TEST_PHASE pid2676 tick667859 dispatched13 preferences-begin
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+2: PREFERENCE missing: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+2: PREFERENCE empty: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+2: PREFERENCE truncated: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+2: PREFERENCE magic: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+2: PREFERENCE future: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+2: TEST_PHASE pid2676 tick671531 dispatched222 screenshot-begin
+2: TEST_PHASE pid2676 tick671546 dispatched222 screenshot-end
+2: PREFERENCE language: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+2: PREFERENCE profile: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+2: PREFERENCE reserved: final=en-US file unchanged
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+2: TEST_PHASE pid2676 tick673562 dispatched330 screenshot-begin
+2: TEST_PHASE pid2676 tick673609 dispatched330 screenshot-end
+2: PREFERENCE zh-CN: final=zh-CN file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+2: PREFERENCE en-US: final=en-US file unchanged
+2: TEST_PHASE pid2676 tick674453 dispatched373 preferences-end
+2: TEST_PHASE pid2676 tick674765 dispatched375 com-uninitialize-begin
+2: TEST_PHASE pid2676 tick674765 dispatched375 process-return
+2: Complete DLL preferences light failures0
+1/1 Test #2: ui_instance_language_light .......***Timeout 240.02 sec
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) = 240.02 sec
+
+The following tests FAILED:
+	  2 - ui_instance_language_light (Timeout)
+Errors while running CTest
+Output from these tests are in: D:/a/ui-framework/ui-framework/build/ci-evidence-webview2/lifecycle-control/runs/original-A/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.

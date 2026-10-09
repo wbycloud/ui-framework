@@ -1,0 +1,2018 @@
+[
+  {
+    "path": "build.cmd",
+    "bytes": 520,
+    "compressed": 283,
+    "offset": 0
+  },
+  {
+    "path": "build.log",
+    "bytes": 47663,
+    "compressed": 5280,
+    "offset": 338
+  },
+  {
+    "path": "compiler.log",
+    "bytes": 131,
+    "compressed": 116,
+    "offset": 5673
+  },
+  {
+    "path": "configure.log",
+    "bytes": 6673,
+    "compressed": 1268,
+    "offset": 5847
+  },
+  {
+    "path": "dependencies.log",
+    "bytes": 836,
+    "compressed": 526,
+    "offset": 7174
+  },
+  {
+    "path": "extraction.log",
+    "bytes": 401,
+    "compressed": 283,
+    "offset": 7762
+  },
+  {
+    "path": "lifecycle-candidate/candidate.zip",
+    "bytes": 38073334,
+    "compressed": 37901442,
+    "offset": 8105
+  },
+  {
+    "path": "lifecycle-candidate/original-debug.7z",
+    "bytes": 84354035,
+    "compressed": 84379780,
+    "offset": 37909626
+  },
+  {
+    "path": "lifecycle-candidate/original-symbols/x64/osmesa.pdb",
+    "bytes": 67080192,
+    "compressed": 19639773,
+    "offset": 122289489
+  },
+  {
+    "path": "lifecycle-candidate/original-symbols-extraction.log",
+    "bytes": 482,
+    "compressed": 311,
+    "offset": 141929359
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/LLVM-LICENSE.TXT",
+    "bytes": 15420,
+    "compressed": 5211,
+    "offset": 141929767
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/Apache-2.0",
+    "bytes": 10045,
+    "compressed": 3741,
+    "offset": 141935078
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/BSL-1.0",
+    "bytes": 1649,
+    "compressed": 898,
+    "offset": 141938918
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/GPL-1.0-or-later",
+    "bytes": 13047,
+    "compressed": 5125,
+    "offset": 141939912
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/GPL-2.0-only",
+    "bytes": 18424,
+    "compressed": 6986,
+    "offset": 141945142
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/MIT",
+    "bytes": 1372,
+    "compressed": 784,
+    "offset": 141952229
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/SGI-B-2.0",
+    "bytes": 1822,
+    "compressed": 993,
+    "offset": 141953105
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa-license.rst",
+    "bytes": 1816,
+    "compressed": 804,
+    "offset": 141954196
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/manifest.json",
+    "bytes": 1208,
+    "compressed": 635,
+    "offset": 141955100
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/mesa-osmesa-process-detach.patch",
+    "bytes": 1685,
+    "compressed": 724,
+    "offset": 141955823
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/osmesa.dll",
+    "bytes": 51686912,
+    "compressed": 19798401,
+    "offset": 141956654
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/osmesa.pdb",
+    "bytes": 68718592,
+    "compressed": 19019978,
+    "offset": 161755140
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/recipe/build-llvm.cmd",
+    "bytes": 1220,
+    "compressed": 538,
+    "offset": 180775203
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/recipe/build-providers.cmd",
+    "bytes": 1731,
+    "compressed": 734,
+    "offset": 180775837
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/recipe/meson-native.ini",
+    "bytes": 126,
+    "compressed": 116,
+    "offset": 180776672
+  },
+  {
+    "path": "lifecycle-control/caller/build.cmd",
+    "bytes": 373,
+    "compressed": 258,
+    "offset": 180776886
+  },
+  {
+    "path": "lifecycle-control/caller/osmesa_thread_probe.exe",
+    "bytes": 690688,
+    "compressed": 219378,
+    "offset": 180777224
+  },
+  {
+    "path": "lifecycle-control/caller/osmesa_thread_probe.ilk",
+    "bytes": 3745151,
+    "compressed": 721006,
+    "offset": 180996696
+  },
+  {
+    "path": "lifecycle-control/caller/osmesa_thread_probe.obj",
+    "bytes": 62061,
+    "compressed": 23882,
+    "offset": 181717796
+  },
+  {
+    "path": "lifecycle-control/caller/osmesa_thread_probe.pdb",
+    "bytes": 7213056,
+    "compressed": 1609145,
+    "offset": 181741772
+  },
+  {
+    "path": "lifecycle-control/isolated-wgl/libgallium_wgl.dll",
+    "bytes": 54089216,
+    "compressed": 20735955,
+    "offset": 183351011
+  },
+  {
+    "path": "lifecycle-control/isolated-wgl/libglapi.dll",
+    "bytes": 340480,
+    "compressed": 111163,
+    "offset": 204087061
+  },
+  {
+    "path": "lifecycle-control/isolated-wgl/opengl32.dll",
+    "bytes": 137216,
+    "compressed": 64778,
+    "offset": 204198313
+  },
+  {
+    "path": "lifecycle-control/isolated-wgl/pipe_swrast.dll",
+    "bytes": 46453248,
+    "compressed": 17879429,
+    "offset": 204263180
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-assistant.bmp",
+    "bytes": 7200054,
+    "compressed": 76107,
+    "offset": 222142701
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-dark.bmp",
+    "bytes": 7200054,
+    "compressed": 63157,
+    "offset": 222218975
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-dual.bmp",
+    "bytes": 7200054,
+    "compressed": 66425,
+    "offset": 222282294
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-full.bmp",
+    "bytes": 7200054,
+    "compressed": 65576,
+    "offset": 222348881
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/empty-after-close.bmp",
+    "bytes": 3013254,
+    "compressed": 12824,
+    "offset": 222414619
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/chinese-narrow.bmp",
+    "bytes": 3013254,
+    "compressed": 36712,
+    "offset": 222427610
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/empty-system.bmp",
+    "bytes": 7200054,
+    "compressed": 17279,
+    "offset": 222464486
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/english-dark.bmp",
+    "bytes": 7200054,
+    "compressed": 67068,
+    "offset": 222481927
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/english-dual.bmp",
+    "bytes": 7200054,
+    "compressed": 66763,
+    "offset": 222549157
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/english-full.bmp",
+    "bytes": 7200054,
+    "compressed": 65842,
+    "offset": 222616082
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 222682086
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/profile-A.ust",
+    "bytes": 584,
+    "compressed": 140,
+    "offset": 222682248
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 222682547
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 222682729
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-144/profile-B.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 222682891
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-assistant.bmp",
+    "bytes": 7360054,
+    "compressed": 93505,
+    "offset": 222683073
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-dark.bmp",
+    "bytes": 7360054,
+    "compressed": 72195,
+    "offset": 222776745
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-dual.bmp",
+    "bytes": 7360054,
+    "compressed": 74228,
+    "offset": 222849102
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-full.bmp",
+    "bytes": 7360054,
+    "compressed": 75616,
+    "offset": 222923492
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/chinese-narrow.bmp",
+    "bytes": 5356854,
+    "compressed": 65244,
+    "offset": 222999270
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/empty-after-close.bmp",
+    "bytes": 5356854,
+    "compressed": 19362,
+    "offset": 223064678
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/english-dark.bmp",
+    "bytes": 7360054,
+    "compressed": 70738,
+    "offset": 223084207
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/english-dual.bmp",
+    "bytes": 7360054,
+    "compressed": 71355,
+    "offset": 223155107
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/empty-system.bmp",
+    "bytes": 7360054,
+    "compressed": 20903,
+    "offset": 223226624
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/english-full.bmp",
+    "bytes": 7360054,
+    "compressed": 69608,
+    "offset": 223247689
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223317459
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/profile-A.ust",
+    "bytes": 584,
+    "compressed": 140,
+    "offset": 223317621
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223317920
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223318102
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-192/profile-B.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223318264
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-dark.bmp",
+    "bytes": 3840054,
+    "compressed": 42081,
+    "offset": 223318446
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-assistant.bmp",
+    "bytes": 3840054,
+    "compressed": 48003,
+    "offset": 223360688
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-dual.bmp",
+    "bytes": 3840054,
+    "compressed": 44104,
+    "offset": 223408857
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-full.bmp",
+    "bytes": 3840054,
+    "compressed": 43730,
+    "offset": 223453122
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/chinese-narrow.bmp",
+    "bytes": 1339254,
+    "compressed": 22152,
+    "offset": 223497013
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/empty-after-close.bmp",
+    "bytes": 1339254,
+    "compressed": 7580,
+    "offset": 223519328
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/empty-system.bmp",
+    "bytes": 3840054,
+    "compressed": 10640,
+    "offset": 223527074
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/english-dual.bmp",
+    "bytes": 3840054,
+    "compressed": 43284,
+    "offset": 223537875
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/english-dark.bmp",
+    "bytes": 3840054,
+    "compressed": 43155,
+    "offset": 223581320
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/english-full.bmp",
+    "bytes": 3840054,
+    "compressed": 43951,
+    "offset": 223624636
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223668748
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223668909
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223669090
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/profile-A.ust",
+    "bytes": 584,
+    "compressed": 139,
+    "offset": 223669251
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/dpi-96/profile-B.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223669548
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/manifest.json",
+    "bytes": 3187,
+    "compressed": 798,
+    "offset": 223669729
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/empty-system.bmp",
+    "bytes": 3840054,
+    "compressed": 10622,
+    "offset": 223670678
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223681466
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223681632
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/rejected-preference.bmp",
+    "bytes": 3840054,
+    "compressed": 43977,
+    "offset": 223681818
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences/restored-chinese.bmp",
+    "bytes": 3840054,
+    "compressed": 42861,
+    "offset": 223725968
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/preferences-96.log",
+    "bytes": 2022,
+    "compressed": 486,
+    "offset": 223768999
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/restore-144.log",
+    "bytes": 4286,
+    "compressed": 662,
+    "offset": 223769641
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/restore-192.log",
+    "bytes": 4313,
+    "compressed": 664,
+    "offset": 223770456
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/restore-96.log",
+    "bytes": 4285,
+    "compressed": 659,
+    "offset": 223771273
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/write-192.log",
+    "bytes": 5246,
+    "compressed": 875,
+    "offset": 223772084
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/write-144.log",
+    "bytes": 5229,
+    "compressed": 869,
+    "offset": 223773110
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42/write-96.log",
+    "bytes": 5231,
+    "compressed": 867,
+    "offset": 223774130
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/manifest.json",
+    "bytes": 1339,
+    "compressed": 560,
+    "offset": 223775147
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/empty-system.bmp",
+    "bytes": 3840054,
+    "compressed": 10622,
+    "offset": 223775858
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223786646
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223786812
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/rejected-preference.bmp",
+    "bytes": 3840054,
+    "compressed": 43977,
+    "offset": 223786998
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences/restored-chinese.bmp",
+    "bytes": 3840054,
+    "compressed": 42820,
+    "offset": 223831148
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-b1aeac2b870d4755906136eeb5f27824/preferences-96.log",
+    "bytes": 2022,
+    "compressed": 483,
+    "offset": 223874138
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/before.bmp",
+    "bytes": 3840054,
+    "compressed": 43814,
+    "offset": 223874777
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223918743
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 223918901
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/restore-96.bmp",
+    "bytes": 3840054,
+    "compressed": 37473,
+    "offset": 223919204
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/dpi-96/saved.bmp",
+    "bytes": 3840054,
+    "compressed": 38708,
+    "offset": 223956833
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/restore-96.log",
+    "bytes": 862,
+    "compressed": 299,
+    "offset": 223995692
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/manifest.json",
+    "bytes": 1129,
+    "compressed": 567,
+    "offset": 223996140
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/checksum.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 223996855
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625/write-96.log",
+    "bytes": 1189,
+    "compressed": 418,
+    "offset": 223997251
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/columns-future.log",
+    "bytes": 693,
+    "compressed": 248,
+    "offset": 223997816
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/columns-reserved.log",
+    "bytes": 693,
+    "compressed": 247,
+    "offset": 223998217
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/before.bmp",
+    "bytes": 7920054,
+    "compressed": 70580,
+    "offset": 223998619
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224069352
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 224069511
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/restore-144.bmp",
+    "bytes": 7920054,
+    "compressed": 61768,
+    "offset": 224069815
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-144/saved.bmp",
+    "bytes": 7920054,
+    "compressed": 63725,
+    "offset": 224131741
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/before.bmp",
+    "bytes": 8536054,
+    "compressed": 78697,
+    "offset": 224195618
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224274468
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 224274627
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/restore-192.bmp",
+    "bytes": 8536054,
+    "compressed": 64729,
+    "offset": 224274931
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-192/saved.bmp",
+    "bytes": 8536054,
+    "compressed": 67735,
+    "offset": 224339818
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/before.bmp",
+    "bytes": 3840054,
+    "compressed": 43951,
+    "offset": 224407705
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224451808
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224451966
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/profile-A.ust",
+    "bytes": 544,
+    "compressed": 129,
+    "offset": 224452124
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/profile-B.ust",
+    "bytes": 584,
+    "compressed": 139,
+    "offset": 224452408
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/reordered-columns.bmp",
+    "bytes": 3840054,
+    "compressed": 37690,
+    "offset": 224452702
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/restore-96.bmp",
+    "bytes": 3840054,
+    "compressed": 37473,
+    "offset": 224490555
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/dpi-96/saved.bmp",
+    "bytes": 3840054,
+    "compressed": 38708,
+    "offset": 224528184
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/empty.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 224567043
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/failed-create-mount-lock-release.log",
+    "bytes": 707,
+    "compressed": 249,
+    "offset": 224567436
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/future.log",
+    "bytes": 693,
+    "compressed": 244,
+    "offset": 224567856
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/initialization/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224568245
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-checksum/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224568411
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-checksum/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 224568579
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-columns-future/profile-A.ust",
+    "bytes": 624,
+    "compressed": 151,
+    "offset": 224568892
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-columns-future/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224569214
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-columns-reserved/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224569388
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-columns-reserved/profile-A.ust",
+    "bytes": 624,
+    "compressed": 150,
+    "offset": 224569564
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-empty/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224569887
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-empty/profile-A.ust",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224570052
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-future/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224570216
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-future/profile-A.ust",
+    "bytes": 624,
+    "compressed": 151,
+    "offset": 224570382
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-layout-future/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224570696
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-layout-future/profile-A.ust",
+    "bytes": 624,
+    "compressed": 149,
+    "offset": 224570869
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-layout-invalid/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224571188
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-layout-invalid/profile-A.ust",
+    "bytes": 624,
+    "compressed": 151,
+    "offset": 224571362
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-magic/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224571684
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-magic/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 224571849
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-oversized/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224572159
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-oversized/profile-A.ust",
+    "bytes": 70001,
+    "compressed": 85,
+    "offset": 224572328
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-truncated/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224572579
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/invalid-truncated/profile-A.ust",
+    "bytes": 41,
+    "compressed": 35,
+    "offset": 224572748
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/isolation.log",
+    "bytes": 1217,
+    "compressed": 424,
+    "offset": 224572949
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/layout-future.log",
+    "bytes": 693,
+    "compressed": 248,
+    "offset": 224573521
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/locked-profile.log",
+    "bytes": 707,
+    "compressed": 247,
+    "offset": 224573921
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/layout-invalid.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 224574321
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/magic.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 224574723
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/manifest.json",
+    "bytes": 7877,
+    "compressed": 1319,
+    "offset": 224575116
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/missing/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224576583
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/missing-file.log",
+    "bytes": 695,
+    "compressed": 244,
+    "offset": 224576742
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/missing-new-columns.log",
+    "bytes": 691,
+    "compressed": 247,
+    "offset": 224577137
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/oversized.log",
+    "bytes": 693,
+    "compressed": 247,
+    "offset": 224577542
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/profile-b.log",
+    "bytes": 697,
+    "compressed": 244,
+    "offset": 224577937
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/reordered-columns.log",
+    "bytes": 866,
+    "compressed": 303,
+    "offset": 224578329
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/reload.log",
+    "bytes": 691,
+    "compressed": 250,
+    "offset": 224578788
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/reset.log",
+    "bytes": 689,
+    "compressed": 252,
+    "offset": 224579183
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/reset-cross-process.log",
+    "bytes": 695,
+    "compressed": 246,
+    "offset": 224579579
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/restore-192.log",
+    "bytes": 863,
+    "compressed": 301,
+    "offset": 224579983
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/restore-144.log",
+    "bytes": 863,
+    "compressed": 300,
+    "offset": 224580434
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/restore-96.log",
+    "bytes": 862,
+    "compressed": 302,
+    "offset": 224580884
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/truncated.log",
+    "bytes": 683,
+    "compressed": 247,
+    "offset": 224581335
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/write-144.log",
+    "bytes": 1191,
+    "compressed": 419,
+    "offset": 224581730
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/write-192.log",
+    "bytes": 1176,
+    "compressed": 417,
+    "offset": 224582297
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-3d697e31664b457f9058fc70388941a6/write-96.log",
+    "bytes": 1189,
+    "compressed": 419,
+    "offset": 224582862
+  },
+  {
+    "path": "lifecycle-control/raw/caller-build.log",
+    "bytes": 23,
+    "compressed": 25,
+    "offset": 224583428
+  },
+  {
+    "path": "lifecycle-control/raw/original-test-plan.json",
+    "bytes": 2221,
+    "compressed": 521,
+    "offset": 224583537
+  },
+  {
+    "path": "lifecycle-control/raw/results.json",
+    "bytes": 27576,
+    "compressed": 6242,
+    "offset": 224584149
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/CTestTestfile.cmake",
+    "bytes": 926,
+    "compressed": 308,
+    "offset": 224590471
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/Testing/Temporary/CTestCostData.txt",
+    "bytes": 99,
+    "compressed": 65,
+    "offset": 224590878
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/Testing/Temporary/LastTest.log",
+    "bytes": 3320,
+    "compressed": 938,
+    "offset": 224591058
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/ctest.xml",
+    "bytes": 2612,
+    "compressed": 812,
+    "offset": 224592106
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/observer.log",
+    "bytes": 203,
+    "compressed": 159,
+    "offset": 224593034
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/Testing/Temporary/LastTestsFailed.log",
+    "bytes": 30,
+    "compressed": 32,
+    "offset": 224593312
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/CMakeLists.txt",
+    "bytes": 52412,
+    "compressed": 7135,
+    "offset": 224593461
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/application.h",
+    "bytes": 8306,
+    "compressed": 2426,
+    "offset": 224600743
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/assistant.h",
+    "bytes": 4915,
+    "compressed": 1184,
+    "offset": 224603336
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/components.h",
+    "bytes": 13416,
+    "compressed": 3913,
+    "offset": 224604685
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/images.h",
+    "bytes": 2294,
+    "compressed": 855,
+    "offset": 224608764
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/language.h",
+    "bytes": 2647,
+    "compressed": 1186,
+    "offset": 224609781
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/menus.h",
+    "bytes": 3785,
+    "compressed": 1435,
+    "offset": 224611131
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/light_web.h",
+    "bytes": 1116,
+    "compressed": 583,
+    "offset": 224612727
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/native.h",
+    "bytes": 2972,
+    "compressed": 1113,
+    "offset": 224613475
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/opengl.h",
+    "bytes": 4066,
+    "compressed": 1563,
+    "offset": 224614750
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/package.h",
+    "bytes": 2569,
+    "compressed": 930,
+    "offset": 224616475
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/shell.h",
+    "bytes": 5268,
+    "compressed": 1774,
+    "offset": 224617568
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/ui.h",
+    "bytes": 22806,
+    "compressed": 5330,
+    "offset": 224619503
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/webview2.h",
+    "bytes": 3370,
+    "compressed": 1419,
+    "offset": 224624991
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/src/components.html",
+    "bytes": 44259,
+    "compressed": 11643,
+    "offset": 224626574
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/src/menus.c",
+    "bytes": 41957,
+    "compressed": 10930,
+    "offset": 224638369
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/display_probe.c",
+    "bytes": 11879,
+    "compressed": 4681,
+    "offset": 224649443
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/framework_features_host.c",
+    "bytes": 11615,
+    "compressed": 4229,
+    "offset": 224654278
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/interaction_probe.c",
+    "bytes": 42381,
+    "compressed": 12024,
+    "offset": 224658671
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/observe_processes.py",
+    "bytes": 6568,
+    "compressed": 2686,
+    "offset": 224670853
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+    "bytes": 9858,
+    "compressed": 3534,
+    "offset": 224673698
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+    "bytes": 20326,
+    "compressed": 6868,
+    "offset": 224677392
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/process_stall_capture.py",
+    "bytes": 1936,
+    "compressed": 939,
+    "offset": 224684430
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+    "bytes": 16945,
+    "compressed": 6413,
+    "offset": 224685532
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+    "bytes": 5664,
+    "compressed": 2055,
+    "offset": 224692111
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.identities.json",
+    "bytes": 4624,
+    "compressed": 1603,
+    "offset": 224694329
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.jsonl",
+    "bytes": 7406,
+    "compressed": 1715,
+    "offset": 224696064
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.log",
+    "bytes": 4061,
+    "compressed": 1206,
+    "offset": 224697901
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.patch",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224699227
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/2676-rast-live.bin",
+    "bytes": 10856,
+    "compressed": 219,
+    "offset": 224699351
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/2676.dmp",
+    "bytes": 141870805,
+    "compressed": 50367385,
+    "offset": 224699707
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/2720.dmp",
+    "bytes": 266045160,
+    "compressed": 99553404,
+    "offset": 275067219
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/6984.dmp",
+    "bytes": 55174042,
+    "compressed": 21643266,
+    "offset": 374620750
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/capture.json",
+    "bytes": 5866,
+    "compressed": 905,
+    "offset": 396264143
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/ctest.xml",
+    "bytes": 2898,
+    "compressed": 931,
+    "offset": 396265179
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/observer.log",
+    "bytes": 205,
+    "compressed": 160,
+    "offset": 396266228
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/CMakeLists.txt",
+    "bytes": 52412,
+    "compressed": 7135,
+    "offset": 396266509
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/application.h",
+    "bytes": 8306,
+    "compressed": 2426,
+    "offset": 396273793
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/assistant.h",
+    "bytes": 4915,
+    "compressed": 1184,
+    "offset": 396276388
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/components.h",
+    "bytes": 13416,
+    "compressed": 3913,
+    "offset": 396277739
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/images.h",
+    "bytes": 2294,
+    "compressed": 855,
+    "offset": 396281820
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/language.h",
+    "bytes": 2647,
+    "compressed": 1186,
+    "offset": 396282839
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/light_web.h",
+    "bytes": 1116,
+    "compressed": 583,
+    "offset": 396284191
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/menus.h",
+    "bytes": 3785,
+    "compressed": 1435,
+    "offset": 396284941
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/native.h",
+    "bytes": 2972,
+    "compressed": 1113,
+    "offset": 396286539
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/opengl.h",
+    "bytes": 4066,
+    "compressed": 1563,
+    "offset": 396287816
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/package.h",
+    "bytes": 2569,
+    "compressed": 930,
+    "offset": 396289543
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/shell.h",
+    "bytes": 5268,
+    "compressed": 1774,
+    "offset": 396290638
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/ui.h",
+    "bytes": 22806,
+    "compressed": 5330,
+    "offset": 396292575
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/webview2.h",
+    "bytes": 3370,
+    "compressed": 1419,
+    "offset": 396298065
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/src/components.html",
+    "bytes": 44259,
+    "compressed": 11643,
+    "offset": 396299650
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/src/menus.c",
+    "bytes": 41957,
+    "compressed": 10930,
+    "offset": 396311447
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/display_probe.c",
+    "bytes": 11879,
+    "compressed": 4681,
+    "offset": 396322523
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/framework_features_host.c",
+    "bytes": 11615,
+    "compressed": 4229,
+    "offset": 396327360
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/interaction_probe.c",
+    "bytes": 42381,
+    "compressed": 12024,
+    "offset": 396331755
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/observe_processes.py",
+    "bytes": 6568,
+    "compressed": 2686,
+    "offset": 396343939
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+    "bytes": 9858,
+    "compressed": 3534,
+    "offset": 396346786
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+    "bytes": 20326,
+    "compressed": 6868,
+    "offset": 396350482
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/process_stall_capture.py",
+    "bytes": 1936,
+    "compressed": 939,
+    "offset": 396357522
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+    "bytes": 16945,
+    "compressed": 6413,
+    "offset": 396358626
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+    "bytes": 5664,
+    "compressed": 2055,
+    "offset": 396365207
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.identities.json",
+    "bytes": 4624,
+    "compressed": 1603,
+    "offset": 396367427
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.jsonl",
+    "bytes": 9819,
+    "compressed": 1973,
+    "offset": 396369164
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.log",
+    "bytes": 4352,
+    "compressed": 1323,
+    "offset": 396371261
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.patch",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 396372706
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/4312-rast-live.bin",
+    "bytes": 10856,
+    "compressed": 196,
+    "offset": 396372832
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/4312.dmp",
+    "bytes": 134341700,
+    "compressed": 48734162,
+    "offset": 396373167
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/6032.dmp",
+    "bytes": 263926528,
+    "compressed": 99192857,
+    "offset": 445107458
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/7408.dmp",
+    "bytes": 55185609,
+    "compressed": 21641698,
+    "offset": 544300444
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/stall-dumps/capture.json",
+    "bytes": 5862,
+    "compressed": 910,
+    "offset": 565942271
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/CTestTestfile.cmake",
+    "bytes": 994,
+    "compressed": 319,
+    "offset": 565943314
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/Testing/Temporary/CTestCostData.txt",
+    "bytes": 83,
+    "compressed": 77,
+    "offset": 565943732
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/Testing/Temporary/LastTest.log",
+    "bytes": 33477,
+    "compressed": 3648,
+    "offset": 565943924
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/ctest.xml",
+    "bytes": 1509,
+    "compressed": 655,
+    "offset": 565947682
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/observer.log",
+    "bytes": 201,
+    "compressed": 157,
+    "offset": 565948453
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/CMakeLists.txt",
+    "bytes": 52412,
+    "compressed": 7135,
+    "offset": 565948729
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/application.h",
+    "bytes": 8306,
+    "compressed": 2426,
+    "offset": 565956011
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/assistant.h",
+    "bytes": 4915,
+    "compressed": 1184,
+    "offset": 565958604
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/components.h",
+    "bytes": 13416,
+    "compressed": 3913,
+    "offset": 565959953
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/images.h",
+    "bytes": 2294,
+    "compressed": 855,
+    "offset": 565964032
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/language.h",
+    "bytes": 2647,
+    "compressed": 1186,
+    "offset": 565965049
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/light_web.h",
+    "bytes": 1116,
+    "compressed": 583,
+    "offset": 565966399
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/menus.h",
+    "bytes": 3785,
+    "compressed": 1435,
+    "offset": 565967147
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/native.h",
+    "bytes": 2972,
+    "compressed": 1113,
+    "offset": 565968743
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/opengl.h",
+    "bytes": 4066,
+    "compressed": 1563,
+    "offset": 565970018
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/package.h",
+    "bytes": 2569,
+    "compressed": 930,
+    "offset": 565971743
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/shell.h",
+    "bytes": 5268,
+    "compressed": 1774,
+    "offset": 565972836
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/ui.h",
+    "bytes": 22806,
+    "compressed": 5330,
+    "offset": 565974771
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/webview2.h",
+    "bytes": 3370,
+    "compressed": 1419,
+    "offset": 565980259
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/src/components.html",
+    "bytes": 44259,
+    "compressed": 11643,
+    "offset": 565981842
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/src/menus.c",
+    "bytes": 41957,
+    "compressed": 10930,
+    "offset": 565993637
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/display_probe.c",
+    "bytes": 11879,
+    "compressed": 4681,
+    "offset": 566004711
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/framework_features_host.c",
+    "bytes": 11615,
+    "compressed": 4229,
+    "offset": 566009546
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/interaction_probe.c",
+    "bytes": 42381,
+    "compressed": 12024,
+    "offset": 566013939
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/observe_processes.py",
+    "bytes": 6568,
+    "compressed": 2686,
+    "offset": 566026121
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+    "bytes": 20326,
+    "compressed": 6868,
+    "offset": 566028966
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/process_stall_capture.py",
+    "bytes": 1936,
+    "compressed": 939,
+    "offset": 566036004
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+    "bytes": 16945,
+    "compressed": 6413,
+    "offset": 566037106
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+    "bytes": 9858,
+    "compressed": 3534,
+    "offset": 566043685
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+    "bytes": 5664,
+    "compressed": 2055,
+    "offset": 566047379
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.identities.json",
+    "bytes": 4624,
+    "compressed": 1603,
+    "offset": 566049597
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.jsonl",
+    "bytes": 30252,
+    "compressed": 3369,
+    "offset": 566051332
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.log",
+    "bytes": 35170,
+    "compressed": 3842,
+    "offset": 566054823
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.patch",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 566058785
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/ctest.xml",
+    "bytes": 1515,
+    "compressed": 703,
+    "offset": 566058909
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/observer.log",
+    "bytes": 204,
+    "compressed": 162,
+    "offset": 566059730
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/CMakeLists.txt",
+    "bytes": 52412,
+    "compressed": 7135,
+    "offset": 566060013
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/application.h",
+    "bytes": 8306,
+    "compressed": 2426,
+    "offset": 566067297
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/assistant.h",
+    "bytes": 4915,
+    "compressed": 1184,
+    "offset": 566069892
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/components.h",
+    "bytes": 13416,
+    "compressed": 3913,
+    "offset": 566071243
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/images.h",
+    "bytes": 2294,
+    "compressed": 855,
+    "offset": 566075324
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/language.h",
+    "bytes": 2647,
+    "compressed": 1186,
+    "offset": 566076343
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/light_web.h",
+    "bytes": 1116,
+    "compressed": 583,
+    "offset": 566077695
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/menus.h",
+    "bytes": 3785,
+    "compressed": 1435,
+    "offset": 566078445
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/opengl.h",
+    "bytes": 4066,
+    "compressed": 1563,
+    "offset": 566080043
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/native.h",
+    "bytes": 2972,
+    "compressed": 1113,
+    "offset": 566081770
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/package.h",
+    "bytes": 2569,
+    "compressed": 930,
+    "offset": 566083047
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/shell.h",
+    "bytes": 5268,
+    "compressed": 1774,
+    "offset": 566084142
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/ui.h",
+    "bytes": 22806,
+    "compressed": 5330,
+    "offset": 566086079
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/webview2.h",
+    "bytes": 3370,
+    "compressed": 1419,
+    "offset": 566091569
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/src/components.html",
+    "bytes": 44259,
+    "compressed": 11643,
+    "offset": 566093154
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/src/menus.c",
+    "bytes": 41957,
+    "compressed": 10930,
+    "offset": 566104951
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/display_probe.c",
+    "bytes": 11879,
+    "compressed": 4681,
+    "offset": 566116027
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/framework_features_host.c",
+    "bytes": 11615,
+    "compressed": 4229,
+    "offset": 566120864
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/interaction_probe.c",
+    "bytes": 42381,
+    "compressed": 12024,
+    "offset": 566125259
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/observe_processes.py",
+    "bytes": 6568,
+    "compressed": 2686,
+    "offset": 566137443
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+    "bytes": 9858,
+    "compressed": 3534,
+    "offset": 566140290
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+    "bytes": 20326,
+    "compressed": 6868,
+    "offset": 566143986
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/process_stall_capture.py",
+    "bytes": 1936,
+    "compressed": 939,
+    "offset": 566151026
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+    "bytes": 16945,
+    "compressed": 6413,
+    "offset": 566152130
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+    "bytes": 5664,
+    "compressed": 2055,
+    "offset": 566158711
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.identities.json",
+    "bytes": 4624,
+    "compressed": 1603,
+    "offset": 566160931
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.jsonl",
+    "bytes": 54285,
+    "compressed": 5189,
+    "offset": 566162668
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.log",
+    "bytes": 30008,
+    "compressed": 3957,
+    "offset": 566167981
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.patch",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 566172060
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate0/stdout.log",
+    "bytes": 5594,
+    "compressed": 828,
+    "offset": 566172186
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate1/capture.log",
+    "bytes": 2993,
+    "compressed": 739,
+    "offset": 566173107
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate1/first-full-dump/532-rast-live.bin",
+    "bytes": 10856,
+    "compressed": 234,
+    "offset": 566173940
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate1/first-full-dump/532.dmp",
+    "bytes": 127998956,
+    "compressed": 34390811,
+    "offset": 566174290
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate1/first-full-dump/capture.json",
+    "bytes": 5046,
+    "compressed": 837,
+    "offset": 600565207
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate1/stdout.log",
+    "bytes": 5593,
+    "compressed": 840,
+    "offset": 600566155
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate0/stdout.log",
+    "bytes": 5572,
+    "compressed": 816,
+    "offset": 600567088
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate1/capture.log",
+    "bytes": 3030,
+    "compressed": 762,
+    "offset": 600567997
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate1/first-full-dump/7132.dmp",
+    "bytes": 126921104,
+    "compressed": 34072071,
+    "offset": 600568853
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate1/first-full-dump/capture.json",
+    "bytes": 5083,
+    "compressed": 862,
+    "offset": 634641031
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate1/first-full-dump/7132-rast-live.bin",
+    "bytes": 10856,
+    "compressed": 241,
+    "offset": 634642004
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate1/stdout.log",
+    "bytes": 5581,
+    "compressed": 823,
+    "offset": 634642362
+  },
+  {
+    "path": "lifecycle-control/system-images/KERNELBASE.dll",
+    "bytes": 3637776,
+    "compressed": 1286550,
+    "offset": 634643278
+  },
+  {
+    "path": "lifecycle-control/system-images/kernel32.dll",
+    "bytes": 790784,
+    "compressed": 380406,
+    "offset": 635929920
+  },
+  {
+    "path": "lifecycle-control/system-images/ucrtbase.dll",
+    "bytes": 1129648,
+    "compressed": 549219,
+    "offset": 636310416
+  },
+  {
+    "path": "lifecycle-control/system-images/ntdll.dll",
+    "bytes": 2104800,
+    "compressed": 1004581,
+    "offset": 636859725
+  },
+  {
+    "path": "lifecycle-desktop.json",
+    "bytes": 101,
+    "compressed": 69,
+    "offset": 637864393
+  },
+  {
+    "path": "runtime.log",
+    "bytes": 71,
+    "compressed": 70,
+    "offset": 637864530
+  }
+]

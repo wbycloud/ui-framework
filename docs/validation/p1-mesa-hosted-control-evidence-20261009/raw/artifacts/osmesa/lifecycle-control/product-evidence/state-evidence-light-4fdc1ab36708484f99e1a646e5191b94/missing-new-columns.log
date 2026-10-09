@@ -1,0 +1,12 @@
+TEST_PHASE pid7972 tick435171 dispatched0 create-host-begin
+TEST_PHASE pid7972 tick435187 dispatched0 create-host-end
+TEST_PHASE pid7972 tick435218 dispatched0 open-begin
+TEST_PHASE pid7972 tick435546 dispatched0 open-return
+TEST_PHASE pid7972 tick436046 dispatched34 open-settled
+RESTORED modeevolve dpi96 name280 treeCollapsed1
+TEST_PHASE pid7972 tick436046 dispatched34 close-begin
+TEST_PHASE pid7972 tick436078 dispatched34 close-request-return
+TEST_PHASE pid7972 tick436140 dispatched35 close-state-checked
+TEST_PHASE pid7972 tick436453 dispatched35 com-uninitialize-begin
+TEST_PHASE pid7972 tick436453 dispatched35 process-return
+Stateful actual light / evolve: 0 failures

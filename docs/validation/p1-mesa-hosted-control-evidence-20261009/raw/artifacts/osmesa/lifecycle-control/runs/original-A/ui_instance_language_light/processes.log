@@ -1,0 +1,470 @@
+Internal ctest changing into directory: D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A
+UpdateCTestConfiguration  from :D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A/DartConfiguration.tcl
+UpdateCTestConfiguration  from :D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A/DartConfiguration.tcl
+Test project D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 2
+    Start 2: ui_instance_language_light
+
+2: Test command: "C:\Program Files\PowerShell\7\pwsh.exe" "-NoProfile" "-File" "D:/a/ui-framework/ui-framework/tests/run-instance-language.ps1" "-BuildDirectory" "D:/a/ui-framework/ui-framework/build/ci-osmesa" "-Provider" "D:\a\ui-framework\ui-framework\.deps\mesa-24.3.4\x64\osmesa.dll" "-Backend" "light"
+2: Working Directory: D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A
+2: Test timeout computed to be: 240
+2: CASE_BEGIN label=preferences-96 utc=2026-10-09T10:31:05.0623888Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\language-evidence-light-85e84b676e544689b4cd136e507ffb59
+2: INPUT_EVIDENCE complete DLL preference startup; no injected input
+2: TEST_PHASE pid5968 tick457156 dispatched0 create-host-begin
+2: TEST_PHASE pid5968 tick457171 dispatched0 create-host-end
+2: TEST_PHASE pid5968 tick457406 dispatched12 screenshot-begin
+2: TEST_PHASE pid5968 tick457421 dispatched12 screenshot-end
+2: TEST_PHASE pid5968 tick457421 dispatched12 preferences-begin
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+2: PREFERENCE missing: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+2: PREFERENCE empty: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+2: PREFERENCE truncated: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+2: PREFERENCE magic: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+2: PREFERENCE future: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+2: TEST_PHASE pid5968 tick461312 dispatched223 screenshot-begin
+2: TEST_PHASE pid5968 tick461343 dispatched223 screenshot-end
+2: PREFERENCE language: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+2: PREFERENCE profile: final=en-US file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+2: PREFERENCE reserved: final=en-US file unchanged
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+2: TEST_PHASE pid5968 tick463484 dispatched329 screenshot-begin
+2: TEST_PHASE pid5968 tick463531 dispatched329 screenshot-end
+2: PREFERENCE zh-CN: final=zh-CN file unchanged
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+2: PREFERENCE en-US: final=en-US file unchanged
+2: TEST_PHASE pid5968 tick464453 dispatched373 preferences-end
+2: TEST_PHASE pid5968 tick464765 dispatched375 com-uninitialize-begin
+2: TEST_PHASE pid5968 tick464765 dispatched375 process-return
+2: Complete DLL preferences light failures0
+2: CASE_END label=preferences-96 elapsedMs=7701 exit=0
+2: CASE_BEGIN label=write-96 utc=2026-10-09T10:31:12.8009671Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\language-evidence-light-85e84b676e544689b4cd136e507ffb59
+2: INPUT_EVIDENCE real SendInput; final state checked
+2: TEST_PHASE pid7108 tick464859 dispatched0 create-host-begin
+2: TEST_PHASE pid7108 tick464875 dispatched0 create-host-end
+2: TEST_PHASE pid7108 tick465109 dispatched12 screenshot-begin
+2: TEST_PHASE pid7108 tick465140 dispatched12 screenshot-end
+2: TEST_PHASE pid7108 tick465140 dispatched12 open-begin
+2: TEST_PHASE pid7108 tick465437 dispatched12 open-return
+2: TEST_PHASE pid7108 tick466046 dispatched46 open-settled
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+2: TEST_PHASE pid7108 tick466046 dispatched46 screenshot-begin
+2: TEST_PHASE pid7108 tick466093 dispatched46 screenshot-end
+2: REAL_CLICK client90,41 128x26 screen202,94 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: REAL_CLICK client4,4 312x28 screen299,126 hit000000000020018C UIFrameworkLightWeb pid7108
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+2: TEST_PHASE pid7108 tick466609 dispatched95 screenshot-begin
+2: TEST_PHASE pid7108 tick466656 dispatched95 screenshot-end
+2: HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+2: CAPTURE hit000000000010018E classUIFrameworkLightWeb thread1056 ours1056 GetCapture000000000010018E target-thread-capture000000000010018E
+2: ACTUAL_HEADER dpi96 width200 -> 280 hit000000000010018E pid7108
+2: TEST_PHASE pid7108 tick467109 dispatched124 open-begin
+2: TEST_PHASE pid7108 tick467406 dispatched124 open-return
+2: TEST_PHASE pid7108 tick468015 dispatched156 open-settled
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+2: REAL_CLICK client90,41 128x26 screen202,94 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: REAL_CLICK client4,32 312x28 screen299,154 hit000000000001023C UIFrameworkLightWeb pid7108
+2: TEST_PHASE pid7108 tick468828 dispatched233 screenshot-begin
+2: TEST_PHASE pid7108 tick468859 dispatched233 screenshot-end
+2: REAL_CLICK client34,4 154x36 screen159,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: REAL_CLICK client34,4 154x36 screen159,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: REAL_CLICK client34,4 154x36 screen159,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: REAL_CLICK client34,4 154x36 screen159,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: REAL_CLICK client34,4 154x36 screen159,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: REAL_CLICK client34,4 154x36 screen159,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: REAL_CLICK client34,4 154x36 screen159,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: REAL_CLICK client34,4 154x36 screen159,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: TEST_PHASE pid7108 tick472546 dispatched575 screenshot-begin
+2: TEST_PHASE pid7108 tick472593 dispatched575 screenshot-end
+2: REAL_CLICK client1006,0 40x40 screen1074,60 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: TEST_PHASE pid7108 tick472875 dispatched600 screenshot-begin
+2: TEST_PHASE pid7108 tick472921 dispatched600 screenshot-end
+2: REAL_CLICK client1006,0 40x40 screen1074,60 hit00000000001F01F4 UIFrameworkLightWeb pid7108
+2: REAL_CLICK client8,40 58x28 screen133,233 hit0000000000010244 UIFrameworkLightWeb pid7108
+2: TEST_PHASE pid7108 tick474390 dispatched683 screenshot-begin
+2: TEST_PHASE pid7108 tick474437 dispatched683 screenshot-end
+2: TEST_PHASE pid7108 tick474781 dispatched692 screenshot-begin
+2: TEST_PHASE pid7108 tick474812 dispatched692 screenshot-end
+2: TEST_PHASE pid7108 tick475343 dispatched707 screenshot-begin
+2: TEST_PHASE pid7108 tick475375 dispatched707 screenshot-end
+2: TEST_PHASE pid7108 tick475375 dispatched707 instances-close-begin
+2: TEST_PHASE pid7108 tick475781 dispatched726 screenshot-begin
+2: TEST_PHASE pid7108 tick475812 dispatched726 screenshot-end
+2: TEST_PHASE pid7108 tick475812 dispatched726 close-begin
+2: TEST_PHASE pid7108 tick475812 dispatched726 close-request-return
+2: TEST_PHASE pid7108 tick476125 dispatched728 com-uninitialize-begin
+2: TEST_PHASE pid7108 tick476125 dispatched728 process-return
+2: Instance language actual light write dpi96 failures0
+2: CASE_END label=write-96 elapsedMs=11345 exit=0
+2: CASE_BEGIN label=restore-96 utc=2026-10-09T10:31:24.1503923Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\language-evidence-light-85e84b676e544689b4cd136e507ffb59
+2: INPUT_EVIDENCE real SendInput; final state checked
+2: TEST_PHASE pid4420 tick476203 dispatched0 create-host-begin
+2: TEST_PHASE pid4420 tick476218 dispatched0 create-host-end
+2: TEST_PHASE pid4420 tick476453 dispatched8 screenshot-begin
+2: TEST_PHASE pid4420 tick476468 dispatched8 screenshot-end
+2: TEST_PHASE pid4420 tick476468 dispatched8 open-begin
+2: TEST_PHASE pid4420 tick476859 dispatched8 open-return
+2: TEST_PHASE pid4420 tick477468 dispatched37 open-settled
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+2: TEST_PHASE pid4420 tick477625 dispatched46 open-begin
+2: TEST_PHASE pid4420 tick477921 dispatched46 open-return
+2: TEST_PHASE pid4420 tick478531 dispatched74 open-settled
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+2: TEST_PHASE pid4420 tick478906 dispatched92 screenshot-begin
+2: TEST_PHASE pid4420 tick478937 dispatched92 screenshot-end
+2: REAL_CLICK client34,4 154x36 screen159,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: REAL_CLICK client34,4 154x36 screen159,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: REAL_CLICK client34,4 154x36 screen159,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: REAL_CLICK client34,4 154x36 screen159,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: REAL_CLICK client34,4 154x36 screen159,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: REAL_CLICK client34,4 154x36 screen159,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: REAL_CLICK client34,4 154x36 screen159,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: REAL_CLICK client34,4 154x36 screen159,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+2: REAL_CLICK client214,4 154x36 screen339,62 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: TEST_PHASE pid4420 tick482640 dispatched405 screenshot-begin
+2: TEST_PHASE pid4420 tick482703 dispatched405 screenshot-end
+2: REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: TEST_PHASE pid4420 tick482937 dispatched433 screenshot-begin
+2: TEST_PHASE pid4420 tick483000 dispatched433 screenshot-end
+2: REAL_CLICK client1006,0 40x40 screen1074,60 hit0000000000110234 UIFrameworkLightWeb pid4420
+2: REAL_CLICK client8,40 58x28 screen133,233 hit00000000000A01FE UIFrameworkLightWeb pid4420
+2: TEST_PHASE pid4420 tick484453 dispatched514 screenshot-begin
+2: TEST_PHASE pid4420 tick484500 dispatched514 screenshot-end
+2: TEST_PHASE pid4420 tick484843 dispatched523 screenshot-begin
+2: TEST_PHASE pid4420 tick484875 dispatched523 screenshot-end
+2: TEST_PHASE pid4420 tick485406 dispatched538 screenshot-begin
+2: TEST_PHASE pid4420 tick485437 dispatched538 screenshot-end
+2: TEST_PHASE pid4420 tick485437 dispatched538 instances-close-begin
+2: TEST_PHASE pid4420 tick485828 dispatched557 screenshot-begin
+2: TEST_PHASE pid4420 tick485875 dispatched557 screenshot-end
+2: TEST_PHASE pid4420 tick485875 dispatched557 close-begin
+2: TEST_PHASE pid4420 tick485875 dispatched557 close-request-return
+2: TEST_PHASE pid4420 tick486187 dispatched559 com-uninitialize-begin
+2: TEST_PHASE pid4420 tick486187 dispatched559 process-return
+2: Instance language actual light restore dpi96 failures0
+2: CASE_END label=restore-96 elapsedMs=10049 exit=0
+2: CASE_BEGIN label=write-144 utc=2026-10-09T10:31:34.2028847Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\language-evidence-light-85e84b676e544689b4cd136e507ffb59
+2: INPUT_EVIDENCE real SendInput; final state checked
+2: TEST_PHASE pid6700 tick486265 dispatched0 create-host-begin
+2: TEST_PHASE pid6700 tick486281 dispatched0 create-host-end
+2: TEST_PHASE pid6700 tick486515 dispatched8 screenshot-begin
+2: TEST_PHASE pid6700 tick486546 dispatched8 screenshot-end
+2: TEST_PHASE pid6700 tick486546 dispatched8 open-begin
+2: TEST_PHASE pid6700 tick486812 dispatched8 open-return
+2: TEST_PHASE pid6700 tick487421 dispatched35 open-settled
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+2: TEST_PHASE pid6700 tick487421 dispatched35 screenshot-begin
+2: TEST_PHASE pid6700 tick487468 dispatched35 screenshot-end
+2: REAL_CLICK client90,41 128x26 screen279,121 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: REAL_CLICK client4,4 312x28 screen424,168 hit0000000000260042 UIFrameworkLightWeb pid6700
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+2: TEST_PHASE pid6700 tick488093 dispatched87 screenshot-begin
+2: TEST_PHASE pid6700 tick488156 dispatched87 screenshot-end
+2: HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+2: CAPTURE hit0000000000030244 classUIFrameworkLightWeb thread3040 ours3040 GetCapture0000000000030244 target-thread-capture0000000000030244
+2: ACTUAL_HEADER dpi144 width200 -> 280 hit0000000000030244 pid6700
+2: TEST_PHASE pid6700 tick488625 dispatched114 open-begin
+2: TEST_PHASE pid6700 tick488890 dispatched114 open-return
+2: TEST_PHASE pid6700 tick489500 dispatched147 open-settled
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+2: REAL_CLICK client90,41 128x26 screen279,121 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: REAL_CLICK client4,32 312x28 screen424,210 hit000000000003023A UIFrameworkLightWeb pid6700
+2: TEST_PHASE pid6700 tick490296 dispatched222 screenshot-begin
+2: TEST_PHASE pid6700 tick490343 dispatched222 screenshot-end
+2: REAL_CLICK client34,4 154x36 screen215,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: REAL_CLICK client34,4 154x36 screen215,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: REAL_CLICK client34,4 154x36 screen215,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: REAL_CLICK client34,4 154x36 screen215,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: REAL_CLICK client34,4 154x36 screen215,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: REAL_CLICK client34,4 154x36 screen215,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: REAL_CLICK client34,4 154x36 screen215,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: REAL_CLICK client34,4 154x36 screen215,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: TEST_PHASE pid6700 tick494062 dispatched567 screenshot-begin
+2: TEST_PHASE pid6700 tick494125 dispatched567 screenshot-end
+2: REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: TEST_PHASE pid6700 tick494406 dispatched598 screenshot-begin
+2: TEST_PHASE pid6700 tick494453 dispatched598 screenshot-end
+2: REAL_CLICK client1011,0 40x40 screen1595,70 hit0000000000180236 UIFrameworkLightWeb pid6700
+2: REAL_CLICK client8,40 60x28 screen153,294 hit0000000000020240 UIFrameworkLightWeb pid6700
+2: TEST_PHASE pid6700 tick495828 dispatched680 screenshot-begin
+2: TEST_PHASE pid6700 tick495890 dispatched680 screenshot-end
+2: TEST_PHASE pid6700 tick496218 dispatched689 screenshot-begin
+2: TEST_PHASE pid6700 tick496265 dispatched689 screenshot-end
+2: TEST_PHASE pid6700 tick496750 dispatched704 screenshot-begin
+2: TEST_PHASE pid6700 tick496765 dispatched704 screenshot-end
+2: TEST_PHASE pid6700 tick496765 dispatched704 instances-close-begin
+2: TEST_PHASE pid6700 tick497156 dispatched723 screenshot-begin
+2: TEST_PHASE pid6700 tick497187 dispatched723 screenshot-end
+2: TEST_PHASE pid6700 tick497187 dispatched723 close-begin
+2: TEST_PHASE pid6700 tick497187 dispatched723 close-request-return
+2: TEST_PHASE pid6700 tick497500 dispatched725 com-uninitialize-begin
+2: TEST_PHASE pid6700 tick497500 dispatched725 process-return
+2: Instance language actual light write dpi144 failures0
+2: CASE_END label=write-144 elapsedMs=11319 exit=0
+2: CASE_BEGIN label=restore-144 utc=2026-10-09T10:31:45.5242846Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\language-evidence-light-85e84b676e544689b4cd136e507ffb59
+2: INPUT_EVIDENCE real SendInput; final state checked
+2: TEST_PHASE pid4732 tick497578 dispatched0 create-host-begin
+2: TEST_PHASE pid4732 tick497625 dispatched0 create-host-end
+2: TEST_PHASE pid4732 tick497859 dispatched8 screenshot-begin
+2: TEST_PHASE pid4732 tick497890 dispatched8 screenshot-end
+2: TEST_PHASE pid4732 tick497890 dispatched8 open-begin
+2: TEST_PHASE pid4732 tick498250 dispatched8 open-return
+2: TEST_PHASE pid4732 tick498859 dispatched35 open-settled
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+2: TEST_PHASE pid4732 tick499000 dispatched44 open-begin
+2: TEST_PHASE pid4732 tick499265 dispatched44 open-return
+2: TEST_PHASE pid4732 tick499875 dispatched70 open-settled
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+2: TEST_PHASE pid4732 tick500234 dispatched88 screenshot-begin
+2: TEST_PHASE pid4732 tick500281 dispatched88 screenshot-end
+2: REAL_CLICK client34,4 154x36 screen215,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: REAL_CLICK client34,4 154x36 screen215,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: REAL_CLICK client34,4 154x36 screen215,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: REAL_CLICK client34,4 154x36 screen215,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: REAL_CLICK client34,4 154x36 screen215,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: REAL_CLICK client34,4 154x36 screen215,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: REAL_CLICK client34,4 154x36 screen215,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: REAL_CLICK client34,4 154x36 screen215,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+2: REAL_CLICK client214,4 154x36 screen485,73 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: TEST_PHASE pid4732 tick504000 dispatched400 screenshot-begin
+2: TEST_PHASE pid4732 tick504046 dispatched400 screenshot-end
+2: REAL_CLICK client1011,0 40x40 screen1595,70 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: TEST_PHASE pid4732 tick504312 dispatched429 screenshot-begin
+2: TEST_PHASE pid4732 tick504375 dispatched429 screenshot-end
+2: REAL_CLICK client1011,0 40x40 screen1595,70 hit00000000002601C0 UIFrameworkLightWeb pid4732
+2: REAL_CLICK client8,40 60x28 screen153,294 hit00000000000D0192 UIFrameworkLightWeb pid4732
+2: TEST_PHASE pid4732 tick505750 dispatched510 screenshot-begin
+2: TEST_PHASE pid4732 tick505796 dispatched510 screenshot-end
+2: TEST_PHASE pid4732 tick506125 dispatched519 screenshot-begin
+2: TEST_PHASE pid4732 tick506187 dispatched519 screenshot-end
+2: TEST_PHASE pid4732 tick506656 dispatched534 screenshot-begin
+2: TEST_PHASE pid4732 tick506687 dispatched534 screenshot-end
+2: TEST_PHASE pid4732 tick506687 dispatched534 instances-close-begin
+2: TEST_PHASE pid4732 tick507093 dispatched553 screenshot-begin
+2: TEST_PHASE pid4732 tick507109 dispatched553 screenshot-end
+2: TEST_PHASE pid4732 tick507109 dispatched553 close-begin
+2: TEST_PHASE pid4732 tick507109 dispatched553 close-request-return
+2: TEST_PHASE pid4732 tick507421 dispatched555 com-uninitialize-begin
+2: TEST_PHASE pid4732 tick507421 dispatched555 process-return
+2: Instance language actual light restore dpi144 failures0
+2: CASE_END label=restore-144 elapsedMs=9912 exit=0
+2: CASE_BEGIN label=write-192 utc=2026-10-09T10:31:55.4393715Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\language-evidence-light-85e84b676e544689b4cd136e507ffb59
+2: INPUT_EVIDENCE real SendInput; final state checked
+2: TEST_PHASE pid6152 tick507500 dispatched0 create-host-begin
+2: TEST_PHASE pid6152 tick507546 dispatched0 create-host-end
+2: TEST_PHASE pid6152 tick507781 dispatched8 screenshot-begin
+2: TEST_PHASE pid6152 tick507796 dispatched8 screenshot-end
+2: TEST_PHASE pid6152 tick507796 dispatched8 open-begin
+2: TEST_PHASE pid6152 tick508046 dispatched8 open-return
+2: TEST_PHASE pid6152 tick508656 dispatched31 open-settled
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+2: TEST_PHASE pid6152 tick508656 dispatched31 screenshot-begin
+2: TEST_PHASE pid6152 tick508718 dispatched31 screenshot-end
+2: REAL_CLICK client90,41 128x26 screen356,148 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: REAL_CLICK client4,4 312x28 screen549,211 hit0000000000140234 UIFrameworkLightWeb pid6152
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation3 source1
+2: TEST_PHASE pid6152 tick509343 dispatched78 screenshot-begin
+2: TEST_PHASE pid6152 tick509406 dispatched78 screenshot-end
+2: HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+2: CAPTURE hit0000000000040240 classUIFrameworkLightWeb thread988 ours988 GetCapture0000000000040240 target-thread-capture0000000000040240
+2: ACTUAL_HEADER dpi192 width200 -> 280 hit0000000000040240 pid6152
+2: TEST_PHASE pid6152 tick509875 dispatched108 open-begin
+2: TEST_PHASE pid6152 tick510125 dispatched108 open-return
+2: TEST_PHASE pid6152 tick510734 dispatched136 open-settled
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+2: REAL_CLICK client90,41 128x26 screen356,148 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: REAL_CLICK client4,32 312x28 screen549,267 hit0000000000050238 UIFrameworkLightWeb pid6152
+2: TEST_PHASE pid6152 tick511500 dispatched211 screenshot-begin
+2: TEST_PHASE pid6152 tick511531 dispatched211 screenshot-end
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation5 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation7 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation9 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation11 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation13 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation15 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation17 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation19 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: TEST_PHASE pid6152 tick515265 dispatched554 screenshot-begin
+2: TEST_PHASE pid6152 tick515328 dispatched554 screenshot-end
+2: REAL_CLICK client734,0 40x40 screen1556,80 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: TEST_PHASE pid6152 tick515625 dispatched585 screenshot-begin
+2: TEST_PHASE pid6152 tick515671 dispatched585 screenshot-end
+2: REAL_CLICK client734,0 40x40 screen1556,80 hit00000000001C0178 UIFrameworkLightWeb pid6152
+2: REAL_CLICK client8,40 59x28 screen170,355 hit00000000001101FC UIFrameworkLightWeb pid6152
+2: TEST_PHASE pid6152 tick517062 dispatched670 screenshot-begin
+2: TEST_PHASE pid6152 tick517109 dispatched670 screenshot-end
+2: TEST_PHASE pid6152 tick517437 dispatched679 screenshot-begin
+2: TEST_PHASE pid6152 tick517484 dispatched679 screenshot-end
+2: TEST_PHASE pid6152 tick517968 dispatched696 screenshot-begin
+2: TEST_PHASE pid6152 tick518015 dispatched696 screenshot-end
+2: TEST_PHASE pid6152 tick518015 dispatched696 instances-close-begin
+2: TEST_PHASE pid6152 tick518437 dispatched715 screenshot-begin
+2: TEST_PHASE pid6152 tick518468 dispatched715 screenshot-end
+2: TEST_PHASE pid6152 tick518468 dispatched715 close-begin
+2: TEST_PHASE pid6152 tick518468 dispatched715 close-request-return
+2: TEST_PHASE pid6152 tick518781 dispatched717 com-uninitialize-begin
+2: TEST_PHASE pid6152 tick518781 dispatched717 process-return
+2: Instance language actual light write dpi192 failures0
+2: CASE_END label=write-192 elapsedMs=11355 exit=0
+2: CASE_BEGIN label=restore-192 utc=2026-10-09T10:32:06.7968654Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\language-evidence-light-85e84b676e544689b4cd136e507ffb59
+2: INPUT_EVIDENCE real SendInput; final state checked
+2: TEST_PHASE pid5480 tick518859 dispatched0 create-host-begin
+2: TEST_PHASE pid5480 tick518921 dispatched0 create-host-end
+2: TEST_PHASE pid5480 tick519156 dispatched8 screenshot-begin
+2: TEST_PHASE pid5480 tick519171 dispatched8 screenshot-end
+2: TEST_PHASE pid5480 tick519171 dispatched8 open-begin
+2: TEST_PHASE pid5480 tick519531 dispatched8 open-return
+2: TEST_PHASE pid5480 tick520140 dispatched32 open-settled
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation2 source1
+2: TEST_PHASE pid5480 tick520281 dispatched41 open-begin
+2: TEST_PHASE pid5480 tick520546 dispatched41 open-return
+2: TEST_PHASE pid5480 tick521156 dispatched64 open-settled
+2: VISIBLE_LANGUAGE en-US header=Appearance / Draft generation3 source1
+2: TEST_PHASE pid5480 tick521484 dispatched82 screenshot-begin
+2: TEST_PHASE pid5480 tick521500 dispatched82 screenshot-end
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation4 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation6 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation8 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation10 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation12 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation14 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation16 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: REAL_CLICK client34,4 154x36 screen270,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 * generation18 source1
+2: REAL_CLICK client214,4 154x36 screen630,84 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: TEST_PHASE pid5480 tick525218 dispatched392 screenshot-begin
+2: TEST_PHASE pid5480 tick525265 dispatched392 screenshot-end
+2: REAL_CLICK client734,0 40x40 screen1556,80 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: TEST_PHASE pid5480 tick525546 dispatched421 screenshot-begin
+2: TEST_PHASE pid5480 tick525609 dispatched421 screenshot-end
+2: REAL_CLICK client734,0 40x40 screen1556,80 hit00000000001201F6 UIFrameworkLightWeb pid5480
+2: REAL_CLICK client8,40 59x28 screen170,355 hit00000000001301CE UIFrameworkLightWeb pid5480
+2: TEST_PHASE pid5480 tick526984 dispatched506 screenshot-begin
+2: TEST_PHASE pid5480 tick527046 dispatched506 screenshot-end
+2: TEST_PHASE pid5480 tick527359 dispatched515 screenshot-begin
+2: TEST_PHASE pid5480 tick527390 dispatched515 screenshot-end
+2: TEST_PHASE pid5480 tick527890 dispatched532 screenshot-begin
+2: TEST_PHASE pid5480 tick527953 dispatched532 screenshot-end
+2: TEST_PHASE pid5480 tick527953 dispatched532 instances-close-begin
+2: TEST_PHASE pid5480 tick528375 dispatched551 screenshot-begin
+2: TEST_PHASE pid5480 tick528406 dispatched551 screenshot-end
+2: TEST_PHASE pid5480 tick528406 dispatched551 close-begin
+2: TEST_PHASE pid5480 tick528406 dispatched551 close-request-return
+2: TEST_PHASE pid5480 tick528718 dispatched553 com-uninitialize-begin
+2: TEST_PHASE pid5480 tick528718 dispatched553 process-return
+2: Instance language actual light restore dpi192 failures0
+1/1 Test #2: ui_instance_language_light .......***Timeout 240.03 sec
+
+0% tests passed, 1 tests failed out of 1
+
+Total Test time (real) = 240.03 sec
+
+The following tests FAILED:
+	  2 - ui_instance_language_light (Timeout)
+Errors while running CTest
+Output from these tests are in: D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A/Testing/Temporary/LastTest.log
+Use "--rerun-failed --output-on-failure" to re-run the failed cases verbosely.

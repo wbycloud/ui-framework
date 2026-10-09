@@ -1,0 +1,1923 @@
+{
+  "configuration": "webview2",
+  "head": "5715a0539b94158e3f18afc32bffbc9a5d6a0168",
+  "providers": {
+    "A": {
+      "path": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+      "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+    },
+    "C": {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-candidate\\unpacked\\osmesa.dll",
+      "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5"
+    }
+  },
+  "caller_sha256": "9ddde29046b3c131c60e8f40330c407c0e6e8f1ab5f446b08e28e07ac3e4bc82",
+  "binaries": {
+    "build\\ci-webview2\\api7_fixture.uapp": "338b01538bb617215704a92a99abc1f8cc40f2495342548f56f177e9cb0f9832",
+    "build\\ci-webview2\\counter_mismatch.uapp": "db99eefb30838c6537229d0926c4d5000425b5ebe419ffc3bcc798b8a965228f",
+    "build\\ci-webview2\\cpp_fixture.uapp": "426c807d6e502f336a597d437273d6ecb7ebd4ab90475b2ec59b67a1a5d5f2b9",
+    "build\\ci-webview2\\dialog_layout_example.exe": "bdc070fb948bcea320655938e4c198949aab1096726cee23028ac914fffc3a3b",
+    "build\\ci-webview2\\framework_features.uapp": "ac980eb51ab49a6641b50b7f3110e5469203510253979f3d793d8579eca689f3",
+    "build\\ci-webview2\\framework_features_app.dll": "8b3e92a30e78e95af76d15003422b3d9709b68fa40f2b3bfffa26726ed639758",
+    "build\\ci-webview2\\framework_features_app.lib": "da41e1cb6d807eca9bda42b6466ee1a9888c80ed66840ee5f797d113772f80c6",
+    "build\\ci-webview2\\framework_host.exe": "229c7875882076a7af5fbb35ef7b269aabbdc146eb4c5520dc067179d55d2eb9",
+    "build\\ci-webview2\\generic_components.uapp": "c1af992f726a6c62abd62d8bb17ba1c98093f04220327ea7966e56fbbd4430d5",
+    "build\\ci-webview2\\generic_components_app.dll": "00866fdb8ae38143da4e4f6d17e7929efca9afa2726e981309930cd6a26bd66f",
+    "build\\ci-webview2\\generic_components_app.lib": "55dd3d37e050b69afbe011c066217d7be2c7b1fe67e9d4b049757d6c17ffc395",
+    "build\\ci-webview2\\light_web_probe.exe": "f84080becd33ab298fa89875c16796a37a97be067a751465b07cbd066ed12d7a",
+    "build\\ci-webview2\\minimal_eda.exe": "f5dba57f93b341ccbf715f2520316fe841e81709d4d6c10d08fef50c05c252ba",
+    "build\\ci-webview2\\minimal_eda.uapp": "4c6a3b679ab99e48ac5c0095209c3e732d4ab3e59f611376cfbe80f2da6a1951",
+    "build\\ci-webview2\\minimal_eda_app.dll": "33488a4f1eb1da8a0101ccf5789f41f1f10f1063ab5cc8f8f9e99f459a0b47f5",
+    "build\\ci-webview2\\minimal_eda_app.lib": "1ce5b600c503c0f7f80b6e0edcfef40fe53553174e366f343df53b840c45e1e9",
+    "build\\ci-webview2\\session0_gl_app.uapp": "27af0e92361a987ae4af3efc0ce48cdbfc69a8385b5efa26976c815b929bcfc5",
+    "build\\ci-webview2\\stateful_components.uapp": "57ad5d712e627af264ab549ac87d736e6a4cd1e6f0b7738cdb9508b3bb2a5dd4",
+    "build\\ci-webview2\\stateful_components_app.dll": "f384c9d5c3c10746bb3b6c0d9ec5e731ebf8ab523ff7ca9463ebf91eb1646c95",
+    "build\\ci-webview2\\stateful_components_app.lib": "135cbfb91a520559d53b3c30da06723a81a3aadebcc212c0199dfdffca3fe63a",
+    "build\\ci-webview2\\uapp_pack.exe": "ec8d78be3e0765f05eb9f4b113042c8ebffc16a1f57cdefbfa84adfb6ac642e4",
+    "build\\ci-webview2\\ui_api7_fixture.dll": "7e9e0ce81e7e3daabd07a7ac2cccfb58e9c716012aaa5dae0a5329de5880866a",
+    "build\\ci-webview2\\ui_api7_fixture.lib": "607d359958e9500f30a3830166c61a7d42d8242d567ca4f13d9fa5a927e674c0",
+    "build\\ci-webview2\\ui_api7_integration_test.exe": "3e79faa2ac513e07353aafb88098eeaee67bf8ad0cdac22070612fb91df3a17b",
+    "build\\ci-webview2\\ui_application_contract_test.exe": "b35c4d322205cd7bde7853498254dc72288039a07c2679752971d26836dd2b6c",
+    "build\\ci-webview2\\ui_application_cpp.dll": "3f12894b71df6c2977e772a1561e6dc58557b1858e5acb997511adf07f3e0e2b",
+    "build\\ci-webview2\\ui_application_cpp.lib": "4ac91edd18960dd54a0a9dfc064242f5d6bd60c90732beff0dd63827fdfc3742",
+    "build\\ci-webview2\\ui_assistant_lifecycle_test.exe": "90518c2a2c62471e1af3f2652592c3bd3d9cca4ee4a72c4900a4ecebe336f067",
+    "build\\ci-webview2\\ui_assistant_protocol_test.exe": "0142f921978748f3cbe88c3570b7a09dc17f668b1c170d7f840b8120b23e6765",
+    "build\\ci-webview2\\ui_browser_host_test.exe": "76d724ef83e894c19fd51c9a2ad012c227af5acbb90a52a7500b4d4a32b002a5",
+    "build\\ci-webview2\\ui_components_core_test.exe": "0bcfc811be0d8e7096e27324e1afa587a1ac797b6f922b53822006cba906ab49",
+    "build\\ci-webview2\\ui_component_experience_test.exe": "aed09fec12ec62d668b849ca986bda520c6843a124ff447959e71abeae63f5ec",
+    "build\\ci-webview2\\ui_component_layout_test.exe": "534a97288225e1d80a8354d6331c2fa19c0f391addf62ad883459bd477330317",
+    "build\\ci-webview2\\ui_component_resilience_test.exe": "e3f35c65f3eac4b292de7e19ab4933dcc99314140417f16ddb5c3d8755809340",
+    "build\\ci-webview2\\ui_component_scroll_native_test.exe": "80bfb4ed009a63fec0e34e2403ccea17f965019ae5e88ad4da57065e6959e83b",
+    "build\\ci-webview2\\ui_component_scroll_test.exe": "334079d2c21bddf0b42fa03a5bf8d3c0b31298fa04764a643f54a271e6391a7f",
+    "build\\ci-webview2\\ui_component_widths_test.exe": "66c3241df0c779b22aa9f89cb9d5f408308b21c0fa8cfc835f73cf5f83273580",
+    "build\\ci-webview2\\ui_display_probe.exe": "098c7bea01fb1b09b4ee0c3d74f261f4cfac05219a8f562f0d48d7246a40c9c1",
+    "build\\ci-webview2\\ui_dpi_integration_test.exe": "1439d00623471bbfd7041e255a80f3719cae85000130c403be7b1625c4cb6007",
+    "build\\ci-webview2\\ui_dpi_web_failure_test.exe": "8c813e52fcd3462eb7f4d505c16f9c30adbc8dff02ddc3a9abaed00865f44850",
+    "build\\ci-webview2\\ui_floating_web_dpi_test.exe": "732a40431651accdf115c7bf082de3bb1f000f0b60cedb079c8b35bcf421d6f9",
+    "build\\ci-webview2\\ui_framework.dll": "9560717767b36ef8af59c3f12d9d4c1372e4281f955aeb1d5788d0d11c33b2b3",
+    "build\\ci-webview2\\ui_framework.lib": "79b8746e8b525a3a81a8b7f3a8025c60206d4bef79b532b28593e7e8da7165ce",
+    "build\\ci-webview2\\ui_framework_features_host_test.exe": "699cf20cfe11443dd6620de45b0bb4f8410d2e118e49e89441c04363f2fb21a8",
+    "build\\ci-webview2\\ui_framework_headless.lib": "45c72ba6152e2ffecfcc9584edf93d0b6a04d3b036aa7e09fdcc957f9123ae24",
+    "build\\ci-webview2\\ui_framework_runtime.lib": "0bf52b6ebe15f18bf9635e8313fd5dc98455bc5a5b9fb4e73e4e89bb2c08eee1",
+    "build\\ci-webview2\\ui_generic_web_host_test.exe": "e2d403729e5beda1dcd264e3f4ab680b13126645c63af478e2a7222ef3ef46b1",
+    "build\\ci-webview2\\ui_headless_example.exe": "8de827124dbd7a0d634f63555be7ca1c1fcc43fba1750a143a261c9333d230db",
+    "build\\ci-webview2\\ui_host_repaint_test.exe": "27f5efb5274450fe2403687b026d4ff560ad08c8a036c5763db45ac5da8e4bac",
+    "build\\ci-webview2\\ui_images_windows_test.exe": "013435f20c7ed3d1c51e79d9d43045733a68a68efbad8d45b0916b5ac8f29416",
+    "build\\ci-webview2\\ui_instance_language_test.exe": "49b369f6cccba07c90c817aad9513871bf9a4169ec0a251f7a41440f62594ced",
+    "build\\ci-webview2\\ui_interaction_probe.exe": "df22ca93f615e5aa07ddf06425f17401ce87b780a439bb1a50774112d1dca5c9",
+    "build\\ci-webview2\\ui_language_core_test.exe": "167af205ca0970e8ebf1b493174258af09aa3a0228069ac97043c40b567842e4",
+    "build\\ci-webview2\\ui_lifecycle_fixture.dll": "f4526ab478b2f424661b4c47d51f4bdb9c2c8123e4e6a1d28462777051af5b79",
+    "build\\ci-webview2\\ui_lifecycle_fixture.lib": "70427df581b76130284e48708199f2ba9c761f84fe114acff378553d3b7dea44",
+    "build\\ci-webview2\\ui_light_glyph_padding_test.exe": "dacfc40443b79d6303dda36564b6390ae9d6ea144f7e4fdb9f7c3bf1a3245df7",
+    "build\\ci-webview2\\ui_light_scroll_test.exe": "e52806109576d04ccdac146710efad3b7e6afb52ee77bb62c1361494c7f1f1c1",
+    "build\\ci-webview2\\ui_light_web_dynamic_test.exe": "a85d3e6e64e1551834981ed5c4675ce704de5440523390161d96b3bd8b8c050f",
+    "build\\ci-webview2\\ui_menu_access_test.exe": "673c2a1b66cd4e11356ebbd60c84693f203dc8ff88682eda96e919e2d7c4a52d",
+    "build\\ci-webview2\\ui_menu_cascade_offscreen_test.exe": "67450c3e4ac6aabf0bfc2df4f18cdff7c159d0fbf9bafe99d2554d9ac37495cb",
+    "build\\ci-webview2\\ui_menu_desktop_test.exe": "2d549fe51691417f0735b37e9f097474c64b3af94381c3e9af4dfe8e88922d1c",
+    "build\\ci-webview2\\ui_menu_offscreen_test.exe": "833d4a0a43831b9bcf4598aa73dd75df66308af2da1ed1e0dba825145311a1e6",
+    "build\\ci-webview2\\ui_monitor_transition_test.exe": "0bcb041ade7e0d9ae89a2f1976a5708ab3554ccab03fcb582d94944021ce5da7",
+    "build\\ci-webview2\\ui_native_activation_test.exe": "f726e06d3665e2bde611a3e6fd5614d96386b4fce03ce44ec698ab7ec76668d9",
+    "build\\ci-webview2\\ui_native_responsive_test.exe": "9a648ad57e7ed0dd201daff0ab918f89526fdfdfbdcaa5413a9864935485cffc",
+    "build\\ci-webview2\\ui_native_shell_integration_test.exe": "a323056d0e3ea4feae49d03bac9b4848c897a80abb534a84e2c087f2e603400d",
+    "build\\ci-webview2\\ui_offscreen_gl_test.exe": "b9dc4453fda003f44062638f3fb7e907dae239d9a46e6418f5067d39f2599ec1",
+    "build\\ci-webview2\\ui_offscreen_msaa_test.exe": "5e209b689f9386f520bdb7699f9ff5fb53870f3c20e397fcfdc847b58dd6627e",
+    "build\\ci-webview2\\ui_opengl_integration_test.exe": "1c8450b2b6a79d411699d600d0b054b63d9779bac1965f80d36c4fbe0b18ccab",
+    "build\\ci-webview2\\ui_package_format_test.exe": "39de605ad5ce4dda901008a83ecc18860cfbd6d95f22e0b94d69696b74c34e62",
+    "build\\ci-webview2\\ui_presentation_transition_probe.exe": "df22fa94f5455ff8c1a08567d8564a6fd052aed57f4dfc52a053866d753ad220",
+    "build\\ci-webview2\\ui_public_headers_cpp_test.exe": "f317ee7c496aacffde5257176496943f0a76ec48a3ed7ffc894d8349957149b4",
+    "build\\ci-webview2\\ui_public_headers_c_test.exe": "2ea730dba6f5b13364af28a7cdf41802b1beb982f9d567064bae53240dd2c400",
+    "build\\ci-webview2\\ui_readonly_navigation_probe.exe": "400d527d01b979a62d58b1c878375022b8732e86a68a104f09e956e16f15a308",
+    "build\\ci-webview2\\ui_responsive_layout_test.exe": "a7e6303f9a48c1f5466f524bcd5607c4cbe05ef1ee569fd3d691bf6ea91d2d1f",
+    "build\\ci-webview2\\ui_runtime_boundary_probe.exe": "7fa2d90936292ae842e1dd8af0bc5dd0a30ec8765c17404e6e4e729559723897",
+    "build\\ci-webview2\\ui_session0_gl_app.dll": "30c97fc69d90f6c674ee7975580b770b6159d89ec5ab21a8f3b4a730a430360a",
+    "build\\ci-webview2\\ui_session0_gl_app.lib": "00e8d56c85141e7543b7fbe774ae8b25446b984ba6db39f3fc7866f785df21f3",
+    "build\\ci-webview2\\ui_session0_gl_test.exe": "551b2718b961dead042f001ed1ec0e5bde6f5d6053f8cae8e09bd76705fa0468",
+    "build\\ci-webview2\\ui_stateful_components_test.exe": "1e81498f91ef3c109369456d190763054141737376c848c215c2b5abd2e45e5e",
+    "build\\ci-webview2\\ui_surface_input_test.exe": "d1728adba7407ada541192cb846aa25c46fc60e133bc58f3c1c40842e4588eaa",
+    "build\\ci-webview2\\ui_visual_ui_test.exe": "52c33eff2f60a5d754dfbeec4ac5b38b1243b2ca92ebb46d1bde96757b7cc764",
+    "build\\ci-webview2\\ui_webview2_messages_test.exe": "4085fd0c2c2f38c37c6f06ea0801817cf77ac0dbdbeff8239642a00515a06b60",
+    "build\\ci-webview2\\ui_webview2_render_test.exe": "cc1bdc99bf42cfa8842fbd9c35e4218e5ccbf7533097f308fdb0b1e71292afc9",
+    "build\\ci-webview2\\ui_web_host_frontend_test.exe": "c3f24251f59d61d57d379248e8a1e22513446208759028ab377e1ccde4b1efa3",
+    "build\\ci-webview2\\ui_web_shell_slots_test.exe": "1361ce468536aaec79421a6e4c019596641b1b6d698e7920dacfd85223b57b41",
+    "build\\ci-webview2\\ui_web_text_edit_test.exe": "33419b265e319711d3fdc6385bb1e3c4bef73fd231a1e267d4020162c7f3048f",
+    "build\\ci-webview2\\ui_workspace7_test.exe": "94f068c97612f6eece19d492c34770ed2274d4de9976622089ed9d9303cd314a",
+    "build\\ci-webview2\\ui_workspace_integration_test.exe": "192b141e83dc34a4a4fdf834a28348f6211cf05a986d4a0e0a95497348d5ec48",
+    "build\\ci-webview2\\ui_workspace_layout_test.exe": "3b4256dd39deb1cd582bb75637ffea10cfd35abca3c312eb4968f2102c6414fb",
+    "build\\ci-webview2\\ui_workspace_offscreen_test.exe": "4bc98ee33ae0031e3373defc23d07152736ed406a1d6c59354301d46d4ab4555",
+    "build\\ci-webview2\\webview2_probe.exe": "f5d65a1c5ca2e694b94592a07d3450355406e2527f0be5ef24f2dd7382424be5",
+    "build\\ci-webview2\\web_counter.uapp": "7219fbc0a932f1f95e2623d86c390d0c05651828baddfc8c693bf7d4039f6477",
+    "build\\ci-webview2\\web_counter_app.dll": "18d67e9e4ff2fcf568319e5cf1229fa367f87b24c5b5fe4386d2620423399539",
+    "build\\ci-webview2\\web_counter_app.lib": "16251ed276a6994b35f74b117b044e371ffc4ae67254eb2a1a8c93215fa4311e"
+  },
+  "runs": [
+    {
+      "label": "A",
+      "kind": "standalone",
+      "command": [
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+        "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 4300,
+      "os_exit": 0,
+      "forced": false,
+      "gated": false,
+      "gate_released": false,
+      "eof": true,
+      "provider_sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=502.778 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "main_return": [
+        "MAIN_RETURN failures=0"
+      ]
+    },
+    {
+      "label": "A",
+      "kind": "standalone",
+      "command": [
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+        "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 532,
+      "os_exit": 0,
+      "forced": false,
+      "gated": true,
+      "gate_released": true,
+      "eof": true,
+      "provider_sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=503.590 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "main_return": [
+        "MAIN_RETURN failures=0"
+      ]
+    },
+    {
+      "label": "A",
+      "kind": "original",
+      "test": "ui_stateful_components_light",
+      "command": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "tests/observe_processes.py",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-A\\ui_stateful_components_light\\processes.jsonl",
+        "--",
+        "ctest",
+        "--test-dir",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-A",
+        "-R",
+        "^ui_stateful_components_light$",
+        "--no-tests=error",
+        "-V",
+        "--output-junit",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-A\\ui_stateful_components_light\\ctest.xml"
+      ],
+      "observer_exit": 8,
+      "native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 3078.0,
+          "pid": 6448,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 180203.0,
+          "pid": 4312,
+          "code": 255,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "case_ends": [
+        "CASE_END label=write-96 elapsedMs=2502 exit=0"
+      ],
+      "complete_boundaries_pass": false,
+      "actual_native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 3078.0,
+          "pid": 6448,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 180203.0,
+          "pid": 4312,
+          "code": 255,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "entered_cases": 2,
+      "completed_cases": 1,
+      "ctest": {
+        "name": "ui_stateful_components_light",
+        "classname": "ui_stateful_components_light",
+        "time": "180.036",
+        "status": "fail"
+      },
+      "ctest_failure": {
+        "message": "Timeout"
+      },
+      "parent_exit": [
+        {
+          "kind": "parent_exit",
+          "elapsed_ms": 180234.0,
+          "pid": 7408,
+          "code": 8
+        }
+      ],
+      "stdout_eof": [
+        {
+          "kind": "stdout_eof",
+          "elapsed_ms": 180219.0
+        }
+      ],
+      "last_phase": {
+        "kind": "stdout_line",
+        "elapsed_ms": 4313.0,
+        "line": "1: TEST_PHASE pid4312 tick490750 dispatched29 process-return"
+      },
+      "stall_events": [
+        {
+          "kind": "stall_capture_started",
+          "elapsed_ms": 64313.0,
+          "pids": [
+            7408,
+            6032,
+            4312
+          ],
+          "idle_seconds": 60.0
+        },
+        {
+          "kind": "stall_capture_completed",
+          "elapsed_ms": 74906.0,
+          "exit": 0,
+          "result": "[{\"pid\": 7408, \"open_process\": true, \"error\": 0, \"flags\": \"0x1826\", \"dump_ok\": true, \"bytes\": 55185609, \"mesa_objects\": {\"pid\": 7408, \"observed_ns\": 1791541932116187900, \"timing_changed\": true, \"reads\": [], \"open_ok\": true, \"open_error\": 0, \"modules_ok\": true, \"modules_error\": 0, \"mesa_present\": false}}, {\"pid\": 6032, \"open_process\": true, \"error\": 0, \"flags\": \"0x1826\", \"dump_ok\": true, \"bytes\": 263926528, \"mesa_objects\": {\"pid\": 6032, \"observed_ns\": 1791541940657322000, \"timing_changed\": true, \"reads\": [], \"open_ok\": true, \"open_error\": 0, \"modules_ok\": true, \"modules_error\": 0, \"mesa_present\": false}}, {\"pid\": 4312, \"open_process\": true, \"error\": 0, \"flags\": \"0x1826\", \"dump_ok\": true, \"bytes\": 134341700, \"mesa_objects\": {\"pid\": 4312, \"observed_ns\": 1791541942344705400, \"timing_changed\": true, \"reads\": [{\"address\": \"0x7ffdda0502c0\", \"bytes\": 8, \"ok\": true, \"error\": 0}, {\"address\": \"0x128c28b0f00\", \"bytes\": 8, \"ok\": true, \"error\": 0}, {\"address\": \"0x128c27d49e0\", \"bytes\": 8, \"ok\": true, \"error\": 0}, {\"address\": \"0x128c27d4a10\", \"bytes\": 8, \"ok\": true, \"error\": 0}, {\"address\": \"0x128c28c7cf0\", \"bytes\": 10856, \"ok\": true, \"error\": 0}], \"open_ok\": true, \"open_error\": 0, \"modules_ok\": true, \"modules_error\": 0, \"mesa_present\": true, \"module_base\": \"0x7ffdd6fe0000\", \"path\": \"D:\\\\a\\\\ui-framework\\\\ui-framework\\\\.deps\\\\mesa-24.3.4\\\\x64\\\\osmesa.dll\", \"sha256\": \"c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f\", \"matched_layout\": {\"label\": \"A\", \"global_rva\": 50791104, \"pdb_guid\": \"a53e732b-2253-4fee-8fee-53f47771d8ea\"}, \"global_fscreen\": \"0x128c28b0f00\", \"screen\": \"0x128c27d4750\", \"rast_address\": \"0x128c28c7cf0\", \"cs_tpool_pointer\": \"0x128c2a1ee20\", \"num_threads\": 4, \"exit_flag\": 1, \"tasks\": [{\"index\": 0, \"task\": \"0x128c28c7d08\", \"saved_handle\": \"0x280\", \"task_index\": 0, \"semaphores\": {\"work_ready\": {\"address\": \"0x128c28c7da8\", \"counter\": 1}, \"work_done\": {\"address\": \"0x128c28c7de0\", \"counter\": 2}, \"exited\": {\"address\": \"0x128c28c7e18\", \"counter\": 0}}, \"duplicate_ok\": true, \"duplicate_error\": 0, \"thread_id\": 4700, \"thread_id_error\": 0, \"query_ok\": true, \"exit_code\": 0, \"query_error\": 0, \"zero_wait\": 0, \"wait_error\": 0, \"observer_close_ok\": true}, {\"index\": 1, \"task\": \"0x128c28c7e50\", \"saved_handle\": \"0x284\", \"task_index\": 1, \"semaphores\": {\"work_ready\": {\"address\": \"0x128c28c7ef0\", \"counter\": 1}, \"work_done\": {\"address\": \"0x128c28c7f28\", \"counter\": 2}, \"exited\": {\"address\": \"0x128c28c7f60\", \"counter\": 0}}, \"duplicate_ok\": true, \"duplicate_error\": 0, \"thread_id\": 2988, \"thread_id_error\": 0, \"query_ok\": true, \"exit_code\": 0, \"query_error\": 0, \"zero_wait\": 0, \"wait_error\": 0, \"observer_close_ok\": true}, {\"index\": 2, \"task\": \"0x128c28c7f98\", \"saved_handle\": \"0x288\", \"task_index\": 2, \"semaphores\": {\"work_ready\": {\"address\": \"0x128c28c8038\", \"counter\": 1}, \"work_done\": {\"address\": \"0x128c28c8070\", \"counter\": 2}, \"exited\": {\"address\": \"0x128c28c80a8\", \"counter\": 0}}, \"duplicate_ok\": true, \"duplicate_error\": 0, \"thread_id\": 4696, \"thread_id_error\": 0, \"query_ok\": true, \"exit_code\": 0, \"query_error\": 0, \"zero_wait\": 0, \"wait_error\": 0, \"observer_close_ok\": true}, {\"index\": 3, \"task\": \"0x128c28c80e0\", \"saved_handle\": \"0x28c\", \"task_index\": 3, \"semaphores\": {\"work_ready\": {\"address\": \"0x128c28c8180\", \"counter\": 1}, \"work_done\": {\"address\": \"0x128c28c81b8\", \"counter\": 2}, \"exited\": {\"address\": \"0x128c28c81f0\", \"counter\": 0}}, \"duplicate_ok\": true, \"duplicate_error\": 0, \"thread_id\": 2248, \"thread_id_error\": 0, \"query_ok\": true, \"exit_code\": 0, \"query_error\": 0, \"zero_wait\": 0, \"wait_error\": 0, \"observer_close_ok\": true}]}}]"
+        }
+      ],
+      "dispatch_max": 58
+    },
+    {
+      "label": "A",
+      "kind": "original",
+      "test": "ui_instance_language_light",
+      "command": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "tests/observe_processes.py",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-A\\ui_instance_language_light\\processes.jsonl",
+        "--",
+        "ctest",
+        "--test-dir",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-A",
+        "-R",
+        "^ui_instance_language_light$",
+        "--no-tests=error",
+        "-V",
+        "--output-junit",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-A\\ui_instance_language_light\\ctest.xml"
+      ],
+      "observer_exit": 8,
+      "native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 240047.0,
+          "pid": 2676,
+          "code": 255,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "case_ends": [],
+      "complete_boundaries_pass": false,
+      "actual_native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 240047.0,
+          "pid": 2676,
+          "code": 255,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "entered_cases": 1,
+      "completed_cases": 0,
+      "ctest": {
+        "name": "ui_instance_language_light",
+        "classname": "ui_instance_language_light",
+        "time": "240.022",
+        "status": "fail"
+      },
+      "ctest_failure": {
+        "message": "Timeout"
+      },
+      "parent_exit": [
+        {
+          "kind": "parent_exit",
+          "elapsed_ms": 240063.0,
+          "pid": 6984,
+          "code": 8
+        }
+      ],
+      "stdout_eof": [
+        {
+          "kind": "stdout_eof",
+          "elapsed_ms": 240047.0
+        }
+      ],
+      "last_phase": {
+        "kind": "stdout_line",
+        "elapsed_ms": 7625.0,
+        "line": "2: TEST_PHASE pid2676 tick674765 dispatched375 process-return"
+      },
+      "stall_events": [
+        {
+          "kind": "stall_capture_started",
+          "elapsed_ms": 67641.0,
+          "pids": [
+            6984,
+            2720,
+            2676
+          ],
+          "idle_seconds": 60.016
+        },
+        {
+          "kind": "stall_capture_completed",
+          "elapsed_ms": 68328.0,
+          "exit": 0,
+          "result": "[{\"pid\": 6984, \"open_process\": true, \"error\": 0, \"flags\": \"0x1826\", \"dump_ok\": true, \"bytes\": 55174042, \"mesa_objects\": {\"pid\": 6984, \"observed_ns\": 1791542115908942400, \"timing_changed\": true, \"reads\": [], \"open_ok\": true, \"open_error\": 0, \"modules_ok\": true, \"modules_error\": 0, \"mesa_present\": false}}, {\"pid\": 2720, \"open_process\": true, \"error\": 0, \"flags\": \"0x1826\", \"dump_ok\": true, \"bytes\": 266045160, \"mesa_objects\": {\"pid\": 2720, \"observed_ns\": 1791542116137691000, \"timing_changed\": true, \"reads\": [], \"open_ok\": true, \"open_error\": 0, \"modules_ok\": true, \"modules_error\": 0, \"mesa_present\": false}}, {\"pid\": 2676, \"open_process\": true, \"error\": 0, \"flags\": \"0x1826\", \"dump_ok\": true, \"bytes\": 141870805, \"mesa_objects\": {\"pid\": 2676, \"observed_ns\": 1791542116470564700, \"timing_changed\": true, \"reads\": [{\"address\": \"0x7ffdda0502c0\", \"bytes\": 8, \"ok\": true, \"error\": 0}, {\"address\": \"0x2081fa713f0\", \"bytes\": 8, \"ok\": true, \"error\": 0}, {\"address\": \"0x2081fc6e480\", \"bytes\": 8, \"ok\": true, \"error\": 0}, {\"address\": \"0x2081fc6e4b0\", \"bytes\": 8, \"ok\": true, \"error\": 0}, {\"address\": \"0x2081fa79270\", \"bytes\": 10856, \"ok\": true, \"error\": 0}], \"open_ok\": true, \"open_error\": 0, \"modules_ok\": true, \"modules_error\": 0, \"mesa_present\": true, \"module_base\": \"0x7ffdd6fe0000\", \"path\": \"D:\\\\a\\\\ui-framework\\\\ui-framework\\\\.deps\\\\mesa-24.3.4\\\\x64\\\\osmesa.dll\", \"sha256\": \"c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f\", \"matched_layout\": {\"label\": \"A\", \"global_rva\": 50791104, \"pdb_guid\": \"a53e732b-2253-4fee-8fee-53f47771d8ea\"}, \"global_fscreen\": \"0x2081fa713f0\", \"screen\": \"0x2081fc6e1f0\", \"rast_address\": \"0x2081fa79270\", \"cs_tpool_pointer\": \"0x2081c233e40\", \"num_threads\": 4, \"exit_flag\": 1, \"tasks\": [{\"index\": 0, \"task\": \"0x2081fa79288\", \"saved_handle\": \"0x308\", \"task_index\": 0, \"semaphores\": {\"work_ready\": {\"address\": \"0x2081fa79328\", \"counter\": 1}, \"work_done\": {\"address\": \"0x2081fa79360\", \"counter\": 20}, \"exited\": {\"address\": \"0x2081fa79398\", \"counter\": 0}}, \"duplicate_ok\": true, \"duplicate_error\": 0, \"thread_id\": 5156, \"thread_id_error\": 0, \"query_ok\": true, \"exit_code\": 0, \"query_error\": 0, \"zero_wait\": 0, \"wait_error\": 0, \"observer_close_ok\": true}, {\"index\": 1, \"task\": \"0x2081fa793d0\", \"saved_handle\": \"0x30c\", \"task_index\": 1, \"semaphores\": {\"work_ready\": {\"address\": \"0x2081fa79470\", \"counter\": 1}, \"work_done\": {\"address\": \"0x2081fa794a8\", \"counter\": 20}, \"exited\": {\"address\": \"0x2081fa794e0\", \"counter\": 0}}, \"duplicate_ok\": true, \"duplicate_error\": 0, \"thread_id\": 7736, \"thread_id_error\": 0, \"query_ok\": true, \"exit_code\": 0, \"query_error\": 0, \"zero_wait\": 0, \"wait_error\": 0, \"observer_close_ok\": true}, {\"index\": 2, \"task\": \"0x2081fa79518\", \"saved_handle\": \"0x310\", \"task_index\": 2, \"semaphores\": {\"work_ready\": {\"address\": \"0x2081fa795b8\", \"counter\": 1}, \"work_done\": {\"address\": \"0x2081fa795f0\", \"counter\": 20}, \"exited\": {\"address\": \"0x2081fa79628\", \"counter\": 0}}, \"duplicate_ok\": true, \"duplicate_error\": 0, \"thread_id\": 7628, \"thread_id_error\": 0, \"query_ok\": true, \"exit_code\": 0, \"query_error\": 0, \"zero_wait\": 0, \"wait_error\": 0, \"observer_close_ok\": true}, {\"index\": 3, \"task\": \"0x2081fa79660\", \"saved_handle\": \"0x314\", \"task_index\": 3, \"semaphores\": {\"work_ready\": {\"address\": \"0x2081fa79700\", \"counter\": 1}, \"work_done\": {\"address\": \"0x2081fa79738\", \"counter\": 20}, \"exited\": {\"address\": \"0x2081fa79770\", \"counter\": 0}}, \"duplicate_ok\": true, \"duplicate_error\": 0, \"thread_id\": 3572, \"thread_id_error\": 0, \"query_ok\": true, \"exit_code\": 0, \"query_error\": 0, \"zero_wait\": 0, \"wait_error\": 0, \"observer_close_ok\": true}]}}]"
+        }
+      ],
+      "dispatch_max": 375
+    },
+    {
+      "label": "C",
+      "kind": "standalone",
+      "command": [
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-candidate\\unpacked\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 6804,
+      "os_exit": 0,
+      "forced": false,
+      "gated": false,
+      "gate_released": false,
+      "eof": true,
+      "provider_sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=496.142 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "main_return": [
+        "MAIN_RETURN failures=0"
+      ]
+    },
+    {
+      "label": "C",
+      "kind": "standalone",
+      "command": [
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-candidate\\unpacked\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 7132,
+      "os_exit": 0,
+      "forced": false,
+      "gated": true,
+      "gate_released": true,
+      "eof": true,
+      "provider_sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+      "renders": [
+        "RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=491.973 hash=38b57cea08bb9bf9 center=255,0,0,255"
+      ],
+      "main_return": [
+        "MAIN_RETURN failures=0"
+      ]
+    },
+    {
+      "label": "C",
+      "kind": "original",
+      "test": "ui_stateful_components_light",
+      "command": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "tests/observe_processes.py",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-C\\ui_stateful_components_light\\processes.jsonl",
+        "--",
+        "ctest",
+        "--test-dir",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-C",
+        "-R",
+        "^ui_stateful_components_light$",
+        "--no-tests=error",
+        "-V",
+        "--output-junit",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-C\\ui_stateful_components_light\\ctest.xml"
+      ],
+      "observer_exit": 0,
+      "native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 2093.0,
+          "pid": 5292,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 3359.0,
+          "pid": 7444,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 5156.0,
+          "pid": 6012,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 6437.0,
+          "pid": 6968,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 8047.0,
+          "pid": 640,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 9281.0,
+          "pid": 5384,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 11890.0,
+          "pid": 7268,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 13140.0,
+          "pid": 5992,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 14640.0,
+          "pid": 3012,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 15922.0,
+          "pid": 7308,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 17234.0,
+          "pid": 1264,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 18484.0,
+          "pid": 1524,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 19828.0,
+          "pid": 8180,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 21047.0,
+          "pid": 848,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 22328.0,
+          "pid": 5352,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 23578.0,
+          "pid": 6356,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 24781.0,
+          "pid": 5236,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 26000.0,
+          "pid": 6724,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 27234.0,
+          "pid": 4624,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 28484.0,
+          "pid": 6472,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 29765.0,
+          "pid": 5264,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 31047.0,
+          "pid": 1536,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 32250.0,
+          "pid": 3992,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 33797.0,
+          "pid": 5168,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 35437.0,
+          "pid": 3416,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 36687.0,
+          "pid": 6704,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "case_ends": [
+        "CASE_END label=write-96 elapsedMs=1676 exit=0",
+        "CASE_END label=restore-96 elapsedMs=1277 exit=0",
+        "CASE_END label=write-144 elapsedMs=1772 exit=0",
+        "CASE_END label=restore-144 elapsedMs=1285 exit=0",
+        "CASE_END label=write-192 elapsedMs=1613 exit=0",
+        "CASE_END label=restore-192 elapsedMs=1245 exit=0",
+        "CASE_END label=isolation elapsedMs=2601 exit=0",
+        "CASE_END label=profile-b elapsedMs=1238 exit=0",
+        "CASE_END label=reload elapsedMs=1486 exit=0",
+        "CASE_END label=locked-profile elapsedMs=1304 exit=0",
+        "CASE_END label=reordered-columns elapsedMs=1315 exit=0",
+        "CASE_END label=missing-new-columns elapsedMs=1237 exit=0",
+        "CASE_END label=empty elapsedMs=1326 exit=0",
+        "CASE_END label=truncated elapsedMs=1221 exit=0",
+        "CASE_END label=oversized elapsedMs=1282 exit=0",
+        "CASE_END label=magic elapsedMs=1215 exit=0",
+        "CASE_END label=checksum elapsedMs=1202 exit=0",
+        "CASE_END label=future elapsedMs=1207 exit=0",
+        "CASE_END label=columns-reserved elapsedMs=1240 exit=0",
+        "CASE_END label=columns-future elapsedMs=1233 exit=0",
+        "CASE_END label=layout-future elapsedMs=1286 exit=0",
+        "CASE_END label=layout-invalid elapsedMs=1264 exit=0",
+        "CASE_END label=missing-file elapsedMs=1209 exit=0",
+        "CASE_END label=failed-create-mount-lock-release elapsedMs=1538 exit=0",
+        "CASE_END label=reset elapsedMs=1651 exit=0",
+        "CASE_END label=reset-cross-process elapsedMs=1238 exit=0"
+      ],
+      "complete_boundaries_pass": true,
+      "actual_native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 2093.0,
+          "pid": 5292,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 3359.0,
+          "pid": 7444,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 5156.0,
+          "pid": 6012,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 6437.0,
+          "pid": 6968,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 8047.0,
+          "pid": 640,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 9281.0,
+          "pid": 5384,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 11890.0,
+          "pid": 7268,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 13140.0,
+          "pid": 5992,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 14640.0,
+          "pid": 3012,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 15922.0,
+          "pid": 7308,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 17234.0,
+          "pid": 1264,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 18484.0,
+          "pid": 1524,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 19828.0,
+          "pid": 8180,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 21047.0,
+          "pid": 848,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 22328.0,
+          "pid": 5352,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 23578.0,
+          "pid": 6356,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 24781.0,
+          "pid": 5236,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 26000.0,
+          "pid": 6724,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 27234.0,
+          "pid": 4624,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 28484.0,
+          "pid": 6472,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 29765.0,
+          "pid": 5264,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 31047.0,
+          "pid": 1536,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 32250.0,
+          "pid": 3992,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 33797.0,
+          "pid": 5168,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 35437.0,
+          "pid": 3416,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 36687.0,
+          "pid": 6704,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "entered_cases": 26,
+      "completed_cases": 26,
+      "ctest": {
+        "name": "ui_stateful_components_light",
+        "classname": "ui_stateful_components_light",
+        "time": "36.6729",
+        "status": "run"
+      },
+      "ctest_failure": null,
+      "parent_exit": [
+        {
+          "kind": "parent_exit",
+          "elapsed_ms": 36687.0,
+          "pid": 4912,
+          "code": 0
+        }
+      ],
+      "stdout_eof": [
+        {
+          "kind": "stdout_eof",
+          "elapsed_ms": 36672.0
+        }
+      ],
+      "last_phase": {
+        "kind": "stdout_line",
+        "elapsed_ms": 36609.0,
+        "line": "1: TEST_PHASE pid6704 tick945687 dispatched37 process-return"
+      },
+      "stall_events": [],
+      "dispatch_max": 90
+    },
+    {
+      "label": "C",
+      "kind": "original",
+      "test": "ui_instance_language_light",
+      "command": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "tests/observe_processes.py",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-C\\ui_instance_language_light\\processes.jsonl",
+        "--",
+        "ctest",
+        "--test-dir",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-C",
+        "-R",
+        "^ui_instance_language_light$",
+        "--no-tests=error",
+        "-V",
+        "--output-junit",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\runs\\original-C\\ui_instance_language_light\\ctest.xml"
+      ],
+      "observer_exit": 0,
+      "native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 7188.0,
+          "pid": 5596,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 17984.0,
+          "pid": 5472,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 27578.0,
+          "pid": 3852,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 38516.0,
+          "pid": 6800,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 47906.0,
+          "pid": 4776,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 58719.0,
+          "pid": 2352,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 68031.0,
+          "pid": 6320,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "case_ends": [
+        "CASE_END label=preferences-96 elapsedMs=6776 exit=0",
+        "CASE_END label=write-96 elapsedMs=10790 exit=0",
+        "CASE_END label=restore-96 elapsedMs=9608 exit=0",
+        "CASE_END label=write-144 elapsedMs=10911 exit=0",
+        "CASE_END label=restore-144 elapsedMs=9407 exit=0",
+        "CASE_END label=write-192 elapsedMs=10800 exit=0",
+        "CASE_END label=restore-192 elapsedMs=9326 exit=0"
+      ],
+      "complete_boundaries_pass": true,
+      "actual_native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 7188.0,
+          "pid": 5596,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 17984.0,
+          "pid": 5472,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 27578.0,
+          "pid": 3852,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 38516.0,
+          "pid": 6800,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 47906.0,
+          "pid": 4776,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 58719.0,
+          "pid": 2352,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 68031.0,
+          "pid": 6320,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "entered_cases": 7,
+      "completed_cases": 7,
+      "ctest": {
+        "name": "ui_instance_language_light",
+        "classname": "ui_instance_language_light",
+        "time": "68.0208",
+        "status": "run"
+      },
+      "ctest_failure": null,
+      "parent_exit": [
+        {
+          "kind": "parent_exit",
+          "elapsed_ms": 68078.0,
+          "pid": 916,
+          "code": 0
+        }
+      ],
+      "stdout_eof": [
+        {
+          "kind": "stdout_eof",
+          "elapsed_ms": 68063.0
+        }
+      ],
+      "last_phase": {
+        "kind": "stdout_line",
+        "elapsed_ms": 67953.0,
+        "line": "2: TEST_PHASE pid6320 tick1014140 dispatched553 process-return"
+      },
+      "stall_events": [],
+      "dispatch_max": 739
+    }
+  ],
+  "dumps": [
+    {
+      "capture": "lifecycle-control\\runs\\original-A\\ui_instance_language_light\\stall-dumps\\capture.json",
+      "records": [
+        {
+          "pid": 6984,
+          "open_process": true,
+          "error": 0,
+          "flags": "0x1826",
+          "dump_ok": true,
+          "bytes": 55174042,
+          "mesa_objects": {
+            "pid": 6984,
+            "observed_ns": 1791542115908942400,
+            "timing_changed": true,
+            "reads": [],
+            "open_ok": true,
+            "open_error": 0,
+            "modules_ok": true,
+            "modules_error": 0,
+            "mesa_present": false
+          }
+        },
+        {
+          "pid": 2720,
+          "open_process": true,
+          "error": 0,
+          "flags": "0x1826",
+          "dump_ok": true,
+          "bytes": 266045160,
+          "mesa_objects": {
+            "pid": 2720,
+            "observed_ns": 1791542116137691000,
+            "timing_changed": true,
+            "reads": [],
+            "open_ok": true,
+            "open_error": 0,
+            "modules_ok": true,
+            "modules_error": 0,
+            "mesa_present": false
+          }
+        },
+        {
+          "pid": 2676,
+          "open_process": true,
+          "error": 0,
+          "flags": "0x1826",
+          "dump_ok": true,
+          "bytes": 141870805,
+          "mesa_objects": {
+            "pid": 2676,
+            "observed_ns": 1791542116470564700,
+            "timing_changed": true,
+            "reads": [
+              {
+                "address": "0x7ffdda0502c0",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x2081fa713f0",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x2081fc6e480",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x2081fc6e4b0",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x2081fa79270",
+                "bytes": 10856,
+                "ok": true,
+                "error": 0
+              }
+            ],
+            "open_ok": true,
+            "open_error": 0,
+            "modules_ok": true,
+            "modules_error": 0,
+            "mesa_present": true,
+            "module_base": "0x7ffdd6fe0000",
+            "path": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+            "matched_layout": {
+              "label": "A",
+              "global_rva": 50791104,
+              "pdb_guid": "a53e732b-2253-4fee-8fee-53f47771d8ea"
+            },
+            "global_fscreen": "0x2081fa713f0",
+            "screen": "0x2081fc6e1f0",
+            "rast_address": "0x2081fa79270",
+            "cs_tpool_pointer": "0x2081c233e40",
+            "num_threads": 4,
+            "exit_flag": 1,
+            "tasks": [
+              {
+                "index": 0,
+                "task": "0x2081fa79288",
+                "saved_handle": "0x308",
+                "task_index": 0,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x2081fa79328",
+                    "counter": 1
+                  },
+                  "work_done": {
+                    "address": "0x2081fa79360",
+                    "counter": 20
+                  },
+                  "exited": {
+                    "address": "0x2081fa79398",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 5156,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 0,
+                "query_error": 0,
+                "zero_wait": 0,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 1,
+                "task": "0x2081fa793d0",
+                "saved_handle": "0x30c",
+                "task_index": 1,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x2081fa79470",
+                    "counter": 1
+                  },
+                  "work_done": {
+                    "address": "0x2081fa794a8",
+                    "counter": 20
+                  },
+                  "exited": {
+                    "address": "0x2081fa794e0",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 7736,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 0,
+                "query_error": 0,
+                "zero_wait": 0,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 2,
+                "task": "0x2081fa79518",
+                "saved_handle": "0x310",
+                "task_index": 2,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x2081fa795b8",
+                    "counter": 1
+                  },
+                  "work_done": {
+                    "address": "0x2081fa795f0",
+                    "counter": 20
+                  },
+                  "exited": {
+                    "address": "0x2081fa79628",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 7628,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 0,
+                "query_error": 0,
+                "zero_wait": 0,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 3,
+                "task": "0x2081fa79660",
+                "saved_handle": "0x314",
+                "task_index": 3,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x2081fa79700",
+                    "counter": 1
+                  },
+                  "work_done": {
+                    "address": "0x2081fa79738",
+                    "counter": 20
+                  },
+                  "exited": {
+                    "address": "0x2081fa79770",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 3572,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 0,
+                "query_error": 0,
+                "zero_wait": 0,
+                "wait_error": 0,
+                "observer_close_ok": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "capture": "lifecycle-control\\runs\\original-A\\ui_stateful_components_light\\stall-dumps\\capture.json",
+      "records": [
+        {
+          "pid": 7408,
+          "open_process": true,
+          "error": 0,
+          "flags": "0x1826",
+          "dump_ok": true,
+          "bytes": 55185609,
+          "mesa_objects": {
+            "pid": 7408,
+            "observed_ns": 1791541932116187900,
+            "timing_changed": true,
+            "reads": [],
+            "open_ok": true,
+            "open_error": 0,
+            "modules_ok": true,
+            "modules_error": 0,
+            "mesa_present": false
+          }
+        },
+        {
+          "pid": 6032,
+          "open_process": true,
+          "error": 0,
+          "flags": "0x1826",
+          "dump_ok": true,
+          "bytes": 263926528,
+          "mesa_objects": {
+            "pid": 6032,
+            "observed_ns": 1791541940657322000,
+            "timing_changed": true,
+            "reads": [],
+            "open_ok": true,
+            "open_error": 0,
+            "modules_ok": true,
+            "modules_error": 0,
+            "mesa_present": false
+          }
+        },
+        {
+          "pid": 4312,
+          "open_process": true,
+          "error": 0,
+          "flags": "0x1826",
+          "dump_ok": true,
+          "bytes": 134341700,
+          "mesa_objects": {
+            "pid": 4312,
+            "observed_ns": 1791541942344705400,
+            "timing_changed": true,
+            "reads": [
+              {
+                "address": "0x7ffdda0502c0",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x128c28b0f00",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x128c27d49e0",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x128c27d4a10",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x128c28c7cf0",
+                "bytes": 10856,
+                "ok": true,
+                "error": 0
+              }
+            ],
+            "open_ok": true,
+            "open_error": 0,
+            "modules_ok": true,
+            "modules_error": 0,
+            "mesa_present": true,
+            "module_base": "0x7ffdd6fe0000",
+            "path": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+            "matched_layout": {
+              "label": "A",
+              "global_rva": 50791104,
+              "pdb_guid": "a53e732b-2253-4fee-8fee-53f47771d8ea"
+            },
+            "global_fscreen": "0x128c28b0f00",
+            "screen": "0x128c27d4750",
+            "rast_address": "0x128c28c7cf0",
+            "cs_tpool_pointer": "0x128c2a1ee20",
+            "num_threads": 4,
+            "exit_flag": 1,
+            "tasks": [
+              {
+                "index": 0,
+                "task": "0x128c28c7d08",
+                "saved_handle": "0x280",
+                "task_index": 0,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x128c28c7da8",
+                    "counter": 1
+                  },
+                  "work_done": {
+                    "address": "0x128c28c7de0",
+                    "counter": 2
+                  },
+                  "exited": {
+                    "address": "0x128c28c7e18",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 4700,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 0,
+                "query_error": 0,
+                "zero_wait": 0,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 1,
+                "task": "0x128c28c7e50",
+                "saved_handle": "0x284",
+                "task_index": 1,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x128c28c7ef0",
+                    "counter": 1
+                  },
+                  "work_done": {
+                    "address": "0x128c28c7f28",
+                    "counter": 2
+                  },
+                  "exited": {
+                    "address": "0x128c28c7f60",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 2988,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 0,
+                "query_error": 0,
+                "zero_wait": 0,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 2,
+                "task": "0x128c28c7f98",
+                "saved_handle": "0x288",
+                "task_index": 2,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x128c28c8038",
+                    "counter": 1
+                  },
+                  "work_done": {
+                    "address": "0x128c28c8070",
+                    "counter": 2
+                  },
+                  "exited": {
+                    "address": "0x128c28c80a8",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 4696,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 0,
+                "query_error": 0,
+                "zero_wait": 0,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 3,
+                "task": "0x128c28c80e0",
+                "saved_handle": "0x28c",
+                "task_index": 3,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x128c28c8180",
+                    "counter": 1
+                  },
+                  "work_done": {
+                    "address": "0x128c28c81b8",
+                    "counter": 2
+                  },
+                  "exited": {
+                    "address": "0x128c28c81f0",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 2248,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 0,
+                "query_error": 0,
+                "zero_wait": 0,
+                "wait_error": 0,
+                "observer_close_ok": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "capture": "lifecycle-control\\runs\\probe-A-gate1\\first-full-dump\\capture.json",
+      "records": [
+        {
+          "pid": 532,
+          "open_process": true,
+          "error": 0,
+          "flags": "0x1826",
+          "dump_ok": true,
+          "bytes": 127998956,
+          "mesa_objects": {
+            "pid": 532,
+            "observed_ns": 1791541866845189400,
+            "timing_changed": true,
+            "reads": [
+              {
+                "address": "0x7ffdda0502c0",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x1ed5e3cc1a0",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x1ed5e3859d0",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x1ed5e385a00",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x1ed5e3c06f0",
+                "bytes": 10856,
+                "ok": true,
+                "error": 0
+              }
+            ],
+            "open_ok": true,
+            "open_error": 0,
+            "modules_ok": true,
+            "modules_error": 0,
+            "mesa_present": true,
+            "module_base": "0x7ffdd6fe0000",
+            "path": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+            "matched_layout": {
+              "label": "A",
+              "global_rva": 50791104,
+              "pdb_guid": "a53e732b-2253-4fee-8fee-53f47771d8ea"
+            },
+            "global_fscreen": "0x1ed5e3cc1a0",
+            "screen": "0x1ed5e385740",
+            "rast_address": "0x1ed5e3c06f0",
+            "cs_tpool_pointer": "0x1ed5e3844a0",
+            "num_threads": 4,
+            "exit_flag": 0,
+            "tasks": [
+              {
+                "index": 0,
+                "task": "0x1ed5e3c0708",
+                "saved_handle": "0x18c",
+                "task_index": 0,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x1ed5e3c07a8",
+                    "counter": 0
+                  },
+                  "work_done": {
+                    "address": "0x1ed5e3c07e0",
+                    "counter": 120
+                  },
+                  "exited": {
+                    "address": "0x1ed5e3c0818",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 432,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 259,
+                "query_error": 0,
+                "zero_wait": 258,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 1,
+                "task": "0x1ed5e3c0850",
+                "saved_handle": "0x190",
+                "task_index": 1,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x1ed5e3c08f0",
+                    "counter": 0
+                  },
+                  "work_done": {
+                    "address": "0x1ed5e3c0928",
+                    "counter": 120
+                  },
+                  "exited": {
+                    "address": "0x1ed5e3c0960",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 8084,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 259,
+                "query_error": 0,
+                "zero_wait": 258,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 2,
+                "task": "0x1ed5e3c0998",
+                "saved_handle": "0x194",
+                "task_index": 2,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x1ed5e3c0a38",
+                    "counter": 0
+                  },
+                  "work_done": {
+                    "address": "0x1ed5e3c0a70",
+                    "counter": 120
+                  },
+                  "exited": {
+                    "address": "0x1ed5e3c0aa8",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 2600,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 259,
+                "query_error": 0,
+                "zero_wait": 258,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 3,
+                "task": "0x1ed5e3c0ae0",
+                "saved_handle": "0x198",
+                "task_index": 3,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x1ed5e3c0b80",
+                    "counter": 0
+                  },
+                  "work_done": {
+                    "address": "0x1ed5e3c0bb8",
+                    "counter": 120
+                  },
+                  "exited": {
+                    "address": "0x1ed5e3c0bf0",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 7900,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 259,
+                "query_error": 0,
+                "zero_wait": 258,
+                "wait_error": 0,
+                "observer_close_ok": true
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "capture": "lifecycle-control\\runs\\probe-C-gate1\\first-full-dump\\capture.json",
+      "records": [
+        {
+          "pid": 7132,
+          "open_process": true,
+          "error": 0,
+          "flags": "0x1826",
+          "dump_ok": true,
+          "bytes": 126921104,
+          "mesa_objects": {
+            "pid": 7132,
+            "observed_ns": 1791542289580401300,
+            "timing_changed": true,
+            "reads": [
+              {
+                "address": "0x7ffdda05d840",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x25a9d7dad00",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x25a9d7d22c0",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x25a9d7d22f0",
+                "bytes": 8,
+                "ok": true,
+                "error": 0
+              },
+              {
+                "address": "0x25a9d7d2420",
+                "bytes": 10856,
+                "ok": true,
+                "error": 0
+              }
+            ],
+            "open_ok": true,
+            "open_error": 0,
+            "modules_ok": true,
+            "modules_error": 0,
+            "mesa_present": true,
+            "module_base": "0x7ffdd7080000",
+            "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-candidate\\unpacked\\osmesa.dll",
+            "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+            "matched_layout": {
+              "label": "C",
+              "global_rva": 50190400,
+              "pdb_guid": "2f352030-3f29-4fe7-a7c1-b1ed70c195f3"
+            },
+            "global_fscreen": "0x25a9d7dad00",
+            "screen": "0x25a9d7d2030",
+            "rast_address": "0x25a9d7d2420",
+            "cs_tpool_pointer": "0x25a9d794130",
+            "num_threads": 4,
+            "exit_flag": 0,
+            "tasks": [
+              {
+                "index": 0,
+                "task": "0x25a9d7d2438",
+                "saved_handle": "0x18c",
+                "task_index": 0,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x25a9d7d24d8",
+                    "counter": 0
+                  },
+                  "work_done": {
+                    "address": "0x25a9d7d2510",
+                    "counter": 120
+                  },
+                  "exited": {
+                    "address": "0x25a9d7d2548",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 644,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 259,
+                "query_error": 0,
+                "zero_wait": 258,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 1,
+                "task": "0x25a9d7d2580",
+                "saved_handle": "0x190",
+                "task_index": 1,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x25a9d7d2620",
+                    "counter": 0
+                  },
+                  "work_done": {
+                    "address": "0x25a9d7d2658",
+                    "counter": 120
+                  },
+                  "exited": {
+                    "address": "0x25a9d7d2690",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 5068,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 259,
+                "query_error": 0,
+                "zero_wait": 258,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 2,
+                "task": "0x25a9d7d26c8",
+                "saved_handle": "0x194",
+                "task_index": 2,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x25a9d7d2768",
+                    "counter": 0
+                  },
+                  "work_done": {
+                    "address": "0x25a9d7d27a0",
+                    "counter": 120
+                  },
+                  "exited": {
+                    "address": "0x25a9d7d27d8",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 1932,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 259,
+                "query_error": 0,
+                "zero_wait": 258,
+                "wait_error": 0,
+                "observer_close_ok": true
+              },
+              {
+                "index": 3,
+                "task": "0x25a9d7d2810",
+                "saved_handle": "0x198",
+                "task_index": 3,
+                "semaphores": {
+                  "work_ready": {
+                    "address": "0x25a9d7d28b0",
+                    "counter": 0
+                  },
+                  "work_done": {
+                    "address": "0x25a9d7d28e8",
+                    "counter": 120
+                  },
+                  "exited": {
+                    "address": "0x25a9d7d2920",
+                    "counter": 0
+                  }
+                },
+                "duplicate_ok": true,
+                "duplicate_error": 0,
+                "thread_id": 6988,
+                "thread_id_error": 0,
+                "query_ok": true,
+                "exit_code": 259,
+                "query_error": 0,
+                "zero_wait": 258,
+                "wait_error": 0,
+                "observer_close_ok": true
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

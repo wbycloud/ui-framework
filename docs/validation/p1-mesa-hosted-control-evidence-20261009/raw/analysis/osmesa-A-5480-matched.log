@@ -1,0 +1,734 @@
+
+Microsoft (R) Windows Debugger Version 10.0.22621.755 X86
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\osmesa\lifecycle-control\runs\original-A\ui_instance_language_light\stall-dumpUser Mini Dump File with Full Memory: Only application data is available
+
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             D:\应用软件框架\应用层序框架\.deps\mes
+OK                                             D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\osmesa\lifecycle-control\s
+OK                                             D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\osmesa\lifecycle-co
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             D:\应用软件框架\应用层序框架\build\p1-hosted-diagnostic-20261009\me
+OK                                             D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\osmesa\lifecycle-co
+Symbol search path is: D:\应用软件框架\应用层序框架\build\p1-hosted-diagnostic-20261009\mesa-debug\x64;D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\osmesa\lExecutable search path is: D:\应用软件框架\应用层序框架\.deps\mesa-24.3.4\x64;D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifacts\osmesa\lifecycle-control\system-images;D:\应用软件框架\应用层序框架\build\p1-mesa-hosted-control-20261009\artifaWindows 10 Version 20348 MP (4 procs) Free x64
+Product: Server, suite: TerminalServer DataCenter SingleUserTS
+Edition build lab: 20348.1.amd64fre.fe_release.210507-1500
+Machine Name:
+Debug session time: Fri Oct  9 18:33:21.000 2026 (UTC + 8:00)
+System Uptime: 0 days 0:09:53.632
+Process Uptime: 0 days 0:01:15.000
+.........................................
+Loading unloaded module list
+.
+For analysis of this file, run !analyze -v
+ntdll!NtWaitForAlertByThreadId+0x14:
+00007ffa`20f63514 c3              ret
+0:000> cdb: Reading initial command 'vertarget; lmv m osmesa; lmv m ntdll; lmv m kernelbase; lmv m osmesa_thread_probe; ~* kb; kn; .frame /r 5; dv /t; .frame /r 0x12; dv /t; dt osmesa!lp_rasterizer 0x16b83c6d6c0; dt osmesa!lp_rasterizer_task 0x16b83c6d6d8; !handle 0x22c f; dt osmesa!lp_rasterizer_task 0x16b83c6d820; !handle 0x228 f; dt osmesa!lp_rasterizer_task 0x16b83c6d968; !handle 0x29c f; dt osmesa!lp_rasterizer_task 0x16b83c6dab0; !handle 0x2a0 f; uf osmesa!lp_rast_destroy; uf osmesa!dllmain_dispatch; uf osmesa!DllMain; uf osmesa!destroy_st_manager; dq poi(osmesa!_tls_used+0x18) L1; q'
+Windows 10 Version 20348 MP (4 procs) Free x64
+Product: Server, suite: TerminalServer DataCenter SingleUserTS
+Edition build lab: 20348.1.amd64fre.fe_release.210507-1500
+Machine Name:
+Debug session time: Fri Oct  9 18:33:21.000 2026 (UTC + 8:00)
+System Uptime: 0 days 0:09:53.632
+Process Uptime: 0 days 0:01:15.000
+  Kernel time: 0 days 0:00:01.000
+  User time: 0 days 0:00:03.000
+start             end                 module name
+00007ff9`d7e20000 00007ff9`db0a0000   osmesa     (deferred)             
+    Image path: D:\a\ui-framework\ui-framework\.deps\mesa-24.3.4\x64\osmesa.dll
+    Image name: osmesa.dll
+    Timestamp:        Sat Jan 25 09:05:05 2025 (679438C1)
+    CheckSum:         031E771C
+    ImageSize:        03280000
+    File version:     24.3.4.0
+    Product version:  24.3.4.0
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        0.0 Unknown
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Mesa/X.org
+        ProductName:      Mesa3D
+        InternalName:     osmesa.dll
+        OriginalFilename: osmesa.dll
+        ProductVersion:   24.3.4.0
+        FileVersion:      24.3.4.0
+        FileDescription:  Mesa3D off-screen rendering gallium driver (x64)
+        LegalCopyright:   Copyright (C) 2024
+start             end                 module name
+00007ffa`20ec0000 00007ffa`210c2000   ntdll      (export symbols)       ntdll.dll
+    Loaded symbol image file: ntdll.dll
+    Image path: C:\Windows\System32\ntdll.dll
+    Image name: ntdll.dll
+    Image was built with /Brepro flag.
+    Timestamp:        C2EADA64 (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         0020A55B
+    ImageSize:        00202000
+    File version:     10.0.20348.5622
+    Product version:  10.0.20348.5622
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        2.0 Dll
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft? Windows? Operating System
+        InternalName:     ntdll.dll
+        OriginalFilename: ntdll.dll
+        ProductVersion:   10.0.20348.5622
+        FileVersion:      10.0.20348.5622 (WinBuild.160101.0800)
+        FileDescription:  NT Layer DLL
+        LegalCopyright:   ? Microsoft Corporation. All rights reserved.
+start             end                 module name
+00007ffa`1e6a0000 00007ffa`1ea11000   KERNELBASE   (deferred)             
+    Image path: C:\Windows\System32\KERNELBASE.dll
+    Image name: KERNELBASE.dll
+    Image was built with /Brepro flag.
+    Timestamp:        D935AA2C (This is a reproducible build file hash, not a timestamp)
+    CheckSum:         00385516
+    ImageSize:        00371000
+    File version:     10.0.20348.5622
+    Product version:  10.0.20348.5622
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        2.0 Dll
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Microsoft Corporation
+        ProductName:      Microsoft? Windows? Operating System
+        InternalName:     Kernelbase.dll
+        OriginalFilename: Kernelbase.dll
+        ProductVersion:   10.0.20348.5622
+        FileVersion:      10.0.20348.5622 (WinBuild.160101.0800)
+        FileDescription:  Windows NT BASE API Client DLL
+        LegalCopyright:   ? Microsoft Corporation. All rights reserved.
+start             end                 module name
+
+.  0  Id: 1568.1bf0 Suspend: 0 Teb: 0000001f`a8e0f000 Unfrozen
+RetAddr               : Args to Child                                                           : Call Site
+00007ffa`20f2da4a     : 00000000`00000000 00000000`00000000 00000000`00000000 0000001f`a8d2f300 : ntdll!NtWaitForAlertByThreadId+0x14
+00007ffa`1e71ea69     : 0000016b`83c6d7e8 0000016b`83c6d6c0 00000000`00000004 00007ff9`d9e8c190 : ntdll!RtlSleepConditionVariableCS+0x10a
+00007ff9`d829bd20     : 00000000`00001568 00000000`00000de8 00000000`0000000f 00000000`00000006 : KERNELBASE!SleepConditionVariableCS+0x29
+00007ff9`d84d8cac     : 0000016b`83c42b50 0000001f`a8d2f4d0 00000000`00000004 000086cf`0378a812 : osmesa!u_cnd_monotonic_wait+0x10
+(Inline Function)     : --------`-------- --------`-------- --------`-------- --------`-------- : osmesa!util_semaphore_wait+0x20
+00007ff9`d84d381b     : 0000001f`00000103 0000016b`83c756f0 0000016b`83d11380 0000001f`a8d2f4d0 : osmesa!lp_rast_destroy+0xdc
+00007ff9`d7eb5f4e     : 0000016b`83d11330 0000001f`a8d2f4d0 0000016b`83d11320 0000001f`a8d2f4d0 : osmesa!llvmpipe_destroy_screen+0x2b
+00007ff9`d9eb5ce2     : 00000000`00000003 0000001f`a8d2f4d0 000086cf`0378a812 0000016b`83d11380 : osmesa!destroy_st_manager+0x1e
+00007ff9`d9eb5a91     : 0000001f`a8d2f500 0000001f`a8d2f5b0 00000000`00000001 0000016b`fe880000 : osmesa!<lambda_f03950bc5685219e0bcd2087efbe011e>::operator()+0x8a
+00007ff9`d9eb5dbd     : 0000001f`a8d2f598 00000000`00000001 0000e176`52e31c48 0000001f`a8d2f500 : osmesa!__crt_seh_guarded_call<int>::operator()<<lambda_7777bce6b2f8c936911f934f8298dc43>,<lambda_f03950bc5685219e0bcd2087efbe011e> &,<lambda_3883c3dff614d5e0c5f61bb1ac94921c> >+0x25
+(Inline Function)     : --------`-------- --------`-------- --------`-------- --------`-------- : osmesa!__acrt_lock_and_call+0x22
+00007ff9`d9ea61fa     : 00007ff9`daf204f8 00007ffa`1ec3be1a 0000016b`00000002 0000016b`00000002 : osmesa!_execute_onexit_table+0x3d
+00007ff9`d9ea6179     : 00000000`00000001 00007ffa`19e50000 0000001f`a8d2f5c8 00007ffa`1ec3bcea : osmesa!<lambda_6e4b09c48022b2350581041d5f6b0c4c>::operator()+0x6e
+00007ff9`d9ea62f7     : 00000000`00000000 00007ffa`1ed202b0 00007ffa`1ec3bc50 0000001f`a8d2f584 : osmesa!__crt_seh_guarded_call<void>::operator()<<lambda_d80eeec6fff315bfe5c115232f3240e3>,<lambda_6e4b09c48022b2350581041d5f6b0c4c> &,<lambda_2358e3775559c9db80273638284d5e45> >+0x25
+(Inline Function)     : --------`-------- --------`-------- --------`-------- --------`-------- : osmesa!__acrt_lock_and_call+0x20
+00007ff9`d9e8bbaf     : 00000000`00000000 00007ffa`00000000 00000000`00000001 0000001f`a8d2f500 : osmesa!common_exit+0xab
+00007ff9`d9e8c02d     : 00000000`00000000 00007ffa`19ec9815 00000000`00000001 00000000`00000000 : osmesa!__scrt_dllmain_uninitialize_c+0x2b
+00007ff9`d9e8c149     : 00000000`00000001 00000000`00000000 00000000`00000000 00007ffa`1f9b2b4a : osmesa!dllmain_crt_process_detach+0x45
+00007ffa`20ee73b7     : 00007ff9`d7e20000 00000000`00000000 00000000`00000001 00000000`7ffe0385 : osmesa!dllmain_dispatch+0xe1
+00007ffa`20f2b90a     : 0000016b`fe89e970 00007ff9`d7e20000 0000016b`00000000 0000001f`a8e0f000 : ntdll!RtlActivateActivationContextUnsafeFast+0x127
+00007ffa`20f2b6bd     : 00000000`00000000 00000000`00000000 0000016b`fe89b840 00000000`00000000 : ntdll!LdrShutdownProcess+0x22a
+00007ffa`1f72dceb     : ffffffff`00070001 0000016b`fe89b840 ffffffff`fffffffe 0000001f`a8d2f8f0 : ntdll!RtlExitUserProcess+0xad
+00007ffa`1ec39eec     : 00000000`00000000 00000000`00000000 0000001f`a8d2f8d0 00007ffa`1ed202b0 : kernel32!ExitProcess+0xb
+00007ffa`1ec39fc1     : 00000000`00000000 00000000`00000000 00000000`00000000 0000001f`a8d2f8c0 : ucrtbase!exit+0xac
+*** WARNING: Unable to verify checksum for ui_instance_language_test.exe
+00007ff7`c5c109c7     : 00000000`00000000 00007ff7`00000000 0000016b`00000000 00000000`00000001 : ucrtbase!exit+0x181
+00007ffa`1f724cc0     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ui_instance_language_test+0x109c7
+00007ffa`20f3edbb     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x10
+00000000`00000000     : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x2b
+ # Child-SP          RetAddr               Call Site
+00 0000001f`a8d2f2d8 00007ffa`20f2da4a     ntdll!NtWaitForAlertByThreadId+0x14
+01 0000001f`a8d2f2e0 00007ffa`1e71ea69     ntdll!RtlSleepConditionVariableCS+0x10a
+02 0000001f`a8d2f350 00007ff9`d829bd20     KERNELBASE!SleepConditionVariableCS+0x29
+03 0000001f`a8d2f380 00007ff9`d84d8cac     osmesa!u_cnd_monotonic_wait+0x10
+04 (Inline Function) --------`--------     osmesa!util_semaphore_wait+0x20
+05 0000001f`a8d2f3b0 00007ff9`d84d381b     osmesa!lp_rast_destroy+0xdc
+06 0000001f`a8d2f3e0 00007ff9`d7eb5f4e     osmesa!llvmpipe_destroy_screen+0x2b
+07 0000001f`a8d2f410 00007ff9`d9eb5ce2     osmesa!destroy_st_manager+0x1e
+08 0000001f`a8d2f440 00007ff9`d9eb5a91     osmesa!<lambda_f03950bc5685219e0bcd2087efbe011e>::operator()+0x8a
+09 0000001f`a8d2f480 00007ff9`d9eb5dbd     osmesa!__crt_seh_guarded_call<int>::operator()<<lambda_7777bce6b2f8c936911f934f8298dc43>,<lambda_f03950bc5685219e0bcd2087efbe011e> &,<lambda_3883c3dff614d5e0c5f61bb1ac94921c> >+0x25
+0a (Inline Function) --------`--------     osmesa!__acrt_lock_and_call+0x22
+0b 0000001f`a8d2f4b0 00007ff9`d9ea61fa     osmesa!_execute_onexit_table+0x3d
+0c 0000001f`a8d2f4f0 00007ff9`d9ea6179     osmesa!<lambda_6e4b09c48022b2350581041d5f6b0c4c>::operator()+0x6e
+0d 0000001f`a8d2f530 00007ff9`d9ea62f7     osmesa!__crt_seh_guarded_call<void>::operator()<<lambda_d80eeec6fff315bfe5c115232f3240e3>,<lambda_6e4b09c48022b2350581041d5f6b0c4c> &,<lambda_2358e3775559c9db80273638284d5e45> >+0x25
+0e (Inline Function) --------`--------     osmesa!__acrt_lock_and_call+0x20
+0f 0000001f`a8d2f560 00007ff9`d9e8bbaf     osmesa!common_exit+0xab
+10 0000001f`a8d2f5c0 00007ff9`d9e8c02d     osmesa!__scrt_dllmain_uninitialize_c+0x2b
+11 0000001f`a8d2f5f0 00007ff9`d9e8c149     osmesa!dllmain_crt_process_detach+0x45
+12 0000001f`a8d2f630 00007ffa`20ee73b7     osmesa!dllmain_dispatch+0xe1
+13 0000001f`a8d2f690 00007ffa`20f2b90a     ntdll!RtlActivateActivationContextUnsafeFast+0x127
+14 0000001f`a8d2f700 00007ffa`20f2b6bd     ntdll!LdrShutdownProcess+0x22a
+15 0000001f`a8d2f810 00007ffa`1f72dceb     ntdll!RtlExitUserProcess+0xad
+16 0000001f`a8d2f840 00007ffa`1ec39eec     kernel32!ExitProcess+0xb
+17 0000001f`a8d2f870 00007ffa`1ec39fc1     ucrtbase!exit+0xac
+18 0000001f`a8d2f8a0 00007ff7`c5c109c7     ucrtbase!exit+0x181
+19 0000001f`a8d2f900 00007ffa`1f724cc0     ui_instance_language_test+0x109c7
+1a 0000001f`a8d2f940 00007ffa`20f3edbb     kernel32!BaseThreadInitThunk+0x10
+1b 0000001f`a8d2f970 00000000`00000000     ntdll!RtlUserThreadStart+0x2b
+05 0000001f`a8d2f3b0 00007ff9`d84d381b     osmesa!lp_rast_destroy+0xdc
+rax=00000000000001d8 rbx=0000016b83c6d7e8 rcx=0000016b83c6d7e8
+rdx=0000000000000000 rsi=0000016b83c6d6c0 rdi=0000000000000004
+rip=00007ff9d84d8cac rsp=0000001fa8d2f3b0 rbp=0000000000000000
+ r8=000086cf0378a812  r9=0000016b83d0dff0 r10=0000016bfe880000
+r11=0000001fa8d2f370 r12=00007ff9d9e8c190 r13=0000000000000000
+r14=000086cf0378a812 r15=0000016b83d0dff0
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+osmesa!lp_rast_destroy+0xdc:
+00007ff9`d84d8cac 8b4330          mov     eax,dword ptr [rbx+30h] ds:0000016b`83c6d818=00000000
+struct lp_rasterizer * rast = 0x0000016b`83c6d6c0
+unsigned int i = 4
+unsigned int i = 0
+unsigned long exit_code = 0x103
+unsigned int i = <value unavailable>
+unsigned int i = <value unavailable>
+12 0000001f`a8d2f630 00007ffa`20ee73b7     osmesa!dllmain_dispatch+0xe1
+rax=00000000000001d8 rbx=0000000000000001 rcx=0000016b83c6d7e8
+rdx=0000000000000000 rsi=0000000000000001 rdi=0000000000000000
+rip=00007ff9d9e8c149 rsp=0000001fa8d2f630 rbp=0000001fa8d2f8f0
+ r8=000086cf0378a812  r9=0000016b83d0dff0 r10=0000016bfe880000
+r11=0000001fa8d2f370 r12=00007ff9d9e8c190 r13=0000000000000000
+r14=00007ff9d7e20000 r15=0000000000000001
+iopl=0         nv up ei pl zr na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00000246
+osmesa!dllmain_dispatch+0xe1:
+00007ff9`d9e8c149 8bd8            mov     ebx,eax
+struct HINSTANCE__ * instance = 0x00007ff9`d7e20000
+unsigned long reason = 0
+void * reserved = 0x00000000`00000001
+int result = 0n1
+   +0x000 exit_flag        : 1
+   +0x001 no_rast          : 0
+   +0x008 full_scenes      : 0x0000016b`839930f0 lp_scene_queue
+   +0x010 curr_scene       : (null) 
+   +0x018 tasks            : [32] lp_rasterizer_task
+   +0x2918 num_threads      : 4
+   +0x2920 threads          : [32] thrd_t
+   +0x2a20 barrier          : util_barrier
+   +0x2a60 last_fence       : 0x0000016b`843e83f0 lp_fence
+   +0x000 bin              : (null) 
+   +0x008 state            : 0x0000016b`89617f50 lp_rast_state
+   +0x010 scene            : (null) 
+   +0x018 x                : 0x40
+   +0x01c y                : 0
+   +0x020 width            : 0x40
+   +0x024 height           : 0x40
+   +0x028 color_tiles      : [8] (null) 
+   +0x068 depth_tile       : (null) 
+   +0x070 rast             : 0x0000016b`83c6d6c0 lp_rasterizer
+   +0x078 thread_index     : 0
+   +0x080 thread_data      : lp_jit_thread_data
+   +0x0a0 work_ready       : util_semaphore
+   +0x0d8 work_done        : util_semaphore
+   +0x110 exited           : util_semaphore
+Handle 000000000000022c
+  Type         	Thread
+  Attributes   	0
+  GrantedAccess	0x1fffff:
+         Delete,ReadControl,WriteDac,WriteOwner,Synch
+         Terminate,Suspend,Alert,GetContext,SetContext,SetInfo,QueryInfo,SetToken,Impersonate,DirectImpersonate
+  HandleCount  	2
+  PointerCount 	65536
+  Name         	<none>
+  Object specific information
+    Thread Id   1568.de8
+    Priority    6
+    Base Priority 0
+   +0x000 bin              : (null) 
+   +0x008 state            : 0x0000016b`89617f50 lp_rast_state
+   +0x010 scene            : (null) 
+   +0x018 x                : 0
+   +0x01c y                : 0
+   +0x020 width            : 0x40
+   +0x024 height           : 0x40
+   +0x028 color_tiles      : [8] (null) 
+   +0x068 depth_tile       : (null) 
+   +0x070 rast             : 0x0000016b`83c6d6c0 lp_rasterizer
+   +0x078 thread_index     : 1
+   +0x080 thread_data      : lp_jit_thread_data
+   +0x0a0 work_ready       : util_semaphore
+   +0x0d8 work_done        : util_semaphore
+   +0x110 exited           : util_semaphore
+Handle 0000000000000228
+  Type         	Thread
+  Attributes   	0
+  GrantedAccess	0x1fffff:
+         Delete,ReadControl,WriteDac,WriteOwner,Synch
+         Terminate,Suspend,Alert,GetContext,SetContext,SetInfo,QueryInfo,SetToken,Impersonate,DirectImpersonate
+  HandleCount  	2
+  PointerCount 	65537
+  Name         	<none>
+  Object specific information
+    Thread Id   1568.1494
+    Priority    6
+    Base Priority 0
+   +0x000 bin              : (null) 
+   +0x008 state            : 0x0000016b`89617f50 lp_rast_state
+   +0x010 scene            : (null) 
+   +0x018 x                : 0x40
+   +0x01c y                : 0x40
+   +0x020 width            : 0x40
+   +0x024 height           : 0x40
+   +0x028 color_tiles      : [8] (null) 
+   +0x068 depth_tile       : (null) 
+   +0x070 rast             : 0x0000016b`83c6d6c0 lp_rasterizer
+   +0x078 thread_index     : 2
+   +0x080 thread_data      : lp_jit_thread_data
+   +0x0a0 work_ready       : util_semaphore
+   +0x0d8 work_done        : util_semaphore
+   +0x110 exited           : util_semaphore
+Handle 000000000000029c
+  Type         	Thread
+  Attributes   	0
+  GrantedAccess	0x1fffff:
+         Delete,ReadControl,WriteDac,WriteOwner,Synch
+         Terminate,Suspend,Alert,GetContext,SetContext,SetInfo,QueryInfo,SetToken,Impersonate,DirectImpersonate
+  HandleCount  	2
+  PointerCount 	65537
+  Name         	<none>
+  Object specific information
+    Thread Id   1568.1ce8
+    Priority    6
+    Base Priority 0
+   +0x000 bin              : (null) 
+   +0x008 state            : 0x0000016b`89617f50 lp_rast_state
+   +0x010 scene            : (null) 
+   +0x018 x                : 0
+   +0x01c y                : 0x40
+   +0x020 width            : 0x40
+   +0x024 height           : 0x40
+   +0x028 color_tiles      : [8] (null) 
+   +0x068 depth_tile       : (null) 
+   +0x070 rast             : 0x0000016b`83c6d6c0 lp_rasterizer
+   +0x078 thread_index     : 3
+   +0x080 thread_data      : lp_jit_thread_data
+   +0x0a0 work_ready       : util_semaphore
+   +0x0d8 work_done        : util_semaphore
+   +0x110 exited           : util_semaphore
+Handle 00000000000002a0
+  Type         	Thread
+  Attributes   	0
+  GrantedAccess	0x1fffff:
+         Delete,ReadControl,WriteDac,WriteOwner,Synch
+         Terminate,Suspend,Alert,GetContext,SetContext,SetInfo,QueryInfo,SetToken,Impersonate,DirectImpersonate
+  HandleCount  	2
+  PointerCount 	65537
+  Name         	<none>
+  Object specific information
+    Thread Id   1568.1b24
+    Priority    6
+    Base Priority 0
+osmesa!lp_rast_destroy:
+00007ff9`d84d8bd0 48895c2410      mov     qword ptr [rsp+10h],rbx
+00007ff9`d84d8bd5 48896c2418      mov     qword ptr [rsp+18h],rbp
+00007ff9`d84d8bda 4889742420      mov     qword ptr [rsp+20h],rsi
+00007ff9`d84d8bdf 57              push    rdi
+00007ff9`d84d8be0 4883ec20        sub     rsp,20h
+00007ff9`d84d8be4 8b8118290000    mov     eax,dword ptr [rcx+2918h]
+00007ff9`d84d8bea 33ff            xor     edi,edi
+00007ff9`d84d8bec c60101          mov     byte ptr [rcx],1
+00007ff9`d84d8bef 488bf1          mov     rsi,rcx
+00007ff9`d84d8bf2 85c0            test    eax,eax
+00007ff9`d84d8bf4 744c            je      osmesa!lp_rast_destroy+0x72 (00007ff9`d84d8c42)
+
+osmesa!lp_rast_destroy+0x26:
+00007ff9`d84d8bf6 66660f1f840000000000 nop word ptr [rax+rax]
+
+osmesa!lp_rast_destroy+0x30:
+00007ff9`d84d8c00 8bc7            mov     eax,edi
+00007ff9`d84d8c02 4869d848010000  imul    rbx,rax,148h
+00007ff9`d84d8c09 4803de          add     rbx,rsi
+00007ff9`d84d8c0c 488d8bb8000000  lea     rcx,[rbx+0B8h]
+00007ff9`d84d8c13 e848a6ddff      call    osmesa!mtx_lock (00007ff9`d82b3260)
+00007ff9`d84d8c18 ff83e8000000    inc     dword ptr [rbx+0E8h]
+00007ff9`d84d8c1e 488d8be0000000  lea     rcx,[rbx+0E0h]
+00007ff9`d84d8c25 e876a4ddff      call    osmesa!cnd_signal (00007ff9`d82b30a0)
+00007ff9`d84d8c2a 488d8bb8000000  lea     rcx,[rbx+0B8h]
+00007ff9`d84d8c31 e84aa6ddff      call    osmesa!mtx_unlock (00007ff9`d82b3280)
+00007ff9`d84d8c36 8b8618290000    mov     eax,dword ptr [rsi+2918h]
+00007ff9`d84d8c3c ffc7            inc     edi
+00007ff9`d84d8c3e 3bf8            cmp     edi,eax
+00007ff9`d84d8c40 72be            jb      osmesa!lp_rast_destroy+0x30 (00007ff9`d84d8c00)
+
+osmesa!lp_rast_destroy+0x72:
+00007ff9`d84d8c42 33ed            xor     ebp,ebp
+00007ff9`d84d8c44 85c0            test    eax,eax
+00007ff9`d84d8c46 0f8480000000    je      osmesa!lp_rast_destroy+0xfc (00007ff9`d84d8ccc)
+
+osmesa!lp_rast_destroy+0x7c:
+00007ff9`d84d8c4c 0f1f4000        nop     dword ptr [rax]
+
+osmesa!lp_rast_destroy+0x80:
+00007ff9`d84d8c50 488b8cee20290000 mov     rcx,qword ptr [rsi+rbp*8+2920h]
+00007ff9`d84d8c58 488d542430      lea     rdx,[rsp+30h]
+00007ff9`d84d8c5d c744243003010000 mov     dword ptr [rsp+30h],103h
+00007ff9`d84d8c65 8bdd            mov     ebx,ebp
+00007ff9`d84d8c67 ff151b95a401    call    qword ptr [osmesa!_imp_GetExitCodeThread (00007ff9`d9f22188)]
+00007ff9`d84d8c6d 85c0            test    eax,eax
+00007ff9`d84d8c6f 744f            je      osmesa!lp_rast_destroy+0xf0 (00007ff9`d84d8cc0)
+
+osmesa!lp_rast_destroy+0xa1:
+00007ff9`d84d8c71 817c243003010000 cmp     dword ptr [rsp+30h],103h
+00007ff9`d84d8c79 7545            jne     osmesa!lp_rast_destroy+0xf0 (00007ff9`d84d8cc0)
+
+osmesa!lp_rast_destroy+0xab:
+00007ff9`d84d8c7b 4869db48010000  imul    rbx,rbx,148h
+00007ff9`d84d8c82 4881c328010000  add     rbx,128h
+00007ff9`d84d8c89 4803de          add     rbx,rsi
+00007ff9`d84d8c8c 488bcb          mov     rcx,rbx
+00007ff9`d84d8c8f e8cca5ddff      call    osmesa!mtx_lock (00007ff9`d82b3260)
+00007ff9`d84d8c94 8b4330          mov     eax,dword ptr [rbx+30h]
+00007ff9`d84d8c97 85c0            test    eax,eax
+00007ff9`d84d8c99 7f18            jg      osmesa!lp_rast_destroy+0xe3 (00007ff9`d84d8cb3)
+
+osmesa!lp_rast_destroy+0xcb:
+00007ff9`d84d8c9b 0f1f440000      nop     dword ptr [rax+rax]
+
+osmesa!lp_rast_destroy+0xd0:
+00007ff9`d84d8ca0 488bd3          mov     rdx,rbx
+00007ff9`d84d8ca3 488d4b28        lea     rcx,[rbx+28h]
+00007ff9`d84d8ca7 e86430dcff      call    osmesa!u_cnd_monotonic_wait (00007ff9`d829bd10)
+00007ff9`d84d8cac 8b4330          mov     eax,dword ptr [rbx+30h]
+00007ff9`d84d8caf 85c0            test    eax,eax
+00007ff9`d84d8cb1 7eed            jle     osmesa!lp_rast_destroy+0xd0 (00007ff9`d84d8ca0)
+
+osmesa!lp_rast_destroy+0xe3:
+00007ff9`d84d8cb3 ffc8            dec     eax
+00007ff9`d84d8cb5 488bcb          mov     rcx,rbx
+00007ff9`d84d8cb8 894330          mov     dword ptr [rbx+30h],eax
+00007ff9`d84d8cbb e8c0a5ddff      call    osmesa!mtx_unlock (00007ff9`d82b3280)
+
+osmesa!lp_rast_destroy+0xf0:
+00007ff9`d84d8cc0 8b8618290000    mov     eax,dword ptr [rsi+2918h]
+00007ff9`d84d8cc6 ffc5            inc     ebp
+00007ff9`d84d8cc8 3be8            cmp     ebp,eax
+00007ff9`d84d8cca 7284            jb      osmesa!lp_rast_destroy+0x80 (00007ff9`d84d8c50)
+
+osmesa!lp_rast_destroy+0xfc:
+00007ff9`d84d8ccc 33ed            xor     ebp,ebp
+00007ff9`d84d8cce 85c0            test    eax,eax
+00007ff9`d84d8cd0 745e            je      osmesa!lp_rast_destroy+0x160 (00007ff9`d84d8d30)
+
+osmesa!lp_rast_destroy+0x102:
+00007ff9`d84d8cd2 8bc5            mov     eax,ebp
+00007ff9`d84d8cd4 4869f848010000  imul    rdi,rax,148h
+00007ff9`d84d8cdb 4803fe          add     rdi,rsi
+00007ff9`d84d8cde 488d8fb8000000  lea     rcx,[rdi+0B8h]
+00007ff9`d84d8ce5 e836a5ddff      call    osmesa!mtx_destroy (00007ff9`d82b3220)
+00007ff9`d84d8cea 488d8fe0000000  lea     rcx,[rdi+0E0h]
+00007ff9`d84d8cf1 e85ab59eff      call    osmesa!nop_glFlush (00007ff9`d7ec4250)
+00007ff9`d84d8cf6 488d8ff0000000  lea     rcx,[rdi+0F0h]
+00007ff9`d84d8cfd e81ea5ddff      call    osmesa!mtx_destroy (00007ff9`d82b3220)
+00007ff9`d84d8d02 488d8f18010000  lea     rcx,[rdi+118h]
+00007ff9`d84d8d09 e842b59eff      call    osmesa!nop_glFlush (00007ff9`d7ec4250)
+00007ff9`d84d8d0e 488d8f28010000  lea     rcx,[rdi+128h]
+00007ff9`d84d8d15 e806a5ddff      call    osmesa!mtx_destroy (00007ff9`d82b3220)
+00007ff9`d84d8d1a 488d8f50010000  lea     rcx,[rdi+150h]
+00007ff9`d84d8d21 e82ab59eff      call    osmesa!nop_glFlush (00007ff9`d7ec4250)
+00007ff9`d84d8d26 ffc5            inc     ebp
+00007ff9`d84d8d28 3bae18290000    cmp     ebp,dword ptr [rsi+2918h]
+00007ff9`d84d8d2e 72a2            jb      osmesa!lp_rast_destroy+0x102 (00007ff9`d84d8cd2)
+
+osmesa!lp_rast_destroy+0x160:
+00007ff9`d84d8d30 33db            xor     ebx,ebx
+00007ff9`d84d8d32 bf01000000      mov     edi,1
+00007ff9`d84d8d37 660f1f840000000000 nop   word ptr [rax+rax]
+
+osmesa!lp_rast_destroy+0x170:
+00007ff9`d84d8d40 8b8618290000    mov     eax,dword ptr [rsi+2918h]
+00007ff9`d84d8d46 3bc7            cmp     eax,edi
+00007ff9`d84d8d48 0f42c7          cmovb   eax,edi
+00007ff9`d84d8d4b 3bd8            cmp     ebx,eax
+00007ff9`d84d8d4d 731a            jae     osmesa!lp_rast_destroy+0x199 (00007ff9`d84d8d69)
+
+osmesa!lp_rast_destroy+0x17f:
+00007ff9`d84d8d4f 8bc3            mov     eax,ebx
+00007ff9`d84d8d51 4869c848010000  imul    rcx,rax,148h
+00007ff9`d84d8d58 488b8c3198000000 mov     rcx,qword ptr [rcx+rsi+98h]
+00007ff9`d84d8d60 e82b169c01      call    osmesa!_aligned_free (00007ff9`d9e9a390)
+00007ff9`d84d8d65 ffc3            inc     ebx
+00007ff9`d84d8d67 ebd7            jmp     osmesa!lp_rast_destroy+0x170 (00007ff9`d84d8d40)
+
+osmesa!lp_rast_destroy+0x199:
+00007ff9`d84d8d69 488b8e602a0000  mov     rcx,qword ptr [rsi+2A60h]
+00007ff9`d84d8d70 4885c9          test    rcx,rcx
+00007ff9`d84d8d73 7412            je      osmesa!lp_rast_destroy+0x1b7 (00007ff9`d84d8d87)
+
+osmesa!lp_rast_destroy+0x1a5:
+00007ff9`d84d8d75 b8ffffffff      mov     eax,0FFFFFFFFh
+00007ff9`d84d8d7a f00fc101        lock xadd dword ptr [rcx],eax
+00007ff9`d84d8d7e 3bc7            cmp     eax,edi
+00007ff9`d84d8d80 7505            jne     osmesa!lp_rast_destroy+0x1b7 (00007ff9`d84d8d87)
+
+osmesa!lp_rast_destroy+0x1b2:
+00007ff9`d84d8d82 e8d9d6ffff      call    osmesa!lp_fence_destroy (00007ff9`d84d6460)
+
+osmesa!lp_rast_destroy+0x1b7:
+00007ff9`d84d8d87 48c786602a000000000000 mov qword ptr [rsi+2A60h],0
+00007ff9`d84d8d92 83be1829000000  cmp     dword ptr [rsi+2918h],0
+00007ff9`d84d8d99 760c            jbe     osmesa!lp_rast_destroy+0x1d7 (00007ff9`d84d8da7)
+
+osmesa!lp_rast_destroy+0x1cb:
+00007ff9`d84d8d9b 488d8e202a0000  lea     rcx,[rsi+2A20h]
+00007ff9`d84d8da2 e8b948daff      call    osmesa!util_barrier_destroy (00007ff9`d827d660)
+
+osmesa!lp_rast_destroy+0x1d7:
+00007ff9`d84d8da7 488b4e08        mov     rcx,qword ptr [rsi+8]
+00007ff9`d84d8dab e8c0eb0200      call    osmesa!lp_scene_queue_destroy (00007ff9`d8507970)
+00007ff9`d84d8db0 488bce          mov     rcx,rsi
+00007ff9`d84d8db3 488b5c2438      mov     rbx,qword ptr [rsp+38h]
+00007ff9`d84d8db8 488b6c2440      mov     rbp,qword ptr [rsp+40h]
+00007ff9`d84d8dbd 488b742448      mov     rsi,qword ptr [rsp+48h]
+00007ff9`d84d8dc2 4883c420        add     rsp,20h
+00007ff9`d84d8dc6 5f              pop     rdi
+00007ff9`d84d8dc7 e9a4159c01      jmp     osmesa!free (00007ff9`d9e9a370)
+
+osmesa!free:
+00007ff9`d9e9a370 e96bfa0100      jmp     osmesa!_free_base (00007ff9`d9eb9de0)
+
+osmesa!_free_base:
+00007ff9`d9eb9de0 4885c9          test    rcx,rcx
+00007ff9`d9eb9de3 7436            je      osmesa!_free_base+0x3b (00007ff9`d9eb9e1b)
+
+osmesa!_free_base+0x5:
+00007ff9`d9eb9de5 53              push    rbx
+00007ff9`d9eb9de6 4883ec20        sub     rsp,20h
+00007ff9`d9eb9dea 4c8bc1          mov     r8,rcx
+00007ff9`d9eb9ded 33d2            xor     edx,edx
+00007ff9`d9eb9def 488b0dc26e0601  mov     rcx,qword ptr [osmesa!__acrt_heap (00007ff9`daf20cb8)]
+00007ff9`d9eb9df6 ff1534870600    call    qword ptr [osmesa!_imp_HeapFree (00007ff9`d9f22530)]
+00007ff9`d9eb9dfc 85c0            test    eax,eax
+00007ff9`d9eb9dfe 7516            jne     osmesa!_free_base+0x36 (00007ff9`d9eb9e16)
+
+osmesa!_free_base+0x20:
+00007ff9`d9eb9e00 ff15fa820600    call    qword ptr [osmesa!_imp_GetLastError (00007ff9`d9f22100)]
+00007ff9`d9eb9e06 8bc8            mov     ecx,eax
+00007ff9`d9eb9e08 e89fa9feff      call    osmesa!__acrt_errno_from_os_error (00007ff9`d9ea47ac)
+00007ff9`d9eb9e0d 8bd8            mov     ebx,eax
+00007ff9`d9eb9e0f e8d8aafeff      call    osmesa!_errno (00007ff9`d9ea48ec)
+00007ff9`d9eb9e14 8918            mov     dword ptr [rax],ebx
+
+osmesa!_free_base+0x36:
+00007ff9`d9eb9e16 4883c420        add     rsp,20h
+00007ff9`d9eb9e1a 5b              pop     rbx
+
+osmesa!_free_base+0x3b:
+00007ff9`d9eb9e1b c3              ret
+osmesa!dllmain_dispatch:
+00007ff9`d9e8c068 488bc4          mov     rax,rsp
+00007ff9`d9e8c06b 48895820        mov     qword ptr [rax+20h],rbx
+00007ff9`d9e8c06f 4c894018        mov     qword ptr [rax+18h],r8
+00007ff9`d9e8c073 895010          mov     dword ptr [rax+10h],edx
+00007ff9`d9e8c076 48894808        mov     qword ptr [rax+8],rcx
+00007ff9`d9e8c07a 56              push    rsi
+00007ff9`d9e8c07b 57              push    rdi
+00007ff9`d9e8c07c 4156            push    r14
+00007ff9`d9e8c07e 4883ec40        sub     rsp,40h
+00007ff9`d9e8c082 498bf0          mov     rsi,r8
+00007ff9`d9e8c085 8bfa            mov     edi,edx
+00007ff9`d9e8c087 4c8bf1          mov     r14,rcx
+00007ff9`d9e8c08a 85d2            test    edx,edx
+00007ff9`d9e8c08c 750f            jne     osmesa!dllmain_dispatch+0x35 (00007ff9`d9e8c09d)
+
+osmesa!dllmain_dispatch+0x26:
+00007ff9`d9e8c08e 39155c320901    cmp     dword ptr [osmesa!__proc_attached (00007ff9`daf1f2f0)],edx
+00007ff9`d9e8c094 7f07            jg      osmesa!dllmain_dispatch+0x35 (00007ff9`d9e8c09d)
+
+osmesa!dllmain_dispatch+0x2e:
+00007ff9`d9e8c096 33c0            xor     eax,eax
+00007ff9`d9e8c098 e9e5000000      jmp     osmesa!dllmain_dispatch+0x11a (00007ff9`d9e8c182)
+
+osmesa!dllmain_dispatch+0x35:
+00007ff9`d9e8c09d 8d42ff          lea     eax,[rdx-1]
+00007ff9`d9e8c0a0 83f801          cmp     eax,1
+00007ff9`d9e8c0a3 7740            ja      osmesa!dllmain_dispatch+0x7d (00007ff9`d9e8c0e5)
+
+osmesa!dllmain_dispatch+0x3d:
+00007ff9`d9e8c0a5 488b053411d600  mov     rax,qword ptr [osmesa!_pDefaultRawDllMain (00007ff9`dabed1e0)]
+00007ff9`d9e8c0ac 4885c0          test    rax,rax
+00007ff9`d9e8c0af 7505            jne     osmesa!dllmain_dispatch+0x4e (00007ff9`d9e8c0b6)
+
+osmesa!dllmain_dispatch+0x49:
+00007ff9`d9e8c0b1 8d5801          lea     ebx,[rax+1]
+00007ff9`d9e8c0b4 eb08            jmp     osmesa!dllmain_dispatch+0x56 (00007ff9`d9e8c0be)
+
+osmesa!dllmain_dispatch+0x4e:
+00007ff9`d9e8c0b6 ff157c650900    call    qword ptr [osmesa!__guard_dispatch_icall_fptr (00007ff9`d9f22638)]
+00007ff9`d9e8c0bc 8bd8            mov     ebx,eax
+
+osmesa!dllmain_dispatch+0x56:
+00007ff9`d9e8c0be 895c2430        mov     dword ptr [rsp+30h],ebx
+00007ff9`d9e8c0c2 85db            test    ebx,ebx
+00007ff9`d9e8c0c4 0f84ae000000    je      osmesa!dllmain_dispatch+0x110 (00007ff9`d9e8c178)
+
+osmesa!dllmain_dispatch+0x62:
+00007ff9`d9e8c0ca 4c8bc6          mov     r8,rsi
+00007ff9`d9e8c0cd 8bd7            mov     edx,edi
+00007ff9`d9e8c0cf 498bce          mov     rcx,r14
+00007ff9`d9e8c0d2 e8a9fdffff      call    osmesa!dllmain_crt_dispatch (00007ff9`d9e8be80)
+00007ff9`d9e8c0d7 8bd8            mov     ebx,eax
+00007ff9`d9e8c0d9 89442430        mov     dword ptr [rsp+30h],eax
+00007ff9`d9e8c0dd 85c0            test    eax,eax
+00007ff9`d9e8c0df 0f8493000000    je      osmesa!dllmain_dispatch+0x110 (00007ff9`d9e8c178)
+
+osmesa!dllmain_dispatch+0x7d:
+00007ff9`d9e8c0e5 4c8bc6          mov     r8,rsi
+00007ff9`d9e8c0e8 8bd7            mov     edx,edi
+00007ff9`d9e8c0ea 498bce          mov     rcx,r14
+00007ff9`d9e8c0ed e85e6d38fe      call    osmesa!`anonymous namespace'::ir_if_simplification_visitor::visit_enter (00007ff9`d8212e50)
+00007ff9`d9e8c0f2 8bd8            mov     ebx,eax
+00007ff9`d9e8c0f4 89442430        mov     dword ptr [rsp+30h],eax
+00007ff9`d9e8c0f8 83ff01          cmp     edi,1
+00007ff9`d9e8c0fb 7536            jne     osmesa!dllmain_dispatch+0xcb (00007ff9`d9e8c133)
+
+osmesa!dllmain_dispatch+0x95:
+00007ff9`d9e8c0fd 85c0            test    eax,eax
+00007ff9`d9e8c0ff 7532            jne     osmesa!dllmain_dispatch+0xcb (00007ff9`d9e8c133)
+
+osmesa!dllmain_dispatch+0x99:
+00007ff9`d9e8c101 4c8bc6          mov     r8,rsi
+00007ff9`d9e8c104 33d2            xor     edx,edx
+00007ff9`d9e8c106 498bce          mov     rcx,r14
+00007ff9`d9e8c109 e8426d38fe      call    osmesa!`anonymous namespace'::ir_if_simplification_visitor::visit_enter (00007ff9`d8212e50)
+00007ff9`d9e8c10e 4885f6          test    rsi,rsi
+00007ff9`d9e8c111 0f95c1          setne   cl
+00007ff9`d9e8c114 e8cffeffff      call    osmesa!dllmain_crt_process_detach (00007ff9`d9e8bfe8)
+00007ff9`d9e8c119 488b05c010d600  mov     rax,qword ptr [osmesa!_pDefaultRawDllMain (00007ff9`dabed1e0)]
+00007ff9`d9e8c120 4885c0          test    rax,rax
+00007ff9`d9e8c123 740e            je      osmesa!dllmain_dispatch+0xcb (00007ff9`d9e8c133)
+
+osmesa!dllmain_dispatch+0xbd:
+00007ff9`d9e8c125 4c8bc6          mov     r8,rsi
+00007ff9`d9e8c128 33d2            xor     edx,edx
+00007ff9`d9e8c12a 498bce          mov     rcx,r14
+00007ff9`d9e8c12d ff1505650900    call    qword ptr [osmesa!__guard_dispatch_icall_fptr (00007ff9`d9f22638)]
+
+osmesa!dllmain_dispatch+0xcb:
+00007ff9`d9e8c133 85ff            test    edi,edi
+00007ff9`d9e8c135 7405            je      osmesa!dllmain_dispatch+0xd4 (00007ff9`d9e8c13c)
+
+osmesa!dllmain_dispatch+0xcf:
+00007ff9`d9e8c137 83ff03          cmp     edi,3
+00007ff9`d9e8c13a 753c            jne     osmesa!dllmain_dispatch+0x110 (00007ff9`d9e8c178)
+
+osmesa!dllmain_dispatch+0xd4:
+00007ff9`d9e8c13c 4c8bc6          mov     r8,rsi
+00007ff9`d9e8c13f 8bd7            mov     edx,edi
+00007ff9`d9e8c141 498bce          mov     rcx,r14
+00007ff9`d9e8c144 e837fdffff      call    osmesa!dllmain_crt_dispatch (00007ff9`d9e8be80)
+00007ff9`d9e8c149 8bd8            mov     ebx,eax
+00007ff9`d9e8c14b 89442430        mov     dword ptr [rsp+30h],eax
+00007ff9`d9e8c14f 85c0            test    eax,eax
+00007ff9`d9e8c151 7425            je      osmesa!dllmain_dispatch+0x110 (00007ff9`d9e8c178)
+
+osmesa!dllmain_dispatch+0xeb:
+00007ff9`d9e8c153 488b058610d600  mov     rax,qword ptr [osmesa!_pDefaultRawDllMain (00007ff9`dabed1e0)]
+00007ff9`d9e8c15a 4885c0          test    rax,rax
+00007ff9`d9e8c15d 7505            jne     osmesa!dllmain_dispatch+0xfc (00007ff9`d9e8c164)
+
+osmesa!dllmain_dispatch+0xf7:
+00007ff9`d9e8c15f 8d5801          lea     ebx,[rax+1]
+00007ff9`d9e8c162 eb10            jmp     osmesa!dllmain_dispatch+0x10c (00007ff9`d9e8c174)
+
+osmesa!dllmain_dispatch+0xfc:
+00007ff9`d9e8c164 4c8bc6          mov     r8,rsi
+00007ff9`d9e8c167 8bd7            mov     edx,edi
+00007ff9`d9e8c169 498bce          mov     rcx,r14
+00007ff9`d9e8c16c ff15c6640900    call    qword ptr [osmesa!__guard_dispatch_icall_fptr (00007ff9`d9f22638)]
+00007ff9`d9e8c172 8bd8            mov     ebx,eax
+
+osmesa!dllmain_dispatch+0x10c:
+00007ff9`d9e8c174 895c2430        mov     dword ptr [rsp+30h],ebx
+
+osmesa!dllmain_dispatch+0x110:
+00007ff9`d9e8c178 eb06            jmp     osmesa!dllmain_dispatch+0x118 (00007ff9`d9e8c180)
+
+osmesa!dllmain_dispatch+0x118:
+00007ff9`d9e8c180 8bc3            mov     eax,ebx
+
+osmesa!dllmain_dispatch+0x11a:
+00007ff9`d9e8c182 488b5c2478      mov     rbx,qword ptr [rsp+78h]
+00007ff9`d9e8c187 4883c440        add     rsp,40h
+00007ff9`d9e8c18b 415e            pop     r14
+00007ff9`d9e8c18d 5f              pop     rdi
+00007ff9`d9e8c18e 5e              pop     rsi
+00007ff9`d9e8c18f c3              ret
+osmesa!`anonymous namespace'::ir_if_simplification_visitor::visit_enter:
+00007ff9`d8212e50 b801000000      mov     eax,1
+00007ff9`d8212e55 c3              ret
+osmesa!destroy_st_manager:
+00007ff9`d7eb5f30 4883ec28        sub     rsp,28h
+00007ff9`d7eb5f34 488b0d85a3fd02  mov     rcx,qword ptr [osmesa!global_fscreen (00007ff9`dae902c0)]
+00007ff9`d7eb5f3b 4885c9          test    rcx,rcx
+00007ff9`d7eb5f3e 741e            je      osmesa!destroy_st_manager+0x2e (00007ff9`d7eb5f5e)
+
+osmesa!destroy_st_manager+0x10:
+00007ff9`d7eb5f40 488b01          mov     rax,qword ptr [rcx]
+00007ff9`d7eb5f43 4885c0          test    rax,rax
+00007ff9`d7eb5f46 740d            je      osmesa!destroy_st_manager+0x25 (00007ff9`d7eb5f55)
+
+osmesa!destroy_st_manager+0x18:
+00007ff9`d7eb5f48 488bc8          mov     rcx,rax
+00007ff9`d7eb5f4b ff5028          call    qword ptr [rax+28h]
+00007ff9`d7eb5f4e 488b0d6ba3fd02  mov     rcx,qword ptr [osmesa!global_fscreen (00007ff9`dae902c0)]
+
+osmesa!destroy_st_manager+0x25:
+00007ff9`d7eb5f55 4883c428        add     rsp,28h
+00007ff9`d7eb5f59 e91244fe01      jmp     osmesa!free (00007ff9`d9e9a370)
+
+osmesa!destroy_st_manager+0x2e:
+00007ff9`d7eb5f5e 4883c428        add     rsp,28h
+00007ff9`d7eb5f62 c3              ret
+
+osmesa!free:
+00007ff9`d9e9a370 e96bfa0100      jmp     osmesa!_free_base (00007ff9`d9eb9de0)
+
+osmesa!_free_base:
+00007ff9`d9eb9de0 4885c9          test    rcx,rcx
+00007ff9`d9eb9de3 7436            je      osmesa!_free_base+0x3b (00007ff9`d9eb9e1b)
+
+osmesa!_free_base+0x5:
+00007ff9`d9eb9de5 53              push    rbx
+00007ff9`d9eb9de6 4883ec20        sub     rsp,20h
+00007ff9`d9eb9dea 4c8bc1          mov     r8,rcx
+00007ff9`d9eb9ded 33d2            xor     edx,edx
+00007ff9`d9eb9def 488b0dc26e0601  mov     rcx,qword ptr [osmesa!__acrt_heap (00007ff9`daf20cb8)]
+00007ff9`d9eb9df6 ff1534870600    call    qword ptr [osmesa!_imp_HeapFree (00007ff9`d9f22530)]
+00007ff9`d9eb9dfc 85c0            test    eax,eax
+00007ff9`d9eb9dfe 7516            jne     osmesa!_free_base+0x36 (00007ff9`d9eb9e16)
+
+osmesa!_free_base+0x20:
+00007ff9`d9eb9e00 ff15fa820600    call    qword ptr [osmesa!_imp_GetLastError (00007ff9`d9f22100)]
+00007ff9`d9eb9e06 8bc8            mov     ecx,eax
+00007ff9`d9eb9e08 e89fa9feff      call    osmesa!__acrt_errno_from_os_error (00007ff9`d9ea47ac)
+00007ff9`d9eb9e0d 8bd8            mov     ebx,eax
+00007ff9`d9eb9e0f e8d8aafeff      call    osmesa!_errno (00007ff9`d9ea48ec)
+00007ff9`d9eb9e14 8918            mov     dword ptr [rax],ebx
+
+osmesa!_free_base+0x36:
+00007ff9`d9eb9e16 4883c420        add     rsp,20h
+00007ff9`d9eb9e1a 5b              pop     rbx
+
+osmesa!_free_base+0x3b:
+00007ff9`d9eb9e1b c3              ret
+00007ff9`d9f25bb8  00000000`00000000
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\winrt.natvis'

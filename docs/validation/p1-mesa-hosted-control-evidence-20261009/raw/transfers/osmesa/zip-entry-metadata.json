@@ -1,0 +1,2642 @@
+[
+  {
+    "path": "build.cmd",
+    "bytes": 520,
+    "compressed": 283,
+    "offset": 0
+  },
+  {
+    "path": "build.log",
+    "bytes": 46474,
+    "compressed": 5118,
+    "offset": 338
+  },
+  {
+    "path": "compiler.log",
+    "bytes": 131,
+    "compressed": 116,
+    "offset": 5511
+  },
+  {
+    "path": "configure.log",
+    "bytes": 6671,
+    "compressed": 1265,
+    "offset": 5685
+  },
+  {
+    "path": "dependencies.log",
+    "bytes": 497,
+    "compressed": 329,
+    "offset": 7009
+  },
+  {
+    "path": "extraction.log",
+    "bytes": 401,
+    "compressed": 283,
+    "offset": 7400
+  },
+  {
+    "path": "lifecycle-candidate/candidate.zip",
+    "bytes": 38073334,
+    "compressed": 37901442,
+    "offset": 7743
+  },
+  {
+    "path": "lifecycle-candidate/original-debug.7z",
+    "bytes": 84354035,
+    "compressed": 84379780,
+    "offset": 37909264
+  },
+  {
+    "path": "lifecycle-candidate/original-symbols/x64/osmesa.pdb",
+    "bytes": 67080192,
+    "compressed": 19639773,
+    "offset": 122289127
+  },
+  {
+    "path": "lifecycle-candidate/original-symbols-extraction.log",
+    "bytes": 478,
+    "compressed": 308,
+    "offset": 141928997
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/LLVM-LICENSE.TXT",
+    "bytes": 15420,
+    "compressed": 5211,
+    "offset": 141929402
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/Apache-2.0",
+    "bytes": 10045,
+    "compressed": 3741,
+    "offset": 141934713
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/BSL-1.0",
+    "bytes": 1649,
+    "compressed": 898,
+    "offset": 141938553
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/GPL-1.0-or-later",
+    "bytes": 13047,
+    "compressed": 5125,
+    "offset": 141939547
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/GPL-2.0-only",
+    "bytes": 18424,
+    "compressed": 6986,
+    "offset": 141944777
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/MIT",
+    "bytes": 1372,
+    "compressed": 784,
+    "offset": 141951864
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa/SGI-B-2.0",
+    "bytes": 1822,
+    "compressed": 993,
+    "offset": 141952740
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/licenses/Mesa-license.rst",
+    "bytes": 1816,
+    "compressed": 804,
+    "offset": 141953831
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/manifest.json",
+    "bytes": 1208,
+    "compressed": 635,
+    "offset": 141954735
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/mesa-osmesa-process-detach.patch",
+    "bytes": 1685,
+    "compressed": 724,
+    "offset": 141955458
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/osmesa.dll",
+    "bytes": 51686912,
+    "compressed": 19798401,
+    "offset": 141956289
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/osmesa.pdb",
+    "bytes": 68718592,
+    "compressed": 19019978,
+    "offset": 161754775
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/recipe/build-llvm.cmd",
+    "bytes": 1220,
+    "compressed": 538,
+    "offset": 180774838
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/recipe/build-providers.cmd",
+    "bytes": 1731,
+    "compressed": 734,
+    "offset": 180775472
+  },
+  {
+    "path": "lifecycle-candidate/unpacked/recipe/meson-native.ini",
+    "bytes": 126,
+    "compressed": 116,
+    "offset": 180776307
+  },
+  {
+    "path": "lifecycle-control/caller/build.cmd",
+    "bytes": 373,
+    "compressed": 258,
+    "offset": 180776521
+  },
+  {
+    "path": "lifecycle-control/caller/osmesa_thread_probe.exe",
+    "bytes": 690688,
+    "compressed": 219375,
+    "offset": 180776859
+  },
+  {
+    "path": "lifecycle-control/caller/osmesa_thread_probe.ilk",
+    "bytes": 3745147,
+    "compressed": 720947,
+    "offset": 180996328
+  },
+  {
+    "path": "lifecycle-control/caller/osmesa_thread_probe.obj",
+    "bytes": 62057,
+    "compressed": 23873,
+    "offset": 181717369
+  },
+  {
+    "path": "lifecycle-control/caller/osmesa_thread_probe.pdb",
+    "bytes": 7213056,
+    "compressed": 1621079,
+    "offset": 181741336
+  },
+  {
+    "path": "lifecycle-control/isolated-wgl/libgallium_wgl.dll",
+    "bytes": 54089216,
+    "compressed": 20735955,
+    "offset": 183362509
+  },
+  {
+    "path": "lifecycle-control/isolated-wgl/libglapi.dll",
+    "bytes": 340480,
+    "compressed": 111163,
+    "offset": 204098559
+  },
+  {
+    "path": "lifecycle-control/isolated-wgl/opengl32.dll",
+    "bytes": 137216,
+    "compressed": 64778,
+    "offset": 204209811
+  },
+  {
+    "path": "lifecycle-control/isolated-wgl/pipe_swrast.dll",
+    "bytes": 46453248,
+    "compressed": 17879429,
+    "offset": 204274678
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/chinese-dark.bmp",
+    "bytes": 7200054,
+    "compressed": 63157,
+    "offset": 222154199
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/chinese-assistant.bmp",
+    "bytes": 7200054,
+    "compressed": 76107,
+    "offset": 222217518
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/chinese-dual.bmp",
+    "bytes": 7200054,
+    "compressed": 66425,
+    "offset": 222293792
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/chinese-full.bmp",
+    "bytes": 7200054,
+    "compressed": 65576,
+    "offset": 222360379
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/chinese-narrow.bmp",
+    "bytes": 3013254,
+    "compressed": 36712,
+    "offset": 222426117
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/empty-after-close.bmp",
+    "bytes": 3013254,
+    "compressed": 12824,
+    "offset": 222462993
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/empty-system.bmp",
+    "bytes": 7200054,
+    "compressed": 17279,
+    "offset": 222475984
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/english-dark.bmp",
+    "bytes": 7200054,
+    "compressed": 67068,
+    "offset": 222493425
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/english-dual.bmp",
+    "bytes": 7200054,
+    "compressed": 66763,
+    "offset": 222560655
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/english-full.bmp",
+    "bytes": 7200054,
+    "compressed": 65842,
+    "offset": 222627580
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 222693584
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/profile-A.ust",
+    "bytes": 584,
+    "compressed": 140,
+    "offset": 222693746
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 222694045
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 222694227
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-144/profile-B.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 222694389
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/chinese-assistant.bmp",
+    "bytes": 7360054,
+    "compressed": 93505,
+    "offset": 222694571
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/chinese-dual.bmp",
+    "bytes": 7360054,
+    "compressed": 74228,
+    "offset": 222788243
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/chinese-dark.bmp",
+    "bytes": 7360054,
+    "compressed": 72195,
+    "offset": 222862633
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/chinese-full.bmp",
+    "bytes": 7360054,
+    "compressed": 75616,
+    "offset": 222934990
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/chinese-narrow.bmp",
+    "bytes": 5356854,
+    "compressed": 65244,
+    "offset": 223010768
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/empty-after-close.bmp",
+    "bytes": 5356854,
+    "compressed": 19362,
+    "offset": 223076176
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/empty-system.bmp",
+    "bytes": 7360054,
+    "compressed": 20903,
+    "offset": 223095705
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/english-dual.bmp",
+    "bytes": 7360054,
+    "compressed": 71355,
+    "offset": 223116770
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/english-dark.bmp",
+    "bytes": 7360054,
+    "compressed": 70738,
+    "offset": 223188287
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/english-full.bmp",
+    "bytes": 7360054,
+    "compressed": 69608,
+    "offset": 223259187
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223328957
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/profile-A.ust",
+    "bytes": 584,
+    "compressed": 140,
+    "offset": 223329119
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223329418
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223329600
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-192/profile-B.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223329762
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/chinese-assistant.bmp",
+    "bytes": 3840054,
+    "compressed": 48003,
+    "offset": 223329944
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/chinese-dark.bmp",
+    "bytes": 3840054,
+    "compressed": 42081,
+    "offset": 223378113
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/chinese-dual.bmp",
+    "bytes": 3840054,
+    "compressed": 44104,
+    "offset": 223420355
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/chinese-full.bmp",
+    "bytes": 3840054,
+    "compressed": 43730,
+    "offset": 223464620
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/chinese-narrow.bmp",
+    "bytes": 1339254,
+    "compressed": 22152,
+    "offset": 223508511
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/empty-after-close.bmp",
+    "bytes": 1339254,
+    "compressed": 7580,
+    "offset": 223530826
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/empty-system.bmp",
+    "bytes": 3840054,
+    "compressed": 10640,
+    "offset": 223538572
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/english-dark.bmp",
+    "bytes": 3840054,
+    "compressed": 43155,
+    "offset": 223549373
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/english-full.bmp",
+    "bytes": 3840054,
+    "compressed": 43951,
+    "offset": 223592689
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/english-dual.bmp",
+    "bytes": 3840054,
+    "compressed": 43284,
+    "offset": 223636801
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223680246
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/profile-A.ust",
+    "bytes": 584,
+    "compressed": 139,
+    "offset": 223680407
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223680704
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223680885
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/dpi-96/profile-B.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223681046
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/manifest.json",
+    "bytes": 3177,
+    "compressed": 796,
+    "offset": 223681227
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/preferences/empty-system.bmp",
+    "bytes": 3840054,
+    "compressed": 10622,
+    "offset": 223682174
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/preferences/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 223692962
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/preferences/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 223693128
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/preferences/rejected-preference.bmp",
+    "bytes": 3840054,
+    "compressed": 43977,
+    "offset": 223693314
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/preferences/restored-chinese.bmp",
+    "bytes": 3840054,
+    "compressed": 42861,
+    "offset": 223737464
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/preferences-96.log",
+    "bytes": 2022,
+    "compressed": 485,
+    "offset": 223780495
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/restore-144.log",
+    "bytes": 4286,
+    "compressed": 657,
+    "offset": 223781136
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/restore-192.log",
+    "bytes": 4284,
+    "compressed": 655,
+    "offset": 223781946
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/restore-96.log",
+    "bytes": 4285,
+    "compressed": 661,
+    "offset": 223782754
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/write-144.log",
+    "bytes": 5231,
+    "compressed": 874,
+    "offset": 223783567
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/write-192.log",
+    "bytes": 5229,
+    "compressed": 874,
+    "offset": 223784592
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49/write-96.log",
+    "bytes": 5231,
+    "compressed": 862,
+    "offset": 223785617
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/chinese-assistant.bmp",
+    "bytes": 7200054,
+    "compressed": 76107,
+    "offset": 223786629
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/chinese-dark.bmp",
+    "bytes": 7200054,
+    "compressed": 63157,
+    "offset": 223862903
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/chinese-dual.bmp",
+    "bytes": 7200054,
+    "compressed": 66425,
+    "offset": 223926222
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/chinese-full.bmp",
+    "bytes": 7200054,
+    "compressed": 65576,
+    "offset": 223992809
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/chinese-narrow.bmp",
+    "bytes": 3013254,
+    "compressed": 36712,
+    "offset": 224058547
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/empty-after-close.bmp",
+    "bytes": 3013254,
+    "compressed": 12824,
+    "offset": 224095423
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/empty-system.bmp",
+    "bytes": 7200054,
+    "compressed": 17279,
+    "offset": 224108414
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/english-dark.bmp",
+    "bytes": 7200054,
+    "compressed": 67068,
+    "offset": 224125855
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/english-dual.bmp",
+    "bytes": 7200054,
+    "compressed": 66763,
+    "offset": 224193085
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/english-full.bmp",
+    "bytes": 7200054,
+    "compressed": 65842,
+    "offset": 224260010
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224326014
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/profile-A.ust",
+    "bytes": 584,
+    "compressed": 140,
+    "offset": 224326176
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 224326475
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224326657
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-144/profile-B.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 224326819
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/chinese-assistant.bmp",
+    "bytes": 7360054,
+    "compressed": 93505,
+    "offset": 224327001
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/chinese-dark.bmp",
+    "bytes": 7360054,
+    "compressed": 72195,
+    "offset": 224420673
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/chinese-dual.bmp",
+    "bytes": 7360054,
+    "compressed": 74228,
+    "offset": 224493030
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/chinese-full.bmp",
+    "bytes": 7360054,
+    "compressed": 75616,
+    "offset": 224567420
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/chinese-narrow.bmp",
+    "bytes": 5356854,
+    "compressed": 65244,
+    "offset": 224643198
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/empty-after-close.bmp",
+    "bytes": 5356854,
+    "compressed": 19362,
+    "offset": 224708606
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/empty-system.bmp",
+    "bytes": 7360054,
+    "compressed": 20903,
+    "offset": 224728135
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/english-dark.bmp",
+    "bytes": 7360054,
+    "compressed": 70738,
+    "offset": 224749200
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/english-dual.bmp",
+    "bytes": 7360054,
+    "compressed": 71355,
+    "offset": 224820100
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/english-full.bmp",
+    "bytes": 7360054,
+    "compressed": 69608,
+    "offset": 224891617
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224961387
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/profile-A.ust",
+    "bytes": 584,
+    "compressed": 140,
+    "offset": 224961549
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 224961848
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 224962030
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-192/profile-B.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 224962192
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/chinese-assistant.bmp",
+    "bytes": 3840054,
+    "compressed": 48003,
+    "offset": 224962374
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/chinese-dark.bmp",
+    "bytes": 3840054,
+    "compressed": 42081,
+    "offset": 225010543
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/chinese-dual.bmp",
+    "bytes": 3840054,
+    "compressed": 44104,
+    "offset": 225052785
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/chinese-full.bmp",
+    "bytes": 3840054,
+    "compressed": 43730,
+    "offset": 225097050
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/chinese-narrow.bmp",
+    "bytes": 1339254,
+    "compressed": 22152,
+    "offset": 225140941
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/empty-after-close.bmp",
+    "bytes": 1339254,
+    "compressed": 7580,
+    "offset": 225163256
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/empty-system.bmp",
+    "bytes": 3840054,
+    "compressed": 10640,
+    "offset": 225171002
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/english-dark.bmp",
+    "bytes": 3840054,
+    "compressed": 43155,
+    "offset": 225181803
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/english-dual.bmp",
+    "bytes": 3840054,
+    "compressed": 43284,
+    "offset": 225225119
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/english-full.bmp",
+    "bytes": 3840054,
+    "compressed": 43951,
+    "offset": 225268564
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225312676
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/profile-A.ust",
+    "bytes": 584,
+    "compressed": 139,
+    "offset": 225312837
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 225313134
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225313315
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/dpi-96/profile-B.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 225313476
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/manifest.json",
+    "bytes": 2957,
+    "compressed": 784,
+    "offset": 225313657
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/preferences/empty-system.bmp",
+    "bytes": 3840054,
+    "compressed": 10622,
+    "offset": 225314592
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/preferences/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225325380
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/preferences/profile-A.ust.language",
+    "bytes": 16,
+    "compressed": 14,
+    "offset": 225325546
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/preferences/rejected-preference.bmp",
+    "bytes": 3840054,
+    "compressed": 43977,
+    "offset": 225325732
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/preferences/restored-chinese.bmp",
+    "bytes": 3840054,
+    "compressed": 42861,
+    "offset": 225369882
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/preferences-96.log",
+    "bytes": 2022,
+    "compressed": 487,
+    "offset": 225412913
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/restore-144.log",
+    "bytes": 4286,
+    "compressed": 656,
+    "offset": 225413556
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/restore-192.log",
+    "bytes": 4284,
+    "compressed": 657,
+    "offset": 225414365
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/restore-96.log",
+    "bytes": 4285,
+    "compressed": 662,
+    "offset": 225415175
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/write-192.log",
+    "bytes": 5227,
+    "compressed": 866,
+    "offset": 225415989
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/write-144.log",
+    "bytes": 5231,
+    "compressed": 868,
+    "offset": 225417006
+  },
+  {
+    "path": "lifecycle-control/product-evidence/language-evidence-light-85e84b676e544689b4cd136e507ffb59/write-96.log",
+    "bytes": 5231,
+    "compressed": 868,
+    "offset": 225418025
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/checksum.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 225419043
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/columns-future.log",
+    "bytes": 693,
+    "compressed": 247,
+    "offset": 225419439
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/columns-reserved.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 225419839
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-144/before.bmp",
+    "bytes": 7920054,
+    "compressed": 70580,
+    "offset": 225420243
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-144/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225490976
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-144/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 225491135
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-144/restore-144.bmp",
+    "bytes": 7920054,
+    "compressed": 61768,
+    "offset": 225491439
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-144/saved.bmp",
+    "bytes": 7920054,
+    "compressed": 63725,
+    "offset": 225553365
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-192/before.bmp",
+    "bytes": 8536054,
+    "compressed": 78697,
+    "offset": 225617242
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-192/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 225696092
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-192/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225696396
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-192/restore-192.bmp",
+    "bytes": 8536054,
+    "compressed": 64729,
+    "offset": 225696555
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-192/saved.bmp",
+    "bytes": 8536054,
+    "compressed": 67735,
+    "offset": 225761442
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/before.bmp",
+    "bytes": 3840054,
+    "compressed": 43814,
+    "offset": 225829329
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225873295
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/profile-A.ust",
+    "bytes": 544,
+    "compressed": 129,
+    "offset": 225873453
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225873737
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/profile-B.ust",
+    "bytes": 584,
+    "compressed": 139,
+    "offset": 225873895
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/reordered-columns.bmp",
+    "bytes": 3840054,
+    "compressed": 37690,
+    "offset": 225874189
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/restore-96.bmp",
+    "bytes": 3840054,
+    "compressed": 37473,
+    "offset": 225912042
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/dpi-96/saved.bmp",
+    "bytes": 3840054,
+    "compressed": 38708,
+    "offset": 225949671
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/empty.log",
+    "bytes": 693,
+    "compressed": 248,
+    "offset": 225988530
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/failed-create-mount-lock-release.log",
+    "bytes": 707,
+    "compressed": 251,
+    "offset": 225988922
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/future.log",
+    "bytes": 693,
+    "compressed": 250,
+    "offset": 225989344
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/initialization/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225989739
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-checksum/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225989905
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-checksum/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 225990073
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-columns-future/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225990386
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-columns-future/profile-A.ust",
+    "bytes": 624,
+    "compressed": 151,
+    "offset": 225990560
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-columns-reserved/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225990882
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-columns-reserved/profile-A.ust",
+    "bytes": 624,
+    "compressed": 150,
+    "offset": 225991058
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-empty/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225991381
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-empty/profile-A.ust",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225991546
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-future/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225991710
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-future/profile-A.ust",
+    "bytes": 624,
+    "compressed": 151,
+    "offset": 225991876
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-layout-future/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225992190
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-layout-future/profile-A.ust",
+    "bytes": 624,
+    "compressed": 149,
+    "offset": 225992363
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-layout-invalid/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225992682
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-layout-invalid/profile-A.ust",
+    "bytes": 624,
+    "compressed": 151,
+    "offset": 225992856
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-magic/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225993178
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-magic/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 225993343
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-oversized/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225993653
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-oversized/profile-A.ust",
+    "bytes": 70001,
+    "compressed": 85,
+    "offset": 225993822
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-truncated/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225994073
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/invalid-truncated/profile-A.ust",
+    "bytes": 41,
+    "compressed": 35,
+    "offset": 225994242
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/isolation.log",
+    "bytes": 1217,
+    "compressed": 422,
+    "offset": 225994443
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/layout-future.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 225995013
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/layout-invalid.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 225995414
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/locked-profile.log",
+    "bytes": 707,
+    "compressed": 250,
+    "offset": 225995816
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/magic.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 225996219
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/manifest.json",
+    "bytes": 7840,
+    "compressed": 1327,
+    "offset": 225996612
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/missing/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 225998087
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/missing-file.log",
+    "bytes": 695,
+    "compressed": 248,
+    "offset": 225998246
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/missing-new-columns.log",
+    "bytes": 691,
+    "compressed": 249,
+    "offset": 225998645
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/oversized.log",
+    "bytes": 693,
+    "compressed": 251,
+    "offset": 225999052
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/profile-b.log",
+    "bytes": 697,
+    "compressed": 252,
+    "offset": 225999451
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/reload.log",
+    "bytes": 691,
+    "compressed": 251,
+    "offset": 225999851
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/reordered-columns.log",
+    "bytes": 866,
+    "compressed": 302,
+    "offset": 226000247
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/reset-cross-process.log",
+    "bytes": 695,
+    "compressed": 247,
+    "offset": 226000705
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/reset.log",
+    "bytes": 689,
+    "compressed": 251,
+    "offset": 226001110
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/restore-144.log",
+    "bytes": 863,
+    "compressed": 301,
+    "offset": 226001505
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/restore-192.log",
+    "bytes": 863,
+    "compressed": 305,
+    "offset": 226001956
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/restore-96.log",
+    "bytes": 862,
+    "compressed": 297,
+    "offset": 226002411
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/truncated.log",
+    "bytes": 693,
+    "compressed": 247,
+    "offset": 226002857
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/write-144.log",
+    "bytes": 1191,
+    "compressed": 423,
+    "offset": 226003252
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/write-192.log",
+    "bytes": 1191,
+    "compressed": 420,
+    "offset": 226003823
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-4fdc1ab36708484f99e1a646e5191b94/write-96.log",
+    "bytes": 1189,
+    "compressed": 421,
+    "offset": 226004391
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/checksum.log",
+    "bytes": 693,
+    "compressed": 247,
+    "offset": 226004959
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/columns-future.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 226005353
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/columns-reserved.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 226005755
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-144/before.bmp",
+    "bytes": 7920054,
+    "compressed": 70580,
+    "offset": 226006159
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-144/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226076892
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-144/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 226077051
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-144/restore-144.bmp",
+    "bytes": 7920054,
+    "compressed": 61768,
+    "offset": 226077355
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-144/saved.bmp",
+    "bytes": 7920054,
+    "compressed": 63725,
+    "offset": 226139281
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-192/before.bmp",
+    "bytes": 8536054,
+    "compressed": 78697,
+    "offset": 226203158
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-192/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226282008
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-192/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 226282167
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-192/restore-192.bmp",
+    "bytes": 8536054,
+    "compressed": 64729,
+    "offset": 226282471
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-192/saved.bmp",
+    "bytes": 8536054,
+    "compressed": 67735,
+    "offset": 226347358
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/before.bmp",
+    "bytes": 3840054,
+    "compressed": 43814,
+    "offset": 226415245
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226459211
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/profile-A.ust",
+    "bytes": 544,
+    "compressed": 129,
+    "offset": 226459369
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/profile-B.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226459653
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/profile-B.ust",
+    "bytes": 584,
+    "compressed": 139,
+    "offset": 226459811
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/reordered-columns.bmp",
+    "bytes": 3840054,
+    "compressed": 37690,
+    "offset": 226460105
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/restore-96.bmp",
+    "bytes": 3840054,
+    "compressed": 37473,
+    "offset": 226497958
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/dpi-96/saved.bmp",
+    "bytes": 3840054,
+    "compressed": 38708,
+    "offset": 226535587
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/empty.log",
+    "bytes": 693,
+    "compressed": 250,
+    "offset": 226574446
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/failed-create-mount-lock-release.log",
+    "bytes": 707,
+    "compressed": 250,
+    "offset": 226574840
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/future.log",
+    "bytes": 693,
+    "compressed": 248,
+    "offset": 226575261
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/initialization/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226575654
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-checksum/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226575820
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-checksum/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 226575988
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-columns-future/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226576301
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-columns-future/profile-A.ust",
+    "bytes": 624,
+    "compressed": 151,
+    "offset": 226576475
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-columns-reserved/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226576797
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-columns-reserved/profile-A.ust",
+    "bytes": 624,
+    "compressed": 150,
+    "offset": 226576973
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-empty/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226577296
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-future/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226577461
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-future/profile-A.ust",
+    "bytes": 624,
+    "compressed": 151,
+    "offset": 226577627
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-layout-future/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226577941
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-empty/profile-A.ust",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226578114
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-layout-invalid/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226578278
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-layout-invalid/profile-A.ust",
+    "bytes": 624,
+    "compressed": 151,
+    "offset": 226578452
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-magic/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226578774
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-layout-future/profile-A.ust",
+    "bytes": 624,
+    "compressed": 149,
+    "offset": 226578939
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-magic/profile-A.ust",
+    "bytes": 624,
+    "compressed": 148,
+    "offset": 226579258
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-oversized/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226579568
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-oversized/profile-A.ust",
+    "bytes": 70001,
+    "compressed": 85,
+    "offset": 226579737
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-truncated/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226579988
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/invalid-truncated/profile-A.ust",
+    "bytes": 41,
+    "compressed": 35,
+    "offset": 226580157
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/isolation.log",
+    "bytes": 1217,
+    "compressed": 424,
+    "offset": 226580358
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/layout-future.log",
+    "bytes": 693,
+    "compressed": 248,
+    "offset": 226580930
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/layout-invalid.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 226581330
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/locked-profile.log",
+    "bytes": 707,
+    "compressed": 250,
+    "offset": 226581732
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/magic.log",
+    "bytes": 693,
+    "compressed": 249,
+    "offset": 226582135
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/manifest.json",
+    "bytes": 7873,
+    "compressed": 1329,
+    "offset": 226582528
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/missing/profile-A.lock",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226584005
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/missing-file.log",
+    "bytes": 695,
+    "compressed": 248,
+    "offset": 226584164
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/missing-new-columns.log",
+    "bytes": 691,
+    "compressed": 248,
+    "offset": 226584563
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/oversized.log",
+    "bytes": 693,
+    "compressed": 246,
+    "offset": 226584969
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/profile-b.log",
+    "bytes": 697,
+    "compressed": 247,
+    "offset": 226585363
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/reload.log",
+    "bytes": 691,
+    "compressed": 253,
+    "offset": 226585758
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/reordered-columns.log",
+    "bytes": 866,
+    "compressed": 303,
+    "offset": 226586156
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/reset-cross-process.log",
+    "bytes": 695,
+    "compressed": 249,
+    "offset": 226586615
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/reset.log",
+    "bytes": 689,
+    "compressed": 254,
+    "offset": 226587022
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/restore-192.log",
+    "bytes": 863,
+    "compressed": 304,
+    "offset": 226587420
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/restore-144.log",
+    "bytes": 863,
+    "compressed": 300,
+    "offset": 226587874
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/restore-96.log",
+    "bytes": 862,
+    "compressed": 300,
+    "offset": 226588324
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/truncated.log",
+    "bytes": 693,
+    "compressed": 248,
+    "offset": 226588773
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/write-144.log",
+    "bytes": 1191,
+    "compressed": 421,
+    "offset": 226589169
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/write-192.log",
+    "bytes": 1191,
+    "compressed": 418,
+    "offset": 226589738
+  },
+  {
+    "path": "lifecycle-control/product-evidence/state-evidence-light-e96979311b64491b8132068274080d78/write-96.log",
+    "bytes": 1189,
+    "compressed": 422,
+    "offset": 226590304
+  },
+  {
+    "path": "lifecycle-control/raw/caller-build.log",
+    "bytes": 23,
+    "compressed": 25,
+    "offset": 226590873
+  },
+  {
+    "path": "lifecycle-control/raw/original-test-plan.json",
+    "bytes": 2213,
+    "compressed": 517,
+    "offset": 226590982
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/CTestTestfile.cmake",
+    "bytes": 922,
+    "compressed": 304,
+    "offset": 226591590
+  },
+  {
+    "path": "lifecycle-control/raw/results.json",
+    "bytes": 34247,
+    "compressed": 6399,
+    "offset": 226591993
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/Testing/Temporary/CTestCostData.txt",
+    "bytes": 105,
+    "compressed": 75,
+    "offset": 226598472
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/Testing/Temporary/LastTest.log",
+    "bytes": 33205,
+    "compressed": 3598,
+    "offset": 226598662
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/Testing/Temporary/LastTestsFailed.log",
+    "bytes": 30,
+    "compressed": 32,
+    "offset": 226602370
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/ctest.xml",
+    "bytes": 32510,
+    "compressed": 3470,
+    "offset": 226602519
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/CMakeLists.txt",
+    "bytes": 52412,
+    "compressed": 7135,
+    "offset": 226606105
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/observer.log",
+    "bytes": 201,
+    "compressed": 157,
+    "offset": 226613387
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/application.h",
+    "bytes": 8306,
+    "compressed": 2426,
+    "offset": 226613663
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/assistant.h",
+    "bytes": 4915,
+    "compressed": 1184,
+    "offset": 226616256
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/components.h",
+    "bytes": 13416,
+    "compressed": 3913,
+    "offset": 226617605
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/images.h",
+    "bytes": 2294,
+    "compressed": 855,
+    "offset": 226621684
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/language.h",
+    "bytes": 2647,
+    "compressed": 1186,
+    "offset": 226622701
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/light_web.h",
+    "bytes": 1116,
+    "compressed": 583,
+    "offset": 226624051
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/menus.h",
+    "bytes": 3785,
+    "compressed": 1435,
+    "offset": 226624799
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/native.h",
+    "bytes": 2972,
+    "compressed": 1113,
+    "offset": 226626395
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/opengl.h",
+    "bytes": 4066,
+    "compressed": 1563,
+    "offset": 226627670
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/package.h",
+    "bytes": 2569,
+    "compressed": 930,
+    "offset": 226629395
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/shell.h",
+    "bytes": 5268,
+    "compressed": 1774,
+    "offset": 226630488
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/ui.h",
+    "bytes": 22806,
+    "compressed": 5330,
+    "offset": 226632423
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/include/ui_framework/webview2.h",
+    "bytes": 3370,
+    "compressed": 1419,
+    "offset": 226637911
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/src/components.html",
+    "bytes": 44259,
+    "compressed": 11643,
+    "offset": 226639494
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/src/menus.c",
+    "bytes": 41957,
+    "compressed": 10930,
+    "offset": 226651289
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/display_probe.c",
+    "bytes": 11879,
+    "compressed": 4681,
+    "offset": 226662363
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/framework_features_host.c",
+    "bytes": 11615,
+    "compressed": 4229,
+    "offset": 226667198
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/interaction_probe.c",
+    "bytes": 42381,
+    "compressed": 12024,
+    "offset": 226671591
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/observe_processes.py",
+    "bytes": 6568,
+    "compressed": 2686,
+    "offset": 226683773
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+    "bytes": 9858,
+    "compressed": 3534,
+    "offset": 226686618
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+    "bytes": 20326,
+    "compressed": 6868,
+    "offset": 226690312
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/process_stall_capture.py",
+    "bytes": 1936,
+    "compressed": 939,
+    "offset": 226697350
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+    "bytes": 16945,
+    "compressed": 6413,
+    "offset": 226698452
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+    "bytes": 5664,
+    "compressed": 2055,
+    "offset": 226705031
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.identities.json",
+    "bytes": 4624,
+    "compressed": 1603,
+    "offset": 226707249
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.jsonl",
+    "bytes": 34312,
+    "compressed": 4255,
+    "offset": 226708984
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.log",
+    "bytes": 35160,
+    "compressed": 4012,
+    "offset": 226713361
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/processes.patch",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 226717493
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/5372.dmp",
+    "bytes": 265806378,
+    "compressed": 99166475,
+    "offset": 226717617
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/5480-rast-live.bin",
+    "bytes": 10856,
+    "compressed": 204,
+    "offset": 325884219
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/5480.dmp",
+    "bytes": 137303796,
+    "compressed": 50032373,
+    "offset": 325884560
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/7456.dmp",
+    "bytes": 55258089,
+    "compressed": 21641930,
+    "offset": 375917060
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_instance_language_light/stall-dumps/capture.json",
+    "bytes": 5862,
+    "compressed": 907,
+    "offset": 397559117
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/ctest.xml",
+    "bytes": 1515,
+    "compressed": 701,
+    "offset": 397560155
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/observer.log",
+    "bytes": 201,
+    "compressed": 156,
+    "offset": 397560974
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/CMakeLists.txt",
+    "bytes": 52412,
+    "compressed": 7135,
+    "offset": 397561251
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/application.h",
+    "bytes": 8306,
+    "compressed": 2426,
+    "offset": 397568535
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/assistant.h",
+    "bytes": 4915,
+    "compressed": 1184,
+    "offset": 397571130
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/components.h",
+    "bytes": 13416,
+    "compressed": 3913,
+    "offset": 397572481
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/images.h",
+    "bytes": 2294,
+    "compressed": 855,
+    "offset": 397576562
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/language.h",
+    "bytes": 2647,
+    "compressed": 1186,
+    "offset": 397577581
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/light_web.h",
+    "bytes": 1116,
+    "compressed": 583,
+    "offset": 397578933
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/menus.h",
+    "bytes": 3785,
+    "compressed": 1435,
+    "offset": 397579683
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/native.h",
+    "bytes": 2972,
+    "compressed": 1113,
+    "offset": 397581281
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/opengl.h",
+    "bytes": 4066,
+    "compressed": 1563,
+    "offset": 397582558
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/shell.h",
+    "bytes": 5268,
+    "compressed": 1774,
+    "offset": 397584285
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/package.h",
+    "bytes": 2569,
+    "compressed": 930,
+    "offset": 397586222
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/ui.h",
+    "bytes": 22806,
+    "compressed": 5330,
+    "offset": 397587317
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/webview2.h",
+    "bytes": 3370,
+    "compressed": 1419,
+    "offset": 397592807
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/src/components.html",
+    "bytes": 44259,
+    "compressed": 11643,
+    "offset": 397594392
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/src/menus.c",
+    "bytes": 41957,
+    "compressed": 10930,
+    "offset": 397606189
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/display_probe.c",
+    "bytes": 11879,
+    "compressed": 4681,
+    "offset": 397617265
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/framework_features_host.c",
+    "bytes": 11615,
+    "compressed": 4229,
+    "offset": 397622102
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/interaction_probe.c",
+    "bytes": 42381,
+    "compressed": 12024,
+    "offset": 397626497
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/observe_processes.py",
+    "bytes": 6568,
+    "compressed": 2686,
+    "offset": 397638681
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+    "bytes": 9858,
+    "compressed": 3534,
+    "offset": 397641528
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+    "bytes": 20326,
+    "compressed": 6868,
+    "offset": 397645224
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/process_stall_capture.py",
+    "bytes": 1936,
+    "compressed": 939,
+    "offset": 397652264
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+    "bytes": 16945,
+    "compressed": 6413,
+    "offset": 397653368
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+    "bytes": 5664,
+    "compressed": 2055,
+    "offset": 397659949
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.identities.json",
+    "bytes": 4624,
+    "compressed": 1603,
+    "offset": 397662169
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.jsonl",
+    "bytes": 54274,
+    "compressed": 5253,
+    "offset": 397663906
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.log",
+    "bytes": 29933,
+    "compressed": 3999,
+    "offset": 397669283
+  },
+  {
+    "path": "lifecycle-control/runs/original-A/ui_stateful_components_light/processes.patch",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 397673404
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/CTestTestfile.cmake",
+    "bytes": 986,
+    "compressed": 318,
+    "offset": 397673530
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/Testing/Temporary/CTestCostData.txt",
+    "bytes": 83,
+    "compressed": 76,
+    "offset": 397673947
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/Testing/Temporary/LastTest.log",
+    "bytes": 33413,
+    "compressed": 3649,
+    "offset": 397674138
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/ctest.xml",
+    "bytes": 1509,
+    "compressed": 654,
+    "offset": 397677897
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/observer.log",
+    "bytes": 200,
+    "compressed": 155,
+    "offset": 397678667
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/CMakeLists.txt",
+    "bytes": 52412,
+    "compressed": 7135,
+    "offset": 397678941
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/application.h",
+    "bytes": 8306,
+    "compressed": 2426,
+    "offset": 397686223
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/assistant.h",
+    "bytes": 4915,
+    "compressed": 1184,
+    "offset": 397688816
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/components.h",
+    "bytes": 13416,
+    "compressed": 3913,
+    "offset": 397690165
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/images.h",
+    "bytes": 2294,
+    "compressed": 855,
+    "offset": 397694244
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/language.h",
+    "bytes": 2647,
+    "compressed": 1186,
+    "offset": 397695261
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/light_web.h",
+    "bytes": 1116,
+    "compressed": 583,
+    "offset": 397696611
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/menus.h",
+    "bytes": 3785,
+    "compressed": 1435,
+    "offset": 397697359
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/native.h",
+    "bytes": 2972,
+    "compressed": 1113,
+    "offset": 397698955
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/opengl.h",
+    "bytes": 4066,
+    "compressed": 1563,
+    "offset": 397700230
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/package.h",
+    "bytes": 2569,
+    "compressed": 930,
+    "offset": 397701955
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/shell.h",
+    "bytes": 5268,
+    "compressed": 1774,
+    "offset": 397703048
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/ui.h",
+    "bytes": 22806,
+    "compressed": 5330,
+    "offset": 397704983
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/include/ui_framework/webview2.h",
+    "bytes": 3370,
+    "compressed": 1419,
+    "offset": 397710471
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/src/components.html",
+    "bytes": 44259,
+    "compressed": 11643,
+    "offset": 397712054
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/src/menus.c",
+    "bytes": 41957,
+    "compressed": 10930,
+    "offset": 397723849
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/display_probe.c",
+    "bytes": 11879,
+    "compressed": 4681,
+    "offset": 397734923
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/framework_features_host.c",
+    "bytes": 11615,
+    "compressed": 4229,
+    "offset": 397739758
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/interaction_probe.c",
+    "bytes": 42381,
+    "compressed": 12024,
+    "offset": 397744151
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/observe_processes.py",
+    "bytes": 6568,
+    "compressed": 2686,
+    "offset": 397756333
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+    "bytes": 9858,
+    "compressed": 3534,
+    "offset": 397759178
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+    "bytes": 20326,
+    "compressed": 6868,
+    "offset": 397762872
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/process_stall_capture.py",
+    "bytes": 1936,
+    "compressed": 939,
+    "offset": 397769910
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+    "bytes": 16945,
+    "compressed": 6413,
+    "offset": 397771012
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+    "bytes": 5664,
+    "compressed": 2055,
+    "offset": 397777591
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.identities.json",
+    "bytes": 4624,
+    "compressed": 1603,
+    "offset": 397779809
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.jsonl",
+    "bytes": 30197,
+    "compressed": 3369,
+    "offset": 397781544
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.log",
+    "bytes": 35098,
+    "compressed": 3841,
+    "offset": 397785035
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_instance_language_light/processes.patch",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 397788996
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/ctest.xml",
+    "bytes": 1515,
+    "compressed": 702,
+    "offset": 397789120
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/observer.log",
+    "bytes": 201,
+    "compressed": 156,
+    "offset": 397789940
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/CMakeLists.txt",
+    "bytes": 52412,
+    "compressed": 7135,
+    "offset": 397790217
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/application.h",
+    "bytes": 8306,
+    "compressed": 2426,
+    "offset": 397797501
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/assistant.h",
+    "bytes": 4915,
+    "compressed": 1184,
+    "offset": 397800096
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/components.h",
+    "bytes": 13416,
+    "compressed": 3913,
+    "offset": 397801447
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/images.h",
+    "bytes": 2294,
+    "compressed": 855,
+    "offset": 397805528
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/language.h",
+    "bytes": 2647,
+    "compressed": 1186,
+    "offset": 397806547
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/light_web.h",
+    "bytes": 1116,
+    "compressed": 583,
+    "offset": 397807899
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/menus.h",
+    "bytes": 3785,
+    "compressed": 1435,
+    "offset": 397808649
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/native.h",
+    "bytes": 2972,
+    "compressed": 1113,
+    "offset": 397810247
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/opengl.h",
+    "bytes": 4066,
+    "compressed": 1563,
+    "offset": 397811524
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/package.h",
+    "bytes": 2569,
+    "compressed": 930,
+    "offset": 397813251
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/shell.h",
+    "bytes": 5268,
+    "compressed": 1774,
+    "offset": 397814346
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/ui.h",
+    "bytes": 22806,
+    "compressed": 5330,
+    "offset": 397816283
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/include/ui_framework/webview2.h",
+    "bytes": 3370,
+    "compressed": 1419,
+    "offset": 397821773
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/src/components.html",
+    "bytes": 44259,
+    "compressed": 11643,
+    "offset": 397823358
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/src/menus.c",
+    "bytes": 41957,
+    "compressed": 10930,
+    "offset": 397835155
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/display_probe.c",
+    "bytes": 11879,
+    "compressed": 4681,
+    "offset": 397846231
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/framework_features_host.c",
+    "bytes": 11615,
+    "compressed": 4229,
+    "offset": 397851068
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/interaction_probe.c",
+    "bytes": 42381,
+    "compressed": 12024,
+    "offset": 397855463
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/observe_processes.py",
+    "bytes": 6568,
+    "compressed": 2686,
+    "offset": 397867647
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/osmesa_thread_probe.c",
+    "bytes": 9858,
+    "compressed": 3534,
+    "offset": 397870494
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/presentation_transition_probe.c",
+    "bytes": 20326,
+    "compressed": 6868,
+    "offset": 397874190
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/process_stall_capture.py",
+    "bytes": 1936,
+    "compressed": 939,
+    "offset": 397881230
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/readonly_navigation_probe.c",
+    "bytes": 16945,
+    "compressed": 6413,
+    "offset": 397882334
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes-source-snapshot/tests/runtime_boundary_probe.c",
+    "bytes": 5664,
+    "compressed": 2055,
+    "offset": 397888915
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.identities.json",
+    "bytes": 4624,
+    "compressed": 1603,
+    "offset": 397891135
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.jsonl",
+    "bytes": 54265,
+    "compressed": 5308,
+    "offset": 397892872
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.log",
+    "bytes": 29965,
+    "compressed": 4011,
+    "offset": 397898304
+  },
+  {
+    "path": "lifecycle-control/runs/original-C/ui_stateful_components_light/processes.patch",
+    "bytes": 0,
+    "compressed": 2,
+    "offset": 397902437
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate0/stdout.log",
+    "bytes": 5588,
+    "compressed": 833,
+    "offset": 397902563
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate1/capture.log",
+    "bytes": 2996,
+    "compressed": 739,
+    "offset": 397903489
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate1/first-full-dump/6596-rast-live.bin",
+    "bytes": 10856,
+    "compressed": 246,
+    "offset": 397904322
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate1/first-full-dump/6596.dmp",
+    "bytes": 127922252,
+    "compressed": 34358650,
+    "offset": 397904685
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate1/first-full-dump/capture.json",
+    "bytes": 5049,
+    "compressed": 837,
+    "offset": 432263442
+  },
+  {
+    "path": "lifecycle-control/runs/probe-A-gate1/stdout.log",
+    "bytes": 5608,
+    "compressed": 835,
+    "offset": 432264390
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate0/stdout.log",
+    "bytes": 5576,
+    "compressed": 823,
+    "offset": 432265318
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate1/capture.log",
+    "bytes": 3029,
+    "compressed": 756,
+    "offset": 432266234
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate1/first-full-dump/6428-rast-live.bin",
+    "bytes": 10856,
+    "compressed": 229,
+    "offset": 432267084
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate1/first-full-dump/6428.dmp",
+    "bytes": 126803590,
+    "compressed": 34024333,
+    "offset": 432267430
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate1/first-full-dump/capture.json",
+    "bytes": 5082,
+    "compressed": 864,
+    "offset": 466291870
+  },
+  {
+    "path": "lifecycle-control/runs/probe-C-gate1/stdout.log",
+    "bytes": 5591,
+    "compressed": 832,
+    "offset": 466292845
+  },
+  {
+    "path": "lifecycle-control/system-images/kernel32.dll",
+    "bytes": 790784,
+    "compressed": 380406,
+    "offset": 466293770
+  },
+  {
+    "path": "lifecycle-control/system-images/KERNELBASE.dll",
+    "bytes": 3637776,
+    "compressed": 1286550,
+    "offset": 466674266
+  },
+  {
+    "path": "lifecycle-control/system-images/ntdll.dll",
+    "bytes": 2104800,
+    "compressed": 1004581,
+    "offset": 467960908
+  },
+  {
+    "path": "lifecycle-control/system-images/ucrtbase.dll",
+    "bytes": 1129648,
+    "compressed": 549219,
+    "offset": 468965576
+  },
+  {
+    "path": "lifecycle-desktop.json",
+    "bytes": 101,
+    "compressed": 67,
+    "offset": 469514885
+  }
+]

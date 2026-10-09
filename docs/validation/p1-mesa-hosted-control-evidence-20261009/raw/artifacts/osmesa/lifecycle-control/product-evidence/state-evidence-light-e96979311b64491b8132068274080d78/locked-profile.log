@@ -1,0 +1,12 @@
+TEST_PHASE pid7648 tick715093 dispatched0 create-host-begin
+TEST_PHASE pid7648 tick715109 dispatched0 create-host-end
+TEST_PHASE pid7648 tick715125 dispatched0 open-begin
+TEST_PHASE pid7648 tick715453 dispatched0 open-return
+TEST_PHASE pid7648 tick715953 dispatched34 open-settled
+RESTORED modelocked-profile dpi96 name280 treeCollapsed1
+TEST_PHASE pid7648 tick715953 dispatched34 close-begin
+TEST_PHASE pid7648 tick715984 dispatched34 close-request-return
+TEST_PHASE pid7648 tick716078 dispatched36 close-state-checked
+TEST_PHASE pid7648 tick716390 dispatched36 com-uninitialize-begin
+TEST_PHASE pid7648 tick716390 dispatched36 process-return
+Stateful actual light / locked-profile: 0 failures

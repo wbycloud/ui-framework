@@ -1,0 +1,547 @@
+DEBUG_CHILD pid=16440 timing_changed=1
+DEBUG_THREAD_CREATE tick=16 tid=3848 start=00007FFDC349A2E0
+DEBUG_THREAD_CREATE tick=16 tid=44688 start=00007FFDC349A2E0
+DEBUG_THREAD_CREATE tick=16 tid=24472 start=00007FFDC349A2E0
+START pid=16440 lp_num_threads=<unset> mode=exit
+BOUNDARY phase=before-load pid=16440 tick=776228156 module=0000000000000000 owned_loads=0 handles=60 gdi=0 user=1
+THREAD phase=before-load tid=48572 name= start=00007FF668D5357B query=0
+THREAD phase=before-load tid=3848 name= start=00007FFDC349A2E0 query=0
+THREAD phase=before-load tid=44688 name= start=00007FFDC349A2E0 query=0
+THREAD phase=before-load tid=24472 name= start=00007FFDC349A2E0 query=0
+THREAD_TOTAL phase=before-load total=4 named_raster=0
+MESA_LOADED base=7ffcd9390000
+EVENT tick=63 tid=48572 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=1 reserved=0
+EVENT tick=63 tid=48572 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=1 reserved=0
+BOUNDARY phase=loaded pid=16440 tick=776228203 module=00007FFCD9390000 owned_loads=1 handles=105 gdi=0 user=1
+THREAD phase=loaded tid=48572 name= start=00007FF668D5357B query=0
+THREAD phase=loaded tid=3848 name= start=00007FFDC349A2E0 query=0
+THREAD phase=loaded tid=44688 name= start=00007FFDC349A2E0 query=0
+THREAD phase=loaded tid=24472 name= start=00007FFDC349A2E0 query=0
+THREAD_TOTAL phase=loaded total=4 named_raster=0
+CONTEXT_CREATE_BEGIN pass=0
+DEBUG_THREAD_CREATE tick=110 tid=38264 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=43856 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=15040 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=28928 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=36832 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=36272 start=00007FFCDAA120D8
+EVENT tick=110 tid=38264 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=110 tid=36288 start=00007FFCDAA120D8
+EVENT tick=110 tid=38264 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=110 tid=40320 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=41816 start=00007FFCDAA120D8
+EVENT tick=110 tid=15040 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=110 tid=12276 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=46904 start=00007FFCDAA120D8
+EVENT tick=110 tid=15040 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=110 tid=42324 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=46552 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=29000 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=10436 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=34120 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=33600 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=25092 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=41172 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=47132 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=45156 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=110 tid=46428 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=125 tid=27656 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=125 tid=43460 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=125 tid=49036 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=125 tid=26024 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=125 tid=32976 start=00007FFCDAA120D8
+EVENT tick=125 tid=43856 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=43856 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=4428 start=00007FFCDAA120D8
+EVENT tick=125 tid=28928 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=28928 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=18300 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=125 tid=47164 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=125 tid=32892 start=00007FFCDAA120D8
+EVENT tick=125 tid=4428 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=45020 start=00007FFCDAA120D8
+EVENT tick=125 tid=4428 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=36832 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=32076 start=00007FFCDAA120D8
+EVENT tick=125 tid=36832 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=18820 start=00007FFCDAA120D8
+EVENT tick=125 tid=36272 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=36272 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=31736 start=00007FFCDAA120D8
+EVENT tick=125 tid=36288 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=36288 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=30208 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=125 tid=23268 start=00007FFCDAA120D8
+EVENT tick=125 tid=40320 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=40320 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=47764 start=00007FFCDAA120D8
+EVENT tick=125 tid=41816 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=41816 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=40908 start=00007FFCDAA120D8
+EVENT tick=125 tid=12276 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=12276 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=27784 start=00007FFCDAA120D8
+EVENT tick=125 tid=46904 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=26324 start=00007FFCDAA120D8
+EVENT tick=125 tid=46904 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=38636 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=125 tid=44660 start=00007FFCDAA120D8
+EVENT tick=125 tid=42324 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=42324 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=49116 start=00007FFCDAA120D8
+EVENT tick=125 tid=46552 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=46552 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=46588 start=00007FFCDAA120D8
+EVENT tick=125 tid=29000 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=26760 start=00007FFCDAA120D8
+EVENT tick=125 tid=29000 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+DEBUG_THREAD_CREATE tick=125 tid=19144 start=00007FFCDAA120D8
+DEBUG_THREAD_CREATE tick=125 tid=32256 start=00007FFCDAA120D8
+EVENT tick=125 tid=10436 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=10436 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=34120 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=34120 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=33600 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=33600 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=25092 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=25092 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=41172 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=41172 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=47132 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=47132 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=45156 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=45156 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=46428 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=46428 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=27656 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=27656 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=43460 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=43460 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=49036 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=49036 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=26024 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=26024 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=32976 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=32976 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=125 tid=18300 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=18300 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=47164 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=47164 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=32892 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=32892 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=45020 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=45020 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=32076 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=32076 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=18820 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=18820 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=31736 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=31736 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=30208 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=30208 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=23268 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=23268 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=47764 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=47764 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=40908 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=40908 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=27784 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=27784 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=26324 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=26324 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=38636 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=38636 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=44660 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=44660 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=49116 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=49116 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=46588 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=46588 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=26760 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=26760 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=19144 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=19144 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=32256 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=2 reserved=0
+EVENT tick=141 tid=32256 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=2 reserved=0
+BOUNDARY phase=context-current pid=16440 tick=776228421 module=00007FFCD9390000 owned_loads=1 handles=166 gdi=0 user=1
+THREAD phase=context-current tid=48572 name= start=00007FF668D5357B query=0
+THREAD phase=context-current tid=3848 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-current tid=44688 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-current tid=24472 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-current tid=38264 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=15040 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=43856 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=28928 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=36832 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=36272 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=36288 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=40320 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=41816 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=12276 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=46904 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=42324 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=46552 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=29000 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=10436 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=34120 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=33600 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=25092 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=41172 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=47132 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=45156 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=46428 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=27656 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=43460 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=49036 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=26024 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=32976 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=4428 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=18300 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=47164 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=32892 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=45020 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=32076 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=18820 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=31736 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=30208 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=23268 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=47764 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=40908 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=27784 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=26324 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=38636 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=44660 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=49116 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=46588 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=26760 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=19144 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-current tid=32256 name= start=00007FFCDAA120D8 query=0
+THREAD_TOTAL phase=context-current total=52 named_raster=0
+GL renderer=llvmpipe (LLVM 19.1.7, 256 bits) version=4.5 (Compatibility Profile) Mesa 24.3.4
+RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=326.444 hash=38b57cea08bb9bf9 center=255,0,0,255
+BOUNDARY phase=rendered pid=16440 tick=776228781 module=00007FFCD9390000 owned_loads=1 handles=166 gdi=0 user=1
+THREAD phase=rendered tid=48572 name= start=00007FF668D5357B query=0
+THREAD phase=rendered tid=3848 name= start=00007FFDC349A2E0 query=0
+THREAD phase=rendered tid=44688 name= start=00007FFDC349A2E0 query=0
+THREAD phase=rendered tid=24472 name= start=00007FFDC349A2E0 query=0
+THREAD phase=rendered tid=38264 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=15040 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=43856 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=28928 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=36832 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=36272 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=36288 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=40320 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=41816 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=12276 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=46904 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=42324 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=46552 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=29000 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=10436 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=34120 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=33600 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=25092 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=41172 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=47132 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=45156 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=46428 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=27656 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=43460 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=49036 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=26024 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=32976 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=4428 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=18300 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=47164 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=32892 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=45020 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=32076 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=18820 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=31736 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=30208 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=23268 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=47764 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=40908 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=27784 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=26324 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=38636 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=44660 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=49116 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=46588 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=26760 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=19144 name= start=00007FFCDAA120D8 query=0
+THREAD phase=rendered tid=32256 name= start=00007FFCDAA120D8 query=0
+THREAD_TOTAL phase=rendered total=52 named_raster=0
+CONTEXT_DESTROY_BEGIN pass=0
+CONTEXT_DESTROY_END pass=0
+BOUNDARY phase=context-destroyed pid=16440 tick=776229203 module=00007FFCD9390000 owned_loads=1 handles=166 gdi=0 user=1
+THREAD phase=context-destroyed tid=48572 name= start=00007FF668D5357B query=0
+THREAD phase=context-destroyed tid=3848 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-destroyed tid=44688 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-destroyed tid=24472 name= start=00007FFDC349A2E0 query=0
+THREAD phase=context-destroyed tid=38264 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=15040 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=43856 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=28928 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=36832 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=36272 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=36288 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=40320 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=41816 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=12276 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=46904 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=42324 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=46552 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=29000 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=10436 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=34120 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=33600 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=25092 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=41172 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=47132 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=45156 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=46428 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=27656 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=43460 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=49036 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=26024 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=32976 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=4428 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=18300 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=47164 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=32892 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=45020 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=32076 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=18820 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=31736 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=30208 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=23268 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=47764 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=40908 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=27784 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=26324 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=38636 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=44660 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=49116 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=46588 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=26760 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=19144 name= start=00007FFCDAA120D8 query=0
+THREAD phase=context-destroyed tid=32256 name= start=00007FFCDAA120D8 query=0
+THREAD_TOTAL phase=context-destroyed total=52 named_raster=0
+BOUNDARY phase=before-main-return pid=16440 tick=776229234 module=00007FFCD9390000 owned_loads=1 handles=166 gdi=0 user=1
+THREAD phase=before-main-return tid=48572 name= start=00007FF668D5357B query=0
+THREAD phase=before-main-return tid=3848 name= start=00007FFDC349A2E0 query=0
+THREAD phase=before-main-return tid=44688 name= start=00007FFDC349A2E0 query=0
+THREAD phase=before-main-return tid=24472 name= start=00007FFDC349A2E0 query=0
+THREAD phase=before-main-return tid=38264 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=15040 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=43856 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=28928 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=36832 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=36272 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=36288 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=40320 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=41816 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=12276 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=46904 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=42324 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=46552 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=29000 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=10436 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=34120 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=33600 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=25092 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=41172 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=47132 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=45156 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=46428 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=27656 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=43460 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=49036 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=26024 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=32976 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=4428 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=18300 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=47164 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=32892 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=45020 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=32076 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=18820 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=31736 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=30208 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=23268 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=47764 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=40908 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=27784 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=26324 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=38636 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=44660 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=49116 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=46588 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=26760 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=19144 name= start=00007FFCDAA120D8 query=0
+THREAD phase=before-main-return tid=32256 name= start=00007FFCDAA120D8 query=0
+THREAD_TOTAL phase=before-main-return total=52 named_raster=0
+MAIN_RETURN failures=0
+DEBUG_THREAD_EXIT tick=1141 tid=44688 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=15040 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=3848 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=38264 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=24472 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=36832 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=28928 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=36288 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=42324 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=46552 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=36272 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=29000 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=47132 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=45156 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=46428 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=27656 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=41816 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=18300 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=32976 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=10436 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=46904 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=45020 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=32076 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=30208 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=47164 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=4428 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=47764 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=18820 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=40908 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=23268 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=31736 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=49116 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=46588 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=26760 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=44660 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=19144 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=27784 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=32892 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=25092 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=33600 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=26324 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=38636 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=32256 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=43460 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=43856 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=34120 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=49036 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=26024 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=12276 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=41172 code=0
+DEBUG_THREAD_EXIT tick=1141 tid=40320 code=0
+EVENT tick=1141 tid=48572 name=DLL_DISPATCH
+DLL_DISPATCH instance=7ffcd9390000 reason=0 reserved=1
+EVENT tick=1141 tid=48572 name=USER_DLLMAIN
+USER_DLLMAIN instance=7ffcd9390000 reason=0 reserved=1
+EVENT tick=1141 tid=48572 name=TERMINATION_NOTICE
+TERMINATION_NOTICE tid=48572
+EVENT tick=1141 tid=48572 name=CRT_DETACH
+CRT_DETACH terminating=1
+EVENT tick=1141 tid=48572 name=MANAGER_DESTROY
+MANAGER_COUNT 1
+MANAGER_TERMINATING value=1
+DEBUG_OS_EXIT code=0 forced=0 errors=0 managers=1 rast_destroy=0 signals=0 waits=0

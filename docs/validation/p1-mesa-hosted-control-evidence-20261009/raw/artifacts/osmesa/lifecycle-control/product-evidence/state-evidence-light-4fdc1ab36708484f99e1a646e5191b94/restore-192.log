@@ -1,0 +1,15 @@
+TEST_PHASE pid6588 tick425078 dispatched0 create-host-begin
+TEST_PHASE pid6588 tick425093 dispatched0 create-host-end
+TEST_PHASE pid6588 tick425125 dispatched0 open-begin
+TEST_PHASE pid6588 tick425421 dispatched0 open-return
+TEST_PHASE pid6588 tick425937 dispatched24 open-settled
+RESTORED moderestore dpi192 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+TEST_PHASE pid6588 tick425937 dispatched24 screenshot-begin
+TEST_PHASE pid6588 tick425968 dispatched24 screenshot-end
+TEST_PHASE pid6588 tick425968 dispatched24 close-begin
+TEST_PHASE pid6588 tick426000 dispatched24 close-request-return
+TEST_PHASE pid6588 tick426046 dispatched25 close-state-checked
+TEST_PHASE pid6588 tick426359 dispatched25 com-uninitialize-begin
+TEST_PHASE pid6588 tick426359 dispatched25 process-return
+Stateful actual light / restore: 0 failures

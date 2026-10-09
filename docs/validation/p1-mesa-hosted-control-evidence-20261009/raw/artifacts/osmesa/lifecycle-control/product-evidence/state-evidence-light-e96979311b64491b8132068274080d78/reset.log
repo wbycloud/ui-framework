@@ -1,0 +1,12 @@
+TEST_PHASE pid7128 tick735687 dispatched0 create-host-begin
+TEST_PHASE pid7128 tick735703 dispatched0 create-host-end
+TEST_PHASE pid7128 tick735734 dispatched0 open-begin
+TEST_PHASE pid7128 tick736062 dispatched0 open-return
+TEST_PHASE pid7128 tick736562 dispatched34 open-settled
+RESTORED modereset dpi96 name280 treeCollapsed1
+TEST_PHASE pid7128 tick737000 dispatched66 close-begin
+TEST_PHASE pid7128 tick737031 dispatched66 close-request-return
+TEST_PHASE pid7128 tick737093 dispatched67 close-state-checked
+TEST_PHASE pid7128 tick737406 dispatched67 com-uninitialize-begin
+TEST_PHASE pid7128 tick737406 dispatched67 process-return
+Stateful actual light / reset: 0 failures

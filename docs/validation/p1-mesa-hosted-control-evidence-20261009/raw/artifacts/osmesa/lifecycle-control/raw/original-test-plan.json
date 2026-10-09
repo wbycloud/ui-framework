@@ -1,0 +1,107 @@
+{
+  "backtraceGraph" : 
+  {
+    "commands" : 
+    [
+      "add_test"
+    ],
+    "files" : 
+    [
+      "D:/a/ui-framework/ui-framework/CMakeLists.txt"
+    ],
+    "nodes" : 
+    [
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 405,
+        "parent" : 0
+      },
+      {
+        "file" : 0
+      },
+      {
+        "command" : 0,
+        "file" : 0,
+        "line" : 407,
+        "parent" : 2
+      }
+    ]
+  },
+  "kind" : "ctestInfo",
+  "tests" : 
+  [
+    {
+      "backtrace" : 1,
+      "command" : 
+      [
+        "C:/Program Files/PowerShell/7/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "D:/a/ui-framework/ui-framework/tests/run-stateful-components.ps1",
+        "-BuildDirectory",
+        "D:/a/ui-framework/ui-framework/build/ci-osmesa",
+        "-Provider",
+        "D:/a/ui-framework/ui-framework/.deps/mesa-24.3.4/x64/osmesa.dll",
+        "-Backend",
+        "light"
+      ],
+      "name" : "ui_stateful_components_light",
+      "properties" : 
+      [
+        {
+          "name" : "RUN_SERIAL",
+          "value" : true
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 180.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/a/ui-framework/ui-framework/build/ci-osmesa"
+        }
+      ]
+    },
+    {
+      "backtrace" : 3,
+      "command" : 
+      [
+        "C:/Program Files/PowerShell/7/pwsh.exe",
+        "-NoProfile",
+        "-File",
+        "D:/a/ui-framework/ui-framework/tests/run-instance-language.ps1",
+        "-BuildDirectory",
+        "D:/a/ui-framework/ui-framework/build/ci-osmesa",
+        "-Provider",
+        "D:/a/ui-framework/ui-framework/.deps/mesa-24.3.4/x64/osmesa.dll",
+        "-Backend",
+        "light"
+      ],
+      "name" : "ui_instance_language_light",
+      "properties" : 
+      [
+        {
+          "name" : "RUN_SERIAL",
+          "value" : true
+        },
+        {
+          "name" : "TIMEOUT",
+          "value" : 240.0
+        },
+        {
+          "name" : "WORKING_DIRECTORY",
+          "value" : "D:/a/ui-framework/ui-framework/build/ci-osmesa"
+        }
+      ]
+    }
+  ],
+  "version" : 
+  {
+    "major" : 1,
+    "minor" : 0
+  }
+}

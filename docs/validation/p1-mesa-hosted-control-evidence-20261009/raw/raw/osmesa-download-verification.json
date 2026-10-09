@@ -1,0 +1,26 @@
+{
+  "artifact": {
+    "id": 11610564176,
+    "node_id": "MDg6QXJ0aWZhY3QxMTYxMDU2NDE3Ng==",
+    "name": "windows-osmesa-5715a0539b94158e3f18afc32bffbc9a5d6a0168-1",
+    "size_in_bytes": 469580301,
+    "url": "https://api.github.com/repos/wbycloud/ui-framework/actions/artifacts/11610564176",
+    "archive_download_url": "https://api.github.com/repos/wbycloud/ui-framework/actions/artifacts/11610564176/zip",
+    "expired": false,
+    "digest": "sha256:6327c1ef443e2ad62b0ed693ad819bbb1d82b58026c0bf08059a6a2999a2c6bb",
+    "created_at": "2026-10-09T10:37:37Z",
+    "updated_at": "2026-10-09T10:37:37Z",
+    "expires_at": "2026-11-08T10:37:01Z",
+    "workflow_run": {
+      "id": 37917825238,
+      "repository_id": 1401087419,
+      "head_repository_id": 1401087419,
+      "head_branch": "codex/p1-process-boundaries",
+      "head_sha": "5715a0539b94158e3f18afc32bffbc9a5d6a0168"
+    }
+  },
+  "archive_sha256": "6327c1ef443e2ad62b0ed693ad819bbb1d82b58026c0bf08059a6a2999a2c6bb",
+  "size": 469580301,
+  "reused_segments": 324,
+  "new_requests": 568
+}

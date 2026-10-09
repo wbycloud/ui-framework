@@ -1,0 +1,30 @@
+{
+  "runtimeDllSha256": "9560717767B36EF8AF59C3F12D9D4C1372E4281F955AEB1D5788D0D11C33B2B3",
+  "packageSha256": "57AD5D712E627AF264AB549AC87D736E6A4CD1E6F0B7738CDB9508B3BB2A5DD4",
+  "evidence": "D:\\a\\ui-framework\\ui-framework\\build\\ci-webview2\\state-evidence-light-2b79f774ce034edc8a8d0b7631e2e625",
+  "providerSha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F",
+  "backend": "light",
+  "frameworkApi": 9,
+  "executableSha256": "1E81498F91EF3C109369456D190763054141737376C848C215C2B5ABD2E45E5E",
+  "startedUtc": "2026-10-09T10:31:07.9965399Z",
+  "cases": [
+    {
+      "status": "exited",
+      "mode": "write",
+      "elapsedMs": 2502,
+      "completedUtc": "2026-10-09T10:31:10.5610823Z",
+      "label": "write-96",
+      "startedUtc": "2026-10-09T10:31:08.0466800Z",
+      "exitCode": 0,
+      "dpi": 96
+    },
+    {
+      "mode": "restore",
+      "dpi": 96,
+      "startedUtc": "2026-10-09T10:31:10.5672249Z",
+      "status": "running",
+      "label": "restore-96"
+    }
+  ],
+  "provider": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll"
+}

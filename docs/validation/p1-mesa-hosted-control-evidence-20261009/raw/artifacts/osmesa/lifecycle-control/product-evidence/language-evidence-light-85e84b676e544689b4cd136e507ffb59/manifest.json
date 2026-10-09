@@ -1,0 +1,95 @@
+{
+  "files": [
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+      "sha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F"
+    },
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\ui_instance_language_test.exe",
+      "sha256": "075FCE28A5500ED259A4FFA592473D9F8246FD296829DB781AAF0CECCAFAFE57"
+    },
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\stateful_components.uapp",
+      "sha256": "CC8DBCCA2853D08FB525AFD3DF1860B9691817C9C0428CE1D368B43FA0307D88"
+    },
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\ui_framework.dll",
+      "sha256": "805B014899AF4690B8A47E0F765D3365EB012EBCC4FB0010F483957C3E1AB096"
+    }
+  ],
+  "evidence": "D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\language-evidence-light-85e84b676e544689b4cd136e507ffb59",
+  "backend": "light",
+  "input": "real SendInput",
+  "provider": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+  "frameworkApi": 9,
+  "startedUtc": "2026-10-09T10:31:04.9553899Z",
+  "cases": [
+    {
+      "mode": "preferences",
+      "status": "exited",
+      "elapsedMs": 7701,
+      "startedUtc": "2026-10-09T10:31:05.0623888Z",
+      "completedUtc": "2026-10-09T10:31:12.7932436Z",
+      "label": "preferences-96",
+      "dpi": 96,
+      "exitCode": 0
+    },
+    {
+      "mode": "write",
+      "status": "exited",
+      "elapsedMs": 11345,
+      "startedUtc": "2026-10-09T10:31:12.8009671Z",
+      "completedUtc": "2026-10-09T10:31:24.1477932Z",
+      "label": "write-96",
+      "dpi": 96,
+      "exitCode": 0
+    },
+    {
+      "mode": "restore",
+      "status": "exited",
+      "elapsedMs": 10049,
+      "startedUtc": "2026-10-09T10:31:24.1503923Z",
+      "completedUtc": "2026-10-09T10:31:34.2008608Z",
+      "label": "restore-96",
+      "dpi": 96,
+      "exitCode": 0
+    },
+    {
+      "mode": "write",
+      "status": "exited",
+      "elapsedMs": 11319,
+      "startedUtc": "2026-10-09T10:31:34.2028847Z",
+      "completedUtc": "2026-10-09T10:31:45.5228172Z",
+      "label": "write-144",
+      "dpi": 144,
+      "exitCode": 0
+    },
+    {
+      "mode": "restore",
+      "status": "exited",
+      "elapsedMs": 9912,
+      "startedUtc": "2026-10-09T10:31:45.5242846Z",
+      "completedUtc": "2026-10-09T10:31:55.4373147Z",
+      "label": "restore-144",
+      "dpi": 144,
+      "exitCode": 0
+    },
+    {
+      "mode": "write",
+      "status": "exited",
+      "elapsedMs": 11355,
+      "startedUtc": "2026-10-09T10:31:55.4393715Z",
+      "completedUtc": "2026-10-09T10:32:06.7952949Z",
+      "label": "write-192",
+      "dpi": 192,
+      "exitCode": 0
+    },
+    {
+      "startedUtc": "2026-10-09T10:32:06.7968654Z",
+      "mode": "restore",
+      "label": "restore-192",
+      "status": "running",
+      "dpi": 192
+    }
+  ]
+}

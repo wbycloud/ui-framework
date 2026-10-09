@@ -1,0 +1,76 @@
+START pid=6596 lp_num_threads=<unset> mode=exit
+BOUNDARY phase=before-load pid=6596 tick=413421 module=0000000000000000 owned_loads=0 handles=50 gdi=0 user=1
+THREAD phase=before-load tid=4560 name= start=00007FF72BBB2C02 query=0
+THREAD phase=before-load tid=3200 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=before-load tid=6436 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=before-load tid=3860 name= start=00007FFA20ECB4A0 query=0
+THREAD_TOTAL phase=before-load total=4 named_raster=0
+BOUNDARY phase=loaded pid=6596 tick=413437 module=00007FF9D7E20000 owned_loads=1 handles=99 gdi=0 user=1
+THREAD phase=loaded tid=4560 name= start=00007FF72BBB2C02 query=0
+THREAD phase=loaded tid=3200 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=loaded tid=6436 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=loaded tid=3860 name= start=00007FFA20ECB4A0 query=0
+THREAD_TOTAL phase=loaded total=4 named_raster=0
+CONTEXT_CREATE_BEGIN pass=0
+BOUNDARY phase=context-current pid=6596 tick=413484 module=00007FF9D7E20000 owned_loads=1 handles=121 gdi=0 user=1
+THREAD phase=context-current tid=4560 name= start=00007FF72BBB2C02 query=0
+THREAD phase=context-current tid=3200 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=context-current tid=6436 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=context-current tid=3860 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=context-current tid=5816 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-current tid=2420 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-current tid=6816 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-current tid=5548 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-current tid=4788 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-current tid=5016 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-current tid=1292 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-current tid=5984 name= start=00007FF9D9EAC348 query=0
+THREAD_TOTAL phase=context-current total=12 named_raster=0
+GL renderer=llvmpipe (LLVM 19.1.7, 256 bits) version=4.5 (Compatibility Profile) Mesa 24.3.4 (git-1950a8b78c)
+RENDER pass=0 frames=120 triangles=64 width=512 height=512 elapsed_ms=692.952 hash=38b57cea08bb9bf9 center=255,0,0,255
+BOUNDARY phase=rendered pid=6596 tick=414187 module=00007FF9D7E20000 owned_loads=1 handles=121 gdi=0 user=1
+THREAD phase=rendered tid=4560 name= start=00007FF72BBB2C02 query=0
+THREAD phase=rendered tid=3200 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=rendered tid=6436 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=rendered tid=3860 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=rendered tid=5816 name= start=00007FF9D9EAC348 query=0
+THREAD phase=rendered tid=2420 name= start=00007FF9D9EAC348 query=0
+THREAD phase=rendered tid=6816 name= start=00007FF9D9EAC348 query=0
+THREAD phase=rendered tid=5548 name= start=00007FF9D9EAC348 query=0
+THREAD phase=rendered tid=4788 name= start=00007FF9D9EAC348 query=0
+THREAD phase=rendered tid=5016 name= start=00007FF9D9EAC348 query=0
+THREAD phase=rendered tid=1292 name= start=00007FF9D9EAC348 query=0
+THREAD phase=rendered tid=5984 name= start=00007FF9D9EAC348 query=0
+THREAD_TOTAL phase=rendered total=12 named_raster=0
+GATE rendered
+CONTEXT_DESTROY_BEGIN pass=0
+CONTEXT_DESTROY_END pass=0
+BOUNDARY phase=context-destroyed pid=6596 tick=414875 module=00007FF9D7E20000 owned_loads=1 handles=121 gdi=0 user=1
+THREAD phase=context-destroyed tid=4560 name= start=00007FF72BBB2C02 query=0
+THREAD phase=context-destroyed tid=3200 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=context-destroyed tid=6436 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=context-destroyed tid=3860 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=context-destroyed tid=5816 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-destroyed tid=2420 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-destroyed tid=6816 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-destroyed tid=5548 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-destroyed tid=4788 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-destroyed tid=5016 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-destroyed tid=1292 name= start=00007FF9D9EAC348 query=0
+THREAD phase=context-destroyed tid=5984 name= start=00007FF9D9EAC348 query=0
+THREAD_TOTAL phase=context-destroyed total=12 named_raster=0
+BOUNDARY phase=before-main-return pid=6596 tick=414875 module=00007FF9D7E20000 owned_loads=1 handles=121 gdi=0 user=1
+THREAD phase=before-main-return tid=4560 name= start=00007FF72BBB2C02 query=0
+THREAD phase=before-main-return tid=3200 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=before-main-return tid=6436 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=before-main-return tid=3860 name= start=00007FFA20ECB4A0 query=0
+THREAD phase=before-main-return tid=5816 name= start=00007FF9D9EAC348 query=0
+THREAD phase=before-main-return tid=2420 name= start=00007FF9D9EAC348 query=0
+THREAD phase=before-main-return tid=6816 name= start=00007FF9D9EAC348 query=0
+THREAD phase=before-main-return tid=5548 name= start=00007FF9D9EAC348 query=0
+THREAD phase=before-main-return tid=4788 name= start=00007FF9D9EAC348 query=0
+THREAD phase=before-main-return tid=5016 name= start=00007FF9D9EAC348 query=0
+THREAD phase=before-main-return tid=1292 name= start=00007FF9D9EAC348 query=0
+THREAD phase=before-main-return tid=5984 name= start=00007FF9D9EAC348 query=0
+THREAD_TOTAL phase=before-main-return total=12 named_raster=0
+MAIN_RETURN failures=0

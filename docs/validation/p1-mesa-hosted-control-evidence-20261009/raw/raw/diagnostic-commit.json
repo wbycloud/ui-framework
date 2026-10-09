@@ -1,0 +1,14 @@
+{
+  "head": "5715a0539b94158e3f18afc32bffbc9a5d6a0168",
+  "parent": "65f678c98dad601833035761f009479018d23079",
+  "paths": [
+    ".gitattributes",
+    ".github/workflows/windows-regression.yml",
+    "tests/observe_processes.py",
+    "tests/process_stall_capture.py",
+    "tests/osmesa_thread_probe.c",
+    "tests/osmesa_stall_objects.py",
+    "tests/run_osmesa_lifecycle_control.py",
+    "tools/mesa-osmesa-process-detach.patch"
+  ]
+}

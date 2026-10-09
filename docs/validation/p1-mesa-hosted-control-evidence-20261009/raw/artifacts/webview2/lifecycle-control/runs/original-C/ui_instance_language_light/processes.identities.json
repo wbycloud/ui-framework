@@ -1,0 +1,138 @@
+{
+  "head": "5715a0539b94158e3f18afc32bffbc9a5d6a0168",
+  "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "files": [
+    {
+      "path": "CMakeLists.txt",
+      "bytes": 52412,
+      "sha256": "b51306b07c1c7e887d65cae97a7528140897769de5c9eab2e6e834fbe8d38c98"
+    },
+    {
+      "path": "include\\ui_framework\\application.h",
+      "bytes": 8306,
+      "sha256": "4c87d5dab2f59eea1a240e1378849604635222452d785b6d928b792b1c6483ab"
+    },
+    {
+      "path": "include\\ui_framework\\assistant.h",
+      "bytes": 4915,
+      "sha256": "785ddb31f95bcde0669dbfc8993c7a2408e560953725690911aa1c84e78f59b6"
+    },
+    {
+      "path": "include\\ui_framework\\components.h",
+      "bytes": 13416,
+      "sha256": "b53e84f337208d80fb8fcb104d70b007c79e00fe38992243ed2ce75d2275e997"
+    },
+    {
+      "path": "include\\ui_framework\\images.h",
+      "bytes": 2294,
+      "sha256": "391bb3234a5fbcd89163ca7508be34beb492c7bfe03b81bf4fce0199532d8431"
+    },
+    {
+      "path": "include\\ui_framework\\language.h",
+      "bytes": 2647,
+      "sha256": "4898dfc284f0c6023d4c020e64855169d576b2144187e0cb10adf1374bd9b9fc"
+    },
+    {
+      "path": "include\\ui_framework\\light_web.h",
+      "bytes": 1116,
+      "sha256": "98df2ed526240575d8ddea17002515dd8be2eacc3ee7e335848f9024b7b43ee2"
+    },
+    {
+      "path": "include\\ui_framework\\menus.h",
+      "bytes": 3785,
+      "sha256": "9faba850144360ebb536c17e345bab2e6bf4081c9a352e715827e9c0b7a9a317"
+    },
+    {
+      "path": "include\\ui_framework\\native.h",
+      "bytes": 2972,
+      "sha256": "7b27baab4c88246edb7ac1714e0774bcf5b1dfb65d9f5cdabfc9c868a570382c"
+    },
+    {
+      "path": "include\\ui_framework\\opengl.h",
+      "bytes": 4066,
+      "sha256": "84b413b7fed2280acde808810eed1fcf852ed580c277d923232cf29f7d2ca3f6"
+    },
+    {
+      "path": "include\\ui_framework\\package.h",
+      "bytes": 2569,
+      "sha256": "b1fd6667566687f1430002030b5f3a23a373e34796939627d1cb3849e36a2e91"
+    },
+    {
+      "path": "include\\ui_framework\\shell.h",
+      "bytes": 5268,
+      "sha256": "bb8b607aa35a1936c0f6d9740527082ac6933953cd764df6d1a356283ab4c86c"
+    },
+    {
+      "path": "include\\ui_framework\\ui.h",
+      "bytes": 22806,
+      "sha256": "5af970d4ee902224c1a9d262bedc3371a2b9ec93b9a762863e67eb336e76803c"
+    },
+    {
+      "path": "include\\ui_framework\\webview2.h",
+      "bytes": 3370,
+      "sha256": "57b3f4e5af2a5f2c53f096e725563752c8e159cbbe054bf42bd741fe7d77c8ca"
+    },
+    {
+      "path": "tests\\display_probe.c",
+      "bytes": 11879,
+      "sha256": "9b8ab40ef047634b980b568a8205e8e1d6ea5c6cbb64b6fcf906025866a4079e"
+    },
+    {
+      "path": "tests\\interaction_probe.c",
+      "bytes": 42381,
+      "sha256": "130c9b7944f0f5e16014c3e5e286c4cc55934943b5e384a6019d7e7a9acb24ca"
+    },
+    {
+      "path": "tests\\osmesa_thread_probe.c",
+      "bytes": 9858,
+      "sha256": "bf5ecbb18ba8902e511d3b55261d6ff0b9f096598b3abb008a321b527c15a8e3"
+    },
+    {
+      "path": "tests\\presentation_transition_probe.c",
+      "bytes": 20326,
+      "sha256": "5ee752c5dac0323158f9981fcbcc44805aaa7fe9a96483bef8300c8871f7d4cf"
+    },
+    {
+      "path": "tests\\readonly_navigation_probe.c",
+      "bytes": 16945,
+      "sha256": "a154b2f3c85767b1dbf3f4f30a5dc5dd58b7b723e0aa1cf59c2635b5a838dc4a"
+    },
+    {
+      "path": "tests\\runtime_boundary_probe.c",
+      "bytes": 5664,
+      "sha256": "8593b88fb4d673ee7e4d788692653829d2a3953aaa2dec404ffc62effb34ba12"
+    },
+    {
+      "path": "tests\\observe_processes.py",
+      "bytes": 6568,
+      "sha256": "a69b28fdab4e508c06c75d59cafd3a276f336a177d04c8e816bb644931990ece"
+    },
+    {
+      "path": "tests\\process_stall_capture.py",
+      "bytes": 1936,
+      "sha256": "a377a3af53fb168db826ec14910d57d6a92f936d4d2039f02647ddabbbd62e2b"
+    },
+    {
+      "path": "tests\\framework_features_host.c",
+      "bytes": 11615,
+      "sha256": "29ccd9fa784d76e1f43998eca61e614946e83fe11bd61aca0545434a7ff2c6f9"
+    },
+    {
+      "path": "src\\menus.c",
+      "bytes": 41957,
+      "sha256": "a95598ee84debaeab43453629fffd7111d7e8e52bd8fecb41fa64e011154a313"
+    },
+    {
+      "path": "src\\components.html",
+      "bytes": 44259,
+      "sha256": "b4a4b8828240c37d8fdc8482236b47d4420352c7caf4778733b5b5879b27de71"
+    }
+  ],
+  "actual_command_files": [
+    {
+      "path": "C:\\Program Files\\CMake\\bin\\ctest.EXE",
+      "bytes": 12947920,
+      "sha256": "76d83c30be3899c2b446c73bff7aead58c47440c05062c5716e3162e588a6e2c"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+TEST_PHASE pid8172 tick453031 dispatched0 create-host-begin
+TEST_PHASE pid8172 tick453046 dispatched0 create-host-end
+TEST_PHASE pid8172 tick453062 dispatched0 open-begin
+TEST_PHASE pid8172 tick453390 dispatched0 open-return
+TEST_PHASE pid8172 tick453890 dispatched34 open-settled
+RESTORED modereset dpi96 name280 treeCollapsed1
+TEST_PHASE pid8172 tick454296 dispatched66 close-begin
+TEST_PHASE pid8172 tick454312 dispatched66 close-request-return
+TEST_PHASE pid8172 tick454390 dispatched67 close-state-checked
+TEST_PHASE pid8172 tick454703 dispatched67 com-uninitialize-begin
+TEST_PHASE pid8172 tick454703 dispatched67 process-return
+Stateful actual light / reset: 0 failures

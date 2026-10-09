@@ -1,0 +1,34 @@
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+TEST_PHASE pid2676 tick667562 dispatched0 create-host-begin
+TEST_PHASE pid2676 tick667578 dispatched0 create-host-end
+TEST_PHASE pid2676 tick667812 dispatched13 screenshot-begin
+TEST_PHASE pid2676 tick667859 dispatched13 screenshot-end
+TEST_PHASE pid2676 tick667859 dispatched13 preferences-begin
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE magic: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation10 source1
+PREFERENCE future: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation12 source1
+TEST_PHASE pid2676 tick671531 dispatched222 screenshot-begin
+TEST_PHASE pid2676 tick671546 dispatched222 screenshot-end
+PREFERENCE language: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation14 source1
+PREFERENCE profile: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation16 source1
+PREFERENCE reserved: final=en-US file unchanged
+VISIBLE_LANGUAGE zh-CN header=外观 / 草稿 generation18 source1
+TEST_PHASE pid2676 tick673562 dispatched330 screenshot-begin
+TEST_PHASE pid2676 tick673609 dispatched330 screenshot-end
+PREFERENCE zh-CN: final=zh-CN file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation20 source1
+PREFERENCE en-US: final=en-US file unchanged
+TEST_PHASE pid2676 tick674453 dispatched373 preferences-end
+TEST_PHASE pid2676 tick674765 dispatched375 com-uninitialize-begin
+TEST_PHASE pid2676 tick674765 dispatched375 process-return
+Complete DLL preferences light failures0

@@ -1,0 +1,121 @@
+
+Microsoft (R) Windows Debugger Version 10.0.22621.755 X86
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [D:\应用软件框架\应用层序框架\build\p1-mesa-lifecycle-20261009\runs\provider-A-exit-default-99\rendered-fullUser Mini Dump File with Full Memory: Only application data is available
+
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             D:\应用软件框架\应用层序框架\.deps\mes
+
+************* Path validation summary **************
+Response                         Time (ms)     Location
+OK                                             D:\应用软件框架\应用层序框架\build\p1-hosted-diagnostic-20261009\me
+Symbol search path is: D:\应用软件框架\应用层序框架\build\p1-hosted-diagnostic-20261009\mesExecutable search path is: D:\应用软件框架\应用层序框架\.deps\mesaWindows 10 Version 26300 MP (24 procs) Free x64
+Product: WinNt, suite: SingleUserTS Personal
+Edition build lab: 26100.1.amd64fre.ge_release.240331-1435
+Machine Name:
+Debug session time: Fri Oct  9 17:18:05.000 2026 (UTC + 8:00)
+System Uptime: 8 days 23:33:41.341
+Process Uptime: not available
+......................
+
+************* Symbol Loading Error Summary **************
+Module name            Error
+ntdll                  The system cannot find the file specified
+
+You can troubleshoot most symbol related issues by turning on symbol loading diagnostics (!sym noisy) and repeating the command that caused symbols to be loaded.
+You should also verify that your symbol search path (.sympath) is correct.
+For analysis of this file, run !analyze -v
+ntdll!NtReadFile+0x14:
+00007ffd`c35e0e84 c3              ret
+0:000> cdb: Reading initial command '.reload /f osmesa.dll; lmv m osmesa; dt osmesa!pipe_frontend_screen; dt osmesa!llvmpipe_screen; dt osmesa!lp_rasterizer; dt osmesa!lp_rasterizer_task; dt osmesa!util_semaphore; dt osmesa!thrd_t; ? osmesa!global_fscreen-osmesa; q'
+start             end                 module name
+00007ffc`d71c0000 00007ffc`da440000   osmesa     (private pdb symbols)  d:\应用软件框架\应用层序框架\build\p1-hosted-diagnostic-20261009\mesa-debug\x64\osmesa.pdb
+    Loaded symbol image file: osmesa.dll
+    Image path: D:\应用软件框架\应用层序框架\.deps\mesa-24.3.4\x64\osmesa.dll
+    Image name: osmesa.dll
+    Timestamp:        Sat Jan 25 09:05:05 2025 (679438C1)
+    CheckSum:         031E771C
+    ImageSize:        03280000
+    File version:     24.3.4.0
+    Product version:  24.3.4.0
+    File flags:       0 (Mask 3F)
+    File OS:          40004 NT Win32
+    File type:        0.0 Unknown
+    File date:        00000000.00000000
+    Translations:     0409.04b0
+    Information from resource tables:
+        CompanyName:      Mesa/X.org
+        ProductName:      Mesa3D
+        InternalName:     osmesa.dll
+        OriginalFilename: osmesa.dll
+        ProductVersion:   24.3.4.0
+        FileVersion:      24.3.4.0
+        FileDescription:  Mesa3D off-screen renderi        LegalCopyright:   Copyright (C) 2024
+   +0x000 screen           : Ptr64 pipe_screen
+   +0x008 get_egl_image    : Ptr64     bool 
+   +0x010 validate_egl_image : Ptr64     bool 
+   +0x018 get_param        : Ptr64     int 
+   +0x020 set_background_context : Ptr64     void 
+   +0x028 st_screen        : Ptr64 Void
+   +0x000 base             : pipe_screen
+   +0x280 winsys           : Ptr64 sw_winsys
+   +0x288 num_threads      : Uint4B
+   +0x28c timestamp        : Uint4B
+   +0x290 rast             : Ptr64 lp_rasterizer
+   +0x298 rast_mutex       : mtx_t
+   +0x2c0 cs_tpool         : Ptr64 lp_cs_tpool
+   +0x2c8 cs_mutex         : mtx_t
+   +0x2f0 allow_cl         : Bool
+   +0x2f8 late_mutex       : mtx_t
+   +0x320 late_init_done   : Bool
+   +0x328 ctx_mutex        : mtx_t
+   +0x350 ctx_list         : list_head
+   +0x360 renderer_string  : [100] Char
+   +0x3c8 disk_shader_cache : Ptr64 disk_cache
+   +0x3d0 dummy_dmabuf     : Ptr64 llvmpipe_memory_allocation
+   +0x3d8 dummy_sync_fd    : Int4B
+   +0x000 exit_flag        : Bool
+   +0x001 no_rast          : Bool
+   +0x008 full_scenes      : Ptr64 lp_scene_queue
+   +0x010 curr_scene       : Ptr64 lp_scene
+   +0x018 tasks            : [32] lp_rasterizer_task
+   +0x2918 num_threads      : Uint4B
+   +0x2920 threads          : [32] thrd_t
+   +0x2a20 barrier          : util_barrier
+   +0x2a60 last_fence       : Ptr64 lp_fence
+   +0x000 bin              : Ptr64 cmd_bin
+   +0x008 state            : Ptr64 lp_rast_state
+   +0x010 scene            : Ptr64 lp_scene
+   +0x018 x                : Uint4B
+   +0x01c y                : Uint4B
+   +0x020 width            : Uint4B
+   +0x024 height           : Uint4B
+   +0x028 color_tiles      : [8] Ptr64 UChar
+   +0x068 depth_tile       : Ptr64 UChar
+   +0x070 rast             : Ptr64 lp_rasterizer
+   +0x078 thread_index     : Uint4B
+   +0x080 thread_data      : lp_jit_thread_data
+   +0x0a0 work_ready       : util_semaphore
+   +0x0d8 work_done        : util_semaphore
+   +0x110 exited           : util_semaphore
+   +0x000 mutex            : mtx_t
+   +0x028 cond             : cnd_t
+   +0x030 counter          : Int4B
+   +0x000 handle           : Ptr64 Void
+Evaluate expression: 50791104 = 00000000`030702c0
+quit:
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\atlmfc.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\ObjectiveC.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\concurrency.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\cpp_rest.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\stl.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Data.Json.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Devices.Geolocation.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Devices.Sensors.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\Windows.Media.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\windows.natvis'
+NatVis script unloaded from 'C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\Visualizers\winrt.natvis'

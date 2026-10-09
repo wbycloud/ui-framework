@@ -1,0 +1,871 @@
+{
+  "head": "5715a0539b94158e3f18afc32bffbc9a5d6a0168",
+  "providers": {
+    "A": {
+      "path": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+      "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+    },
+    "C": {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-candidate\\unpacked\\osmesa.dll",
+      "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5"
+    }
+  },
+  "caller_sha256": "8f1bea06efa99d2e89e92dfb4b199e281ac850af1f3bfcaaddf9c96e71c5cbb2",
+  "source_sha256": "bf5ecbb18ba8902e511d3b55261d6ff0b9f096598b3abb008a321b527c15a8e3",
+  "binaries": {
+    "build\\ci-osmesa\\api7_fixture.uapp": "ad82fe04285d8eafd21b8a69869014ad182ec5c1ce4b8a69bab00ed642794b29",
+    "build\\ci-osmesa\\counter_mismatch.uapp": "d7f213e825b3164f4afc57f97327d5f07b22c1cceaeb0f87b6582f6e4ec601d4",
+    "build\\ci-osmesa\\cpp_fixture.uapp": "919cf4f130e1fe2776a2a302543a9ed17406af6b92683ac2700fdb02bb0c0c15",
+    "build\\ci-osmesa\\dialog_layout_example.exe": "bc1f02189b0a2193b9ad55b599bf1c63ab53a15b36d49622fe8515162217835d",
+    "build\\ci-osmesa\\framework_features.uapp": "b7867df44a9b7794c387b08e45a263db3b1f7a73f84323b8ad3e82649caa8a82",
+    "build\\ci-osmesa\\framework_features_app.dll": "ae3edfa42bf00cf37a6b4897b09314653dc1dc1fc7e31de8792ce09a307aaf9f",
+    "build\\ci-osmesa\\framework_features_app.lib": "da41e1cb6d807eca9bda42b6466ee1a9888c80ed66840ee5f797d113772f80c6",
+    "build\\ci-osmesa\\framework_host.exe": "283a5d19a9f851f2421fa0e3409db22cf02de179a15669a3839c98e9359ad4ac",
+    "build\\ci-osmesa\\generic_components.uapp": "34e72b88f8f16412f878a54b339c0f223262f148da616fcb4f4fc876668aee91",
+    "build\\ci-osmesa\\generic_components_app.dll": "7b85828a65613c386f39076ef0deb6ab11c0558d85c047062f80d9ead1e7195c",
+    "build\\ci-osmesa\\generic_components_app.lib": "55dd3d37e050b69afbe011c066217d7be2c7b1fe67e9d4b049757d6c17ffc395",
+    "build\\ci-osmesa\\light_web_probe.exe": "1ce0d963f481c700813f7d496aab26926bddd0eb53b3b43dfc349171c3181cc0",
+    "build\\ci-osmesa\\minimal_eda.exe": "ca566c917004b4e5404cb5223539ae3b9578af982917d21c5f7916d6f67592ca",
+    "build\\ci-osmesa\\minimal_eda.uapp": "668a090f8d16c14ab6f2edd9b1ac1b01b1fc328ccc981a223c89ce44734b1871",
+    "build\\ci-osmesa\\minimal_eda_app.dll": "8eead9de4257269ec686b674cb467fb02174b826215750c687e39a478204cff2",
+    "build\\ci-osmesa\\minimal_eda_app.lib": "1ce5b600c503c0f7f80b6e0edcfef40fe53553174e366f343df53b840c45e1e9",
+    "build\\ci-osmesa\\session0_gl_app.uapp": "0e30b123aefa075ccc1c52f7a3f724e0cab58d9555d0321c25317400ff3095f1",
+    "build\\ci-osmesa\\stateful_components.uapp": "cc8dbcca2853d08fb525afd3df1860b9691817c9c0428ce1d368b43fa0307d88",
+    "build\\ci-osmesa\\stateful_components_app.dll": "4ea4d9bc878bf195aac0b23efea8b3d4d6f00164c2617a86b51166dcf9209be8",
+    "build\\ci-osmesa\\stateful_components_app.lib": "135cbfb91a520559d53b3c30da06723a81a3aadebcc212c0199dfdffca3fe63a",
+    "build\\ci-osmesa\\uapp_pack.exe": "b4b690d97198eb203546c93b0c548d4e315655434d136cff01da7095dc847db7",
+    "build\\ci-osmesa\\ui_api7_fixture.dll": "b65006b491962c99c3e12f43d7312c40313f52e282410d8e998b1daada22a079",
+    "build\\ci-osmesa\\ui_api7_fixture.lib": "607d359958e9500f30a3830166c61a7d42d8242d567ca4f13d9fa5a927e674c0",
+    "build\\ci-osmesa\\ui_api7_integration_test.exe": "3a21c88bb503127a594f39d35f83bd882cc32069ad1e364902ac7239ad37d032",
+    "build\\ci-osmesa\\ui_application_contract_test.exe": "b65ac1e0aa417f92cee7b05868bd0dee02df99ca54177b0820a28c6ae768a6ed",
+    "build\\ci-osmesa\\ui_application_cpp.dll": "47b7c4f8bb52c61cef335e3813043d7ab516d7d68e00bd5a9e2f3744a90f908f",
+    "build\\ci-osmesa\\ui_application_cpp.lib": "4ac91edd18960dd54a0a9dfc064242f5d6bd60c90732beff0dd63827fdfc3742",
+    "build\\ci-osmesa\\ui_assistant_lifecycle_test.exe": "5297178c7d310402cec00a122234edecb5b257643f9d93688bbc88af1b9ed409",
+    "build\\ci-osmesa\\ui_assistant_protocol_test.exe": "8cd66abde55f78b8849c2df6475cc39c56f54d8a7477a33bf7bfd4e91c8f42d6",
+    "build\\ci-osmesa\\ui_browser_host_test.exe": "009c593dbee62d2e36e828f1b9bce52495a4897de18151244ae674a6e691ee3f",
+    "build\\ci-osmesa\\ui_components_core_test.exe": "373ce9d3c8478404abe41328843d391867ae7c46153e1742a946347f5c64242c",
+    "build\\ci-osmesa\\ui_component_experience_test.exe": "1aa28c8dbdfd7a073febd05fa2255c295b4fd147b83a19130a44134a4a9fdccd",
+    "build\\ci-osmesa\\ui_component_layout_test.exe": "e71a1ec742b742058fa20f5bfc618754d82a1979b9aae7d659c195c84faeb0f3",
+    "build\\ci-osmesa\\ui_component_resilience_test.exe": "9286f77388b3652fd3ed774b8cfa5b7cdc70c6c161cfd834967b05f1691a09d3",
+    "build\\ci-osmesa\\ui_component_scroll_native_test.exe": "aa3bb736e13322929094ec9b341796b64d45f77fe51724604192c49b3d907f6e",
+    "build\\ci-osmesa\\ui_component_scroll_test.exe": "c05d029cc9961aea28f0630f9b538e2db274607dda3cb0b5415ecc4e9251e2a6",
+    "build\\ci-osmesa\\ui_component_widths_test.exe": "713ea30dd8d5a30f40669b1170788cb29d6f986c764d6f8703bcfbd2c32fb3d0",
+    "build\\ci-osmesa\\ui_display_probe.exe": "633f74b88fe3fe90796e27c8e6090132e632b2b023b5f16caad06b869ce0630a",
+    "build\\ci-osmesa\\ui_dpi_integration_test.exe": "23c3fe1df993a63b16a7035f575d498325caa4999a90d4377c34c005c245ba2a",
+    "build\\ci-osmesa\\ui_dpi_web_failure_test.exe": "eb50def9cb4b6e3a1d209b34ad56b964aeb7e6b1e719922be3685a90aaf81568",
+    "build\\ci-osmesa\\ui_floating_web_dpi_test.exe": "7277ec81b043313bc04c54fc7801a6ab284ccfe8c32ecffe155169f77e78a9ca",
+    "build\\ci-osmesa\\ui_framework.dll": "805b014899af4690b8a47e0f765d3365eb012ebcc4fb0010f483957c3e1ab096",
+    "build\\ci-osmesa\\ui_framework.lib": "79a7a99425e76fccee09ad59698876fac194105ed7073e4190a51a1a9fce6f03",
+    "build\\ci-osmesa\\ui_framework_features_host_test.exe": "4e8cb5cc5d235589f8b078cb68bf6364e482f3a4c313c8db03ebf429988e0f6f",
+    "build\\ci-osmesa\\ui_framework_headless.lib": "497bf188fe9103ec60a51e6df9101a052c50e68f8a704bcf4b072c73f749d077",
+    "build\\ci-osmesa\\ui_framework_runtime.lib": "d533c97e54c2105c2a09b854b38be97fee204d39a47c9e2e6193ec85fdf5f1f0",
+    "build\\ci-osmesa\\ui_generic_web_host_test.exe": "7a88a8b1bab7b21e2ea73252c6af628b6ede1dbcd21946e91567154b968aa800",
+    "build\\ci-osmesa\\ui_headless_example.exe": "7eda800b958e6293b76353fc150a19213420a107842b648aafb65f60f001c913",
+    "build\\ci-osmesa\\ui_host_repaint_test.exe": "7e18cd141db13299016a70eb095b5f777370ed36efcb73c202d707a887d09681",
+    "build\\ci-osmesa\\ui_images_windows_test.exe": "ff5591a06406c32383073474f03bc54c3b79b2c887494590c337f44650e358a2",
+    "build\\ci-osmesa\\ui_instance_language_test.exe": "075fce28a5500ed259a4ffa592473d9f8246fd296829db781aaf0ceccafafe57",
+    "build\\ci-osmesa\\ui_interaction_probe.exe": "a8c030f37b781f330285929095ec786df00254dce4c2b368fb5ca7acc3f2bcbb",
+    "build\\ci-osmesa\\ui_language_core_test.exe": "28c11cc36f391da819c041a02aee59243e6e4dc882c420c84b410578866d9b35",
+    "build\\ci-osmesa\\ui_lifecycle_fixture.dll": "5a23e8aacbc3dcf0bc416c2ca1ff2364d94a6915d4f41935013629eafb511a89",
+    "build\\ci-osmesa\\ui_lifecycle_fixture.lib": "70427df581b76130284e48708199f2ba9c761f84fe114acff378553d3b7dea44",
+    "build\\ci-osmesa\\ui_light_glyph_padding_test.exe": "bfb2a3a1a4b9e0ad6d1c5828601596f9a21950a7a00bce071cbc209eed8fa84c",
+    "build\\ci-osmesa\\ui_light_scroll_test.exe": "08d92b1330257644d6913ff6da441a0fcc3dcc99e50509ea2ddd0182d0ffd9a0",
+    "build\\ci-osmesa\\ui_light_web_dynamic_test.exe": "f3b9bbf8ee97fea4071f055485b9d92d4a8e138175af51bafc4947ebfb19cc74",
+    "build\\ci-osmesa\\ui_menu_access_test.exe": "699089dfc453ac291ed4d24077764efd495d641bcc06107612442c05e7e7e751",
+    "build\\ci-osmesa\\ui_menu_cascade_offscreen_test.exe": "81d7660df1b7f425a823664476c15cb66c49764996be8072b4855881109c15fd",
+    "build\\ci-osmesa\\ui_menu_desktop_test.exe": "270692f03b65e0fba5d0813b660b401e7a9a86cd07248830e41e2c6fac7f6cea",
+    "build\\ci-osmesa\\ui_menu_offscreen_test.exe": "3a8749d15a82293c351564ce7fe1a50f953e15c0412fa923f2a91cd660f82581",
+    "build\\ci-osmesa\\ui_monitor_transition_test.exe": "50cf7401c85eb0018cf783fd76eafeae63e1baaa9bc25a0a932e9669d8de47ec",
+    "build\\ci-osmesa\\ui_native_activation_test.exe": "b23e4e5fce83b2f3fd4ec3006fa43c8bce08cbf653ddca42e6615f928e21a079",
+    "build\\ci-osmesa\\ui_native_responsive_test.exe": "b6b0c586c8de2acd4b2462101597d61a17d34b3bc2ebaa30b34c6e69dea1447a",
+    "build\\ci-osmesa\\ui_native_shell_integration_test.exe": "683fb1497906ba1e869744542eb7ef54168c179d2ef3a09313ebb7660b72110e",
+    "build\\ci-osmesa\\ui_offscreen_gl_test.exe": "0ed5c67e0a3ae618d9dfe7e6f1b8063073c523bdefec07c795cd4c98eb3d77c5",
+    "build\\ci-osmesa\\ui_offscreen_msaa_test.exe": "6448ef1acbfd4e6abca14d8525f596187276ef1cbc32a8ca115a39a752221ffc",
+    "build\\ci-osmesa\\ui_opengl_integration_test.exe": "71dde54be4f1c688c8fd6be03d9d21c70aa31e5aa15d82c98e2a281218ae2d3e",
+    "build\\ci-osmesa\\ui_package_format_test.exe": "9fafaafbabddec5ac16d96e01b21a1cdfd84250c92620040b993a5a813f24f3a",
+    "build\\ci-osmesa\\ui_public_headers_cpp_test.exe": "a50ce94456def9066d8a2c7d8d2982ab5093ab88827c548e738f501b09dd6956",
+    "build\\ci-osmesa\\ui_public_headers_c_test.exe": "2aee57ae45ae8e9a7629b3e98784d4f310177fe2d247ea6dc9a0c749378fe0c5",
+    "build\\ci-osmesa\\ui_responsive_layout_test.exe": "339d18c8be17ead732dd238d5fdd5c5de8b7e2049386f30043c4b66ce9a5140c",
+    "build\\ci-osmesa\\ui_session0_gl_app.dll": "bf640f3337cb7e5e4ccd9e467e52b5fc52d64a75d0efb009eac3326d7d8460bc",
+    "build\\ci-osmesa\\ui_session0_gl_app.lib": "00e8d56c85141e7543b7fbe774ae8b25446b984ba6db39f3fc7866f785df21f3",
+    "build\\ci-osmesa\\ui_session0_gl_test.exe": "1f2614b9ba8b71f79a8cac860e331a432afc34d8313ae11d8fc845debebaba08",
+    "build\\ci-osmesa\\ui_stateful_components_test.exe": "a61f107171c738f4650ccd4ab1c4279fbc42c5240d5dc4ea8d7c8cd7445c4aed",
+    "build\\ci-osmesa\\ui_surface_input_test.exe": "7858197f8c24650309e0d04e435c98e5b3d465b6493d5f0e6236a0e250deed42",
+    "build\\ci-osmesa\\ui_visual_ui_test.exe": "7e9aa73224c029cd80a8394476179c819b96e013d2a5b148048f314f9914e0f5",
+    "build\\ci-osmesa\\ui_web_host_frontend_test.exe": "45569d6e02cc3047ddcd63e0dc5a311da9b4e7c8117bacd47fc28c2fd381c35d",
+    "build\\ci-osmesa\\ui_web_shell_slots_test.exe": "471934bde53dd588faf6651b642a0f70bc9d814f430c8b765e34cbb507e5ab7a",
+    "build\\ci-osmesa\\ui_web_text_edit_test.exe": "c9234dc756abacc0faa7b34f1aaf5f3362f91cdd79c00e45b16694ff1f302939",
+    "build\\ci-osmesa\\ui_workspace7_test.exe": "46ef157507b8d034263ed9528032a4122fa6ebbf164cbe8056642d0bd9fb9926",
+    "build\\ci-osmesa\\ui_workspace_integration_test.exe": "0c11787afd948eada1cc37229e14fef34b758625f56062e54d06d5c11bf00865",
+    "build\\ci-osmesa\\ui_workspace_layout_test.exe": "9792b2891b7d606240e6f8baf326eff39b5a492efe8e7177d61b17d673d4abdb",
+    "build\\ci-osmesa\\ui_workspace_offscreen_test.exe": "0b710ec25c7ed1905a6202184072cd1f27804b34040a21ec78fc51ed79db2f0b",
+    "build\\ci-osmesa\\web_counter.uapp": "165015b96353c5be3d0c68b5bb97b6dbf6ea347268d6cd1f1988eadab86eb17f",
+    "build\\ci-osmesa\\web_counter_app.dll": "d227c1d5ad0256c9cca91fe3a4f464e376b00cc5eabf24b85f4df7eba77ff648",
+    "build\\ci-osmesa\\web_counter_app.lib": "16251ed276a6994b35f74b117b044e371ffc4ae67254eb2a1a8c93215fa4311e"
+  },
+  "parent_lp_before": null,
+  "parent_lp_after": null,
+  "runs": [
+    {
+      "label": "A",
+      "kind": "standalone",
+      "command": [
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+        "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 4180,
+      "os_exit": 0,
+      "forced": false,
+      "gated": false,
+      "gate_released": false,
+      "eof": true,
+      "provider_sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+    },
+    {
+      "label": "A",
+      "kind": "standalone",
+      "command": [
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+        "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 6596,
+      "os_exit": 0,
+      "forced": false,
+      "gated": true,
+      "gate_released": true,
+      "eof": true,
+      "provider_sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+    },
+    {
+      "label": "A",
+      "kind": "original",
+      "test": "ui_stateful_components_light",
+      "command": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "tests/observe_processes.py",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-A\\ui_stateful_components_light\\processes.jsonl",
+        "--",
+        "ctest",
+        "--test-dir",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-A",
+        "-R",
+        "^ui_stateful_components_light$",
+        "--no-tests=error",
+        "-V",
+        "--output-junit",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-A\\ui_stateful_components_light\\ctest.xml"
+      ],
+      "observer_exit": 0,
+      "native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 3000.0,
+          "pid": 6584,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 4438.0,
+          "pid": 7908,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 6360.0,
+          "pid": 5308,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 7766.0,
+          "pid": 5616,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 9610.0,
+          "pid": 8108,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 10985.0,
+          "pid": 6588,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 13828.0,
+          "pid": 2744,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 15203.0,
+          "pid": 6568,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 16844.0,
+          "pid": 7412,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 18266.0,
+          "pid": 3760,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 19719.0,
+          "pid": 1132,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 21078.0,
+          "pid": 7972,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 22391.0,
+          "pid": 6300,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 23672.0,
+          "pid": 5656,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 25016.0,
+          "pid": 7884,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 26375.0,
+          "pid": 7876,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 27719.0,
+          "pid": 3176,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 29032.0,
+          "pid": 2108,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 30391.0,
+          "pid": 3640,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 31750.0,
+          "pid": 4632,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 33203.0,
+          "pid": 5144,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 34563.0,
+          "pid": 4868,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 35891.0,
+          "pid": 3684,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 37563.0,
+          "pid": 1464,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 39328.0,
+          "pid": 8172,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 40688.0,
+          "pid": 4792,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "case_ends": [
+        "CASE_END label=write-96 elapsedMs=2441 exit=0",
+        "CASE_END label=restore-96 elapsedMs=1429 exit=0",
+        "CASE_END label=write-144 elapsedMs=1918 exit=0",
+        "CASE_END label=restore-144 elapsedMs=1426 exit=0",
+        "CASE_END label=write-192 elapsedMs=1823 exit=0",
+        "CASE_END label=restore-192 elapsedMs=1361 exit=0",
+        "CASE_END label=isolation elapsedMs=2855 exit=0",
+        "CASE_END label=profile-b elapsedMs=1363 exit=0",
+        "CASE_END label=reload elapsedMs=1664 exit=0",
+        "CASE_END label=locked-profile elapsedMs=1398 exit=0",
+        "CASE_END label=reordered-columns elapsedMs=1441 exit=0",
+        "CASE_END label=missing-new-columns elapsedMs=1361 exit=0",
+        "CASE_END label=empty elapsedMs=1309 exit=0",
+        "CASE_END label=truncated elapsedMs=1295 exit=0",
+        "CASE_END label=oversized elapsedMs=1314 exit=0",
+        "CASE_END label=magic elapsedMs=1332 exit=0",
+        "CASE_END label=checksum elapsedMs=1312 exit=0",
+        "CASE_END label=future elapsedMs=1308 exit=0",
+        "CASE_END label=columns-reserved elapsedMs=1363 exit=0",
+        "CASE_END label=columns-future elapsedMs=1345 exit=0",
+        "CASE_END label=layout-future elapsedMs=1435 exit=0",
+        "CASE_END label=layout-invalid elapsedMs=1370 exit=0",
+        "CASE_END label=missing-file elapsedMs=1299 exit=0",
+        "CASE_END label=failed-create-mount-lock-release elapsedMs=1684 exit=0",
+        "CASE_END label=reset elapsedMs=1753 exit=0",
+        "CASE_END label=reset-cross-process elapsedMs=1371 exit=0"
+      ],
+      "complete_boundaries_pass": true
+    },
+    {
+      "label": "A",
+      "kind": "original",
+      "test": "ui_instance_language_light",
+      "command": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "tests/observe_processes.py",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-A\\ui_instance_language_light\\processes.jsonl",
+        "--",
+        "ctest",
+        "--test-dir",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-A",
+        "-R",
+        "^ui_instance_language_light$",
+        "--no-tests=error",
+        "-V",
+        "--output-junit",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-A\\ui_instance_language_light\\ctest.xml"
+      ],
+      "observer_exit": 8,
+      "native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 8203.0,
+          "pid": 5968,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 19562.0,
+          "pid": 7108,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 29625.0,
+          "pid": 4420,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 40937.0,
+          "pid": 6700,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 50859.0,
+          "pid": 4732,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 62203.0,
+          "pid": 6152,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 240062.0,
+          "pid": 5480,
+          "code": 255,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "case_ends": [
+        "CASE_END label=preferences-96 elapsedMs=7701 exit=0",
+        "CASE_END label=write-96 elapsedMs=11345 exit=0",
+        "CASE_END label=restore-96 elapsedMs=10049 exit=0",
+        "CASE_END label=write-144 elapsedMs=11319 exit=0",
+        "CASE_END label=restore-144 elapsedMs=9912 exit=0",
+        "CASE_END label=write-192 elapsedMs=11355 exit=0"
+      ],
+      "complete_boundaries_pass": false
+    },
+    {
+      "label": "C",
+      "kind": "standalone",
+      "command": [
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-candidate\\unpacked\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 4480,
+      "os_exit": 0,
+      "forced": false,
+      "gated": false,
+      "gate_released": false,
+      "eof": true,
+      "provider_sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5"
+    },
+    {
+      "label": "C",
+      "kind": "standalone",
+      "command": [
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-candidate\\unpacked\\osmesa.dll",
+        "exit"
+      ],
+      "pid": 6428,
+      "os_exit": 0,
+      "forced": false,
+      "gated": true,
+      "gate_released": true,
+      "eof": true,
+      "provider_sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5"
+    },
+    {
+      "label": "C",
+      "kind": "original",
+      "test": "ui_stateful_components_light",
+      "command": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "tests/observe_processes.py",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-C\\ui_stateful_components_light\\processes.jsonl",
+        "--",
+        "ctest",
+        "--test-dir",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-C",
+        "-R",
+        "^ui_stateful_components_light$",
+        "--no-tests=error",
+        "-V",
+        "--output-junit",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-C\\ui_stateful_components_light\\ctest.xml"
+      ],
+      "observer_exit": 0,
+      "native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 2328.0,
+          "pid": 3804,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 3750.0,
+          "pid": 5420,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 5609.0,
+          "pid": 1408,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 7062.0,
+          "pid": 8180,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 8812.0,
+          "pid": 5008,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 10156.0,
+          "pid": 7076,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 12937.0,
+          "pid": 1124,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 14297.0,
+          "pid": 1220,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 15937.0,
+          "pid": 2700,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 17328.0,
+          "pid": 7648,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 18687.0,
+          "pid": 1780,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 20047.0,
+          "pid": 1316,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 21359.0,
+          "pid": 3568,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 22672.0,
+          "pid": 4324,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 24015.0,
+          "pid": 7112,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 25422.0,
+          "pid": 1628,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 26734.0,
+          "pid": 3200,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 28047.0,
+          "pid": 6132,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 29406.0,
+          "pid": 2860,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 30750.0,
+          "pid": 3508,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 32172.0,
+          "pid": 7008,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 33562.0,
+          "pid": 7292,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 34875.0,
+          "pid": 6156,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 36531.0,
+          "pid": 5912,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 38312.0,
+          "pid": 7128,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 39687.0,
+          "pid": 7276,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "case_ends": [
+        "CASE_END label=write-96 elapsedMs=1848 exit=0",
+        "CASE_END label=restore-96 elapsedMs=1401 exit=0",
+        "CASE_END label=write-144 elapsedMs=1868 exit=0",
+        "CASE_END label=restore-144 elapsedMs=1441 exit=0",
+        "CASE_END label=write-192 elapsedMs=1744 exit=0",
+        "CASE_END label=restore-192 elapsedMs=1347 exit=0",
+        "CASE_END label=isolation elapsedMs=2788 exit=0",
+        "CASE_END label=profile-b elapsedMs=1332 exit=0",
+        "CASE_END label=reload elapsedMs=1648 exit=0",
+        "CASE_END label=locked-profile elapsedMs=1377 exit=0",
+        "CASE_END label=reordered-columns elapsedMs=1381 exit=0",
+        "CASE_END label=missing-new-columns elapsedMs=1346 exit=0",
+        "CASE_END label=empty elapsedMs=1310 exit=0",
+        "CASE_END label=truncated elapsedMs=1314 exit=0",
+        "CASE_END label=oversized elapsedMs=1328 exit=0",
+        "CASE_END label=magic elapsedMs=1351 exit=0",
+        "CASE_END label=checksum elapsedMs=1304 exit=0",
+        "CASE_END label=future elapsedMs=1322 exit=0",
+        "CASE_END label=columns-reserved elapsedMs=1351 exit=0",
+        "CASE_END label=columns-future elapsedMs=1345 exit=0",
+        "CASE_END label=layout-future elapsedMs=1399 exit=0",
+        "CASE_END label=layout-invalid elapsedMs=1404 exit=0",
+        "CASE_END label=missing-file elapsedMs=1300 exit=0",
+        "CASE_END label=failed-create-mount-lock-release elapsedMs=1665 exit=0",
+        "CASE_END label=reset elapsedMs=1792 exit=0",
+        "CASE_END label=reset-cross-process elapsedMs=1343 exit=0"
+      ],
+      "complete_boundaries_pass": true
+    },
+    {
+      "label": "C",
+      "kind": "original",
+      "test": "ui_instance_language_light",
+      "command": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "tests/observe_processes.py",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-C\\ui_instance_language_light\\processes.jsonl",
+        "--",
+        "ctest",
+        "--test-dir",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-C",
+        "-R",
+        "^ui_instance_language_light$",
+        "--no-tests=error",
+        "-V",
+        "--output-junit",
+        "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\runs\\original-C\\ui_instance_language_light\\ctest.xml"
+      ],
+      "observer_exit": 0,
+      "native_exits": [
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 8187.0,
+          "pid": 3020,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 19656.0,
+          "pid": 7760,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 29687.0,
+          "pid": 4648,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 41047.0,
+          "pid": 4208,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 51218.0,
+          "pid": 1228,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 62437.0,
+          "pid": 1944,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        },
+        {
+          "kind": "child_exit",
+          "elapsed_ms": 72281.0,
+          "pid": 7172,
+          "code": 0,
+          "read_ok": true,
+          "read_error": 0
+        }
+      ],
+      "case_ends": [
+        "CASE_END label=preferences-96 elapsedMs=7691 exit=0",
+        "CASE_END label=write-96 elapsedMs=11447 exit=0",
+        "CASE_END label=restore-96 elapsedMs=10035 exit=0",
+        "CASE_END label=write-144 elapsedMs=11370 exit=0",
+        "CASE_END label=restore-144 elapsedMs=10147 exit=0",
+        "CASE_END label=write-192 elapsedMs=11223 exit=0",
+        "CASE_END label=restore-192 elapsedMs=9857 exit=0"
+      ],
+      "complete_boundaries_pass": true
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+TEST_PHASE pid5992 tick920968 dispatched0 create-host-begin
+TEST_PHASE pid5992 tick920968 dispatched0 create-host-end
+TEST_PHASE pid5992 tick921000 dispatched0 open-begin
+TEST_PHASE pid5992 tick921265 dispatched0 open-return
+TEST_PHASE pid5992 tick921765 dispatched30 open-settled
+RESTORED modeprofile-b dpi96 name360 treeCollapsed0
+TEST_PHASE pid5992 tick921765 dispatched30 close-begin
+TEST_PHASE pid5992 tick921765 dispatched30 close-request-return
+TEST_PHASE pid5992 tick921828 dispatched31 close-state-checked
+TEST_PHASE pid5992 tick922140 dispatched31 com-uninitialize-begin
+TEST_PHASE pid5992 tick922140 dispatched31 process-return
+Stateful actual light / profile-b: 0 failures

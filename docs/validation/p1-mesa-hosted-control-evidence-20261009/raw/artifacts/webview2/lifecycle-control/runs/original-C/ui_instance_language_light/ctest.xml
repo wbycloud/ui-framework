@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="1"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="68"
+	timestamp="2026-10-09T10:38:47"
+	>
+	<testcase name="ui_instance_language_light" classname="ui_instance_language_light" time="68.0208" status="run">
+		<properties/>
+		<system-out>CASE_BEGIN label=preferences-96 utc=2026-10-09T10:38:47.6047789Z evidence=D:\a\ui-framework\ui-framework\build\ci-webview2\language-evidence-light-3ede27ee1f0a42349243f6402ffc3c42
+INPUT_EVIDENCE complete DLL preference startup; no injected input
+TEST_PHASE pid5596 tick946578 dispatched0 create-host-begin
+TEST_PHASE pid5596 tick946593 dispatched0 create-host-end
+TEST_PHASE pid5596 tick946812 dispatched12 screenshot-begin
+TEST_PHASE pid5596 tick946843 dispatched12 screenshot-end
+TEST_PHASE pid5596 tick946843 dispatched12 preferences-begin
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation2 source1
+PREFERENCE missing: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation4 source1
+PREFERENCE empty: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation6 source1
+PREFERENCE truncated: final=en-US file unchanged
+VISIBLE_LANGUAGE en-US header=Appearance / Draft generation8 source1
+PREFERENCE magic: final=en-US file unchanged
+VISIBLE_LANGUAGE en...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

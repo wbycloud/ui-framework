@@ -1,0 +1,428 @@
+Internal ctest changing into directory: D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A
+UpdateCTestConfiguration  from :D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A/DartConfiguration.tcl
+UpdateCTestConfiguration  from :D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A/DartConfiguration.tcl
+Test project D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: ui_stateful_components_light
+
+1: Test command: "C:\Program Files\PowerShell\7\pwsh.exe" "-NoProfile" "-File" "D:/a/ui-framework/ui-framework/tests/run-stateful-components.ps1" "-BuildDirectory" "D:/a/ui-framework/ui-framework/build/ci-osmesa" "-Provider" "D:\a\ui-framework\ui-framework\.deps\mesa-24.3.4\x64\osmesa.dll" "-Backend" "light"
+1: Working Directory: D:/a/ui-framework/ui-framework/build/ci-evidence-osmesa/lifecycle-control/runs/original-A
+1: Test timeout computed to be: 180
+1: CASE_BEGIN label=write-96 mode=write dpi=96 utc=2026-10-09T10:30:23.9337214Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid6584 tick416062 dispatched0 create-host-begin
+1: TEST_PHASE pid6584 tick416609 dispatched0 create-host-end
+1: TEST_PHASE pid6584 tick416656 dispatched0 open-begin
+1: TEST_PHASE pid6584 tick416937 dispatched0 open-return
+1: TEST_PHASE pid6584 tick417437 dispatched34 open-settled
+1: RESTORED modewrite dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid6584 tick417437 dispatched34 screenshot-begin
+1: TEST_PHASE pid6584 tick417484 dispatched34 screenshot-end
+1: HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+1: CAPTURE hit00000000000901DC classUIFrameworkLightWeb thread1984 ours1984 GetCapture00000000000901DC target-thread-capture00000000000901DC
+1: ACTUAL_HEADER dpi96 width200 -> 280 hit00000000000901DC pid6584
+1: TEST_PHASE pid6584 tick417890 dispatched56 screenshot-begin
+1: TEST_PHASE pid6584 tick417937 dispatched56 screenshot-end
+1: TEST_PHASE pid6584 tick417937 dispatched56 close-begin
+1: TEST_PHASE pid6584 tick417968 dispatched56 close-request-return
+1: TEST_PHASE pid6584 tick418046 dispatched58 close-state-checked
+1: TEST_PHASE pid6584 tick418359 dispatched58 com-uninitialize-begin
+1: TEST_PHASE pid6584 tick418359 dispatched58 process-return
+1: Stateful actual light / write: 0 failures
+1: CASE_END label=write-96 elapsedMs=2441 exit=0
+1: CASE_BEGIN label=restore-96 mode=restore dpi=96 utc=2026-10-09T10:30:26.3979252Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid7908 tick418453 dispatched0 create-host-begin
+1: TEST_PHASE pid7908 tick418484 dispatched0 create-host-end
+1: TEST_PHASE pid7908 tick418484 dispatched0 open-begin
+1: TEST_PHASE pid7908 tick418859 dispatched0 open-return
+1: TEST_PHASE pid7908 tick419359 dispatched28 open-settled
+1: RESTORED moderestore dpi96 name280 treeCollapsed1
+1: STABLE_COLUMN name headerX8 cellX8 texteditable
+1: TEST_PHASE pid7908 tick419359 dispatched28 screenshot-begin
+1: TEST_PHASE pid7908 tick419390 dispatched28 screenshot-end
+1: TEST_PHASE pid7908 tick419390 dispatched28 close-begin
+1: TEST_PHASE pid7908 tick419437 dispatched28 close-request-return
+1: TEST_PHASE pid7908 tick419500 dispatched29 close-state-checked
+1: TEST_PHASE pid7908 tick419812 dispatched29 com-uninitialize-begin
+1: TEST_PHASE pid7908 tick419812 dispatched29 process-return
+1: Stateful actual light / restore: 0 failures
+1: CASE_END label=restore-96 elapsedMs=1429 exit=0
+1: CASE_BEGIN label=write-144 mode=write dpi=144 utc=2026-10-09T10:30:27.8323488Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid5308 tick419890 dispatched0 create-host-begin
+1: TEST_PHASE pid5308 tick419906 dispatched0 create-host-end
+1: TEST_PHASE pid5308 tick419984 dispatched0 open-begin
+1: TEST_PHASE pid5308 tick420328 dispatched0 open-return
+1: TEST_PHASE pid5308 tick420828 dispatched29 open-settled
+1: RESTORED modewrite dpi144 name200 treeCollapsed0
+1: TEST_PHASE pid5308 tick420828 dispatched29 screenshot-begin
+1: TEST_PHASE pid5308 tick420875 dispatched29 screenshot-end
+1: HEADER_GEOMETRY width200 grip202,40 6x28 screen716,223
+1: CAPTURE hit00000000000901CE classUIFrameworkLightWeb thread2176 ours2176 GetCapture00000000000901CE target-thread-capture00000000000901CE
+1: ACTUAL_HEADER dpi144 width200 -> 280 hit00000000000901CE pid5308
+1: TEST_PHASE pid5308 tick421265 dispatched57 screenshot-begin
+1: TEST_PHASE pid5308 tick421328 dispatched57 screenshot-end
+1: TEST_PHASE pid5308 tick421328 dispatched57 close-begin
+1: TEST_PHASE pid5308 tick421359 dispatched57 close-request-return
+1: TEST_PHASE pid5308 tick421421 dispatched59 close-state-checked
+1: TEST_PHASE pid5308 tick421734 dispatched59 com-uninitialize-begin
+1: TEST_PHASE pid5308 tick421734 dispatched59 process-return
+1: Stateful actual light / write: 0 failures
+1: CASE_END label=write-144 elapsedMs=1918 exit=0
+1: CASE_BEGIN label=restore-144 mode=restore dpi=144 utc=2026-10-09T10:30:29.7536818Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid5616 tick421812 dispatched0 create-host-begin
+1: TEST_PHASE pid5616 tick421828 dispatched0 create-host-end
+1: TEST_PHASE pid5616 tick421859 dispatched0 open-begin
+1: TEST_PHASE pid5616 tick422203 dispatched0 open-return
+1: TEST_PHASE pid5616 tick422703 dispatched27 open-settled
+1: RESTORED moderestore dpi144 name280 treeCollapsed1
+1: STABLE_COLUMN name headerX8 cellX8 texteditable
+1: TEST_PHASE pid5616 tick422703 dispatched27 screenshot-begin
+1: TEST_PHASE pid5616 tick422750 dispatched27 screenshot-end
+1: TEST_PHASE pid5616 tick422750 dispatched27 close-begin
+1: TEST_PHASE pid5616 tick422781 dispatched27 close-request-return
+1: TEST_PHASE pid5616 tick422843 dispatched28 close-state-checked
+1: TEST_PHASE pid5616 tick423171 dispatched28 com-uninitialize-begin
+1: TEST_PHASE pid5616 tick423171 dispatched28 process-return
+1: Stateful actual light / restore: 0 failures
+1: CASE_END label=restore-144 elapsedMs=1426 exit=0
+1: CASE_BEGIN label=write-192 mode=write dpi=192 utc=2026-10-09T10:30:31.1834833Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid8108 tick423250 dispatched0 create-host-begin
+1: TEST_PHASE pid8108 tick423265 dispatched0 create-host-end
+1: TEST_PHASE pid8108 tick423328 dispatched0 open-begin
+1: TEST_PHASE pid8108 tick423609 dispatched0 open-return
+1: TEST_PHASE pid8108 tick424109 dispatched26 open-settled
+1: RESTORED modewrite dpi192 name200 treeCollapsed0
+1: TEST_PHASE pid8108 tick424109 dispatched26 screenshot-begin
+1: TEST_PHASE pid8108 tick424156 dispatched26 screenshot-end
+1: HEADER_GEOMETRY width200 grip202,40 6x28 screen938,284
+1: CAPTURE hit00000000000601FE classUIFrameworkLightWeb thread5380 ours5380 GetCapture00000000000601FE target-thread-capture00000000000601FE
+1: ACTUAL_HEADER dpi192 width200 -> 280 hit00000000000601FE pid8108
+1: TEST_PHASE pid8108 tick424562 dispatched54 screenshot-begin
+1: TEST_PHASE pid8108 tick424593 dispatched54 screenshot-end
+1: TEST_PHASE pid8108 tick424593 dispatched54 close-begin
+1: TEST_PHASE pid8108 tick424609 dispatched54 close-request-return
+1: TEST_PHASE pid8108 tick424671 dispatched56 close-state-checked
+1: TEST_PHASE pid8108 tick424984 dispatched56 com-uninitialize-begin
+1: TEST_PHASE pid8108 tick424984 dispatched56 process-return
+1: Stateful actual light / write: 0 failures
+1: CASE_END label=write-192 elapsedMs=1823 exit=0
+1: CASE_BEGIN label=restore-192 mode=restore dpi=192 utc=2026-10-09T10:30:33.0100646Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid6588 tick425078 dispatched0 create-host-begin
+1: TEST_PHASE pid6588 tick425093 dispatched0 create-host-end
+1: TEST_PHASE pid6588 tick425125 dispatched0 open-begin
+1: TEST_PHASE pid6588 tick425421 dispatched0 open-return
+1: TEST_PHASE pid6588 tick425937 dispatched24 open-settled
+1: RESTORED moderestore dpi192 name280 treeCollapsed1
+1: STABLE_COLUMN name headerX8 cellX8 texteditable
+1: TEST_PHASE pid6588 tick425937 dispatched24 screenshot-begin
+1: TEST_PHASE pid6588 tick425968 dispatched24 screenshot-end
+1: TEST_PHASE pid6588 tick425968 dispatched24 close-begin
+1: TEST_PHASE pid6588 tick426000 dispatched24 close-request-return
+1: TEST_PHASE pid6588 tick426046 dispatched25 close-state-checked
+1: TEST_PHASE pid6588 tick426359 dispatched25 com-uninitialize-begin
+1: TEST_PHASE pid6588 tick426359 dispatched25 process-return
+1: Stateful actual light / restore: 0 failures
+1: CASE_END label=restore-192 elapsedMs=1361 exit=0
+1: CASE_BEGIN label=isolation mode=isolation dpi=96 utc=2026-10-09T10:30:34.3769186Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid2744 tick426437 dispatched0 create-host-begin
+1: TEST_PHASE pid2744 tick426453 dispatched0 create-host-end
+1: TEST_PHASE pid2744 tick426468 dispatched0 open-begin
+1: TEST_PHASE pid2744 tick426828 dispatched0 open-return
+1: TEST_PHASE pid2744 tick427328 dispatched28 open-settled
+1: RESTORED modeisolation dpi96 name280 treeCollapsed1
+1: HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+1: CAPTURE hit0000000000040042 classUIFrameworkLightWeb thread7084 ours7084 GetCapture0000000000040042 target-thread-capture0000000000040042
+1: ACTUAL_HEADER dpi96 width200 -> 280 hit0000000000040042 pid2744
+1: HEADER_GEOMETRY width280 grip282,40 6x28 screen573,162
+1: CAPTURE hit0000000000040042 classUIFrameworkLightWeb thread7084 ours7084 GetCapture0000000000040042 target-thread-capture0000000000040042
+1: ACTUAL_HEADER dpi96 width280 -> 360 hit0000000000040042 pid2744
+1: TEST_PHASE pid2744 tick428734 dispatched88 close-begin
+1: TEST_PHASE pid2744 tick428781 dispatched88 close-request-return
+1: TEST_PHASE pid2744 tick428906 dispatched89 close-state-checked
+1: TEST_PHASE pid2744 tick429218 dispatched90 com-uninitialize-begin
+1: TEST_PHASE pid2744 tick429218 dispatched90 process-return
+1: Stateful actual light / isolation: 0 failures
+1: CASE_END label=isolation elapsedMs=2855 exit=0
+1: CASE_BEGIN label=profile-b mode=profile-b dpi=96 utc=2026-10-09T10:30:37.2355011Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid6568 tick429296 dispatched0 create-host-begin
+1: TEST_PHASE pid6568 tick429312 dispatched0 create-host-end
+1: TEST_PHASE pid6568 tick429328 dispatched0 open-begin
+1: TEST_PHASE pid6568 tick429671 dispatched0 open-return
+1: TEST_PHASE pid6568 tick430171 dispatched30 open-settled
+1: RESTORED modeprofile-b dpi96 name360 treeCollapsed0
+1: TEST_PHASE pid6568 tick430171 dispatched30 close-begin
+1: TEST_PHASE pid6568 tick430187 dispatched30 close-request-return
+1: TEST_PHASE pid6568 tick430265 dispatched31 close-state-checked
+1: TEST_PHASE pid6568 tick430578 dispatched31 com-uninitialize-begin
+1: TEST_PHASE pid6568 tick430578 dispatched31 process-return
+1: Stateful actual light / profile-b: 0 failures
+1: CASE_END label=profile-b elapsedMs=1363 exit=0
+1: CASE_BEGIN label=reload mode=reload dpi=96 utc=2026-10-09T10:30:38.6029837Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid7412 tick430656 dispatched0 create-host-begin
+1: TEST_PHASE pid7412 tick430671 dispatched0 create-host-end
+1: TEST_PHASE pid7412 tick430703 dispatched0 open-begin
+1: TEST_PHASE pid7412 tick431046 dispatched0 open-return
+1: TEST_PHASE pid7412 tick431546 dispatched34 open-settled
+1: RESTORED modereload dpi96 name280 treeCollapsed1
+1: TEST_PHASE pid7412 tick431843 dispatched52 close-begin
+1: TEST_PHASE pid7412 tick431859 dispatched52 close-request-return
+1: TEST_PHASE pid7412 tick431937 dispatched53 close-state-checked
+1: TEST_PHASE pid7412 tick432250 dispatched53 com-uninitialize-begin
+1: TEST_PHASE pid7412 tick432250 dispatched53 process-return
+1: Stateful actual light / reload: 0 failures
+1: CASE_END label=reload elapsedMs=1664 exit=0
+1: CASE_BEGIN label=locked-profile mode=locked-profile dpi=96 utc=2026-10-09T10:30:40.2696650Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid3760 tick432328 dispatched0 create-host-begin
+1: TEST_PHASE pid3760 tick432343 dispatched0 create-host-end
+1: TEST_PHASE pid3760 tick432359 dispatched0 open-begin
+1: TEST_PHASE pid3760 tick432718 dispatched0 open-return
+1: TEST_PHASE pid3760 tick433218 dispatched34 open-settled
+1: RESTORED modelocked-profile dpi96 name280 treeCollapsed1
+1: TEST_PHASE pid3760 tick433218 dispatched34 close-begin
+1: TEST_PHASE pid3760 tick433250 dispatched34 close-request-return
+1: TEST_PHASE pid3760 tick433343 dispatched36 close-state-checked
+1: TEST_PHASE pid3760 tick433656 dispatched36 com-uninitialize-begin
+1: TEST_PHASE pid3760 tick433656 dispatched36 process-return
+1: Stateful actual light / locked-profile: 0 failures
+1: CASE_END label=locked-profile elapsedMs=1398 exit=0
+1: CASE_BEGIN label=reordered-columns mode=restore dpi=96 utc=2026-10-09T10:30:41.6703491Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid1132 tick433734 dispatched0 create-host-begin
+1: TEST_PHASE pid1132 tick433750 dispatched0 create-host-end
+1: TEST_PHASE pid1132 tick433781 dispatched0 open-begin
+1: TEST_PHASE pid1132 tick434140 dispatched0 open-return
+1: TEST_PHASE pid1132 tick434640 dispatched34 open-settled
+1: RESTORED moderestore dpi96 name280 treeCollapsed1
+1: STABLE_COLUMN name headerX128 cellX128 texteditable
+1: TEST_PHASE pid1132 tick434640 dispatched34 screenshot-begin
+1: TEST_PHASE pid1132 tick434687 dispatched34 screenshot-end
+1: TEST_PHASE pid1132 tick434687 dispatched34 close-begin
+1: TEST_PHASE pid1132 tick434718 dispatched34 close-request-return
+1: TEST_PHASE pid1132 tick434781 dispatched35 close-state-checked
+1: TEST_PHASE pid1132 tick435093 dispatched35 com-uninitialize-begin
+1: TEST_PHASE pid1132 tick435093 dispatched35 process-return
+1: Stateful actual light / restore: 0 failures
+1: CASE_END label=reordered-columns elapsedMs=1441 exit=0
+1: CASE_BEGIN label=missing-new-columns mode=evolve dpi=96 utc=2026-10-09T10:30:43.1141978Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid7972 tick435171 dispatched0 create-host-begin
+1: TEST_PHASE pid7972 tick435187 dispatched0 create-host-end
+1: TEST_PHASE pid7972 tick435218 dispatched0 open-begin
+1: TEST_PHASE pid7972 tick435546 dispatched0 open-return
+1: TEST_PHASE pid7972 tick436046 dispatched34 open-settled
+1: RESTORED modeevolve dpi96 name280 treeCollapsed1
+1: TEST_PHASE pid7972 tick436046 dispatched34 close-begin
+1: TEST_PHASE pid7972 tick436078 dispatched34 close-request-return
+1: TEST_PHASE pid7972 tick436140 dispatched35 close-state-checked
+1: TEST_PHASE pid7972 tick436453 dispatched35 com-uninitialize-begin
+1: TEST_PHASE pid7972 tick436453 dispatched35 process-return
+1: Stateful actual light / evolve: 0 failures
+1: CASE_END label=missing-new-columns elapsedMs=1361 exit=0
+1: CASE_BEGIN label=empty mode=invalid dpi=96 utc=2026-10-09T10:30:44.4835583Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid6300 tick436531 dispatched0 create-host-begin
+1: TEST_PHASE pid6300 tick436562 dispatched0 create-host-end
+1: TEST_PHASE pid6300 tick436578 dispatched0 open-begin
+1: TEST_PHASE pid6300 tick436875 dispatched0 open-return
+1: TEST_PHASE pid6300 tick437375 dispatched36 open-settled
+1: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid6300 tick437375 dispatched36 close-begin
+1: TEST_PHASE pid6300 tick437406 dispatched36 close-request-return
+1: TEST_PHASE pid6300 tick437468 dispatched37 close-state-checked
+1: TEST_PHASE pid6300 tick437781 dispatched37 com-uninitialize-begin
+1: TEST_PHASE pid6300 tick437781 dispatched37 process-return
+1: Stateful actual light / invalid: 0 failures
+1: CASE_END label=empty elapsedMs=1309 exit=0
+1: CASE_BEGIN label=truncated mode=invalid dpi=96 utc=2026-10-09T10:30:45.7997208Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid5656 tick437859 dispatched0 create-host-begin
+1: TEST_PHASE pid5656 tick437875 dispatched0 create-host-end
+1: TEST_PHASE pid5656 tick437890 dispatched0 open-begin
+1: TEST_PHASE pid5656 tick438171 dispatched0 open-return
+1: TEST_PHASE pid5656 tick438671 dispatched36 open-settled
+1: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid5656 tick438671 dispatched36 close-begin
+1: TEST_PHASE pid5656 tick438703 dispatched36 close-request-return
+1: TEST_PHASE pid5656 tick438765 dispatched37 close-state-checked
+1: TEST_PHASE pid5656 tick439078 dispatched37 com-uninitialize-begin
+1: TEST_PHASE pid5656 tick439078 dispatched37 process-return
+1: Stateful actual light / invalid: 0 failures
+1: CASE_END label=truncated elapsedMs=1295 exit=0
+1: CASE_BEGIN label=oversized mode=invalid dpi=96 utc=2026-10-09T10:30:47.0998488Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid7884 tick439156 dispatched0 create-host-begin
+1: TEST_PHASE pid7884 tick439171 dispatched0 create-host-end
+1: TEST_PHASE pid7884 tick439203 dispatched0 open-begin
+1: TEST_PHASE pid7884 tick439484 dispatched0 open-return
+1: TEST_PHASE pid7884 tick439984 dispatched36 open-settled
+1: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid7884 tick439984 dispatched36 close-begin
+1: TEST_PHASE pid7884 tick440015 dispatched36 close-request-return
+1: TEST_PHASE pid7884 tick440078 dispatched37 close-state-checked
+1: TEST_PHASE pid7884 tick440390 dispatched37 com-uninitialize-begin
+1: TEST_PHASE pid7884 tick440390 dispatched37 process-return
+1: Stateful actual light / invalid: 0 failures
+1: CASE_END label=oversized elapsedMs=1314 exit=0
+1: CASE_BEGIN label=magic mode=invalid dpi=96 utc=2026-10-09T10:30:48.4644117Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid7876 tick440531 dispatched0 create-host-begin
+1: TEST_PHASE pid7876 tick440546 dispatched0 create-host-end
+1: TEST_PHASE pid7876 tick440562 dispatched0 open-begin
+1: TEST_PHASE pid7876 tick440875 dispatched0 open-return
+1: TEST_PHASE pid7876 tick441375 dispatched35 open-settled
+1: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid7876 tick441375 dispatched35 close-begin
+1: TEST_PHASE pid7876 tick441406 dispatched35 close-request-return
+1: TEST_PHASE pid7876 tick441468 dispatched36 close-state-checked
+1: TEST_PHASE pid7876 tick441781 dispatched36 com-uninitialize-begin
+1: TEST_PHASE pid7876 tick441781 dispatched36 process-return
+1: Stateful actual light / invalid: 0 failures
+1: CASE_END label=magic elapsedMs=1332 exit=0
+1: CASE_BEGIN label=checksum mode=invalid dpi=96 utc=2026-10-09T10:30:49.8038950Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid3176 tick441859 dispatched0 create-host-begin
+1: TEST_PHASE pid3176 tick441875 dispatched0 create-host-end
+1: TEST_PHASE pid3176 tick441906 dispatched0 open-begin
+1: TEST_PHASE pid3176 tick442187 dispatched0 open-return
+1: TEST_PHASE pid3176 tick442687 dispatched36 open-settled
+1: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid3176 tick442687 dispatched36 close-begin
+1: TEST_PHASE pid3176 tick442718 dispatched36 close-request-return
+1: TEST_PHASE pid3176 tick442781 dispatched37 close-state-checked
+1: TEST_PHASE pid3176 tick443093 dispatched37 com-uninitialize-begin
+1: TEST_PHASE pid3176 tick443093 dispatched37 process-return
+1: Stateful actual light / invalid: 0 failures
+1: CASE_END label=checksum elapsedMs=1312 exit=0
+1: CASE_BEGIN label=future mode=invalid dpi=96 utc=2026-10-09T10:30:51.1200701Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid2108 tick443187 dispatched0 create-host-begin
+1: TEST_PHASE pid2108 tick443203 dispatched0 create-host-end
+1: TEST_PHASE pid2108 tick443218 dispatched0 open-begin
+1: TEST_PHASE pid2108 tick443500 dispatched0 open-return
+1: TEST_PHASE pid2108 tick444015 dispatched36 open-settled
+1: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid2108 tick444015 dispatched36 close-begin
+1: TEST_PHASE pid2108 tick444046 dispatched36 close-request-return
+1: TEST_PHASE pid2108 tick444109 dispatched37 close-state-checked
+1: TEST_PHASE pid2108 tick444421 dispatched37 com-uninitialize-begin
+1: TEST_PHASE pid2108 tick444421 dispatched37 process-return
+1: Stateful actual light / invalid: 0 failures
+1: CASE_END label=future elapsedMs=1308 exit=0
+1: CASE_BEGIN label=columns-reserved mode=invalid dpi=96 utc=2026-10-09T10:30:52.4316386Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid3640 tick444484 dispatched0 create-host-begin
+1: TEST_PHASE pid3640 tick444500 dispatched0 create-host-end
+1: TEST_PHASE pid3640 tick444531 dispatched0 open-begin
+1: TEST_PHASE pid3640 tick444875 dispatched0 open-return
+1: TEST_PHASE pid3640 tick445375 dispatched36 open-settled
+1: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid3640 tick445375 dispatched36 close-begin
+1: TEST_PHASE pid3640 tick445406 dispatched36 close-request-return
+1: TEST_PHASE pid3640 tick445468 dispatched37 close-state-checked
+1: TEST_PHASE pid3640 tick445781 dispatched37 com-uninitialize-begin
+1: TEST_PHASE pid3640 tick445781 dispatched37 process-return
+1: Stateful actual light / invalid: 0 failures
+1: CASE_END label=columns-reserved elapsedMs=1363 exit=0
+1: CASE_BEGIN label=columns-future mode=invalid dpi=96 utc=2026-10-09T10:30:53.8144510Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid4632 tick445875 dispatched0 create-host-begin
+1: TEST_PHASE pid4632 tick445890 dispatched0 create-host-end
+1: TEST_PHASE pid4632 tick445906 dispatched0 open-begin
+1: TEST_PHASE pid4632 tick446234 dispatched0 open-return
+1: TEST_PHASE pid4632 tick446734 dispatched35 open-settled
+1: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid4632 tick446734 dispatched35 close-begin
+1: TEST_PHASE pid4632 tick446765 dispatched35 close-request-return
+1: TEST_PHASE pid4632 tick446828 dispatched36 close-state-checked
+1: TEST_PHASE pid4632 tick447140 dispatched36 com-uninitialize-begin
+1: TEST_PHASE pid4632 tick447140 dispatched36 process-return
+1: Stateful actual light / invalid: 0 failures
+1: CASE_END label=columns-future elapsedMs=1345 exit=0
+1: CASE_BEGIN label=layout-future mode=invalid dpi=96 utc=2026-10-09T10:30:55.1667480Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid5144 tick447218 dispatched0 create-host-begin
+1: TEST_PHASE pid5144 tick447250 dispatched0 create-host-end
+1: TEST_PHASE pid5144 tick447265 dispatched0 open-begin
+1: TEST_PHASE pid5144 tick447687 dispatched0 open-return
+1: TEST_PHASE pid5144 tick448187 dispatched36 open-settled
+1: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid5144 tick448187 dispatched36 close-begin
+1: TEST_PHASE pid5144 tick448218 dispatched36 close-request-return
+1: TEST_PHASE pid5144 tick448281 dispatched37 close-state-checked
+1: TEST_PHASE pid5144 tick448593 dispatched37 com-uninitialize-begin
+1: TEST_PHASE pid5144 tick448593 dispatched37 process-return
+1: Stateful actual light / invalid: 0 failures
+1: CASE_END label=layout-future elapsedMs=1435 exit=0
+1: CASE_BEGIN label=layout-invalid mode=invalid dpi=96 utc=2026-10-09T10:30:56.6052256Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid4868 tick448671 dispatched0 create-host-begin
+1: TEST_PHASE pid4868 tick448687 dispatched0 create-host-end
+1: TEST_PHASE pid4868 tick448703 dispatched0 open-begin
+1: TEST_PHASE pid4868 tick449062 dispatched0 open-return
+1: TEST_PHASE pid4868 tick449562 dispatched35 open-settled
+1: RESTORED modeinvalid dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid4868 tick449562 dispatched35 close-begin
+1: TEST_PHASE pid4868 tick449593 dispatched35 close-request-return
+1: TEST_PHASE pid4868 tick449656 dispatched36 close-state-checked
+1: TEST_PHASE pid4868 tick449968 dispatched36 com-uninitialize-begin
+1: TEST_PHASE pid4868 tick449968 dispatched36 process-return
+1: Stateful actual light / invalid: 0 failures
+1: CASE_END label=layout-invalid elapsedMs=1370 exit=0
+1: CASE_BEGIN label=missing-file mode=defaults dpi=96 utc=2026-10-09T10:30:57.9776661Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid3684 tick450031 dispatched0 create-host-begin
+1: TEST_PHASE pid3684 tick450046 dispatched0 create-host-end
+1: TEST_PHASE pid3684 tick450078 dispatched0 open-begin
+1: TEST_PHASE pid3684 tick450359 dispatched0 open-return
+1: TEST_PHASE pid3684 tick450859 dispatched36 open-settled
+1: RESTORED modedefaults dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid3684 tick450859 dispatched36 close-begin
+1: TEST_PHASE pid3684 tick450890 dispatched36 close-request-return
+1: TEST_PHASE pid3684 tick450953 dispatched37 close-state-checked
+1: TEST_PHASE pid3684 tick451265 dispatched37 com-uninitialize-begin
+1: TEST_PHASE pid3684 tick451265 dispatched37 process-return
+1: Stateful actual light / defaults: 0 failures
+1: CASE_END label=missing-file elapsedMs=1299 exit=0
+1: CASE_BEGIN label=failed-create-mount-lock-release mode=init-failures dpi=96 utc=2026-10-09T10:30:59.2787029Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid1464 tick451343 dispatched0 create-host-begin
+1: TEST_PHASE pid1464 tick451359 dispatched0 create-host-end
+1: TEST_PHASE pid1464 tick451765 dispatched22 open-begin
+1: TEST_PHASE pid1464 tick452031 dispatched22 open-return
+1: TEST_PHASE pid1464 tick452531 dispatched57 open-settled
+1: RESTORED modeinit-failures dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid1464 tick452531 dispatched57 close-begin
+1: TEST_PHASE pid1464 tick452562 dispatched57 close-request-return
+1: TEST_PHASE pid1464 tick452640 dispatched58 close-state-checked
+1: TEST_PHASE pid1464 tick452953 dispatched58 com-uninitialize-begin
+1: TEST_PHASE pid1464 tick452953 dispatched58 process-return
+1: Stateful actual light / init-failures: 0 failures
+1: CASE_END label=failed-create-mount-lock-release elapsedMs=1684 exit=0
+1: CASE_BEGIN label=reset mode=reset dpi=96 utc=2026-10-09T10:31:00.9645845Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid8172 tick453031 dispatched0 create-host-begin
+1: TEST_PHASE pid8172 tick453046 dispatched0 create-host-end
+1: TEST_PHASE pid8172 tick453062 dispatched0 open-begin
+1: TEST_PHASE pid8172 tick453390 dispatched0 open-return
+1: TEST_PHASE pid8172 tick453890 dispatched34 open-settled
+1: RESTORED modereset dpi96 name280 treeCollapsed1
+1: TEST_PHASE pid8172 tick454296 dispatched66 close-begin
+1: TEST_PHASE pid8172 tick454312 dispatched66 close-request-return
+1: TEST_PHASE pid8172 tick454390 dispatched67 close-state-checked
+1: TEST_PHASE pid8172 tick454703 dispatched67 com-uninitialize-begin
+1: TEST_PHASE pid8172 tick454703 dispatched67 process-return
+1: Stateful actual light / reset: 0 failures
+1: CASE_END label=reset elapsedMs=1753 exit=0
+1: CASE_BEGIN label=reset-cross-process mode=defaults dpi=96 utc=2026-10-09T10:31:02.7204173Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1: TEST_PHASE pid4792 tick454765 dispatched0 create-host-begin
+1: TEST_PHASE pid4792 tick454796 dispatched0 create-host-end
+1: TEST_PHASE pid4792 tick454828 dispatched0 open-begin
+1: TEST_PHASE pid4792 tick455156 dispatched0 open-return
+1: TEST_PHASE pid4792 tick455656 dispatched36 open-settled
+1: RESTORED modedefaults dpi96 name200 treeCollapsed0
+1: TEST_PHASE pid4792 tick455656 dispatched36 close-begin
+1: TEST_PHASE pid4792 tick455687 dispatched36 close-request-return
+1: TEST_PHASE pid4792 tick455765 dispatched37 close-state-checked
+1: TEST_PHASE pid4792 tick456078 dispatched37 com-uninitialize-begin
+1: TEST_PHASE pid4792 tick456078 dispatched37 process-return
+1: Stateful actual light / defaults: 0 failures
+1: CASE_END label=reset-cross-process elapsedMs=1371 exit=0
+1: Stateful application actual light PASS; evidence D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-4fdc1ab36708484f99e1a646e5191b94
+1/1 Test #1: ui_stateful_components_light .....   Passed   40.67 sec
+
+The following tests passed:
+	ui_stateful_components_light
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =  40.67 sec

@@ -1,0 +1,1091 @@
+{
+  "checks": [
+    {
+      "configuration": "osmesa",
+      "pid": 5480,
+      "label": "A",
+      "gated": false,
+      "matches": [
+        {
+          "pe": {
+            "path": ".deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+            "image_size": 52953088,
+            "timestamp": 1737767105,
+            "checksum": 52328220,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "base": "0x7ff9d7e20000",
+            "image_size": 52953088,
+            "timestamp": 1737767105,
+            "checksum": 52328220,
+            "pdb_guid": "a53e732b-2253-4fee-8fee-53f47771d8ea",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\kernel32.dll",
+            "sha256": "da41de8a936170f771f6f3b1543b93fdf6768d3b5b40ff8637820ca01ade9d82",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\kernel32.dll",
+            "base": "0x7ffa1f710000",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "pdb_guid": "d99f0cfc-1ca2-0048-91f4-66a8d013810a",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\KERNELBASE.dll",
+            "sha256": "9817ec58129ec44dc8b063a7790565d41fd5e1d8673d57e43a79b669b63e0255",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\KERNELBASE.dll",
+            "base": "0x7ffa1e6a0000",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "pdb_guid": "fe021ba8-b8f1-757b-4baf-1a6d18b8119e",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\ntdll.dll",
+            "sha256": "cf49573b6caa724c13310f2f774e81d527831e84bb8db822e12932ce6a47ea9e",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ntdll.dll",
+            "base": "0x7ffa20ec0000",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "pdb_guid": "06d1c145-6b12-ef30-6389-a4d17d891bf6",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\ucrtbase.dll",
+            "sha256": "5e5ae0f8e4325ceb3ee767065dda6e03e980d401f00a2bdb8ca81ed90813920f",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ucrtbase.dll",
+            "base": "0x7ffa1ec20000",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "pdb_guid": "96a776e0-5920-e3a3-34c1-c632bffdedfe",
+            "pdb_age": 1
+          }
+        }
+      ],
+      "threads": [
+        {
+          "id": "1568.1bf0 Suspend: 0 Teb: 0000001f`a8e0f000 Unfrozen",
+          "kind": "other"
+        }
+      ],
+      "thread_counts": {
+        "rasterizer": 0,
+        "compute": 0,
+        "utility": 0,
+        "probe-main": 0,
+        "other": 1
+      },
+      "dump_sha256": "e7bb0f17fbf30db6a0ecb11c65f96a970dee60be515bdfd1ad7942e92679b6fa",
+      "same_wait_task0": true,
+      "limitation": "Framework/test PE images not retained in the target artifact; recorded SHA only. Windows symbols are exports; Mesa/caller private symbols matched."
+    },
+    {
+      "configuration": "osmesa",
+      "pid": 6596,
+      "label": "A",
+      "gated": true,
+      "matches": [
+        {
+          "pe": {
+            "path": ".deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+            "image_size": 52953088,
+            "timestamp": 1737767105,
+            "checksum": 52328220,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "base": "0x7ff9d7e20000",
+            "image_size": 52953088,
+            "timestamp": 1737767105,
+            "checksum": 52328220,
+            "pdb_guid": "a53e732b-2253-4fee-8fee-53f47771d8ea",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\kernel32.dll",
+            "sha256": "da41de8a936170f771f6f3b1543b93fdf6768d3b5b40ff8637820ca01ade9d82",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\kernel32.dll",
+            "base": "0x7ffa1f710000",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "pdb_guid": "d99f0cfc-1ca2-0048-91f4-66a8d013810a",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\KERNELBASE.dll",
+            "sha256": "9817ec58129ec44dc8b063a7790565d41fd5e1d8673d57e43a79b669b63e0255",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\KERNELBASE.dll",
+            "base": "0x7ffa1e6a0000",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "pdb_guid": "fe021ba8-b8f1-757b-4baf-1a6d18b8119e",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\ntdll.dll",
+            "sha256": "cf49573b6caa724c13310f2f774e81d527831e84bb8db822e12932ce6a47ea9e",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ntdll.dll",
+            "base": "0x7ffa20ec0000",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "pdb_guid": "06d1c145-6b12-ef30-6389-a4d17d891bf6",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\ucrtbase.dll",
+            "sha256": "5e5ae0f8e4325ceb3ee767065dda6e03e980d401f00a2bdb8ca81ed90813920f",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ucrtbase.dll",
+            "base": "0x7ffa1ec20000",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "pdb_guid": "96a776e0-5920-e3a3-34c1-c632bffdedfe",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+            "sha256": "8f1bea06efa99d2e89e92dfb4b199e281ac850af1f3bfcaaddf9c96e71c5cbb2",
+            "image_size": 724992,
+            "timestamp": 1791541820,
+            "checksum": 0,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+            "base": "0x7ff72bbb0000",
+            "image_size": 724992,
+            "timestamp": 1791541820,
+            "checksum": 0,
+            "pdb_guid": "082d8a29-254e-4261-a152-cff3143af30b",
+            "pdb_age": 1
+          }
+        }
+      ],
+      "threads": [
+        {
+          "id": "19c4.11d0 Suspend: 0 Teb: 00000025`1a077000 Unfrozen",
+          "kind": "probe-main"
+        },
+        {
+          "id": "19c4.c80 Suspend: 0 Teb: 00000025`1a079000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "19c4.1924 Suspend: 0 Teb: 00000025`1a07b000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "19c4.f14 Suspend: 0 Teb: 00000025`1a07d000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "19c4.16b8 Suspend: 0 Teb: 00000025`1a07f000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "19c4.974 Suspend: 0 Teb: 00000025`1a081000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "19c4.1aa0 Suspend: 0 Teb: 00000025`1a083000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "19c4.15ac Suspend: 0 Teb: 00000025`1a085000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "19c4.12b4 Suspend: 0 Teb: 00000025`1a087000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "19c4.1398 Suspend: 0 Teb: 00000025`1a089000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "19c4.50c Suspend: 0 Teb: 00000025`1a08b000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "19c4.1760 Suspend: 0 Teb: 00000025`1a08d000 Unfrozen",
+          "kind": "compute"
+        }
+      ],
+      "thread_counts": {
+        "rasterizer": 4,
+        "compute": 4,
+        "utility": 0,
+        "probe-main": 1,
+        "other": 3
+      },
+      "dump_sha256": "cb2d1c9138a7d92ad0816f915cc734b80345f14278f05438c7d7e455ff00bdfd",
+      "same_wait_task0": false,
+      "limitation": "Framework/test PE images not retained in the target artifact; recorded SHA only. Windows symbols are exports; Mesa/caller private symbols matched."
+    },
+    {
+      "configuration": "osmesa",
+      "pid": 6428,
+      "label": "C",
+      "gated": true,
+      "matches": [
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-candidate\\unpacked\\osmesa.dll",
+            "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+            "image_size": 52289536,
+            "timestamp": 1791537425,
+            "checksum": 51707595,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-candidate\\unpacked\\osmesa.dll",
+            "base": "0x7ff9d7ec0000",
+            "image_size": 52289536,
+            "timestamp": 1791537425,
+            "checksum": 51707595,
+            "pdb_guid": "2f352030-3f29-4fe7-a7c1-b1ed70c195f3",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\kernel32.dll",
+            "sha256": "da41de8a936170f771f6f3b1543b93fdf6768d3b5b40ff8637820ca01ade9d82",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\kernel32.dll",
+            "base": "0x7ffa1f710000",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "pdb_guid": "d99f0cfc-1ca2-0048-91f4-66a8d013810a",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\KERNELBASE.dll",
+            "sha256": "9817ec58129ec44dc8b063a7790565d41fd5e1d8673d57e43a79b669b63e0255",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\KERNELBASE.dll",
+            "base": "0x7ffa1e6a0000",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "pdb_guid": "fe021ba8-b8f1-757b-4baf-1a6d18b8119e",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\ntdll.dll",
+            "sha256": "cf49573b6caa724c13310f2f774e81d527831e84bb8db822e12932ce6a47ea9e",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ntdll.dll",
+            "base": "0x7ffa20ec0000",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "pdb_guid": "06d1c145-6b12-ef30-6389-a4d17d891bf6",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\system-images\\ucrtbase.dll",
+            "sha256": "5e5ae0f8e4325ceb3ee767065dda6e03e980d401f00a2bdb8ca81ed90813920f",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ucrtbase.dll",
+            "base": "0x7ffa1ec20000",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "pdb_guid": "96a776e0-5920-e3a3-34c1-c632bffdedfe",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\osmesa\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+            "sha256": "8f1bea06efa99d2e89e92dfb4b199e281ac850af1f3bfcaaddf9c96e71c5cbb2",
+            "image_size": 724992,
+            "timestamp": 1791541820,
+            "checksum": 0,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+            "base": "0x7ff72bbb0000",
+            "image_size": 724992,
+            "timestamp": 1791541820,
+            "checksum": 0,
+            "pdb_guid": "082d8a29-254e-4261-a152-cff3143af30b",
+            "pdb_age": 1
+          }
+        }
+      ],
+      "threads": [
+        {
+          "id": "191c.10f0 Suspend: 0 Teb: 000000d6`0a5df000 Unfrozen",
+          "kind": "probe-main"
+        },
+        {
+          "id": "191c.177c Suspend: 0 Teb: 000000d6`0a5e1000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "191c.1d7c Suspend: 0 Teb: 000000d6`0a5e3000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "191c.139c Suspend: 0 Teb: 000000d6`0a5e5000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "191c.1ed0 Suspend: 0 Teb: 000000d6`0a5e7000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "191c.e60 Suspend: 0 Teb: 000000d6`0a5e9000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "191c.a48 Suspend: 0 Teb: 000000d6`0a5eb000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "191c.e48 Suspend: 0 Teb: 000000d6`0a5ed000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "191c.9d8 Suspend: 0 Teb: 000000d6`0a5ef000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "191c.15a8 Suspend: 0 Teb: 000000d6`0a5f1000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "191c.11ec Suspend: 0 Teb: 000000d6`0a5f3000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "191c.1a44 Suspend: 0 Teb: 000000d6`0a5f5000 Unfrozen",
+          "kind": "compute"
+        }
+      ],
+      "thread_counts": {
+        "rasterizer": 4,
+        "compute": 4,
+        "utility": 0,
+        "probe-main": 1,
+        "other": 3
+      },
+      "dump_sha256": "b72c184a33521a37b5cdc5ac6023de10aa5c9a87c40b3463e3a6a6cbd58d8a51",
+      "same_wait_task0": false,
+      "limitation": "Framework/test PE images not retained in the target artifact; recorded SHA only. Windows symbols are exports; Mesa/caller private symbols matched."
+    },
+    {
+      "configuration": "webview2",
+      "pid": 2676,
+      "label": "A",
+      "gated": false,
+      "matches": [
+        {
+          "pe": {
+            "path": ".deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+            "image_size": 52953088,
+            "timestamp": 1737767105,
+            "checksum": 52328220,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "base": "0x7ffdd6fe0000",
+            "image_size": 52953088,
+            "timestamp": 1737767105,
+            "checksum": 52328220,
+            "pdb_guid": "a53e732b-2253-4fee-8fee-53f47771d8ea",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\kernel32.dll",
+            "sha256": "da41de8a936170f771f6f3b1543b93fdf6768d3b5b40ff8637820ca01ade9d82",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\kernel32.dll",
+            "base": "0x7ffe1e4a0000",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "pdb_guid": "d99f0cfc-1ca2-0048-91f4-66a8d013810a",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\KERNELBASE.dll",
+            "sha256": "9817ec58129ec44dc8b063a7790565d41fd5e1d8673d57e43a79b669b63e0255",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\KERNELBASE.dll",
+            "base": "0x7ffe1ce90000",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "pdb_guid": "fe021ba8-b8f1-757b-4baf-1a6d18b8119e",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\ntdll.dll",
+            "sha256": "cf49573b6caa724c13310f2f774e81d527831e84bb8db822e12932ce6a47ea9e",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ntdll.dll",
+            "base": "0x7ffe1f860000",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "pdb_guid": "06d1c145-6b12-ef30-6389-a4d17d891bf6",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\ucrtbase.dll",
+            "sha256": "5e5ae0f8e4325ceb3ee767065dda6e03e980d401f00a2bdb8ca81ed90813920f",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ucrtbase.dll",
+            "base": "0x7ffe1d550000",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "pdb_guid": "96a776e0-5920-e3a3-34c1-c632bffdedfe",
+            "pdb_age": 1
+          }
+        }
+      ],
+      "threads": [
+        {
+          "id": "a74.2dc Suspend: 0 Teb: 000000f9`9f8fd000 Unfrozen",
+          "kind": "other"
+        }
+      ],
+      "thread_counts": {
+        "rasterizer": 0,
+        "compute": 0,
+        "utility": 0,
+        "probe-main": 0,
+        "other": 1
+      },
+      "dump_sha256": "6270259b002d9dad0e04d6001898cd2a1db640daa15fb0aceca6de4db715179c",
+      "same_wait_task0": true,
+      "limitation": "Framework/test PE images not retained in the target artifact; recorded SHA only. Windows symbols are exports; Mesa/caller private symbols matched."
+    },
+    {
+      "configuration": "webview2",
+      "pid": 4312,
+      "label": "A",
+      "gated": false,
+      "matches": [
+        {
+          "pe": {
+            "path": ".deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+            "image_size": 52953088,
+            "timestamp": 1737767105,
+            "checksum": 52328220,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "base": "0x7ffdd6fe0000",
+            "image_size": 52953088,
+            "timestamp": 1737767105,
+            "checksum": 52328220,
+            "pdb_guid": "a53e732b-2253-4fee-8fee-53f47771d8ea",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\kernel32.dll",
+            "sha256": "da41de8a936170f771f6f3b1543b93fdf6768d3b5b40ff8637820ca01ade9d82",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\kernel32.dll",
+            "base": "0x7ffe1e4a0000",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "pdb_guid": "d99f0cfc-1ca2-0048-91f4-66a8d013810a",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\KERNELBASE.dll",
+            "sha256": "9817ec58129ec44dc8b063a7790565d41fd5e1d8673d57e43a79b669b63e0255",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\KERNELBASE.dll",
+            "base": "0x7ffe1ce90000",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "pdb_guid": "fe021ba8-b8f1-757b-4baf-1a6d18b8119e",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\ntdll.dll",
+            "sha256": "cf49573b6caa724c13310f2f774e81d527831e84bb8db822e12932ce6a47ea9e",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ntdll.dll",
+            "base": "0x7ffe1f860000",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "pdb_guid": "06d1c145-6b12-ef30-6389-a4d17d891bf6",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\ucrtbase.dll",
+            "sha256": "5e5ae0f8e4325ceb3ee767065dda6e03e980d401f00a2bdb8ca81ed90813920f",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ucrtbase.dll",
+            "base": "0x7ffe1d550000",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "pdb_guid": "96a776e0-5920-e3a3-34c1-c632bffdedfe",
+            "pdb_age": 1
+          }
+        }
+      ],
+      "threads": [
+        {
+          "id": "10d8.840 Suspend: 0 Teb: 00000027`36c5e000 Unfrozen",
+          "kind": "other"
+        }
+      ],
+      "thread_counts": {
+        "rasterizer": 0,
+        "compute": 0,
+        "utility": 0,
+        "probe-main": 0,
+        "other": 1
+      },
+      "dump_sha256": "01364fe968afb863d9c84d7115408f127c95fcc90dc04a50fc365e9ddedd0743",
+      "same_wait_task0": true,
+      "limitation": "Framework/test PE images not retained in the target artifact; recorded SHA only. Windows symbols are exports; Mesa/caller private symbols matched."
+    },
+    {
+      "configuration": "webview2",
+      "pid": 532,
+      "label": "A",
+      "gated": true,
+      "matches": [
+        {
+          "pe": {
+            "path": ".deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f",
+            "image_size": 52953088,
+            "timestamp": 1737767105,
+            "checksum": 52328220,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+            "base": "0x7ffdd6fe0000",
+            "image_size": 52953088,
+            "timestamp": 1737767105,
+            "checksum": 52328220,
+            "pdb_guid": "a53e732b-2253-4fee-8fee-53f47771d8ea",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\kernel32.dll",
+            "sha256": "da41de8a936170f771f6f3b1543b93fdf6768d3b5b40ff8637820ca01ade9d82",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\kernel32.dll",
+            "base": "0x7ffe1e4a0000",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "pdb_guid": "d99f0cfc-1ca2-0048-91f4-66a8d013810a",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\KERNELBASE.dll",
+            "sha256": "9817ec58129ec44dc8b063a7790565d41fd5e1d8673d57e43a79b669b63e0255",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\KERNELBASE.dll",
+            "base": "0x7ffe1ce90000",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "pdb_guid": "fe021ba8-b8f1-757b-4baf-1a6d18b8119e",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\ntdll.dll",
+            "sha256": "cf49573b6caa724c13310f2f774e81d527831e84bb8db822e12932ce6a47ea9e",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ntdll.dll",
+            "base": "0x7ffe1f860000",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "pdb_guid": "06d1c145-6b12-ef30-6389-a4d17d891bf6",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\ucrtbase.dll",
+            "sha256": "5e5ae0f8e4325ceb3ee767065dda6e03e980d401f00a2bdb8ca81ed90813920f",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ucrtbase.dll",
+            "base": "0x7ffe1d550000",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "pdb_guid": "96a776e0-5920-e3a3-34c1-c632bffdedfe",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+            "sha256": "9ddde29046b3c131c60e8f40330c407c0e6e8f1ab5f446b08e28e07ac3e4bc82",
+            "image_size": 724992,
+            "timestamp": 1791541864,
+            "checksum": 0,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+            "base": "0x7ff777500000",
+            "image_size": 724992,
+            "timestamp": 1791541864,
+            "checksum": 0,
+            "pdb_guid": "980c82fe-bec8-46ee-929f-441b06509709",
+            "pdb_age": 1
+          }
+        }
+      ],
+      "threads": [
+        {
+          "id": "214.1cec Suspend: 0 Teb: 00000028`ec770000 Unfrozen",
+          "kind": "probe-main"
+        },
+        {
+          "id": "214.958 Suspend: 0 Teb: 00000028`ec772000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "214.1a10 Suspend: 0 Teb: 00000028`ec774000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "214.868 Suspend: 0 Teb: 00000028`ec776000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "214.1b0 Suspend: 0 Teb: 00000028`ec778000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "214.1f94 Suspend: 0 Teb: 00000028`ec77a000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "214.a28 Suspend: 0 Teb: 00000028`ec77c000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "214.1edc Suspend: 0 Teb: 00000028`ec77e000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "214.10dc Suspend: 0 Teb: 00000028`ec780000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "214.1bcc Suspend: 0 Teb: 00000028`ec782000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "214.230 Suspend: 0 Teb: 00000028`ec784000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "214.8c4 Suspend: 0 Teb: 00000028`ec786000 Unfrozen",
+          "kind": "compute"
+        }
+      ],
+      "thread_counts": {
+        "rasterizer": 4,
+        "compute": 4,
+        "utility": 0,
+        "probe-main": 1,
+        "other": 3
+      },
+      "dump_sha256": "23459ce0ab43aacd8b01557f9a30a6080ad0247d94b555248ede99d83994ddb9",
+      "same_wait_task0": false,
+      "limitation": "Framework/test PE images not retained in the target artifact; recorded SHA only. Windows symbols are exports; Mesa/caller private symbols matched."
+    },
+    {
+      "configuration": "webview2",
+      "pid": 7132,
+      "label": "C",
+      "gated": true,
+      "matches": [
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-candidate\\unpacked\\osmesa.dll",
+            "sha256": "99d8142434c3abfacce969aa3731220314d99c53ee0afc546896c0afad92f5f5",
+            "image_size": 52289536,
+            "timestamp": 1791537425,
+            "checksum": 51707595,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-candidate\\unpacked\\osmesa.dll",
+            "base": "0x7ffdd7080000",
+            "image_size": 52289536,
+            "timestamp": 1791537425,
+            "checksum": 51707595,
+            "pdb_guid": "2f352030-3f29-4fe7-a7c1-b1ed70c195f3",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\kernel32.dll",
+            "sha256": "da41de8a936170f771f6f3b1543b93fdf6768d3b5b40ff8637820ca01ade9d82",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\kernel32.dll",
+            "base": "0x7ffe1e4a0000",
+            "image_size": 778240,
+            "timestamp": 1386387714,
+            "checksum": 831431,
+            "pdb_guid": "d99f0cfc-1ca2-0048-91f4-66a8d013810a",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\KERNELBASE.dll",
+            "sha256": "9817ec58129ec44dc8b063a7790565d41fd5e1d8673d57e43a79b669b63e0255",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\KERNELBASE.dll",
+            "base": "0x7ffe1ce90000",
+            "image_size": 3608576,
+            "timestamp": 3644172844,
+            "checksum": 3691798,
+            "pdb_guid": "fe021ba8-b8f1-757b-4baf-1a6d18b8119e",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\ntdll.dll",
+            "sha256": "cf49573b6caa724c13310f2f774e81d527831e84bb8db822e12932ce6a47ea9e",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ntdll.dll",
+            "base": "0x7ffe1f860000",
+            "image_size": 2105344,
+            "timestamp": 3270171236,
+            "checksum": 2139483,
+            "pdb_guid": "06d1c145-6b12-ef30-6389-a4d17d891bf6",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\system-images\\ucrtbase.dll",
+            "sha256": "5e5ae0f8e4325ceb3ee767065dda6e03e980d401f00a2bdb8ca81ed90813920f",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "C:\\Windows\\System32\\ucrtbase.dll",
+            "base": "0x7ffe1d550000",
+            "image_size": 1114112,
+            "timestamp": 1549298007,
+            "checksum": 1162034,
+            "pdb_guid": "96a776e0-5920-e3a3-34c1-c632bffdedfe",
+            "pdb_age": 1
+          }
+        },
+        {
+          "pe": {
+            "path": "build\\p1-mesa-hosted-control-20261009\\artifacts\\webview2\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+            "sha256": "9ddde29046b3c131c60e8f40330c407c0e6e8f1ab5f446b08e28e07ac3e4bc82",
+            "image_size": 724992,
+            "timestamp": 1791541864,
+            "checksum": 0,
+            "machine": "0x8664"
+          },
+          "dump_module": {
+            "name": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-webview2\\lifecycle-control\\caller\\osmesa_thread_probe.exe",
+            "base": "0x7ff777500000",
+            "image_size": 724992,
+            "timestamp": 1791541864,
+            "checksum": 0,
+            "pdb_guid": "980c82fe-bec8-46ee-929f-441b06509709",
+            "pdb_age": 1
+          }
+        }
+      ],
+      "threads": [
+        {
+          "id": "1bdc.2b0 Suspend: 0 Teb: 00000092`f88e1000 Unfrozen",
+          "kind": "probe-main"
+        },
+        {
+          "id": "1bdc.1a90 Suspend: 0 Teb: 00000092`f88e3000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "1bdc.1124 Suspend: 0 Teb: 00000092`f88e5000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "1bdc.14fc Suspend: 0 Teb: 00000092`f88e7000 Unfrozen",
+          "kind": "other"
+        },
+        {
+          "id": "1bdc.284 Suspend: 0 Teb: 00000092`f88e9000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "1bdc.13cc Suspend: 0 Teb: 00000092`f88eb000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "1bdc.78c Suspend: 0 Teb: 00000092`f88ed000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "1bdc.1b4c Suspend: 0 Teb: 00000092`f88ef000 Unfrozen",
+          "kind": "rasterizer"
+        },
+        {
+          "id": "1bdc.1b50 Suspend: 0 Teb: 00000092`f88f1000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "1bdc.1b54 Suspend: 0 Teb: 00000092`f88f3000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "1bdc.1d9c Suspend: 0 Teb: 00000092`f88f5000 Unfrozen",
+          "kind": "compute"
+        },
+        {
+          "id": "1bdc.978 Suspend: 0 Teb: 00000092`f88f7000 Unfrozen",
+          "kind": "compute"
+        }
+      ],
+      "thread_counts": {
+        "rasterizer": 4,
+        "compute": 4,
+        "utility": 0,
+        "probe-main": 1,
+        "other": 3
+      },
+      "dump_sha256": "f4283b117f74838bda3b26d9d7e556188bb4cc086c08b33a1b682f1fb850e4af",
+      "same_wait_task0": false,
+      "limitation": "Framework/test PE images not retained in the target artifact; recorded SHA only. Windows symbols are exports; Mesa/caller private symbols matched."
+    }
+  ],
+  "original_commands_and_timeouts": "matched",
+  "pass": true
+}

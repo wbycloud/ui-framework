@@ -1,0 +1,99 @@
+{
+  "evidence": "D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\language-evidence-light-3c170e7f4b4743e9a41f62e864be2e49",
+  "input": "real SendInput",
+  "backend": "light",
+  "startedUtc": "2026-10-09T10:35:47.6332841Z",
+  "provider": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-candidate\\unpacked\\osmesa.dll",
+  "completedUtc": "2026-10-09T10:36:59.5621025Z",
+  "cases": [
+    {
+      "elapsedMs": 7691,
+      "startedUtc": "2026-10-09T10:35:47.7349723Z",
+      "status": "exited",
+      "label": "preferences-96",
+      "dpi": 96,
+      "mode": "preferences",
+      "completedUtc": "2026-10-09T10:35:55.4546413Z",
+      "exitCode": 0
+    },
+    {
+      "elapsedMs": 11447,
+      "startedUtc": "2026-10-09T10:35:55.4627973Z",
+      "status": "exited",
+      "label": "write-96",
+      "dpi": 96,
+      "mode": "write",
+      "completedUtc": "2026-10-09T10:36:06.9110380Z",
+      "exitCode": 0
+    },
+    {
+      "elapsedMs": 10035,
+      "startedUtc": "2026-10-09T10:36:06.9136833Z",
+      "status": "exited",
+      "label": "restore-96",
+      "dpi": 96,
+      "mode": "restore",
+      "completedUtc": "2026-10-09T10:36:16.9503480Z",
+      "exitCode": 0
+    },
+    {
+      "elapsedMs": 11370,
+      "startedUtc": "2026-10-09T10:36:16.9524000Z",
+      "status": "exited",
+      "label": "write-144",
+      "dpi": 144,
+      "mode": "write",
+      "completedUtc": "2026-10-09T10:36:28.3236052Z",
+      "exitCode": 0
+    },
+    {
+      "elapsedMs": 10147,
+      "startedUtc": "2026-10-09T10:36:28.3251635Z",
+      "status": "exited",
+      "label": "restore-144",
+      "dpi": 144,
+      "mode": "restore",
+      "completedUtc": "2026-10-09T10:36:38.4739400Z",
+      "exitCode": 0
+    },
+    {
+      "elapsedMs": 11223,
+      "startedUtc": "2026-10-09T10:36:38.4760470Z",
+      "status": "exited",
+      "label": "write-192",
+      "dpi": 192,
+      "mode": "write",
+      "completedUtc": "2026-10-09T10:36:49.7003659Z",
+      "exitCode": 0
+    },
+    {
+      "elapsedMs": 9857,
+      "startedUtc": "2026-10-09T10:36:49.7018442Z",
+      "status": "exited",
+      "label": "restore-192",
+      "dpi": 192,
+      "mode": "restore",
+      "completedUtc": "2026-10-09T10:36:59.5605252Z",
+      "exitCode": 0
+    }
+  ],
+  "files": [
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-evidence-osmesa\\lifecycle-candidate\\unpacked\\osmesa.dll",
+      "sha256": "99D8142434C3ABFACCE969AA3731220314D99C53EE0AFC546896C0AFAD92F5F5"
+    },
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\ui_instance_language_test.exe",
+      "sha256": "075FCE28A5500ED259A4FFA592473D9F8246FD296829DB781AAF0CECCAFAFE57"
+    },
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\stateful_components.uapp",
+      "sha256": "CC8DBCCA2853D08FB525AFD3DF1860B9691817C9C0428CE1D368B43FA0307D88"
+    },
+    {
+      "path": "D:\\a\\ui-framework\\ui-framework\\build\\ci-osmesa\\ui_framework.dll",
+      "sha256": "805B014899AF4690B8A47E0F765D3365EB012EBCC4FB0010F483957C3E1AB096"
+    }
+  ],
+  "frameworkApi": 9
+}

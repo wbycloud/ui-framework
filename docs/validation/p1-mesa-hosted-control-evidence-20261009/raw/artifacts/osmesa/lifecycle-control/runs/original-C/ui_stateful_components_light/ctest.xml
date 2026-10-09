@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="1"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="39"
+	timestamp="2026-10-09T10:35:07"
+	>
+	<testcase name="ui_stateful_components_light" classname="ui_stateful_components_light" time="39.6686" status="run">
+		<properties/>
+		<system-out>CASE_BEGIN label=write-96 mode=write dpi=96 utc=2026-10-09T10:35:07.5658815Z evidence=D:\a\ui-framework\ui-framework\build\ci-osmesa\state-evidence-light-e96979311b64491b8132068274080d78
+TEST_PHASE pid3804 tick699640 dispatched0 create-host-begin
+TEST_PHASE pid3804 tick699671 dispatched0 create-host-end
+TEST_PHASE pid3804 tick699703 dispatched0 open-begin
+TEST_PHASE pid3804 tick700000 dispatched0 open-return
+TEST_PHASE pid3804 tick700500 dispatched34 open-settled
+RESTORED modewrite dpi96 name200 treeCollapsed0
+TEST_PHASE pid3804 tick700500 dispatched34 screenshot-begin
+TEST_PHASE pid3804 tick700531 dispatched34 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit00000000001301FA classUIFrameworkLightWeb thread3932 ours3932 GetCapture00000000001301FA target-thread-capture00000000001301FA
+ACTUAL_HEADER dpi96 width200 -&gt; 280 hit00000000001301FA pid3804
+TEST_PHASE pid3804 tick700937 dispatched56 screenshot-begin
+TEST_PHASE pid3804 tick700984 dispatched56 screenshot-end
+TEST_PHASE pid3...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+</testsuite>

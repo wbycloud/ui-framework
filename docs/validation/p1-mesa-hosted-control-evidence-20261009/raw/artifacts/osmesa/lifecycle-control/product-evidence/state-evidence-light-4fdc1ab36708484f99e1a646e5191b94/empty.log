@@ -1,0 +1,12 @@
+TEST_PHASE pid6300 tick436531 dispatched0 create-host-begin
+TEST_PHASE pid6300 tick436562 dispatched0 create-host-end
+TEST_PHASE pid6300 tick436578 dispatched0 open-begin
+TEST_PHASE pid6300 tick436875 dispatched0 open-return
+TEST_PHASE pid6300 tick437375 dispatched36 open-settled
+RESTORED modeinvalid dpi96 name200 treeCollapsed0
+TEST_PHASE pid6300 tick437375 dispatched36 close-begin
+TEST_PHASE pid6300 tick437406 dispatched36 close-request-return
+TEST_PHASE pid6300 tick437468 dispatched37 close-state-checked
+TEST_PHASE pid6300 tick437781 dispatched37 com-uninitialize-begin
+TEST_PHASE pid6300 tick437781 dispatched37 process-return
+Stateful actual light / invalid: 0 failures
