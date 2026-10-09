@@ -2,6 +2,8 @@
 
 更新日期：2026-10-09。当前SDK0.9.0-dev/API9/标准9，应用ABI1/包格式1。最新实例语言复核接手干净876588246a72d261c88b9e1906372d1b5b91d1ca，已有实现保留，没有重复新增接口；先读第24节与[本轮复核](validation/instance-language-current-validation.md)。此前已核验远端main/codex/menus-offscreen b6a36fee完整源码同步，原托管CI失败及Session0实际GL通过/严格无登录失败见第21节与[同步记录](validation/github-sync-validation.md)，不是当前8765882服务复验。第19节[API9初验](validation/instance-language-validation.md)、第18节及更早各节保留原提交、环境和失败，不继承为当前CI通过。保留95f5d78/6a0170a视觉、9df202f/2e87e02捕获及异步轨道、f0b161c列序与捕获和第23节界面修复。共同组件无分页按钮，原预算与生命周期保持，只维护当前API9；本地交付、托管CI、Session0及物理人工条件分别报告。
 
+本次持久化交接准备时HEAD为main/419290bc9ebf6fb8c4056f3139932d89b6dec219，工作区干净；44c039f与419290b只更新说明和当前证据，产品/公共头/测试实现与8765882相同。先读第25节的恢复清单与[新会话提示词](next-session-prompt.md)，最新交接文档提交用实际Git核对。本次不启动下一轮开发，不新建会话、推送或远程运行。
+
 本地CI收敛的最新接续见第22节及[本轮验收](validation/ci-recovery-validation.md)：宿主语言断言已有本地修正，原托管存储/语言超时仍待定位。远端原结果、Session0 GL及严格无登录分别保留，不能把本机通过当作远程复验。
 
 本轮只框架及框架维护完整示例，不访问业务仓库。当前完整配置63通过/1物理跳过、独立无Web原生21通过/1物理跳过；SDK归档、实际解包应用、源码快照及最终本地提交见第24节与本轮复核，未经新授权不推送或远程复验。
@@ -15,6 +17,7 @@
 | 项目 | 交接状态 |
 | --- | --- |
 | 仓库 | [wbycloud/ui-framework](https://github.com/wbycloud/ui-framework) |
+| 当前本地已完成交付 | 419290bc9ebf6fb8c4056f3139932d89b6dec219，main；44c039f说明/当前回归，419290b最终SDK外部证明。交接整理另作文档提交，实际HEAD以Git为准 |
 | 当前已核验GitHub交付 | main与codex/menus-offscreen均为b6a36fee3f4c1a73818cdb01ea7271ad5abd30db；源码与README匹配，自动CI失败，详见第21节；后续本地文档提交不自动代表远端已更新 |
 | API5功能代码 | [87478fa20d7bb46809c0ef81dd44f972dc193a24](https://github.com/wbycloud/ui-framework/commit/87478fa20d7bb46809c0ef81dd44f972dc193a24)，四项实现及回归；文档另行提交，实际HEAD以Git为准 |
 | 浏览器式宿主 | d7030b3：单行标签标题栏、第二行应用菜单、原Windows/关闭合同及12项最近成功包；完整结果/限制见第12节，文档提交不改执行代码 |
@@ -353,3 +356,47 @@ SDK0.9.0-dev/API9/标准9、ABI1/包1保持，新增独立完整size描述及三
 当前最终SDK为ui-framework-sdk0.9.0-dev-api9-44c039f-windows-x64.zip，源码/说明快照44c039fce36c191dba03631a7bcc1c5756e2dd90（首轮文档提交）；3602文件/117891276字节，SHA256 28ca0b8409b321477f1aa3adce2680fda8cf2cd8a9a35dd4308a5f08ef1f79a2。原产品/头文件/测试没有新差异；CRC/逐文件/实际解包C调用通过，最终解包完整应用两后端14个子进程均实际exited0。包内固定依赖离线构建成功，语言core/C++公共头/实际OSMesa三项通过；选错Ninja目标的原失败保持。之后全部交付文件和旧SDK哈希仍匹配。[最终外部证明](validation/instance-language-current-evidence-20261009/raw/sdk-final-archive.json)另作本地提交，不回写已封存归档；最新HEAD见git log，不能把文档提交混作产品测试身份。
 
 全部原证据在build/language-current-20261009，关键原日志、运行器、确认观察器、manifest和18张真实PNG保存到docs/validation/instance-language-current-evidence-20261009，Git属性保留原字节。本机Windows10.0.26300/Session1/MSVC19.50/Runtime154.0.4258.62，固定依赖未改。当前会话非管理员，本轮没有服务Session0复验；原b6a36fee Session0 GL通过和严格无登录logged_sessions1失败分别保留。没有严格无登录runner和新的托管CI授权；真实其他系统UI/IME/物理不同DPI/桌面合成/长期人工待验，原托管超时/历史重绘不宣称根治。仅本地提交，不推送/发布/标签/新会话/子代理/graph-engineering，不改冻结SDK/历史包/证据/PERF-001，不扩大硬件GL。
+
+## 25. 2026-10-09 持久化与新会话恢复
+
+本节是当前恢复入口，前述历史结果保持原身份。整理前工作区干净、main/419290bc9ebf6fb8c4056f3139932d89b6dec219；本次只维护本文及[接手提示词](next-session-prompt.md)，不改产品、脚本、测试、SDK或原证据，不启动后台任务。交接文档提交在419290b之后，不能当作新增产品测试或SDK源码身份。
+
+### 已完成与精确身份
+
+| 对象 | 已确认状态 |
+| --- | --- |
+| 当前合同 | SDK0.9.0-dev/API9/标准9、应用ABI1/包格式1、Windows x64/C11；只维护当前版本 |
+| 语言实现 | ee6a2a8/6d88770已有能力：每host独立zh-CN/en-US、设置/查询/同步通知及稳定ID文本更新；无全局语言设置 |
+| 应用偏好 | 完整stateful_components示例拥有UIL1，稳定A/B档案隔离，首次呈现前提交；缺失/拒绝文件时由示例明确选择英文，框架未提交host跟随Windows显示语言 |
+| 宿主与刷新 | 活动实例语言决定宿主文案，后台隔离，最后关闭恢复系统来源；不重载DLL/HWND/GL、不翻译用户值、不改用户列宽；权限确认保留打开时目标语言快照 |
+| 本轮产品测试身份 | 876588246a72d261c88b9e1906372d1b5b91d1ca新构建；最后产品修复07a66a8，后续4fdfcc2只调整Runtime测试输入点，44c039f/419290b为说明和证据 |
+| 当前本地结果 | 完整64项63通过/0失败/1物理跳过，原生22项21通过/0失败/1跳过；两后端确认快照共4场景通过，最终解包语言14个进程正常退出，离线3/3 |
+| 最后核验的远端（历史） | b6a36fee3f4c1a73818cdb01ea7271ad5abd30db；本次未fetch或查询实时远端，不能称其仍是实时main |
+
+接口与所有权见[实例语言](instance-language.md)，完整应用使用见[示例说明](../examples/stateful_components/README.md)。当前回归的构建、产物、固定依赖、原失败和真实截图以[第24节完整验收](validation/instance-language-current-validation.md)为准，不根据Git文档提交日期推算运行身份。
+
+### 必须保留的交付与证据
+
+Git中`docs/validation/instance-language-current-evidence-20261009`包含143份清单内文件、18张完整宿主真实PNG；`sha256.json`不含自身，raw日志保持原字节。`sdk-final-archive.json`、`sdk-final-actual-results.json`、`final-sdk-language-*/manifest.json`、`sdk-offline-tests.xml`分别证明封存包、实际退出和离线调用。不要重跑收集/打包辅助程序覆盖这些记录。
+
+本地最终包为`build/language-current-20261009/ui-framework-sdk0.9.0-dev-api9-44c039f-windows-x64.zip`，源码/说明快照44c039fce36c191dba03631a7bcc1c5756e2dd90，3602文件/117891276字节，SHA256 `28ca0b8409b321477f1aa3adce2680fda8cf2cd8a9a35dd4308a5f08ef1f79a2`。外部证明后提交，归档不补写419290b或本次交接文档。SDK、源BMP和完整本地日志在被忽略的build目录，clone不会携带；新机器缺少时准确列缺失，不重生成冒充原包/原截图。
+
+`build/github-sync-20261008`的437份原CI证据、`build/ci-recovery-20261008`、`build/ui-repair-20261009`、历史6d88770/07a66a8归档及`.deps`固定依赖继续保留。不要把它们当作可直接删除的临时文件。原CI记录提供运行链接；远端Artifacts过期不能靠本机新结果覆盖。
+
+### 恢复步骤与未完成事项
+
+1. 在仓库核对Git状态、分支、HEAD及最近提交，保留用户改动；读本文第21–25节、本轮验收、实例语言合同、示例说明与构建说明。根目录被忽略的task_plan.md/progress.md只是同机补充，Git文档是跨会话依据。
+2. 只读核对143份证据哈希、最终SDK身份及包内identity/sha256清单；缺文件则记录。固定Lexbor7fb22cf5664a331d7c24b113489e566767c9c25a、QuickJS-NG2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278、WebView2 SDK1.0.4129.50/Mesa24.3.4；上次实际Runtime154.0.4258.62，当前环境需重新识别，不盲目prepare改写依赖。
+3. 完成恢复后报告已完成、未定位与缺条件，等待用户明确下一轮范围。新开发获授权后使用新目录/新证据；真实SendInput必须解锁且串行，检查实际Dispatch、最终状态和进程退出，不以消息取出或failures0尾行代替整项成功。
+
+| 未完成项 | 接续条件与不能作出的结论 |
+| --- | --- |
+| 原托管Light存储180秒/语言240秒超时 | 2fa6f84补了阶段/PID/elapsed/实际退出诊断，本机未复现，根因未定位；获得新的远程授权后在准确commit的目标环境定位，不加sleep/超时/阈值 |
+| 历史持续重绘、瞬态Runtime与泛化192叠层/窄表头残影 | 当前通过不证明根治；用户要求继续时先建立新复现和触发链证据，不将旧中文断言失败当成重绘根因 |
+| 当前源码Session0 | 上轮非管理员、未运行服务复验；需要权限。历史b6a GL通过不可继承到当前提交 |
+| 严格整机无登录 | 用户无服务runner；原logged_sessions1为失败，保留门槛，不注销用户/改既有服务 |
+| 实际其他Windows显示语言 | 真实系统只有zh-CN；实例英文和可控映射不证明英文Windows空宿主；需要相应环境，不改机器语言或注销 |
+| 真实IME、物理不同DPI/桌面合成与长期人工 | 自动输入/程序DPI/截图不能替代，具备条件再验 |
+| 业务正式接入 | 本轮只框架完整示例；请求方仓库/冻结SDK/历史包与证据/PERF-001只读，应用修改需要另行明确授权 |
+
+此次只授权本地交接准备，不包含推送、远程工作流、发布、标签、清理产物或新会话；第20节旧同步授权已完成。保留9df202f/2e87e02捕获与异步轨道、f0b161c列序/捕获、f00bbeb精确语言断言、2fa6f84诊断和第23节修复；不恢复分页或旧版兼容专项，不提高预算、不删除失败断言，不使用graph-engineering或子代理。
