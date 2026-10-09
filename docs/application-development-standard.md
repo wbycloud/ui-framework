@@ -154,7 +154,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 ### 3.3 size 和兼容性
 
-使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 8。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前实现接受 1–8，拒绝 0 和未支持的更高版本。低版本接受分支是现存行为，不是持续维护承诺；只维护当前 API9。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
+使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 9。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前实现接受 1–9，拒绝 0 和未支持的更高版本。低版本接受分支是现存行为，不是持续维护承诺；只维护当前 API9。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
 
 布局接口接受原始六字段布局描述，省略的新字段按零值处理；Web ops 支持旧尺寸，缺少追加的定位、消息或能力回调时对应操作返回 UNSUPPORTED。`ui_workspace_config_t` 在保留完整 v1 布局后追加 `shell_mode`；清零时选择 `UI_WORKSPACE_SHELL_NATIVE`，自建 Web workspace 可显式选择 `UI_WORKSPACE_SHELL_WEB`。独立宿主固定使用 WEB。并非所有结构都允许截断，不能人为缩小 `size` 来假装某个版本。C++ 应用通过 `extern "C"` 调用同一接口；[`tests/public_headers.cpp`](../tests/public_headers.cpp) 覆盖公共头文件调用路径。
 
@@ -493,4 +493,4 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 
 公共多行字段默认四行容量，调用 `ui_component_set_field_layout` 设置首选行数或逻辑高度。只读字段仍可选择、复制和滚动；内部文字与外层字段容器分别滚动，验收必须实际读到末行，不能以滚动条或接口成功代替。公共DIALOG通过 `ui_component_set_dialog_layout` / `ui_component_get_dialog_layout` 管理首选、最小、最大客户区尺寸，首次按内容计算高度，按钮与模态/键盘语义保留；详见[布局合同及C示例](dialog-layout.md)。
 
-`ui_host_hide_tooltip` 在UI线程隐藏本宿主及其shell内部浮动标题提示，保留普通菜单和独立应用宿主的提示。离开锚点、位置变化、拖动、停靠、关闭及拥有者销毁关闭旧提示；内容更新关闭旧值提示。尺寸按内容计算，并受可见拥有者及监视器工作区约束。程序设置DPI、窗口报告DPI和物理显示器DPI分别记录。新能力使用匹配的当前开发提交产物；不改写冻结SDK及历史标准。实际可见性与自动回归见[本轮验收](validation/ui-repair-validation.md)。
+`ui_host_hide_tooltip` 在UI线程隐藏本宿主及其shell内部浮动标题提示，保留普通菜单和独立应用宿主的提示。离开锚点、位置变化、拖动、停靠、关闭及拥有者销毁关闭旧提示；内容更新关闭旧值提示。尺寸按内容计算，完整提示矩形限制在拥有者可见客户区与监视器工作区的交集内；交集为空时 `ui_host_show_tooltip` 返回NOT_FOUND。提示保持可见并让鼠标输入穿过，普通菜单保留可操作语义。程序设置DPI、窗口报告DPI和物理显示器DPI分别记录。新能力使用匹配的当前开发提交产物；不改写冻结SDK及历史标准。实际可见性与自动回归见[此前验收](validation/ui-repair-validation.md)及[当前本地查证](validation/local-investigation-validation.md)。

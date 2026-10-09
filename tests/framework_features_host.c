@@ -2,12 +2,20 @@
 #define UI_HOST_TEST 1
 #include "../examples/framework_host/main.c"
 static int failures,group_count,forbidden;
+typedef struct feature_paint {HWND hwnd;unsigned queued,sent,invalid_before,invalid_after,positions;RECT region;} feature_paint_t;
+static feature_paint_t observed[64];
+static unsigned observed_count,refreshes,wakes;
+static HHOOK paint_enter,paint_leave;
+static feature_paint_t *paint_for(HWND hwnd){for(unsigned i=0;i<observed_count;++i)if(observed[i].hwnd==hwnd)return &observed[i];if(observed_count==64)return NULL;observed[observed_count].hwnd=hwnd;return &observed[observed_count++];}
+static LRESULT CALLBACK feature_enter(int code,WPARAM a,LPARAM b){if(code>=0){CWPSTRUCT *m=(CWPSTRUCT*)b;feature_paint_t *p;if(m->message==WM_PAINT&&(p=paint_for(m->hwnd))!=NULL){++p->sent;p->invalid_before+=GetUpdateRect(m->hwnd,&p->region,FALSE)!=0;}if(m->message==WM_WINDOWPOSCHANGED&&(p=paint_for(m->hwnd))!=NULL)++p->positions;refreshes+=m->message==HOST_REFRESH_MESSAGE;wakes+=m->message==UI_WORKSPACE_WAKE_MESSAGE;}return CallNextHookEx(paint_enter,code,a,b);}
+static LRESULT CALLBACK feature_leave(int code,WPARAM a,LPARAM b){if(code>=0){CWPRETSTRUCT *m=(CWPRETSTRUCT*)b;feature_paint_t *p;if(m->message==WM_PAINT&&(p=paint_for(m->hwnd))!=NULL)p->invalid_after+=GetUpdateRect(m->hwnd,NULL,FALSE)!=0;}return CallNextHookEx(paint_leave,code,a,b);}
 static void trace_step(int line,const char *text)
 {if(GetEnvironmentVariableW(L"UI_FEATURE_TRACE",NULL,0)){fprintf(stderr,"FEATURE_TRACE %llu line%d: %s\n",(unsigned long long)GetTickCount64(),line,text);fflush(stderr);}}
 #define CHECK(x) do{trace_step(__LINE__,#x);if(!(x)){fprintf(stderr,"line %d: %s\n",__LINE__,#x);++failures;}}while(0)
 /* A live rendering queue need not become empty. Check bounds before removal so
  * every retrieved message is dispatched, including when a paint stays pending. */
-static void pump(void){MSG m;unsigned n=0,timers=0,paints=0;ULONGLONG start=GetTickCount64();while(n<3000&&GetTickCount64()-start<100&&PeekMessageW(&m,NULL,0,0,PM_REMOVE)){++n;if(m.message!=WM_QUIT){timers+=m.message==WM_TIMER;paints+=m.message==WM_PAINT;TranslateMessage(&m);DispatchMessageW(&m);}}if(GetEnvironmentVariableW(L"UI_FEATURE_TRACE",NULL,0)){fprintf(stderr,"FEATURE_PUMP %llu ms messages%u timers%u paints%u\n",(unsigned long long)(GetTickCount64()-start),n,timers,paints);fflush(stderr);}}
+static void pump(void){MSG m;unsigned n=0,timers=0,paints=0;ULONGLONG start=GetTickCount64();if(paint_enter){memset(observed,0,sizeof(observed));observed_count=refreshes=wakes=0;}while(n<3000&&GetTickCount64()-start<100&&PeekMessageW(&m,NULL,0,0,PM_REMOVE)){++n;if(m.message!=WM_QUIT){feature_paint_t *p=NULL;timers+=m.message==WM_TIMER;paints+=m.message==WM_PAINT;if(paint_enter&&m.message==WM_PAINT&&(p=paint_for(m.hwnd))!=NULL){++p->queued;p->invalid_before+=GetUpdateRect(m.hwnd,&p->region,FALSE)!=0;}TranslateMessage(&m);DispatchMessageW(&m);if(p)p->invalid_after+=GetUpdateRect(m.hwnd,NULL,FALSE)!=0;}}if(GetEnvironmentVariableW(L"UI_FEATURE_TRACE",NULL,0)){fprintf(stderr,"FEATURE_PUMP %llu ms messages%u timers%u paints%u\n",(unsigned long long)(GetTickCount64()-start),n,timers,paints);fflush(stderr);}if(paint_enter){for(unsigned i=0;i<observed_count;++i){feature_paint_t *p=&observed[i];wchar_t cls[80];GetClassNameW(p->hwnd,cls,80);fprintf(stderr,"FEATURE_WINDOW tick%llu hwnd%p class%ls queued%u sent%u invalid-before%u invalid-after%u positions%u update=%ld,%ld,%ld,%ld\n",GetTickCount64(),(void*)p->hwnd,cls,p->queued,p->sent,p->invalid_before,p->invalid_after,p->positions,p->region.left,p->region.top,p->region.right,p->region.bottom);}fprintf(stderr,"FEATURE_DISPATCH count%u refresh%u wake%u elapsed%llu\n",n,refreshes,wakes,GetTickCount64()-start);}}
+static void feature_idle(const char *phase){ULONGLONG end=GetTickCount64()+1000;unsigned queued=0;do{pump();for(unsigned i=0;i<observed_count;++i)queued+=observed[i].queued;MsgWaitForMultipleObjects(0,NULL,FALSE,10,QS_ALLINPUT);}while(GetTickCount64()<end);fprintf(stderr,"FEATURE_IDLE phase=%s queued-paint=%u\n",phase,queued);if(queued>100)++failures;}
 static int click(ui_web_view_t *v,const char *id)
 {ui_element_presentation_t p={0};ui_input_event_t e={0};p.size=sizeof(p);if(ui_web_view_get_presentation(v,id,&p)!=UI_STATUS_OK||!p.visible||!p.enabled)return 0;
  e.size=sizeof(e);e.kind=UI_INPUT_POINTER_DOWN;e.x=p.clip.x+3;e.y=p.clip.y+3;e.pointer_button=1;if(ui_web_view_dispatch_input(v,&e)!=UI_STATUS_OK)return 0;
@@ -35,6 +43,7 @@ int wmain(int argc,wchar_t **argv)
 {
  host_window_t host={0};HWND root;uint64_t first,second;ui_app_instance_info_t a={0},b={0};ui_menu_popup_desc_t menu={0};ui_input_event_t e={0};ui_element_presentation_t p={0};int i,j;
  const int sizes[]={1920,1280,800,640},heights[]={1080,720,600,480};const uint32_t dpis[]={96,144,192};if(argc<2)return 2;CHECK(ui_framework_initialize()==UI_STATUS_OK);
+ if(GetEnvironmentVariableW(L"UI_FEATURE_PAINT_TRACE",NULL,0)){paint_enter=SetWindowsHookExW(WH_CALLWNDPROC,feature_enter,NULL,GetCurrentThreadId());paint_leave=SetWindowsHookExW(WH_CALLWNDPROCRET,feature_leave,NULL,GetCurrentThreadId());CHECK(paint_enter&&paint_leave);}
  root=create_host(&host,GetModuleHandleW(NULL));CHECK(root!=NULL);if(!root)return 1;ShowWindow(root,SW_SHOW);
  open_path(&host,argv[1]);pump();first=ui_workspace_active(host.workspace);open_path(&host,argv[1]);pump();second=ui_workspace_active(host.workspace);
  CHECK(first&&second&&first!=second);if(!first||!second){fprintf(stderr,"%s\n",ui_workspace_last_error(host.workspace));return 1;}
@@ -44,13 +53,15 @@ int wmain(int argc,wchar_t **argv)
  /* Normal Web dispatch reserves Ctrl+O for the application and executes once. */
  e.size=sizeof(e);e.kind=UI_INPUT_KEY_DOWN;e.key_code='O';e.modifiers=UI_INPUT_MODIFIER_CONTROL;CHECK(ui_web_view_dispatch_input(host.view,&e)==UI_STATUS_OK);pump();CHECK(operations(&a)==1);
  {MSG key={0};key.hwnd=root;key.wParam=VK_MENU;key.message=WM_SYSKEYDOWN;CHECK(host_menu_key(&host,&key));key.message=WM_SYSKEYUP;CHECK(host_menu_key(&host,&key));p.size=sizeof(p);CHECK(ui_host_menu_get_presentation(a.host,"close",&p)==UI_STATUS_OK);key.message=WM_KEYDOWN;key.wParam=VK_ESCAPE;CHECK(host_menu_key(&host,&key));key.message=WM_KEYUP;CHECK(host_menu_key(&host,&key));}
+ if(paint_enter)feature_idle("after-original-instance-menu-chain");
  for(i=0;i<4;++i)for(j=0;j<3;++j){MoveWindow(root,30,30,sizes[i],heights[i],TRUE);pump();host.dpi=dpis[j];layout(&host);pump();
   p.size=sizeof(p);CHECK(ui_web_view_get_presentation(host.view,"tool-more",&p)==UI_STATUS_OK);if(sizes[i]<=800)CHECK(p.visible&&p.enabled);
   if(p.visible){CHECK(click(host.view,"tool-more"));pump();for(int n=0;n<6;++n){ui_element_presentation_t down={0};down.size=sizeof(down);if(ui_host_menu_get_presentation(a.host,"down",&down)!=UI_STATUS_OK||!down.enabled)break;
     e.kind=UI_INPUT_POINTER_DOWN;e.x=down.clip.x+3;e.y=down.clip.y+3;e.pointer_button=1;e.modifiers=0;CHECK(ui_host_menu_dispatch_input(a.host,&e)==UI_STATUS_OK);e.kind=UI_INPUT_POINTER_UP;CHECK(ui_host_menu_dispatch_input(a.host,&e)==UI_STATUS_OK);}
    CHECK(ui_host_menu_get_item_presentation(a.host,"feature.tool.12",&p)==UI_STATUS_OK&&p.visible&&p.enabled);CHECK(ui_host_close_menu(a.host)==UI_STATUS_OK);}}
  host.dpi=96;MoveWindow(root,30,30,1600,1000,TRUE);pump();layout(&host);pump();if(argc>2)screenshot(root,argv[2]);
+ if(paint_enter){InvalidateRect(host.web_hwnd,NULL,FALSE);pump();{unsigned positive=0;for(unsigned k=0;k<observed_count;++k)positive+=observed[k].queued+observed[k].sent;CHECK(positive>0);fprintf(stderr,"FEATURE_POSITIVE actual-paint=%u\n",positive);}feature_idle("after-original-size-DPI-overflow-chain");}
  EnumChildWindows(root,controls,0);CHECK(forbidden==0);CHECK(ui_workspace_close_all(host.workspace)==UI_STATUS_OK);
  {ULONGLONG end=GetTickCount64()+5000;while(ui_workspace_count(host.workspace)&&GetTickCount64()<end){pump();ui_workspace_poll(host.workspace);SwitchToThread();}}
- CHECK(ui_workspace_count(host.workspace)==0);DestroyWindow(root);pump();printf("API4 actual host menus/overflow/instances: %d failures\n",failures);return failures?1:0;
+ CHECK(ui_workspace_count(host.workspace)==0);DestroyWindow(root);pump();if(paint_enter)UnhookWindowsHookEx(paint_enter);if(paint_leave)UnhookWindowsHookEx(paint_leave);printf("API4 actual host menus/overflow/instances: %d failures\n",failures);return failures?1:0;
 }

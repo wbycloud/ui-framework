@@ -1,7 +1,8 @@
 param(
     [Parameter(Mandatory)][ValidateSet('native','light','webview2','osmesa')][string]$Configuration,
     [Parameter(Mandatory)][ValidateSet('prepare','build','test')][string]$Stage,
-    [string]$EvidenceDirectory
+    [string]$EvidenceDirectory,
+    [switch]$P1ProcessDiagnostic
 )
 $ErrorActionPreference = 'Stop'
 . "$PSScriptRoot/windows-ci-checks.ps1"
@@ -126,15 +127,18 @@ if ($provider) {
     $manifest.osmesaFile = [ordered]@{path=$provider; sha256=(Get-FileHash -LiteralPath $provider -Algorithm SHA256).Hash.ToLowerInvariant()}
 }
 $manifest | ConvertTo-Json -Depth 6 | Set-Content "$evidenceDirectory/manifest.json"
-& ctest --test-dir $buildDirectory --show-only=json-v1 > "$evidenceDirectory/test-plan.json"
+ $p1Filter = '^(ui_stateful_components_light|ui_instance_language_light)$'
+$inventoryFilter = if ($P1ProcessDiagnostic) { @('-R',$p1Filter) } else { @() }
+& ctest --test-dir $buildDirectory @inventoryFilter --show-only=json-v1 > "$evidenceDirectory/test-plan.json"
 CheckExit 'CTest inventory'
 $plan = Get-Content "$evidenceDirectory/test-plan.json" -Raw | ConvertFrom-Json
 $expected = @($plan.tests | ForEach-Object name)
 if (!$expected.Count) { throw 'Empty configured CTest plan' }
+if ($P1ProcessDiagnostic -and ($Configuration -notin @('webview2','osmesa') -or $expected.Count -ne 2 -or @(Compare-Object @('ui_stateful_components_light','ui_instance_language_light') $expected).Count)) { throw 'P1 diagnostic requires the exact original two Light cases' }
 [ordered]@{maintained_api=9; policy='current_only'; historical_sdk_api_callers_and_packages='not_maintained_or_gated'; existing_loader_behavior='not_a_future_compatibility_promise'} | ConvertTo-Json | Set-Content "$evidenceDirectory/compatibility-policy.json"
 $env:GALLIUM_DRIVER = 'llvmpipe'
 $runtimeTests = $UiCiRuntimeTests
-$phases = if ($Configuration -eq 'webview2') { @('wgl','provider','runtime') } elseif ($Configuration -eq 'osmesa') { @('wgl','provider') } else { @('all') }
+$phases = if ($P1ProcessDiagnostic) { @('provider') } elseif ($Configuration -eq 'webview2') { @('wgl','provider','runtime') } elseif ($Configuration -eq 'osmesa') { @('wgl','provider') } else { @('all') }
 $testExit = 0
 '' | Set-Content "$evidenceDirectory/regression.log"
 '' | Set-Content "$evidenceDirectory/test-output.log"
@@ -147,7 +151,25 @@ foreach ($phase in $phases) {
     }
     $excluded = if ($Configuration -eq 'webview2') { "$runtimeTests|$UiCiProviderTests" } else { $UiCiProviderTests }
     $filter = if ($phase -eq 'wgl') { @('-E',$excluded) } elseif ($phase -eq 'provider') { @('-R',$UiCiProviderTests) } elseif ($phase -eq 'runtime') { @('-R',$runtimeTests) } else { @() }
-    & ctest --test-dir $buildDirectory @filter --no-tests=error --output-on-failure --output-junit "$((Resolve-Path $evidenceDirectory).Path)/ctest-$phase.xml" *> "$evidenceDirectory/regression-$phase.log"
+    if ($P1ProcessDiagnostic) {
+        $env:UI_PROCESS_STALL_SECONDS = '60'
+        $diagnosticCombined = [xml]'<testsuite name="P1 diagnostic" tests="0" failures="0" skipped="0"/>'
+        '' | Set-Content "$evidenceDirectory/regression-$phase.log"
+        foreach ($caseName in $expected) {
+            $caseEvidence = "$evidenceDirectory/p1/$caseName"
+            New-Item -ItemType Directory -Path $caseEvidence | Out-Null
+            $caseXml = "$((Resolve-Path $caseEvidence).Path)/ctest.xml"
+            & python tests/observe_processes.py "$caseEvidence/processes.jsonl" -- ctest --test-dir $buildDirectory -R "^$caseName$" --no-tests=error -V --output-junit $caseXml *> "$caseEvidence/observer.log"
+            if ($LASTEXITCODE) { $testExit = $LASTEXITCODE }
+            Get-Content "$caseEvidence/processes.log" | Add-Content "$evidenceDirectory/regression-$phase.log"
+            [xml]$caseResult = Get-Content $caseXml -Raw
+            foreach ($test in $caseResult.testsuite.testcase) { [void]$diagnosticCombined.testsuite.AppendChild($diagnosticCombined.ImportNode($test,$true)) }
+            foreach ($attribute in @('tests','failures','skipped')) { $diagnosticCombined.testsuite.SetAttribute($attribute,[string]([int]$diagnosticCombined.testsuite.GetAttribute($attribute)+[int]$caseResult.testsuite.GetAttribute($attribute))) }
+        }
+        $diagnosticCombined.Save("$((Resolve-Path $evidenceDirectory).Path)/ctest-$phase.xml")
+    } else {
+        & ctest --test-dir $buildDirectory @filter --no-tests=error --output-on-failure --output-junit "$((Resolve-Path $evidenceDirectory).Path)/ctest-$phase.xml" *> "$evidenceDirectory/regression-$phase.log"
+    }
     if ($LASTEXITCODE) { $testExit = $LASTEXITCODE }
     Get-Content "$evidenceDirectory/regression-$phase.log" | Add-Content "$evidenceDirectory/regression.log"
     Get-Content "$buildDirectory/Testing/Temporary/LastTest.log" | Add-Content "$evidenceDirectory/test-output.log"
@@ -164,4 +186,8 @@ if ('ui_session0_interactive_control' -in $expected -and (Test-Path "$buildDirec
 [xml]$results = Get-Content "$evidenceDirectory/ctest.xml" -Raw
 
 if ($testExit) { throw "Regression failed ($testExit)" }
-Assert-UiCiResults $results $expected $Configuration
+if ($P1ProcessDiagnostic) {
+    $actual = @($results.testsuite.testcase)
+    if ($actual.Count -ne 2 -or @(Compare-Object $expected @($actual | ForEach-Object name)).Count -or @($actual | Where-Object { $_.status -ne 'run' -or $_.SelectSingleNode('failure') }).Count) { throw 'P1 diagnostic exact case/exit failure' }
+    Write-Output 'P1 diagnostic only; not complete regression acceptance'
+} else { Assert-UiCiResults $results $expected $Configuration }

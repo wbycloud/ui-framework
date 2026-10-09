@@ -58,7 +58,7 @@ Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标
 
 ### 2.1 打包自己的应用
 
-应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 8；使用当前接口的应用将清单与 DLL descriptor 一致声明为8，历史SDK/API和原包不再属于维护及专项回归范围。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
+应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 9；使用当前接口的应用将清单与 DLL descriptor 一致声明为9，历史SDK/API和原包不再属于维护及专项回归范围。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
 
 ```text
 minimal_eda_app.dll
@@ -389,7 +389,7 @@ foreach ($row in @("native","light","webview2","osmesa")) {
 
 ## 框架视觉复验
 
-公共API为8；内部视觉修正不再次升级接口。统一CSS在CMake配置时嵌入生成的宿主资源、组件/菜单字符串及Web浮动标题。修改src/visual.css或模板后执行cmake --build会触发重配置/RC与DLL构建；仅打开源host.html不能代替运行真实宿主。
+当前公共API为9；内部视觉修正沿用当前接口版本。统一CSS在CMake配置时嵌入生成的宿主资源、组件/菜单字符串及Web浮动标题。修改src/visual.css或模板后执行cmake --build会触发重配置/RC与DLL构建；仅打开源host.html不能代替运行真实宿主。
 
 使用第3节固定依赖、真实Runtime及显式OSMesa配置，在Windows x64开发终端执行：
 
@@ -438,7 +438,7 @@ ctest --test-dir build/visual -R "^(ui_light_glyph_padding|ui_component_scroll_n
 
 ## 此前API8必跑增补（当前继续执行）
 
-现有四行CI复用，不新建工作流。light/osmesa/webview2必须包含ui_component_widths，Runtime行另含ui_component_widths_webview2；tools/test-windows-ci.ps1验证分类与缺失测试拒绝。测试名ui_api7_integration与api7_fixture表示既有基础用例，当前编译宏、清单及DLL声明已为8，不能把文件名视为旧SDK兼容专项。
+现有四行CI复用，不新建工作流。light/osmesa/webview2必须包含ui_component_widths，Runtime行另含ui_component_widths_webview2；tools/test-windows-ci.ps1验证分类与缺失测试拒绝。测试名ui_api7_integration与api7_fixture表示既有基础用例，当前编译宏、清单及DLL声明均为9，不能把文件名视为旧SDK兼容专项。
 
 本轮本地构建build/experience-20261007/after；证据见[当前验收](validation/component-experience-validation.md)。真实Runtime测试需要允许浏览器进程的Windows桌面，沙箱内失败需单独保留；使用构建缓存记录的CTest绝对路径并检查真实退出码。当前服务Session0与整机无登录门槛独立，普通桌面OSMesa通过不算服务或无登录成功。
 

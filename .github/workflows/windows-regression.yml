@@ -4,6 +4,11 @@ on:
     branches: [main, codex/menus-offscreen]
   pull_request:
   workflow_dispatch:
+    inputs:
+      p1_process_diagnostic:
+        description: "Diagnostic only: original two Light cases, process boundaries and stall dumps"
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -13,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        configuration: [native, light, webview2, osmesa]
+        configuration: ${{ fromJSON(inputs.p1_process_diagnostic && '["webview2","osmesa"]' || '["native","light","webview2","osmesa"]') }}
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
@@ -28,7 +33,11 @@ jobs:
         shell: pwsh
         run: |
           ./tools/test-windows-ci.ps1
-          ./tools/windows-ci.ps1 -Configuration ${{ matrix.configuration }} -Stage test
+          if ('${{ inputs.p1_process_diagnostic }}' -eq 'true') {
+            ./tools/windows-ci.ps1 -Configuration ${{ matrix.configuration }} -Stage test -P1ProcessDiagnostic
+          } else {
+            ./tools/windows-ci.ps1 -Configuration ${{ matrix.configuration }} -Stage test
+          }
       - name: Public result and environment
         if: always()
         shell: pwsh

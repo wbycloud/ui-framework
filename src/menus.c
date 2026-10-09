@@ -336,16 +336,21 @@ static ui_status_t show_popup(ui_menu_popup_t *p)
 #ifdef _WIN32
     if(p->window){POINT point={MulDiv(rect.x,(int)dpi,96),MulDiv(rect.y+rect.height,(int)dpi,96)};MONITORINFO monitor={sizeof(monitor)};
         int width,height,x,y;ClientToScreen((HWND)native,&point);GetMonitorInfoW(MonitorFromPoint(point,MONITOR_DEFAULTTONEAREST),&monitor);
-        if(p->detail){p->tip_anchor_window=(HWND)native;p->tip_anchor_screen=(RECT){MulDiv(rect.x,(int)dpi,96),MulDiv(rect.y,(int)dpi,96),MulDiv(rect.x+rect.width,(int)dpi,96),MulDiv(rect.y+rect.height,(int)dpi,96)};MapWindowPoints((HWND)native,NULL,(POINT *)&p->tip_anchor_screen,2);GetWindowRect((HWND)native,&p->tip_owner_rect);{POINT at;GetCursorPos(&at);p->tip_pointer_inside=PtInRect(&p->tip_anchor_screen,at);}SetTimer((HWND)p->window,2,80,NULL);}
+        if(p->detail){p->tip_anchor_window=(HWND)native;p->tip_anchor_screen=(RECT){MulDiv(rect.x,(int)dpi,96),MulDiv(rect.y,(int)dpi,96),MulDiv(rect.x+rect.width,(int)dpi,96),MulDiv(rect.y+rect.height,(int)dpi,96)};MapWindowPoints((HWND)native,NULL,(POINT *)&p->tip_anchor_screen,2);GetWindowRect((HWND)native,&p->tip_owner_rect);{POINT at;GetCursorPos(&at);p->tip_pointer_inside=PtInRect(&p->tip_anchor_screen,at);}}
         width=MulDiv(p->width,(int)dpi,96);height=MulDiv(p->height,(int)dpi,96);if(height>monitor.rcWork.bottom-monitor.rcWork.top)height=monitor.rcWork.bottom-monitor.rcWork.top;
         if(width>monitor.rcWork.right-monitor.rcWork.left)width=monitor.rcWork.right-monitor.rcWork.left;
         x=point.x;y=point.y;if(p->parent&&p->parent->window){POINT at={MulDiv(p->parent_row.x,(int)dpi,96),MulDiv(p->parent_row.y,(int)dpi,96)};RECT parent_rect;ClientToScreen((HWND)p->parent->window,&at);GetWindowRect((HWND)p->parent->window,&parent_rect);x=parent_rect.right-2;y=at.y-4;if(x+width>monitor.rcWork.right)x=parent_rect.left-width+2;}
         if(y+height>monitor.rcWork.bottom)y=p->parent?monitor.rcWork.bottom-height:point.y-MulDiv(rect.height,(int)dpi,96)-height;
         if(x+width>monitor.rcWork.right)x=p->parent?monitor.rcWork.right-width:point.x+MulDiv(rect.width,(int)dpi,96)-width;
         if(x<monitor.rcWork.left)x=monitor.rcWork.left;if(y<monitor.rcWork.top)y=monitor.rcWork.top;
+        if(p->detail){RECT owner,visible;if(GetClientRect((HWND)native,&owner)){MapWindowPoints((HWND)native,NULL,(POINT *)&owner,2);if(!IntersectRect(&visible,&owner,&monitor.rcWork))return UI_STATUS_NOT_FOUND;
+            if(width>visible.right-visible.left)width=visible.right-visible.left;if(height>visible.bottom-visible.top)height=visible.bottom-visible.top;
+            if(x+width>visible.right)x=visible.right-width;if(y+height>visible.bottom)y=visible.bottom-height;
+            if(x<visible.left)x=visible.left;if(y<visible.top)y=visible.top;}}
         p->width=MulDiv(width,96,(int)dpi);p->height=MulDiv(height,96,(int)dpi);if(!p->detail&&height<MulDiv((int)p->page_count*28+8+(total>p->page_count?36:0),(int)dpi,96))p->page_count=p->height>44?(size_t)(p->height-44)/28:1;if(!p->open)p->previous_focus=GetFocus();
-        {LONG_PTR style=GetWindowLongPtrW((HWND)p->window,GWL_EXSTYLE);SetWindowLongPtrW((HWND)p->window,GWL_EXSTYLE,p->detail?style|WS_EX_NOACTIVATE:style&~(LONG_PTR)WS_EX_NOACTIVATE);EnableWindow((HWND)ui_web_view_native_handle(p->view),p->detail?FALSE:TRUE);EnableWindow((HWND)p->window,p->detail?FALSE:TRUE);}
+        {LONG_PTR style=GetWindowLongPtrW((HWND)p->window,GWL_EXSTYLE),tip_style=WS_EX_NOACTIVATE|WS_EX_LAYERED|WS_EX_TRANSPARENT;SetWindowLongPtrW((HWND)p->window,GWL_EXSTYLE,p->detail?style|tip_style:style&~tip_style);if(p->detail)SetLayeredWindowAttributes((HWND)p->window,0,255,LWA_ALPHA);EnableWindow((HWND)ui_web_view_native_handle(p->view),p->detail?FALSE:TRUE);EnableWindow((HWND)p->window,p->detail?FALSE:TRUE);}
         SetWindowPos((HWND)p->window,HWND_TOP,x,y,width,height,SWP_NOACTIVATE);
+        if(p->detail)SetTimer((HWND)p->window,2,80,NULL);
     }
 #endif
     status=ui_web_view_resize(p->view,p->width,p->height,dpi);if(status!=UI_STATUS_OK)return status;p->open=1;
