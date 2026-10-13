@@ -1,0 +1,15 @@
+IDENTITY pid49284 backendwebview2 chromeRuntime-mirror dpi96 themelight input=real-SendInput capture=desktop-BitBlt
+READY qpcMs1040219310.422 startupMs1284.030 hwnd00000000021A0F44 chrome000000000A5506F4
+state line78: chrome_presentation(id,&p)==UI_STATUS_OK&&p.visible&&p.enabled
+state line78: chrome_presentation(id,&p)==UI_STATUS_OK&&p.visible&&p.enabled
+state line78: chrome_presentation(id,&p)==UI_STATUS_OK&&p.visible&&p.enabled
+state line78: chrome_presentation(id,&p)==UI_STATUS_OK&&p.visible&&p.enabled
+state line78: chrome_presentation(id,&p)==UI_STATUS_OK&&p.visible&&p.enabled
+state line78: chrome_presentation(id,&p)==UI_STATUS_OK&&p.visible&&p.enabled
+state line78: chrome_presentation(id,&p)==UI_STATUS_OK&&p.visible&&p.enabled
+state line78: chrome_presentation(id,&p)==UI_STATUS_OK&&p.visible&&p.enabled
+state line106: chrome_presentation("assistant-toggle",&p)==UI_STATUS_OK
+state line61: chrome_presentation(id,&p)==UI_STATUS_OK
+FRAME n0 qpcMs1040319602.473 idassistant-toggle stageclicked rect0,0,0,0 clip0,0,0,0 focused0 enabled0 visible0 dpi96 windowDpi96 cursor48,40 hit00000000050B0E70 pid49284 classChrome_WidgetWin_0 capture0000000000000000 focus0000000003410AD6 dispatch281
+state line108: chrome_presentation("assistant-toggle",&p)==UI_STATUS_OK&&p.focused
+state line108: host.assistant_expanded

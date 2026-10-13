@@ -1,0 +1,12 @@
+TEST_PHASE pid48740 tick1047601218 dispatched0 create-host-begin
+TEST_PHASE pid48740 tick1047601265 dispatched0 create-host-end
+TEST_PHASE pid48740 tick1047601718 dispatched29 open-begin
+TEST_PHASE pid48740 tick1047601921 dispatched29 open-return
+TEST_PHASE pid48740 tick1047602421 dispatched67 open-settled
+RESTORED modeinit-failures dpi96 name200 treeCollapsed0
+TEST_PHASE pid48740 tick1047602421 dispatched67 close-begin
+TEST_PHASE pid48740 tick1047602453 dispatched67 close-request-return
+TEST_PHASE pid48740 tick1047602531 dispatched70 close-state-checked
+TEST_PHASE pid48740 tick1047602843 dispatched70 com-uninitialize-begin
+TEST_PHASE pid48740 tick1047602843 dispatched70 process-return
+Stateful actual light / init-failures: 0 failures

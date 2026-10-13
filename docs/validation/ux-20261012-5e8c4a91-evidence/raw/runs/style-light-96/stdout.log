@@ -1,0 +1,99 @@
+IDENTITY pid34936 backendlight chromeactual-Light dpi96 themelight input=real-SendInput capture=desktop-BitBlt
+READY qpcMs1041257954.509 startupMs1333.775 hwnd0000000008D00A64 chrome0000000001EA074E
+FRAME n0 qpcMs1041258026.339 idopen stagebefore rect214,2,34,36 clip214,2,34,36 focused0 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000008D00A64 dispatch40
+FRAME n1 qpcMs1041258127.794 idopen stagehover rect214,2,34,36 clip214,2,34,36 focused0 enabled1 visible1 dpi96 windowDpi96 cursor279,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000000000000 focus0000000008D00A64 dispatch55
+FRAME n2 qpcMs1041258236.269 idopen stagedown rect214,2,34,36 clip214,2,34,36 focused1 enabled1 visible1 dpi96 windowDpi96 cursor279,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000001EA074E focus0000000001EA074E dispatch61
+FRAME n3 qpcMs1041258285.739 idopen stageheld-outside rect214,2,34,36 clip214,2,34,36 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000001EA074E focus0000000001EA074E dispatch66
+FRAME n4 qpcMs1041258376.650 idopen stagerelease-outside rect214,2,34,36 clip214,2,34,36 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch70
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+FRAME n5 qpcMs1041258537.291 idopen stagekeyboard rect214,2,34,36 clip214,2,34,36 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch98
+FRAME n6 qpcMs1041258616.069 idassistant-toggle stagebefore rect1006,0,40,40 clip1006,0,40,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch98
+FRAME n7 qpcMs1041258710.212 idassistant-toggle stagehover rect1006,0,40,40 clip1006,0,40,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor1074,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000000000000 focus0000000001EA074E dispatch113
+FRAME n8 qpcMs1041258819.642 idassistant-toggle stagedown rect1006,0,40,40 clip1006,0,40,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor1074,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000001EA074E focus0000000001EA074E dispatch115
+FRAME n9 qpcMs1041258870.426 idassistant-toggle stageheld-outside rect1006,0,40,40 clip1006,0,40,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000001EA074E focus0000000001EA074E dispatch120
+FRAME n10 qpcMs1041258960.528 idassistant-toggle stagerelease-outside rect1006,0,40,40 clip1006,0,40,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch124
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+FRAME n11 qpcMs1041259121.023 idassistant-toggle stagekeyboard rect1006,0,40,40 clip1006,0,40,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch149
+FRAME n12 qpcMs1041259200.103 idwindow-min stagebefore rect1046,0,46,40 clip1046,0,46,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch149
+FRAME n13 qpcMs1041259293.695 idwindow-min stagehover rect1046,0,46,40 clip1046,0,46,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor1117,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000000000000 focus0000000001EA074E dispatch151
+FRAME n14 qpcMs1041259403.966 idwindow-min stagedown rect1046,0,46,40 clip1046,0,46,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor1117,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000001EA074E focus0000000001EA074E dispatch153
+FRAME n15 qpcMs1041259453.782 idwindow-min stageheld-outside rect1046,0,46,40 clip1046,0,46,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000001EA074E focus0000000001EA074E dispatch155
+FRAME n16 qpcMs1041259692.773 idwindow-min stagerelease-outside rect1046,0,46,40 clip1046,0,46,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch159
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+FRAME n17 qpcMs1041259855.908 idwindow-min stagekeyboard rect1046,0,46,40 clip1046,0,46,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch184
+FRAME n18 qpcMs1041259950.987 idwindow-max stagebefore rect1092,0,46,40 clip1092,0,46,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch184
+FRAME n19 qpcMs1041260045.179 idwindow-max stagehover rect1092,0,46,40 clip1092,0,46,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor1163,60 hit0000000008D00A64 pid34936 classUiFrameworkStandaloneHostV2 capture0000000000000000 focus0000000001EA074E dispatch194
+FRAME n20 qpcMs1041260155.160 idwindow-max stagedown rect1092,0,46,40 clip1092,0,46,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor1163,60 hit0000000008D00A64 pid34936 classUiFrameworkStandaloneHostV2 capture0000000008D00A64 focus0000000001EA074E dispatch208
+FRAME n21 qpcMs1041260204.827 idwindow-max stageheld-outside rect1092,0,46,40 clip1092,0,46,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000008D00A64 focus0000000001EA074E dispatch209
+FRAME n22 qpcMs1041260295.734 idwindow-max stagerelease-outside rect1092,0,46,40 clip1092,0,46,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch218
+FRAME n23 qpcMs1041260383.951 idwindow-close stagebefore rect1138,0,46,40 clip1138,0,46,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch218
+FRAME n24 qpcMs1041260479.625 idwindow-close stagehover rect1138,0,46,40 clip1138,0,46,40 focused0 enabled1 visible1 dpi96 windowDpi96 cursor1209,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000000000000 focus0000000001EA074E dispatch220
+FRAME n25 qpcMs1041260587.758 idwindow-close stagedown rect1138,0,46,40 clip1138,0,46,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor1209,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000001EA074E focus0000000001EA074E dispatch222
+FRAME n26 qpcMs1041260638.588 idwindow-close stageheld-outside rect1138,0,46,40 clip1138,0,46,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000001EA074E focus0000000001EA074E dispatch224
+FRAME n27 qpcMs1041260728.240 idwindow-close stagerelease-outside rect1138,0,46,40 clip1138,0,46,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch228
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+FRAME n28 qpcMs1041260890.132 idwindow-close stagekeyboard rect1138,0,46,40 clip1138,0,46,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch253
+FRAME n29 qpcMs1041260984.461 idpanel-form stagebefore rect1148,72,12,20 clip1148,72,12,20 focused0 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch253
+FRAME n30 qpcMs1041261078.597 idpanel-form stagehover rect1148,72,12,20 clip1148,72,12,20 focused0 enabled1 visible1 dpi96 windowDpi96 cursor1202,122 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000000000000 focus0000000001EA074E dispatch255
+FRAME n31 qpcMs1041261179.646 idpanel-form stagedown rect1148,72,12,20 clip1148,72,12,20 focused1 enabled1 visible1 dpi96 windowDpi96 cursor1202,122 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000001EA074E focus0000000001EA074E dispatch257
+FRAME n32 qpcMs1041261240.887 idpanel-form stageheld-outside rect1148,72,12,20 clip1148,72,12,20 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000001EA074E focus0000000001EA074E dispatch259
+FRAME n33 qpcMs1041261345.497 idpanel-form stagerelease-outside rect1148,72,12,20 clip1148,72,12,20 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch263
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+FRAME n34 qpcMs1041261506.304 idpanel-form stagekeyboard rect1148,72,12,20 clip1148,72,12,20 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch286
+FRAME n35 qpcMs1041261585.815 idfold-form stagebefore rect1164,72,12,20 clip1164,72,12,20 focused0 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch286
+FRAME n36 qpcMs1041261678.963 idfold-form stagehover rect1164,72,12,20 clip1164,72,12,20 focused0 enabled1 visible1 dpi96 windowDpi96 cursor1218,122 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000000000000 focus0000000001EA074E dispatch288
+FRAME n37 qpcMs1041261778.943 idfold-form stagedown rect1164,72,12,20 clip1164,72,12,20 focused1 enabled1 visible1 dpi96 windowDpi96 cursor1218,122 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000001EA074E focus0000000001EA074E dispatch290
+FRAME n38 qpcMs1041261839.571 idfold-form stageheld-outside rect1164,72,12,20 clip1164,72,12,20 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000001EA074E focus0000000001EA074E dispatch292
+FRAME n39 qpcMs1041261929.464 idfold-form stagerelease-outside rect1164,72,12,20 clip1164,72,12,20 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch296
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+FRAME n40 qpcMs1041262093.291 idfold-form stagekeyboard rect1164,72,12,20 clip1164,72,12,20 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch321
+FRAME n41 qpcMs1041262185.596 idclose-1 stagebefore rect188,4,26,36 clip188,4,26,36 focused0 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch321
+FRAME n42 qpcMs1041262279.750 idclose-1 stagehover rect188,4,26,36 clip188,4,26,36 focused0 enabled1 visible1 dpi96 windowDpi96 cursor249,62 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000000000000 focus0000000001EA074E dispatch323
+FRAME n43 qpcMs1041262380.158 idclose-1 stagedown rect188,4,26,36 clip188,4,26,36 focused1 enabled1 visible1 dpi96 windowDpi96 cursor249,62 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000001EA074E focus0000000001EA074E dispatch325
+FRAME n44 qpcMs1041262440.113 idclose-1 stageheld-outside rect188,4,26,36 clip188,4,26,36 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000001EA074E focus0000000001EA074E dispatch327
+FRAME n45 qpcMs1041262532.346 idclose-1 stagerelease-outside rect188,4,26,36 clip188,4,26,36 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch331
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd0000000001EA074E handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant0
+FRAME n46 qpcMs1041262690.826 idclose-1 stagekeyboard rect188,4,26,36 clip188,4,26,36 focused1 enabled1 visible1 dpi96 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus0000000001EA074E dispatch356
+FRAME n47 qpcMs1041262874.998 idassistant-toggle stageclicked rect1006,0,40,40 clip1006,0,40,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor1074,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000000000000 focus0000000001EA074E dispatch384
+KEYTRACE message256 key32 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant1
+KEYTRACE message257 key32 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant-1
+FRAME n48 qpcMs1041263002.924 idassistant-toggle stagespace rect1006,0,40,40 clip1006,0,40,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor1074,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000000000000 focus0000000001EA074E dispatch403
+KEYTRACE message256 key13 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key13 hwnd0000000001EA074E handled0 modifiers0,0,0 assistant1
+FRAME n49 qpcMs1041263117.905 idassistant-toggle stageenter rect1006,0,40,40 clip1006,0,40,40 focused1 enabled1 visible1 dpi96 windowDpi96 cursor1074,60 hit0000000001EA074E pid34936 classUIFrameworkLightWeb capture0000000000000000 focus0000000001EA074E dispatch422
+END dispatch425 failures0 actual-main-return-only

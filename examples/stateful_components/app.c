@@ -117,10 +117,15 @@ static ui_status_t UI_APP_CALL state_create(const ui_app_context_t *context,void
     if(!s)return UI_STATUS_OUT_OF_MEMORY;*out=s;status=acquire_profile(s);if(status!=UI_STATUS_OK)return status;
     status=prepare_language(s,context->host);if(status!=UI_STATUS_OK)return status;
     status=create(context,&scene,assistant);s->scene=scene;if(status!=UI_STATUS_OK)return status;status=schema_variant(s->scene);if(status!=UI_STATUS_OK)return status;
+    {ui_dialog_layout_t layout={0};layout.size=sizeof(layout);layout.preferred_width=440;layout.min_width=240;layout.min_height=120;
+        status=ui_component_set_dialog_layout(s->scene->dialog,&layout);if(status!=UI_STATUS_OK)return status;}
     for(size_t i=0;i<4;++i){ui_command_desc_t cmd={0};ui_menu_item_desc_t item={0};cmd.size=sizeof(cmd);cmd.id=ids[i];cmd.title=titles[i];cmd.handler=state_command;cmd.user_data=s;
         status=ui_host_register_command(context->host,&cmd);if(status!=UI_STATUS_OK)return status;
         item.size=sizeof(item);item.id=ids[i];item.menu_path="State";item.title=titles[i];item.command_id=ids[i];item.order=(int)i;status=ui_host_register_menu_item(context->host,&item);if(status!=UI_STATUS_OK)return status;
     }
+    {ui_menu_item_desc_t item={0};item.size=sizeof(item);item.id="state.properties";item.menu_path="State";
+        item.title="Edit properties...";item.command_id="test.modal";item.order=4;
+        status=ui_host_register_menu_item(context->host,&item);if(status!=UI_STATUS_OK)return status;}
     status=register_language(s);if(status!=UI_STATUS_OK)return status;
     return ui_host_set_language_callback(context->host,language_changed,s);
 }

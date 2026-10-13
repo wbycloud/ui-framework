@@ -1,0 +1,12 @@
+TEST_PHASE pid43044 tick1047702984 dispatched0 create-host-begin
+TEST_PHASE pid43044 tick1047703031 dispatched0 create-host-end
+TEST_PHASE pid43044 tick1047703109 dispatched0 open-begin
+TEST_PHASE pid43044 tick1047703218 dispatched0 open-return
+TEST_PHASE pid43044 tick1047703765 dispatched45 open-settled
+RESTORED modereload dpi96 name280 treeCollapsed1
+TEST_PHASE pid43044 tick1047704031 dispatched186 close-begin
+TEST_PHASE pid43044 tick1047704031 dispatched186 close-request-return
+TEST_PHASE pid43044 tick1047704156 dispatched187 close-state-checked
+TEST_PHASE pid43044 tick1047704468 dispatched196 com-uninitialize-begin
+TEST_PHASE pid43044 tick1047704468 dispatched196 process-return
+Stateful actual webview2 / reload: 0 failures

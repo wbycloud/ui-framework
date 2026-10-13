@@ -43,7 +43,8 @@ typedef struct lw_style {
     int padding[4], margin[4], gap, align, justify;
     unsigned padding_set;
     int border, radius, font_size, font_weight, font_family, nowrap, text_align, scroll_x;
-    unsigned color, border_color;
+    unsigned color, border_color, outline_color;
+    int outline, outline_offset;
 } lw_style_t;
 
 typedef struct lw_rule {
@@ -103,7 +104,7 @@ typedef struct lw_view {
     uint32_t dpi;
     int media_breakpoint;
     int media_hide_assistant;
-    int focused, pressed;
+    int focused, pressed, keyboard_focus;
     int dragging, composing;
     wchar_t high_surrogate;
     uint32_t event_modifiers;
@@ -123,6 +124,11 @@ typedef struct lw_view {
     ULONGLONG script_deadline;
     HWND hwnd;
     HFONT font;
+    int trace_enabled;
+    char trace_phase[64];
+    uint64_t trace_layouts,trace_paints,trace_nodes,trace_area;
+    LARGE_INTEGER trace_frequency;
+    double trace_layout_ms,trace_paint_ms;
 } lw_view_t;
 
 static lw_backend_t *g_backends;
@@ -347,8 +353,8 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
                 int result = lw_color(value, &style->background);
                 if (!result) return UI_STATUS_UNSUPPORTED;
                 style->background_set = result == 1;
-            } else if (!strcmp(key, "color") || !strcmp(key, "border-color")) {
-                if (lw_color(value, !strcmp(key, "color") ? &style->color : &style->border_color) != 1)
+            } else if (!strcmp(key, "color") || !strcmp(key, "border-color") || !strcmp(key,"outline-color")) {
+                if (lw_color(value, !strcmp(key,"color") ? &style->color : !strcmp(key,"outline-color") ? &style->outline_color : &style->border_color) != 1)
                     return UI_STATUS_UNSUPPORTED;
             } else if (!strcmp(key, "padding") || !strcmp(key, "margin")) {
                 status = lw_box(value, !strcmp(key, "padding") ? style->padding : style->margin);
@@ -387,17 +393,22 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
                 if (!strcmp(value,"normal")) style->font_weight = FW_NORMAL;
                 else if (!strcmp(value,"bold")) style->font_weight = FW_BOLD;
                 else { number = atoi(value); if (number < 100 || number > 900) return UI_STATUS_UNSUPPORTED; style->font_weight = number; }
-            } else if (!strcmp(key,"border") || !strcmp(key,"border-left") || !strcmp(key,"border-right") || !strcmp(key,"border-top") || !strcmp(key,"border-bottom")) {
+            } else if (!strcmp(key,"outline-offset")) {
+                char *offset_end;long offset=strtol(value,&offset_end,10);
+                if(offset_end==value||(*offset_end&&strcmp(offset_end,"px"))||offset < -32767||offset > 32767)return UI_STATUS_UNSUPPORTED;
+                style->outline_offset=(int)offset;
+            } else if (!strcmp(key,"outline") || !strcmp(key,"border") || !strcmp(key,"border-left") || !strcmp(key,"border-right") || !strcmp(key,"border-top") || !strcmp(key,"border-bottom")) {
                 char border[128], *space, *color;
-                if (!strcmp(value,"none") || !strcmp(value,"0")) { style->border = 0; goto next; }
+                int outline=!strcmp(key,"outline");
+                if (!strcmp(value,"none") || !strcmp(value,"0")) { if(outline)style->outline=0;else style->border=0;goto next; }
                 if (strlen(value) >= sizeof(border)) return UI_STATUS_VALIDATION_FAILED;
                 strcpy(border,value); space = strchr(border,' ');
                 if (!space) return UI_STATUS_UNSUPPORTED;
                 *space++ = 0; space = lw_trim(space); color = strchr(space,' ');
                 if (!color) return UI_STATUS_UNSUPPORTED;
                 *color++ = 0;
-                if (strcmp(space,"solid") || lw_number(border,&number,&percent) != UI_STATUS_OK || percent || lw_color(lw_trim(color),&style->border_color) != 1) return UI_STATUS_UNSUPPORTED;
-                style->border = number;
+                if (strcmp(space,"solid") || lw_number(border,&number,&percent) != UI_STATUS_OK || percent || lw_color(lw_trim(color),outline?&style->outline_color:&style->border_color) != 1) return UI_STATUS_UNSUPPORTED;
+                if(outline)style->outline=number;else style->border=number;
             } else if (!strcmp(key,"box-sizing")) {
                 if (strcmp(value,"border-box")) return UI_STATUS_UNSUPPORTED;
             } else if (!strcmp(key,"cursor")) {
@@ -538,6 +549,7 @@ static int lw_matches_piece(lw_view_t *view, int index, const char *piece)
                 if(pressed<0||lw_disabled(view,index))return 0;
             }
             else if (!strcmp(token,"focus")) { if (view->focused != index) return 0; }
+            else if (!strcmp(token,"focus-visible")) { if (view->focused != index || (!view->keyboard_focus && !lw_input(node))) return 0; }
             else if (!strcmp(token,"disabled")) { if (!node->disabled) return 0; }
             else return 0;
         }
@@ -696,6 +708,11 @@ static void lw_compute_style(lw_view_t *view, int index)
     int r, child;
     char declarations[LW_ATTR_CAP];
     lw_style_default(&node->style);
+    /* Unstyled public pages keep a keyboard indicator; authored outline rules
+       can override it. Mouse focus still preserves the focused node. */
+    if(view->focused==index&&view->keyboard_focus&&!lw_input(node)){
+        node->style.outline=1;node->style.outline_color=0x0078d4;node->style.outline_offset=-2;
+    }
     if (node->parent >= 0) {
         lw_style_t *parent = &view->nodes[node->parent].style;
         node->style.color = parent->color; node->style.font_size = parent->font_size;
@@ -735,10 +752,15 @@ static void lw_compute_style(lw_view_t *view, int index)
         HDC dc = CreateCompatibleDC(NULL);
         if (text && dc) {
             SIZE size = {0}; HGDIOBJ previous = SelectObject(dc,node->font);
-            if (GetTextExtentPoint32W(dc,text,(int)wcslen(text),&size))
-                node->natural_width = MulDiv(size.cx,96,(int)view->dpi) +
-                    (node->style.padding_set & 2 ? node->style.padding[1] : 8) +
-                    (node->style.padding_set & 8 ? node->style.padding[3] : 8) + 2 * node->style.border;
+            if (GetTextExtentPoint32W(dc,text,(int)wcslen(text),&size)) {
+                int left=node->style.padding_set&8?node->style.padding[3]+node->style.border:8;
+                int right=node->style.padding[1]+node->style.border+(node->style.padding_set&2?0:8);
+                /* Match the separately rounded paint insets, then round the
+                   required width up so fractional DPI never elides the text. */
+                int64_t pixels=(int64_t)size.cx+lw_pixel(left,view->dpi)+lw_pixel(right,view->dpi);
+                int64_t logical=(pixels*96+view->dpi-1)/view->dpi;
+                node->natural_width=logical>LW_MAX_DIMENSION?LW_MAX_DIMENSION:(int)logical;
+            }
             SelectObject(dc,previous);
         }
         if (dc) DeleteDC(dc); free(text);
@@ -847,16 +869,31 @@ static void lw_layout_node(lw_view_t *view, int index, ui_rect_t rect, ui_rect_t
     }
 }
 
+static void lw_trace(lw_view_t *view,int final)
+{
+    char phase[64]={0};
+    if(!view->trace_enabled)return;
+    if(!final)GetEnvironmentVariableA("UI_UX_PHASE",phase,sizeof(phase));
+    if(final||strcmp(phase,view->trace_phase)){
+        if(view->trace_layouts||view->trace_paints)fprintf(stderr,"UX_LIGHT hwnd%p phase=%s layouts=%llu layoutMs=%.3f paints=%llu paintMs=%.3f nodeVisits=%llu paintArea=%llu view=%dx%d\n",
+            (void *)view->hwnd,view->trace_phase,(unsigned long long)view->trace_layouts,view->trace_layout_ms,(unsigned long long)view->trace_paints,view->trace_paint_ms,
+            (unsigned long long)view->trace_nodes,(unsigned long long)view->trace_area,view->width,view->height);
+        strcpy(view->trace_phase,phase);view->trace_layouts=view->trace_paints=view->trace_nodes=view->trace_area=0;view->trace_layout_ms=view->trace_paint_ms=0;
+    }
+}
 static void lw_layout(lw_view_t *view)
 {
     ui_rect_t viewport = {0, 0, view->width, view->height};
+    LARGE_INTEGER start={0},end;
     if (view->layout_depth) return;
+    if(view->trace_enabled){lw_trace(view,0);QueryPerformanceCounter(&start);}
     ++view->layout_depth;
     if (view->root >= 0) { lw_compute_style(view,view->root); lw_layout_node(view, view->root, viewport, viewport); }
     lw_caret(view);
     if (view->hwnd) InvalidateRect(view->hwnd, NULL, FALSE);
     view->dirty = 0;
     --view->layout_depth;
+    if(view->trace_enabled){QueryPerformanceCounter(&end);++view->trace_layouts;view->trace_layout_ms+=(double)(end.QuadPart-start.QuadPart)*1000.0/view->trace_frequency.QuadPart;}
 }
 
 static int lw_interrupt(JSRuntime *runtime, void *opaque)
@@ -1043,7 +1080,7 @@ static JSValue lw_dom_set(JSContext *ctx, JSValueConst object, JSValueConst valu
     view->dirty = 1; return JS_UNDEFINED;
 }
 
-static const char *lw_style_names[] = {"cssText","display","width","height","left","top","right","bottom","position","background","background-color","color","padding","margin","gap","border","border-radius","flex","flex-direction","font-size","font-weight","min-width","max-width","min-height","max-height","overflow-y","align-items","justify-content","white-space","text-align","overflow-x"};
+static const char *lw_style_names[] = {"cssText","display","width","height","left","top","right","bottom","position","background","background-color","color","padding","margin","gap","border","border-radius","flex","flex-direction","font-size","font-weight","min-width","max-width","min-height","max-height","overflow-y","align-items","justify-content","white-space","text-align","overflow-x","outline","outline-color","outline-offset"};
 
 static JSValue lw_style_get(JSContext *ctx, JSValueConst object, int property)
 {
@@ -1101,6 +1138,8 @@ static JSValue lw_style_set(JSContext *ctx, JSValueConst object, JSValueConst va
     strcpy(view->nodes[index].inline_style,output); view->dirty = 1;
     JS_FreeCString(ctx,text); return JS_UNDEFINED;
 invalid:
+    if(GetEnvironmentVariableW(L"UI_LIGHT_SCRIPT_DIAGNOSTICS",NULL,0))
+        fprintf(stderr,"Light CSS declaration rejected: %s=%s\n",property?lw_style_names[property]:"cssText",text);
     JS_FreeCString(ctx,text); return JS_ThrowTypeError(ctx,"unsupported or oversized CSS declaration");
 }
 
@@ -1553,6 +1592,8 @@ static int lw_next_node(const lw_view_t *view, int index)
 static void lw_paint(lw_view_t *view, HDC dc, RECT client)
 {
     int i;
+    LARGE_INTEGER start={0},end;
+    if(view->trace_enabled){lw_trace(view,0);QueryPerformanceCounter(&start);}
     HBRUSH brush = CreateSolidBrush(RGB(32,34,38));
     FillRect(dc,&client,brush); DeleteObject(brush);
     SetBkMode(dc,TRANSPARENT);
@@ -1562,6 +1603,7 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
         int saved;
         wchar_t *text;
         if (!node->used || !node->visible || !node->clip.width || !node->clip.height) continue;
+        if(view->trace_enabled)++view->trace_nodes;
         rect = lw_pixel_rect(view,node->rect); clip = lw_pixel_rect(view,node->clip);
         saved = SaveDC(dc); IntersectClipRect(dc,clip.left,clip.top,clip.right,clip.bottom);
         if (node->kind == 2 || node->style.background_set || node->style.border) {
@@ -1597,12 +1639,19 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
                     DrawTextW(dc,text,-1,&rect,flags);if(text_saved)RestoreDC(dc,text_saved);}free(text);
             }
         }
-        if (view->focused == i && !lw_input(node)) {
-            RECT focus = rect; InflateRect(&focus,-3,-3); DrawFocusRect(dc,&focus);
+        if (node->style.outline) {
+            RECT focus = lw_pixel_rect(view,node->rect);
+            HPEN pen = CreatePen(PS_SOLID,lw_pixel(node->style.outline,view->dpi),lw_rgb(node->style.outline_color));
+            HGDIOBJ old_pen = SelectObject(dc,pen),old_brush = SelectObject(dc,GetStockObject(NULL_BRUSH));
+            InflateRect(&focus,lw_pixel(node->style.outline_offset,view->dpi),lw_pixel(node->style.outline_offset,view->dpi));
+            Rectangle(dc,focus.left,focus.top,focus.right,focus.bottom);
+            SelectObject(dc,old_brush);SelectObject(dc,old_pen);DeleteObject(pen);
         }
         lw_scroll_paint(view,node,dc);
         RestoreDC(dc,saved);
     }
+    if(view->trace_enabled){QueryPerformanceCounter(&end);++view->trace_paints;view->trace_paint_ms+=(double)(end.QuadPart-start.QuadPart)*1000.0/view->trace_frequency.QuadPart;
+        view->trace_area+=(uint64_t)(client.right-client.left)*(uint64_t)(client.bottom-client.top);}
 }
 
 static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
@@ -1691,7 +1740,8 @@ static ui_status_t lw_create_view(void *user, ui_host_t *host, void **out)
     view = (lw_view_t *)calloc(1, sizeof(*view));
     if (!view) return UI_STATUS_OUT_OF_MEMORY;
     view->backend = backend; view->host = host; view->dpi = 96;
-    view->root = view->focused = view->pressed = -1;view->scroll_focus=-1;
+    view->root = view->focused = view->pressed = -1;view->scroll_focus=-1;view->keyboard_focus=1;
+    view->trace_enabled=GetEnvironmentVariableA("UI_UX_TRACE",NULL,0)!=0;if(view->trace_enabled)QueryPerformanceFrequency(&view->trace_frequency);
     view->font = CreateFontW(-14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
         DEFAULT_PITCH, L"Segoe UI");
@@ -1713,6 +1763,7 @@ static void lw_destroy_view(void *user, void *data)
     lw_view_t *view = (lw_view_t *)data;
     (void)user;
     if (!view) return;
+    lw_trace(view,1);
     lw_scroll_cancel(view,0);lw_free_document(view);
     if (view->hwnd) DestroyWindow(view->hwnd);
     DeleteObject(view->font); free(view);
@@ -1838,6 +1889,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
         lw_layout(view);return event->kind==UI_INPUT_CANCEL?UI_STATUS_OK:UI_STATUS_CANCELLED;
     }
     if (!view->context) return UI_STATUS_NOT_FOUND;
+    if(event->kind==UI_INPUT_POINTER_DOWN&&view->keyboard_focus){view->keyboard_focus=0;view->dirty=1;}
     if(ui_menus_route_input(view->host,view,event,view->composing)==UI_STATUS_OK)return UI_STATUS_OK;
     if(lw_scroll_input(view,event))return UI_STATUS_OK;
     view->event_modifiers = event->modifiers; view->wheel_delta = event->wheel_delta;
@@ -1901,6 +1953,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
     }
     if (event->kind == UI_INPUT_TEXT) return lw_text_insert(view,event->text_utf8);
     if (event->kind == UI_INPUT_KEY_DOWN) {
+        if(event->key_code!=VK_SHIFT&&event->key_code!=VK_CONTROL&&event->key_code!=VK_MENU&&!view->keyboard_focus){view->keyboard_focus=1;view->dirty=1;}
         if (view->composing && (event->key_code == VK_RETURN || event->key_code == VK_ESCAPE)) return UI_STATUS_OK;
         if (lw_text_key(view,event)) return UI_STATUS_OK;
         if (event->key_code == VK_TAB) {
@@ -2107,5 +2160,5 @@ void ui_light_web_backend_destroy(ui_web_backend_t *handle)
 
 const char *ui_light_web_backend_capabilities(void)
 {
-    return "html:lexbor,1024-nodes,256KiB;js:quickjs-ng,50ms,8MiB;layout:flex,absolute,box-model;controls:button,input,textarea;dom:incremental;events:ui.invoke,ui.value,ui.postMessage,ui.onmessage;scroll:vertical;css:class,id,descendant,hover,active,focus,disabled,width-media;thread:ui";
+    return "html:lexbor,1024-nodes,256KiB;js:quickjs-ng,50ms,8MiB;layout:flex,absolute,box-model;controls:button,input,textarea;dom:incremental;events:ui.invoke,ui.value,ui.postMessage,ui.onmessage;scroll:vertical;css:class,id,descendant,hover,active,focus,focus-visible,disabled,width-media;thread:ui";
 }

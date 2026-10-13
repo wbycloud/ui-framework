@@ -1,0 +1,99 @@
+{
+  "completedUtc": "2026-10-12T12:45:45.0079779Z",
+  "startedUtc": "2026-10-12T12:44:35.3465562Z",
+  "provider": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+  "files": [
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+      "sha256": "C633B820BBA8EC0DCB05466505E3C246E4C4028EAEC7CAF1054E707C8EB3CA1F"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ux-20261012-5e8c4a91\\final\\ui_instance_language_test.exe",
+      "sha256": "8559BADD242E21687B69597552DF831F705BF50EBE4E92AADEAA0E71606AB0F8"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ux-20261012-5e8c4a91\\final\\stateful_components.uapp",
+      "sha256": "B8925A415B7879AE77368A351C357DBBE4FE63AFE55BAD2E6AE3E858D0B03C63"
+    },
+    {
+      "path": "D:\\应用软件框架\\应用层序框架\\build\\ux-20261012-5e8c4a91\\final\\ui_framework.dll",
+      "sha256": "6D3F81456BF0B021499930E0289FB0BC6C17BB0847092E561CC45B2732C266F5"
+    }
+  ],
+  "cases": [
+    {
+      "elapsedMs": 6777,
+      "completedUtc": "2026-10-12T12:44:42.2478322Z",
+      "exitCode": 0,
+      "label": "preferences-96",
+      "status": "exited",
+      "startedUtc": "2026-10-12T12:44:35.4625653Z",
+      "dpi": 96,
+      "mode": "preferences"
+    },
+    {
+      "elapsedMs": 10834,
+      "completedUtc": "2026-10-12T12:44:53.0956737Z",
+      "exitCode": 0,
+      "label": "write-96",
+      "status": "exited",
+      "startedUtc": "2026-10-12T12:44:42.2539477Z",
+      "dpi": 96,
+      "mode": "write"
+    },
+    {
+      "elapsedMs": 9462,
+      "completedUtc": "2026-10-12T12:45:02.5680044Z",
+      "exitCode": 0,
+      "label": "restore-96",
+      "status": "exited",
+      "startedUtc": "2026-10-12T12:44:53.0976945Z",
+      "dpi": 96,
+      "mode": "restore"
+    },
+    {
+      "elapsedMs": 11053,
+      "completedUtc": "2026-10-12T12:45:13.6284780Z",
+      "exitCode": 0,
+      "label": "write-144",
+      "status": "exited",
+      "startedUtc": "2026-10-12T12:45:02.5699278Z",
+      "dpi": 144,
+      "mode": "write"
+    },
+    {
+      "elapsedMs": 9612,
+      "completedUtc": "2026-10-12T12:45:23.2544476Z",
+      "exitCode": 0,
+      "label": "restore-144",
+      "status": "exited",
+      "startedUtc": "2026-10-12T12:45:13.6297436Z",
+      "dpi": 144,
+      "mode": "restore"
+    },
+    {
+      "elapsedMs": 11679,
+      "completedUtc": "2026-10-12T12:45:34.9445912Z",
+      "exitCode": 0,
+      "label": "write-192",
+      "status": "exited",
+      "startedUtc": "2026-10-12T12:45:23.2562023Z",
+      "dpi": 192,
+      "mode": "write"
+    },
+    {
+      "elapsedMs": 10055,
+      "completedUtc": "2026-10-12T12:45:45.0069376Z",
+      "exitCode": 0,
+      "label": "restore-192",
+      "status": "exited",
+      "startedUtc": "2026-10-12T12:45:34.9457697Z",
+      "dpi": 192,
+      "mode": "restore"
+    }
+  ],
+  "frameworkApi": 9,
+  "backend": "light",
+  "evidence": "D:\\应用软件框架\\应用层序框架\\build\\ux-20261012-5e8c4a91\\final\\language-evidence-light-127cd9ce377f42c293d71c66ece1af32",
+  "input": "real SendInput"
+}

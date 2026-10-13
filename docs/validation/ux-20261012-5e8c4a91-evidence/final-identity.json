@@ -1,0 +1,204 @@
+{
+  "head": "7848a946fcf417eefe87bd63e42f83c8a3f875f3",
+  "branch": "codex/p1-process-boundaries",
+  "uncommitted": true,
+  "diffSha256": "55d17004c9bc5b62dc02ab7be3ba908962aac8fcc54ea093e53762032f69b795",
+  "sourceFiles": [
+    {
+      "path": ".gitattributes",
+      "sha256": "098d7dc5535082d1fa9a1ad65445afee37d3e80283bd0515795b555e0ad23e46",
+      "bytes": 1979
+    },
+    {
+      "path": "docs/application-development-standard.md",
+      "sha256": "30c53c4ed962b64fffc8c310700ae036ef178f07b057d51924ddd748a6d6b479",
+      "bytes": 70808
+    },
+    {
+      "path": "docs/handoff.md",
+      "sha256": "229ed6bb261ab4361569e8f50630f5d7db1785a0e67a2afd38d8179d8b1f9af6",
+      "bytes": 74659
+    },
+    {
+      "path": "docs/visual-design.md",
+      "sha256": "e395d38f35033e807584c44a0c725b646268bbb93a570f1e8bfdf1480684f8cd",
+      "bytes": 11136
+    },
+    {
+      "path": "examples/framework_host/host.html",
+      "sha256": "899c4701b29c3a32c4d78783a69050a0133560f4e8b2fe6dbbb78fb97a358400",
+      "bytes": 31476
+    },
+    {
+      "path": "examples/framework_host/main.c",
+      "sha256": "2e9c394bd88f67f84cbe247307826385af0b987df6938a79ce302c57016dcd6a",
+      "bytes": 68670
+    },
+    {
+      "path": "examples/stateful_components/README.md",
+      "sha256": "ec0b8f2a02fff59eae8aa21b1d978337af07f54803735ad267af4dbdb2b88f86",
+      "bytes": 9588
+    },
+    {
+      "path": "examples/stateful_components/app.c",
+      "sha256": "f596ceea8576f00fd55f897524635f989ffde4b407cae43fb29f733fecc17543",
+      "bytes": 12744
+    },
+    {
+      "path": "examples/stateful_components/language.inc",
+      "sha256": "d117660c69e28285630a67ff6a98b87fb8efd5c4579435dd43ffa2c61177fce3",
+      "bytes": 8382
+    },
+    {
+      "path": "src/backends/light_web.c",
+      "sha256": "6433d30ec61d4409ffedab75a3c466461d8512234df37aa3c6007bcc199a0c3a",
+      "bytes": 118872
+    },
+    {
+      "path": "src/visual.css",
+      "sha256": "38a6f85810bf970daef87dda9b67824edc42bf13cde660f4b4917f426b16b034",
+      "bytes": 3698
+    },
+    {
+      "path": "tests/light_glyph_padding.c",
+      "sha256": "15a3c35af1312f395a9b6e4a15184a37ccb865383b615a0c0fa442a922d5f0f7",
+      "bytes": 3898
+    },
+    {
+      "path": "tests/light_web_dynamic.c",
+      "sha256": "1476b96074c26a12f092a12dbbbd256cbd879bfef6bf3727ef09a986d8b22c32",
+      "bytes": 10783
+    }
+  ],
+  "products": [
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\baseline\\ui_framework.dll",
+      "sha256": "93ebfd2cfbbd6705ee83c6497875cbb20b857e17ec4b54fb66db9d1ed3b2fc47",
+      "bytes": 2190848
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\baseline\\framework_host.exe",
+      "sha256": "7e3ab1b8b069945e582b63926c10e8a5386ffed0ec71f0fc9cca462904b0d5e9",
+      "bytes": 257024
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\baseline\\ui_framework_runtime.lib",
+      "sha256": "fa14d15ec556363c2af99b176b24926bb9e1b5e1eedad4d3dba78fa9cd44ab0a",
+      "bytes": 61690
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\baseline\\stateful_components.uapp",
+      "sha256": "7513e95947ef607bc0dd0e1674b5d4a228bb6b5451a3ef2ffbbd294b7e3c999d",
+      "bytes": 38799
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\baseline\\ux_probe.exe",
+      "sha256": "641fe2497755a26c45ed74831d2a3601c505abd526b6bbbd86dff859969f6d71",
+      "bytes": 848384
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\pre-perf\\ui_framework.dll",
+      "sha256": "723f9f8abe01529e83d1bcd49ede92fdd261ffec36f48498ace52b36d928c476",
+      "bytes": 2194432
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\pre-perf\\framework_host.exe",
+      "sha256": "a4faae1a6338ede74935f7bc421d8376a5740989dcf2d0614dfe910e3704a240",
+      "bytes": 257024
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\pre-perf\\ui_framework_runtime.lib",
+      "sha256": "fa14d15ec556363c2af99b176b24926bb9e1b5e1eedad4d3dba78fa9cd44ab0a",
+      "bytes": 61690
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\pre-perf\\stateful_components.uapp",
+      "sha256": "932367a96561ca8452d054d49b8dc276c57b4127898b4082867396263c3611f6",
+      "bytes": 38799
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\pre-perf\\ux_probe.exe",
+      "sha256": "f6a01ff3fae241ec1dfa5540f59b5b4c895c6fecb632188ebaa82eba90632ba9",
+      "bytes": 899072
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\optimized\\ui_framework.dll",
+      "sha256": "16373c235673e66b5345888fcb11ba7f6f14206e96a3479a5834eefe2e5483fc",
+      "bytes": 2194432
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\optimized\\framework_host.exe",
+      "sha256": "c675abcf7c5f90d1af5e44d13041464032b817291381a56f2a8782ca56c86db8",
+      "bytes": 257024
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\optimized\\ui_framework_runtime.lib",
+      "sha256": "fa14d15ec556363c2af99b176b24926bb9e1b5e1eedad4d3dba78fa9cd44ab0a",
+      "bytes": 61690
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\optimized\\stateful_components.uapp",
+      "sha256": "eb80fd7b90a0a8fef85c32f47da67e870348c42e83365c4ce3ac508e0922a60c",
+      "bytes": 38799
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\optimized\\ux_probe.exe",
+      "sha256": "0f3aa8a25401e549df80818c5728a32fae6c8f131fd2f08bb9a0132d5fd66066",
+      "bytes": 895488
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\final2-snapshot\\ui_framework.dll",
+      "sha256": "6d3f81456bf0b021499930e0289fb0bc6c17bb0847092e561cc45b2732c266f5",
+      "bytes": 2194432
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\final2-snapshot\\framework_host.exe",
+      "sha256": "31bcdfcc6e17afa40d3e7b5594f29be15ce044ccaeac7b9761f611728201fe88",
+      "bytes": 257024
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\final2-snapshot\\ui_framework_runtime.lib",
+      "sha256": "fa14d15ec556363c2af99b176b24926bb9e1b5e1eedad4d3dba78fa9cd44ab0a",
+      "bytes": 61690
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\final2-snapshot\\stateful_components.uapp",
+      "sha256": "b8925a415b7879ae77368a351c357dbbe4fe63afe55bad2e6ae3e858d0b03c63",
+      "bytes": 38799
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\final2-snapshot\\ux_probe.exe",
+      "sha256": "1f00abb3b45ae5542727e09b7c7b208a4665de54065c153b308f516a4297dea3",
+      "bytes": 899072
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\final\\ui_framework.dll",
+      "sha256": "6993b3db2ba38e6e5d74e6fc841a52cd19c12b2c63995a384d25020fb28e864c",
+      "bytes": 2194944
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\final\\framework_host.exe",
+      "sha256": "811d749ce67ac1eda589e29c1f6fb604acf62b3f089a76a24153e9e169e17654",
+      "bytes": 257024
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\final\\ui_framework_runtime.lib",
+      "sha256": "fa14d15ec556363c2af99b176b24926bb9e1b5e1eedad4d3dba78fa9cd44ab0a",
+      "bytes": 61690
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\final\\stateful_components.uapp",
+      "sha256": "b8925a415b7879ae77368a351c357dbbe4fe63afe55bad2e6ae3e858d0b03c63",
+      "bytes": 38799
+    },
+    {
+      "path": "build\\ux-20261012-5e8c4a91\\final\\ux_probe.exe",
+      "sha256": "f435153b7186633e441073d9f6ff13ca999915eb78aa8153ea33cfb7d2d3f48f",
+      "bytes": 899072
+    }
+  ],
+  "publicHeadersChanged": false,
+  "final4FrameworkAndPackageEqualFinal5": false,
+  "reportSha256": "e1ef0e9bf960f13f00bef155a6e2713bda4e7b68e4e5da39e7809b08131a4662",
+  "note": "final5 removes obsolete private kind5 show-mode branch and rebuilds products; exact changed binary identities remain per run; final4 timing is not relabeled as final5 timing"
+}

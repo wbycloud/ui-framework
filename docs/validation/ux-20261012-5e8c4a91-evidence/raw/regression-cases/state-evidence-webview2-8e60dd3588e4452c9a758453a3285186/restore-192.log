@@ -1,0 +1,15 @@
+TEST_PHASE pid36252 tick1047696390 dispatched0 create-host-begin
+TEST_PHASE pid36252 tick1047696437 dispatched0 create-host-end
+TEST_PHASE pid36252 tick1047696515 dispatched0 open-begin
+TEST_PHASE pid36252 tick1047696609 dispatched0 open-return
+TEST_PHASE pid36252 tick1047697109 dispatched39 open-settled
+RESTORED moderestore dpi192 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+TEST_PHASE pid36252 tick1047697703 dispatched191 screenshot-begin
+TEST_PHASE pid36252 tick1047697765 dispatched191 screenshot-end
+TEST_PHASE pid36252 tick1047697765 dispatched191 close-begin
+TEST_PHASE pid36252 tick1047697781 dispatched191 close-request-return
+TEST_PHASE pid36252 tick1047697875 dispatched199 close-state-checked
+TEST_PHASE pid36252 tick1047698187 dispatched201 com-uninitialize-begin
+TEST_PHASE pid36252 tick1047698187 dispatched201 process-return
+Stateful actual webview2 / restore: 0 failures

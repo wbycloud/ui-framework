@@ -31,6 +31,11 @@ $env:UI_STATE_EXAMPLE_PROFILE='A'
 | Reload interface state | 从同一档案读取；不清空业务文档、属性草稿或选择 |
 | Reset Name width | 只恢复 name 的注册宽度 200，不自动保存 |
 | Reset widths and layout | 重置全部列宽及布局，不自动保存；需要再点 Save 持久化 |
+| Edit properties... | 打开已有 `test.modal` 单字段对话框；使用公共 dialog layout，独立草稿不自动回写父属性表单 |
+
+完整体验路径为宿主打开此包 → 十万行表格滚动／调宽 → Properties 编辑 → State / Edit properties... → Tab、提交或 Esc。对话框使用 `ui_component_set_dialog_layout` 表达首选宽440、最小宽240／高120、内容自动高度；不增加公共接口或改变档案格式。共同样式统一悬停、按下及键盘实线焦点；鼠标焦点与键盘焦点均保留原输入合同。
+
+窄窗中 Properties 可能成为侧边条；使用该条上已有的浮动工具进入完整属性字段，再从 State 打开对话框。这个操作保留草稿和内容 HWND，不要求自动重置已保存布局。
 
 注册宽度为 name 200、value 120、其余 180 **逻辑像素**。恢复前没有有效状态时保持这些宽度，不自动按内容适配。表头拖动、右键／F10 适配与单列／全表宽度工具仍由共同组件提供，24–4096 逻辑像素合同不变。
 

@@ -1,0 +1,15 @@
+TEST_PHASE pid2460 tick1047572281 dispatched0 create-host-begin
+TEST_PHASE pid2460 tick1047572328 dispatched0 create-host-end
+TEST_PHASE pid2460 tick1047572390 dispatched0 open-begin
+TEST_PHASE pid2460 tick1047572625 dispatched0 open-return
+TEST_PHASE pid2460 tick1047573125 dispatched37 open-settled
+RESTORED moderestore dpi144 name280 treeCollapsed1
+STABLE_COLUMN name headerX8 cellX8 texteditable
+TEST_PHASE pid2460 tick1047573125 dispatched37 screenshot-begin
+TEST_PHASE pid2460 tick1047573156 dispatched37 screenshot-end
+TEST_PHASE pid2460 tick1047573156 dispatched37 close-begin
+TEST_PHASE pid2460 tick1047573187 dispatched37 close-request-return
+TEST_PHASE pid2460 tick1047573250 dispatched40 close-state-checked
+TEST_PHASE pid2460 tick1047573562 dispatched40 com-uninitialize-begin
+TEST_PHASE pid2460 tick1047573562 dispatched40 process-return
+Stateful actual light / restore: 0 failures

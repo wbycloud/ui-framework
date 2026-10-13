@@ -1,0 +1,572 @@
+IDENTITY pid6964 backendlight chromeactual-Light dpi144 themedark input=real-SendInput capture=desktop-BitBlt
+READY qpcMs1047315988.604 startupMs1343.400 hwnd00000000091F10DC chrome000000000042049A
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n0 qpcMs1047316064.362 idopen stagebefore rect214,2,34,36 clip214,2,34,36 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus00000000091F10DC dispatch42
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n1 qpcMs1047316172.922 idopen stagehover rect214,2,34,36 clip214,2,34,36 focused0 enabled1 visible1 dpi144 windowDpi96 cursor395,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus00000000091F10DC dispatch49
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n2 qpcMs1047316293.253 idopen stagedown rect214,2,34,36 clip214,2,34,36 focused1 enabled1 visible1 dpi144 windowDpi96 cursor395,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture000000000042049A focus000000000042049A dispatch56
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n3 qpcMs1047316370.468 idopen stageheld-outside rect214,2,34,36 clip214,2,34,36 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture000000000042049A focus000000000042049A dispatch60
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n4 qpcMs1047316476.406 idopen stagerelease-outside rect214,2,34,36 clip214,2,34,36 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch64
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n5 qpcMs1047316662.181 idopen stagekeyboard rect214,2,34,36 clip214,2,34,36 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch92
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n6 qpcMs1047316767.342 idassistant-toggle stagebefore rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch93
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n7 qpcMs1047316874.920 idassistant-toggle stagehover rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor995,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000042049A dispatch99
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n8 qpcMs1047316995.094 idassistant-toggle stagedown rect611,0,40,40 clip611,0,40,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor995,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture000000000042049A focus000000000042049A dispatch103
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n9 qpcMs1047317071.835 idassistant-toggle stageheld-outside rect611,0,40,40 clip611,0,40,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture000000000042049A focus000000000042049A dispatch107
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n10 qpcMs1047317177.480 idassistant-toggle stagerelease-outside rect611,0,40,40 clip611,0,40,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch111
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n11 qpcMs1047317360.502 idassistant-toggle stagekeyboard rect611,0,40,40 clip611,0,40,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch136
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n12 qpcMs1047317467.329 idwindow-min stagebefore rect651,0,46,40 clip651,0,46,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch136
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n13 qpcMs1047317573.286 idwindow-min stagehover rect651,0,46,40 clip651,0,46,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1059,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000042049A dispatch138
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n14 qpcMs1047317678.574 idwindow-min stagedown rect651,0,46,40 clip651,0,46,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor1059,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture000000000042049A focus000000000042049A dispatch140
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n15 qpcMs1047317754.440 idwindow-min stageheld-outside rect651,0,46,40 clip651,0,46,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture000000000042049A focus000000000042049A dispatch142
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n16 qpcMs1047317862.194 idwindow-min stagerelease-outside rect651,0,46,40 clip651,0,46,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch146
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n17 qpcMs1047318044.124 idwindow-min stagekeyboard rect651,0,46,40 clip651,0,46,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch170
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n18 qpcMs1047318151.259 idwindow-max stagebefore rect697,0,46,40 clip697,0,46,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch170
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n19 qpcMs1047318257.985 idwindow-max stagehover rect697,0,46,40 clip697,0,46,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1128,70 hit00000000091F10DC pid6964 classUiFrameworkStandaloneHostV2 capture0000000000000000 focus000000000042049A dispatch180
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n20 qpcMs1047318363.574 idwindow-max stagedown rect697,0,46,40 clip697,0,46,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1128,70 hit00000000091F10DC pid6964 classUiFrameworkStandaloneHostV2 capture00000000091F10DC focus000000000042049A dispatch195
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n21 qpcMs1047318440.261 idwindow-max stageheld-outside rect697,0,46,40 clip697,0,46,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture00000000091F10DC focus000000000042049A dispatch196
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n22 qpcMs1047318548.489 idwindow-max stagerelease-outside rect697,0,46,40 clip697,0,46,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch205
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n23 qpcMs1047318654.286 idwindow-close stagebefore rect743,0,46,40 clip743,0,46,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch205
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n24 qpcMs1047318761.818 idwindow-close stagehover rect743,0,46,40 clip743,0,46,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1197,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000042049A dispatch207
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n25 qpcMs1047318883.032 idwindow-close stagedown rect743,0,46,40 clip743,0,46,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor1197,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture000000000042049A focus000000000042049A dispatch209
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n26 qpcMs1047318943.485 idwindow-close stageheld-outside rect743,0,46,40 clip743,0,46,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture000000000042049A focus000000000042049A dispatch211
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n27 qpcMs1047319066.388 idwindow-close stagerelease-outside rect743,0,46,40 clip743,0,46,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch215
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n28 qpcMs1047319235.949 idwindow-close stagekeyboard rect743,0,46,40 clip743,0,46,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch240
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n29 qpcMs1047319327.800 idpanel-form stagebefore rect753,72,12,20 clip753,72,12,20 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch240
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n30 qpcMs1047319434.336 idpanel-form stagehover rect753,72,12,20 clip753,72,12,20 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1187,163 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000042049A dispatch242
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n31 qpcMs1047319555.802 idpanel-form stagedown rect753,72,12,20 clip753,72,12,20 focused1 enabled1 visible1 dpi144 windowDpi96 cursor1187,163 hit000000000042049A pid6964 classUIFrameworkLightWeb capture000000000042049A focus000000000042049A dispatch244
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n32 qpcMs1047319616.173 idpanel-form stageheld-outside rect753,72,12,20 clip753,72,12,20 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture000000000042049A focus000000000042049A dispatch246
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n33 qpcMs1047319723.941 idpanel-form stagerelease-outside rect753,72,12,20 clip753,72,12,20 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch250
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n34 qpcMs1047319890.449 idpanel-form stagekeyboard rect753,72,12,20 clip753,72,12,20 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch274
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n35 qpcMs1047319997.059 idfold-form stagebefore rect769,72,12,20 clip769,72,12,20 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch274
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n36 qpcMs1047320103.710 idfold-form stagehover rect769,72,12,20 clip769,72,12,20 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1211,163 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000042049A dispatch276
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n37 qpcMs1047320212.330 idfold-form stagedown rect769,72,12,20 clip769,72,12,20 focused1 enabled1 visible1 dpi144 windowDpi96 cursor1211,163 hit000000000042049A pid6964 classUIFrameworkLightWeb capture000000000042049A focus000000000042049A dispatch278
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n38 qpcMs1047320287.733 idfold-form stageheld-outside rect769,72,12,20 clip769,72,12,20 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture000000000042049A focus000000000042049A dispatch280
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n39 qpcMs1047320395.235 idfold-form stagerelease-outside rect769,72,12,20 clip769,72,12,20 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch284
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n40 qpcMs1047320577.099 idfold-form stagekeyboard rect769,72,12,20 clip769,72,12,20 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch309
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n41 qpcMs1047320685.632 idclose-1 stagebefore rect188,4,26,36 clip188,4,26,36 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch309
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n42 qpcMs1047320792.071 idclose-1 stagehover rect188,4,26,36 clip188,4,26,36 focused0 enabled1 visible1 dpi144 windowDpi96 cursor350,73 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000042049A dispatch311
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n43 qpcMs1047320898.020 idclose-1 stagedown rect188,4,26,36 clip188,4,26,36 focused1 enabled1 visible1 dpi144 windowDpi96 cursor350,73 hit000000000042049A pid6964 classUIFrameworkLightWeb capture000000000042049A focus000000000042049A dispatch313
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n44 qpcMs1047320973.777 idclose-1 stageheld-outside rect188,4,26,36 clip188,4,26,36 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture000000000042049A focus000000000042049A dispatch315
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n45 qpcMs1047321080.092 idclose-1 stagerelease-outside rect188,4,26,36 clip188,4,26,36 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch319
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+KEYTRACE message256 key16 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message256 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key9 hwnd000000000042049A handled0 modifiers0,1,0 assistant0
+KEYTRACE message257 key16 hwnd000000000042049A handled0 modifiers0,0,0 assistant0
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n46 qpcMs1047321264.160 idclose-1 stagekeyboard rect188,4,26,36 clip188,4,26,36 focused1 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000042049A dispatch342
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n47 qpcMs1047321432.628 idassistant-toggle stageclicked rect611,0,40,40 clip611,0,40,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor995,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000042049A dispatch360
+KEYTRACE message256 key32 hwnd000000000042049A handled0 modifiers0,0,0 assistant1
+KEYTRACE message257 key32 hwnd000000000042049A handled0 modifiers0,0,0 assistant-1
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n48 qpcMs1047321570.101 idassistant-toggle stagespace rect611,0,40,40 clip611,0,40,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor995,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000042049A dispatch382
+KEYTRACE message256 key13 hwnd000000000042049A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key13 hwnd000000000042049A handled0 modifiers0,0,0 assistant1
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n49 qpcMs1047321707.713 idassistant-toggle stageenter rect611,0,40,40 clip611,0,40,40 focused1 enabled1 visible1 dpi144 windowDpi96 cursor995,70 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000042049A dispatch400
+KEYTRACE message256 key17 hwnd000000000014033A handled0 modifiers1,0,0 assistant-1
+KEYTRACE message256 key65 hwnd000000000014033A handled0 modifiers1,0,0 assistant-1
+KEYTRACE message257 key65 hwnd000000000014033A handled0 modifiers1,0,0 assistant-1
+KEYTRACE message257 key17 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key231 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key36 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key36 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+COORD root40,40,1240,840 viewOrigin858,184 contentView000000000014033A
+CAPTURE_RECT 40,40,1240,840
+FRAME n50 qpcMs1047322332.147 idfield-name stagehome rect96,78,145,28 clip96,78,145,28 focused1 enabled1 visible1 dpi144 windowDpi96 cursor1111,322 hit000000000014033A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000014033A dispatch832
+KEYTRACE message256 key35 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key35 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+COORD root40,40,1240,840 viewOrigin858,184 contentView000000000014033A
+CAPTURE_RECT 40,40,1240,840
+FRAME n51 qpcMs1047322467.843 idfield-name stageend rect96,78,145,28 clip96,78,145,28 focused1 enabled1 visible1 dpi144 windowDpi96 cursor1111,322 hit000000000014033A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000014033A dispatch841
+COORD root40,40,1240,840 viewOrigin858,184 contentView000000000014033A
+CAPTURE_RECT 40,40,1240,840
+FRAME n52 qpcMs1047322575.578 idsubmit stagebefore rect8,40,60,28 clip8,40,60,28 focused0 enabled1 visible1 dpi144 windowDpi96 cursor60,1100 hit0000000008BD0B50 pid30072 classChrome_RenderWidgetHostHWND capture0000000000000000 focus000000000014033A dispatch843
+COORD root40,40,1240,840 viewOrigin858,184 contentView000000000014033A
+CAPTURE_RECT 40,40,1240,840
+FRAME n53 qpcMs1047322681.643 idsubmit stagehover rect8,40,60,28 clip8,40,60,28 focused0 enabled1 visible1 dpi144 windowDpi96 cursor915,265 hit000000000014033A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000014033A dispatch845
+COORD root40,40,1240,840 viewOrigin858,184 contentView000000000014033A
+CAPTURE_RECT 40,40,1240,840
+FRAME n54 qpcMs1047322803.159 idsubmit stagedown rect8,40,60,28 clip8,40,60,28 focused1 enabled1 visible1 dpi144 windowDpi96 cursor915,265 hit000000000014033A pid6964 classUIFrameworkLightWeb capture000000000014033A focus000000000014033A dispatch847
+COORD root40,40,1240,840 viewOrigin858,184 contentView000000000014033A
+CAPTURE_RECT 40,40,1240,840
+FRAME n55 qpcMs1047322985.441 idsubmit stagereleased rect8,40,60,28 clip8,40,60,28 focused1 enabled1 visible1 dpi144 windowDpi96 cursor915,265 hit000000000014033A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000014033A dispatch858
+KEYTRACE message256 key9 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key9 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+KEYTRACE message256 key16 hwnd000000000014033A handled0 modifiers0,1,0 assistant-1
+KEYTRACE message256 key9 hwnd000000000014033A handled0 modifiers0,1,0 assistant-1
+KEYTRACE message257 key9 hwnd000000000014033A handled0 modifiers0,1,0 assistant-1
+KEYTRACE message257 key16 hwnd000000000014033A handled0 modifiers0,0,0 assistant-1
+COORD root40,40,1240,840 viewOrigin858,184 contentView000000000014033A
+CAPTURE_RECT 40,40,1240,840
+FRAME n56 qpcMs1047323181.715 idsubmit stagekeyboard rect8,40,60,28 clip8,40,60,28 focused1 enabled1 visible1 dpi144 windowDpi96 cursor915,265 hit000000000014033A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000014033A dispatch882
+COORD root40,40,1240,840 viewOrigin96,213 contentView00000000003703C8
+CAPTURE_RECT 40,40,1240,840
+FRAME n57 qpcMs1047323455.018 idfield-name stagedialog-ready rect96,78,336,28 clip96,78,336,28 focused1 enabled1 visible1 dpi144 windowDpi96 cursor295,336 hit00000000003703C8 pid6964 classUIFrameworkLightWeb capture0000000000000000 focus00000000003703C8 dispatch925
+COORD root40,40,1240,840 viewOrigin96,213 contentView00000000003703C8
+CAPTURE_RECT 40,40,1240,840
+FRAME n58 qpcMs1047323592.913 idfield-name stagedialog-focused rect96,78,336,28 clip96,78,336,28 focused1 enabled1 visible1 dpi144 windowDpi96 cursor420,351 hit00000000003703C8 pid6964 classUIFrameworkLightWeb capture0000000000000000 focus00000000003703C8 dispatch930
+KEYTRACE message256 key9 hwnd00000000003703C8 handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key9 hwnd00000000003703C8 handled0 modifiers0,0,0 assistant-1
+COORD root40,40,1240,840 viewOrigin96,213 contentView00000000003703C8
+CAPTURE_RECT 40,40,1240,840
+FRAME n59 qpcMs1047323710.747 idsubmit stagedialog-tab rect8,40,60,28 clip8,40,60,28 focused1 enabled1 visible1 dpi144 windowDpi96 cursor420,351 hit00000000003703C8 pid6964 classUIFrameworkLightWeb capture0000000000000000 focus00000000003703C8 dispatch939
+KEYTRACE message256 key9 hwnd00000000003703C8 handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key9 hwnd00000000003703C8 handled0 modifiers0,0,0 assistant-1
+COORD root40,40,1240,840 viewOrigin96,213 contentView00000000003703C8
+CAPTURE_RECT 40,40,1240,840
+FRAME n60 qpcMs1047323835.510 idcancel stagedialog-tab rect72,40,56,28 clip72,40,56,28 focused1 enabled1 visible1 dpi144 windowDpi96 cursor420,351 hit00000000003703C8 pid6964 classUIFrameworkLightWeb capture0000000000000000 focus00000000003703C8 dispatch948
+KEYTRACE message256 key27 hwnd00000000003703C8 handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key27 hwnd000000000042049A handled0 modifiers0,0,0 assistant-1
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n61 qpcMs1047323952.609 idassistant-toggle stagedialog-closed rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor420,351 hit00000000003E00F8 pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000042049A dispatch978
+PATH narrow0 draft-preserved=1 total100000 nodes77 bytes93456
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n62 qpcMs1047324276.737 idassistant-toggle stagefloat-down rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor827,235 hit0000000002D31026 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1021
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n63 qpcMs1047324312.918 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor772,238 hit0000000002D31026 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1024
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n64 qpcMs1047324343.488 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor716,242 hit00000000003E00F8 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1027
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n65 qpcMs1047324379.894 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor661,246 hit00000000003E00F8 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1030
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n66 qpcMs1047324415.673 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor605,250 hit00000000003E00F8 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1033
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n67 qpcMs1047324463.608 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor550,253 hit00000000003E00F8 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1036
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n68 qpcMs1047324497.124 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor494,257 hit00000000003E00F8 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1040
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n69 qpcMs1047324532.421 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor438,261 hit00000000003E00F8 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1042
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n70 qpcMs1047324577.167 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor383,265 hit0000000002A2058E pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1045
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n71 qpcMs1047324611.679 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor327,268 hit0000000002A2058E pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1048
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n72 qpcMs1047324649.155 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor272,272 hit0000000002A2058E pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1051
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n73 qpcMs1047324699.091 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor216,276 hit0000000002A2058E pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1056
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n74 qpcMs1047324749.734 idassistant-toggle stagefloat-through-gl rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor160,280 hit0000000002A2058E pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1060
+KEYTRACE message256 key27 hwnd0000000003EF122C handled0 modifiers0,0,0 assistant-1
+KEYTRACE message257 key27 hwnd000000000247118C handled0 modifiers0,0,0 assistant-1
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n75 qpcMs1047324963.415 idassistant-toggle stagefloat-esc rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor160,280 hit0000000002A2058E pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000247118C dispatch1089
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n76 qpcMs1047325239.946 idassistant-toggle stagefloat-controlled-capture-loss rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor827,235 hit0000000002D31026 pid6964 classUIFrameworkLightWeb capture0000000000000000 focus000000000247118C dispatch1139
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n77 qpcMs1047325416.621 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor859,239 hit0000000002D31026 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1168
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1268,840
+FRAME n78 qpcMs1047325468.197 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor892,244 hit0000000002D31026 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1170
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1301,840
+FRAME n79 qpcMs1047325513.661 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor925,248 hit0000000002D31026 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1172
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n80 qpcMs1047325546.373 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor958,253 hit0000000002D31026 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1175
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n81 qpcMs1047325583.678 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor990,257 hit0000000002D31026 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1179
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n82 qpcMs1047325633.825 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1023,262 hit0000000002D31026 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1183
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n83 qpcMs1047325679.685 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1056,267 hit0000000002D31026 pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1187
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n84 qpcMs1047325716.661 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1089,271 hit000000000014033A pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1191
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n85 qpcMs1047325766.621 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1121,276 hit000000000014033A pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1195
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n86 qpcMs1047325816.579 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1154,280 hit000000000014033A pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1200
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n87 qpcMs1047325863.122 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1187,285 hit000000000014033A pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1204
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n88 qpcMs1047325900.065 idassistant-toggle stagedock-held rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1220,290 hit000000000042049A pid6964 classUIFrameworkLightWeb capture0000000003EF122C focus0000000003EF122C dispatch1208
+COORD root40,40,1240,840 viewOrigin48,40 contentView000000000042049A
+CAPTURE_RECT 40,40,1240,840
+FRAME n89 qpcMs1047326077.432 idassistant-toggle stagedock-release rect611,0,40,40 clip611,0,40,40 focused0 enabled1 visible1 dpi144 windowDpi96 cursor1220,290 hit000000000014033A pid6964 classUIFrameworkLightWeb capture0000000000000000 focus0000000003EF122C dispatch1222
+END dispatch1226 failures0 actual-main-return-only

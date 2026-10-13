@@ -1,0 +1,674 @@
+[
+  {
+    "run": "before-light-96",
+    "id": "open",
+    "logicalButton": [
+      214,
+      2,
+      34,
+      36
+    ],
+    "deviceButton": [
+      222,
+      2,
+      256,
+      38
+    ],
+    "foregroundBounds": [
+      224,
+      19,
+      233,
+      21
+    ],
+    "centerOffsetDevice": [
+      -10.5,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "known probe root plus observed 8px left frame; historical probe did not log native origin"
+  },
+  {
+    "run": "before-light-96",
+    "id": "window-min",
+    "logicalButton": [
+      1046,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      1054,
+      0,
+      1100,
+      40
+    ],
+    "foregroundBounds": [
+      1056,
+      19,
+      1066,
+      20
+    ],
+    "centerOffsetDevice": [
+      -16.0,
+      -0.5
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "known probe root plus observed 8px left frame; historical probe did not log native origin"
+  },
+  {
+    "run": "before-light-96",
+    "id": "window-max",
+    "logicalButton": [
+      1092,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      1100,
+      0,
+      1146,
+      40
+    ],
+    "foregroundBounds": [
+      1102,
+      14,
+      1112,
+      26
+    ],
+    "centerOffsetDevice": [
+      -16.0,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "known probe root plus observed 8px left frame; historical probe did not log native origin"
+  },
+  {
+    "run": "before-light-96",
+    "id": "window-close",
+    "logicalButton": [
+      1138,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      1146,
+      0,
+      1192,
+      40
+    ],
+    "foregroundBounds": [
+      1148,
+      15,
+      1157,
+      25
+    ],
+    "centerOffsetDevice": [
+      -16.5,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "known probe root plus observed 8px left frame; historical probe did not log native origin"
+  },
+  {
+    "run": "before-light-96",
+    "id": "panel-form",
+    "logicalButton": [
+      1132,
+      72,
+      20,
+      20
+    ],
+    "deviceButton": [
+      1140,
+      72,
+      1160,
+      92
+    ],
+    "foregroundBounds": [
+      1144,
+      77,
+      1155,
+      86
+    ],
+    "centerOffsetDevice": [
+      -0.5,
+      -0.5
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "known probe root plus observed 8px left frame; historical probe did not log native origin"
+  },
+  {
+    "run": "before-light-96",
+    "id": "fold-form",
+    "logicalButton": [
+      1156,
+      72,
+      20,
+      20
+    ],
+    "deviceButton": [
+      1164,
+      72,
+      1184,
+      92
+    ],
+    "foregroundBounds": [
+      1168,
+      79,
+      1180,
+      85
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "known probe root plus observed 8px left frame; historical probe did not log native origin"
+  },
+  {
+    "run": "final-path-light-96-light-buttons",
+    "id": "open",
+    "logicalButton": [
+      214,
+      2,
+      34,
+      36
+    ],
+    "deviceButton": [
+      222,
+      2,
+      256,
+      38
+    ],
+    "foregroundBounds": [
+      234,
+      19,
+      244,
+      21
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-96-light-buttons",
+    "id": "window-min",
+    "logicalButton": [
+      1046,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      1054,
+      0,
+      1100,
+      40
+    ],
+    "foregroundBounds": [
+      1071,
+      19,
+      1083,
+      20
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      -0.5
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-96-light-buttons",
+    "id": "window-max",
+    "logicalButton": [
+      1092,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      1100,
+      0,
+      1146,
+      40
+    ],
+    "foregroundBounds": [
+      1117,
+      14,
+      1129,
+      26
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-96-light-buttons",
+    "id": "window-close",
+    "logicalButton": [
+      1138,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      1146,
+      0,
+      1192,
+      40
+    ],
+    "foregroundBounds": [
+      1163,
+      14,
+      1174,
+      26
+    ],
+    "centerOffsetDevice": [
+      -0.5,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-96-light-buttons",
+    "id": "panel-form",
+    "logicalButton": [
+      1148,
+      72,
+      12,
+      20
+    ],
+    "deviceButton": [
+      1156,
+      72,
+      1168,
+      92
+    ],
+    "foregroundBounds": [
+      1158,
+      77,
+      1166,
+      86
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      -0.5
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-96-light-buttons",
+    "id": "fold-form",
+    "logicalButton": [
+      1164,
+      72,
+      12,
+      20
+    ],
+    "deviceButton": [
+      1172,
+      72,
+      1184,
+      92
+    ],
+    "foregroundBounds": [
+      1174,
+      81,
+      1182,
+      85
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      1.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-144-dark-buttons",
+    "id": "open",
+    "logicalButton": [
+      214,
+      2,
+      34,
+      36
+    ],
+    "deviceButton": [
+      329,
+      3,
+      380,
+      57
+    ],
+    "foregroundBounds": [
+      345,
+      29,
+      363,
+      31
+    ],
+    "centerOffsetDevice": [
+      -0.5,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-144-dark-buttons",
+    "id": "window-min",
+    "logicalButton": [
+      651,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      985,
+      0,
+      1054,
+      60
+    ],
+    "foregroundBounds": [
+      1010,
+      28,
+      1028,
+      30
+    ],
+    "centerOffsetDevice": [
+      -0.5,
+      -1.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-144-dark-buttons",
+    "id": "window-max",
+    "logicalButton": [
+      697,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      1054,
+      0,
+      1123,
+      60
+    ],
+    "foregroundBounds": [
+      1080,
+      21,
+      1096,
+      39
+    ],
+    "centerOffsetDevice": [
+      -0.5,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-144-dark-buttons",
+    "id": "window-close",
+    "logicalButton": [
+      743,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      1123,
+      0,
+      1192,
+      60
+    ],
+    "foregroundBounds": [
+      1149,
+      22,
+      1165,
+      38
+    ],
+    "centerOffsetDevice": [
+      -0.5,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-144-dark-buttons",
+    "id": "panel-form",
+    "logicalButton": [
+      753,
+      72,
+      12,
+      20
+    ],
+    "deviceButton": [
+      1138,
+      108,
+      1156,
+      138
+    ],
+    "foregroundBounds": [
+      1141,
+      116,
+      1153,
+      129
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      -0.5
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-light-144-dark-buttons",
+    "id": "fold-form",
+    "logicalButton": [
+      769,
+      72,
+      12,
+      20
+    ],
+    "deviceButton": [
+      1162,
+      108,
+      1180,
+      138
+    ],
+    "foregroundBounds": [
+      1165,
+      121,
+      1177,
+      127
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      1.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-webview2-192-dark-buttons",
+    "id": "open",
+    "logicalButton": [
+      214,
+      2,
+      34,
+      36
+    ],
+    "deviceButton": [
+      436,
+      4,
+      504,
+      76
+    ],
+    "foregroundBounds": [
+      458,
+      39,
+      482,
+      41
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-webview2-192-dark-buttons",
+    "id": "window-min",
+    "logicalButton": [
+      454,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      916,
+      0,
+      1008,
+      80
+    ],
+    "foregroundBounds": [
+      950,
+      37,
+      974,
+      40
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      -1.5
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-webview2-192-dark-buttons",
+    "id": "window-max",
+    "logicalButton": [
+      500,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      1008,
+      0,
+      1100,
+      80
+    ],
+    "foregroundBounds": [
+      1043,
+      28,
+      1065,
+      52
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-webview2-192-dark-buttons",
+    "id": "window-close",
+    "logicalButton": [
+      546,
+      0,
+      46,
+      40
+    ],
+    "deviceButton": [
+      1100,
+      0,
+      1192,
+      80
+    ],
+    "foregroundBounds": [
+      1134,
+      28,
+      1157,
+      52
+    ],
+    "centerOffsetDevice": [
+      -0.5,
+      0.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-webview2-192-dark-buttons",
+    "id": "panel-form",
+    "logicalButton": [
+      556,
+      72,
+      12,
+      20
+    ],
+    "deviceButton": [
+      1120,
+      144,
+      1144,
+      184
+    ],
+    "foregroundBounds": [
+      1124,
+      155,
+      1140,
+      172
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      -0.5
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  },
+  {
+    "run": "final-path-webview2-192-dark-buttons",
+    "id": "fold-form",
+    "logicalButton": [
+      572,
+      72,
+      12,
+      20
+    ],
+    "deviceButton": [
+      1152,
+      144,
+      1176,
+      184
+    ],
+    "foregroundBounds": [
+      1156,
+      161,
+      1172,
+      169
+    ],
+    "centerOffsetDevice": [
+      0.0,
+      1.0
+    ],
+    "method": "foreground threshold inside desktop button ROI; anti-alias fringes excluded",
+    "originEvidence": "logged COORD/CAPTURE_RECT"
+  }
+]

@@ -341,8 +341,8 @@ TypeScript 需在构建阶段离线编译为 JavaScript，再交给后端执行�
 | HTML 内容元素 | `div`、`header`、`footer`、`nav`、`aside`、`section`、`main`、`p`、`span`、`button`、文本 `input`、`textarea`、资源 ID `img` |
 | 内容属性 | `id`、`class`、`style`、`onclick`、`onmousedown`、`oninput`、`value`、文本 `type`、`disabled`、`readonly` |
 | 布局 | `display:block/flex/none`、row/column、整数 flex 权重、整数 px/百分比宽高、absolute 定位、padding/margin/gap、min/max尺寸和基本对齐 |
-| 样式 | 十六进制颜色、solid 边框、圆角、字体大小/粗细、受限字体族（含系统MDL2图标）、box-sizing、裁剪和滚动 |
-| 样式表 | 标签/class/ID/后代选择器、hover/active/focus/disabled（hover/active包含命中祖先）、有限优先级与 width min/max media 规则 |
+| 样式 | 十六进制颜色、solid 边框和 outline（含颜色、整数 px offset）、圆角、字体大小/粗细、受限字体族（含系统MDL2图标）、box-sizing、裁剪和滚动 |
+| 样式表 | 标签/class/ID/后代选择器、hover/active/focus/focus-visible/disabled（hover/active包含命中祖先）、有限优先级与 width min/max media 规则 |
 | DOM 脚本 | `document.body`、`getElementById/createElement`、`appendChild/removeChild/remove`、`textContent/className/value/disabled/style`、受限属性访问、`focus()` |
 | 事件/消息 | click/input/keydown/focus/blur/mouseenter/mouseleave/mousedown/wheel/contextmenu 监听、document keydown、`ui.invoke/value/postMessage/onmessage` 和 window message |
 | 输入 | 逻辑像素命中、按钮/滚轮；Uniscribe 和 IMM32 平台适配的 Web 单行/多行编辑、选择、剪贴板及撤销，无 EDIT 代理 |

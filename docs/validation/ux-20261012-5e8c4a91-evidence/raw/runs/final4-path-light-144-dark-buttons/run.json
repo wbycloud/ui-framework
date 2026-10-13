@@ -1,0 +1,32 @@
+{
+  "label": "final4-path-light-144-dark-buttons",
+  "command": [
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\ux-20261012-5e8c4a91\\final\\ux_probe.exe",
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\ux-20261012-5e8c4a91\\final\\stateful_components.uapp",
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+    "light",
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\ux-20261012-5e8c4a91\\runs\\final4-path-light-144-dark-buttons",
+    "144",
+    "dark",
+    "light",
+    "buttons"
+  ],
+  "pid": 39792,
+  "os_exit": 0,
+  "forced": false,
+  "elapsed_ms": 12641.0,
+  "backend": "light",
+  "chrome": "light",
+  "program_dpi": "144",
+  "theme": "dark",
+  "identities": {
+    "build\\ux-20261012-5e8c4a91\\final\\ux_probe.exe": "ab2e69ed0a4f157339b6e800e39a5827b3e6c9b1b6e6e804c9950ac2474738eb",
+    "build\\ux-20261012-5e8c4a91\\final\\ui_framework.dll": "019fee88b15f518cda6f2360b71c18f294af42df9f612bf053a38cbd83cffb71",
+    "build\\ux-20261012-5e8c4a91\\final\\stateful_components.uapp": "b8925a415b7879ae77368a351c357dbbe4fe63afe55bad2e6ae3e858d0b03c63",
+    ".deps\\mesa-24.3.4\\x64\\osmesa.dll": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+  },
+  "lp_parent": null,
+  "input": "real SendInput",
+  "capture": "desktop BitBlt",
+  "eof": "stdout file closed after process wait"
+}

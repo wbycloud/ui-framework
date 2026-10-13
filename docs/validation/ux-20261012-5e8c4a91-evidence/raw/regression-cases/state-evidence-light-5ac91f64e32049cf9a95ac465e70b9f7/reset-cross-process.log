@@ -1,0 +1,12 @@
+TEST_PHASE pid11688 tick1047604796 dispatched0 create-host-begin
+TEST_PHASE pid11688 tick1047604843 dispatched0 create-host-end
+TEST_PHASE pid11688 tick1047604906 dispatched0 open-begin
+TEST_PHASE pid11688 tick1047605171 dispatched0 open-return
+TEST_PHASE pid11688 tick1047605671 dispatched45 open-settled
+RESTORED modedefaults dpi96 name200 treeCollapsed0
+TEST_PHASE pid11688 tick1047605671 dispatched45 close-begin
+TEST_PHASE pid11688 tick1047605703 dispatched45 close-request-return
+TEST_PHASE pid11688 tick1047605765 dispatched48 close-state-checked
+TEST_PHASE pid11688 tick1047606078 dispatched48 com-uninitialize-begin
+TEST_PHASE pid11688 tick1047606078 dispatched48 process-return
+Stateful actual light / defaults: 0 failures

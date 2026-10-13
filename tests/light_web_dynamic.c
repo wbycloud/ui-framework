@@ -123,6 +123,38 @@ int main(void)
     CHECK(ui_web_view_resize(view,500,600,144) == UI_STATUS_OK);
     CHECK(ui_web_view_get_element_rect(view,"sidebar",&rect) == UI_STATUS_OK && rect.width == 0);
     CHECK(ui_web_view_native_handle(view) == web_hwnd);
+    /* Mouse focus keeps activation semantics; only keyboard focus draws the
+       solid ring, without changing layout or hit geometry. */
+    CHECK(ui_web_view_resize(view,160,80,96) == UI_STATUS_OK);
+    CHECK(ui_web_view_load_html(view,
+        "<style>body{margin:0;}button{width:60px;height:28px;outline:none;}"
+        "button:focus-visible{outline:1px solid #0078d4;outline-offset:-2px;}</style>"
+        "<button id='first'>A</button><button id='second'>B</button>") == UI_STATUS_OK);
+    CHECK(ui_web_view_get_element_rect(view,"first",&before) == UI_STATUS_OK);
+    CHECK(input(view,UI_INPUT_POINTER_DOWN,before.x+10,before.y+10,0,0) == UI_STATUS_OK);
+    CHECK(input(view,UI_INPUT_POINTER_UP,before.x+10,before.y+10,0,0) == UI_STATUS_OK);
+    {ui_element_presentation_t p={0};ui_pixel_buffer_t pixels={0};uint8_t image[160*80*4];size_t blue=0;
+     p.size=sizeof(p);CHECK(ui_web_view_get_presentation(view,"first",&p)==UI_STATUS_OK&&p.focused);
+     pixels.size=sizeof(pixels);pixels.pixels=image;pixels.capacity=sizeof(image);
+     CHECK(ui_web_view_capture_rgba(view,160,80,96,&pixels)==UI_STATUS_OK);
+     for(size_t n=0;n<sizeof(image);n+=4)if(image[n]==0&&image[n+1]==120&&image[n+2]==212)++blue;
+     CHECK(blue==0);
+     CHECK(input(view,UI_INPUT_KEY_DOWN,0,0,VK_TAB,0)==UI_STATUS_OK);
+     p.size=sizeof(p);CHECK(ui_web_view_get_presentation(view,"second",&p)==UI_STATUS_OK&&p.focused);
+     CHECK(ui_web_view_capture_rgba(view,160,80,96,&pixels)==UI_STATUS_OK);blue=0;
+     for(size_t n=0;n<sizeof(image);n+=4)if(image[n]==0&&image[n+1]==120&&image[n+2]==212)++blue;
+     CHECK(blue>=100);
+     CHECK(ui_web_view_get_element_rect(view,"first",&after)==UI_STATUS_OK&&!memcmp(&before,&after,sizeof(before)));
+     CHECK(ui_web_view_load_html(view,"<button id='plain'>Unstyled</button>")==UI_STATUS_OK);
+     CHECK(input(view,UI_INPUT_POINTER_DOWN,10,10,0,0)==UI_STATUS_OK);
+     CHECK(input(view,UI_INPUT_POINTER_UP,10,10,0,0)==UI_STATUS_OK);
+     CHECK(ui_web_view_capture_rgba(view,160,80,96,&pixels)==UI_STATUS_OK);blue=0;
+     for(size_t n=0;n<sizeof(image);n+=4)if(image[n]==0&&image[n+1]==120&&image[n+2]==212)++blue;
+     CHECK(blue==0);
+     CHECK(input(view,UI_INPUT_KEY_DOWN,0,0,VK_TAB,0)==UI_STATUS_OK);
+     CHECK(ui_web_view_capture_rgba(view,160,80,96,&pixels)==UI_STATUS_OK);blue=0;
+     for(size_t n=0;n<sizeof(image);n+=4)if(image[n]==0&&image[n+1]==120&&image[n+2]==212)++blue;
+     CHECK(blue>=100);}
     ui_web_view_destroy(view); ui_light_web_backend_destroy(backend); ui_host_destroy(host); DestroyWindow(parent);
     printf("Dynamic Web probe: %d failure(s), %d messages, 250 incremental rebuilds\n",failures,messages);
     return failures ? 1 : 0;

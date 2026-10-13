@@ -1,0 +1,82 @@
+{
+  "head": "7848a946fcf417eefe87bd63e42f83c8a3f875f3",
+  "branch": "codex/p1-process-boundaries",
+  "status": "?? docs/validation/local-investigation-evidence-20261009/\n?? docs/validation/local-investigation-presentation-evidence-20261009/\n?? docs/validation/local-investigation-validation.md\n?? docs/validation/p1-hosted-diagnostic-evidence-20261009/\n?? docs/validation/p1-hosted-diagnostic-validation-20261009.md\n?? docs/validation/p1-mesa-lifecycle-evidence-20261009/\n?? docs/validation/p1-mesa-lifecycle-validation-20261009.md\n?? docs/validation/p1-mesa-thread-control-evidence-20261009/\n?? docs/validation/p1-mesa-thread-control-validation-20261009.md\n?? docs/validation/root-cause-investigation-evidence-20261009/\n?? docs/validation/root-cause-investigation-validation.md\n?? docs/validation/ux-20261012-5e8c4a91-evidence/",
+  "environment": {
+    "session": 1,
+    "desktop": "Default",
+    "desktop_error": 0,
+    "screen": [
+      2560,
+      1440
+    ],
+    "system_dpi": 96,
+    "user_ui_language": "0x804",
+    "system_ui_language": "0x804"
+  },
+  "dependencies": {
+    "lexbor": "7fb22cf5664a331d7c24b113489e566767c9c25a",
+    "quickjs": "2f0aa72a6b09cf69ff06399bcf9f4c083ac1a278"
+  },
+  "protected_groups": [
+    {
+      "directory": "docs\\validation\\instance-language-current-evidence-20261009",
+      "entries": 143,
+      "index_sha256": "33ee946dbb2254f1698d3b261ea179b4c221fdd094ed2780b1175c45613fd13c"
+    },
+    {
+      "directory": "docs\\validation\\ui-repair-evidence-20261009",
+      "entries": 638,
+      "index_sha256": "1b302c600cfad805360db79957a89241d20988652e3d798186f70bb34b82ea19"
+    },
+    {
+      "directory": "docs\\validation\\p1-mesa-lifecycle-evidence-20261009",
+      "entries": 733,
+      "index_sha256": "6d06e8866863a7276c77ffe091090de401dad80da1cc0153bd09cb50f4bb0362"
+    },
+    {
+      "directory": "docs\\validation\\p1-mesa-hosted-control-evidence-20261009",
+      "entries": 2675,
+      "index_sha256": "fe5f1cff5af39fe1db252e6a52562edf8a7582ad68acdf0dbc0f9b94b9bae08d"
+    }
+  ],
+  "errors": [],
+  "files": [
+    {
+      "path": ".deps/mesa-24.3.4/x64/osmesa.dll",
+      "bytes": 52327936,
+      "sha256": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+    },
+    {
+      "path": "build/language-current-20261009/ui-framework-sdk0.9.0-dev-api9-44c039f-windows-x64.zip",
+      "bytes": 117891276,
+      "sha256": "28ca0b8409b321477f1aa3adce2680fda8cf2cd8a9a35dd4308a5f08ef1f79a2"
+    },
+    {
+      "path": "src/backends/light_web.c",
+      "bytes": 114374,
+      "sha256": "db31663c9920388a27917cb6fb3ba89a7970be982396f44127e4bdf89ccd4acb"
+    },
+    {
+      "path": "src/visual.css",
+      "bytes": 3377,
+      "sha256": "75fdf73bd75b6e2865c8ca8e3e161c4a45c2a849d314a93dee6fb28082ac12ad"
+    },
+    {
+      "path": "examples/framework_host/host.html",
+      "bytes": 31583,
+      "sha256": "ac8b33a64181b4196dc316c1ee0fc3b9a600b3a5a9ee172bbdad62e9ebbac86a"
+    },
+    {
+      "path": "examples/framework_host/main.c",
+      "bytes": 68314,
+      "sha256": "452e02e9a8f5f5488a36e03145774c89e1c68a5e9f8bebad55cde49b367ef3f4"
+    },
+    {
+      "path": "src/components.html",
+      "bytes": 44259,
+      "sha256": "b4a4b8828240c37d8fdc8482236b47d4420352c7caf4778733b5b5879b27de71"
+    }
+  ],
+  "new_directory": "ux-20261012-5e8c4a91"
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="(empty)"
+	tests="7"
+	failures="0"
+	disabled="0"
+	skipped="0"
+	hostname=""
+	time="40"
+	timestamp="2026-10-12T21:38:28"
+	>
+	<testcase name="ui_component_layout" classname="ui_component_layout" time="3.06286" status="run">
+		<properties/>
+		<system-out>CASE runtime=0 dpi=96 fields=1 client=260,240
+CASE runtime=0 dpi=96 fields=1 client=600,240
+CASE runtime=0 dpi=96 fields=3 client=260,240
+CASE runtime=0 dpi=96 fields=3 client=600,240
+CASE runtime=0 dpi=144 fields=1 client=390,360
+CASE runtime=0 dpi=144 fields=1 client=900,360
+CASE runtime=0 dpi=144 fields=3 client=390,360
+CASE runtime=0 dpi=144 fields=3 client=900,360
+CASE runtime=0 dpi=192 fields=1 client=520,480
+CASE runtime=0 dpi=192 fields=1 client=1200,480
+CASE runtime=0 dpi=192 fields=3 client=520,480
+CASE runtime=0 dpi=192 fields=3 client=1200,480
+Public layout: runtime=0 failures=0. State checks only.
+</system-out>
+	</testcase>
+	<testcase name="ui_component_scroll_native" classname="ui_component_scroll_native" time="22.7262" status="run">
+		<properties/>
+		<system-out>PASS: initialize current shared framework
+PASS: native root visible
+PASS: program DPI native slot reflow
+REPRO_QUERY: first0 count8 col0+0 dpi96
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: register native component
+PASS: wheel viewport visible
+PASS: move real pointer over rows
+PASS: seed return with real wheel
+REPRO_QUERY: first0 count18 col0+0 dpi96
+REPRO_QUERY: first18 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+REPRO_QUERY: first1 count18 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: synchronous copied data batch
+PASS: independent return starts at first3
+PASS: public scrollbar geometry visible
+PASS: actual pointer target owned by reproducer
+REPRO_HIT: classUIFrameworkLightWeb start814,103 client786,52 thumb780,40 track780,40
+PASS: actual mouse down
+REPRO_QUERY: first0 count16 col0+0 dpi96
+PASS: synchronous copied data batch
+PASS: native pointer capture belongs to hit window
+PASS: actual mouse drag
+REPRO_QUERY: ...
+[This part of the test output was removed since it exceeds the threshold of 1024 bytes.]
+</system-out>
+	</testcase>
+	<testcase name="ui_light_glyph_padding" classname="ui_light_glyph_padding" time="0.0994905" status="run">
+		<properties/>
+		<system-out>load=0 host=0000022D813BE1A0 view=0000022D813C2BC0
+capture=0 dimensions=40x40
+presentation=0 visible=1 rect=0,0,20,20 text=
+Explicit zero-padding icon: dark=22 extent=4..15 PASS
+Auto text dpi96 logicalWidth58 dark97 reference97
+Auto text dpi144 logicalWidth61 dark188 reference188
+Auto text dpi192 logicalWidth59 dark377 reference377
+</system-out>
+	</testcase>
+	<testcase name="ui_menu_desktop" classname="ui_menu_desktop" time="13.0861" status="run">
+		<properties/>
+		<system-out>Input desktop cursor available: 1
+Function key presentation: status 0; text Ctrl+F1
+Menu hit 0 at 698,111: expected 0000000003BB0AAA; actual 0000000003BB0AAA UIFrameworkRegisteredMenu4; foreground 00000000043C024E
+Menu hit 1 at 380,110: expected 0000000001F012EE; actual 0000000001F012EE UIFrameworkRegisteredMenu4; foreground 00000000043C024E
+Menu hit 2 at 62,109: expected 00000000050B1258; actual 00000000050B1258 UIFrameworkRegisteredMenu4; foreground 00000000043C024E
+40 menu reopen cycles: handles 290 -&gt; 290; GDI 857 -&gt; 857; USER 47 -&gt; 47
+After instance switch: visible menus=0; first path=closed second path=closed
+Desktop menu real host: 0 failures; command calls=1
+</system-out>
+	</testcase>
+	<testcase name="ui_menu_access" classname="ui_menu_access" time="0.425746" status="run">
+		<properties/>
+		<system-out>Menu Alt real template: 0 failures, calls=3
+</system-out>
+	</testcase>
+	<testcase name="ui_web_text_edit" classname="ui_web_text_edit" time="0.325696" status="run">
+		<properties/>
+		<system-out>Reader viewport=0,0,220,160 capture=240,160
+Web editor: 0 failures. Physical Chinese IME remains unverified.
+</system-out>
+	</testcase>
+	<testcase name="ui_light_web_dynamic" classname="ui_light_web_dynamic" time="0.420971" status="run">
+		<properties/>
+		<system-out>Dynamic Web probe: 0 failure(s), 6 messages, 250 incremental rebuilds
+</system-out>
+	</testcase>
+</testsuite>

@@ -321,6 +321,7 @@ static LRESULT CALLBACK popup_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
 }
 static void close_popup(host_window_t *s)
 {
+    if(s->chrome_host)(void)ui_host_hide_tooltip(s->chrome_host);
     if(s->confirm_waiting){s->confirm_answer=-1;return;}
     if(s->menu_hook){UnhookWindowsHookEx(s->menu_hook);s->menu_hook=NULL;}if(pointer_menu==s)pointer_menu=NULL;
     if(s->popup_hwnd||s->popup_view)++s->popup_token;
@@ -354,7 +355,7 @@ static int create_popup(host_window_t *s,int kind,int width,int height)
         s->menu_anchor.left=origin.x+MulDiv(at.x,(int)s->dpi,96);s->menu_anchor.top=origin.y+MulDiv(at.y,(int)s->dpi,96);
         s->menu_anchor.right=s->menu_anchor.left+MulDiv(at.width,(int)s->dpi,96);s->menu_anchor.bottom=s->menu_anchor.top+MulDiv(at.height,(int)s->dpi,96);
         pointer_menu=s;s->menu_hook=SetWindowsHookExW(WH_GETMESSAGE,host_menu_messages,NULL,GetCurrentThreadId());if(!s->menu_hook){close_popup(s);return 0;}}
-    ShowWindow(s->popup_hwnd,kind==5?SW_SHOWNOACTIVATE:SW_SHOW);if(kind==1&&IsWindowVisible(s->hwnd))SetFocus((HWND)ui_web_view_native_handle(s->popup_view));return 1;
+    ShowWindow(s->popup_hwnd,SW_SHOW);if(kind==1&&IsWindowVisible(s->hwnd))SetFocus((HWND)ui_web_view_native_handle(s->popup_view));return 1;
 }
 static void popup_start(host_window_t *s,json_buffer_t *json,const char *title,const char *detail,int confirm)
 {
@@ -450,7 +451,7 @@ static const char *command_title(ui_host_t *host,const char *id)
 {ui_command_entry_t *c;for(c=host->commands;c;c=c->next)if(id&&!strcmp(c->id,id))return c->title;return id?id:"";}
 static int assistant_visible(host_window_t *s)
 {return s->assistant_expanded>0;}
-static void send_state(host_window_t *s)
+static void send_state(host_window_t *s,char **layout_state)
 {
     json_buffer_t json={0};ui_app_instance_info_t info,target;size_t i,count;
     char *schema,label[512];uint64_t active;RECT client;int width,tab_width;size_t tab_start,tab_count;
@@ -489,7 +490,12 @@ static void send_state(host_window_t *s)
         json_append(&json,",\"menuGroups\":[");{menu_state_writer_t writer={&json,0};if(ui_host_visit_menu(info.host,"",state_menu_group,&writer)!=UI_STATUS_OK)json.failed=1;}json_append(&json,"]");
         json_append(&json,",\"tools\":[");state_tools(&json,info.host);json_append(&json,"],\"panels\":[");state_panels(&json,&info);json_append(&json,"],\"status\":");json_string(&json,ui_host_status_text(info.host));
     }else json_append(&json,",\"activeLabel\":\"\",\"menuGroups\":[],\"tools\":[],\"panels\":[]");
-    json_append(&json,"}");(void)post_json(s->view,&json);
+    json_append(&json,"}");
+    /* Suppress only an identical second update within this layout. The first
+       update of every refresh still runs, including image-only changes. */
+    if(!json.failed&&json.text&&(!*layout_state||strcmp(*layout_state,json.text))&&
+       ui_web_view_post_json(s->view,json.text)==UI_STATUS_OK){free(*layout_state);*layout_state=json.text;json.text=NULL;}
+    free(json.text);
 }
 static void cut_region(HRGN full,const ui_rect_t *rect,uint32_t dpi,int offset_x,int offset_y)
 {
@@ -512,15 +518,15 @@ static void update_region(host_window_t *s)
 }
 static void layout(host_window_t *s)
 {
-    RECT client;int width,height;ui_rect_t rect;
+    RECT client;int width,height;ui_rect_t rect;char *layout_state=NULL;
     if(!s->view||!s->workspace||s->refreshing)return;s->refreshing=1;
     {uint64_t active=ui_workspace_active(s->workspace);if(active!=s->displayed_instance&&s->popup_kind==1)close_popup(s);s->displayed_instance=active;}GetClientRect(s->hwnd,&client);
     width=MulDiv(client.right,96,(int)s->dpi);height=MulDiv(client.bottom,96,(int)s->dpi);
     (void)ui_host_set_dpi(s->chrome_host,s->dpi);(void)ui_host_resize(s->chrome_host,width,height);
-    (void)ui_web_view_resize(s->view,width,height,s->dpi);send_state(s);
+    (void)ui_web_view_resize(s->view,width,height,s->dpi);send_state(s,&layout_state);
     if(ui_web_view_get_element_rect(s->view,"workspace",&rect)==UI_STATUS_OK){
         if(rect.width<0)rect.width=0;if(rect.height<0)rect.height=0;{ui_app_instance_info_t info;if(get_instance(s,ui_workspace_active(s->workspace),&info)){int menu=app_menu_height(&info);rect.y-=menu;rect.height+=menu;}}s->workspace_rect=rect;(void)ui_workspace_set_rect(s->workspace,&rect,s->dpi);}
-    send_state(s);update_region(s);s->refreshing=0;
+    send_state(s,&layout_state);free(layout_state);update_region(s);s->refreshing=0;
 }
 static void refresh_workspace(void *data)
 {schedule_refresh((host_window_t *)data);}
@@ -653,7 +659,7 @@ static void selector_popup(host_window_t *s,int commands)
 }
 static void tooltip_popup(host_window_t *s,const char *id)
 {
-    const char *text=NULL;json_buffer_t json={0};RECT origin;ui_rect_t rect;ui_app_instance_info_t active={0};if(get_instance(s,ui_workspace_active(s->workspace),&active)&&active.host->menu_open_path)return;if(s->popup_hwnd&&s->popup_kind!=5)return;
+    const char *text=NULL;ui_menu_anchor_t anchor={0};ui_app_instance_info_t active={0};if(get_instance(s,ui_workspace_active(s->workspace),&active)&&active.host->menu_open_path)return;if(s->popup_hwnd)return;
     if(!strcmp(id?id:"","menu"))text=tr(s,"宿主选项：主题、布局及窗口操作");
     else if(!strcmp(id?id:"","recent"))text=tr(s,"最近成功打开的应用（与当前标签分开）");
     else if(!strcmp(id?id:"","open"))text=tr(s,"打开 .uapp 应用包 · Ctrl+Shift+O");
@@ -666,17 +672,16 @@ static void tooltip_popup(host_window_t *s,const char *id)
     else if(id&&(!strncmp(id,"panel-title-",12)||!strncmp(id,"panel-tab-",10))&&active.host){ui_panel_entry_t *panel;
         const char *panel_id=id+(!strncmp(id,"panel-title-",12)?12:10);
         for(panel=active.host->panels;panel;panel=panel->next)if(!strcmp(panel->id,panel_id)){text=panel->title;break;}}
-    if(!text||!create_popup(s,5,300,160))return;
-    if(ui_web_view_get_element_rect(s->view,id,&rect)==UI_STATUS_OK){POINT point={0,0};ClientToScreen(s->hwnd,&point);GetWindowRect(s->popup_hwnd,&origin);
-        SetWindowPos(s->popup_hwnd,NULL,point.x+MulDiv(rect.x,(int)s->dpi,96),point.y+MulDiv(rect.y+rect.height+6,(int)s->dpi,96),
-            origin.right-origin.left,origin.bottom-origin.top,SWP_NOZORDER|SWP_NOACTIVATE);}
-    popup_start(s,&json,tr(s,"提示"),text,0);popup_finish(s,&json);
+    if(!text)return;anchor.size=sizeof(anchor);
+    if(ui_web_view_get_element_rect(s->view,id,&anchor.rect)!=UI_STATUS_OK)return;
+    s->chrome_host->menu_dark=s->dark;(void)ui_host_show_tooltip(s->chrome_host,&anchor,text);
 }
 static int registered_command(const ui_host_t *host,const char *id)
 {ui_command_entry_t *entry;for(entry=host->commands;entry;entry=entry->next)if(!strcmp(entry->id,id))return entry->state.visible&&entry->state.enabled&&!entry->state.busy;return 0;}
 static void process_action(host_window_t *s,host_action_t *action)
 {
     const char *name=action->action;uint64_t id=read_id(action->id);ui_app_instance_info_t info;
+    if(strcmp(name,"tooltip"))(void)ui_host_hide_tooltip(s->chrome_host);
     if(action->popup_token){
         if(action->popup_token!=s->popup_token)return;if(action->token&&read_id(action->token)!=s->popup_token)return;
         if(!strcmp(name,"ready"))return;
@@ -738,7 +743,7 @@ static void process_action(host_window_t *s,host_action_t *action)
                 else{layout.collapsed=!layout.collapsed;(void)ui_shell_set_panel_layout(shell,action->panel,&layout);}}
         }}
     else if(!strcmp(name,"tooltip")){tooltip_popup(s,action->id);return;}
-    else if(!strcmp(name,"tooltip-hide")){if(s->popup_kind==5)close_popup(s);return;}
+    else if(!strcmp(name,"tooltip-hide")){(void)ui_host_hide_tooltip(s->chrome_host);return;}
     else if(!strcmp(name,"dismiss"))close_popup(s);else return;schedule_refresh(s);
 }
 static void destroy_chrome(host_window_t *s)
@@ -754,6 +759,7 @@ static LRESULT CALLBACK host_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
     if(message==WM_NCCREATE){s=(host_window_t *)((CREATESTRUCTW *)lp)->lpCreateParams;s->hwnd=hwnd;SetWindowLongPtrW(hwnd,GWLP_USERDATA,(LONG_PTR)s);}
     if(!s)return DefWindowProcW(hwnd,message,wp,lp);
     switch(message){
+    case WM_WINDOWPOSCHANGING:if(s->chrome_host)(void)ui_host_hide_tooltip(s->chrome_host);break;
     case WM_NCCALCSIZE:{RECT *r=wp?&((NCCALCSIZE_PARAMS *)lp)->rgrc[0]:(RECT *)lp;
         if(IsZoomed(hwnd)){MONITORINFO mi={sizeof(mi)};if(GetMonitorInfoW(MonitorFromWindow(hwnd,MONITOR_DEFAULTTONEAREST),&mi))*r=mi.rcWork;}
         else{LONG top=r->top;(void)DefWindowProcW(hwnd,message,wp,lp);r->top=top;}return 0;}

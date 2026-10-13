@@ -1,0 +1,64 @@
+{
+  "junit": [
+    {
+      "file": "regression-junit.xml",
+      "name": "(empty)",
+      "tests": "28",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "",
+      "time": "347",
+      "timestamp": "2026-10-12T20:42:46"
+    },
+    {
+      "file": "focus-regression-junit.xml",
+      "name": "(empty)",
+      "tests": "7",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "",
+      "time": "37",
+      "timestamp": "2026-10-12T20:51:45"
+    },
+    {
+      "file": "final-regression-junit.xml",
+      "name": "(empty)",
+      "tests": "7",
+      "failures": "0",
+      "disabled": "0",
+      "skipped": "0",
+      "hostname": "",
+      "time": "40",
+      "timestamp": "2026-10-12T21:38:28"
+    }
+  ],
+  "final4Matrix": [
+    "final4-path-light-144-dark-buttons",
+    "final4-path-light-144-light-buttons",
+    "final4-path-light-192-dark-buttons",
+    "final4-path-light-192-dark-narrow",
+    "final4-path-light-192-light-buttons",
+    "final4-path-light-96-dark-buttons",
+    "final4-path-light-96-light-buttons",
+    "final4-path-light-96-light-narrow",
+    "final4-path-webview2-144-dark-buttons",
+    "final4-path-webview2-144-light-buttons",
+    "final4-path-webview2-192-dark-buttons",
+    "final4-path-webview2-192-dark-narrow",
+    "final4-path-webview2-192-light-buttons",
+    "final4-path-webview2-96-dark-buttons",
+    "final4-path-webview2-96-light-buttons",
+    "final4-path-webview2-96-light-narrow"
+  ],
+  "v4Samples": 1080,
+  "final5WindowOps": 2,
+  "originalBmpHashed": 6375,
+  "originalBmpReadFailures": [
+    "build\\ux-20261012-5e8c4a91\\runs\\final4-path-webview2-96-dark-buttons\\060-cancel-dialog-tab.bmp",
+    "build\\ux-20261012-5e8c4a91\\runs\\final4-path-webview2-96-light-buttons\\066-assistant-toggle-float-through-gl.bmp"
+  ],
+  "originalBmpAllVerified": false,
+  "independentConditions": "See report; no physical or target-CI substitution"
+}

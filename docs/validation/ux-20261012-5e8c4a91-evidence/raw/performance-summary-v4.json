@@ -1,0 +1,2066 @@
+{
+  "perf-after-v4-light-96": {
+    "exit": 0,
+    "forced": false,
+    "elapsedMs": 80000.0,
+    "categories": {
+      "host-hover": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 39.20055,
+          "p99": 43.156130000000005,
+          "worst": 44.665
+        },
+        "state": {
+          "n": 30,
+          "p95": 24.568739999999995,
+          "p99": 48.12480800000003,
+          "worst": 57.4642
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 21.975044999999998,
+          "p99": 24.405895000000005,
+          "worst": 25.283
+        }
+      },
+      "host-click": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 99.78934,
+          "p99": 102.140313,
+          "worst": 102.7784
+        },
+        "state": {
+          "n": 30,
+          "p95": 98.72565,
+          "p99": 102.12630800000001,
+          "worst": 103.2703
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 20.624284999999997,
+          "p99": 21.005492,
+          "worst": 21.1346
+        }
+      },
+      "menu-open": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 96.403925,
+          "p99": 99.86534499999999,
+          "worst": 100.7307
+        },
+        "state": {
+          "n": 20,
+          "p95": 104.34051500000001,
+          "p99": 104.88794299999999,
+          "worst": 105.0248
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 31.74106,
+          "p99": 33.211812,
+          "worst": 33.5795
+        }
+      },
+      "dialog-open": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 80.13634,
+          "p99": 84.40966799999998,
+          "worst": 85.478
+        },
+        "state": {
+          "n": 20,
+          "p95": 140.519515,
+          "p99": 149.59566299999997,
+          "worst": 151.8647
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 32.41741,
+          "p99": 33.52108199999999,
+          "worst": 33.797
+        }
+      },
+      "long-input": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 108.582645,
+          "p99": 110.150449,
+          "worst": 110.5424
+        },
+        "state": {
+          "n": 20,
+          "p95": 303.710925,
+          "p99": 307.328905,
+          "worst": 308.2334
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 21.709875,
+          "p99": 21.720135,
+          "worst": 21.7227
+        }
+      },
+      "text-end": {
+        "samples": 15,
+        "invalid": 0,
+        "missingDesktopChange": 1,
+        "desktop": {
+          "n": 14,
+          "p95": 25.455595,
+          "p99": 26.708638999999998,
+          "worst": 27.0219
+        },
+        "state": {
+          "n": 15,
+          "p95": 9.52058,
+          "p99": 9.574676,
+          "worst": 9.5882
+        },
+        "samplingGap": {
+          "n": 15,
+          "p95": 21.30895,
+          "p99": 21.440830000000002,
+          "worst": 21.4738
+        }
+      },
+      "text-home": {
+        "samples": 15,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 15,
+          "p95": 22.514989999999997,
+          "p99": 22.806358,
+          "worst": 22.8792
+        },
+        "state": {
+          "n": 15,
+          "p95": 8.77332,
+          "p99": 8.820584,
+          "worst": 8.8324
+        },
+        "samplingGap": {
+          "n": 15,
+          "p95": 19.771729999999998,
+          "p99": 20.785386,
+          "worst": 21.0388
+        }
+      },
+      "table-wheel": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 29.681534999999997,
+          "p99": 65.02250000000004,
+          "worst": 79.1455
+        },
+        "state": {
+          "n": 30,
+          "p95": 17.484015,
+          "p99": 66.09337300000007,
+          "worst": 85.7804
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 20.25841,
+          "p99": 20.723219,
+          "worst": 20.8215
+        }
+      },
+      "scrollbar-drag": {
+        "samples": 8,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 8,
+          "p95": 314.463935,
+          "p99": 314.90686700000003,
+          "worst": 315.0176
+        },
+        "state": {
+          "n": 8,
+          "p95": 416.055385,
+          "p99": 427.57259700000003,
+          "worst": 430.4519
+        },
+        "samplingGap": {
+          "n": 8,
+          "p95": 21.14465,
+          "p99": 21.18973,
+          "worst": 21.201
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 37,
+          "p95": 36.71947999000549,
+          "p99": 45.36957602500917,
+          "worst": 50.0867999792099
+        },
+        "gapsOverAssumed60Hz": 17,
+        "unseen60HzSlotsEstimate": 21
+      },
+      "column-width": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 68.175145,
+          "p99": 68.35974900000001,
+          "worst": 68.4059
+        },
+        "state": {
+          "n": 20,
+          "p95": 60.180620000000005,
+          "p99": 62.232924,
+          "worst": 62.746
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 21.095869999999998,
+          "p99": 21.133414000000002,
+          "worst": 21.1428
+        }
+      },
+      "float-drag-gl": {
+        "samples": 6,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 6,
+          "p95": 308.23377500000004,
+          "p99": 311.62115500000004,
+          "worst": 312.468
+        },
+        "state": {
+          "n": 6,
+          "p95": 631.7533249999999,
+          "p99": 640.258025,
+          "worst": 642.3842
+        },
+        "samplingGap": {
+          "n": 6,
+          "p95": 33.983325,
+          "p99": 34.302345,
+          "worst": 34.3821
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 35,
+          "p95": 80.70142998695373,
+          "p99": 160.7668959903713,
+          "worst": 200.98570001125336
+        },
+        "gapsOverAssumed60Hz": 30,
+        "unseen60HzSlotsEstimate": 59
+      },
+      "dock": {
+        "samples": 6,
+        "invalid": 0,
+        "missingDesktopChange": 6,
+        "desktop": {
+          "n": 0
+        },
+        "state": {
+          "n": 6,
+          "p95": 572.1259,
+          "p99": 575.0679,
+          "worst": 575.8034
+        },
+        "samplingGap": {
+          "n": 6,
+          "p95": 34.244625,
+          "p99": 34.817405,
+          "worst": 34.9606
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 0
+        },
+        "gapsOverAssumed60Hz": 0,
+        "unseen60HzSlotsEstimate": 0
+      },
+      "window-resize": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 135.10922000000002,
+          "p99": 146.685844,
+          "worst": 149.58
+        },
+        "state": {
+          "n": 20,
+          "p95": 148.68603000000002,
+          "p99": 164.75744599999996,
+          "worst": 168.7753
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 20.767875,
+          "p99": 20.870855,
+          "worst": 20.8966
+        }
+      },
+      "instance-switch": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 146.56203,
+          "p99": 147.630255,
+          "worst": 147.9117
+        },
+        "state": {
+          "n": 30,
+          "p95": 142.31725,
+          "p99": 144.58483800000002,
+          "worst": 145.3469
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 22.516704999999998,
+          "p99": 22.966396,
+          "worst": 22.9918
+        }
+      }
+    },
+    "lightPhases": {
+      "host-hover": {
+        "layouts": 126.0,
+        "layoutMs": 142.789,
+        "paints": 51.0,
+        "paintMs": 58.207,
+        "nodeVisits": 1612.0,
+        "paintArea": 30943157.0
+      },
+      "host-click": {
+        "layouts": 903.0,
+        "layoutMs": 1038.785,
+        "paints": 150.0,
+        "paintMs": 204.37199999999999,
+        "nodeVisits": 6120.0,
+        "paintArea": 49717920.0
+      },
+      "menu-open": {
+        "layouts": 522.0,
+        "layoutMs": 584.867,
+        "paints": 220.0,
+        "paintMs": 299.97400000000005,
+        "nodeVisits": 9300.0,
+        "paintArea": 71871360.0
+      },
+      "dialog-open": {
+        "layouts": 1504.0,
+        "layoutMs": 1407.9210000000003,
+        "paints": 348.0,
+        "paintMs": 442.645,
+        "nodeVisits": 13948.0,
+        "paintArea": 109629120.0
+      },
+      "long-input": {
+        "layouts": 3286.0,
+        "layoutMs": 4596.441,
+        "paints": 162.0,
+        "paintMs": 162.79600000000002,
+        "nodeVisits": 3548.0,
+        "paintArea": 33696960.0
+      },
+      "text-end": {
+        "layouts": 15.0,
+        "layoutMs": 38.29800000000001,
+        "paints": 15.0,
+        "paintMs": 16.578999999999997,
+        "nodeVisits": 330.0,
+        "paintArea": 3132000.0
+      },
+      "text-home": {
+        "layouts": 15.0,
+        "layoutMs": 37.09700000000001,
+        "paints": 15.0,
+        "paintMs": 15.245999999999999,
+        "nodeVisits": 330.0,
+        "paintArea": 3132000.0
+      },
+      "table-wheel": {
+        "layouts": 108.0,
+        "layoutMs": 159.29799999999997,
+        "paints": 35.0,
+        "paintMs": 99.3,
+        "nodeVisits": 3585.0,
+        "paintArea": 15296326.0
+      },
+      "scrollbar-drag": {
+        "layouts": 693.0,
+        "layoutMs": 1059.4070000000002,
+        "paints": 186.0,
+        "paintMs": 548.4979999999999,
+        "nodeVisits": 21135.0,
+        "paintArea": 86165440.0
+      },
+      "column-width": {
+        "layouts": 201.0,
+        "layoutMs": 283.793,
+        "paints": 60.0,
+        "paintMs": 185.171,
+        "nodeVisits": 6960.0,
+        "paintArea": 27975360.0
+      },
+      "float-drag-gl": {
+        "layouts": 461.0,
+        "layoutMs": 437.196,
+        "paints": 114.0,
+        "paintMs": 121.03200000000002,
+        "nodeVisits": 3792.0,
+        "paintArea": 29342288.0
+      },
+      "dock": {
+        "layouts": 216.0,
+        "layoutMs": 225.5970000000001,
+        "paints": 72.0,
+        "paintMs": 101.00699999999999,
+        "nodeVisits": 2586.0,
+        "paintArea": 20381112.0
+      },
+      "window-resize": {
+        "layouts": 927.0,
+        "layoutMs": 997.5550000000001,
+        "paints": 205.0,
+        "paintMs": 275.855,
+        "nodeVisits": 8981.0,
+        "paintArea": 73030864.0
+      },
+      "instance-switch": {
+        "layouts": 2046.0,
+        "layoutMs": 1972.5810000000001,
+        "paints": 155.0,
+        "paintMs": 277.36699999999996,
+        "nodeVisits": 6820.0,
+        "paintArea": 54857104.0
+      },
+      "idle": {
+        "layouts": 112.0,
+        "layoutMs": 85.66900000000001,
+        "paints": 0.0,
+        "paintMs": 0.0,
+        "nodeVisits": 0.0,
+        "paintArea": 0.0
+      }
+    },
+    "cpu": [
+      {
+        "pid": "33728",
+        "name": "ux_probe.exe",
+        "cpuMs": 27890.625,
+        "peakRssBytes": 129605632
+      }
+    ],
+    "assertions": [],
+    "coldSetup": [
+      "READY qpcMs1049168699.720 startupMs338.786 hwnd0000000004130F70 chrome0000000015B602CE"
+    ],
+    "idle": [
+      "UX_IDLE elapsedMs2007.089 hostCpuMs0.000 observerThreadDormant=1"
+    ]
+  },
+  "perf-after-v4-runtime-96": {
+    "exit": 0,
+    "forced": false,
+    "elapsedMs": 72906.0,
+    "categories": {
+      "host-hover": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 43.035745,
+          "p99": 46.286182000000004,
+          "worst": 47.5054
+        },
+        "state": {
+          "n": 30,
+          "p95": 25.292364999999986,
+          "p99": 39.18311000000001,
+          "worst": 44.0322
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 24.190425,
+          "p99": 25.243618,
+          "worst": 25.6397
+        }
+      },
+      "host-click": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 81.578245,
+          "p99": 93.21781400000002,
+          "worst": 97.8849
+        },
+        "state": {
+          "n": 30,
+          "p95": 75.63671,
+          "p99": 80.555452,
+          "worst": 81.594
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 22.99379,
+          "p99": 23.193324999999998,
+          "worst": 23.2506
+        }
+      },
+      "menu-open": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 95.305035,
+          "p99": 96.284447,
+          "worst": 96.5293
+        },
+        "state": {
+          "n": 20,
+          "p95": 91.612645,
+          "p99": 98.49284899999999,
+          "worst": 100.2129
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 31.419555000000003,
+          "p99": 33.80223099999999,
+          "worst": 34.3979
+        }
+      },
+      "dialog-open": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 77.00542,
+          "p99": 79.018204,
+          "worst": 79.5214
+        },
+        "state": {
+          "n": 20,
+          "p95": 144.2773500000001,
+          "p99": 237.76114999999982,
+          "worst": 261.1321
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 34.741585,
+          "p99": 34.902477000000005,
+          "worst": 34.9427
+        }
+      },
+      "long-input": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 64.56156,
+          "p99": 66.325672,
+          "worst": 66.7667
+        },
+        "state": {
+          "n": 20,
+          "p95": 121.602025,
+          "p99": 124.019205,
+          "worst": 124.6235
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 21.85735,
+          "p99": 23.672989999999995,
+          "worst": 24.1269
+        }
+      },
+      "text-end": {
+        "samples": 15,
+        "invalid": 0,
+        "missingDesktopChange": 1,
+        "desktop": {
+          "n": 14,
+          "p95": 28.146124999999994,
+          "p99": 35.96146499999999,
+          "worst": 37.9153
+        },
+        "state": {
+          "n": 15,
+          "p95": 30.3138,
+          "p99": 30.39948,
+          "worst": 30.4209
+        },
+        "samplingGap": {
+          "n": 15,
+          "p95": 21.366749999999996,
+          "p99": 21.958949999999998,
+          "worst": 22.107
+        }
+      },
+      "text-home": {
+        "samples": 15,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 15,
+          "p95": 23.85354,
+          "p99": 24.514228,
+          "worst": 24.6794
+        },
+        "state": {
+          "n": 15,
+          "p95": 30.68771,
+          "p99": 30.810182,
+          "worst": 30.8408
+        },
+        "samplingGap": {
+          "n": 15,
+          "p95": 20.83174,
+          "p99": 20.927388,
+          "worst": 20.9513
+        }
+      },
+      "table-wheel": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 29,
+        "desktop": {
+          "n": 1,
+          "p95": 35.1776,
+          "p99": 35.1776,
+          "worst": 35.1776
+        },
+        "state": {
+          "n": 30,
+          "p95": 5.366944999999996,
+          "p99": 28.107259000000028,
+          "worst": 37.0923
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 21.73067,
+          "p99": 22.060503,
+          "worst": 22.1299
+        }
+      },
+      "scrollbar-drag": {
+        "samples": 8,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 8,
+          "p95": 342.812125,
+          "p99": 343.827545,
+          "worst": 344.0814
+        },
+        "state": {
+          "n": 8,
+          "p95": 395.77769,
+          "p99": 396.452658,
+          "worst": 396.6214
+        },
+        "samplingGap": {
+          "n": 8,
+          "p95": 23.85192,
+          "p99": 23.941744,
+          "worst": 23.9642
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 35,
+          "p95": 32.25769004821777,
+          "p99": 33.46626196861267,
+          "worst": 33.77249991893768
+        },
+        "gapsOverAssumed60Hz": 23,
+        "unseen60HzSlotsEstimate": 24
+      },
+      "column-width": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 84.118575,
+          "p99": 84.735315,
+          "worst": 84.8895
+        },
+        "state": {
+          "n": 20,
+          "p95": 55.122125000000004,
+          "p99": 57.685224999999996,
+          "worst": 58.326
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 21.49143,
+          "p99": 21.871886,
+          "worst": 21.967
+        }
+      },
+      "float-drag-gl": {
+        "samples": 6,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 6,
+          "p95": 298.2779,
+          "p99": 306.28654,
+          "worst": 308.2887
+        },
+        "state": {
+          "n": 6,
+          "p95": 598.538425,
+          "p99": 605.799285,
+          "worst": 607.6145
+        },
+        "samplingGap": {
+          "n": 6,
+          "p95": 34.917874999999995,
+          "p99": 35.540535,
+          "worst": 35.6962
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 39,
+          "p95": 78.72981003522874,
+          "p99": 84.66465002059934,
+          "worst": 87.52320003509521
+        },
+        "gapsOverAssumed60Hz": 32,
+        "unseen60HzSlotsEstimate": 53
+      },
+      "dock": {
+        "samples": 6,
+        "invalid": 0,
+        "missingDesktopChange": 3,
+        "desktop": {
+          "n": 3,
+          "p95": 481.20716999999996,
+          "p99": 481.256154,
+          "worst": 481.2684
+        },
+        "state": {
+          "n": 6,
+          "p95": 510.6615,
+          "p99": 511.29086,
+          "worst": 511.4482
+        },
+        "samplingGap": {
+          "n": 6,
+          "p95": 31.597475,
+          "p99": 32.162455,
+          "worst": 32.3037
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 3,
+          "p95": 17.747609972953796,
+          "p99": 17.885601973533632,
+          "worst": 17.92009997367859
+        },
+        "gapsOverAssumed60Hz": 1,
+        "unseen60HzSlotsEstimate": 1
+      },
+      "window-resize": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 77.68554,
+          "p99": 83.37702799999998,
+          "worst": 84.7999
+        },
+        "state": {
+          "n": 20,
+          "p95": 88.49408000000001,
+          "p99": 97.99529599999998,
+          "worst": 100.3706
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 24.159735,
+          "p99": 28.29162699999999,
+          "worst": 29.3246
+        }
+      },
+      "instance-switch": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 145.10428499999992,
+          "p99": 156.395821,
+          "worst": 156.4292
+        },
+        "state": {
+          "n": 30,
+          "p95": 145.58833999999996,
+          "p99": 151.447912,
+          "worst": 152.5056
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 23.148784999999997,
+          "p99": 24.255153,
+          "worst": 24.4768
+        }
+      }
+    },
+    "lightPhases": {
+      "host-hover": {
+        "layouts": 62.0,
+        "layoutMs": 74.10499999999999,
+        "paints": 46.0,
+        "paintMs": 50.242999999999995,
+        "nodeVisits": 1394.0,
+        "paintArea": 29170053.0
+      },
+      "host-click": {
+        "layouts": 183.0,
+        "layoutMs": 336.378,
+        "paints": 30.0,
+        "paintMs": 57.975,
+        "nodeVisits": 1530.0,
+        "paintArea": 28131840.0
+      },
+      "menu-open": {
+        "layouts": 202.0,
+        "layoutMs": 254.236,
+        "paints": 60.0,
+        "paintMs": 80.51700000000001,
+        "nodeVisits": 2300.0,
+        "paintArea": 38456320.0
+      },
+      "dialog-open": {
+        "layouts": 379.0,
+        "layoutMs": 470.998,
+        "paints": 80.0,
+        "paintMs": 102.352,
+        "nodeVisits": 3180.0,
+        "paintArea": 57210880.0
+      },
+      "table-wheel": {
+        "layouts": 2.0,
+        "layoutMs": 0.891,
+        "paints": 1.0,
+        "paintMs": 0.136,
+        "nodeVisits": 2.0,
+        "paintArea": 1798.0
+      },
+      "scrollbar-drag": {
+        "layouts": 2.0,
+        "layoutMs": 4.657,
+        "paints": 1.0,
+        "paintMs": 2.446,
+        "nodeVisits": 44.0,
+        "paintArea": 937728.0
+      },
+      "column-width": {
+        "layouts": 8.0,
+        "layoutMs": 8.498999999999999,
+        "paints": 4.0,
+        "paintMs": 6.304,
+        "nodeVisits": 92.0,
+        "paintArea": 1878066.0
+      },
+      "float-drag-gl": {
+        "layouts": 187.0,
+        "layoutMs": 186.84799999999996,
+        "paints": 42.0,
+        "paintMs": 35.297,
+        "nodeVisits": 768.0,
+        "paintArea": 17044848.0
+      },
+      "dock": {
+        "layouts": 66.0,
+        "layoutMs": 80.05900000000001,
+        "paints": 24.0,
+        "paintMs": 25.634999999999998,
+        "nodeVisits": 528.0,
+        "paintArea": 11312856.0
+      },
+      "window-resize": {
+        "layouts": 112.0,
+        "layoutMs": 260.494,
+        "paints": 41.0,
+        "paintMs": 63.887,
+        "nodeVisits": 1807.0,
+        "paintArea": 38763648.0
+      },
+      "instance-switch": {
+        "layouts": 182.0,
+        "layoutMs": 521.649,
+        "paints": 31.0,
+        "paintMs": 111.897,
+        "nodeVisits": 1457.0,
+        "paintArea": 29069568.0
+      }
+    },
+    "cpu": [
+      {
+        "pid": "31264",
+        "name": "ux_probe.exe",
+        "cpuMs": 16093.75,
+        "peakRssBytes": 105537536
+      },
+      {
+        "pid": "10808",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 5171.875,
+        "peakRssBytes": 196628480
+      },
+      {
+        "pid": "46840",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 62.5,
+        "peakRssBytes": 20017152
+      },
+      {
+        "pid": "22912",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 2078.125,
+        "peakRssBytes": 113758208
+      },
+      {
+        "pid": "33404",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 187.5,
+        "peakRssBytes": 41271296
+      },
+      {
+        "pid": "37448",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 46.875,
+        "peakRssBytes": 20688896
+      },
+      {
+        "pid": "43016",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 312.5,
+        "peakRssBytes": 63954944
+      },
+      {
+        "pid": "33196",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 1328.125,
+        "peakRssBytes": 84426752
+      },
+      {
+        "pid": "19204",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 390.625,
+        "peakRssBytes": 78843904
+      },
+      {
+        "pid": "21656",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 1687.5,
+        "peakRssBytes": 112881664
+      },
+      {
+        "pid": "4904",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 78.125,
+        "peakRssBytes": 64548864
+      },
+      {
+        "pid": "19812",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 156.25,
+        "peakRssBytes": 59850752
+      },
+      {
+        "pid": "8972",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 93.75,
+        "peakRssBytes": 64958464
+      },
+      {
+        "pid": "50012",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 281.25,
+        "peakRssBytes": 72568832
+      },
+      {
+        "pid": "22572",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 93.75,
+        "peakRssBytes": 65929216
+      },
+      {
+        "pid": "3068",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 0.0,
+        "peakRssBytes": 4182016
+      }
+    ],
+    "assertions": [],
+    "coldSetup": [
+      "READY qpcMs1049322871.794 startupMs221.680 hwnd0000000001DF11EC chrome0000000006A8111A"
+    ],
+    "idle": [
+      "UX_IDLE elapsedMs2010.703 hostCpuMs0.000 observerThreadDormant=1"
+    ]
+  },
+  "perf-before-v4-light-96": {
+    "exit": 0,
+    "forced": false,
+    "elapsedMs": 81734.0,
+    "categories": {
+      "host-hover": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 90.56535000000001,
+          "p99": 93.857853,
+          "worst": 95.1786
+        },
+        "state": {
+          "n": 30,
+          "p95": 87.18763999999999,
+          "p99": 96.98540200000002,
+          "worst": 100.3773
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 26.49775,
+          "p99": 31.590055000000003,
+          "worst": 33.6202
+        }
+      },
+      "host-click": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 98.564985,
+          "p99": 148.67605900000007,
+          "worst": 168.7913
+        },
+        "state": {
+          "n": 30,
+          "p95": 97.129485,
+          "p99": 141.29776700000008,
+          "worst": 159.2452
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 20.967865,
+          "p99": 21.272161,
+          "worst": 21.385
+        }
+      },
+      "menu-open": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 98.95593,
+          "p99": 102.420466,
+          "worst": 103.2866
+        },
+        "state": {
+          "n": 20,
+          "p95": 115.524145,
+          "p99": 116.591869,
+          "worst": 116.8588
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 34.965615,
+          "p99": 35.464403000000004,
+          "worst": 35.5891
+        }
+      },
+      "dialog-open": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 79.024925,
+          "p99": 80.90858499999999,
+          "worst": 81.3795
+        },
+        "state": {
+          "n": 20,
+          "p95": 140.20705999999998,
+          "p99": 149.69733199999996,
+          "worst": 152.0699
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 32.188925,
+          "p99": 32.906745,
+          "worst": 33.0862
+        }
+      },
+      "long-input": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 106.32923,
+          "p99": 106.623046,
+          "worst": 106.6965
+        },
+        "state": {
+          "n": 20,
+          "p95": 299.40818,
+          "p99": 301.45379599999995,
+          "worst": 301.9652
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 21.62347,
+          "p99": 21.838854,
+          "worst": 21.8927
+        }
+      },
+      "text-end": {
+        "samples": 15,
+        "invalid": 0,
+        "missingDesktopChange": 1,
+        "desktop": {
+          "n": 14,
+          "p95": 25.254189999999998,
+          "p99": 26.698437999999996,
+          "worst": 27.0595
+        },
+        "state": {
+          "n": 15,
+          "p95": 9.800059999999997,
+          "p99": 11.600572,
+          "worst": 12.0507
+        },
+        "samplingGap": {
+          "n": 15,
+          "p95": 19.22636,
+          "p99": 19.473992000000003,
+          "worst": 19.5359
+        }
+      },
+      "text-home": {
+        "samples": 15,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 15,
+          "p95": 34.857049999999965,
+          "p99": 52.72692999999998,
+          "worst": 57.1944
+        },
+        "state": {
+          "n": 15,
+          "p95": 21.475869999999954,
+          "p99": 47.086853999999974,
+          "worst": 53.4896
+        },
+        "samplingGap": {
+          "n": 15,
+          "p95": 20.82979,
+          "p99": 21.025958,
+          "worst": 21.075
+        }
+      },
+      "table-wheel": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 29.261799999999997,
+          "p99": 71.33271800000006,
+          "worst": 88.4328
+        },
+        "state": {
+          "n": 30,
+          "p95": 16.60210499999999,
+          "p99": 76.92153500000008,
+          "worst": 101.1361
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 21.025239999999997,
+          "p99": 21.601393,
+          "worst": 21.7285
+        }
+      },
+      "scrollbar-drag": {
+        "samples": 8,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 8,
+          "p95": 317.025455,
+          "p99": 318.64293100000003,
+          "worst": 319.0473
+        },
+        "state": {
+          "n": 8,
+          "p95": 418.06546499999996,
+          "p99": 430.504213,
+          "worst": 433.6139
+        },
+        "samplingGap": {
+          "n": 8,
+          "p95": 21.41891,
+          "p99": 21.492102,
+          "worst": 21.5104
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 35,
+          "p95": 33.95302999019623,
+          "p99": 45.262134008407536,
+          "worst": 50.85000002384186
+        },
+        "gapsOverAssumed60Hz": 20,
+        "unseen60HzSlotsEstimate": 25
+      },
+      "column-width": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 68.25556999999999,
+          "p99": 68.50439399999999,
+          "worst": 68.5666
+        },
+        "state": {
+          "n": 20,
+          "p95": 61.30914,
+          "p99": 62.452788,
+          "worst": 62.7387
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 20.97838,
+          "p99": 21.400636,
+          "worst": 21.5062
+        }
+      },
+      "float-drag-gl": {
+        "samples": 6,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 6,
+          "p95": 301.77105,
+          "p99": 309.10397,
+          "worst": 310.9372
+        },
+        "state": {
+          "n": 6,
+          "p95": 606.894575,
+          "p99": 611.918675,
+          "worst": 613.1747
+        },
+        "samplingGap": {
+          "n": 6,
+          "p95": 32.1755,
+          "p99": 32.75486,
+          "worst": 32.8997
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 37,
+          "p95": 85.83377997875213,
+          "p99": 126.4375560331345,
+          "worst": 149.03310000896454
+        },
+        "gapsOverAssumed60Hz": 29,
+        "unseen60HzSlotsEstimate": 55
+      },
+      "dock": {
+        "samples": 6,
+        "invalid": 0,
+        "missingDesktopChange": 6,
+        "desktop": {
+          "n": 0
+        },
+        "state": {
+          "n": 6,
+          "p95": 558.19685,
+          "p99": 558.2417700000001,
+          "worst": 558.253
+        },
+        "samplingGap": {
+          "n": 6,
+          "p95": 30.409525000000002,
+          "p99": 30.835105000000002,
+          "worst": 30.9415
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 0
+        },
+        "gapsOverAssumed60Hz": 0,
+        "unseen60HzSlotsEstimate": 0
+      },
+      "window-resize": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 128.04034500000003,
+          "p99": 141.61918899999998,
+          "worst": 145.0139
+        },
+        "state": {
+          "n": 20,
+          "p95": 149.54042,
+          "p99": 162.36648399999999,
+          "worst": 165.573
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 21.634695,
+          "p99": 21.649819,
+          "worst": 21.6536
+        }
+      },
+      "instance-switch": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 157.97403999999995,
+          "p99": 347.55137000000025,
+          "worst": 421.3236
+        },
+        "state": {
+          "n": 30,
+          "p95": 157.66440999999998,
+          "p99": 355.12908700000025,
+          "worst": 434.6992
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 22.202209999999997,
+          "p99": 30.71461600000001,
+          "worst": 34.0959
+        }
+      }
+    },
+    "lightPhases": {
+      "host-hover": {
+        "layouts": 357.0,
+        "layoutMs": 448.092,
+        "paints": 119.0,
+        "paintMs": 177.025,
+        "nodeVisits": 4682.0,
+        "paintArea": 46640968.0
+      },
+      "host-click": {
+        "layouts": 916.0,
+        "layoutMs": 1037.4500000000003,
+        "paints": 151.0,
+        "paintMs": 198.833,
+        "nodeVisits": 6127.0,
+        "paintArea": 49765004.0
+      },
+      "menu-open": {
+        "layouts": 562.0,
+        "layoutMs": 642.3760000000001,
+        "paints": 220.0,
+        "paintMs": 311.865,
+        "nodeVisits": 9300.0,
+        "paintArea": 71871360.0
+      },
+      "dialog-open": {
+        "layouts": 1564.0,
+        "layoutMs": 1510.597,
+        "paints": 352.0,
+        "paintMs": 477.79900000000004,
+        "nodeVisits": 13972.0,
+        "paintArea": 109949760.0
+      },
+      "long-input": {
+        "layouts": 3286.0,
+        "layoutMs": 4557.976,
+        "paints": 162.0,
+        "paintMs": 164.609,
+        "nodeVisits": 3548.0,
+        "paintArea": 33696960.0
+      },
+      "text-end": {
+        "layouts": 15.0,
+        "layoutMs": 39.551999999999985,
+        "paints": 15.0,
+        "paintMs": 17.073,
+        "nodeVisits": 330.0,
+        "paintArea": 3132000.0
+      },
+      "text-home": {
+        "layouts": 15.0,
+        "layoutMs": 38.43300000000001,
+        "paints": 15.0,
+        "paintMs": 14.23,
+        "nodeVisits": 330.0,
+        "paintArea": 3132000.0
+      },
+      "table-wheel": {
+        "layouts": 109.0,
+        "layoutMs": 160.23,
+        "paints": 35.0,
+        "paintMs": 102.80999999999999,
+        "nodeVisits": 3585.0,
+        "paintArea": 15296326.0
+      },
+      "scrollbar-drag": {
+        "layouts": 694.0,
+        "layoutMs": 1067.8949999999998,
+        "paints": 185.0,
+        "paintMs": 562.4920000000001,
+        "nodeVisits": 21019.0,
+        "paintArea": 85699184.0
+      },
+      "column-width": {
+        "layouts": 201.0,
+        "layoutMs": 290.88,
+        "paints": 60.0,
+        "paintMs": 182.526,
+        "nodeVisits": 6960.0,
+        "paintArea": 27975360.0
+      },
+      "float-drag-gl": {
+        "layouts": 484.0,
+        "layoutMs": 488.478,
+        "paints": 114.0,
+        "paintMs": 125.30000000000003,
+        "nodeVisits": 3792.0,
+        "paintArea": 29342288.0
+      },
+      "dock": {
+        "layouts": 228.0,
+        "layoutMs": 234.26899999999995,
+        "paints": 72.0,
+        "paintMs": 94.134,
+        "nodeVisits": 2586.0,
+        "paintArea": 20381112.0
+      },
+      "window-resize": {
+        "layouts": 950.0,
+        "layoutMs": 1034.98,
+        "paints": 205.0,
+        "paintMs": 318.26099999999997,
+        "nodeVisits": 8981.0,
+        "paintArea": 73030864.0
+      },
+      "instance-switch": {
+        "layouts": 2077.0,
+        "layoutMs": 2223.232,
+        "paints": 155.0,
+        "paintMs": 276.624,
+        "nodeVisits": 6820.0,
+        "paintArea": 54857104.0
+      },
+      "idle": {
+        "layouts": 112.0,
+        "layoutMs": 85.12299999999999,
+        "paints": 0.0,
+        "paintMs": 0.0,
+        "nodeVisits": 0.0,
+        "paintArea": 0.0
+      }
+    },
+    "cpu": [
+      {
+        "pid": "49684",
+        "name": "ux_probe.exe",
+        "cpuMs": 29046.875,
+        "peakRssBytes": 126963712
+      }
+    ],
+    "assertions": [],
+    "coldSetup": [
+      "READY qpcMs1049086710.341 startupMs317.752 hwnd000000000057039A chrome0000000000C506A0"
+    ],
+    "idle": [
+      "UX_IDLE elapsedMs2009.554 hostCpuMs15.625 observerThreadDormant=1"
+    ]
+  },
+  "perf-before-v4-runtime-96": {
+    "exit": 0,
+    "forced": false,
+    "elapsedMs": 74172.0,
+    "categories": {
+      "host-hover": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 87.04033499999998,
+          "p99": 89.011984,
+          "worst": 89.1542
+        },
+        "state": {
+          "n": 30,
+          "p95": 69.891085,
+          "p99": 73.68683700000001,
+          "worst": 74.9033
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 29.849449999999976,
+          "p99": 36.469612000000005,
+          "worst": 37.6056
+        }
+      },
+      "host-click": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 84.04805499999999,
+          "p99": 129.31107100000006,
+          "worst": 147.787
+        },
+        "state": {
+          "n": 30,
+          "p95": 78.75126499999999,
+          "p99": 121.30676200000005,
+          "worst": 138.3246
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 23.08907,
+          "p99": 29.232507000000005,
+          "worst": 31.6864
+        }
+      },
+      "menu-open": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 102.125195,
+          "p99": 111.14327899999999,
+          "worst": 113.3978
+        },
+        "state": {
+          "n": 20,
+          "p95": 95.84858,
+          "p99": 104.16723599999999,
+          "worst": 106.2469
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 30.363315,
+          "p99": 31.878982999999998,
+          "worst": 32.2579
+        }
+      },
+      "dialog-open": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 80.03575000000001,
+          "p99": 85.22426999999999,
+          "worst": 86.5214
+        },
+        "state": {
+          "n": 20,
+          "p95": 144.4088700000001,
+          "p99": 248.28065399999983,
+          "worst": 274.2486
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 34.39183,
+          "p99": 35.112766,
+          "worst": 35.293
+        }
+      },
+      "long-input": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 60.223845000000004,
+          "p99": 64.66596899999999,
+          "worst": 65.7765
+        },
+        "state": {
+          "n": 20,
+          "p95": 123.619645,
+          "p99": 128.757929,
+          "worst": 130.0425
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 21.525325,
+          "p99": 23.360344999999995,
+          "worst": 23.8191
+        }
+      },
+      "text-end": {
+        "samples": 15,
+        "invalid": 0,
+        "missingDesktopChange": 1,
+        "desktop": {
+          "n": 14,
+          "p95": 27.740839999999995,
+          "p99": 36.20560799999999,
+          "worst": 38.3218
+        },
+        "state": {
+          "n": 15,
+          "p95": 29.96334,
+          "p99": 30.425787999999997,
+          "worst": 30.5414
+        },
+        "samplingGap": {
+          "n": 15,
+          "p95": 20.03653,
+          "p99": 20.234265999999998,
+          "worst": 20.2837
+        }
+      },
+      "text-home": {
+        "samples": 15,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 15,
+          "p95": 26.165049999999983,
+          "p99": 35.88468999999999,
+          "worst": 38.3146
+        },
+        "state": {
+          "n": 15,
+          "p95": 30.729329999999997,
+          "p99": 30.737786,
+          "worst": 30.7399
+        },
+        "samplingGap": {
+          "n": 15,
+          "p95": 21.099709999999998,
+          "p99": 21.199782,
+          "worst": 21.2248
+        }
+      },
+      "table-wheel": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 25,
+        "desktop": {
+          "n": 5,
+          "p95": 36.13802,
+          "p99": 38.354884,
+          "worst": 38.9091
+        },
+        "state": {
+          "n": 30,
+          "p95": 4.9136999999999995,
+          "p99": 25.101017000000027,
+          "worst": 33.3436
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 20.976114999999997,
+          "p99": 23.295335,
+          "worst": 23.9358
+        }
+      },
+      "scrollbar-drag": {
+        "samples": 8,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 8,
+          "p95": 346.06102999999996,
+          "p99": 348.027806,
+          "worst": 348.5195
+        },
+        "state": {
+          "n": 8,
+          "p95": 390.5331,
+          "p99": 393.96533999999997,
+          "worst": 394.8234
+        },
+        "samplingGap": {
+          "n": 8,
+          "p95": 24.069860000000002,
+          "p99": 24.180852,
+          "worst": 24.2086
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 33,
+          "p95": 38.29121994972229,
+          "p99": 39.706115956306455,
+          "worst": 39.843299984931946
+        },
+        "gapsOverAssumed60Hz": 14,
+        "unseen60HzSlotsEstimate": 17
+      },
+      "column-width": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 76.12749500000001,
+          "p99": 80.94733899999999,
+          "worst": 82.1523
+        },
+        "state": {
+          "n": 20,
+          "p95": 50.670440000000006,
+          "p99": 56.25400799999999,
+          "worst": 57.6499
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 20.859565,
+          "p99": 20.916793000000002,
+          "worst": 20.9311
+        }
+      },
+      "float-drag-gl": {
+        "samples": 6,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 6,
+          "p95": 302.05305,
+          "p99": 310.90925,
+          "worst": 313.1233
+        },
+        "state": {
+          "n": 6,
+          "p95": 591.01775,
+          "p99": 596.18259,
+          "worst": 597.4738
+        },
+        "samplingGap": {
+          "n": 6,
+          "p95": 37.132075,
+          "p99": 37.381775000000005,
+          "worst": 37.4442
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 39,
+          "p95": 83.6458400964737,
+          "p99": 96.82553001165388,
+          "worst": 99.67610001564026
+        },
+        "gapsOverAssumed60Hz": 28,
+        "unseen60HzSlotsEstimate": 51
+      },
+      "dock": {
+        "samples": 6,
+        "invalid": 0,
+        "missingDesktopChange": 4,
+        "desktop": {
+          "n": 2,
+          "p95": 480.60197,
+          "p99": 481.272714,
+          "worst": 481.4404
+        },
+        "state": {
+          "n": 6,
+          "p95": 531.700525,
+          "p99": 537.580585,
+          "worst": 539.0506
+        },
+        "samplingGap": {
+          "n": 6,
+          "p95": 32.6326,
+          "p99": 33.32732,
+          "worst": 33.501
+        },
+        "observedChangedPixelIntervalMs": {
+          "n": 2,
+          "p95": 16.554100036621094,
+          "p99": 16.575380039215087,
+          "worst": 16.580700039863586
+        },
+        "gapsOverAssumed60Hz": 0,
+        "unseen60HzSlotsEstimate": 0
+      },
+      "window-resize": {
+        "samples": 20,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 20,
+          "p95": 75.49963,
+          "p99": 78.13880599999999,
+          "worst": 78.7986
+        },
+        "state": {
+          "n": 20,
+          "p95": 101.81098,
+          "p99": 104.12411599999999,
+          "worst": 104.7024
+        },
+        "samplingGap": {
+          "n": 20,
+          "p95": 21.735805,
+          "p99": 21.790601000000002,
+          "worst": 21.8043
+        }
+      },
+      "instance-switch": {
+        "samples": 30,
+        "invalid": 0,
+        "missingDesktopChange": 0,
+        "desktop": {
+          "n": 30,
+          "p95": 129.072995,
+          "p99": 136.12596000000002,
+          "worst": 137.9692
+        },
+        "state": {
+          "n": 30,
+          "p95": 141.26815,
+          "p99": 142.385764,
+          "worst": 142.6057
+        },
+        "samplingGap": {
+          "n": 30,
+          "p95": 23.558625,
+          "p99": 23.724420000000002,
+          "worst": 23.754
+        }
+      }
+    },
+    "lightPhases": {
+      "host-hover": {
+        "layouts": 136.0,
+        "layoutMs": 208.496,
+        "paints": 46.0,
+        "paintMs": 51.237,
+        "nodeVisits": 1469.0,
+        "paintArea": 29775828.0
+      },
+      "host-click": {
+        "layouts": 188.0,
+        "layoutMs": 367.513,
+        "paints": 31.0,
+        "paintMs": 61.908,
+        "nodeVisits": 1537.0,
+        "paintArea": 28178924.0
+      },
+      "menu-open": {
+        "layouts": 242.0,
+        "layoutMs": 312.468,
+        "paints": 60.0,
+        "paintMs": 69.88,
+        "nodeVisits": 2300.0,
+        "paintArea": 38456320.0
+      },
+      "dialog-open": {
+        "layouts": 439.0,
+        "layoutMs": 535.8,
+        "paints": 80.0,
+        "paintMs": 111.064,
+        "nodeVisits": 3180.0,
+        "paintArea": 57210880.0
+      },
+      "table-wheel": {
+        "layouts": 2.0,
+        "layoutMs": 1.055,
+        "paints": 1.0,
+        "paintMs": 0.102,
+        "nodeVisits": 2.0,
+        "paintArea": 1798.0
+      },
+      "scrollbar-drag": {
+        "layouts": 3.0,
+        "layoutMs": 4.289,
+        "paints": 1.0,
+        "paintMs": 2.489,
+        "nodeVisits": 44.0,
+        "paintArea": 937728.0
+      },
+      "column-width": {
+        "layouts": 5.0,
+        "layoutMs": 5.637,
+        "paints": 2.0,
+        "paintMs": 2.94,
+        "nodeVisits": 46.0,
+        "paintArea": 939091.0
+      },
+      "float-drag-gl": {
+        "layouts": 210.0,
+        "layoutMs": 237.852,
+        "paints": 42.0,
+        "paintMs": 35.315,
+        "nodeVisits": 768.0,
+        "paintArea": 17044848.0
+      },
+      "dock": {
+        "layouts": 78.0,
+        "layoutMs": 116.166,
+        "paints": 24.0,
+        "paintMs": 25.986,
+        "nodeVisits": 528.0,
+        "paintArea": 11312856.0
+      },
+      "window-resize": {
+        "layouts": 129.0,
+        "layoutMs": 308.017,
+        "paints": 41.0,
+        "paintMs": 73.82,
+        "nodeVisits": 1807.0,
+        "paintArea": 38763648.0
+      },
+      "instance-switch": {
+        "layouts": 213.0,
+        "layoutMs": 683.44,
+        "paints": 31.0,
+        "paintMs": 82.55,
+        "nodeVisits": 1457.0,
+        "paintArea": 29069568.0
+      }
+    },
+    "cpu": [
+      {
+        "pid": "30536",
+        "name": "ux_probe.exe",
+        "cpuMs": 17812.5,
+        "peakRssBytes": 104685568
+      },
+      {
+        "pid": "44380",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 6875.0,
+        "peakRssBytes": 196780032
+      },
+      {
+        "pid": "31348",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 31.25,
+        "peakRssBytes": 20029440
+      },
+      {
+        "pid": "2184",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 2125.0,
+        "peakRssBytes": 117211136
+      },
+      {
+        "pid": "4456",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 359.375,
+        "peakRssBytes": 41611264
+      },
+      {
+        "pid": "38052",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 62.5,
+        "peakRssBytes": 20701184
+      },
+      {
+        "pid": "23824",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 281.25,
+        "peakRssBytes": 66142208
+      },
+      {
+        "pid": "25596",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 1734.375,
+        "peakRssBytes": 85258240
+      },
+      {
+        "pid": "38196",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 453.125,
+        "peakRssBytes": 76341248
+      },
+      {
+        "pid": "16584",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 1796.875,
+        "peakRssBytes": 113573888
+      },
+      {
+        "pid": "17672",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 109.375,
+        "peakRssBytes": 64606208
+      },
+      {
+        "pid": "20524",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 187.5,
+        "peakRssBytes": 60096512
+      },
+      {
+        "pid": "7900",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 156.25,
+        "peakRssBytes": 62091264
+      },
+      {
+        "pid": "18496",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 375.0,
+        "peakRssBytes": 72564736
+      },
+      {
+        "pid": "7512",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 93.75,
+        "peakRssBytes": 65499136
+      },
+      {
+        "pid": "24080",
+        "name": "msedgewebview2.exe",
+        "cpuMs": 0.0,
+        "peakRssBytes": 11382784
+      }
+    ],
+    "assertions": [],
+    "coldSetup": [
+      "READY qpcMs1049248563.923 startupMs224.815 hwnd0000000007030824 chrome00000000008405F6"
+    ],
+    "idle": [
+      "UX_IDLE elapsedMs2011.481 hostCpuMs0.000 observerThreadDormant=1"
+    ]
+  }
+}

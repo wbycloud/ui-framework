@@ -1,0 +1,19 @@
+TEST_PHASE pid24916 tick1047677187 dispatched0 create-host-begin
+TEST_PHASE pid24916 tick1047677234 dispatched0 create-host-end
+TEST_PHASE pid24916 tick1047677296 dispatched0 open-begin
+TEST_PHASE pid24916 tick1047677421 dispatched0 open-return
+TEST_PHASE pid24916 tick1047677921 dispatched59 open-settled
+RESTORED modewrite dpi96 name200 treeCollapsed0
+TEST_PHASE pid24916 tick1047677921 dispatched59 screenshot-begin
+TEST_PHASE pid24916 tick1047678031 dispatched59 screenshot-end
+HEADER_GEOMETRY width200 grip202,40 6x28 screen493,162
+CAPTURE hit0000000000AC06A0 classChrome_WidgetWin_0 thread38244 ours38244 GetCapture0000000000000000 target-thread-capture0000000000000000
+ACTUAL_HEADER dpi96 width200 -> 280 hit0000000000AC06A0 pid24916
+TEST_PHASE pid24916 tick1047679734 dispatched205 screenshot-begin
+TEST_PHASE pid24916 tick1047680000 dispatched205 screenshot-end
+TEST_PHASE pid24916 tick1047680000 dispatched205 close-begin
+TEST_PHASE pid24916 tick1047680015 dispatched205 close-request-return
+TEST_PHASE pid24916 tick1047680078 dispatched213 close-state-checked
+TEST_PHASE pid24916 tick1047680390 dispatched215 com-uninitialize-begin
+TEST_PHASE pid24916 tick1047680390 dispatched215 process-return
+Stateful actual webview2 / write: 0 failures

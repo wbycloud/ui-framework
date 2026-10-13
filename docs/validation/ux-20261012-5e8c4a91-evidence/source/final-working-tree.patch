@@ -1,0 +1,662 @@
+diff --git a/.gitattributes b/.gitattributes
+index 558db17..938c8ea 100644
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -22,3 +22,5 @@
+ /docs/validation/p1-mesa-hosted-control-evidence-20261009/** -text whitespace=cr-at-eol
+ /docs/validation/p1-mesa-hosted-control-evidence-20261009/raw/** -whitespace
+ /tools/mesa-osmesa-process-detach.patch -text -whitespace
++/docs/validation/ux-20261012-5e8c4a91-evidence/** -text whitespace=cr-at-eol
++/docs/validation/ux-20261012-5e8c4a91-evidence/raw/** -whitespace
+diff --git a/docs/application-development-standard.md b/docs/application-development-standard.md
+index b15ff6f..d6275d4 100644
+--- a/docs/application-development-standard.md
++++ b/docs/application-development-standard.md
+@@ -341,8 +341,8 @@ TypeScript 需在构建阶段离线编译为 JavaScript，再交给后端执行
+ | HTML 内容元素 | `div`、`header`、`footer`、`nav`、`aside`、`section`、`main`、`p`、`span`、`button`、文本 `input`、`textarea`、资源 ID `img` |
+ | 内容属性 | `id`、`class`、`style`、`onclick`、`onmousedown`、`oninput`、`value`、文本 `type`、`disabled`、`readonly` |
+ | 布局 | `display:block/flex/none`、row/column、整数 flex 权重、整数 px/百分比宽高、absolute 定位、padding/margin/gap、min/max尺寸和基本对齐 |
+-| 样式 | 十六进制颜色、solid 边框、圆角、字体大小/粗细、受限字体族（含系统MDL2图标）、box-sizing、裁剪和滚动 |
+-| 样式表 | 标签/class/ID/后代选择器、hover/active/focus/disabled（hover/active包含命中祖先）、有限优先级与 width min/max media 规则 |
++| 样式 | 十六进制颜色、solid 边框和 outline（含颜色、整数 px offset）、圆角、字体大小/粗细、受限字体族（含系统MDL2图标）、box-sizing、裁剪和滚动 |
++| 样式表 | 标签/class/ID/后代选择器、hover/active/focus/focus-visible/disabled（hover/active包含命中祖先）、有限优先级与 width min/max media 规则 |
+ | DOM 脚本 | `document.body`、`getElementById/createElement`、`appendChild/removeChild/remove`、`textContent/className/value/disabled/style`、受限属性访问、`focus()` |
+ | 事件/消息 | click/input/keydown/focus/blur/mouseenter/mouseleave/mousedown/wheel/contextmenu 监听、document keydown、`ui.invoke/value/postMessage/onmessage` 和 window message |
+ | 输入 | 逻辑像素命中、按钮/滚轮；Uniscribe 和 IMM32 平台适配的 Web 单行/多行编辑、选择、剪贴板及撤销，无 EDIT 代理 |
+diff --git a/docs/handoff.md b/docs/handoff.md
+index e269891..7e88d47 100644
+--- a/docs/handoff.md
++++ b/docs/handoff.md
+@@ -400,3 +400,7 @@ Git中`docs/validation/instance-language-current-evidence-20261009`包含143份
+ | 业务正式接入 | 本轮只框架完整示例；请求方仓库/冻结SDK/历史包与证据/PERF-001只读，应用修改需要另行明确授权 |
+ 
+ 此次只授权本地交接准备，不包含推送、远程工作流、发布、标签、清理产物或新会话；第20节旧同步授权已完成。保留9df202f/2e87e02捕获与异步轨道、f0b161c列序/捕获、f00bbeb精确语言断言、2fa6f84诊断和第23节修复；不恢复分页或旧版兼容专项，不提高预算、不删除失败断言，不使用graph-engineering或子代理。
++
++## 2026-10-12 本地 UX 后续（未提交）
++
++本轮仍为 HEAD 7848a946fcf417eefe87bd63e42f83c8a3f875f3、codex/p1-process-boundaries；存在已授权的本地未提交 UX 改动。恢复时先读 [本轮报告](validation/ux-validation-20261012.md) 和其中的源码／产物身份、连续画面与保护索引，再核对 Git。glyph居中、鼠标无虚线／键盘实线、宿主公共短提示、同布局重复状态去重、零尺寸分隔边及144DPI自动按钮截断已查证修复，不能重新列为未实现。完整性能 v4 与最后 final5 构建身份分别记录，不混计历史或重建结果。未提交／推送／远程运行；Mesa P1、物理与人工条件仍独立待验，原 SDK 和证据未改。
+diff --git a/docs/visual-design.md b/docs/visual-design.md
+index 6ad2ca8..a4d9460 100644
+--- a/docs/visual-design.md
++++ b/docs/visual-design.md
+@@ -41,6 +41,10 @@
+ 
+ 选中行用独立浅蓝/深蓝表面；编辑输入保留自身边框，焦点用边框或轻量绘制焦点矩形，不能只依赖选中背景。hover、pressed、disabled、readonly、invalid、关闭中和加载状态分别呈现；禁用行为仍由原命令/输入合同决定。
+ 
++宿主 glyph 水平居中。窗口控制使用矩形背景，关闭保留红色悬停；“＋”及面板工具采用4／3逻辑像素圆角。鼠标点击保留内部焦点，不画虚线；Tab 导航采用1逻辑像素实线强调环，向内偏移2逻辑像素，不改变布局或命中范围。Light 显式跟踪输入模态并绘制受控 `:focus-visible` / `outline`；真实 Runtime 使用同一共享样式。输入框仍以 `:focus` 边框、光标和选择反馈。宿主短提示复用 `ui_host_show_tooltip` / `ui_host_hide_tooltip`，沿用内容测量和拥有者生命周期。
++
++未加载共同样式的 Light 公共页面也保留默认键盘实线焦点环；页面的显式 outline 样式可覆盖它。鼠标输入不删除焦点状态。
++
+ ## 3. 角色与状态
+ 
+ 菜单是紧凑平面文字入口，展开/悬停/聚焦高亮；工具为小尺寸图标/文字按钮；应用标签有活动表面、名称截断和独立关闭入口；窗口控制有各自命中与关闭红色状态。没有将所有button改成菜单样式。
+diff --git a/examples/framework_host/host.html b/examples/framework_host/host.html
+index fcc8805..9903545 100644
+--- a/examples/framework_host/host.html
++++ b/examples/framework_host/host.html
+@@ -19,8 +19,9 @@
+ #title-space { flex:1; height:40px; min-width:24px; }
+ #window-controls { display:flex; flex-direction:row; gap:0; }
+ .window-button { width:46px; height:40px; padding:0; border:0; border-radius:0; background:#e9e9ec; }
+-.window-button:hover,.window-button:focus { background:#d7d7dc; }
+-#window-close:hover,#window-close:focus,#window-close:active { background:#c42b1c; color:#ffffff; }
++.window-button:hover { background:#d7d7dc; }
++.window-button:active { background:#cdced3; }
++#window-close:hover,#window-close:active { background:#c42b1c; color:#ffffff; }
+ #menu-row { display:flex; flex-direction:row; height:28px; background:#f7f7f8; }
+ #app-menus { flex:1; min-width:0; height:28px; }
+ #menu { width:34px; height:28px; padding:2px; }
+@@ -30,8 +31,8 @@
+ .tab-close { width:26px; height:36px; padding:0; border:0; border-radius:2px; background:#e9e9ec; }
+ .tab-name:hover,.tab-close:hover { background:#dcdce0; }
+ .tab.active,.tab.active .tab-name,.tab.active .tab-close { background:#f7f7f8; color:#242424; }
+-.tab.active .tab-close:hover,.tab.active .tab-close:focus { background:#e3e3e7; }
+-.tab-name:focus,.tab-close:focus { border:1px solid #0078d4; }
++.tab.active .tab-close:hover { background:#e3e3e7; }
++.tab-close:active,.tab.active .tab-close:active { background:#cdced3; }
+ .tab.closing,.tab.closing .tab-name,.tab.closing .tab-close { background:#e5e5e7; color:#919191; }
+ #body { display:flex; flex-direction:row; flex:1; }
+ #workspace { flex:1; height:100%; position:relative; overflow:hidden; background:#f7f7f8; }
+@@ -59,7 +60,7 @@
+ .app-menu:hover,.app-menu:focus,.app-menu.expanded { background:#e2eaf2; }
+ .app-menu:active { background:#d3e2f1; }
+ .app-menu:disabled { color:#919191; background:#f7f7f8; }
+-.host-tool,.app-tool { border:0; border-radius:2px; background:#e9e9ec; }
++.host-tool,.app-tool { border:0; border-radius:4px; background:#e9e9ec; }
+ .app-tool { background:#ffffff; flex:0; }
+ .app-tool.active { background:#dcecff; color:#0067b8; }
+ .window-button.hovered { background:#d7d7dc; }
+@@ -69,7 +70,7 @@
+ .dark .window-button.pressed { background:#454545; }
+ .host-tool.active { background:#dcecff; color:#0067b8; }
+ .dark .host-tool.active { background:#263e50; color:#60b7ff; }
+-.host-tool:hover,.host-tool:focus,.app-tool:hover,.app-tool:focus { background:#dedee2; }
++.host-tool:hover,.app-tool:hover { background:#dedee2; }
+ .host-tool:active,.app-tool:active { background:#cdced3; }
+ #popup.popup-menu { padding:4px; gap:0; }
+ #popup.popup-menu #popup-title,#popup.popup-menu #popup-detail,#popup.popup-menu #popup-actions { display:none; }
+@@ -80,17 +81,17 @@
+ .dark .chrome,.dark #assistant,.dark #popup { background:#252525; }
+ .dark #top,.dark .window-button,.dark .tab-name,.dark .tab-close,.dark .host-tool { background:#181818; color:#d4d4d4; border:0; }
+ .dark #menu-row,.dark .tab.active,.dark .tab.active .tab-name,.dark .tab.active .tab-close,.dark .menu-strip,.dark .app-menu,.dark #workspace { background:#202020; color:#ededed; }
+-.dark .tab-name:hover,.dark .tab-close:hover,.dark .tab-close:focus,.dark .window-button:hover,.dark .window-button:focus,.dark .host-tool:hover,.dark .host-tool:focus { background:#383838; }
+-.dark .tab-name:focus,.dark .tab-close:focus { border:1px solid #60b7ff; }
++.dark .tab-name:hover,.dark .tab-close:hover,.dark .window-button:hover,.dark .host-tool:hover { background:#383838; }
++.dark .tab-close:active,.dark .window-button:active { background:#454545; }
+ .dark .tab.closing,.dark .tab.closing .tab-name,.dark .tab.closing .tab-close { background:#252525; color:#999999; }
+-.dark #window-close:hover,.dark #window-close:focus,.dark #window-close:active { background:#c42b1c; color:#ffffff; }
++.dark #window-close:hover,.dark #window-close:active { background:#c42b1c; color:#ffffff; }
+ .dark .panel-tab.active { background:#202020; color:#60b7ff; }
+ .dark .splitter { background:#454545; }
+ .dark .splitter:hover { background:#60b7ff; }
+ .dark .app-menu:hover,.dark .app-menu:focus,.dark .app-menu.expanded { background:#353535; }
+ .dark .app-menu:disabled { background:#202020; color:#999999; }
+ .dark .app-tool,.dark #advanced-toggle,.dark #result { background:#2b2b2b; }
+-.dark .app-tool:hover,.dark .app-tool:focus { background:#454545; }
++.dark .app-tool:hover { background:#454545; }
+ .dark #popup.popup-menu .popup-menu-row { background:#252525; }
+ .dark #popup.popup-menu .popup-menu-row:hover,.dark #popup.popup-menu .popup-menu-row:focus { background:#353535; }
+ .dark .popup-shortcut { color:#b3b3b7; }
+@@ -192,6 +193,7 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
+     if(start>0)box.tabs.appendChild(button('tab-prev-'+panel.id,'‹','panel-activate',{id:state.active,panel:members[start-1].id}));
+     for(var t=start;t<members.length&&t<start+page;t++){var tab=button('panel-tab-'+members[t].id,members[t].title+(members[t].closed?' ×':''),'panel-activate',{id:state.active,panel:members[t].id},'panel-tab'+(members[t].id===panel.id?' active':''));titleTip(tab);box.tabs.appendChild(tab);}
+     if(start+page<members.length)box.tabs.appendChild(button('tab-next-'+panel.id,'›','panel-activate',{id:state.active,panel:members[start+page].id}));var tabSize=Math.max(16,Math.floor(Math.max(0,panel.frame.width-84)/box.tabs.children.length));for(var pt=0;pt<box.tabs.children.length;pt++){var item=box.tabs.children[pt];item.style.width=tabSize+'px';item.style.overflow='hidden';item.style.whiteSpace='nowrap';}}box.text.style.flex=panel.group==='0'?'1':'0';box.text.style.width=panel.group==='0'?'auto':'16px';box.tabs.style.flex=panel.group==='0'?'0':'1';box.tabs.style.display=panel.group==='0'?'none':'flex';box.text.textContent=panel.group==='0'?(panel.collapsed?'▸ ':'')+panel.title:'⋮';box.split.style.position='absolute';box.split.style.top=(panel.region===9?0:23)+'px';box.split.style.width=panel.frame.width+'px';
++   if(panel.frame.width<4||panel.frame.height<=0)continue;
+    var edgeKey='side:'+panel.region;live[edgeKey]=true;var edge=keep(root,chromeNodes,edgeKey,function(){var n=document.createElement('div');n.className='splitter';n.addEventListener('mousedown',function(){send('side-split',{id:model.active,panel:n.region===5?'left':n.region===9?'bottom':'right'})});return n;});edge.region=panel.region;place(edge,{x:panel.region===5?panel.frame.x+panel.frame.width-4:panel.frame.x,y:panel.frame.y,width:panel.region===9?panel.frame.width:4,height:panel.region===9?5:28});
+   }
+   var status=keep(root,chromeNodes,'status',function(){var n=document.createElement('div');n.className='muted chrome';n.style.padding='4px 8px';return n;});live.status=true;place(status,state.statusRect);status.textContent=state.status||state.activeLabel+' · '+state.dpi+' DPI';prune(root,chromeNodes,live);if(panelFocus.indexOf('panel-tab-')===0){var focused=element(panelFocus);if(focused)focused.focus()}
+diff --git a/examples/framework_host/main.c b/examples/framework_host/main.c
+index 66d49ac..c9489d2 100644
+--- a/examples/framework_host/main.c
++++ b/examples/framework_host/main.c
+@@ -321,6 +321,7 @@ static LRESULT CALLBACK popup_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
+ }
+ static void close_popup(host_window_t *s)
+ {
++    if(s->chrome_host)(void)ui_host_hide_tooltip(s->chrome_host);
+     if(s->confirm_waiting){s->confirm_answer=-1;return;}
+     if(s->menu_hook){UnhookWindowsHookEx(s->menu_hook);s->menu_hook=NULL;}if(pointer_menu==s)pointer_menu=NULL;
+     if(s->popup_hwnd||s->popup_view)++s->popup_token;
+@@ -354,7 +355,7 @@ static int create_popup(host_window_t *s,int kind,int width,int height)
+         s->menu_anchor.left=origin.x+MulDiv(at.x,(int)s->dpi,96);s->menu_anchor.top=origin.y+MulDiv(at.y,(int)s->dpi,96);
+         s->menu_anchor.right=s->menu_anchor.left+MulDiv(at.width,(int)s->dpi,96);s->menu_anchor.bottom=s->menu_anchor.top+MulDiv(at.height,(int)s->dpi,96);
+         pointer_menu=s;s->menu_hook=SetWindowsHookExW(WH_GETMESSAGE,host_menu_messages,NULL,GetCurrentThreadId());if(!s->menu_hook){close_popup(s);return 0;}}
+-    ShowWindow(s->popup_hwnd,kind==5?SW_SHOWNOACTIVATE:SW_SHOW);if(kind==1&&IsWindowVisible(s->hwnd))SetFocus((HWND)ui_web_view_native_handle(s->popup_view));return 1;
++    ShowWindow(s->popup_hwnd,SW_SHOW);if(kind==1&&IsWindowVisible(s->hwnd))SetFocus((HWND)ui_web_view_native_handle(s->popup_view));return 1;
+ }
+ static void popup_start(host_window_t *s,json_buffer_t *json,const char *title,const char *detail,int confirm)
+ {
+@@ -450,7 +451,7 @@ static const char *command_title(ui_host_t *host,const char *id)
+ {ui_command_entry_t *c;for(c=host->commands;c;c=c->next)if(id&&!strcmp(c->id,id))return c->title;return id?id:"";}
+ static int assistant_visible(host_window_t *s)
+ {return s->assistant_expanded>0;}
+-static void send_state(host_window_t *s)
++static void send_state(host_window_t *s,char **layout_state)
+ {
+     json_buffer_t json={0};ui_app_instance_info_t info,target;size_t i,count;
+     char *schema,label[512];uint64_t active;RECT client;int width,tab_width;size_t tab_start,tab_count;
+@@ -489,7 +490,12 @@ static void send_state(host_window_t *s)
+         json_append(&json,",\"menuGroups\":[");{menu_state_writer_t writer={&json,0};if(ui_host_visit_menu(info.host,"",state_menu_group,&writer)!=UI_STATUS_OK)json.failed=1;}json_append(&json,"]");
+         json_append(&json,",\"tools\":[");state_tools(&json,info.host);json_append(&json,"],\"panels\":[");state_panels(&json,&info);json_append(&json,"],\"status\":");json_string(&json,ui_host_status_text(info.host));
+     }else json_append(&json,",\"activeLabel\":\"\",\"menuGroups\":[],\"tools\":[],\"panels\":[]");
+-    json_append(&json,"}");(void)post_json(s->view,&json);
++    json_append(&json,"}");
++    /* Suppress only an identical second update within this layout. The first
++       update of every refresh still runs, including image-only changes. */
++    if(!json.failed&&json.text&&(!*layout_state||strcmp(*layout_state,json.text))&&
++       ui_web_view_post_json(s->view,json.text)==UI_STATUS_OK){free(*layout_state);*layout_state=json.text;json.text=NULL;}
++    free(json.text);
+ }
+ static void cut_region(HRGN full,const ui_rect_t *rect,uint32_t dpi,int offset_x,int offset_y)
+ {
+@@ -512,15 +518,15 @@ static void update_region(host_window_t *s)
+ }
+ static void layout(host_window_t *s)
+ {
+-    RECT client;int width,height;ui_rect_t rect;
++    RECT client;int width,height;ui_rect_t rect;char *layout_state=NULL;
+     if(!s->view||!s->workspace||s->refreshing)return;s->refreshing=1;
+     {uint64_t active=ui_workspace_active(s->workspace);if(active!=s->displayed_instance&&s->popup_kind==1)close_popup(s);s->displayed_instance=active;}GetClientRect(s->hwnd,&client);
+     width=MulDiv(client.right,96,(int)s->dpi);height=MulDiv(client.bottom,96,(int)s->dpi);
+     (void)ui_host_set_dpi(s->chrome_host,s->dpi);(void)ui_host_resize(s->chrome_host,width,height);
+-    (void)ui_web_view_resize(s->view,width,height,s->dpi);send_state(s);
++    (void)ui_web_view_resize(s->view,width,height,s->dpi);send_state(s,&layout_state);
+     if(ui_web_view_get_element_rect(s->view,"workspace",&rect)==UI_STATUS_OK){
+         if(rect.width<0)rect.width=0;if(rect.height<0)rect.height=0;{ui_app_instance_info_t info;if(get_instance(s,ui_workspace_active(s->workspace),&info)){int menu=app_menu_height(&info);rect.y-=menu;rect.height+=menu;}}s->workspace_rect=rect;(void)ui_workspace_set_rect(s->workspace,&rect,s->dpi);}
+-    send_state(s);update_region(s);s->refreshing=0;
++    send_state(s,&layout_state);free(layout_state);update_region(s);s->refreshing=0;
+ }
+ static void refresh_workspace(void *data)
+ {schedule_refresh((host_window_t *)data);}
+@@ -653,7 +659,7 @@ static void selector_popup(host_window_t *s,int commands)
+ }
+ static void tooltip_popup(host_window_t *s,const char *id)
+ {
+-    const char *text=NULL;json_buffer_t json={0};RECT origin;ui_rect_t rect;ui_app_instance_info_t active={0};if(get_instance(s,ui_workspace_active(s->workspace),&active)&&active.host->menu_open_path)return;if(s->popup_hwnd&&s->popup_kind!=5)return;
++    const char *text=NULL;ui_menu_anchor_t anchor={0};ui_app_instance_info_t active={0};if(get_instance(s,ui_workspace_active(s->workspace),&active)&&active.host->menu_open_path)return;if(s->popup_hwnd)return;
+     if(!strcmp(id?id:"","menu"))text=tr(s,"宿主选项：主题、布局及窗口操作");
+     else if(!strcmp(id?id:"","recent"))text=tr(s,"最近成功打开的应用（与当前标签分开）");
+     else if(!strcmp(id?id:"","open"))text=tr(s,"打开 .uapp 应用包 · Ctrl+Shift+O");
+@@ -666,17 +672,16 @@ static void tooltip_popup(host_window_t *s,const char *id)
+     else if(id&&(!strncmp(id,"panel-title-",12)||!strncmp(id,"panel-tab-",10))&&active.host){ui_panel_entry_t *panel;
+         const char *panel_id=id+(!strncmp(id,"panel-title-",12)?12:10);
+         for(panel=active.host->panels;panel;panel=panel->next)if(!strcmp(panel->id,panel_id)){text=panel->title;break;}}
+-    if(!text||!create_popup(s,5,300,160))return;
+-    if(ui_web_view_get_element_rect(s->view,id,&rect)==UI_STATUS_OK){POINT point={0,0};ClientToScreen(s->hwnd,&point);GetWindowRect(s->popup_hwnd,&origin);
+-        SetWindowPos(s->popup_hwnd,NULL,point.x+MulDiv(rect.x,(int)s->dpi,96),point.y+MulDiv(rect.y+rect.height+6,(int)s->dpi,96),
+-            origin.right-origin.left,origin.bottom-origin.top,SWP_NOZORDER|SWP_NOACTIVATE);}
+-    popup_start(s,&json,tr(s,"提示"),text,0);popup_finish(s,&json);
++    if(!text)return;anchor.size=sizeof(anchor);
++    if(ui_web_view_get_element_rect(s->view,id,&anchor.rect)!=UI_STATUS_OK)return;
++    s->chrome_host->menu_dark=s->dark;(void)ui_host_show_tooltip(s->chrome_host,&anchor,text);
+ }
+ static int registered_command(const ui_host_t *host,const char *id)
+ {ui_command_entry_t *entry;for(entry=host->commands;entry;entry=entry->next)if(!strcmp(entry->id,id))return entry->state.visible&&entry->state.enabled&&!entry->state.busy;return 0;}
+ static void process_action(host_window_t *s,host_action_t *action)
+ {
+     const char *name=action->action;uint64_t id=read_id(action->id);ui_app_instance_info_t info;
++    if(strcmp(name,"tooltip"))(void)ui_host_hide_tooltip(s->chrome_host);
+     if(action->popup_token){
+         if(action->popup_token!=s->popup_token)return;if(action->token&&read_id(action->token)!=s->popup_token)return;
+         if(!strcmp(name,"ready"))return;
+@@ -738,7 +743,7 @@ static void process_action(host_window_t *s,host_action_t *action)
+                 else{layout.collapsed=!layout.collapsed;(void)ui_shell_set_panel_layout(shell,action->panel,&layout);}}
+         }}
+     else if(!strcmp(name,"tooltip")){tooltip_popup(s,action->id);return;}
+-    else if(!strcmp(name,"tooltip-hide")){if(s->popup_kind==5)close_popup(s);return;}
++    else if(!strcmp(name,"tooltip-hide")){(void)ui_host_hide_tooltip(s->chrome_host);return;}
+     else if(!strcmp(name,"dismiss"))close_popup(s);else return;schedule_refresh(s);
+ }
+ static void destroy_chrome(host_window_t *s)
+@@ -754,6 +759,7 @@ static LRESULT CALLBACK host_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
+     if(message==WM_NCCREATE){s=(host_window_t *)((CREATESTRUCTW *)lp)->lpCreateParams;s->hwnd=hwnd;SetWindowLongPtrW(hwnd,GWLP_USERDATA,(LONG_PTR)s);}
+     if(!s)return DefWindowProcW(hwnd,message,wp,lp);
+     switch(message){
++    case WM_WINDOWPOSCHANGING:if(s->chrome_host)(void)ui_host_hide_tooltip(s->chrome_host);break;
+     case WM_NCCALCSIZE:{RECT *r=wp?&((NCCALCSIZE_PARAMS *)lp)->rgrc[0]:(RECT *)lp;
+         if(IsZoomed(hwnd)){MONITORINFO mi={sizeof(mi)};if(GetMonitorInfoW(MonitorFromWindow(hwnd,MONITOR_DEFAULTTONEAREST),&mi))*r=mi.rcWork;}
+         else{LONG top=r->top;(void)DefWindowProcW(hwnd,message,wp,lp);r->top=top;}return 0;}
+diff --git a/examples/stateful_components/README.md b/examples/stateful_components/README.md
+index d1b0dfd..c4d9ba8 100644
+--- a/examples/stateful_components/README.md
++++ b/examples/stateful_components/README.md
+@@ -31,6 +31,11 @@ $env:UI_STATE_EXAMPLE_PROFILE='A'
+ | Reload interface state | 从同一档案读取；不清空业务文档、属性草稿或选择 |
+ | Reset Name width | 只恢复 name 的注册宽度 200，不自动保存 |
+ | Reset widths and layout | 重置全部列宽及布局，不自动保存；需要再点 Save 持久化 |
++| Edit properties... | 打开已有 `test.modal` 单字段对话框；使用公共 dialog layout，独立草稿不自动回写父属性表单 |
++
++完整体验路径为宿主打开此包 → 十万行表格滚动／调宽 → Properties 编辑 → State / Edit properties... → Tab、提交或 Esc。对话框使用 `ui_component_set_dialog_layout` 表达首选宽440、最小宽240／高120、内容自动高度；不增加公共接口或改变档案格式。共同样式统一悬停、按下及键盘实线焦点；鼠标焦点与键盘焦点均保留原输入合同。
++
++窄窗中 Properties 可能成为侧边条；使用该条上已有的浮动工具进入完整属性字段，再从 State 打开对话框。这个操作保留草稿和内容 HWND，不要求自动重置已保存布局。
+ 
+ 注册宽度为 name 200、value 120、其余 180 **逻辑像素**。恢复前没有有效状态时保持这些宽度，不自动按内容适配。表头拖动、右键／F10 适配与单列／全表宽度工具仍由共同组件提供，24–4096 逻辑像素合同不变。
+ 
+diff --git a/examples/stateful_components/app.c b/examples/stateful_components/app.c
+index c032299..ebfabdc 100644
+--- a/examples/stateful_components/app.c
++++ b/examples/stateful_components/app.c
+@@ -117,10 +117,15 @@ static ui_status_t UI_APP_CALL state_create(const ui_app_context_t *context,void
+     if(!s)return UI_STATUS_OUT_OF_MEMORY;*out=s;status=acquire_profile(s);if(status!=UI_STATUS_OK)return status;
+     status=prepare_language(s,context->host);if(status!=UI_STATUS_OK)return status;
+     status=create(context,&scene,assistant);s->scene=scene;if(status!=UI_STATUS_OK)return status;status=schema_variant(s->scene);if(status!=UI_STATUS_OK)return status;
++    {ui_dialog_layout_t layout={0};layout.size=sizeof(layout);layout.preferred_width=440;layout.min_width=240;layout.min_height=120;
++        status=ui_component_set_dialog_layout(s->scene->dialog,&layout);if(status!=UI_STATUS_OK)return status;}
+     for(size_t i=0;i<4;++i){ui_command_desc_t cmd={0};ui_menu_item_desc_t item={0};cmd.size=sizeof(cmd);cmd.id=ids[i];cmd.title=titles[i];cmd.handler=state_command;cmd.user_data=s;
+         status=ui_host_register_command(context->host,&cmd);if(status!=UI_STATUS_OK)return status;
+         item.size=sizeof(item);item.id=ids[i];item.menu_path="State";item.title=titles[i];item.command_id=ids[i];item.order=(int)i;status=ui_host_register_menu_item(context->host,&item);if(status!=UI_STATUS_OK)return status;
+     }
++    {ui_menu_item_desc_t item={0};item.size=sizeof(item);item.id="state.properties";item.menu_path="State";
++        item.title="Edit properties...";item.command_id="test.modal";item.order=4;
++        status=ui_host_register_menu_item(context->host,&item);if(status!=UI_STATUS_OK)return status;}
+     status=register_language(s);if(status!=UI_STATUS_OK)return status;
+     return ui_host_set_language_callback(context->host,language_changed,s);
+ }
+diff --git a/examples/stateful_components/language.inc b/examples/stateful_components/language.inc
+index c7ff400..38c072e 100644
+--- a/examples/stateful_components/language.inc
++++ b/examples/stateful_components/language.inc
+@@ -48,6 +48,7 @@ static void refresh_language(state_app_t *s)
+     struct caption commands[]={ {"state.save","Save interface state","保存界面状态"},{"state.load","Reload interface state","恢复界面状态"},{"state.reset-column","Reset Name width","重置名称列宽"},{"state.reset","Reset widths and layout","重置列宽与布局"},
+         {"language.zh","Simplified Chinese","简体中文"},{"language.en","English","English"}};
+     for(size_t i=0;i<6;++i){const char *text=app_text(s,commands[i].en,commands[i].zh);(void)ui_host_set_title(host,UI_TEXT_COMMAND,commands[i].id,text);(void)ui_host_set_title(host,UI_TEXT_MENU_ITEM,commands[i].id,text);}
++    (void)ui_host_set_title(host,UI_TEXT_MENU_ITEM,"state.properties",app_text(s,"Edit properties...","编辑属性..."));
+     struct caption tools[]={ {"test.render","Refresh GL frame","刷新 GL 帧"},{"test.edit","Edit cell","编辑单元格"},{"test.select","Select rows","选择行"},{"test.sort","Sort data source","数据源排序"},{"test.submit","Submit properties","提交属性"},{"test.reset","Reset layout","重置布局"},{"test.modal","Open dialog","打开对话框"},{"test.modal.close","Close dialog","关闭对话框"},{"test.image.release","Release image","释放图片"},{"test.late","Test late image","测试迟到图片"}};
+     for(size_t i=0;i<10;++i)(void)ui_host_set_title(host,UI_TEXT_COMMAND,tools[i].id,app_text(s,tools[i].en,tools[i].zh));
+     (void)ui_host_set_title(host,UI_TEXT_MENU_GROUP,"State",app_text(s,"State","状态"));
+diff --git a/src/backends/light_web.c b/src/backends/light_web.c
+index 30124d9..34f8154 100644
+--- a/src/backends/light_web.c
++++ b/src/backends/light_web.c
+@@ -43,7 +43,8 @@ typedef struct lw_style {
+     int padding[4], margin[4], gap, align, justify;
+     unsigned padding_set;
+     int border, radius, font_size, font_weight, font_family, nowrap, text_align, scroll_x;
+-    unsigned color, border_color;
++    unsigned color, border_color, outline_color;
++    int outline, outline_offset;
+ } lw_style_t;
+ 
+ typedef struct lw_rule {
+@@ -103,7 +104,7 @@ typedef struct lw_view {
+     uint32_t dpi;
+     int media_breakpoint;
+     int media_hide_assistant;
+-    int focused, pressed;
++    int focused, pressed, keyboard_focus;
+     int dragging, composing;
+     wchar_t high_surrogate;
+     uint32_t event_modifiers;
+@@ -123,6 +124,11 @@ typedef struct lw_view {
+     ULONGLONG script_deadline;
+     HWND hwnd;
+     HFONT font;
++    int trace_enabled;
++    char trace_phase[64];
++    uint64_t trace_layouts,trace_paints,trace_nodes,trace_area;
++    LARGE_INTEGER trace_frequency;
++    double trace_layout_ms,trace_paint_ms;
+ } lw_view_t;
+ 
+ static lw_backend_t *g_backends;
+@@ -347,8 +353,8 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
+                 int result = lw_color(value, &style->background);
+                 if (!result) return UI_STATUS_UNSUPPORTED;
+                 style->background_set = result == 1;
+-            } else if (!strcmp(key, "color") || !strcmp(key, "border-color")) {
+-                if (lw_color(value, !strcmp(key, "color") ? &style->color : &style->border_color) != 1)
++            } else if (!strcmp(key, "color") || !strcmp(key, "border-color") || !strcmp(key,"outline-color")) {
++                if (lw_color(value, !strcmp(key,"color") ? &style->color : !strcmp(key,"outline-color") ? &style->outline_color : &style->border_color) != 1)
+                     return UI_STATUS_UNSUPPORTED;
+             } else if (!strcmp(key, "padding") || !strcmp(key, "margin")) {
+                 status = lw_box(value, !strcmp(key, "padding") ? style->padding : style->margin);
+@@ -387,17 +393,22 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
+                 if (!strcmp(value,"normal")) style->font_weight = FW_NORMAL;
+                 else if (!strcmp(value,"bold")) style->font_weight = FW_BOLD;
+                 else { number = atoi(value); if (number < 100 || number > 900) return UI_STATUS_UNSUPPORTED; style->font_weight = number; }
+-            } else if (!strcmp(key,"border") || !strcmp(key,"border-left") || !strcmp(key,"border-right") || !strcmp(key,"border-top") || !strcmp(key,"border-bottom")) {
++            } else if (!strcmp(key,"outline-offset")) {
++                char *offset_end;long offset=strtol(value,&offset_end,10);
++                if(offset_end==value||(*offset_end&&strcmp(offset_end,"px"))||offset < -32767||offset > 32767)return UI_STATUS_UNSUPPORTED;
++                style->outline_offset=(int)offset;
++            } else if (!strcmp(key,"outline") || !strcmp(key,"border") || !strcmp(key,"border-left") || !strcmp(key,"border-right") || !strcmp(key,"border-top") || !strcmp(key,"border-bottom")) {
+                 char border[128], *space, *color;
+-                if (!strcmp(value,"none") || !strcmp(value,"0")) { style->border = 0; goto next; }
++                int outline=!strcmp(key,"outline");
++                if (!strcmp(value,"none") || !strcmp(value,"0")) { if(outline)style->outline=0;else style->border=0;goto next; }
+                 if (strlen(value) >= sizeof(border)) return UI_STATUS_VALIDATION_FAILED;
+                 strcpy(border,value); space = strchr(border,' ');
+                 if (!space) return UI_STATUS_UNSUPPORTED;
+                 *space++ = 0; space = lw_trim(space); color = strchr(space,' ');
+                 if (!color) return UI_STATUS_UNSUPPORTED;
+                 *color++ = 0;
+-                if (strcmp(space,"solid") || lw_number(border,&number,&percent) != UI_STATUS_OK || percent || lw_color(lw_trim(color),&style->border_color) != 1) return UI_STATUS_UNSUPPORTED;
+-                style->border = number;
++                if (strcmp(space,"solid") || lw_number(border,&number,&percent) != UI_STATUS_OK || percent || lw_color(lw_trim(color),outline?&style->outline_color:&style->border_color) != 1) return UI_STATUS_UNSUPPORTED;
++                if(outline)style->outline=number;else style->border=number;
+             } else if (!strcmp(key,"box-sizing")) {
+                 if (strcmp(value,"border-box")) return UI_STATUS_UNSUPPORTED;
+             } else if (!strcmp(key,"cursor")) {
+@@ -538,6 +549,7 @@ static int lw_matches_piece(lw_view_t *view, int index, const char *piece)
+                 if(pressed<0||lw_disabled(view,index))return 0;
+             }
+             else if (!strcmp(token,"focus")) { if (view->focused != index) return 0; }
++            else if (!strcmp(token,"focus-visible")) { if (view->focused != index || (!view->keyboard_focus && !lw_input(node))) return 0; }
+             else if (!strcmp(token,"disabled")) { if (!node->disabled) return 0; }
+             else return 0;
+         }
+@@ -696,6 +708,11 @@ static void lw_compute_style(lw_view_t *view, int index)
+     int r, child;
+     char declarations[LW_ATTR_CAP];
+     lw_style_default(&node->style);
++    /* Unstyled public pages keep a keyboard indicator; authored outline rules
++       can override it. Mouse focus still preserves the focused node. */
++    if(view->focused==index&&view->keyboard_focus&&!lw_input(node)){
++        node->style.outline=1;node->style.outline_color=0x0078d4;node->style.outline_offset=-2;
++    }
+     if (node->parent >= 0) {
+         lw_style_t *parent = &view->nodes[node->parent].style;
+         node->style.color = parent->color; node->style.font_size = parent->font_size;
+@@ -735,10 +752,15 @@ static void lw_compute_style(lw_view_t *view, int index)
+         HDC dc = CreateCompatibleDC(NULL);
+         if (text && dc) {
+             SIZE size = {0}; HGDIOBJ previous = SelectObject(dc,node->font);
+-            if (GetTextExtentPoint32W(dc,text,(int)wcslen(text),&size))
+-                node->natural_width = MulDiv(size.cx,96,(int)view->dpi) +
+-                    (node->style.padding_set & 2 ? node->style.padding[1] : 8) +
+-                    (node->style.padding_set & 8 ? node->style.padding[3] : 8) + 2 * node->style.border;
++            if (GetTextExtentPoint32W(dc,text,(int)wcslen(text),&size)) {
++                int left=node->style.padding_set&8?node->style.padding[3]+node->style.border:8;
++                int right=node->style.padding[1]+node->style.border+(node->style.padding_set&2?0:8);
++                /* Match the separately rounded paint insets, then round the
++                   required width up so fractional DPI never elides the text. */
++                int64_t pixels=(int64_t)size.cx+lw_pixel(left,view->dpi)+lw_pixel(right,view->dpi);
++                int64_t logical=(pixels*96+view->dpi-1)/view->dpi;
++                node->natural_width=logical>LW_MAX_DIMENSION?LW_MAX_DIMENSION:(int)logical;
++            }
+             SelectObject(dc,previous);
+         }
+         if (dc) DeleteDC(dc); free(text);
+@@ -847,16 +869,31 @@ static void lw_layout_node(lw_view_t *view, int index, ui_rect_t rect, ui_rect_t
+     }
+ }
+ 
++static void lw_trace(lw_view_t *view,int final)
++{
++    char phase[64]={0};
++    if(!view->trace_enabled)return;
++    if(!final)GetEnvironmentVariableA("UI_UX_PHASE",phase,sizeof(phase));
++    if(final||strcmp(phase,view->trace_phase)){
++        if(view->trace_layouts||view->trace_paints)fprintf(stderr,"UX_LIGHT hwnd%p phase=%s layouts=%llu layoutMs=%.3f paints=%llu paintMs=%.3f nodeVisits=%llu paintArea=%llu view=%dx%d\n",
++            (void *)view->hwnd,view->trace_phase,(unsigned long long)view->trace_layouts,view->trace_layout_ms,(unsigned long long)view->trace_paints,view->trace_paint_ms,
++            (unsigned long long)view->trace_nodes,(unsigned long long)view->trace_area,view->width,view->height);
++        strcpy(view->trace_phase,phase);view->trace_layouts=view->trace_paints=view->trace_nodes=view->trace_area=0;view->trace_layout_ms=view->trace_paint_ms=0;
++    }
++}
+ static void lw_layout(lw_view_t *view)
+ {
+     ui_rect_t viewport = {0, 0, view->width, view->height};
++    LARGE_INTEGER start={0},end;
+     if (view->layout_depth) return;
++    if(view->trace_enabled){lw_trace(view,0);QueryPerformanceCounter(&start);}
+     ++view->layout_depth;
+     if (view->root >= 0) { lw_compute_style(view,view->root); lw_layout_node(view, view->root, viewport, viewport); }
+     lw_caret(view);
+     if (view->hwnd) InvalidateRect(view->hwnd, NULL, FALSE);
+     view->dirty = 0;
+     --view->layout_depth;
++    if(view->trace_enabled){QueryPerformanceCounter(&end);++view->trace_layouts;view->trace_layout_ms+=(double)(end.QuadPart-start.QuadPart)*1000.0/view->trace_frequency.QuadPart;}
+ }
+ 
+ static int lw_interrupt(JSRuntime *runtime, void *opaque)
+@@ -1043,7 +1080,7 @@ static JSValue lw_dom_set(JSContext *ctx, JSValueConst object, JSValueConst valu
+     view->dirty = 1; return JS_UNDEFINED;
+ }
+ 
+-static const char *lw_style_names[] = {"cssText","display","width","height","left","top","right","bottom","position","background","background-color","color","padding","margin","gap","border","border-radius","flex","flex-direction","font-size","font-weight","min-width","max-width","min-height","max-height","overflow-y","align-items","justify-content","white-space","text-align","overflow-x"};
++static const char *lw_style_names[] = {"cssText","display","width","height","left","top","right","bottom","position","background","background-color","color","padding","margin","gap","border","border-radius","flex","flex-direction","font-size","font-weight","min-width","max-width","min-height","max-height","overflow-y","align-items","justify-content","white-space","text-align","overflow-x","outline","outline-color","outline-offset"};
+ 
+ static JSValue lw_style_get(JSContext *ctx, JSValueConst object, int property)
+ {
+@@ -1101,6 +1138,8 @@ static JSValue lw_style_set(JSContext *ctx, JSValueConst object, JSValueConst va
+     strcpy(view->nodes[index].inline_style,output); view->dirty = 1;
+     JS_FreeCString(ctx,text); return JS_UNDEFINED;
+ invalid:
++    if(GetEnvironmentVariableW(L"UI_LIGHT_SCRIPT_DIAGNOSTICS",NULL,0))
++        fprintf(stderr,"Light CSS declaration rejected: %s=%s\n",property?lw_style_names[property]:"cssText",text);
+     JS_FreeCString(ctx,text); return JS_ThrowTypeError(ctx,"unsupported or oversized CSS declaration");
+ }
+ 
+@@ -1553,6 +1592,8 @@ static int lw_next_node(const lw_view_t *view, int index)
+ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
+ {
+     int i;
++    LARGE_INTEGER start={0},end;
++    if(view->trace_enabled){lw_trace(view,0);QueryPerformanceCounter(&start);}
+     HBRUSH brush = CreateSolidBrush(RGB(32,34,38));
+     FillRect(dc,&client,brush); DeleteObject(brush);
+     SetBkMode(dc,TRANSPARENT);
+@@ -1562,6 +1603,7 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
+         int saved;
+         wchar_t *text;
+         if (!node->used || !node->visible || !node->clip.width || !node->clip.height) continue;
++        if(view->trace_enabled)++view->trace_nodes;
+         rect = lw_pixel_rect(view,node->rect); clip = lw_pixel_rect(view,node->clip);
+         saved = SaveDC(dc); IntersectClipRect(dc,clip.left,clip.top,clip.right,clip.bottom);
+         if (node->kind == 2 || node->style.background_set || node->style.border) {
+@@ -1597,12 +1639,19 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
+                     DrawTextW(dc,text,-1,&rect,flags);if(text_saved)RestoreDC(dc,text_saved);}free(text);
+             }
+         }
+-        if (view->focused == i && !lw_input(node)) {
+-            RECT focus = rect; InflateRect(&focus,-3,-3); DrawFocusRect(dc,&focus);
++        if (node->style.outline) {
++            RECT focus = lw_pixel_rect(view,node->rect);
++            HPEN pen = CreatePen(PS_SOLID,lw_pixel(node->style.outline,view->dpi),lw_rgb(node->style.outline_color));
++            HGDIOBJ old_pen = SelectObject(dc,pen),old_brush = SelectObject(dc,GetStockObject(NULL_BRUSH));
++            InflateRect(&focus,lw_pixel(node->style.outline_offset,view->dpi),lw_pixel(node->style.outline_offset,view->dpi));
++            Rectangle(dc,focus.left,focus.top,focus.right,focus.bottom);
++            SelectObject(dc,old_brush);SelectObject(dc,old_pen);DeleteObject(pen);
+         }
+         lw_scroll_paint(view,node,dc);
+         RestoreDC(dc,saved);
+     }
++    if(view->trace_enabled){QueryPerformanceCounter(&end);++view->trace_paints;view->trace_paint_ms+=(double)(end.QuadPart-start.QuadPart)*1000.0/view->trace_frequency.QuadPart;
++        view->trace_area+=(uint64_t)(client.right-client.left)*(uint64_t)(client.bottom-client.top);}
+ }
+ 
+ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
+@@ -1691,7 +1740,8 @@ static ui_status_t lw_create_view(void *user, ui_host_t *host, void **out)
+     view = (lw_view_t *)calloc(1, sizeof(*view));
+     if (!view) return UI_STATUS_OUT_OF_MEMORY;
+     view->backend = backend; view->host = host; view->dpi = 96;
+-    view->root = view->focused = view->pressed = -1;view->scroll_focus=-1;
++    view->root = view->focused = view->pressed = -1;view->scroll_focus=-1;view->keyboard_focus=1;
++    view->trace_enabled=GetEnvironmentVariableA("UI_UX_TRACE",NULL,0)!=0;if(view->trace_enabled)QueryPerformanceFrequency(&view->trace_frequency);
+     view->font = CreateFontW(-14, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
+         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
+         DEFAULT_PITCH, L"Segoe UI");
+@@ -1713,6 +1763,7 @@ static void lw_destroy_view(void *user, void *data)
+     lw_view_t *view = (lw_view_t *)data;
+     (void)user;
+     if (!view) return;
++    lw_trace(view,1);
+     lw_scroll_cancel(view,0);lw_free_document(view);
+     if (view->hwnd) DestroyWindow(view->hwnd);
+     DeleteObject(view->font); free(view);
+@@ -1838,6 +1889,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
+         lw_layout(view);return event->kind==UI_INPUT_CANCEL?UI_STATUS_OK:UI_STATUS_CANCELLED;
+     }
+     if (!view->context) return UI_STATUS_NOT_FOUND;
++    if(event->kind==UI_INPUT_POINTER_DOWN&&view->keyboard_focus){view->keyboard_focus=0;view->dirty=1;}
+     if(ui_menus_route_input(view->host,view,event,view->composing)==UI_STATUS_OK)return UI_STATUS_OK;
+     if(lw_scroll_input(view,event))return UI_STATUS_OK;
+     view->event_modifiers = event->modifiers; view->wheel_delta = event->wheel_delta;
+@@ -1901,6 +1953,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
+     }
+     if (event->kind == UI_INPUT_TEXT) return lw_text_insert(view,event->text_utf8);
+     if (event->kind == UI_INPUT_KEY_DOWN) {
++        if(event->key_code!=VK_SHIFT&&event->key_code!=VK_CONTROL&&event->key_code!=VK_MENU&&!view->keyboard_focus){view->keyboard_focus=1;view->dirty=1;}
+         if (view->composing && (event->key_code == VK_RETURN || event->key_code == VK_ESCAPE)) return UI_STATUS_OK;
+         if (lw_text_key(view,event)) return UI_STATUS_OK;
+         if (event->key_code == VK_TAB) {
+@@ -2107,5 +2160,5 @@ void ui_light_web_backend_destroy(ui_web_backend_t *handle)
+ 
+ const char *ui_light_web_backend_capabilities(void)
+ {
+-    return "html:lexbor,1024-nodes,256KiB;js:quickjs-ng,50ms,8MiB;layout:flex,absolute,box-model;controls:button,input,textarea;dom:incremental;events:ui.invoke,ui.value,ui.postMessage,ui.onmessage;scroll:vertical;css:class,id,descendant,hover,active,focus,disabled,width-media;thread:ui";
++    return "html:lexbor,1024-nodes,256KiB;js:quickjs-ng,50ms,8MiB;layout:flex,absolute,box-model;controls:button,input,textarea;dom:incremental;events:ui.invoke,ui.value,ui.postMessage,ui.onmessage;scroll:vertical;css:class,id,descendant,hover,active,focus,focus-visible,disabled,width-media;thread:ui";
+ }
+diff --git a/src/visual.css b/src/visual.css
+index 76f35e5..822a9c7 100644
+--- a/src/visual.css
++++ b/src/visual.css
+@@ -1,10 +1,10 @@
+ /* Shared controlled-CSS palette. Included into framework templates at build time. */
+ body,div,span,button,input,textarea,img,header,section,main,aside { box-sizing:border-box; }
+ body { margin:0; font-family:"Segoe UI"; font-size:13px; color:#242424; background:#f7f7f8; }
+-button { font-family:"Segoe UI"; font-size:13px; height:28px; padding:4px 8px; border:1px solid #d4d4d4; border-radius:4px; background:#ffffff; color:#242424; white-space:nowrap; }
++button { font-family:"Segoe UI"; font-size:13px; height:28px; padding:4px 8px; border:1px solid #d4d4d4; border-radius:4px; background:#ffffff; color:#242424; white-space:nowrap; text-align:center; outline:none; }
+ button:hover { background:#eeeeef; }
+ button:active { background:#dedee0; }
+-button:focus { border-color:#0078d4; }
++button:focus-visible,span:focus-visible,div:focus-visible { outline:1px solid #0078d4; outline-offset:-2px; }
+ button:disabled { color:#919191; background:#f1f1f2; border-color:#dddddf; }
+ input,textarea { height:28px; padding:4px 8px; border:1px solid #c8c8cb; border-radius:3px; background:#ffffff; color:#242424; font-family:"Segoe UI"; font-size:13px; }
+ input:focus,textarea:focus { border-color:#0078d4; }
+@@ -16,12 +16,13 @@ input:disabled,textarea:disabled,.readonly { background:#f0f0f2; color:#707074;
+ .muted,.label,.unit { color:#646468; font-size:12px; }
+ .error { color:#b42318; font-size:12px; }
+ .primary:disabled { background:#f1f1f2; color:#919191; border-color:#dddddf; }
+-.glyph { padding:0; font-family:"Segoe MDL2 Assets"; font-size:12px; }
++.glyph { padding:0; font-family:"Segoe MDL2 Assets"; font-size:12px; text-align:center; }
+ .dark { background:#202020; color:#ededed; }
+ .dark button { background:#2b2b2b; color:#ededed; border-color:#484848; }
+ .dark button:hover { background:#383838; }
+ .dark button:active { background:#454545; }
+-.dark button:focus,.dark input:focus,.dark textarea:focus { border-color:#60b7ff; }
++.dark button:focus-visible,.dark span:focus-visible,.dark div:focus-visible { outline-color:#60b7ff; }
++.dark input:focus,.dark textarea:focus { border-color:#60b7ff; }
+ .dark input,.dark textarea { background:#252525; color:#ededed; border-color:#555555; }
+ .dark button:disabled,.dark input:disabled,.dark textarea:disabled,.dark .readonly { background:#292929; color:#999999; border-color:#3c3c3c; }
+ .dark .invalid { border-color:#ff9a8f; }
+@@ -35,9 +36,12 @@ input:disabled,textarea:disabled,.readonly { background:#f0f0f2; color:#707074;
+ .panel-title { height:28px; padding:4px 8px; display:flex; flex-direction:row; gap:4px; align-items:center; background:#f0f0f2; }
+ .panel-title span { height:20px; white-space:nowrap; font-size:12px; }
+ .panel-title button { height:20px; padding:2px 4px; border:0; border-radius:2px; background:#f0f0f2; font-size:12px; }
+-.panel-title button:hover,.panel-title button:focus { background:#dedee0; }
++.panel-title button.glyph { padding:0; border-radius:3px; }
++.panel-title button:hover { background:#dedee0; }
++.panel-title button:active { background:#cdced3; }
+ .dark .panel-title,.dark .panel-title button { background:#2b2b2b; color:#ededed; }
+-.dark .panel-title button:hover,.dark .panel-title button:focus { background:#454545; }
++.dark .panel-title button:hover { background:#383838; }
++.dark .panel-title button:active { background:#454545; }
+ 
+ ::-webkit-scrollbar { width:12px; height:12px; }
+ ::-webkit-scrollbar-track,::-webkit-scrollbar-corner { background:#eeeeef; }
+diff --git a/tests/light_glyph_padding.c b/tests/light_glyph_padding.c
+index a7dfa16..beb2766 100644
+--- a/tests/light_glyph_padding.c
++++ b/tests/light_glyph_padding.c
+@@ -1,8 +1,16 @@
+ /* Real light rendering: explicit zero padding must leave the whole icon visible. */
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <windows.h>
+ #include "ui_framework/ui.h"
+ #include "ui_framework/light_web.h"
++static unsigned text_pixels(const ui_pixel_buffer_t *pixels,const ui_rect_t *rect,uint32_t dpi)
++{
++ unsigned count=0;int x0=MulDiv(rect->x+9,(int)dpi,96),x1=MulDiv(rect->x+rect->width-9,(int)dpi,96);
++ int y0=MulDiv(rect->y+5,(int)dpi,96),y1=MulDiv(rect->y+rect->height-5,(int)dpi,96);
++ for(int y=y0;y<y1;++y)for(int x=x0;x<x1;++x){const unsigned char *s=pixels->pixels+(size_t)y*pixels->stride+(size_t)x*4;if(s[0]<180&&s[1]<180&&s[2]<180)++count;}
++ return count;
++}
+ int main(void)
+ {
+  ui_host_config_t hc={0};ui_light_web_config_t bc={0};ui_pixel_buffer_t p={0};unsigned count=0;int left=20,right=-1;
+@@ -16,5 +24,19 @@ int main(void)
+  ui_element_presentation_t box={0};box.size=sizeof(box);ui_status_t ps=ui_web_view_get_presentation(v,"icon",&box);printf("presentation=%d visible=%d rect=%d,%d,%d,%d text=%s\n",ps,box.visible,box.rect.x,box.rect.y,box.rect.width,box.rect.height,box.text_utf8);
+  if(ok)for(int y=2;y<38;++y)for(int x=2;x<18;++x){unsigned char *s=p.pixels+y*p.stride+x*4;if((299u*s[0]+587u*s[1]+114u*s[2])<210000u){++count;if(x<left)left=x;if(x>right)right=x;}}
+  ok=ok&&right-left>=6&&count>=10;printf("Explicit zero-padding icon: dark=%u extent=%d..%d %s\n",count,left,right,ok?"PASS":"FAIL");
+- free(p.pixels);ui_web_view_destroy(v);ui_light_web_backend_destroy(b);ui_host_destroy(h);return ok?0:1;
++ free(p.pixels);p.pixels=NULL;
++ for(uint32_t dpi=96;dpi<=192;dpi+=48){
++  int previous_ok=ok;ok=1;
++  ui_rect_t automatic={0},reference={0};unsigned actual=0,complete=0;
++  ok=ok&&ui_web_view_resize(v,160,80,dpi)==UI_STATUS_OK;
++  ok=ok&&ui_web_view_load_html(v,"<style>body{margin:0;background:#ffffff}button{position:absolute;left:0px;height:28px;padding:4px 8px;border:1px solid #000000;background:#ffffff;color:#000000;font-family:Segoe UI;font-size:13px;text-align:center}#auto{top:0px}#reference{top:40px;width:120px}</style><button id='auto'>Submit</button><button id='reference'>Submit</button>")==UI_STATUS_OK;
++  p.stride=0;p.capacity=0;ok=ok&&ui_web_view_capture_rgba(v,160,80,dpi,&p)==UI_STATUS_OK;p.capacity=p.stride*p.height;p.pixels=malloc(p.capacity);
++  ok=ok&&p.pixels&&ui_web_view_capture_rgba(v,160,80,dpi,&p)==UI_STATUS_OK;
++  ok=ok&&ui_web_view_get_element_rect(v,"auto",&automatic)==UI_STATUS_OK&&ui_web_view_get_element_rect(v,"reference",&reference)==UI_STATUS_OK;
++  if(p.pixels){actual=text_pixels(&p,&automatic,dpi);complete=text_pixels(&p,&reference,dpi);}
++  printf("Auto text dpi%u logicalWidth%d dark%u reference%u\n",dpi,automatic.width,actual,complete);ok=ok&&complete>20&&actual*10>=complete*9;
++  free(p.pixels);p.pixels=NULL;
++  ok=ok&&previous_ok;
++ }
++ ui_web_view_destroy(v);ui_light_web_backend_destroy(b);ui_host_destroy(h);return ok?0:1;
+ }
+diff --git a/tests/light_web_dynamic.c b/tests/light_web_dynamic.c
+index d6f5555..e3bd41e 100644
+--- a/tests/light_web_dynamic.c
++++ b/tests/light_web_dynamic.c
+@@ -123,6 +123,38 @@ int main(void)
+     CHECK(ui_web_view_resize(view,500,600,144) == UI_STATUS_OK);
+     CHECK(ui_web_view_get_element_rect(view,"sidebar",&rect) == UI_STATUS_OK && rect.width == 0);
+     CHECK(ui_web_view_native_handle(view) == web_hwnd);
++    /* Mouse focus keeps activation semantics; only keyboard focus draws the
++       solid ring, without changing layout or hit geometry. */
++    CHECK(ui_web_view_resize(view,160,80,96) == UI_STATUS_OK);
++    CHECK(ui_web_view_load_html(view,
++        "<style>body{margin:0;}button{width:60px;height:28px;outline:none;}"
++        "button:focus-visible{outline:1px solid #0078d4;outline-offset:-2px;}</style>"
++        "<button id='first'>A</button><button id='second'>B</button>") == UI_STATUS_OK);
++    CHECK(ui_web_view_get_element_rect(view,"first",&before) == UI_STATUS_OK);
++    CHECK(input(view,UI_INPUT_POINTER_DOWN,before.x+10,before.y+10,0,0) == UI_STATUS_OK);
++    CHECK(input(view,UI_INPUT_POINTER_UP,before.x+10,before.y+10,0,0) == UI_STATUS_OK);
++    {ui_element_presentation_t p={0};ui_pixel_buffer_t pixels={0};uint8_t image[160*80*4];size_t blue=0;
++     p.size=sizeof(p);CHECK(ui_web_view_get_presentation(view,"first",&p)==UI_STATUS_OK&&p.focused);
++     pixels.size=sizeof(pixels);pixels.pixels=image;pixels.capacity=sizeof(image);
++     CHECK(ui_web_view_capture_rgba(view,160,80,96,&pixels)==UI_STATUS_OK);
++     for(size_t n=0;n<sizeof(image);n+=4)if(image[n]==0&&image[n+1]==120&&image[n+2]==212)++blue;
++     CHECK(blue==0);
++     CHECK(input(view,UI_INPUT_KEY_DOWN,0,0,VK_TAB,0)==UI_STATUS_OK);
++     p.size=sizeof(p);CHECK(ui_web_view_get_presentation(view,"second",&p)==UI_STATUS_OK&&p.focused);
++     CHECK(ui_web_view_capture_rgba(view,160,80,96,&pixels)==UI_STATUS_OK);blue=0;
++     for(size_t n=0;n<sizeof(image);n+=4)if(image[n]==0&&image[n+1]==120&&image[n+2]==212)++blue;
++     CHECK(blue>=100);
++     CHECK(ui_web_view_get_element_rect(view,"first",&after)==UI_STATUS_OK&&!memcmp(&before,&after,sizeof(before)));
++     CHECK(ui_web_view_load_html(view,"<button id='plain'>Unstyled</button>")==UI_STATUS_OK);
++     CHECK(input(view,UI_INPUT_POINTER_DOWN,10,10,0,0)==UI_STATUS_OK);
++     CHECK(input(view,UI_INPUT_POINTER_UP,10,10,0,0)==UI_STATUS_OK);
++     CHECK(ui_web_view_capture_rgba(view,160,80,96,&pixels)==UI_STATUS_OK);blue=0;
++     for(size_t n=0;n<sizeof(image);n+=4)if(image[n]==0&&image[n+1]==120&&image[n+2]==212)++blue;
++     CHECK(blue==0);
++     CHECK(input(view,UI_INPUT_KEY_DOWN,0,0,VK_TAB,0)==UI_STATUS_OK);
++     CHECK(ui_web_view_capture_rgba(view,160,80,96,&pixels)==UI_STATUS_OK);blue=0;
++     for(size_t n=0;n<sizeof(image);n+=4)if(image[n]==0&&image[n+1]==120&&image[n+2]==212)++blue;
++     CHECK(blue>=100);}
+     ui_web_view_destroy(view); ui_light_web_backend_destroy(backend); ui_host_destroy(host); DestroyWindow(parent);
+     printf("Dynamic Web probe: %d failure(s), %d messages, 250 incremental rebuilds\n",failures,messages);
+     return failures ? 1 : 0;

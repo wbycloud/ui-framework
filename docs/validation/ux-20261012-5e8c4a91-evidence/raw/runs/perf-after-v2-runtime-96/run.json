@@ -1,0 +1,32 @@
+{
+  "label": "perf-after-v2-runtime-96",
+  "command": [
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\ux-20261012-5e8c4a91\\optimized\\ux_probe.exe",
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\ux-20261012-5e8c4a91\\optimized\\stateful_components.uapp",
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+    "webview2",
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\ux-20261012-5e8c4a91\\runs\\perf-after-v2-runtime-96",
+    "96",
+    "light",
+    "light",
+    "benchmark"
+  ],
+  "pid": 34168,
+  "os_exit": 1,
+  "forced": false,
+  "elapsed_ms": 76735.0,
+  "backend": "webview2",
+  "chrome": "light",
+  "program_dpi": "96",
+  "theme": "light",
+  "identities": {
+    "build\\ux-20261012-5e8c4a91\\optimized\\ux_probe.exe": "191ac8f696dc746262218883138194c03182d9d38a561d01577c8a8fb4cf5d93",
+    "build\\ux-20261012-5e8c4a91\\optimized\\ui_framework.dll": "16373c235673e66b5345888fcb11ba7f6f14206e96a3479a5834eefe2e5483fc",
+    "build\\ux-20261012-5e8c4a91\\optimized\\stateful_components.uapp": "eb80fd7b90a0a8fef85c32f47da67e870348c42e83365c4ce3ac508e0922a60c",
+    ".deps\\mesa-24.3.4\\x64\\osmesa.dll": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+  },
+  "lp_parent": null,
+  "input": "real SendInput",
+  "capture": "desktop BitBlt",
+  "eof": "stdout file closed after process wait"
+}

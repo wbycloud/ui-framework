@@ -1,0 +1,5 @@
+Get-FileHash: 
+Line |
+   2 |  … oding utf8; Get-FileHash -LiteralPath build/ux-20261012-5e8c4a91/runs …
+     |                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | 数据错误(循环冗余检查)。 : 'D:\应用软件框架\应用层序框架\build\ux-20261012-5e8c4a91\runs\final4-path-webview2-96-dark-buttons\060-cancel-dialog-tab.bmp'.

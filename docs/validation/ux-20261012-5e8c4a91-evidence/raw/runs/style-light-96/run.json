@@ -1,0 +1,31 @@
+{
+  "label": "style-light-96",
+  "command": [
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\ux-20261012-5e8c4a91\\after\\ux_probe.exe",
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\ux-20261012-5e8c4a91\\after\\stateful_components.uapp",
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\.deps\\mesa-24.3.4\\x64\\osmesa.dll",
+    "light",
+    "D:\\\u5e94\u7528\u8f6f\u4ef6\u6846\u67b6\\\u5e94\u7528\u5c42\u5e8f\u6846\u67b6\\build\\ux-20261012-5e8c4a91\\runs\\style-light-96",
+    "96",
+    "light",
+    "light"
+  ],
+  "pid": 34936,
+  "os_exit": 0,
+  "forced": false,
+  "elapsed_ms": 7469.0,
+  "backend": "light",
+  "chrome": "light",
+  "program_dpi": "96",
+  "theme": "light",
+  "identities": {
+    "build\\ux-20261012-5e8c4a91\\after\\ux_probe.exe": "e9eb9cee9c7bf673e3b18b88c23892e0777a6d2a1046a5f1b5a2dc57ccdc7492",
+    "build\\ux-20261012-5e8c4a91\\after\\ui_framework.dll": "c8e2ad169b1d4eb50d1263a519a2487ed8f9442c22ca097d101535f8b365eb89",
+    "build\\ux-20261012-5e8c4a91\\after\\stateful_components.uapp": "637d99fbf6579b626fac8f3a4520d719ce51a3959dbad89661d4ad1259cd1700",
+    ".deps\\mesa-24.3.4\\x64\\osmesa.dll": "c633b820bba8ec0dcb05466505e3c246e4c4028eaec7caf1054e707c8eb3ca1f"
+  },
+  "lp_parent": null,
+  "input": "real SendInput",
+  "capture": "desktop BitBlt",
+  "eof": "stdout file closed after process wait"
+}

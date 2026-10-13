@@ -1,0 +1,12 @@
+TEST_PHASE pid14032 tick1047724468 dispatched0 create-host-begin
+TEST_PHASE pid14032 tick1047724515 dispatched0 create-host-end
+TEST_PHASE pid14032 tick1047724953 dispatched36 open-begin
+TEST_PHASE pid14032 tick1047725093 dispatched36 open-return
+TEST_PHASE pid14032 tick1047725687 dispatched77 open-settled
+RESTORED modeinit-failures dpi96 name200 treeCollapsed0
+TEST_PHASE pid14032 tick1047725687 dispatched77 close-begin
+TEST_PHASE pid14032 tick1047725703 dispatched77 close-request-return
+TEST_PHASE pid14032 tick1047725843 dispatched79 close-state-checked
+TEST_PHASE pid14032 tick1047726156 dispatched84 com-uninitialize-begin
+TEST_PHASE pid14032 tick1047726156 dispatched84 process-return
+Stateful actual webview2 / init-failures: 0 failures
