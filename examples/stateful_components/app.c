@@ -3,10 +3,12 @@
 #define UI_FIXTURE_EMBEDDED 1
 #include "../../tests/api7_fixture.c"
 #include "ui_framework/language.h"
+#include "ui_framework/theme.h"
 #define STATE_LIMIT 70000u
 #define STATE_HEADER 32u
 typedef struct state_app {
     fixture_t *scene;
+    ui_image_id_t theme_icon;
     HANDLE profile_lock;
     wchar_t path[4096];
     unsigned char profile;
@@ -75,14 +77,25 @@ static void report(state_app_t *s,const char *operation,ui_status_t status)
  else if(status==UI_STATUS_NOT_FOUND)snprintf(text,sizeof(text),app_text(s,"No user state: profile %c; current state retained","没有用户状态：档案 %c；保留当前状态"),s->profile);
  else snprintf(text,sizeof(text),app_text(s,"State rejected: profile %c, status %d","状态被拒绝：档案 %c，状态码 %d"),s->profile,status);
  (void)ui_component_set_text(s->scene->status,text);}
+/* Caller-owned icon: the host supplies semantic foreground, the application
+   keeps the image ID and refreshes its pixels without re-registering menus. */
+static void theme_changed(ui_host_t *host,const ui_theme_info_t *theme,void *data)
+{
+    state_app_t *s=data;unsigned char pixels[16*16*4]={0};ui_rgba_desc_t image={0};uint32_t color=theme->icon_rgba;
+    for(int y=3;y<13;++y)for(int x=3;x<13;++x)if(x==y||x==y+1||x==15-y){size_t at=((size_t)y*16+(size_t)x)*4;pixels[at]=(unsigned char)(color>>24);pixels[at+1]=(unsigned char)(color>>16);pixels[at+2]=(unsigned char)(color>>8);pixels[at+3]=255;}
+    image.size=sizeof(image);image.width=image.height=16;image.stride=64;image.bytes=sizeof(pixels);image.pixels=pixels;
+    if(s->theme_icon)(void)ui_image_update(host,s->theme_icon,&image);else (void)ui_image_create(host,&image,&s->theme_icon);
+}
 static void state_command(ui_host_t *host,uint64_t request,const char *id,const char *params,const char *origin,void *data)
 {
     state_app_t *s=data;ui_status_t status=UI_STATUS_OK;(void)params;(void)origin;
     if(!strcmp(id,"state.save"))status=save_state(s);
     else if(!strcmp(id,"state.load"))status=load_state(s);
     else if(!strcmp(id,"state.reset-column"))status=ui_component_reset_columns(s->scene->table,"name");
+    else if(!strcmp(id,"state.title")){ui_cell_t field={0};field.size=sizeof(field);status=ui_component_get_field(s->scene->form,"name",&field);if(status==UI_STATUS_OK)status=ui_workspace_set_instance_title(s->scene->context.workspace,s->scene->context.instance_id,field.text);}
+    else if(!strcmp(id,"state.theme-system"))status=ui_host_set_theme(host,UI_THEME_SYSTEM);
     else{status=ui_component_reset_columns(s->scene->table,NULL);if(status==UI_STATUS_OK)status=ui_shell_reset_layout(ui_host_get_shell(host));}
-    report(s,!strcmp(id,"state.save")?"saved":!strcmp(id,"state.load")?"loaded":"reset",status);
+    report(s,!strcmp(id,"state.save")?"saved":!strcmp(id,"state.load")?"loaded":!strcmp(id,"state.title")?"renamed":!strcmp(id,"state.theme-system")?"theme":"reset",status);
     (void)ui_host_reply(host,request,status==UI_STATUS_OK,"{}");
 }
 static ui_status_t acquire_profile(state_app_t *s)
@@ -113,27 +126,28 @@ static ui_status_t schema_variant(fixture_t *scene)
 }
 static ui_status_t UI_APP_CALL state_create(const ui_app_context_t *context,void **out,ui_assistant_config_t *assistant)
 {
-    state_app_t *s=calloc(1,sizeof(*s));ui_status_t status;void *scene=NULL;const char *ids[]={"state.save","state.load","state.reset-column","state.reset"},*titles[]={"Save interface state","Reload interface state","Reset Name width","Reset widths and layout"};
+    state_app_t *s=calloc(1,sizeof(*s));ui_status_t status;void *scene=NULL;const char *ids[]={"state.save","state.load","state.reset-column","state.reset","state.title","state.theme-system"},*titles[]={"Save interface state","Reload interface state","Reset Name width","Reset widths and layout","Use draft as tab title","Follow system theme"};
     if(!s)return UI_STATUS_OUT_OF_MEMORY;*out=s;status=acquire_profile(s);if(status!=UI_STATUS_OK)return status;
     status=prepare_language(s,context->host);if(status!=UI_STATUS_OK)return status;
     status=create(context,&scene,assistant);s->scene=scene;if(status!=UI_STATUS_OK)return status;status=schema_variant(s->scene);if(status!=UI_STATUS_OK)return status;
     {ui_dialog_layout_t layout={0};layout.size=sizeof(layout);layout.preferred_width=440;layout.min_width=240;layout.min_height=120;
         status=ui_component_set_dialog_layout(s->scene->dialog,&layout);if(status!=UI_STATUS_OK)return status;}
-    for(size_t i=0;i<4;++i){ui_command_desc_t cmd={0};ui_menu_item_desc_t item={0};cmd.size=sizeof(cmd);cmd.id=ids[i];cmd.title=titles[i];cmd.handler=state_command;cmd.user_data=s;
+    {ui_theme_info_t theme={0};theme.size=sizeof(theme);status=ui_host_get_theme(context->host,&theme);if(status!=UI_STATUS_OK)return status;theme_changed(context->host,&theme,s);if(!s->theme_icon)return UI_STATUS_OUT_OF_MEMORY;}
+    for(size_t i=0;i<6;++i){ui_command_desc_t cmd={0};ui_menu_item_desc_t item={0};cmd.size=sizeof(cmd);cmd.id=ids[i];cmd.title=titles[i];cmd.handler=state_command;cmd.user_data=s;
         status=ui_host_register_command(context->host,&cmd);if(status!=UI_STATUS_OK)return status;
-        item.size=sizeof(item);item.id=ids[i];item.menu_path="State";item.title=titles[i];item.command_id=ids[i];item.order=(int)i;status=ui_host_register_menu_item(context->host,&item);if(status!=UI_STATUS_OK)return status;
+        item.size=sizeof(item);item.id=ids[i];item.menu_path="State";item.title=titles[i];item.command_id=ids[i];item.order=(int)i;if(i==4)item.image_id=s->theme_icon;status=ui_host_register_menu_item(context->host,&item);if(status!=UI_STATUS_OK)return status;
     }
     {ui_menu_item_desc_t item={0};item.size=sizeof(item);item.id="state.properties";item.menu_path="State";
-        item.title="Edit properties...";item.command_id="test.modal";item.order=4;
+        item.title="Edit properties...";item.command_id="test.modal";item.order=6;
         status=ui_host_register_menu_item(context->host,&item);if(status!=UI_STATUS_OK)return status;}
     status=register_language(s);if(status!=UI_STATUS_OK)return status;
-    return ui_host_set_language_callback(context->host,language_changed,s);
+    status=ui_host_set_language_callback(context->host,language_changed,s);return status==UI_STATUS_OK?ui_host_set_theme_callback(context->host,theme_changed,s):status;
 }
 static ui_status_t UI_APP_CALL state_mount(void *data,const ui_app_context_t *context)
 {state_app_t *s=data;ui_status_t status=mount(s->scene,context);if(status!=UI_STATUS_OK)return status;status=load_state(s);report(s,"loaded",status);if(s->language_load!=UI_STATUS_OK&&s->language_load!=UI_STATUS_NOT_FOUND)report(s,"language rejected",s->language_load);return UI_STATUS_OK;}
 static void UI_APP_CALL state_active(void *data,int enabled){state_app_t *s=data;active(s->scene,enabled);}
 static ui_app_close_decision_t UI_APP_CALL state_close(void *data,ui_app_close_reason_t reason){state_app_t *s=data;return close_app(s->scene,reason);}
-static void UI_APP_CALL state_unmount(void *data){state_app_t *s=data;(void)ui_host_set_language_callback(s->scene->context.host,NULL,NULL);unmount(s->scene);}
+static void UI_APP_CALL state_unmount(void *data){state_app_t *s=data;(void)ui_host_set_language_callback(s->scene->context.host,NULL,NULL);(void)ui_host_set_theme_callback(s->scene->context.host,NULL,NULL);if(s->theme_icon){(void)ui_image_release(s->scene->context.host,s->theme_icon);s->theme_icon=0;}unmount(s->scene);}
 static void UI_APP_CALL state_destroy(void *data)
 {state_app_t *s=data;if(s->scene)destroy(s->scene);if(s->profile_lock&&s->profile_lock!=INVALID_HANDLE_VALUE)CloseHandle(s->profile_lock);free(s);}
 UI_APP_EXPORT const ui_app_descriptor_t *UI_APP_CALL ui_app_query_v1(void)

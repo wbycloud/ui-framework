@@ -1,0 +1,25 @@
+/* Own-process desktop driver for the public-C diagnostic package. */
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+static HWND root;static DWORD child_pid;static int failures,frame_number;
+#define CHECK(x) do{if(!(x)){printf("host desktop line%d: %s\n",__LINE__,#x);++failures;}}while(0)
+static BOOL CALLBACK find_root(HWND w,LPARAM unused)
+{DWORD pid=0;(void)unused;GetWindowThreadProcessId(w,&pid);if(pid==child_pid&&IsWindowVisible(w)&&!GetWindow(w,GW_OWNER)){root=w;return FALSE;}return TRUE;}
+static void pump(DWORD ms){Sleep(ms);}
+static void shot(const char *name)
+{int w=GetSystemMetrics(SM_CXVIRTUALSCREEN),h=GetSystemMetrics(SM_CYVIRTUALSCREEN);HDC screen=GetDC(NULL),dc=CreateCompatibleDC(screen);BITMAPINFO info={0};BITMAPFILEHEADER header={0};void *bits;HBITMAP bitmap;HGDIOBJ old;char path[160];FILE *f=NULL;info.bmiHeader.biSize=sizeof(BITMAPINFOHEADER);info.bmiHeader.biWidth=w;info.bmiHeader.biHeight=-h;info.bmiHeader.biPlanes=1;info.bmiHeader.biBitCount=32;bitmap=CreateDIBSection(screen,&info,DIB_RGB_COLORS,&bits,NULL,0);CHECK(bitmap);if(!bitmap)return;old=SelectObject(dc,bitmap);CHECK(BitBlt(dc,0,0,w,h,screen,GetSystemMetrics(SM_XVIRTUALSCREEN),GetSystemMetrics(SM_YVIRTUALSCREEN),SRCCOPY|CAPTUREBLT));header.bfType=0x4d42;header.bfOffBits=sizeof(header)+sizeof(info.bmiHeader);header.bfSize=header.bfOffBits+w*h*4;snprintf(path,sizeof(path),"%03d-%s.bmp",frame_number++,name);CHECK(!fopen_s(&f,path,"wb"));if(f){fwrite(&header,sizeof(header),1,f);fwrite(&info.bmiHeader,sizeof(info.bmiHeader),1,f);fwrite(bits,4,(size_t)w*h,f);fclose(f);}SelectObject(dc,old);DeleteObject(bitmap);DeleteDC(dc);ReleaseDC(NULL,screen);printf("FRAME %s foreground=%p focus-childPID=%lu\n",name,(void *)GetForegroundWindow(),child_pid);}
+static void mouse(int x,int y,DWORD flags)
+{POINT at={x,y};INPUT in={0};DWORD pid=0;ClientToScreen(root,&at);GetWindowThreadProcessId(WindowFromPoint(at),&pid);CHECK(pid==child_pid);if(pid!=child_pid)return;in.type=INPUT_MOUSE;in.mi.dx=MulDiv(at.x,65535,GetSystemMetrics(SM_CXVIRTUALSCREEN)-1);in.mi.dy=MulDiv(at.y,65535,GetSystemMetrics(SM_CYVIRTUALSCREEN)-1);in.mi.dwFlags=MOUSEEVENTF_ABSOLUTE|MOUSEEVENTF_MOVE|flags;CHECK(SendInput(1,&in,sizeof(in))==1);pump(100);}
+static void key(WORD k,int ctrl)
+{INPUT in={0};DWORD pid=0;GetWindowThreadProcessId(GetForegroundWindow(),&pid);CHECK(pid==child_pid);if(pid!=child_pid)return;in.type=INPUT_KEYBOARD;if(ctrl){in.ki.wVk=VK_CONTROL;CHECK(SendInput(1,&in,sizeof(in))==1);pump(20);}in.ki.wVk=k;in.ki.dwFlags=0;CHECK(SendInput(1,&in,sizeof(in))==1);in.ki.dwFlags=KEYEVENTF_KEYUP;CHECK(SendInput(1,&in,sizeof(in))==1);if(ctrl){in.ki.wVk=VK_CONTROL;CHECK(SendInput(1,&in,sizeof(in))==1);}pump(100);}
+int wmain(int argc,wchar_t **argv)
+{STARTUPINFOW start={0};PROCESS_INFORMATION process={0};wchar_t command[8192];ULONGLONG deadline;DWORD code=259;setvbuf(stdout,NULL,_IONBF,0);if(argc!=3)return 2;start.cb=sizeof(start);swprintf_s(command,8192,L"\"%s\" \"%s\" \"%s\"",argv[1],argv[2],argv[2]);CHECK(CreateProcessW(NULL,command,NULL,NULL,FALSE,0,NULL,NULL,&start,&process));if(!process.hProcess)return 2;child_pid=process.dwProcessId;deadline=GetTickCount64()+10000;do{EnumWindows(find_root,0);pump(20);}while(!root&&GetTickCount64()<deadline);CHECK(root);if(!root)return 2;SetWindowPos(root,HWND_TOP,60,60,1200,800,0);SetForegroundWindow(root);pump(800);shot("two-instances-initial");
+ /* Stable field placement is checked in the saved frame, then the app's public
+    command logs certify actual Dispatch and the resulting ID/title/theme. */
+ mouse(35,74,MOUSEEVENTF_LEFTDOWN);mouse(35,74,MOUSEEVENTF_LEFTUP);pump(300);shot("title-applied");
+ mouse(260,15,MOUSEEVENTF_LEFTDOWN);mouse(260,15,MOUSEEVENTF_LEFTUP);key(VK_F1,0);pump(200);shot("complete-title-F1");mouse(180,150,MOUSEEVENTF_LEFTDOWN);mouse(180,150,MOUSEEVENTF_LEFTUP);key(VK_END,1);shot("complete-title-End");key('A',1);key('C',1);if(OpenClipboard(NULL)){HGLOBAL memory=GetClipboardData(CF_UNICODETEXT);const wchar_t *text=memory?GlobalLock(memory):NULL;CHECK(text&&wcsstr(text,L"TITLE_END")&&wcslen(text)>300);if(text)GlobalUnlock(memory);CloseClipboard();}else CHECK(0);key(VK_ESCAPE,0);
+ mouse(150,74,MOUSEEVENTF_LEFTDOWN);mouse(150,74,MOUSEEVENTF_LEFTUP);pump(300);shot("theme-toggle");
+ key(VK_TAB,1);shot("other-instance");key('W',1);pump(300);key('W',1);pump(300);PostMessageW(root,WM_CLOSE,0,0);CHECK(WaitForSingleObject(process.hProcess,10000)==WAIT_OBJECT_0);CHECK(GetExitCodeProcess(process.hProcess,&code)&&code==0);{char events[12000]={0};FILE *f=NULL;CHECK(!fopen_s(&f,"public-contract-events.log","rb"));if(f){size_t bytes=fread(events,1,sizeof(events)-1,f);events[bytes]=0;fclose(f);CHECK(strstr(events,"probe.rename id=2 status=0")!=NULL);CHECK(strstr(events,"probe.theme id=2 status=0")!=NULL);CHECK(strstr(events,"effective=1")!=NULL);}}printf("HOST OS exit=%lu failures=%d\n",code,failures);CloseHandle(process.hThread);CloseHandle(process.hProcess);return failures?1:0;}

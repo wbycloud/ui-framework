@@ -30,6 +30,7 @@ struct app_instance {
     ui_assistant_config_t app_assistant;
     void *state;
     HWND container;
+    char *title;
     int mounted, closing, close_ready, active;
     app_instance_t *next;
 };
@@ -56,6 +57,8 @@ struct ui_workspace {
     uint64_t active_id;
     ui_rect_t rect;
     uint32_t dpi;
+    DWORD thread_id;
+    int title_changing;
     int depth, polling, deferred_poll;
     CRITICAL_SECTION queue_lock;
     posted_message_t *queue_head, *queue_tail;
@@ -369,6 +372,7 @@ static void unmount_instance(app_instance_t *p)
     if (p->context.host != NULL) { ui_host_destroy(p->context.host); p->context.host = NULL; }
     if (p->container != NULL) { DestroyWindow(p->container); p->container = NULL; }
     if (p->state != NULL) { p->module->api.destroy(p->state); p->state = NULL; }
+    free(p->title);p->title=NULL;
     leave_callback(w);
 }
 static ui_status_t create_instance(ui_workspace_t *w, app_module_t *m,
@@ -479,6 +483,7 @@ ui_workspace_t *ui_workspace_create(const ui_workspace_config_t *config)
         if (w->config.shell_mode != UI_WORKSPACE_SHELL_NATIVE &&
             w->config.shell_mode != UI_WORKSPACE_SHELL_WEB) { free(w); return NULL; }
         w->parent = (HWND)config->native_parent;
+        w->thread_id=GetCurrentThreadId();
         w->dpi = 96; InitializeCriticalSection(&w->queue_lock);
     }
     return w;
@@ -606,6 +611,32 @@ ui_status_t ui_workspace_get_instance(const ui_workspace_t *w, uint64_t id,
     info->active = p->active; info->closing = p->closing;
     info->host = p->context.host; info->shell = p->context.shell;
     info->assistant = p->context.assistant; info->native_container = p->container;
+    return UI_STATUS_OK;
+}
+ui_status_t ui_workspace_get_instance_title(const ui_workspace_t *w,uint64_t id,
+    char *buffer,size_t capacity,size_t *required)
+{
+    app_instance_t *p;const char *text;size_t size;
+    if(!w||w->thread_id!=GetCurrentThreadId()||!required||(!buffer&&capacity))return UI_STATUS_INVALID_ARGUMENT;
+    p=find_instance(w,id);if(!p)return UI_STATUS_NOT_FOUND;
+    text=p->title?p->title:p->module->meta->name;size=strlen(text)+1;*required=size;
+    if(!buffer)return UI_STATUS_OK;
+    if(capacity<size)return UI_STATUS_LIMIT_EXCEEDED;
+    memcpy(buffer,text,size);return UI_STATUS_OK;
+}
+ui_status_t ui_workspace_set_instance_title(ui_workspace_t *w,uint64_t id,const char *title)
+{
+    app_instance_t *p;const char *next,*old;char *copy=NULL;
+    if(!w||w->thread_id!=GetCurrentThreadId())return UI_STATUS_INVALID_ARGUMENT;
+    p=find_instance(w,id);if(!p)return UI_STATUS_NOT_FOUND;
+    if(p->closing||w->title_changing)return UI_STATUS_CANCELLED;
+    next=title?title:p->module->meta->name;
+    if(!*next||strlen(next)>UI_WORKSPACE_TITLE_MAX_BYTES)return UI_STATUS_INVALID_ARGUMENT;
+    if(!MultiByteToWideChar(CP_UTF8,MB_ERR_INVALID_CHARS,next,-1,NULL,0))return UI_STATUS_INVALID_ARGUMENT;
+    old=p->title?p->title:p->module->meta->name;
+    if(!strcmp(old,next)){if(!title){free(p->title);p->title=NULL;}return UI_STATUS_OK;}
+    if(title){copy=copy_text(title);if(!copy)return UI_STATUS_OUT_OF_MEMORY;}
+    free(p->title);p->title=copy;w->title_changing=1;changed(w);w->title_changing=0;
     return UI_STATUS_OK;
 }
 ui_status_t ui_workspace_set_rect(ui_workspace_t *w, const ui_rect_t *rect, uint32_t dpi)

@@ -73,7 +73,10 @@ static ui_status_t lw_text_replace(lw_view_t *view,lw_node_t *n,const wchar_t *i
     memmove(buffer+a,buffer,(size_t)added*sizeof(wchar_t));memcpy(buffer,w,(size_t)a*sizeof(wchar_t));
     memcpy(buffer+a+added,w+b,(size_t)(len-b+1)*sizeof(wchar_t));free(w);
     if(!WideCharToMultiByte(CP_UTF8,WC_ERR_INVALID_CHARS,buffer,-1,utf8,sizeof(utf8),NULL,NULL))return UI_STATUS_VALIDATION_FAILED;
-    if(!strcmp(utf8,n->value))return UI_STATUS_OK;
+    /* Equal text can still replace a selection: commit its caret/history/input
+       semantics just like the browser. Only an empty insertion at an empty
+       selection is a no-op (for example Backspace at the start). */
+    if(a==b&&!added)return UI_STATUS_OK;
     lw_history_push(&n->undo,n);lw_history_free(&n->redo);strcpy(n->value,utf8);n->caret=n->anchor=a+added;
     view->text_scrolling=0;view->dirty=1;(void)lw_event(view,(int)(n-view->nodes),1,0);lw_layout(view);return UI_STATUS_OK;
 }

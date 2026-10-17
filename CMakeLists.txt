@@ -68,6 +68,7 @@ file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/generated/webview2_bridge.h" "static con
 add_library(ui_framework STATIC
     src/ui.c
     src/language.c
+    src/theme.c
     src/assistant.c
     src/package.c
     src/images.c
@@ -87,7 +88,7 @@ if(WIN32)
     target_sources(ui_framework PRIVATE
         src/platform/win32_surface.c
         src/platform/win32_shell.c)
-    target_link_libraries(ui_framework PUBLIC user32 gdi32 opengl32 comctl32
+    target_link_libraries(ui_framework PUBLIC user32 gdi32 opengl32 comctl32 runtimeobject
         imm32 usp10 msimg32 ole32 windowscodecs uuid)
 else()
     target_sources(ui_framework PRIVATE
@@ -96,7 +97,7 @@ else()
 endif()
 
 if(WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
-    add_library(ui_framework_shared SHARED src/ui.c src/language.c src/assistant.c src/package.c
+    add_library(ui_framework_shared SHARED src/ui.c src/language.c src/theme.c src/assistant.c src/package.c
         src/images.c src/components.c src/menus.c
         src/workspace.c src/platform/win32_surface.c src/platform/win32_shell.c)
     set_target_properties(ui_framework_shared PROPERTIES
@@ -104,7 +105,7 @@ if(WIN32 AND CMAKE_SIZEOF_VOID_P EQUAL 8)
     target_include_directories(ui_framework_shared PUBLIC include PRIVATE src ${CMAKE_CURRENT_BINARY_DIR}/generated)
     target_compile_definitions(ui_framework_shared PUBLIC UI_FRAMEWORK_BUILD_SHARED
         PRIVATE UI_FRAMEWORK_BUILDING _CRT_SECURE_NO_WARNINGS)
-    target_link_libraries(ui_framework_shared PUBLIC user32 gdi32 opengl32 comctl32
+    target_link_libraries(ui_framework_shared PUBLIC user32 gdi32 opengl32 comctl32 runtimeobject
         imm32 usp10 msimg32 ole32 windowscodecs uuid)
     if(MSVC)
         target_compile_options(ui_framework_shared PRIVATE /W4 /WX /utf-8)
@@ -268,11 +269,11 @@ if(UI_BUILD_TESTS)
     add_executable(ui_package_format_test tests/package_format.c)
     target_link_libraries(ui_package_format_test PRIVATE ui_framework)
     add_test(NAME ui_package_format COMMAND ui_package_format_test)
-    add_library(ui_framework_headless STATIC src/ui.c src/language.c src/assistant.c src/images.c src/components.c src/menus.c
+    add_library(ui_framework_headless STATIC src/ui.c src/language.c src/theme.c src/assistant.c src/images.c src/components.c src/menus.c
         src/platform/headless_surface.c src/platform/headless_shell.c)
     target_include_directories(ui_framework_headless PUBLIC include PRIVATE src ${CMAKE_CURRENT_BINARY_DIR}/generated)
     if(WIN32)
-        target_link_libraries(ui_framework_headless PUBLIC user32 gdi32 imm32 usp10 msimg32 ole32 windowscodecs uuid)
+        target_link_libraries(ui_framework_headless PUBLIC user32 gdi32 imm32 usp10 msimg32 ole32 windowscodecs uuid runtimeobject)
         add_executable(ui_images_windows_test tests/images_windows.c)
         target_link_libraries(ui_images_windows_test PRIVATE ui_framework_headless)
         add_test(NAME ui_images_windows COMMAND ui_images_windows_test)
@@ -286,6 +287,9 @@ if(UI_BUILD_TESTS)
     target_link_libraries(ui_headless_example PRIVATE ui_framework_headless)
     add_test(NAME ui_headless_example COMMAND ui_headless_example)
     add_executable(ui_public_headers_c_test tests/public_headers.c)
+    add_executable(ui_theme_core_test tests/theme_core.c)
+    target_link_libraries(ui_theme_core_test PRIVATE ui_framework_headless)
+    add_test(NAME ui_theme_core COMMAND ui_theme_core_test)
     target_link_libraries(ui_public_headers_c_test PRIVATE ui_framework_headless)
     add_test(NAME ui_public_headers_c COMMAND ui_public_headers_c_test)
     include(CheckLanguage)
@@ -343,6 +347,9 @@ if(UI_BUILD_TESTS)
             add_executable(ui_light_glyph_padding_test tests/light_glyph_padding.c)
             target_link_libraries(ui_light_glyph_padding_test PRIVATE ui_framework_shared)
             add_test(NAME ui_light_glyph_padding COMMAND ui_light_glyph_padding_test)
+            add_executable(ui_light_rect_stability_test tests/light_rect_stability.c)
+            target_link_libraries(ui_light_rect_stability_test PRIVATE ui_framework_shared)
+            add_test(NAME ui_light_rect_stability COMMAND ui_light_rect_stability_test)
             add_executable(ui_light_scroll_test tests/light_scroll.c)
             target_link_libraries(ui_light_scroll_test PRIVATE ui_framework)
             add_test(NAME ui_light_scroll COMMAND ui_light_scroll_test)
@@ -514,6 +521,23 @@ if(UI_BUILD_TESTS)
         add_executable(ui_web_text_edit_test tests/web_text_edit.c)
         target_link_libraries(ui_web_text_edit_test PRIVATE ui_framework)
         add_test(NAME ui_web_text_edit COMMAND ui_web_text_edit_test)
+        add_executable(ui_text_replacement_test tests/text_replacement.c)
+        add_executable(ui_workspace_titles_test tests/workspace_titles.c)
+        target_link_libraries(ui_workspace_titles_test PRIVATE ui_framework_shared)
+        add_test(NAME ui_workspace_titles COMMAND ui_workspace_titles_test "${CMAKE_CURRENT_BINARY_DIR}/web_counter.uapp")
+        set_tests_properties(ui_workspace_titles PROPERTIES TIMEOUT 30 RUN_SERIAL TRUE)
+        target_link_libraries(ui_text_replacement_test PRIVATE ui_framework_shared)
+        add_test(NAME ui_text_replacement COMMAND ui_text_replacement_test)
+        set_tests_properties(ui_text_replacement PROPERTIES TIMEOUT 60 RUN_SERIAL TRUE)
+        if(UI_FRAMEWORK_ENABLE_WEBVIEW2)
+            add_executable(ui_webview2_capture_edges_test tests/webview2_capture_edges.c)
+            target_link_libraries(ui_webview2_capture_edges_test PRIVATE ui_framework_shared)
+            add_test(NAME ui_webview2_capture_edges COMMAND ui_webview2_capture_edges_test)
+            set_tests_properties(ui_webview2_capture_edges PROPERTIES TIMEOUT 60 RUN_SERIAL TRUE)
+            target_compile_definitions(ui_text_replacement_test PRIVATE UI_REPLACEMENT_WEBVIEW2)
+            add_test(NAME ui_text_replacement_webview2 COMMAND ui_text_replacement_test --webview2)
+            set_tests_properties(ui_text_replacement_webview2 PROPERTIES TIMEOUT 60 RUN_SERIAL TRUE)
+        endif()
         add_executable(ui_generic_web_host_test tests/generic_web_host.c "${CMAKE_CURRENT_BINARY_DIR}/generated/host.rc")
         target_include_directories(ui_generic_web_host_test PRIVATE src examples/framework_host "${CMAKE_CURRENT_BINARY_DIR}/generated")
         target_compile_definitions(ui_generic_web_host_test PRIVATE _CRT_SECURE_NO_WARNINGS)
@@ -545,17 +569,18 @@ if(UI_BUILD_TESTS)
         # Desktop SendInput/continuous-frame acceptance is an explicit serial run.
         add_executable(ui_interaction_probe tests/interaction_probe.c)
         add_executable(ui_display_probe tests/display_probe.c)
-        target_link_libraries(ui_display_probe PRIVATE ui_framework)
-        target_compile_definitions(ui_display_probe PRIVATE _CRT_SECURE_NO_WARNINGS)
+        target_link_libraries(ui_display_probe PRIVATE ui_framework_shared dwmapi)
+        target_compile_definitions(ui_display_probe PRIVATE _CRT_SECURE_NO_WARNINGS UI_THEME_PROBE)
         target_link_libraries(ui_interaction_probe PRIVATE ui_framework)
         target_compile_definitions(ui_interaction_probe PRIVATE _CRT_SECURE_NO_WARNINGS)
         if(UI_FRAMEWORK_ENABLE_WEBVIEW2)
+            target_compile_definitions(ui_display_probe PRIVATE UI_REPAIR_WEBVIEW2=1)
             target_compile_definitions(ui_interaction_probe PRIVATE UI_REPAIR_WEBVIEW2=1)
             add_executable(ui_readonly_navigation_probe tests/readonly_navigation_probe.c)
             target_link_libraries(ui_readonly_navigation_probe PRIVATE ui_framework_shared)
             target_compile_definitions(ui_readonly_navigation_probe PRIVATE _CRT_SECURE_NO_WARNINGS)
             add_executable(ui_presentation_transition_probe tests/presentation_transition_probe.c)
-            target_link_libraries(ui_presentation_transition_probe PRIVATE ui_framework_shared)
+            target_link_libraries(ui_presentation_transition_probe PRIVATE ui_framework_shared dwmapi)
             target_compile_definitions(ui_presentation_transition_probe PRIVATE _CRT_SECURE_NO_WARNINGS)
             add_executable(ui_runtime_boundary_probe tests/runtime_boundary_probe.c)
             target_link_libraries(ui_runtime_boundary_probe PRIVATE ui_framework_shared)

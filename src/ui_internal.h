@@ -7,6 +7,7 @@
 #include "ui_framework/components.h"
 #include "ui_framework/menus.h"
 #include "ui_framework/language.h"
+#include "ui_framework/theme.h"
 
 typedef struct ui_command_entry ui_command_entry_t;
 typedef struct ui_menu_entry ui_menu_entry_t;
@@ -101,6 +102,12 @@ struct ui_host {
     ui_host_t *image_source; /* Trusted shell chrome may display its active application's images. */
     const char *menu_open_path; /* Borrowed current root path; NULL when closed. */
     int menu_dark;
+    ui_theme_mode_t theme_mode;
+    uint64_t theme_generation;
+    uint32_t theme_system_available;
+    int theme_changing;
+    ui_theme_callback_fn theme_callback;
+    void *theme_data;
     ui_rect_t bottom_rect;
     int bottom_height;
     uint32_t api_version;

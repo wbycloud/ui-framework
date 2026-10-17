@@ -8,8 +8,10 @@
 #include "ui_framework/images.h"
 #include "ui_framework/menus.h"
 #include "ui_framework/language.h"
+#include "ui_framework/theme.h"
 #include <stddef.h>
 _Static_assert(UI_FRAMEWORK_API_VERSION == 9, "current SDK");
+_Static_assert(sizeof(ui_theme_info_t)==88 && offsetof(ui_theme_info_t,background_rgba)==24 && offsetof(ui_theme_info_t,error_rgba)==84,"independent theme info ABI");
 _Static_assert(sizeof(ui_language_info_t)==128 && offsetof(ui_language_info_t,generation)==8 && offsetof(ui_language_info_t,system_language)==32 && offsetof(ui_language_info_t,fallback)==120,"API9 language Windows x64 layout");
 _Static_assert(sizeof(ui_field_text_t)==64 && offsetof(ui_field_text_t,option_labels)==48,"API9 text Windows x64 layout");
 _Static_assert(offsetof(ui_field_desc_t, help) == 64, "appended complete help field");

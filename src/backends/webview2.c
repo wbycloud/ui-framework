@@ -1296,12 +1296,21 @@ static HRESULT decode_capture(IStream *stream,webview2_view_t *v)
  hr=IStream_Seek(stream,zero,STREAM_SEEK_SET,NULL);if(SUCCEEDED(hr))hr=CoCreateInstance(&CLSID_WICImagingFactory,NULL,CLSCTX_INPROC_SERVER,&IID_IWICImagingFactory,(void **)&factory);
  if(SUCCEEDED(hr))hr=IWICImagingFactory_CreateDecoderFromStream(factory,stream,NULL,WICDecodeMetadataCacheOnLoad,&decoder);
  if(SUCCEEDED(hr))hr=IWICBitmapDecoder_GetFrame(decoder,0,&frame);if(SUCCEEDED(hr))hr=IWICBitmapFrameDecode_GetSize(frame,&width,&height);
- if(SUCCEEDED(hr)&&(width!=v->capture_width||height!=v->capture_height||(uint64_t)width*height*4>32u*1024u*1024u))hr=E_FAIL;
+ if(SUCCEEDED(hr)){
+    /* CapturePreview can rasterize a complete integer DIP beyond the raw-pixel
+       controller clip. Accept only that calculated extent (or an exact frame),
+       then copy the visible client rectangle; never stretch or pad pixels. */
+    uint64_t raster_width=((((uint64_t)v->capture_width*96+v->dpi-1)/v->dpi)*v->dpi+95)/96;
+    uint64_t raster_height=((((uint64_t)v->capture_height*96+v->dpi-1)/v->dpi)*v->dpi+95)/96;
+    if((width!=v->capture_width&&width!=raster_width)||(height!=v->capture_height&&height!=raster_height)||(uint64_t)width*height*4>32u*1024u*1024u){
+        fprintf(stderr,"Runtime capture geometry epoch=%llu origin=%d,%d logical=%d,%d dpi=%u expected=%u,%u raster=%llu,%llu actual=%u,%u\n",(unsigned long long)v->epoch,v->x,v->y,v->width,v->height,v->dpi,v->capture_width,v->capture_height,(unsigned long long)raster_width,(unsigned long long)raster_height,width,height);hr=E_FAIL;}
+    else if(GetEnvironmentVariableW(L"UI_RENDER_DIAGNOSTICS",NULL,0))fprintf(stderr,"Runtime capture clip epoch=%llu native=%u,%u raster=%llu,%llu actual=%u,%u\n",(unsigned long long)v->epoch,v->capture_width,v->capture_height,(unsigned long long)raster_width,(unsigned long long)raster_height,width,height);
+ }
  if(SUCCEEDED(hr))hr=IWICImagingFactory_CreateFormatConverter(factory,&converter);
  if(SUCCEEDED(hr))hr=IWICFormatConverter_Initialize(converter,(IWICBitmapSource *)frame,&GUID_WICPixelFormat32bppRGBA,WICBitmapDitherTypeNone,NULL,0,WICBitmapPaletteTypeCustom);
- if(SUCCEEDED(hr)){pixels=(uint8_t *)malloc((size_t)width*height*4);if(!pixels)hr=E_OUTOFMEMORY;}
- if(SUCCEEDED(hr))hr=IWICFormatConverter_CopyPixels(converter,NULL,width*4,width*height*4,pixels);
- if(SUCCEEDED(hr)){for(size_t i=3;i<(size_t)width*height*4;i+=4)pixels[i]=255;free(v->capture_pixels);v->capture_pixels=pixels;pixels=NULL;}
+ if(SUCCEEDED(hr)){pixels=(uint8_t *)malloc((size_t)v->capture_width*v->capture_height*4);if(!pixels)hr=E_OUTOFMEMORY;}
+ if(SUCCEEDED(hr)){WICRect clip={0,0,(INT)v->capture_width,(INT)v->capture_height};hr=IWICFormatConverter_CopyPixels(converter,&clip,v->capture_width*4,v->capture_width*v->capture_height*4,pixels);}
+ if(SUCCEEDED(hr)){for(size_t i=3;i<(size_t)v->capture_width*v->capture_height*4;i+=4)pixels[i]=255;free(v->capture_pixels);v->capture_pixels=pixels;pixels=NULL;}
  free(pixels);if(converter)IWICFormatConverter_Release(converter);if(frame)IWICBitmapFrameDecode_Release(frame);if(decoder)IWICBitmapDecoder_Release(decoder);if(factory)IWICImagingFactory_Release(factory);return hr;
 }
 static HRESULT STDMETHODCALLTYPE capture_query(ICoreWebView2CapturePreviewCompletedHandler *self,REFIID iid,void **out)
@@ -1317,7 +1326,7 @@ static HRESULT begin_capture(webview2_view_t *v)
  h->iface.lpVtbl=&capture_vtable;h->refs=1;h->view=v;h->epoch=v->epoch;view_add_ref(v);v->capture_pending=2;hr=ICoreWebView2_CapturePreview(v->webview,COREWEBVIEW2_CAPTURE_PREVIEW_IMAGE_FORMAT_PNG,h->stream,&h->iface);h->iface.lpVtbl->Release(&h->iface);return hr;}
 static ui_status_t webview2_capture(void *backend,void *data,ui_pixel_buffer_t *out)
 {
- webview2_view_t *v=(webview2_view_t *)data;uint64_t width=((uint64_t)v->width*v->dpi+48)/96,height=((uint64_t)v->height*v->dpi+48)/96;size_t stride,bytes;char script[100];ui_status_t status;(void)backend;
+ webview2_view_t *v=(webview2_view_t *)data;uint64_t width=(uint64_t)((int64_t)scaled_coordinate((int64_t)v->x+v->width,v->dpi)-scaled_coordinate(v->x,v->dpi)),height=(uint64_t)((int64_t)scaled_coordinate((int64_t)v->y+v->height,v->dpi)-scaled_coordinate(v->y,v->dpi));size_t stride,bytes;char script[100];ui_status_t status;(void)backend;
  status=view_status(v);if(status!=UI_STATUS_OK)return status;if(!width||!height||width>16384||height>16384||width*height*4>32u*1024u*1024u)return UI_STATUS_LIMIT_EXCEEDED;
  stride=out->stride?out->stride:(size_t)width*4;if(stride<width*4||stride>SIZE_MAX/height)return UI_STATUS_INVALID_ARGUMENT;bytes=stride*(height-1)+(size_t)width*4;
  out->width=(uint32_t)width;out->height=(uint32_t)height;out->stride=stride;if(!out->pixels)return UI_STATUS_OK;if(out->capacity<bytes)return UI_STATUS_LIMIT_EXCEEDED;

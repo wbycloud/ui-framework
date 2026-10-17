@@ -1143,6 +1143,23 @@ invalid:
     JS_FreeCString(ctx,text); return JS_ThrowTypeError(ctx,"unsupported or oversized CSS declaration");
 }
 
+static void lw_reveal(lw_view_t *view,int index)
+{
+    int parent;if(view->dirty)lw_layout(view);
+    for(parent=view->nodes[index].parent;parent>=0;parent=view->nodes[parent].parent){
+        lw_node_t *node=&view->nodes[index],*p=&view->nodes[parent];int x=p->scroll_x,y=p->scroll_y;
+        /* Recompute after each inner scroll so outer containers use the new
+           geometry. The viewport, not its already-clipped child bounds, is
+           the scroll container's own coordinate space. */
+        if(p->style.scroll){if(node->rect.y<p->viewport.y)p->scroll_y+=node->rect.y-p->viewport.y;
+            else if(node->rect.y+node->rect.height>p->viewport.y+p->viewport.height)p->scroll_y+=node->rect.y+node->rect.height-p->viewport.y-p->viewport.height;
+            if(p->scroll_y<0)p->scroll_y=0;}
+        if(p->style.scroll_x){if(node->rect.x<p->viewport.x)p->scroll_x+=node->rect.x-p->viewport.x;
+            else if(node->rect.x+node->rect.width>p->viewport.x+p->viewport.width)p->scroll_x+=node->rect.x+node->rect.width-p->viewport.x-p->viewport.width;
+            if(p->scroll_x<0)p->scroll_x=0;}
+        if(x!=p->scroll_x||y!=p->scroll_y){view->dirty=1;lw_layout(view);}
+    }
+}
 static JSValue lw_dom_method(JSContext *ctx, JSValueConst object, int argc,
                               JSValueConst *argv, int method)
 {
@@ -1214,16 +1231,7 @@ static JSValue lw_dom_method(JSContext *ctx, JSValueConst object, int argc,
         return JS_ThrowTypeError(ctx,"unsupported attribute");
     }
     if (method == 8) {
-        int parent;
-        if(view->dirty)lw_layout(view);
-        for(parent=node->parent;parent>=0;parent=view->nodes[parent].parent){lw_node_t *p=&view->nodes[parent];
-            if(p->style.scroll){if(node->rect.y<p->clip.y)p->scroll_y-=p->clip.y-node->rect.y;
-                else if(node->rect.y+node->rect.height>p->clip.y+p->clip.height)p->scroll_y+=node->rect.y+node->rect.height-p->clip.y-p->clip.height;
-                if(p->scroll_y<0)p->scroll_y=0;}
-            if(p->style.scroll_x){if(node->rect.x<p->clip.x)p->scroll_x-=p->clip.x-node->rect.x;
-                else if(node->rect.x+node->rect.width>p->clip.x+p->clip.width)p->scroll_x+=node->rect.x+node->rect.width-p->clip.x-p->clip.width;
-                if(p->scroll_x<0)p->scroll_x=0;}}
-        view->dirty=1;return JS_UNDEFINED;
+        lw_reveal(view,index);return JS_UNDEFINED;
     }
     if(method==9){JSValue r=JS_NewObject(ctx);if(view->dirty)lw_layout(view);
         JS_SetPropertyStr(ctx,r,"x",JS_NewInt32(ctx,node->rect.x));JS_SetPropertyStr(ctx,r,"left",JS_NewInt32(ctx,node->rect.x));
@@ -1237,7 +1245,7 @@ static JSValue lw_dom_method(JSContext *ctx, JSValueConst object, int argc,
     if (method == 7) {
         view->scroll_focus=-1;view->text_scrolling=0;
         if(view->focused!=index)lw_cancel_composition(view);
-        view->focused = index; if (view->hwnd&&IsWindowVisible(view->hwnd)&&IsWindowEnabled(view->hwnd)) SetFocus(view->hwnd); lw_caret(view); view->dirty = 1; return lw_event(view,index,3,0) == UI_STATUS_OK ? JS_UNDEFINED : JS_EXCEPTION;
+        view->focused = index;lw_reveal(view,index);if (view->hwnd&&IsWindowVisible(view->hwnd)&&IsWindowEnabled(view->hwnd)) SetFocus(view->hwnd); lw_caret(view); view->dirty = 1; return lw_event(view,index,3,0) == UI_STATUS_OK ? JS_UNDEFINED : JS_EXCEPTION;
     }
     return JS_UNDEFINED;
 }
@@ -1839,6 +1847,20 @@ static ui_status_t lw_set_rect(void *user, void *data, const ui_rect_t *rect,
     pixel_x = lw_pixel(rect->x, dpi); pixel_y = lw_pixel(rect->y, dpi);
     pixel_width = lw_pixel(rect->x + rect->width, dpi) - pixel_x;
     pixel_height = lw_pixel(rect->y + rect->height, dpi) - pixel_y;
+    if (view->font && view->width == rect->width && view->height == rect->height &&
+        view->dpi == dpi && !view->dirty) {
+        if (view->hwnd) {
+            RECT actual;
+            if (!GetWindowRect(view->hwnd, &actual)) return UI_STATUS_PLATFORM_ERROR;
+            MapWindowPoints(NULL, GetParent(view->hwnd), (POINT *)&actual, 2);
+            if ((actual.left != pixel_x || actual.top != pixel_y ||
+                 actual.right - actual.left != pixel_width || actual.bottom - actual.top != pixel_height) &&
+                !SetWindowPos(view->hwnd, NULL, pixel_x, pixel_y, pixel_width, pixel_height,
+                              SWP_NOZORDER | SWP_NOACTIVATE)) return UI_STATUS_PLATFORM_ERROR;
+        }
+        view->x = rect->x; view->y = rect->y;
+        return UI_STATUS_OK;
+    }
     font = CreateFontW(-lw_pixel(14, dpi), 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE,
         DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
         DEFAULT_PITCH, L"Segoe UI");
@@ -1963,7 +1985,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
                 start = (start + direction + view->node_count) % view->node_count;
                 if (view->nodes[start].used && view->nodes[start].visible && !view->nodes[start].disabled && (view->nodes[start].kind == 2 || lw_input(&view->nodes[start]))) {
                     lw_cancel_composition(view);(void)lw_event(view,view->focused,4,0); view->focused = start;
-                    view->text_scrolling=0;if (view->hwnd) SetFocus(view->hwnd); lw_caret(view);
+                    view->text_scrolling=0;lw_reveal(view,start);if (view->hwnd) SetFocus(view->hwnd); lw_caret(view);
                     (void)lw_event(view,start,3,0); lw_layout(view); return UI_STATUS_OK;
                 }
             }

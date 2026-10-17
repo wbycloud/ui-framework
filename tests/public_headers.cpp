@@ -7,6 +7,7 @@
 #include "ui_framework/components.h"
 #include "ui_framework/images.h"
 #include "ui_framework/menus.h"
+#include "ui_framework/theme.h"
 int main()
 {
     ui_host_config_t config{};

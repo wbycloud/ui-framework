@@ -130,6 +130,22 @@ UI_API uint64_t ui_workspace_instance_at(const ui_workspace_t *workspace,
 UI_API uint64_t ui_workspace_active(const ui_workspace_t *workspace);
 UI_API ui_status_t ui_workspace_get_instance(const ui_workspace_t *workspace,
     uint64_t id, ui_app_instance_info_t *info);
+/* API9 development additions; no existing structure/ABI change. UI-thread.
+ * Instance IDs remain stable and are never reused. Available from mount (not
+ * create) until removal. NULL title resets to the package name; otherwise copy
+ * nonempty valid UTF-8, at most4095 bytes, excluding NUL. No business/status
+ * inference. info.name_utf8 remains package metadata, not this mutable title.
+ * No reloading, content recreation, activation, focus or close side effects.
+ * One workspace changed callback after a real title change. Recursive setter
+ * during that callback returns CANCELLED; closing instances also reject it.
+ * Removed/unknown IDs return NOT_FOUND while the workspace remains alive.
+ * A destroyed workspace pointer is invalid; IDs are not a workspace lifetime. */
+#define UI_WORKSPACE_TITLE_MAX_BYTES 4095u
+UI_API ui_status_t ui_workspace_set_instance_title(ui_workspace_t *,uint64_t,const char *);
+/* Copies title; required includes NUL. NULL buffer/capacity0 queries the size.
+ * Too small returns LIMIT_EXCEEDED and writes no partial title. */
+UI_API ui_status_t ui_workspace_get_instance_title(const ui_workspace_t *,uint64_t,
+    char *buffer,size_t capacity,size_t *required);
 /* Logical rect relative to native_parent client, without the native HMENU. */
 UI_API ui_status_t ui_workspace_set_rect(ui_workspace_t *workspace,
     const ui_rect_t *rect, uint32_t dpi);

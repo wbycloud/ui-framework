@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 char *ui_strdup(const char *value)
 {
@@ -556,6 +559,10 @@ ui_status_t ui_host_handle_message(ui_host_t *host,
     if (result != NULL) {
         *result = 0;
     }
+#ifdef _WIN32
+    if(message==WM_SETTINGCHANGE||message==WM_THEMECHANGED)
+        return ui_host_refresh_theme(host);
+#endif
     return ui_platform_host_handle_message(host, hwnd, message, w_param,
                                            l_param, result);
 }
