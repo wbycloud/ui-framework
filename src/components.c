@@ -440,7 +440,7 @@ ui_status_t ui_component_set_field(ui_component_t *c,const char *id,const ui_cel
         free_cell(&c->values[i]);c->values[i]=copy;
         if(!(c->drafts[i].flags&UI_VALUE_MODIFIED)){free_cell(&c->drafts[i]);c->drafts[i]=draft;c->validation_errors[i]=NULL;}
         else{c->drafts[i].flags=(copy.flags&~UI_VALUE_MODIFIED)|UI_VALUE_MODIFIED;free_cell(&draft);}
-        (void)ui_host_hide_tooltip(c->host);render_component(c);return UI_STATUS_OK;}
+        ui_menus_hide_component_tooltip(c->host,c);render_component(c);return UI_STATUS_OK;}
     return UI_STATUS_NOT_FOUND;
 }
 ui_status_t ui_component_set_error(ui_component_t *c,const char *id,const char *error)
@@ -448,7 +448,7 @@ ui_status_t ui_component_set_error(ui_component_t *c,const char *id,const char *
     size_t i,bytes=0;char *copy;if(!c||!id)return UI_STATUS_INVALID_ARGUMENT;
     for(i=0;i<c->desc.field_count;++i)if(!strcmp(c->fields[i].id,id)){
         copy=copy_string(error,&bytes);if(!copy)return UI_STATUS_INVALID_ARGUMENT;
-        free((void *)c->drafts[i].error);c->drafts[i].error=copy;c->validation_errors[i]=NULL;render_component(c);return UI_STATUS_OK;}
+        free((void *)c->drafts[i].error);c->drafts[i].error=copy;c->validation_errors[i]=NULL;ui_menus_hide_component_tooltip(c->host,c);render_component(c);return UI_STATUS_OK;}
     return UI_STATUS_NOT_FOUND;
 }
 ui_status_t ui_component_accept_fields(ui_component_t *c)
@@ -651,8 +651,8 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
                     anchor.rect.width=MulDiv(anchor.rect.width,(int)c->dpi,(int)c->host->dpi);anchor.rect.height=MulDiv(anchor.rect.height,(int)c->dpi,(int)c->host->dpi);}
 #endif
             }}
-            (void)ui_host_show_tooltip(c->host,&anchor,tip);c->tooltip_anchor=NULL;}return;}
-    if(!strcmp(action,"tip-hide")){ui_menus_hide_tooltip(c->host);return;}
+            (void)ui_menus_show_component_tooltip(c->host,c,&anchor,tip);c->tooltip_anchor=NULL;}return;}
+    if(!strcmp(action,"tip-hide")){ui_menus_hide_component_tooltip(c->host,c);return;}
     if(!strcmp(action,"focus")){c->focused=uj_get(json,"focused",field,sizeof(field))&&*field;
         if(c->focused)c->host->focused_component=c;else if(c->host->focused_component==c)c->host->focused_component=NULL;return;}
     if(!strcmp(action,"metrics")){ui_rect_t rows;size_t wanted,budget;
@@ -728,7 +728,7 @@ ui_status_t ui_component_mount(ui_component_t *c,ui_content_slot_t *slot)
 #endif
 }
 ui_status_t ui_component_set_visible(ui_component_t *c,int visible)
-{if(!c)return UI_STATUS_INVALID_ARGUMENT;if(!visible)cancel_column_resize(c,1);if(!visible)(void)ui_host_hide_tooltip(c->host);c->visible=visible!=0;render_component(c);return ui_host_emit_event(c->host,"ui.components.changed","{}");}
+{if(!c)return UI_STATUS_INVALID_ARGUMENT;if(!visible)cancel_column_resize(c,1);if(!visible)ui_menus_hide_component_tooltip(c->host,c);c->visible=visible!=0;render_component(c);return ui_host_emit_event(c->host,"ui.components.changed","{}");}
 void ui_components_layout(ui_host_t *host)
 {
     ui_component_t *c;for(c=host->components;c;c=c->next)if(c->slot){ui_rect_t rect;
@@ -778,7 +778,7 @@ ui_status_t ui_component_set_field_layout(ui_component_t *c,const ui_field_layou
 {
     size_t i;if(!c||!layout||layout->size<sizeof(*layout)||!layout->id||layout->visible_rows<0||layout->visible_rows>100||layout->height<0||layout->height>32767||(layout->height&&layout->height<42)||(c->desc.kind!=UI_COMPONENT_FORM&&c->desc.kind!=UI_COMPONENT_DIALOG))return UI_STATUS_INVALID_ARGUMENT;
     for(i=0;i<c->desc.field_count;++i)if(!strcmp(c->fields[i].id,layout->id)){if(c->fields[i].kind!=UI_VALUE_TEXT||!(c->fields[i].flags&UI_VALUE_MULTILINE))return UI_STATUS_INVALID_ARGUMENT;
-        c->field_heights[i]=layout->height?layout->height:layout->visible_rows?(layout->visible_rows==1?42:layout->visible_rows*19+22):0;(void)ui_host_hide_tooltip(c->host);render_component(c);return UI_STATUS_OK;}
+        c->field_heights[i]=layout->height?layout->height:layout->visible_rows?(layout->visible_rows==1?42:layout->visible_rows*19+22):0;ui_menus_hide_component_tooltip(c->host,c);render_component(c);return UI_STATUS_OK;}
     return UI_STATUS_NOT_FOUND;
 }
 #if defined(_WIN32) && (defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2))
@@ -876,7 +876,7 @@ void ui_components_active(ui_host_t *host,int active)
 }
 static void destroy_component(ui_component_t *c)
 {
-    (void)ui_host_hide_tooltip(c->host);
+    ui_menus_hide_component_tooltip(c->host,c);
     ui_menus_component_invalidated(c->host,c,0);
     if(c->host->modal_component==c)(void)ui_component_close_dialog(c);
     if(c->host->focused_component==c)c->host->focused_component=NULL;

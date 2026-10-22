@@ -472,3 +472,25 @@ ctest --test-dir build/current -R '^ui_stateful_components_(light|webview2)$' --
 ## 2026-10-09 公共布局与真实可见性验收
 
 新增 `ui_component_layout` / `ui_component_layout_webview2` 纳入现有WGL/provider/Runtime隔离与完整清单检查；原断言、180/240/300秒及资源门槛保持。`dialog_layout_example` 仅链接当前公共共享库，`ui_interaction_probe` / `ui_display_probe` 为不加载业务DLL的公共C复现，真实输入必须在解锁桌面串行执行。SendInput、实际窗口画面与自动状态检查分列；程序192不代表物理高DPI。当前开发SDK增补需匹配头文件、导入库和运行库，冻结API9归档不包含三个新导出。[命令、实际提交、证据及限制](validation/ui-repair-validation.md)。
+
+## 2026-10-17 通用交互与公共契约增补
+
+新增公共输入 `ui_text_replacement` / `_webview2`、实例标题 `ui_workspace_titles`、主题 `ui_theme_core`、Runtime DPI捕获边缘 `ui_webview2_capture_edges` 纳入对应当前清单和隔离规则。公开显示探针扩展真实逐字替换、同值粘贴、主题保持焦点、96/144/192及窄窗长文本；嵌套焦点测试检验逐层滚动可达。保持原超时、资源、uint64/BigInt和按需查询门槛。
+
+[公共合同与调用示例](instance-title-and-theme.md)、[新构建/失败/完整回归/ASAN/解包结果](validation/interaction-20261017-validation.md)。SDK0.9-dev/API9开发增补以源码清单SHA绑定匹配头文件、导入库、DLL、宿主及包；禁止补写既有SDK。真实键鼠、桌面画面与OS退出分别验收；截图API通过不能代替可读性、程序DPI不能代替物理条件。
+
+当前Light配置新增 `ui_light_rect_stability`：公开set_rect在相同size/DPI且无dirty时不重复native placement/layout，仍覆盖位置校正、实际HWND偏离、resize/DPI/reload。四配置必跑清单同步；[本轮源码身份、当前回归和体验端点边界](validation/lifecycle-ux-20261017-validation.md)单列。
+
+
+## 2026-10-20 内置 browser.uapp 构建
+
+默认独立宿主包含 apps/browser 源码并生成同目录 browser.uapp。浏览器包不依赖测试目标、Mesa或WebView2：
+
+```powershell
+cmake -S . -B build/browser-release -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_BUILD_TESTS=OFF -DBROWSER_BUILD_CHECKS=OFF -DUI_FRAMEWORK_ENABLE_WEBVIEW2=OFF -DUI_OSMESA_LIBRARY=
+cmake --build build/browser-release --target framework_host browser_package uapp_pack
+```
+
+开发时 UI_BROWSER_SOURCE_DIR 可指向独立应用工作区。匹配SDK支持应用独立构建：在应用源码使用 UI_BROWSER_SDK_DIR，读取SDK的公共头文件、import lib、DLL、打包器及固定Lexbor静态库，不读取框架源码或QuickJS源码。见[应用构建命令](../apps/browser/README.md)。
+
+应用验证开关 BROWSER_BUILD_CHECKS 默认OFF；开启后提供纯公共C的 document/workspace/failure/url 调用方。宿主内部入口夹具另列，不替代纯公共调用方。真实输入仅在协调空闲桌面后串行执行；物理DPI、多屏、IME和长期人工单列。已有测试/固定依赖/冻结SDK保留，未恢复历史兼容专项。

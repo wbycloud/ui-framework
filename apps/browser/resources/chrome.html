@@ -1,0 +1,64 @@
+<html><head><style>
+body{background:#f7f7f8;color:#242424;padding:4px;gap:3px;}
+.row{display:flex;flex-direction:row;gap:3px;height:30px;}
+button{width:32px;height:30px;background:#ffffff;color:#242424;border:1px solid #d1d1d6;border-radius:4px;padding:0;}
+button:hover{background:#e2eaf2;}button:active{background:#d3e2f1;}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #0067b8;outline-offset:-2px;}
+button:disabled{color:#999999;}input{height:30px;flex:1;min-width:40px;background:#ffffff;color:#242424;border:1px solid #c4c4c8;}
+#address{font-size:14px;}#status{height:24px;font-size:12px;white-space:nowrap;overflow-x:auto;}
+#zoom-label{width:48px;height:30px;padding:4px;font-size:12px;}
+.nav button{width:24px;}.nav #zoom-label{width:38px;padding:4px 0;}
+#error{display:none;flex:1;overflow-y:auto;overflow-x:auto;padding:12px;}
+.panel{display:none;flex:1;overflow-y:auto;overflow-x:auto;padding:8px;}textarea{height:120px;font-size:14px;border:1px solid #888888;background:#ffffff;color:#242424;}#diagnostic-text{height:170px;}#diagnostics-settings{width:80px;}.hint{font-size:12px;height:64px;overflow-y:auto;}
+.dark{background:#202020;color:#ebebeb;}.dark button,.dark input,.dark textarea{background:#292929;color:#ebebeb;border:1px solid #606068;}.dark button:hover{background:#334454;}
+</style></head><body>
+<div class="row"><input id="address" placeholder="HTTP / HTTPS 地址"><button id="go">↵</button></div>
+<div class="row nav"><button id="back">←</button><button id="forward">→</button><button id="reload">↻</button><button id="stop">×</button><button id="home">⌂</button><button id="help">?</button><button id="minus">−</button><p id="zoom-label">100%</p><button id="plus">+</button><button id="reset">1:1</button></div>
+<div class="row"><input id="find" placeholder="查找文字"><button id="find-prev">↑</button><button id="find-next">↓</button><button id="settings">设</button><button id="diagnostics">诊</button></div>
+<p id="status">包内起始页</p>
+<p id="error"></p>
+<div id="settings-panel" class="panel"><p>可信来源设置</p><p class="hint">每行一个HTTP/HTTPS精确来源（协议、主机、端口）。最多16项/4095字节。空列表拒绝全部网络；远程页面不能放行来源。</p>
+<textarea id="origins"></textarea><p id="config-message" class="hint"></p>
+<div class="row"><button id="settings-save">保存</button><button id="settings-reset">默认</button><button id="settings-close">返回</button></div>
+<p class="hint">保存后取消在途请求并返回包内首页；同一用户其他实例在500ms内重读。非法保存不改旧规则；磁盘文件无效则拒绝全部网络。</p>
+<p class="hint">本地文件：%LOCALAPPDATA%\ui-framework\browser\origins-v1.txt。删除该文件或点击默认恢复包内规则。只改变本应用来源，不修改系统代理。</p></div>
+<div id="diagnostics-panel" class="panel"><p>访问诊断（本导航，有限显示）</p><p class="hint">记录主文档/图片/样式、失败类别、阶段、系统/HTTP/TLS码和逐跳来源；凭据、路径、查询和表单值不进入诊断。</p>
+<textarea id="diagnostic-text" readonly></textarea><p id="diagnostic-limit" class="hint"></p>
+<div class="row"><button id="diagnostics-close">返回</button><button id="diagnostics-settings">来源设置</button></div>
+<p class="hint">网络使用WinHTTP系统/用户自动代理；保留系统TLS验证，不自动认证。错误可重试；证书错误请核实证书，切勿关闭验证。</p></div>
+<script>
+(function(){
+function el(id){return document.getElementById(id);}
+function send(action,value){ui.postMessage({action:action,value:value||''});}
+var ids=['go','back','forward','reload','stop','home','help','minus','plus','reset','find-prev','find-next','settings','diagnostics'];
+for(var i=0;i<ids.length;i++)(function(id){el(id).addEventListener('click',function(){send(id,id==='go'?el('address').value:el('find').value);});})(ids[i]);
+el('address').addEventListener('keydown',function(e){if(e.keyCode===13){e.preventDefault();send('go',el('address').value);}});
+el('find').addEventListener('keydown',function(e){if(e.keyCode===13){e.preventDefault();send(e.shiftKey?'find-prev':'find-next',el('find').value);}});
+el('settings-save').addEventListener('click',function(){send('settings-save',el('origins').value);});
+el('settings-reset').addEventListener('click',function(){send('settings-reset');});
+el('settings-close').addEventListener('click',function(){send('panel-close');});
+el('diagnostics-close').addEventListener('click',function(){send('panel-close');});
+el('diagnostics-settings').addEventListener('click',function(){send('settings');});
+el('diagnostics').addEventListener('keydown',function(e){if(e.keyCode===9&&!e.shiftKey){e.preventDefault();send('document');}});
+el('address').addEventListener('keydown',function(e){if(e.keyCode===9&&e.shiftKey){e.preventDefault();send('document-last');}});
+var panel=0,lastError='',status='',invalid=false;
+ui.onmessage=function(s){
+ if(s.theme)document.body.className=s.theme;
+ if(s.address!==undefined)el('address').value=s.address;
+ if(s.status!==undefined)status=s.status;
+ if(s.config_invalid!==undefined)invalid=s.config_invalid;
+ el('status').textContent=(invalid?'来源配置无效，全部网络已拒绝 · ':'')+status;
+ if(s.zoom!==undefined)el('zoom-label').textContent=s.zoom+'%';
+ if(s.back!==undefined)el('back').disabled=!s.back;
+ if(s.forward!==undefined)el('forward').disabled=!s.forward;
+ if(s.error!==undefined){lastError=s.error;el('error').textContent=s.error;}
+ if(s.panel!==undefined)panel=s.panel;
+ el('error').style.display=lastError&&panel===0?'block':'none';
+ el('settings-panel').style.display=panel===1?'flex':'none';el('diagnostics-panel').style.display=panel===2?'flex':'none';
+ if(s.origins!==undefined)el('origins').value=s.origins;
+ if(s.config_message!==undefined)el('config-message').textContent=s.config_message;
+ if(s.diagnostics!==undefined&&el('diagnostic-text').value!==s.diagnostics)el('diagnostic-text').value=s.diagnostics;
+ if(s.omitted!==undefined)el('diagnostic-limit').textContent=s.omitted?'已省略较早或过长诊断 '+s.omitted+' 组；显示当前保留内容。':'无诊断省略。';
+ if(s.focus)el(s.focus).focus();
+};
+})();
+</script></body></html>

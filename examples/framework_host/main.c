@@ -423,12 +423,15 @@ static int tool_visible(const ui_host_t *host,const ui_toolbar_item_entry_t *ite
 {ui_command_state_t state={0};state.size=sizeof(state);
  return item->state.visible&&toolbar_visible(host,item->toolbar_id)&&
      ui_host_get_command_state(host,item->command_id,&state)==UI_STATUS_OK&&state.visible;}
-typedef struct menu_state_writer { json_buffer_t *json;size_t count; } menu_state_writer_t;
+typedef struct menu_state_writer { json_buffer_t *json;size_t count;HDC dc;uint32_t dpi; } menu_state_writer_t;
 static void state_menu_group(const ui_menu_model_entry_t *entry,void *data)
 {
     menu_state_writer_t *writer=(menu_state_writer_t *)data;json_buffer_t *json=writer->json;uint64_t hash=UINT64_C(1469598103934665603);const unsigned char *cursor=(const unsigned char *)entry->path;
+    wchar_t title[4096];SIZE extent={0};int width=32;
+    if(MultiByteToWideChar(CP_UTF8,MB_ERR_INVALID_CHARS,entry->title,-1,title,4096)&&GetTextExtentPoint32W(writer->dc,title,(int)wcslen(title),&extent)){
+        width=(extent.cx*96+(int)writer->dpi-1)/(int)writer->dpi+16;if(width<32)width=32;if(width>220)width=220;}
     while(*cursor){hash^=*cursor++;hash*=UINT64_C(1099511628211);}if(writer->count++)json_append(json,",");
-    json_format(json,"{\"key\":\"%llu\",\"path\":",(unsigned long long)hash);json_string(json,entry->path);json_append(json,",\"title\":");json_string(json,entry->title);json_append(json,"}");
+    json_format(json,"{\"key\":\"%llu\",\"path\":",(unsigned long long)hash);json_string(json,entry->path);json_append(json,",\"title\":");json_string(json,entry->title);json_format(json,",\"width\":%d}",width);
 }
 static void state_tools(json_buffer_t *json,const ui_host_t *host)
 {
@@ -501,7 +504,7 @@ static void send_state(host_window_t *s,char **layout_state)
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_MENU_BAR,&rect);json_append(&json,",\"menuRect\":");json_rect(&json,&rect);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_TOOLBAR,&rect);rect.y-=app_menu_height(&info);json_append(&json,",\"toolbarRect\":");json_rect(&json,&rect);
         (void)ui_host_get_rect(info.host,UI_LAYOUT_REGION_STATUS_BAR,&rect);rect.y-=app_menu_height(&info);json_append(&json,",\"statusRect\":");json_rect(&json,&rect);
-        json_append(&json,",\"menuGroups\":[");{menu_state_writer_t writer={&json,0};if(ui_host_visit_menu(info.host,"",state_menu_group,&writer)!=UI_STATUS_OK)json.failed=1;}json_append(&json,"]");
+        json_append(&json,",\"menuGroups\":[");{HDC dc=GetDC(s->hwnd);HFONT font=CreateFontW(-MulDiv(13,(int)s->dpi,96),0,0,0,FW_NORMAL,FALSE,FALSE,FALSE,DEFAULT_CHARSET,OUT_DEFAULT_PRECIS,CLIP_DEFAULT_PRECIS,CLEARTYPE_QUALITY,DEFAULT_PITCH,L"Segoe UI");HGDIOBJ previous=SelectObject(dc,font);menu_state_writer_t writer={&json,0,dc,s->dpi};if(ui_host_visit_menu(info.host,"",state_menu_group,&writer)!=UI_STATUS_OK)json.failed=1;SelectObject(dc,previous);DeleteObject(font);ReleaseDC(s->hwnd,dc);}json_append(&json,"]");
         json_append(&json,",\"tools\":[");state_tools(&json,info.host);json_append(&json,"],\"panels\":[");state_panels(&json,&info);json_append(&json,"],\"status\":");json_string(&json,ui_host_status_text(info.host));
     }else json_append(&json,",\"activeLabel\":\"\",\"menuGroups\":[],\"tools\":[],\"panels\":[]");
     json_append(&json,"}");
@@ -588,6 +591,13 @@ static void open_path(host_window_t *s,const wchar_t *path)
     status=ui_workspace_open(s->workspace,utf8,&id);free(utf8);
     if(status!=UI_STATUS_OK)show_error(s,ui_workspace_last_error(s->workspace));else{close_popup(s);recent_record(s,path);schedule_refresh(s);}
 }
+static void open_builtin_browser(host_window_t *s)
+{
+    wchar_t path[32768],*name;DWORD length=GetModuleFileNameW(NULL,path,32768);
+    if(!length||length>=32768||(name=wcsrchr(path,L'\\'))==NULL){show_error(s,"Cannot locate built-in browser.uapp");return;}
+    ++name;if((size_t)(name-path)+wcslen(L"browser.uapp")>=32768){show_error(s,"Built-in browser path too long");return;}
+    wcscpy(name,L"browser.uapp");open_path(s,path);
+}
 static void open_dialog(host_window_t *s)
 {
     OPENFILENAMEW file;wchar_t path[32768]=L"",filter[128]={0};memset(&file,0,sizeof(file));file.lStructSize=sizeof(file);file.hwndOwner=s->hwnd;
@@ -629,6 +639,7 @@ static void transaction_action(host_window_t *s,const char *action)
 static void menu_popup(host_window_t *s)
 {
     json_buffer_t json={0};int count=0;if(!create_popup(s,1,360,212))return;anchor_popup(s,"menu");s->selector_page=0;popup_start(s,&json,tr(s,"宿主选项"),tr(s,"应用菜单位于标签栏下方"),0);
+    popup_item(&json,&count,tr(s,"浏览网页"),"browse",0,NULL);
     popup_item(&json,&count,tr(s,"打开应用包… · Ctrl+Shift+O"),"open",0,NULL);
     popup_item(&json,&count,tr(s,"关闭当前标签 · Ctrl+W"),"close",ui_workspace_active(s->workspace),NULL);
     popup_item(&json,&count,tr(s,"下一个标签 · Ctrl+Tab"),"next",0,NULL);popup_item(&json,&count,tr(s,"上一个标签 · Ctrl+Shift+Tab"),"previous",0,NULL);
@@ -707,7 +718,8 @@ static void process_action(host_window_t *s,host_action_t *action)
         if(strcmp(name,"tooltip-hide"))close_popup(s);
     }else if(s->confirm_waiting)return;
     if(!strcmp(name,"ready")){schedule_refresh(s);return;}
-    if(!strcmp(name,"open")){close_popup(s);open_dialog(s);}
+    if(!strcmp(name,"browse")){close_popup(s);open_builtin_browser(s);}
+    else if(!strcmp(name,"open")){close_popup(s);open_dialog(s);}
     else if(!strcmp(name,"close")){close_popup(s);if(!id)id=ui_workspace_active(s->workspace);if(id)(void)ui_workspace_close(s->workspace,id,UI_APP_CLOSE_TAB);}
     else if(!strcmp(name,"activate")){close_popup(s);if(id)(void)ui_workspace_activate(s->workspace,id);}
     else if(!strcmp(name,"next"))switch_tab(s,1);else if(!strcmp(name,"previous"))switch_tab(s,-1);

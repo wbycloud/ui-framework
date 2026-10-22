@@ -22,7 +22,7 @@ function Assert-UiCiResults([xml]$Results, [string[]]$Expected, [string]$Configu
         }
     }
     $required = @('ui_workspace7','ui_workspace_layout','ui_public_headers_c','ui_language_core','ui_theme_core')
-    if ($Configuration -ne 'native') { $required += @('ui_component_layout','ui_component_widths','ui_light_glyph_padding','ui_light_rect_stability','ui_light_scroll','ui_component_scroll','ui_component_scroll_native','ui_menu_access','ui_application_contract','ui_text_replacement','ui_workspace_titles') }
+    if ($Configuration -ne 'native') { $required += @('ui_component_layout','ui_component_widths','ui_light_glyph_padding','ui_light_rect_stability','ui_hover_boundaries','ui_light_scroll','ui_component_scroll','ui_component_scroll_native','ui_menu_access','ui_application_contract','ui_text_replacement','ui_workspace_titles') }
     if ($Configuration -in @('osmesa','webview2')) { $required += @('ui_visual_ui_light','ui_windowless_gl','ui_session0_interactive_control','ui_api7_integration','ui_host_repaint','ui_stateful_components_light','ui_instance_language_light') }
     if ($Configuration -eq 'webview2') {
         $required += @('ui_component_layout_webview2','ui_component_widths_webview2','ui_visual_ui_webview2','ui_component_scroll_webview2','ui_api7_integration_webview2','ui_component_experience_webview2','ui_webview2_render','ui_webview2_messages','ui_webview2_parity','ui_webview2_capture_edges','ui_stateful_components_webview2','ui_instance_language_webview2','ui_text_replacement_webview2')

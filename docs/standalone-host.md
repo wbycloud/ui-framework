@@ -1,6 +1,6 @@
 # 独立宿主使用说明
 
-当前为SDK0.9/API9。浏览器式外壳属于宿主内部实现，没有新增公共接口；当前API9应用按现行菜单、内容槽、助手和生命周期合同运行；历史兼容维护已按[版本政策](version-policy.md)撤销。[浏览器式宿主验收](validation/browser-host-validation.md)与[本轮视觉验收](validation/visual-ui-validation.md)。统一数值及后端边界见[视觉规范](visual-design.md)。
+当前为SDK0.9/API9。浏览器式外壳属于宿主内部实现；2026-10-17开发快照另增[实例标题与每host主题公共契约](instance-title-and-theme.md)，冻结API9不含新导出；当前API9应用按现行菜单、内容槽、助手和生命周期合同运行；历史兼容维护已按[版本政策](version-policy.md)撤销。[浏览器式宿主验收](validation/browser-host-validation.md)与[本轮视觉验收](validation/visual-ui-validation.md)。统一数值及后端边界见[视觉规范](visual-design.md)。
 
 ## 1. 打开、标签和菜单
 
@@ -70,3 +70,10 @@ ui_browser_host使用框架测试包和私有临时历史目录，保留GetCurso
 语言入口在应用，不在宿主全局设置。有应用时读取活动host，后台变更隔离；切换/关闭活动标签更新文案，最后一个关闭后恢复Windows显示语言。最近、空状态、工具提示、固定错误和助手使用框架统一资源。用户路径、参数和已有结果不翻译；助手确认按目标实例打开时快照。Windows文件选择器系统按钮依旧使用系统语言，其应用包过滤标签属于框架。实际识别时机和模态策略见[语言合同](instance-language.md)，[本轮证据](validation/instance-language-validation.md)不继承历史通过。
 
 [2026-10-09当前源码复核](validation/instance-language-current-validation.md)补充完整示例双实例、实际Runtime及同状态中英文截图。权限确认已打开时保持目标实例的语言快照，后来活动标签或后台实例改语言不会改写该确认；无实例时按实际Windows UI查询，不以输入法/地区格式代替。
+
+
+## 2026-10-20 内置浏览网页入口
+
+宿主选项菜单首项“浏览网页”定位 framework_host.exe 同目录的 browser.uapp，通过既有 open_path/workspace 打开。用户无需选择应用包；每次打开一个普通多实例标签。应用默认不随宿主启动、不恢复网页会话、不产生后台网络请求。原加号的打开包行为保留。
+
+浏览器不创建第二层标签栏。标题、主题、切换、关闭等待、卸载继续使用公共应用机制；页面和来源限制见[支持表](restricted-browser.md)。包缺失仍走正常宿主加载错误，不回退到其他浏览器内核。

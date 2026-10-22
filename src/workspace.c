@@ -6,6 +6,7 @@
 #include <string.h>
 #include <wchar.h>
 #include "ui_framework/application.h"
+#include "ui_framework/app_data.h"
 #include "ui_framework/package.h"
 #include "ui_internal.h"
 
@@ -29,13 +30,15 @@ struct app_instance {
     ui_app_context_t context;
     ui_assistant_config_t app_assistant;
     void *state;
+    ui_app_data_fn data_callback;
+    void *data_user;
     HWND container;
     char *title;
     int mounted, closing, close_ready, active;
     app_instance_t *next;
 };
 typedef struct post_budget { uint64_t id; size_t bytes,limit; struct post_budget *next; } post_budget_t;
-enum post_kind { POST_RESULT, POST_EVENT, POST_PROGRESS, POST_CLOSE, POST_COMPONENT, POST_THUMBNAIL, POST_SELECTION };
+enum post_kind { POST_RESULT, POST_EVENT, POST_PROGRESS, POST_CLOSE, POST_COMPONENT, POST_THUMBNAIL, POST_SELECTION, POST_APP_DATA };
 struct posted_message {
     enum post_kind kind;
     uint64_t id, request;
@@ -46,7 +49,7 @@ struct posted_message {
     uint64_t selection_generation;
     size_t selection_count;
     void *pixels;
-    size_t bytes;
+    size_t bytes, app_length;
     posted_message_t *next;
 };
 struct ui_workspace {
@@ -732,6 +735,24 @@ static ui_status_t enqueue_component(ui_workspace_t *w,posted_message_t *p)
     else{b->bytes+=p->bytes;if(w->queue_tail)w->queue_tail->next=p;else w->queue_head=p;w->queue_tail=p;}
     LeaveCriticalSection(&w->queue_lock);if(status!=UI_STATUS_OK)free_post(p);else wake(w);return status;
 }
+ui_status_t ui_app_set_data_callback(const ui_app_context_t *context,ui_app_data_fn callback,void *user)
+{
+    app_instance_t *p;ui_workspace_t *w;
+    if(!context||context->size<sizeof(*context)||!(w=context->workspace)||w->thread_id!=GetCurrentThreadId())return UI_STATUS_INVALID_ARGUMENT;
+    p=find_instance(w,context->instance_id);if(!p)return UI_STATUS_NOT_FOUND;
+    if(p->context.host!=context->host)return UI_STATUS_INVALID_ARGUMENT;
+    p->data_callback=callback;p->data_user=user;return UI_STATUS_OK;
+}
+ui_status_t ui_workspace_post_app_data(ui_workspace_t *w,uint64_t id,uint64_t kind,const void *data,size_t bytes)
+{
+    posted_message_t *p;
+    if(!w||!id||(bytes&&!data))return UI_STATUS_INVALID_ARGUMENT;
+    if(bytes>8u*1024u*1024u-sizeof(*p))return UI_STATUS_LIMIT_EXCEEDED;
+    p=(posted_message_t *)calloc(1,sizeof(*p));if(!p)return UI_STATUS_OUT_OF_MEMORY;
+    p->kind=POST_APP_DATA;p->id=id;p->request=kind;p->app_length=bytes;p->bytes=sizeof(*p)+bytes;
+    if(bytes){p->pixels=malloc(bytes);if(!p->pixels){free(p);return UI_STATUS_OUT_OF_MEMORY;}memcpy(p->pixels,data,bytes);}
+    return enqueue_component(w,p);
+}
 ui_status_t ui_workspace_set_component_queue_limit(ui_workspace_t *w,uint64_t id,size_t limit)
 {post_budget_t *b;ui_status_t status=UI_STATUS_OK;if(!w||!id||!limit)return UI_STATUS_INVALID_ARGUMENT;
  EnterCriticalSection(&w->queue_lock);b=budget(w,id);if(!b)status=UI_STATUS_NOT_FOUND;else if(limit<b->bytes)status=UI_STATUS_LIMIT_EXCEEDED;else b->limit=limit;
@@ -788,6 +809,9 @@ static void workspace_poll_impl(ui_workspace_t *w,uint32_t budget_count)
         if (p && !p->close_ready) {
             ++w->depth;
             switch (messages->kind) {
+            case POST_APP_DATA:
+                if(p->data_callback)p->data_callback(messages->request,messages->pixels,messages->app_length,p->data_user);
+                break;
             case POST_RESULT: (void)ui_host_reply(p->context.host, messages->request, messages->value, messages->text); break;
             case POST_EVENT: (void)ui_host_emit_event(p->context.host, messages->name, messages->text); break;
             case POST_PROGRESS: (void)ui_assistant_report_progress(p->context.assistant, messages->request, messages->value, messages->text); break;

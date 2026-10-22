@@ -1,3 +1,5 @@
+> 最新恢复入口：[2026-10-22当前交接](handoff-current.md)。下面各日期段落保留历史身份，旧“当前”描述不覆盖新专项结论。
+
 # 框架开发交接记录
 
 更新日期：2026-10-09。当前SDK0.9.0-dev/API9/标准9，应用ABI1/包格式1。最新实例语言复核接手干净876588246a72d261c88b9e1906372d1b5b91d1ca，已有实现保留，没有重复新增接口；先读第24节与[本轮复核](validation/instance-language-current-validation.md)。此前已核验远端main/codex/menus-offscreen b6a36fee完整源码同步，原托管CI失败及Session0实际GL通过/严格无登录失败见第21节与[同步记录](validation/github-sync-validation.md)，不是当前8765882服务复验。第19节[API9初验](validation/instance-language-validation.md)、第18节及更早各节保留原提交、环境和失败，不继承为当前CI通过。保留95f5d78/6a0170a视觉、9df202f/2e87e02捕获及异步轨道、f0b161c列序与捕获和第23节界面修复。共同组件无分页按钮，原预算与生命周期保持，只维护当前API9；本地交付、托管CI、Session0及物理人工条件分别报告。
@@ -404,3 +406,15 @@ Git中`docs/validation/instance-language-current-evidence-20261009`包含143份�
 ## 2026-10-12 本地 UX 后续（未提交）
 
 本轮仍为 HEAD 7848a946fcf417eefe87bd63e42f83c8a3f875f3、codex/p1-process-boundaries；存在已授权的本地未提交 UX 改动。恢复时先读 [本轮报告](validation/ux-validation-20261012.md) 和其中的源码／产物身份、连续画面与保护索引，再核对 Git。glyph居中、鼠标无虚线／键盘实线、宿主公共短提示、同布局重复状态去重、零尺寸分隔边及144DPI自动按钮截断已查证修复，不能重新列为未实现。完整性能 v4 与最后 final5 构建身份分别记录，不混计历史或重建结果。未提交／推送／远程运行；Mesa P1、物理与人工条件仍独立待验，原 SDK 和证据未改。
+
+## 2026-10-17 通用交互与公共契约（未提交工作树）
+
+入口实际HEAD `1af1f5a9f2efd6627ffea300ef90c41171cb917b`、`codex/p1-process-boundaries`；入口tracked clean，原11个未跟踪材料路径保留。先读[本轮验证](validation/interaction-20261017-validation.md)与[公共契约](instance-title-and-theme.md)，再核对实际Git和产物。Light同值选区替换、嵌套焦点显露及Runtime144程序DPI捕获取整有独立公共复现；动态实例标题及每host主题为API9开发增补，不改旧结构和冻结SDK。不要把候选/早期构建与最终匹配交付混用。所有原失败保留。
+
+用户本轮禁止提交、推送、远程工作流、发布、标签、computer use、私有调用方接口/JS、子代理和新会话；后续仍按明确授权。业务、PERF-001、固定依赖和历史证据只读。物理DPI/多屏/IME/人工、当前Session0和严格无登录独立待验，旧Mesa专项不扩展。回退仅按本轮清单与入口ZIP撤回本轮改动，保留全部证据。
+
+## 2026-10-17 生命周期与体验续查
+
+当前专项以[本轮记录](validation/lifecycle-ux-20261017-validation.md)为准：入口1af1f5a9及599800c3工作树受保护；新Light稳定几何路径避免重复字体/布局，语言测试使用公开主题并补活动时序。Mesa默认A未替换，C仅独立候选；原子259→0及公共多线程正常screen清理/真正UNLOAD仍未闭环，目标B/C未远程执行。新证据与交付均使用lifecycle-ux-20261017-f6c42b91独立目录，不能使用上轮回退覆盖受保护入口。
+
+本轮另捕获一次Runtime144冷write子进程退出门槛失败：主OS0但两观察子在原10秒仍259；原样保留，后续限定对照未复现，未归因或宣称修复，详见新专项B3/C5。

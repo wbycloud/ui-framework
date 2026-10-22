@@ -494,3 +494,14 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 公共多行字段默认四行容量，调用 `ui_component_set_field_layout` 设置首选行数或逻辑高度。只读字段仍可选择、复制和滚动；内部文字与外层字段容器分别滚动，验收必须实际读到末行，不能以滚动条或接口成功代替。公共DIALOG通过 `ui_component_set_dialog_layout` / `ui_component_get_dialog_layout` 管理首选、最小、最大客户区尺寸，首次按内容计算高度，按钮与模态/键盘语义保留；详见[布局合同及C示例](dialog-layout.md)。
 
 `ui_host_hide_tooltip` 在UI线程隐藏本宿主及其shell内部浮动标题提示，保留普通菜单和独立应用宿主的提示。离开锚点、位置变化、拖动、停靠、关闭及拥有者销毁关闭旧提示；内容更新关闭旧值提示。尺寸按内容计算，完整提示矩形限制在拥有者可见客户区与监视器工作区的交集内；交集为空时 `ui_host_show_tooltip` 返回NOT_FOUND。提示保持可见并让鼠标输入穿过，普通菜单保留可操作语义。程序设置DPI、窗口报告DPI和物理显示器DPI分别记录。新能力使用匹配的当前开发提交产物；不改写冻结SDK及历史标准。实际可见性与自动回归见[此前验收](validation/ui-repair-validation.md)及[当前本地查证](validation/local-investigation-validation.md)。
+
+## 2026-10-17 开发快照增补
+
+当前SDK0.9.0-dev/API9/标准9按[版本政策](version-policy.md)追加独立主题信息结构与六个导出，不修改已发布结构或冻结SDK。`ui_workspace_set/get_instance_title`按稳定实例ID更新显示标题；`theme.h`提供每host的模式、语义色和同步通知，应用自绘图标/GL自行协作。[调用线程、字符串复制、长度/错误、通知顺序、系统刷新及示例](instance-title-and-theme.md)。本轮交付用基准HEAD+工作树源码SHA标识；新增应用须链接同包导入库/DLL，不能以API数字相同替代快照匹配。本轮用户要求的冻结API9定向兼容结果见[验证](validation/interaction-20261017-validation.md)，不恢复历史API1–8持续维护。
+
+
+## 2026-10-20 受限文档公共 C 增补
+
+可信应用HTML继续使用 ui_light_web_backend_create/load_html；下载页面必须使用独立的 ui_light_document_backend_create 与 light_document.h。该后端不创建JS runtime，拒绝可信加载与JSON应用桥，只交付结构化导航/GET字段和资源事件，不能从页面升级成可信模式。窗口、呈现、输入和图片仍复用公共C接口。
+
+后台结果通过 app_data.h 的复制投递交给应用自己的UI接收函数，沿用workspace稳定ID、线程、所有权、预算和WAIT关闭合同。应用及调用示例见[受限浏览器合同](restricted-browser.md)与[公共验证源码](../apps/browser/tests/document_public.c)。新增独立结构读取要求完整size；冻结SDK不变，使用匹配开发快照。

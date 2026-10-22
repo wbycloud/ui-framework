@@ -35,6 +35,7 @@ typedef struct ui_menu_popup {
     int tip_pointer_inside;
 #endif
     char *path, *detail;
+    ui_component_t *tooltip_owner;
     struct ui_menu_popup *parent, *child, *next_root;
     ui_rect_t parent_row;
     char hover_id[4096];
@@ -181,7 +182,7 @@ static int valid_target(ui_menu_popup_t *p)
 ui_status_t ui_host_close_menu(ui_host_t *host)
 {
     ui_menu_popup_t *p;if(!host)return UI_STATUS_INVALID_ARGUMENT;p=(ui_menu_popup_t *)host->menu_popup;
-    host->menu_alt_pending=0;if(!p||!p->open)return UI_STATUS_OK;close_branch(p);host->menu_open_path=NULL;
+    host->menu_alt_pending=0;if(!p||!p->open)return UI_STATUS_OK;close_branch(p);p->tooltip_owner=NULL;host->menu_open_path=NULL;
 #ifdef _WIN32
 #ifdef UI_FRAMEWORK_ENABLE_LIGHT_WEB
     {ui_menu_popup_t *r;int any=0;for(r=menu_roots;r;r=r->next_root)if(r->open)any=1;if(!any&&menu_hook){UnhookWindowsHookEx(menu_hook);menu_hook=NULL;}}
@@ -480,6 +481,11 @@ void ui_menus_destroy(ui_host_t *host)
 
 void ui_menus_hide_tooltip(ui_host_t *host)
 {ui_menu_popup_t *p=host?(ui_menu_popup_t *)host->menu_popup:NULL;if(p&&p->detail)(void)ui_host_close_menu(host);}
+
+ui_status_t ui_menus_show_component_tooltip(ui_host_t *host,ui_component_t *owner,const ui_menu_anchor_t *anchor,const char *text)
+{ui_status_t status=ui_host_show_tooltip(host,anchor,text);if(status==UI_STATUS_OK)((ui_menu_popup_t *)host->menu_popup)->tooltip_owner=owner;return status;}
+void ui_menus_hide_component_tooltip(ui_host_t *host,ui_component_t *owner)
+{ui_menu_popup_t *p=host?(ui_menu_popup_t *)host->menu_popup:NULL;if(p&&p->detail&&(p->tooltip_owner==owner||p->anchor.component==owner))(void)ui_host_close_menu(host);}
 
 ui_status_t ui_host_hide_tooltip(ui_host_t *host)
 {if(!host)return UI_STATUS_INVALID_ARGUMENT;ui_menus_hide_tooltip(host);ui_shell_hide_tooltips(host);return UI_STATUS_OK;}

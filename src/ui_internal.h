@@ -194,6 +194,8 @@ void ui_components_destroy(ui_host_t *host);
 void ui_menus_destroy(ui_host_t *);
 void ui_menus_commands_changed(ui_host_t *);
 void ui_menus_hide_tooltip(ui_host_t *);
+ui_status_t ui_menus_show_component_tooltip(ui_host_t *,ui_component_t *,const ui_menu_anchor_t *,const char *);
+void ui_menus_hide_component_tooltip(ui_host_t *,ui_component_t *);
 void ui_shell_hide_tooltips(ui_host_t *);
 ui_status_t ui_menus_route_input(ui_host_t *,const void *,const ui_input_event_t *,int composing);
 void ui_menus_component_invalidated(ui_host_t *,ui_component_t *,uint64_t);

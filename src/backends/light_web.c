@@ -1,4 +1,6 @@
 #include "ui_framework/light_web.h"
+#include "ui_framework/light_document.h"
+#include <limits.h>
 #include "../ui_internal.h"
 
 #include <ctype.h>
@@ -41,16 +43,17 @@ typedef struct lw_style {
     int display_flex, absolute, left, top, right, bottom;
     int min_width, max_width, min_height, max_height;
     int padding[4], margin[4], gap, align, justify;
-    unsigned padding_set;
+    unsigned padding_set, margin_set;
     int border, radius, font_size, font_weight, font_family, nowrap, text_align, scroll_x;
     unsigned color, border_color, outline_color;
     int outline, outline_offset;
+    int font_italic, white_space, line_height, display_kind;
 } lw_style_t;
 
 typedef struct lw_rule {
     char selector[256];
     char declarations[LW_ATTR_CAP];
-    int min_width, max_width, specificity;
+    int min_width, max_width, specificity, source_order;
 } lw_rule_t;
 
 typedef struct lw_node {
@@ -77,21 +80,25 @@ typedef struct lw_node {
     struct lw_history *undo, *redo;
     uint64_t image;
     HFONT font;
-    int font_size, font_weight, font_family;
+    int font_size, font_weight, font_family, font_italic;
     uint32_t font_dpi;
     JSValue object;
     JSValue listeners[LW_EVENTS]; /* click, input, keydown, focus, blur, mouseenter, mouseleave, mousedown */
 } lw_node_t;
 
+typedef struct ld_document ld_document_t;
+
 typedef struct lw_backend {
     ui_web_backend_t *common;
     HWND parent;
     int enable_native_input;
+    int restricted;
     struct lw_backend *next;
 } lw_backend_t;
 
 typedef struct lw_view {
     lw_backend_t *backend;
+    ld_document_t *restricted;
     ui_host_t *host;
     lxb_html_document_t *document;
     JSRuntime *runtime;
@@ -132,6 +139,15 @@ typedef struct lw_view {
 } lw_view_t;
 
 static lw_backend_t *g_backends;
+static void ld_reset(lw_view_t *);
+static void ld_layout(lw_view_t *);
+static ui_status_t ld_input(lw_view_t *,const ui_input_event_t *);
+static ui_status_t lw_create_view(void *,ui_host_t *,void **);
+static int ld_font_size(lw_view_t *,int);
+static void ld_style_defaults(lw_view_t *,int);
+static ui_status_t ld_declarations(lw_view_t *,char *,const char *);
+static int ld_style_order(lw_view_t *);
+static void ld_css_restriction(lw_view_t *);
 static void lw_report_exception(lw_view_t *view)
 {
     JSValue exception=JS_GetException(view->context);const char *message=JS_ToCString(view->context,exception);
@@ -323,7 +339,8 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
             if (_stricmp(key, "display") == 0) {
                 if (_stricmp(value, "none") == 0) style->hidden = 1;
                 else if (_stricmp(value, "flex") == 0) { style->hidden = 0; style->display_flex = 1; }
-                else if (_stricmp(value, "block") == 0) { style->hidden = 0; style->display_flex = 0; }
+                else if (_stricmp(value, "block") == 0) { style->hidden = 0; style->display_flex = 0; style->display_kind=1; }
+                else if (!_stricmp(value,"inline")||!_stricmp(value,"inline-block")){style->hidden=0;style->display_kind=2;}
                 else return UI_STATUS_UNSUPPORTED;
             } else if (_stricmp(key, "flex-direction") == 0) {
                 if (_stricmp(value, "row") == 0) style->row = 1;
@@ -359,7 +376,7 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
             } else if (!strcmp(key, "padding") || !strcmp(key, "margin")) {
                 status = lw_box(value, !strcmp(key, "padding") ? style->padding : style->margin);
                 if (status != UI_STATUS_OK) return status;
-                if (!strcmp(key,"padding")) style->padding_set = 15;
+                if (!strcmp(key,"padding")) style->padding_set = 15;else style->margin_set=15;
             } else if (!strncmp(key, "padding-", 8) || !strncmp(key, "margin-", 7)) {
                 int *box = !strncmp(key, "padding-", 8) ? style->padding : style->margin;
                 const char *side = key + (!strncmp(key, "padding-", 8) ? 8 : 7);
@@ -367,7 +384,7 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
                     !strcmp(side,"bottom") ? 2 : !strcmp(side,"left") ? 3 : -1;
                 if (slot < 0 || lw_number(value, &number, &percent) != UI_STATUS_OK || percent) return UI_STATUS_UNSUPPORTED;
                 box[slot] = number;
-                if (!strncmp(key,"padding-",8)) style->padding_set |= 1u << slot;
+                if (!strncmp(key,"padding-",8)) style->padding_set |= 1u << slot;else style->margin_set|=1u<<slot;
             } else if (!strcmp(key, "align-items") || !strcmp(key, "justify-content") || !strcmp(key, "text-align")) {
                 int alignment = !strcmp(value,"center") ? 1 : (!strcmp(value,"end") || !strcmp(value,"flex-end") || !strcmp(value,"right")) ? 2 :
                     !strcmp(value,"space-between") ? 3 : !strcmp(value,"stretch") ? 4 :
@@ -381,13 +398,25 @@ static ui_status_t lw_apply_style(lw_style_t *style, char *text)
                 else if (!strcmp(value,"relative") || !strcmp(value,"static")) style->absolute = 0;
                 else return UI_STATUS_UNSUPPORTED;
             } else if (!strcmp(key,"white-space")) {
-                if (!strcmp(value,"nowrap")) style->nowrap = 1;
-                else if (!strcmp(value,"normal") || !strcmp(value,"pre-wrap")) style->nowrap = 0;
+                if (!strcmp(value,"nowrap")) {style->nowrap=1;style->white_space=1;}
+                else if (!strcmp(value,"normal")) {style->nowrap=0;style->white_space=0;}
+                else if (!strcmp(value,"pre")) {style->nowrap=1;style->white_space=2;}
+                else if (!strcmp(value,"pre-wrap")) {style->nowrap=0;style->white_space=3;}
+                else if (!strcmp(value,"pre-line")) {style->nowrap=0;style->white_space=4;}
+                else return UI_STATUS_UNSUPPORTED;
+            } else if (!strcmp(key,"font-style")) {
+                if(!strcmp(value,"italic")||!strcmp(value,"oblique"))style->font_italic=1;
+                else if(!strcmp(value,"normal"))style->font_italic=0;else return UI_STATUS_UNSUPPORTED;
+            } else if (!strcmp(key,"line-height")) {
+                if(!strcmp(value,"normal"))style->line_height=0;
+                else if(lw_number(value,&number,&percent)==UI_STATUS_OK&&!percent&&strstr(value,"px")&&number>0&&number<=256)style->line_height=number;
                 else return UI_STATUS_UNSUPPORTED;
             } else if (!strcmp(key,"font-family")) {
                 if (strstr(value,"Segoe MDL2 Assets")) style->font_family = 2;
                 else if (strstr(value,"Microsoft YaHei UI")) style->font_family = 1;
                 else if (strstr(value,"Segoe UI") || !strcmp(value,"sans-serif")) style->font_family = 0;
+                else if(!strcmp(value,"monospace")||strstr(value,"Consolas"))style->font_family=3;
+                else if(!strcmp(value,"serif")||strstr(value,"Times New Roman"))style->font_family=4;
                 else return UI_STATUS_UNSUPPORTED;
             } else if (!strcmp(key,"font-weight")) {
                 if (!strcmp(value,"normal")) style->font_weight = FW_NORMAL;
@@ -472,6 +501,7 @@ static ui_status_t lw_stylesheet(lw_view_t *view, const char *text)
         length = (size_t)(close - open - 1);
         if (length >= sizeof(declarations)) return UI_STATUS_VALIDATION_FAILED;
         memcpy(declarations,open + 1,length); declarations[length] = 0;
+        if(view->restricted){char filtered[LW_ATTR_CAP];ui_status_t status=ld_declarations(view,filtered,declarations);if(status!=UI_STATUS_OK)return status;strcpy(declarations,filtered);}
         {
             char validate[LW_ATTR_CAP]; lw_style_t style;
             strcpy(validate,declarations);
@@ -480,7 +510,8 @@ static ui_status_t lw_stylesheet(lw_view_t *view, const char *text)
         while (piece && *piece) {
             lw_rule_t *rule; const char *s;
             comma = strchr(piece,','); if (comma) *comma++ = 0;
-            if (view->rule_count >= LW_MAX_RULES) return UI_STATUS_VALIDATION_FAILED;
+            if(view->restricted&&(strpbrk(piece,">+[]~(")||*lw_trim(piece)=='@')){ld_css_restriction(view);piece=comma;continue;}
+            if (view->rule_count >= LW_MAX_RULES) return view->restricted?UI_STATUS_LIMIT_EXCEEDED:UI_STATUS_VALIDATION_FAILED;
             if (view->rule_count == view->rule_capacity) {
                 int capacity = view->rule_capacity ? view->rule_capacity * 2 : 16;
                 lw_rule_t *rules = (lw_rule_t *)realloc(view->rules,(size_t)capacity * sizeof(*rules));
@@ -489,12 +520,12 @@ static ui_status_t lw_stylesheet(lw_view_t *view, const char *text)
             }
             rule = &view->rules[view->rule_count++];
             strcpy(rule->selector,lw_trim(piece)); strcpy(rule->declarations,declarations);
-            rule->min_width = media_min; rule->max_width = media_max; rule->specificity = 0;
+            rule->min_width = media_min; rule->max_width = media_max; rule->specificity = 0;rule->source_order=view->restricted?ld_style_order(view):0;
             for (s = rule->selector; *s; ++s) {
                 if (*s == '#') rule->specificity += 100;
                 else if (*s == '.' || *s == ':') rule->specificity += 10;
                 else if (s == rule->selector || isspace((unsigned char)s[-1])) ++rule->specificity;
-                if (*s == '>' || *s == '+' || *s == '[' || *s == '*') return UI_STATUS_UNSUPPORTED;
+                if (*s == '>' || *s == '+' || *s == '[' || (*s == '*'&&!view->restricted)) return UI_STATUS_UNSUPPORTED;
             }
             piece = comma;
         }
@@ -505,7 +536,7 @@ static ui_status_t lw_stylesheet(lw_view_t *view, const char *text)
         int i, j;
         for (i = 1; i < view->rule_count; ++i) {
             lw_rule_t rule = view->rules[i]; j = i;
-            while (j > 0 && view->rules[j - 1].specificity > rule.specificity) {
+            while (j > 0 && (view->rules[j - 1].specificity > rule.specificity || (view->rules[j - 1].specificity==rule.specificity && view->rules[j - 1].source_order>rule.source_order))) {
                 view->rules[j] = view->rules[j - 1]; --j;
             }
             view->rules[j] = rule;
@@ -553,7 +584,7 @@ static int lw_matches_piece(lw_view_t *view, int index, const char *piece)
             else if (!strcmp(token,"disabled")) { if (!node->disabled) return 0; }
             else return 0;
         }
-        if (kind != '#' && kind != '.' && kind != ':' && _stricmp(node->tag,token)) return 0;
+        if (kind != '#' && kind != '.' && kind != ':' && (!view->restricted||strcmp(token,"*")) && _stricmp(node->tag,token)) return 0;
     }
     return 1;
 }
@@ -708,6 +739,8 @@ static void lw_compute_style(lw_view_t *view, int index)
     int r, child;
     char declarations[LW_ATTR_CAP];
     lw_style_default(&node->style);
+    if(view->restricted){node->style.color=0x242424;node->style.font_size=16;
+        if(index==view->root){node->style.background_set=1;node->style.background=0xffffff;}}
     /* Unstyled public pages keep a keyboard indicator; authored outline rules
        can override it. Mouse focus still preserves the focused node. */
     if(view->focused==index&&view->keyboard_focus&&!lw_input(node)){
@@ -718,7 +751,9 @@ static void lw_compute_style(lw_view_t *view, int index)
         node->style.color = parent->color; node->style.font_size = parent->font_size;
         node->style.font_weight = parent->font_weight;
         node->style.font_family = parent->font_family;
+        node->style.font_italic=parent->font_italic;node->style.white_space=parent->white_space;node->style.nowrap=parent->nowrap;node->style.line_height=parent->line_height;
     }
+    if(view->restricted)ld_style_defaults(view,index);
     /* Stable specificity order; equal specificity retains source ordering. */
     for (r = 0; r < view->rule_count; ++r) {
             lw_rule_t *rule = &view->rules[r];
@@ -728,6 +763,7 @@ static void lw_compute_style(lw_view_t *view, int index)
             (void)lw_apply_style(&node->style,declarations);
     }
     strcpy(declarations,node->inline_style); (void)lw_apply_style(&node->style,declarations);
+    if(view->restricted)node->style.font_size=ld_font_size(view,node->style.font_size);
     /* A single body child is the legacy page root and fills the viewport. */
     if (node->parent == view->root && view->nodes[view->root].first_child == index && node->next_sibling < 0)
         node->style.flex = 1;
@@ -735,14 +771,14 @@ static void lw_compute_style(lw_view_t *view, int index)
         (node->parent < 0 || view->nodes[node->parent].visible);
     if (!node->visible) memset(&node->rect,0,sizeof(node->rect));
     if (!node->font || node->font_size != node->style.font_size ||
-        node->font_weight != node->style.font_weight || node->font_family != node->style.font_family || node->font_dpi != view->dpi) {
+        node->font_weight != node->style.font_weight || node->font_italic!=node->style.font_italic || node->font_family != node->style.font_family || node->font_dpi != view->dpi) {
         if (node->font) DeleteObject(node->font);
         node->font = CreateFontW(-lw_pixel(node->style.font_size,view->dpi),0,0,0,
-            node->style.font_weight,FALSE,FALSE,FALSE,DEFAULT_CHARSET,OUT_DEFAULT_PRECIS,
-            CLIP_DEFAULT_PRECIS,CLEARTYPE_QUALITY,DEFAULT_PITCH,node->style.font_family==2?L"Segoe MDL2 Assets":node->style.font_family?L"Microsoft YaHei UI":L"Segoe UI");
+            node->style.font_weight,node->style.font_italic,FALSE,FALSE,DEFAULT_CHARSET,OUT_DEFAULT_PRECIS,
+            CLIP_DEFAULT_PRECIS,CLEARTYPE_QUALITY,DEFAULT_PITCH,node->style.font_family==2?L"Segoe MDL2 Assets":node->style.font_family==3?L"Consolas":node->style.font_family==4?L"Times New Roman":node->style.font_family?L"Microsoft YaHei UI":L"Segoe UI");
         node->font_size = node->style.font_size; node->font_weight = node->style.font_weight;
         node->font_dpi = view->dpi;
-        node->font_family = node->style.font_family;
+        node->font_family = node->style.font_family;node->font_italic=node->style.font_italic;
     }
     for (child = node->first_child; child >= 0; child = view->nodes[child].next_sibling)
         lw_compute_style(view,child);
@@ -888,7 +924,8 @@ static void lw_layout(lw_view_t *view)
     if (view->layout_depth) return;
     if(view->trace_enabled){lw_trace(view,0);QueryPerformanceCounter(&start);}
     ++view->layout_depth;
-    if (view->root >= 0) { lw_compute_style(view,view->root); lw_layout_node(view, view->root, viewport, viewport); }
+    if (view->restricted) ld_layout(view);
+    else if (view->root >= 0) { lw_compute_style(view,view->root); lw_layout_node(view, view->root, viewport, viewport); }
     lw_caret(view);
     if (view->hwnd) InvalidateRect(view->hwnd, NULL, FALSE);
     view->dirty = 0;
@@ -1560,6 +1597,7 @@ static ui_status_t lw_collect_scripts(lw_view_t *view, lxb_dom_node_t *parent,
 static void lw_free_document(lw_view_t *view)
 {
     int i;
+    if(view->restricted)ld_reset(view);
     for (i = 0; i < view->node_count; ++i) if (view->nodes[i].used) lw_release_node(view,i);
     if (view->document) lxb_html_document_destroy(view->document);
     view->document = NULL; view->node_count = 0; view->root = -1;
@@ -1596,12 +1634,26 @@ static int lw_next_node(const lw_view_t *view, int index)
 
 #include "light_text.inc"
 #include "light_scroll.inc"
+#include "light_document.inc"
+
+static void lw_hover(lw_view_t *view,int hit)
+{
+    unsigned before[LW_MAX_NODES],after[LW_MAX_NODES];int n=0,m=0,index;
+    if(hit==view->hovered)return;
+    for(index=view->hovered;index>=0;index=view->nodes[index].parent)before[n++]=view->nodes[index].uid;
+    for(index=hit;index>=0;index=view->nodes[index].parent)after[m++]=view->nodes[index].uid;
+    while(n&&m&&before[n-1]==after[m-1]){--n;--m;}
+    view->hovered=hit;
+    for(index=0;index<n;++index)(void)lw_event(view,lw_uid_index(view,before[index]),6,0);
+    while(m)(void)lw_event(view,lw_uid_index(view,after[--m]),5,0);
+}
 
 static void lw_paint(lw_view_t *view, HDC dc, RECT client)
 {
     int i;
     LARGE_INTEGER start={0},end;
     if(view->trace_enabled){lw_trace(view,0);QueryPerformanceCounter(&start);}
+    if(view->restricted)QueryPerformanceCounter(&start);
     HBRUSH brush = CreateSolidBrush(RGB(32,34,38));
     FillRect(dc,&client,brush); DeleteObject(brush);
     SetBkMode(dc,TRANSPARENT);
@@ -1628,7 +1680,8 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
         }
         if (lw_input(node)) lw_text_paint(view,node,dc,rect);
         if (node->kind == 5 && node->image) ui_image_draw(view->host,node->image,dc,&rect,node->disabled);
-        if (node->kind < 3 && *node->text) {
+        if (view->restricted && ld_paint_text(view,i,dc)) {}
+        else if (node->kind < 3 && *node->text) {
             UINT flags = DT_NOPREFIX | (node->style.text_align == 1 ? DT_CENTER : node->style.text_align == 2 ? DT_RIGHT : DT_LEFT);
             SetTextColor(dc,lw_rgb(node->disabled ? 0x8e969fu : node->style.color));
             if (node->font) SelectObject(dc,node->font);
@@ -1658,6 +1711,7 @@ static void lw_paint(lw_view_t *view, HDC dc, RECT client)
         lw_scroll_paint(view,node,dc);
         RestoreDC(dc,saved);
     }
+    if(view->restricted){QueryPerformanceCounter(&end);++view->restricted->state.paint_count;view->restricted->state.paint_ms=(double)(end.QuadPart-start.QuadPart)*1000.0/view->restricted->frequency.QuadPart;}
     if(view->trace_enabled){QueryPerformanceCounter(&end);++view->trace_paints;view->trace_paint_ms+=(double)(end.QuadPart-start.QuadPart)*1000.0/view->trace_frequency.QuadPart;
         view->trace_area+=(uint64_t)(client.right-client.left)*(uint64_t)(client.bottom-client.top);}
 }
@@ -1670,6 +1724,7 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         SetWindowLongPtrW(hwnd, GWLP_USERDATA, (LONG_PTR)view); view->hwnd = hwnd; return TRUE;
     }
     if (view == NULL) return DefWindowProcW(hwnd, message, wp, lp);
+    if(view->restricted&&(message==WM_CAPTURECHANGED||message==WM_CANCELMODE||message==WM_KILLFOCUS||(message==WM_SHOWWINDOW&&!wp))){view->restricted->selecting=0;view->dragging=0;}
     if(message==WM_CAPTURECHANGED||message==WM_CANCELMODE||message==WM_KILLFOCUS||(message==WM_SHOWWINDOW&&!wp)){
         if(view->pressed>=0){view->pressed=-1;lw_layout(view);}
     }
@@ -1699,8 +1754,7 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         (void)lw_dispatch_input(NULL, view, &event); return 0;
     }
     if (message == WM_MOUSELEAVE) {
-        if (view->hovered >= 0) (void)lw_event(view,view->hovered,6,0);
-        view->hovered = -1; lw_layout(view); return 0;
+        lw_hover(view,-1);lw_layout(view);return 0;
     }
     if (message == WM_KEYDOWN || message == WM_SYSKEYDOWN || message == WM_KEYUP || message == WM_SYSKEYUP) {
         ui_input_event_t event = {0};
@@ -1763,6 +1817,9 @@ static ui_status_t lw_create_view(void *user, ui_host_t *host, void **out)
             0, 0, 1, 1, backend->parent, NULL, wc.hInstance, view);
         if (!view->hwnd) { DeleteObject(view->font); free(view); return UI_STATUS_PLATFORM_ERROR; }
     }
+    if(backend->restricted){view->restricted=(ld_document_t *)calloc(1,sizeof(ld_document_t));
+        if(!view->restricted){if(view->hwnd)DestroyWindow(view->hwnd);DeleteObject(view->font);free(view);return UI_STATUS_OUT_OF_MEMORY;}
+        view->restricted->state.zoom_percent=100;QueryPerformanceFrequency(&view->restricted->frequency);}
     *out = view; return UI_STATUS_OK;
 }
 
@@ -1774,7 +1831,7 @@ static void lw_destroy_view(void *user, void *data)
     lw_trace(view,1);
     lw_scroll_cancel(view,0);lw_free_document(view);
     if (view->hwnd) DestroyWindow(view->hwnd);
-    DeleteObject(view->font); free(view);
+    DeleteObject(view->font); free(view->restricted); free(view);
 }
 
 static ui_status_t lw_load_html(void *user, void *data, const char *html)
@@ -1787,6 +1844,7 @@ static ui_status_t lw_load_html(void *user, void *data, const char *html)
     wchar_t *valid;
     (void)user;
     if (!view || !html) return UI_STATUS_INVALID_ARGUMENT;
+    if(view->backend->restricted)return UI_STATUS_UNSUPPORTED;
     if (view->dispatch_depth) return UI_STATUS_PLATFORM_ERROR;
     length = strlen(html);
     if (length > LW_HTML_LIMIT) return UI_STATUS_VALIDATION_FAILED;
@@ -1904,6 +1962,8 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
     int hit;
     (void)user;
     if (!view || !event || event->size < sizeof(*event)) return UI_STATUS_INVALID_ARGUMENT;
+    if(view->restricted){if(!ui_components_input_allowed(view->host,view))return UI_STATUS_CANCELLED;
+        if(view->root<0)return UI_STATUS_NOT_FOUND;view->event_modifiers=event->modifiers;return ld_input(view,event);}
     if (event->kind==UI_INPUT_CANCEL||!ui_components_input_allowed(view->host,view)) {
         view->pressed=-1;
         lw_scroll_cancel(view,1);
@@ -1954,8 +2014,7 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
         (void)lw_event(view,hit,11,0);
         if (view->dragging) lw_text_pointer(view,view->focused,event->x,event->y,1);
         if (hit != view->hovered) {
-            (void)lw_event(view,view->hovered,6,0); view->hovered = hit;
-            (void)lw_event(view,hit,5,0); lw_layout(view);
+            lw_hover(view,hit);lw_layout(view);
         }
         if(view->dirty)lw_layout(view);return UI_STATUS_OK;
     }
@@ -2033,6 +2092,7 @@ static ui_status_t lw_set_message_handler(void *user, void *data,
     lw_view_t *view = (lw_view_t *)data;
     (void)user;
     if (!view) return UI_STATUS_INVALID_ARGUMENT;
+    if(view->backend->restricted)return UI_STATUS_UNSUPPORTED;
     view->message_handler = callback; view->message_user = callback_user;
     return UI_STATUS_OK;
 }
@@ -2047,6 +2107,7 @@ static ui_status_t lw_post_json(void *user, void *data, const char *json)
     uint32_t count = 0, i;
     (void)user;
     if (!view || !json) return UI_STATUS_INVALID_ARGUMENT;
+    if(view->backend->restricted)return UI_STATUS_UNSUPPORTED;
     if (!view->context) return UI_STATUS_NOT_FOUND;
     if (strlen(json) > LW_HTML_LIMIT) return UI_STATUS_VALIDATION_FAILED;
     valid = lw_wide(json); if (!valid) return UI_STATUS_VALIDATION_FAILED; free(valid);
@@ -2088,6 +2149,7 @@ static ui_status_t lw_get_capabilities(void *user, void *data, uint64_t *capabil
     if (!view || !capabilities) return UI_STATUS_INVALID_ARGUMENT;
     *capabilities = UI_WEB_CAP_JSON_MESSAGES | UI_WEB_CAP_DYNAMIC_DOM |
         UI_WEB_CAP_RESPONSIVE_LAYOUT | UI_WEB_CAP_TEXT_INPUT | UI_WEB_CAP_IMAGES | UI_WEB_CAP_WEB_TEXT_EDIT | UI_WEB_CAP_COMPONENTS | UI_WEB_CAP_OFFSCREEN_CAPTURE | UI_WEB_CAP_PRESENTATION_QUERY;
+    if(view->restricted)*capabilities=UI_WEB_CAP_RESPONSIVE_LAYOUT|UI_WEB_CAP_TEXT_INPUT|UI_WEB_CAP_IMAGES|UI_WEB_CAP_WEB_TEXT_EDIT|UI_WEB_CAP_OFFSCREEN_CAPTURE|UI_WEB_CAP_PRESENTATION_QUERY;
     if (view->hwnd) *capabilities |= UI_WEB_CAP_NATIVE_WINDOW;
     return UI_STATUS_OK;
 }
@@ -2141,6 +2203,7 @@ static ui_status_t lw_capture(void *user,void *data,ui_pixel_buffer_t *out)
 static ui_status_t lw_flush(void *user,void *data,uint32_t budget)
 {
     lw_view_t *v=(lw_view_t *)data;JSContext *ctx;uint32_t i;int result;(void)user;
+    if(v&&v->restricted)return ld_flush(v);
     if(!v||!v->runtime)return UI_STATUS_NOT_FOUND;
     v->script_deadline=GetTickCount64()+LW_SCRIPT_MILLISECONDS;
     for(i=0;i<budget;++i){result=JS_ExecutePendingJob(v->runtime,&ctx);if(result<0){JSValue exception=JS_GetException(ctx);JS_FreeValue(ctx,exception);return UI_STATUS_PLATFORM_ERROR;}if(!result)break;}

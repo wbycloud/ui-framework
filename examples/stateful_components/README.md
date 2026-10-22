@@ -93,3 +93,6 @@ powershell -NoProfile -File tests/run-instance-language.ps1 -BuildDirectory buil
 该脚本验证完整DLL的10种偏好文件、真实菜单鼠标、A中文/B英文、反复标签切换、后台隔离、96/144/192、草稿/选择/GL、模态、AI尺寸回收、关闭和跨进程恢复。public input diagnostic模式只供定位，不替代真实鼠标。合同见[实例语言](../../docs/instance-language.md)，原失败及本轮证据见[验收](../../docs/validation/instance-language-validation.md)。
 
 [2026-10-09当前源码复核](../../docs/validation/instance-language-current-validation.md)使用新构建的完整DLL以及解包后的匹配SDK，保存同状态中英文实际截图、退出记录和语言快照补验。原API8存储与API9首次语言验收保持原身份；示例已有能力不重复开发，始终使用确切commit的清单、头文件、导入库、运行库和宿主。
+# 2026-10-17 公共契约示例增补
+
+State 菜单增加“Use draft as tab title”，读取现有 Name 草稿后调用 `ui_workspace_set_instance_title`；标题及状态标记完全由调用方决定。增加“Follow system theme”，调用 `ui_host_set_theme(..., UI_THEME_SYSTEM)`。应用通过主题回调查询语义前景，更新自己的同 ID 菜单图标；unmount 先移除回调、释放图片，再走原有清理。未改变 UIL1/UST1 档案或GL画布自绘色。宿主全局主题菜单仍显式设置当前打开的实例；独立 host 可自行选择主题。[线程、所有权、错误、刷新和完整标题访问](../../docs/instance-title-and-theme.md)。

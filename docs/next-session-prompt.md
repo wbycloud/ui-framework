@@ -1,3 +1,25 @@
+# 2026-10-22 当前接手提示词
+
+复制以下提示词；后面的旧提示词仅作历史，不作为当前待办。
+
+```text
+请接手 https://github.com/wbycloud/ui-framework，分支 codex/p1-process-boundaries。
+本地 D:\应用软件框架\应用层序框架。本次只恢复上下文、只读核对并报告后待命。
+先读 docs/handoff-current.md、docs/validation/handoff-20261022-validation.md、docs/version-policy.md、docs/build-and-validation.md，再按问题读公共合同和对应源码。
+先核对实际HEAD、分支、工作区、构建及产物；保留全部已有修改和未跟踪文件。旧689fa03、1af1f5a及工作树SHA只是历史身份。
+菜单实测宽度、组件归属tooltip失效、Light父子hover边界和错误文字失效已修复并验证，不重复开发。受限浏览器M0/M1/M2已集成，默认CMake构建须保留apps/browser和两个公共头及对应实现；M3—M5未完成。
+历史已通过与未定位分开：Alt+F4正式宿主脚本、Runtime冷write子进程259、Runtime同值粘贴、Mesa原子时序/正常多线程清理/真正卸载仍有未闭环项。Mesa默认A未替换，C仅候选，LP_NUM_THREADS=0不是正式修复。本地通过不证明托管已解决。
+Git此次只新增源码、资源、构建/测试和必要文档；build/.deps/外部deliverables及原始画面不随clone提供，缺失如实记录，不重生成冒充原证据。按构建文档准备固定依赖后编译；不盲目prepare或升级。
+不要立即构建、测试、修改、清理、提交、推送、触发远程CI、发布或建标签，等用户指定下一轮任务。不使用子代理、新会话、graph-engineering、computer use、私有接口或私有JS。不停止未知进程、修改服务或注销用户。业务klayoutC、PERF-001、冻结SDK、历史包和证据只读。
+恢复后简短报告实际基线、用户改动、证据可用性和独立遗留/缺条件项目，然后待命。真实输入前须重新协调桌面，旧空闲许可不沿用。
+```
+
+---
+
+以下为历史提示词：
+
+> 当前恢复入口：2026-10-17未提交工作树基于1af1f5a9（codex/p1-process-boundaries）。先读[本轮报告](validation/interaction-20261017-validation.md)和[标题/主题合同](instance-title-and-theme.md)，核对实际Git、源码SHA和交付。下面82a774a/44c039f等段落是原交接快照，不能覆盖当前状态。禁止自动提交/推送/远程运行；历史材料原字节保留。
+
 # 当前API9新会话恢复提示词
 
 复制下面代码块发给新会话。本提示词只授权恢复上下文与只读核对；下一轮开发、远程执行或应用修改等待用户另行指定，不新建会话或后台任务。
@@ -34,3 +56,7 @@
 
 恢复后简短报告实际HEAD/用户改动、已完成能力、证据是否完整、待验和授权边界，再等待用户给出下一轮具体任务。
 ```
+
+2026-10-17续查请先读[生命周期/显示/性能记录](validation/lifecycle-ux-20261017-validation.md)及其入口/最终清单。保留此前未提交修改；本轮只优化Light稳定几何，Mesa C未默认纳入，远程/原子时序/正常多线程清理边界独立待验；回退必须以本轮入口ZIP为基准。
+
+新增遗留：Runtime144冷write主OS0/两子进程10秒259，失败时转储未及时取得；后续限定对照不解释首次失败。先追踪身份、BrowserProcessExited及UI清理顺序，不加等待制造通过。
