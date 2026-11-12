@@ -1,0 +1,11 @@
+/* Public production DLL/application proof. No model, credentials or private input. */
+#define wmain browser_prior_main
+#include "browser_capability.c"
+#undef wmain
+int wmain(int argc,wchar_t **argv)
+{
+ if(argc!=3)return 2;wchar_t settings[4096];CHECK(CreateDirectoryW(argv[2],NULL)||GetLastError()==ERROR_ALREADY_EXISTS);_snwprintf_s(settings,4096,_TRUNCATE,L"%s/production-%lu.txt",argv[2],GetCurrentProcessId());HANDLE file=CreateFileW(settings,GENERIC_WRITE,0,NULL,CREATE_NEW,FILE_ATTRIBUTE_NORMAL,NULL);CHECK(file!=INVALID_HANDLE_VALUE);if(file!=INVALID_HANDLE_VALUE)CloseHandle(file);CHECK(SetEnvironmentVariableW(L"UI_BROWSER_SETTINGS_PATH",settings));CHECK(ui_framework_initialize()==UI_STATUS_OK);
+ HWND parent=CreateWindowExW(0,L"STATIC",L"BR-1 production business",WS_OVERLAPPEDWINDOW,-16000,-16000,1000,800,NULL,NULL,GetModuleHandleW(NULL),NULL);CHECK(parent!=NULL);ui_workspace_config_t config={0};config.size=sizeof(config);config.run_mode=UI_RUN_WINDOWED;config.native_parent=parent;config.max_permission=UI_ASSISTANT_PERMISSION_READ;w=ui_workspace_create(&config);CHECK(w!=NULL);char path[4096];CHECK(WideCharToMultiByte(CP_UTF8,0,argv[1],-1,path,sizeof(path),NULL,NULL)>0);uint64_t first=0,second=0;CHECK(ui_workspace_open(w,path,&first)==UI_STATUS_OK);a.size=sizeof(a);CHECK(ui_workspace_get_instance(w,first,&a)==UI_STATUS_OK);CHECK(read_state(&a,"BR-1 合成交接单：设备巡检"));CHECK(strstr(state,"\"address\":\"browser:start\"")&&strstr(state,"\"policy_count\":0"));fprintf(stderr,"production business %s\n",state);
+ CHECK(ui_workspace_open(w,path,&second)==UI_STATUS_OK);b.size=sizeof(b);CHECK(ui_workspace_get_instance(w,second,&b)==UI_STATUS_OK);CHECK(ui_workspace_activate(w,second)==UI_STATUS_OK);CHECK(read_state(&a,"BR-1 合成交接单：设备巡检"));CHECK(read_state(&b,"BR-1 合成交接单：设备巡检"));CHECK(a.instance_id!=b.instance_id);
+ CHECK(ui_workspace_close(w,first,UI_APP_CLOSE_TAB)==UI_STATUS_OK);CHECK(ui_workspace_close(w,second,UI_APP_CLOSE_TAB)==UI_STATUS_OK);DWORD start=GetTickCount();while(ui_workspace_count(w)&&GetTickCount()-start<5000)pump();CHECK(!ui_workspace_count(w));CHECK(ui_workspace_destroy(w)==UI_STATUS_OK);DestroyWindow(parent);SetEnvironmentVariableW(L"UI_BROWSER_SETTINGS_PATH",NULL);printf("BR-1 production checks=%u failures=%u\n",checks,failures);return failures?1:0;
+}

@@ -46,7 +46,7 @@ ui_status_t ui_component_set_sort(ui_component_t *c,const char *column,int direc
     ui_dispatch_enter(c->host);cancel_column_resize(c,0);free_pages(c);free_thumbs(c);release_previews(c,1);c->selection_request=0;c->selection_anchor=0;
     c->selection_anchor_id=0;c->generation=++c->host->component_generation;c->sort_direction=direction;strcpy(c->sort_column,direction?column:"");c->first=0;
     uj_add(&params,"{\"column\":");uj_string(&params,c->sort_column);uj_fmt(&params,",\"direction\":%d,\"generation\":\"%llu\"}",direction,(unsigned long long)c->generation);
-    if(!params.failed)invoke_component(c,c->desc.sort_command,params.data);free(params.data);
+    if(!params.failed&&!ui_inputs_component_action_bound(c->host,c,"sort"))invoke_component(c,c->desc.sort_command,params.data);free(params.data);
     status=query_viewport(c,0,c->first_column,0);render_component(c);ui_dispatch_leave(c->host);return status;
 }
 static int parse_color(const char *text,uint32_t *out)

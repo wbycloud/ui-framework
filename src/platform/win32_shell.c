@@ -3,6 +3,7 @@
 
 #include <windows.h>
 #include <commctrl.h>
+#include <windowsx.h>
 
 #include <stdint.h>
 #include <limits.h>
@@ -45,6 +46,7 @@ struct ui_content_slot {
 typedef struct ui_native_command_binding {
     UINT native_id;
     char *command_id;
+    const char *item_id;
 } ui_native_command_binding_t;
 
 typedef struct ui_native_panel {
@@ -86,6 +88,13 @@ struct ui_native_shell {
     HMENU previous_menu;
     HMENU menu;
     HWND toolbar;
+    ui_input_chain_t capability_chain;
+    struct ui_native_shell *menu_filter_next;
+    HMENU selected_menu, candidate_menu;
+    UINT selected_command, pressed_command, candidate_position, candidate_command;
+    DWORD candidate_time;
+    uint64_t menu_generation, menu_sequence;
+    int menu_loop, menu_mouse_down, menu_candidate, menu_titles_pending;
     HFONT font;
     uint32_t font_dpi;
     ui_native_command_binding_t *bindings;
@@ -124,6 +133,9 @@ static void end_splitter(ui_native_shell_t *,int);
 static void clamp_floating_windows(ui_native_shell_t *);
 static void prepare_layout(ui_native_shell_t *);
 static int panel_tab_visible(const ui_native_panel_t *);
+static int native_menu_attach(ui_native_shell_t *);
+static void native_menu_detach(ui_native_shell_t *);
+static int native_menu_style(HMENU);
 
 static ui_content_slot_t *find_slot(ui_native_shell_t *shell,
                                      const char *panel_id)
@@ -458,7 +470,7 @@ static int add_binding(ui_native_shell_t *shell,
         return 0;
     }
     binding = &shell->bindings[shell->binding_count];
-    binding->native_id = native_id;
+    binding->native_id = native_id;binding->item_id=NULL;
     binding->command_id = duplicate_string(command_id);
     if (binding->command_id == NULL) {
         return 0;
@@ -562,6 +574,8 @@ static ui_status_t refresh_menu(ui_native_shell_t *shell,int bind)
     size_t count = 0u;
     size_t index;
 
+    if(shell->menu_loop){shell->menu_titles_pending=1;return UI_STATUS_PENDING;}
+
     if (!collect_menu_entries(shell, &entries, &count)) {
         return UI_STATUS_OUT_OF_MEMORY;
     }
@@ -597,9 +611,14 @@ static ui_status_t refresh_menu(ui_native_shell_t *shell,int bind)
             free(entries);
             return UI_STATUS_OUT_OF_MEMORY;
         }
+        if(bind)shell->bindings[shell->binding_count-1].item_id=entries[index]->id;
         free(title);
     }
     free(entries);
+
+    if(!native_menu_style(menu)){DestroyMenu(menu);return UI_STATUS_PLATFORM_ERROR;}
+    ++shell->menu_generation;
+    shell->menu_candidate=0;
 
     if (!shell->web_chrome && shell->active) {
         if (!SetMenu(shell->menu_owner, menu)) {
@@ -619,6 +638,28 @@ static ui_status_t refresh_menu(ui_native_shell_t *shell,int bind)
     return UI_STATUS_OK;
 }
 
+static int toolbar_origin_valid(void *data)
+{HWND h=(HWND)data;return IsWindow(h)&&IsWindowVisible(h)&&IsWindowEnabled(h);}
+static LRESULT CALLBACK capability_toolbar_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp,UINT_PTR id,DWORD_PTR data)
+{
+    ui_native_shell_t *shell=(ui_native_shell_t *)data;ui_input_event_t event={0};POINT point;TBBUTTON button;int at=-1,eligible=0;size_t k;const char *item=NULL;(void)id;
+    if(message==WM_LBUTTONDOWN||message==WM_LBUTTONUP||message==WM_KEYDOWN)ui_capabilities_human_invalidate(shell->host,hwnd);
+    event.size=sizeof(event);event.modifiers=(GetKeyState(VK_CONTROL)&0x8000?1u:0u)|(GetKeyState(VK_SHIFT)&0x8000?2u:0u)|(GetKeyState(VK_MENU)&0x8000?4u:0u);
+    if(message==WM_LBUTTONDOWN||message==WM_LBUTTONUP){point.x=GET_X_LPARAM(lp);point.y=GET_Y_LPARAM(lp);at=(int)SendMessageW(hwnd,TB_HITTEST,0,(LPARAM)&point);
+      event.kind=message==WM_LBUTTONDOWN?UI_INPUT_POINTER_DOWN:UI_INPUT_POINTER_UP;event.pointer_button=1;event.x=MulDiv(point.x,96,(int)ui_platform_get_dpi(hwnd));event.y=MulDiv(point.y,96,(int)ui_platform_get_dpi(hwnd));}
+    else if(message==WM_KEYDOWN&&(wp==VK_RETURN||wp==VK_SPACE)){at=(int)SendMessageW(hwnd,TB_GETHOTITEM,0,0);event.kind=UI_INPUT_KEY_DOWN;event.key_code=(uint32_t)wp;}
+    else if(message==WM_CAPTURECHANGED||message==WM_KILLFOCUS||message==WM_CANCELMODE){memset(&shell->capability_chain,0,sizeof(shell->capability_chain));ui_capabilities_human_invalidate(shell->host,hwnd);}
+    if(at>=0&&SendMessageW(hwnd,TB_GETBUTTON,(WPARAM)at,(LPARAM)&button)){
+      ui_input_event_t trigger=event;if(trigger.kind==UI_INPUT_POINTER_DOWN)trigger.kind=UI_INPUT_POINTER_UP;
+      for(k=0;k<shell->binding_count;++k)if(shell->bindings[k].native_id==(UINT)button.idCommand){item=shell->bindings[k].item_id;break;}
+      eligible=ui_inputs_chain(&shell->capability_chain,&event,(uint64_t)button.idCommand,ui_inputs_current_source()&&!(message==WM_KEYDOWN&&(lp&(1L<<30))));
+      if(item&&ui_inputs_has(shell->host,UI_CAP_INPUT_TOOLBAR,NULL,item,&trigger)&&event.kind!=UI_INPUT_POINTER_DOWN){
+        if(eligible){ui_capabilities_human_begin(shell->host,hwnd);ui_capabilities_human_guard(shell->host,toolbar_origin_valid,hwnd);}
+        (void)ui_inputs_route(shell->host,UI_CAP_INPUT_TOOLBAR,NULL,item,&event,hwnd);
+        if(eligible)ui_capabilities_human_end(shell->host);SendMessageW(hwnd,TB_PRESSBUTTON,(WPARAM)button.idCommand,MAKELONG(FALSE,0));if(GetCapture()==hwnd)ReleaseCapture();return 0;}
+    }
+    return DefSubclassProc(hwnd,message,wp,lp);
+}
 static ui_status_t refresh_toolbar(ui_native_shell_t *shell)
 {
     ui_toolbar_entry_t *toolbar_entry;
@@ -714,6 +755,7 @@ static ui_status_t refresh_toolbar(ui_native_shell_t *shell)
             free(toolbars);
             return UI_STATUS_OUT_OF_MEMORY;
         }
+        shell->bindings[shell->binding_count-1].item_id=items[index]->id;
         string_index = (int)SendMessageW(toolbar, TB_ADDSTRINGW, 0,
                                          (LPARAM)title);
         free(title);
@@ -741,6 +783,7 @@ static ui_status_t refresh_toolbar(ui_native_shell_t *shell)
       items = NULL;
     }
     free(toolbars);
+    if(!SetWindowSubclass(toolbar,capability_toolbar_proc,1,(DWORD_PTR)shell)){DestroyWindow(toolbar);return UI_STATUS_PLATFORM_ERROR;}
     shell->toolbar = toolbar;
     return UI_STATUS_OK;
 }
@@ -1590,6 +1633,8 @@ static const char *find_command_binding(const ui_native_shell_t *shell,
     return NULL;
 }
 
+#include "win32_capability_menu.inc"
+
 static ui_native_shell_t *create_shell(
     const ui_native_shell_config_t *config, int web_chrome)
 {
@@ -1638,6 +1683,7 @@ static ui_native_shell_t *create_shell(
     shell->host->shell = &shell->shell;
     shell->default_layout = shell->host->layout;
     if(parent&&!SetWindowSubclass(parent,layout_subclass,2,(DWORD_PTR)shell)){ui_native_shell_destroy(shell);return NULL;}
+    if(!native_menu_attach(shell)){ui_native_shell_destroy(shell);return NULL;}
     return shell;
 }
 
@@ -1661,10 +1707,12 @@ ui_native_shell_t *ui_native_shell_create_web(const ui_native_shell_config_t *co
 
 void ui_native_shell_destroy(ui_native_shell_t *shell)
 {
+    if(shell&&shell->host->capability_ui_callbacks)return;
     ui_content_slot_t *slot;
     if (shell == NULL) {
         return;
     }
+    native_menu_detach(shell);
     if(shell->drag_active)(void)ui_shell_end_panel_drag(&shell->shell,0);
     if(shell->split_active)end_splitter(shell,1);
     if(shell->parent)RemoveWindowSubclass(shell->parent,layout_subclass,2);
@@ -1748,6 +1796,7 @@ ui_status_t ui_native_shell_set_panel_floating(ui_native_shell_t *shell,
 ui_status_t ui_native_shell_refresh(ui_native_shell_t *shell)
 {
     ui_status_t status;
+    if(shell&&shell->host->capability_ui_callbacks)return UI_STATUS_PENDING;
 
     if(shell&&shell->offscreen)return ui_shell_refresh(&shell->shell);
     if (shell == NULL || shell->host == NULL || shell->parent == NULL) {
@@ -1966,6 +2015,26 @@ ui_status_t ui_content_slot_attach_web_view(ui_content_slot_t *slot,
     (void)ui_web_view_set_layout_region(view, UI_LAYOUT_REGION_NONE);
     update_native_slot(slot);
     return apply_slot(slot);
+}
+
+ui_status_t ui_shell_set_chrome_suppressed(ui_shell_t *shell,int suppressed)
+{
+    if(!shell||!shell->native)return UI_STATUS_INVALID_ARGUMENT;
+    ui_native_shell_t *native=shell->native;
+    if(!native->web_chrome)return UI_STATUS_UNSUPPORTED;
+    suppressed=suppressed!=0;
+    if(native->host->chrome_suppressed==suppressed)return UI_STATUS_OK;
+    (void)ui_host_close_menu(native->host);
+    native->host->chrome_suppressed=suppressed;
+    ui_status_t status=ui_host_resize(native->host,native->host->host_rect.width,native->host->host_rect.height);
+    if(status)return status;
+    return native->offscreen?offscreen_reflow(native):ui_native_shell_reflow(native);
+}
+
+ui_status_t ui_shell_get_chrome_suppressed(ui_shell_t *shell,int *suppressed)
+{
+    if(!shell||!shell->native||!suppressed)return UI_STATUS_INVALID_ARGUMENT;
+    *suppressed=shell->native->host->chrome_suppressed;return UI_STATUS_OK;
 }
 
 ui_status_t ui_shell_refresh(ui_shell_t *shell)

@@ -166,3 +166,7 @@ UI_TEXT("Unsupported application package format version.","不支持此应用包
 UI_TEXT("Windows error","Windows 错误","Windows error")
 UI_TEXT("C 应用框架 · Web","C 应用框架 · Web","C Application Framework · Web")
 UI_TEXT("应用包","应用包","Application package")
+
+UI_TEXT("保留草稿","保留草稿","Keep draft")
+UI_TEXT("重新载入","重新载入","Reload model")
+UI_TEXT("业务已更新，请保留草稿或重新载入","业务已更新，请保留草稿或重新载入","Model changed; keep the draft or reload")

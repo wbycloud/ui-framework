@@ -11,9 +11,9 @@ button:disabled{color:#999999;}input{height:30px;flex:1;min-width:40px;backgroun
 .panel{display:none;flex:1;overflow-y:auto;overflow-x:auto;padding:8px;}textarea{height:120px;font-size:14px;border:1px solid #888888;background:#ffffff;color:#242424;}#diagnostic-text{height:170px;}#diagnostics-settings{width:80px;}.hint{font-size:12px;height:64px;overflow-y:auto;}
 .dark{background:#202020;color:#ebebeb;}.dark button,.dark input,.dark textarea{background:#292929;color:#ebebeb;border:1px solid #606068;}.dark button:hover{background:#334454;}
 </style></head><body>
-<div class="row"><input id="address" placeholder="HTTP / HTTPS 地址"><button id="go">↵</button></div>
-<div class="row nav"><button id="back">←</button><button id="forward">→</button><button id="reload">↻</button><button id="stop">×</button><button id="home">⌂</button><button id="help">?</button><button id="minus">−</button><p id="zoom-label">100%</p><button id="plus">+</button><button id="reset">1:1</button></div>
-<div class="row"><input id="find" placeholder="查找文字"><button id="find-prev">↑</button><button id="find-next">↓</button><button id="settings">设</button><button id="diagnostics">诊</button></div>
+<div id="navigation-address" class="row"><input id="address" placeholder="HTTP / HTTPS 地址"><button id="go">↵</button></div>
+<div id="navigation-tools" class="row nav"><button id="back">←</button><button id="forward">→</button><button id="reload">↻</button><button id="stop">×</button><button id="home">⌂</button><button id="help">?</button><button id="minus">−</button><p id="zoom-label">100%</p><button id="plus">+</button><button id="reset">1:1</button></div>
+<div id="navigation-find" class="row"><input id="find" placeholder="查找文字"><button id="find-prev">↑</button><button id="find-next">↓</button><button id="settings">设</button><button id="diagnostics">诊</button></div>
 <p id="status">包内起始页</p>
 <p id="error"></p>
 <div id="settings-panel" class="panel"><p>可信来源设置</p><p class="hint">每行一个HTTP/HTTPS精确来源（协议、主机、端口）。最多16项/4095字节。空列表拒绝全部网络；远程页面不能放行来源。</p>
@@ -42,6 +42,7 @@ el('diagnostics').addEventListener('keydown',function(e){if(e.keyCode===9&&!e.sh
 el('address').addEventListener('keydown',function(e){if(e.keyCode===9&&e.shiftKey){e.preventDefault();send('document-last');}});
 var panel=0,lastError='',status='',invalid=false;
 ui.onmessage=function(s){
+ if(s.chrome_suppressed!==undefined){var ordinary=['navigation-address','navigation-tools','navigation-find'];for(var c=0;c<ordinary.length;c++)el(ordinary[c]).style.display=s.chrome_suppressed?'none':'flex';}
  if(s.theme)document.body.className=s.theme;
  if(s.address!==undefined)el('address').value=s.address;
  if(s.status!==undefined)status=s.status;

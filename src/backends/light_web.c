@@ -80,6 +80,7 @@ typedef struct lw_node {
     struct lw_history *undo, *redo;
     uint64_t image;
     HFONT font;
+    int measured_text_width, measured_text_valid;
     int font_size, font_weight, font_family, font_italic;
     uint32_t font_dpi;
     JSValue object;
@@ -112,6 +113,10 @@ typedef struct lw_view {
     int media_breakpoint;
     int media_hide_assistant;
     int focused, pressed, keyboard_focus;
+    unsigned human_pressed_uid, native_click_uid,local_click_uid;
+    uint64_t dom_generation;
+    int native_pending,native_key,input_consumed,native_repeat;uint64_t input_generation;
+    ui_input_event_t semantic_input;ui_input_chain_t semantic_chain;
     int dragging, composing;
     wchar_t high_surrogate;
     uint32_t event_modifiers;
@@ -138,6 +143,19 @@ typedef struct lw_view {
     double trace_layout_ms,trace_paint_ms;
 } lw_view_t;
 
+#ifdef UI_BR1_WRITE_TRACE
+#include "../../tests/br1_write_trace.inc"
+#define BR1_WRITE(v,n,s) br1_write_note(v,n,s)
+#define BR1_INPUT(v,n,s,t) br1_input_note(v,n,s,t)
+#define BR1_WIDE(v,n,s,t) br1_input_wide(v,n,s,t)
+#define BR1_AFTER(v,u,s) br1_input_after(v,u,s)
+#else
+#define BR1_WRITE(v,n,s) ((void)0)
+#define BR1_INPUT(v,n,s,t) ((void)0)
+#define BR1_WIDE(v,n,s,t) ((void)0)
+#define BR1_AFTER(v,u,s) ((void)0)
+#endif
+
 static lw_backend_t *g_backends;
 static void ld_reset(lw_view_t *);
 static void ld_layout(lw_view_t *);
@@ -152,11 +170,20 @@ static void lw_report_exception(lw_view_t *view)
 {
     JSValue exception=JS_GetException(view->context);const char *message=JS_ToCString(view->context,exception);
     if(GetEnvironmentVariableW(L"UI_LIGHT_SCRIPT_DIAGNOSTICS",NULL,0))fprintf(stderr,"Light script: %s\n",message?message:"unknown");
+#ifdef UI_AI_EDIT_TEST_DLL
+    if(GetEnvironmentVariableW(L"UI_LIGHT_SCRIPT_DIAGNOSTICS",NULL,0)){
+        JSValue stack=JS_GetPropertyStr(view->context,exception,"stack");const char *trace=JS_ToCString(view->context,stack);
+        if(trace)fprintf(stderr,"Light isolated stack: %.2048s\n",trace);
+        if(trace)JS_FreeCString(view->context,trace);JS_FreeValue(view->context,stack);
+    }
+#endif
     if(message)JS_FreeCString(view->context,message);JS_FreeValue(view->context,exception);
 }
+static ui_status_t lw_native_input(lw_view_t *,const ui_input_event_t *);
 static ui_status_t lw_dispatch_input(void *user, void *data,
                                       const ui_input_event_t *event);
 static void lw_layout(lw_view_t *view);
+static int lw_uid_index(const lw_view_t *,unsigned);
 static void lw_scroll_cancel(lw_view_t *,int);
 static int lw_hit(const lw_view_t *view, int x, int y);
 static int lw_disabled(const lw_view_t *,int);
@@ -661,6 +688,7 @@ static ui_status_t lw_collect(lw_view_t *view, lxb_dom_node_t *parent,
         LW_READ_ATTR("onmousedown", node->onmousedown);
         LW_READ_ATTR("oninput", node->oninput);
         LW_READ_ATTR("value", node->value);
+        BR1_WRITE(view,node,"initialize");
         LW_READ_ATTR("style", node->inline_style);
         LW_READ_ATTR("type", type);
         { char image[64]; LW_READ_ATTR("src", image); node->image = _strtoui64(image,NULL,10); }
@@ -772,6 +800,7 @@ static void lw_compute_style(lw_view_t *view, int index)
     if (!node->visible) memset(&node->rect,0,sizeof(node->rect));
     if (!node->font || node->font_size != node->style.font_size ||
         node->font_weight != node->style.font_weight || node->font_italic!=node->style.font_italic || node->font_family != node->style.font_family || node->font_dpi != view->dpi) {
+        node->measured_text_valid = 0;
         if (node->font) DeleteObject(node->font);
         node->font = CreateFontW(-lw_pixel(node->style.font_size,view->dpi),0,0,0,
             node->style.font_weight,node->style.font_italic,FALSE,FALSE,DEFAULT_CHARSET,OUT_DEFAULT_PRECIS,
@@ -784,22 +813,34 @@ static void lw_compute_style(lw_view_t *view, int index)
         lw_compute_style(view,child);
     node->natural_width = node->natural_height = 0;
     if (node->kind == 2 && *node->text) {
-        wchar_t *text = lw_wide(node->text);
-        HDC dc = CreateCompatibleDC(NULL);
-        if (text && dc) {
-            SIZE size = {0}; HGDIOBJ previous = SelectObject(dc,node->font);
-            if (GetTextExtentPoint32W(dc,text,(int)wcslen(text),&size)) {
-                int left=node->style.padding_set&8?node->style.padding[3]+node->style.border:8;
-                int right=node->style.padding[1]+node->style.border+(node->style.padding_set&2?0:8);
-                /* Match the separately rounded paint insets, then round the
-                   required width up so fractional DPI never elides the text. */
-                int64_t pixels=(int64_t)size.cx+lw_pixel(left,view->dpi)+lw_pixel(right,view->dpi);
-                int64_t logical=(pixels*96+view->dpi-1)/view->dpi;
-                node->natural_width=logical>LW_MAX_DIMENSION?LW_MAX_DIMENSION:(int)logical;
+        SIZE size = {0}; int measured = node->measured_text_valid && !view->restricted;
+        /* Only glyph pixels are reused. Insets and child sizes remain live;
+           restricted documents have their own later font adjustment. */
+        if (measured) size.cx = node->measured_text_width;
+        else {
+            wchar_t *text = lw_wide(node->text);
+            HDC dc = CreateCompatibleDC(NULL);
+            if (text && dc) {
+                HGDIOBJ previous = SelectObject(dc,node->font);
+                if (GetTextExtentPoint32W(dc,text,(int)wcslen(text),&size)) {
+                    measured = 1;
+                    if (!view->restricted && node->font && previous && previous != HGDI_ERROR) {
+                        node->measured_text_width = size.cx; node->measured_text_valid = 1;
+                    }
+                }
+                SelectObject(dc,previous);
             }
-            SelectObject(dc,previous);
+            if (dc) DeleteDC(dc); free(text);
         }
-        if (dc) DeleteDC(dc); free(text);
+        if (measured) {
+            int left=node->style.padding_set&8?node->style.padding[3]+node->style.border:8;
+            int right=node->style.padding[1]+node->style.border+(node->style.padding_set&2?0:8);
+            /* Match the separately rounded paint insets, then round the
+               required width up so fractional DPI never elides the text. */
+            int64_t pixels=(int64_t)size.cx+lw_pixel(left,view->dpi)+lw_pixel(right,view->dpi);
+            int64_t logical=(pixels*96+view->dpi-1)/view->dpi;
+            node->natural_width=logical>LW_MAX_DIMENSION?LW_MAX_DIMENSION:(int)logical;
+        }
     }
     {
         int count = 0;
@@ -917,6 +958,21 @@ static void lw_trace(lw_view_t *view,int final)
         strcpy(view->trace_phase,phase);view->trace_layouts=view->trace_paints=view->trace_nodes=view->trace_area=0;view->trace_layout_ms=view->trace_paint_ms=0;
     }
 }
+static int lw_hidden_input(const lw_view_t *view,int index)
+{return index>=0&&(index>=view->node_count||!view->nodes[index].used||!view->nodes[index].visible);}
+static void lw_hide_interaction(lw_view_t *view)
+{
+ int release=0,invalid=0;
+ if(lw_hidden_input(view,view->focused)){lw_cancel_composition(view);view->focused=-1;view->dragging=0;invalid=1;}
+ if(lw_hidden_input(view,view->pressed)){view->pressed=-1;release=invalid=1;}
+ if(view->captured){int i=lw_uid_index(view,view->captured);if(i<0||lw_hidden_input(view,i)){view->captured=0;release=invalid=1;}}
+ if(view->scroll_uid){int i=lw_uid_index(view,view->scroll_uid);if(i<0||lw_hidden_input(view,i)){view->scroll_uid=0;release=invalid=1;}}
+ if(lw_hidden_input(view,view->scroll_focus))view->scroll_focus=-1;
+ if(lw_hidden_input(view,view->hovered))view->hovered=-1;
+ if(invalid){ui_capabilities_human_invalidate(view->host,view);view->human_pressed_uid=view->native_click_uid=view->local_click_uid=0;memset(&view->semantic_chain,0,sizeof(view->semantic_chain));}
+ /* Clear local state before ReleaseCapture synchronously reenters the window. */
+ if(release&&view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();
+}
 static void lw_layout(lw_view_t *view)
 {
     ui_rect_t viewport = {0, 0, view->width, view->height};
@@ -925,7 +981,7 @@ static void lw_layout(lw_view_t *view)
     if(view->trace_enabled){lw_trace(view,0);QueryPerformanceCounter(&start);}
     ++view->layout_depth;
     if (view->restricted) ld_layout(view);
-    else if (view->root >= 0) { lw_compute_style(view,view->root); lw_layout_node(view, view->root, viewport, viewport); }
+    else if (view->root >= 0) { lw_compute_style(view,view->root); lw_hide_interaction(view); lw_layout_node(view, view->root, viewport, viewport); }
     lw_caret(view);
     if (view->hwnd) InvalidateRect(view->hwnd, NULL, FALSE);
     view->dirty = 0;
@@ -1022,6 +1078,7 @@ static void lw_unlink(lw_view_t *view, int index)
 static void lw_release_node(lw_view_t *view, int index)
 {
     lw_node_t *node = &view->nodes[index]; int child, next, k;
+    BR1_WRITE(view,node,"release");
     node->used = 0;
     for (child = node->first_child; child >= 0; child = next) {
         next = view->nodes[child].next_sibling; lw_release_node(view,child);
@@ -1107,12 +1164,15 @@ static JSValue lw_dom_set(JSContext *ctx, JSValueConst object, JSValueConst valu
             }
     }
     if (property == LW_PROP_TEXT) {
+        if (strcmp(node->text,text)) node->measured_text_valid = 0;
         for (child = node->first_child; child >= 0; child = next) {
             next = view->nodes[child].next_sibling; lw_release_node(view,child);
         }
         node->first_child = -1;
     }
+    if(property==LW_PROP_VALUE)BR1_WRITE(view,node,"before-dom-value");
     strcpy(destination,text); JS_FreeCString(ctx,text);
+    if(property==LW_PROP_VALUE)BR1_WRITE(view,node,"dom-value");
     if (property == LW_PROP_VALUE) lw_sync_value(view,node);
     view->dirty = 1; return JS_UNDEFINED;
 }
@@ -1492,6 +1552,21 @@ static JSValue lw_js_prevent(JSContext *ctx, JSValueConst object, int argc, JSVa
     JS_SetPropertyStr(ctx,object,"defaultPrevented",JS_TRUE); return JS_UNDEFINED;
 }
 
+typedef struct lw_human_guard {lw_view_t *view;unsigned uid;uint64_t generation;} lw_human_guard_t;
+static int lw_human_valid(void *data)
+{
+    lw_human_guard_t *g=data;int index=lw_uid_index(g->view,g->uid);
+    return g->view->dom_generation==g->generation&&index>=0&&g->view->nodes[index].visible&&!lw_disabled(g->view,index);
+}
+static int ui_web_semantic_all_keys(ui_host_t *host,void *backend)
+{ui_web_view_t *v;for(v=host->web_views;v;v=v->host_next)if(v->user_data==backend)return v->semantic_all_keys;return 0;}
+static int lw_action_index(lw_view_t *v,int index,const ui_input_event_t *e)
+{
+    int at=index;ui_input_event_t up=*e;if(up.kind==UI_INPUT_POINTER_DOWN)up.kind=UI_INPUT_POINTER_UP;
+    for(;at>=0;at=v->nodes[at].parent)if(ui_inputs_light_has(v->host,v,v->nodes[at].id,&up))return at;
+    if(e->kind==UI_INPUT_KEY_DOWN)return index;
+    while(index>=0&&v->nodes[index].kind!=2)index=v->nodes[index].parent;return index;
+}
 static ui_status_t lw_event(lw_view_t *view, int index, int kind, uint32_t key)
 {
     JSContext *ctx = view->context;
@@ -1500,6 +1575,44 @@ static ui_status_t lw_event(lw_view_t *view, int index, int kind, uint32_t key)
     unsigned path[LW_MAX_NODES];
     int current = index, count = 0, at;
     if (!ctx || index < 0 || index >= view->node_count || !view->nodes[index].used) return UI_STATUS_OK;
+    if(kind==0&&view->local_click_uid){index=lw_uid_index(view,view->local_click_uid);view->local_click_uid=0;if(index<0)return UI_STATUS_OK;current=index;view->default_prevented=0;goto script_event;}
+    if(kind==0||kind==2||kind==7||kind==9||kind==10||kind==12){
+        ui_input_event_t semantic=view->semantic_input;int semantic_at;
+        if(kind==2){semantic.kind=UI_INPUT_KEY_DOWN;semantic.key_code=key;}
+        else semantic.kind=UI_INPUT_POINTER_UP;
+        semantic_at=lw_action_index(view,index,&semantic);
+        if(semantic_at>=0&&ui_inputs_light_has(view->host,view,view->nodes[semantic_at].id,&semantic)){
+            lw_human_guard_t guard={view,view->nodes[semantic_at].uid,view->dom_generation};
+            int eligible=view->native_click_uid==guard.uid&&!view->input_consumed;
+            view->default_prevented=1;
+            if(kind==7||kind==10||view->input_consumed)return UI_STATUS_OK;
+            if(eligible){ui_capabilities_human_begin(view->host,view);ui_capabilities_human_guard(view->host,lw_human_valid,&guard);}
+            {int routed=ui_inputs_light(view->host,view,view->nodes[semantic_at].id,&semantic,lw_input(&view->nodes[semantic_at])?view->nodes[semantic_at].value:NULL);view->input_consumed=1;view->native_click_uid=0;
+             if(eligible)ui_capabilities_human_end(view->host);if(routed!=2)return UI_STATUS_OK;
+             if(kind==12){view->local_click_uid=guard.uid;return UI_STATUS_OK;}
+             /* Business callbacks may have projected/rebuilt the template. Do
+              * not continue a local focus/expand action using an old index. */
+             index=lw_uid_index(view,guard.uid);if(index<0)return UI_STATUS_OK;current=index;view->default_prevented=0;goto script_event;}
+        }
+    }
+    /* Framework semantic actions bypass script messages, but only a private
+     * native input record can authorize a nonread call. */
+    if(kind==0||(kind==2&&(key==VK_RETURN||key==VK_SPACE||key==VK_ESCAPE||ui_web_semantic_all_keys(view->host,view)))){
+        int semantic=index;ui_status_t action;char semantic_node[160];
+        int key_action=kind==2&&(ui_web_semantic_all_keys(view->host,view)||key==VK_ESCAPE||(key==VK_RETURN&&view->nodes[index].kind!=2));
+        if(!key_action)while(semantic>=0&&view->nodes[semantic].kind!=2)semantic=view->nodes[semantic].parent;
+        if(semantic>=0){unsigned uid=view->nodes[semantic].uid;
+            lw_human_guard_t guard={view,uid,view->dom_generation};int eligible=view->native_click_uid==uid;
+            view->native_click_uid=0;
+            if(key_action)snprintf(semantic_node,sizeof(semantic_node),"@key:%u:%u:%s",key,view->event_modifiers,view->nodes[semantic].id);
+            else snprintf(semantic_node,sizeof(semantic_node),"%s",view->nodes[semantic].id);
+            if(eligible){ui_capabilities_human_begin(view->host,view);ui_capabilities_human_guard(view->host,lw_human_valid,&guard);}
+            action=ui_web_semantic_action(view->host,view,semantic_node,&view->semantic_input);
+            if(eligible)ui_capabilities_human_end(view->host);
+            if(action!=UI_STATUS_UNSUPPORTED){view->default_prevented=1;return action;}
+        }
+    }
+script_event:
     for (; current >= 0; current = view->nodes[current].parent) path[count++] = view->nodes[current].uid;
     event = JS_NewObject(ctx); target = lw_element(view,index);
     JS_SetPropertyStr(ctx,event,"target",target);
@@ -1726,16 +1839,16 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
     if (view == NULL) return DefWindowProcW(hwnd, message, wp, lp);
     if(view->restricted&&(message==WM_CAPTURECHANGED||message==WM_CANCELMODE||message==WM_KILLFOCUS||(message==WM_SHOWWINDOW&&!wp))){view->restricted->selecting=0;view->dragging=0;}
     if(message==WM_CAPTURECHANGED||message==WM_CANCELMODE||message==WM_KILLFOCUS||(message==WM_SHOWWINDOW&&!wp)){
-        if(view->pressed>=0){view->pressed=-1;lw_layout(view);}
+        ui_capabilities_human_invalidate(view->host,view);view->human_pressed_uid=0;view->native_click_uid=0;memset(&view->semantic_chain,0,sizeof(view->semantic_chain));if(view->pressed>=0){view->pressed=-1;lw_layout(view);}
     }
     if(message==WM_CAPTURECHANGED||message==WM_CANCELMODE||(message==WM_SHOWWINDOW&&!wp))lw_scroll_cancel(view,1);
     if((message==WM_CAPTURECHANGED||message==WM_CANCELMODE||message==WM_SHOWWINDOW&&!wp)&&view->captured){
         int index=lw_uid_index(view,view->captured);view->captured=0;(void)lw_event(view,index,14,0);if(view->dirty)lw_layout(view);}
     if ((message==WM_LBUTTONDOWN||message==WM_LBUTTONUP||message==WM_MOUSEWHEEL||
-         message==WM_MOUSEMOVE||message==WM_RBUTTONUP||message==WM_KEYDOWN||
+         message==WM_MOUSEMOVE||message==WM_RBUTTONDOWN||message==WM_RBUTTONUP||message==WM_KEYDOWN||
          message==WM_SYSKEYDOWN||message==WM_CHAR||message==WM_IME_STARTCOMPOSITION||
          message==WM_IME_COMPOSITION)&&!ui_components_input_allowed(view->host,view)) return 0;
-    if (message == WM_LBUTTONDOWN || message == WM_LBUTTONUP || message == WM_MOUSEWHEEL || message == WM_MOUSEMOVE || message == WM_RBUTTONUP) {
+    if (message == WM_LBUTTONDOWN || message == WM_LBUTTONUP || message == WM_MOUSEWHEEL || message == WM_MOUSEMOVE || message == WM_RBUTTONDOWN || message == WM_RBUTTONUP) {
         ui_input_event_t event = {0};
         POINT point = {GET_X_LPARAM(lp), GET_Y_LPARAM(lp)};
         if (message == WM_MOUSEWHEEL) ScreenToClient(hwnd, &point);
@@ -1746,12 +1859,12 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         event.wheel_delta = message == WM_MOUSEWHEEL ? GET_WHEEL_DELTA_WPARAM(wp) : 0;
         if (GetKeyState(VK_SHIFT) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_SHIFT;
         if (GetKeyState(VK_CONTROL) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_CONTROL;
-        if (message == WM_RBUTTONUP) { event.pointer_button=2;event.kind=UI_INPUT_POINTER_UP; }
+        if (message == WM_RBUTTONUP || message == WM_RBUTTONDOWN) { event.pointer_button=2;event.kind=message==WM_RBUTTONDOWN?UI_INPUT_POINTER_DOWN:UI_INPUT_POINTER_UP; }
         if (message == WM_MOUSEMOVE) {
             TRACKMOUSEEVENT track = {sizeof(track),TME_LEAVE,hwnd,0}; TrackMouseEvent(&track);
         }
-        if (message == WM_LBUTTONDOWN) SetFocus(hwnd);
-        (void)lw_dispatch_input(NULL, view, &event); return 0;
+        if (message == WM_LBUTTONDOWN || message == WM_RBUTTONDOWN) {SetFocus(hwnd);if(message==WM_RBUTTONDOWN)SetCapture(hwnd);}
+        (void)lw_native_input(view, &event); return 0;
     }
     if (message == WM_MOUSELEAVE) {
         lw_hover(view,-1);lw_layout(view);return 0;
@@ -1762,7 +1875,8 @@ static LRESULT lw_wnd_inner(HWND hwnd, UINT message, WPARAM wp, LPARAM lp)
         if (GetKeyState(VK_SHIFT) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_SHIFT;
         if (GetKeyState(VK_CONTROL) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_CONTROL;
         if (GetKeyState(VK_MENU) & 0x8000) event.modifiers |= UI_INPUT_MODIFIER_ALT;
-        if (lw_dispatch_input(NULL,view,&event) == UI_STATUS_OK) return 0;
+        if(event.kind==UI_INPUT_KEY_DOWN&&(lp&(1L<<30))&&ui_inputs_has(view->host,UI_CAP_INPUT_SHORTCUT,NULL,"",&event))return 0;
+        {ui_status_t native_status;view->native_repeat=event.kind==UI_INPUT_KEY_DOWN&&((lp&(1L<<30))!=0);native_status=lw_native_input(view,&event);view->native_repeat=0;if(native_status==UI_STATUS_OK)return 0;}
     }
     if (lw_text_message(view,message,wp,lp)) return 0;
     if (message == WM_ERASEBKGND) return 1;
@@ -1789,7 +1903,13 @@ static LRESULT CALLBACK lw_wnd_proc(HWND hwnd, UINT message, WPARAM wp, LPARAM l
     if (message == WM_NCCREATE) view = (lw_view_t *)((CREATESTRUCTW *)lp)->lpCreateParams;
     if (!view) return DefWindowProcW(hwnd,message,wp,lp);
     host = view->host; ui_dispatch_enter(host);
+#ifdef UI_BR1_WRITE_TRACE
+    UINT previous_message=br1_window_message;br1_window_message=message;
+#endif
     result = lw_wnd_inner(hwnd,message,wp,lp);
+#ifdef UI_BR1_WRITE_TRACE
+    br1_window_message=previous_message;
+#endif
     ui_dispatch_leave(host); return result;
 }
 
@@ -1846,6 +1966,7 @@ static ui_status_t lw_load_html(void *user, void *data, const char *html)
     if (!view || !html) return UI_STATUS_INVALID_ARGUMENT;
     if(view->backend->restricted)return UI_STATUS_UNSUPPORTED;
     if (view->dispatch_depth) return UI_STATUS_PLATFORM_ERROR;
+    ++view->dom_generation;
     length = strlen(html);
     if (length > LW_HTML_LIMIT) return UI_STATUS_VALIDATION_FAILED;
     valid = lw_wide(html); if (!valid) return UI_STATUS_VALIDATION_FAILED; free(valid);
@@ -1956,12 +2077,37 @@ static int lw_hit(const lw_view_t *view, int x, int y)
 static int lw_disabled(const lw_view_t *view,int index)
 {for(;index>=0;index=view->nodes[index].parent)if(view->nodes[index].disabled)return 1;return 0;}
 
+static ui_status_t lw_source_input(lw_view_t *view,const ui_input_event_t *event,int qualified)
+{
+    ui_status_t status;int hit=-1,eligible;
+    ui_capabilities_human_invalidate(view->host,view);
+    if(event->kind==UI_INPUT_KEY_DOWN&&view->native_repeat)qualified=0;
+    view->native_click_uid=0;view->native_key=event->kind==UI_INPUT_KEY_DOWN&&qualified;
+    if(event->kind==UI_INPUT_POINTER_DOWN||event->kind==UI_INPUT_POINTER_UP)hit=lw_action_index(view,lw_hit(view,event->x,event->y),event);
+    else if(event->kind==UI_INPUT_KEY_DOWN)hit=view->focused>=0?view->focused:view->root;
+    if(event->kind==UI_INPUT_POINTER_DOWN)view->input_generation=view->dom_generation;
+    if(event->kind==UI_INPUT_POINTER_UP&&view->input_generation!=view->dom_generation)qualified=0;
+    eligible=ui_inputs_chain(&view->semantic_chain,event,hit>=0?view->nodes[hit].uid:0,qualified);
+    if(eligible&&hit>=0)view->native_click_uid=view->nodes[hit].uid;
+    view->native_pending=1;status=lw_dispatch_input(NULL,view,event);view->native_click_uid=0;view->native_pending=0;
+    return status;
+}
+static ui_status_t lw_native_input(lw_view_t *view,const ui_input_event_t *event)
+{return lw_source_input(view,event,ui_inputs_current_source());}
+#ifdef UI_FRAMEWORK_INPUT_FIXTURE
+/* Static test runtime only; never a production DLL export or physical proof. */
+ui_status_t ui_inputs_fixture_light(ui_web_view_t *view,const ui_input_event_t *event,int qualified)
+{return lw_source_input((lw_view_t *)view->user_data,event,qualified);}
+#endif
 static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_event_t *event)
 {
     lw_view_t *view = (lw_view_t *)data;
     int hit;
     (void)user;
     if (!view || !event || event->size < sizeof(*event)) return UI_STATUS_INVALID_ARGUMENT;
+    if(!view->native_pending){ui_capabilities_human_invalidate(view->host,view);view->native_click_uid=0;view->human_pressed_uid=0;view->native_key=0;memset(&view->semantic_chain,0,sizeof(view->semantic_chain));}
+    view->semantic_input=*event;view->semantic_input.text_utf8=NULL;view->input_consumed=0;view->local_click_uid=0;
+    view->native_pending=0;
     if(view->restricted){if(!ui_components_input_allowed(view->host,view))return UI_STATUS_CANCELLED;
         if(view->root<0)return UI_STATUS_NOT_FOUND;view->event_modifiers=event->modifiers;return ld_input(view,event);}
     if (event->kind==UI_INPUT_CANCEL||!ui_components_input_allowed(view->host,view)) {
@@ -1973,6 +2119,13 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
     if (!view->context) return UI_STATUS_NOT_FOUND;
     if(event->kind==UI_INPUT_POINTER_DOWN&&view->keyboard_focus){view->keyboard_focus=0;view->dirty=1;}
     if(ui_menus_route_input(view->host,view,event,view->composing)==UI_STATUS_OK)return UI_STATUS_OK;
+    if(event->kind==UI_INPUT_KEY_DOWN&&ui_inputs_has(view->host,UI_CAP_INPUT_SHORTCUT,NULL,"",event)){
+      int editing=view->focused>=0&&lw_input(&view->nodes[view->focused]);
+      int edit_key=editing&&((event->modifiers&UI_INPUT_MODIFIER_CONTROL)&&(event->key_code=='A'||event->key_code=='C'||event->key_code=='V'||event->key_code=='X'||event->key_code=='Z'||event->key_code=='Y'));
+      if(!edit_key){lw_human_guard_t guard={view,view->nodes[view->focused>=0?view->focused:view->root].uid,view->dom_generation};
+        if(view->native_key){ui_capabilities_human_begin(view->host,view);ui_capabilities_human_guard(view->host,lw_human_valid,&guard);}
+        (void)ui_inputs_route(view->host,UI_CAP_INPUT_SHORTCUT,NULL,"",event,view);
+        if(view->native_key)ui_capabilities_human_end(view->host);return UI_STATUS_OK;}}
     if(lw_scroll_input(view,event))return UI_STATUS_OK;
     view->event_modifiers = event->modifiers; view->wheel_delta = event->wheel_delta;
     view->pointer_x=event->x;view->pointer_y=event->y;
@@ -1982,8 +2135,9 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
         int pressed=view->pressed;
         if (event->pointer_button == 2) {
             if(event->kind==UI_INPUT_POINTER_UP&&hit>=0&&!lw_disabled(view,hit)) {
-                ui_status_t status=lw_event(view,hit,9,0);lw_layout(view);return status;
+                ui_status_t status=lw_event(view,hit,9,0);if(view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();lw_layout(view);return status;
             }
+            if(event->kind==UI_INPUT_POINTER_UP&&view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();
             return UI_STATUS_OK;
         }
         if (event->pointer_button > 1) return UI_STATUS_UNSUPPORTED;
@@ -2003,10 +2157,11 @@ static ui_status_t lw_dispatch_input(void *user, void *data, const ui_input_even
             return UI_STATUS_OK;
         }
         if(hit>=0&&!lw_disabled(view,hit))(void)lw_event(view,hit,12,0);
-        view->captured=0;view->dragging = 0; if (view->hwnd && GetCapture() == view->hwnd) ReleaseCapture();
+        if(view->local_click_uid){int local=lw_uid_index(view,view->local_click_uid);view->pressed=-1;view->captured=0;view->dragging=0;if(local>=0)(void)lw_event(view,local,0,0);view->local_click_uid=0;if(view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();lw_layout(view);return UI_STATUS_OK;}
+        view->captured=0;view->dragging = 0;
         if (hit >= 0 && hit == pressed && !lw_disabled(view,hit)) {
             ui_status_t status;
-            view->pressed = -1; status = lw_event(view,hit,0,0); lw_layout(view); return status;
+            view->pressed = -1; status = lw_event(view,hit,0,0);if(view->hwnd&&GetCapture()==view->hwnd)ReleaseCapture();lw_layout(view); return status;
         }
         view->pressed = -1; lw_layout(view);return UI_STATUS_OK;
     }
@@ -2122,7 +2277,11 @@ static ui_status_t lw_post_json(void *user, void *data, const char *json)
     callback = JS_GetPropertyStr(ctx,ui,"onmessage");
     if (JS_IsFunction(ctx,callback)) {
         result = JS_Call(ctx,callback,ui,1,&parsed);
-        if (JS_IsException(result)) { JSValue exception = JS_GetException(ctx);const char *error=JS_ToCString(ctx,exception);fprintf(stderr,"Web update: %s\n",error?error:"unknown");JS_FreeCString(ctx,error);JS_FreeValue(ctx,exception);status = UI_STATUS_VALIDATION_FAILED; }
+        if (JS_IsException(result)) { JSValue exception = JS_GetException(ctx);const char *error=JS_ToCString(ctx,exception);fprintf(stderr,"Web update: %s\n",error?error:"unknown");
+#ifdef UI_AI_EDIT_TEST_DLL
+        if(GetEnvironmentVariableW(L"UI_LIGHT_SCRIPT_DIAGNOSTICS",NULL,0)){JSValue stack=JS_GetPropertyStr(ctx,exception,"stack");const char *trace=JS_ToCString(ctx,stack);if(trace)fprintf(stderr,"Web isolated stack: %.2048s\n",trace);if(trace)JS_FreeCString(ctx,trace);JS_FreeValue(ctx,stack);}
+#endif
+        JS_FreeCString(ctx,error);JS_FreeValue(ctx,exception);status = UI_STATUS_VALIDATION_FAILED; }
         JS_FreeValue(ctx,result);
     }
     JS_FreeValue(ctx,callback); JS_FreeValue(ctx,ui);
@@ -2227,6 +2386,7 @@ ui_web_backend_t *ui_light_web_backend_create(const ui_light_web_config_t *confi
     desc.size = sizeof(desc); desc.ops = &lw_ops; desc.user_data = backend;
     backend->common = ui_web_backend_create(&desc);
     if (!backend->common) { free(backend); return NULL; }
+    backend->common->trusted_light=1;
     backend->next = g_backends; g_backends = backend;
     return backend->common;
 }
@@ -2236,7 +2396,8 @@ void ui_light_web_backend_destroy(ui_web_backend_t *handle)
     lw_backend_t **link = &g_backends;
     while (*link) {
         if ((*link)->common == handle) {
-            lw_backend_t *backend = *link;
+            lw_backend_t *backend = *link;ui_web_view_t *v;
+            for(v=backend->common->views;v;v=v->backend_next)if(ui_inputs_owner_busy(v->host,v))return;
             *link = backend->next; ui_web_backend_destroy(backend->common); free(backend); return;
         }
         link = &(*link)->next;

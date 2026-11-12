@@ -1,0 +1,377 @@
+{
+  "url": "https://codeload.github.com/deepseek-ai/deepseek-recipe/zip/refs/heads/main",
+  "archive_sha256": "BF40407077C893BA51DCFE2D015C457198CFF8C9F01923FCBAD4B11ACD01E9CC",
+  "files": [
+    {
+      "path": "Cargo.toml",
+      "sha256": "790D9820E34CFB0555ABA0D64E753591CFFB786EE66C73B6C7D2925972BA0510",
+      "bytes": 1972
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "EBB4F09972AEE8608BE255DEBAF78451A68E95C290F55C240DEC2ECFA16EA6BE",
+      "bytes": 1065
+    },
+    {
+      "path": "README.md",
+      "sha256": "E3EA4BD6B3A3DEBD8431AF23D81935B93858636883DFC651F7ECC3416E099A67",
+      "bytes": 7141
+    },
+    {
+      "path": "deepseek-recipe-core/Cargo.toml",
+      "sha256": "105EE24459FD31A4A3DC3257FA8899C91F64FF592A72A9E3E7B09A8B92FEF9B5",
+      "bytes": 429
+    },
+    {
+      "path": "deepseek-recipe-core/LICENSE",
+      "sha256": "EBB4F09972AEE8608BE255DEBAF78451A68E95C290F55C240DEC2ECFA16EA6BE",
+      "bytes": 1065
+    },
+    {
+      "path": "deepseek-recipe-core/src/conversation.rs",
+      "sha256": "6711FFD8DE536B52894B3EAF781A78CB027E5E580FEE545F47DFBD1B10FAEB42",
+      "bytes": 2733
+    },
+    {
+      "path": "deepseek-recipe-core/src/json.rs",
+      "sha256": "5F870D05A986009F57FD2452F0EB7800476CA5BE5A3DA722263EC696A743211C",
+      "bytes": 5409
+    },
+    {
+      "path": "deepseek-recipe-core/src/lib.rs",
+      "sha256": "5FB42C69AD2189D485B2880A115D087BB3C89C986A6DEEEDFE541E11A7F19863",
+      "bytes": 416
+    },
+    {
+      "path": "deepseek-recipe-core/src/messages.rs",
+      "sha256": "8800BD2C18C7E49CFE5F3A218129DD8F813621C2E4CC5D0D69CBF93AD0F6E66A",
+      "bytes": 2581
+    },
+    {
+      "path": "deepseek-recipe-core/src/multimodal/mod.rs",
+      "sha256": "9DE7B7227D6EE10DF5EAC92B426F25F5C32F0B9BDD01AA326A2270042269776B",
+      "bytes": 8163
+    },
+    {
+      "path": "deepseek-recipe-core/src/multimodal/token_spec.rs",
+      "sha256": "3B8A106BA2CA78AE027BE73E16457AE5DD8BFC2B34AEA675E3FDE938E6DF4C80",
+      "bytes": 12118
+    },
+    {
+      "path": "deepseek-recipe-core/src/prompt.rs",
+      "sha256": "C63534A96F533D47DC02467CCB540E0FC5CCCBF89AFC5DABBD275331DDF188D6",
+      "bytes": 10758
+    },
+    {
+      "path": "deepseek-recipe-core/src/special_tokens.rs",
+      "sha256": "E38F095CA3841855234A009AD913C250BEFB179240D32E5CF22FC1EF140569B3",
+      "bytes": 9822
+    },
+    {
+      "path": "deepseek-recipe-core/src/tools.rs",
+      "sha256": "5BD7BAD3FC17AC50CDBEE85D16C80AE7B9A46A3478D329CDC99592B572720B29",
+      "bytes": 1488
+    },
+    {
+      "path": "deepseek-recipe-encoding/Cargo.toml",
+      "sha256": "D55C358C393AF48A386B681DA8A152227C5E6E6562AE6D86466229A148996C47",
+      "bytes": 579
+    },
+    {
+      "path": "deepseek-recipe-encoding/LICENSE",
+      "sha256": "EBB4F09972AEE8608BE255DEBAF78451A68E95C290F55C240DEC2ECFA16EA6BE",
+      "bytes": 1065
+    },
+    {
+      "path": "deepseek-recipe-encoding/src/lib.rs",
+      "sha256": "E59026E36CB8B729667EF167DEBC2D681B0A19E80B5E2227BDFC973F6CC1AD24",
+      "bytes": 4137
+    },
+    {
+      "path": "deepseek-recipe-encoding/src/tokenizer.rs",
+      "sha256": "21FEFC37C6689CAC8357D030F1CCB2C84E37D293950797EC4A6A0BFC208B56DE",
+      "bytes": 4823
+    },
+    {
+      "path": "deepseek-recipe-encoding/src/v4/dsv4.rs",
+      "sha256": "D1E210FB958C9D4C0C3AB18899D7AA2E76C8D8F93E66E4DD1F1FCEAD5790A7AD",
+      "bytes": 15102
+    },
+    {
+      "path": "deepseek-recipe-encoding/src/v4/dsv41.rs",
+      "sha256": "33F7B0E0C3DDE66020A4746FFC6C35DF8DD30933E653AAF9071C1BEB21439A90",
+      "bytes": 17617
+    },
+    {
+      "path": "deepseek-recipe-encoding/src/v4/mod.rs",
+      "sha256": "B48C8B1B725EAC84C8D9BF1AADB715C36922E027516974D5B33A315DA9FCDD63",
+      "bytes": 24117
+    },
+    {
+      "path": "deepseek-recipe-macros/Cargo.toml",
+      "sha256": "AAE27F50C3D78D40294035FA5808F6D42EB9A7E23D08025FA2C42368AA5EB03F",
+      "bytes": 480
+    },
+    {
+      "path": "deepseek-recipe-macros/LICENSE",
+      "sha256": "EBB4F09972AEE8608BE255DEBAF78451A68E95C290F55C240DEC2ECFA16EA6BE",
+      "bytes": 1065
+    },
+    {
+      "path": "deepseek-recipe-macros/src/lib.rs",
+      "sha256": "07303834ED83CFCC2270D8C80A710EBE4B7B4F0C2D6B1EA7385B69C7086E49BC",
+      "bytes": 3343
+    },
+    {
+      "path": "deepseek-recipe-macros/src/prompt.rs",
+      "sha256": "24CBB46F14708B507C2160FC93C53138A92E347D8372869D82886859858E027D",
+      "bytes": 13080
+    },
+    {
+      "path": "deepseek-recipe-macros/src/untagged.rs",
+      "sha256": "86D30E8C7EB41BCC574BA2FAB729B17E2D543020F3BF5FEF6671B2487E7B1A13",
+      "bytes": 8425
+    },
+    {
+      "path": "deepseek-recipe/Cargo.toml",
+      "sha256": "795E51382A68B662A78103B70844F0B0F3C67B5118A3AFA18AFF67ABE7DFD9C6",
+      "bytes": 884
+    },
+    {
+      "path": "deepseek-recipe/LICENSE",
+      "sha256": "EBB4F09972AEE8608BE255DEBAF78451A68E95C290F55C240DEC2ECFA16EA6BE",
+      "bytes": 1065
+    },
+    {
+      "path": "deepseek-recipe/src/error_response.rs",
+      "sha256": "2690C53DA70E5D918B6FF5263CC66C2B2EC06487126D2B158F200EEEC3E648E8",
+      "bytes": 2150
+    },
+    {
+      "path": "deepseek-recipe/src/lib.rs",
+      "sha256": "FE68548DC1A0C3AE7FFE573064B5C9AE31A006EEACC3E77A65529444E22464C7",
+      "bytes": 615
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/anthropic/messages/mod.rs",
+      "sha256": "74EE32089A06EBF2E4B31E3112CFA312605D6949B2A6B8A6DD991D39DBA73D3F",
+      "bytes": 1266
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/anthropic/messages/request/convert.rs",
+      "sha256": "7E3E440804ACDE6BE1B34C293EC4797BC797A1E8F7DB80F02AEAE65184B24967",
+      "bytes": 36298
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/anthropic/messages/request/mod.rs",
+      "sha256": "9AFFE9648F7DD09A4D3AB1FAFD4730966959D7EE414103963C8686BD8F9ADDE7",
+      "bytes": 45
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/anthropic/messages/request/schema.rs",
+      "sha256": "699565374AB5D2292F2978EB5014EB4C91532728E4614AF5AE869CD96954C4E0",
+      "bytes": 8266
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/anthropic/messages/response/chunk_generator.rs",
+      "sha256": "82F5F28088CBDD911E3DF92E05BE999FC6382D8CA49B9255B4E9DAA713B18094",
+      "bytes": 7611
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/anthropic/messages/response/mod.rs",
+      "sha256": "41EBB720BDB1181559CACF39C7A9BAFCCC557F254FFD59194A72040902CC23A1",
+      "bytes": 81
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/anthropic/messages/response/schema.rs",
+      "sha256": "095216A701ECA19B11139BF1CC25A3D60C5338F31D1292B75DEA8DADAFE68E24",
+      "bytes": 8581
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/anthropic/mod.rs",
+      "sha256": "7F85176F32FEEDE76D0CF753508E09F79CC42AE03286DDCB36080387D1D433BF",
+      "bytes": 189
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/client_tools.rs",
+      "sha256": "6AC02A44EB42A2EB2A64D79EED22B9EA39396F868045BBE4636785D75BA7DB73",
+      "bytes": 6365
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/image.rs",
+      "sha256": "50E9E678ED5F07D47BD08EF820F99703437A2BD58F6392E4C49F921A27AF10D3",
+      "bytes": 8591
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/json_schema.rs",
+      "sha256": "B6A01D0D9A0FEC45C9B79445B90F042C95E8C6EEC5B8D51ED36307BD2A357451",
+      "bytes": 13938
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/mod.rs",
+      "sha256": "113FAA015C6079ADE0E02644CC38AEFB0935228AA349FA1BB611E904A80E72FF",
+      "bytes": 199
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/chat_completion/mod.rs",
+      "sha256": "9D3BEF2C5CCDFD0ED5E73EF303BF03F464965126611AB96C91CBE27A31655BC3",
+      "bytes": 35
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/chat_completion/request/convert.rs",
+      "sha256": "2661A956939446D3E8AA3423C56FCEF7B3FD892F9470477BA979570744ADBAA5",
+      "bytes": 25895
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/chat_completion/request/mod.rs",
+      "sha256": "DE644171E7357C35FC2943F09DE236E8540D6DC63C17D0CAEE45162128A8A7A0",
+      "bytes": 3009
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/chat_completion/request/schema.rs",
+      "sha256": "7934DAF74887AFD067461A8A9F1EFDEF5F39FEE717728A21FBA02E470254222F",
+      "bytes": 8181
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/chat_completion/response/chunk_generator.rs",
+      "sha256": "996A5613AA858A30B0527A0F3EF46AE6CA3108ED626655156600E10915627BBA",
+      "bytes": 10370
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/chat_completion/response/mod.rs",
+      "sha256": "41EBB720BDB1181559CACF39C7A9BAFCCC557F254FFD59194A72040902CC23A1",
+      "bytes": 81
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/chat_completion/response/schema.rs",
+      "sha256": "590D034DB959FACD31C28DB13C95201E5BF93EBFA0C8EE8ED0C3390EE992B9DF",
+      "bytes": 11371
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/mod.rs",
+      "sha256": "4CB69774240B938B17A030B4AD5C861226C569BAE8A454D30BCC2148FE28737B",
+      "bytes": 148
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/responses/mod.rs",
+      "sha256": "9D3BEF2C5CCDFD0ED5E73EF303BF03F464965126611AB96C91CBE27A31655BC3",
+      "bytes": 35
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/responses/request/convert.rs",
+      "sha256": "A6A5834F4FDE9AD71A58A89E63F3DF208EAD50DE45B8918B3CEB5F500E4B4BC2",
+      "bytes": 39468
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/responses/request/mod.rs",
+      "sha256": "C0A739D0D91C6645F4E82D62611D0E5B3AAB0778FA2F14C74E42D5E4ACBACF55",
+      "bytes": 2735
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/responses/request/schema.rs",
+      "sha256": "1999D12454C8DCC19EC7384CF629ECD88720A46661CA9457760FADB19DC419FA",
+      "bytes": 12432
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/responses/request/tools.rs",
+      "sha256": "537AD3CF8FDCAA18403A62FA1B386211624E5CF5B51CA2E3BBBAD8CE4331CF1C",
+      "bytes": 20072
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/responses/response/accumulator.rs",
+      "sha256": "78C6D10EE389F49CA9D3FC9ABE7D418183FA6EF56DC3E7C2D0BA603C548F7668",
+      "bytes": 8381
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/responses/response/chunk_generator.rs",
+      "sha256": "74B2C09AFB6CE53CBB713F051E9A62D278BEC82D599A48ECE17EA46DD795EB9A",
+      "bytes": 21714
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/responses/response/custom_tool_input.rs",
+      "sha256": "78256E1401ECB38CCFE145D7CB121DEB8A443BEC575A9CA97C7D11B9868CB62F",
+      "bytes": 6937
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/responses/response/mod.rs",
+      "sha256": "F65BC7C548154B3601BEB6EF3B2ED3F1D1B1DB99F57824E7E00677DB2195319C",
+      "bytes": 121
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/openai/responses/response/schema.rs",
+      "sha256": "DBBC4B7BD2C1481A9D9DD15A984D68151F64EB352D7752E0B5AB1772A7F4964D",
+      "bytes": 16397
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/output_constraint.rs",
+      "sha256": "3AC2D0BF86E3F099255B3D09E24BA4B2516E7E8C00E338E9A3BC4B13FFCAF4DB",
+      "bytes": 2589
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/reasoning.rs",
+      "sha256": "BD2AB9A8CDBF82ECD9F77238D571DE31F0105F78AA609ED5834DE6E13C0F9F0A",
+      "bytes": 4591
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/reasoning_content.rs",
+      "sha256": "0F3A5DDA4B05560AC1E22120FD7D6292E7160F6C62E35FD059EB8A67C67BF502",
+      "bytes": 6509
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/tool_call_id.rs",
+      "sha256": "B4511E56BBEB08318658A858B7624743BF1D53E707DEA164A286D7A49A2C05DF",
+      "bytes": 2826
+    },
+    {
+      "path": "deepseek-recipe/src/protocol/validation.rs",
+      "sha256": "2D39EEE7110BF6051DC5EBC75A639BEDD72E804B2DB3B0BBFA8799EE4BE095FD",
+      "bytes": 12017
+    },
+    {
+      "path": "deepseek-recipe/src/request/mod.rs",
+      "sha256": "C2D996ACA81B6956B9E997C24FD4239A1191248D4E5399DFA069EE41F19FC2B9",
+      "bytes": 11979
+    },
+    {
+      "path": "deepseek-recipe/src/request/options.rs",
+      "sha256": "0A0C998D3F3DFC93FD6B53CA106E600416BCBB36C4083B0E5F9C773A2E7BA128",
+      "bytes": 12320
+    },
+    {
+      "path": "deepseek-recipe/src/response.rs",
+      "sha256": "26A4639A915497A5CBB75E6361C550BA737CD94C69C5B1DC98481AC4BC143309",
+      "bytes": 2148
+    },
+    {
+      "path": "deepseek-recipe/src/stream/decoder.rs",
+      "sha256": "2237F08024225C3AFA79042E9FCD1F3FC838D3E433027D4F193F20E5F1F9D084",
+      "bytes": 8791
+    },
+    {
+      "path": "deepseek-recipe/src/stream/inference.rs",
+      "sha256": "1088A96D606E6090E0AEDF08419C587536DEB84D4AFADF063B753F13436F203D",
+      "bytes": 3538
+    },
+    {
+      "path": "deepseek-recipe/src/stream/logprobs.rs",
+      "sha256": "4E8AEF09AB01538BD374719C8AFC582A8E663CED6DA6D14EA96CE0D26E9C8D8E",
+      "bytes": 4595
+    },
+    {
+      "path": "deepseek-recipe/src/stream/mod.rs",
+      "sha256": "17705C7754675B231B7FF6F03D4D9BC59BA7A8A0005AC3420068247C17B248EC",
+      "bytes": 3732
+    },
+    {
+      "path": "deepseek-recipe/src/stream/output_parser.rs",
+      "sha256": "38AEB5E0CD475C39B2269E71ADC037167E713CF98BA551D7210365CEB6ECCBC7",
+      "bytes": 30794
+    },
+    {
+      "path": "deepseek-recipe/src/stream/processor.rs",
+      "sha256": "40EB9F349666AF775E8649AB340BA32AE76F8C5E251B8A05A38FE854AFC35BC4",
+      "bytes": 45272
+    }
+  ],
+  "local_changes": "workspace selects four text-only crates; tokenizers pinned 0.23.2 as upstream, HTTP/default features disabled; upstream Rust sources unchanged"
+}

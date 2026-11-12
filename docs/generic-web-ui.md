@@ -1,10 +1,12 @@
-# 通用 Web UI：当前 API9 接入约定
+# 通用Web UI接入约定（API10）
 
-本文描述 **SDK 0.9.0 开发版 / API9 / 标准修订9** 当前组件合同，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；当前结果见[API9验收](validation/instance-language-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
+本文描述SDK 0.10.0开发版、API10、标准10沿用的组件合同，应用 ABI、导出入口和包格式保持1。菜单及离屏增补见[接口约定](framework-menu-offscreen.md)；API9历史结果见[验收](validation/instance-language-validation.md)，[API5记录](validation/api5-validation.md)保留历史结果，历史证据保留在[API3验收](validation/api3-validation.md)与[API4验收](validation/api4-validation.md)。
+
+当前统一业务、受控编辑和通用助手通过能力层复用这些组件及业务函数，接口索引见[接入指南](xuanshu-general-assistant-integration.md)。
 
 ## 1. 架构、复用与边界
 
-| 已有机制 | API 3 的使用方式 |
+| 已有机制 | 当前组件接入 |
 | --- | --- |
 | host、workspace、生命周期 | 每实例拥有组件和图片；沿用关闭、投递和卸载流程 |
 | 语义命令、assistant | 菜单、工具、快捷键、组件绑定同一命令 |

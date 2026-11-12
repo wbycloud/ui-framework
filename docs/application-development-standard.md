@@ -1,14 +1,14 @@
 # Windows C/Web UI 框架应用开发标准
 
-开发标准修订：**9**。对应 **SDK 0.9.0 开发版、框架 API 9**；本轮起按[当前版本政策](version-policy.md)只维护API9，历史声明的现存接受行为不作未来保证；应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
+开发标准修订：**10**。对应 **SDK 0.10.0 开发版、框架 API 10**；本轮起按[当前版本政策](version-policy.md)只维护API10，历史声明的现存接受行为不作未来保证；应用 ABI、导出 ui_app_query_v1 和包格式仍为 1。没有创建稳定标签，最近稳定基准仍为 v0.1.0。开发者应记录实际 SDK commit，而不是只记录 main。
 
-面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的开发者。新应用通过公共 C 接口注册组件、提供数据、绑定已有语义命令，通用 HTML/CSS/JavaScript、草稿、焦点和交互由框架维护。菜单、工具、面板内组件、状态、参数及确认界面使用 Web；Win32 仅承载窗口、消息、输入法及绘制。当前API9应用自有原生内容和原生嵌入式保留，系统文件/目录选择器是例外。
+面向能阅读 C/C++ 头文件、Win32 和 OpenGL 示例的开发者。新应用通过公共 C 接口注册组件、提供数据、绑定已有语义命令，通用 HTML/CSS/JavaScript、草稿、焦点和交互由框架维护。菜单、工具、面板内组件、状态、参数及确认界面使用 Web；Win32 仅承载窗口、消息、输入法及绘制。当前API10应用自有原生内容和原生嵌入式保留，系统文件/目录选择器是例外。
 
 ## 0. 阅读入口与版本约定
 
-当前升级先读[0.8→0.9迁移](migration-v0.8-to-v0.9.md)与[构建及CI](build-and-validation.md)，业务接入准备见[试点清单](business-pilot.md)。再读[通用 Web UI 接入约定](generic-web-ui.md)，再参考[通用纯 C 示例](../examples/generic_components/README.md)。新语言接口见 [language.h](../include/ui_framework/language.h)，组件接口见 [components.h](../include/ui_framework/components.h)、[images.h](../include/ui_framework/images.h)；命令、面板、内容槽、助手和应用生命周期仍以原公共头文件为准。
+当前API10包括v1只读能力、C2人工UI绑定、P4受控编辑/撤销、P5有限计划及通用应用助手。应用从[接入指南](xuanshu-general-assistant-integration.md)和[能力合同当前索引](application-capability-contract.md#当前公共接口索引)选择需要的独立头。普通APP复用正式宿主现有Service/Provider/确认/存储，应用提供真实数据和业务执行。[迁移](migration-v0.9-to-v0.10.md)、[构建与匹配材料](build-and-validation.md)、[最小公共示例](../examples/general_assistant/README.md)构成当前开发入口。首批只读历史范围在迁移指南按日期保留。
 
-[0.3 → 0.4 迁移指南](migration-v0.3-to-v0.4.md)说明API4历史菜单及离屏接口；[0.4→0.5](migration-v0.4-to-v0.5.md)说明API5历史增补，[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)保留通用组件和废弃输入开关的迁移要求；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[API5历史验收](validation/api5-validation.md)及[当前API9验收](validation/instance-language-validation.md)记录构建、自动化与真实宿主证据。API4 包不能加载到只支持 API1/2/3 的运行库，清单与 DLL 声明必须相同。
+[0.3 → 0.4 迁移指南](migration-v0.3-to-v0.4.md)说明API4历史菜单及离屏接口；[0.4→0.5](migration-v0.4-to-v0.5.md)说明API5历史增补，[0.2 → 0.3 迁移指南](migration-v0.2-to-v0.3.md)保留通用组件和废弃输入开关的迁移要求；[CHANGELOG](../CHANGELOG.md)区分兼容、可选和必须迁移；[API5历史验收](validation/api5-validation.md)及[API9历史验收](validation/instance-language-validation.md)记录构建、自动化与真实宿主证据。API4 包不能加载到只支持 API1/2/3 的运行库，清单与 DLL 声明必须相同。
 
 受控轻量后端实现本版框架组件；WebView2 可选提供实际 Runtime 呈现查询、捕获、C 图片 ID 和共同框架组件，异步合同见本页 API5 增补。OpenGL 仍由应用自行选择、通过内容槽挂载，框架没有应用文档模型或业务渲染器。具体子集、预算及未实现能力以接入约定的能力清单为准，不把 HTML 支持视为完整浏览器。
 
@@ -30,13 +30,13 @@ API4历史菜单、隐藏WGL及无窗口workspace合同保留在[菜单与离屏
 | C 核心 | host 生命周期、布局与 DPI、命令和异步结果、事件、surface 回调、Web 后端接口 | 文档模型、业务校验、工作任务、文件格式 |
 | 外壳与内容容器 | 独立宿主的 Web 菜单/工具入口/面板外框、借用内容槽；原生嵌入式的菜单/工具栏/面板和消息转发 | 注册框架组件和业务数据；绘图surface与应用自有内容 |
 | OpenGL 层 | 显式版本/profile/MSAA/debug 配置、兼容路径、GPU/context 信息查询 | 绘制、资源、文档坐标、缩放、滚动、选择和拾取 |
-| 助手协议 | 命令允许列表、schema 元数据、校验和确认回调、进度、取消、快照、事务接口 | 模型服务连接、权限界面、实际事务和撤销数据 |
+| 助手与能力执行 | 统一目录、同一Service/Provider、可信确认、read/P4/P5调度和存储 | 真实业务模型、资源/revision、Schema、校验、执行及事务/撤销数据 |
 | 轻量 Web 后端 | Lexbor HTML 解析、QuickJS-NG 脚本、GDI 绘制、受控动态 DOM/布局/控件和 JSON 消息 | 遵守受控子集、页面资源、语义命令 |
 | WebView2 后端 | 纯 C COM 适配、异步呈现查询/RGBA捕获、C图片、共同组件和可信页面命令桥接 | 兼容Runtime部署、STA消息循环、PENDING完成及后端能力选择 |
 
 构建同时保留静态框架和原有嵌入式样例，并提供独立宿主所需的共享框架。Windows 默认开启独立宿主与轻量 Web 后端，WebView2 默认关闭。只构建原生/OpenGL 时，同时设置 `UI_BUILD_STANDALONE_HOST=OFF` 与 `UI_FRAMEWORK_ENABLE_LIGHT_WEB=OFF`，无需 HTML/JS 引擎；此配置不生成独立宿主。原ui_framework_headless目标仍只验证核心状态；Windows完整运行库分别提供轻量无HWND、HIDDEN_WINDOW隐藏WGL和NO_WINDOW OSMesa内存GL。Session0与整机无登录继续独立验收。
 
-框架没有内置 EDA、Markdown、画板、PPT、Excel 文档模型，也没有自动加载 `app://` 资源、任意嵌套分割树、网络模型客户端或 TypeScript 编译器。将这些能力实现为应用逻辑，保持公共 C 接口作为接入边界。
+框架没有内置 EDA、Markdown、画板、PPT、Excel 文档模型，也没有自动加载 `app://` 资源、任意嵌套分割树或 TypeScript 编译器。应用实现自己的文档和渲染逻辑，模型连接由正式宿主统一管理。公共C接口是接入边界。
 
 ## 2. 应用包和生命周期
 
@@ -53,14 +53,14 @@ name=Minimal EDA
 version=1.0.0
 architecture=x64
 abi_version=1
-framework_api_version=9
+framework_api_version=10
 module=minimal_eda_app.dll
 multiple_instances=true
 ```
 
 `app_id` 是稳定身份，`version` 标识版本；同一 ID 的不同版本不能同时加载。`multiple_instances=false` 时，重复打开包激活已有标签；为 true 时创建新的私有状态和标签。不要通过进程全局变量保存实例数据。
 
-清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前维护 `architecture=x64`、应用ABI1和框架API9。清单API必须与DLL descriptor一致；当前头文件构建的应用声明9。运行库中API1–8接受分支暂存，不保证旧包今后兼容。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
+清单必须有且仅有一个 `[application]` 节，以上八个字段必须各出现一次。UTF-8 可带 BOM，接受 LF/CRLF、空行和以 `#`/`;` 开头的注释；不接受未知字段。当前维护 `architecture=x64`、应用ABI1和框架API10。清单API必须与DLL descriptor一致，当前头文件构建的应用声明10。运行库中API1–9接受分支暂存，不保证旧包今后兼容。`app_id` 使用字母、数字、点、下划线和连字符，首字符为字母或数字。文件名为有效 UTF-8 相对路径，以 `/` 分隔；不得使用绝对路径、反斜杠、`.`/`..`、Windows 设备名或大小写冲突的同名文件。同包不能同时含文件 `assets` 和路径 `Assets/icon.txt`，避免文件/目录前缀冲突。打包源目录不得含符号链接或 reparse points，输出包必须在源目录之外。
 
 ### 2.2 UAPP v1 容器格式
 
@@ -154,7 +154,7 @@ enter 覆盖整个调用：应用处理、`DefWindowProc`/`DefSubclassProc`、�
 
 ### 3.3 size 和兼容性
 
-使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为 9。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前实现接受 1–9，拒绝 0 和未支持的更高版本。低版本接受分支是现存行为，不是持续维护承诺；只维护当前 API9。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
+使用当前头文件时，先将描述结构清零，再设置 `size = sizeof(结构)`。host 配置还需设置 `api_version = UI_FRAMEWORK_API_VERSION`，当前值为10。可用 `ui_framework_supports_api()` 查询运行库是否接受某个 API 版本；当前实现接受1–10，拒绝 0 和未支持的更高版本。低版本接受分支是现存行为，不是持续维护承诺；只维护当前API10。新增可选描述字段放在原有字段之后；枚举已有数值保持不变。不要改变公共结构的 packing，也不要把应用私有字段插入公共结构。
 
 布局接口接受原始六字段布局描述，省略的新字段按零值处理；Web ops 支持旧尺寸，缺少追加的定位、消息或能力回调时对应操作返回 UNSUPPORTED。`ui_workspace_config_t` 在保留完整 v1 布局后追加 `shell_mode`；清零时选择 `UI_WORKSPACE_SHELL_NATIVE`，自建 Web workspace 可显式选择 `UI_WORKSPACE_SHELL_WEB`。独立宿主固定使用 WEB。并非所有结构都允许截断，不能人为缩小 `size` 来假装某个版本。C++ 应用通过 `extern "C"` 调用同一接口；[`tests/public_headers.cpp`](../tests/public_headers.cpp) 覆盖公共头文件调用路径。
 
@@ -286,13 +286,15 @@ surface 使用 Unicode 窗口，从 `WM_CHAR`/`WM_SYSCHAR` 将提交的 UTF-16 �
 
 ## 8. 助手命令、权限和撤销
 
+当前通用助手的资源/能力/专业角色、两阶段完整确认、手动交接及关闭顺序见[接入指南](xuanshu-general-assistant-integration.md)。本节8.1—8.3描述原assistant.h命令允许列表及事务适配层，迁移后的read、C2和P4由同一业务注册生成相应入口。[统一能力合同](application-capability-contract.md)
+
 ### 8.1 模型输出进入助手允许列表
 
 应用先在 host 注册业务 command，再在 `ui_assistant_t` 注册模型可调用的语义 command、权限和参数 schema。未进入助手允许列表的 command 返回 `UI_STATUS_NOT_FOUND`。用 `ui_assistant_visit_commands()` 向模型工具适配器提供可用 ID、权限和 schema；visitor 内的描述借用到回调结束，不能在遍历时增添命令或销毁 assistant。
 
 `params_schema_json` 供工具说明和应用读取，框架不实现 JSON Schema 校验。用 `validate` callback 检查 JSON 语法、字段类型、范围、文档对象 ID 和业务前提。返回不通过后不派发业务命令；`UI_STATUS_INVALID_ARGUMENT` 会转为 `UI_STATUS_VALIDATION_FAILED`。没有 validator 就没有自动参数校验。
 
-独立宿主的全局助手通过 `ui_workspace_invoke()` 显式选择实例，再进入该实例的 `ui_assistant_invoke()`。助手 UI 的目标与当前活动标签是两个独立选择，不用标签切换改变已提交的调用。目录只展示目标实例允许的 ID、权限和 schema，结果标注原实例和请求 ID。宿主当前提供协议验证 UI，实际模型提供商、网络请求和模型工具适配器另行接入。
+独立宿主的全局助手通过 `ui_workspace_invoke()` 显式选择实例，再进入该实例的 `ui_assistant_invoke()`。助手 UI 的目标与当前活动标签是两个独立选择，不用标签切换改变已提交的调用。目录只展示目标实例允许的 ID、权限和 schema，结果标注原实例和请求 ID。本节说明原assistant.h命令协议适配层。正式宿主当前已由同一Service/Provider接入模型请求、工具执行和存储，接入方按通用助手指南选择对应独立接口。
 
 模型输出不得绕过这条路径进入 `ui_host_invoke()`、可信 Web 页面的 `ui.invoke()` 或任意 script execution。Web 页面中的 `ui.invoke()` 直接进入 host，它是可信应用 UI 的通路，不能作为模型权限边界。模型只使用对象 ID 和语义参数，不获得 HWND、屏幕坐标或任意 C 指针。
 
@@ -497,7 +499,7 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 
 ## 2026-10-17 开发快照增补
 
-当前SDK0.9.0-dev/API9/标准9按[版本政策](version-policy.md)追加独立主题信息结构与六个导出，不修改已发布结构或冻结SDK。`ui_workspace_set/get_instance_title`按稳定实例ID更新显示标题；`theme.h`提供每host的模式、语义色和同步通知，应用自绘图标/GL自行协作。[调用线程、字符串复制、长度/错误、通知顺序、系统刷新及示例](instance-title-and-theme.md)。本轮交付用基准HEAD+工作树源码SHA标识；新增应用须链接同包导入库/DLL，不能以API数字相同替代快照匹配。本轮用户要求的冻结API9定向兼容结果见[验证](validation/interaction-20261017-validation.md)，不恢复历史API1–8持续维护。
+当前SDK0.9.0-dev/API9/标准9按[版本政策](version-policy.md)追加独立主题信息结构与六个导出，不修改已发布结构或冻结SDK。`ui_workspace_set_instance_title`和`ui_workspace_get_instance_title`按稳定实例ID更新显示标题；`theme.h`提供每host的模式、语义色和同步通知，应用自绘图标/GL自行协作。[调用线程、字符串复制、长度/错误、通知顺序、系统刷新及示例](instance-title-and-theme.md)。本轮交付用基准HEAD+工作树源码SHA标识；新增应用须链接同包导入库/DLL，不能以API数字相同替代快照匹配。本轮用户要求的冻结API9定向兼容结果见[验证](validation/interaction-20261017-validation.md)，不恢复历史API1–8持续维护。
 
 
 ## 2026-10-20 受限文档公共 C 增补
@@ -505,3 +507,7 @@ API7面板注册的dock_region可直接声明BOTTOM，NONE保留原RIGHT默认�
 可信应用HTML继续使用 ui_light_web_backend_create/load_html；下载页面必须使用独立的 ui_light_document_backend_create 与 light_document.h。该后端不创建JS runtime，拒绝可信加载与JSON应用桥，只交付结构化导航/GET字段和资源事件，不能从页面升级成可信模式。窗口、呈现、输入和图片仍复用公共C接口。
 
 后台结果通过 app_data.h 的复制投递交给应用自己的UI接收函数，沿用workspace稳定ID、线程、所有权、预算和WAIT关闭合同。应用及调用示例见[受限浏览器合同](restricted-browser.md)与[公共验证源码](../apps/browser/tests/document_public.c)。新增独立结构读取要求完整size；冻结SDK不变，使用匹配开发快照。
+
+## 2026-11-11 通用应用助手首版增补
+
+当前开发快照在API10下新增独立`ai_assistant.h`及Profile目录枚举接口。真实模型准备、专业子任务和结果轮通过同一Service、Provider、计量及根预算，实际业务执行复用read及P4事务。接入顺序、对象身份、Schema参数卡、问题关联、显隐协作和可运行示例见[首版接入标准](xuanshu-general-assistant-integration.md)。旧公开布局、错误值及冻结SDK保持，使用新增接口须匹配本次源码与程序身份。

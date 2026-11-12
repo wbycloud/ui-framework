@@ -1,3 +1,54 @@
+# 应用项目接入当前API10的提示词
+
+2026-11-12。供APP开发者或代码助手使用，覆盖统一能力、受控事务和通用助手接入。公共接口基于SDK 0.10.0开发版、API10、标准10、ABI1、包1。当前同API10后续扩展与匹配材料见指南。[接入指南](xuanshu-general-assistant-integration.md)、[迁移说明](migration-v0.9-to-v0.10.md)
+
+## 分享与版本选择
+
+以下复制块使用仓库地址和相对路径。维护方应同时提供匹配源码/SDK、增量清单及程序身份。最新本地冻结有未提交工作区内容，接入方核对交付清单后选定源文件，GitHub main或API10数值本身不能定位这些增量。配套头、导入库、DLL和宿主按同一份清单使用。[当前交付清单](xuanshu-general-assistant-delivery-manifest.md)
+
+## 可直接分享的当前提示词
+
+```text
+请完成已授权APP的当前API10接入。先核对目标源码/SDK和实际应用，再最小实现、验证并更新应用文档。
+
+框架源码仓库为https://github.com/wbycloud/ui-framework。
+目标为维护方提供的匹配SDK 0.10.0开发快照、框架API10、开发标准10，应用ABI1、ui_app_query_v1和包格式1。
+
+1. 记录提供的源码commit、工作区增量和交付identity。核对CMake 0.10.0、ui.h的API10、公共头、ui_framework_runtime.lib、ui_framework.dll、framework_host.exe及包清单。维护方当前本地冻结内容可能尚未提交，先核实完整快照可取得性。缺少接口或文件身份时明确差异，继续无依赖工作。
+
+2. 阅读README.md、docs/application-development-standard.md、docs/application-capability-contract.md当前索引、docs/migration-v0.9-to-v0.10.md、docs/build-and-validation.md、docs/xuanshu-general-assistant-integration.md及include/ui_framework实际公共头。旧API10只读头和后续P4/P5/通用助手独立头有具体差异，按所需接口迁移。
+
+3. 盘点本APP的业务数据、UI、文件格式、资源、能力、线程和关闭路径。把已接入、缺失及本次改动列清。保留现有算法和数据，UI、菜单、工具、快捷键与AI复用真实业务函数。普通APP复用正式宿主现有Service、Provider、确认、计量和存储。
+
+4. 在create/mount适用阶段登记稳定资源、open_epoch、真实revision及Schema。对象ID使用稳定十进制字符串。read用capability.h的register/bind/prepare/dispatch/complete/get_result/forget，结构完整size/version=1。元数据注册时复制，应用持有callback/user_data至注销完成。严格Schema及预算以公共头为准。
+
+5. 普通菜单、Light输入、表单和共同组件使用capability_ui/inputs/forms/component_inputs的对应绑定。v2结构按头设version=2，独立绑定/P4结构按version=1。程序页面消息、source字符串或角色文本均不能授予人工来源。迁移后同一能力保持单一目录和执行器。
+
+6. 需要写能力时沿capability_edit.h的P4事务、真实效果/回读、revision及transaction/undo回执实现。UNKNOWN保持原门和错误。取消请求、终态及最终保存分别判断。危险审批、具体有限计划和后续撤销按相应可信确认合同处理。
+
+7. 用ui_ai_agent_profile_register登记复制的专业说明和允许能力。实际权限取APP角色、目标、根范围及能力描述交集。Profile中只列本APP已存在且适用的能力。浏览器state是完整顶层对象，正文使用browser.body；模型后继结果按明确选择的顶层字段过滤。
+
+8. 正式宿主使用ai_assistant.h的catalog/propose/get/get_disclosure/control。APP提供能力和业务，不调用宿主私有实现。实现独立宿主时按接入指南先create Service并在open前enable通用策略，等待READY和P4/Coordinator可用，继续UI poll，关闭至允许destroy。每个根策略的次数/期限/费用取具体配置。
+
+9. 默认历史不选，固定任务绑定实例、host/open epoch、revision及scope。查看旧任务、当前配置和新草稿分离。初始模型请求与后续具体有限计划分别完整展示。run/hash、代次、实际文字、布局及末次回调后的条件共同决定资格。隐藏、失败、旧代次或解绑PENDING使旧资格失效。
+
+10. worker只通过app_data等复制接口将稳定ID和数据交付UI线程。complete必须对应执行者真实退出，运行中的cancel继续等待。get_result借用至forget，capability分配用ui_capability_release，Service/图/Profile分配用ui_ai_release。外部UI回调按application.h的enter/leave scope保护。资源注销、UI解绑、调用及callback全部排空后才可卸载。
+
+11. 手动接管先停止新冲突派发，等待网络/业务/P4、图保存和所属引用排空后才报告可手动操作。交回AI重新核对身份和revision。重开只恢复记录，旧授权和执行保持失效。请求数、期限、费用及计量由宿主同一根账本控制，覆盖所有专业续轮。
+
+12. 从examples/general_assistant/README.md、examples/web_counter/README.md开始，再读examples/stateful_components/README.md及apps/browser/README.md。例子只代表其实际能力。浏览器九项导航/设置副作用、完整EDA及其他未接入业务依实际范围另案。私有测试可信事件、替身及注入接口只用于隔离验证。
+
+13. 在明确授权的开发范围内构建匹配APP，验证精确业务值、revision、固定目标、草稿分离、事务/撤销、异步取消、引用及安全关闭。运行范围与实际结果分开记录。当前设备来源、IME、跨屏DPI及真实服务按具体条件验收。已取消的临时助手页面控件测试保持取消。
+
+14. 更新本APP README、SDK/API/标准/源码及文件身份、迁移和验证记录。交付实际支持、未接入能力、失败与未验项。构建、人工和真实服务请求各需相应授权。本提示词不授予凭据访问、Provider请求或真实验证包执行权限。
+```
+
+## 历史提示词范围
+
+以下API9提示词保留当时版本与迁移条件，其中“当前”按该历史时点理解。API10接入采用上方复制块，原验收链接保留各自证据身份。
+
+## 历史API9升级提示词保留
+
 # 应用项目升级到当前 API9 的提示词
 
 目标SDK0.9.0开发版、API9、标准修订9，ABI和包格式仍为1。当前API9开发源码入口为[GitHub main](https://github.com/wbycloud/ui-framework/tree/main)。采用开发版必须记录取得的确切commit；不要用稳定标签v0.1.0替代本轮接口，也不要把离屏测试通过写成真实输入法/跨屏通过。

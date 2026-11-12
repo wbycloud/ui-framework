@@ -1,34 +1,41 @@
-# browser.uapp
+# browser.uapp开发与助手接入
 
-C11 受限文档阅读应用，当前0.3.0完成M2阅读兼容性，并保持M0/M1访问与诊断，作为 ui-framework 内置应用交付。每个实例是一个宿主标签；启动宿主不会打开浏览器或发出网页请求。宿主选项菜单的“浏览网页”通过普通 workspace/uapp 生命周期打开包。
+当前仓库内应用位于apps/browser，使用实际受限文档解析、状态模型及统一read链。应用版本0.3.0承接M0—M2阅读功能，框架接入使用当前SDK 0.10开发版、API10、ABI1和包1。普通浏览操作、助手读取及原副作用分别遵循各自来源和范围。[应用接入指南](../../docs/xuanshu-general-assistant-integration.md)、[浏览器阅读合同](docs/browser.md)
 
-本工程实际工作区为 `D:\应用软件框架\uapp浏览器`，接手时为空且没有 Git 仓库。框架实际基准 HEAD 为 `689fa03b34f8c4321a6c838f52ca9dcd790a9319`，分支 `codex/p1-process-boundaries`，包含接手前修改。本轮不创建提交；身份以完整源码 SHA 清单与交付文件 SHA 确认。
+## 资源、字段和专业角色
 
-在本机运行：
+| 资源与能力 | 输入/输出 | 当前合同 |
+|---|---|---|
+| browser.view / browser.snapshot | 输入{}，顶层state、revision、find_text | state含title、address、加载/布局/错误等完整状态，选择state即选择整个对象 |
+| browser.view / browser.body | 输入{}，顶层body、revision | body含text/bytes/complete/semantics，DOM规范化正文最多8192 UTF-8字节，语义dom-body-v1，排除脚本和表单控件，超限或不可用失败 |
+| browser.reader | browser.snapshot、browser.body | 专业角色是复制的说明和允许列表，与根任务及目标取交集 |
 
-```powershell
-& .\tools\build.ps1 -Targets browser_package,framework_host
-& .\build\release\framework\framework_host.exe
-```
+源码在browser_capabilities.inc注册资源、真实SHA-256 revision、两项v1 read、C1发布/退役及专业Profile。状态与正文均来自实际当前文档，旧revision或重开epoch保持原固定目标拒绝语义。[能力注册与执行](src/browser_capabilities.inc)、[正文提取](src/browser_body.c)
 
-干净的框架构建不需要测试、Mesa 或 WebView2：
+现有十项view动作沿C2人工UI绑定。导航/back/forward/reload/stop/home/help及settings-save/settings-reset九项副作用保留原人工行为，完整AI副作用迁移另案。状态读取和正文读取均不导航或修改用户来源规则。[原P6分类及边界](../../docs/xuanshu-p5-application-coverage.md#4-2026-10-27-p6补充盘点与brc-1实况)
 
-```powershell
-cmake -S D:/应用软件框架/应用层序框架 -B build/production -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_BUILD_TESTS=OFF -DBROWSER_BUILD_CHECKS=OFF -DUI_FRAMEWORK_ENABLE_WEBVIEW2=OFF -DUI_OSMESA_LIBRARY=
-cmake --build build/production --target framework_host browser_package uapp_pack
-```
+## 从框架仓库构建
 
-从 deliverables/m2-20261021/browser-sdk-m2.zip 解压匹配SDK（下例位于 D:/sdk/browser-sdk-m2），应用支持仅使用该 SDK 构建，无需框架源码或 QuickJS 源码：
+在仓库根、MSVC x64开发环境准备固定Lexbor/QuickJS依赖。下列命令仅列使用入口，本轮静态核对了选项、目标和包位置。
 
 ```powershell
-cmake -S . -B build/sdk-only -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_BROWSER_SDK_DIR=D:/sdk/browser-sdk-m2 -DBROWSER_BUILD_CHECKS=OFF
-cmake --build build/sdk-only --target browser_package
+cmake -S . -B build/browser-dev -G Ninja -DCMAKE_BUILD_TYPE=Release -DUI_BUILD_TESTS=OFF -DBROWSER_BUILD_CHECKS=OFF -DUI_FRAMEWORK_ENABLE_WEBVIEW2=OFF
+cmake --build build/browser-dev --target framework_host browser_package uapp_pack
+./build/browser-dev/framework_host.exe ./build/browser-dev/browser.uapp
 ```
 
-需要 MSVC x64 Developer PowerShell。固定依赖不自动下载或升级；SDK 中的 Lexbor 静态库、头文件和许可证来自同一固定版本。包内 `origins.txt` 提供默认精确origin；可信工具栏“设”可保存用户规则，无需重新编译或重打包。用户文件为 `%LOCALAPPDATA%\ui-framework\browser\origins-v1.txt`，非法配置拒绝全部网络，点击“默认”可恢复。可信“诊”面板区分访问阶段、重定向及子资源失败，隐藏凭据、路径和查询。
+生产浏览器不要求OSMesa。单独以apps/browser为源目录时可通过UI_BROWSER_SDK_DIR指定匹配的已解包SDK，需包含bin/ui_framework.dll、bin/uapp_pack.exe、lib/ui_framework_runtime.lib、include及third_party/lexbor的匹配库/头。具体导入关系由CMake定义，历史M2 SDK仅保留其原接口和身份。[构建定义](CMakeLists.txt)、[框架匹配材料](../../docs/build-and-validation.md#23-当前开发材料和代表目标)
 
-详细范围见 [支持表与公共合同](docs/browser.md)，实际结果与交付身份见 [验证记录](docs/validation.md)。`tests/document_public.c`、`tests/workspace_public.c`、`tests/failure_public.c` 仅使用公共框架 C 接口；宿主入口夹具单独负责宿主内部观察，不替代它们。
+同app_id的打开遵循workspace模块复用规则。验证不同包内资源时先使用明确的隔离实例和包身份，已有同ID模块不能被另一包悄悄替换。
 
-产品目标及M0—M5见[整体路线图](docs/development-roadmap.md)。本批固定样本及源码维护规则见[M0支持矩阵](docs/m01-support.md)，M0/M1构建、真实结果、新包和已知问题见[本批验收](docs/m01-validation.md)。首版docs/validation.md及旧deliverables/INDEX.md保留历史身份；该段保留M0/M1历史入口，当前M2交付见下文；M3—M5后续。
+## 来源配置与隔离样本
 
-M2新增：start/reversed/li value编号、合并表格与caption、仅可见文本查找复制、基础CSS/外部样式顺序、JPEG EXIF八方向及GET提交语义。具体可测试范围见[本批矩阵](docs/m2-support.md)，实际命令、失败及新交付见[本批验收](docs/m2-validation.md)。M0/M1记录保留历史，M3—M5后续。
+默认用户来源文件为`%LOCALAPPDATA%/ui-framework/browser/origins-v1.txt`。`UI_BROWSER_SETTINGS_PATH`显式选择配置位置，非法/空值/超长显式路径拒绝并保持失败状态，未设置时保留默认行为。环境变量隔离文件位置，资源授权和来源规则仍由原合同约束。[配置实现](src/browser_settings.c)
+
+本地验证使用全新自有目录、空来源规则及包内合成样本。匹配交付br1-production.uapp使用同一生产browser实现和samples/browser-read资源，能够验证包内合成交接单。它与普通browser.uapp及隔离测试链接包分别有文件身份。[合成业务样本](../../samples/browser-read/start.html)、[匹配交付清单](../../docs/xuanshu-general-assistant-delivery-manifest.md)
+
+## 历史阅读能力和证据
+
+M0/M1访问、诊断与M2列表/表格/CSS/图片/查找等阅读能力按原合同和验证记录保留。M3—M5路线图按实际接入推进，当前快照的通用助手结果另有身份。[路线图](docs/development-roadmap.md)、[M0/M1支持](docs/m01-support.md)、[M2支持](docs/m2-support.md)、[M2验证](docs/m2-validation.md)
+
+当前完整助手联调的模型及可信事件为隔离替身。历史真实Provider结果有各自程序、日期和数据范围，新的真实验证包保持Proposed，需另行批准。浏览器本文及命令在本轮只做静态核对。[当前限定复审](../../docs/validation/xuanshu-general-layout-independent-review.md)

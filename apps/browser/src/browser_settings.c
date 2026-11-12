@@ -14,6 +14,14 @@ int browser_settings_init(browser_settings_t *s,const char *defaults)
 {
     wchar_t base[32768];DWORD length;memset(s,0,sizeof(*s));
     if(!parse(defaults,&s->policy,s->defaults))return 0;
+    /* Explicit application-owned path: never fall back to user data on error. */
+    SetLastError(ERROR_SUCCESS);length=GetEnvironmentVariableW(L"UI_BROWSER_SETTINGS_PATH",base,32768);
+    if(length){
+        if(length>=32768||length>32600||!((base[0]&&base[1]==L':'&&(base[2]==L'\\'||base[2]==L'/'))||(base[0]==L'\\'&&base[1]==L'\\')))return 0;
+        for(DWORD i=0;i<length;++i)if(base[i]==L'/')base[i]=L'\\';
+        wcscpy(s->path,base);(void)browser_settings_reload(s);return 1;
+    }
+    if(GetLastError()!=ERROR_ENVVAR_NOT_FOUND)return 0;
     length=GetEnvironmentVariableW(L"LOCALAPPDATA",base,32768);
     if(length&&length<32700)swprintf(s->path,32768,L"%s\\ui-framework\\browser\\origins-v1.txt",base);
     (void)browser_settings_reload(s);return 1;
@@ -45,9 +53,9 @@ int browser_settings_save(browser_settings_t *s,const char *text)
     browser_policy_t policy;char canonical[BROWSER_SETTINGS_CAP];wchar_t temp[32768],directory[32768],*separator;HANDLE file;DWORD written=0,length,error=0;int ok;
     if(!parse(text,&policy,canonical)){strcpy(s->message,"未保存：每行仅HTTP/HTTPS精确来源，不接受凭据、路径、查询或片段；最多16项、4095字节。");return 0;}
     if(!*s->path){strcpy(s->message,"未保存：LOCALAPPDATA路径不可用。");return 0;}
-    wcscpy(directory,s->path);separator=wcsrchr(directory,L'\\');*separator=0;separator=wcsrchr(directory,L'\\');*separator=0;
+    wcscpy(directory,s->path);separator=wcsrchr(directory,L'\\');*separator=0;separator=wcsrchr(directory,L'\\');if(separator&&separator>directory+2)*separator=0;else separator=NULL;
     if(!CreateDirectoryW(directory,NULL)&&GetLastError()!=ERROR_ALREADY_EXISTS)goto failed;
-    *separator=L'\\';if(!CreateDirectoryW(directory,NULL)&&GetLastError()!=ERROR_ALREADY_EXISTS)goto failed;
+    if(separator){*separator=L'\\';if(!CreateDirectoryW(directory,NULL)&&GetLastError()!=ERROR_ALREADY_EXISTS)goto failed;}
     swprintf(temp,32768,L"%s.%lu.tmp",s->path,(unsigned long)GetCurrentProcessId());
     file=CreateFileW(temp,GENERIC_WRITE,0,NULL,CREATE_NEW,FILE_ATTRIBUTE_TEMPORARY,NULL);if(file==INVALID_HANDLE_VALUE)goto failed;
     length=(DWORD)strlen(canonical);ok=WriteFile(file,canonical,length,&written,NULL)!=0;

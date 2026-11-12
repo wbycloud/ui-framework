@@ -1,6 +1,8 @@
-# 通用组件纯 C 示例（当前 API7）
+# 通用组件纯 C 示例（当前 API10）
 
 应用只注册 C 描述、提供数据、绑定已有语义命令，不提供通用组件 HTML。它是测试数据示例，框架没有加入应用专用文档模型。
+
+当前已接入统一资源/能力和真实示例状态，read、编辑及普通UI绑定复用capabilities.inc中的业务函数，P4事务/撤销沿p2_support适配。专业角色及权限范围见[当前接入指南](../../docs/xuanshu-general-assistant-integration.md)，对应Schema和资源见[示例能力实现](capabilities.inc)。早期P2 A+B只更新声明的范围保留在原验收记录。
 
 ## 构建与启动
 

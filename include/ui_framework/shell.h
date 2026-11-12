@@ -45,6 +45,10 @@ UI_API ui_status_t ui_content_slot_attach_web_view(ui_content_slot_t *slot,
 /* Update registered chrome without destroying existing content containers.
  * This differs from the legacy ui_native_shell_refresh() rebuild operation. */
 UI_API ui_status_t ui_shell_refresh(ui_shell_t *shell);
+/* Presentation-only, for the host-managed Web shell. Preserves registered
+ * menus, tools and content slots. Business HUD/content and permissions persist. */
+UI_API ui_status_t ui_shell_set_chrome_suppressed(ui_shell_t *, int suppressed);
+UI_API ui_status_t ui_shell_get_chrome_suppressed(ui_shell_t *, int *suppressed);
 
 /* Optional outputs. Docked frame/content rectangles use host coordinates;
  * floating content is local to its owned popup. Called on the UI thread. */

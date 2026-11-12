@@ -6,7 +6,7 @@
 #ifdef _WIN32
 #include <windows.h>
 #endif
-_Static_assert(UI_FRAMEWORK_API_VERSION==9,"language contract is API9");
+_Static_assert(UI_FRAMEWORK_API_VERSION==10,"current SDK with API9 language contract");
 static int failures,notices,reentrant;
 static int queries;
 static ui_component_query_t late;

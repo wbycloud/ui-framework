@@ -16,10 +16,23 @@
 #include "ui_framework/light_web.h"
 #include "ui_framework/shell.h"
 #include "ui_framework/theme.h"
+#include "ui_framework/ai_service.h"
+#include "ui_framework/ai_model_ui.h"
+#include "ui_framework/ai_model_view.h"
+#include "ui_framework/ai_business_validation.h"
+#include "yyjson.h"
+#include "ui_framework/ai_edit_ui.h"
+#include "ui_framework/ai_coordinator.h"
+#include "ui_framework/ai_assistant.h"
+#include "ui_framework/images.h"
+#include "br2_meter_config.h"
 /* The framework shell consumes registrations; SDK applications never use this header. */
 #include "../../src/ui_internal.h"
 
 enum { ID_OPEN=0x1001, ID_CLOSE, ID_EXIT, ID_NEXT, ID_PREVIOUS };
+#ifndef UI_UHA_PROJECTION_PROBE
+#define UI_UHA_PROJECTION_PROBE(stage) 0
+#endif
 #define HOST_ACTION_MESSAGE (WM_APP+0x351)
 #define HOST_REFRESH_MESSAGE (WM_APP+0x352)
 #define HOST_PAGE_RESOURCE 101
@@ -30,6 +43,10 @@ enum { ID_OPEN=0x1001, ID_CLOSE, ID_EXIT, ID_NEXT, ID_PREVIOUS };
 #define HOST_RECENT_PATH 4096u
 #define HOST_SELECTOR_PAGE 8u
 typedef struct recent_app { char path[HOST_RECENT_PATH]; } recent_app_t;
+typedef struct assistant_attachment {
+    char name[256],media[32],hash[65];
+    void *bytes;size_t length;ui_image_id_t image;
+} assistant_attachment_t;
 
 typedef struct json_buffer { char *text; size_t length,capacity; int failed; } json_buffer_t;
 typedef struct host_action {
@@ -42,15 +59,36 @@ typedef struct host_window {
     ui_web_backend_t *backend,*popup_backend;
     ui_web_view_t *view,*popup_view;
     ui_workspace_t *workspace;
+    ui_ai_service_t *ai;
+    ui_web_view_t *ai_model_bound_view;char *ai_model;uint64_t ai_model_bindings[2];char ai_model_binding_hash[2][65],ai_model_binding_run[65];
+    char ai_run[65],ai_ack[65],ai_handoff_run[65];
+    char *ai_choices,*ai_preview,*ai_chunks,*ai_draft;char ai_preview_run[65],ai_preview_hash[65];
+    char *ai_state_sent;char ai_state_hash[65];uint64_t ai_display_generation,ai_binding_display_generation;int ai_display_valid;
+    char ai_stored_id[65],ai_query_id[65];uint64_t ai_query_generation;int ai_query_pending;char *ai_query_error;
+    char *ai_config_location;int ai_preview_ready;DWORD ai_copy_error;char ai_copy_notice[128];
+    char *ai_messages,*ai_runs,*ai_stored_run,*ai_error,*ai_edit,*ai_edit_catalog;
+    char ai_edit_ack[65],ai_edit_bound[65];uint64_t ai_edit_bindings[5];
+    uint64_t ai_projection_generation,ai_projection_rendered;
+    char *ai_graph,*ai_coordinator;uint64_t ai_graph_bindings[4];char ai_graph_bound[1024];
+    int ai_edit_bound_phase,ai_edit_bound_schema;
+    int ai_refresh_history,ai_exit_error_ack;
     uint32_t dpi;
     ui_rect_t workspace_rect;
+    int chrome_width,chrome_height;uint32_t chrome_dpi,workspace_dpi;size_t layout_instances;
     uint64_t target,last_id,last_request,completed_id,completed_request,displayed_instance;
     uint64_t transaction_id,transaction_instance,undo_id,undo_instance;
     uint64_t popup_token,language_instance,language_revision,language_generation;
     uint64_t title_popup_instance;
     ui_language_info_t popup_language;
     char *command,*params,*log;
-    int refreshing,refresh_pending,exiting,dark,assistant_expanded;
+    int refreshing,refresh_pending,exiting,dark,assistant_expanded,assistant_manual,ai_general;
+    char *ai_general_state,*ai_general_active;
+    uint64_t ai_assistant_binding;char ai_assistant_binding_hash[65];
+    uint64_t ai_assistant_generation;
+    uint64_t ai_undo_binding,ai_undo_generation;
+    char ai_undo_node[65],ai_undo_run[65],ai_undo_hash[65];
+    char *ai_general_catalog,*ai_database_path;
+    assistant_attachment_t ai_attachments[4];unsigned ai_attachment_count;
     char result_summary[192];
     int popup_kind,confirm_answer,confirm_waiting;
     char reported_error[512];
@@ -67,6 +105,20 @@ typedef struct host_window {
 static void json_append(json_buffer_t *,const char *);
 static void json_string(json_buffer_t *,const char *);
 static void json_id(json_buffer_t *,uint64_t);
+static void ai_panel_json(host_window_t *,json_buffer_t *);
+static void ai_panel_edit_bindings(host_window_t *);
+static void ai_model_panel_bindings(host_window_t *);
+static void ai_model_panel_projection(host_window_t *,json_buffer_t *);
+static const char *ai_model_task_snapshot(host_window_t *,const char *,const char **);
+static int ai_model_preview_displayed(host_window_t *);
+static void ai_panel_graph_bindings(host_window_t *);
+static void ai_assistant_bindings(host_window_t *);
+static void ai_assistant_tick(host_window_t *);
+static void ai_assistant_json(host_window_t *,json_buffer_t *);
+static void ai_assistant_free(host_window_t *);
+static int ai_assistant_enabled(host_window_t *);
+static ui_status_t ai_assistant_enable(host_window_t *);
+static int ai_assistant_action(host_window_t *,host_action_t *);
 static const char *tr(host_window_t *s,const char *key)
 {return ui_language_text(s->chrome_host,key);}
 static void language_json(json_buffer_t *json,const char *language,uint64_t revision)
@@ -290,6 +342,9 @@ static char *load_page(void)
 static void on_web_message(ui_web_view_t *view,const char *json,void *data)
 {
     host_window_t *s=(host_window_t *)data;host_action_t *action=parse_action(json);if(!action)return;
+#if defined(UI_HOST_TEST) && defined(UI_HOST_MODEL_TRACE)
+    if(!strcmp(action->action,"ai-model-save")){UI_HOST_MODEL_TRACE("page-wire",json,action->token);UI_HOST_MODEL_TRACE("page-message-answer",action->answer,action->token);}
+#endif
     action->popup_token=view==s->popup_view?s->popup_token:0;
     if(!PostMessageW(s->hwnd,HOST_ACTION_MESSAGE,0,(LPARAM)action))action_free(action);
 }
@@ -465,6 +520,7 @@ static const char *command_title(ui_host_t *host,const char *id)
 {ui_command_entry_t *c;for(c=host->commands;c;c=c->next)if(id&&!strcmp(c->id,id))return c->title;return id?id:"";}
 static int assistant_visible(host_window_t *s)
 {return s->assistant_expanded>0;}
+#include "ai_projection.inc"
 static void send_state(host_window_t *s,char **layout_state)
 {
     json_buffer_t json={0};ui_app_instance_info_t info,target;size_t i,count;
@@ -486,6 +542,7 @@ static void send_state(host_window_t *s,char **layout_state)
     if(!get_instance(s,s->last_id,&info))s->last_request=0;
     json_append(&json,"{\"type\":\"state\",\"active\":");if(active)json_id(&json,active);else json_string(&json,"");
     language_json(&json,s->chrome_host->language.language,s->language_revision);
+    json_format(&json,",\"chromeSuppressed\":%s,\"assistantWidth\":%d",assistant_visible(s)&&!s->assistant_manual?"true":"false",width<640?280:380);
     json_format(&json,",\"dpi\":%u,\"dark\":%s,\"assistant\":%s,\"tabs\":[",s->dpi,s->dark?"true":"false",assistant_visible(s)?"true":"false");
     for(i=0;i<count;++i){uint64_t id=ui_workspace_instance_at(s->workspace,i);if(!get_instance(s,id,&info))continue;
         if(i)json_append(&json,",");json_append(&json,"{\"id\":");json_id(&json,id);
@@ -507,12 +564,14 @@ static void send_state(host_window_t *s,char **layout_state)
         json_append(&json,",\"menuGroups\":[");{HDC dc=GetDC(s->hwnd);HFONT font=CreateFontW(-MulDiv(13,(int)s->dpi,96),0,0,0,FW_NORMAL,FALSE,FALSE,FALSE,DEFAULT_CHARSET,OUT_DEFAULT_PRECIS,CLIP_DEFAULT_PRECIS,CLEARTYPE_QUALITY,DEFAULT_PITCH,L"Segoe UI");HGDIOBJ previous=SelectObject(dc,font);menu_state_writer_t writer={&json,0,dc,s->dpi};if(ui_host_visit_menu(info.host,"",state_menu_group,&writer)!=UI_STATUS_OK)json.failed=1;SelectObject(dc,previous);DeleteObject(font);ReleaseDC(s->hwnd,dc);}json_append(&json,"]");
         json_append(&json,",\"tools\":[");state_tools(&json,info.host);json_append(&json,"],\"panels\":[");state_panels(&json,&info);json_append(&json,"],\"status\":");json_string(&json,ui_host_status_text(info.host));
     }else json_append(&json,",\"activeLabel\":\"\",\"menuGroups\":[],\"tools\":[],\"panels\":[]");
+    if(!json.failed)ai_panel_json(s,&json);else ai_projection_invalidate(s);
     json_append(&json,"}");
-    /* Suppress only an identical second update within this layout. The first
-       update of every refresh still runs, including image-only changes. */
-    if(!json.failed&&json.text&&(!*layout_state||strcmp(*layout_state,json.text))&&
-       ui_web_view_post_json(s->view,json.text)==UI_STATUS_OK){free(*layout_state);*layout_state=json.text;json.text=NULL;}
+    (void)layout_state;
+    if(!json.failed&&json.text&&ai_projection_send(s,json.text)){
+        s->view->input_instance=active;s->ai_projection_rendered=s->ai_projection_generation;
+    }else {s->view->input_instance=0;ai_projection_invalidate(s);}
     free(json.text);
+    if(s->ai){ai_panel_edit_bindings(s);ai_panel_graph_bindings(s);ai_model_panel_bindings(s);ai_assistant_bindings(s);}
 }
 static void cut_region(HRGN full,const ui_rect_t *rect,uint32_t dpi,int offset_x,int offset_y)
 {
@@ -535,14 +594,21 @@ static void update_region(host_window_t *s)
 }
 static void layout(host_window_t *s)
 {
-    RECT client;int width,height;ui_rect_t rect;char *layout_state=NULL;
+    RECT client;int width,height,active_changed;ui_rect_t rect;char *layout_state=NULL;
     if(!s->view||!s->workspace||s->refreshing)return;s->refreshing=1;
-    {uint64_t active=ui_workspace_active(s->workspace);if(active!=s->displayed_instance&&s->popup_kind==1)close_popup(s);s->displayed_instance=active;}GetClientRect(s->hwnd,&client);
+    {uint64_t active=ui_workspace_active(s->workspace);active_changed=active!=s->displayed_instance;if(active_changed&&s->popup_kind==1)close_popup(s);s->displayed_instance=active;}GetClientRect(s->hwnd,&client);
     width=MulDiv(client.right,96,(int)s->dpi);height=MulDiv(client.bottom,96,(int)s->dpi);
-    (void)ui_host_set_dpi(s->chrome_host,s->dpi);(void)ui_host_resize(s->chrome_host,width,height);
-    (void)ui_web_view_resize(s->view,width,height,s->dpi);send_state(s,&layout_state);
+    for(size_t i=0;i<ui_workspace_count(s->workspace);++i){ui_app_instance_info_t app;if(get_instance(s,ui_workspace_instance_at(s->workspace,i),&app))(void)ui_shell_set_chrome_suppressed(ui_host_get_shell(app.host),assistant_visible(s)&&!s->assistant_manual);}
+    if(s->chrome_width!=width||s->chrome_height!=height||s->chrome_dpi!=s->dpi){
+        (void)ui_host_set_dpi(s->chrome_host,s->dpi);(void)ui_host_resize(s->chrome_host,width,height);
+        if(ui_web_view_resize(s->view,width,height,s->dpi)==UI_STATUS_OK){s->chrome_width=width;s->chrome_height=height;s->chrome_dpi=s->dpi;}
+    }
+    send_state(s,&layout_state);
     if(ui_web_view_get_element_rect(s->view,"workspace",&rect)==UI_STATUS_OK){
-        if(rect.width<0)rect.width=0;if(rect.height<0)rect.height=0;{ui_app_instance_info_t info;if(get_instance(s,ui_workspace_active(s->workspace),&info)){int menu=app_menu_height(&info);rect.y-=menu;rect.height+=menu;}}s->workspace_rect=rect;(void)ui_workspace_set_rect(s->workspace,&rect,s->dpi);}
+        if(rect.width<0)rect.width=0;if(rect.height<0)rect.height=0;{ui_app_instance_info_t info;if(get_instance(s,ui_workspace_active(s->workspace),&info)){int menu=app_menu_height(&info);rect.y-=menu;rect.height+=menu;}}size_t instances=ui_workspace_count(s->workspace);
+        if(active_changed||s->workspace_dpi!=s->dpi||s->layout_instances!=instances||memcmp(&s->workspace_rect,&rect,sizeof(rect))){
+            if(ui_workspace_set_rect(s->workspace,&rect,s->dpi)==UI_STATUS_OK){s->workspace_rect=rect;s->workspace_dpi=s->dpi;s->layout_instances=instances;}
+        }}
     send_state(s,&layout_state);free(layout_state);update_region(s);s->refreshing=0;
 }
 static void refresh_workspace(void *data)
@@ -706,6 +772,7 @@ static void tooltip_popup(host_window_t *s,const char *id)
 }
 static int registered_command(const ui_host_t *host,const char *id)
 {ui_command_entry_t *entry;for(entry=host->commands;entry;entry=entry->next)if(!strcmp(entry->id,id))return entry->state.visible&&entry->state.enabled&&!entry->state.busy;return 0;}
+#include "ai_panel.inc"
 static void process_action(host_window_t *s,host_action_t *action)
 {
     const char *name=action->action;uint64_t id=read_id(action->id);ui_app_instance_info_t info;
@@ -717,6 +784,7 @@ static void process_action(host_window_t *s,host_action_t *action)
             else if(!strcmp(name,"dismiss"))s->confirm_answer=-1;return;}
         if(strcmp(name,"tooltip-hide"))close_popup(s);
     }else if(s->confirm_waiting)return;
+    if(ai_panel_action(s,action))return;
     if(!strcmp(name,"ready")){schedule_refresh(s);return;}
     if(!strcmp(name,"browse")){close_popup(s);open_builtin_browser(s);}
     else if(!strcmp(name,"open")){close_popup(s);open_dialog(s);}
@@ -734,7 +802,7 @@ static void process_action(host_window_t *s,host_action_t *action)
             s->title_popup_instance=id;popup_start(s,&json,tr(s,"完整内容 · 关闭"),title,0);popup_finish(s,&json);}return;}
     else if(!strcmp(name,"theme")){ui_theme_mode_t mode=s->dark?UI_THEME_LIGHT:UI_THEME_DARK;
         (void)ui_host_set_theme(s->chrome_host,mode);for(size_t n=0;n<ui_workspace_count(s->workspace);++n)if(get_instance(s,ui_workspace_instance_at(s->workspace,n),&info))(void)ui_host_set_theme(info.host,mode);s->dark=mode==UI_THEME_DARK;}
-    else if(!strcmp(name,"assistant"))s->assistant_expanded=assistant_visible(s)?-1:1;
+    else if(!strcmp(name,"assistant")){ai_projection_invalidate(s);s->assistant_expanded=assistant_visible(s)?-1:1;}
     else if(!strcmp(name,"menu")){if(s->popup_kind==1)close_popup(s);else menu_popup(s);return;}else if(!strcmp(name,"targets")){selector_popup(s,0);return;}
     else if(!strcmp(name,"app-shortcut")){
         uint64_t key=read_id(action->key),modifiers=read_id(action->modifiers);
@@ -786,6 +854,7 @@ static void destroy_chrome(host_window_t *s)
     if(s->backend){ui_light_web_backend_destroy(s->backend);s->backend=NULL;}
     if(s->chrome_host){ui_host_destroy(s->chrome_host);s->chrome_host=NULL;}
     free(s->command);free(s->params);free(s->log);s->command=s->params=s->log=NULL;
+    ai_panel_free(s);
 }
 static LRESULT CALLBACK host_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
 {
@@ -823,7 +892,8 @@ static LRESULT CALLBACK host_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
         workspace.user_data=s;workspace.result=on_result;workspace.event=on_event;workspace.progress=on_progress;
         workspace.confirm=on_confirm;workspace.changed=refresh_workspace;workspace.max_permission=UI_ASSISTANT_PERMISSION_DESTRUCTIVE;
         workspace.shell_mode=UI_WORKSPACE_SHELL_WEB;s->workspace=ui_workspace_create(&workspace);
-        if(!s->workspace){destroy_chrome(s);return -1;}layout(s);return 0;}
+        if(!s->workspace){destroy_chrome(s);return -1;}
+        if(ui_capability_workspace_input_bind(s->workspace,s->view)!=UI_STATUS_OK){destroy_chrome(s);return -1;}ai_panel_initialize(s);SetTimer(hwnd,0x503,20,NULL);layout(s);return 0;}
     case WM_SIZE:layout(s);return 0;
     case WM_DPICHANGED:{RECT *rect=(RECT *)lp;s->dpi=LOWORD(wp);close_popup(s);
         SetWindowPos(hwnd,NULL,rect->left,rect->top,rect->right-rect->left,rect->bottom-rect->top,SWP_NOZORDER|SWP_NOACTIVATE);layout(s);return 0;}
@@ -835,17 +905,25 @@ static LRESULT CALLBACK host_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp)
     case WM_COMMAND:switch(LOWORD(wp)){
         case ID_OPEN:open_dialog(s);return 0;case ID_CLOSE:(void)ui_workspace_close(s->workspace,ui_workspace_active(s->workspace),UI_APP_CLOSE_TAB);return 0;
         case ID_EXIT:PostMessageW(hwnd,WM_CLOSE,0,0);return 0;case ID_NEXT:switch_tab(s,1);return 0;case ID_PREVIOUS:switch_tab(s,-1);return 0;}break;
+    case WM_TIMER:if(wp!=0x503)break;/* Poll never waits for the worker. */
+        if(!s->workspace)return 0;ai_panel_tick(s);if(!s->exiting)return 0;
+        /* fall through */
     case UI_WORKSPACE_WAKE_MESSAGE:
-        if(!s->workspace)return 0;ui_workspace_poll(s->workspace);
+        if(!s->workspace)return 0;ui_workspace_poll(s->workspace);ai_panel_tick(s);
         {const char *error=ui_workspace_last_error(s->workspace);if(error[0]&&strcmp(error,s->reported_error))show_error(s,error);}
-        if(s->exiting){if(!ui_workspace_count(s->workspace)){ui_status_t status=ui_workspace_destroy(s->workspace);
+        if(s->exiting){if(!ui_workspace_count(s->workspace)){ui_status_t status;
+                if(s->ai){ui_ai_service_state_t state={0};state.size=sizeof(state);state.version=1;(void)ui_ai_service_get_state(s->ai,&state);
+                    if(state.error[0]&&!s->ai_exit_error_ack){s->exiting=0;s->ai_exit_error_ack=1;show_error(s,state.error);return 0;}
+                    (void)ui_ai_service_request_close(s->ai);ai_panel_tick(s);status=ui_ai_service_destroy(s->ai);if(status!=UI_STATUS_OK)return 0;s->ai=NULL;}
+                status=ui_workspace_destroy(s->workspace);
                 if(status==UI_STATUS_OK){s->workspace=NULL;DestroyWindow(hwnd);}else{s->exiting=0;show_error(s,ui_workspace_last_error(s->workspace));}}
             else{size_t i;for(i=0;i<ui_workspace_count(s->workspace);++i){ui_app_instance_info_t info;
-                if(get_instance(s,ui_workspace_instance_at(s->workspace,i),&info)&&!info.closing)s->exiting=0;}}}return 0;
+                if(get_instance(s,ui_workspace_instance_at(s->workspace,i),&info)&&!info.closing){s->exiting=0;if(s->ai)(void)ui_ai_service_resume(s->ai);}}}}return 0;
     case WM_CLOSE:
+        ai_projection_invalidate(s);
         if(s->confirm_waiting){s->confirm_answer=-1;return 0;}
         if(s->chrome_host&&s->chrome_host->dispatch_depth){PostMessageW(hwnd,WM_CLOSE,0,0);return 0;}
-        s->exiting=1;if(ui_workspace_close_all(s->workspace)!=UI_STATUS_OK)s->exiting=0;PostMessageW(hwnd,UI_WORKSPACE_WAKE_MESSAGE,0,0);return 0;
+        if(s->ai)(void)ui_ai_service_quiesce(s->ai);s->exiting=1;if(ui_workspace_close_all(s->workspace)!=UI_STATUS_OK){s->exiting=0;if(s->ai)(void)ui_ai_service_resume(s->ai);}PostMessageW(hwnd,UI_WORKSPACE_WAKE_MESSAGE,0,0);return 0;
     case WM_DESTROY:{MSG queued;destroy_chrome(s);
         while(PeekMessageW(&queued,hwnd,HOST_ACTION_MESSAGE,HOST_ACTION_MESSAGE,PM_REMOVE))action_free((host_action_t *)queued.lParam);
         PostQuitMessage(0);return 0;}

@@ -220,6 +220,17 @@ static ui_status_t paint_popup(ui_menu_popup_t *p)
         uj_fmt(&json,",\"access\":%u,\"group\":%s,\"image\":\"%llu\",\"enabled\":%s,\"checked\":%s,\"busy\":%s}",e->access_key,e->group?"true":"false",(unsigned long long)e->image_id,e->state.enabled?"true":"false",e->state.checked?"true":"false",e->state.busy?"true":"false");}
     uj_add(&json,"]");ui_language_json(p->host,&json);uj_add(&json,"}");free(rows);status=json.failed?UI_STATUS_LIMIT_EXCEEDED:ui_web_view_post_json(p->view,json.data);free(json.data);return status;
 }
+static ui_status_t popup_semantic(ui_web_view_t *view,const char *node,void *data)
+{
+    ui_menu_popup_t *p=data;menu_rows_t *rows;ui_status_t status=UI_STATUS_UNSUPPORTED;size_t i;
+    if(!p->open)return UI_STATUS_UNSUPPORTED;
+    rows=calloc(1,sizeof(*rows));if(!rows)return UI_STATUS_OUT_OF_MEMORY;
+    if(popup_rows(p,rows)==UI_STATUS_OK)for(i=0;i<rows->count;++i){char dom[80];
+      menu_dom_id(rows->rows[i].entry.id,dom);if(strcmp(dom,node)||rows->rows[i].entry.group)continue;
+      if(p->toolbar&&ui_inputs_route(p->host,UI_CAP_INPUT_TOOLBAR,NULL,rows->rows[i].entry.id,&view->private_input,view->user_data))status=UI_STATUS_OK;
+      else status=ui_capabilities_ui_action(p->host,rows->rows[i].entry.id,view->user_data);break;}
+    free(rows);if(status!=UI_STATUS_UNSUPPORTED)(void)ui_host_close_menu(p->host);return status;
+}
 static ui_status_t create_popup(ui_host_t *,ui_menu_popup_t *,ui_menu_popup_t **);
 static ui_status_t show_popup(ui_menu_popup_t *);
 static ui_status_t open_child(ui_menu_popup_t *p,const char *path)
@@ -298,7 +309,7 @@ static ui_status_t create_popup(ui_host_t *host,ui_menu_popup_t *parent,ui_menu_
         if(!p->window){free(p);return UI_STATUS_PLATFORM_ERROR;}}
 #endif
     config.size=sizeof(config);config.parent_hwnd=p->window;p->backend=ui_light_web_backend_create(&config);
-    p->view=p->backend?ui_web_view_create(host,p->backend):NULL;status=p->view?ui_web_view_set_message_callback(p->view,popup_message,p):UI_STATUS_OUT_OF_MEMORY;
+    p->view=p->backend?ui_web_view_create(host,p->backend):NULL;if(p->view){p->view->semantic_action=popup_semantic;p->view->semantic_data=p;}status=p->view?ui_web_view_set_message_callback(p->view,popup_message,p):UI_STATUS_OUT_OF_MEMORY;
 #ifdef _WIN32
     if(p->view&&p->window)(void)ImmAssociateContextEx((HWND)ui_web_view_native_handle(p->view),NULL,IACE_CHILDREN);
 #endif

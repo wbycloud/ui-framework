@@ -1,6 +1,7 @@
 /* Real light rendering: explicit zero padding must leave the whole icon visible. */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <windows.h>
 #include "ui_framework/ui.h"
 #include "ui_framework/light_web.h"
@@ -10,6 +11,48 @@ static unsigned text_pixels(const ui_pixel_buffer_t *pixels,const ui_rect_t *rec
  int y0=MulDiv(rect->y+5,(int)dpi,96),y1=MulDiv(rect->y+rect->height-5,(int)dpi,96);
  for(int y=y0;y<y1;++y)for(int x=x0;x<x1;++x){const unsigned char *s=pixels->pixels+(size_t)y*pixels->stride+(size_t)x*4;if(s[0]<180&&s[1]<180&&s[2]<180)++count;}
  return count;
+}
+/* Compare a repeatedly updated node with a newly created node. This catches
+ * stale text/font metrics without inspecting any private cache flag. */
+static int changed_text_widths(ui_web_view_t *view)
+{
+ const char *html="<style>body{margin:0}button{position:absolute;left:0px;height:40px}</style>"
+  "<button id='cached'>Seed</button><input id='draft' value='untouched'>"
+  "<script>var cached=document.getElementById('cached');"
+  "ui.onmessage=function(d){if(d.rebuild){cached.remove();cached=document.createElement('button');cached.id='cached';document.body.appendChild(cached);}"
+  "cached.textContent=d.text;cached.style.cssText=d.style;"
+  "var old=document.getElementById('fresh');if(old)old.remove();var fresh=document.createElement('button');fresh.id='fresh';"
+  "fresh.textContent=d.text;fresh.style.cssText=d.style;document.body.appendChild(fresh);};</script>";
+ const char *cases[]={
+  "{\"text\":\"Submit\",\"style\":\"font-family:Segoe UI;font-size:13px;padding:4px 8px;border:1px solid #000000;\"}",
+  "{\"text\":\"Submit\",\"style\":\"font-family:Segoe UI;font-size:13px;padding:4px 8px;border:1px solid #000000;\"}",
+  "{\"text\":\"Wider text 0123456789\",\"style\":\"font-family:Segoe UI;font-size:13px;padding:4px 8px;border:1px solid #000000;\"}",
+  "{\"text\":\"I\",\"style\":\"font-family:Segoe UI;font-size:13px;padding:4px 8px;border:1px solid #000000;\"}",
+  "{\"text\":\"中文与Latin\",\"style\":\"font-family:Microsoft YaHei UI;font-size:18px;font-weight:bold;padding:0;border:0;\"}",
+  "{\"text\":\"中文与Latin\",\"style\":\"font-family:Consolas;font-size:27px;font-style:italic;padding:0;border:0;\"}",
+  "{\"text\":\"中文与Latin\",\"style\":\"font-family:Consolas;font-size:27px;font-style:italic;padding:3px 17px;border:2px solid #000000;\"}",
+  "{\"text\":\"Hidden changed text\",\"style\":\"display:none;font-size:22px;padding:0;\"}",
+  "{\"text\":\"Hidden changed text\",\"style\":\"display:block;font-size:22px;padding:0;\"}",
+  "{\"text\":\"\",\"style\":\"font-size:13px;padding:0;\"}",
+  "{\"text\":\"Reused node\",\"style\":\"font-size:19px;padding:0;\",\"rebuild\":true}"
+ };
+ int ok=1,count=0;
+ for(unsigned document=0;document<2;++document){
+  if(ui_web_view_load_html(view,html)!=UI_STATUS_OK)return 0;
+  for(uint32_t dpi=96;dpi<=192;dpi+=24){
+   if(ui_web_view_resize(view,480,180,dpi)!=UI_STATUS_OK)return 0;
+   for(unsigned i=0;i<sizeof(cases)/sizeof(cases[0]);++i){
+    ui_element_presentation_t a={0},b={0},draft={0};a.size=sizeof(a);b.size=sizeof(b);draft.size=sizeof(draft);
+    if(ui_web_view_post_json(view,cases[i])!=UI_STATUS_OK)return 0;
+    int equal=ui_web_view_get_presentation(view,"cached",&a)==UI_STATUS_OK&&ui_web_view_get_presentation(view,"fresh",&b)==UI_STATUS_OK;
+    equal=equal&&a.visible==(i!=7)&&a.visible==b.visible&&a.rect.width==b.rect.width&&a.rect.height==b.rect.height&&!strcmp(a.text_utf8,b.text_utf8);
+    equal=equal&&ui_web_view_get_presentation(view,"draft",&draft)==UI_STATUS_OK&&draft.text_utf8&&!strcmp(draft.text_utf8,"untouched");
+    if(!equal)printf("Text metric mismatch document%u dpi%u case%u cached%d fresh%d\n",document,dpi,i,a.rect.width,b.rect.width);
+    ok=ok&&equal;++count;
+   }
+  }
+ }
+ printf("Changed text/font/DPI, fresh node and reload comparisons: %d %s\n",count,ok?"PASS":"FAIL");return ok;
 }
 int main(void)
 {
@@ -38,5 +81,6 @@ int main(void)
   free(p.pixels);p.pixels=NULL;
   ok=ok&&previous_ok;
  }
+ ok=changed_text_widths(v)&&ok;
  ui_web_view_destroy(v);ui_light_web_backend_destroy(b);ui_host_destroy(h);return ok?0:1;
 }

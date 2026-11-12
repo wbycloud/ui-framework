@@ -1,6 +1,7 @@
 #include "ui_internal.h"
 #include "json_ui.h"
 #include "language_json.h"
+#include "capability_internal.h"
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -34,7 +35,10 @@ typedef struct component_preview {
     int used;
     struct component_preview *next;
 } component_preview_t;
+typedef struct component_form component_form_t;
 struct ui_component {
+    component_form_t *form;
+    const char *editor_accepted,*editor_text;
     ui_host_t *host;
     ui_component_desc_t desc;
     ui_column_desc_t *columns;
@@ -72,6 +76,11 @@ struct ui_component {
     void *dialog_window, *previous_focus;
     struct ui_component *next;
 };
+static size_t form_conflicts(ui_component_t *);
+static int form_field_conflict(ui_component_t *,size_t);
+static void form_changed(ui_component_t *,size_t);
+static ui_status_t form_read(ui_component_t *);
+static ui_status_t form_semantic(ui_web_view_t *,const char *,void *);
 static void render_component(ui_component_t *c);
 static uint64_t tree_total(ui_component_t *c);
 static void invoke_component(ui_component_t *c,const char *command,const char *params);
@@ -589,7 +598,10 @@ static void render_component(ui_component_t *c)
         if(c->first>=total){(void)query_viewport(c,total?total-1:0,c->first_column,0);root=page(c,0,0);}}
     uj_fmt(&json,"{\"kind\":%d,\"rowHeight\":%d,\"width\":%d,\"height\":%d,\"first\":\"%llu\",\"total\":\"%llu\",\"selected\":\"%llu\",\"title\":",
         c->desc.kind,c->desc.row_height,c->width,c->height,(unsigned long long)c->first,(unsigned long long)(c->desc.kind==UI_COMPONENT_TREE?tree_total(c):(root?root->total:0)),(unsigned long long)c->selected);
-    uj_string(&json,c->desc.title);component_language_json(c,&json);uj_add(&json,",\"selection\":[");for(i=0;i<c->selection_count;++i){if(i)uj_add(&json,",");uj_fmt(&json,"\"%llu\"",(unsigned long long)c->selection[i]);}
+    uj_string(&json,c->desc.title);
+    uj_fmt(&json,",\"preserveEditors\":%s",ui_inputs_component_action_bound(c->host,c,"edit")||ui_inputs_component_action_bound(c->host,c,"rename")?"true":"false");
+    if(c->editor_accepted){uj_add(&json,",\"editorAccepted\":");uj_string(&json,c->editor_accepted);uj_add(&json,",\"editorText\":");uj_string(&json,c->editor_text);}
+    component_language_json(c,&json);uj_add(&json,",\"selection\":[");for(i=0;i<c->selection_count;++i){if(i)uj_add(&json,",");uj_fmt(&json,"\"%llu\"",(unsigned long long)c->selection[i]);}
     uj_add(&json,"],\"sortColumn\":");uj_string(&json,c->sort_column);uj_fmt(&json,",\"sortDirection\":%d,\"sortable\":%s,\"experience\":%s,\"totalColumns\":%zu,\"generation\":\"%llu\",\"columns\":[",c->sort_direction,c->desc.sort_command&&*c->desc.sort_command?"true":"false",c->desc.selection_flags||c->desc.sort_command&&*c->desc.sort_command?"true":"false",c->desc.column_count,(unsigned long long)c->generation);
     for(i=c->render_column;i<c->desc.column_count&&i<c->render_column+c->column_count;++i){if(i>c->render_column)uj_add(&json,",");
         uj_add(&json,"{\"id\":");uj_string(&json,c->columns[i].id);uj_add(&json,",\"title\":");uj_string(&json,c->columns[i].title);
@@ -604,12 +616,14 @@ static void render_component(ui_component_t *c)
         if(f->kind==UI_VALUE_STYLE){ui_status_t status=cell_preview(c,&c->drafts[i]);if(status!=UI_STATUS_OK)c->resource_status=status;}
         json_cell(&json,&c->drafts[i]);
         if(c->drafts[i].image_id)(void)ui_image_get_info(c->host,c->drafts[i].image_id,&image);
+        uj_fmt(&json,",\"conflict\":%s",form_field_conflict(c,i)?"true":"false");
         uj_fmt(&json,",\"imageWidth\":%u,\"imageHeight\":%u,\"options\":[",image.width,image.height);
         for(j=0;j<f->option_count;++j){if(j)uj_add(&json,",");uj_string(&json,f->options[j]);}uj_add(&json,"],\"optionLabels\":[");
         for(j=0;j<f->option_count;++j){if(j)uj_add(&json,",");uj_string(&json,c->option_labels[i]?c->option_labels[i][j]:f->options[j]);}uj_add(&json,"]}");}
     {int actions=c->desc.kind==UI_COMPONENT_DIALOG||c->desc.commands.submit[0]||c->desc.commands.cancel[0];
      for(i=0;i<c->desc.field_count;++i)if(!(c->drafts[i].flags&(UI_VALUE_READONLY|UI_VALUE_DISABLED))&&c->fields[i].kind!=UI_VALUE_GROUP)actions=1;
      uj_fmt(&json,"],\"formActions\":%s",actions?"true":"false");}
+    uj_fmt(&json,",\"capabilityForm\":%s,\"draftConflicts\":%zu",c->form?"true":"false",form_conflicts(c));
     uj_fmt(&json,",\"dark\":%s,\"loading\":%s,\"modal\":%s,\"visible\":%s,\"inputAllowed\":%s}",c->host->menu_dark?"true":"false",root&&root->pending?"true":"false",c->modal?"true":"false",c->visible?"true":"false",c->host->app_active&&!c->host->dispatch_blocked&&(!c->host->modal_component||c->host->modal_component==c)?"true":"false");
     c->presentation_status=json.failed?UI_STATUS_LIMIT_EXCEEDED:ui_web_view_post_json(c->view,json.data);
     free(json.data);release_previews(c,0);
@@ -626,6 +640,7 @@ void ui_components_set_theme(ui_host_t *host,int dark)
 static void invoke_component(ui_component_t *c,const char *command,const char *params)
 {
     ui_command_state_t state={0};state.size=sizeof(state);
+    if(c->form)return; /* Bound forms have one business executor, including close/legacy messages. */
     if(command&&*command&&ui_host_get_command_state(c->host,command,&state)==UI_STATUS_OK&&state.enabled&&!state.busy)
         (void)ui_host_invoke(c->host,command,params,"component");
 }
@@ -634,6 +649,9 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
 {
     ui_component_t *c=(ui_component_t *)user;char action[64],field[128],text[4096];uint64_t id;size_t i;
     (void)view;if(!uj_get(json,"action",action,sizeof(action)))return;
+    if(!strcmp(action,"editor-open")||!strcmp(action,"editor-change")){
+      char node[256];if(uj_get(json,"node",node,sizeof(node)))ui_inputs_editor_event(c->host,c,action,node);return;}
+    if(ui_inputs_component_action_bound(c->host,c,action))return;
     if(c->host->modal_component&&c->host->modal_component!=c)return;
     if(!strcmp(action,"tip")){ui_row_t *row=cached_row(c,uj_u64(json,"id"));ui_menu_anchor_t anchor={0};const char *tip=NULL;
         if(uj_u64(json,"generation")!=c->generation||uj_u64(json,"languageGeneration")!=c->host->language.generation)return;
@@ -693,9 +711,11 @@ static void component_message(ui_web_view_t *view,const char *json,void *user)
     if(!strcmp(action,"draft")&&uj_get(json,"field",field,sizeof(field))&&uj_get(json,"text",text,sizeof(text))){
         for(i=0;i<c->desc.field_count;++i)if(!strcmp(c->fields[i].id,field)&&!(c->drafts[i].flags&(UI_VALUE_READONLY|UI_VALUE_DISABLED))){
             char *copy=ui_strdup(text);if(copy){uint32_t rgba;free((void *)c->drafts[i].text);c->drafts[i].text=copy;c->drafts[i].flags=(c->drafts[i].flags&~UI_VALUE_MIXED)|UI_VALUE_MODIFIED;c->dirty=1;
-                if(c->fields[i].kind==UI_VALUE_COLOR&&parse_color(text,&rgba))c->drafts[i].color_rgba=rgba;}break;}return;}
+                if(c->fields[i].kind==UI_VALUE_COLOR&&parse_color(text,&rgba))c->drafts[i].color_rgba=rgba;form_changed(c,i);}break;}return;}
+    if(c->form&&!strcmp(action,"cancel")){(void)ui_components_form_action(c,"cancel");return;}
     if(!strcmp(action,"cancel")){for(i=0;i<c->desc.field_count;++i){size_t bytes=0;ui_cell_t copy={0};if(copy_cell(&copy,&c->values[i],&bytes)){free_cell(&c->drafts[i]);c->drafts[i]=copy;}}
         c->dirty=0;invoke_component(c,c->desc.commands.cancel,json);if(c->modal)(void)ui_component_close_dialog(c);else render_component(c);return;}
+    if(c->form&&!strcmp(action,"submit")){(void)ui_components_form_action(c,"submit");return;}
     if(!strcmp(action,"submit")){ui_json_t params={0};int valid=1;uj_add(&params,"{\"fields\":{");
         for(i=0;i<c->desc.field_count;++i){const char *value=c->drafts[i].text;char *end;
             (void)ui_component_set_error(c,c->fields[i].id,"");
@@ -717,6 +737,7 @@ ui_status_t ui_component_mount(ui_component_t *c,ui_content_slot_t *slot)
 #ifdef _WIN32
     if(c->desc.web_backend)(void)SetParent((HWND)ui_web_view_native_handle(c->view),(HWND)ui_content_slot_native_handle(slot));
 #endif
+    c->view->semantic_action=form_semantic;c->view->semantic_data=c;
     status=ui_web_view_set_message_callback(c->view,component_message,c);
     if(status==UI_STATUS_OK)status=ui_web_view_load_html(c->view,ui_component_page);
     if(status==UI_STATUS_OK)status=ui_content_slot_attach_web_view(slot,c->view);
@@ -812,6 +833,7 @@ static ui_status_t create_dialog(ui_component_t *c)
     c->view=c->backend?ui_web_view_create(c->host,c->backend):NULL;
     if(!c->view){status=UI_STATUS_OUT_OF_MEMORY;goto fail;}
     if(c->desc.web_backend){HWND child=(HWND)ui_web_view_native_handle(c->view);if(!child){status=UI_STATUS_UNSUPPORTED;goto fail;}(void)SetParent(child,(HWND)c->dialog_window);}
+    c->view->semantic_action=form_semantic;c->view->semantic_data=c;
     status=ui_web_view_set_message_callback(c->view,component_message,c);
     if(status==UI_STATUS_OK)status=ui_web_view_load_html(c->view,ui_component_page);
     if(status!=UI_STATUS_OK)goto fail;
@@ -830,6 +852,8 @@ ui_status_t ui_component_show_dialog(ui_component_t *c)
 #if defined(_WIN32) && !defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) && !defined(UI_FRAMEWORK_HAS_WEBVIEW2)
     return UI_STATUS_UNSUPPORTED;
 #else
+    if(c->form){ui_status_t status=form_read(c);if(status!=UI_STATUS_OK)return status;}
+    if(c->host->modal_component&&c->host->modal_component!=c)return UI_STATUS_ALREADY_EXISTS;
 #if defined(_WIN32) && (defined(UI_FRAMEWORK_ENABLE_LIGHT_WEB) || defined(UI_FRAMEWORK_HAS_WEBVIEW2))
     if(c->host->run_mode==UI_RUN_OFFSCREEN||(!c->host->native_parent&&c->view)){
         if(!c->view){ui_dialog_layout_t layout={0};ui_status_t status;layout.size=sizeof(layout);(void)ui_component_get_dialog_layout(c,&layout);status=ui_component_mount_offscreen(c,layout.preferred_width,layout.preferred_height,c->host->dpi);if(status!=UI_STATUS_OK)return status;}
@@ -891,6 +915,7 @@ ui_status_t ui_component_unregister(ui_component_t *c)
 {
     ui_component_t **link;if(!c)return UI_STATUS_INVALID_ARGUMENT;
     if(c->host->dispatch_depth)return UI_STATUS_CANCELLED;
+    if(c->form)return UI_STATUS_PENDING;
     for(link=&c->host->components;*link&&*link!=c;link=&(*link)->next){}
     if(!*link)return UI_STATUS_NOT_FOUND;*link=c->next;destroy_component(c);return UI_STATUS_OK;
 }
@@ -905,6 +930,7 @@ ui_status_t ui_component_mount_offscreen(ui_component_t *c,int width,int height,
     if(c->desc.web_backend)return UI_STATUS_UNSUPPORTED;
     config.size=sizeof(config);c->backend_owned=1;c->backend=ui_light_web_backend_create(&config);if(!c->backend)return UI_STATUS_OUT_OF_MEMORY;
     c->view=ui_web_view_create(c->host,c->backend);if(!c->view){ui_light_web_backend_destroy(c->backend);c->backend=NULL;return UI_STATUS_OUT_OF_MEMORY;}
+    c->view->semantic_action=form_semantic;c->view->semantic_data=c;
     status=ui_web_view_set_message_callback(c->view,component_message,c);
     if(status==UI_STATUS_OK)status=ui_web_view_load_html(c->view,ui_component_page);
     if(status==UI_STATUS_OK)status=ui_web_view_resize(c->view,width,height,dpi);
@@ -946,3 +972,28 @@ ui_status_t ui_component_menu_anchor(ui_component_t *c,ui_host_t *host,uint64_t 
     status=ui_web_view_get_presentation(c->view,element,&state);if(status!=UI_STATUS_OK)return status;
     if(!state.visible)return UI_STATUS_NOT_FOUND;*rect=state.clip;*native=ui_web_view_native_handle(c->view);*generation=c->generation;return UI_STATUS_OK;
 }
+
+#include "component_forms.inc"
+int ui_components_editor_accept(ui_component_t *c,const char *node,const char *text)
+{
+    char *end;uint64_t id;ui_row_t *row;const char *value=NULL;size_t at;
+    if(!c||!node||!text)return 0;
+    if(!strncmp(node,"edit-",5)){id=strtoull(node+5,&end,10);if(*end!='-')return 0;row=cached_row(c,id);if(!row)return 0;
+      for(at=0;at<row->cell_count;++at)if(!strcmp(row->cells[at].column_id,end+1)){value=row->cells[at].text;break;}}
+    else if(!strncmp(node,"rename-",7)){id=strtoull(node+7,&end,10);row=cached_row(c,id);if(!row||*end)return 0;value=row->title;}
+    if(!value||strcmp(value,text))return 0;c->editor_accepted=node;c->editor_text=text;render_component(c);c->editor_accepted=c->editor_text=NULL;return 1;
+}
+int ui_components_input_node_allowed(ui_component_t *c,const char *node)
+{
+    char *end;uint64_t id;ui_row_t *row;const char *number;size_t at;
+    if(!c||!node)return 0;
+    if(!strncmp(node,"sort-",5))return column_index(c,node+5)<c->desc.column_count;
+    number=!strncmp(node,"check-",6)?node+6:!strncmp(node,"edit-",5)||!strncmp(node,"cell-",5)?node+5:!strncmp(node,"rename-",7)?node+7:!strncmp(node,"tree-label-",11)?node+11:!strncmp(node,"row-",4)?node+4:NULL;
+    if(!number)return 0;id=strtoull(number,&end,10);row=cached_row(c,id);if(!row)return 0;
+    if(!strncmp(node,"edit-",5)||!strncmp(node,"check-",6)){if(*end!='-')return 0;for(at=0;at<row->cell_count;++at)if(!strcmp(row->cells[at].column_id,end+1))return !(row->cells[at].flags&(UI_VALUE_READONLY|UI_VALUE_DISABLED))&&(strncmp(node,"check-",6)||row->cells[at].kind==UI_VALUE_BOOLEAN);return 0;}
+    return 1;
+}
+
+ui_web_view_t *ui_components_view(ui_component_t *c){return c?c->view:NULL;}
+
+int ui_components_form_bound(ui_component_t *c){return c&&c->form!=NULL;}

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.10.0-dev / API10 / 标准10（未发布）
+
+2026-10-22 XuanShu P2仅A批+B批：独立只读能力目录、资源绑定、稳定ID调用/结果及在途关闭门；固定yyjson0.13.0、最小Schema、RFC8785/JCS+SHA256。保持ABI1/包1和既有公开结构布局。当前包/CI版本同步；没有业务写入、UI绑定、五示例能力迁移或AI Service。[合同](docs/application-capability-contract.md)、[本轮验收](docs/validation/xuanshu-p2ab-validation.md)。历史SDK及以下记录不改写。
+
 ## 0.9.0-dev / API9 / 标准9（本地未发布）
 
 2026-10-09实例语言交付复核：保留已有应用自有UIL1、每实例中英文、活动宿主跟随、系统UI默认及原位文本接口，不新增API或产品改动。当前完整配置63通过/1物理跳过，独立原生21通过/1跳过；补验确认弹窗的目标/打开时语言快照与后台隔离，保存完整窗口真实中英文对照。修正当前开发标准仍声明API8和菜单文档验收指向的残留，交付新的匹配完整SDK；旧SDK/历史证据不改写。原托管超时、当前服务环境及物理人工待验分别保留。[本轮记录](docs/validation/instance-language-current-validation.md)。

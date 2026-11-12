@@ -11,6 +11,8 @@ extern "C" {
  * borrowed object pointers. Receiver arguments are borrowed during callback.
  * Delivery continues during WAIT so the receiver can finish cleanup. ALLOW
  * means workers/callbacks are already finished; remaining copies are discarded.
+ * API10: while a read-capability lease is still running, close/unload is held
+ * and its copied app_data may finish that call even after an ALLOW decision.
  * Receiver is protected by workspace dispatch depth. Do not destroy/reload a
  * current Web view inside its callback; defer from Web input callbacks first. */
 typedef void (*ui_app_data_fn)(uint64_t kind,const void *data,size_t bytes,void *user);

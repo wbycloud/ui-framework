@@ -14,6 +14,7 @@ typedef struct fixture {
     ui_app_context_t context;ui_component_t *table,*tree,*form,*viewport,*dialog,*status;
     ui_web_backend_t *backend;ui_surface_t *gl;ui_image_id_t image;ui_component_query_t late;
     HANDLE stop,worker;CRITICAL_SECTION lock;ui_component_query_t thumbnails[128];size_t head,count;
+    void *application_data;void (*adapt_rows)(struct fixture *,ui_component_t *,ui_row_t *,size_t);
     char column_ids[64][12];unsigned frames,commands,edits,version,gl_errors;GLuint gl_list;int runtime;
 } fixture_t;
 static LONG live_instances,live_workers,live_surfaces;
@@ -44,7 +45,11 @@ static DWORD WINAPI thumbnails(void *data)
         EnterCriticalSection(&s->lock);if(s->count){q=s->thumbnails[s->head];s->head=(s->head+1)%128;--s->count;have=1;}LeaveCriticalSection(&s->lock);if(!have)continue;
         r.size=sizeof(r);r.component_generation=q.component_generation;r.request_id=q.request_id;r.item_id=q.item_id;r.content_version=q.content_version;r.dpi=q.dpi;
         r.rgba=(ui_rgba_desc_t){sizeof(r.rgba),2,2,8,16,pixels};(void)ui_workspace_post_thumbnail(s->context.workspace,s->context.instance_id,"tree",&r);
-    }InterlockedDecrement(&live_workers);(void)ui_workspace_post_close_complete(s->context.workspace,s->context.instance_id,UI_APP_CLOSE_ALLOW);return 0;
+    }InterlockedDecrement(&live_workers);
+#ifndef UI_FIXTURE_P2
+    (void)ui_workspace_post_close_complete(s->context.workspace,s->context.instance_id,UI_APP_CLOSE_ALLOW);
+#endif
+    return 0;
 }
 static uint64_t row_id(const ui_component_query_t *q,uint64_t index)
 {return ROW_BASE+(q->sort_direction==-1?ROW_TOTAL-1-index:index);}
@@ -60,6 +65,7 @@ static void source(ui_component_t *c,const ui_component_query_t *q,void *data)
         rows[i].parent_id=q->parent_id;rows[i].title="Independent API7 row";rows[i].content_version=s->version;rows[i].has_children=c==s->tree&&!q->parent_id;
         if(c==s->table){cells[i][0].size=cells[i][1].size=sizeof(ui_cell_t);cells[i][0].column_id="name";cells[i][0].kind=UI_VALUE_TEXT;cells[i][0].text="editable";
             cells[i][1].column_id="value";cells[i][1].kind=UI_VALUE_NUMBER;cells[i][1].text="42";rows[i].cells=cells[i];for(size_t col=2;col<64;++col){cells[i][col].size=sizeof(ui_cell_t);cells[i][col].column_id=s->column_ids[col];cells[i][col].kind=UI_VALUE_TEXT;cells[i][col].text="wide cell";}rows[i].cell_count=64;}}
+    if(s->adapt_rows)s->adapt_rows(s,c,rows,n);
     b.size=sizeof(b);b.component_generation=q->component_generation;b.request_id=q->request_id;b.parent_id=q->parent_id;b.first=q->first;b.total_count=c==s->tree?(q->parent_id?1:20):ROW_TOTAL;b.rows=rows;b.row_count=n;(void)ui_component_submit(c,&b);free(cells);
 }
 static ui_status_t render(fixture_t *s)
@@ -98,7 +104,11 @@ static ui_status_t UI_APP_CALL create(const ui_app_context_t *context,void **out
 #endif
     }
     {ui_layout_desc_t l={0};l.size=sizeof(l);l.left_sidebar_width=240;l.right_sidebar_width=300;l.left_sidebar_min_width=120;l.left_sidebar_max_width=400;l.right_sidebar_min_width=160;l.right_sidebar_max_width=500;l.collapsed_tag_width=28;l.main_min_width=300;status=ui_host_set_layout(context->host,&l);if(status!=UI_STATUS_OK){fprintf(stderr,"fixture %d status %d\n",__LINE__,status);return status;}}
+#ifndef UI_FIXTURE_P2
     cmd.size=sizeof(cmd);cmd.title="API7 integration";cmd.handler=command;cmd.user_data=s;for(i=0;i<sizeof(commands)/sizeof(commands[0]);++i){cmd.id=commands[i];status=ui_host_register_command(context->host,&cmd);if(status!=UI_STATUS_OK){fprintf(stderr,"fixture %d status %d\n",__LINE__,status);return status;}}
+#else
+    (void)cmd;(void)commands;(void)command;
+#endif
     panel.size=sizeof(panel);panel.title="API7 panel";panel.entry_url="";panel.kind=UI_PANEL_SIDEBAR;panel.dock_region=UI_LAYOUT_REGION_LEFT_SIDEBAR;panel.id="tree";status=ui_host_register_panel(context->host,&panel);if(status!=UI_STATUS_OK){fprintf(stderr,"fixture %d status %d\n",__LINE__,status);return status;}
     panel.id="viewport";status=ui_host_register_panel(context->host,&panel);if(status!=UI_STATUS_OK){fprintf(stderr,"fixture %d status %d\n",__LINE__,status);return status;}panel.id="form";panel.dock_region=UI_LAYOUT_REGION_RIGHT_SIDEBAR;status=ui_host_register_panel(context->host,&panel);if(status!=UI_STATUS_OK){fprintf(stderr,"fixture %d status %d\n",__LINE__,status);return status;}
     columns[0].size=columns[1].size=sizeof(columns[0]);columns[0].id="name";columns[0].title="Name";columns[0].kind=UI_VALUE_TEXT;columns[0].width=200;columns[1].id="value";columns[1].title="Value";columns[1].kind=UI_VALUE_NUMBER;columns[1].width=120;
@@ -121,14 +131,22 @@ static ui_status_t UI_APP_CALL mount(void *data,const ui_app_context_t *context)
     if(!GetEnvironmentVariableW(L"UI_API7_OSMESA_DLL",wide,4096)||!WideCharToMultiByte(CP_UTF8,WC_ERR_INVALID_CHARS,wide,-1,path,sizeof(path),NULL,NULL))return UI_STATUS_INVALID_ARGUMENT;
     desc.size=sizeof(desc);desc.id="viewport-gl";desc.kind=UI_SURFACE_OPENGL;desc.rect=(ui_rect_t){0,0,64,64};gl.size=sizeof(gl);gl.major_version=3;gl.minor_version=3;gl.profile=UI_OPENGL_PROFILE_COMPATIBILITY;gl.samples=4;provider.size=sizeof(provider);provider.library_path_utf8=path;
     s->gl=ui_opengl_windowless_surface_create(context->host,&desc,&gl,&provider,&status);if(!s->gl)return status;InterlockedIncrement(&live_surfaces);status=ui_surface_set_callbacks(s->gl,NULL,frame,s);if(status!=UI_STATUS_OK){fprintf(stderr,"fixture %d status %d\n",__LINE__,status);return status;}
+    #ifndef UI_FIXTURE_P2
     s->stop=CreateEventW(NULL,TRUE,FALSE,NULL);if(!s->stop)return UI_STATUS_PLATFORM_ERROR;s->worker=CreateThread(NULL,0,thumbnails,s,0,NULL);if(!s->worker)return UI_STATUS_PLATFORM_ERROR;
+#endif
     if(GetEnvironmentVariableA("UI_API7_FAIL_MOUNT",path,sizeof(path)))return UI_STATUS_PLATFORM_ERROR;return render(s);
 }
 static void UI_APP_CALL active(void *data,int enabled){(void)data;(void)enabled;}
 static ui_app_close_decision_t UI_APP_CALL close_app(void *data,ui_app_close_reason_t reason)
 {fixture_t *s=(fixture_t *)data;(void)reason;if(s->stop)SetEvent(s->stop);return s->worker&&WaitForSingleObject(s->worker,0)!=WAIT_OBJECT_0?UI_APP_CLOSE_WAIT:UI_APP_CLOSE_ALLOW;}
 static void UI_APP_CALL unmount(void *data)
-{fixture_t *s=(fixture_t *)data;if(s->stop)SetEvent(s->stop);if(s->worker){WaitForSingleObject(s->worker,INFINITE);CloseHandle(s->worker);s->worker=NULL;}if(s->stop){CloseHandle(s->stop);s->stop=NULL;}if(s->gl){ui_surface_destroy(s->gl);s->gl=NULL;InterlockedDecrement(&live_surfaces);}}
+{fixture_t *s=(fixture_t *)data;if(s->stop)SetEvent(s->stop);if(s->worker){
+#ifndef UI_FIXTURE_P2
+    WaitForSingleObject(s->worker,INFINITE);
+#else
+    if(WaitForSingleObject(s->worker,0)!=WAIT_OBJECT_0)abort();
+#endif
+    CloseHandle(s->worker);s->worker=NULL;}if(s->stop){CloseHandle(s->stop);s->stop=NULL;}if(s->gl){ui_surface_destroy(s->gl);s->gl=NULL;InterlockedDecrement(&live_surfaces);}}
 static void UI_APP_CALL destroy(void *data)
 {fixture_t *s=(fixture_t *)data;
 #ifdef UI_API7_WEBVIEW2

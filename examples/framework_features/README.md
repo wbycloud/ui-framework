@@ -1,6 +1,8 @@
-# 菜单与离屏纯 C 示例（当前 API7）
+# 菜单与离屏纯 C 示例（当前 API10）
 
-本样例使用当前SDK/API7头文件构建，与清单/DLL声明一致，展示当前菜单及内容基础功能。UI_SAMPLE_API4仅是复用样例的功能开关名，不表示冻结SDK或旧API兼容专项。当前集成入口为[API7 fixture](../../tests/api7_fixture.c)；[历史API4/5记录](../../docs/validation/api5-validation.md)保留当时结果，维护范围见[版本政策](../../docs/version-policy.md)。
+本样例使用当前SDK/API10头文件构建，与清单/DLL声明一致，展示当前菜单及内容基础功能。UI_SAMPLE_API4仅是复用样例的功能开关名，不表示冻结SDK或旧API兼容专项。当前集成入口为[API7 fixture](../../tests/api7_fixture.c)；[历史API4/5记录](../../docs/validation/api5-validation.md)保留当时结果，维护范围见[版本政策](../../docs/version-policy.md)。
+
+当前包已按UI_SAMPLE_API4分支登记真实示例状态、统一能力和普通UI绑定，read、P4编辑/撤销及专业角色复用同一业务函数。分支及实例各有目录和身份。[实际能力实现](../generic_components/capabilities.inc)、[当前接入指南](../../docs/xuanshu-general-assistant-integration.md)。早期P2 A+B阶段范围保留在其验收记录。
 
 本示例以编译开关UI_SAMPLE_API4复用generic_components/app.c，通过公共接口展示七个菜单分组、嵌套菜单、三个toolbar、13个新增工具（加原有2项）、紧凑图标、按需树/表格/表单/对话框、后台缩略图和可选OpenGL内容槽。框架不包含示例数据的业务模型。
 

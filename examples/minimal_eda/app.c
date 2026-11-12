@@ -12,93 +12,43 @@
 
 #include "ui_framework/application.h"
 #include "ui_framework/opengl.h"
+#include "../p2_support.h"
 
 typedef struct eda_block {
-    float x, y, width, height;
+    uint64_t id;float x, y, width, height;
 } eda_block_t;
 
 typedef struct eda_state {
     ui_app_context_t context;
     ui_surface_t *canvas;
-    HWND panel, properties, summary, note;
+    HWND panel, properties, summary, note, submit, cancel, keep;
     HFONT font;
     int active;
     int pixel_width, pixel_height;
     float zoom;
     size_t block_count;
     eda_block_t blocks[64];
-    char snapshot[256];
+    char snapshot[256];p2_app_t capabilities;
+    uint64_t revision,view_revision,next_id,selected,note_base,note_generation;
+    char *committed_note;int note_dirty,note_conflict,projecting;
+
 } eda_state_t;
 
 static HINSTANCE module_instance;
 static ATOM properties_class;
 static const wchar_t properties_class_name[] = L"UiFramework.MinimalEda.Properties.v1";
-static const char empty_schema[] =
-    "{\"type\":\"object\",\"properties\":{},\"additionalProperties\":false}";
-
 static void update_properties(eda_state_t *eda)
 {
     wchar_t text[160];
     if (eda->summary == NULL) return;
     (void)swprintf(text, sizeof(text) / sizeof(text[0]),
-        L"Instance %llu\nBlocks: %u   Zoom: %.2f\nA: add  Z: zoom  C: clear",
+        L"Instance %llu\nBlocks: %u   Zoom: %.2f\nA: add  Z: zoom  C: clear\n%ls",
         (unsigned long long)eda->context.instance_id,
-        (unsigned)eda->block_count, (double)eda->zoom);
+        (unsigned)eda->block_count, (double)eda->zoom,eda->note_conflict?L"NOTE CONFLICT: Reload or Keep draft":eda->note_dirty?L"Uncommitted note draft":L"Committed note");
     SetWindowTextW(eda->summary, text);
 }
 
-static void changed(eda_state_t *eda, uint64_t request_id, const char *result)
-{
-    update_properties(eda);
-    if (eda->active && eda->canvas != NULL)
-        (void)ui_surface_invalidate(eda->canvas);
-    (void)ui_host_emit_event(eda->context.host, "eda.state.changed", result);
-    (void)ui_host_reply(eda->context.host, request_id, 1, result);
-}
-
-static void command_add(ui_host_t *host, uint64_t request_id,
-    const char *command_id, const char *params_json, const char *source, void *data)
-{
-    eda_state_t *eda = data;
-    eda_block_t *block;
-    char result[80];
-    (void)command_id; (void)params_json; (void)source;
-    if (eda->block_count == sizeof(eda->blocks) / sizeof(eda->blocks[0])) {
-        (void)ui_host_reply(host, request_id, 0, "{\"error\":\"block_limit\"}");
-        return;
-    }
-    block = &eda->blocks[eda->block_count];
-    block->x = -0.8f + (float)(eda->block_count % 5u) * 0.35f;
-    block->y = 0.6f - (float)(eda->block_count / 5u) * 0.25f;
-    block->width = 0.22f;
-    block->height = 0.12f;
-    ++eda->block_count;
-    (void)snprintf(result, sizeof(result), "{\"blocks\":%u}",
-        (unsigned)eda->block_count);
-    changed(eda, request_id, result);
-}
-
-static void command_zoom(ui_host_t *host, uint64_t request_id,
-    const char *command_id, const char *params_json, const char *source, void *data)
-{
-    eda_state_t *eda = data;
-    char result[80];
-    (void)host; (void)command_id; (void)params_json; (void)source;
-    eda->zoom *= 1.1f;
-    if (eda->zoom > 4.0f) eda->zoom = 4.0f;
-    (void)snprintf(result, sizeof(result), "{\"zoom\":%.3f}", (double)eda->zoom);
-    changed(eda, request_id, result);
-}
-
-static void command_clear(ui_host_t *host, uint64_t request_id,
-    const char *command_id, const char *params_json, const char *source, void *data)
-{
-    eda_state_t *eda = data;
-    (void)host; (void)command_id; (void)params_json; (void)source;
-    eda->block_count = 0;
-    eda->zoom = 1.0f;
-    changed(eda, request_id, "{\"blocks\":0,\"zoom\":1.0}");
-}
+#include "capabilities.inc"
 
 static const char *snapshot(void *data)
 {
@@ -110,19 +60,6 @@ static const char *snapshot(void *data)
         (unsigned)eda->block_count, (double)eda->zoom,
         eda->active ? "true" : "false", eda->pixel_width, eda->pixel_height);
     return eda->snapshot;
-}
-
-static ui_status_t validate_empty_object(const char *json, void *data)
-{
-    const unsigned char *cursor = (const unsigned char *)json;
-    (void)data;
-    if (cursor == NULL) return UI_STATUS_INVALID_ARGUMENT;
-    while (isspace(*cursor)) ++cursor;
-    if (*cursor++ != '{') return UI_STATUS_INVALID_ARGUMENT;
-    while (isspace(*cursor)) ++cursor;
-    if (*cursor++ != '}') return UI_STATUS_INVALID_ARGUMENT;
-    while (isspace(*cursor)) ++cursor;
-    return *cursor == 0 ? UI_STATUS_OK : UI_STATUS_INVALID_ARGUMENT;
 }
 
 static void canvas_resize(ui_surface_t *surface, const ui_rect_t *logical,
@@ -164,6 +101,7 @@ static void canvas_frame(ui_surface_t *surface, void *data)
     glBegin(GL_QUADS);
     for (index = 0; index < eda->block_count; ++index) {
         const eda_block_t *block = &eda->blocks[index];
+        if(block->id==eda->selected)glColor3f(1.0f,.65f,.2f);else glColor3f(.25f,.72f,.95f);
         glVertex2f(block->x, block->y);
         glVertex2f(block->x + block->width, block->y);
         glVertex2f(block->x + block->width, block->y + block->height);
@@ -173,31 +111,17 @@ static void canvas_frame(ui_surface_t *surface, void *data)
     (void)ui_surface_swap_buffers(surface);
 }
 
-static void canvas_input(ui_surface_t *surface, const ui_input_event_t *event,
-    void *data)
-{
-    eda_state_t *eda = data;
-    const char *id;
-    (void)surface;
-    if (!eda->active || event->kind != UI_INPUT_KEY_DOWN) return;
-    id = event->key_code == 'A' ? "eda.add_block" :
-         event->key_code == 'Z' ? "eda.zoom_in" :
-         event->key_code == 'C' ? "eda.clear" : NULL;
-    if (id != NULL)
-        (void)ui_host_invoke(eda->context.host, id, "{}", "keyboard");
-}
-
 static void properties_layout(eda_state_t *eda)
 {
     RECT rect;
     uint32_t dpi = GetDpiForWindow(eda->properties);
-    int margin, summary_height, edit_y;
+    int margin, summary_height, edit_y, buttons;
     HFONT font;
     if (dpi == 0) dpi = 96;
     GetClientRect(eda->properties, &rect);
     margin = MulDiv(8, (int)dpi, 96);
-    summary_height = MulDiv(66, (int)dpi, 96);
-    edit_y = summary_height + 2 * margin;
+    summary_height = MulDiv(88, (int)dpi, 96);
+    edit_y = summary_height + 2 * margin;buttons=MulDiv(32,(int)dpi,96);
     font = CreateFontW(-MulDiv(14, (int)dpi, 96), 0, 0, 0,
         FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
         OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,
@@ -205,6 +129,7 @@ static void properties_layout(eda_state_t *eda)
     if (font != NULL) {
         SendMessageW(eda->summary, WM_SETFONT, (WPARAM)font, TRUE);
         SendMessageW(eda->note, WM_SETFONT, (WPARAM)font, TRUE);
+        SendMessageW(eda->submit,WM_SETFONT,(WPARAM)font,TRUE);SendMessageW(eda->cancel,WM_SETFONT,(WPARAM)font,TRUE);SendMessageW(eda->keep,WM_SETFONT,(WPARAM)font,TRUE);
         if (eda->font != NULL) DeleteObject(eda->font);
         eda->font = font;
     }
@@ -212,7 +137,8 @@ static void properties_layout(eda_state_t *eda)
         rect.right > 2 * margin ? rect.right - 2 * margin : 0, summary_height, TRUE);
     MoveWindow(eda->note, margin, edit_y,
         rect.right > 2 * margin ? rect.right - 2 * margin : 0,
-        rect.bottom > edit_y + margin ? rect.bottom - edit_y - margin : 0, TRUE);
+        rect.bottom > edit_y + margin+buttons ? rect.bottom - edit_y - margin-buttons : 0, TRUE);
+    {int width=(rect.right-4*margin)/3;MoveWindow(eda->submit,margin,rect.bottom-buttons,width,buttons-margin,TRUE);MoveWindow(eda->cancel,2*margin+width,rect.bottom-buttons,width,buttons-margin,TRUE);MoveWindow(eda->keep,3*margin+2*width,rect.bottom-buttons,width,buttons-margin,TRUE);}
 }
 
 static LRESULT CALLBACK properties_proc(HWND hwnd, UINT message,
@@ -231,6 +157,9 @@ static LRESULT CALLBACK properties_proc(HWND hwnd, UINT message,
         properties_layout(eda);
         ui_app_callback_leave(&eda->context);
         return 0;
+    }
+    if(eda&&message==WM_COMMAND&&HIWORD(w_param)==EN_CHANGE&&(HWND)l_param==eda->note&&!eda->projecting){
+        if(!eda->note_dirty)eda->note_base=eda->revision;eda->note_dirty=1;++eda->note_generation;eda->note_conflict=eda->note_base!=eda->revision;update_properties(eda);
     }
     if (message == WM_NCDESTROY) SetWindowLongPtrW(hwnd, GWLP_USERDATA, 0);
     result = DefWindowProcW(hwnd, message, w_param, l_param);
@@ -279,10 +208,7 @@ static ui_status_t register_ui(eda_state_t *eda)
 {
     static const char *ids[] = { "eda.add_block", "eda.zoom_in", "eda.clear" };
     static const char *titles[] = { "Add block (A)", "Zoom in (Z)", "Clear (C)" };
-    static const ui_command_handler_fn handlers[] = {
-        command_add, command_zoom, command_clear
-    };
-    ui_command_desc_t command;
+
     ui_menu_item_desc_t menu;
     ui_toolbar_desc_t toolbar;
     ui_toolbar_item_desc_t item;
@@ -308,13 +234,6 @@ static ui_status_t register_ui(eda_state_t *eda)
     status = ui_host_register_toolbar(eda->context.host, &toolbar);
     if (status != UI_STATUS_OK) return status;
     for (i = 0; i < 3; ++i) {
-        ZeroMemory(&command, sizeof(command));
-        command.size = sizeof(command);
-        command.id = ids[i]; command.title = titles[i];
-        command.params_schema_json = empty_schema;
-        command.handler = handlers[i]; command.user_data = eda;
-        status = ui_host_register_command(eda->context.host, &command);
-        if (status != UI_STATUS_OK) return status;
         ZeroMemory(&menu, sizeof(menu));
         menu.size = sizeof(menu); menu.id = ids[i]; menu.menu_path = "EDA";
         menu.title = titles[i]; menu.command_id = ids[i]; menu.order = (int)i * 10;
@@ -326,6 +245,8 @@ static ui_status_t register_ui(eda_state_t *eda)
         item.command_id = ids[i]; item.order = (int)i * 10;
         status = ui_host_register_toolbar_item(eda->context.host, &item);
         if (status != UI_STATUS_OK) return status;
+        status=p2_bind_menu(&eda->capabilities,ids[i],ids[i],NULL);if(status)return status;
+        {ui_cap_input_binding_desc_t binding={0};uint64_t id;binding.size=sizeof(binding);binding.version=1;binding.kind=UI_CAP_INPUT_TOOLBAR;binding.control_id=ids[i];binding.trigger=UI_INPUT_POINTER_UP;binding.pointer_button=1;binding.capability_id=ids[i];binding.resource=eda->capabilities.resources[i==1?1:0].ref;binding.purpose=UI_CAP_UI_INVOKE;binding.observe=p2_notice;binding.user_data=p2_find(&eda->capabilities,ids[i]);status=ui_capability_input_bind(eda->context.host,&binding,&id);if(status)return status;}
     }
     ZeroMemory(&panel, sizeof(panel));
     panel.size = sizeof(panel); panel.id = "eda.properties";
@@ -349,7 +270,7 @@ static ui_status_t UI_APP_CALL eda_create(const ui_app_context_t *context,
     assistant_config->source_id = "workspace.assistant";
     assistant_config->user_data = eda;
     assistant_config->snapshot = snapshot;
-    return register_ui(eda);
+    {ui_status_t status=eda_capabilities(eda,context);return status?status:register_ui(eda);}
 }
 
 static ui_status_t UI_APP_CALL eda_mount(void *state, const ui_app_context_t *context)
@@ -357,7 +278,6 @@ static ui_status_t UI_APP_CALL eda_mount(void *state, const ui_app_context_t *co
     eda_state_t *eda = state;
     ui_surface_desc_t surface;
     ui_opengl_config_t gl_config;
-    ui_assistant_command_desc_t command;
     ui_status_t status;
     HWND panel;
     RECT rect;
@@ -365,19 +285,7 @@ static ui_status_t UI_APP_CALL eda_mount(void *state, const ui_app_context_t *co
     size_t resource_size = 0;
     wchar_t *resource_wide;
     int characters;
-    size_t i;
-    static const char *ids[] = { "eda.add_block", "eda.zoom_in", "eda.clear" };
     eda->context = *context;
-    for (i = 0; i < 3; ++i) {
-        ZeroMemory(&command, sizeof(command));
-        command.size = sizeof(command); command.id = ids[i];
-        command.permission = i == 2 ? UI_ASSISTANT_PERMISSION_DESTRUCTIVE :
-            UI_ASSISTANT_PERMISSION_EDIT;
-        command.params_schema_json = empty_schema;
-        command.validate = validate_empty_object;
-        status = ui_assistant_register_command(context->assistant, &command);
-        if (status != UI_STATUS_OK) return status;
-    }
     ZeroMemory(&surface, sizeof(surface));
     surface.size = sizeof(surface); surface.id = "eda.canvas";
     surface.kind = UI_SURFACE_OPENGL; surface.visible = 1;
@@ -388,8 +296,6 @@ static ui_status_t UI_APP_CALL eda_mount(void *state, const ui_app_context_t *co
     eda->canvas = ui_opengl_surface_create(context->host, &surface, &gl_config, &status);
     if (eda->canvas == NULL) return status;
     status = ui_surface_set_callbacks(eda->canvas, canvas_resize, canvas_frame, eda);
-    if (status != UI_STATUS_OK) return status;
-    status = ui_surface_set_input_callback(eda->canvas, canvas_input, eda);
     if (status != UI_STATUS_OK) return status;
     status = ui_surface_set_layout_region(eda->canvas, UI_LAYOUT_REGION_MAIN);
     if (status != UI_STATUS_OK) return status;
@@ -408,7 +314,10 @@ static ui_status_t UI_APP_CALL eda_mount(void *state, const ui_app_context_t *co
         WS_CHILD | WS_VISIBLE | WS_TABSTOP | WS_VSCROLL |
         ES_MULTILINE | ES_AUTOVSCROLL | ES_WANTRETURN,
         0, 0, 0, 0, eda->properties, (HMENU)(uintptr_t)2, module_instance, NULL);
-    if (eda->summary == NULL || eda->note == NULL) return UI_STATUS_PLATFORM_ERROR;
+    eda->submit=CreateWindowExW(0,L"BUTTON",L"Submit",WS_CHILD|WS_VISIBLE|WS_TABSTOP,0,0,0,0,eda->properties,(HMENU)(uintptr_t)3,module_instance,NULL);
+    eda->cancel=CreateWindowExW(0,L"BUTTON",L"Cancel/reload",WS_CHILD|WS_VISIBLE|WS_TABSTOP,0,0,0,0,eda->properties,(HMENU)(uintptr_t)4,module_instance,NULL);
+    eda->keep=CreateWindowExW(0,L"BUTTON",L"Keep draft",WS_CHILD|WS_VISIBLE|WS_TABSTOP,0,0,0,0,eda->properties,(HMENU)(uintptr_t)5,module_instance,NULL);
+    if (eda->summary == NULL || eda->note == NULL||!eda->submit||!eda->cancel||!eda->keep) return UI_STATUS_PLATFORM_ERROR;
     if (!SetWindowSubclass(panel, panel_resize_proc, 1, (DWORD_PTR)eda))
         return UI_STATUS_PLATFORM_ERROR;
     eda->panel = panel;
@@ -431,12 +340,13 @@ static ui_status_t UI_APP_CALL eda_mount(void *state, const ui_app_context_t *co
     }
     (void)MultiByteToWideChar(CP_UTF8, MB_ERR_INVALID_CHARS, resource,
         (int)resource_size, resource_wide, characters);
-    SetWindowTextW(eda->note, resource_wide);
+    eda->committed_note=calloc(resource_size+1,1);if(!eda->committed_note){free(resource_wide);ui_app_resource_release(resource);return UI_STATUS_OUT_OF_MEMORY;}memcpy(eda->committed_note,resource,resource_size);
+    eda->projecting=1;SetWindowTextW(eda->note, resource_wide);eda->projecting=0;eda->note_base=eda->revision;
     free(resource_wide);
     ui_app_resource_release(resource);
     properties_layout(eda);
     update_properties(eda);
-    return UI_STATUS_OK;
+    status=p2_mount(&eda->capabilities,context);return status?status:eda_bindings(eda);
 }
 
 static void UI_APP_CALL eda_set_active(void *state, int active)
@@ -449,7 +359,7 @@ static void UI_APP_CALL eda_set_active(void *state, int active)
 static ui_app_close_decision_t UI_APP_CALL eda_request_close(void *state,
     ui_app_close_reason_t reason)
 {
-    (void)state; (void)reason;
+    ((eda_state_t *)state)->capabilities.closing=1; (void)reason;
     /* This example has no worker, timer, file persistence, or external callback. */
     return UI_APP_CLOSE_ALLOW;
 }
@@ -474,7 +384,7 @@ static void UI_APP_CALL eda_unmount(void *state)
 
 static void UI_APP_CALL eda_destroy(void *state)
 {
-    free(state);
+    eda_state_t *eda=state;p2_dispose(&eda->capabilities);free(eda->committed_note);free(state);
 }
 
 static ui_status_t UI_APP_CALL eda_module_shutdown(void)

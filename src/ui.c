@@ -144,8 +144,8 @@ ui_status_t ui_layout_recompute(ui_host_t *host)
     }
 
     root = host->host_rect;
-    menu_height = clamp_dimension(host->layout.menu_bar_height, root.height);
-    toolbar_height = clamp_dimension(host->layout.toolbar_height,
+    menu_height = clamp_dimension(host->chrome_suppressed ? 0 : host->layout.menu_bar_height, root.height);
+    toolbar_height = clamp_dimension(host->chrome_suppressed ? 0 : host->layout.toolbar_height,
                                      root.height - menu_height);
     status_height = clamp_dimension(host->layout.status_bar_height,
                                     root.height - menu_height - toolbar_height);
@@ -466,6 +466,11 @@ void ui_host_destroy(ui_host_t *host)
         return;
     }
 
+    if (ui_capabilities_busy(host)) return;
+    {ui_web_view_t *v;for(v=host->web_views;v;v=v->host_next)if(v->input_detach)v->input_detach(v);}
+    ui_capabilities_destroy(host);
+    ui_assistants_detach_host(host);
+
     ui_menus_destroy(host);
     ui_components_destroy(host);
     while (host->surfaces != NULL) {
@@ -638,7 +643,7 @@ ui_status_t ui_host_get_min_size(const ui_host_t *host,
             host->layout.right_sidebar_min_width, host->layout.right_sidebar_preferred_width,
             host->layout.right_sidebar_max_width, INT_MAX);
     }
-    height = (int64_t)host->layout.menu_bar_height + host->layout.toolbar_height +
+    height = (host->chrome_suppressed ? 0 : (int64_t)host->layout.menu_bar_height + host->layout.toolbar_height) +
              host->layout.status_bar_height;
     *logical_width = width > INT_MAX ? INT_MAX : (int)width;
     *logical_height = height > INT_MAX ? INT_MAX : (int)height;
@@ -688,7 +693,7 @@ ui_status_t ui_host_register_command(ui_host_t *host,
         return UI_STATUS_INVALID_ARGUMENT;
     }
 
-    if (find_command(host, desc->id) != NULL) {
+    if (find_command(host, desc->id) != NULL || ui_capabilities_has_id(host, desc->id)) {
         return UI_STATUS_ALREADY_EXISTS;
     }
 
@@ -992,33 +997,35 @@ uint64_t ui_host_invoke(ui_host_t *host,
     if (host == NULL || host->dispatch_blocked || command_id == NULL || command_id[0] == '\0') {
         return 0u;
     }
+    if(host->capability_read_entries&&(!ui_language_thread_ok(host)||!host->next_request_id||host->next_request_id==UINT64_MAX))return 0u;
     if (host->modal_component && (!source || strcmp(source,"component") != 0)) return 0u;
 
     command = find_command(host, command_id);
     if (command == NULL) {
         return 0u;
     }
-
-    pending = (ui_pending_request_t *)calloc(1u, sizeof(*pending));
-    if (pending == NULL) {
-        return 0u;
+    if(command->capability_generated){size_t n=0;
+        if(!ui_language_thread_ok(host))return 0u;
+        if(source){while(n<=255&&source[n])++n;if(n>255)return 0u;}
     }
 
+    if(command->capability_generated){
+        if(ui_capabilities_acquire_pending(host,command_id,source,&pending)!=UI_STATUS_OK)return 0u;
+    }else{
+        pending = (ui_pending_request_t *)calloc(1u, sizeof(*pending));
+        if(pending==NULL)return 0u;
+        pending->command_id=ui_strdup(command_id);pending->source=ui_strdup(source);
+        if(!pending->command_id||!pending->source){free(pending->command_id);free(pending->source);free(pending);return 0u;}
+    }
     request_id = host->next_request_id++;
     pending->id = request_id;
-    pending->command_id = ui_strdup(command_id);
-    pending->source = ui_strdup(source);
-    if (pending->command_id == NULL || pending->source == NULL) {
-        free(pending->command_id);
-        free(pending->source);
-        free(pending);
-        return 0u;
-    }
 
     pending->next = host->pending;
     host->pending = pending;
     ui_dispatch_enter(host);
-    command->handler(host, request_id, command->id,
+    if(pending->capability_limited)ui_capabilities_reply_failure(host,request_id,UI_STATUS_LIMIT_EXCEEDED);
+    else if(command->capability_generated==2)ui_capabilities_reply_failure(host,request_id,UI_STATUS_PERMISSION_DENIED);
+    else command->handler(host, request_id, command->id,
                      params_json != NULL ? params_json : "{}",
                      source != NULL ? source : "",
                      command->user_data);
@@ -1026,14 +1033,15 @@ uint64_t ui_host_invoke(ui_host_t *host,
     return request_id;
 }
 
-ui_status_t ui_host_reply(ui_host_t *host,
+static ui_status_t host_reply(ui_host_t *host,
                           uint64_t request_id,
                           int success,
-                          const char *result_json)
+                          const char *result_json, int capability)
 {
     ui_pending_request_t *previous;
     ui_pending_request_t *pending;
     ui_result_t result;
+    int legacy;
 
     if (host == NULL || request_id == 0u) {
         return UI_STATUS_INVALID_ARGUMENT;
@@ -1043,6 +1051,13 @@ ui_status_t ui_host_reply(ui_host_t *host,
     if (pending == NULL) {
         return UI_STATUS_NOT_FOUND;
     }
+    if (pending->capability_generated && !capability) return UI_STATUS_PERMISSION_DENIED;
+
+    /* An asynchronous legacy reply has no outer invoke lease. Keep activation
+     * and close gated through observer delivery and pending-data cleanup;
+     * capability dispatch must not see this as a nested capability callback. */
+    legacy=!pending->capability_generated;
+    if(legacy){++host->assistant_callbacks;ui_dispatch_enter(host);}
 
     if (previous == NULL) {
         host->pending = pending->next;
@@ -1055,15 +1070,22 @@ ui_status_t ui_host_reply(ui_host_t *host,
     result.source = pending->source;
     result.success = success ? 1 : 0;
     result.result_json = result_json != NULL ? result_json : "{}";
+    if(pending->capability_generated&&!success)ui_capabilities_failure_enter(host);
     if (host->result_callback != NULL) {
         host->result_callback(&result, host->user_data);
     }
 
-    free(pending->command_id);
-    free(pending->source);
-    free(pending);
+    if(pending->capability_generated&&!success)ui_capabilities_failure_leave(host);
+    if(pending->capability_generated)ui_capabilities_release_pending(host,pending);
+    else{free(pending->command_id);free(pending->source);free(pending);}
+    if(legacy){--host->assistant_callbacks;ui_dispatch_leave(host);}
     return UI_STATUS_OK;
 }
+
+ui_status_t ui_host_reply(ui_host_t *host, uint64_t id, int success, const char *json)
+{return host_reply(host,id,success,json,0);}
+ui_status_t ui_host_reply_capability(ui_host_t *host, uint64_t id, int success, const char *json)
+{return host_reply(host,id,success,json,1);}
 
 ui_status_t ui_host_emit_event(ui_host_t *host,
                                const char *event_id,
@@ -1134,6 +1156,7 @@ void ui_web_backend_destroy(ui_web_backend_t *backend)
         return;
     }
 
+    {ui_web_view_t *v;for(v=backend->views;v;v=v->backend_next)if(ui_inputs_owner_busy(v->host,v))return;}
     while (backend->views != NULL) {
         ui_web_view_destroy(backend->views);
     }
@@ -1183,6 +1206,9 @@ void ui_web_view_destroy(ui_web_view_t *view)
         return;
     }
 
+    if(ui_inputs_owner_busy(view->host,view))return;
+    if(view->input_detach)view->input_detach(view);
+    ui_inputs_owner_destroyed(view->host,view);
     ui_shell_web_view_destroyed(view->host, view);
     if (view->host != NULL) {
         it = &view->host->web_views;
@@ -1532,6 +1558,7 @@ ui_status_t ui_surface_dispatch_input(ui_surface_t *surface,const ui_input_event
 {if(!surface||!event||event->size<sizeof(*event)||event->kind<UI_INPUT_POINTER_MOVE||event->kind>UI_INPUT_TEXT)return UI_STATUS_INVALID_ARGUMENT;
  if(surface->host->dispatch_blocked||!surface->host->app_active||surface->host->modal_component)return UI_STATUS_CANCELLED;
  if(event->kind==UI_INPUT_TEXT&&!event->text_utf8)return UI_STATUS_INVALID_ARGUMENT;
+ if(ui_inputs_surface(surface,event,0))return UI_STATUS_PERMISSION_DENIED;
  if(ui_menus_route_input(surface->host,NULL,event,0)==UI_STATUS_OK)return UI_STATUS_OK;
  if(event->kind==UI_INPUT_KEY_DOWN&&ui_host_dispatch_shortcut(surface->host,event->key_code,event->modifiers,0))return UI_STATUS_OK;
  if(!surface->input)return UI_STATUS_NOT_FOUND;ui_dispatch_enter(surface->host);surface->input(surface,event,surface->input_user_data);ui_dispatch_leave(surface->host);return UI_STATUS_OK;}
@@ -1544,6 +1571,8 @@ void ui_surface_destroy(ui_surface_t *surface)
         return;
     }
 
+    if(ui_inputs_owner_busy(surface->host,surface))return;
+    ui_inputs_owner_destroyed(surface->host,surface);
     ui_shell_surface_destroyed(surface->host, surface);
     it = &surface->host->surfaces;
     while (*it != NULL && *it != surface) {

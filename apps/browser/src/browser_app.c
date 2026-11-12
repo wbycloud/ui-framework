@@ -6,10 +6,14 @@
 #include "ui_framework/shell.h"
 #include "ui_framework/light_document.h"
 #include "ui_framework/theme.h"
+#include "ui_framework/capability_inputs.h"
+#include "ui_framework/capability_entry.h"
+#include <bcrypt.h>
 #include "ui_framework/menus.h"
 #include "browser_net.h"
 #include "browser_json.h"
 #include "browser_settings.h"
+#include "browser_body.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,6 +23,7 @@
 #define HISTORY_LIMIT 64
 typedef struct browser_action { char action[32],value[BROWSER_URL_CAP]; } browser_action_t;
 typedef struct history { char url[BROWSER_URL_CAP];int x,y; } history_t;
+typedef struct browser_cap_item {struct browser *app;unsigned index;char id[64];} browser_cap_item_t;
 typedef struct browser {
     ui_app_context_t context;
     ui_web_backend_t *chrome_backend,*document_backend;
@@ -40,6 +45,12 @@ typedef struct browser {
     double network_ms,decode_ms;
     uint32_t resource_restrictions;
     char snapshot[49152];
+    ui_cap_resource_ref_v2_t capability_resource;browser_cap_item_t capability_items[19];
+    uint64_t capability_gc[UI_CAPABILITY_MAX_CALLS],focus_revision;size_t capability_gc_count;
+    int snapshot_registered,snapshot_retiring,reader_profile_registered;char published_revision[128];
+    int body_registered,body_retiring;char body_revision[128],body[BROWSER_BODY_BYTES+1];ui_status_t body_status;
+    uint64_t capability_pending,capability_last;int capability_read,capability_cancelled,capability_changed,capability_executing;
+    ui_cap_effect_v2_t capability_effect;char *capability_output;
 } browser_t;
 static volatile LONG instances;
 static const char *command_names[]={"navigate","back","forward","reload","stop","home","help","address","find","find-next","find-prev","plus","minus","reset","settings","diagnostics","settings-save","settings-reset","panel-close"};
@@ -50,6 +61,8 @@ static void action(browser_t *,const browser_action_t *);
 static void failure(browser_t *,const char *);
 static void settings_changed(browser_t *s);
 static void position_fragment(browser_t *s);
+static void browser_cap_poll(browser_t *);
+static int browser_view_action(const char *);
 static void diagnostic(browser_t *s,const browser_reply_t *reply)
 {
     char entry[6144],origin[200]="[地址已隐藏]";browser_url_t parsed;size_t used,length;
@@ -89,6 +102,7 @@ static int shortcut(browser_t *s,UINT message,WPARAM wp)
     if(control){switch(wp){case 'L':name="address";break;case 'F':name="find";break;case 'R':name="reload";break;case VK_OEM_PLUS:case VK_ADD:name="plus";break;case VK_OEM_MINUS:case VK_SUBTRACT:name="minus";break;case '0':case VK_NUMPAD0:name="reset";break;}}
     else if(alt){if(wp==VK_LEFT)name="back";else if(wp==VK_RIGHT)name="forward";}
     else if(wp==VK_F5)name="reload";else if(wp==VK_ESCAPE)name="escape";
+    if(name&&browser_view_action(name))return 0;
     if(name){if(alt)(void)ui_host_close_menu(s->context.host);post_action(s,name,"");return 1;}return 0;
 }
 static LRESULT CALLBACK view_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp,UINT_PTR id,DWORD_PTR data)
@@ -99,7 +113,7 @@ static LRESULT CALLBACK view_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp,UIN
 }
 static void finish_close(browser_t *s)
 {
-    if(s->closing&&browser_net_finished(s->net)){
+    if(s->closing&&!s->capability_pending&&browser_net_finished(s->net)){
         if(ui_workspace_post_close_complete(s->context.workspace,s->context.instance_id,UI_APP_CLOSE_ALLOW)==UI_STATUS_OK)KillTimer(s->slot,0x4252);
     }
 }
@@ -109,6 +123,7 @@ static LRESULT CALLBACK slot_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp,UIN
     result=DefSubclassProc(hwnd,message,wp,lp);
     if(message==WM_SIZE&&!s->closing)resize_views(s);
     if(message==WM_TIMER&&wp==0x4252){
+        browser_cap_poll(s);
         if(s->closing)finish_close(s);
         else if(s->mounted){
             if(GetTickCount64()>=s->settings_poll){s->settings_poll=GetTickCount64()+500;if(browser_settings_reload(&s->settings))settings_changed(s);}
@@ -127,8 +142,10 @@ static LRESULT CALLBACK slot_proc(HWND hwnd,UINT message,WPARAM wp,LPARAM lp,UIN
 }
 static void resize_views(browser_t *s)
 {
-    RECT r;uint32_t dpi=96;ui_rect_t chrome,doc;if(!s->slot)return;GetClientRect(s->slot,&r);(void)ui_host_get_dpi(s->context.host,&dpi);
-    chrome=(ui_rect_t){0,0,MulDiv(r.right,96,(int)dpi),s->error_active||s->panel?MulDiv(r.bottom,96,(int)dpi):CHROME_HEIGHT};
+    RECT r;uint32_t dpi=96;int suppressed=0;ui_rect_t chrome,doc;if(!s->slot)return;GetClientRect(s->slot,&r);(void)ui_host_get_dpi(s->context.host,&dpi);
+    (void)ui_shell_get_chrome_suppressed(ui_host_get_shell(s->context.host),&suppressed);
+    if(s->chrome){char state[64];snprintf(state,sizeof(state),"{\"chrome_suppressed\":%s}",suppressed?"true":"false");(void)ui_web_view_post_json(s->chrome,state);}
+    chrome=(ui_rect_t){0,0,MulDiv(r.right,96,(int)dpi),s->error_active||s->panel?MulDiv(r.bottom,96,(int)dpi):suppressed?32:CHROME_HEIGHT};
     if(chrome.height>MulDiv(r.bottom,96,(int)dpi))chrome.height=MulDiv(r.bottom,96,(int)dpi);
     doc=(ui_rect_t){0,chrome.height,chrome.width,MulDiv(r.bottom,96,(int)dpi)-chrome.height};if(doc.height<0)doc.height=0;
     if(s->chrome)(void)ui_web_view_set_rect(s->chrome,&chrome,dpi);if(s->document){(void)ui_web_view_set_rect(s->document,&doc,dpi);if(ui_web_view_native_handle(s->document))ShowWindow((HWND)ui_web_view_native_handle(s->document),s->error_active||s->panel?SW_HIDE:SW_SHOWNA);}
@@ -149,6 +166,7 @@ static void release_images(browser_t *s)
 {for(size_t i=0;i<s->image_count;++i)(void)ui_image_release(s->context.host,s->images[i]);s->image_count=0;}
 static void failure(browser_t *s,const char *text)
 {
+    s->body[0]=0;s->body_status=UI_STATUS_VALIDATION_FAILED;
     s->pending_fragment[0]=0;s->accept_network=0;browser_net_stop(s->net);if(s->document)(void)ui_light_document_cancel_resources(s->document);
     s->loading=0;s->stopping=0;s->error_active=1;snprintf(s->error,sizeof(s->error),"加载失败\n%s\n可修改地址重试，或使用后退、首页和帮助。",text);
     snprintf(s->status,sizeof(s->status),"失败：%s",text);resize_views(s);chrome_state(s,1);
@@ -169,7 +187,7 @@ static int builtin(browser_t *s,const char *url)
     void *html=NULL;size_t length=0;ui_status_t status;ui_document_load_t load={0};ui_document_state_t d={0};const char *resource=!strcmp(url,"browser:help")?"help.html":"start.html";
     status=ui_app_resource_read(&s->context,resource,&html,&length);if(status!=UI_STATUS_OK){failure(s,"包内页面读取失败");return 0;}
     load.size=sizeof(load);load.navigation_id=s->navigation;load.source_url="https://browser.invalid/";load.html_utf8=(const char *)html;
-    status=ui_light_document_load(s->document,&load);ui_app_resource_release(html);
+    status=ui_light_document_load(s->document,&load);s->body_status=status?status:browser_body_extract((const char *)html,length,s->body);ui_app_resource_release(html);
     if(status!=UI_STATUS_OK){failure(s,"包内页面解析失败");return 0;}(void)ui_light_document_zoom(s->document,s->zoom);release_images(s);strcpy(s->source,load.source_url);
     s->loading=0;d.size=sizeof(d);(void)ui_light_document_get_state(s->document,&d);(void)ui_workspace_set_instance_title(s->context.workspace,s->context.instance_id,*d.title_utf8?d.title_utf8:"浏览网页");
     strcpy(s->status,!strcmp(url,"browser:help")?"包内帮助":"包内起始页");return 1;
@@ -199,6 +217,7 @@ static void navigate(browser_t *s,const char *input,int history_mode)
     if(!local&&!s->error_active&&strchr(address,'#')){browser_url_t current_url;
         if(browser_url_parse(NULL,s->source,&current_url)&&!strcmp(current_url.origin,url.origin)&&!strcmp(current_url.path,url.path)){
             strcpy(s->pending_fragment,url.fragment);if(!*url.fragment)(void)apply_fragment(s,"");else{ui_document_state_t doc={0};doc.size=sizeof(doc);(void)ui_light_document_get_state(s->document,&doc);if(!doc.pending_resources)position_fragment(s);}chrome_state(s,1);return;}}
+    s->body[0]=0;s->body_status=UI_STATUS_VALIDATION_FAILED;
     browser_net_stop(s->net);++s->navigation;s->resource_restrictions=0;s->accept_network=!local;s->error_active=0;s->error[0]=0;s->stopping=0;s->loading=!local;
     resize_views(s);
     if(local)(void)builtin(s,address);
@@ -231,7 +250,7 @@ static void document_event(ui_web_view_t *view,const ui_document_event_t *event,
 static void chrome_message(ui_web_view_t *view,const char *json,void *data)
 {
     browser_t *s=(browser_t *)data;browser_action_t a={0};(void)view;
-    if(browser_json_get(json,"action",a.action,sizeof(a.action))&&browser_json_get(json,"value",a.value,sizeof(a.value)))post_action(s,a.action,a.value);
+    if(browser_json_get(json,"action",a.action,sizeof(a.action))&&browser_json_get(json,"value",a.value,sizeof(a.value))&&!browser_view_action(a.action))post_action(s,a.action,a.value);
 }
 static void receive(uint64_t kind,const void *data,size_t bytes,void *user)
 {
@@ -243,7 +262,7 @@ static void receive(uint64_t kind,const void *data,size_t bytes,void *user)
         if(r->kind==BROWSER_HTML){ui_document_load_t load={0};ui_document_state_t d={0};ui_status_t status;
             if(r->error){failure(s,r->message);return;}if(r->bytes==bytes-sizeof(*r)||BROWSER_REPLY_DATA(r)[r->bytes]!=0){failure(s,"文档结果不完整");return;}
             load.size=sizeof(load);load.navigation_id=s->navigation;load.source_url=r->url;load.html_utf8=(const char *)BROWSER_REPLY_DATA(r);
-            status=ui_light_document_load(s->document,&load);release_images(s);
+            status=ui_light_document_load(s->document,&load);s->body_status=status?status:browser_body_extract(load.html_utf8,r->bytes,s->body);release_images(s);
             if(status!=UI_STATUS_OK){local_failure(s,status==UI_STATUS_LIMIT_EXCEEDED?BROWSER_FAILURE_DOCUMENT_LIMIT:status==UI_STATUS_UNSUPPORTED?BROWSER_FAILURE_DOCUMENT_EMPTY:BROWSER_FAILURE_DOCUMENT,r->url);return;}
             s->loading=0;s->status_dirty=1;s->network_ms=r->network_ms;s->decode_ms=r->decode_ms;strcpy(s->source,r->url);strcpy(s->address,r->url);
             if(s->history_index>=0)strcpy(s->history[s->history_index].url,r->url);
@@ -324,15 +343,17 @@ static void command(ui_host_t *host,uint64_t id,const char *command_id,const cha
     if(!strcmp(name,"find-next")||!strcmp(name,"find-prev")){if(!browser_json_get(params,"text",value,sizeof(value)))strcpy(value,s->find);}
     post_action(s,name,value);(void)ui_host_reply(host,id,1,"{\"queued\":true}");
 }
+#include "browser_capabilities.inc"
 static ui_status_t UI_APP_CALL create(const ui_app_context_t *context,void **out,ui_assistant_config_t *assistant)
 {
     const char *const *names=command_names;
     static const char *titles[]={"打开地址","后退","前进","刷新","停止","首页","帮助","地址栏","查找","下一个结果","上一个结果","放大","缩小","重置缩放","可信来源设置","访问诊断","保存来源","恢复默认来源","返回正文"};
     browser_t *s=(browser_t *)calloc(1,sizeof(*s));if(!s)return UI_STATUS_OUT_OF_MEMORY;
     *out=s;s->context=*context;s->history_index=-1;s->zoom=100;InterlockedIncrement(&instances);
+    {ui_status_t status=browser_cap_create(s);if(status)return status;}
     for(size_t i=0;i<sizeof(command_names)/sizeof(command_names[0]);++i){ui_command_desc_t c={0};ui_menu_item_desc_t m={0};char command_id[64],menu_id[64];ui_status_t status;
         snprintf(command_id,sizeof(command_id),"browser.%s",names[i]);c.size=sizeof(c);c.id=command_id;c.title=titles[i];c.params_schema_json=!strcmp(names[i],"navigate")?"{\"type\":\"object\",\"properties\":{\"url\":{\"type\":\"string\"}},\"required\":[\"url\"]}":"{\"type\":\"object\"}";c.handler=command;c.user_data=s;
-        status=ui_host_register_command(context->host,&c);if(status!=UI_STATUS_OK)return status;
+        if(browser_view_action(names[i]))status=browser_cap_register_view(s,(unsigned)i,titles[i]);else status=ui_host_register_command(context->host,&c);if(status!=UI_STATUS_OK)return status;
         if(!strcmp(names[i],"navigate")||!strcmp(names[i],"settings-save"))continue;
         snprintf(menu_id,sizeof(menu_id),"browser.menu.%zu",i);m.size=sizeof(m);m.id=menu_id;m.menu_path="浏览";m.title=titles[i];m.command_id=command_id;m.order=(int)i;
         status=ui_host_register_menu_item(context->host,&m);if(status!=UI_STATUS_OK)return status;}
@@ -343,9 +364,6 @@ static ui_status_t UI_APP_CALL mount(void *data,const ui_app_context_t *context)
 {
     browser_t *s=(browser_t *)data;ui_content_slot_t *slot;ui_light_web_config_t cfg={0};void *html=NULL,*policy=NULL;size_t bytes;ui_status_t status;
     s->context=*context;slot=ui_shell_get_content_slot(ui_host_get_shell(context->host),NULL);if(!slot)return UI_STATUS_UNSUPPORTED;s->slot=(HWND)ui_content_slot_native_handle(slot);if(!s->slot)return UI_STATUS_UNSUPPORTED;
-    for(size_t i=0;i<sizeof(command_names)/sizeof(command_names[0]);++i){ui_assistant_command_desc_t c={0};char id[64];snprintf(id,sizeof(id),"browser.%s",command_names[i]);
-        if(!strcmp(command_names[i],"settings-save")||!strcmp(command_names[i],"settings-reset"))continue; /* Local trusted UI only. */
-        c.size=sizeof(c);c.id=id;c.permission=UI_ASSISTANT_PERMISSION_READ;c.params_schema_json="{\"type\":\"object\"}";status=ui_assistant_register_command(context->assistant,&c);if(status!=UI_STATUS_OK)return status;}
     status=ui_app_resource_read(context,"origins.txt",&policy,&bytes);if(status!=UI_STATUS_OK)return status;
     if(!browser_settings_init(&s->settings,(char *)policy)){ui_app_resource_release(policy);return UI_STATUS_VALIDATION_FAILED;}s->policy=s->settings.policy;ui_app_resource_release(policy);s->settings_poll=GetTickCount64()+500;
     cfg.size=sizeof(cfg);cfg.parent_hwnd=s->slot;s->chrome_backend=ui_light_web_backend_create(&cfg);s->document_backend=ui_light_document_backend_create(&cfg);if(!s->chrome_backend||!s->document_backend)return UI_STATUS_OUT_OF_MEMORY;
@@ -360,13 +378,14 @@ static ui_status_t UI_APP_CALL mount(void *data,const ui_app_context_t *context)
     (void)ui_host_set_theme_callback(context->host,theme_changed,s);s->mounted=1;
     if(!SetTimer(s->slot,0x4252,30,NULL))return UI_STATUS_PLATFORM_ERROR;
     resize_views(s);navigate(s,"browser:start",0);if(s->error_active)return UI_STATUS_VALIDATION_FAILED;
-    s->net=browser_net_create(context->workspace,context->instance_id,&s->policy);return s->net?UI_STATUS_OK:UI_STATUS_OUT_OF_MEMORY;
+    s->net=browser_net_create(context->workspace,context->instance_id,&s->policy);if(!s->net)return UI_STATUS_OUT_OF_MEMORY;
+    status=ui_capability_enable_read_entries(context->host);if(status)return status;browser_cap_poll(s);return browser_cap_bind(s);
 }
 static void UI_APP_CALL active(void *data,int value){(void)data;(void)value;}
 static ui_app_close_decision_t UI_APP_CALL request_close(void *data,ui_app_close_reason_t reason)
 {
-    browser_t *s=(browser_t *)data;(void)reason;s->closing=1;browser_net_shutdown(s->net);
-    if(browser_net_finished(s->net))return UI_APP_CLOSE_ALLOW;return UI_APP_CLOSE_WAIT;
+    browser_t *s=(browser_t *)data;(void)reason;s->closing=1;browser_cap_poll(s);browser_net_shutdown(s->net);
+    if(!s->capability_pending&&browser_net_finished(s->net))return UI_APP_CLOSE_ALLOW;return UI_APP_CLOSE_WAIT;
 }
 static void UI_APP_CALL unmount(void *data)
 {
@@ -378,7 +397,7 @@ static void UI_APP_CALL unmount(void *data)
     release_images(s);if(s->chrome_backend)ui_light_web_backend_destroy(s->chrome_backend);if(s->document_backend)ui_light_web_backend_destroy(s->document_backend);s->chrome_backend=s->document_backend=NULL;s->mounted=0;
 }
 static void UI_APP_CALL destroy(void *data)
-{browser_t *s=(browser_t *)data;if(!s)return;browser_net_destroy(s->net);InterlockedDecrement(&instances);free(s);}
+{browser_t *s=(browser_t *)data;if(!s)return;browser_net_destroy(s->net);free(s->capability_output);InterlockedDecrement(&instances);free(s);}
 static ui_status_t UI_APP_CALL module_shutdown(void)
 {return !InterlockedCompareExchange(&instances,0,0)&&!browser_net_live_threads()&&!browser_net_live_callbacks()?UI_STATUS_OK:UI_STATUS_CANCELLED;}
 UI_APP_EXPORT const ui_app_descriptor_t *UI_APP_CALL ui_app_query_v1(void)

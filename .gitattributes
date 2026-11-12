@@ -25,3 +25,12 @@
 /docs/validation/ux-20261012-5e8c4a91-evidence/** -text whitespace=cr-at-eol
 /docs/validation/ux-20261012-5e8c4a91-evidence/raw/** -whitespace
 /docs/validation/ux-validation-20261012.md -text whitespace=cr-at-eol
+
+/docs/validation/interaction-20261017-a7d913e4-evidence/** -text whitespace=cr-at-eol
+/docs/validation/interaction-20261017-a7d913e4-evidence/raw/** -whitespace
+
+# Configure-time dependency locks and the meter profile use exact byte hashes.
+/third_party/** -text -whitespace
+/tools/br2_meter/profile.json -text whitespace=cr-at-eol
+/tools/br2_meter/tokenizer.json -text -whitespace
+/samples/** -text -whitespace

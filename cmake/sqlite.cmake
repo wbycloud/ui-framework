@@ -1,0 +1,20 @@
+# Official amalgamation only; no configure/build network access.
+set(_sqlite_root "${CMAKE_CURRENT_LIST_DIR}/../third_party/sqlite")
+file(READ "${_sqlite_root}/source-lock.json" _sqlite_lock)
+string(JSON _sqlite_id GET "${_sqlite_lock}" source_id)
+if(NOT _sqlite_id STREQUAL "2026-10-16 14:45:20 555e07ef33f69a0957d24d8e555b702464a131d6f1607f4c3c1e4551e8e6ca76")
+    message(FATAL_ERROR "Unexpected SQLite identity")
+endif()
+foreach(_file sqlite3.c sqlite3.h sqlite3ext.h COPYRIGHT.html LICENSE.txt)
+    string(JSON _expected GET "${_sqlite_lock}" sha256 "${_file}")
+    file(SHA256 "${_sqlite_root}/${_file}" _actual)
+    if(NOT _actual STREQUAL _expected)
+        message(FATAL_ERROR "SQLite source hash mismatch: ${_file}")
+    endif()
+endforeach()
+set_source_files_properties("${_sqlite_root}/sqlite3.c" PROPERTIES
+    COMPILE_DEFINITIONS "SQLITE_THREADSAFE=1;SQLITE_OMIT_LOAD_EXTENSION;SQLITE_DQS=0")
+if(MSVC)
+    # Isolate third-party diagnostics; framework code retains /W4 /WX.
+    set_source_files_properties("${_sqlite_root}/sqlite3.c" PROPERTIES COMPILE_OPTIONS /w)
+endif()

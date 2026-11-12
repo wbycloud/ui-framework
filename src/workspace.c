@@ -9,6 +9,9 @@
 #include "ui_framework/app_data.h"
 #include "ui_framework/package.h"
 #include "ui_internal.h"
+#include "ui_framework/app_poll.h"
+#include "ui_framework/ai_service.h"
+#include "assistant_internal.h"
 
 typedef struct app_module app_module_t;
 typedef struct app_instance app_instance_t;
@@ -32,6 +35,8 @@ struct app_instance {
     void *state;
     ui_app_data_fn data_callback;
     void *data_user;
+    ui_app_poll_fn poll_callback;
+    void *poll_user;
     HWND container;
     char *title;
     int mounted, closing, close_ready, active;
@@ -53,6 +58,8 @@ struct posted_message {
     posted_message_t *next;
 };
 struct ui_workspace {
+    ui_ai_service_t *ai_service; /* P3-1 one service; does not own its lifetime. */
+    ui_web_view_t *input_views;
     ui_workspace_config_t config;
     HWND parent;
     app_module_t *modules;
@@ -235,6 +242,18 @@ static LRESULT CALLBACK container_proc(HWND hwnd, UINT message,
         p = (app_instance_t *)((CREATESTRUCTW *)lp)->lpCreateParams;
         SetWindowLongPtrW(hwnd, GWLP_USERDATA, (LONG_PTR)p);
     }
+    if (p != NULL && (message == WM_ERASEBKGND || message == WM_PAINT || message == WM_PRINTCLIENT)) {
+        PAINTSTRUCT ps;HDC dc=message==WM_PAINT?BeginPaint(hwnd,&ps):(HDC)wp;
+        RECT rect;GetClientRect(hwnd,&rect);ui_theme_info_t theme={0};theme.size=sizeof(theme);
+        if(p->context.host)(void)ui_host_get_theme(p->context.host,&theme);
+        int dark=theme.effective==UI_THEME_DARK;HBRUSH brush=CreateSolidBrush(dark?RGB(32,32,32):RGB(247,247,248));
+        FillRect(dc,&rect,brush);DeleteObject(brush);
+        if(message!=WM_ERASEBKGND&&p->context.host&&!p->context.host->surfaces&&!p->context.host->web_views&&!p->context.host->components&&!GetWindow(hwnd,GW_CHILD)){
+            SetBkMode(dc,TRANSPARENT);SetTextColor(dc,dark?RGB(212,212,212):RGB(85,85,85));rect.left+=24;rect.top+=24;
+            DrawTextW(dc,L"当前应用未提供业务视图；可使用助手查看已注册的只读能力。",-1,&rect,DT_LEFT|DT_TOP|DT_WORDBREAK);
+        }
+        if(message==WM_PAINT)EndPaint(hwnd,&ps);return message==WM_ERASEBKGND?1:0;
+    }
     if (p != NULL && p->context.host != NULL && message == WM_SIZE) {
         intptr_t result;
         ++p->workspace->depth;
@@ -242,6 +261,7 @@ static LRESULT CALLBACK container_proc(HWND hwnd, UINT message,
                                      (uintptr_t)wp, (intptr_t)lp, &result);
         if (p->context.shell != NULL)
             (void)ui_native_shell_reflow(p->context.shell);
+        InvalidateRect(hwnd,NULL,TRUE);
         leave_callback(p->workspace);
     }
     if (p != NULL && p->context.shell != NULL && p->active && !p->closing &&
@@ -363,7 +383,9 @@ static void unmount_instance(app_instance_t *p)
 {
     ui_workspace_t *w = p->workspace;
     remove_budget(w,p->context.instance_id);
+    ui_capabilities_finalize_close(p->context.host);
     ++w->depth;
+    p->poll_callback=NULL;p->poll_user=NULL;
     if (p->mounted) { p->module->api.unmount(p->state); p->mounted = 0; }
     if (p->context.shell != NULL) {
         (void)ui_native_shell_set_active(p->context.shell, 0);
@@ -400,6 +422,7 @@ static ui_status_t create_instance(ui_workspace_t *w, app_module_t *m,
     p->context.host = ui_host_create(&host);
     if (!p->context.host) { DestroyWindow(p->container); free(p); return error_text(w, UI_STATUS_PLATFORM_ERROR, "Cannot create application host"); }
     p->context.host->run_mode=w->config.run_mode;
+    ui_capabilities_set_instance(p->context.host,p->context.instance_id);
     p->context.host->dispatch_idle = host_idle;
     p->context.host->dispatch_idle_data = w;
     /* Establish host geometry before application create/mount can start work.
@@ -448,6 +471,7 @@ static ui_status_t create_instance(ui_workspace_t *w, app_module_t *m,
         while (*link != p) link = &(*link)->next;
         *link = p->next; --m->instances; goto fail;
     }
+    p->context.host->capability_loading=0;
     *out = p; return UI_STATUS_OK;
 fail:
     unmount_instance(p); free(p);
@@ -459,6 +483,7 @@ static void set_closing(app_instance_t *p, int closing)
     ++p->workspace->depth;
     p->closing = closing;
     p->context.host->dispatch_blocked = closing;
+    ui_capabilities_workspace_close(p->context.host,closing);
     if(p->container)EnableWindow(p->container, !closing);
     if (closing) {
         if(p->active && p->module->api.set_active) p->module->api.set_active(p->state,0);
@@ -743,6 +768,14 @@ ui_status_t ui_app_set_data_callback(const ui_app_context_t *context,ui_app_data
     if(p->context.host!=context->host)return UI_STATUS_INVALID_ARGUMENT;
     p->data_callback=callback;p->data_user=user;return UI_STATUS_OK;
 }
+ui_status_t ui_app_set_poll_callback(const ui_app_context_t *context,ui_app_poll_fn callback,void *user)
+{
+    app_instance_t *p;ui_workspace_t *w;
+    if(!context||context->size<sizeof(*context)||!(w=context->workspace)||w->thread_id!=GetCurrentThreadId())return UI_STATUS_INVALID_ARGUMENT;
+    p=find_instance(w,context->instance_id);if(!p)return UI_STATUS_NOT_FOUND;
+    if(p->context.host!=context->host)return UI_STATUS_INVALID_ARGUMENT;
+    p->poll_callback=callback;p->poll_user=user;return UI_STATUS_OK;
+}
 ui_status_t ui_workspace_post_app_data(ui_workspace_t *w,uint64_t id,uint64_t kind,const void *data,size_t bytes)
 {
     posted_message_t *p;
@@ -798,6 +831,13 @@ static void workspace_poll_impl(ui_workspace_t *w,uint32_t budget_count)
           w->deferred_poll=1;return;
       } }
     w->polling = 1;
+    {app_instance_t *p;for(p=w->instances;p;p=p->next)ui_assistant_collect_completed(p->context.assistant);}
+    {app_instance_t *p;for(p=w->instances;p;p=p->next)if(p->mounted&&p->poll_callback){
+      ui_app_poll_fn callback=p->poll_callback;void *user=p->poll_user;
+      ++w->depth;++p->context.host->app_poll_callbacks;ui_dispatch_enter(p->context.host);
+      callback(&p->context,user);
+      --p->context.host->app_poll_callbacks;ui_dispatch_leave(p->context.host);leave_callback(w);
+    }}
     EnterCriticalSection(&w->queue_lock);
     messages = w->queue_head;
     {posted_message_t *last=messages;uint32_t count=1;while(last&&last->next&&count<budget_count){last=last->next;++count;}
@@ -806,7 +846,7 @@ static void workspace_poll_impl(ui_workspace_t *w,uint32_t budget_count)
     while (messages) {
         app_instance_t *p = find_instance(w, messages->id);
         next = messages->next;
-        if (p && !p->close_ready) {
+        if (p && (!p->close_ready || ui_capabilities_busy(p->context.host))) {
             ++w->depth;
             switch (messages->kind) {
             case POST_APP_DATA:
@@ -837,7 +877,7 @@ static void workspace_poll_impl(ui_workspace_t *w,uint32_t budget_count)
     link = &w->instances;
     while (*link) {
         app_instance_t *p = *link;
-        if (!p->close_ready) { link = &p->next; continue; }
+        if (!p->close_ready || ui_capabilities_busy(p->context.host)) { link = &p->next; continue; }
         if (p->active) {
             ++w->depth;
             if (p->module->api.set_active) p->module->api.set_active(p->state, 0);
@@ -900,15 +940,21 @@ ui_status_t ui_workspace_destroy(ui_workspace_t *w)
 {
     posted_message_t *p;
     if (!w) return UI_STATUS_INVALID_ARGUMENT;
-    if (w->depth || w->polling || w->instances) return UI_STATUS_CANCELLED;
+    if (w->depth || w->polling || w->instances || w->ai_service) return UI_STATUS_CANCELLED;
+    {ui_web_view_t *v;for(v=w->input_views;v;v=v->input_workspace_next)if(v->host->capability_ui_callbacks)return UI_STATUS_CANCELLED;}
     ui_workspace_poll(w);
     if (w->modules) return UI_STATUS_PLATFORM_ERROR;
     EnterCriticalSection(&w->queue_lock); p = w->queue_head; w->queue_head = w->queue_tail = NULL;
     LeaveCriticalSection(&w->queue_lock);
     while (p) { posted_message_t *next = p->next; free_post(p); p = next; }
     while(w->budgets){post_budget_t *b=w->budgets;w->budgets=b->next;free(b);}
+    while(w->input_views)(void)ui_capability_workspace_input_unbind(w->input_views);
     DeleteCriticalSection(&w->queue_lock); free(w); return UI_STATUS_OK;
 }
+ui_status_t ui_workspace_ai_claim(ui_workspace_t *w,ui_ai_service_t *service)
+{if(!w||w->thread_id!=GetCurrentThreadId()||!service)return UI_STATUS_INVALID_ARGUMENT;if(w->ai_service)return UI_STATUS_ALREADY_EXISTS;w->ai_service=service;return UI_STATUS_OK;}
+void ui_workspace_ai_release(ui_workspace_t *w,ui_ai_service_t *service)
+{if(w&&w->thread_id==GetCurrentThreadId()&&w->ai_service==service)w->ai_service=NULL;}
 ui_status_t ui_app_resource_read(const ui_app_context_t *context,
     const char *name, void **bytes, size_t *size)
 {
@@ -923,3 +969,49 @@ void ui_app_callback_enter(const ui_app_context_t *context)
 { if(context && context->host) ui_dispatch_enter(context->host); }
 void ui_app_callback_leave(const ui_app_context_t *context)
 { if(context && context->host) ui_dispatch_leave(context->host); }
+
+typedef struct workspace_projection {ui_workspace_t *workspace;ui_web_view_t *view;uint64_t instance;} workspace_projection_t;
+static int workspace_projection_valid(void *data)
+{
+ workspace_projection_t *g=data;app_instance_t *p=find_instance(g->workspace,g->instance);
+ return g->view->input_workspace==g->workspace&&g->view->input_instance==g->instance&&p&&p->active&&!p->closing;
+}
+static ui_status_t workspace_input_semantic(ui_web_view_t *view,const char *node,void *data)
+{
+ ui_workspace_t *w=data;workspace_projection_t projection={w,view,view->input_instance};app_instance_t *p=find_instance(w,projection.instance);
+ const char *control=node;ui_cap_input_kind_t kind;int routed;
+ if(!strncmp(node,"@key:",5)){control=strchr(node+5,':');if(control)control=strchr(control+1,':');if(control)++control;else control="";}
+ if(w->ai_service){ui_status_t action=ui_ai_model_light_action(w->ai_service,view,control);if(action!=UI_STATUS_UNSUPPORTED)return action;}
+ if(w->ai_service){ui_status_t action=ui_ai_graph_light_action(w->ai_service,view,control);if(action!=UI_STATUS_UNSUPPORTED)return action;}
+ if(w->ai_service){ui_status_t action=ui_ai_edit_light_action(w->ai_service,view,control);if(action!=UI_STATUS_UNSUPPORTED)return action;}
+ if(!strncmp(control,"tool-",5)&&strcmp(control,"tool-more")){kind=UI_CAP_INPUT_TOOLBAR;control+=5;}
+ else if(view->private_input.kind==UI_INPUT_KEY_DOWN){kind=UI_CAP_INPUT_SHORTCUT;control="";}
+ else return UI_STATUS_UNSUPPORTED;
+ if(!p||!p->active||p->closing)return kind==UI_CAP_INPUT_TOOLBAR?UI_STATUS_PERMISSION_DENIED:UI_STATUS_UNSUPPORTED;
+ if(!ui_inputs_has(p->context.host,kind,NULL,control,&view->private_input)){
+   if(kind==UI_CAP_INPUT_TOOLBAR){ui_toolbar_item_entry_t *t;for(t=p->context.host->toolbar_items;t&&strcmp(t->id,control);t=t->next){}
+    if(t&&ui_capabilities_nonread(p->context.host,t->command_id))return UI_STATUS_PERMISSION_DENIED;}
+   return UI_STATUS_UNSUPPORTED;
+ }
+ ++w->depth;routed=ui_inputs_forward(view,p->context.host,kind,control,&view->private_input,workspace_projection_valid,&projection);leave_callback(w);
+ return routed?UI_STATUS_OK:UI_STATUS_PERMISSION_DENIED;
+}
+static void workspace_input_detach(ui_web_view_t *view){(void)ui_capability_workspace_input_unbind(view);}
+ui_status_t ui_capability_workspace_input_bind(ui_workspace_t *w,ui_web_view_t *view)
+{
+ app_instance_t *p;ui_status_t s;if(!w||!view||!ui_language_thread_ok(view->host)||w->thread_id!=GetCurrentThreadId())return UI_STATUS_INVALID_ARGUMENT;
+ if(!view->backend->trusted_light)return UI_STATUS_UNSUPPORTED;if(view->semantic_action||view->input_workspace)return UI_STATUS_ALREADY_EXISTS;
+ for(p=w->instances;p;p=p->next)if(p->context.host==view->host)return UI_STATUS_INVALID_ARGUMENT;
+ s=ui_inputs_origin_host(view->host,1);if(s)return s;
+ view->input_workspace=w;view->input_workspace_next=w->input_views;w->input_views=view;view->input_detach=workspace_input_detach;
+ view->semantic_action=workspace_input_semantic;view->semantic_data=w;view->semantic_all_keys=1;view->input_instance=0;return UI_STATUS_OK;
+}
+ui_status_t ui_capability_workspace_input_unbind(ui_web_view_t *view)
+{
+ ui_workspace_t *w;ui_web_view_t **link;if(!view||!ui_language_thread_ok(view->host))return UI_STATUS_INVALID_ARGUMENT;
+ w=view->input_workspace;if(!w)return UI_STATUS_NOT_FOUND;if(view->host->capability_ui_callbacks)return UI_STATUS_PENDING;
+ for(link=&w->input_views;*link&&*link!=view;link=&(*link)->input_workspace_next){}if(*link)*link=view->input_workspace_next;
+ if(w->ai_service){ui_ai_model_light_detach(w->ai_service,view);ui_ai_graph_light_detach(w->ai_service,view);ui_ai_edit_light_detach(w->ai_service,view);}
+ view->input_workspace=NULL;view->input_workspace_next=NULL;view->input_detach=NULL;view->input_instance=0;
+ view->semantic_action=NULL;view->semantic_data=NULL;view->semantic_all_keys=0;(void)ui_inputs_origin_host(view->host,0);return UI_STATUS_OK;
+}

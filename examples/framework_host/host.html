@@ -2,6 +2,15 @@
 <html><head><meta charset="utf-8"><style>
 .row { display:flex; flex-direction:row; gap:4px; align-items:center; }
 .column { display:flex; flex-direction:column; gap:8px; }
+.chat-row { display:flex; flex-direction:row; width:100%; }
+.chat-spacer { flex:1; min-width:20px; }
+.chat-message { width:86%; padding:10px; border-radius:8px; background:#f3f5f8; text-align:left; }
+.chat-user { background:#e8f2fb; }
+.chat-role { font-size:12px; color:#586579; }
+#ai-chat { gap:10px; }
+#ai-attachments img { width:100px; height:80px; }
+.parameter-label { font-size:13px; color:#44546a; }
+.ai-section { font-size:16px; font-weight:600; padding:6px 0; border-top:1px solid #738095; }
 .chrome { background:#ffffff; border:0; }
 .panel-tab { min-width:0; padding:2px 8px; white-space:nowrap; }
 .panel-tab.active { background:#ffffff; color:#0067b8; }
@@ -39,7 +48,7 @@
 #empty { padding:48px 32px; gap:16px; }
 #empty-title { font-size:24px; color:#242424; }
 #app-chrome { position:absolute; left:0; top:0; width:100%; height:100%; }
-#assistant { width:320px; height:100%; padding:16px; gap:8px; background:#ffffff; overflow-y:auto; }
+#assistant { width:380px; height:100%; padding:16px; gap:8px; background:#ffffff; overflow-y:auto; }
 #assistant-title { height:24px; font-size:16px; font-weight:600; }
 #target,#command { width:100%; text-align:left; }
 #params { height:64px; width:100%; }
@@ -78,6 +87,9 @@
 #popup.popup-menu .popup-menu-row { height:28px; padding:3px 6px; border:0; border-radius:2px; background:#ffffff; }
 #popup.popup-menu .popup-menu-row:hover,#popup.popup-menu .popup-menu-row:focus { background:#e2eaf2; }
 .popup-shortcut { color:#646468; font-size:12px; }
+.dark .chat-message { background:#30363f; }
+.dark .chat-user { background:#1f4058; }
+.dark .chat-role { color:#bac8d8; }
 .dark .chrome,.dark #assistant,.dark #popup { background:#252525; }
 .dark #top,.dark .window-button,.dark .tab-name,.dark .tab-close,.dark .host-tool { background:#181818; color:#d4d4d4; border:0; }
 .dark #menu-row,.dark .tab.active,.dark .tab.active .tab-name,.dark .tab.active .tab-close,.dark .menu-strip,.dark .app-menu,.dark #workspace { background:#202020; color:#ededed; }
@@ -97,24 +109,99 @@
 .dark .popup-shortcut { color:#b3b3b7; }
 .dark #empty-title { color:#ededed; }
 
-</style></head><body>
+</style></head><body><span id="ai-projection-proof" style="display:none"></span>
 <div id="shell">
  <header id="top" class="row">
   <button id="recent" class="host-tool glyph" title="最近成功打开的应用">&#xE70D;</button><div id="tabs"></div>
   <button id="tab-more" class="host-tool glyph" title="当前打开的标签" style="display:none">&#xE712;</button>
   <button id="open" class="host-tool glyph" title="打开应用包 · Ctrl+Shift+O">&#xE710;</button><div id="title-space"></div>
   <button id="assistant-toggle" class="host-tool" title="显示或收起助手工作台">AI</button>
-  <div id="window-controls"><button id="window-min" class="window-button glyph" title="最小化">&#xE921;</button>
+  <button id="menu" class="host-tool glyph" title="宿主选项">&#xE712;</button>
+   <div id="window-controls"><button id="window-min" class="window-button glyph" title="最小化">&#xE921;</button>
    <button id="window-max" class="window-button glyph" title="最大化 / 还原">&#xE922;</button>
    <button id="window-close" class="window-button glyph" title="关闭宿主">&#xE8BB;</button></div>
  </header>
- <div id="menu-row"><div id="app-menus"></div><button id="menu" class="host-tool glyph" title="宿主选项">&#xE712;</button></div>
+ <div id="menu-row"><div id="app-menus"></div></div>
  <main id="body">
-  <section id="workspace"><div id="empty" class="column"><span id="empty-title">你的应用工作区</span>
-   <span class="muted">打开 .uapp 应用包，在标签间切换。应用自行选择原生、OpenGL 或 Web 内容。</span>
-   <button id="empty-open" class="primary" style="width:160px">打开应用包</button>
-  </div><div id="app-chrome"></div></section>
   <aside id="assistant" class="column">
+   <div id="ai-box" class="column" style="display:none">
+    <span id="ai-main-title" class="ai-section">玄枢 · 只读助手</span><span class="muted">先保存任务，查看固定范围后逐任务确认发送。</span>
+    <div class="row"><button id="ai-model-toggle">设置</button><button id="ai-developer-toggle">开发诊断</button></div>
+     <div id="ai-control-bar" class="column" style="display:none"><button id="ai-takeover">手动接管应用</button><button id="ai-return">交回AI</button><span id="ai-control-state"></span></div>
+     <div id="ai-active-task" class="column"></div><div id="ai-chat" class="column"></div>
+     <div id="ai-message-box" class="column" style="display:none"><span id="ai-message-title"></span><textarea id="ai-message-detail" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-message-detail-prev">前页</button><span id="ai-message-detail-page"></span><button id="ai-message-detail-next">后页</button></div></div>
+     <div id="ai-professional-tasks" class="column"></div><button id="ai-evidence-toggle" style="display:none">查看业务结果与依据 ▸</button><div id="ai-evidence-box" class="column" style="display:none"><textarea id="ai-evidence" readonly="readonly" style="height:150px"></textarea><div class="row"><button id="ai-evidence-prev">前页</button><span id="ai-evidence-page"></span><button id="ai-evidence-next">后页</button></div></div><div id="ai-node-undo-box" class="column" style="display:none"><span class="label">撤销范围（新的本地操作）</span><textarea id="ai-node-undo-preview" readonly="readonly" style="height:150px"></textarea><button id="ai-node-undo" disabled="disabled">确认撤销此步骤（新操作）</button></div>
+    <div id="ai-settings-box" class="column" style="display:none">     <span class="label">当前模型配置（与任务绑定配置分开）</span><span>DeepSeek 官方 Responses · 普通任务逐项确认；配置或打开面板不会联网</span>
+     <input id="ai-model-name" placeholder="您选定的 DeepSeek 模型ID"/><div class="row"><button id="ai-model-save">保存用户模型配置</button><button id="ai-model-key">原生窗口设置密钥</button></div>
+     <span id="ai-model-state"></span>
+</div>
+    <button id="ai-history-toggle">会话记录 ▸</button><div id="ai-history-box" class="column" style="display:none">    <textarea id="ai-history" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-history-prev">前段</button><span id="ai-history-page"></span><button id="ai-history-next">后段</button></div>
+    <div class="row"><button id="ai-older">消息首页</button><button id="ai-next">下一页</button><button id="ai-runs-refresh">任务记录</button></div>
+</div>
+    <button id="ai-list-toggle">收起任务列表</button><div id="ai-runs" class="column"></div><span id="ai-task-title" class="ai-section">当前任务与处理状态</span><button id="ai-view-scope">查看本任务范围（只查看，不授权）</button><span id="ai-status-line"></span><span id="ai-current-content"></span><button id="ai-task-facts-toggle">查看保存与处理详情 ▸</button><div id="ai-task-facts" class="column" style="display:none"><textarea id="ai-task-state" readonly="readonly" style="height:155px"></textarea><div class="row"><button id="ai-task-state-prev">前页</button><span id="ai-task-state-page"></span><button id="ai-task-state-next">后页</button></div></div><span id="ai-result-label" class="muted">当前任务结果（与新任务草稿分开）</span><textarea id="ai-output" readonly="readonly" style="height:120px"></textarea><div id="ai-output-pages" class="row"><button id="ai-output-prev">前段</button><span id="ai-output-page"></span><button id="ai-output-next">后段</button></div>
+    <div id="ai-question" class="muted"></div><span id="ai-answer-label" class="label">关联问题回复（仅回答当前问题）</span><input id="ai-answer" placeholder="回答关联问题"/><button id="ai-answer-send">回复此问题</button>
+
+    <button id="ai-cancel">请求取消当前任务</button><span id="ai-cancel-notice"></span>
+    <span id="ai-diagnostic-title" class="label">脱敏诊断</span><button id="ai-model-copy">复制脱敏诊断（不授权、不发送）</button><span id="ai-copy-notice"></span>
+    <span id="ai-error"></span>
+    <span class="ai-section">新任务草稿</span>    <span class="label">当前编辑草稿（修改不会改变已接纳任务）</span><span id="ai-input-label" class="label">任务输入（填写要本地保存的任务内容）</span><textarea id="ai-input" placeholder="描述要完成的任务" style="height:70px"></textarea>
+
+    <div id="ai-attachment-controls" class="column" style="display:none"><div class="row"><button id="ai-attachment-add">添加文本或本地PNG</button><button id="ai-attachment-clear">移除草稿附件</button></div><div id="ai-attachments" class="column"></div></div>
+     <button id="ai-draft-range-toggle">选择新任务范围 ▸</button><div id="ai-draft-range" class="column" style="display:none">     <span class="label">新提案范围草稿（仅下次保存提案使用）</span><span>选择要发送的历史片段（默认不选；可通过上方历史翻页）：</span><div id="ai-model-history" class="column"></div>
+     <button id="ai-model-catalog">选择当前应用的只读目标与能力</button><span id="ai-model-target"></span><div id="ai-model-resources" class="column"></div><div id="ai-model-projection" class="column"></div>
+     <div id="ai-general-range" class="column" style="display:none"><div id="ai-task-suggestions" class="column"></div><div id="ai-profile-choices" class="column"></div><div id="ai-parameter-cards" class="column"></div><button id="ai-target-add">加入／更新此草稿目标</button><div id="ai-target-drafts" class="column"></div></div>
+      <span>任务数据限于所选历史、目标能力及字段。先保存本地提案，再查看固定范围和完整请求。可撤销编辑还须核对具体有限计划；其他业务内容须另行明确选择。</span>
+</div>
+    <span id="ai-save-notice" class="muted">仅本地保存，不会直接发送。请先在设置中配置模型。</span>
+    <button id="ai-model-propose" class="primary">保存任务并查看范围</button>
+    <div id="ai-model-box" class="column" style="display:none"><button id="ai-range-close">收起任务范围</button>     <span id="ai-scope-title" class="ai-section">本次允许发送的内容</span>
+     <span id="ai-summary-note" class="muted"></span>
+     <span class="label">本次任务输入（分页全文）</span><textarea id="ai-summary-input" readonly="readonly" style="height:80px"></textarea><div class="row"><button id="ai-summary-input-prev">前页</button><span id="ai-summary-input-page"></span><button id="ai-summary-input-next">后页</button></div>
+     <span class="label">选中的历史片段（分页全文）</span><textarea id="ai-summary-history" readonly="readonly" style="height:100px"></textarea><div class="row"><button id="ai-summary-history-prev">前页</button><span id="ai-summary-history-page"></span><button id="ai-summary-history-next">后页</button></div>
+     <span id="ai-fixed-title" class="ai-section">已接纳任务的固定目标</span>
+     <span class="muted">属于当前查看任务，不随活动标签或草稿改变。epoch为固定绑定的技术标识。</span><textarea id="ai-summary-fixed" readonly="readonly" style="height:120px"></textarea><div class="row"><button id="ai-summary-fixed-prev">前页</button><span id="ai-summary-fixed-page"></span><button id="ai-summary-fixed-next">后页</button></div>
+     <span class="label">任务绑定的模型与能力白名单</span><textarea id="ai-summary-policy" readonly="readonly" style="height:110px"></textarea><div class="row"><button id="ai-summary-policy-prev">前页</button><span id="ai-summary-policy-page"></span><button id="ai-summary-policy-next">后页</button></div>
+     <span id="ai-detail-title" class="ai-section">完整请求详情</span>
+     <span class="muted">包含实际instructions、tools、输入及所选历史；摘要不能代替完整展示校验。</span>
+     <button id="ai-detail-toggle">收起完整请求详情（收起后不可确认）</button>
+     <div id="ai-detail-box" class="column"><span id="ai-detail-count"></span><div id="ai-disclosure" class="column"></div></div><span id="ai-display-state"></span>
+     <button id="ai-model-confirm" disabled="disabled">确认此任务外发范围（一次）</button>
+     <button id="ai-scope-toggle">查看技术范围记录（JSON）</button><div id="ai-scope-box" class="column" style="display:none"><span>技术范围记录；完整实际请求位于上方“完整请求详情”。</span><textarea id="ai-model-scope" readonly="readonly" style="height:130px"></textarea><div class="row"><button id="ai-model-scope-prev">前页</button><span id="ai-model-scope-page"></span><button id="ai-model-scope-next">后页</button></div></div>
+</div>
+    <div id="ai-developer-box" class="column" style="display:none"><span id="ai-state" class="muted"></span>
+    <span class="ai-section">开发诊断（非日常任务入口）</span><span>以下保留stub、受控编辑、图及命令诊断。不会取得真实模型修改权限。</span>
+    <button id="ai-model-continue">以当前目标显式继续</button>    <span id="ai-resource-label" class="label">stub可选资源ID（仅诊断；模型目标在新任务范围选择）</span><input id="ai-resource" placeholder="显式只读资源ID（可选）"/><span id="ai-plan-label" class="label">stub诊断脚本（测试模型，不是自然语言）</span><textarea id="ai-plan" style="height:70px">{"steps":[]}</textarea>
+    <span class="muted">脚本仅用于stub测试；目标取提交时选中的应用，工具使用target:0。</span>
+    <div class="row"><button id="ai-send" class="primary">提交stub任务</button><button id="ai-continue">显式继续</button></div>
+    <div id="ai-edit-box" class="column" style="border-top:1px solid #738095;padding-top:12px">
+     <span>受控编辑 · 结构化范围（Stub测试模型）</span>
+     <span class="muted">提案时固定应用和资源；文本和脚本不授权。确认最长30分钟，逐项批准最长5分钟，不自动续期。</span>
+     <input id="ai-edit-cap" placeholder="能力ID，例如 counter.increment"/>
+     <input id="ai-edit-resource" placeholder="明确资源ID，例如 counter.document"/>
+     <textarea id="ai-edit-params" style="height:65px">{}</textarea>
+     <textarea id="ai-edit-schema" style="height:65px">{"type":"object","properties":{},"additionalProperties":false}</textarea>
+     <div class="row"><button id="ai-edit-catalog">查看当前应用能力</button><button id="ai-edit-propose">创建待确认提案</button></div>
+     <textarea id="ai-edit-catalog-data" readonly="readonly" style="height:85px"></textarea><div class="row"><button id="ai-edit-catalog-data-prev">前段</button><span id="ai-edit-catalog-data-page"></span><button id="ai-edit-catalog-data-next">后段</button></div>
+     <span id="ai-edit-state"></span><textarea id="ai-edit-scope" readonly="readonly" style="height:180px"></textarea><div class="row"><button id="ai-edit-scope-prev">前段</button><span id="ai-edit-scope-page"></span><button id="ai-edit-scope-next">后段</button></div>
+     <div class="column"><button id="ai-edit-confirm" class="primary">确认此任务范围</button><button id="ai-edit-approve">逐项批准此调用</button><button id="ai-edit-reject">拒绝／请求取消</button></div>
+     <div class="column"><button id="ai-edit-undo">新的显式撤销</button><button id="ai-edit-check">只读核对UNKNOWN</button><button id="ai-edit-migrate">确认备份并迁移此库</button></div>
+     <span class="muted">迁移前核对下方数据库、schema、影响和备份位置。历史恢复不恢复授权；条件变化须重新提案。未知结果保持写入阻止。</span>
+     <textarea id="ai-edit-result" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-edit-result-prev">前段</button><span id="ai-edit-result-page"></span><button id="ai-edit-result-next">后段</button></div>
+    </div>
+    <div class="column" style="border-top:1px solid #738095;padding-top:12px">
+     <span class="label">Coordinator · Stub结构化任务图（测试模型）</span>
+     <span class="muted">目标每行“实例ID:资源ID”；步骤target从0编号。只读直接运行；修改须宿主确认有限步骤。恢复不恢复授权，不自动重放。</span>
+     <textarea id="ai-graph-targets" style="height:55px" placeholder="1:counter.document"></textarea>
+     <textarea id="ai-graph-plan" style="height:100px">{"nodes":[{"id":"counter","operation_id":"counter-1","agent_profile":"application.specialist","target":0,"capability":"counter.increment","params":{},"constraint":{"type":"object","properties":{},"additionalProperties":false}}]}</textarea>
+     <div class="row"><button id="ai-graph-propose">提交显式测试图</button><button id="ai-graph-continue">核对新目标后明确继续</button><button id="ai-graph-cancel">请求取消整图</button></div>
+     <span id="ai-graph-state"></span><textarea id="ai-graph-data" readonly="readonly" style="height:180px"></textarea><div class="row"><button id="ai-graph-data-prev">前段</button><span id="ai-graph-data-page"></span><button id="ai-graph-data-next">后段</button></div>
+     <div class="row"><button id="ai-graph-confirm" class="primary">确认图中有限任务范围</button><button id="ai-graph-approve">批准当前具体步骤</button><button id="ai-graph-check">只读核对UNKNOWN步骤</button><button id="ai-graph-migrate">确认schema3备份迁移</button></div>
+     <input id="ai-graph-node" placeholder="问题所属节点ID"/><input id="ai-graph-question" placeholder="question ID"/><input id="ai-graph-answer" placeholder="只回答该问题，不授予权限"/><button id="ai-graph-answer-send">发送关联回答</button>
+    </div>
+    <button id="ai-diagnostic-toggle">命令诊断 ▸</button>
+</div>
+   </div>
+   <div id="command-diagnostics" class="column">
    <div id="assistant-title">助手工作台</div><span class="muted">调用固定目标实例；切换标签不会改变任务目标。</span>
    <span class="label">目标实例</span><button id="target">选择应用</button>
    <span class="label">语义命令</span><button id="command">选择命令</button>
@@ -129,7 +216,13 @@
     <span class="label">原始参数 · JSON</span><textarea id="params">{}</textarea>
     <span class="label">详细结果 / 进度 / 事件</span><textarea id="log" readonly="readonly"></textarea>
    </div>
+   </div>
   </aside>
+  <section id="workspace"><div id="empty" class="column"><span id="empty-title">你的应用工作区</span>
+   <span class="muted">打开 .uapp 应用包，在标签间切换。应用自行选择原生、OpenGL 或 Web 内容。</span>
+   <button id="empty-open" class="primary" style="width:160px">打开应用包</button>
+  </div><div id="app-chrome"></div></section>
+
  </main>
 </div>
 <div id="popup" class="column" style="display:none"><div id="popup-title"></div>
@@ -142,7 +235,7 @@ function rememberText(n){if(!n.children.length&&n.textContent)staticLanguage.pus
 rememberText(document.body);
 function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage.length;i++){var a=staticLanguage[i],v=languageTexts[a[1]];if(v!==undefined&&a[0].textContent!==v)a[0].textContent=v}}
 
-(function () {
+
  var model = null, popupToken = '', dark = false, advanced = false, paramKey = '', paramNodes = [];
  function element(id) { return document.getElementById(id); }
  function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
@@ -153,7 +246,277 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
   b.addEventListener('click', function () { send(action, extra); }); return b;
  }
  function action(id, name) { element(id).addEventListener('click', function () { send(name); }); }
- function setTheme(value) { dark = !!value; document.body.className = dark ? 'dark' : ''; }
+ var aiPending=null,aiDiagnostic=false,aiDeveloper=false,aiCounter=0,aiCancelRun="";
+ function aiID(){return 'panel-'+Date.now().toString(16)+'-'+(++aiCounter).toString(16)}
+ function aiBytes(text){try{return encodeURIComponent(text).replace(/%[0-9A-F]{2}/g,'x').length}catch(e){return Infinity;}}
+
+ function aiSubmit(continuing){if(aiPending)return;var client=aiID(),input=element('ai-input').value,m={action:continuing?'ai-continue':'ai-submit',id:model.active||'',command:model.ai.selected||'',token:client,answer:input,params:element('ai-plan').value,panel:element('ai-resource').value};if(aiBytes(input)>16384||aiBytes(m.params)>65536||aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='输入或桥接消息超过字节上限；输入保留';return;}aiPending={id:client,input:input};ui.postMessage(m)}
+ element('ai-send').addEventListener('click',function(){aiSubmit(false)});element('ai-continue').addEventListener('click',function(){aiSubmit(true)});
+ element('ai-cancel').addEventListener('click',function(){aiCancelRun=model.ai.selected||'';element('ai-cancel-notice').textContent='取消请求已发起，等待实际状态和保存确认。';send('ai-cancel',{id:aiCancelRun})});
+ element('ai-answer-send').addEventListener('click',function(){var r=model.ai.run||{},question=generalQuestion(model.ai);if(question){send('ai-assistant-answer',{id:model.ai.selected,panel:question.node,command:question.question_id,token:aiID(),answer:element('ai-answer').value});return;}send('ai-answer',{id:model.ai.selected||'',command:r.question_id||'',token:aiID(),answer:element('ai-answer').value})});
+ element('ai-older').addEventListener('click',function(){send('ai-history',{id:'0',command:'messages'})});element('ai-next').addEventListener('click',function(){send('ai-history',{id:String(model.ai.messages.next||0),command:'messages'})});
+ element('ai-runs-refresh').addEventListener('click',function(){send('ai-history',{id:'0',command:'runs'})});
+ element('ai-diagnostic-toggle').addEventListener('click',function(){aiDiagnostic=!aiDiagnostic;element('command-diagnostics').style.display=aiDiagnostic?'flex':'none'});
+ var realDetails=true,realTechnical=false,realPreview=null,summaryKey='',summaryPreview=null;
+ var settingsOpen=false,choicesOpen=false,historyOpen=false,listOpen=true,factsOpen=false,runListKey=null;
+ element('ai-task-facts-toggle').addEventListener('click',function(){factsOpen=!factsOpen;element('ai-task-facts').style.display=factsOpen?'flex':'none';element('ai-task-facts-toggle').textContent=factsOpen?'收起保存与处理详情':'查看保存与处理详情 ▸'});
+ function showRange(value){if(realExpanded===value)return;realExpanded=value;element('ai-model-box').style.display=value?'flex':'none';send('ai-model-display')}
+ element('ai-range-close').addEventListener('click',function(){showRange(false)});
+ element('ai-developer-toggle').addEventListener('click',function(){aiDeveloper=!aiDeveloper;element('ai-developer-box').style.display=aiDeveloper?'flex':'none';element('command-diagnostics').style.display=aiDeveloper&&aiDiagnostic?'flex':'none'});
+ element('ai-draft-range-toggle').addEventListener('click',function(){choicesOpen=!choicesOpen;element('ai-draft-range').style.display=choicesOpen?'flex':'none';element('ai-draft-range-toggle').textContent=choicesOpen?'收起新任务范围':'选择新任务范围 ▸'});
+ element('ai-history-toggle').addEventListener('click',function(){historyOpen=!historyOpen;element('ai-history-box').style.display=historyOpen?'flex':'none'});
+ element('ai-list-toggle').addEventListener('click',function(){listOpen=!listOpen;element('ai-runs').style.display=listOpen?'flex':'none';element('ai-list-toggle').textContent=listOpen?'收起任务列表':'任务列表 ▸'});
+ var realPending=null,realExpanded=false,realHistory={},realCaps={},realFields={},realResource="",realInstance="",realChoices="",realHistoryPage="",realChunks="",realRestored=false;
+ element('ai-view-scope').addEventListener('click',function(){showRange(true);element('ai-summary-policy').scrollIntoView();element('ai-scope-title').scrollIntoView()});
+ element('ai-detail-toggle').addEventListener('click',function(){realDetails=!realDetails;element('ai-detail-box').style.display=realDetails?'flex':'none';element('ai-detail-toggle').textContent=realDetails?'收起完整请求详情（收起后不可确认）':'展开完整请求详情';send('ai-model-display')});
+ element('ai-scope-toggle').addEventListener('click',function(){realTechnical=!realTechnical;element('ai-scope-box').style.display=realTechnical?'flex':'none';element('ai-scope-toggle').textContent=realTechnical?'收起技术范围记录（JSON）':'查看技术范围记录（JSON）'});
+ element('ai-model-toggle').addEventListener('click',function(){settingsOpen=!settingsOpen;element('ai-settings-box').style.display=settingsOpen?'flex':'none'});
+ element('ai-model-save').addEventListener('click',function(){send('ai-model-save',{token:aiID(),answer:element('ai-model-name').value})});
+ function realSubmit(resume){if(model.ai.general){generalSubmit(resume);return;}if(realPending)return;var token=aiID(),input=element('ai-input').value,m={action:resume?'ai-model-continue':'ai-model-propose',id:realInstance||model.active||'',command:model.ai.selected||'',token:token,answer:input,panel:realResource,params:JSON.stringify({history:JSON.stringify(Object.keys(realHistory).map(function(k){return Number(k)})),projection:JSON.stringify({capabilities:Object.keys(realCaps),fields:Object.keys(realFields)})})};if(aiBytes(input)>16384||aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='提案超出上限；输入保留';return;}realPending={id:token,input:input};element('ai-model-propose').disabled=true;element('ai-save-notice').textContent='正在提交本地提案；尚未确认保存。';ui.postMessage(m)}
+ element('ai-model-propose').addEventListener('click',function(){realSubmit(false)});element('ai-model-continue').addEventListener('click',function(){realSubmit(true)});
+ /* Key and disclosure confirmation have no page-message authorization handler. */
+ function realSaveDraft(){var d={input:element('ai-input').value,history:realHistory,capabilities:realCaps,fields:realFields,resource:realResource,instance:realInstance,generalTargets:generalTargets,generalProfiles:generalProfiles,generalParameters:generalParameters};var p=JSON.stringify(d);if(aiBytes(p)<60000)send('ai-model-draft',{params:p})}
+ element('ai-input').addEventListener('input',realSaveDraft);
+ function localChoice(root,id,label,selected,toggle){var b=document.createElement('button');b.id=id;b.textContent=(selected?'✓ ':'□ ')+label;b.addEventListener('click',toggle);root.appendChild(b);return b;}
+ element('ai-model-catalog').addEventListener('click',function(){realInstance=model.active||'';realResource='';realCaps={};realFields={};realChoices='';realSaveDraft();send('ai-model-catalog',{id:realInstance,panel:''})});
+ element('ai-model-copy').addEventListener('click',function(){send('ai-model-copy')});
+ function paintChoices(a){if(a.general)return;var signature=JSON.stringify(a.messages.items||[]);if(realHistoryPage!==signature){realHistoryPage='';var h=element('ai-model-history');clear(h);(a.messages.items||[]).forEach(function(m,i){var key=String(m.sequence);localChoice(h,'ai-history-select-'+i,m.role+': '+m.content.slice(0,100)+(m.content.length>100?'…（摘要；完整内容见消息历史）':''),!!realHistory[key],function(){if(realHistory[key])delete realHistory[key];else realHistory[key]=true;realHistoryPage='';paintChoices(model.ai);realSaveDraft()})});realHistoryPage=signature;}
+  var c=a.choices,signature2=JSON.stringify(c);if(realChoices!==signature2){realChoices='';var rs=element('ai-model-resources'),caps=element('ai-model-projection');clear(rs);clear(caps);localChoice(rs,'ai-resource-none','无目标（纯文本）',!realResource,function(){realResource='';realCaps={};realFields={};realChoices='';paintChoices(model.ai);realSaveDraft()});
+   if(c){(c.resources||[]).forEach(function(r,i){localChoice(rs,'ai-resource-select-'+i,r,realResource===r,function(){realInstance=c.instance;realResource=r;realCaps={};realFields={};realChoices='';paintChoices(model.ai);realSaveDraft();send('ai-model-catalog',{id:realInstance,panel:r})})});
+    if(realResource){var capabilities=c.capabilities||[];for(let i=0;i<capabilities.length;i++){let cap=capabilities[i];localChoice(caps,'ai-cap-select-'+i,cap.id+' · '+cap.name,!!realCaps[cap.id],function(){if(realCaps[cap.id])delete realCaps[cap.id];else realCaps[cap.id]=true;realChoices='';paintChoices(model.ai);realSaveDraft()});var fields=cap.fields||[];for(let j=0;j<fields.length;j++){let f=fields[j];localChoice(caps,'ai-field-select-'+i+'-'+j,'字段 '+f,!!realFields[f],function(){if(realFields[f])delete realFields[f];else realFields[f]=true;realChoices='';paintChoices(model.ai);realSaveDraft()})}}}
+    if(c.resource_offset)rs.appendChild(button('ai-resources-prev','上一页资源','ai-model-catalog',{id:c.instance,panel:realResource,params:String(Math.max(0,c.resource_offset-32))}));if(c.resource_next)rs.appendChild(button('ai-resources-next','下一页资源','ai-model-catalog',{id:c.instance,panel:realResource,params:String(c.resource_next)}));
+    if(c.next)rs.appendChild(button('ai-catalog-next','下一页read能力','ai-model-catalog',{id:c.instance,panel:realResource,command:String(c.next)}));}}
+  element('ai-model-target').textContent='新提案目标：'+(realResource?('实例 '+realInstance+' / '+realResource):'无目标')+'；提交后固定，不随标签切换';realChoices=signature2;
+ }
+ function paintModel(a){if(!realRestored){realRestored=true;if(a.draft){var draft=a.draft;element('ai-input').value=draft.input||'';realHistory=draft.history||{};realCaps=draft.capabilities||{};realFields=draft.fields||{};realResource=draft.resource||'';realInstance=draft.instance||'';generalTargets=draft.generalTargets||[];generalProfiles=draft.generalProfiles||{};generalParameters=draft.generalParameters||{};}}element('ai-copy-notice').textContent=a.copyNotice||'';var c=a.modelConfig||{},r=a.run||{},k=c.credential||{};
+  var key=k.error?('凭据失败：'+k.error):(k.stage==='saving'?'凭据正在保存':k.local_readable?'本地可读取；服务端未验证':k.stage==='cancelled'?'录入已取消':'凭据未确认可用');
+  element('ai-model-state').textContent=(c.ready?c.model_id:'模型未配置')+' · '+(c.pending?'后台正在保存':c.error||'配置已读回')+' · '+key+' · 配置代次 '+(c.revision===undefined?'未记录':c.revision)+' · '+a.configLocation;
+  if(c.business_validation){var guard=summaryParse(c.business_validation)||{};element('ai-model-state').textContent+=' · BR-2验证保护：'+(guard.stopped?'已停止 '+(guard.error||''):guard.ready?'已就绪，仍需逐任务确认':'等待保护保存')+' · 请求占用 '+(guard.reserved||0)+'/3 · 费用已知 '+guard.known_nano_usd+' nano USD，未知 '+guard.fee_unknown;}
+  if(!element('ai-model-name').value&&c.model_id)element('ai-model-name').value=c.model_id;
+  element('ai-model-save').disabled=a.phase!==2||c.pending;element('ai-model-key').disabled=!c.ready||c.pending||a.phase!==2;
+  element('ai-model-propose').disabled=!!realPending||!c.ready||c.pending||a.phase!==2;element('ai-model-continue').disabled=!c.ready||r.phase!==8||a.phase!==2;
+  paintChoices(a);var chunks=a.disclosureChunks||[],sig=JSON.stringify(chunks);if(realChunks!==sig){realChunks=null;realPreview=null;var candidate=summaryParse(chunks.join(''));if(chunks.length&&!candidate)throw Error('Invalid complete request');clear(element('ai-disclosure'));chunks.forEach(function(chunk,i){var t=document.createElement('textarea');t.id='ai-disclosure-'+i;t.readOnly=true;t.value=chunk;t.style.height='135px';element('ai-disclosure').appendChild(t)});element('ai-detail-count').textContent='共 '+chunks.length+' 块，以下按顺序显示，每块可滚动查看全文。';realPreview=candidate;realChunks=sig;}
+  paintSummary(a,realPreview);element('ai-view-scope').disabled=!a.selected;
+  element('ai-model-confirm').disabled=!realExpanded||!realDetails||!chunks.length||!r.real_provider||r.disclosure_confirmed||r.phase!==3||!r.committed||a.phase!==2;
+  element('ai-display-state').textContent=!realDetails?'完整请求详情已收起；摘要不授予确认资格。':chunks.length?'完整初始请求及范围，以上分块可滚动查看；宿主校验全部显示后才接受真实确认。':'预览未就绪／已失效，不可确认旧范围';
+  pageText('ai-model-scope',JSON.stringify({run_id:r.run_id||r.id,model:r.model_id,input:r.input,targets:r.fixed_targets,binding:r.binding_hash,confirmation_received:r.disclosure_confirmed,confirmation_saved:r.disclosure_saved,request_saved:r.model_request_saved,error:r.error,warning:'仅所选历史及read范围；不授予编辑、审批或图调度权限。'},null,2));
+  if(realPending){var saved=a.ack===realPending.id;if(saved){var current=r.client_request_id===realPending.id&&r.committed;if(element('ai-input').value===realPending.input){element('ai-input').value='';realSaveDraft();}realPending=null;element('ai-save-notice').textContent='任务已持久化接纳；可从任务记录查看固定范围，尚未确认外发。';if(current)showRange(true);}else if(a.error||a.storageError){realPending=null;element('ai-save-notice').textContent='保存未确认：'+(a.storageError||a.error)+'；草稿与选择保留。';}element('ai-model-propose').disabled=!!realPending||!c.ready||c.pending||a.phase!==2;}}
+ // Summary is a read-only projection of the selected task and its matching request.
+ function summaryParse(raw){try{return typeof raw==='string'?JSON.parse(raw):raw||null}catch(e){return null}}
+ function summaryFlag(r,key){return r[key]===undefined?'未记录':r[key]?'是':'否'}
+ function paintSummary(a,preview){var r=a.run||{},id=r.run_id||'',matching=id&&id===a.selected,source={memory:'内存',persisted:'持久化快照',pending:'正在读取',error:'读取失败',unavailable:'无可用快照'}[a.taskSource]||'无可用快照';
+  if(!matching)r={};
+  var scope=summaryParse(r.disclosure||r.stub_plan)||{},projection=summaryParse(scope.projection)||{},history=summaryParse(scope.history),targets=summaryParse(r.fixed_targets||r.targets),p=matching&&preview&&preview.run_id===id&&(preview.binding_hash===r.binding_hash||a.assistantTask&&a.assistantTask.plan_waiting&&preview.binding_hash===a.assistantTask.plan_binding_hash&&preview.finite_plan)?preview:null,req=p&&p.request;
+  var phases=['收到（尚未确认保存）','排队','执行中','等待问题回复','只读工具在途','取消请求处理中','取消停滞（仍等待真实退出）','任务终态','恢复记录／需显式继续','存储未确认'],real=scope.request_kind==='deepseek-responses-v1';
+  var phase=phases[r.phase]||'无可用任务状态';if(real&&r.phase===3)phase=r.disclosure_confirmed?'外发确认已接纳；后续状态见保存事实':'等待外发确认';
+  var remote={not_sent:'未发送',response_received:'完整响应已收到',remote_processing_unknown:'远端状态未知（取消不证明服务端已停止）'};
+  var state='任务：'+(a.selected||'未选择')+'\n来源：'+source+(a.taskQueryId?' · 查询：'+a.taskQueryId:'')+'\n状态：'+phase+(r.outcome?' / '+r.outcome:'');
+  if(matching){state+='\n持久化接纳：'+summaryFlag(r,'committed')+' · 外发确认：'+summaryFlag(r,'disclosure_confirmed')+'\n确认保存：'+summaryFlag(r,'disclosure_saved')+' · 模型请求保存：'+summaryFlag(r,'model_request_saved')+'\n终态：'+summaryFlag(r,'terminal')+' · 终态保存：'+(r.terminal===undefined||r.committed===undefined?'未记录':r.terminal&&r.committed?'是':'否')+'\n远端：'+(r.remote_delivery===undefined?'未记录':remote[r.remote_delivery]||r.remote_delivery)+'\n工具调用数（不等于完成）：'+(r.tool_calls===undefined?'未记录':r.tool_calls)+' · 模型轮次：'+(r.model_calls===undefined?'未记录':r.model_calls)+'（不是HTTP计数）';
+   if(r.provider_phase===2&&!r.terminal)state+='\n请求路径在途；不代表服务端已处理。';if(r.reply&&!r.terminal)state+='\n已有流式输出（尚非最终保存）。';state+='\n任务错误：'+(r.error|| (r.error_recorded===false?'未记录':'无'));
+  }if(a.queryError)state+='\n读取错误：'+a.queryError;if(a.storageError)state+='\n存储错误：'+a.storageError;if(a.error)state+='\n宿主错误：'+a.error;pageText('ai-task-state',state);element('ai-status-line').textContent=matching?phase+(r.outcome?' / '+r.outcome:'')+' · '+(r.committed?'已持久化接纳':'保存尚未确认')+(r.terminal?' · 终态保存：'+summaryFlag(r,'committed'):''):'尚未选择任务；在下方填写新任务草稿。';element('ai-current-content').textContent=matching?'任务内容：'+(r.input||'（无输入）').slice(0,180)+((r.input||'').length>180?'…（摘要；全文见任务范围）':''):'';
+  var key=JSON.stringify([a.selected,a.taskSource,matching,r.input,r.disclosure,r.stub_plan,r.fixed_targets,r.targets,r.model_id,r.binding_hash]);if(summaryKey===key&&summaryPreview===p&&['ai-summary-input','ai-summary-history','ai-summary-fixed','ai-summary-policy'].every(function(id){return displayPages[id]&&displayPages[id].painted}))return;summaryKey=null;summaryPreview=null;
+  element('ai-summary-note').textContent=matching?(real?'以下是当前任务的固定范围；未选历史、其他应用内容及业务文件不会自动加入。':'当前任务是本地诊断；没有真实模型外发范围。'):'当前尚无匹配任务快照；草稿不等于已保存任务。';
+  pageText('ai-summary-input',matching?r.input||'（无输入）':'暂无匹配任务');
+  var histories='未记录历史选择';if(Array.isArray(history)){histories='所选历史序号：'+(history.length?history.join('、'):'无')+'\n';if(!history.length)histories+='未选择任何历史。';else if(req&&Array.isArray(req.input)&&req.input.length>=history.length+2){histories+='以下按实际请求顺序列出所选历史全文：\n';for(var i=0;i<history.length;i++)histories+='片段 '+(i+1)+' · '+req.input[i].role+'\n'+req.input[i].content+'\n';}else histories+='历史全文未随任务快照恢复；通过上方“消息首页／下一页”和消息历史分页查看原序号。不重建或恢复旧外发授权。';}
+  pageText('ai-summary-history',matching?histories:'暂无匹配任务');
+  var fixed='未记录目标';if(Array.isArray(targets))fixed=targets.length?targets.map(function(t,i){return 'target-'+i+' · 实例：'+t.instance_id+'\n资源：'+t.resource_id+' · revision：'+t.revision+'\n固定权限范围：'+t.scope+'\nhost epoch：'+t.host_epoch+'\nopen epoch：'+t.open_epoch}).join('\n\n'):'无目标（纯文本）';pageText('ai-summary-fixed',matching?fixed:'暂无匹配任务');
+  pageText('ai-summary-policy',!matching?'暂无匹配任务':!real?'本地stub诊断；真实模型范围未记录。':'模型：'+(req?req.model:r.model_id||scope.model||'未记录')+'\norigin：https://api.deepseek.com（固定协议）\n配置代次：'+(scope.profile_revision===undefined?'未记录':scope.profile_revision)+'\n允许read能力：'+(Array.isArray(projection.capabilities)?projection.capabilities.join('、')||'无':'未记录')+'\n允许字段：'+(Array.isArray(projection.fields)?projection.fields.join('、')||'无':'未记录')+(scope.assistant_version?'\n有限计划须另行核对和确认。':'\n不授予写入、审批或图调度权限。'));if(scope.assistant_version){var allowed=summaryParse(scope.assistant_scope)||[],policyText=displayPages['ai-summary-policy'].text;for(var i=0;i<allowed.length;i++){var item=allowed[i];policyText+='\n\n实例目标 '+item.target+' / '+item.resource+'\n范围 '+item.scope+'\n允许能力 '+item.capabilities.map(function(c){return c.id}).join('、')+'\n允许字段 '+(item.fields||projection.fields||[]).join('、');}pageText('ai-summary-policy',policyText);}summaryKey=key;summaryPreview=p;
+ }
+ var displayPages={};
+ function pageText(id,text){var p=displayPages[id];if(!p){p=displayPages[id]={text:'',page:0,painted:false};element(id+'-prev').addEventListener('click',function(){p.painted=false;if(p.page>0)p.page--;paintPage(id)});element(id+'-next').addEventListener('click',function(){p.painted=false;if((p.page+1)*900<p.text.length)p.page++;paintPage(id)})}if(p.text===(text||'')&&p.painted)return;p.painted=false;p.text=text||'';if(p.page*900>=p.text.length)p.page=0;paintPage(id)}
+ function paintPage(id){var p=displayPages[id];p.painted=false;var at=p.page*900,end=Math.min(at+900,p.text.length);if(at>0&&p.text.charCodeAt(at)>=56320&&p.text.charCodeAt(at)<=57343)at--;if(end<p.text.length&&p.text.charCodeAt(end-1)>=55296&&p.text.charCodeAt(end-1)<=56319)end++;element(id).value=p.text.slice(at,end);element(id+'-page').textContent='展示 '+(p.page+1)+' / '+Math.max(1,Math.ceil(p.text.length/900));p.painted=true;}
+ var aiEditPending=null;
+ element('ai-edit-propose').addEventListener('click',function(){if(aiEditPending)return;var token=aiID(),params=element('ai-edit-params').value,schema=element('ai-edit-schema').value,m={action:'ai-edit-propose',id:model.active||'',command:element('ai-edit-cap').value,panel:element('ai-edit-resource').value,params:params,answer:schema,token:token};if(aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='编辑提案超过桥接上限；输入保留';return;}aiEditPending={id:token,params:params};ui.postMessage(m)});
+ element('ai-edit-catalog').addEventListener('click',function(){send('ai-edit-catalog',{id:model.active||''})});
+ element('ai-edit-reject').addEventListener('click',function(){var e=model.ai.edit||{};send('ai-edit-reject',{id:e.id||''})});
+ /* Confirm/approve/undo/check/migrate deliberately have NO message handlers.
+    The framework's qualified private semantic binding is their sole authority. */
+ function paintEdit(a){var e=a.edit||{},target=e.target||{},risks=['普通可撤销内存编辑','破坏性（需逐项审批）','外发（仅政策拒绝）','不可撤销／文件副作用（AI仅政策拒绝）'];
+  element('ai-edit-state').textContent='状态 '+(e.phase===undefined?'未启用':e.phase)+' · '+(e.code||'')+' · 宿主动作 '+(e.last_host_status||0);
+  pageText('ai-edit-scope',JSON.stringify({operation_id:e.id,operation:e.undo?"UNDO":"EXECUTE",undo_receipt:e.undo_id,capability:e.capability_id,side_effect:e.side_effect,target:target,parameters:e.params,allowed_parameters:e.parameter_constraint,risk:risks[e.risk]||'',scope_until:e.scope_until,approval_until:e.approval_until,database:e.storage_path,schema:e.schema,target_schema:2,backup:e.backup_path,migration:'暂停新写入并排空，校验一致备份后事务迁移；失败不重建／覆盖恢复',unresolved_records:e.recovered_unresolved},null,2));
+  pageText('ai-edit-result',JSON.stringify({storage_confirmed:e.storage_confirmed,transaction_committed:e.transaction_committed,rolled_back:e.rolled_back,effect:e.effect,revision:e.revision_after,transaction:e.transaction_id,undo_receipt:e.undo_id,output:e.output,code:e.code,history_record:(a.run||{}).edit_record,history_authorization:'恢复记录不恢复授权；旧epoch不重放'},null,2));
+  element('ai-edit-confirm').disabled=e.phase!==1||a.phase!==2;element('ai-edit-approve').disabled=e.phase!==2||a.phase!==2;element('ai-edit-undo').disabled=e.phase!==11||e.effect!==1||!e.undo_id||a.phase!==2;element('ai-edit-check').disabled=e.phase!==12||!e.call_id||e.call_id==='0'||a.phase!==2;element('ai-edit-migrate').disabled=e.schema!==1||a.phase!==2;
+  element('ai-edit-reject').disabled=!e.id||e.phase===11;element('ai-edit-propose').disabled=a.phase!==2||(e.phase!==0&&e.phase!==11&&e.phase!==undefined)||e.recovered_unresolved>0;
+  pageText('ai-edit-catalog-data',a.editCatalog?JSON.stringify(a.editCatalog,null,2):'目录仅描述能力，不授予执行权。');
+  if(aiEditPending&&(a.editAck===aiEditPending.id||a.error||a.storageError)){if(a.editAck===aiEditPending.id&&element('ai-edit-params').value===aiEditPending.params)element('ai-edit-params').value='{}';aiEditPending=null;}
+ }
+ var graphPending=null;
+ function graphSubmit(resume){var token=aiID(),params=element('ai-graph-plan').value,targets=element('ai-graph-targets').value,m={action:resume?'ai-graph-continue':'ai-graph-propose',id:model.ai.selected||'',token:token,command:'Explicit stub Coordinator task graph',params:params,answer:targets};if(aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='图提案超过桥接限额，输入保留';return;}graphPending=token;ui.postMessage(m)}
+ element('ai-graph-propose').addEventListener('click',function(){graphSubmit(false)});element('ai-graph-continue').addEventListener('click',function(){graphSubmit(true)});
+ element('ai-graph-cancel').addEventListener('click',function(){send('ai-graph-cancel',{id:model.ai.selected||''})});
+ element('ai-graph-answer-send').addEventListener('click',function(){send('ai-graph-answer',{id:model.ai.selected||'',panel:element('ai-graph-node').value,command:element('ai-graph-question').value,token:aiID(),answer:element('ai-graph-answer').value})});
+ function paintGraph(a){var g=a.graph||{},c=a.coordinator||{},nodes=g.nodes||[],waiting=false,unknown=false;for(var i=0;i<nodes.length;i++){if(nodes[i].edit_phase===2)waiting=true;if(nodes[i].edit_phase===12)unknown=true;}
+  element('ai-graph-state').textContent='任务 '+(g.run_id||'无')+' · 在途 '+(g.active||0)+' · '+(g.outcome||'')+' · '+(c.error||'');
+  pageText('ai-graph-data',JSON.stringify({database:c.storage_path,schema:c.schema,target_schema:3,backup:c.backup_path,migration:'确认后排空、校验一致备份、事务迁移；失败保留原库',root:g,history:(a.run||{}).graph_record},null,2));
+  element('ai-graph-confirm').disabled=!g.needs_scope||g.confirmed||g.terminal||c.pending||a.phase!==2;element('ai-graph-approve').disabled=!waiting||c.pending||a.phase!==2;element('ai-graph-check').disabled=!unknown||c.pending||a.phase!==2;element('ai-graph-migrate').disabled=c.schema!==2||c.pending||a.phase!==2;
+  element('ai-graph-propose').disabled=c.schema!==3||a.phase!==2;element('ai-graph-continue').disabled=(a.run||{}).phase!==8||c.schema!==3||a.phase!==2;element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
+  if(graphPending&&(a.ack===graphPending||a.error||a.storageError))graphPending=null;
+ }
+
+</script>
+<script>
+ var generalEvidence=false,generalTargets=[],generalProfiles={},generalParameters={},generalChoicesKey='',generalChatKey='',generalNodesKey='',generalFilesKey='',generalFirst=true,generalUndoNode='',generalChrome=null;
+ function generalLocalButton(id,title){var b=document.createElement("button");b.id=id;b.textContent=title;return b;}
+ function generalQuestion(a){
+  var nodes=a.assistantTask&&a.assistantTask.nodes||[];
+  for(var i=0;i<nodes.length;i++)if(nodes[i].question_id&&nodes[i].question)return nodes[i];
+  return null;
+ }
+ function generalSubmit(resume){
+  if(realPending)return;
+  if(!generalTargets.length){element('ai-error').textContent='先选择应用资源、能力及字段，并加入草稿目标。';return;}
+  var caps={},fields={};
+  for(var i=0;i<generalTargets.length;i++){
+   var t=generalTargets[i];
+   for(var j=0;j<t.readCapabilities.length;j++)caps[t.readCapabilities[j]]=true;
+   for(var j=0;j<t.fields.length;j++)fields[t.fields[j]]=true;
+  }
+  var input=element('ai-input').value,token=aiID();
+  var payload={history:JSON.stringify(Object.keys(realHistory).map(function(k){return Number(k)})),projection:JSON.stringify({capabilities:Object.keys(caps),fields:Object.keys(fields)}),targets:generalTargets};
+  var m={action:'ai-assistant-propose',token:token,answer:input,command:resume?model.ai.selected||'':'',params:JSON.stringify(payload)};
+  if(aiBytes(input)>16384||aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='任务或范围超过字节上限，草稿保留。';return;}
+  realPending={id:token,input:input};element('ai-model-propose').disabled=true;
+  element('ai-save-notice').textContent='正在提交本地提案，等待持久化接纳。';ui.postMessage(m);
+ }
+ function generalParameter(cap,key,schema,root){
+  var values=generalParameters[cap.id]||(generalParameters[cap.id]={});
+  var label=document.createElement('span');label.className='parameter-label';label.textContent=schema.title||key;root.appendChild(label);
+  if(schema.enum){
+   for(let i=0;i<schema.enum.length;i++){
+    let choice=schema.enum[i];localChoice(root,'ai-param-'+cap.id+'-'+key+'-'+i,String(choice),values[key]===choice,function(){values[key]=choice;generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft()});
+   }
+  }else if(schema.type==='boolean'){
+   localChoice(root,'ai-param-'+cap.id+'-'+key,'是',values[key]===true,function(){values[key]=!values[key];generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft()});
+  }else if(schema.type==='string'||schema.type==='integer'||schema.type==='number'){
+   var control=document.createElement('input');control.id='ai-param-'+cap.id+'-'+key;
+   control.value=values[key]===undefined?'':String(values[key]);
+   control.addEventListener('input',function(){
+    if(control.value==='')delete values[key];else values[key]=schema.type==='string'?control.value:Number(control.value);
+    realSaveDraft();
+   });root.appendChild(control);
+  }else{
+   var hint=document.createElement('span');hint.className='muted';hint.textContent='复杂参数可用自然语言说明，或手动接管应用。';root.appendChild(hint);
+  }
+ }
+ function paintGeneralChoices(a){
+  var signature=JSON.stringify(a.messages.items||[]);
+  if(realHistoryPage!==signature){
+   realHistoryPage='';var history=element('ai-model-history');clear(history);
+   (a.messages.items||[]).forEach(function(m,i){var key=String(m.sequence);localChoice(history,'ai-history-select-'+i,m.role+' · '+m.content.slice(0,80),!!realHistory[key],function(){if(realHistory[key])delete realHistory[key];else realHistory[key]=true;realHistoryPage='';paintGeneralChoices(model.ai);realSaveDraft()})});realHistoryPage=signature;
+  }
+  var catalog=a.applicationCatalog,key=JSON.stringify([catalog,realResource,realCaps,realFields,generalProfiles,generalTargets]);
+  if(generalChoicesKey===key)return;
+  generalChoicesKey='';
+  var resources=element('ai-model-resources'),caps=element('ai-model-projection'),roles=element('ai-profile-choices'),cards=element('ai-parameter-cards'),suggestions=element('ai-task-suggestions');
+  clear(resources);clear(caps);clear(roles);clear(cards);clear(suggestions);
+  if(catalog){
+   (catalog.resources||[]).forEach(function(resource,i){
+    localChoice(resources,'ai-resource-select-'+i,resource.id+' · '+resource.revision,realInstance===catalog.instance&&realResource===resource.id,function(){realInstance=catalog.instance;realResource=resource.id;realCaps={};realFields={};generalProfiles={};generalParameters={};generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft()});
+   });
+   var resource=null;
+   for(var i=0;i<(catalog.resources||[]).length;i++)if(catalog.resources[i].id===realResource&&realInstance===catalog.instance)resource=catalog.resources[i];
+   if(resource){
+    var all=catalog.capabilities||[];
+    for(let i=0;i<all.length;i++){
+     let cap=all[i];if(cap.target_kind!==resource.kind)continue;
+     localChoice(caps,'ai-cap-select-'+i,(cap.effect==='write'?'可撤销编辑 · ':'读取 · ')+(cap.name||cap.id),!!realCaps[cap.id],function(){if(realCaps[cap.id])delete realCaps[cap.id];else realCaps[cap.id]=true;generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft()});
+     if(realCaps[cap.id]){
+      var properties=cap.output_schema&&cap.output_schema.properties||{};
+      for(let field in properties){let name=field;localChoice(caps,'ai-field-'+cap.id+'-'+name,'允许结果字段 '+name,!!realFields[name],function(){if(realFields[name])delete realFields[name];else realFields[name]=true;generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft()});}
+      var title=document.createElement('span');title.className='label';title.textContent='参数卡 · '+(cap.name||cap.id);cards.appendChild(title);
+      var inputs=cap.input_schema&&cap.input_schema.properties||{};
+      for(var parameter in inputs)generalParameter(cap,parameter,inputs[parameter],cards);
+     }
+     suggestions.appendChild(generalLocalButton('ai-suggest-'+i,'准备任务 · '+(cap.name||cap.id)));
+     (function(capability,index){var b=element('ai-suggest-'+index);if(!b)b=suggestions.children[suggestions.children.length-1];b.addEventListener('click',function(){element('ai-input').value='请'+(capability.name||capability.id)+'，核对实际结果和版本。';realCaps[capability.id]=true;generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft()})})(cap,i);
+    }
+    (catalog.profiles||[]).forEach(function(profile,i){localChoice(roles,'ai-profile-'+i,'专业角色 · '+profile.id,!!generalProfiles[profile.id],function(){if(generalProfiles[profile.id])delete generalProfiles[profile.id];else generalProfiles[profile.id]=true;generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft()})});
+   }
+  }
+  var targets=element('ai-target-drafts');clear(targets);
+  for(let i=0;i<generalTargets.length;i++){
+   var target=generalTargets[i];targets.appendChild(generalLocalButton('ai-target-remove-'+i,'移除 · 实例 '+target.instance+' / '+target.resource+' · '+target.capabilities.join('、')));
+   (function(index){var b=targets.children[targets.children.length-1];b.addEventListener('click',function(){generalTargets.splice(index,1);generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft()})})(i);
+  }
+  element('ai-target-add').disabled=!realResource||!Object.keys(realCaps).length;
+  element('ai-model-target').textContent='当前范围草稿 · '+(realResource?'实例 '+realInstance+' / '+realResource:'尚未选择资源')+'；已加入 '+generalTargets.length+' 个目标。';
+  generalChoicesKey=key;
+ }
+ element('ai-target-add').addEventListener('click',function(){
+  var catalog=model.ai.applicationCatalog||{},read=[];
+  (catalog.capabilities||[]).forEach(function(cap){if(realCaps[cap.id]&&cap.effect==='read')read.push(cap.id)});
+  var parameters={};for(var cap in generalParameters)if(realCaps[cap]&&Object.keys(generalParameters[cap]).length)parameters[cap]=generalParameters[cap];
+  var target={instance:realInstance,resource:realResource,capabilities:Object.keys(realCaps),readCapabilities:read,profiles:Object.keys(generalProfiles),fields:Object.keys(realFields),parameters:JSON.parse(JSON.stringify(parameters))};
+  var found=false;for(var i=0;i<generalTargets.length;i++)if(generalTargets[i].instance===target.instance&&generalTargets[i].resource===target.resource){generalTargets[i]=target;found=true;break;}
+  if(!found&&generalTargets.length<16)generalTargets.push(target);
+  generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft();
+ });
+ element('ai-takeover').addEventListener('click',function(){send('ai-takeover')});
+ element('ai-return').addEventListener('click',function(){send('ai-return')});
+ element('ai-attachment-add').addEventListener('click',function(){send('ai-attachment-add')});
+ element('ai-attachment-clear').addEventListener('click',function(){send('ai-attachment-clear')});
+ element('ai-evidence-toggle').addEventListener('click',function(){generalEvidence=!generalEvidence;element('ai-evidence-box').style.display=generalEvidence?'flex':'none'});
+ function generalMessage(root,id,role,text,attachments){
+  var row=document.createElement('div');row.className='chat-row';row.id=id;
+  var message=document.createElement('div');message.className='column chat-message'+(role==='user'?' chat-user':'');
+  var who=document.createElement('span');who.className='chat-role';who.textContent=role==='user'?'你':'玄枢';message.appendChild(who);
+  var body=document.createElement('span');body.textContent=text.slice(0,1200)+(text.length>1200?'…':'');message.appendChild(body);
+  if(attachments)for(var i=0;i<attachments.length;i++){var file=document.createElement('span');file.className='muted';file.textContent='附件 · '+attachments[i].name+' · '+attachments[i].bytes+'字节'+(attachments[i].local_only?' · 本地图片，未进入模型':'');message.appendChild(file);}
+  if(text.length>1200){var more=document.createElement('button');more.textContent='查看消息全文';more.addEventListener('click',function(){element('ai-message-box').style.display='flex';element('ai-message-title').textContent=who.textContent+' · 消息全文';pageText('ai-message-detail',text)});message.appendChild(more);}
+  var spacer=document.createElement('div');spacer.className='chat-spacer';
+  if(role==='user')row.appendChild(spacer);row.appendChild(message);if(role!=='user')row.appendChild(spacer);root.appendChild(row);
+ }
+ function paintGeneral(a){
+  if(generalChrome!==a.general){generalChrome=a.general;element('ai-control-bar').style.display=a.general?'flex':'none';
+   element('ai-attachment-controls').style.display=a.general?'flex':'none';element('ai-general-range').style.display=a.general?'flex':'none';}
+  if(!a.general)return;
+  ['ai-result-label','ai-output','ai-output-pages'].forEach(function(id){element(id).style.display='none'});
+  element('ai-main-title').textContent='玄枢 · 应用助手';element('ai-model-catalog').textContent='选择当前应用的目标与能力';
+  if(generalFirst){generalFirst=false;listOpen=false;element('ai-runs').style.display='none';element('ai-list-toggle').textContent='任务列表 ▸';}
+  var task=a.assistantTask||{},active=a.activeAssistant||{},r=a.run||{},control=active.control;
+  element('ai-takeover').disabled=!!a.manual||control===1;element('ai-return').disabled=!a.manual;
+  element('ai-control-state').textContent=control===1?'正在交接，等待在途调用和保存收尾':a.manual?'应用已交还手动操作':control===3?'业务状态改变，需要重新规划':'AI任务使用固定范围；收起面板保留任务。';
+  var activeBox=element('ai-active-task');clear(activeBox);
+  if(a.active&&a.active!==a.selected)activeBox.appendChild(button('ai-show-active','查看正在运行的任务','ai-select',{id:a.active}));
+  var messages=a.messages.items||[],key=JSON.stringify([messages,task.root_run,task.result,task.attachments]);
+  if(generalChatKey!==key){
+   generalChatKey='';var chat=element('ai-chat');clear(chat);var files=summaryParse(task.attachments)||[];
+   for(var i=0;i<messages.length;i++){var m=messages[i];generalMessage(chat,'ai-message-'+m.sequence,m.role,m.content,m.role==='user'&&m.content===(a.run||{}).input?files:null);}
+   if(task.result&&(!messages.length||messages[messages.length-1].content!==task.result))generalMessage(chat,'ai-message-current','assistant',task.result,null);
+   generalChatKey=key;
+  }
+  element('ai-evidence-toggle').style.display=(task.nodes||[]).length?'flex':'none';pageText('ai-evidence',JSON.stringify({root:task.root_run,nodes:task.nodes||[]},null,2));
+  var undo=null;for(var i=0;i<(task.nodes||[]).length;i++)if(task.nodes[i].node===a.undoNode)undo=task.nodes[i];
+  element('ai-node-undo-box').style.display=undo?'flex':'none';var undoText=undo?undo.undo_preview||'撤销处理中或已结束，详见业务结果与依据。':'';if(element('ai-node-undo-preview').value!==undoText)element('ai-node-undo-preview').value=undoText;element('ai-node-undo').disabled=!undo||!undo.undo_preview;if(generalUndoNode!==a.undoNode){generalUndoNode=a.undoNode||'';if(undo)element('ai-node-undo-preview').scrollIntoView()}
+  var nodeKey=JSON.stringify(task.nodes||[]);
+  if(generalNodesKey!==nodeKey){generalNodesKey='';var nodes=element('ai-professional-tasks');clear(nodes);
+   (task.nodes||[]).forEach(function(node){var title=document.createElement('span');title.className='label';title.textContent=(node.profile||'主任务')+' · '+node.capability+' · '+(node.outcome||'处理中');nodes.appendChild(title);if(node.summary){var text=document.createElement('span');text.textContent=node.summary;nodes.appendChild(text)}if(node.undo_preview)nodes.appendChild(button('ai-undo-view-'+node.node,'查看此步骤的撤销范围','ai-undo-view',{id:a.selected,panel:node.node}));});generalNodesKey=nodeKey;
+  }
+  var question=generalQuestion(a);
+  if(question){element('ai-question').textContent=question.question;['ai-answer-label','ai-answer','ai-answer-send'].forEach(function(id){element(id).style.display='flex'});element('ai-answer-send').disabled=false;}
+  var filesKey=JSON.stringify(a.draftAttachments||[]);
+  if(generalFilesKey!==filesKey){generalFilesKey='';var area=element('ai-attachments');clear(area);
+   (a.draftAttachments||[]).forEach(function(file){var title=document.createElement('span');title.textContent=file.name+' · '+file.bytes+'字节'+(file.localOnly?' · 仅本地预览，不发送图片':' · 选中后进入任务快照');area.appendChild(title);if(file.image&&file.image!=='0'){var image=document.createElement('img');image.src=file.image;area.appendChild(image)}});generalFilesKey=filesKey;
+  }
+  if(task.plan_waiting){
+   element('ai-status-line').textContent='有限计划已接纳，等待核对具体计划与适用确认。';
+   element('ai-model-confirm').textContent='确认此有限计划及外发范围（一次）';
+   element('ai-model-confirm').disabled=!realExpanded||!realDetails||!(a.disclosureChunks||[]).length||a.phase!==2;
+  }else element('ai-model-confirm').textContent='确认此任务外发范围（一次）';
+  if(task.root_run)pageText('ai-output',task.result||task.error||(task.plan_waiting?'请核对有限计划与完整请求详情。':'正在处理当前任务；实际步骤见上方专业子任务。'));
+  if(task.root_run&&!task.result&&!task.plan_waiting&&!r.terminal&&r.disclosure_confirmed)element('ai-status-line').textContent=task.error||({1:'准备有限操作计划',2:'核对模型候选计划',4:'执行已确认的应用步骤',5:'已安排专业模型轮次',6:'模型处理中',7:'核对专业结果',8:'核对结论与来源',9:'正在保存最终结果',10:'应用专业子任务正在补齐计划',11:'核对应用专业结果依据'}[task.stage]||element('ai-status-line').textContent);
+ }
+
+ function paintAI(a){if(!a)return;element('ai-box').style.display=a.enabled?'flex':'none';element('command-diagnostics').style.display=!a.enabled||aiDeveloper&&aiDiagnostic?'flex':'none';if(!a.enabled)return;
+  paintEdit(a);paintGraph(a);paintModel(a);element('ai-state').textContent='Service '+a.phase+' · 排队 '+a.queued+' · '+a.conversation;
+  var lines=[],items=a.messages.items||[];for(var i=0;i<items.length;i++)lines.push('sequence '+items[i].sequence+' '+items[i].role+': '+items[i].content);pageText('ai-history',lines.join('\n'));element('ai-next').disabled=!a.messages.next;
+  var root=element('ai-runs'),listKey=JSON.stringify(a.runs);if(runListKey!==listKey){runListKey=null;clear(root);items=a.runs.items||[];for(var i=0;i<items.length;i++)root.appendChild(button('ai-run-'+i,items[i].input.slice(0,80)+(items[i].input.length>80?'…':''),'ai-select',{id:items[i].run_id}));if(a.runs.next)root.appendChild(button('ai-runs-next','下一页任务','ai-history',{id:String(a.runs.next),command:'runs'}));runListKey=listKey;}
+  var r=a.run||{};pageText('ai-output',(r.reply||'')+'\n'+(r.outcome||'')+' '+(r.error||''));element('ai-question').textContent=r.question||'';['ai-answer-label','ai-answer','ai-answer-send'].forEach(function(id){element(id).style.display=r.question_id?'flex':'none'});if(aiCancelRun&&aiCancelRun!==a.selected){aiCancelRun='';element('ai-cancel-notice').textContent='';}if(aiCancelRun&&r.terminal)element('ai-cancel-notice').textContent='任务已到终态；最终保存及远端状态见上方任务状态。';
+  element('ai-answer-send').disabled=r.phase!==3;element('ai-cancel').disabled=!a.selected||r.terminal===true||r.terminal===1;element('ai-continue').disabled=r.phase!==8;element('ai-send').disabled=a.phase!==2;
+  if(!a.general)paintGeneral(a);element('ai-error').textContent=a.storageError||a.error||'';
+  if(aiPending&&(a.ack===aiPending.id||a.error||a.storageError)){if(a.ack===aiPending.id&&element('ai-input').value===aiPending.input){element('ai-input').value='';realSaveDraft();}aiPending=null;}
+ }
+ function setTheme(value) { var next=!!value;if(dark===next)return;dark=next;document.body.className = dark ? 'dark' : ''; }
  action('menu','menu');action('recent','recent');action('tab-more','tabs');action('open','open');action('empty-open','open');
  action('assistant-toggle','assistant');action('window-min','window-min');action('window-max','window-max');action('window-close','exit');
  element('advanced-toggle').addEventListener('click',function(){advanced=!advanced;element('advanced').style.display=advanced?'flex':'none';element('advanced-toggle').textContent=advanced?frameworkText('高级：参数、事务与详细记录 ▾'):frameworkText('高级：参数、事务与详细记录 ▸')});
@@ -165,20 +528,23 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
   node.style.position='absolute'; node.style.left=rect.x+'px'; node.style.top=rect.y+'px';
   node.style.width=rect.width+'px'; node.style.height=rect.height+'px';
  }
- var chromeNodes={},tabNodes={};
+ var chromeNodes={},tabNodes={},chromeSignature=null;
  function keep(root,map,key,make){var n=map[key];if(!n){n=make();map[key]=n;}root.appendChild(n);return n;}
  function prune(root,map,live){for(var k in map)if(!live[k]){root.removeChild(map[k]);delete map[k];}}
  function paintChrome(state) {
+  var signature=JSON.stringify([state.active,state.activeLabel,state.menuWidth,state.menuGroups,state.menuOpen,state.tools,state.toolbarRect,state.panels,state.statusRect,state.status,state.dpi,state.chromeSuppressed]);
+  if(chromeSignature===signature)return;chromeSignature=null;
   var panelFocus=document.activeElement?document.activeElement.id:'';
   var root=element('app-chrome'),live={};
-  if(!state.active){if(chromeNodes.menu){element('app-menus').removeChild(chromeNodes.menu);delete chromeNodes.menu;}prune(root,chromeNodes,live);if(panelFocus.indexOf('panel-tab-')===0){var focused=element(panelFocus);if(focused)focused.focus()}return;}
+  if(!state.active){if(chromeNodes.menu){element('app-menus').removeChild(chromeNodes.menu);delete chromeNodes.menu;}prune(root,chromeNodes,live);if(panelFocus.indexOf('panel-tab-')===0){var focused=element(panelFocus);if(focused)focused.focus()}chromeSignature=signature;return;}
   for(var old in chromeNodes)if(old.indexOf(':panel:')>=0&&old.indexOf(state.active+':panel:')!==0){root.removeChild(chromeNodes[old]);delete chromeNodes[old];}
+  if(!state.chromeSuppressed){
   var menu=keep(element('app-menus'),chromeNodes,'menu',function(){var n=document.createElement('div');n.className='row menu-strip';n.items={};return n;});live.menu=true;menu.style.width=state.menuWidth+'px';menu.style.height='28px';if(menu.instance!==state.active){if(menu.more){menu.removeChild(menu.more);menu.more=null}menu.instance=state.active}var menuLive={},used=0,menuOverflow=false;menu.groups=state.menuGroups||[];menu.target=state.active;for(var prior in menu.items)if(prior.indexOf(state.active+':')!==0){menu.removeChild(menu.items[prior]);delete menu.items[prior]}
   for(var g=0;g<(state.menuGroups||[]).length;g++){var group=state.menuGroups[g],key=state.active+':'+group.path;menuLive[key]=true;
    var item=keep(menu,menu.items,key,function(){var n=button('app-menu-'+group.key,group.title,'app-menu',{id:state.active,menu:group.path,panel:'app-menu-'+group.key},'app-menu');n.addEventListener('mouseenter',function(){send('app-menu-hover',{id:model.active,menu:n.group.path,panel:n.id})});n.addEventListener('keydown',function(e){if(e.keyCode===37||e.keyCode===39){e.preventDefault();var at=menu.groups.indexOf(n.group),next=(at+menu.groups.length+(e.keyCode===37?-1:1))%menu.groups.length;var group=menu.groups[next];send('app-menu',{id:menu.target,menu:group.path,panel:n.id})}});return n;});item.group=group;item.textContent=group.title;item.className='app-menu'+(state.menuOpen===group.path?' expanded':'');
    var width=group.width;item.style.width=width+'px';item.style.display=used+width+76<=state.menuWidth?'flex':'none';if(item.style.display==='flex')used+=width;else menuOverflow=true;
   }prune(menu,menu.items,menuLive);if(!menu.more){menu.more=button('menu-more',frameworkText('更多 ▾'),'menu-more',{id:state.active,panel:'menu-more'},'app-menu');menu.more.addEventListener('mouseenter',function(){send('app-menu-hover',{id:model.active,menu:'',panel:'menu-more'})});menu.appendChild(menu.more)}menu.more.textContent=frameworkText('更多 ▾');menu.more.className='app-menu'+(state.menuOpen===''?' expanded':'');menu.more.style.width='70px';menu.more.style.display=menuOverflow?'flex':'none';menu.appendChild(menu.more);
-  var tools=keep(root,chromeNodes,'tools',function(){var n=document.createElement('div');n.className='row chrome';n.items={};return n;});live.tools=true;place(tools,state.toolbarRect);if(tools.instance!==state.active){if(tools.more){tools.removeChild(tools.more);tools.more=null}tools.instance=state.active}var alive={},toolWidth=0,lastGroup='',overflow=false;
+  var tools=keep(root,chromeNodes,'tools',function(){var n=document.createElement('div');n.className='row chrome';n.items={};return n;});live.tools=true;place(tools,state.toolbarRect);tools.style.display=state.chromeSuppressed?'none':'flex';if(tools.instance!==state.active){if(tools.more){tools.removeChild(tools.more);tools.more=null}tools.instance=state.active}var alive={},toolWidth=0,lastGroup='',overflow=false;
   for(var previous in tools.items)if(previous.indexOf(state.active+':')!==0){tools.removeChild(tools.items[previous]);delete tools.items[previous];}
   for(var i=0;i<state.tools.length;i++){var tool=state.tools[i],key=state.active+':'+tool.id;alive[key]=true;
    var b=keep(tools,tools.items,key,function(){var n=button('tool-'+tool.id,'','app-command',{id:state.active,command:tool.command},'app-tool');n.style.display='flex';n.style.flexDirection='row';n.style.gap='6px';n.label=document.createElement('span');n.label.style.flex='1';n.label.style.height='20px';n.icon=document.createElement('img');n.icon.style.width='20px';n.icon.style.height='20px';n.appendChild(n.icon);n.appendChild(n.label);
@@ -187,6 +553,7 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
    var units=tool.title.replace(/[^\x00-\x7f]/g,'aa').length;var width=tool.compact&&tool.image!=='0'?40:Math.max(70,Math.min(240,units*7+(tool.image==='0'?24:48)));var gap=lastGroup&&lastGroup!==tool.group?14:0;b.style.marginLeft=gap+'px';lastGroup=tool.group;b.style.width=width+'px';
    b.style.display=!overflow&&toolWidth+gap+width+76<=state.toolbarRect.width?'flex':'none';if(b.style.display==='flex')toolWidth+=gap+width+6;else overflow=true;
   }prune(tools,tools.items,alive);if(!tools.more){tools.more=button('tool-more',frameworkText('更多 ▾'),'tool-more',{id:state.active,panel:'tool-more'},'app-tool');tools.appendChild(tools.more)}tools.more.textContent=frameworkText('更多 ▾');tools.more.style.width='70px';tools.more.style.display=overflow?'flex':'none';tools.appendChild(tools.more);
+  }else{if(chromeNodes.menu)live.menu=true;if(chromeNodes.tools){live.tools=true;chromeNodes.tools.style.display='none';}}
   for(var p=0;p<state.panels.length;p++){var panel=state.panels[p];if(panel.floating||panel.closed||(panel.group!=='0'&&!panel.tabActive))continue;var k=state.active+':panel:'+panel.id;live[k]=true;
    var box=keep(root,chromeNodes,k,function(){var n=document.createElement('div');n.className='chrome';n.title=document.createElement('div');n.title.className='panel-title';n.text=document.createElement('span');n.text.id='panel-title-'+panel.id;n.text.tabIndex=0;n.text.style.minWidth='0px';n.text.style.whiteSpace='nowrap';n.text.style.overflow='hidden';titleTip(n.text);n.text.style.flex='1';n.text.addEventListener('mousedown',function(){n.text.focus();send('panel-drag',{id:model.active,panel:n.panel.id})});n.title.appendChild(n.text);n.tabs=document.createElement('div');n.tabs.style.display='flex';n.tabs.style.flexDirection='row';n.tabs.style.minWidth='0px';n.title.appendChild(n.tabs);n.title.appendChild(button('panel-'+panel.id,'\uE8A7','panel-float',{id:state.active,panel:panel.id},'glyph'));var fold=button('fold-'+panel.id,'\uE70D','panel-collapse',{id:state.active,panel:panel.id},'glyph');n.title.appendChild(fold);n.appendChild(n.title);n.split=document.createElement('div');n.split.style.height='5px';n.split.className='splitter';n.split.addEventListener('mousedown',function(){send('panel-split',{id:model.active,panel:n.panel.id})});n.appendChild(n.split);return n;});box.panel=panel;place(box,panel.frame);if(!box.tabs){box.tabs=document.createElement('div');box.tabs.style.display='flex';box.tabs.style.flexDirection='row';box.title.appendChild(box.tabs)}while(box.tabs.firstChild)box.tabs.removeChild(box.tabs.firstChild);
    if(panel.group!=='0'){var members=state.panels.filter(function(p){return p.group===panel.group}),at=members.findIndex(function(p){return p.id===panel.id}),page=Math.max(1,Math.min(4,Math.floor(Math.max(80,panel.frame.width-124)/80))),start=Math.floor(Math.max(0,at)/page)*page;
@@ -196,16 +563,17 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
    if(panel.frame.width<4||panel.frame.height<=0)continue;
    var edgeKey='side:'+panel.region;live[edgeKey]=true;var edge=keep(root,chromeNodes,edgeKey,function(){var n=document.createElement('div');n.className='splitter';n.addEventListener('mousedown',function(){send('side-split',{id:model.active,panel:n.region===5?'left':n.region===9?'bottom':'right'})});return n;});edge.region=panel.region;place(edge,{x:panel.region===5?panel.frame.x+panel.frame.width-4:panel.frame.x,y:panel.frame.y,width:panel.region===9?panel.frame.width:4,height:panel.region===9?5:28});
   }
-  var status=keep(root,chromeNodes,'status',function(){var n=document.createElement('div');n.className='muted chrome';n.style.padding='4px 8px';return n;});live.status=true;place(status,state.statusRect);status.textContent=state.status||state.activeLabel+' · '+state.dpi+' DPI';prune(root,chromeNodes,live);if(panelFocus.indexOf('panel-tab-')===0){var focused=element(panelFocus);if(focused)focused.focus()}
+  var status=keep(root,chromeNodes,'status',function(){var n=document.createElement('div');n.className='muted chrome';n.style.padding='4px 8px';return n;});live.status=true;place(status,state.statusRect);status.textContent=state.status||state.activeLabel+' · '+state.dpi+' DPI';prune(root,chromeNodes,live);if(panelFocus.indexOf('panel-tab-')===0){var focused=element(panelFocus);if(focused)focused.focus()}chromeSignature=signature;
  }
  function titleTip(n){n.addEventListener('mouseenter',function(){send('tooltip',{id:n.id})});n.addEventListener('mouseleave',function(){send('tooltip-hide')});n.addEventListener('keydown',function(e){if(e.keyCode===112){e.preventDefault();if(n.id.indexOf('tab-')===0)send('tab-title',{id:n.id.slice(4)});else send('tooltip',{id:n.id})}else if(e.keyCode===27)send('tooltip-hide')})}
  function paintState(state) {
+  paintAI(state.ai);
   model=state;setTheme(state.dark);element('top').className='row'+(state.compact?' compact':'');var tabs=element('tabs'),alive={};
   for(var i=0;i<state.tabs.length;i++){var tab=state.tabs[i];alive[tab.id]=true;
    var row=keep(tabs,tabNodes,tab.id,function(){var n=document.createElement('div');n.className='tab';n.name=button('tab-'+tab.id,'','activate',{id:tab.id});titleTip(n.name);n.appendChild(n.name);n.close=button('close-'+tab.id,'\uE8BB','close',{id:tab.id},'tab-close glyph');n.appendChild(n.close);return n;});
    row.name.textContent=tab.title;row.name.className='tab-name';row.name.disabled=tab.closing;row.close.disabled=tab.closing;row.className='tab'+(tab.active?' active':'')+(tab.closing?' closing':'');row.style.display=tab.visible?'flex':'none';row.name.style.width=(state.tabWidth-26)+'px';
   }prune(tabs,tabNodes,alive);element('tabs').style.width=(state.tabWidth*state.tabCount)+'px';element('tab-more').style.display=state.tabOverflow?'flex':'none';element('window-max').className='window-button glyph'+(state.maxHover?' hovered':'')+(state.maxPressed?' pressed':'');element('window-max').textContent=state.maximized?'\uE923':'\uE922';
-  element('empty').style.display=state.tabs.length?'none':'flex';element('assistant').style.display=state.assistant?'flex':'none';element('assistant-toggle').className='host-tool'+(state.assistant?' active':'');
+  element('menu-row').style.display=state.chromeSuppressed?'none':'flex';element('assistant').style.width=(state.assistantWidth||380)+'px';element('empty').style.display=state.tabs.length?'none':'flex';element('assistant').style.display=state.assistant?'flex':'none';element('assistant-toggle').className='host-tool'+(state.assistant?' active':'');
   element('target').textContent=state.targetLabel||frameworkText('选择应用');element('command').textContent=state.commandTitle||state.command||frameworkText('选择操作');element('result').textContent=state.result||frameworkText('选择目标和操作后执行。');paintParams(state);element('schema').value=state.schema||'';element('log').value=state.log||'';updateInvoke();element('cancel').disabled=!state.canCancel;
   if(element('params').value!==state.params)element('params').value=state.params;paintChrome(state);
  }
@@ -247,11 +615,27 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
    actions.appendChild(button('confirm-yes',frameworkText('允许'),'confirm',{token:popupToken,answer:'yes'},'primary'));
   } else actions.appendChild(button('popup-dismiss',frameworkText('关闭'),'dismiss',{token:popupToken}));
  }
- ui.onmessage=function(state) {if(state.texts){if(languageRevision&&BigInt(state.languageRevision)<BigInt(languageRevision))return;if(languageRevision!==state.languageRevision){languageRevision=state.languageRevision;applyLanguage(state);element('advanced-toggle').textContent=frameworkText(advanced?'高级：参数、事务与详细记录 ▾':'高级：参数、事务与详细记录 ▸')}} if(state.type==='popup')paintPopup(state);else if(state.type==='state')paintState(state);else if(state.type==='command-states')for(var i=0;i<state.items.length;i++){var item=state.items[i],b=popupCommands[item.command];if(b)applyCommand(b,item);} };
+ var projectionPending=null,projectionSeen=0n,generalProjection=null;
+ function projectionPart(p){
+  var g;try{g=BigInt(p.generation)}catch(e){projectionPending=null;return;}
+  if(p.index===0){if(g<=projectionSeen){projectionPending=null;return;}projectionSeen=g;element('ai-projection-proof').textContent='';projectionPending={generation:p.generation,hash:p.hash,count:p.count,bytes:p.bytes,next:0,size:0,parts:[]};}
+  var q=projectionPending;
+  if(!q||q.generation!==p.generation||q.hash!==p.hash||q.count!==p.count||q.bytes!==p.bytes||p.index!==q.next||p.count<1||p.count>512||p.bytes>2097152||typeof p.hash!=='string'||p.hash.length!==64||typeof p.text!=='string'||typeof p.chunk_bytes!=='number'||p.chunk_bytes<1||p.chunk_bytes>8192||p.text.length>p.chunk_bytes){projectionPending=null;return;}
+  q.size+=p.chunk_bytes;if(q.size>q.bytes){projectionPending=null;return;}q.parts.push(p.text);q.next++;
+  if(q.next===q.count){projectionPending=null;if(q.size!==q.bytes)return;var text=q.parts.join('');q.parts=[];try{var full=JSON.parse(text);if(full.type!=='state')return;ui.onmessage(full);if(full.ai&&full.ai.enabled&&full.ai.general)generalProjection={generation:q.generation,hash:q.hash,next:0};else element('ai-projection-proof').textContent=q.generation+':'+q.hash;}catch(e){element('ai-projection-proof').textContent='';}}
+ }
+ function generalProjectionPart(p){
+  var q=generalProjection;if(!q||p.generation!==q.generation||p.hash!==q.hash||p.part!==q.next)return;
+  element('ai-projection-proof').textContent='';
+  try{if(p.part===0)paintGeneralChoices(model.ai);else paintGeneral(model.ai);q.next++;
+   if(q.next===2){generalProjection=null;element('ai-projection-proof').textContent=q.generation+':'+q.hash;}
+  }catch(e){generalProjection=null;element('ai-projection-proof').textContent='';throw e;}
+ }
+ ui.onmessage=function(state) {if(state.type==='general-projection'){generalProjectionPart(state);return;}if(state.type==='projection'){projectionPart(state);return;}if(state.texts){if(languageRevision&&BigInt(state.languageRevision)<BigInt(languageRevision))return;if(languageRevision!==state.languageRevision){languageRevision=state.languageRevision;applyLanguage(state);element('advanced-toggle').textContent=frameworkText(advanced?'高级：参数、事务与详细记录 ▾':'高级：参数、事务与详细记录 ▸')}} if(state.type==='popup')paintPopup(state);else if(state.type==='state')paintState(state);else if(state.type==='command-states')for(var i=0;i<state.items.length;i++){var item=state.items[i],b=popupCommands[item.command];if(b)applyCommand(b,item);} };
  document.addEventListener('keydown',function(event) {
   if(event.keyCode===27){send('dismiss',{token:popupToken});return;}
   if(event.defaultPrevented||event.keyCode===13||event.keyCode===32||!model||!model.active)return;
-  var active=document.activeElement,id=active?active.id:'',editing=id==='params'||id==='schema'||id==='log'||id.indexOf('param-')===0;
+  var active=document.activeElement,id=active?active.id:'',editing=id.indexOf('ai-')===0||id==='params'||id==='schema'||id==='log'||id.indexOf('param-')===0;
   if(editing&&(event.keyCode<=46||event.ctrlKey&&[65,67,86,88,89,90].indexOf(event.keyCode)>=0))return;
   send('app-shortcut',{id:model.active,key:String(event.keyCode),modifiers:String((event.ctrlKey?1:0)+(event.shiftKey?2:0)+(event.altKey?4:0)),editing:editing?'1':'0'});
  });
@@ -260,5 +644,5 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
   node.addEventListener('mouseleave',function(){send('tooltip-hide');});
  });
  send('ready');
-})();
+
 </script></body></html>

@@ -6,7 +6,8 @@
 #include <string.h>
 #include "ui_framework/components.h"
 #include "ui_framework/opengl.h"
-#include "command_json.h"
+#include "../p2_support.h"
+#include <math.h>
 #ifdef UI_SAMPLE_API4
 #include "ui_framework/menus.h"
 #endif
@@ -23,7 +24,10 @@ typedef struct sample {
     unsigned operations,version;
     struct {uint64_t id;char column[33],text[256];} changes[64];
     size_t change_count;
-    char snapshot[512];
+    char snapshot[512];p2_app_t capabilities;uint64_t revision,view_revision;
+    char name[4097],mode[32],notes[4097];double size;int enabled,close_posted;
+    struct sample_form *forms;
+
 } sample_t;
 typedef struct sample_row { ui_row_t row; ui_cell_t cells[16]; char title[256],text[16][80]; } sample_row_t;
 static const char *commands[]={"demo.dialog","demo.refresh","demo.submit","demo.edit","demo.select","demo.rename","demo.context","demo.cancel"};
@@ -45,7 +49,7 @@ static DWORD WINAPI worker(void *data)
             (void)ui_workspace_post_thumbnail(s->context.workspace,s->context.instance_id,j->component,&result);free(pixels);free(j);
             SetEvent(s->wake);}
     }
-    (void)ui_workspace_post_close_complete(s->context.workspace,s->context.instance_id,UI_APP_CLOSE_ALLOW);return 0;
+    return 0;
 }
 static void source(ui_component_t *component,const ui_component_query_t *q,void *data)
 {
@@ -71,40 +75,7 @@ static void source(ui_component_t *component,const ui_component_query_t *q,void 
     batch.size=sizeof(batch);batch.component_generation=q->component_generation;batch.request_id=q->request_id;batch.parent_id=q->parent_id;batch.first=q->first;batch.total_count=total;batch.rows=rows;batch.row_count=count;
     (void)ui_component_submit(component,&batch);free(rows);free(storage);
 }
-static void run(ui_host_t *host,uint64_t request,const char *command,const char *params,const char *origin,void *data)
-{
-    sample_t *s=(sample_t *)data;char status[128];(void)origin;++s->operations;
-    if(!strcmp(command,"demo.close_refuse"))s->refuse_close=1;
-    if(!strcmp(command,"demo.close_allow"))s->refuse_close=0;
-    if(!strcmp(command,"demo.dialog"))(void)ui_component_show_dialog(s->dialog);
-    if(!strcmp(command,"demo.context")){uint64_t id=uj_u64(params,"id");(void)ui_component_show_menu(id>=9007199254741000ULL?s->table:s->tree,id,
-#ifdef UI_SAMPLE_API4
-        "Tools/节点"
-#else
-        "节点"
-#endif
-        );}
-    if(!strcmp(command,"demo.cancel"))(void)ui_component_close_dialog(s->dialog);
-    if(!strcmp(command,"demo.submit")){ui_component_state_t state={0};ui_cell_t size={0};ui_component_t *target=s->form;state.size=sizeof(state);size.size=sizeof(size);
-        (void)ui_component_get_state(s->dialog,&state);if(state.modal)target=s->dialog;
-        if(ui_component_get_field(target,"size",&size)==UI_STATUS_OK&&*size.text&&strtod(size.text,NULL)<=0){
-            (void)ui_component_set_error(target,"size","尺寸必须大于零");(void)ui_host_reply(host,request,0,"{\"error\":\"size must be positive\"}");return;}
-        (void)ui_component_accept_fields(target);if(target==s->dialog)(void)ui_component_close_dialog(target);}
-    if(!strcmp(command,"demo.edit")||!strcmp(command,"demo.rename")){char column[33]={0},value[256];uint64_t id=uj_u64(params,"id");size_t at;
-        if(!id||!uj_get(params,"text",value,sizeof(value))||(!strcmp(command,"demo.edit")&&!uj_get(params,"column",column,sizeof(column)))){
-            (void)ui_host_reply(host,request,0,"{\"error\":\"invalid edit payload\"}");return;}
-        for(at=0;at<s->change_count;++at)if(s->changes[at].id==id&&!strcmp(s->changes[at].column,column))break;
-        if(at==64){(void)ui_host_reply(host,request,0,"{\"error\":\"demo edit capacity reached\"}");return;}
-        if(at==s->change_count)++s->change_count;s->changes[at].id=id;strcpy_s(s->changes[at].column,33,column);strcpy_s(s->changes[at].text,256,value);
-        if(!*column){ui_row_t row={0};row.size=sizeof(row);row.id=id;row.title=value;row.has_children=id<=100;row.content_version=s->version;
-            (void)ui_component_update_rows(s->tree,&row,1);}
-        else{ui_component_state_t state={0};state.size=sizeof(state);
-            if(ui_component_get_state(s->table,&state)==UI_STATUS_OK)(void)ui_component_query(s->table,0,state.first,20,state.first_column,state.column_count);}}
-    if(!strcmp(command,"demo.refresh")){ui_component_state_t state={0};state.size=sizeof(state);++s->version;
-        if(ui_component_get_state(s->table,&state)==UI_STATUS_OK)(void)ui_component_query(s->table,0,state.first,20,state.first_column,state.column_count);}
-    snprintf(status,sizeof(status),"实例 %llu · 操作 %u · 图片版本 %u",(unsigned long long)s->context.instance_id,s->operations,s->version);
-    (void)ui_component_set_text(s->status,status);(void)ui_host_reply(host,request,1,"{\"ok\":true}");
-}
+#include "capabilities.inc"
 static const char *snapshot(void *data)
 {
     sample_t *s=(sample_t *)data;ui_component_state_t t={0},tree={0};ui_image_stats_t images={0};t.size=tree.size=sizeof(t);images.size=sizeof(images);
@@ -134,11 +105,8 @@ static ui_status_t UI_APP_CALL create(const ui_app_context_t *context,void **out
     layout.left_sidebar_min_width=layout.right_sidebar_min_width=220;
     layout.left_sidebar_max_width=layout.right_sidebar_max_width=300;layout.collapsed_tag_width=32;
     status=ui_host_set_layout(context->host,&layout);if(status!=UI_STATUS_OK)return status;
-    for(i=0;i<8;++i){ui_command_desc_t c={0};ui_menu_item_desc_t m={0};c.size=sizeof(c);c.id=commands[i];c.title=titles[i];c.params_schema_json="{\"type\":\"object\"}";c.handler=run;c.user_data=s;
-        #ifdef UI_SAMPLE_API4
-        if(i==1){c.shortcut_key='O';c.shortcut_modifiers=UI_INPUT_MODIFIER_CONTROL;}
-#endif
-        if(i==0){c.shortcut_key='D';c.shortcut_modifiers=UI_INPUT_MODIFIER_CONTROL;}status=ui_host_register_command(context->host,&c);if(status!=UI_STATUS_OK)return status;
+    status=sample_capabilities(s,context);if(status)return status;
+    for(i=0;i<8;++i){ui_menu_item_desc_t m={0};
         m.size=sizeof(m);m.id=commands[i];m.title=titles[i];m.menu_path=
 #ifdef UI_SAMPLE_API4
 "Tools";
@@ -172,8 +140,8 @@ item.command_id=commands[i];item.order=(int)i;
      for(i=0;i<13;++i){ui_toolbar_item_desc_t t={0};char id[40],title[80];snprintf(id,sizeof(id),"feature.tool.%02zu",i);snprintf(title,sizeof(title),"工具 %02zu 中文%s",i,i%3==0?"长标题示例":"");
         t.size=sizeof(t);t.id=id;t.title=title;t.toolbar_id=i<5?toolbar.id:i<9?"features.edit":"features.view";t.command_id=commands[i%8];t.order=(int)i+2;
         status=ui_host_register_toolbar_item(context->host,&t);if(status!=UI_STATUS_OK)return status;}
-     for(i=0;i<2;++i){ui_command_desc_t c={0};c.size=sizeof(c);c.id=i?"demo.close_allow":"demo.close_refuse";c.title=c.id;c.handler=run;c.user_data=s;
-        status=ui_host_register_command(context->host,&c);if(status!=UI_STATUS_OK)return status;}}
+     for(i=0;i<2;++i){ui_menu_item_desc_t m={0};m.size=sizeof(m);m.id=m.command_id=i?"demo.close_allow":"demo.close_refuse";m.title=m.id;m.menu_path="Tools/Close test";status=ui_host_register_menu_item(context->host,&m);if(status)return status;}}
+
 #endif
     for(i=0;i<3;++i){panel.size=sizeof(panel);panel.entry_url="";panel.id=i==0?"tree":i==1?"form":"drawing";panel.title=i==0?"按需树":i==1?"属性":"绘图内容槽";
         panel.kind=i==2?UI_PANEL_FLOATING:UI_PANEL_SIDEBAR;panel.dock_region=i==0?UI_LAYOUT_REGION_LEFT_SIDEBAR:UI_LAYOUT_REGION_RIGHT_SIDEBAR;panel.preferred_width=i==2?360:250;
@@ -195,25 +163,22 @@ static void frame(ui_surface_t *surface,void *data)
 }
 static ui_status_t UI_APP_CALL mount(void *data,const ui_app_context_t *context)
 {
-    sample_t *s=(sample_t *)data;ui_shell_t *shell=ui_host_get_shell(context->host);ui_surface_desc_t surface={0};ui_opengl_config_t gl={0};ui_status_t status;size_t i;s->context=*context;
-    s->worker=CreateThread(NULL,0,worker,s,0,NULL);if(!s->worker)return UI_STATUS_PLATFORM_ERROR;
+    sample_t *s=(sample_t *)data;ui_shell_t *shell=ui_host_get_shell(context->host);ui_surface_desc_t surface={0};ui_opengl_config_t gl={0};ui_status_t status;size_t i;int no_gl=0;(void)i;s->context=*context;
     {ui_image_id_t icon;status=ui_image_load_resource(context,"icon.png",&icon);if(status!=UI_STATUS_OK)return status;
      (void)ui_host_set_item_image(context->host,"demo.dialog",icon);(void)ui_host_set_item_image(context->host,"demo.refresh",icon);
 #ifdef UI_SAMPLE_API4
      for(i=0;i<13;++i){char id[40];snprintf(id,sizeof(id),"feature.tool.%02zu",i);(void)ui_host_set_item_image(context->host,id,icon);}
 #endif
     }
-    for(i=0;i<8;++i){ui_assistant_command_desc_t c={0};c.size=sizeof(c);c.id=commands[i];c.permission=UI_ASSISTANT_PERMISSION_EDIT;c.params_schema_json="{\"type\":\"object\"}";status=ui_assistant_register_command(context->assistant,&c);if(status!=UI_STATUS_OK)return status;}
     status=ui_component_mount(s->table,ui_shell_get_content_slot(shell,NULL));if(status!=UI_STATUS_OK)return status;
     status=ui_component_mount(s->tree,ui_shell_get_content_slot(shell,"tree"));if(status!=UI_STATUS_OK)return status;
     status=ui_component_mount(s->form,ui_shell_get_content_slot(shell,"form"));if(status!=UI_STATUS_OK)return status;
 #ifdef UI_SAMPLE_API4
     if(GetEnvironmentVariableA("UI_FEATURES_FAIL_MOUNT",NULL,0))return UI_STATUS_PLATFORM_ERROR;
-    {ui_run_mode_t mode;ui_assistant_command_desc_t c={0};c.size=sizeof(c);c.permission=UI_ASSISTANT_PERMISSION_EDIT;
-     c.id="demo.close_refuse";(void)ui_assistant_register_command(context->assistant,&c);c.id="demo.close_allow";(void)ui_assistant_register_command(context->assistant,&c);
-     (void)ui_host_get_run_mode(context->host,&mode);if(mode==UI_RUN_OFFSCREEN&&GetEnvironmentVariableA("UI_FEATURES_NO_GL",NULL,0))return UI_STATUS_OK;}
+    {ui_run_mode_t mode;(void)ui_host_get_run_mode(context->host,&mode);no_gl=mode==UI_RUN_OFFSCREEN&&GetEnvironmentVariableA("UI_FEATURES_NO_GL",NULL,0);}
+
 #endif
-    surface.size=sizeof(surface);surface.id="drawing";surface.kind=UI_SURFACE_OPENGL;surface.visible=1;gl.size=sizeof(gl);gl.legacy_context=1;
+    if(!no_gl){surface.size=sizeof(surface);surface.id="drawing";surface.kind=UI_SURFACE_OPENGL;surface.visible=1;gl.size=sizeof(gl);gl.legacy_context=1;
 #ifdef UI_SAMPLE_API4
     {ui_run_mode_t mode;gl.legacy_context=0;gl.major_version=3;gl.minor_version=3;gl.profile=UI_OPENGL_PROFILE_COMPATIBILITY;
      (void)ui_host_get_run_mode(context->host,&mode);surface.rect=(ui_rect_t){0,0,360,240};s->canvas=mode==UI_RUN_OFFSCREEN?
@@ -222,16 +187,18 @@ static ui_status_t UI_APP_CALL mount(void *data,const ui_app_context_t *context)
     s->canvas=ui_opengl_surface_create(context->host,&surface,&gl,&status);
 #endif
     if(!s->canvas)return status;
-    (void)ui_surface_set_callbacks(s->canvas,NULL,frame,s);return ui_content_slot_attach_surface(ui_shell_get_content_slot(shell,"drawing"),s->canvas);
+    status=ui_surface_set_callbacks(s->canvas,NULL,frame,s);if(status)return status;status=ui_content_slot_attach_surface(ui_shell_get_content_slot(shell,"drawing"),s->canvas);if(status)return status;}
+    status=p2_mount(&s->capabilities,context);if(status)return status;status=sample_bindings(s);if(status)return status;
+    s->worker=CreateThread(NULL,0,worker,s,0,NULL);return s->worker?UI_STATUS_OK:UI_STATUS_PLATFORM_ERROR;
 }
 static void UI_APP_CALL active(void *data,int active_value)
 {sample_t *s=(sample_t *)data;s->active=active_value;if(s->active&&s->canvas)(void)ui_surface_invalidate(s->canvas);}
 static ui_app_close_decision_t UI_APP_CALL close_app(void *data,ui_app_close_reason_t reason)
-{sample_t *s=(sample_t *)data;(void)reason;if(s->refuse_close)return UI_APP_CLOSE_REFUSE;s->closing=1;SetEvent(s->stop);return s->worker?UI_APP_CLOSE_WAIT:UI_APP_CLOSE_ALLOW;}
+{sample_t *s=(sample_t *)data;(void)reason;if(s->refuse_close)return UI_APP_CLOSE_REFUSE;s->closing=s->capabilities.closing=1;SetEvent(s->stop);return s->worker&&WaitForSingleObject(s->worker,0)!=WAIT_OBJECT_0?UI_APP_CLOSE_WAIT:UI_APP_CLOSE_ALLOW;}
 static void UI_APP_CALL unmount(void *data)
-{sample_t *s=(sample_t *)data;SetEvent(s->stop);if(s->worker){WaitForSingleObject(s->worker,INFINITE);CloseHandle(s->worker);s->worker=NULL;}if(s->canvas){ui_surface_destroy(s->canvas);s->canvas=NULL;}}
+{sample_t *s=(sample_t *)data;SetEvent(s->stop);if(s->worker){if(WaitForSingleObject(s->worker,0)!=WAIT_OBJECT_0)abort();CloseHandle(s->worker);s->worker=NULL;}if(s->canvas){ui_surface_destroy(s->canvas);s->canvas=NULL;}}
 static void UI_APP_CALL destroy(void *data)
-{sample_t *s=(sample_t *)data;job_t *j;while(s->head){j=s->head;s->head=j->next;free(j);}if(s->wake)CloseHandle(s->wake);if(s->stop)CloseHandle(s->stop);DeleteCriticalSection(&s->lock);free(s);}
+{sample_t *s=(sample_t *)data;job_t *j;p2_dispose(&s->capabilities);free(s->forms);while(s->head){j=s->head;s->head=j->next;free(j);}if(s->wake)CloseHandle(s->wake);if(s->stop)CloseHandle(s->stop);DeleteCriticalSection(&s->lock);free(s);}
 static ui_status_t UI_APP_CALL shutdown_module(void){return UI_STATUS_OK;}
 UI_APP_EXPORT const ui_app_descriptor_t *UI_APP_CALL ui_app_query_v1(void)
 {static const ui_app_descriptor_t d={sizeof(d),1,

@@ -135,7 +135,7 @@ $plan = Get-Content "$evidenceDirectory/test-plan.json" -Raw | ConvertFrom-Json
 $expected = @($plan.tests | ForEach-Object name)
 if (!$expected.Count) { throw 'Empty configured CTest plan' }
 if ($P1ProcessDiagnostic -and ($Configuration -notin @('webview2','osmesa') -or $expected.Count -ne 2 -or @(Compare-Object @('ui_stateful_components_light','ui_instance_language_light') $expected).Count)) { throw 'P1 diagnostic requires the exact original two Light cases' }
-[ordered]@{maintained_api=9; policy='current_only'; historical_sdk_api_callers_and_packages='not_maintained_or_gated'; existing_loader_behavior='not_a_future_compatibility_promise'} | ConvertTo-Json | Set-Content "$evidenceDirectory/compatibility-policy.json"
+[ordered]@{maintained_api=10; policy='current_only'; historical_sdk_api_callers_and_packages='not_maintained_or_gated'; existing_loader_behavior='not_a_future_compatibility_promise'} | ConvertTo-Json | Set-Content "$evidenceDirectory/compatibility-policy.json"
 $env:GALLIUM_DRIVER = 'llvmpipe'
 $runtimeTests = $UiCiRuntimeTests
 $phases = if ($P1ProcessDiagnostic) { @('provider') } elseif ($Configuration -eq 'webview2') { @('wgl','provider','runtime') } elseif ($Configuration -eq 'osmesa') { @('wgl','provider') } else { @('all') }

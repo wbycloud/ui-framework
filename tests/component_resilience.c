@@ -2,6 +2,7 @@
 #define UI_HOST_TEST 1
 #include "../examples/framework_host/main.c"
 #include "ui_framework/components.h"
+#include "ui_framework/capability.h"
 #include <psapi.h>
 
 static int failures;
@@ -70,7 +71,10 @@ static void layout_transition(host_window_t *window,ui_app_instance_info_t *a,ui
                 SendMessageW((HWND)ui_web_view_native_handle(view),WM_CHAR,'!',0);
                 SendMessageW((HWND)ui_web_view_native_handle(view),WM_KEYDOWN,VK_BACK,0);}
             CHECK(ui_component_get_presentation(form,"field-name",&after)==UI_STATUS_OK&&!strcmp(before.text_utf8,after.text_utf8));}
-        click(dialog,"field-name");insert(dialog,"allowed");field_equals(dialog,"allowed");
+        /* The migrated dialog projects a valid business name, rather than an
+           assumed empty editor. Replace the complete value; retain the exact
+           editable-modal assertion and all existing ranges/timing. */
+        click(dialog,"field-name");key(dialog,'A',UI_INPUT_MODIFIER_CONTROL);insert(dialog,"allowed");field_equals(dialog,"allowed");
         CHECK(ui_workspace_activate(window->workspace,other)==UI_STATUS_OK);
         CHECK(ui_workspace_activate(window->workspace,a->instance_id)==UI_STATUS_OK);
         CHECK(ui_component_close_dialog(dialog)==UI_STATUS_OK);
@@ -130,6 +134,20 @@ static void close_one(host_window_t *window,uint64_t id)
     CHECK(ui_workspace_close(window->workspace,id,UI_APP_CLOSE_TAB)==UI_STATUS_OK);
     while(get_instance(window,id,&info)&&GetTickCount64()<end){pump_for(2);ui_workspace_poll(window->workspace);}
     CHECK(!get_instance(window,id,&info));
+}
+static void refresh_program_denied(host_window_t *window,ui_app_instance_info_t *instance)
+{
+    ui_cap_target_t target={0};ui_cap_result_t result={0};uint64_t request=0,call=0;
+    /* API10 migrated examples reject programmatic Assistant/view mutations.
+     * Exercise the negative gate and prove the original image version remains;
+     * the legitimate view operation is covered by p2_generic's private fixture
+     * and the concentrated physical checklist. No range/timing is relaxed. */
+    CHECK(ui_workspace_invoke(window->workspace,instance->instance_id,"demo.refresh","{}",&request)==UI_STATUS_PERMISSION_DENIED);
+    target.size=sizeof(target);target.version=1;CHECK(ui_capability_bind(instance->host,"demo.view",&target)==UI_STATUS_OK);
+    CHECK(ui_capability_prepare(instance->host,"demo.view.read",&target,"{}",&call)==UI_STATUS_OK);
+    CHECK(ui_capability_dispatch(instance->host,call)==UI_STATUS_OK);result.size=sizeof(result);result.version=1;
+    CHECK(ui_capability_get_result(instance->host,call,&result)==UI_STATUS_OK&&result.outcome==UI_CAP_OK&&result.output_json&&strstr(result.output_json,"\"image_version\":1,"));
+    CHECK(ui_capability_forget(instance->host,call)==UI_STATUS_OK);
 }
 static void style_source(ui_component_t *c,const ui_component_query_t *q,void *data)
 {
@@ -197,7 +215,7 @@ int wmain(int argc,wchar_t **argv)
     puts("record,elapsed_ms,iterations,instance,working_set,private_bytes,handles,gdi,user,table_dom,table_rows,table_bytes,tree_dom,tree_bytes,image_bytes,image_count");
     started=GetTickCount64();next_sample=started;
     while(!failures&&GetTickCount64()-started<(ULONGLONG)seconds*1000){
-        ui_app_instance_info_t *active=iterations%2?&b:&a;ui_component_t *table=ui_component_find(active->host,"table"),*tree=ui_component_find(active->host,"tree");uint64_t request;
+        ui_app_instance_info_t *active=iterations%2?&b:&a;ui_component_t *table=ui_component_find(active->host,"table"),*tree=ui_component_find(active->host,"tree");
         CHECK(ui_workspace_activate(window.workspace,active->instance_id)==UI_STATUS_OK);
         CHECK(ui_component_query(table,0,(iterations*997u)%99988u,12,iterations%13,4)==UI_STATUS_OK);
         {ui_element_presentation_t p={0};ui_input_event_t e={0};p.size=sizeof(p);
@@ -206,7 +224,7 @@ int wmain(int argc,wchar_t **argv)
             CHECK(ui_component_dispatch_input(table,&e)==UI_STATUS_OK);e.modifiers=UI_INPUT_MODIFIER_SHIFT;
             CHECK(ui_component_dispatch_input(table,&e)==UI_STATUS_OK);}
         CHECK(ui_component_expand(tree,iterations%100+1,(iterations/100)%2==0)==UI_STATUS_OK);
-        if(iterations%8==0)CHECK(ui_workspace_invoke(window.workspace,active->instance_id,"demo.refresh","{}",&request)==UI_STATUS_OK);
+        if(iterations%8==0)refresh_program_denied(&window,active);
         pump_for(5);ui_workspace_poll(window.workspace);++iterations;
         if(GetTickCount64()>=next_sample){sample_resources(&a,GetTickCount64()-started,iterations);sample_resources(&b,GetTickCount64()-started,iterations);next_sample=GetTickCount64()+1000;}
         if(iterations%200==0){uint64_t old=b.instance_id;close_one(&window,old);open_path(&window,argv[1]);pump_for(20);

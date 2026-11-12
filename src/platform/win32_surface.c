@@ -171,7 +171,7 @@ static void surface_emit_codepoint(ui_surface_t *surface, uint32_t codepoint,
 {
     ui_input_event_t event;
     char text[5];
-    if (codepoint == 0u) return;
+    if (codepoint == 0u || surface->input == NULL) return;
     if (codepoint <= 0x7fu) {
         text[0] = (char)codepoint; text[1] = '\0';
     } else if (codepoint <= 0x7ffu) {
@@ -200,15 +200,16 @@ static int surface_dispatch_native_input(ui_surface_t *surface, HWND hwnd,
                                           LPARAM l_param)
 {
     ui_win32_surface_t *platform;
-    ui_input_event_t event;
+    ui_input_event_t event;int qualified=ui_inputs_current_source();
     if (surface == NULL || surface->platform == NULL) return 0;
     platform = (ui_win32_surface_t *)surface->platform;
     if (message == WM_CAPTURECHANGED) {
-        if ((HWND)l_param != hwnd) platform->captured_buttons = 0;
+        if ((HWND)l_param != hwnd){platform->captured_buttons=0;memset(&surface->input_chain,0,sizeof(surface->input_chain));ui_capabilities_human_invalidate(surface->host,surface);}
         return 0;
     }
     if (message == WM_KILLFOCUS || message == WM_CANCELMODE) {
         platform->pending_high_surrogate = 0;
+        memset(&surface->input_chain,0,sizeof(surface->input_chain));ui_capabilities_human_invalidate(surface->host,surface);
         platform->captured_buttons = 0;
         if (GetCapture() == hwnd) ReleaseCapture();
         return 0;
@@ -219,9 +220,11 @@ static int surface_dispatch_native_input(ui_surface_t *surface, HWND hwnd,
     if (!surface->host->dispatch_blocked && (message == WM_KEYDOWN || message == WM_SYSKEYDOWN)) {
         uint32_t modifiers = input_modifiers();
         if ((uintptr_t)l_param & ((uintptr_t)1u << 29)) modifiers |= UI_INPUT_MODIFIER_ALT;
+        {ui_input_event_t key={0};key.size=sizeof(key);key.kind=UI_INPUT_KEY_DOWN;key.key_code=(uint32_t)w_param;key.modifiers=modifiers;
+         if(ui_inputs_surface(surface,&key,qualified&&!(l_param&(1L<<30))))return 1;}
         if (ui_host_dispatch_shortcut(surface->host, (uint32_t)w_param, modifiers, 0) != 0) return 1;
     }
-    if (surface->input == NULL || surface->host->dispatch_blocked) {
+    if (surface->host->dispatch_blocked) {
         platform->pending_high_surrogate = 0;
         return 0;
     }
@@ -252,7 +255,7 @@ static int surface_dispatch_native_input(ui_surface_t *surface, HWND hwnd,
                 if (GetCapture() != hwnd) SetCapture(hwnd);
             } else {
                 platform->captured_buttons &= ~mask;
-                if (!platform->captured_buttons && GetCapture() == hwnd) ReleaseCapture();
+
             }
         }
         break;
@@ -278,6 +281,10 @@ static int surface_dispatch_native_input(ui_surface_t *surface, HWND hwnd,
     case WM_CHAR: case WM_SYSCHAR: {
         uint32_t value = (uint16_t)w_param;
         uint16_t previous = platform->pending_high_surrogate;
+        if (surface->input == NULL) {
+            platform->pending_high_surrogate = 0;
+            return 0;
+        }
         if ((uintptr_t)l_param & ((uintptr_t)1u << 29)) event.modifiers |= UI_INPUT_MODIFIER_ALT;
         platform->pending_high_surrogate = 0;
         if (value >= 0xd800u && value <= 0xdbffu) {
@@ -295,6 +302,10 @@ static int surface_dispatch_native_input(ui_surface_t *surface, HWND hwnd,
     default:
         return 0;
     }
+    {int handled=ui_inputs_surface(surface,&event,qualified);
+     if(event.kind==UI_INPUT_POINTER_UP&&!platform->captured_buttons&&GetCapture()==hwnd)ReleaseCapture();
+     if(handled)return 1;}
+    if(!surface->input)return 0;
     ui_dispatch_enter(surface->host);
     surface->input(surface, &event, surface->input_user_data);
     ui_dispatch_leave(surface->host);

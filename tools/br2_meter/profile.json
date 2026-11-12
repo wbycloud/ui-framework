@@ -1,0 +1,12 @@
+{
+  "profile": "deepseek-v41-responses-1017-v1",
+  "model": "deepseek-flash",
+  "model_version": "DeepSeek-V4.1-Flash-1017",
+  "recipe_archive_sha256": "BF40407077C893BA51DCFE2D015C457198CFF8C9F01923FCBAD4B11ACD01E9CC",
+  "tokenizer_sha256": "81F64D1248A68CE3663E07AB3EE48B851E5DF0E32D27CB98E4C9A268151E8D99",
+  "output_limit": 4096,
+  "request_bytes_limit": 131072,
+  "response_bytes_limit": 1024,
+  "component_commit_limit_bytes": 134217728,
+  "recipe_sources": "0.2.0 official source, text-only, HTTP disabled"
+}

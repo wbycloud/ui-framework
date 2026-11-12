@@ -1,10 +1,12 @@
 # 构建与验证
 
-本项目的实际 UI 目标是 Windows x64。当前 SDK 为 0.9.0 开发源码，最近稳定标签仍是 `v0.1.0`。Windows 默认构建 Web 独立宿主 `framework_host.exe`、共享运行库 `ui_framework.dll`、打包器、以当前SDK/API9构建的EDA、Web Counter、generic_components和framework_features功能应用包；同时保留 C11 静态框架、原生嵌入式 EDA 和核心/Win32 测试。默认轻量 Web 引擎需要另行准备固定依赖，WebView2 默认关闭。应用 API/ABI、包格式和生命周期见 [应用开发标准](application-development-standard.md)，当前升级见[0.8→0.9迁移](migration-v0.8-to-v0.9.md)；更早版本按对应历史指南迁移。
+当前开发接口为SDK 0.10.0开发版、API10、标准10、ABI1和包格式1。Windows x64默认构建正式宿主、生产运行库、打包器及维护示例，另保留静态/原生嵌入路径。当前迁移和通用能力接入分别见指南。[迁移](migration-v0.9-to-v0.10.md)、[应用开发标准](application-development-standard.md)、[通用助手接入](xuanshu-general-assistant-integration.md)
 
-API5已有能力见[菜单与离屏](framework-menu-offscreen.md)、[通用Web](generic-web-ui.md)及[历史验收](validation/api5-validation.md)。当前API9接口迁移见[0.8→0.9](migration-v0.8-to-v0.9.md)、[布局](workspace-layout.md)及[当前API9验收](validation/instance-language-validation.md)。历史验收节和冻结源码保留原结果，不作为当前测试状态或未来兼容承诺。当前维护范围见[版本政策](version-policy.md)，本轮结果见[实例语言验收](validation/instance-language-validation.md)。
+本地匹配冻结为`build/xuanshu-general-layout-20261112-6b37c1`，identity SHA256为`2C447E95741824E2C2A94E3EF91EC1782CF75C5870E262D7831C44989C7029CA`。当前公共头范围与清单匹配。API9、P2首批及后续各阶段运行保留自己的源码/程序身份。[匹配交付清单](xuanshu-general-assistant-delivery-manifest.md)、[限定复审](validation/xuanshu-general-layout-independent-review.md)
 
-最新实例语言源码复核和本地SDK交付见[2026-10-09记录](validation/instance-language-current-validation.md)，API9首次实现验收保持原版本/失败/环境。使用同一开发快照的头文件、导入库、DLL、宿主和.uapp；先核对归档及逐文件哈希，再执行解包产物。本机结果不能覆盖b6a36fee的托管失败或替代当前源码Session0/严格无登录/物理条件。
+构建新的当前源码会产生独立程序身份。开发者先核对源文件及配套头、导入库、DLL和宿主，再选择构建目标。现有本机结果与托管CI、当前设备/Session0或真实服务各有适用范围。[版本政策](version-policy.md)
+
+能力层使用仓库内固定yyjson，Service使用固定SQLite，CMake离线核对源文件哈希。Light、WebView2、OSMesa及本地计量的依赖按下文准备，构建不会自动下载。
 
 ## 1. 构建环境
 
@@ -58,7 +60,7 @@ Web 外壳提供打开/关闭入口，应用菜单和工具入口跟随当前标
 
 ### 2.1 打包自己的应用
 
-应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的 API 宏是 9；使用当前接口的应用将清单与 DLL descriptor 一致声明为9，历史SDK/API和原包不再属于维护及专项回归范围。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
+应用模块使用 [`application.h`](../include/ui_framework/application.h)，导出 `ui_app_query_v1`，链接共享框架的 `ui_framework_runtime.lib`，并用 `UI_FRAMEWORK_BUILD_SHARED` 编译；不要链接供嵌入式应用使用的静态 `ui_framework.lib`。CMake 模块目标链接 `ui_framework_shared`，公共 include 路径与 shared 定义由该目标传递。当前头文件的API宏是10，使用当前接口的应用将清单与DLL descriptor一致声明为10，历史SDK/API和原包不再属于维护及专项回归范围。清单存于 staging 目录外，staging 只放 module 和资源。构建自动生成 `build/web-shell/eda_package`，内容为：
 
 ```text
 minimal_eda_app.dll
@@ -91,6 +93,24 @@ ctest --test-dir build/native --output-on-failure
 ```
 
 使用新目录避免旧 CMake cache 保留轻量后端为 ON。应用自建 workspace 的零初始化 `shell_mode` 继续选择原生嵌入式外壳；这是保留的 API 使用方式，不是独立宿主的原生模式开关。
+
+### 2.3 当前开发材料和代表目标
+
+最新冻结没有另行覆盖历史SDK压缩包。需要本地匹配接口时使用当前清单对应的公共include目录、`build/xuanshu-general-layout-20261112-6b37c1/light-final/ui_framework_runtime.lib`、同目录生产DLL及宿主。导入库SHA256为`607B39737F886246AF2F3CFA09813C93C6634241CA6A9FCC1EA86316DA1B2F40`。头文件身份由source-final.json关联。对外共享应交付同一源码/SDK快照及文件清单，提交身份和工作区增量同时记录。
+
+| 目标 | 配置与用途 |
+|---|---|
+| framework_host、web_counter_package | Windows共享运行库及Light后端，普通C/Web应用入口 |
+| ui_general_catalog_example | ui_framework_shared与web_counter_package存在时注册，参数为包和全新数据库 |
+| browser_package | 实际apps/browser应用，包内资源从该目录生成 |
+| stateful_components_package | 当前在UI_BUILD_TESTS=ON、Light及显式UI_OSMESA_LIBRARY条件下注册，复用完整集成场景 |
+| br1_production_package | 同一browser生产实现加samples/browser-read合成资源，随相应验证配置注册 |
+
+目录示例和浏览器可分别按其README构建。维护组件及合成业务包当前属于维护方验证配置，具体条件以CMake注册为准。[目录示例](../examples/general_assistant/README.md)、[计数器](../examples/web_counter/README.md)、[维护组件](../examples/stateful_components/README.md)、[浏览器](../apps/browser/README.md)
+
+通用助手真实发送需要固定本地计量程序。`UI_BR2_METER_PROGRAM`指向已核对身份的生产计量exe，CMake复制为xuanshu_br2_meter.exe并把SHA绑定到生成配置。`UI_BR2_METER_FIXTURE_PROGRAM`只服务隔离测试。计量源码和profile位于tools/br2_meter，配置与构建说明在其README；这两个程序均为可选显式输入，缺少计量时相应真实发送保持锁停。[计量构建说明](../tools/br2_meter/README.md)、[CMake绑定](../cmake/br2_meter.cmake)
+
+新构建命令与示例命令在本轮只做静态核对。既有冻结的Light100/100、ASAN100项分次覆盖和Native47/47依赖复用按原日志记录。新程序需形成自己的验证证据。[已有结果与限制](validation/xuanshu-general-layout-independent-review.md)
 
 ## 3. 启用两种 Web 后端
 
@@ -166,7 +186,7 @@ Windows 的 CTest 目标由宿主、后端和 C++ 编译器配置决定；选项
 | `ui_native_activation` | managed shell菜单所有权、前台/后台切换、panel/child保留、浮窗隐藏恢复、后台销毁不覆盖前台菜单 |
 | `ui_workspace_integration` | 实际包/DLL加载和资源、单/多实例与同名命令隔离、关闭拒绝/等待/完成、异步复制投递/取消/进度、迟到消息丢弃、清理和卸载重载、C++模块ABI、EDA/DPI/布局与回调在途保护 |
 | `ui_web_host_frontend` | Web 宿主空启动/加载、多标签、菜单/工具入口、助手/确认/事务、浅色/深色、尺寸/DPI、内容容器/GL 保留和卸载；需独立宿主，C++ fixture 可用时追加覆盖 |
-| `ui_application_contract` | 当前API9/非法版本拒绝、当前包加载、多实例、Web及原生/OpenGL内容、清单/DLL API不一致拒绝；不指定历史原包 |
+| `ui_application_contract` | 当前API10/非法版本拒绝、当前包加载、多实例、Web及原生/OpenGL内容、清单/DLL API不一致拒绝；不指定历史原包 |
 | `ui_web_shell_slots` | 借用内容槽、坐标、surface 绑定、增量刷新、停靠/浮动/DPI 及原生兼容容器 |
 | `ui_floating_web_dpi` | 浮动 Web 内容跟随自身窗口 DPI；主 host 的 DPI/布局更新不覆盖浮窗局部尺寸和像素矩形 |
 | `ui_light_web_dynamic` | 受控 DOM/CSS、动态按钮、JSON 转义、输入/焦点/滚动保留、重复增量更新、能力位和响应式/DPI |
@@ -270,7 +290,11 @@ OpenGL 测试会打印实际 vendor、renderer 和 context 信息。现代配置
 
 原有基线完整输出保存在本地文件 `build/windows-ctest.log`，不随源码提交。新增宿主前的默认原生 `build/native` 基线为 13 项中 12 通过、1 跳过、0 失败。此前嵌入式 EDA 也完成启动存活检查；渲染、窗口几何与输入的证据来自对应集成测试，启动存活不替代图像或交互验收。
 
-## 6. 必须完成的人工验证
+<a id="6-必须完成的人工验证"></a>
+
+## 6. 按接入范围安排的环境验证
+
+本节为历史环境条件清单，按具体应用与授权范围选取。已取消的临时助手页面控件测试保持取消，其原观察及失败继续保留。
 
 自动矩阵使用的是逻辑客户区尺寸；它没有改变桌面显示器分辨率。96/144/192 DPI 的模拟调用也不能替代 Windows 真实跨显示器消息。
 
@@ -282,7 +306,7 @@ OpenGL 测试会打印实际 vendor、renderer 和 context 信息。现代配置
 6. 在应用目标 GPU 上验证默认现代配置，另用嵌入式 EXE显式验证legacy路径；检查renderer，确认是否达到硬件加速要求。
 7. 选择后台实例的助手命令，切换标签后检查日志目标；清空确认显示正确实例，拒绝时模型不变。
 8. 用实际应用测试未保存关闭拒绝、异步等待后完成和最后实例卸载；接入模型后验证权限、校验、异步取消和文档rollback/undo。
-9. 使用当前SDK/API9构建的原生/OpenGL和Web应用混合运行；检查浅色/深色、Web 菜单/工具入口、浮动外框及多行/中文输入，长日志预览与完整确认参数都可读取。
+9. 使用当前SDK/API10构建的原生/OpenGL和Web应用混合运行；检查浅色/深色、Web 菜单/工具入口、浮动外框及多行/中文输入，长日志预览与完整确认参数都可读取。
 
 尚未完成真实跨显示器和目标 GPU 的验证时，应将这两项标为待验收，不能由模拟消息或整体 CTest 通过代替。
 
@@ -313,13 +337,15 @@ ctest --test-dir build/current-provider --output-on-failure
 
 `UI_OSMESA_LIBRARY`仅注册实际提供方验收，不是隐式运行模式或编译时硬依赖。当前api7_fixture仅用于框架集成；显式环境路径由integration测试传入。缺少提供方不会注册windowless/integration测试，不得声称通过。旧API集成/冻结SDK/原包注册和UI_LEGACY_*入口已退出当前CMake，历史源码及证据仍保留。
 
-历史API5（78c24cb）在Windows普通账户Session1和实际CI LocalSystem Session0均已运行OSMesa实际frame；当前API9源码Session0仍需另验；整机无登录仍需独立环境，不通过隐藏WGL或替代图片推断。WebView2仍需要实际Runtime、图形会话和原生承载窗口，受限执行环境可能禁止浏览器子进程；通过只表示对应实际环境的证据。测试失败保留并修复，不使用skip或隐瞒资源增长。
+历史API5（78c24cb）在Windows普通账户Session1和实际CI LocalSystem Session0均已运行OSMesa实际frame；API9当时源码的Session0条件按原记录待验；整机无登录仍需独立环境，不通过隐藏WGL或替代图片推断。WebView2仍需要实际Runtime、图形会话和原生承载窗口，受限执行环境可能禁止浏览器子进程；通过只表示对应实际环境的证据。测试失败保留并修复，不使用skip或隐瞒资源增长。
 
 Session0／无登录CI现有独立实际应用DLL及临时服务入口，详细构建、命令、环境门槛、资源预算及目标结果见[专门验收](validation/session0-osmesa-validation.md)。该测试配置同时关闭两个Web后端，不依赖WebView2或轻量引擎。默认运行器拒绝Session1；CTest对照不会计入Session0通过数。
 
 CI使用MSVC19.44/W4/WX实际构建通过；x64包检查使用编译期 `UINTPTR_MAX` 比较，避免旧编译器C4127。正式用例保留全部资源采样，进程缓存采用声明的128 MiB预算；初始门槛和失败诊断见专门记录。Windows服务无继承控制台，测试直接重开stdout/stderr文件，不创建控制台窗口。默认托管runner实测有登录用户，严格无登录项会失败；已有无登录Windows x64服务runner可在手动工作流填写其runner_label，不自动创建机器或注销用户。
 
-## 当前 API9 Windows 回归矩阵
+<a id="当前-api9-windows-回归矩阵"></a>
+
+## API9历史Windows回归矩阵（2026-10-09）
 
 [windows-regression.yml](../.github/workflows/windows-regression.yml)与[执行脚本](../tools/windows-ci.ps1)建立四种Windows-2022 x64/C11 Release配置。native关闭两种Web和宿主；light开启轻量但不配置OSMesa；webview2开启两种Web、真实Runtime和显式OSMesa；osmesa开启轻量/实际OSMesa测试DLL，关闭WebView2。四行都执行被配置的必要CTest。只有物理ui_monitor_transition允许缺条件跳过，其余跳过及失败均拒绝。
 
@@ -342,25 +368,31 @@ ctest --test-dir build/current-api8 --output-on-failure
 
 UI_BUILD_TESTS下生成api7_fixture.uapp，public-C应用包含十万行/64列、树/属性、底部/标签布局、实际OSMesa frame C图片、异步缩略图、语义命令、双实例/失败/模态/卸载。ui_api7_integration与Runtime变体只算框架集成证据；当前Alt/无窗口GL/MSAA/非MSAA基础功能仍独立回归。冻结SDK和历史集成/原包专项不再注册，不用新包冒充旧包。
 
-## 菜单外观与鼠标回归
+<a id="菜单外观与鼠标回归"></a>
 
-使用当前API9依赖和配置，执行`ctest --test-dir build/fw-next/release -R "ui_menu_desktop|ui_menu_cascade_offscreen|ui_menu_access|ui_menu_offscreen|ui_framework_features_host|ui_web_host_frontend" --output-on-failure`。`ui_menu_desktop_test`加载框架维护的framework_features.uapp，覆盖实际宿主/GL、三层鼠标、翻转、模态、双实例、焦点和40次重开；`ui_menu_cascade_offscreen_test`覆盖128项末项、超限、展开链预算与零菜单HWND。
+## API9历史菜单外观与鼠标回归（2026-10-09）
+
+当时使用API9依赖和配置，执行`ctest --test-dir build/fw-next/release -R "ui_menu_desktop|ui_menu_cascade_offscreen|ui_menu_access|ui_menu_offscreen|ui_framework_features_host|ui_web_host_frontend" --output-on-failure`。`ui_menu_desktop_test`加载框架维护的framework_features.uapp，覆盖实际宿主/GL、三层鼠标、翻转、模态、双实例、焦点和40次重开；`ui_menu_cascade_offscreen_test`覆盖128项末项、超限、展开链预算与零菜单HWND。
 
 只读观察现有应用时，可向`ui_menu_desktop_test.exe`传入原.uapp、证据输出前缀和`--observe`。该分支只打开/关闭菜单和切换宿主主题，不调用应用命令；输出真实PrintWindow客户区BMP，证据PNG只作无损转换。包及原应用目录保持只读，不覆盖它的运行库。菜单截图、窗口命中和程序DPI不能替代真实IME、物理跨屏、桌面合成人工及长期操作验收。详见[菜单验收](validation/menu-desktop-validation.md)。
 
-## 当前 API9 源码交付和必要矩阵
+<a id="当前-api10-源码交付和必要矩阵"></a>
 
-API9/ABI1/包格式1，见[迁移](migration-v0.8-to-v0.9.md)及[验收](validation/instance-language-validation.md)。当前API9开发源码同步main；本地结果、源码同步、稳定发布及托管CI运行分别报告。工作流配置不等于对应commit已在托管CI通过。固定Lexbor/QuickJS与WebView2 SDK1.0.4129.50、显式x64 Mesa24.3.4 OSMesa路径保持。
+## API10首批P2源码交付与矩阵（历史）
 
-原生/轻量/Runtime/OSMesa四配置沿用[windows-ci.ps1](../tools/windows-ci.ps1)。Runtime阶段显式纳入ui_component_scroll_webview2、ui_api7_integration_webview2并要求实际执行，仍与显式软件WGL隔离。API7独立DLL/.uapp组合100k/64列、底部/标签、RGBA、GL/缩略图/双实例/卸载；当前功能调用方使用当前头文件与API9声明，停止冻结SDK和旧包专项。
+API10/ABI1/包格式1，见[迁移](migration-v0.9-to-v0.10.md)及[本轮验收](validation/xuanshu-p2ab-validation.md)；API9语言验收保留为历史证据。本轮为未提交工作区增量，不宣称已同步main；本地结果、源码同步、稳定发布及托管CI运行分别报告。工作流配置不等于对应commit已在托管CI通过。固定Lexbor/QuickJS与WebView2 SDK1.0.4129.50、显式x64 Mesa24.3.4 OSMesa路径保持。
+
+原生/轻量/Runtime/OSMesa四配置沿用[windows-ci.ps1](../tools/windows-ci.ps1)。Runtime阶段显式纳入ui_component_scroll_webview2、ui_api7_integration_webview2并要求实际执行，仍与显式软件WGL隔离。API7独立DLL/.uapp组合100k/64列、底部/标签、RGBA、GL/缩略图/双实例/卸载；当前功能调用方使用当前头文件与API10声明，停止冻结SDK和旧包专项。
 
 构建后执行ctest --test-dir build/web-shell --output-on-failure；专测使用-R "ui_workspace7|ui_component_scroll|ui_light_scroll|ui_component_experience|ui_api7_integration"。UI_RUNTIME_CYCLES=64选择64连续周期，UI_RUNTIME_READY_REOPENS=1要求实际Runtime呈现后关闭，再运行ui_api7_integration_test.exe package.uapp osmesa.dll webview2；记录实际绝对提供方路径及hash。
 
 Session0用原[服务脚本](../tools/run-session0-validation.ps1)和[严格工作流](../.github/workflows/session0-osmesa.yml)，仅创建自身GUID临时服务，要求管理员/服务管理权限。不注销用户或改既有服务，RequireNoLogin检查整机登录会话；Session0成功不替代该门槛。当前证据必须有当前二进制hash。
 
-## 当前 API9 CI 可复验性与版本门槛
+<a id="当前-api10-ci-可复验性与版本门槛"></a>
 
-沿用四行工作流，不重复搭建。执行脚本需在x64开发终端使用PowerShell 7、Ninja和CMake/CTest至少3.26（JUnit始于3.21，`--no-tests=error`始于3.26，见[CTest官方手册](https://cmake.org/cmake/help/latest/manual/ctest.1.html)）；普通产品CMake最低3.20不因此改变。先核对取得的确切API9 commit，再在新目录运行：
+## API10首批CI可复验性与版本门槛（历史）
+
+沿用四行工作流，不重复搭建。执行脚本需在x64开发终端使用PowerShell 7、Ninja和CMake/CTest至少3.26（JUnit始于3.21，`--no-tests=error`始于3.26，见[CTest官方手册](https://cmake.org/cmake/help/latest/manual/ctest.1.html)）；普通产品CMake最低3.20不因此改变。先核对取得的确切API10源码身份，再在新目录运行：
 
 ```powershell
 ./tools/test-windows-ci.ps1
@@ -378,7 +410,7 @@ foreach ($row in @("native","light","webview2","osmesa")) {
 
 每行`build/ci-evidence-<row>/`归档源commit/dirty状态、运行ID、OS/Session/桌面/DPI/Runtime、编译输出、实际DLL/EXE/.uapp及OSMesa哈希、精确测试清单、JUnit、完整LastTest和真实帧；工作流always上传30日保留的artifact。本机运行仍是本机证据，不能将无GitHub run ID的结果写为托管CI。
 
-`compatibility-policy.json`取代原包专项摘要，明确maintained_api=9、current_only及现存加载行为不是未来兼容承诺。当前样例全部使用当前SDK、清单及DLL API9；不编译冻结调用方，不验收旧包，也不以新包代替。
+`compatibility-policy.json`取代原包专项摘要，明确maintained_api=10、current_only及现存加载行为不是未来兼容承诺。当前样例全部使用当前SDK、清单及DLL API10；不编译冻结调用方，不验收旧包，也不以新包代替。
 
 历史原包保全位置/哈希仍见[API7历史记录](validation/api7-validation.md#5-兼容依赖和复现)，保持只读。本轮不修改冻结SDK、历史验收或原包；UI_LEGACY_*不再是当前构建开关，遗留CMakeCache条目不产生旧版测试。
 
@@ -389,7 +421,7 @@ foreach ($row in @("native","light","webview2","osmesa")) {
 
 ## 框架视觉复验
 
-当前公共API为9；内部视觉修正沿用当前接口版本。统一CSS在CMake配置时嵌入生成的宿主资源、组件/菜单字符串及Web浮动标题。修改src/visual.css或模板后执行cmake --build会触发重配置/RC与DLL构建；仅打开源host.html不能代替运行真实宿主。
+当前公共API为10；下述历史视觉复验不代表本轮重新验收。统一CSS在CMake配置时嵌入生成的宿主资源、组件/菜单字符串及Web浮动标题。修改src/visual.css或模板后执行cmake --build会触发重配置/RC与DLL构建；仅打开源host.html不能代替运行真实宿主。
 
 使用第3节固定依赖、真实Runtime及显式OSMesa配置，在Windows x64开发终端执行：
 
@@ -494,3 +526,10 @@ cmake --build build/browser-release --target framework_host browser_package uapp
 开发时 UI_BROWSER_SOURCE_DIR 可指向独立应用工作区。匹配SDK支持应用独立构建：在应用源码使用 UI_BROWSER_SDK_DIR，读取SDK的公共头文件、import lib、DLL、打包器及固定Lexbor静态库，不读取框架源码或QuickJS源码。见[应用构建命令](../apps/browser/README.md)。
 
 应用验证开关 BROWSER_BUILD_CHECKS 默认OFF；开启后提供纯公共C的 document/workspace/failure/url 调用方。宿主内部入口夹具另列，不替代纯公共调用方。真实输入仅在协调空闲桌面后串行执行；物理DPI、多屏、IME和长期人工单列。已有测试/固定依赖/冻结SDK保留，未恢复历史兼容专项。
+
+
+## 2026-10-23 剩余P2与集中人工准备
+
+本轮采用新目录build/xuanshu-p2-remaining-20261023-b84e6f，Native/Light/ASAN分账、阶段源码清单/原日志/JUnit与失败匹配产物保留，详见[独立记录](validation/xuanshu-p2-remaining-validation.md)。不能将限定通过称为全套CTest或物理来源通过；Light surface_input首次失败仍未定位。
+
+[人工清单](xuanshu-p2-manual-acceptance.md)提供匹配二进制、启动命令、原生HMENU/Web chrome及五实例业务回读。脚本由用户启动后才开始人工验收，本轮未运行；当前没有真实鼠标/键盘、DPI/IME或Windows分类完整动态矩阵结论。固定OSMesa用原路径/哈希，不复制opengl32.dll到host旁改变测试组合。WebView2不在本轮。旧版本/原包与固定依赖保持只读。

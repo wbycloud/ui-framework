@@ -18,10 +18,12 @@ struct ui_assistant_command {
 struct ui_assistant_request {
     uint64_t id;
     int cancelled;
+    int generated;
     ui_assistant_request_t *next;
 };
 
 struct ui_assistant {
+    ui_assistant_t *host_next;
     ui_host_t *host;
     ui_assistant_permission_t max_permission;
     char *source_id;
@@ -37,5 +39,12 @@ struct ui_assistant {
     ui_assistant_command_t *commands;
     ui_assistant_request_t *requests;
 };
+
+int ui_assistants_have_id(const ui_host_t *, const char *);
+ui_status_t ui_capabilities_visit_entries(ui_host_t *, ui_assistant_command_visitor_fn, void *);
+void ui_assistant_collect_completed(ui_assistant_t *);
+void ui_assistants_detach_host(ui_host_t *);
+ui_status_t ui_capabilities_reserve_request(ui_host_t *);
+void ui_capabilities_release_request(ui_host_t *);
 
 #endif

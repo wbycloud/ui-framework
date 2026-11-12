@@ -2,37 +2,38 @@
 
 面向 Windows x64 的轻量 C 应用框架。独立宿主 `framework_host.exe` 加载 `.uapp` 应用包，以浏览器风格的 Web 外壳提供多应用标签、菜单、工具入口、侧栏外框和全局助手。外壳使用 Lexbor、QuickJS-NG 与 GDI 实现受控 HTML/CSS/JS 子集，支持浅色/深色切换；第一行为融合标题区的实例标签栏，第二行为活动应用菜单。[宿主操作与最近记录](docs/standalone-host.md)。框架自有界面采用紧凑中性浅深主题，共同组件同步宿主主题，AI每次启动默认收起。[视觉规范](docs/visual-design.md)与[本轮完整窗口真实截图/回归](docs/validation/component-experience-validation.md)。
 
-新应用通过公共 C ABI 注册框架 Web 组件、提供数据并绑定语义命令；绘图内容按需要使用 OpenGL 内容槽，文档和业务逻辑由应用维护。当前API9应用可挂载自有原生内容。框架同时保留静态库及应用自行创建窗口的原生嵌入式模式。WebView2 是可选的应用内容后端。
+新应用通过公共 C ABI 注册框架 Web 组件、提供数据并绑定语义命令；绘图内容按需要使用 OpenGL 内容槽，文档和业务逻辑由应用维护。当前API10应用可挂载自有原生内容。框架同时保留静态库及应用自行创建窗口的原生嵌入式模式。WebView2 是可选的应用内容后端。
+
+当前API10开发快照提供统一资源/能力目录、严格JSON/Schema与JCS指纹、C2人工UI绑定、P4受控事务与撤销、P5有限计划、同一Service/Provider上的通用应用助手。代表接入包括实际浏览器snapshot/body、维护组件单元格及五个维护示例。开发者从[应用开发标准](docs/application-development-standard.md)进入，再按[当前接入指南与支持矩阵](docs/xuanshu-general-assistant-integration.md)选择接口层。原P2只读阶段结果见[历史开发记录](docs/validation/xuanshu-p2-simulated-acceptance.md)。
 
 ## 当前版本与开发入口
 
 | 项目 | 当前开发值 | 定义位置 |
 | --- | --- | --- |
-| SDK | `0.9.0` 开发版，尚未发布对应稳定标签 | [CMakeLists.txt](CMakeLists.txt) |
+| SDK | `0.10.0` 开发版，尚未发布对应稳定标签 | [CMakeLists.txt](CMakeLists.txt) |
 | 最近稳定标签 | `v0.1.0` | [稳定源码](https://github.com/wbycloud/ui-framework/tree/v0.1.0) |
-| 框架 API | `9`；只维护和验收当前版本，现存低版本加载行为不作未来保证 | [ui.h](include/ui_framework/ui.h) |
+| 框架 API | `10`；只维护和验收当前版本，现存低版本加载行为不作未来保证 | [ui.h](include/ui_framework/ui.h) |
 | 应用 ABI / 包格式 | `1` / `1` | [application.h](include/ui_framework/application.h)、[package.h](include/ui_framework/package.h) |
-| 开发标准修订 | `9`，对应当前 `0.9.0` 开发源码 | [应用开发标准](docs/application-development-standard.md) |
+| 开发标准修订 | `10`，对应当前 `0.10.0` 开发源码 | [应用开发标准](docs/application-development-standard.md) |
 
-当前工作源码为 0.9.0 开发版，不创建稳定标签。采用开发版本须记录确切 commit；v0.1.0仅是历史稳定标签。[当前版本政策](docs/version-policy.md)撤销持续旧版兼容承诺。清单与 DLL 的 API 声明必须一致，应用不能加载到不支持其声明 API 的旧运行库。
+当前工作源码为SDK 0.10.0开发版。采用开发快照须记录commit、工作区增量及文件清单，API10内新增接口需要匹配公共头、导入库、DLL、宿主和应用包。当前本地匹配冻结为`build/xuanshu-general-layout-20261112-6b37c1`，identity以[交付清单](docs/xuanshu-general-assistant-delivery-manifest.md)和[冻结记录](docs/xuanshu-general-layout-freeze.md)核对。
 
-当前API9开发源码入口为[GitHub main](https://github.com/wbycloud/ui-framework/tree/main)。取得源码后记录实际 commit，再读[API9验收](docs/validation/instance-language-validation.md)、[0.8 → 0.9迁移](docs/migration-v0.8-to-v0.9.md)和[应用升级提示词](docs/application-upgrade-prompt.md)。API3/4/5历史记录保留原结果，当前菜单及离屏合同见[接口说明](docs/framework-menu-offscreen.md)。
+开发源码仓库为[GitHub](https://github.com/wbycloud/ui-framework)。本地冻结包含未提交工作区增量，外部开发者须取得维护方提供的匹配源码/SDK和清单，再核对确切身份。迁移见[0.9→0.10及同API10后续扩展](docs/migration-v0.9-to-v0.10.md)，接入指令见[应用升级提示词](docs/application-upgrade-prompt.md)。
 
 API8 后续收敛提供[完整应用存储示例](examples/stateful_components/README.md)：应用自己保存 UCW1 列宽与工作区布局，稳定 A/B 档案跨进程恢复、锁隔离、显式保存／重置和异常拒绝。共同表格按稳定列 ID 对齐，调宽改变可见列数时保留指针捕获。[此前API8收敛证据](docs/validation/api8-stability-state-validation.md)分别记录重绘诊断、实际 Runtime、业务原固定坐标失败及 SDK；历史持续重绘尚不能宣称根治。
 
-此前API7[交付收敛与CI审计](docs/validation/api7-delivery-validation.md)区分本机运行、托管CI和待验条件；真实应用准备见[业务试点](docs/business-pilot.md)。当前main提供SDK0.9.0开发源码，不代表已发布稳定SDK或GitHub Release。新clone须记录`git rev-parse HEAD`，核对`UI_FRAMEWORK_API_VERSION=9`和CMake版本0.9.0；v0.1.0仍为历史稳定标签，不能替代当前API9。
+此前API7[交付收敛与CI审计](docs/validation/api7-delivery-validation.md)保留当时本机、托管CI和待验条件。当前取得源码后核对CMake版本0.10.0、`UI_FRAMEWORK_API_VERSION=10`及标准10，配套头和程序依清单核对。历史稳定标签v0.1.0保留各自接口范围。
 
 2026-10-09本地界面修复及公共布局增补见[逐项验收](docs/validation/ui-repair-validation.md)、[FORM/DIALOG布局合同与C示例](docs/dialog-layout.md)。[后续候选方案](docs/workspace-feature-candidates.md)仅交付范围和验收设计；托管超时、历史持续重绘及未定位显示问题没有被新功能替代。
 
-建议按以下顺序阅读：
+开发者按以下顺序接入。
 
-1. [CHANGELOG](CHANGELOG.md)：版本变化和兼容性分类。
-2. [0.8 → 0.9迁移](docs/migration-v0.8-to-v0.9.md)：当前API9；[0.7 → 0.8](docs/migration-v0.7-to-v0.8.md)：此前列宽/help；[0.6 → 0.7](docs/migration-v0.6-to-v0.7.md)：此前滚动/停靠/颜色；[0.5 → 0.6 迁移](docs/migration-v0.5-to-v0.6.md)：布局和组件交互；[0.4 → 0.5](docs/migration-v0.4-to-v0.5.md)：Alt、OSMesa、MSAA和Runtime；更早版本按原API阅读相应迁移指南。
-3. [应用开发标准](docs/application-development-standard.md)：生命周期、线程、所有权、DPI、内容后端与助手约定。
-4. [构建与验证](docs/build-and-validation.md)：固定依赖、构建开关、测试和发布检查。
-5. [通用 Web UI](docs/generic-web-ui.md)及[纯 C 示例](examples/generic_components/README.md)：框架管理的树、表格、表单、对话框、缩略图和绘图内容槽。
-6. [Web Counter](examples/web_counter/app.c)及其[清单](examples/web_counter/manifest.ini)：使用当前SDK/API9的纯Web内容示例；[最小 EDA](examples/minimal_eda/app.c)展示当前原生/OpenGL内容路径。
-7. [应用升级提示词](docs/application-upgrade-prompt.md)：交给其他应用项目的适配指令，包含版本核对和未验证项的处理要求。
+1. [应用开发标准](docs/application-development-standard.md)与[迁移指南](docs/migration-v0.9-to-v0.10.md)核对版本、生命周期和应用职责。
+2. [通用助手接入指南](docs/xuanshu-general-assistant-integration.md)与[能力合同的当前公共接口](docs/application-capability-contract.md#当前公共接口索引)选择read、C2、P4和专业角色。
+3. [公共目录示例](examples/general_assistant/README.md)和[Web Counter](examples/web_counter/README.md)学习实际资源、Schema、调用及关闭顺序。
+4. [维护组件](examples/stateful_components/README.md)和[浏览器](apps/browser/README.md)学习业务读、事务、撤销和正文语义。
+5. [构建与验证](docs/build-and-validation.md)及[匹配交付清单](docs/xuanshu-general-assistant-delivery-manifest.md)选择成套头、库、DLL、宿主和包。
+6. [应用升级提示词](docs/application-upgrade-prompt.md)可分享给接入项目。[通用Web UI](docs/generic-web-ui.md)和[纯C组件示例](examples/generic_components/README.md)继续提供UI基础参考。
 
 ## 获取、构建与运行
 
@@ -61,7 +62,7 @@ ctest --test-dir build/web-shell --output-on-failure
 & .\build\web-shell\framework_host.exe .\build\web-shell\web_counter.uapp .\build\web-shell\minimal_eda.uapp
 ```
 
-当前菜单/工具溢出示例使用 `framework_features.uapp`；可打开两个实例。通用示例也以当前SDK/API9构建：
+当前菜单/工具溢出示例使用 `framework_features.uapp`；可打开两个实例。通用示例也以当前SDK/API10构建：
 
 ```powershell
 & .\build\web-shell\framework_host.exe .\build\web-shell\generic_components.uapp .\build\web-shell\generic_components.uapp
@@ -118,7 +119,7 @@ git rev-parse HEAD
 
 本轮起只维护接手确认的当前版本。历史SDK/API、旧调用方和旧二进制包不再保证兼容，也不作为CI必跑项；冻结SDK、原包与历史结果不改。当前仍接受部分旧声明属于现存实现，不是持续承诺。原生嵌入式等当前基础接口仍受维护。
 
-接入当前维护版本应锁定确切commit，使用匹配的API9头文件、导入库及运行库，同步清单与DLL声明，在目标宿主验证加载、多实例、助手、DPI/绘制和卸载。历史迁移指南仅供迁移参考，维护范围以[当前政策](docs/version-policy.md)为准。
+接入当前维护版本应锁定确切commit，使用匹配的API10头文件、导入库及运行库，同步清单与DLL声明，在目标宿主验证加载、多实例、助手、DPI/绘制和卸载。历史迁移指南仅供迁移参考，维护范围以[当前政策](docs/version-policy.md)为准。
 
 ## Web 后端和能力边界
 
@@ -128,7 +129,7 @@ git rev-parse HEAD
 
 API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离屏Web/workspace与隐藏WGL的结果见[API4验收](docs/validation/api4-validation.md)。实际宿主已验证两实例、十万行/十万节点、异步图片、草稿、实例模态和旧应用混合加载；实际中文 IME、物理跨屏及长时间手动滚动仍未验证，见[API3 验收记录](docs/validation/api3-validation.md)。
 
-应用在同一进程执行，应用崩溃可能影响宿主。助手 UI 尚未连接模型服务。框架不实现 EDA、Markdown、画板、PPT 或电子表格的完整文档模型，也不直接加载任意现成 EXE。
+应用在同一进程执行，应用崩溃可能影响宿主。正式宿主已接入同一Service、Provider、持久化和逐任务可信确认，默认未核价策略保持发送锁停。框架不实现 EDA、Markdown、画板、PPT 或电子表格的完整文档模型，也不直接加载任意现成 EXE。
 
 ## 维护与接手
 
@@ -155,7 +156,7 @@ API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离
 本轮[分页清理与当前版本验收](docs/validation/component-scroll-only-validation.md)提供真实前后截图及本地矩阵；菜单、最近应用、标签溢出的分页保持原合同。
 
 
-原生共同组件滚动首末项与宽表捕获修复见[真实鼠标、业务应用和SDK交付记录](docs/validation/native-component-scroll-validation.md)。该历史修复使用API7匹配产物；当前API9需使用本轮匹配头文件/导入库/运行库/宿主重建；应用仍提供真实total_count与按需批次，本次无需改业务源或预算。
+原生共同组件滚动首末项与宽表捕获修复见[真实鼠标、业务应用和SDK交付记录](docs/validation/native-component-scroll-validation.md)。该历史修复使用API7匹配产物；当前API10需使用匹配头文件/导入库/运行库/宿主重建；应用仍提供真实total_count与按需批次，本次无需改业务源或预算。
 
 ## API8 组件与工作区体验
 
@@ -164,4 +165,4 @@ API3历史完整可选构建为27通过、1跳过；API4新增菜单、真实离
 
 ## API9 应用实例语言
 
-应用决定并持久化语言，每个host独立支持zh-CN/en-US。宿主跟随活动实例，无应用时跟随Windows显示语言。设置、来源查询、通知及原位文本更新使用匹配SDK0.9/API9，不重建DLL、工作区或GL。完整示例通过A/B档案演示语言与原列宽/布局状态的独立持久化。[语言合同](docs/instance-language.md)、[当前源码复核、真实截图与SDK交付](docs/validation/instance-language-current-validation.md)、[API9首次验收](docs/validation/instance-language-validation.md)、[完整示例](examples/stateful_components/README.md)。
+应用决定并持久化语言，每个host独立支持zh-CN/en-US。宿主跟随活动实例，无应用时跟随Windows显示语言。当前API10沿用实例语言接口，设置、来源查询、通知及原位文本更新使用匹配头与程序，不重建DLL、工作区或GL。完整示例通过A/B档案演示语言与原列宽/布局状态的独立持久化。[语言合同](docs/instance-language.md)、[当前源码复核、真实截图与SDK交付](docs/validation/instance-language-current-validation.md)、[API9首次验收](docs/validation/instance-language-validation.md)、[完整示例](examples/stateful_components/README.md)。

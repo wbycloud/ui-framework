@@ -1,6 +1,21 @@
-# API9 完整应用的列宽与布局存储示例
+# API10维护组件、受控事务与界面存储示例
 
-`stateful_components.uapp` 是框架维护的独立集成应用，包含十万行宽表、异步缩略图树、属性编辑、颜色／枚举、模态和实际 OSMesa MSAA 输出。它复用 [完整场景](../../tests/api7_fixture.c) 的数据和生命周期；文件名中的 API7 是原用例名称，当前头文件、DLL 和清单声明均为 API9。结果只算框架集成证据。
+`stateful_components.uapp` 是框架维护的独立集成应用，包含十万行宽表、异步缩略图树、属性编辑、颜色／枚举、模态和实际 OSMesa MSAA 输出。它复用 [完整场景](../../tests/api7_fixture.c) 的数据和生命周期；文件名中的 API7 是原用例名称，当前头文件、DLL 和清单声明均为 API10。结果只算框架集成证据。
+
+2026-11-12。示例已接入统一资源和能力、普通UI绑定、真实内存业务、P4事务/撤销及专业Profile。源码中的state_run供普通UI与受控执行复用，主文先列当前业务入口，再说明已有列宽、布局和语言存储。[接入指南](../../docs/xuanshu-general-assistant-integration.md)、[业务实现](capabilities.inc)
+
+## 当前业务能力
+
+| 资源/能力 | 性质与数据 | 事务和结果 |
+|---|---|---|
+| state.document / state.document.read | read，返回当前文档属性、维度、changed_cells和revision等Schema字段 | 应用模型提供实际文档状态 |
+| state.document / state.cell.read | read，参数id/column，实际单元格输出含text及revision | 大ID使用字符串，如9007199254741000 |
+| state.document / test.edit | write，参数id/column/text，value列校验有限数字文本 | P4捕获/事务/提交/实际回读/撤销，原UI编辑复用同一state_run |
+| 视图及偏好资源 | state.view.read/state.preferences.read及目录中的对应UI动作 | UI/偏好按原C2效果及来源处理，目录可见不等于AI可执行 |
+
+专业角色maintenance.editor允许state.document.read、state.cell.read、test.edit，再与根任务和目标选择取交集。默认value单元格为42，已有通用助手隔离业务直接核对74/doc-2与独立撤销42/doc-3，实际结果和回执保存在宿主自己的任务库。其他数值由明确任务参数决定。[既有完整业务与证据边界](../../docs/validation/xuanshu-general-layout-independent-review.md)
+
+下列存储文件属于示例自己的界面/偏好档案，宿主任务、图和编辑回执使用宿主库。开发应用按自己的文档持久化需求接入，结果保存和业务文件保存分别表述。
 
 ## 构建与运行
 

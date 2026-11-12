@@ -8,6 +8,32 @@
 #include "ui_framework/menus.h"
 #include "ui_framework/language.h"
 #include "ui_framework/theme.h"
+#include "ui_framework/capability_forms.h"
+#include "ui_framework/capability_inputs.h"
+#include "ui_framework/capability_component_inputs.h"
+typedef struct ui_input_chain {uint64_t pressed;uint32_t button,modifiers;} ui_input_chain_t;
+#ifdef UI_FRAMEWORK_INPUT_FIXTURE
+ui_status_t ui_inputs_fixture_light(ui_web_view_t *,const ui_input_event_t *,int);
+#endif
+ui_status_t ui_inputs_origin_host(ui_host_t *,int);
+int ui_inputs_forward(ui_web_view_t *,ui_host_t *,ui_cap_input_kind_t,const char *,const ui_input_event_t *,int (*)(void *),void *);
+int ui_inputs_origin_eligible(int,int,int);
+int ui_inputs_current_source(void);
+int ui_inputs_surface(ui_surface_t *,const ui_input_event_t *,int);
+int ui_inputs_chain(ui_input_chain_t *,const ui_input_event_t *,uint64_t,int);
+int ui_inputs_route(ui_host_t *,ui_cap_input_kind_t,void *,const char *,const ui_input_event_t *,void *);
+int ui_inputs_has(ui_host_t *,ui_cap_input_kind_t,void *,const char *,const ui_input_event_t *);
+int ui_inputs_owner_busy(ui_host_t *,void *);
+void ui_inputs_owner_destroyed(ui_host_t *,void *);
+ui_web_view_t *ui_components_view(ui_component_t *);
+int ui_components_form_bound(ui_component_t *);
+int ui_inputs_component_bound(ui_host_t *,ui_component_t *);
+int ui_inputs_light(ui_host_t *,void *,const char *,const ui_input_event_t *,const char *);
+int ui_inputs_light_has(ui_host_t *,void *,const char *,const ui_input_event_t *);
+void ui_inputs_editor_event(ui_host_t *,ui_component_t *,const char *,const char *);
+int ui_components_editor_accept(ui_component_t *,const char *,const char *);
+int ui_components_input_node_allowed(ui_component_t *,const char *);
+int ui_inputs_component_action_bound(ui_host_t *,ui_component_t *,const char *);
 
 typedef struct ui_command_entry ui_command_entry_t;
 typedef struct ui_menu_entry ui_menu_entry_t;
@@ -33,12 +59,14 @@ struct ui_surface {
     void *input_user_data;
     void *native_handle;
     void *platform;
+    ui_input_chain_t input_chain;
     ui_surface_t *next;
 };
 
 struct ui_web_backend {
     ui_web_backend_ops_t ops;
     void *user_data;
+    int trusted_light;
     ui_web_view_t *views;
 };
 
@@ -53,11 +81,24 @@ struct ui_web_view {
     uint32_t dpi;
     ui_web_view_t *host_next;
     ui_web_view_t *backend_next;
+    ui_status_t (*semantic_action)(ui_web_view_t *,const char *,void *);
+    void *semantic_data;
+    ui_input_event_t private_input;
+    int semantic_all_keys;
+    uint64_t input_instance;
+    ui_workspace_t *input_workspace;
+    ui_web_view_t *input_workspace_next;
+    void (*input_detach)(ui_web_view_t *);
     ui_web_message_fn message_callback;
     void *message_user_data;
 };
 
 struct ui_host {
+    struct ui_cap_registry *capabilities;
+    struct ui_assistant *assistants;
+    int capability_read_entries;
+    uint64_t capability_instance;
+    int capability_loading;
     ui_language_info_t language;
     ui_language_callback_fn language_callback;
     void *language_data;
@@ -65,6 +106,9 @@ struct ui_host {
     int language_changing;
     int dispatch_blocked; /* Workspace close gate; legacy hosts default to zero. */
     unsigned dispatch_depth;
+    unsigned capability_ui_callbacks;
+    unsigned assistant_callbacks; /* Legacy callbacks also block activation/close. */
+    unsigned app_poll_callbacks; /* AP-1 context lease, permits safe call/catalog GC. */
     void (*dispatch_idle)(void *data);
     void *dispatch_idle_data;
     void *native_parent;
@@ -75,6 +119,7 @@ struct ui_host {
     uint32_t dpi;
     ui_rect_t host_rect;
     ui_layout_desc_t layout;
+    int chrome_suppressed;
     ui_rect_t layout_rects[UI_LAYOUT_REGION_COUNT];
     ui_sidebar_state_t sidebar_states[2];
     ui_narrow_policy_fn narrow_callback;
@@ -114,6 +159,7 @@ struct ui_host {
 };
 
 struct ui_command_entry {
+    int capability_generated; /* ID/Schema borrowed; title is an owned UI projection. */
     char *id;
     char *title;
     char *params_schema_json;
@@ -168,13 +214,56 @@ struct ui_panel_entry {
 };
 
 struct ui_pending_request {
+    int capability_generated;
+    int capability_limited;
+    size_t capability_bytes;
     uint64_t id;
     char *command_id;
     char *source;
     ui_pending_request_t *next;
 };
 
+ui_status_t ui_capabilities_bind_component(ui_host_t *,const ui_cap_ui_binding_desc_t *,ui_component_t *,void (*cleanup)(void *),uint64_t *);
+ui_status_t ui_capabilities_form_reserve(ui_host_t *,size_t);
+void ui_capabilities_form_release(ui_host_t *,size_t);
+ui_status_t ui_capabilities_model_revision(ui_host_t *,const ui_cap_resource_ref_v2_t *,const char *);
+ui_status_t ui_capabilities_control_consume(ui_host_t *,void *,uint64_t *);
+int ui_capabilities_control_current(ui_host_t *,uint64_t);
+int ui_components_form_available(ui_component_t *);
+void ui_components_form_base(ui_component_t *,char [128]);
+ui_status_t ui_components_form_action(ui_component_t *,const char *);
+void ui_components_form_draft(ui_component_t *,const char *,const char *);
 char *ui_strdup(const char *value);
+int ui_capabilities_nonread(const ui_host_t *,const char *);
+ui_status_t ui_capabilities_ui_action(ui_host_t *,const char *,void *);
+void ui_capabilities_human_begin(ui_host_t *,void *);
+void ui_capabilities_human_end(ui_host_t *);
+struct ui_ai_service;
+ui_status_t ui_ai_model_light_action(struct ui_ai_service *,ui_web_view_t *,const char *);
+void ui_ai_model_light_detach(struct ui_ai_service *,ui_web_view_t *);
+int ui_inputs_consume_action(ui_host_t *,void *);
+ui_status_t ui_ai_graph_light_action(struct ui_ai_service *,ui_web_view_t *,const char *);
+void ui_ai_graph_light_detach(struct ui_ai_service *,ui_web_view_t *);
+ui_status_t ui_ai_edit_light_action(struct ui_ai_service *,ui_web_view_t *,const char *);
+void ui_ai_edit_light_detach(struct ui_ai_service *,ui_web_view_t *);
+void ui_capabilities_human_guard(ui_host_t *,int (*)(void *),void *);
+void ui_capabilities_human_invalidate(ui_host_t *,void *);
+ui_status_t ui_web_semantic_action(ui_host_t *,void *,const char *,const ui_input_event_t *);
+
+int ui_capabilities_busy(const ui_host_t *);
+void ui_capabilities_destroy(ui_host_t *);
+void ui_capabilities_set_instance(ui_host_t *, uint64_t);
+void ui_capabilities_workspace_close(ui_host_t *, int closing);
+void ui_capabilities_finalize_close(ui_host_t *);
+int ui_capabilities_has_id(const ui_host_t *, const char *);
+int ui_capabilities_entry_active(const ui_host_t *, const char *);
+ui_status_t ui_host_reply_capability(ui_host_t *, uint64_t, int, const char *);
+ui_status_t ui_capabilities_acquire_pending(ui_host_t *, const char *, const char *, ui_pending_request_t **);
+void ui_capabilities_release_pending(ui_host_t *, ui_pending_request_t *);
+void ui_capabilities_reply_failure(ui_host_t *, uint64_t, ui_status_t);
+void ui_capabilities_failure_enter(ui_host_t *);
+void ui_capabilities_failure_leave(ui_host_t *);
+void ui_assistants_detach_host(ui_host_t *);
 void ui_language_initialize(ui_host_t *);
 int ui_language_thread_ok(const ui_host_t *);
 const char *ui_language_map_windows(const char *);

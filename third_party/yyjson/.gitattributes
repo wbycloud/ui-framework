@@ -1,0 +1,5 @@
+# Keep the exact upstream bytes required by source-lock.json on every checkout.
+yyjson.c -text
+yyjson.h -text
+LICENSE -text
+source-lock.json text eol=lf

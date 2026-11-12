@@ -64,6 +64,10 @@ static void lw_caret(lw_view_t *view)
 }
 static ui_status_t lw_text_replace(lw_view_t *view,lw_node_t *n,const wchar_t *insert)
 {
+    BR1_WRITE(view,n,"before-replace");
+#ifdef UI_BR1_WRITE_TRACE
+    unsigned input_uid=n->uid;
+#endif
     wchar_t *w=lw_wide(n->value),buffer[LW_TEXT_CAP];char utf8[LW_TEXT_CAP];int a,b,len,added,at=0,i;
     if(!w)return UI_STATUS_VALIDATION_FAILED;len=(int)wcslen(w);a=n->anchor<n->caret?n->anchor:n->caret;b=n->anchor>n->caret?n->anchor:n->caret;
     if(a>len)a=len;if(b>len)b=len;
@@ -72,20 +76,24 @@ static ui_status_t lw_text_replace(lw_view_t *view,lw_node_t *n,const wchar_t *i
     added=at;if(a+added+len-b>=LW_TEXT_CAP){free(w);return UI_STATUS_VALIDATION_FAILED;}
     memmove(buffer+a,buffer,(size_t)added*sizeof(wchar_t));memcpy(buffer,w,(size_t)a*sizeof(wchar_t));
     memcpy(buffer+a+added,w+b,(size_t)(len-b+1)*sizeof(wchar_t));free(w);
+    BR1_WIDE(view,n,"temporary",buffer);
     if(!WideCharToMultiByte(CP_UTF8,WC_ERR_INVALID_CHARS,buffer,-1,utf8,sizeof(utf8),NULL,NULL))return UI_STATUS_VALIDATION_FAILED;
     /* Equal text can still replace a selection: commit its caret/history/input
        semantics just like the browser. Only an empty insertion at an empty
        selection is a no-op (for example Backspace at the start). */
     if(a==b&&!added)return UI_STATUS_OK;
     lw_history_push(&n->undo,n);lw_history_free(&n->redo);strcpy(n->value,utf8);n->caret=n->anchor=a+added;
-    view->text_scrolling=0;view->dirty=1;(void)lw_event(view,(int)(n-view->nodes),1,0);lw_layout(view);return UI_STATUS_OK;
+    BR1_WRITE(view,n,"replace");
+    BR1_INPUT(view,n,"written",n->value);
+    view->text_scrolling=0;view->dirty=1;(void)lw_event(view,(int)(n-view->nodes),1,0);BR1_AFTER(view,input_uid,"callback");lw_layout(view);BR1_AFTER(view,input_uid,"layout");return UI_STATUS_OK;
 }
 static ui_status_t lw_text_insert(lw_view_t *view,const char *text)
 {
     wchar_t *w;ui_status_t status;lw_node_t *n;
     if(view->focused<0||!text)return UI_STATUS_NOT_FOUND;n=&view->nodes[view->focused];
     if(!lw_input(n)||n->disabled||n->readonly)return UI_STATUS_NOT_FOUND;
-    w=lw_wide(text);if(!w)return UI_STATUS_VALIDATION_FAILED;status=lw_text_replace(view,n,w);free(w);return status;
+    BR1_INPUT(view,n,"raw",text);
+    w=lw_wide(text);if(!w)return UI_STATUS_VALIDATION_FAILED;BR1_WIDE(view,n,"converted",w);status=lw_text_replace(view,n,w);free(w);return status;
 }
 static void lw_clipboard(lw_view_t *view,lw_node_t *n,int paste,int cut)
 {
@@ -107,7 +115,7 @@ static int lw_text_key(lw_view_t *view,const ui_input_event_t *event)
     w=lw_wide(n->value);if(!w)return 0;length=(int)wcslen(w);position=n->caret;
     if(control&&(event->key_code=='C'||event->key_code=='X'||event->key_code=='V')){free(w);lw_clipboard(view,n,event->key_code=='V',event->key_code=='X');return 1;}
     if(control&&(event->key_code=='Z'||event->key_code=='Y')){lw_history_t **from=event->key_code=='Y'||shift?&n->redo:&n->undo,**to=from==&n->undo?&n->redo:&n->undo;
-        if(*from&&!n->readonly){lw_history_t *h=*from;lw_history_push(to,n);*from=h->next;strcpy(n->value,h->text);n->caret=h->caret;n->anchor=h->anchor;free(h->text);free(h);view->dirty=1;(void)lw_event(view,view->focused,1,0);}free(w);view->text_scrolling=0;lw_layout(view);return 1;}
+        if(*from&&!n->readonly){BR1_WRITE(view,n,"before-history");lw_history_t *h=*from;lw_history_push(to,n);*from=h->next;strcpy(n->value,h->text);BR1_WRITE(view,n,"history");n->caret=h->caret;n->anchor=h->anchor;free(h->text);free(h);view->dirty=1;(void)lw_event(view,view->focused,1,0);}free(w);view->text_scrolling=0;lw_layout(view);return 1;}
     if(control&&event->key_code=='A'){n->anchor=0;n->caret=length;free(w);view->text_scrolling=0;lw_layout(view);return 1;}
     if(event->key_code==VK_BACK||event->key_code==VK_DELETE){
         if(!n->readonly){if(n->anchor==n->caret)n->anchor=lw_grapheme(n,w,n->caret,event->key_code==VK_BACK?-1:1);(void)lw_text_replace(view,n,L"");}free(w);return 1;}
