@@ -1,0 +1,70 @@
+name: SDK clean Windows prerequisite probe
+'on':
+  push:
+    branches: [codex/sdk-clean-check-c71e29-20261123-f42b83]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: windows-2022
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - name: Build and run a synthetic Windows x64 C11 program
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $PSNativeCommandUseErrorActionPreference = $false
+          $proof = Join-Path $env:RUNNER_TEMP 'sdk-clean-prerequisite-evidence'
+          New-Item -Path $proof -ItemType Directory | Out-Null
+          $vswhere = Join-Path ([Environment]::GetEnvironmentVariable('ProgramFiles(x86)')) 'Microsoft Visual Studio/Installer/vswhere.exe'
+          $vs = & $vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
+          if ($LASTEXITCODE -or !$vs) { throw 'x64 MSVC is missing' }
+          $dev = Join-Path $vs 'Common7/Tools/VsDevCmd.bat'
+          $setup = '"' + $dev + '" -no_logo -arch=x64 -host_arch=x64 >nul && (set VCToolsInstallDir & set INCLUDE & set LIB & set LIBPATH & set PATH & set VSCMD_ARG_TGT_ARCH)'
+          cmd.exe /d /s /c $setup | ForEach-Object {
+            if ($_ -match '^([^=]+)=(.*)$' -and $matches[1] -in 'VCToolsInstallDir','INCLUDE','LIB','LIBPATH','PATH','VSCMD_ARG_TGT_ARCH') {
+              [Environment]::SetEnvironmentVariable($matches[1],$matches[2],'Process')
+            }
+          }
+          if ($LASTEXITCODE -or $env:VSCMD_ARG_TGT_ARCH -ne 'x64') { throw 'MSVC x64 initialization failed' }
+          $toolchain = Join-Path $env:VCToolsInstallDir 'bin/Hostx64/x64'
+          $source = Join-Path $env:GITHUB_WORKSPACE 'tests/sdk_clean_prerequisite.c'
+          $binary = Join-Path $proof 'sdk-clean-prerequisite.exe'
+          $runtime = Get-Item -LiteralPath "$env:SystemRoot/System32/vcruntime140.dll"
+          @{
+            runner_image = $env:ImageOS
+            runner_image_version = $env:ImageVersion
+            runner_arch = $env:RUNNER_ARCH
+            os = [Environment]::OSVersion.VersionString
+            cl_version = (Get-Item -LiteralPath "$toolchain/cl.exe").VersionInfo.FileVersion
+            source_sha256 = (Get-FileHash -LiteralPath $source).Hash
+            vcruntime_version = $runtime.VersionInfo.FileVersion
+            vcruntime_sha256 = (Get-FileHash -LiteralPath $runtime.FullName).Hash
+          } | ConvertTo-Json | Set-Content -LiteralPath "$proof/environment.json" -Encoding utf8
+          & "$toolchain/cl.exe" /nologo /std:c11 /utf-8 /MD /W4 /WX "/Fo$proof/probe.obj" "/Fe$binary" $source user32.lib *> "$proof/compile.log"
+          if ($LASTEXITCODE) { Get-Content -LiteralPath "$proof/compile.log"; throw 'Synthetic compile failed' }
+          & "$toolchain/dumpbin.exe" /headers /dependents $binary *> "$proof/dependencies.log"
+          if ($LASTEXITCODE) { throw 'PE dependency observation failed' }
+          $pathBefore = $env:Path
+          try {
+            $env:Path = "$proof;$env:SystemRoot\System32"
+            & $binary 1> "$proof/stdout.log" 2> "$proof/stderr.log"
+            $actualExit = $LASTEXITCODE
+          } finally {
+            $env:Path = $pathBefore
+          }
+          @{exit_code=$actualExit;binary_sha256=(Get-FileHash -LiteralPath $binary).Hash;scope='synthetic Win32/C11 with system runtime'} |
+            ConvertTo-Json | Set-Content -LiteralPath "$proof/result.json" -Encoding utf8
+          Get-Content -LiteralPath "$proof/environment.json","$proof/stdout.log","$proof/stderr.log","$proof/result.json"
+          if ($actualExit) { throw "Synthetic runtime failed with exit $actualExit" }
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sdk-clean-prerequisite-evidence
+          path: |
+            ${{ runner.temp }}/sdk-clean-prerequisite-evidence/*.json
+            ${{ runner.temp }}/sdk-clean-prerequisite-evidence/*.log
+          retention-days: 3
