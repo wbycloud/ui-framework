@@ -5,6 +5,9 @@ static void ai_panel_event(const ui_ai_event_t *event,void *data)
     if(!strcmp(event->type,"ready"))s->ai_refresh_history=1;
     if(!strcmp(event->type,"received")){if(strcmp(s->ai_run,event->run_id)){s->ai_query_pending=0;s->ai_query_id[0]=0;s->ai_stored_id[0]=0;replace_text(&s->ai_query_error,"");}strcpy_s(s->ai_run,sizeof(s->ai_run),event->run_id);}
     if(!strcmp(event->type,"accepted")||!strcmp(event->type,"existing")){
+        if(s->ai_quick_pending[0]&&!strcmp(s->ai_quick_pending,event->client_request_id)){
+            s->ai_quick_target.resource.instance_id=0;s->ai_quick_pending[0]=0;
+        }
         strcpy_s(s->ai_ack,sizeof(s->ai_ack),event->client_request_id);if(!strcmp(event->type,"existing")&&strstr(event->payload,"\"graph_record\"")){replace_text(&s->ai_stored_run,event->payload);strcpy_s(s->ai_stored_id,65,event->run_id);}s->ai_refresh_history=1;
     }
     if(!strcmp(event->type,"finished"))s->ai_refresh_history=1;

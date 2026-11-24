@@ -120,6 +120,7 @@ static ui_status_t am_propose_common(ui_ai_service_t *s,const char *parent,const
  c=s->model_config;if(!c||!c->ready||c->job||c->busy||q->profile_revision!=c->revision)return UI_STATUS_PERMISSION_DENIED;
  if(!am_json_parse(q->history_selection_json,strlen(q->history_selection_json),&hp))return UI_STATUS_VALIDATION_FAILED;yyjson_val *a=yyjson_doc_get_root(hp.doc),*v;size_t i,n;int valid=yyjson_is_arr(a)&&yyjson_arr_size(a)<=32;yyjson_arr_foreach(a,i,n,v)if(!yyjson_is_uint(v)||!yyjson_get_uint(v)||yyjson_get_uint(v)>INT64_MAX)valid=0;am_json_free(&hp);if(!valid)return UI_STATUS_VALIDATION_FAILED;
  if(ui_cap_json_canonicalize(q->history_selection_json,strlen(q->history_selection_json),&history,&length)||ui_cap_json_canonicalize(q->disclosure_projection_json,strlen(q->disclosure_projection_json),&projection,&length)){free(history);free(projection);return UI_STATUS_VALIDATION_FAILED;}
+ if(assistant&&!q->target_count&&strcmp(projection,"{\"capabilities\":[],\"fields\":[]}")){free(history);free(projection);return UI_STATUS_VALIDATION_FAILED;}
  m=calloc(1,sizeof(*m));d=yyjson_mut_doc_new(NULL);o=d?yyjson_mut_obj(d):NULL;if(!m||!o){free(m);free(history);free(projection);yyjson_mut_doc_free(d);return UI_STATUS_OUT_OF_MEMORY;}m->assistant=assistant;m->validation_kind=s->validation?(unsigned)s->validation->admitting:0;BR1_MODEL_COPY(m->model,128,c->model,"task-model-bind");strcpy_s(m->ref,128,c->ref);m->revision=c->revision;
  old.targets=q->targets;old.target_count=q->target_count;if(ai_targets_check(s,&old,0)||!am_catalog(s,q->targets,q->target_count,projection,m->catalog)){free(m);yyjson_mut_doc_free(d);free(history);free(projection);return UI_STATUS_PERMISSION_DENIED;}
  yyjson_mut_doc_set_root(d,o);if(m->validation_kind)yyjson_mut_obj_add_uint(d,o,"validation_kind",m->validation_kind);if(m->validation_kind&&s->validation->body_scene)yyjson_mut_obj_add_strcpy(d,o,"validation_scene",av_scene_name(s->validation));yyjson_mut_obj_add_strcpy(d,o,"request_kind","deepseek-responses-v1");yyjson_mut_obj_add_strcpy(d,o,"model",m->model);yyjson_mut_obj_add_strcpy(d,o,"catalog_hash",m->catalog);yyjson_mut_obj_add_uint(d,o,"profile_revision",m->revision);yyjson_mut_obj_add_strcpy(d,o,"credential_ref",m->ref);yyjson_mut_obj_add_strcpy(d,o,"history",history);yyjson_mut_obj_add_strcpy(d,o,"projection",projection);if(assistant){char *policy=as_policy_json(assistant);if(!policy){free(m);yyjson_mut_doc_free(d);free(history);free(projection);return UI_STATUS_OUT_OF_MEMORY;}yyjson_mut_obj_add_strcpy(d,o,"assistant_policy",policy);free(policy);yyjson_mut_obj_add_strcpy(d,o,"assistant_scope",assistant->scope);yyjson_mut_obj_add_strcpy(d,o,"attachments",assistant->attachments);yyjson_mut_obj_add_strcpy(d,o,"assistant_version","general-v1");}plan=yyjson_mut_write(d,0,NULL);yyjson_mut_doc_free(d);free(history);free(projection);
@@ -135,13 +136,16 @@ static yyjson_mut_val *am_build(am_builder_t *b,int array)
 {memset(b,0,sizeof(*b));b->pool=am_allocate(256u*1024u);if(!b->pool||!yyjson_alc_pool_init(&b->alc,b->pool,256u*1024u))return NULL;b->doc=yyjson_mut_doc_new(&b->alc);if(!b->doc)return NULL;yyjson_mut_val *o=array?yyjson_mut_arr(b->doc):yyjson_mut_obj(b->doc);yyjson_mut_doc_set_root(b->doc,o);return o;}
 static void am_build_free(am_builder_t *b){yyjson_mut_doc_free(b->doc);am_delete(b->pool);}
 static char *am_build_write(am_builder_t *b){char *p=b->doc?am_mutable_write(b->doc):NULL;if(p&&strlen(p)>AM_REQUEST){am_delete(p);p=NULL;}if(p){char *compact=am_resize(p,strlen(p)+1);if(compact)p=compact;}am_build_free(b);return p;}
+static int am_text_chat(const am_run_t *m)
+{return m->assistant&&!m->assistant->target_count;}
+
 static int am_initial(ui_ai_service_t *s,ai_run_t *r)
 {
  am_run_t *m=r->model;am_builder_t b;yyjson_mut_val *a=am_build(&b,1);yyjson_mut_doc *d=b.doc;ui_cap_json_doc_t plan={0},history={0};int ok=a!=NULL;sqlite3_stmt *q=NULL;
  if(!am_json_parse(r->plan,strlen(r->plan),&plan)){am_build_free(&b);return 0;}const char *selected=am_s(yyjson_doc_get_root(plan.doc),"history");if(!selected||!am_json_parse(selected,strlen(selected),&history))ok=0;
  if(ok){size_t i,n;yyjson_val *v;yyjson_arr_foreach(yyjson_doc_get_root(history.doc),i,n,v){if(!ai_statement(s,"SELECT role,content FROM messages WHERE seq=? AND role IN('user','assistant')",&q)){ok=0;break;}sqlite3_bind_int64(q,1,(sqlite3_int64)yyjson_get_uint(v));if(sqlite3_step(q)!=SQLITE_ROW){sqlite3_finalize(q);ok=0;break;}yyjson_mut_val *item=yyjson_mut_obj(d);ok=item&&yyjson_mut_obj_add_strcpy(d,item,"role",(const char *)sqlite3_column_text(q,0))&&yyjson_mut_obj_add_strcpy(d,item,"content",(const char *)sqlite3_column_text(q,1))&&yyjson_mut_arr_add_val(a,item);sqlite3_finalize(q);if(!ok)break;}}
- if(ok){const char *projection=am_s(yyjson_doc_get_root(plan.doc),"projection");yyjson_mut_val *scope=yyjson_mut_obj(d);ok=scope&&projection&&yyjson_mut_obj_add_strcpy(d,scope,"role","user")&&yyjson_mut_obj_add_strcpy(d,scope,"content",projection)&&yyjson_mut_arr_add_val(a,scope);}
- if(ok&&m->assistant){char *scope=as_initial_scope(m);yyjson_mut_val *item=yyjson_mut_obj(d);ok=scope&&item&&yyjson_mut_obj_add_strcpy(d,item,"role","user")&&yyjson_mut_obj_add_strcpy(d,item,"content",scope)&&yyjson_mut_arr_add_val(a,item);free(scope);}
+ if(ok&&!am_text_chat(m)){const char *projection=am_s(yyjson_doc_get_root(plan.doc),"projection");yyjson_mut_val *scope=yyjson_mut_obj(d);ok=scope&&projection&&yyjson_mut_obj_add_strcpy(d,scope,"role","user")&&yyjson_mut_obj_add_strcpy(d,scope,"content",projection)&&yyjson_mut_arr_add_val(a,scope);}
+ if(ok&&m->assistant&&!am_text_chat(m)){char *scope=as_initial_scope(m);yyjson_mut_val *item=yyjson_mut_obj(d);ok=scope&&item&&yyjson_mut_obj_add_strcpy(d,item,"role","user")&&yyjson_mut_obj_add_strcpy(d,item,"content",scope)&&yyjson_mut_arr_add_val(a,item);free(scope);}
  if(ok){yyjson_mut_val *item=yyjson_mut_obj(d);ok=item&&yyjson_mut_obj_add_strcpy(d,item,"role","user")&&yyjson_mut_obj_add_strcpy(d,item,"content",r->input)&&yyjson_mut_arr_add_val(a,item);}am_json_free(&history);am_json_free(&plan);if(!ok){am_build_free(&b);return 0;}m->items=am_build_write(&b);return m->items!=NULL;
 }
 static const char am_tool_definitions[]="[{\"type\":\"function\",\"name\":\"xs_read_discover\",\"description\":\"Discover the permitted read catalog for an explicit target. Only page 0 is supported.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"target_alias\":{\"type\":\"string\"},\"category\":{\"type\":\"string\",\"description\":\"Use an empty string to enumerate only the read capabilities permitted for this target. A named category must exactly match a category from a discovered descriptor; never infer it from application or capability names.\"},\"page\":{\"type\":\"integer\",\"enum\":[0]}},\"required\":[\"target_alias\",\"category\",\"page\"],\"additionalProperties\":false}},{\"type\":\"function\",\"name\":\"xs_read_call\",\"description\":\"Invoke a permitted read capability with JSON parameters.\",\"parameters\":{\"type\":\"object\",\"properties\":{\"target_alias\":{\"type\":\"string\"},\"capability_id\":{\"type\":\"string\"},\"parameters_json\":{\"type\":\"string\"}},\"required\":[\"target_alias\",\"capability_id\",\"parameters_json\"],\"additionalProperties\":false}}]";
@@ -150,7 +154,8 @@ static char *am_body(am_run_t *m)
 {
  am_builder_t b;yyjson_mut_val *o=am_build(&b,0);yyjson_mut_doc *d=b.doc;ui_cap_json_doc_t input={0},tools={0};char *result=NULL;
 
- if(!o||!am_json_parse(m->items,strlen(m->items),&input)||!am_json_parse(m->assistant&&m->assistant->frame?"[]":am_tool_definitions,strlen(m->assistant&&m->assistant->frame?"[]":am_tool_definitions),&tools))goto done;
+ const char *tool_list=m->assistant&&(m->assistant->frame||am_text_chat(m))?"[]":am_tool_definitions;
+ if(!o||!am_json_parse(m->items,strlen(m->items),&input)||!am_json_parse(tool_list,strlen(tool_list),&tools))goto done;
  if(!yyjson_mut_obj_add_strcpy(d,o,"model",m->model)||!yyjson_mut_obj_add_bool(d,o,"stream",true)||!yyjson_mut_obj_add_int(d,o,"max_output_tokens",4096)||!yyjson_mut_obj_add_strcpy(d,o,"instructions",m->assistant?as_instructions(m):am_system_instructions)||!yyjson_mut_obj_add_val(d,o,"input",yyjson_val_mut_copy(d,yyjson_doc_get_root(input.doc)))||!yyjson_mut_obj_add_val(d,o,"tools",yyjson_val_mut_copy(d,yyjson_doc_get_root(tools.doc))))goto done;
  {yyjson_mut_val *reason=yyjson_mut_obj(d);if(!reason||!yyjson_mut_obj_add_strcpy(d,reason,"effort","none")||!yyjson_mut_obj_add_val(d,o,"reasoning",reason))goto done;}/* Mutable copies own their strings; release parse scratch before serialization. */am_json_free(&input);am_json_free(&tools);result=am_build_write(&b);memset(&b,0,sizeof(b));
 done:am_json_free(&input);am_json_free(&tools);am_build_free(&b);return result;
@@ -182,7 +187,18 @@ static char *am_step(ai_run_t *r,yyjson_val *item)
 {
  am_run_t *m=r->model;const char *name=am_s(item,"name"),*args=am_s(item,"arguments"),*call=am_s(item,"call_id");ui_cap_json_doc_t p={0},plan={0};am_builder_t b;yyjson_mut_val *o=NULL;char *out=NULL,key[600],local[65];unsigned target;char tail;
  if(!name||!args||!call||!am_json_parse(args,strlen(args),&p)||!am_json_parse(r->plan,strlen(r->plan),&plan))goto done;yyjson_val *a=yyjson_doc_get_root(p.doc);const char *alias=am_s(a,"target_alias"),*projection=am_s(yyjson_doc_get_root(plan.doc),"projection");
- if(!alias||sscanf_s(alias,"target-%u%c",&target,&tail,1)!=1||target>=r->target_count||!projection)goto done;
+ if(!alias||!projection)goto done;
+ if(sscanf_s(alias,"target-%u%c",&target,&tail,1)!=1){
+  /* The coordinator may return the fixed target ordinal as a decimal string. */
+  if(!m->assistant||!*alias||(alias[0]=='0'&&alias[1])||strlen(alias)!=yyjson_get_len(am_obj(a,"target_alias")))goto done;
+  target=0;
+  for(const char *digit=alias;*digit;++digit){
+   if(*digit<'0'||*digit>'9')goto done;
+   target=target*10u+(unsigned)(*digit-'0');
+   if(target>=r->target_count)goto done;
+  }
+ }
+ if(target>=r->target_count)goto done;
  o=am_build(&b,0);if(!o)goto build_done;snprintf(key,sizeof(key),"%s:%s",m->request_id,call);ui_cap_hash_bytes(key,strlen(key),local);yyjson_mut_obj_add_uint(b.doc,o,"target",target);yyjson_mut_obj_add_strcpy(b.doc,o,"tool_call_id",local);
  if(!strcmp(name,"xs_read_discover")){const char *category=am_s(a,"category");yyjson_val *page=am_obj(a,"page");if(yyjson_obj_size(a)!=3||!ai_text(category,127,1)||!yyjson_is_uint(page)||yyjson_get_uint(page)!=0)goto build_done;yyjson_mut_obj_add_strcpy(b.doc,o,"type","discover");yyjson_mut_obj_add_strcpy(b.doc,o,"category",category);}
  else if(!strcmp(name,"xs_read_call")){const char *cap=am_s(a,"capability_id"),*params=am_s(a,"parameters_json");ui_cap_json_doc_t scope={0},param={0};int valid=yyjson_obj_size(a)==3&&ai_text(cap,255,0)&&params&&strlen(params)<=65536&&am_json_parse(projection,strlen(projection),&scope)&&am_contains(am_obj(yyjson_doc_get_root(scope.doc),"capabilities"),cap)&&(!m->assistant||as_read_allowed(r,target,cap))&&am_json_parse(params,strlen(params),&param);if(valid){yyjson_mut_obj_add_strcpy(b.doc,o,"type","tool");yyjson_mut_obj_add_strcpy(b.doc,o,"capability_id",cap);valid=yyjson_mut_obj_add_val(b.doc,o,"arguments",yyjson_val_mut_copy(b.doc,yyjson_doc_get_root(param.doc)));}am_json_free(&scope);am_json_free(&param);if(!valid)goto build_done;}
@@ -198,7 +214,7 @@ static int am_validate(ui_ai_service_t *s,ai_run_t *r)
  am_run_t *m=r->model;ui_cap_json_doc_t batch={0};unsigned count=0;ui_ai_task_request_t q={0};int ok=1;q.targets=r->targets;q.target_count=r->target_count;
  if(s->phase!=UI_AI_READY||r->cancel||m->until<=ai_now(s)){strcpy_s(m->error,96,"batch_policy_changed");return 0;}if(!am_json_parse(m->batch,strlen(m->batch),&batch)){strcpy_s(m->error,96,"batch_storage_invalid");return 0;}
  if((m->assistant?!as_current(s,r):ai_targets_check(s,&q,1)||!am_catalog_current(s,r))){ok=0;strcpy_s(m->error,96,"batch_target_changed");}
- if(m->assistant&&m->assistant->frame&&am_function_at(yyjson_doc_get_root(batch.doc),0)){am_json_free(&batch);strcpy_s(m->error,96,"assistant_unplanned_function");return 0;}
+ if(m->assistant&&(m->assistant->frame||am_text_chat(m))&&am_function_at(yyjson_doc_get_root(batch.doc),0)){am_json_free(&batch);strcpy_s(m->error,96,"assistant_unplanned_function");return 0;}
  while(ok){yyjson_val *item=am_function_at(yyjson_doc_get_root(batch.doc),count);if(!item)break;const char *remote=am_s(item,"call_id");char remote_hash[65];if(!remote){ok=0;break;}ui_cap_hash_bytes(remote,strlen(remote),remote_hash);for(unsigned j=0;j<m->remote_count;++j)if(!strcmp(m->remote_ids[j],remote_hash)){ok=0;strcpy_s(m->error,96,"duplicate_remote_call");}if(!ok)break;char *step=am_step(r,item);ui_cap_json_doc_t p={0};if(!step||!am_json_parse(step,strlen(step),&p)){ok=0;strcpy_s(m->error,96,"batch_wrapper_invalid");}else{yyjson_val *v=yyjson_doc_get_root(p.doc);const char *cap=am_s(v,"capability_id");unsigned at=(unsigned)yyjson_get_uint(am_obj(v,"target"));ui_app_instance_info_t app={0};app.size=sizeof(app);if(ui_workspace_get_instance(s->config.workspace,r->targets[at].instance_id,&app)||app.closing){ok=0;strcpy_s(m->error,96,"batch_instance_closed");}
   if(ok&&cap){char *desc=NULL,*params=am_value_write(am_obj(v,"arguments"));ui_cap_json_doc_t description={0};if(!params||ui_capability_describe(app.host,cap,&desc)||!am_json_parse(desc,strlen(desc),&description)||!am_s(yyjson_doc_get_root(description.doc),"effect")||strcmp(am_s(yyjson_doc_get_root(description.doc),"effect"),"read")){ok=0;strcpy_s(m->error,96,"batch_descriptor_invalid");}
    if(ok){char *schema=am_value_write(am_obj(yyjson_doc_get_root(description.doc),"input_schema"));ui_status_t preflight=schema?ui_cap_json_validate(schema,params,strlen(params)):UI_STATUS_VALIDATION_FAILED;if(preflight){ok=0;snprintf(m->error,96,"batch_parameters_%d",preflight);}am_delete(schema);}am_json_free(&description);ui_capability_release(desc);am_delete(params);}}
@@ -289,7 +305,12 @@ if(r->model_calls==16||r->steps==64){am_finish(s,r,"limit","model_budget");retur
  }
  if(m->phase==AM_VALIDATE){if(!m->validated||m->validated==2)return 0;if(m->validated<0){am_finish(s,r,"failed",m->error[0]?m->error:"invalid_tool_batch");return 1;}am_stage(s,m,AM_TOOLS);}
  if(m->phase==AM_TOOLS){ui_cap_json_doc_t batch={0};if(!am_json_parse(m->batch,strlen(m->batch),&batch)){am_finish(s,r,"failed","invalid_batch");return 1;}yyjson_val *item=am_function_at(yyjson_doc_get_root(batch.doc),m->index);if(item){char *step=am_step(r,item);ui_cap_json_doc_t p={0};int ok=step&&am_json_parse(step,strlen(step),&p);if(ok)ok=ab_tool_allowed(s,r,yyjson_doc_get_root(p.doc));if(ok)ok=ai_tool_begin(s,r,yyjson_doc_get_root(p.doc),!strcmp(am_s(yyjson_doc_get_root(p.doc),"type"),"discover"));am_json_free(&p);am_delete(step);am_json_free(&batch);if(ok>0){++r->steps;++r->step;}if(ok<=0&&ai_store_available(s))am_finish(s,r,"failed","tool_rejected");return ok!=0;}
-  am_json_free(&batch);if(!m->index){if(m->assistant)return as_frame_complete(s,r);am_finish(s,r,"completed",NULL);return 1;}EnterCriticalSection(&s->lock);memset(&m->net,0,sizeof(m->net));m->request_saved=0;LeaveCriticalSection(&s->lock);am_delete(m->batch);m->batch=NULL;m->emitted=0;am_stage(s,m,AM_PREPARE);return 1;
+  am_json_free(&batch);if(!m->index){
+   if(m->assistant&&!am_text_chat(m))return as_frame_complete(s,r);
+   if(am_text_chat(m)&&!r->reply_length)am_finish(s,r,"failed","assistant_response_empty");
+   else am_finish(s,r,"completed",NULL);
+   return 1;
+  }EnterCriticalSection(&s->lock);memset(&m->net,0,sizeof(m->net));m->request_saved=0;LeaveCriticalSection(&s->lock);am_delete(m->batch);m->batch=NULL;m->emitted=0;am_stage(s,m,AM_PREPARE);return 1;
  }return 0;
 }
 /* UI owns application callbacks. Publication prevents the worker from using

@@ -11,6 +11,18 @@ __declspec(dllimport) ui_status_t ui_ai_graph_fixture_light(ui_ai_service_t *,ui
 __declspec(dllimport) void ui_ai_graph_fixture(ui_ai_service_t *,int,int);
 
 static unsigned unchanged_sizes;
+static ULONGLONG case_started;
+static void case_stage(const char *stage)
+{
+    FILETIME created,exited,kernel,user;
+    ULARGE_INTEGER cpu;
+    cpu.QuadPart=0;
+    if(GetThreadTimes(GetCurrentThread(),&created,&exited,&kernel,&user)){
+        cpu.LowPart=user.dwLowDateTime;cpu.HighPart=user.dwHighDateTime;
+    }
+    fprintf(stderr,"UI-STAGE %s elapsed_ms=%llu ui_user_ms=%llu\n",stage,
+        (unsigned long long)(GetTickCount64()-case_started),(unsigned long long)(cpu.QuadPart/10000));
+}
 static LRESULT CALLBACK general_size_probe(HWND window,UINT message,WPARAM wparam,LPARAM lparam,UINT_PTR id,DWORD_PTR data)
 {
     (void)id;(void)data;if(message==WM_SIZE)++unchanged_sizes;
@@ -158,8 +170,11 @@ static void host_graph_handoff(host_window_t *s,uint64_t instance)
     action.action="ai-cancel";action.id=s->ai_run;process_action(s,&action);CHECK(model_wait(s,"\"terminal\":true"));
 }
 
+#include "general_daily_release.inc"
+
 int wmain(int argc,wchar_t **argv)
 {
+    case_started=GetTickCount64();
     if(argc!=5&&argc!=6)return 2;SetEnvironmentVariableW(L"UI_LIGHT_SCRIPT_DIAGNOSTICS",L"1");host_window_t s={0};host_action_t action={0};GUID guid;wchar_t db[4096],folder[4096],id[40],settings[4096];
     CHECK(CreateDirectoryW(argv[3],NULL)||GetLastError()==ERROR_ALREADY_EXISTS);CoCreateGuid(&guid);StringFromGUID2(&guid,id,40);
     _snwprintf_s(folder,4096,_TRUNCATE,L"%s/host-%s",argv[3],id);CHECK(CreateDirectoryW(folder,NULL));
@@ -168,18 +183,30 @@ int wmain(int argc,wchar_t **argv)
     CHECK(SetEnvironmentVariableW(L"UI_AI_DB_PATH",db));CHECK(SetEnvironmentVariableW(L"UI_BROWSER_SETTINGS_PATH",settings));
     CHECK(SetEnvironmentVariableW(L"UI_STATE_EXAMPLE_HOME",folder));CHECK(SetEnvironmentVariableW(L"UI_API7_BACKEND",L"light"));
     CHECK(SetEnvironmentVariableW(L"UI_API7_OSMESA_DLL",argv[4]));CHECK(SetEnvironmentVariableW(L"UI_AI_GENERAL_ASSISTANT",L"1"));
+    SetEnvironmentVariableW(L"UI_AI_ASSISTANT_POLICY",NULL);SetEnvironmentVariableW(L"UI_AI_BR2_POLICY",NULL);
+    SetEnvironmentVariableW(L"UI_AI_PROFILE_PATH",NULL);SetEnvironmentVariableW(L"UI_AI_PROFILE_ID",NULL);
     CHECK(ui_framework_initialize()==UI_STATUS_OK);CHECK(create_host(&s,GetModuleHandleW(NULL))!=NULL);if(!s.ai)return 1;
     CHECK(model_wait(&s,NULL));CHECK(s.ai_general&&s.ai->assistant_policy);
-    /* Only this isolated Service receives a verified fake-price policy. */
-    s.ai->assistant_policy->input_rate=100;s.ai->assistant_policy->output_rate=200;
-    strcpy_s(s.ai->assistant_policy->price_version,65,"isolated-host-v1");memset(s.ai->assistant_policy->price_evidence,'1',64);s.ai->assistant_policy->price_evidence[64]=0;
+    if(!s.ai_general||!s.ai->assistant_policy){CHECK(close_host(&s));return 1;}
+    int daily=argc==6&&!wcsncmp(argv[5],L"daily-",6);
+    if(!daily){
+        /* Existing synthetic-policy cases do not require a release descriptor. */
+        s.ai->assistant_policy->input_rate=100;s.ai->assistant_policy->output_rate=200;
+        strcpy_s(s.ai->assistant_policy->price_version,65,"isolated-host-v1");memset(s.ai->assistant_policy->price_evidence,'1',64);s.ai->assistant_policy->price_evidence[64]=0;
+        strcpy_s(s.ai_price_version,65,"isolated-host-v1");
+    }
     CHECK(MoveWindow(s.hwnd,-16000,-16000,1280,1000,FALSE));ShowWindow(s.hwnd,SW_HIDE);
     action.action="assistant";process_action(&s,&action);pump(&s);
     ui_rect_t assistant={0},workspace={0};CHECK(ui_web_view_get_element_rect(s.view,"assistant",&assistant)==UI_STATUS_OK);
-    CHECK(ui_web_view_get_element_rect(s.view,"workspace",&workspace)==UI_STATUS_OK);CHECK(assistant.x<workspace.x&&assistant.width>=280);
-    click(&s,"ai-model-toggle");text(&s,"ai-model-name","deepseek-flash");click(&s,"ai-model-save");CHECK(model_wait(&s,NULL));click(&s,"ai-model-toggle");
+    CHECK(ui_web_view_get_element_rect(s.view,"workspace",&workspace)==UI_STATUS_OK);CHECK(assistant.x==0&&assistant.width==380&&workspace.x==assistant.width&&workspace.width>0);
+    click(&s,"ai-model-toggle");text(&s,"ai-model-name","deepseek-flash");
+    if(failures){CHECK(close_host(&s));return 1;}
+    click(&s,"ai-model-save");CHECK(model_wait(&s,NULL));click(&s,"ai-model-toggle");
+    if(daily)return host_daily_run(&s,argv[1],db,argv[5]);
     host_general_responses(&s);open_path(&s,argv[1]);pump(&s);uint64_t browser=ui_workspace_active(s.workspace);
+    host_shared_chat_controls(&s);
     open_path(&s,argv[2]);pump(&s);uint64_t maintenance=ui_workspace_active(s.workspace);CHECK(browser!=maintenance);
+    host_shared_chat_controls(&s);
     click(&s,"ai-draft-range-toggle");int graph_save=argc==6&&!wcscmp(argv[5],L"graph-save");
     unsigned before=failures;
     if(graph_save)host_general_target(&s,browser,"memory.document","memory.read",NULL,"");
@@ -236,18 +263,18 @@ int wmain(int argc,wchar_t **argv)
         do{
             pump(&s);
             CHECK(ui_web_view_get_presentation(s.view,"ai-status-line",&status)==UI_STATUS_OK);
-            displayed=status.text_utf8&&strstr(status.text_utf8,"任务终态 / cancelled")&&strstr(status.text_utf8,"终态保存：是");
+            displayed=status.text_utf8&&strstr(status.text_utf8,"已取消")&&strstr(status.text_utf8,"已保存");
             if(displayed)break;
         }while(GetTickCount()-begin<5000);
-        CHECK(status.text_utf8&&strstr(status.text_utf8,"任务终态 / cancelled")&&strstr(status.text_utf8,"终态保存：是"));
+        CHECK(status.text_utf8&&strstr(status.text_utf8,"已取消")&&strstr(status.text_utf8,"已保存"));
         CHECK(s.ai->model_config->requests==0);CHECK(close_host(&s));
         printf("General cancellation status checks=%u failures=%u\n",checks,failures);return failures?1:0;
     }
-    char run[65];strcpy_s(run,65,s.ai_run);CHECK(ui_ai_model_fixture_light(s.ai,s.view,"ai-model-confirm")==UI_STATUS_OK);
+    case_stage("initial-preview");char run[65];strcpy_s(run,65,s.ai_run);CHECK(ui_ai_model_fixture_light(s.ai,s.view,"ai-model-confirm")==UI_STATUS_OK);
     if(!host_general_wait(&s,"在固定浏览器资源读取")){CHECK(close_host(&s));return 1;}
     if(!host_general_wait(&s,"\"plan_waiting\":true")){CHECK(close_host(&s));return 1;}
     if(!host_general_binding(&s,1)){CHECK(0);CHECK(close_host(&s));return 1;}CHECK(s.ai_preview&&strstr(s.ai_preview,"74"));CHECK(s.ai->model_config->requests==3);
-    text(&s,"ai-input","未提交草稿保留");CHECK(ui_workspace_activate(s.workspace,browser)==UI_STATUS_OK);pump(&s);
+    case_stage("plan-ready");text(&s,"ai-input","未提交草稿保留");CHECK(ui_workspace_activate(s.workspace,browser)==UI_STATUS_OK);pump(&s);
     if(!host_general_binding(&s,1)){CHECK(0);CHECK(close_host(&s));return 1;}char *fixed=_strdup(s.ai_preview);CHECK(fixed!=NULL);
     click(&s,"ai-detail-toggle");pump(&s);CHECK(!s.ai_assistant_binding);CHECK(ui_ai_graph_fixture_light(s.ai,s.view,"ai-model-confirm")==UI_STATUS_UNSUPPORTED);
     click(&s,"ai-detail-toggle");if(!host_general_binding(&s,1)){CHECK(0);CHECK(close_host(&s));return 1;}CHECK(!strcmp(fixed,s.ai_preview));free(fixed);
@@ -255,17 +282,26 @@ int wmain(int argc,wchar_t **argv)
     CHECK(host_general_wait(&s,"browser:start"));CHECK(host_general_wait(&s,"doc-2"));
     CHECK(host_general_wait(&s,"原文没有待办"));CHECK(model_wait(&s,"\"terminal\":true"));CHECK(s.ai->model_config->requests==6);
     ui_element_presentation_t draft={0};draft.size=sizeof(draft);CHECK(ui_web_view_get_presentation(s.view,"ai-input",&draft)==UI_STATUS_OK&&!strcmp(draft.text_utf8,"未提交草稿保留"));
-    cell_expect(&s,maintenance,"74","doc-2");
-    action.action="ai-undo-view";action.id=run;action.panel="cell";process_action(&s,&action);DWORD begin=GetTickCount();do{pump(&s);}while(!s.ai_undo_binding&&GetTickCount()-begin<5000);
+    case_stage("root-complete");cell_expect(&s,maintenance,"74","doc-2");
+    click(&s,"ai-task-facts-toggle");
+    click(&s,"ai-undo-view-cell");
+    DWORD begin=GetTickCount();do{pump(&s);}while(!s.ai_undo_binding&&GetTickCount()-begin<5000);
+    if(!s.ai_undo_binding){
+        ui_element_presentation_t undo={0};undo.size=sizeof(undo);
+        ui_web_view_get_presentation(s.view,"ai-node-undo-preview",&undo);
+        fprintf(stderr,"undo preview visible=%d y=%d height=%d clip=%d/%d projection=%llu/%llu\n",undo.visible,undo.rect.y,undo.rect.height,undo.clip.y,undo.clip.height,(unsigned long long)s.ai_projection_rendered,(unsigned long long)s.ai_projection_generation);
+    }
     CHECK(s.ai_undo_binding!=0);CHECK(ui_ai_graph_fixture_light(s.ai,s.view,"ai-node-undo")==UI_STATUS_OK);CHECK(host_general_wait(&s,"\"undo_finished\":true"));cell_expect(&s,maintenance,"42","doc-3");
-    CHECK(close_host(&s));
+    case_stage("undo-complete");CHECK(close_host(&s));case_stage("first-closed");
     char path[4096];CHECK(WideCharToMultiByte(CP_UTF8,0,db,-1,path,sizeof(path),NULL,NULL)>0);char uri[4300];snprintf(uri,sizeof(uri),"file:%s?immutable=1",path);
     sqlite3 *sql=NULL;CHECK(sqlite3_open_v2(uri,&sql,SQLITE_OPEN_READONLY|SQLITE_OPEN_URI,NULL)==SQLITE_OK);sqlite3_stmt *q=NULL;
     CHECK(sqlite3_prepare_v2(sql,"SELECT terminal,outcome,reply FROM runs WHERE id=?",-1,&q,NULL)==SQLITE_OK);sqlite3_bind_text(q,1,run,-1,SQLITE_STATIC);CHECK(sqlite3_step(q)==SQLITE_ROW&&sqlite3_column_int(q,0)==1&&!strcmp((const char *)sqlite3_column_text(q,1),"completed"));CHECK(strstr((const char *)sqlite3_column_text(q,2),"原文没有待办"));sqlite3_finalize(q);
     CHECK(sqlite3_prepare_v2(sql,"SELECT payload FROM ai_graphs WHERE run_id=?",-1,&q,NULL)==SQLITE_OK);sqlite3_bind_text(q,1,run,-1,SQLITE_STATIC);CHECK(sqlite3_step(q)==SQLITE_ROW);const char *graph=(const char *)sqlite3_column_text(q,0);CHECK(graph&&strstr(graph,"transaction_id")&&strstr(graph,"browser:start")&&strstr(graph,"\"undo_finished\":true"));sqlite3_finalize(q);sqlite3_close(sql);
     memset(&s,0,sizeof(s));CHECK(create_host(&s,GetModuleHandleW(NULL))!=NULL);CHECK(model_wait(&s,NULL));ShowWindow(s.hwnd,SW_HIDE);
+    case_stage("records-reopened");
     action.action="ai-select";action.id=run;process_action(&s,&action);begin=GetTickCount();do{pump(&s);}while((!s.ai_stored_run||s.ai_query_pending)&&GetTickCount()-begin<5000);
     CHECK(s.ai_stored_run&&strstr(s.ai_stored_run,"completed")&&strstr(s.ai_stored_run,"authorization_restored\":false"));CHECK(s.ai->model_config->requests==0&&!s.ai_preview_ready);CHECK(close_host(&s));
+    case_stage("records-closed");
     SetEnvironmentVariableW(L"UI_AI_DB_PATH",NULL);SetEnvironmentVariableW(L"UI_BROWSER_SETTINGS_PATH",NULL);SetEnvironmentVariableW(L"UI_STATE_EXAMPLE_HOME",NULL);SetEnvironmentVariableW(L"UI_AI_GENERAL_ASSISTANT",NULL);
     printf("General host business checks=%u failures=%u; isolated authorization only\n",checks,failures);return failures?1:0;
 }

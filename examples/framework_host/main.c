@@ -89,6 +89,10 @@ typedef struct host_window {
     char ai_undo_node[65],ai_undo_run[65],ai_undo_hash[65];
     char *ai_general_catalog,*ai_database_path;
     assistant_attachment_t ai_attachments[4];unsigned ai_attachment_count;
+    char ai_price_version[65];
+    int ai_price_ready;
+    char ai_quick_app[128],ai_quick_resource[256],ai_quick_capability[256],ai_quick_label[96],ai_quick_pending[65];
+    ui_cap_target_v2_t ai_quick_target;
     char result_summary[192];
     int popup_kind,confirm_answer,confirm_waiting;
     char reported_error[512];

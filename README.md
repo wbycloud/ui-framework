@@ -70,7 +70,7 @@ ctest --test-dir build/web-shell --output-on-failure
 
 示例无需编写组件 HTML，展示按需树、表格/复选框/图片/样式、单位和混合值表单、Web 参数对话框、后台缩略图及绘图浮窗。菜单“Web 对话框”或 Ctrl+D 打开参数界面；Enter 提交表格编辑，Esc 取消；表格 Shift+滚轮切换列。它的 OpenGL 三角形仅为内容槽验证，不是框架业务渲染器。
 
-EDA 需要驱动支持 OpenGL 3.3 compatibility profile。点击画布后，`A` 添加矩形、`Z` 放大、`C` 清空。不同实例的数据、缩放和属性笔记独立保存。`Ctrl+Shift+O` 打开应用包，`Ctrl+W` 关闭标签，`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。全局助手点击AI展开，普通视图显示目标、可读操作、基本参数、执行状态及结果；schema、原始JSON、快照、事务和详细日志位于可折叠高级区。危险命令经过权限和确认接口。
+EDA 需要驱动支持 OpenGL 3.3 compatibility profile。点击画布后，`A` 添加矩形、`Z` 放大、`C` 清空。不同实例的数据、缩放和属性笔记独立保存。`Ctrl+Shift+O` 打开应用包，`Ctrl+W` 关闭标签，`Ctrl+Tab` / `Ctrl+Shift+Tab` 切换标签。点击「AI」打开框架共用的左侧聊天助手。日常对话显示消息和输入，需要时可选择范围并核对完整发送内容。模型和密钥在「设置」，诊断在「维护」。 [框架通用助手使用入口](docs/xuanshu-general-assistant-entry.md)
 
 分发宿主时，保留同目录的 `framework_host.exe` 与匹配的 `ui_framework.dll`，并提供应用包、工具链运行依赖及第三方许可。默认轻量引擎静态链接到运行库；当前共享运行库使用动态 CRT，部署要求见[构建与验证](docs/build-and-validation.md#21-打包自己的应用)。Git 仓库不提交构建产物。
 

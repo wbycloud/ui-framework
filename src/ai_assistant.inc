@@ -249,7 +249,8 @@ ui_status_t ui_ai_assistant_propose(ui_ai_service_t *s,const ui_ai_assistant_req
     if(out)out[0]=0;
     if(!ai_ui(s)||!out||!q||q->size<sizeof(*q)||q->version!=1||
        !s->assistant_policy||s->validation||!s->coordinator||s->coordinator->schema!=3||
-       !q->target_count||q->target_count>16||!q->targets||!q->task.targets||q->target_count!=q->task.target_count||
+       q->target_count>16||(q->target_count&&(!q->targets||!q->task.targets))||
+       q->target_count!=q->task.target_count||(!q->target_count&&q->attachment_count)||
        (q->parent_run_id&&*q->parent_run_id&&!ai_id(q->parent_run_id)))return UI_STATUS_INVALID_ARGUMENT;
     ++s->methods;
     as_run_t *a=calloc(1,sizeof(*a));ui_status_t status=UI_STATUS_OUT_OF_MEMORY;
@@ -268,7 +269,7 @@ ui_status_t ui_ai_assistant_propose(ui_ai_service_t *s,const ui_ai_assistant_req
     }
     a->bytes=sizeof(*a)+strlen(a->scope)+strlen(a->attachments)+2;
     a->policy=*s->assistant_policy;a->target_count=q->target_count;
-    memcpy(a->targets,q->targets,q->target_count*sizeof(*q->targets));
+    if(q->target_count)memcpy(a->targets,q->targets,q->target_count*sizeof(*q->targets));
     a->stage=AS_PLANNING;
     int owned=0;
     status=am_propose_common(s,q->parent_run_id&&*q->parent_run_id?q->parent_run_id:NULL,&q->task,out,a,&owned);

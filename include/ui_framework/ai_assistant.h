@@ -66,6 +66,10 @@ UI_API ui_status_t ui_ai_assistant_catalog(ui_ai_service_t *, uint64_t instance_
 /* Pure bounded identity check. Caller owns any durable local blob/preview. PNG
  * stays local-only. Text bytes are copied into the admitted task snapshot. */
 UI_API ui_status_t ui_ai_assistant_attachment_hash(const ui_ai_assistant_attachment_t *, char sha256[65]);
+/* Zero targets submit a text conversation on the same assistant. Use an empty
+ * permissions array, empty capability and field projections, and no attachments.
+ * Only explicitly selected history is included. The same disclosure confirmation
+ * and request controls apply, and the request exposes no tools. */
 UI_API ui_status_t ui_ai_assistant_propose(ui_ai_service_t *, const ui_ai_assistant_request_t *, char run_id[65]);
 UI_API ui_status_t ui_ai_assistant_get(ui_ai_service_t *, const char *run_id, char **json);
 UI_API ui_status_t ui_ai_assistant_get_disclosure(ui_ai_service_t *, const char *run_id, char **json);

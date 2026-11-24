@@ -2,12 +2,13 @@
 #include "ui_framework/ai_assistant.h"
 #include "br2_meter_config.h"
 static int general_unpriced,general_read_first,general_bad_agent,general_bad_specialist;
+static int general_expired;
 static ui_status_t general_open(ui_ai_service_t *service)
 {
     ui_ai_assistant_policy_t p={0};p.size=sizeof(p);p.version=1;
     p.request_limit=8;p.deadline_ms=600000;p.budget_nano_usd=100000000;
     p.input_rate_nano_usd=general_unpriced?0:100;p.output_rate_nano_usd=general_unpriced?0:200;
-    p.price_version="isolated-general-price-v1";
+    p.price_version=general_expired?"release-until-20000101-isolated":"isolated-general-price-v1";
     p.price_evidence_sha256="1111111111111111111111111111111111111111111111111111111111111111";
     p.meter_profile="deepseek-v41-responses-1017-v1";p.meter_evidence_sha256=BR2_METER_EVIDENCE;
     ui_status_t status=ui_ai_assistant_enable(service,&p);
@@ -125,6 +126,51 @@ static ai_run_t *general_run(void)
     return NULL;
 }
 
+static void general_text_case(int unexpected_tool)
+{
+    const char *input="请用一句话解释什么是只读。";
+    char *wire=unexpected_tool?general_read_wire("memory.read"):general_wire("只读可以查看数据。",0);
+    yyjson_mut_doc *d=yyjson_mut_doc_new(NULL);yyjson_mut_val *frames=yyjson_mut_arr(d);
+    yyjson_mut_doc_set_root(d,frames);
+    CHECK(wire&&yyjson_mut_arr_add_strcpy(d,frames,wire));
+    char *fixture=yyjson_mut_write(d,0,NULL);
+    CHECK(fixture&&ui_ai_model_fixture(s,1,fixture)==UI_STATUS_OK);
+    CHECK(ui_ai_model_fixture(s,5,"isolated-chat-sentinel")==UI_STATUS_OK);
+    free(fixture);free(wire);yyjson_mut_doc_free(d);
+    ui_ai_assistant_request_t q={0};q.size=sizeof(q);q.version=1;
+    q.task.size=sizeof(q.task);q.task.version=1;q.task.client_request_id="text-only";
+    q.task.input_utf8=input;q.task.profile_id="deepseek";q.task.profile_revision=s->model_config->revision;
+    q.task.history_selection_json="[]";q.permissions_json="[]";
+    q.task.disclosure_projection_json="{\"fields\":[\"value\"],\"capabilities\":[]}";
+    CHECK(ui_ai_assistant_propose(s,&q,run)==UI_STATUS_VALIDATION_FAILED);
+    q.task.disclosure_projection_json="{\"capabilities\":[],\"fields\":[]}";
+    CHECK(ui_ai_assistant_propose(s,&q,run)==UI_STATUS_OK);
+    int waiting=real_wait("\"phase\":3");CHECK(waiting);if(!waiting)return;
+    ai_run_t *r=general_run();CHECK(r&&r->target_count==0&&!r->graph);
+    char *preview=NULL;CHECK(ui_ai_assistant_get_disclosure(s,run,&preview)==UI_STATUS_OK);
+    yyjson_doc *pd=preview?yyjson_read(preview,strlen(preview),0):NULL;
+    yyjson_val *root=yyjson_doc_get_root(pd),*req=yyjson_obj_get(root,"request");
+    yyjson_val *tools=yyjson_obj_get(req,"tools"),*items=yyjson_obj_get(req,"input");
+    CHECK(yyjson_equals_str(yyjson_obj_get(root,"fixed_targets"),"[]"));
+    CHECK(yyjson_is_arr(tools)&&!yyjson_arr_size(tools));
+    CHECK(yyjson_arr_size(items)==1&&yyjson_equals_str(yyjson_obj_get(yyjson_arr_get(items,0),"content"),input));
+    CHECK(s->model_config->requests==0);
+    if(general_expired)CHECK(general_wait("\"price_ready\":false"));
+    CHECK(ui_ai_model_fixture(s,2,run)==UI_STATUS_OK);
+    CHECK(ui_ai_model_fixture(s,2,run)!=UI_STATUS_OK);
+    CHECK(real_wait("\"terminal\":true"));
+    CHECK(s->model_config->requests==(general_expired?0u:1u));
+    if(!general_expired){
+        yyjson_doc *bd=yyjson_read(s->model_config->fixture_body,strlen(s->model_config->fixture_body),0);
+        CHECK(req&&yyjson_equals(req,yyjson_doc_get_root(bd)));yyjson_doc_free(bd);
+    }
+    if(general_expired)CHECK(general_wait("\"error\":\"assistant_send_conditions\""));
+    else if(unexpected_tool)CHECK(strstr(state,"assistant_unplanned_function")!=NULL);
+    else CHECK(general_wait("\"result\":\"只读可以查看数据。\""));
+    CHECK(value(0)==10&&value(1)==10);
+    yyjson_doc_free(pd);ui_ai_release(preview);
+}
+
 static void general_case(const wchar_t *kind)
 {
     int question=!wcscmp(kind,L"question"),invalid=!wcscmp(kind,L"scope"),bad=!wcscmp(kind,L"inference"),missing=!wcscmp(kind,L"usage");
@@ -143,7 +189,9 @@ static void general_case(const wchar_t *kind)
         CHECK(general_wait("\"control\":2"));CHECK(ui_ai_model_fixture(s,2,run)==UI_STATUS_PERMISSION_DENIED);CHECK(s->model_config->requests==0);
         CHECK(ui_ai_assistant_control(s,run,UI_AI_ASSISTANT_RETURN)==UI_STATUS_OK);
     }
-    if(!general_plan(question))return;
+    int planned=general_plan(question);
+    CHECK(planned);
+    if(!planned)return;
     ai_run_t *r=general_run();CHECK(r&&r->graph);if(!r||!r->graph)return;
     DWORD begin=GetTickCount();
     do{pump();}while((r->graph->dirty||r->graph->persisted!=r->graph->version)&&GetTickCount()-begin<5000);
@@ -209,12 +257,23 @@ int GENERAL_ASSISTANT_MAIN(int argc,wchar_t **argv)
     if(argc!=4)return 2;
     CHECK(ui_framework_initialize()==UI_STATUS_OK);cr_package=argv[1];cr_directory=argv[2];
     general_bad_agent=!wcscmp(argv[3],L"specialist-scope");general_bad_specialist=!wcscmp(argv[3],L"specialist-inference");
-    general_read_first=!wcscmp(argv[3],L"preparation-read");general_unpriced=!wcscmp(argv[3],L"unpriced");setup(argv[1],argv[2]);general_model();
-    general_case(argv[3]);
+    general_read_first=!wcscmp(argv[3],L"preparation-read");general_unpriced=!wcscmp(argv[3],L"unpriced");
+    general_expired=!wcscmp(argv[3],L"text-expired");
+    int chat=!wcsncmp(argv[3],L"text",4),unexpected_tool=!wcscmp(argv[3],L"text-tool");
+    setup(argv[1],argv[2]);general_model();
+    if(chat)general_text_case(unexpected_tool);else general_case(argv[3]);
     if(s)close_service();
-    CHECK(cr_sql("SELECT count(*) FROM events WHERE kind='assistant_reserved'")>=(general_unpriced?0:1));
+    CHECK(cr_sql("SELECT count(*) FROM events WHERE kind='assistant_reserved'")>=((general_unpriced||general_expired)?0:1));
     CHECK(cr_sql("SELECT count(*) FROM events WHERE kind='assistant_reserved'")==cr_sql("SELECT count(*) FROM events WHERE kind='assistant_transport_entry'"));
     if(wcscmp(argv[3],L"storage"))CHECK(cr_sql("SELECT count(*) FROM events WHERE terminal=1")==1);
+    if(chat){
+        CHECK(cr_sql("SELECT count(*) FROM tools")==0);
+        CHECK(cr_sql("SELECT count(*) FROM ai_graphs")==0);
+        CHECK(cr_sql("SELECT count(*) FROM events WHERE kind='assistant_reserved'")==!general_expired);
+        if(!general_expired)CHECK(cr_sql("SELECT count(*) FROM events WHERE kind='assistant_cost' AND json_extract(payload,'$.known_nano_usd')=1800")==1);
+        if(!general_expired&&!unexpected_tool)
+            CHECK(cr_sql("SELECT count(*) FROM runs WHERE outcome='completed' AND reply='只读可以查看数据。'")==1);
+    }
     CHECK(ui_workspace_close_all(w)==UI_STATUS_OK);DWORD begin=GetTickCount();
     while(ui_workspace_count(w)&&GetTickCount()-begin<5000){ui_workspace_poll(w);MsgWaitForMultipleObjects(0,NULL,FALSE,1,QS_ALLINPUT);}
     CHECK(ui_workspace_destroy(w)==UI_STATUS_OK);

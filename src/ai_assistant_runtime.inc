@@ -9,7 +9,8 @@ static const char as_planner_instructions[]=
  "receives only its explicitly listed context. Parameters remain fixed after "
  "confirmation. New targets, operations or parameters need a new plan. "
  "During preparation use only supplied read tools to resolve selected objects "
- "and necessary parameters. Never execute planned edits, approve, navigate, "
+ "and necessary parameters. For read tools use target_alias strings such as "
+ "target-0 and target-1. Never execute planned edits, approve, navigate, "
  "write files, or invent capabilities.";
 static const char as_agent_instructions[]=
  "You are the application specialist for one fixed XuanShu plan node. The "
@@ -39,6 +40,7 @@ static const char as_result_instructions[]=
 
 static const char *as_instructions(am_run_t *m)
 {
+    if(am_text_chat(m))return "You are XuanShu, a conversational assistant. Answer the user's message directly. Do not call tools or claim access to any application or file.";
     return m->assistant->frame==3?as_agent_result_instructions:m->assistant->frame==1?as_agent_instructions:
            m->assistant->frame==2?as_result_instructions:as_planner_instructions;
 }
@@ -631,7 +633,8 @@ ui_status_t ui_ai_assistant_get(ui_ai_service_t *s,const char *id,char **out)
     if(!o){yyjson_mut_doc_free(d);return UI_STATUS_OUT_OF_MEMORY;}yyjson_mut_doc_set_root(d,o);
     EnterCriticalSection(&s->lock);
     yyjson_mut_obj_add_strcpy(d,o,"root_run",r->id);
-    yyjson_mut_obj_add_int(d,o,"stage",a->stage);
+    yyjson_mut_obj_add_int(d,o,"stage",r->terminal?AS_DONE:a->stage);
+    yyjson_mut_obj_add_bool(d,o,"text_only",am_text_chat(r->model)!=0);
     yyjson_mut_obj_add_int(d,o,"control",a->control);
     yyjson_mut_obj_add_uint(d,o,"requests_reserved",a->used);
     yyjson_mut_obj_add_uint(d,o,"request_limit",a->policy.requests);
@@ -643,7 +646,7 @@ ui_status_t ui_ai_assistant_get(ui_ai_service_t *s,const char *id,char **out)
     yyjson_mut_obj_add_bool(d,o,"price_ready",as_policy_ready(&a->policy)!=0);
     yyjson_mut_obj_add_strcpy(d,o,"error",a->error);
     yyjson_mut_obj_add_strcpy(d,o,"attachments",a->attachments);
-    yyjson_mut_obj_add_strcpy(d,o,"result",a->final_result);
+    yyjson_mut_obj_add_strcpy(d,o,"result",am_text_chat(r->model)&&r->terminal&&!strcmp(r->outcome,"completed")?r->reply:a->final_result);
     yyjson_mut_obj_add_bool(d,o,"plan_waiting",a->stage==AS_PLAN_WAIT);
     yyjson_mut_obj_add_strcpy(d,o,"plan_binding_hash",r->graph?r->graph->binding:"");
     yyjson_mut_val *nodes=yyjson_mut_arr(d);

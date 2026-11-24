@@ -1,8 +1,10 @@
 /* All root and application model frames pass these hooks from the original
  * av_reserve / av_before_send / transport / av_price call sites. */
+#include "ai_assistant_price.h"
+
 static int as_policy_ready(as_policy_t *p)
 {
-    return p->input_rate&&p->output_rate&&p->price_version[0]&&
+    return p->input_rate&&p->output_rate&&p->price_version[0]&&ai_assistant_price_current(p->price_version)&&
            as_hash(p->price_evidence)&&bm_profile_matches(p->meter_profile,p->meter_evidence);
 }
 

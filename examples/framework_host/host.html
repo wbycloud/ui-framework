@@ -4,10 +4,10 @@
 .column { display:flex; flex-direction:column; gap:8px; }
 .chat-row { display:flex; flex-direction:row; width:100%; }
 .chat-spacer { flex:1; min-width:20px; }
-.chat-message { width:86%; padding:10px; border-radius:8px; background:#f3f5f8; text-align:left; }
-.chat-user { background:#e8f2fb; }
-.chat-role { font-size:12px; color:#586579; }
-#ai-chat { gap:10px; }
+.chat-message { width:100%; padding:0; gap:12px; text-align:left; font-size:15px; line-height:25px; }
+.chat-user { width:82%; padding:12px 16px; border-radius:16px; background:#e7eff9; }
+.chat-role { display:none; }
+#ai-chat { gap:24px; }
 #ai-attachments img { width:100px; height:80px; }
 .parameter-label { font-size:13px; color:#44546a; }
 .ai-section { font-size:16px; font-weight:600; padding:6px 0; border-top:1px solid #738095; }
@@ -45,20 +45,14 @@
 .tab.closing,.tab.closing .tab-name,.tab.closing .tab-close { background:#e5e5e7; color:#919191; }
 #body { display:flex; flex-direction:row; flex:1; }
 #workspace { flex:1; height:100%; position:relative; overflow:hidden; background:#f7f7f8; }
-#empty { padding:48px 32px; gap:16px; }
-#empty-title { font-size:24px; color:#242424; }
+#empty { flex:1; height:100%; min-width:0; padding:16px; gap:14px; align-items:center; justify-content:center; }
+#empty-title { width:100%; text-align:center; font-size:26px; font-weight:600; color:#263142; }
 #app-chrome { position:absolute; left:0; top:0; width:100%; height:100%; }
-#assistant { width:380px; height:100%; padding:16px; gap:8px; background:#ffffff; overflow-y:auto; }
-#assistant-title { height:24px; font-size:16px; font-weight:600; }
-#target,#command { width:100%; text-align:left; }
-#params { height:64px; width:100%; }
-#schema { height:72px; width:100%; font-size:12px; }
-#actions button,#transactions button { flex:1; }
-#transactions button { padding:4px; font-size:12px; }
-#advanced { gap:8px; display:none; }
-#advanced-toggle { height:28px; text-align:left; border:0; background:#f7f7f8; }
-#result { min-height:40px; padding:8px; background:#f7f7f8; font-size:12px; }
-#log { height:160px; width:100%; font-size:12px; }
+#assistant { width:380px; height:100%; padding:0; gap:0; background:#ffffff; overflow-y:hidden; }
+/* UI_HOST_DEV_BEGIN */
+#advanced-toggle { height:28px; text-align:left; border:0; background:#f0f3f7; }
+#result { min-height:40px; padding:8px; background:#f0f3f7; font-size:12px; }
+/* UI_HOST_DEV_END */
 #popup { width:100%; height:100%; padding:16px; gap:8px; background:#ffffff; overflow-y:auto; }
 #popup-title { height:24px; font-size:16px; font-weight:600; }
 #popup-detail { max-height:160px; overflow-y:auto; }
@@ -109,6 +103,37 @@
 .dark .popup-shortcut { color:#b3b3b7; }
 .dark #empty-title { color:#ededed; }
 
+ .studio-mark { background:#30465e; color:#89aedd; }
+#ai-box { height:100%; gap:0; font-family:"Microsoft YaHei UI"; }
+#ai-box button,#ai-box input,#ai-box textarea { font-family:"Microsoft YaHei UI"; }
+#ai-toolbar { height:54px; padding:8px 14px; gap:4px; }
+#ai-main-title { flex:1; min-width:0; padding:0; border:0; font-size:15px; font-weight:600; white-space:nowrap; }
+#ai-toolbar button,#ai-task-overview button { border:0; border-radius:8px; }
+#ai-daily-content { flex:1; min-height:0; gap:0; }
+#ai-scroll { flex:1; min-height:0; overflow-y:auto; padding:24px; gap:20px; }
+#ai-empty-chat { flex:1; min-height:150px; gap:12px; justify-content:center; align-items:center; }
+#ai-empty-title { font-size:22px; font-weight:600; }
+#ai-task-overview { padding:0; gap:6px; font-size:12px; }
+#ai-question-box { padding:10px; border:1px solid #d2dce7; border-radius:8px; }
+#ai-composer { padding:16px 24px 24px; gap:6px; background:#ffffff; }
+#ai-composer-card { position:relative; padding:12px; gap:6px; border:1px solid #b9c6d5; border-radius:16px; background:#f8fafd; }
+#ai-input { height:64px; padding:6px; font-size:15px; border:0; background:transparent; }
+#ai-composer-tools button { height:32px; padding:4px 10px; border:0; border-radius:8px; }
+#ai-quick-read,#ai-view-scope { padding:4px 10px; border-radius:8px; }
+#ai-quick-read.selected { color:#254d7a; background:#e2edf9; border-color:#b2c9e4; }
+.dark #ai-quick-read.selected { color:#d5e7fa; background:#31485f; border-color:#527495; }
+#ai-error { font-size:12px; color:#9b372f; }
+.dark #ai-error { color:#f4a89f; }
+#ai-composer-scope { flex:1; min-width:0; }
+.dark #ai-composer { background:#1e2732; }
+.dark #ai-composer-card,.dark #ai-question-box { background:#243140; border-color:#4b5a6e; }
+/* UI_HOST_DEV_BEGIN */
+#assistant { padding:16px; gap:8px; overflow-y:auto; }
+#ai-box { height:auto; }
+#ai-daily-content { flex:0; }
+#ai-scroll { flex:0; padding:0; overflow-y:visible; }
+#ai-composer { padding:0; border:0; }
+/* UI_HOST_DEV_END */
 </style></head><body><span id="ai-projection-proof" style="display:none"></span>
 <div id="shell">
  <header id="top" class="row">
@@ -124,37 +149,21 @@
  <div id="menu-row"><div id="app-menus"></div></div>
  <main id="body">
   <aside id="assistant" class="column">
-   <div id="ai-box" class="column" style="display:none">
-    <span id="ai-main-title" class="ai-section">玄枢 · 只读助手</span><span class="muted">先保存任务，查看固定范围后逐任务确认发送。</span>
-    <div class="row"><button id="ai-model-toggle">设置</button><button id="ai-developer-toggle">开发诊断</button></div>
-     <div id="ai-control-bar" class="column" style="display:none"><button id="ai-takeover">手动接管应用</button><button id="ai-return">交回AI</button><span id="ai-control-state"></span></div>
-     <div id="ai-active-task" class="column"></div><div id="ai-chat" class="column"></div>
-     <div id="ai-message-box" class="column" style="display:none"><span id="ai-message-title"></span><textarea id="ai-message-detail" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-message-detail-prev">前页</button><span id="ai-message-detail-page"></span><button id="ai-message-detail-next">后页</button></div></div>
-     <div id="ai-professional-tasks" class="column"></div><button id="ai-evidence-toggle" style="display:none">查看业务结果与依据 ▸</button><div id="ai-evidence-box" class="column" style="display:none"><textarea id="ai-evidence" readonly="readonly" style="height:150px"></textarea><div class="row"><button id="ai-evidence-prev">前页</button><span id="ai-evidence-page"></span><button id="ai-evidence-next">后页</button></div></div><div id="ai-node-undo-box" class="column" style="display:none"><span class="label">撤销范围（新的本地操作）</span><textarea id="ai-node-undo-preview" readonly="readonly" style="height:150px"></textarea><button id="ai-node-undo" disabled="disabled">确认撤销此步骤（新操作）</button></div>
-    <div id="ai-settings-box" class="column" style="display:none">     <span class="label">当前模型配置（与任务绑定配置分开）</span><span>DeepSeek 官方 Responses · 普通任务逐项确认；配置或打开面板不会联网</span>
-     <input id="ai-model-name" placeholder="您选定的 DeepSeek 模型ID"/><div class="row"><button id="ai-model-save">保存用户模型配置</button><button id="ai-model-key">原生窗口设置密钥</button></div>
-     <span id="ai-model-state"></span>
-</div>
-    <button id="ai-history-toggle">会话记录 ▸</button><div id="ai-history-box" class="column" style="display:none">    <textarea id="ai-history" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-history-prev">前段</button><span id="ai-history-page"></span><button id="ai-history-next">后段</button></div>
+   <div id="ai-box" class="column" style="display:none"><div id="ai-toolbar" class="row"><span id="ai-main-title" class="ai-section">玄枢 · 只读助手</span><button id="ai-history-toggle">记录</button><button id="ai-model-toggle">设置</button><button id="ai-maintenance-toggle" style="display:none">维护</button>
+<!-- UI_HOST_DEV_BEGIN -->
+<button id="ai-developer-toggle">开发诊断</button>
+<!-- UI_HOST_DEV_END -->
+</div><span id="ai-service-failure" style="display:none"></span><div id="ai-daily-content" class="column"><div id="ai-scroll" class="column"><div id="ai-history-panel" class="column" style="display:none"><div id="ai-history-box" class="column" style="display:none">    <textarea id="ai-history" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-history-prev">前段</button><span id="ai-history-page"></span><button id="ai-history-next">后段</button></div>
     <div class="row"><button id="ai-older">消息首页</button><button id="ai-next">下一页</button><button id="ai-runs-refresh">任务记录</button></div>
-</div>
-    <button id="ai-list-toggle">收起任务列表</button><div id="ai-runs" class="column"></div><span id="ai-task-title" class="ai-section">当前任务与处理状态</span><button id="ai-view-scope">查看本任务范围（只查看，不授权）</button><span id="ai-status-line"></span><span id="ai-current-content"></span><button id="ai-task-facts-toggle">查看保存与处理详情 ▸</button><div id="ai-task-facts" class="column" style="display:none"><textarea id="ai-task-state" readonly="readonly" style="height:155px"></textarea><div class="row"><button id="ai-task-state-prev">前页</button><span id="ai-task-state-page"></span><button id="ai-task-state-next">后页</button></div></div><span id="ai-result-label" class="muted">当前任务结果（与新任务草稿分开）</span><textarea id="ai-output" readonly="readonly" style="height:120px"></textarea><div id="ai-output-pages" class="row"><button id="ai-output-prev">前段</button><span id="ai-output-page"></span><button id="ai-output-next">后段</button></div>
-    <div id="ai-question" class="muted"></div><span id="ai-answer-label" class="label">关联问题回复（仅回答当前问题）</span><input id="ai-answer" placeholder="回答关联问题"/><button id="ai-answer-send">回复此问题</button>
-
-    <button id="ai-cancel">请求取消当前任务</button><span id="ai-cancel-notice"></span>
-    <span id="ai-diagnostic-title" class="label">脱敏诊断</span><button id="ai-model-copy">复制脱敏诊断（不授权、不发送）</button><span id="ai-copy-notice"></span>
-    <span id="ai-error"></span>
-    <span class="ai-section">新任务草稿</span>    <span class="label">当前编辑草稿（修改不会改变已接纳任务）</span><span id="ai-input-label" class="label">任务输入（填写要本地保存的任务内容）</span><textarea id="ai-input" placeholder="描述要完成的任务" style="height:70px"></textarea>
-
-    <div id="ai-attachment-controls" class="column" style="display:none"><div class="row"><button id="ai-attachment-add">添加文本或本地PNG</button><button id="ai-attachment-clear">移除草稿附件</button></div><div id="ai-attachments" class="column"></div></div>
-     <button id="ai-draft-range-toggle">选择新任务范围 ▸</button><div id="ai-draft-range" class="column" style="display:none">     <span class="label">新提案范围草稿（仅下次保存提案使用）</span><span>选择要发送的历史片段（默认不选；可通过上方历史翻页）：</span><div id="ai-model-history" class="column"></div>
+</div><button id="ai-list-toggle">收起任务列表</button><div id="ai-runs" class="column"></div></div><div id="ai-settings-box" class="column" style="display:none"><span id="ai-settings-title" class="ai-section" style="display:none">模型设置</span><div id="ai-settings-description" class="column"><span class="label">当前模型配置（与任务绑定配置分开）</span><span>DeepSeek 官方 Responses · 普通任务逐项确认；配置或打开面板不会联网</span></div>
+     <span class="label">模型ID</span><input id="ai-model-name" placeholder="您选定的 DeepSeek 模型ID"/><div class="row"><button id="ai-model-save">保存用户模型配置</button><button id="ai-model-key">原生窗口设置密钥</button></div>
+      <span id="ai-model-ready" class="muted" style="display:none"></span><button id="ai-model-diagnostics-toggle" style="display:none">查看诊断</button>
+      <div id="ai-model-diagnostics" class="column"><span id="ai-model-state"></span><button id="ai-model-copy">复制脱敏诊断（不授权、不发送）</button><span id="ai-copy-notice"></span></div>
+</div><div id="ai-active-task" class="column"></div><div id="ai-empty-chat" class="column"><span class="glyph studio-mark" style="width:42px;height:42px;padding:9px;border-radius:13px;font-size:20px">&#xE8BD;</span><span id="ai-empty-title" style="width:100%;text-align:center">有什么可以帮你？</span></div><div id="ai-chat" class="column"></div><div id="ai-task-overview" class="column" style="display:none"><span id="ai-status-line"></span><div class="row"><button id="ai-task-facts-toggle">详情</button><button id="ai-cancel">取消</button></div><span id="ai-cancel-notice"></span></div><div id="ai-question-box" class="column" style="display:none"><div id="ai-question" class="muted"></div><span id="ai-answer-label" class="label">关联问题回复（仅回答当前问题）</span><input id="ai-answer" placeholder="回答关联问题"/><button id="ai-answer-send">回复此问题</button></div><div id="ai-task-facts" class="column" style="display:none"><button id="ai-view-saved-scope" style="display:none">查看发送内容</button><textarea id="ai-task-state" readonly="readonly" style="height:155px"></textarea><div class="row"><button id="ai-task-state-prev">前页</button><span id="ai-task-state-page"></span><button id="ai-task-state-next">后页</button></div><span id="ai-task-title" class="ai-section">当前任务与处理状态</span><span id="ai-current-content"></span><span id="ai-result-label" class="muted">当前任务结果（与新任务草稿分开）</span><textarea id="ai-output" readonly="readonly" style="height:120px"></textarea><div id="ai-output-pages" class="row"><button id="ai-output-prev">前段</button><span id="ai-output-page"></span><button id="ai-output-next">后段</button></div><div id="ai-control-bar" class="column" style="display:none"><button id="ai-takeover">手动接管应用</button><button id="ai-return">交回AI</button><span id="ai-control-state"></span></div><div id="ai-professional-tasks" class="column"></div><button id="ai-evidence-toggle" style="display:none">查看业务结果与依据 ▸</button><div id="ai-evidence-box" class="column" style="display:none"><textarea id="ai-evidence" readonly="readonly" style="height:150px"></textarea><div class="row"><button id="ai-evidence-prev">前页</button><span id="ai-evidence-page"></span><button id="ai-evidence-next">后页</button></div></div></div><div id="ai-message-box" class="column" style="display:none"><span id="ai-message-title"></span><textarea id="ai-message-detail" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-message-detail-prev">前页</button><span id="ai-message-detail-page"></span><button id="ai-message-detail-next">后页</button></div></div><div id="ai-node-undo-box" class="column" style="display:none"><span class="label">撤销范围（新的本地操作）</span><textarea id="ai-node-undo-preview" readonly="readonly" style="height:150px"></textarea><button id="ai-node-undo" disabled="disabled">确认撤销此步骤（新操作）</button></div><div id="ai-draft-range" class="column" style="display:none">     <span class="label">新提案范围草稿（仅下次保存提案使用）</span><span>选择要发送的历史片段（默认不选；可通过上方历史翻页）：</span><div id="ai-model-history" class="column"></div>
      <button id="ai-model-catalog">选择当前应用的只读目标与能力</button><span id="ai-model-target"></span><div id="ai-model-resources" class="column"></div><div id="ai-model-projection" class="column"></div>
-     <div id="ai-general-range" class="column" style="display:none"><div id="ai-task-suggestions" class="column"></div><div id="ai-profile-choices" class="column"></div><div id="ai-parameter-cards" class="column"></div><button id="ai-target-add">加入／更新此草稿目标</button><div id="ai-target-drafts" class="column"></div></div>
+     <div id="ai-general-range" class="column" style="display:none"><div id="ai-attachment-controls" class="row" style="display:none"><button id="ai-attachment-add">添加附件</button><button id="ai-attachment-clear">移除附件</button></div><div id="ai-task-suggestions" class="column"></div><div id="ai-profile-choices" class="column"></div><div id="ai-parameter-cards" class="column"></div><button id="ai-target-add">加入／更新此草稿目标</button><div id="ai-target-drafts" class="column"></div></div>
       <span>任务数据限于所选历史、目标能力及字段。先保存本地提案，再查看固定范围和完整请求。可撤销编辑还须核对具体有限计划；其他业务内容须另行明确选择。</span>
-</div>
-    <span id="ai-save-notice" class="muted">仅本地保存，不会直接发送。请先在设置中配置模型。</span>
-    <button id="ai-model-propose" class="primary">保存任务并查看范围</button>
-    <div id="ai-model-box" class="column" style="display:none"><button id="ai-range-close">收起任务范围</button>     <span id="ai-scope-title" class="ai-section">本次允许发送的内容</span>
+</div><div id="ai-model-box" class="column" style="display:none"><button id="ai-range-close">收起任务范围</button>     <span id="ai-scope-title" class="ai-section">本次允许发送的内容</span>
      <span id="ai-summary-note" class="muted"></span>
      <span class="label">本次任务输入（分页全文）</span><textarea id="ai-summary-input" readonly="readonly" style="height:80px"></textarea><div class="row"><button id="ai-summary-input-prev">前页</button><span id="ai-summary-input-page"></span><button id="ai-summary-input-next">后页</button></div>
      <span class="label">选中的历史片段（分页全文）</span><textarea id="ai-summary-history" readonly="readonly" style="height:100px"></textarea><div class="row"><button id="ai-summary-history-prev">前页</button><span id="ai-summary-history-page"></span><button id="ai-summary-history-next">后页</button></div>
@@ -167,60 +176,88 @@
      <div id="ai-detail-box" class="column"><span id="ai-detail-count"></span><div id="ai-disclosure" class="column"></div></div><span id="ai-display-state"></span>
      <button id="ai-model-confirm" disabled="disabled">确认此任务外发范围（一次）</button>
      <button id="ai-scope-toggle">查看技术范围记录（JSON）</button><div id="ai-scope-box" class="column" style="display:none"><span>技术范围记录；完整实际请求位于上方“完整请求详情”。</span><textarea id="ai-model-scope" readonly="readonly" style="height:130px"></textarea><div class="row"><button id="ai-model-scope-prev">前页</button><span id="ai-model-scope-page"></span><button id="ai-model-scope-next">后页</button></div></div>
-</div>
-    <div id="ai-developer-box" class="column" style="display:none"><span id="ai-state" class="muted"></span>
-    <span class="ai-section">开发诊断（非日常任务入口）</span><span>以下保留stub、受控编辑、图及命令诊断。不会取得真实模型修改权限。</span>
-    <button id="ai-model-continue">以当前目标显式继续</button>    <span id="ai-resource-label" class="label">stub可选资源ID（仅诊断；模型目标在新任务范围选择）</span><input id="ai-resource" placeholder="显式只读资源ID（可选）"/><span id="ai-plan-label" class="label">stub诊断脚本（测试模型，不是自然语言）</span><textarea id="ai-plan" style="height:70px">{"steps":[]}</textarea>
+</div><div id="ai-maintenance-box" class="column" style="display:none">
+    <span class="ai-section">任务维护</span>
+<!-- UI_HOST_DEV_BEGIN -->
+<div id="ai-developer-box" class="column"><span id="ai-state" class="muted"></span><span class="label">开发诊断</span>
+<!-- UI_HOST_DEV_END -->
+
+    <button id="ai-model-continue">以当前目标显式继续</button>
+<!-- UI_HOST_DEV_BEGIN -->
+<span id="ai-resource-label" class="label">stub可选资源ID（仅诊断；模型目标在新任务范围选择）</span><input id="ai-resource" placeholder="显式只读资源ID（可选）"/><span id="ai-plan-label" class="label">stub诊断脚本（测试模型，不是自然语言）</span><textarea id="ai-plan" style="height:70px">{"steps":[]}</textarea>
     <span class="muted">脚本仅用于stub测试；目标取提交时选中的应用，工具使用target:0。</span>
     <div class="row"><button id="ai-send" class="primary">提交stub任务</button><button id="ai-continue">显式继续</button></div>
+
+<!-- UI_HOST_DEV_END -->
     <div id="ai-edit-box" class="column" style="border-top:1px solid #738095;padding-top:12px">
-     <span>受控编辑 · 结构化范围（Stub测试模型）</span>
+     <span class="label">受控操作与恢复</span>
      <span class="muted">提案时固定应用和资源；文本和脚本不授权。确认最长30分钟，逐项批准最长5分钟，不自动续期。</span>
+
+<!-- UI_HOST_DEV_BEGIN -->
      <input id="ai-edit-cap" placeholder="能力ID，例如 counter.increment"/>
      <input id="ai-edit-resource" placeholder="明确资源ID，例如 counter.document"/>
      <textarea id="ai-edit-params" style="height:65px">{}</textarea>
      <textarea id="ai-edit-schema" style="height:65px">{"type":"object","properties":{},"additionalProperties":false}</textarea>
      <div class="row"><button id="ai-edit-catalog">查看当前应用能力</button><button id="ai-edit-propose">创建待确认提案</button></div>
      <textarea id="ai-edit-catalog-data" readonly="readonly" style="height:85px"></textarea><div class="row"><button id="ai-edit-catalog-data-prev">前段</button><span id="ai-edit-catalog-data-page"></span><button id="ai-edit-catalog-data-next">后段</button></div>
+
+<!-- UI_HOST_DEV_END -->
      <span id="ai-edit-state"></span><textarea id="ai-edit-scope" readonly="readonly" style="height:180px"></textarea><div class="row"><button id="ai-edit-scope-prev">前段</button><span id="ai-edit-scope-page"></span><button id="ai-edit-scope-next">后段</button></div>
      <div class="column"><button id="ai-edit-confirm" class="primary">确认此任务范围</button><button id="ai-edit-approve">逐项批准此调用</button><button id="ai-edit-reject">拒绝／请求取消</button></div>
      <div class="column"><button id="ai-edit-undo">新的显式撤销</button><button id="ai-edit-check">只读核对UNKNOWN</button><button id="ai-edit-migrate">确认备份并迁移此库</button></div>
      <span class="muted">迁移前核对下方数据库、schema、影响和备份位置。历史恢复不恢复授权；条件变化须重新提案。未知结果保持写入阻止。</span>
      <textarea id="ai-edit-result" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-edit-result-prev">前段</button><span id="ai-edit-result-page"></span><button id="ai-edit-result-next">后段</button></div>
     </div>
-    <div class="column" style="border-top:1px solid #738095;padding-top:12px">
-     <span class="label">Coordinator · Stub结构化任务图（测试模型）</span>
+    <div id="ai-graph-box" class="column" style="border-top:1px solid #738095;padding-top:12px">
+     <span class="label">有限计划与恢复</span>
+
+<!-- UI_HOST_DEV_BEGIN -->
      <span class="muted">目标每行“实例ID:资源ID”；步骤target从0编号。只读直接运行；修改须宿主确认有限步骤。恢复不恢复授权，不自动重放。</span>
      <textarea id="ai-graph-targets" style="height:55px" placeholder="1:counter.document"></textarea>
      <textarea id="ai-graph-plan" style="height:100px">{"nodes":[{"id":"counter","operation_id":"counter-1","agent_profile":"application.specialist","target":0,"capability":"counter.increment","params":{},"constraint":{"type":"object","properties":{},"additionalProperties":false}}]}</textarea>
-     <div class="row"><button id="ai-graph-propose">提交显式测试图</button><button id="ai-graph-continue">核对新目标后明确继续</button><button id="ai-graph-cancel">请求取消整图</button></div>
+     <div class="row"><button id="ai-graph-propose">提交显式测试图</button><button id="ai-graph-continue">核对新目标后明确继续</button></div>
+
+<!-- UI_HOST_DEV_END -->
+<button id="ai-graph-cancel">请求取消整图</button>
      <span id="ai-graph-state"></span><textarea id="ai-graph-data" readonly="readonly" style="height:180px"></textarea><div class="row"><button id="ai-graph-data-prev">前段</button><span id="ai-graph-data-page"></span><button id="ai-graph-data-next">后段</button></div>
      <div class="row"><button id="ai-graph-confirm" class="primary">确认图中有限任务范围</button><button id="ai-graph-approve">批准当前具体步骤</button><button id="ai-graph-check">只读核对UNKNOWN步骤</button><button id="ai-graph-migrate">确认schema3备份迁移</button></div>
+
+<!-- UI_HOST_DEV_BEGIN -->
      <input id="ai-graph-node" placeholder="问题所属节点ID"/><input id="ai-graph-question" placeholder="question ID"/><input id="ai-graph-answer" placeholder="只回答该问题，不授予权限"/><button id="ai-graph-answer-send">发送关联回答</button>
+<!-- UI_HOST_DEV_END -->
+
     </div>
+
+<!-- UI_HOST_DEV_BEGIN -->
     <button id="ai-diagnostic-toggle">命令诊断 ▸</button>
 </div>
-   </div>
+<!-- UI_HOST_DEV_END -->
+
+</div></div><div id="ai-composer" class="column"><div id="ai-composer-card" class="column"><span id="ai-input-label" style="display:none">消息输入</span><span id="ai-composer-placeholder" class="muted" style="position:absolute;left:18px;top:18px;width:80%;height:24px;font-size:15px">给玄枢发消息…</span><textarea id="ai-input" title="消息输入" placeholder="给玄枢发消息…"></textarea><div id="ai-attachments" class="column" style="max-height:120px;overflow-y:auto"></div><button id="ai-quick-read" style="display:none"></button><div id="ai-composer-tools" class="row" style="gap:6px"><button id="ai-draft-range-toggle">高级范围</button><span id="ai-composer-scope" class="muted"></span><span id="ai-composer-model" class="muted" title="当前草稿使用的模型"></span><button id="ai-model-propose" class="primary">发送消息</button></div></div><span id="ai-error" style="display:none"></span><span id="ai-save-notice" class="muted"></span><button id="ai-view-scope" style="display:none">查看本次发送内容</button><span id="ai-composer-hint" class="muted"></span></div></div></div>
+
+<!-- UI_HOST_DEV_BEGIN -->
    <div id="command-diagnostics" class="column">
-   <div id="assistant-title">助手工作台</div><span class="muted">调用固定目标实例；切换标签不会改变任务目标。</span>
-   <span class="label">目标实例</span><button id="target">选择应用</button>
-   <span class="label">语义命令</span><button id="command">选择命令</button>
+   <div id="assistant-title" style="height:24px;font-size:16px;font-weight:600">助手工作台</div><span class="muted">调用固定目标实例；切换标签不会改变任务目标。</span>
+   <span class="label">目标实例</span><button id="target" style="width:100%;text-align:left">选择应用</button>
+   <span class="label">语义命令</span><button id="command" style="width:100%;text-align:left">选择命令</button>
    <div id="param-inputs" class="column"></div><span id="param-hint" class="muted"></span>
-   <div id="actions" class="row"><button id="invoke" class="primary">执行操作</button><button id="cancel">取消任务</button></div>
+   <div id="actions" class="row"><button id="invoke" class="primary" style="flex:1">执行操作</button><button id="cancel" style="flex:1">取消任务</button></div>
    <span class="label">执行状态</span><div id="result">选择目标和操作后执行。</div>
    <button id="advanced-toggle">高级：参数、事务与详细记录 ▸</button>
-   <div id="advanced" class="column">
+   <div id="advanced" class="column" style="gap:8px;display:none">
     <button id="snapshot">查看状态快照</button><div id="transactions" class="row">
-     <button id="begin">开始</button><button id="commit">提交</button><button id="rollback">回滚</button><button id="undo">撤销</button></div>
-    <span class="label">参数定义 · JSON schema</span><textarea id="schema" readonly="readonly"></textarea>
-    <span class="label">原始参数 · JSON</span><textarea id="params">{}</textarea>
-    <span class="label">详细结果 / 进度 / 事件</span><textarea id="log" readonly="readonly"></textarea>
+     <button id="begin" style="flex:1;padding:4px;font-size:12px">开始</button><button id="commit" style="flex:1;padding:4px;font-size:12px">提交</button><button id="rollback" style="flex:1;padding:4px;font-size:12px">回滚</button><button id="undo" style="flex:1;padding:4px;font-size:12px">撤销</button></div>
+    <span class="label">参数定义 · JSON schema</span><textarea id="schema" readonly="readonly" style="height:72px;width:100%;font-size:12px"></textarea>
+    <span class="label">原始参数 · JSON</span><textarea id="params" style="height:64px;width:100%">{}</textarea>
+    <span class="label">详细结果 / 进度 / 事件</span><textarea id="log" readonly="readonly" style="height:160px;width:100%;font-size:12px"></textarea>
    </div>
    </div>
+
+<!-- UI_HOST_DEV_END -->
   </aside>
-  <section id="workspace"><div id="empty" class="column"><span id="empty-title">你的应用工作区</span>
-   <span class="muted">打开 .uapp 应用包，在标签间切换。应用自行选择原生、OpenGL 或 Web 内容。</span>
-   <button id="empty-open" class="primary" style="width:160px">打开应用包</button>
+  <section id="workspace"><div id="empty" class="column"><span id="empty-icon" class="glyph studio-mark" style="width:56px;height:56px;padding:12px;font-size:26px;border-radius:16px">&#xE8F1;</span><span id="empty-title">你的应用工作区</span>
+   <span class="muted" style="width:100%;text-align:center">打开 .uapp 应用包，开始工作。</span>
+   <button id="empty-open" class="primary" style="width:136px;height:36px;margin-top:6px;border-radius:9px">打开应用包</button>
   </div><div id="app-chrome"></div></section>
 
  </main>
@@ -231,14 +268,18 @@
 <script>
 var languageTexts={},staticLanguage=[],languageRevision='';
 function frameworkText(key){return languageTexts[key]||key}
-function rememberText(n){if(!n.children.length&&n.textContent)staticLanguage.push([n,n.textContent]);for(var i=0;i<n.children.length;i++)rememberText(n.children[i])}
+function rememberText(root){var pending=[root];while(pending.length){var n=pending.pop(),children=n.children;if(!children.length&&n.textContent)staticLanguage.push([n,n.textContent]);for(var i=children.length-1;i>=0;i--)pending.push(children[i])}}
 rememberText(document.body);
 function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage.length;i++){var a=staticLanguage[i],v=languageTexts[a[1]];if(v!==undefined&&a[0].textContent!==v)a[0].textContent=v}}
 
 
- var model = null, popupToken = '', dark = false, advanced = false, paramKey = '', paramNodes = [];
+ var model = null, popupToken = '', dark = false;
+/* UI_HOST_DEV_BEGIN */
+ var advanced = false, paramKey = '', paramNodes = [];
+/* UI_HOST_DEV_END */
  function element(id) { return document.getElementById(id); }
  function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
+ function showElement(id,visible){var n=element(id),display=visible?'flex':'none';if(n.style.display!==display)n.style.display=display;}
  function send(action, extra) { var m = extra || {}; m.action = action; ui.postMessage(m); }
  function button(id, title, action, extra, style) {
   var b = document.createElement('button'); b.id = id; b.textContent = title;
@@ -246,37 +287,101 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
   b.addEventListener('click', function () { send(action, extra); }); return b;
  }
  function action(id, name) { element(id).addEventListener('click', function () { send(name); }); }
- var aiPending=null,aiDiagnostic=false,aiDeveloper=false,aiCounter=0,aiCancelRun="";
+ var aiCounter=0,aiCancelRun="";
+/* UI_HOST_DEV_BEGIN */
+ var aiPending=null,aiDiagnostic=false,aiDeveloper=false;
+/* UI_HOST_DEV_END */
  function aiID(){return 'panel-'+Date.now().toString(16)+'-'+(++aiCounter).toString(16)}
  function aiBytes(text){try{return encodeURIComponent(text).replace(/%[0-9A-F]{2}/g,'x').length}catch(e){return Infinity;}}
 
+
+/* UI_HOST_DEV_BEGIN */
  function aiSubmit(continuing){if(aiPending)return;var client=aiID(),input=element('ai-input').value,m={action:continuing?'ai-continue':'ai-submit',id:model.active||'',command:model.ai.selected||'',token:client,answer:input,params:element('ai-plan').value,panel:element('ai-resource').value};if(aiBytes(input)>16384||aiBytes(m.params)>65536||aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='输入或桥接消息超过字节上限；输入保留';return;}aiPending={id:client,input:input};ui.postMessage(m)}
  element('ai-send').addEventListener('click',function(){aiSubmit(false)});element('ai-continue').addEventListener('click',function(){aiSubmit(true)});
+
+/* UI_HOST_DEV_END */
  element('ai-cancel').addEventListener('click',function(){aiCancelRun=model.ai.selected||'';element('ai-cancel-notice').textContent='取消请求已发起，等待实际状态和保存确认。';send('ai-cancel',{id:aiCancelRun})});
  element('ai-answer-send').addEventListener('click',function(){var r=model.ai.run||{},question=generalQuestion(model.ai);if(question){send('ai-assistant-answer',{id:model.ai.selected,panel:question.node,command:question.question_id,token:aiID(),answer:element('ai-answer').value});return;}send('ai-answer',{id:model.ai.selected||'',command:r.question_id||'',token:aiID(),answer:element('ai-answer').value})});
  element('ai-older').addEventListener('click',function(){send('ai-history',{id:'0',command:'messages'})});element('ai-next').addEventListener('click',function(){send('ai-history',{id:String(model.ai.messages.next||0),command:'messages'})});
  element('ai-runs-refresh').addEventListener('click',function(){send('ai-history',{id:'0',command:'runs'})});
+
+/* UI_HOST_DEV_BEGIN */
  element('ai-diagnostic-toggle').addEventListener('click',function(){aiDiagnostic=!aiDiagnostic;element('command-diagnostics').style.display=aiDiagnostic?'flex':'none'});
- var realDetails=true,realTechnical=false,realPreview=null,summaryKey='',summaryPreview=null;
- var settingsOpen=false,choicesOpen=false,historyOpen=false,listOpen=true,factsOpen=false,runListKey=null;
- element('ai-task-facts-toggle').addEventListener('click',function(){factsOpen=!factsOpen;element('ai-task-facts').style.display=factsOpen?'flex':'none';element('ai-task-facts-toggle').textContent=factsOpen?'收起保存与处理详情':'查看保存与处理详情 ▸'});
- function showRange(value){if(realExpanded===value)return;realExpanded=value;element('ai-model-box').style.display=value?'flex':'none';send('ai-model-display')}
+/* UI_HOST_DEV_END */
+
+ var realDetails=true,realTechnical=false,realPreview=null,summaryKey='',summaryPreview=null,closeReviewOnTerminal=false;
+ var settingsOpen=false,diagnosticsOpen=false,choicesOpen=false,historyOpen=false,listOpen=true,factsOpen=false,runListKey=null,maintenanceOpen=false;
+ function showMaintenance(value){
+  maintenanceOpen=value;diagnosticsOpen=false;
+  var a=model.ai;
+  if(value){paintEdit(a);paintGraph(a);}
+  paintAssistantPane(a);paintMaintenance(a);
+  if(value&&a.general&&realExpanded)showRange(false);else send('ai-model-display');
+ }
+ element('ai-maintenance-toggle').addEventListener('click',function(){showMaintenance(!maintenanceOpen)});
+ element('ai-task-facts-toggle').addEventListener('click',function(){factsOpen=!factsOpen;element('ai-task-facts').style.display=factsOpen?'flex':'none';element('ai-task-facts-toggle').textContent=factsOpen?'收起详情':'详情'});
+ function showRange(value,afterSave){
+  closeReviewOnTerminal=!!afterSave;
+  if(realExpanded===value)return;
+  realExpanded=value;showElement('ai-model-box',value);
+  if(model&&model.ai)paintChatVisibility(model.ai.general);
+  if(value)element('ai-model-box').scrollIntoView();
+  send('ai-model-display');
+ }
  element('ai-range-close').addEventListener('click',function(){showRange(false)});
- element('ai-developer-toggle').addEventListener('click',function(){aiDeveloper=!aiDeveloper;element('ai-developer-box').style.display=aiDeveloper?'flex':'none';element('command-diagnostics').style.display=aiDeveloper&&aiDiagnostic?'flex':'none'});
- element('ai-draft-range-toggle').addEventListener('click',function(){choicesOpen=!choicesOpen;element('ai-draft-range').style.display=choicesOpen?'flex':'none';element('ai-draft-range-toggle').textContent=choicesOpen?'收起新任务范围':'选择新任务范围 ▸'});
- element('ai-history-toggle').addEventListener('click',function(){historyOpen=!historyOpen;element('ai-history-box').style.display=historyOpen?'flex':'none'});
+
+/* UI_HOST_DEV_BEGIN */
+ element('ai-developer-toggle').addEventListener('click',function(){aiDeveloper=!aiDeveloper;showMaintenance(aiDeveloper);element('command-diagnostics').style.display=aiDeveloper&&aiDiagnostic?'flex':'none'});
+/* UI_HOST_DEV_END */
+
+ function showChoices(value,general){choicesOpen=value;showElement('ai-draft-range',value);element('ai-draft-range-toggle').textContent=general?(value?'收起范围':'范围'):(value?'收起高级范围':'高级范围');if(value)element('ai-draft-range').scrollIntoView();}
+ element('ai-draft-range-toggle').addEventListener('click',function(){showChoices(!choicesOpen,model.ai.general);send('ai-model-display')});
+ element('ai-history-toggle').addEventListener('click',function(){historyOpen=!historyOpen;showElement('ai-history-panel',historyOpen);showElement('ai-history-box',historyOpen);if(historyOpen)element('ai-history-panel').scrollIntoView();send('ai-model-display')});
  element('ai-list-toggle').addEventListener('click',function(){listOpen=!listOpen;element('ai-runs').style.display=listOpen?'flex':'none';element('ai-list-toggle').textContent=listOpen?'收起任务列表':'任务列表 ▸'});
  var realPending=null,realExpanded=false,realHistory={},realCaps={},realFields={},realResource="",realInstance="",realChoices="",realHistoryPage="",realChunks="",realRestored=false;
- element('ai-view-scope').addEventListener('click',function(){showRange(true);element('ai-summary-policy').scrollIntoView();element('ai-scope-title').scrollIntoView()});
+ function openRange(confirming){showRange(true,confirming);element('ai-summary-policy').scrollIntoView();element('ai-scope-title').scrollIntoView();}
+ element('ai-view-scope').addEventListener('click',function(){openRange(model.ai.general)});
+ element('ai-view-saved-scope').addEventListener('click',function(){openRange(false)});
  element('ai-detail-toggle').addEventListener('click',function(){realDetails=!realDetails;element('ai-detail-box').style.display=realDetails?'flex':'none';element('ai-detail-toggle').textContent=realDetails?'收起完整请求详情（收起后不可确认）':'展开完整请求详情';send('ai-model-display')});
  element('ai-scope-toggle').addEventListener('click',function(){realTechnical=!realTechnical;element('ai-scope-box').style.display=realTechnical?'flex':'none';element('ai-scope-toggle').textContent=realTechnical?'收起技术范围记录（JSON）':'查看技术范围记录（JSON）'});
- element('ai-model-toggle').addEventListener('click',function(){settingsOpen=!settingsOpen;element('ai-settings-box').style.display=settingsOpen?'flex':'none'});
+ function paintAssistantPane(a){
+  var separate=a.general,settings=element('ai-settings-box'),available=a.enabled&&a.phase!==6;
+  if(separate&&settings.className==='column'){
+   var maintenance=element('ai-maintenance-box');
+   [settings,maintenance].forEach(function(panel){
+    element('ai-box').appendChild(panel);
+    panel.style.flex='1';panel.style.minHeight='0';panel.style.overflowY='auto';panel.style.padding='8px 16px 16px';
+   });
+   settings.className='column settings-page';
+   maintenance.appendChild(element('ai-model-diagnostics-toggle'));
+   maintenance.appendChild(element('ai-model-diagnostics'));
+   showElement('ai-settings-description',false);showElement('ai-settings-title',true);
+   showElement('ai-model-ready',true);showElement('ai-model-diagnostics-toggle',true);
+   element('ai-model-save').textContent='保存模型';element('ai-model-key').textContent='设置密钥';
+   showChoices(false,true);
+  }
+  var focused=separate&&(settingsOpen||maintenanceOpen);
+  showElement('ai-settings-box',available&&settingsOpen);
+  showElement('ai-daily-content',available&&!focused);
+  showElement('ai-history-toggle',!focused);
+  showElement('ai-model-toggle',!separate||!maintenanceOpen);
+  showElement('ai-model-diagnostics',!separate||maintenanceOpen&&diagnosticsOpen);
+  element('ai-model-toggle').textContent=separate&&settingsOpen?'返回聊天':'设置';
+  element('ai-model-diagnostics-toggle').textContent=diagnosticsOpen?'收起诊断':'查看诊断';
+ }
+ element('ai-model-toggle').addEventListener('click',function(){
+  settingsOpen=!settingsOpen;
+  var a=model.ai;paintAssistantPane(a);paintMaintenance(a);
+  if(settingsOpen&&!a.general)element('ai-settings-box').scrollIntoView();
+  if(settingsOpen&&a.general&&realExpanded)showRange(false);else send('ai-model-display');
+ });
+ element('ai-model-diagnostics-toggle').addEventListener('click',function(){diagnosticsOpen=!diagnosticsOpen;paintAssistantPane(model.ai);});
  element('ai-model-save').addEventListener('click',function(){send('ai-model-save',{token:aiID(),answer:element('ai-model-name').value})});
- function realSubmit(resume){if(model.ai.general){generalSubmit(resume);return;}if(realPending)return;var token=aiID(),input=element('ai-input').value,m={action:resume?'ai-model-continue':'ai-model-propose',id:realInstance||model.active||'',command:model.ai.selected||'',token:token,answer:input,panel:realResource,params:JSON.stringify({history:JSON.stringify(Object.keys(realHistory).map(function(k){return Number(k)})),projection:JSON.stringify({capabilities:Object.keys(realCaps),fields:Object.keys(realFields)})})};if(aiBytes(input)>16384||aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='提案超出上限；输入保留';return;}realPending={id:token,input:input};element('ai-model-propose').disabled=true;element('ai-save-notice').textContent='正在提交本地提案；尚未确认保存。';ui.postMessage(m)}
+ function realSubmit(resume){if(model.ai.general){generalSubmit(resume);return;}if(realPending)return;var token=aiID(),input=element('ai-input').value,m={action:resume?'ai-model-continue':'ai-model-propose',id:realInstance||model.active||'',command:model.ai.selected||'',token:token,answer:input,panel:realResource,params:JSON.stringify({history:JSON.stringify(Object.keys(realHistory).map(function(k){return Number(k)})),projection:JSON.stringify({capabilities:Object.keys(realCaps),fields:Object.keys(realFields)})})};if(aiBytes(input)>16384||aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='提案超出上限；输入保留';return;}realPending={id:token,input:input};element('ai-model-propose').disabled=true;element('ai-save-notice').textContent='正在保存消息…';ui.postMessage(m)}
  element('ai-model-propose').addEventListener('click',function(){realSubmit(false)});element('ai-model-continue').addEventListener('click',function(){realSubmit(true)});
  /* Key and disclosure confirmation have no page-message authorization handler. */
- function realSaveDraft(){var d={input:element('ai-input').value,history:realHistory,capabilities:realCaps,fields:realFields,resource:realResource,instance:realInstance,generalTargets:generalTargets,generalProfiles:generalProfiles,generalParameters:generalParameters};var p=JSON.stringify(d);if(aiBytes(p)<60000)send('ai-model-draft',{params:p})}
- element('ai-input').addEventListener('input',realSaveDraft);
+ function realSaveDraft(){showElement('ai-composer-placeholder',!element('ai-input').value);var d={input:element('ai-input').value,history:realHistory,capabilities:realCaps,fields:realFields,resource:realResource,instance:realInstance,generalTargets:generalTargets,generalProfiles:generalProfiles,generalParameters:generalParameters};var p=JSON.stringify(d);if(aiBytes(p)<60000)send('ai-model-draft',{params:p})}
+ element('ai-input').addEventListener('input',realSaveDraft);element('ai-composer-placeholder').addEventListener('click',function(){element('ai-input').focus()});
  function localChoice(root,id,label,selected,toggle){var b=document.createElement('button');b.id=id;b.textContent=(selected?'✓ ':'□ ')+label;b.addEventListener('click',toggle);root.appendChild(b);return b;}
  element('ai-model-catalog').addEventListener('click',function(){realInstance=model.active||'';realResource='';realCaps={};realFields={};realChoices='';realSaveDraft();send('ai-model-catalog',{id:realInstance,panel:''})});
  element('ai-model-copy').addEventListener('click',function(){send('ai-model-copy')});
@@ -290,6 +395,7 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
  }
  function paintModel(a){if(!realRestored){realRestored=true;if(a.draft){var draft=a.draft;element('ai-input').value=draft.input||'';realHistory=draft.history||{};realCaps=draft.capabilities||{};realFields=draft.fields||{};realResource=draft.resource||'';realInstance=draft.instance||'';generalTargets=draft.generalTargets||[];generalProfiles=draft.generalProfiles||{};generalParameters=draft.generalParameters||{};}}element('ai-copy-notice').textContent=a.copyNotice||'';var c=a.modelConfig||{},r=a.run||{},k=c.credential||{};
   var key=k.error?('凭据失败：'+k.error):(k.stage==='saving'?'凭据正在保存':k.local_readable?'本地可读取；服务端未验证':k.stage==='cancelled'?'录入已取消':'凭据未确认可用');
+   element('ai-model-ready').textContent=c.pending?'正在保存模型…':c.error?'模型配置有问题，可查看诊断。':!c.ready?'请保存模型。':k.error?'密钥设置失败，可查看诊断。':k.stage==='saving'?'正在保存密钥…':k.local_readable?'模型已保存，密钥可在本机读取。':'模型已保存，请设置密钥。';
   element('ai-model-state').textContent=(c.ready?c.model_id:'模型未配置')+' · '+(c.pending?'后台正在保存':c.error||'配置已读回')+' · '+key+' · 配置代次 '+(c.revision===undefined?'未记录':c.revision)+' · '+a.configLocation;
   if(c.business_validation){var guard=summaryParse(c.business_validation)||{};element('ai-model-state').textContent+=' · BR-2验证保护：'+(guard.stopped?'已停止 '+(guard.error||''):guard.ready?'已就绪，仍需逐任务确认':'等待保护保存')+' · 请求占用 '+(guard.reserved||0)+'/3 · 费用已知 '+guard.known_nano_usd+' nano USD，未知 '+guard.fee_unknown;}
   if(!element('ai-model-name').value&&c.model_id)element('ai-model-name').value=c.model_id;
@@ -297,10 +403,10 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
   element('ai-model-propose').disabled=!!realPending||!c.ready||c.pending||a.phase!==2;element('ai-model-continue').disabled=!c.ready||r.phase!==8||a.phase!==2;
   paintChoices(a);var chunks=a.disclosureChunks||[],sig=JSON.stringify(chunks);if(realChunks!==sig){realChunks=null;realPreview=null;var candidate=summaryParse(chunks.join(''));if(chunks.length&&!candidate)throw Error('Invalid complete request');clear(element('ai-disclosure'));chunks.forEach(function(chunk,i){var t=document.createElement('textarea');t.id='ai-disclosure-'+i;t.readOnly=true;t.value=chunk;t.style.height='135px';element('ai-disclosure').appendChild(t)});element('ai-detail-count').textContent='共 '+chunks.length+' 块，以下按顺序显示，每块可滚动查看全文。';realPreview=candidate;realChunks=sig;}
   paintSummary(a,realPreview);element('ai-view-scope').disabled=!a.selected;
-  element('ai-model-confirm').disabled=!realExpanded||!realDetails||!chunks.length||!r.real_provider||r.disclosure_confirmed||r.phase!==3||!r.committed||a.phase!==2;
-  element('ai-display-state').textContent=!realDetails?'完整请求详情已收起；摘要不授予确认资格。':chunks.length?'完整初始请求及范围，以上分块可滚动查看；宿主校验全部显示后才接受真实确认。':'预览未就绪／已失效，不可确认旧范围';
+  element('ai-model-confirm').disabled=!realExpanded||!realDetails||!chunks.length||!r.real_provider||r.disclosure_confirmed||r.phase!==3||!r.committed||a.phase!==2||(a.general&&!generalPriceReady(a));
+  element('ai-display-state').textContent=!realDetails?'展开完整请求详情后可确认。':chunks.length?'请核对以上完整请求，再确认发送。':'正在准备完整预览，或原范围已失效。';
   pageText('ai-model-scope',JSON.stringify({run_id:r.run_id||r.id,model:r.model_id,input:r.input,targets:r.fixed_targets,binding:r.binding_hash,confirmation_received:r.disclosure_confirmed,confirmation_saved:r.disclosure_saved,request_saved:r.model_request_saved,error:r.error,warning:'仅所选历史及read范围；不授予编辑、审批或图调度权限。'},null,2));
-  if(realPending){var saved=a.ack===realPending.id;if(saved){var current=r.client_request_id===realPending.id&&r.committed;if(element('ai-input').value===realPending.input){element('ai-input').value='';realSaveDraft();}realPending=null;element('ai-save-notice').textContent='任务已持久化接纳；可从任务记录查看固定范围，尚未确认外发。';if(current)showRange(true);}else if(a.error||a.storageError){realPending=null;element('ai-save-notice').textContent='保存未确认：'+(a.storageError||a.error)+'；草稿与选择保留。';}element('ai-model-propose').disabled=!!realPending||!c.ready||c.pending||a.phase!==2;}}
+   if(realPending){var saved=a.ack===realPending.id;if(saved){var current=r.client_request_id===realPending.id&&r.committed;if(element('ai-input').value===realPending.input){element('ai-input').value='';realSaveDraft();}realPending=null;element('ai-save-notice').textContent=a.general?'已在本地保存，等待确认。':'已在本地保存。核对发送内容后确认。';if(a.general&&choicesOpen)showChoices(false,true);if(current&&(!a.general||!settingsOpen&&!maintenanceOpen))showRange(true,a.general);}else if(a.error||a.storageError){realPending=null;element('ai-save-notice').textContent='保存未确认，草稿已保留。';}element('ai-model-propose').disabled=!!realPending||!c.ready||c.pending||a.phase!==2;}}
  // Summary is a read-only projection of the selected task and its matching request.
  function summaryParse(raw){try{return typeof raw==='string'?JSON.parse(raw):raw||null}catch(e){return null}}
  function summaryFlag(r,key){return r[key]===undefined?'未记录':r[key]?'是':'否'}
@@ -313,11 +419,11 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
   var state='任务：'+(a.selected||'未选择')+'\n来源：'+source+(a.taskQueryId?' · 查询：'+a.taskQueryId:'')+'\n状态：'+phase+(r.outcome?' / '+r.outcome:'');
   if(matching){state+='\n持久化接纳：'+summaryFlag(r,'committed')+' · 外发确认：'+summaryFlag(r,'disclosure_confirmed')+'\n确认保存：'+summaryFlag(r,'disclosure_saved')+' · 模型请求保存：'+summaryFlag(r,'model_request_saved')+'\n终态：'+summaryFlag(r,'terminal')+' · 终态保存：'+(r.terminal===undefined||r.committed===undefined?'未记录':r.terminal&&r.committed?'是':'否')+'\n远端：'+(r.remote_delivery===undefined?'未记录':remote[r.remote_delivery]||r.remote_delivery)+'\n工具调用数（不等于完成）：'+(r.tool_calls===undefined?'未记录':r.tool_calls)+' · 模型轮次：'+(r.model_calls===undefined?'未记录':r.model_calls)+'（不是HTTP计数）';
    if(r.provider_phase===2&&!r.terminal)state+='\n请求路径在途；不代表服务端已处理。';if(r.reply&&!r.terminal)state+='\n已有流式输出（尚非最终保存）。';state+='\n任务错误：'+(r.error|| (r.error_recorded===false?'未记录':'无'));
-  }if(a.queryError)state+='\n读取错误：'+a.queryError;if(a.storageError)state+='\n存储错误：'+a.storageError;if(a.error)state+='\n宿主错误：'+a.error;pageText('ai-task-state',state);element('ai-status-line').textContent=matching?phase+(r.outcome?' / '+r.outcome:'')+' · '+(r.committed?'已持久化接纳':'保存尚未确认')+(r.terminal?' · 终态保存：'+summaryFlag(r,'committed'):''):'尚未选择任务；在下方填写新任务草稿。';element('ai-current-content').textContent=matching?'任务内容：'+(r.input||'（无输入）').slice(0,180)+((r.input||'').length>180?'…（摘要；全文见任务范围）':''):'';
+  }if(a.queryError)state+='\n读取错误：'+a.queryError;if(a.storageError)state+='\n存储错误：'+a.storageError;if(a.error)state+='\n宿主错误：'+a.error;pageText('ai-task-state',state);element('ai-status-line').textContent=matching?(r.terminal?({completed:'已完成',cancelled:'已取消',failed:'未完成',unknown:'远端结果未知'}[r.outcome]||phase):phase)+' · '+(r.committed?'已保存':'正在确认保存'):'尚未选择任务；在下方填写新任务草稿。';element('ai-current-content').textContent=matching?'任务内容：'+(r.input||'（无输入）').slice(0,180)+((r.input||'').length>180?'…（摘要；全文见任务范围）':''):'';
   var key=JSON.stringify([a.selected,a.taskSource,matching,r.input,r.disclosure,r.stub_plan,r.fixed_targets,r.targets,r.model_id,r.binding_hash]);if(summaryKey===key&&summaryPreview===p&&['ai-summary-input','ai-summary-history','ai-summary-fixed','ai-summary-policy'].every(function(id){return displayPages[id]&&displayPages[id].painted}))return;summaryKey=null;summaryPreview=null;
   element('ai-summary-note').textContent=matching?(real?'以下是当前任务的固定范围；未选历史、其他应用内容及业务文件不会自动加入。':'当前任务是本地诊断；没有真实模型外发范围。'):'当前尚无匹配任务快照；草稿不等于已保存任务。';
   pageText('ai-summary-input',matching?r.input||'（无输入）':'暂无匹配任务');
-  var histories='未记录历史选择';if(Array.isArray(history)){histories='所选历史序号：'+(history.length?history.join('、'):'无')+'\n';if(!history.length)histories+='未选择任何历史。';else if(req&&Array.isArray(req.input)&&req.input.length>=history.length+2){histories+='以下按实际请求顺序列出所选历史全文：\n';for(var i=0;i<history.length;i++)histories+='片段 '+(i+1)+' · '+req.input[i].role+'\n'+req.input[i].content+'\n';}else histories+='历史全文未随任务快照恢复；通过上方“消息首页／下一页”和消息历史分页查看原序号。不重建或恢复旧外发授权。';}
+  var histories='未记录历史选择';if(Array.isArray(history)){histories='所选历史序号：'+(history.length?history.join('、'):'无')+'\n';if(!history.length)histories+='未选择任何历史。';else if(req&&Array.isArray(req.input)&&req.input.length>history.length){histories+='以下按实际请求顺序列出所选历史全文：\n';for(var i=0;i<history.length;i++)histories+='片段 '+(i+1)+' · '+req.input[i].role+'\n'+req.input[i].content+'\n';}else histories+='历史全文未随任务快照恢复；通过上方“消息首页／下一页”和消息历史分页查看原序号。不重建或恢复旧外发授权。';}
   pageText('ai-summary-history',matching?histories:'暂无匹配任务');
   var fixed='未记录目标';if(Array.isArray(targets))fixed=targets.length?targets.map(function(t,i){return 'target-'+i+' · 实例：'+t.instance_id+'\n资源：'+t.resource_id+' · revision：'+t.revision+'\n固定权限范围：'+t.scope+'\nhost epoch：'+t.host_epoch+'\nopen epoch：'+t.open_epoch}).join('\n\n'):'无目标（纯文本）';pageText('ai-summary-fixed',matching?fixed:'暂无匹配任务');
   pageText('ai-summary-policy',!matching?'暂无匹配任务':!real?'本地stub诊断；真实模型范围未记录。':'模型：'+(req?req.model:r.model_id||scope.model||'未记录')+'\norigin：https://api.deepseek.com（固定协议）\n配置代次：'+(scope.profile_revision===undefined?'未记录':scope.profile_revision)+'\n允许read能力：'+(Array.isArray(projection.capabilities)?projection.capabilities.join('、')||'无':'未记录')+'\n允许字段：'+(Array.isArray(projection.fields)?projection.fields.join('、')||'无':'未记录')+(scope.assistant_version?'\n有限计划须另行核对和确认。':'\n不授予写入、审批或图调度权限。'));if(scope.assistant_version){var allowed=summaryParse(scope.assistant_scope)||[],policyText=displayPages['ai-summary-policy'].text;for(var i=0;i<allowed.length;i++){var item=allowed[i];policyText+='\n\n实例目标 '+item.target+' / '+item.resource+'\n范围 '+item.scope+'\n允许能力 '+item.capabilities.map(function(c){return c.id}).join('、')+'\n允许字段 '+(item.fields||projection.fields||[]).join('、');}pageText('ai-summary-policy',policyText);}summaryKey=key;summaryPreview=p;
@@ -325,9 +431,13 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
  var displayPages={};
  function pageText(id,text){var p=displayPages[id];if(!p){p=displayPages[id]={text:'',page:0,painted:false};element(id+'-prev').addEventListener('click',function(){p.painted=false;if(p.page>0)p.page--;paintPage(id)});element(id+'-next').addEventListener('click',function(){p.painted=false;if((p.page+1)*900<p.text.length)p.page++;paintPage(id)})}if(p.text===(text||'')&&p.painted)return;p.painted=false;p.text=text||'';if(p.page*900>=p.text.length)p.page=0;paintPage(id)}
  function paintPage(id){var p=displayPages[id];p.painted=false;var at=p.page*900,end=Math.min(at+900,p.text.length);if(at>0&&p.text.charCodeAt(at)>=56320&&p.text.charCodeAt(at)<=57343)at--;if(end<p.text.length&&p.text.charCodeAt(end-1)>=55296&&p.text.charCodeAt(end-1)<=56319)end++;element(id).value=p.text.slice(at,end);element(id+'-page').textContent='展示 '+(p.page+1)+' / '+Math.max(1,Math.ceil(p.text.length/900));p.painted=true;}
+
+/* UI_HOST_DEV_BEGIN */
  var aiEditPending=null;
  element('ai-edit-propose').addEventListener('click',function(){if(aiEditPending)return;var token=aiID(),params=element('ai-edit-params').value,schema=element('ai-edit-schema').value,m={action:'ai-edit-propose',id:model.active||'',command:element('ai-edit-cap').value,panel:element('ai-edit-resource').value,params:params,answer:schema,token:token};if(aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='编辑提案超过桥接上限；输入保留';return;}aiEditPending={id:token,params:params};ui.postMessage(m)});
  element('ai-edit-catalog').addEventListener('click',function(){send('ai-edit-catalog',{id:model.active||''})});
+
+/* UI_HOST_DEV_END */
  element('ai-edit-reject').addEventListener('click',function(){var e=model.ai.edit||{};send('ai-edit-reject',{id:e.id||''})});
  /* Confirm/approve/undo/check/migrate deliberately have NO message handlers.
     The framework's qualified private semantic binding is their sole authority. */
@@ -336,21 +446,45 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
   pageText('ai-edit-scope',JSON.stringify({operation_id:e.id,operation:e.undo?"UNDO":"EXECUTE",undo_receipt:e.undo_id,capability:e.capability_id,side_effect:e.side_effect,target:target,parameters:e.params,allowed_parameters:e.parameter_constraint,risk:risks[e.risk]||'',scope_until:e.scope_until,approval_until:e.approval_until,database:e.storage_path,schema:e.schema,target_schema:2,backup:e.backup_path,migration:'暂停新写入并排空，校验一致备份后事务迁移；失败不重建／覆盖恢复',unresolved_records:e.recovered_unresolved},null,2));
   pageText('ai-edit-result',JSON.stringify({storage_confirmed:e.storage_confirmed,transaction_committed:e.transaction_committed,rolled_back:e.rolled_back,effect:e.effect,revision:e.revision_after,transaction:e.transaction_id,undo_receipt:e.undo_id,output:e.output,code:e.code,history_record:(a.run||{}).edit_record,history_authorization:'恢复记录不恢复授权；旧epoch不重放'},null,2));
   element('ai-edit-confirm').disabled=e.phase!==1||a.phase!==2;element('ai-edit-approve').disabled=e.phase!==2||a.phase!==2;element('ai-edit-undo').disabled=e.phase!==11||e.effect!==1||!e.undo_id||a.phase!==2;element('ai-edit-check').disabled=e.phase!==12||!e.call_id||e.call_id==='0'||a.phase!==2;element('ai-edit-migrate').disabled=e.schema!==1||a.phase!==2;
-  element('ai-edit-reject').disabled=!e.id||e.phase===11;element('ai-edit-propose').disabled=a.phase!==2||(e.phase!==0&&e.phase!==11&&e.phase!==undefined)||e.recovered_unresolved>0;
+  element('ai-edit-reject').disabled=!e.id||e.phase===11;
+/* UI_HOST_DEV_BEGIN */
+element('ai-edit-propose').disabled=a.phase!==2||(e.phase!==0&&e.phase!==11&&e.phase!==undefined)||e.recovered_unresolved>0;
+/* UI_HOST_DEV_END */
+
+
+/* UI_HOST_DEV_BEGIN */
   pageText('ai-edit-catalog-data',a.editCatalog?JSON.stringify(a.editCatalog,null,2):'目录仅描述能力，不授予执行权。');
   if(aiEditPending&&(a.editAck===aiEditPending.id||a.error||a.storageError)){if(a.editAck===aiEditPending.id&&element('ai-edit-params').value===aiEditPending.params)element('ai-edit-params').value='{}';aiEditPending=null;}
+/* UI_HOST_DEV_END */
+
  }
+
+/* UI_HOST_DEV_BEGIN */
  var graphPending=null;
  function graphSubmit(resume){var token=aiID(),params=element('ai-graph-plan').value,targets=element('ai-graph-targets').value,m={action:resume?'ai-graph-continue':'ai-graph-propose',id:model.ai.selected||'',token:token,command:'Explicit stub Coordinator task graph',params:params,answer:targets};if(aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='图提案超过桥接限额，输入保留';return;}graphPending=token;ui.postMessage(m)}
  element('ai-graph-propose').addEventListener('click',function(){graphSubmit(false)});element('ai-graph-continue').addEventListener('click',function(){graphSubmit(true)});
+
+/* UI_HOST_DEV_END */
  element('ai-graph-cancel').addEventListener('click',function(){send('ai-graph-cancel',{id:model.ai.selected||''})});
+
+/* UI_HOST_DEV_BEGIN */
  element('ai-graph-answer-send').addEventListener('click',function(){send('ai-graph-answer',{id:model.ai.selected||'',panel:element('ai-graph-node').value,command:element('ai-graph-question').value,token:aiID(),answer:element('ai-graph-answer').value})});
+/* UI_HOST_DEV_END */
+
  function paintGraph(a){var g=a.graph||{},c=a.coordinator||{},nodes=g.nodes||[],waiting=false,unknown=false;for(var i=0;i<nodes.length;i++){if(nodes[i].edit_phase===2)waiting=true;if(nodes[i].edit_phase===12)unknown=true;}
   element('ai-graph-state').textContent='任务 '+(g.run_id||'无')+' · 在途 '+(g.active||0)+' · '+(g.outcome||'')+' · '+(c.error||'');
   pageText('ai-graph-data',JSON.stringify({database:c.storage_path,schema:c.schema,target_schema:3,backup:c.backup_path,migration:'确认后排空、校验一致备份、事务迁移；失败保留原库',root:g,history:(a.run||{}).graph_record},null,2));
   element('ai-graph-confirm').disabled=!g.needs_scope||g.confirmed||g.terminal||c.pending||a.phase!==2;element('ai-graph-approve').disabled=!waiting||c.pending||a.phase!==2;element('ai-graph-check').disabled=!unknown||c.pending||a.phase!==2;element('ai-graph-migrate').disabled=c.schema!==2||c.pending||a.phase!==2;
-  element('ai-graph-propose').disabled=c.schema!==3||a.phase!==2;element('ai-graph-continue').disabled=(a.run||{}).phase!==8||c.schema!==3||a.phase!==2;element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
+
+/* UI_HOST_DEV_BEGIN */
+  element('ai-graph-propose').disabled=c.schema!==3||a.phase!==2;element('ai-graph-continue').disabled=(a.run||{}).phase!==8||c.schema!==3||a.phase!==2;
+/* UI_HOST_DEV_END */
+element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
+
+/* UI_HOST_DEV_BEGIN */
   if(graphPending&&(a.ack===graphPending||a.error||a.storageError))graphPending=null;
+/* UI_HOST_DEV_END */
+
  }
 
 </script>
@@ -362,21 +496,30 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
   for(var i=0;i<nodes.length;i++)if(nodes[i].question_id&&nodes[i].question)return nodes[i];
   return null;
  }
+ function quickReadSelected(a){return !!a.quickReadInstance&&a.quickReadInstance!=='0'}
+ function generalPriceReady(a){return a.priceReady&&(a.modelConfig||{}).model_id==='deepseek-flash'}
+ element('ai-quick-read').addEventListener('click',function(){
+  if(realPending)return;
+  send('ai-assistant-quick-read',{id:model.active||'',command:quickReadSelected(model.ai)?'remove':'select'});
+ });
  function generalSubmit(resume){
   if(realPending)return;
-  if(!generalTargets.length){element('ai-error').textContent='先选择应用资源、能力及字段，并加入草稿目标。';return;}
+  var input=element('ai-input').value,quick=quickReadSelected(model.ai),error='';
+  if(!input.trim())error='请输入消息。';
+  else if(!quick&&!generalTargets.length&&(model.ai.draftAttachments||[]).length)error='发送附件需要先选择应用范围。可在「范围」里移除附件。';
   var caps={},fields={};
   for(var i=0;i<generalTargets.length;i++){
    var t=generalTargets[i];
    for(var j=0;j<t.readCapabilities.length;j++)caps[t.readCapabilities[j]]=true;
    for(var j=0;j<t.fields.length;j++)fields[t.fields[j]]=true;
   }
-  var input=element('ai-input').value,token=aiID();
-  var payload={history:JSON.stringify(Object.keys(realHistory).map(function(k){return Number(k)})),projection:JSON.stringify({capabilities:Object.keys(caps),fields:Object.keys(fields)}),targets:generalTargets};
+  var token=aiID();
+  var payload={history:JSON.stringify(Object.keys(realHistory).map(function(k){return Number(k)})),projection:JSON.stringify({capabilities:Object.keys(caps),fields:Object.keys(fields)}),targets:generalTargets,quick:quick};
   var m={action:'ai-assistant-propose',token:token,answer:input,command:resume?model.ai.selected||'':'',params:JSON.stringify(payload)};
-  if(aiBytes(input)>16384||aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='任务或范围超过字节上限，草稿保留。';return;}
+  if(!error&&(aiBytes(input)>16384||aiBytes(JSON.stringify(m))>65536))error='任务或范围超过字节上限，草稿保留。';
+  element('ai-error').textContent=error;showElement('ai-error',!!error);if(error)return;
   realPending={id:token,input:input};element('ai-model-propose').disabled=true;
-  element('ai-save-notice').textContent='正在提交本地提案，等待持久化接纳。';ui.postMessage(m);
+  element('ai-save-notice').textContent='正在保存消息…';ui.postMessage(m);
  }
  function generalParameter(cap,key,schema,root){
   var values=generalParameters[cap.id]||(generalParameters[cap.id]={});
@@ -438,7 +581,7 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
    var target=generalTargets[i];targets.appendChild(generalLocalButton('ai-target-remove-'+i,'移除 · 实例 '+target.instance+' / '+target.resource+' · '+target.capabilities.join('、')));
    (function(index){var b=targets.children[targets.children.length-1];b.addEventListener('click',function(){generalTargets.splice(index,1);generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft()})})(i);
   }
-  element('ai-target-add').disabled=!realResource||!Object.keys(realCaps).length;
+  element('ai-target-add').disabled=!realResource||!Object.keys(realCaps).length||quickReadSelected(a);
   element('ai-model-target').textContent='当前范围草稿 · '+(realResource?'实例 '+realInstance+' / '+realResource:'尚未选择资源')+'；已加入 '+generalTargets.length+' 个目标。';
   generalChoicesKey=key;
  }
@@ -457,14 +600,36 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
  element('ai-attachment-clear').addEventListener('click',function(){send('ai-attachment-clear')});
  element('ai-evidence-toggle').addEventListener('click',function(){generalEvidence=!generalEvidence;element('ai-evidence-box').style.display=generalEvidence?'flex':'none'});
  function generalMessage(root,id,role,text,attachments){
-  var row=document.createElement('div');row.className='chat-row';row.id=id;
-  var message=document.createElement('div');message.className='column chat-message'+(role==='user'?' chat-user':'');
-  var who=document.createElement('span');who.className='chat-role';who.textContent=role==='user'?'你':'玄枢';message.appendChild(who);
-  var body=document.createElement('span');body.textContent=text.slice(0,1200)+(text.length>1200?'…':'');message.appendChild(body);
+  var row=document.createElement('div');root.appendChild(row);row.className='chat-row';row.id=id;
+  if(role==='user'){var spacer=document.createElement('div');row.appendChild(spacer);spacer.className='chat-spacer';}var message=document.createElement('div');row.appendChild(message);message.className='column chat-message'+(role==='user'?' chat-user':'');
+  var who=document.createElement('span');message.appendChild(who);who.id=id+'-role';who.className='chat-role';who.textContent=role==='user'?'你':'玄枢';
+  var body=document.createElement('span');message.appendChild(body);body.id=id+'-body';var excerpt=text.slice(0,1200)+(text.length>1200?'…':'');
+  var paragraphs=excerpt.split(/\n\n+/);
+  if(role==='user'||paragraphs.length>24||paragraphs.length===1&&!/\*\*|`/.test(excerpt)){body.style.whiteSpace='pre-wrap';body.textContent=excerpt;}
+  else{body.className='column';body.style.gap='14px';
+   for(var pi=0;pi<paragraphs.length;pi++){
+    var paragraph=document.createElement('span'),value=paragraphs[pi];body.appendChild(paragraph);paragraph.id=body.id+'-block-'+pi;paragraph.style.whiteSpace='pre-wrap';
+    if(/^\*\*[^*]+\*\*$/.test(value))paragraph.style.fontWeight='600';
+    paragraph.textContent=value.replace(/\*\*([^*\n]+)\*\*/g,'$1').replace(/`([^`\n]+)`/g,'$1').replace(/^[-*] /gm,'• ');
+   }
+  }
   if(attachments)for(var i=0;i<attachments.length;i++){var file=document.createElement('span');file.className='muted';file.textContent='附件 · '+attachments[i].name+' · '+attachments[i].bytes+'字节'+(attachments[i].local_only?' · 本地图片，未进入模型':'');message.appendChild(file);}
   if(text.length>1200){var more=document.createElement('button');more.textContent='查看消息全文';more.addEventListener('click',function(){element('ai-message-box').style.display='flex';element('ai-message-title').textContent=who.textContent+' · 消息全文';pageText('ai-message-detail',text)});message.appendChild(more);}
-  var spacer=document.createElement('div');spacer.className='chat-spacer';
-  if(role==='user')row.appendChild(spacer);row.appendChild(message);if(role!=='user')row.appendChild(spacer);root.appendChild(row);
+
+ }
+ function paintChatVisibility(general){
+  var visible=!general||!realExpanded,hasMessages=element('ai-chat').children.length>0;
+  showElement('ai-empty-chat',visible&&!hasMessages);showElement('ai-chat',visible&&hasMessages);
+ }
+ function paintConversation(a){
+  var task=a.assistantTask||{},messages=a.messages.items||[],key=JSON.stringify([messages,task.root_run,task.result,task.attachments]);
+  if(generalChatKey!==key){
+   generalChatKey='';var chat=element('ai-chat');clear(chat);var files=summaryParse(task.attachments)||[];
+   for(var i=0;i<messages.length;i++){var m=messages[i];if(!m.content)continue;generalMessage(chat,'ai-message-'+m.sequence,m.role,m.content,m.role==='user'&&m.content===(a.run||{}).input?files:null);}
+   if(task.result&&(!messages.length||messages[messages.length-1].content!==task.result))generalMessage(chat,'ai-message-current','assistant',task.result,null);
+   generalChatKey=key;
+  }
+  paintChatVisibility(a.general);
  }
  function paintGeneral(a){
   if(generalChrome!==a.general){generalChrome=a.general;element('ai-control-bar').style.display=a.general?'flex':'none';
@@ -474,17 +639,11 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
   element('ai-main-title').textContent='玄枢 · 应用助手';element('ai-model-catalog').textContent='选择当前应用的目标与能力';
   if(generalFirst){generalFirst=false;listOpen=false;element('ai-runs').style.display='none';element('ai-list-toggle').textContent='任务列表 ▸';}
   var task=a.assistantTask||{},active=a.activeAssistant||{},r=a.run||{},control=active.control;
-  element('ai-takeover').disabled=!!a.manual||control===1;element('ai-return').disabled=!a.manual;
+   showElement('ai-control-bar',active.root_run&&!active.text_only||a.manual);
+  element('ai-takeover').disabled=!!a.manual||active.text_only||control===1;element('ai-return').disabled=!a.manual;
   element('ai-control-state').textContent=control===1?'正在交接，等待在途调用和保存收尾':a.manual?'应用已交还手动操作':control===3?'业务状态改变，需要重新规划':'AI任务使用固定范围；收起面板保留任务。';
-  var activeBox=element('ai-active-task');clear(activeBox);
+  var activeBox=element('ai-active-task');clear(activeBox);showElement('ai-active-task',a.active&&a.active!==a.selected);
   if(a.active&&a.active!==a.selected)activeBox.appendChild(button('ai-show-active','查看正在运行的任务','ai-select',{id:a.active}));
-  var messages=a.messages.items||[],key=JSON.stringify([messages,task.root_run,task.result,task.attachments]);
-  if(generalChatKey!==key){
-   generalChatKey='';var chat=element('ai-chat');clear(chat);var files=summaryParse(task.attachments)||[];
-   for(var i=0;i<messages.length;i++){var m=messages[i];generalMessage(chat,'ai-message-'+m.sequence,m.role,m.content,m.role==='user'&&m.content===(a.run||{}).input?files:null);}
-   if(task.result&&(!messages.length||messages[messages.length-1].content!==task.result))generalMessage(chat,'ai-message-current','assistant',task.result,null);
-   generalChatKey=key;
-  }
   element('ai-evidence-toggle').style.display=(task.nodes||[]).length?'flex':'none';pageText('ai-evidence',JSON.stringify({root:task.root_run,nodes:task.nodes||[]},null,2));
   var undo=null;for(var i=0;i<(task.nodes||[]).length;i++)if(task.nodes[i].node===a.undoNode)undo=task.nodes[i];
   element('ai-node-undo-box').style.display=undo?'flex':'none';var undoText=undo?undo.undo_preview||'撤销处理中或已结束，详见业务结果与依据。':'';if(element('ai-node-undo-preview').value!==undoText)element('ai-node-undo-preview').value=undoText;element('ai-node-undo').disabled=!undo||!undo.undo_preview;if(generalUndoNode!==a.undoNode){generalUndoNode=a.undoNode||'';if(undo)element('ai-node-undo-preview').scrollIntoView()}
@@ -501,29 +660,96 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
   if(task.plan_waiting){
    element('ai-status-line').textContent='有限计划已接纳，等待核对具体计划与适用确认。';
    element('ai-model-confirm').textContent='确认此有限计划及外发范围（一次）';
-   element('ai-model-confirm').disabled=!realExpanded||!realDetails||!(a.disclosureChunks||[]).length||a.phase!==2;
-  }else element('ai-model-confirm').textContent='确认此任务外发范围（一次）';
+   element('ai-model-confirm').disabled=!realExpanded||!realDetails||!(a.disclosureChunks||[]).length||a.phase!==2||!generalPriceReady(a);
+  }else element('ai-model-confirm').textContent='确认发送';
   if(task.root_run)pageText('ai-output',task.result||task.error||(task.plan_waiting?'请核对有限计划与完整请求详情。':'正在处理当前任务；实际步骤见上方专业子任务。'));
-  if(task.root_run&&!task.result&&!task.plan_waiting&&!r.terminal&&r.disclosure_confirmed)element('ai-status-line').textContent=task.error||({1:'准备有限操作计划',2:'核对模型候选计划',4:'执行已确认的应用步骤',5:'已安排专业模型轮次',6:'模型处理中',7:'核对专业结果',8:'核对结论与来源',9:'正在保存最终结果',10:'应用专业子任务正在补齐计划',11:'核对应用专业结果依据'}[task.stage]||element('ai-status-line').textContent);
+  if(task.root_run&&!task.result&&!task.plan_waiting&&!r.terminal&&r.disclosure_confirmed)element('ai-status-line').textContent=task.error||({1:task.text_only?'等待模型回复':'准备有限操作计划',2:'核对模型候选计划',4:'执行已确认的应用步骤',5:'已安排专业模型轮次',6:'模型处理中',7:'核对专业结果',8:'核对结论与来源',9:'正在保存最终结果',10:'应用专业子任务正在补齐计划',11:'核对应用专业结果依据'}[task.stage]||element('ai-status-line').textContent);
  }
 
- function paintAI(a){if(!a)return;element('ai-box').style.display=a.enabled?'flex':'none';element('command-diagnostics').style.display=!a.enabled||aiDeveloper&&aiDiagnostic?'flex':'none';if(!a.enabled)return;
-  paintEdit(a);paintGraph(a);paintModel(a);element('ai-state').textContent='Service '+a.phase+' · 排队 '+a.queued+' · '+a.conversation;
+ function paintMaintenance(a){
+  var e=a.edit||{},g=a.graph||{},c=a.coordinator||{},r=a.run||{};
+  var edit=!!e.id||e.schema===1||e.recovered_unresolved>0||!!r.edit_record;
+  var graph=!!g.run_id||c.schema===2||!!r.graph_record;
+  var available=edit||graph||a.general&&a.enabled&&a.phase!==6;
+/* UI_HOST_DEV_BEGIN */
+  if(aiDeveloper){available=true;edit=true;graph=true;}
+/* UI_HOST_DEV_END */
+  showElement('ai-maintenance-toggle',available&&(!a.general||!settingsOpen));
+  element('ai-maintenance-toggle').textContent=a.general&&maintenanceOpen?'返回聊天':'维护';
+  showElement('ai-maintenance-box',maintenanceOpen&&available);
+  showElement('ai-edit-box',edit);showElement('ai-graph-box',graph);
+ }
+ function paintAI(a){if(!a)return;
+  var unavailable=!a.enabled||a.phase===6;
+  showElement('ai-box',true);paintAssistantPane(a);
+  showElement('ai-service-failure',unavailable);
+  var failure=unavailable?'助手服务不可用。'+(a.storageError||a.error||'服务尚未建立，请保留本次日志并正常关闭。'):'';if(element('ai-service-failure').textContent!==failure)element('ai-service-failure').textContent=failure;
+  element('ai-model-toggle').disabled=unavailable;
+/* UI_HOST_DEV_BEGIN */
+  element('command-diagnostics').style.display=!a.enabled||aiDeveloper&&aiDiagnostic?'flex':'none';
+/* UI_HOST_DEV_END */
+  paintMaintenance(a);if(unavailable)return;
+  paintModel(a);
+/* UI_HOST_DEV_BEGIN */
+element('ai-state').textContent='Service '+a.phase+' · 排队 '+a.queued+' · '+a.conversation;
+/* UI_HOST_DEV_END */
+
   var lines=[],items=a.messages.items||[];for(var i=0;i<items.length;i++)lines.push('sequence '+items[i].sequence+' '+items[i].role+': '+items[i].content);pageText('ai-history',lines.join('\n'));element('ai-next').disabled=!a.messages.next;
   var root=element('ai-runs'),listKey=JSON.stringify(a.runs);if(runListKey!==listKey){runListKey=null;clear(root);items=a.runs.items||[];for(var i=0;i<items.length;i++)root.appendChild(button('ai-run-'+i,items[i].input.slice(0,80)+(items[i].input.length>80?'…':''),'ai-select',{id:items[i].run_id}));if(a.runs.next)root.appendChild(button('ai-runs-next','下一页任务','ai-history',{id:String(a.runs.next),command:'runs'}));runListKey=listKey;}
   var r=a.run||{};pageText('ai-output',(r.reply||'')+'\n'+(r.outcome||'')+' '+(r.error||''));element('ai-question').textContent=r.question||'';['ai-answer-label','ai-answer','ai-answer-send'].forEach(function(id){element(id).style.display=r.question_id?'flex':'none'});if(aiCancelRun&&aiCancelRun!==a.selected){aiCancelRun='';element('ai-cancel-notice').textContent='';}if(aiCancelRun&&r.terminal)element('ai-cancel-notice').textContent='任务已到终态；最终保存及远端状态见上方任务状态。';
-  element('ai-answer-send').disabled=r.phase!==3;element('ai-cancel').disabled=!a.selected||r.terminal===true||r.terminal===1;element('ai-continue').disabled=r.phase!==8;element('ai-send').disabled=a.phase!==2;
+  element('ai-answer-send').disabled=r.phase!==3;element('ai-cancel').disabled=!a.selected||r.terminal===true||r.terminal===1;
+/* UI_HOST_DEV_BEGIN */
+element('ai-continue').disabled=r.phase!==8;element('ai-send').disabled=a.phase!==2;
+/* UI_HOST_DEV_END */
+
+  var hasTask=!!a.selected,hasOutput=!a.general&&hasTask&&!!(r.reply||r.outcome||r.error);
+  var current=hasTask&&r.run_id===a.selected,confirming=current&&!r.terminal&&(r.phase===3&&!r.disclosure_confirmed||a.assistantTask&&a.assistantTask.plan_waiting);
+  if(a.general&&current&&r.terminal&&closeReviewOnTerminal)showRange(false);
+  showElement('ai-list-toggle',(a.runs.items||[]).length||a.runs.next);
+  showElement('ai-view-scope',hasTask&&(!a.general||confirming));
+  showElement('ai-view-saved-scope',a.general&&current&&!confirming);
+  showElement('ai-task-facts-toggle',hasTask);
+  ['ai-result-label','ai-output'].forEach(function(id){showElement(id,hasOutput)});
+  showElement('ai-output-pages',hasOutput&&(r.reply||'').length>900);
   if(!a.general)paintGeneral(a);element('ai-error').textContent=a.storageError||a.error||'';
+  ['ai-current-content','ai-question','ai-cancel-notice','ai-copy-notice','ai-error','ai-save-notice'].forEach(function(id){showElement(id,!!element(id).textContent)});
+  if(!a.general){showElement('ai-active-task',false);showElement('ai-professional-tasks',false);}
+  showElement('ai-task-overview',hasTask);showElement('ai-cancel',hasTask&&!r.terminal);showElement('ai-question-box',!!r.question_id||!!generalQuestion(a));
+  var quick=quickReadSelected(a),read=element('ai-quick-read'),config=a.modelConfig||{},draftModel=config.model_id||'';
+  showElement('ai-quick-read',a.general&&a.quickReadLabel);
+  read.textContent=quick?'✓ 已添加摘要 · 移除':a.quickReadLabel||'';
+  read.className=quick?'selected':'';read.disabled=!!realPending||!!generalTargets.length||a.phase!==2;
+  element('ai-composer-scope').textContent=a.general?(generalTargets.length?generalTargets.length+' 个目标':''):(realResource?'1 个目标':'');
+  element('ai-composer-model').textContent=draftModel.slice(0,20)+(draftModel.length>20?'…':'');showElement('ai-composer-placeholder',!element('ai-input').value);
+  var failed=current&&r.terminal&&r.outcome==='failed'&&r.error;
+  var replied=r.remote_delivery==='response_received',hint='';
+  if(a.general&&failed)element('ai-status-line').textContent=replied?'模型已回复，任务处理未完成。':'发送未完成。';
+  if(!config.ready)hint='请在设置中保存模型并设置密钥。';
+  else if(a.general){
+   if(!a.priceReady)hint='计价缺失或已过期，消息只能保存到本地。';
+   else if(!generalPriceReady(a))hint='当前计价适用于 deepseek-flash，请在设置中选择该模型。';
+  }else hint=!failed?'消息先保存，确认后发送。':replied?'模型已回复，任务处理未完成，可查看详情。':'发送未完成，处理详情中可查看原因。';
+  element('ai-composer-hint').textContent=hint;showElement('ai-composer-hint',!!hint);
+  showElement('ai-attachment-clear',(a.draftAttachments||[]).length>0);showElement('ai-attachments',(a.draftAttachments||[]).length>0);
+  if(r.terminal&&!realPending){element('ai-save-notice').textContent='';showElement('ai-save-notice',false);}
+
+/* UI_HOST_DEV_BEGIN */
   if(aiPending&&(a.ack===aiPending.id||a.error||a.storageError)){if(a.ack===aiPending.id&&element('ai-input').value===aiPending.input){element('ai-input').value='';realSaveDraft();}aiPending=null;}
+/* UI_HOST_DEV_END */
+
  }
  function setTheme(value) { var next=!!value;if(dark===next)return;dark=next;document.body.className = dark ? 'dark' : ''; }
  action('menu','menu');action('recent','recent');action('tab-more','tabs');action('open','open');action('empty-open','open');
  action('assistant-toggle','assistant');action('window-min','window-min');action('window-max','window-max');action('window-close','exit');
+
+/* UI_HOST_DEV_BEGIN */
  element('advanced-toggle').addEventListener('click',function(){advanced=!advanced;element('advanced').style.display=advanced?'flex':'none';element('advanced-toggle').textContent=advanced?frameworkText('高级：参数、事务与详细记录 ▾'):frameworkText('高级：参数、事务与详细记录 ▸')});
  action('target', 'targets'); action('command', 'commands');
  action('invoke', 'invoke'); action('cancel', 'cancel'); action('snapshot', 'snapshot');
  action('begin', 'begin'); action('commit', 'commit'); action('rollback', 'rollback'); action('undo', 'undo');
  element('params').addEventListener('input', function () { for(var i=0;i<paramNodes.length;i++)paramNodes[i].className='';if(model){model.params=element('params').value;paintParams(model);}updateInvoke();send('params', {params:element('params').value}); });
+
+/* UI_HOST_DEV_END */
  function place(node, rect) {
   node.style.position='absolute'; node.style.left=rect.x+'px'; node.style.top=rect.y+'px';
   node.style.width=rect.width+'px'; node.style.height=rect.height+'px';
@@ -568,18 +794,24 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
  function titleTip(n){n.addEventListener('mouseenter',function(){send('tooltip',{id:n.id})});n.addEventListener('mouseleave',function(){send('tooltip-hide')});n.addEventListener('keydown',function(e){if(e.keyCode===112){e.preventDefault();if(n.id.indexOf('tab-')===0)send('tab-title',{id:n.id.slice(4)});else send('tooltip',{id:n.id})}else if(e.keyCode===27)send('tooltip-hide')})}
  function paintState(state) {
   paintAI(state.ai);
+  if(state.ai&&state.ai.enabled&&state.ai.phase!==6){if(maintenanceOpen){paintEdit(state.ai);paintGraph(state.ai);}if(!state.ai.general)paintConversation(state.ai);}
   model=state;setTheme(state.dark);element('top').className='row'+(state.compact?' compact':'');var tabs=element('tabs'),alive={};
   for(var i=0;i<state.tabs.length;i++){var tab=state.tabs[i];alive[tab.id]=true;
    var row=keep(tabs,tabNodes,tab.id,function(){var n=document.createElement('div');n.className='tab';n.name=button('tab-'+tab.id,'','activate',{id:tab.id});titleTip(n.name);n.appendChild(n.name);n.close=button('close-'+tab.id,'\uE8BB','close',{id:tab.id},'tab-close glyph');n.appendChild(n.close);return n;});
    row.name.textContent=tab.title;row.name.className='tab-name';row.name.disabled=tab.closing;row.close.disabled=tab.closing;row.className='tab'+(tab.active?' active':'')+(tab.closing?' closing':'');row.style.display=tab.visible?'flex':'none';row.name.style.width=(state.tabWidth-26)+'px';
   }prune(tabs,tabNodes,alive);element('tabs').style.width=(state.tabWidth*state.tabCount)+'px';element('tab-more').style.display=state.tabOverflow?'flex':'none';element('window-max').className='window-button glyph'+(state.maxHover?' hovered':'')+(state.maxPressed?' pressed':'');element('window-max').textContent=state.maximized?'\uE923':'\uE922';
-  element('menu-row').style.display=state.chromeSuppressed?'none':'flex';element('assistant').style.width=(state.assistantWidth||380)+'px';element('empty').style.display=state.tabs.length?'none':'flex';element('assistant').style.display=state.assistant?'flex':'none';element('assistant-toggle').className='host-tool'+(state.assistant?' active':'');
+  element('menu-row').style.display=state.chromeSuppressed?'none':'flex';element('assistant').style.width=(state.assistantWidth||380)+'px';element('workspace').style.display='flex';var chatInset=(state.assistantWidth||380)>=340?16:12;showElement('ai-composer-model',!(state.ai&&state.ai.general)&&(state.assistantWidth||380)>=340);element('ai-scroll').style.padding='24px '+chatInset+'px';element('ai-composer').style.padding='10px '+chatInset+'px 16px';element('empty').style.display=state.tabs.length?'none':'flex';element('assistant').style.display=state.assistant?'flex':'none';element('assistant-toggle').className='host-tool'+(state.assistant?' active':'');
+
+/* UI_HOST_DEV_BEGIN */
   element('target').textContent=state.targetLabel||frameworkText('选择应用');element('command').textContent=state.commandTitle||state.command||frameworkText('选择操作');element('result').textContent=state.result||frameworkText('选择目标和操作后执行。');paintParams(state);element('schema').value=state.schema||'';element('log').value=state.log||'';updateInvoke();element('cancel').disabled=!state.canCancel;
-  if(element('params').value!==state.params)element('params').value=state.params;paintChrome(state);
+  if(element('params').value!==state.params)element('params').value=state.params;
+/* UI_HOST_DEV_END */
+paintChrome(state);
  }
  var popupCommands={};
  function applyCommand(b,item){b.disabled=item.enabled===false||!!item.busy;b.style.display=item.visible===false?'none':'flex';b.label.textContent=(b.menuRow?'':item.busy?'◌ ':item.checked?'✓ ':'')+b.caption;if(b.mark)b.mark.textContent=item.busy?'◌':item.checked?'✓':'';b.icon.src=item.image||'0';b.icon.style.display=b.menuRow||item.image&&item.image!=='0'?'flex':'none';b.icon.disabled=b.disabled;}
 
+/* UI_HOST_DEV_BEGIN */
  function numberTokens(text){var out=[],match,re=/"(?:\\.|[^"\\])*"|(-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)/g;while((match=re.exec(text))!==null)if(match[1])out.push(match[1]);return out.join(',');}
  function paramBytes(text){var bytes=0;for(var i=0;i<text.length&&bytes<=4095;i++){var c=text.charCodeAt(i);if(c<128)bytes++;else if(c<2048)bytes+=2;else if(c>=55296&&c<=56319&&i+1<text.length&&text.charCodeAt(i+1)>=56320&&text.charCodeAt(i+1)<=57343){bytes+=4;i++;}else bytes+=3;}return bytes;}
  function updateInvoke(){element('invoke').disabled=!model||!model.canInvoke||paramNodes.some(function(n){return n.className==='invalid'});}
@@ -594,6 +826,8 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
    })(keys[i],i);}}
   for(var i=0;i<paramNodes.length;i++){var n=paramNodes[i];n.disabled=!s.canInvoke;if(n.spec.type==='boolean')n.textContent=values[n.name]===true?frameworkText('是'):frameworkText('否');else if(document.activeElement!==n&&n.className!=='invalid')n.value=values[n.name]===undefined?'':String(values[n.name]);}
  }
+/* UI_HOST_DEV_END */
+
 
  function paintPopup(state) {
   popupToken=state.token;setTheme(state.dark);element('popup').className='column'+(state.menu?' popup-menu':'');element('shell').style.display='none';element('popup').style.display='flex';
@@ -627,11 +861,15 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
  function generalProjectionPart(p){
   var q=generalProjection;if(!q||p.generation!==q.generation||p.hash!==q.hash||p.part!==q.next)return;
   element('ai-projection-proof').textContent='';
-  try{if(p.part===0)paintGeneralChoices(model.ai);else paintGeneral(model.ai);q.next++;
+  try{if(p.part===0)paintGeneralChoices(model.ai);else{paintGeneral(model.ai);paintConversation(model.ai);}q.next++;
    if(q.next===2){generalProjection=null;element('ai-projection-proof').textContent=q.generation+':'+q.hash;}
   }catch(e){generalProjection=null;element('ai-projection-proof').textContent='';throw e;}
  }
- ui.onmessage=function(state) {if(state.type==='general-projection'){generalProjectionPart(state);return;}if(state.type==='projection'){projectionPart(state);return;}if(state.texts){if(languageRevision&&BigInt(state.languageRevision)<BigInt(languageRevision))return;if(languageRevision!==state.languageRevision){languageRevision=state.languageRevision;applyLanguage(state);element('advanced-toggle').textContent=frameworkText(advanced?'高级：参数、事务与详细记录 ▾':'高级：参数、事务与详细记录 ▸')}} if(state.type==='popup')paintPopup(state);else if(state.type==='state')paintState(state);else if(state.type==='command-states')for(var i=0;i<state.items.length;i++){var item=state.items[i],b=popupCommands[item.command];if(b)applyCommand(b,item);} };
+ ui.onmessage=function(state) {if(state.type==='general-projection'){generalProjectionPart(state);return;}if(state.type==='projection'){projectionPart(state);return;}if(state.texts){if(languageRevision&&BigInt(state.languageRevision)<BigInt(languageRevision))return;if(languageRevision!==state.languageRevision){languageRevision=state.languageRevision;applyLanguage(state);
+/* UI_HOST_DEV_BEGIN */
+element('advanced-toggle').textContent=frameworkText(advanced?'高级：参数、事务与详细记录 ▾':'高级：参数、事务与详细记录 ▸')
+/* UI_HOST_DEV_END */
+}} if(state.type==='popup')paintPopup(state);else if(state.type==='state')paintState(state);else if(state.type==='command-states')for(var i=0;i<state.items.length;i++){var item=state.items[i],b=popupCommands[item.command];if(b)applyCommand(b,item);} };
  document.addEventListener('keydown',function(event) {
   if(event.keyCode===27){send('dismiss',{token:popupToken});return;}
   if(event.defaultPrevented||event.keyCode===13||event.keyCode===32||!model||!model.active)return;

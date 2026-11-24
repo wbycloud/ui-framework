@@ -1,8 +1,8 @@
 /* Isolated SSE serialization shared by general-assistant regressions. */
-static char *general_read_wire(const char *capability)
+static char *general_read_wire_alias(const char *capability,const char *alias)
 {
     yyjson_mut_doc *d=yyjson_mut_doc_new(NULL);yyjson_mut_val *args=yyjson_mut_obj(d);
-    yyjson_mut_doc_set_root(d,args);yyjson_mut_obj_add_strcpy(d,args,"target_alias","target-0");
+    yyjson_mut_doc_set_root(d,args);yyjson_mut_obj_add_strcpy(d,args,"target_alias",alias);
     yyjson_mut_obj_add_strcpy(d,args,"capability_id",capability);yyjson_mut_obj_add_strcpy(d,args,"parameters_json","{}");
     char *raw=yyjson_mut_write(d,0,NULL);yyjson_mut_doc_free(d);if(!raw)return NULL;
     d=yyjson_mut_doc_new(NULL);yyjson_mut_doc_set_root(d,yyjson_mut_strcpy(d,raw));free(raw);
@@ -17,6 +17,9 @@ static char *general_read_wire(const char *capability)
       "event: response.completed\r\ndata: {\"type\":\"response.completed\",\"sequence_number\":5,\"response\":{\"id\":\"prep\",\"status\":\"completed\",\"output\":[{\"type\":\"function_call\",\"id\":\"item-0\",\"call_id\":\"prep-call\",\"name\":\"xs_read_call\",\"arguments\":%s}],\"usage\":{\"input_tokens\":10,\"output_tokens\":4}}}\r\n\r\n",quoted,quoted,quoted,quoted);
     free(quoted);return wire;
 }
+static char *general_read_wire(const char *capability)
+{return general_read_wire_alias(capability,"target-0");}
+
 static char *general_wire(const char *text,int missing_usage)
 {
     yyjson_mut_doc *quoted_doc=yyjson_mut_doc_new(NULL);

@@ -1,5 +1,7 @@
 /* Ordinary page actions propose data and request control transitions. Trusted
  * plan confirmation remains the framework Light binding with full readback. */
+#include "ai_assistant_release.inc"
+
 static int ai_assistant_enabled(host_window_t *s)
 {
     int enabled=1;
@@ -19,21 +21,20 @@ static ui_status_t ai_assistant_enable(host_window_t *s)
     p.request_limit=8;p.deadline_ms=600000;p.budget_nano_usd=100000000;
     p.price_version="";p.price_evidence_sha256="";
     p.meter_profile="deepseek-v41-responses-1017-v1";p.meter_evidence_sha256=BR2_METER_EVIDENCE;
-    /* Daily defaults preserve a local, unpriced proposal. A separately reviewed
-       concrete runtime policy is required before any real model send. */
     wchar_t path[4096];SetLastError(ERROR_SUCCESS);
     DWORD n=GetEnvironmentVariableW(L"UI_AI_ASSISTANT_POLICY",path,4096),error=GetLastError();
-    char raw[8193];yyjson_doc *d=NULL;
+    char evidence[65];yyjson_doc *release=ai_assistant_release(s,evidence),*d=NULL;
+    ui_status_t status=UI_STATUS_INVALID_ARGUMENT;
     if(n||error!=ERROR_ENVVAR_NOT_FOUND){
-        if(!n||n>=4096)return UI_STATUS_INVALID_ARGUMENT;
-        FILE *f=_wfopen(path,L"rb");if(!f)return UI_STATUS_PLATFORM_ERROR;
-        size_t bytes=fread(raw,1,8192,f);int complete=feof(f);fclose(f);
-        raw[bytes]=0;if(!complete)return UI_STATUS_LIMIT_EXCEEDED;
+        if(!n||n>=4096)goto done;
+        FILE *f=_wfopen(path,L"rb");if(!f){status=UI_STATUS_PLATFORM_ERROR;goto done;}
+        char raw[8193];size_t bytes=fread(raw,1,8192,f);int complete=feof(f)&&!ferror(f);fclose(f);
+        if(!complete){status=UI_STATUS_LIMIT_EXCEEDED;goto done;}
         d=yyjson_read(raw,bytes,0);yyjson_val *o=d?yyjson_doc_get_root(d):NULL;
         const char *database=o?yyjson_get_str(yyjson_obj_get(o,"database")):NULL;
-        if(!database||!s->ai_database_path||strcmp(database,s->ai_database_path)){yyjson_doc_free(d);return UI_STATUS_PERMISSION_DENIED;}
+        if(!database||!s->ai_database_path||strcmp(database,s->ai_database_path)){status=UI_STATUS_PERMISSION_DENIED;goto done;}
         if(!yyjson_is_uint(yyjson_obj_get(o,"request_limit"))||yyjson_get_uint(yyjson_obj_get(o,"request_limit"))>16||
-           !yyjson_is_uint(yyjson_obj_get(o,"deadline_ms"))||yyjson_get_uint(yyjson_obj_get(o,"deadline_ms"))>1800000){yyjson_doc_free(d);return UI_STATUS_INVALID_ARGUMENT;}
+           !yyjson_is_uint(yyjson_obj_get(o,"deadline_ms"))||yyjson_get_uint(yyjson_obj_get(o,"deadline_ms"))>1800000)goto done;
         p.request_limit=(uint32_t)yyjson_get_uint(yyjson_obj_get(o,"request_limit"));
         p.deadline_ms=(uint32_t)yyjson_get_uint(yyjson_obj_get(o,"deadline_ms"));
         p.budget_nano_usd=yyjson_get_uint(yyjson_obj_get(o,"budget_nano_usd"));
@@ -41,8 +42,15 @@ static ui_status_t ai_assistant_enable(host_window_t *s)
         p.output_rate_nano_usd=yyjson_get_uint(yyjson_obj_get(o,"output_rate_nano_usd"));
         p.price_version=yyjson_get_str(yyjson_obj_get(o,"price_version"));
         p.price_evidence_sha256=yyjson_get_str(yyjson_obj_get(o,"price_evidence_sha256"));
+    }else if(release)ai_assistant_release_price(release,evidence,&p);
+    status=ui_ai_assistant_enable(s->ai,&p);
+    if(!status&&p.input_rate_nano_usd&&p.output_rate_nano_usd&&
+       strspn(p.price_evidence_sha256,"0123456789abcdefABCDEF")==64){
+        strcpy_s(s->ai_price_version,sizeof(s->ai_price_version),p.price_version);
+        s->ai_price_ready=s->ai_price_version[0]&&ai_assistant_price_current(s->ai_price_version);
     }
-    ui_status_t status=ui_ai_assistant_enable(s->ai,&p);yyjson_doc_free(d);return status;
+done:
+    yyjson_doc_free(d);yyjson_doc_free(release);return status;
 }
 
 static void ai_assistant_json(host_window_t *s,json_buffer_t *json)
@@ -80,6 +88,11 @@ static void ai_assistant_json(host_window_t *s,json_buffer_t *json)
     json_append(json,",\"activeAssistant\":");json_append(json,active?active:"null");
     json_append(json,",\"undoNode\":");json_string(json,s->ai_undo_node);
     json_append(json,",\"applicationCatalog\":");json_append(json,s->ai_general_catalog?s->ai_general_catalog:"null");
+    ui_app_instance_info_t app;
+    uint64_t quick=s->ai_quick_target.resource.instance_id;
+    int quick_available=quick||ai_assistant_quick_app(s,ui_workspace_active(s->workspace),&app);
+    json_format(json,",\"priceReady\":%s,\"quickReadInstance\":\"%llu\"",s->ai_price_ready?"true":"false",(unsigned long long)quick);
+    json_append(json,",\"quickReadLabel\":");json_string(json,quick_available?s->ai_quick_label:"");
     json_append(json,",\"draftAttachments\":[");
     for(unsigned i=0;i<s->ai_attachment_count;++i){
         assistant_attachment_t *file=&s->ai_attachments[i];if(i)json_append(json,",");
@@ -160,10 +173,11 @@ static ui_status_t ai_assistant_propose(host_window_t *s,host_action_t *action)
     yyjson_doc *d=action->params?yyjson_read(action->params,strlen(action->params),0):NULL;
     yyjson_val *o=d?yyjson_doc_get_root(d):NULL,*selected=yyjson_obj_get(o,"targets"),*row;
     size_t count=yyjson_arr_size(selected);ui_status_t status=UI_STATUS_VALIDATION_FAILED;
+    int quick=yyjson_is_true(yyjson_obj_get(o,"quick"));
     ui_cap_target_t reads[16];ui_cap_target_v2_t fixed[16];
     char *history=NULL,*projection=NULL,*permissions=NULL;
     yyjson_mut_doc *pd=yyjson_mut_doc_new(NULL);yyjson_mut_val *allowed=pd?yyjson_mut_arr(pd):NULL;
-    if(!yyjson_is_arr(selected)||!count||count>16||!allowed)goto done;
+    if(!yyjson_is_arr(selected)||count>16||!allowed||quick!=(s->ai_quick_target.resource.instance_id!=0)||(quick&&count))goto done;
     yyjson_mut_doc_set_root(pd,allowed);
     for(size_t i=0;i<count;++i){
         row=yyjson_arr_get(selected,i);const char *id=yyjson_get_str(yyjson_obj_get(row,"instance")),*resource=yyjson_get_str(yyjson_obj_get(row,"resource"));
@@ -193,7 +207,12 @@ static ui_status_t ai_assistant_propose(host_window_t *s,host_action_t *action)
         if(fields)yyjson_mut_obj_add_val(pd,permission,"fields",yyjson_val_mut_copy(pd,fields));
         yyjson_mut_arr_add_val(allowed,permission);
     }
-    history=ai_panel_edit_string(action->params,"history");projection=ai_panel_edit_string(action->params,"projection");
+    if(quick){
+        if(!ai_assistant_quick_scope(s,pd,allowed,reads,fixed,&projection))goto done;
+        count=1;
+    }else projection=ai_panel_edit_string(action->params,"projection");
+    if(!count&&s->ai_attachment_count){status=UI_STATUS_INVALID_ARGUMENT;goto done;}
+    history=ai_panel_edit_string(action->params,"history");
     permissions=yyjson_mut_write(pd,0,NULL);
     ui_ai_assistant_attachment_t files[4];memset(files,0,sizeof(files));
     for(unsigned i=0;i<s->ai_attachment_count;++i){
@@ -211,7 +230,7 @@ static ui_status_t ai_assistant_propose(host_window_t *s,host_action_t *action)
     q.targets=fixed;q.target_count=count;q.permissions_json=permissions;q.attachments=files;q.attachment_count=s->ai_attachment_count;
     status=ai_assistant_snapshot_files(s);if(status)goto done;
     char run[65];status=ui_ai_assistant_propose(s->ai,&q,run);
-    if(!status){strcpy_s(s->ai_run,65,run);free(s->ai_stored_run);s->ai_stored_run=NULL;if(s->assistant_manual){strcpy_s(s->ai_handoff_run,65,run);(void)ui_ai_assistant_control(s->ai,run,UI_AI_ASSISTANT_TAKEOVER);}}
+    if(!status){if(quick)strcpy_s(s->ai_quick_pending,65,action->token);strcpy_s(s->ai_run,65,run);free(s->ai_stored_run);s->ai_stored_run=NULL;if(count&&s->assistant_manual){strcpy_s(s->ai_handoff_run,65,run);(void)ui_ai_assistant_control(s->ai,run,UI_AI_ASSISTANT_TAKEOVER);}}
 done:
     free(history);free(projection);free(permissions);yyjson_mut_doc_free(pd);yyjson_doc_free(d);return status;
 }
@@ -223,6 +242,10 @@ static int ai_assistant_action(host_window_t *s,host_action_t *a)
     if(!strcmp(a->action,"ai-model-catalog")){
         char *catalog=NULL;status=ui_ai_assistant_catalog(s->ai,read_id(a->id),&catalog);
         if(!status){replace_text(&s->ai_general_catalog,catalog);}ui_ai_release(catalog);
+    }else if(!strcmp(a->action,"ai-assistant-quick-read")){
+        if(a->command&&!strcmp(a->command,"remove")){
+            s->ai_quick_target.resource.instance_id=0;s->ai_quick_pending[0]=0;status=UI_STATUS_OK;
+        }else status=ai_assistant_quick_bind(s,read_id(a->id));
     }else if(!strcmp(a->action,"ai-assistant-propose"))status=ai_assistant_propose(s,a);
     else if(!strcmp(a->action,"ai-attachment-add"))status=ai_assistant_attach(s);
     else if(!strcmp(a->action,"ai-attachment-clear")){ai_assistant_attachments_clear(s);status=UI_STATUS_OK;}
@@ -245,7 +268,10 @@ static int ai_assistant_action(host_window_t *s,host_action_t *a)
         status=ui_ai_graph_answer(s->ai,a->id,a->panel,a->command,a->token,a->answer);
     else return 0;
     if(status&&status!=UI_STATUS_PENDING&&status!=UI_STATUS_CANCELLED){
-        char message[160];snprintf(message,sizeof(message),"助手操作未接纳（%d），草稿及原任务保持。",status);replace_text(&s->ai_error,message);
+        if(status==UI_STATUS_VALIDATION_FAILED&&(!strcmp(a->action,"ai-assistant-quick-read")||
+           (!strcmp(a->action,"ai-assistant-propose")&&s->ai_quick_target.resource.instance_id)))
+            replace_text(&s->ai_error,"只读范围不可用或已变化。请移除后重新选择，草稿已保留。");
+        else{char message[160];snprintf(message,sizeof(message),"助手操作未接纳（%d），草稿及原任务保持。",status);replace_text(&s->ai_error,message);}
     }else replace_text(&s->ai_error,"");
     schedule_refresh(s);return 1;
 }
@@ -329,6 +355,8 @@ static void ai_assistant_bindings(host_window_t *s)
 static void ai_assistant_tick(host_window_t *s)
 {
     if(!s->ai_general)return;
+    int price=s->ai_price_version[0]&&ai_assistant_price_current(s->ai_price_version);
+    if(s->ai_price_ready!=price){s->ai_price_ready=price;++s->ai_projection_generation;schedule_refresh(s);}
     char *selected=NULL,*active=NULL;ui_ai_service_state_t state={0};state.size=sizeof(state);state.version=1;
     if(s->ai_run[0])(void)ui_ai_assistant_get(s->ai,s->ai_run,&selected);
     if(!ui_ai_service_get_state(s->ai,&state)){
