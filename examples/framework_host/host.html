@@ -159,7 +159,7 @@
      <span class="label">模型ID</span><input id="ai-model-name" placeholder="您选定的 DeepSeek 模型ID"/><div class="row"><button id="ai-model-save">保存用户模型配置</button><button id="ai-model-key">原生窗口设置密钥</button></div>
       <span id="ai-model-ready" class="muted" style="display:none"></span><button id="ai-model-diagnostics-toggle" style="display:none">查看诊断</button>
       <div id="ai-model-diagnostics" class="column"><span id="ai-model-state"></span><button id="ai-model-copy">复制脱敏诊断（不授权、不发送）</button><span id="ai-copy-notice"></span></div>
-</div><div id="ai-active-task" class="column"></div><div id="ai-empty-chat" class="column"><span class="glyph studio-mark" style="width:42px;height:42px;padding:9px;border-radius:13px;font-size:20px">&#xE8BD;</span><span id="ai-empty-title" style="width:100%;text-align:center">有什么可以帮你？</span></div><div id="ai-chat" class="column"></div><div id="ai-clarification" class="column" style="display:none"></div><div id="ai-task-overview" class="column" style="display:none"><span id="ai-status-line"></span><div class="row"><button id="ai-task-facts-toggle">详情</button><button id="ai-cancel">取消</button></div><span id="ai-cancel-notice"></span></div><div id="ai-question-box" class="column" style="display:none"><div id="ai-question" class="muted"></div><span id="ai-answer-label" class="label">关联问题回复（仅回答当前问题）</span><input id="ai-answer" placeholder="回答关联问题"/><button id="ai-answer-send">回复此问题</button></div><div id="ai-task-facts" class="column" style="display:none"><button id="ai-view-saved-scope" style="display:none">查看发送内容</button><textarea id="ai-task-state" readonly="readonly" style="height:155px"></textarea><div class="row"><button id="ai-task-state-prev">前页</button><span id="ai-task-state-page"></span><button id="ai-task-state-next">后页</button></div><span id="ai-task-title" class="ai-section">当前任务与处理状态</span><span id="ai-current-content"></span><span id="ai-result-label" class="muted">当前任务结果（与新任务草稿分开）</span><textarea id="ai-output" readonly="readonly" style="height:120px"></textarea><div id="ai-output-pages" class="row"><button id="ai-output-prev">前段</button><span id="ai-output-page"></span><button id="ai-output-next">后段</button></div><div id="ai-control-bar" class="column" style="display:none"><button id="ai-takeover">手动接管应用</button><button id="ai-return">交回AI</button><span id="ai-control-state"></span></div><div id="ai-professional-tasks" class="column"></div><button id="ai-evidence-toggle" style="display:none">查看业务结果与依据 ▸</button><div id="ai-evidence-box" class="column" style="display:none"><textarea id="ai-evidence" readonly="readonly" style="height:150px"></textarea><div class="row"><button id="ai-evidence-prev">前页</button><span id="ai-evidence-page"></span><button id="ai-evidence-next">后页</button></div></div></div><div id="ai-message-box" class="column" style="display:none"><span id="ai-message-title"></span><textarea id="ai-message-detail" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-message-detail-prev">前页</button><span id="ai-message-detail-page"></span><button id="ai-message-detail-next">后页</button></div></div><div id="ai-node-undo-box" class="column" style="display:none"><span class="label">撤销范围（新的本地操作）</span><textarea id="ai-node-undo-preview" readonly="readonly" style="height:150px"></textarea><button id="ai-node-undo" disabled="disabled">确认撤销此步骤（新操作）</button></div><div id="ai-draft-range" class="column" style="display:none">     <span class="label">新提案范围草稿（仅下次保存提案使用）</span><span>选择要发送的历史片段（默认不选；可通过上方历史翻页）：</span><div id="ai-model-history" class="column"></div>
+</div><div id="ai-active-task" class="column"></div><div id="ai-empty-chat" class="column"><span class="glyph studio-mark" style="width:42px;height:42px;padding:9px;border-radius:13px;font-size:20px">&#xE8BD;</span><span id="ai-empty-title" style="width:100%;text-align:center">有什么可以帮你？</span></div><div id="ai-chat" class="column"></div><div id="ai-clarification" class="column" style="display:none"></div><div id="ai-task-overview" class="column" style="display:none"><span id="ai-status-line"></span><div class="row"><button id="ai-task-facts-toggle">详情</button><button id="ai-operation-redraft" title="将原任务文字复制到新草稿" style="display:none">重新生成方案</button><button id="ai-cancel">取消</button></div><span id="ai-cancel-notice"></span></div><div id="ai-question-box" class="column" style="display:none"><div id="ai-question" class="muted"></div><span id="ai-answer-label" class="label">关联问题回复（仅回答当前问题）</span><input id="ai-answer" placeholder="回答关联问题"/><button id="ai-answer-send">回复此问题</button></div><div id="ai-task-facts" class="column" style="display:none"><button id="ai-view-saved-scope" style="display:none">查看发送内容</button><textarea id="ai-task-state" readonly="readonly" style="height:155px"></textarea><div class="row"><button id="ai-task-state-prev">前页</button><span id="ai-task-state-page"></span><button id="ai-task-state-next">后页</button></div><span id="ai-task-title" class="ai-section">当前任务与处理状态</span><span id="ai-current-content"></span><span id="ai-result-label" class="muted">当前任务结果（与新任务草稿分开）</span><textarea id="ai-output" readonly="readonly" style="height:120px"></textarea><div id="ai-output-pages" class="row"><button id="ai-output-prev">前段</button><span id="ai-output-page"></span><button id="ai-output-next">后段</button></div><div id="ai-control-bar" class="column" style="display:none"><button id="ai-takeover">手动接管应用</button><button id="ai-return">交回AI</button><span id="ai-control-state"></span></div><div id="ai-professional-tasks" class="column"></div><button id="ai-evidence-toggle" style="display:none">查看业务结果与依据 ▸</button><div id="ai-evidence-box" class="column" style="display:none"><textarea id="ai-evidence" readonly="readonly" style="height:150px"></textarea><div class="row"><button id="ai-evidence-prev">前页</button><span id="ai-evidence-page"></span><button id="ai-evidence-next">后页</button></div></div></div><div id="ai-message-box" class="column" style="display:none"><span id="ai-message-title"></span><textarea id="ai-message-detail" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-message-detail-prev">前页</button><span id="ai-message-detail-page"></span><button id="ai-message-detail-next">后页</button></div></div><div id="ai-node-undo-box" class="column" style="display:none"><span class="label">撤销范围（新的本地操作）</span><textarea id="ai-node-undo-preview" readonly="readonly" style="height:150px"></textarea><button id="ai-node-undo" disabled="disabled">确认撤销此步骤（新操作）</button></div><div id="ai-draft-range" class="column" style="display:none">     <span class="label">新提案范围草稿（仅下次保存提案使用）</span><span>选择要发送的历史片段（默认不选；可通过上方历史翻页）：</span><div id="ai-model-history" class="column"></div>
      <button id="ai-model-catalog">选择当前应用的只读目标与能力</button><span id="ai-model-target"></span><div id="ai-model-resources" class="column"></div><div id="ai-model-projection" class="column"></div>
 <!-- UI_HOST_DEV_BEGIN -->
      <div id="ai-general-range" class="column" style="display:none"><div id="ai-task-suggestions" class="column"></div><div id="ai-profile-choices" class="column"></div><div id="ai-parameter-cards" class="column"></div><button id="ai-target-add">加入／更新此草稿目标</button><div id="ai-target-drafts" class="column"></div></div>
@@ -521,6 +521,24 @@ element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
   if(notice.textContent!==text)notice.textContent=text;
   showElement(notice.id,!!text);
  }
+ function operationPlanError(a){
+  var r=a.run||{},task=a.assistantTask||{},op=task.operation_task;
+  if(!a.general||!r.run_id||r.run_id!==a.selected||r.run_id!==task.root_run||
+     !r.committed||!r.terminal||r.outcome!=='failed'||!op||op.phase!==0||op.attempted!==0||op.committed!==0)return '';
+  if(r.error==='operation_invalid_response')return '模型返回的方案格式有误。本次任务未修改应用内容。';
+  if(r.error==='operation_proposal_rejected')return '模型返回的方案未通过校验。本次任务未修改应用内容。';
+  return '';
+ }
+ element('ai-operation-redraft').addEventListener('click',function(){
+  var a=model.ai,r=a.run||{},input=element('ai-input');
+  if(generalTechnical()||dailyWaiting||!r.input||!operationPlanError(a))return;
+  if(input.value||Object.keys(realHistory).length||(a.draftAttachments||[]).length){
+   dailyNotice='已有草稿，请先处理后再复制。';dailyNoticeText(dailyNotice);return;
+  }
+  input.value=r.input;dailyOperate=true;dailyDraftChanged();realSaveDraft();showRange(false);
+  dailyNotice='已复制到新草稿。保存后请核对本次对象和发送限额。';
+  paintDailySubmission(a);input.focus();
+ });
  function dailyDispatch(attempt,choice){
   dailyWaiting=true;dailyNotice='正在保存消息…';dailyNoticeText(dailyNotice);
   element('ai-model-propose').disabled=true;
@@ -593,6 +611,7 @@ element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
   var config=a.modelConfig||{};
   element('ai-model-propose').disabled=dailyWaiting||!config.ready||config.pending||a.phase!==2;
   element('ai-attachment-add').disabled=dailyWaiting;element('ai-attachment-clear').disabled=dailyWaiting;
+  element('ai-operation-redraft').disabled=dailyWaiting;
   element('ai-operate').disabled=dailyWaiting;element('ai-operate').textContent=dailyOperate?'代操作已选':'代操作';
   dailyNoticeText(dailyNotice);
  }
@@ -834,7 +853,9 @@ element('ai-continue').disabled=r.phase!==8;element('ai-send').disabled=a.phase!
   element('ai-composer-model').textContent=draftModel.slice(0,20)+(draftModel.length>20?'…':'');showElement('ai-composer-placeholder',!element('ai-input').value);
   var failed=current&&r.terminal&&r.outcome==='failed'&&r.error;
   var replied=r.remote_delivery==='response_received',hint='';
-  if(a.general&&failed)element('ai-status-line').textContent=replied?'模型已回复，任务处理未完成。':'发送未完成。';
+  var planError=operationPlanError(a);
+  showElement('ai-operation-redraft',!!planError&&!generalTechnical());
+  if(a.general&&failed)element('ai-status-line').textContent=planError||(replied?'模型已回复，任务处理未完成。':'发送未完成。');
   if(a.general&&a.phase===6)hint='保存服务不可用，草稿已保留。';
   else if(!config.ready)hint='请在设置中保存模型并设置密钥。';
   else if(a.general){

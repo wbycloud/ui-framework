@@ -36,3 +36,15 @@
 实际生产启动从新 AppContainer 的隔离 Known Folder 和独立工作目录执行 `start.cmd`。宿主 PID 19360 加载匹配生产 DLL 和两款生产应用模块，正常关闭，实际退出码 0。生产导出 373 项，原 371 项保留，新加 `ui_ai_operation_register` 和 `ui_ai_operation_list`，零私有测试入口。 [Light](../../build/xuanshu-app-operations-20261125-3be274/light-release/junit.xml) · [ASAN](../../build/xuanshu-app-operations-20261125-3be274/asan-release/junit.xml) · [兼容](../../build/xuanshu-app-operations-20261125-3be274/legacy-release/junit.xml) · [正式启动与版本](../../build/xuanshu-app-operations-20261125-3be274/production-smoke/host-final.log) · [导出比较](../../build/xuanshu-app-operations-20261125-3be274/exports-release-check.json)
 
 业务写入使用正式页面、实际 App 能力、隔离可信事件、模型与计价替身。生产启动验证覆盖模块加载和退出。真实模型决策效果、真实网络传输和物理人工确认仍待另行验证。先前扫雷整局工单仍停止。本次保留旧交付及首败，完成本地候选及应用接入说明。 [使用说明](../../build/xuanshu-app-operations-20261125-3be274/dist/使用说明.md) · [开发者接入](../xuanshu-operation-entry.md)
+
+## 2026-11-26 首轮方案拒绝与重新生成
+
+前置 Git 为 `ce632004`，验证采用现有工作区源码。缺动作闭合括号和裸 `goal.equals` 修前分别得到 `operation_invalid_response` 和 `operation_proposal_rejected`，各有一次隔离模型响应、零工具及零业务修改。后补的 16 图元合成样本保留正确的完成条件和缺括号边界，使用修前运行库与其原页面资源单独复现。两次修前运行均缺有效示例、可读失败原因和重新生成入口。 [修前两例](../../build/xuanshu-plan-response-20261126/red/junit.xml) · [后补嵌套复现](../../build/xuanshu-plan-response-20261126/red-nested/junit.xml)
+
+首轮及续轮预览的 JSON 示例能由严格解析器读回。畸形方案继续进入原失败终态。新的「重新生成方案」只复制草稿，已有草稿时保留其内容。在另一标签保存得到新的实例与 `doc-2`，切回旧标签仍固定该目标。隐藏确认和重复确认均被拒。用户路径的隔离可信确认后只提交一笔事务，目标读回 `Sketch / doc-3`，原实例为 `editable / doc-1`。关后有两个根任务及一个 P4 子任务，原根保留一次模拟传输、零工具和唯一失败终态。
+
+首轮修后 Light 为 22/23，新任务在给编辑控制器分配内存时停在 `edit_budget`。在该分配点复用现有终态缓存回收，继续执行到了实际提交。次轮 33/34 的末项失败来自账本夹具把 P4 子任务也按根任务计数，核对原始关后记录后修正测试。另保留诊断编译时对前置声明类型取尺寸导致的 C2027。 [编辑预算关后记录](../../build/xuanshu-plan-response-20261126/light/plan-schema-closed.log) · [子任务计数关后记录](../../build/xuanshu-plan-response-20261126/light-final/plan-schema-closed.log)
+
+最终同范围源码的 Light 34/34、ASAN Light 6/6 分别通过，包含表格、EDA 真实图块写入、隐藏与重复确认、旧计划、引用关闭、公开 C/C++ 头。生产 DLL 导出仍为 373 项，名称集合保持一致。验收使用隔离模型和测试自有数据。 [Light](../../build/xuanshu-plan-response-20261126/light-verified/junit.xml) · [ASAN](../../build/xuanshu-plan-response-20261126/asan/junit.xml) · [源码、程序与用例证据](../../build/xuanshu-plan-response-20261126/verification.json)
+
+DeepSeek Responses 官方文档支持 `text.format` 下的 `json_schema`。当前实测发送前计量器仅接纳原七字段请求，添加 `json_object` 或 `json_schema` 均退出 2 并返回 `meter_protocol`。固定编码实现会将 JSON Schema 编入模型输入。启用需有支持完整请求和 Schema 输入计量的匹配身份。本次离线结果适用于方案拒绝、重新生成和再确认路径，真实模型仍待验证。 [官方请求字段](https://api-docs.deepseek.com/api/create-response/#request) · [计量器同程序对照](../../build/xuanshu-plan-response-20261126/structured-output-meter-comparison.json)

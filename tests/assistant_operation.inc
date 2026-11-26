@@ -228,6 +228,168 @@ static int host_operation_check_draining(host_window_t *s,ai_run_t *r)
     return 0;
 }
 
+static int host_operation_prompt_example(host_window_t *s,int next)
+{
+    yyjson_doc *preview=host_daily_json(s->ai_preview);
+    yyjson_val *request=yyjson_obj_get(yyjson_doc_get_root(preview),"request");
+    const char *instructions=yyjson_get_str(yyjson_obj_get(request,"instructions"));
+    const char *heading=next?"Example next action:\n":"Example plan:\n";
+    const char *start=instructions?strstr(instructions,heading):NULL;
+    if(start)start+=strlen(heading);
+    const char *end=start?strchr(start,'\n'):NULL;
+    yyjson_doc *example=end?yyjson_read(start,(size_t)(end-start),0):NULL;
+    yyjson_val *o=yyjson_doc_get_root(example);
+    int ok=next?yyjson_obj_size(o)==3&&yyjson_is_str(yyjson_obj_get(o,"revision"))&&
+        yyjson_is_str(yyjson_obj_get(o,"action"))&&yyjson_is_obj(yyjson_obj_get(o,"parameters")):
+        yyjson_obj_size(o)==3&&yyjson_arr_size(yyjson_obj_get(o,"observations"))&&
+        yyjson_arr_size(yyjson_obj_get(o,"actions"))&&yyjson_equals_str(yyjson_obj_get(
+            yyjson_obj_get(yyjson_obj_get(o,"goal"),"equals"),"value"),"Sketch");
+    yyjson_doc_free(example);yyjson_doc_free(preview);return ok;
+}
+
+static void host_operation_recovery_saved(const wchar_t *db,const char *failed,const char *error,int recovered)
+{
+    char path[4096];sqlite3 *sql=NULL;sqlite3_stmt *q=NULL;
+    int readable=WideCharToMultiByte(CP_UTF8,0,db,-1,path,sizeof(path),NULL,NULL)>0&&
+        sqlite3_open_v2(path,&sql,SQLITE_OPEN_READONLY,NULL)==SQLITE_OK;
+    CHECK(readable);
+    if(readable){
+        int prepared=sqlite3_prepare_v2(sql,
+            "SELECT (SELECT count(*) FROM runs),(SELECT count(*) FROM events WHERE terminal=1),"
+            "(SELECT count(*) FROM runs WHERE id=?1 AND terminal=1 AND outcome='failed'),"
+            "(SELECT count(*) FROM events WHERE run_id=?1 AND kind='assistant_transport_entry'),"
+            "(SELECT count(*) FROM tools WHERE run_id=?1),"
+            "(SELECT count(*) FROM events WHERE run_id=?1 AND terminal=1 AND json_extract(payload,'$.error')=?2),"
+            "(SELECT count(*) FROM events WHERE kind='assistant_transport_entry'),"
+            "(SELECT count(*) FROM runs WHERE terminal=1 AND outcome='completed' AND json_extract(plan,'$.assistant_version')='general-v1'),"
+            "(SELECT count(*) FROM ai_edits WHERE terminal=1 AND json_extract(payload,'$.transaction_committed')=1"
+            " AND json_extract(payload,'$.revision_after')='doc-3')",
+            -1,&q,NULL)==SQLITE_OK;
+        CHECK(prepared);
+        if(prepared){
+            sqlite3_bind_text(q,1,failed,-1,SQLITE_TRANSIENT);sqlite3_bind_text(q,2,error,-1,SQLITE_TRANSIENT);
+            CHECK(sqlite3_step(q)==SQLITE_ROW&&sqlite3_column_int(q,0)==1+2*recovered&&
+                sqlite3_column_int(q,1)==1+2*recovered&&sqlite3_column_int(q,2)==1&&
+                sqlite3_column_int(q,3)==1&&sqlite3_column_int(q,4)==0&&
+                sqlite3_column_int(q,5)==1&&sqlite3_column_int(q,6)==1+2*recovered&&
+                sqlite3_column_int(q,7)==recovered&&sqlite3_column_int(q,8)==recovered);
+        }
+    }
+    sqlite3_finalize(q);sqlite3_close(sql);
+}
+
+static int host_operation_plan_recovery(host_window_t *s,const wchar_t *package,const wchar_t *db,int schema)
+{
+#define SKETCH_PLAN "{\"observations\":[{\"id\":\"target\",\"parameters\":{\"id\":\"9007199254741000\",\"column\":\"name\"}}]," \
+        "\"actions\":[{\"id\":\"set\",\"capability\":\"test.edit\",\"readback\":\"target\",\"parameters\":" \
+        "{\"id\":{\"value\":\"9007199254741000\"},\"column\":{\"value\":\"name\"},\"text\":{\"value\":\"Sketch\"}}"
+#define SKETCH_GOAL "],\"goal\":{\"observation\":\"target\",\"field\":\"text\",\"equals\":"
+    /* The array is complete. Only the surrounding action object lacks its
+       closing brace, as in the reported multi-shape response. */
+#define PLAN_SHAPE "{\"kind\":\"rectangle\",\"x\":8,\"y\":12,\"width\":16,\"height\":10}"
+#define PLAN_FOUR_SHAPES PLAN_SHAPE "," PLAN_SHAPE "," PLAN_SHAPE "," PLAN_SHAPE
+    static const char malformed[]="{\"observations\":[{\"id\":\"target\",\"parameters\":{\"id\":\"9007199254741000\",\"column\":\"name\"}}],"
+        "\"actions\":[{\"id\":\"set\",\"capability\":\"test.edit\",\"readback\":\"target\",\"parameters\":"
+        "{\"id\":{\"value\":\"9007199254741000\"},\"column\":{\"value\":\"name\"},\"text\":{\"value\":["
+        PLAN_FOUR_SHAPES "," PLAN_FOUR_SHAPES "," PLAN_FOUR_SHAPES "," PLAN_FOUR_SHAPES "]}}"
+        SKETCH_GOAL "{\"value\":\"Sketch\"}}}";
+#undef PLAN_FOUR_SHAPES
+#undef PLAN_SHAPE
+    static const char bare[]=SKETCH_PLAN "}" SKETCH_GOAL "\"Sketch\"}}";
+    static const char valid[]=SKETCH_PLAN "}" SKETCH_GOAL "{\"value\":\"Sketch\"}}}";
+#undef SKETCH_GOAL
+#undef SKETCH_PLAN
+    const char *input="把第 1 行名称列改为 Sketch，再读回核对。";
+    const char *error=schema?"operation_proposal_rejected":"operation_invalid_response";
+    operation_case_t c={0};c.plan=schema?bare:malformed;c.expected="Sketch";
+    char failed[65]={0};int recovered=0;
+    ui_app_instance_info_t a={0},b={0};
+    open_path(s,package);pump(s);uint64_t first=ui_workspace_active(s->workspace);
+    CHECK(first&&get_instance(s,first,&a));
+    if(!a.host)goto finish;
+    CHECK(host_operation_table_ready(s,a.host));
+    CHECK(ui_ai_model_fixture(s->ai,1,"[\"isolated-plan-response\"]")==UI_STATUS_OK);
+    CHECK(ui_ai_model_fixture(s->ai,5,"operation-isolated-model")==UI_STATUS_OK);
+    s->ai->model_config->fixture_reply=host_operation_reply;s->ai->model_config->fixture_reply_data=&c;
+    if(failures)goto finish;
+    click(s,"ai-operate");
+    if(!host_daily_propose(s,input,1))goto finish;
+    CHECK(host_general_binding(s,0));CHECK(host_operation_prompt_example(s,0));
+    CHECK(s->ai->model_config->requests==0);
+    CHECK(ui_ai_model_fixture_light(s->ai,s->view,"ai-model-confirm")==UI_STATUS_OK);
+    CHECK(model_wait(s,"\"outcome\":\"failed\""));CHECK(host_general_wait(s,error));
+    CHECK(model_wait(s,"\"tool_calls\":0")&&host_daily_idle(s));
+    strcpy_s(failed,sizeof(failed),s->ai_run);
+    CHECK(s->ai->model_config->requests==1&&host_operation_read(a.host,0,"editable",0,1));
+    fprintf(stderr,"Operation plan response first run=%s reason=%s requests=%u; target unchanged\n",
+        failed,error,s->ai->model_config->requests);
+    const char *notice=schema?"方案未通过校验":"方案格式有误";
+    DWORD presentation_started=GetTickCount();
+    while((!host_daily_visible(s,"ai-status-line",notice)||
+           !host_daily_visible(s,"ai-operation-redraft","重新生成方案"))&&
+          GetTickCount()-presentation_started<5000)pump(s);
+    CHECK(host_daily_visible(s,"ai-status-line",notice));
+    CHECK(host_daily_visible(s,"ai-status-line","本次任务未修改应用内容"));
+    int can_redraft=host_daily_visible(s,"ai-operation-redraft","重新生成方案");
+    CHECK(can_redraft);
+    if(!can_redraft||!schema||failures)goto finish;
+
+    text(s,"ai-input","保留这份草稿。");click(s,"ai-operation-redraft");
+    CHECK(host_daily_visible(s,"ai-input","保留这份草稿。"));
+    CHECK(!strcmp(s->ai_run,failed)&&s->ai->model_config->requests==1);
+    text(s,"ai-input","");
+    open_path(s,package);pump(s);uint64_t second=ui_workspace_active(s->workspace);
+    CHECK(second&&second!=first&&get_instance(s,second,&b));
+    if(!b.host)goto finish;
+    CHECK(host_operation_table_ready(s,b.host));
+    CHECK(host_operation_seed(s,b.host,"state.document","test.edit",
+        "{\"id\":\"9007199254741000\",\"column\":\"name\",\"text\":\"新目标原值\"}",1));
+    CHECK(host_operation_read(b.host,0,"新目标原值",0,2));
+    click(s,"ai-operation-redraft");
+    CHECK(host_daily_visible(s,"ai-input",input)&&host_daily_visible(s,"ai-operate","代操作已选"));
+    CHECK(!strcmp(s->ai_run,failed)&&s->ai->model_config->requests==1);
+    CHECK(ui_ai_model_fixture_light(s->ai,s->view,"ai-model-confirm")!=UI_STATUS_OK);
+    s->ai->assistant_policy->requests=3;s->ai->assistant_policy->budget=50000000;
+    c.plan=valid;
+    click(s,"ai-input");
+    ui_input_event_t repeat={0};repeat.size=sizeof(repeat);repeat.kind=UI_INPUT_KEY_DOWN;
+    repeat.key_code=VK_RETURN;repeat.modifiers=UI_INPUT_MODIFIER_CONTROL;
+    CHECK(!ui_web_view_dispatch_input(s->view,&repeat)&&!ui_web_view_dispatch_input(s->view,&repeat));
+    CHECK(model_wait(s,"\"phase\":3")&&host_general_binding(s,0));
+    CHECK(strcmp(s->ai_run,failed)&&s->ai_submission.phase==AI_SUBMIT_SAVED&&
+        s->ai_submission.count==1&&s->ai_submission.choices[0].target.resource.instance_id==second&&
+        !strcmp(s->ai_submission.choices[0].target.expected_revision,"doc-2"));
+    CHECK(ui_workspace_activate(s->workspace,first)==UI_STATUS_OK);pump(s);
+    click(s,"ai-range-close");
+    CHECK(ui_ai_model_fixture_light(s->ai,s->view,"ai-model-confirm")!=UI_STATUS_OK);
+    CHECK(s->ai->model_config->requests==1);
+    click(s,"ai-view-scope");CHECK(host_general_binding(s,0));
+    CHECK(ui_ai_model_fixture_light(s->ai,s->view,"ai-model-confirm")==UI_STATUS_OK);
+    CHECK(ui_ai_model_fixture_light(s->ai,s->view,"ai-model-confirm")!=UI_STATUS_OK);
+    click(s,"ai-range-close");
+    CHECK(host_general_wait(s,"\"plan_waiting\":true"));
+    CHECK(s->ai->model_config->requests==2&&host_operation_read(b.host,0,"新目标原值",0,2));
+    CHECK(ui_ai_graph_fixture_light(s->ai,s->view,"ai-model-confirm")!=UI_STATUS_OK);
+    click(s,"ai-view-scope");CHECK(host_general_binding(s,1));CHECK(host_operation_prompt_example(s,1));
+    CHECK(s->ai_preview&&strstr(s->ai_preview,"\"requests_limit\": 3")&&strstr(s->ai_preview,"\"budget_nano_usd\": 50000000")&&
+        strstr(s->ai_preview,"\"requests_remaining\": 2")&&strstr(s->ai_preview,"\"budget_remaining_nano_usd\": 49998200"));
+    ui_ai_service_state_t state={0};state.size=sizeof(state);state.version=1;
+    CHECK(ui_ai_service_get_state(s->ai,&state)==UI_STATUS_OK&&state.bytes<=UI_AI_MAX_BYTES);
+    fprintf(stderr,"Operation before second approval service_bytes=%zu\n",state.bytes);
+    CHECK(ui_ai_graph_fixture_light(s->ai,s->view,"ai-model-confirm")==UI_STATUS_OK);
+    CHECK(ui_ai_graph_fixture_light(s->ai,s->view,"ai-model-confirm")!=UI_STATUS_OK);
+    CHECK(model_wait(s,"\"outcome\":\"completed\"")&&host_daily_idle(s));
+    CHECK(host_general_wait(s,"\"verified\":1")&&s->ai->model_config->requests==3);
+    CHECK(ui_ai_service_get_state(s->ai,&state)==UI_STATUS_OK&&state.bytes<=UI_AI_MAX_BYTES);
+    CHECK(host_operation_read(a.host,0,"editable",0,1)&&host_operation_read(b.host,0,"Sketch",0,3));
+    recovered=1;
+finish:
+    CHECK(close_host(s));
+    if(failed[0])host_operation_recovery_saved(db,failed,error,recovered);
+    fprintf(stderr,"Operation plan response checks=%u failures=%u\n",checks,failures);
+    return failures?1:0;
+}
+
 static int host_operation_run(host_window_t *s,const wchar_t *package,const wchar_t *mode)
 {
     static const char fixed[]="{\"observations\":[{\"id\":\"target\",\"parameters\":{\"id\":\"9007199254741000\",\"column\":\"name\"}}],"

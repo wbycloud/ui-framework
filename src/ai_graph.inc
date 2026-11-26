@@ -136,8 +136,16 @@ static void ag_edit(ui_ai_service_t *s,ai_graph_t *g,ag_node_t *n)
  ai_edit_t *e=n->edit;char cap[256],id[65],client[65],key[180];ui_status_t status;
  if(!e&&g->cancel){ag_collect(g,n,"cancelled","root_cancelled",NULL);return;}
  if(!e&&g->suspended)return;
- if(!e){ui_ai_edit_request_t q={0};if(sizeof(*e)>UI_AI_MAX_BYTES-s->bytes){ag_collect(g,n,"failed","edit_budget",NULL);return;}
-  e=calloc(1,sizeof(*e));if(!e){ag_collect(g,n,"failed","spawn_allocation",NULL);return;}e->service=s;e->schema=3;EnterCriticalSection(&s->lock);s->bytes+=sizeof(*e);n->edit=e;LeaveCriticalSection(&s->lock);
+ if(!e){ui_ai_edit_request_t q={0};
+  EnterCriticalSection(&s->lock);
+  while(sizeof(*e)>UI_AI_MAX_BYTES-s->bytes){
+   if(ai_evict(s)>=0)continue;
+   LeaveCriticalSection(&s->lock);ag_collect(g,n,"failed","edit_budget",NULL);return;
+  }
+  e=calloc(1,sizeof(*e));
+  if(e){e->service=s;e->schema=3;s->bytes+=sizeof(*e);n->edit=e;}
+  LeaveCriticalSection(&s->lock);
+  if(!e){ag_collect(g,n,"failed","spawn_allocation",NULL);return;}
   q.size=sizeof(q);q.version=1;snprintf(key,sizeof(key),"{\"root\":\"%s\",\"operation\":\"%s\"}",g->binding,n->operation);if(ui_cap_json_fingerprint(key,strlen(key),client)){ag_collect(g,n,"failed","operation_identity",NULL);return;}q.client_request_id=client;q.capability_id=ag_cap(g,n,cap);q.target=g->targets[n->target];q.params_json=n->params;q.parameter_constraint_schema=n->constraint;
   status=ag_check(s,g,n);if(!status)status=ae_propose_one(s,e,&q,id,1);if(status){ag_collect(g,n,"failed","edit_prepare_rejected",NULL);return;}
  }

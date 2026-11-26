@@ -1,5 +1,9 @@
 # 当前交接与APP开发参考
 
+## 2026-11-26 代操作方案拒绝与重新生成
+
+`ce632004` 后的本地整改已通过 Light 34/34、ASAN Light 6/6。首轮方案错误有可读原因及「重新生成方案」入口。复制为新草稿后重新绑定当前对象与计价，两次可信确认后才允许操作。画板 16 图元缺括号的合成形态继续零写入。DeepSeek Responses 支持结构化输出，现有计量器对该请求形状仍锁停。 [使用入口](xuanshu-operation-entry.md) · [验证与计量边界](validation/xuanshu-operation-tasks-validation.md#2026-11-26-首轮方案拒绝与重新生成)
+
 ## 2026-11-25 共用助手代操作
 
 本地交付 `3be274` 支持已注册 App 在一次授权内按核实版本逐笔代操作。表格覆盖固定值、同任务两种真实源值。EDA 仅新增自身注册，实测从 1 或 2 个补到 3 个及已有 3 个时零写入。Light 和 ASAN 各 12/12，旧入口相称回归 34/34，隔离启动正式宿主加载两款生产包后退出 0。真实模型验证待另行授权。 [SDK 接入](xuanshu-operation-entry.md) · [验证](validation/xuanshu-operation-tasks-validation.md) · [本地入口](../build/xuanshu-app-operations-20261125-3be274/dist/start.cmd)

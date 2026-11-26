@@ -2079,7 +2079,7 @@ if(TARGET ui_general_assistant_test AND TARGET br1_isolated_package AND TARGET p
     add_test(NAME ui_general_host_graph_save COMMAND ui_general_host_test "${CMAKE_CURRENT_BINARY_DIR}/ai_edit_fixture.uapp" "${CMAKE_CURRENT_BINARY_DIR}/p4-stateful_components.uapp" "${CMAKE_CURRENT_BINARY_DIR}/general-graph-save" "${UI_OSMESA_LIBRARY}" graph-save)
     set_tests_properties(ui_general_host_graph_save PROPERTIES TIMEOUT 30 RUN_SERIAL TRUE)
     add_dependencies(ui_general_daily_test p4_minimal_eda_package)
-    foreach(_case IN ITEMS fixed copy-a copy-b denied stale takeover storage deadline-inflight takeover-inflight eda-1 eda-2 eda-3)
+    foreach(_case IN ITEMS fixed copy-a copy-b denied stale takeover storage deadline-inflight takeover-inflight eda-1 eda-2 eda-3 plan-syntax plan-schema)
         if(_case MATCHES "^eda-")
             set(_operation_package "${CMAKE_CURRENT_BINARY_DIR}/p4-minimal_eda.uapp")
         else()

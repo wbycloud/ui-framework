@@ -205,6 +205,8 @@ int wmain(int argc,wchar_t **argv)
     if(failures){CHECK(close_host(&s));return 1;}
     click(&s,"ai-model-save");CHECK(model_wait(&s,NULL));click(&s,"ai-model-toggle");
     if(argc==6&&!wcscmp(argv[5],L"operation-red"))return host_operation_red(&s,argv[1]);
+    if(argc==6&&!wcsncmp(argv[5],L"operation-plan-",15))
+        return host_operation_plan_recovery(&s,argv[1],db,!wcscmp(argv[5],L"operation-plan-schema"));
     if(argc==6&&!wcsncmp(argv[5],L"operation-",10))return host_operation_run(&s,argv[1],argv[5]);
     if(daily)return host_daily_run(&s,argv[1],db,argv[5]);
     host_general_responses(&s);open_path(&s,argv[1]);pump(&s);uint64_t browser=ui_workspace_active(s.workspace);

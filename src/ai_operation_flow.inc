@@ -473,11 +473,20 @@ static ui_status_t ao_disclosure(ui_ai_service_t *s,ai_run_t *r,char **out)
         if(ok&&request)ok=yyjson_mut_obj_add_val(d,o,"request",yyjson_val_mut_copy(d,yyjson_doc_get_root(request)));
         if(ok&&!request)ok=yyjson_mut_obj_add_str(d,o,"next_request","目标已达到或不符合继续条件，当前没有后续发送。");
         if(ok){
-            yyjson_mut_obj_add_uint(d,o,"actions_limit",op->limit);
-            yyjson_mut_obj_add_uint(d,o,"requests_limit",a->policy.requests);
-            yyjson_mut_obj_add_uint(d,o,"budget_nano_usd",a->policy.budget);
-            yyjson_mut_obj_add_uint(d,o,"deadline_ms",a->policy.deadline_ms);
-            *out=yyjson_mut_write(d,YYJSON_WRITE_PRETTY,NULL);
+            EnterCriticalSection(&s->lock);
+            unsigned requests_left=a->used<a->policy.requests?a->policy.requests-a->used:0;
+            uint64_t fees_left=a->known<a->policy.budget?a->policy.budget-a->known:0;
+            fees_left=a->estimated<fees_left?fees_left-a->estimated:0;
+            int fee_unknown=a->fee_unknown;
+            LeaveCriticalSection(&s->lock);
+            ok=yyjson_mut_obj_add_uint(d,o,"actions_limit",op->limit)&&
+                yyjson_mut_obj_add_uint(d,o,"requests_limit",a->policy.requests)&&
+                yyjson_mut_obj_add_uint(d,o,"requests_remaining",requests_left)&&
+                yyjson_mut_obj_add_uint(d,o,"budget_nano_usd",a->policy.budget)&&
+                (fee_unknown?yyjson_mut_obj_add_null(d,o,"budget_remaining_nano_usd"):
+                    yyjson_mut_obj_add_uint(d,o,"budget_remaining_nano_usd",fees_left))&&
+                yyjson_mut_obj_add_uint(d,o,"deadline_ms",a->policy.deadline_ms);
+            if(ok)*out=yyjson_mut_write(d,YYJSON_WRITE_PRETTY,NULL);
         }
     }
     (void)s;yyjson_mut_doc_free(d);yyjson_doc_free(request);yyjson_doc_free(plan);yyjson_doc_free(facts);am_delete(wire);free(items);
