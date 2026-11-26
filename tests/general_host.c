@@ -171,9 +171,11 @@ static void host_graph_handoff(host_window_t *s,uint64_t instance)
 }
 
 #include "general_daily_release.inc"
+#include "assistant_operation.inc"
 
 int wmain(int argc,wchar_t **argv)
 {
+    if(argc==3&&!wcscmp(argv[1],L"operation-restore"))return host_operation_restore(argv[2]);
     case_started=GetTickCount64();
     if(argc!=5&&argc!=6)return 2;SetEnvironmentVariableW(L"UI_LIGHT_SCRIPT_DIAGNOSTICS",L"1");host_window_t s={0};host_action_t action={0};GUID guid;wchar_t db[4096],folder[4096],id[40],settings[4096];
     CHECK(CreateDirectoryW(argv[3],NULL)||GetLastError()==ERROR_ALREADY_EXISTS);CoCreateGuid(&guid);StringFromGUID2(&guid,id,40);
@@ -202,11 +204,14 @@ int wmain(int argc,wchar_t **argv)
     click(&s,"ai-model-toggle");text(&s,"ai-model-name","deepseek-flash");
     if(failures){CHECK(close_host(&s));return 1;}
     click(&s,"ai-model-save");CHECK(model_wait(&s,NULL));click(&s,"ai-model-toggle");
+    if(argc==6&&!wcscmp(argv[5],L"operation-red"))return host_operation_red(&s,argv[1]);
+    if(argc==6&&!wcsncmp(argv[5],L"operation-",10))return host_operation_run(&s,argv[1],argv[5]);
     if(daily)return host_daily_run(&s,argv[1],db,argv[5]);
     host_general_responses(&s);open_path(&s,argv[1]);pump(&s);uint64_t browser=ui_workspace_active(s.workspace);
     host_shared_chat_controls(&s);
     open_path(&s,argv[2]);pump(&s);uint64_t maintenance=ui_workspace_active(s.workspace);CHECK(browser!=maintenance);
     host_shared_chat_controls(&s);
+    click(&s,"ai-developer-toggle");click(&s,"ai-maintenance-toggle");
     click(&s,"ai-draft-range-toggle");int graph_save=argc==6&&!wcscmp(argv[5],L"graph-save");
     unsigned before=failures;
     if(graph_save)host_general_target(&s,browser,"memory.document","memory.read",NULL,"");
@@ -257,7 +262,7 @@ int wmain(int argc,wchar_t **argv)
     if(argc==6){
         ui_element_presentation_t status={0};status.size=sizeof(status);
         CHECK(ui_web_view_get_presentation(s.view,"ai-status-line",&status)==UI_STATUS_OK);
-        CHECK(status.text_utf8&&strstr(status.text_utf8,"等待外发确认"));
+        CHECK(status.text_utf8&&strstr(status.text_utf8,"已保存，等待确认发送"));
         click(&s,"ai-cancel");CHECK(model_wait(&s,"\"terminal\":true"));
         DWORD begin=GetTickCount();int displayed=0;
         do{

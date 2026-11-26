@@ -1,4 +1,5 @@
 /* Application memory model. Source rows and both property projections read it. */
+#include "ui_framework/ai_operation.h"
 struct state_form {state_app_t *app;p2_cap_t *cap;int dialog;uint64_t binding;};
 #define ST_FIELDS "{\"type\":\"object\",\"properties\":{\"fields\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"maxLength\":4096},\"mode\":{\"type\":\"string\",\"enum\":[\"low\",\"medium\",\"high\"]},\"color\":{\"type\":\"string\",\"maxLength\":15}},\"additionalProperties\":false}},\"required\":[\"fields\"],\"additionalProperties\":false}"
 #define ST_DIALOG "{\"type\":\"object\",\"properties\":{\"fields\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"maxLength\":4096}},\"required\":[\"name\"],\"additionalProperties\":false}},\"required\":[\"fields\"],\"additionalProperties\":false}"
@@ -175,7 +176,11 @@ static ui_status_t state_capabilities(state_app_t *s,const ui_app_context_t *con
  ui_ai_agent_profile_t profile={0};profile.size=sizeof(profile);profile.version=1;profile.id="maintenance.editor";
  profile.instructions_utf8="维护组件文档中的明确单元格。对象ID、列和新文本必须明确且符合Schema。读取真实业务值及revision。编辑通过原可撤销事务，保持提交、回读、撤销回执与保存状态，参数缺失时先提问。不可访问用户设置或其他应用。";
  profile.allowed_capability_ids_json="[\"state.document.read\",\"state.cell.read\",\"test.edit\"]";
- return ui_ai_agent_profile_register(context->host,&profile);}
+ status=ui_ai_agent_profile_register(context->host,&profile);if(status)return status;
+ return ui_ai_operation_register(context->host,
+  "{\"version\":1,\"id\":\"table.cells\",\"title\":\"表格单元格\",\"resource\":\"state.document\","
+  "\"observe\":{\"capability\":\"state.cell.read\",\"fields\":{\"id\":\"value\",\"column\":\"value\",\"text\":\"value\"}},"
+  "\"actions\":[{\"capability\":\"test.edit\",\"identity\":[\"id\",\"column\"],\"sources\":{\"text\":[\"text\"]}}],\"max_actions\":4}");}
 static ui_status_t state_bindings(state_app_t *s)
 {
  ui_status_t status;s->forms=calloc(2,sizeof(*s->forms));if(!s->forms)return UI_STATUS_OUT_OF_MEMORY;

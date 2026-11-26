@@ -13,6 +13,7 @@ static void as_free(ui_ai_service_t *s,as_run_t *a)
     if(!a)return;
     free(a->scope);
     free(a->attachments);
+    free(a->operation);
     free(a);
 }
 
@@ -244,18 +245,54 @@ static char *as_scope(ui_ai_service_t *s,const ui_ai_assistant_request_t *q)
     yyjson_doc_free(permissions);yyjson_mut_doc_free(d);return result;
 }
 
+static ui_status_t ao_scope(ui_ai_service_t *s,const ui_ai_assistant_request_t *q,as_run_t *a)
+{
+    const char *raw=q->permissions_json;
+    yyjson_doc *d=raw&&strlen(raw)<=65536?yyjson_read(raw,strlen(raw),0):NULL;
+    yyjson_val *list=yyjson_doc_get_root(d),*entry=yyjson_arr_get(list,0);
+    yyjson_val *operation=yyjson_obj_get(entry,"operation");
+    if(!operation){yyjson_doc_free(d);return UI_STATUS_OK;}
+    const char *name=yyjson_get_str(operation);
+    const ui_cap_target_v2_t *target=q->targets;
+    ui_status_t status=UI_STATUS_VALIDATION_FAILED;
+    if(name&&strlen(name)==yyjson_get_len(operation)&&ai_text(name,64,0)&&q->target_count==1&&
+       yyjson_arr_size(list)==1&&yyjson_obj_size(entry)==1&&!q->attachment_count&&
+       (!q->parent_run_id||!*q->parent_run_id)&&q->task.history_selection_json&&!strcmp(q->task.history_selection_json,"[]")&&
+       q->task.disclosure_projection_json&&!strcmp(q->task.disclosure_projection_json,"{\"capabilities\":[],\"fields\":[]}")&&
+       ag_target_shape(target)&&!strcmp(target->scope_json,"{\"access\":\"write\"}")){
+        ui_app_instance_info_t app;
+        status=ag_app(s,target,&app);
+        if(!status)status=ui_cap_operation_get(app.host,name,&a->scope);
+        yyjson_doc *spec=a->scope?yyjson_read(a->scope,strlen(a->scope),0):NULL;
+        yyjson_val *root=yyjson_doc_get_root(spec);
+        if(!status&&!yyjson_equals_str(yyjson_obj_get(root,"resource"),target->resource.resource_id))status=UI_STATUS_VALIDATION_FAILED;
+        if(!status){
+            a->operation=calloc(1,sizeof(*a->operation));
+            if(!a->operation)status=UI_STATUS_OUT_OF_MEMORY;
+            else{
+                a->operation->limit=(unsigned)yyjson_get_uint(yyjson_obj_get(root,"max_actions"));
+                strcpy_s(a->operation->revision,128,target->expected_revision);
+            }
+        }
+        yyjson_doc_free(spec);
+    }
+    yyjson_doc_free(d);return status;
+}
+
 ui_status_t ui_ai_assistant_propose(ui_ai_service_t *s,const ui_ai_assistant_request_t *q,char out[65])
 {
     if(out)out[0]=0;
     if(!ai_ui(s)||!out||!q||q->size<sizeof(*q)||q->version!=1||
        !s->assistant_policy||s->validation||!s->coordinator||s->coordinator->schema!=3||
        q->target_count>16||(q->target_count&&(!q->targets||!q->task.targets))||
-       q->target_count!=q->task.target_count||(!q->target_count&&q->attachment_count)||
+       q->target_count!=q->task.target_count||
        (q->parent_run_id&&*q->parent_run_id&&!ai_id(q->parent_run_id)))return UI_STATUS_INVALID_ARGUMENT;
     ++s->methods;
     as_run_t *a=calloc(1,sizeof(*a));ui_status_t status=UI_STATUS_OUT_OF_MEMORY;
     if(!a)goto done;
-    a->scope=as_scope(s,q);a->attachments=as_attachments(q);
+    status=ao_scope(s,q,a);if(status)goto done;
+    if(!a->operation)a->scope=as_scope(s,q);
+    a->attachments=as_attachments(q);
     if(!a->scope||!a->attachments){status=UI_STATUS_VALIDATION_FAILED;goto done;}
     ui_ai_task_request_t binding={0};binding.targets=q->task.targets;binding.target_count=q->task.target_count;
     status=ai_targets_check(s,&binding,1);if(status)goto done;
@@ -269,6 +306,11 @@ ui_status_t ui_ai_assistant_propose(ui_ai_service_t *s,const ui_ai_assistant_req
     }
     a->bytes=sizeof(*a)+strlen(a->scope)+strlen(a->attachments)+2;
     a->policy=*s->assistant_policy;a->target_count=q->target_count;
+    if(a->operation){
+        a->bytes+=sizeof(*a->operation);
+        if(a->policy.requests>8)a->policy.requests=8;
+        if(a->policy.deadline_ms>600000)a->policy.deadline_ms=600000;
+    }
     if(q->target_count)memcpy(a->targets,q->targets,q->target_count*sizeof(*q->targets));
     a->stage=AS_PLANNING;
     int owned=0;

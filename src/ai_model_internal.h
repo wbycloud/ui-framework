@@ -21,6 +21,7 @@ struct am_config {
  HANDLE fixture_meter_enter,fixture_meter_release;int fixture_meter_fault;
  HANDLE fixture_scan_gate,fixture_scan_enter;char fixture_scan_id[65];int fixture_scan_armed,fixture_scan_slot,fixture_scan_same;unsigned fixture_scan_done;
  wchar_t fixture_key[513];char fixture_body[AM_REQUEST+1];
+ int (*fixture_reply)(void *,unsigned,const char *,char *,size_t);void *fixture_reply_data;
  int fixture_batch_mode;
  int fixture_credentials,fixture_prompt_result,fixture_prompt_reenter,fixture_credential_hold,fixture_dialog_checks;
  DWORD fixture_write_error,fixture_config_error,fixture_read_error;wchar_t fixture_credential[513];

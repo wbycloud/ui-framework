@@ -1,3 +1,4 @@
+#include "ui_framework/ai_operation.h"
 #define EDA_NOTE_INPUT "{\"type\":\"object\",\"properties\":{\"text\":{\"type\":\"string\"},\"base_revision\":{\"type\":\"string\",\"maxLength\":127},\"generation\":{\"type\":\"string\",\"maxLength\":20}},\"required\":[\"text\",\"base_revision\",\"generation\"],\"additionalProperties\":false}"
 #define EDA_SELECT_INPUT "{\"type\":\"object\",\"properties\":{\"ids\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"maxLength\":20},\"maxItems\":1}},\"required\":[\"ids\"],\"additionalProperties\":false}"
 static const char eda_document_output[]="{\"type\":\"object\",\"properties\":{\"revision\":{\"type\":\"string\"},\"note\":{\"type\":\"string\"},\"objects\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"x\":{\"type\":\"number\"},\"y\":{\"type\":\"number\"},\"width\":{\"type\":\"number\"},\"height\":{\"type\":\"number\"}},\"required\":[\"id\",\"x\",\"y\",\"width\",\"height\"],\"additionalProperties\":false},\"maxItems\":64},\"zoom\":{\"type\":\"number\"},\"selection\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"maxItems\":1},\"draft_conflict\":{\"type\":\"boolean\"},\"draft_dirty\":{\"type\":\"boolean\"}},\"required\":[\"revision\",\"note\",\"objects\"],\"additionalProperties\":false}";
@@ -52,7 +53,13 @@ static ui_status_t eda_publish(void *data)
 {eda_state_t *e=data;ui_status_t status=UI_STATUS_OK;if(e->capabilities.transaction_committed&&!e->capabilities.transaction_is_undo&&!strcmp(e->capabilities.transaction_capability,"eda.clear")){if(e->zoom!=1||e->selected)++e->view_revision;e->zoom=1;e->selected=0;}
  eda_draft_project(e);if(!e->note_dirty)status=eda_note_reload(e);update_properties(e);if(e->active&&e->canvas)(void)ui_surface_invalidate(e->canvas);return status;}
 static ui_status_t eda_capabilities(eda_state_t *e,const ui_app_context_t *context)
-{const char *resources[]={"eda.document","eda.view"};ui_cap_resource_kind_t kinds[]={UI_CAP_DOCUMENT,UI_CAP_INSTANCE_VIEW};e->revision=e->view_revision=e->note_generation=1;e->capabilities.capture_business=eda_capture;e->capabilities.restore_business=eda_restore;e->capabilities.project_business=eda_publish;e->capabilities.run=eda_run;e->capabilities.revision=eda_revision;e->capabilities.describe=eda_describe;return p2_register(&e->capabilities,context,e,eda_specs,sizeof(eda_specs)/sizeof(eda_specs[0]),resources,kinds,2);}
+{const char *resources[]={"eda.document","eda.view"};ui_cap_resource_kind_t kinds[]={UI_CAP_DOCUMENT,UI_CAP_INSTANCE_VIEW};e->revision=e->view_revision=e->note_generation=1;e->capabilities.capture_business=eda_capture;e->capabilities.restore_business=eda_restore;e->capabilities.project_business=eda_publish;e->capabilities.run=eda_run;e->capabilities.revision=eda_revision;e->capabilities.describe=eda_describe;
+ ui_status_t status=p2_register(&e->capabilities,context,e,eda_specs,sizeof(eda_specs)/sizeof(eda_specs[0]),resources,kinds,2);
+ if(status)return status;
+ return ui_ai_operation_register(context->host,
+  "{\"version\":1,\"id\":\"drawing.blocks\",\"title\":\"图块\",\"resource\":\"eda.document\","
+  "\"observe\":{\"capability\":\"eda.document.read\",\"fields\":{\"objects\":\"count\"}},"
+  "\"actions\":[{\"capability\":\"eda.add_block\",\"identity\":[],\"sources\":{}}],\"max_actions\":8}");}
 static ui_status_t eda_collect(const ui_cap_input_context_t *context,char *out,size_t capacity,size_t *length,void *data)
 {
  p2_cap_t *cap=data;eda_state_t *e=cap->app->model;yyjson_mut_doc *d=yyjson_mut_doc_new(NULL);yyjson_mut_val *root=d?yyjson_mut_obj(d):NULL;ui_status_t status=UI_STATUS_OK;

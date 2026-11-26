@@ -181,6 +181,14 @@ static void conversation_path(host_window_t *s, const wchar_t *folder, int readi
     CHECK(model_wait(s, "\"phase\":3"));
     CHECK(bound(s));
     CHECK(s->ai->model_config->requests == 0);
+    DWORD saved = GetTickCount();
+    ui_element_presentation_t message = {0};
+    message.size = sizeof(message);
+    do {
+        pump(s);
+        if (ui_web_view_get_presentation(s->view, "ai-message-1-body", &message) == UI_STATUS_OK &&
+            message.text_utf8 && !strcmp(message.text_utf8, input)) break;
+    } while (GetTickCount() - saved < 5000);
     actual_text(s, "ai-message-1-role", "你");
     actual_text(s, "ai-message-1-body", input);
     text(s, "ai-input", draft);

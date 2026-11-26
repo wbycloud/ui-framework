@@ -154,14 +154,16 @@
 <button id="ai-developer-toggle">开发诊断</button>
 <!-- UI_HOST_DEV_END -->
 </div><span id="ai-service-failure" style="display:none"></span><div id="ai-daily-content" class="column"><div id="ai-scroll" class="column"><div id="ai-history-panel" class="column" style="display:none"><div id="ai-history-box" class="column" style="display:none">    <textarea id="ai-history" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-history-prev">前段</button><span id="ai-history-page"></span><button id="ai-history-next">后段</button></div>
-    <div class="row"><button id="ai-older">消息首页</button><button id="ai-next">下一页</button><button id="ai-runs-refresh">任务记录</button></div>
+    <div class="row"><button id="ai-older">消息首页</button><button id="ai-next">下一页</button><button id="ai-runs-refresh">任务记录</button></div><button id="ai-history-include" style="display:none">引用历史消息</button><div id="ai-history-choices" class="column" style="display:none"></div>
 </div><button id="ai-list-toggle">收起任务列表</button><div id="ai-runs" class="column"></div></div><div id="ai-settings-box" class="column" style="display:none"><span id="ai-settings-title" class="ai-section" style="display:none">模型设置</span><div id="ai-settings-description" class="column"><span class="label">当前模型配置（与任务绑定配置分开）</span><span>DeepSeek 官方 Responses · 普通任务逐项确认；配置或打开面板不会联网</span></div>
      <span class="label">模型ID</span><input id="ai-model-name" placeholder="您选定的 DeepSeek 模型ID"/><div class="row"><button id="ai-model-save">保存用户模型配置</button><button id="ai-model-key">原生窗口设置密钥</button></div>
       <span id="ai-model-ready" class="muted" style="display:none"></span><button id="ai-model-diagnostics-toggle" style="display:none">查看诊断</button>
       <div id="ai-model-diagnostics" class="column"><span id="ai-model-state"></span><button id="ai-model-copy">复制脱敏诊断（不授权、不发送）</button><span id="ai-copy-notice"></span></div>
-</div><div id="ai-active-task" class="column"></div><div id="ai-empty-chat" class="column"><span class="glyph studio-mark" style="width:42px;height:42px;padding:9px;border-radius:13px;font-size:20px">&#xE8BD;</span><span id="ai-empty-title" style="width:100%;text-align:center">有什么可以帮你？</span></div><div id="ai-chat" class="column"></div><div id="ai-task-overview" class="column" style="display:none"><span id="ai-status-line"></span><div class="row"><button id="ai-task-facts-toggle">详情</button><button id="ai-cancel">取消</button></div><span id="ai-cancel-notice"></span></div><div id="ai-question-box" class="column" style="display:none"><div id="ai-question" class="muted"></div><span id="ai-answer-label" class="label">关联问题回复（仅回答当前问题）</span><input id="ai-answer" placeholder="回答关联问题"/><button id="ai-answer-send">回复此问题</button></div><div id="ai-task-facts" class="column" style="display:none"><button id="ai-view-saved-scope" style="display:none">查看发送内容</button><textarea id="ai-task-state" readonly="readonly" style="height:155px"></textarea><div class="row"><button id="ai-task-state-prev">前页</button><span id="ai-task-state-page"></span><button id="ai-task-state-next">后页</button></div><span id="ai-task-title" class="ai-section">当前任务与处理状态</span><span id="ai-current-content"></span><span id="ai-result-label" class="muted">当前任务结果（与新任务草稿分开）</span><textarea id="ai-output" readonly="readonly" style="height:120px"></textarea><div id="ai-output-pages" class="row"><button id="ai-output-prev">前段</button><span id="ai-output-page"></span><button id="ai-output-next">后段</button></div><div id="ai-control-bar" class="column" style="display:none"><button id="ai-takeover">手动接管应用</button><button id="ai-return">交回AI</button><span id="ai-control-state"></span></div><div id="ai-professional-tasks" class="column"></div><button id="ai-evidence-toggle" style="display:none">查看业务结果与依据 ▸</button><div id="ai-evidence-box" class="column" style="display:none"><textarea id="ai-evidence" readonly="readonly" style="height:150px"></textarea><div class="row"><button id="ai-evidence-prev">前页</button><span id="ai-evidence-page"></span><button id="ai-evidence-next">后页</button></div></div></div><div id="ai-message-box" class="column" style="display:none"><span id="ai-message-title"></span><textarea id="ai-message-detail" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-message-detail-prev">前页</button><span id="ai-message-detail-page"></span><button id="ai-message-detail-next">后页</button></div></div><div id="ai-node-undo-box" class="column" style="display:none"><span class="label">撤销范围（新的本地操作）</span><textarea id="ai-node-undo-preview" readonly="readonly" style="height:150px"></textarea><button id="ai-node-undo" disabled="disabled">确认撤销此步骤（新操作）</button></div><div id="ai-draft-range" class="column" style="display:none">     <span class="label">新提案范围草稿（仅下次保存提案使用）</span><span>选择要发送的历史片段（默认不选；可通过上方历史翻页）：</span><div id="ai-model-history" class="column"></div>
+</div><div id="ai-active-task" class="column"></div><div id="ai-empty-chat" class="column"><span class="glyph studio-mark" style="width:42px;height:42px;padding:9px;border-radius:13px;font-size:20px">&#xE8BD;</span><span id="ai-empty-title" style="width:100%;text-align:center">有什么可以帮你？</span></div><div id="ai-chat" class="column"></div><div id="ai-clarification" class="column" style="display:none"></div><div id="ai-task-overview" class="column" style="display:none"><span id="ai-status-line"></span><div class="row"><button id="ai-task-facts-toggle">详情</button><button id="ai-cancel">取消</button></div><span id="ai-cancel-notice"></span></div><div id="ai-question-box" class="column" style="display:none"><div id="ai-question" class="muted"></div><span id="ai-answer-label" class="label">关联问题回复（仅回答当前问题）</span><input id="ai-answer" placeholder="回答关联问题"/><button id="ai-answer-send">回复此问题</button></div><div id="ai-task-facts" class="column" style="display:none"><button id="ai-view-saved-scope" style="display:none">查看发送内容</button><textarea id="ai-task-state" readonly="readonly" style="height:155px"></textarea><div class="row"><button id="ai-task-state-prev">前页</button><span id="ai-task-state-page"></span><button id="ai-task-state-next">后页</button></div><span id="ai-task-title" class="ai-section">当前任务与处理状态</span><span id="ai-current-content"></span><span id="ai-result-label" class="muted">当前任务结果（与新任务草稿分开）</span><textarea id="ai-output" readonly="readonly" style="height:120px"></textarea><div id="ai-output-pages" class="row"><button id="ai-output-prev">前段</button><span id="ai-output-page"></span><button id="ai-output-next">后段</button></div><div id="ai-control-bar" class="column" style="display:none"><button id="ai-takeover">手动接管应用</button><button id="ai-return">交回AI</button><span id="ai-control-state"></span></div><div id="ai-professional-tasks" class="column"></div><button id="ai-evidence-toggle" style="display:none">查看业务结果与依据 ▸</button><div id="ai-evidence-box" class="column" style="display:none"><textarea id="ai-evidence" readonly="readonly" style="height:150px"></textarea><div class="row"><button id="ai-evidence-prev">前页</button><span id="ai-evidence-page"></span><button id="ai-evidence-next">后页</button></div></div></div><div id="ai-message-box" class="column" style="display:none"><span id="ai-message-title"></span><textarea id="ai-message-detail" readonly="readonly" style="height:140px"></textarea><div class="row"><button id="ai-message-detail-prev">前页</button><span id="ai-message-detail-page"></span><button id="ai-message-detail-next">后页</button></div></div><div id="ai-node-undo-box" class="column" style="display:none"><span class="label">撤销范围（新的本地操作）</span><textarea id="ai-node-undo-preview" readonly="readonly" style="height:150px"></textarea><button id="ai-node-undo" disabled="disabled">确认撤销此步骤（新操作）</button></div><div id="ai-draft-range" class="column" style="display:none">     <span class="label">新提案范围草稿（仅下次保存提案使用）</span><span>选择要发送的历史片段（默认不选；可通过上方历史翻页）：</span><div id="ai-model-history" class="column"></div>
      <button id="ai-model-catalog">选择当前应用的只读目标与能力</button><span id="ai-model-target"></span><div id="ai-model-resources" class="column"></div><div id="ai-model-projection" class="column"></div>
-     <div id="ai-general-range" class="column" style="display:none"><div id="ai-attachment-controls" class="row" style="display:none"><button id="ai-attachment-add">添加附件</button><button id="ai-attachment-clear">移除附件</button></div><div id="ai-task-suggestions" class="column"></div><div id="ai-profile-choices" class="column"></div><div id="ai-parameter-cards" class="column"></div><button id="ai-target-add">加入／更新此草稿目标</button><div id="ai-target-drafts" class="column"></div></div>
+<!-- UI_HOST_DEV_BEGIN -->
+     <div id="ai-general-range" class="column" style="display:none"><div id="ai-task-suggestions" class="column"></div><div id="ai-profile-choices" class="column"></div><div id="ai-parameter-cards" class="column"></div><button id="ai-target-add">加入／更新此草稿目标</button><div id="ai-target-drafts" class="column"></div></div>
+<!-- UI_HOST_DEV_END -->
       <span>任务数据限于所选历史、目标能力及字段。先保存本地提案，再查看固定范围和完整请求。可撤销编辑还须核对具体有限计划；其他业务内容须另行明确选择。</span>
 </div><div id="ai-model-box" class="column" style="display:none"><button id="ai-range-close">收起任务范围</button>     <span id="ai-scope-title" class="ai-section">本次允许发送的内容</span>
      <span id="ai-summary-note" class="muted"></span>
@@ -233,7 +235,7 @@
 </div>
 <!-- UI_HOST_DEV_END -->
 
-</div></div><div id="ai-composer" class="column"><div id="ai-composer-card" class="column"><span id="ai-input-label" style="display:none">消息输入</span><span id="ai-composer-placeholder" class="muted" style="position:absolute;left:18px;top:18px;width:80%;height:24px;font-size:15px">给玄枢发消息…</span><textarea id="ai-input" title="消息输入" placeholder="给玄枢发消息…"></textarea><div id="ai-attachments" class="column" style="max-height:120px;overflow-y:auto"></div><button id="ai-quick-read" style="display:none"></button><div id="ai-composer-tools" class="row" style="gap:6px"><button id="ai-draft-range-toggle">高级范围</button><span id="ai-composer-scope" class="muted"></span><span id="ai-composer-model" class="muted" title="当前草稿使用的模型"></span><button id="ai-model-propose" class="primary">发送消息</button></div></div><span id="ai-error" style="display:none"></span><span id="ai-save-notice" class="muted"></span><button id="ai-view-scope" style="display:none">查看本次发送内容</button><span id="ai-composer-hint" class="muted"></span></div></div></div>
+</div></div><div id="ai-composer" class="column"><div id="ai-composer-card" class="column"><span id="ai-input-label" style="display:none">消息输入</span><span id="ai-composer-placeholder" class="muted" style="position:absolute;left:18px;top:18px;width:80%;height:24px;font-size:15px">给玄枢发消息…</span><textarea id="ai-input" title="消息输入" placeholder="给玄枢发消息…"></textarea><div id="ai-attachments" class="column" style="max-height:120px;overflow-y:auto"></div><div id="ai-composer-tools" class="row" style="gap:6px"><button id="ai-operate" style="display:none">代操作</button><button id="ai-draft-range-toggle">高级范围</button><button id="ai-attachment-add" style="display:none">附件</button><button id="ai-attachment-clear" style="display:none">移除附件</button><span id="ai-composer-scope" class="muted"></span><span id="ai-composer-model" class="muted" title="当前草稿使用的模型"></span><button id="ai-model-propose" class="primary">发送消息</button></div></div><span id="ai-error" style="display:none"></span><span id="ai-save-notice" class="muted"></span><button id="ai-save-check" style="display:none">核对保存</button><button id="ai-view-scope" style="display:none">查看本次发送内容</button><span id="ai-composer-hint" class="muted"></span></div></div></div>
 
 <!-- UI_HOST_DEV_BEGIN -->
    <div id="command-diagnostics" class="column">
@@ -300,7 +302,7 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
  element('ai-send').addEventListener('click',function(){aiSubmit(false)});element('ai-continue').addEventListener('click',function(){aiSubmit(true)});
 
 /* UI_HOST_DEV_END */
- element('ai-cancel').addEventListener('click',function(){aiCancelRun=model.ai.selected||'';element('ai-cancel-notice').textContent='取消请求已发起，等待实际状态和保存确认。';send('ai-cancel',{id:aiCancelRun})});
+ element('ai-cancel').addEventListener('click',function(){var a=model.ai;aiCancelRun=a.selected||'';var operate=a.assistantTask&&a.assistantTask.operation_task&&a.active===aiCancelRun;element('ai-cancel-notice').textContent=operate?'正在停止，等待在途回执和保存。':'取消请求已发起，等待实际状态和保存确认。';send(operate?'ai-takeover':'ai-cancel',{id:aiCancelRun})});
  element('ai-answer-send').addEventListener('click',function(){var r=model.ai.run||{},question=generalQuestion(model.ai);if(question){send('ai-assistant-answer',{id:model.ai.selected,panel:question.node,command:question.question_id,token:aiID(),answer:element('ai-answer').value});return;}send('ai-answer',{id:model.ai.selected||'',command:r.question_id||'',token:aiID(),answer:element('ai-answer').value})});
  element('ai-older').addEventListener('click',function(){send('ai-history',{id:'0',command:'messages'})});element('ai-next').addEventListener('click',function(){send('ai-history',{id:String(model.ai.messages.next||0),command:'messages'})});
  element('ai-runs-refresh').addEventListener('click',function(){send('ai-history',{id:'0',command:'runs'})});
@@ -334,7 +336,7 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
  element('ai-developer-toggle').addEventListener('click',function(){aiDeveloper=!aiDeveloper;showMaintenance(aiDeveloper);element('command-diagnostics').style.display=aiDeveloper&&aiDiagnostic?'flex':'none'});
 /* UI_HOST_DEV_END */
 
- function showChoices(value,general){choicesOpen=value;showElement('ai-draft-range',value);element('ai-draft-range-toggle').textContent=general?(value?'收起范围':'范围'):(value?'收起高级范围':'高级范围');if(value)element('ai-draft-range').scrollIntoView();}
+ function showChoices(value,general){if(general&&!generalTechnical())value=false;choicesOpen=value;showElement('ai-draft-range',value);element('ai-draft-range-toggle').textContent=general?(value?'收起范围':'范围'):(value?'收起高级范围':'高级范围');if(value)element('ai-draft-range').scrollIntoView();}
  element('ai-draft-range-toggle').addEventListener('click',function(){showChoices(!choicesOpen,model.ai.general);send('ai-model-display')});
  element('ai-history-toggle').addEventListener('click',function(){historyOpen=!historyOpen;showElement('ai-history-panel',historyOpen);showElement('ai-history-box',historyOpen);if(historyOpen)element('ai-history-panel').scrollIntoView();send('ai-model-display')});
  element('ai-list-toggle').addEventListener('click',function(){listOpen=!listOpen;element('ai-runs').style.display=listOpen?'flex':'none';element('ai-list-toggle').textContent=listOpen?'收起任务列表':'任务列表 ▸'});
@@ -345,7 +347,7 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
  element('ai-detail-toggle').addEventListener('click',function(){realDetails=!realDetails;element('ai-detail-box').style.display=realDetails?'flex':'none';element('ai-detail-toggle').textContent=realDetails?'收起完整请求详情（收起后不可确认）':'展开完整请求详情';send('ai-model-display')});
  element('ai-scope-toggle').addEventListener('click',function(){realTechnical=!realTechnical;element('ai-scope-box').style.display=realTechnical?'flex':'none';element('ai-scope-toggle').textContent=realTechnical?'收起技术范围记录（JSON）':'查看技术范围记录（JSON）'});
  function paintAssistantPane(a){
-  var separate=a.general,settings=element('ai-settings-box'),available=a.enabled&&a.phase!==6;
+  var separate=a.general,settings=element('ai-settings-box'),available=a.enabled&&(separate||a.phase!==6);
   if(separate&&settings.className==='column'){
    var maintenance=element('ai-maintenance-box');
    [settings,maintenance].forEach(function(panel){
@@ -359,11 +361,13 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
    showElement('ai-model-ready',true);showElement('ai-model-diagnostics-toggle',true);
    element('ai-model-save').textContent='保存模型';element('ai-model-key').textContent='设置密钥';
    showChoices(false,true);
+   element('ai-history-choices').appendChild(element('ai-model-history'));
   }
   var focused=separate&&(settingsOpen||maintenanceOpen);
   showElement('ai-settings-box',available&&settingsOpen);
   showElement('ai-daily-content',available&&!focused);
   showElement('ai-history-toggle',!focused);
+  showElement('ai-draft-range-toggle',!separate||generalTechnical());
   showElement('ai-model-toggle',!separate||!maintenanceOpen);
   showElement('ai-model-diagnostics',!separate||maintenanceOpen&&diagnosticsOpen);
   element('ai-model-toggle').textContent=separate&&settingsOpen?'返回聊天':'设置';
@@ -380,8 +384,9 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
  function realSubmit(resume){if(model.ai.general){generalSubmit(resume);return;}if(realPending)return;var token=aiID(),input=element('ai-input').value,m={action:resume?'ai-model-continue':'ai-model-propose',id:realInstance||model.active||'',command:model.ai.selected||'',token:token,answer:input,panel:realResource,params:JSON.stringify({history:JSON.stringify(Object.keys(realHistory).map(function(k){return Number(k)})),projection:JSON.stringify({capabilities:Object.keys(realCaps),fields:Object.keys(realFields)})})};if(aiBytes(input)>16384||aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='提案超出上限；输入保留';return;}realPending={id:token,input:input};element('ai-model-propose').disabled=true;element('ai-save-notice').textContent='正在保存消息…';ui.postMessage(m)}
  element('ai-model-propose').addEventListener('click',function(){realSubmit(false)});element('ai-model-continue').addEventListener('click',function(){realSubmit(true)});
  /* Key and disclosure confirmation have no page-message authorization handler. */
- function realSaveDraft(){showElement('ai-composer-placeholder',!element('ai-input').value);var d={input:element('ai-input').value,history:realHistory,capabilities:realCaps,fields:realFields,resource:realResource,instance:realInstance,generalTargets:generalTargets,generalProfiles:generalProfiles,generalParameters:generalParameters};var p=JSON.stringify(d);if(aiBytes(p)<60000)send('ai-model-draft',{params:p})}
- element('ai-input').addEventListener('input',realSaveDraft);element('ai-composer-placeholder').addEventListener('click',function(){element('ai-input').focus()});
+ function realSaveDraft(){showElement('ai-composer-placeholder',!element('ai-input').value);var d={input:element('ai-input').value,history:realHistory,capabilities:realCaps,fields:realFields,resource:realResource,instance:realInstance,generalTargets:generalTargets,generalProfiles:generalProfiles,generalParameters:generalParameters,draftVersion:draftVersion,operate:dailyOperate};var p=JSON.stringify(d);if(aiBytes(p)<60000)send('ai-model-draft',{params:p})}
+ element('ai-input').addEventListener('input',function(){dailyDraftChanged();realSaveDraft()});
+ element('ai-input').addEventListener('keydown',function(e){if(model&&model.ai.general&&e.ctrlKey&&e.keyCode===13&&!e.isComposing){e.preventDefault();generalSubmit(false)}});element('ai-composer-placeholder').addEventListener('click',function(){element('ai-input').focus()});
  function localChoice(root,id,label,selected,toggle){var b=document.createElement('button');b.id=id;b.textContent=(selected?'✓ ':'□ ')+label;b.addEventListener('click',toggle);root.appendChild(b);return b;}
  element('ai-model-catalog').addEventListener('click',function(){realInstance=model.active||'';realResource='';realCaps={};realFields={};realChoices='';realSaveDraft();send('ai-model-catalog',{id:realInstance,panel:''})});
  element('ai-model-copy').addEventListener('click',function(){send('ai-model-copy')});
@@ -393,7 +398,7 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
     if(c.next)rs.appendChild(button('ai-catalog-next','下一页read能力','ai-model-catalog',{id:c.instance,panel:realResource,command:String(c.next)}));}}
   element('ai-model-target').textContent='新提案目标：'+(realResource?('实例 '+realInstance+' / '+realResource):'无目标')+'；提交后固定，不随标签切换';realChoices=signature2;
  }
- function paintModel(a){if(!realRestored){realRestored=true;if(a.draft){var draft=a.draft;element('ai-input').value=draft.input||'';realHistory=draft.history||{};realCaps=draft.capabilities||{};realFields=draft.fields||{};realResource=draft.resource||'';realInstance=draft.instance||'';generalTargets=draft.generalTargets||[];generalProfiles=draft.generalProfiles||{};generalParameters=draft.generalParameters||{};}}element('ai-copy-notice').textContent=a.copyNotice||'';var c=a.modelConfig||{},r=a.run||{},k=c.credential||{};
+ function paintModel(a){if(!realRestored){realRestored=true;if(a.draft){var draft=a.draft;draftVersion=draft.draftVersion||'';dailyOperate=!!draft.operate;element('ai-input').value=draft.input||'';realHistory=draft.history||{};realCaps=draft.capabilities||{};realFields=draft.fields||{};realResource=draft.resource||'';realInstance=draft.instance||'';generalTargets=draft.generalTargets||[];generalProfiles=draft.generalProfiles||{};generalParameters=draft.generalParameters||{};}}element('ai-copy-notice').textContent=a.copyNotice||'';var c=a.modelConfig||{},r=a.run||{},k=c.credential||{};
   var key=k.error?('凭据失败：'+k.error):(k.stage==='saving'?'凭据正在保存':k.local_readable?'本地可读取；服务端未验证':k.stage==='cancelled'?'录入已取消':'凭据未确认可用');
    element('ai-model-ready').textContent=c.pending?'正在保存模型…':c.error?'模型配置有问题，可查看诊断。':!c.ready?'请保存模型。':k.error?'密钥设置失败，可查看诊断。':k.stage==='saving'?'正在保存密钥…':k.local_readable?'模型已保存，密钥可在本机读取。':'模型已保存，请设置密钥。';
   element('ai-model-state').textContent=(c.ready?c.model_id:'模型未配置')+' · '+(c.pending?'后台正在保存':c.error||'配置已读回')+' · '+key+' · 配置代次 '+(c.revision===undefined?'未记录':c.revision)+' · '+a.configLocation;
@@ -412,7 +417,7 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
  function summaryFlag(r,key){return r[key]===undefined?'未记录':r[key]?'是':'否'}
  function paintSummary(a,preview){var r=a.run||{},id=r.run_id||'',matching=id&&id===a.selected,source={memory:'内存',persisted:'持久化快照',pending:'正在读取',error:'读取失败',unavailable:'无可用快照'}[a.taskSource]||'无可用快照';
   if(!matching)r={};
-  var scope=summaryParse(r.disclosure||r.stub_plan)||{},projection=summaryParse(scope.projection)||{},history=summaryParse(scope.history),targets=summaryParse(r.fixed_targets||r.targets),p=matching&&preview&&preview.run_id===id&&(preview.binding_hash===r.binding_hash||a.assistantTask&&a.assistantTask.plan_waiting&&preview.binding_hash===a.assistantTask.plan_binding_hash&&preview.finite_plan)?preview:null,req=p&&p.request;
+  var scope=summaryParse(r.disclosure||r.stub_plan)||{},projection=summaryParse(scope.projection)||{},history=summaryParse(scope.history),targets=summaryParse(r.fixed_targets||r.targets),p=matching&&preview&&preview.run_id===id&&(preview.binding_hash===r.binding_hash||a.assistantTask&&a.assistantTask.plan_waiting&&preview.binding_hash===a.assistantTask.plan_binding_hash&&(preview.finite_plan||preview.operation_review))?preview:null,req=p&&p.request;
   var phases=['收到（尚未确认保存）','排队','执行中','等待问题回复','只读工具在途','取消请求处理中','取消停滞（仍等待真实退出）','任务终态','恢复记录／需显式继续','存储未确认'],real=scope.request_kind==='deepseek-responses-v1';
   var phase=phases[r.phase]||'无可用任务状态';if(real&&r.phase===3)phase=r.disclosure_confirmed?'外发确认已接纳；后续状态见保存事实':'等待外发确认';
   var remote={not_sent:'未发送',response_received:'完整响应已收到',remote_processing_unknown:'远端状态未知（取消不证明服务端已停止）'};
@@ -421,7 +426,9 @@ function applyLanguage(s){languageTexts=s.texts||{};for(var i=0;i<staticLanguage
    if(r.provider_phase===2&&!r.terminal)state+='\n请求路径在途；不代表服务端已处理。';if(r.reply&&!r.terminal)state+='\n已有流式输出（尚非最终保存）。';state+='\n任务错误：'+(r.error|| (r.error_recorded===false?'未记录':'无'));
   }if(a.queryError)state+='\n读取错误：'+a.queryError;if(a.storageError)state+='\n存储错误：'+a.storageError;if(a.error)state+='\n宿主错误：'+a.error;pageText('ai-task-state',state);element('ai-status-line').textContent=matching?(r.terminal?({completed:'已完成',cancelled:'已取消',failed:'未完成',unknown:'远端结果未知'}[r.outcome]||phase):phase)+' · '+(r.committed?'已保存':'正在确认保存'):'尚未选择任务；在下方填写新任务草稿。';element('ai-current-content').textContent=matching?'任务内容：'+(r.input||'（无输入）').slice(0,180)+((r.input||'').length>180?'…（摘要；全文见任务范围）':''):'';
   var key=JSON.stringify([a.selected,a.taskSource,matching,r.input,r.disclosure,r.stub_plan,r.fixed_targets,r.targets,r.model_id,r.binding_hash]);if(summaryKey===key&&summaryPreview===p&&['ai-summary-input','ai-summary-history','ai-summary-fixed','ai-summary-policy'].every(function(id){return displayPages[id]&&displayPages[id].painted}))return;summaryKey=null;summaryPreview=null;
-  element('ai-summary-note').textContent=matching?(real?'以下是当前任务的固定范围；未选历史、其他应用内容及业务文件不会自动加入。':'当前任务是本地诊断；没有真实模型外发范围。'):'当前尚无匹配任务快照；草稿不等于已保存任务。';
+  var operation=a.assistantTask&&a.assistantTask.operation_task;
+  element('ai-scope-title').textContent=p&&p.operation_review?'核对代操作范围':'本次允许发送的内容';
+  element('ai-summary-note').textContent=p&&p.operation_review?'核对下方允许披露的事实、动作、参数来源和限额。授权后只在当前对象内操作，可随时停止。':operation?'本次发送任务文字和应用的操作约束。读取实际业务值后还需单独核对并授权。':matching?(real?'以下是当前任务的固定范围；未选历史、其他应用内容及业务文件不会自动加入。':'当前任务是本地诊断；没有真实模型外发范围。'):'当前尚无匹配任务快照；草稿不等于已保存任务。';
   pageText('ai-summary-input',matching?r.input||'（无输入）':'暂无匹配任务');
   var histories='未记录历史选择';if(Array.isArray(history)){histories='所选历史序号：'+(history.length?history.join('、'):'无')+'\n';if(!history.length)histories+='未选择任何历史。';else if(req&&Array.isArray(req.input)&&req.input.length>history.length){histories+='以下按实际请求顺序列出所选历史全文：\n';for(var i=0;i<history.length;i++)histories+='片段 '+(i+1)+' · '+req.input[i].role+'\n'+req.input[i].content+'\n';}else histories+='历史全文未随任务快照恢复；通过上方“消息首页／下一页”和消息历史分页查看原序号。不重建或恢复旧外发授权。';}
   pageText('ai-summary-history',matching?histories:'暂无匹配任务');
@@ -496,28 +503,112 @@ element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
   for(var i=0;i<nodes.length;i++)if(nodes[i].question_id&&nodes[i].question)return nodes[i];
   return null;
  }
- function quickReadSelected(a){return !!a.quickReadInstance&&a.quickReadInstance!=='0'}
  function generalPriceReady(a){return a.priceReady&&(a.modelConfig||{}).model_id==='deepseek-flash'}
- element('ai-quick-read').addEventListener('click',function(){
-  if(realPending)return;
-  send('ai-assistant-quick-read',{id:model.active||'',command:quickReadSelected(model.ai)?'remove':'select'});
- });
+ var draftVersion='',dailyAttempt=null,dailyWaiting=false,dailyNotice='',dailyChoiceKey='',includeHistory=false,dailyOperate=false;
+ element('ai-operate').addEventListener('click',function(){dailyOperate=!dailyOperate;dailyDraftChanged();realSaveDraft();paintDailySubmission(model.ai)});
+ function generalTechnical(){
+/* UI_HOST_DEV_BEGIN */
+  return aiDeveloper;
+/* UI_HOST_DEV_END */
+  return false;
+ }
+ function dailyDraftChanged(){
+  draftVersion=aiID();
+  if(!dailyWaiting){dailyNotice='';dailyAttempt=null;showElement('ai-clarification',false);showElement('ai-save-notice',false);}
+ }
+ function dailyNoticeText(text){
+  var notice=element('ai-save-notice');
+  if(notice.textContent!==text)notice.textContent=text;
+  showElement(notice.id,!!text);
+ }
+ function dailyDispatch(attempt,choice){
+  dailyWaiting=true;dailyNotice='正在保存消息…';dailyNoticeText(dailyNotice);
+  element('ai-model-propose').disabled=true;
+  attempt.wire.panel=choice||'';
+  attempt.ticket=aiID();
+  attempt.params.attempt=attempt.ticket;
+  attempt.wire.params=JSON.stringify(attempt.params);
+  ui.postMessage(attempt.wire);
+ }
+ function dailyDraftRequest(previous,parent){
+  var params={draftVersion:draftVersion,mode:dailyOperate?'operation':'',history:JSON.stringify(Object.keys(realHistory).map(function(k){return Number(k)}))};
+  return {version:draftVersion,params:params,wire:{action:'ai-assistant-propose',token:previous||aiID(),answer:element('ai-input').value,command:parent||''}};
+ }
  function generalSubmit(resume){
+  if(generalTechnical()){technicalSubmit(resume);return;}
+  if(dailyWaiting||!model||model.ai.phase!==2)return;
+  var input=element('ai-input').value;
+  if(!input.trim()||aiBytes(input)>16384){
+   dailyNotice=!input.trim()?'请输入消息。':'消息超过长度上限，草稿已保留。';
+   dailyNoticeText(dailyNotice);return;
+  }
+  if(!draftVersion){draftVersion=aiID();realSaveDraft();}
+  if(!dailyAttempt||dailyAttempt.version!==draftVersion||dailyAttempt.wire.answer!==input)
+   dailyAttempt=dailyDraftRequest('',resume?model.ai.selected:'');
+  dailyDispatch(dailyAttempt,'');
+ }
+ element('ai-save-check').addEventListener('click',function(){
+  var r=model.ai.submission||{};if(r.id)send('ai-assistant-submission-check',{token:r.id});
+ });
+ element('ai-history-include').addEventListener('click',function(){
+  includeHistory=!includeHistory;showElement('ai-history-choices',includeHistory);
+  element('ai-history-include').textContent=includeHistory?'收起历史选择':'引用历史消息';
+ });
+ function paintDailySubmission(a){
+  var r=a.submission||{},task=a.run||{},showChoice=false;
+  if(!dailyAttempt&&r.id&&r.phase!==2&&r.version===draftVersion){
+   dailyAttempt=dailyDraftRequest(r.id,'');dailyAttempt.ticket=r.attempt;
+  }
+  var match=dailyAttempt&&dailyAttempt.wire.token===r.id&&dailyAttempt.ticket===r.attempt;
+  if(match||!dailyAttempt&&r.id&&r.version===draftVersion){
+   dailyWaiting=r.phase===1||r.phase===4;
+   if(r.phase===2){
+    if(draftVersion===r.version){
+     element('ai-input').value='';realHistory={};realHistoryPage='';dailyOperate=false;
+     draftVersion=aiID();realSaveDraft();
+    }
+    dailyAttempt=null;
+    dailyNotice='已在本地保存，等待确认。';
+    if(task.run_id===r.run&&task.committed&&!task.disclosure_confirmed&&!task.terminal&&!settingsOpen&&!maintenanceOpen)showRange(true,true);
+   }else if(r.phase===1)dailyNotice=r.message||'正在保存消息…';
+   else if(r.phase===3||r.phase===4)dailyNotice=r.message||'消息保存未确认，已保留草稿。';
+   else if(r.phase===5){showChoice=!!match&&draftVersion===r.version;dailyNotice='';}
+  }else if(!dailyAttempt){
+   dailyWaiting=r.phase===1||r.phase===4;
+   if(dailyWaiting)dailyNotice=r.message||'正在保存消息…';
+  }
+  if(r.phase===2&&task.run_id===r.run&&(task.disclosure_confirmed||task.terminal)&&dailyNotice==='已在本地保存，等待确认。')dailyNotice='';
+  var key=showChoice?r.id:'';
+  if(dailyChoiceKey!==key){
+   dailyChoiceKey=key;
+   var choices=element('ai-clarification');clear(choices);
+   if(key){
+    var question=document.createElement('span');question.id='ai-context-question';question.textContent='你指的是哪一个？';choices.appendChild(question);
+    (r.choices||[]).forEach(function(title,i){var choice=generalLocalButton('ai-context-choice-'+i,title);choices.appendChild(choice);choice.addEventListener('click',function(){if(!dailyWaiting&&dailyAttempt&&dailyAttempt.version===draftVersion){showElement('ai-clarification',false);dailyDispatch(dailyAttempt,String(i+1));}})});
+   }
+  }
+  showElement('ai-clarification',showChoice);
+  var check=(r.phase===1||r.phase===4)&&r.id&&(!dailyAttempt||match);
+  showElement('ai-save-check',check);element('ai-save-check').disabled=!!r.checking;
+  var config=a.modelConfig||{};
+  element('ai-model-propose').disabled=dailyWaiting||!config.ready||config.pending||a.phase!==2;
+  element('ai-attachment-add').disabled=dailyWaiting;element('ai-attachment-clear').disabled=dailyWaiting;
+  element('ai-operate').disabled=dailyWaiting;element('ai-operate').textContent=dailyOperate?'代操作已选':'代操作';
+  dailyNoticeText(dailyNotice);
+ }
+/* UI_HOST_DEV_BEGIN */
+ function technicalSubmit(resume){
   if(realPending)return;
-  var input=element('ai-input').value,quick=quickReadSelected(model.ai),error='';
-  if(!input.trim())error='请输入消息。';
-  else if(!quick&&!generalTargets.length&&(model.ai.draftAttachments||[]).length)error='发送附件需要先选择应用范围。可在「范围」里移除附件。';
-  var caps={},fields={};
+  var input=element('ai-input').value,caps={},fields={};
   for(var i=0;i<generalTargets.length;i++){
    var t=generalTargets[i];
    for(var j=0;j<t.readCapabilities.length;j++)caps[t.readCapabilities[j]]=true;
    for(var j=0;j<t.fields.length;j++)fields[t.fields[j]]=true;
   }
   var token=aiID();
-  var payload={history:JSON.stringify(Object.keys(realHistory).map(function(k){return Number(k)})),projection:JSON.stringify({capabilities:Object.keys(caps),fields:Object.keys(fields)}),targets:generalTargets,quick:quick};
-  var m={action:'ai-assistant-propose',token:token,answer:input,command:resume?model.ai.selected||'':'',params:JSON.stringify(payload)};
-  if(!error&&(aiBytes(input)>16384||aiBytes(JSON.stringify(m))>65536))error='任务或范围超过字节上限，草稿保留。';
-  element('ai-error').textContent=error;showElement('ai-error',!!error);if(error)return;
+  var payload={history:JSON.stringify(Object.keys(realHistory).map(function(k){return Number(k)})),projection:JSON.stringify({capabilities:Object.keys(caps),fields:Object.keys(fields)}),targets:generalTargets};
+  var m={action:'ai-assistant-technical-propose',token:token,answer:input,command:resume?model.ai.selected||'':'',params:JSON.stringify(payload)};
+  if(!input.trim()||aiBytes(input)>16384||aiBytes(JSON.stringify(m))>65536){element('ai-error').textContent='输入为空或超过上限';return;}
   realPending={id:token,input:input};element('ai-model-propose').disabled=true;
   element('ai-save-notice').textContent='正在保存消息…';ui.postMessage(m);
  }
@@ -541,12 +632,15 @@ element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
    var hint=document.createElement('span');hint.className='muted';hint.textContent='复杂参数可用自然语言说明，或手动接管应用。';root.appendChild(hint);
   }
  }
+/* UI_HOST_DEV_END */
  function paintGeneralChoices(a){
   var signature=JSON.stringify(a.messages.items||[]);
   if(realHistoryPage!==signature){
    realHistoryPage='';var history=element('ai-model-history');clear(history);
-   (a.messages.items||[]).forEach(function(m,i){var key=String(m.sequence);localChoice(history,'ai-history-select-'+i,m.role+' · '+m.content.slice(0,80),!!realHistory[key],function(){if(realHistory[key])delete realHistory[key];else realHistory[key]=true;realHistoryPage='';paintGeneralChoices(model.ai);realSaveDraft()})});realHistoryPage=signature;
+   (a.messages.items||[]).forEach(function(m,i){var key=String(m.sequence);localChoice(history,'ai-history-select-'+i,(m.role==='user'?'你':'玄枢')+' · '+m.content.slice(0,80),!!realHistory[key],function(){if(realHistory[key])delete realHistory[key];else realHistory[key]=true;realHistoryPage='';dailyDraftChanged();paintGeneralChoices(model.ai);realSaveDraft()})});realHistoryPage=signature;
   }
+/* UI_HOST_DEV_BEGIN */
+  if(!aiDeveloper)return;
   var catalog=a.applicationCatalog,key=JSON.stringify([catalog,realResource,realCaps,realFields,generalProfiles,generalTargets]);
   if(generalChoicesKey===key)return;
   generalChoicesKey='';
@@ -581,10 +675,12 @@ element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
    var target=generalTargets[i];targets.appendChild(generalLocalButton('ai-target-remove-'+i,'移除 · 实例 '+target.instance+' / '+target.resource+' · '+target.capabilities.join('、')));
    (function(index){var b=targets.children[targets.children.length-1];b.addEventListener('click',function(){generalTargets.splice(index,1);generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft()})})(i);
   }
-  element('ai-target-add').disabled=!realResource||!Object.keys(realCaps).length||quickReadSelected(a);
+  element('ai-target-add').disabled=!realResource||!Object.keys(realCaps).length;
   element('ai-model-target').textContent='当前范围草稿 · '+(realResource?'实例 '+realInstance+' / '+realResource:'尚未选择资源')+'；已加入 '+generalTargets.length+' 个目标。';
   generalChoicesKey=key;
+/* UI_HOST_DEV_END */
  }
+/* UI_HOST_DEV_BEGIN */
  element('ai-target-add').addEventListener('click',function(){
   var catalog=model.ai.applicationCatalog||{},read=[];
   (catalog.capabilities||[]).forEach(function(cap){if(realCaps[cap.id]&&cap.effect==='read')read.push(cap.id)});
@@ -594,10 +690,11 @@ element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
   if(!found&&generalTargets.length<16)generalTargets.push(target);
   generalChoicesKey='';paintGeneralChoices(model.ai);realSaveDraft();
  });
+/* UI_HOST_DEV_END */
  element('ai-takeover').addEventListener('click',function(){send('ai-takeover')});
  element('ai-return').addEventListener('click',function(){send('ai-return')});
- element('ai-attachment-add').addEventListener('click',function(){send('ai-attachment-add')});
- element('ai-attachment-clear').addEventListener('click',function(){send('ai-attachment-clear')});
+ element('ai-attachment-add').addEventListener('click',function(){dailyDraftChanged();realSaveDraft();send('ai-attachment-add')});
+ element('ai-attachment-clear').addEventListener('click',function(){dailyDraftChanged();realSaveDraft();send('ai-attachment-clear')});
  element('ai-evidence-toggle').addEventListener('click',function(){generalEvidence=!generalEvidence;element('ai-evidence-box').style.display=generalEvidence?'flex':'none'});
  function generalMessage(root,id,role,text,attachments){
   var row=document.createElement('div');root.appendChild(row);row.className='chat-row';row.id=id;
@@ -633,23 +730,27 @@ element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
  }
  function paintGeneral(a){
   if(generalChrome!==a.general){generalChrome=a.general;element('ai-control-bar').style.display=a.general?'flex':'none';
-   element('ai-attachment-controls').style.display=a.general?'flex':'none';element('ai-general-range').style.display=a.general?'flex':'none';}
+/* UI_HOST_DEV_BEGIN */
+   element('ai-general-range').style.display=a.general?'flex':'none';
+/* UI_HOST_DEV_END */
+  }
   if(!a.general)return;
   ['ai-result-label','ai-output','ai-output-pages'].forEach(function(id){element(id).style.display='none'});
   element('ai-main-title').textContent='玄枢 · 应用助手';element('ai-model-catalog').textContent='选择当前应用的目标与能力';
   if(generalFirst){generalFirst=false;listOpen=false;element('ai-runs').style.display='none';element('ai-list-toggle').textContent='任务列表 ▸';}
-  var task=a.assistantTask||{},active=a.activeAssistant||{},r=a.run||{},control=active.control;
+  var task=a.assistantTask||{},active=a.activeAssistant||{},r=a.run||{},control=active.control,operation=task.operation_task;
    showElement('ai-control-bar',active.root_run&&!active.text_only||a.manual);
   element('ai-takeover').disabled=!!a.manual||active.text_only||control===1;element('ai-return').disabled=!a.manual;
+  element('ai-takeover').textContent=active.operation_task?'接管并停止':'手动接管应用';showElement('ai-return',!active.operation_task);
   element('ai-control-state').textContent=control===1?'正在交接，等待在途调用和保存收尾':a.manual?'应用已交还手动操作':control===3?'业务状态改变，需要重新规划':'AI任务使用固定范围；收起面板保留任务。';
   var activeBox=element('ai-active-task');clear(activeBox);showElement('ai-active-task',a.active&&a.active!==a.selected);
   if(a.active&&a.active!==a.selected)activeBox.appendChild(button('ai-show-active','查看正在运行的任务','ai-select',{id:a.active}));
-  element('ai-evidence-toggle').style.display=(task.nodes||[]).length?'flex':'none';pageText('ai-evidence',JSON.stringify({root:task.root_run,nodes:task.nodes||[]},null,2));
+  element('ai-evidence-toggle').style.display=operation||(task.nodes||[]).length?'flex':'none';pageText('ai-evidence',JSON.stringify(operation||{root:task.root_run,nodes:task.nodes||[]},null,2));
   var undo=null;for(var i=0;i<(task.nodes||[]).length;i++)if(task.nodes[i].node===a.undoNode)undo=task.nodes[i];
   element('ai-node-undo-box').style.display=undo?'flex':'none';var undoText=undo?undo.undo_preview||'撤销处理中或已结束，详见业务结果与依据。':'';if(element('ai-node-undo-preview').value!==undoText)element('ai-node-undo-preview').value=undoText;element('ai-node-undo').disabled=!undo||!undo.undo_preview;if(generalUndoNode!==a.undoNode){generalUndoNode=a.undoNode||'';if(undo)element('ai-node-undo-preview').scrollIntoView()}
   var nodeKey=JSON.stringify(task.nodes||[]);
   if(generalNodesKey!==nodeKey){generalNodesKey='';var nodes=element('ai-professional-tasks');clear(nodes);
-   (task.nodes||[]).forEach(function(node){var title=document.createElement('span');title.className='label';title.textContent=(node.profile||'主任务')+' · '+node.capability+' · '+(node.outcome||'处理中');nodes.appendChild(title);if(node.summary){var text=document.createElement('span');text.textContent=node.summary;nodes.appendChild(text)}if(node.undo_preview)nodes.appendChild(button('ai-undo-view-'+node.node,'查看此步骤的撤销范围','ai-undo-view',{id:a.selected,panel:node.node}));});generalNodesKey=nodeKey;
+   (task.nodes||[]).forEach(function(node){var title=document.createElement('span');title.className='label';title.textContent=node.outcome==='completed'?'步骤已完成':node.outcome?'步骤未完成':'正在处理应用步骤';nodes.appendChild(title);if(node.summary){var text=document.createElement('span');text.textContent=node.summary;nodes.appendChild(text)}if(node.undo_preview)nodes.appendChild(button('ai-undo-view-'+node.node,'查看此步骤的撤销范围','ai-undo-view',{id:a.selected,panel:node.node}));});generalNodesKey=nodeKey;
   }
   var question=generalQuestion(a);
   if(question){element('ai-question').textContent=question.question;['ai-answer-label','ai-answer','ai-answer-send'].forEach(function(id){element(id).style.display='flex'});element('ai-answer-send').disabled=false;}
@@ -658,12 +759,21 @@ element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
    (a.draftAttachments||[]).forEach(function(file){var title=document.createElement('span');title.textContent=file.name+' · '+file.bytes+'字节'+(file.localOnly?' · 仅本地预览，不发送图片':' · 选中后进入任务快照');area.appendChild(title);if(file.image&&file.image!=='0'){var image=document.createElement('img');image.src=file.image;area.appendChild(image)}});generalFilesKey=filesKey;
   }
   if(task.plan_waiting){
-   element('ai-status-line').textContent='有限计划已接纳，等待核对具体计划与适用确认。';
-   element('ai-model-confirm').textContent='确认此有限计划及外发范围（一次）';
+   element('ai-status-line').textContent='请核对并确认接下来的操作。';
+   element('ai-model-confirm').textContent=operation?'授权本次代操作':'确认执行这些步骤';
    element('ai-model-confirm').disabled=!realExpanded||!realDetails||!(a.disclosureChunks||[]).length||a.phase!==2||!generalPriceReady(a);
   }else element('ai-model-confirm').textContent='确认发送';
   if(task.root_run)pageText('ai-output',task.result||task.error||(task.plan_waiting?'请核对有限计划与完整请求详情。':'正在处理当前任务；实际步骤见上方专业子任务。'));
-  if(task.root_run&&!task.result&&!task.plan_waiting&&!r.terminal&&r.disclosure_confirmed)element('ai-status-line').textContent=task.error||({1:task.text_only?'等待模型回复':'准备有限操作计划',2:'核对模型候选计划',4:'执行已确认的应用步骤',5:'已安排专业模型轮次',6:'模型处理中',7:'核对专业结果',8:'核对结论与来源',9:'正在保存最终结果',10:'应用专业子任务正在补齐计划',11:'核对应用专业结果依据'}[task.stage]||element('ai-status-line').textContent);
+  if(task.root_run&&!r.terminal&&!task.plan_waiting){
+   if(r.phase===4)element('ai-status-line').textContent='正在读取应用内容…';
+   else if(r.disclosure_confirmed)element('ai-status-line').textContent=task.stage===9?'正在保存回复…':task.text_only?'正在等待回复…':'正在处理应用任务…';
+   else if(r.phase===3&&r.committed)element('ai-status-line').textContent='已保存，等待确认发送';
+  }
+  if(operation&&!r.terminal&&r.disclosure_confirmed){
+   var steps=['正在理解任务…','正在读取所选对象…','请核对操作范围并授权','正在根据业务状态选择下一步…','正在执行已授权的操作…','正在读回核对结果…','正在保存结果…'];
+   element('ai-status-line').textContent=control===1?'正在停止并保存回执…':steps[operation.phase]+(operation.verified?' 已核实 '+operation.verified+' 项。':'');
+  }
+  element('ai-cancel').textContent=operation&&a.active===a.selected?'接管并停止':'取消';
  }
 
  function paintMaintenance(a){
@@ -680,7 +790,7 @@ element('ai-graph-cancel').disabled=!g.run_id||g.terminal;
   showElement('ai-edit-box',edit);showElement('ai-graph-box',graph);
  }
  function paintAI(a){if(!a)return;
-  var unavailable=!a.enabled||a.phase===6;
+  var unavailable=!a.enabled||!a.general&&a.phase===6;
   showElement('ai-box',true);paintAssistantPane(a);
   showElement('ai-service-failure',unavailable);
   var failure=unavailable?'助手服务不可用。'+(a.storageError||a.error||'服务尚未建立，请保留本次日志并正常关闭。'):'';if(element('ai-service-failure').textContent!==failure)element('ai-service-failure').textContent=failure;
@@ -711,27 +821,30 @@ element('ai-continue').disabled=r.phase!==8;element('ai-send').disabled=a.phase!
   showElement('ai-task-facts-toggle',hasTask);
   ['ai-result-label','ai-output'].forEach(function(id){showElement(id,hasOutput)});
   showElement('ai-output-pages',hasOutput&&(r.reply||'').length>900);
-  if(!a.general)paintGeneral(a);element('ai-error').textContent=a.storageError||a.error||'';
+  if(!a.general)paintGeneral(a);element('ai-error').textContent=a.general&&!generalTechnical()?'':a.storageError||a.error||'';
   ['ai-current-content','ai-question','ai-cancel-notice','ai-copy-notice','ai-error','ai-save-notice'].forEach(function(id){showElement(id,!!element(id).textContent)});
   if(!a.general){showElement('ai-active-task',false);showElement('ai-professional-tasks',false);}
   showElement('ai-task-overview',hasTask);showElement('ai-cancel',hasTask&&!r.terminal);showElement('ai-question-box',!!r.question_id||!!generalQuestion(a));
-  var quick=quickReadSelected(a),read=element('ai-quick-read'),config=a.modelConfig||{},draftModel=config.model_id||'';
-  showElement('ai-quick-read',a.general&&a.quickReadLabel);
-  read.textContent=quick?'✓ 已添加摘要 · 移除':a.quickReadLabel||'';
-  read.className=quick?'selected':'';read.disabled=!!realPending||!!generalTargets.length||a.phase!==2;
-  element('ai-composer-scope').textContent=a.general?(generalTargets.length?generalTargets.length+' 个目标':''):(realResource?'1 个目标':'');
+  var config=a.modelConfig||{},draftModel=config.model_id||'',receipt=a.submission||{};
+  var subject=a.general&&receipt.phase===2&&receipt.run===r.run_id&&!r.disclosure_confirmed&&!r.terminal?receipt.subject:'';
+  element('ai-composer-scope').textContent=subject?(receipt.operation?'代操作 ':'读取 ')+subject:!a.general&&realResource?'1 个目标':'';
+  showElement('ai-history-include',a.general&&(a.messages.items||[]).length);
+  showElement('ai-attachment-add',a.general);
+  showElement('ai-operate',a.general);
   element('ai-composer-model').textContent=draftModel.slice(0,20)+(draftModel.length>20?'…':'');showElement('ai-composer-placeholder',!element('ai-input').value);
   var failed=current&&r.terminal&&r.outcome==='failed'&&r.error;
   var replied=r.remote_delivery==='response_received',hint='';
   if(a.general&&failed)element('ai-status-line').textContent=replied?'模型已回复，任务处理未完成。':'发送未完成。';
-  if(!config.ready)hint='请在设置中保存模型并设置密钥。';
+  if(a.general&&a.phase===6)hint='保存服务不可用，草稿已保留。';
+  else if(!config.ready)hint='请在设置中保存模型并设置密钥。';
   else if(a.general){
    if(!a.priceReady)hint='计价缺失或已过期，消息只能保存到本地。';
    else if(!generalPriceReady(a))hint='当前计价适用于 deepseek-flash，请在设置中选择该模型。';
   }else hint=!failed?'消息先保存，确认后发送。':replied?'模型已回复，任务处理未完成，可查看详情。':'发送未完成，处理详情中可查看原因。';
   element('ai-composer-hint').textContent=hint;showElement('ai-composer-hint',!!hint);
-  showElement('ai-attachment-clear',(a.draftAttachments||[]).length>0);showElement('ai-attachments',(a.draftAttachments||[]).length>0);
-  if(r.terminal&&!realPending){element('ai-save-notice').textContent='';showElement('ai-save-notice',false);}
+  showElement('ai-attachment-clear',a.general&&(a.draftAttachments||[]).length>0);showElement('ai-attachments',(a.draftAttachments||[]).length>0);
+  if(a.general&&!generalTechnical())paintDailySubmission(a);
+  else if(r.terminal&&!realPending){element('ai-save-notice').textContent='';showElement('ai-save-notice',false);}
 
 /* UI_HOST_DEV_BEGIN */
   if(aiPending&&(a.ack===aiPending.id||a.error||a.storageError)){if(a.ack===aiPending.id&&element('ai-input').value===aiPending.input){element('ai-input').value='';realSaveDraft();}aiPending=null;}

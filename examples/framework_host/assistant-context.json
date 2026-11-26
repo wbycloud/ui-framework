@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "read_presets": [
+    {
+      "app_id": "org.ui-framework.minesweeperc",
+      "resource": "minesweeper.board",
+      "capability": "minesweeper.board.read",
+      "label": "棋局摘要",
+      "intents": ["棋局摘要", "当前棋局", "这局扫雷", "棋盘状态", "扫雷进度"],
+      "fields": ["state", "revision"]
+    },
+    {
+      "app_id": "org.ui-framework.browser",
+      "resource": "browser.view",
+      "capability": "browser.body",
+      "label": "网页正文",
+      "intents": ["网页正文", "页面正文", "当前页面", "当前网页", "这篇网页", "当前文档", "这份文档"],
+      "fields": ["body", "revision"]
+    }
+  ]
+}

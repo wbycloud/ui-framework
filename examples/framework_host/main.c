@@ -24,6 +24,7 @@
 #include "ui_framework/ai_edit_ui.h"
 #include "ui_framework/ai_coordinator.h"
 #include "ui_framework/ai_assistant.h"
+#include "ui_framework/ai_operation.h"
 #include "ui_framework/images.h"
 #include "br2_meter_config.h"
 /* The framework shell consumes registrations; SDK applications never use this header. */
@@ -53,6 +54,19 @@ typedef struct host_action {
     char *action,*id,*command,*params,*panel,*token,*answer,*menu,*key,*modifiers,*editing;
     uint64_t popup_token;
 } host_action_t;
+enum { AI_SUBMIT_SAVING=1, AI_SUBMIT_SAVED, AI_SUBMIT_REJECTED, AI_SUBMIT_CHECK, AI_SUBMIT_CHOOSE };
+typedef struct assistant_context_choice {
+    yyjson_val *preset;
+    ui_cap_target_v2_t target;
+    char title[512],operation[65];
+} assistant_context_choice_t;
+typedef struct assistant_submission {
+    char id[65],version[65],attempt[65],run[65];
+    const char *message;
+    int phase,querying,operation;
+    unsigned count,choice;
+    assistant_context_choice_t choices[8];
+} assistant_submission_t;
 typedef struct host_window {
     HWND hwnd,web_hwnd,popup_hwnd;
     ui_host_t *chrome_host;
@@ -88,11 +102,12 @@ typedef struct host_window {
     uint64_t ai_undo_binding,ai_undo_generation;
     char ai_undo_node[65],ai_undo_run[65],ai_undo_hash[65];
     char *ai_general_catalog,*ai_database_path;
-    assistant_attachment_t ai_attachments[4];unsigned ai_attachment_count;
     char ai_price_version[65];
     int ai_price_ready;
-    char ai_quick_app[128],ai_quick_resource[256],ai_quick_capability[256],ai_quick_label[96],ai_quick_pending[65];
-    ui_cap_target_v2_t ai_quick_target;
+    yyjson_doc *ai_release;
+    assistant_submission_t ai_submission;
+    int ai_development;
+    assistant_attachment_t ai_attachments[4];unsigned ai_attachment_count;
     char result_summary[192];
     int popup_kind,confirm_answer,confirm_waiting;
     char reported_error[512];
@@ -123,6 +138,7 @@ static void ai_assistant_free(host_window_t *);
 static int ai_assistant_enabled(host_window_t *);
 static ui_status_t ai_assistant_enable(host_window_t *);
 static int ai_assistant_action(host_window_t *,host_action_t *);
+static void ai_assistant_submission_event(host_window_t *,const ui_ai_event_t *);
 static const char *tr(host_window_t *s,const char *key)
 {return ui_language_text(s->chrome_host,key);}
 static void language_json(json_buffer_t *json,const char *language,uint64_t revision)
@@ -363,6 +379,7 @@ static ui_web_view_t *create_view(host_window_t *s,HWND parent,ui_web_backend_t 
        (UI_WEB_CAP_JSON_MESSAGES|UI_WEB_CAP_DYNAMIC_DOM|UI_WEB_CAP_NATIVE_WINDOW))goto failed;
     if(ui_web_view_set_message_callback(view,on_web_message,s)!=UI_STATUS_OK)goto failed;
     page=load_page();if(!page)goto failed;
+    s->ai_development=strstr(page,"id=\"ai-developer-toggle\"")!=NULL;
     {ui_status_t status=ui_web_view_load_html(view,page);if(status!=UI_STATUS_OK){
 #ifdef UI_HOST_TEST
         fprintf(stderr,"Host page load status=%d\n",(int)status);

@@ -1,6 +1,7 @@
 /* Ordinary page actions propose data and request control transitions. Trusted
  * plan confirmation remains the framework Light binding with full readback. */
 #include "ai_assistant_release.inc"
+#include "ai_assistant_context.inc"
 
 static int ai_assistant_enabled(host_window_t *s)
 {
@@ -23,7 +24,7 @@ static ui_status_t ai_assistant_enable(host_window_t *s)
     p.meter_profile="deepseek-v41-responses-1017-v1";p.meter_evidence_sha256=BR2_METER_EVIDENCE;
     wchar_t path[4096];SetLastError(ERROR_SUCCESS);
     DWORD n=GetEnvironmentVariableW(L"UI_AI_ASSISTANT_POLICY",path,4096),error=GetLastError();
-    char evidence[65];yyjson_doc *release=ai_assistant_release(s,evidence),*d=NULL;
+    char evidence[65];yyjson_doc *release=ai_assistant_release(evidence),*d=NULL;
     ui_status_t status=UI_STATUS_INVALID_ARGUMENT;
     if(n||error!=ERROR_ENVVAR_NOT_FOUND){
         if(!n||n>=4096)goto done;
@@ -49,6 +50,7 @@ static ui_status_t ai_assistant_enable(host_window_t *s)
         strcpy_s(s->ai_price_version,sizeof(s->ai_price_version),p.price_version);
         s->ai_price_ready=s->ai_price_version[0]&&ai_assistant_price_current(s->ai_price_version);
     }
+    if(!status){s->ai_release=release;release=NULL;}
 done:
     yyjson_doc_free(d);yyjson_doc_free(release);return status;
 }
@@ -73,7 +75,12 @@ static void ai_assistant_json(host_window_t *s,json_buffer_t *json)
             const char *files=yyjson_get_str(yyjson_obj_get(yyjson_doc_get_root(plan),"attachments"));
             yyjson_mut_obj_add_strcpy(d,o,"attachments",files?files:"[]");
             yyjson_val *graph=yyjson_obj_get(record,"graph_record"),*nodes=yyjson_obj_get(graph,"nodes");
-            if(nodes)yyjson_mut_obj_add_val(d,o,"nodes",yyjson_val_mut_copy(d,nodes));
+            yyjson_val *operation=yyjson_obj_get(graph,"operation_task");
+            if(operation){
+                yyjson_mut_val *snapshot=yyjson_val_mut_copy(d,operation);
+                yyjson_mut_obj_put(snapshot,yyjson_mut_str(d,"granted"),yyjson_mut_bool(d,false));
+                yyjson_mut_obj_add_val(d,o,"operation_task",snapshot);
+            }else if(nodes)yyjson_mut_obj_add_val(d,o,"nodes",yyjson_val_mut_copy(d,nodes));
             state=yyjson_mut_write(d,0,NULL);
         }
         yyjson_mut_doc_free(d);yyjson_doc_free(plan);yyjson_doc_free(stored);
@@ -82,17 +89,27 @@ static void ai_assistant_json(host_window_t *s,json_buffer_t *json)
         const char *control_run=service.active_run_id[0]?service.active_run_id:s->ai_handoff_run;
         if(control_run[0])(void)ui_ai_assistant_get(s->ai,control_run,&active);
     }
-    if(active&&strstr(active,"\"control\":2"))s->assistant_manual=1;
+    if(active&&strstr(active,"\"control\":2")&&!strstr(active,"\"operation_task\""))s->assistant_manual=1;
     json_format(json,",\"general\":%s,\"manual\":%s",s->ai_general?"true":"false",s->assistant_manual?"true":"false");
     json_append(json,",\"assistantTask\":");json_append(json,state?state:"null");
     json_append(json,",\"activeAssistant\":");json_append(json,active?active:"null");
     json_append(json,",\"undoNode\":");json_string(json,s->ai_undo_node);
     json_append(json,",\"applicationCatalog\":");json_append(json,s->ai_general_catalog?s->ai_general_catalog:"null");
-    ui_app_instance_info_t app;
-    uint64_t quick=s->ai_quick_target.resource.instance_id;
-    int quick_available=quick||ai_assistant_quick_app(s,ui_workspace_active(s->workspace),&app);
-    json_format(json,",\"priceReady\":%s,\"quickReadInstance\":\"%llu\"",s->ai_price_ready?"true":"false",(unsigned long long)quick);
-    json_append(json,",\"quickReadLabel\":");json_string(json,quick_available?s->ai_quick_label:"");
+    assistant_submission_t *receipt=&s->ai_submission;
+    json_format(json,",\"priceReady\":%s,\"submission\":{\"phase\":%d,\"checking\":%s,\"id\":",s->ai_price_ready?"true":"false",
+        receipt->phase,receipt->querying?"true":"false");
+    json_string(json,receipt->id);json_append(json,",\"version\":");json_string(json,receipt->version);
+    json_append(json,",\"attempt\":");json_string(json,receipt->attempt);
+    json_append(json,",\"run\":");json_string(json,receipt->run);
+    json_append(json,",\"message\":");json_string(json,receipt->message);
+    json_format(json,",\"operation\":%s",receipt->operation?"true":"false");
+    json_append(json,",\"subject\":");json_string(json,receipt->choice?receipt->choices[receipt->choice-1].title:"");
+    json_append(json,",\"choices\":[");
+    if(receipt->phase==AI_SUBMIT_CHOOSE)for(unsigned i=0;i<receipt->count;++i){
+        if(i)json_append(json,",");
+        json_string(json,receipt->choices[i].title);
+    }
+    json_append(json,"]}");
     json_append(json,",\"draftAttachments\":[");
     for(unsigned i=0;i<s->ai_attachment_count;++i){
         assistant_attachment_t *file=&s->ai_attachments[i];if(i)json_append(json,",");
@@ -168,16 +185,15 @@ static ui_status_t ai_assistant_snapshot_files(host_window_t *s)
     return UI_STATUS_OK;
 }
 
-static ui_status_t ai_assistant_propose(host_window_t *s,host_action_t *action)
+static ui_status_t ai_assistant_propose(host_window_t *s,host_action_t *action,const assistant_context_choice_t *choice,int technical)
 {
     yyjson_doc *d=action->params?yyjson_read(action->params,strlen(action->params),0):NULL;
     yyjson_val *o=d?yyjson_doc_get_root(d):NULL,*selected=yyjson_obj_get(o,"targets"),*row;
-    size_t count=yyjson_arr_size(selected);ui_status_t status=UI_STATUS_VALIDATION_FAILED;
-    int quick=yyjson_is_true(yyjson_obj_get(o,"quick"));
+    size_t count=technical?yyjson_arr_size(selected):0;ui_status_t status=UI_STATUS_VALIDATION_FAILED;
     ui_cap_target_t reads[16];ui_cap_target_v2_t fixed[16];
     char *history=NULL,*projection=NULL,*permissions=NULL;
     yyjson_mut_doc *pd=yyjson_mut_doc_new(NULL);yyjson_mut_val *allowed=pd?yyjson_mut_arr(pd):NULL;
-    if(!yyjson_is_arr(selected)||count>16||!allowed||quick!=(s->ai_quick_target.resource.instance_id!=0)||(quick&&count))goto done;
+    if(!yyjson_is_obj(o)||(technical&&!yyjson_is_arr(selected))||count>16||!allowed)goto done;
     yyjson_mut_doc_set_root(pd,allowed);
     for(size_t i=0;i<count;++i){
         row=yyjson_arr_get(selected,i);const char *id=yyjson_get_str(yyjson_obj_get(row,"instance")),*resource=yyjson_get_str(yyjson_obj_get(row,"resource"));
@@ -207,11 +223,12 @@ static ui_status_t ai_assistant_propose(host_window_t *s,host_action_t *action)
         if(fields)yyjson_mut_obj_add_val(pd,permission,"fields",yyjson_val_mut_copy(pd,fields));
         yyjson_mut_arr_add_val(allowed,permission);
     }
-    if(quick){
-        if(!ai_assistant_quick_scope(s,pd,allowed,reads,fixed,&projection))goto done;
+    if(choice){
+        status=ai_context_scope(s,choice,pd,allowed,reads,fixed,&projection);
+        if(status)goto done;
         count=1;
-    }else projection=ai_panel_edit_string(action->params,"projection");
-    if(!count&&s->ai_attachment_count){status=UI_STATUS_INVALID_ARGUMENT;goto done;}
+    }else if(technical)projection=ai_panel_edit_string(action->params,"projection");
+    else projection=_strdup("{\"capabilities\":[],\"fields\":[]}");
     history=ai_panel_edit_string(action->params,"history");
     permissions=yyjson_mut_write(pd,0,NULL);
     ui_ai_assistant_attachment_t files[4];memset(files,0,sizeof(files));
@@ -221,6 +238,7 @@ static ui_status_t ai_assistant_propose(host_window_t *s,host_action_t *action)
     }
     ui_ai_assistant_request_t q={0};q.size=sizeof(q);q.version=1;
     q.task.size=sizeof(q.task);q.task.version=1;q.task.client_request_id=action->token;q.task.input_utf8=action->answer;
+    if(!projection||!permissions){status=UI_STATUS_OUT_OF_MEMORY;goto done;}
     char *configuration=NULL;status=ui_ai_model_get_state(s->ai,&configuration);if(status)goto done;
     yyjson_doc *config=yyjson_read(configuration,strlen(configuration),0);
     q.task.profile_id="deepseek";q.task.profile_revision=config?yyjson_get_uint(yyjson_obj_get(yyjson_doc_get_root(config),"revision")):0;
@@ -230,23 +248,24 @@ static ui_status_t ai_assistant_propose(host_window_t *s,host_action_t *action)
     q.targets=fixed;q.target_count=count;q.permissions_json=permissions;q.attachments=files;q.attachment_count=s->ai_attachment_count;
     status=ai_assistant_snapshot_files(s);if(status)goto done;
     char run[65];status=ui_ai_assistant_propose(s->ai,&q,run);
-    if(!status){if(quick)strcpy_s(s->ai_quick_pending,65,action->token);strcpy_s(s->ai_run,65,run);free(s->ai_stored_run);s->ai_stored_run=NULL;if(count&&s->assistant_manual){strcpy_s(s->ai_handoff_run,65,run);(void)ui_ai_assistant_control(s->ai,run,UI_AI_ASSISTANT_TAKEOVER);}}
+    if(!technical&&run[0])strcpy_s(s->ai_submission.run,65,run);
+    if(!status){strcpy_s(s->ai_run,65,run);free(s->ai_stored_run);s->ai_stored_run=NULL;if(count&&s->assistant_manual){strcpy_s(s->ai_handoff_run,65,run);(void)ui_ai_assistant_control(s->ai,run,UI_AI_ASSISTANT_TAKEOVER);}}
 done:
     free(history);free(projection);free(permissions);yyjson_mut_doc_free(pd);yyjson_doc_free(d);return status;
 }
+
+#include "ai_assistant_submission.inc"
 
 static int ai_assistant_action(host_window_t *s,host_action_t *a)
 {
     if(!s->ai_general)return 0;
     ui_status_t status;
     if(!strcmp(a->action,"ai-model-catalog")){
-        char *catalog=NULL;status=ui_ai_assistant_catalog(s->ai,read_id(a->id),&catalog);
+        char *catalog=NULL;status=s->ai_development?ui_ai_assistant_catalog(s->ai,read_id(a->id),&catalog):UI_STATUS_PERMISSION_DENIED;
         if(!status){replace_text(&s->ai_general_catalog,catalog);}ui_ai_release(catalog);
-    }else if(!strcmp(a->action,"ai-assistant-quick-read")){
-        if(a->command&&!strcmp(a->command,"remove")){
-            s->ai_quick_target.resource.instance_id=0;s->ai_quick_pending[0]=0;status=UI_STATUS_OK;
-        }else status=ai_assistant_quick_bind(s,read_id(a->id));
-    }else if(!strcmp(a->action,"ai-assistant-propose"))status=ai_assistant_propose(s,a);
+    }else if(!strcmp(a->action,"ai-assistant-propose")){ai_assistant_submit(s,a);schedule_refresh(s);return 1;}
+    else if(!strcmp(a->action,"ai-assistant-submission-check")){ai_assistant_submission_check(s,a);schedule_refresh(s);return 1;}
+    else if(!strcmp(a->action,"ai-assistant-technical-propose"))status=s->ai_development?ai_assistant_propose(s,a,NULL,1):UI_STATUS_PERMISSION_DENIED;
     else if(!strcmp(a->action,"ai-attachment-add"))status=ai_assistant_attach(s);
     else if(!strcmp(a->action,"ai-attachment-clear")){ai_assistant_attachments_clear(s);status=UI_STATUS_OK;}
     else if(!strcmp(a->action,"ai-undo-view")){
@@ -268,10 +287,7 @@ static int ai_assistant_action(host_window_t *s,host_action_t *a)
         status=ui_ai_graph_answer(s->ai,a->id,a->panel,a->command,a->token,a->answer);
     else return 0;
     if(status&&status!=UI_STATUS_PENDING&&status!=UI_STATUS_CANCELLED){
-        if(status==UI_STATUS_VALIDATION_FAILED&&(!strcmp(a->action,"ai-assistant-quick-read")||
-           (!strcmp(a->action,"ai-assistant-propose")&&s->ai_quick_target.resource.instance_id)))
-            replace_text(&s->ai_error,"只读范围不可用或已变化。请移除后重新选择，草稿已保留。");
-        else{char message[160];snprintf(message,sizeof(message),"助手操作未接纳（%d），草稿及原任务保持。",status);replace_text(&s->ai_error,message);}
+        char message[160];snprintf(message,sizeof(message),"助手操作未接纳（%d），草稿及原任务保持。",status);replace_text(&s->ai_error,message);
     }else replace_text(&s->ai_error,"");
     schedule_refresh(s);return 1;
 }
@@ -327,8 +343,9 @@ static void ai_assistant_bindings(host_window_t *s)
 {
     if(!s->ai||!s->ai_general||!s->view)return;
     char *disclosure=NULL;ui_status_t status=ui_ai_assistant_get_disclosure(s->ai,s->ai_run,&disclosure);
-    int plan=!status&&disclosure&&strstr(disclosure,"\"finite_plan\"")!=NULL;
-    yyjson_doc *current=plan?yyjson_read(disclosure,strlen(disclosure),0):NULL;
+    yyjson_doc *current=!status&&disclosure?yyjson_read(disclosure,strlen(disclosure),0):NULL;
+    yyjson_val *display=yyjson_doc_get_root(current);
+    int plan=yyjson_is_str(yyjson_obj_get(display,"finite_plan"))||yyjson_is_true(yyjson_obj_get(display,"operation_review"));
     const char *current_hash=current?yyjson_get_str(yyjson_obj_get(yyjson_doc_get_root(current),"binding_hash")):NULL;
     int valid=plan&&current_hash&&!strcmp(current_hash,s->ai_preview_hash)&&s->ai_preview_ready&&
         ai_model_display_check(s,s->ai_run,current_hash,s->ai_display_generation)==UI_STATUS_OK;
@@ -372,6 +389,7 @@ static void ai_assistant_tick(host_window_t *s)
 
 static void ai_assistant_free(host_window_t *s)
 {
+    yyjson_doc_free(s->ai_release);s->ai_release=NULL;
     ai_assistant_attachments_clear(s);free(s->ai_general_catalog);free(s->ai_database_path);free(s->ai_general_state);free(s->ai_general_active);s->ai_general_state=s->ai_general_active=NULL;
     s->ai_general_catalog=s->ai_database_path=NULL;
 }

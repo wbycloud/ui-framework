@@ -32,7 +32,10 @@ typedef struct ui_ai_assistant_request {
     /* Array in target order. Each item has capabilities and profiles arrays,
      * with optional per-target fields and capability-keyed parameters fixed by
      * a completed form. Omitted fields retain the task's read projection.
-     * Per-target fields restrict read-tool results as well as specialist evidence. */
+     * Per-target fields restrict read-tool results as well as specialist evidence.
+     * An optional application operation uses [{"operation":"registered-id"}],
+     * one fixed write target, empty history/projection and no attachments or parent.
+     * Approval of model disclosure and approval of this operation are separate. */
     const char *permissions_json;
     const ui_ai_assistant_attachment_t *attachments;
     size_t attachment_count;
@@ -67,9 +70,9 @@ UI_API ui_status_t ui_ai_assistant_catalog(ui_ai_service_t *, uint64_t instance_
  * stays local-only. Text bytes are copied into the admitted task snapshot. */
 UI_API ui_status_t ui_ai_assistant_attachment_hash(const ui_ai_assistant_attachment_t *, char sha256[65]);
 /* Zero targets submit a text conversation on the same assistant. Use an empty
- * permissions array, empty capability and field projections, and no attachments.
- * Only explicitly selected history is included. The same disclosure confirmation
- * and request controls apply, and the request exposes no tools. */
+ * permissions array and empty capability and field projections. Only explicitly
+ * selected history and text attachments are included; PNG stays local. The same
+ * disclosure confirmation and request controls apply, with no tools exposed. */
 UI_API ui_status_t ui_ai_assistant_propose(ui_ai_service_t *, const ui_ai_assistant_request_t *, char run_id[65]);
 UI_API ui_status_t ui_ai_assistant_get(ui_ai_service_t *, const char *run_id, char **json);
 UI_API ui_status_t ui_ai_assistant_get_disclosure(ui_ai_service_t *, const char *run_id, char **json);

@@ -13,4 +13,5 @@ int ui_cap_text(const char *, size_t, int);
 int ui_capabilities_busy(const ui_host_t *);
 void ui_capabilities_destroy(ui_host_t *);
 void ui_capabilities_set_instance(ui_host_t *, uint64_t);
+ui_status_t ui_cap_operation_get(ui_host_t *,const char *,char **);
 #endif

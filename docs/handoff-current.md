@@ -1,5 +1,9 @@
 # 当前交接与APP开发参考
 
+## 2026-11-25 共用助手代操作
+
+本地交付 `3be274` 支持已注册 App 在一次授权内按核实版本逐笔代操作。表格覆盖固定值、同任务两种真实源值。EDA 仅新增自身注册，实测从 1 或 2 个补到 3 个及已有 3 个时零写入。Light 和 ASAN 各 12/12，旧入口相称回归 34/34，隔离启动正式宿主加载两款生产包后退出 0。真实模型验证待另行授权。 [SDK 接入](xuanshu-operation-entry.md) · [验证](validation/xuanshu-operation-tasks-validation.md) · [本地入口](../build/xuanshu-app-operations-20261125-3be274/dist/start.cmd)
+
 2026-11-12。面向APP开发者的参考入口已同步当前匹配交付。README、开发标准、统一能力/API索引、API10迁移、构建与升级提示词，以及目录/计数器/维护组件/browser示例形成连贯路径。静态核对与前后清单见[开发参考同步记录](validation/xuanshu-application-docs-sync-validation.md)。
 
 通用助手限定独立复审及冻结已完成，产品快照`build/xuanshu-general-layout-20261112-6b37c1`、identity `2C447E95741824E2C2A94E3EF91EC1782CF75C5870E262D7831C44989C7029CA`保持。具体记录见[冻结](xuanshu-general-layout-freeze.md)及[交付清单](xuanshu-general-assistant-delivery-manifest.md)。本轮为文档静态核对，真实验证包GENERAL-REAL-20261112-a74e20保持Proposed。

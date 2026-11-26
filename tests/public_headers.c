@@ -1,4 +1,5 @@
 #include "ui_framework/ai_assistant.h"
+#include "ui_framework/ai_operation.h"
 #include "ui_framework/ai_business_validation.h"
 #include "ui_framework/ai_model_view.h"
 #include "ui_framework/ai_validation_batch.h"

@@ -71,7 +71,11 @@ static int am_net_poll(ui_ai_service_t *s,ai_run_t *r)
  if(!n->started||n->finished)return 0;if(ai_now(s)-n->begin>=120000||ai_now(s)-n->progress>=30000){n->error=1;strcpy_s(m->error,96,"network_timeout_unknown");}
 #ifdef UI_AI_FIXTURE
  if(s->model_config->fixture_count){am_config_t *c=s->model_config;if(c->fixture_batch_mode==2&&r->model->validation_kind==3&&!r->cancel)return 0;
-  if(c->fixture_error){n->error=1;n->transport_error=c->fixture_error;}if(!c->fixture_hold&&!n->closed){if(!r->cancel&&!s->store_failed&&!n->error){unsigned at=c->fixture_batch_mode&&r->model->validation_kind==3?c->fixture_count-1:m->ordinal-1;if(c->fixture_http){n->http=(DWORD)c->fixture_http;n->error=1;snprintf(m->error,96,"http_%lu",(unsigned long)n->http);}else if(at>=c->fixture_count||!am_stream_feed(m->stream,c->fixture[at],strlen(c->fixture[at]))||!am_stream_eof(m->stream)){n->error=1;strcpy_s(m->error,96,m->stream->error[0]?m->stream->error:"truncated_stream");}}
+  if(c->fixture_error){n->error=1;n->transport_error=c->fixture_error;}if(!c->fixture_hold&&!n->closed){if(!r->cancel&&!s->store_failed&&!n->error){unsigned at=c->fixture_batch_mode&&r->model->validation_kind==3?c->fixture_count-1:m->ordinal-1;if(c->fixture_http){n->http=(DWORD)c->fixture_http;n->error=1;snprintf(m->error,96,"http_%lu",(unsigned long)n->http);}else{
+   const char *wire=at<c->fixture_count?c->fixture[at]:NULL;char *observed=NULL;
+   if(c->fixture_reply){size_t capacity=16384;observed=calloc(1,capacity);
+    wire=observed&&c->fixture_reply(c->fixture_reply_data,m->ordinal,m->body,observed,capacity)&&memchr(observed,0,capacity)?observed:NULL;}
+   if(!wire||!am_stream_feed(m->stream,wire,strlen(wire))||!am_stream_eof(m->stream)){n->error=1;strcpy_s(m->error,96,m->stream->error[0]?m->stream->error:"truncated_stream");}free(observed);}}
    n->closed=1;}else if(r->cancel||s->store_failed)strcpy_s(m->error,96,"cancellation_stalled");
  }else
 #endif

@@ -8,6 +8,8 @@
 
 ## 当前版本与开发入口
 
+应用助手的受控代操作接入、表格和 EDA 样例及本地启动入口见 [应用代操作](docs/xuanshu-operation-entry.md) 与 [匹配验证](docs/validation/xuanshu-operation-tasks-validation.md)。
+
 | 项目 | 当前开发值 | 定义位置 |
 | --- | --- | --- |
 | SDK | `0.10.0` 开发版，尚未发布对应稳定标签 | [CMakeLists.txt](CMakeLists.txt) |

@@ -51,6 +51,7 @@ static char *ag_snapshot(ui_ai_service_t *s,ai_run_t *r,int private_data)
   if(n->result)ae_json(d,v,"result",n->result);if(n->edit){yyjson_mut_obj_add_strcpy(d,v,"edit_id",n->edit->id);yyjson_mut_obj_add_strcpy(d,v,"transaction_id",n->edit->transaction);yyjson_mut_obj_add_strcpy(d,v,"undo_id",n->edit->undo_id);yyjson_mut_obj_add_int(d,v,"effect",n->edit->effect);yyjson_mut_obj_add_int(d,v,"edit_phase",n->edit->phase);}
   if(private_data){yyjson_mut_obj_add_strcpy(d,v,"instruction",n->instruction);yyjson_mut_obj_add_strcpy(d,v,"private_context",n->context);yyjson_mut_obj_add_strcpy(d,v,"private_answer",n->answer?n->answer:"");}yyjson_mut_arr_add_val(a,v);
  }
+ if(r->model&&r->model->assistant&&r->model->assistant->operation)ao_snapshot(s,r,d,o);
  yyjson_mut_obj_add_val(d,o,"nodes",a);yyjson_mut_obj_add_strcpy(d,o,"summary",r->reply?r->reply:"");yyjson_mut_obj_add_strcpy(d,o,"outcome",r->outcome);yyjson_mut_obj_add_strcpy(d,o,"storage_path",s->path);json=yyjson_mut_write(d,0,NULL);yyjson_mut_doc_free(d);return json;
 }
 static void ag_dirty(ai_graph_t *g){++g->version;g->dirty=1;}
@@ -293,8 +294,10 @@ static ui_status_t ag_action(ui_ai_service_t *s,ui_ai_graph_action_t action,cons
   EnterCriticalSection(&s->lock);
   if(s->phase!=UI_AI_READY||s->close_requested||root->cancel||root->terminal||s->store_failed||
      root->graph!=g||g->cancel||g->confirmed||!g->needs_scope||g->persisted!=g->version||strcmp(binding,g->binding))status=UI_STATUS_CANCELLED;
-  else if(assistant&&(assistant->stage!=AS_PLAN_WAIT||assistant->control!=AS_CONTROL_AI||assistant->stopped))status=UI_STATUS_PERMISSION_DENIED;
-  else{g->confirmed=1;g->scope_until=ai_now(s)+UI_AI_EDIT_SCOPE_MS;if(assistant)assistant->stage=AS_EXECUTING;ag_dirty(g);status=UI_STATUS_OK;}
+  else if(assistant&&(assistant->stage!=AS_PLAN_WAIT||assistant->control!=AS_CONTROL_AI||assistant->stopped||
+      (assistant->operation&&(assistant->operation->phase!=AO_REVIEW||assistant->operation->granted||
+      !root->model->confirmation_saved||assistant->fee_unknown||ai_now(s)>=assistant->until))))status=UI_STATUS_PERMISSION_DENIED;
+  else{g->confirmed=1;g->scope_until=assistant&&assistant->operation?assistant->until:ai_now(s)+UI_AI_EDIT_SCOPE_MS;if(assistant)assistant->stage=AS_EXECUTING;ag_dirty(g);status=UI_STATUS_OK;}
   LeaveCriticalSection(&s->lock);
  confirm_done:
   EnterCriticalSection(&s->lock);--root->refs;LeaveCriticalSection(&s->lock);return status;}

@@ -6,6 +6,7 @@
 #include "capability_edit_internal.h"
 #include "json_ui.h"
 #include "ui_framework/ai_coordinator.h"
+#include "ui_framework/ai_operation.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -64,6 +65,7 @@ typedef struct failure_slot {
 typedef struct agent_profile {struct agent_profile *next;char *id,*json;size_t bytes;} agent_profile_t;
 struct ui_cap_registry {
     agent_profile_t *profiles;size_t profile_bytes,profile_count;
+    agent_profile_t *operations;unsigned operation_count;
     char epoch[37]; uint64_t instance, sequence, generation;
     size_t catalog_bytes, capability_count, resource_count, call_bytes, call_count;
     size_t entry_requests;
@@ -493,6 +495,7 @@ void ui_capabilities_destroy(ui_host_t *host)
     while((cap=r->capabilities)!=NULL){r->capabilities=cap->next;remove_entry(host,cap);free_cap(cap);}
     while((res=r->resources)!=NULL){r->resources=res->next;free(res);}
     while(r->profiles){agent_profile_t *p=r->profiles;r->profiles=p->next;free(p->id);free(p->json);free(p);}
+    while(r->operations){agent_profile_t *p=r->operations;r->operations=p->next;free(p->id);free(p->json);free(p);}
     free(r->failure_slot);free(r);host->capabilities=NULL;
 }
 
@@ -617,3 +620,4 @@ ui_status_t ui_capabilities_visit_entries(ui_host_t *host,ui_assistant_command_v
 #include "capability_component_inputs.inc"
 
 #include "ai_profiles.inc"
+#include "ai_operation_catalog.inc"
